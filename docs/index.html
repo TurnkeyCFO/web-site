@@ -7,8 +7,18 @@
 <meta name="description" content="Turnkey Web builds modern websites and landing pages for small businesses that want more calls, better leads, and a stronger first impression online.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  window.TKW_CALENDLY_URL = "https://calendly.com/ricky-turnkeycfo/15min-review-tkweb";
+  window.openTKWCalendly = function(source){
+    if(!window.Calendly){ window.location.href = window.TKW_CALENDLY_URL; return false; }
+    window.Calendly.initPopupWidget({ url: window.TKW_CALENDLY_URL + "?utm_source=" + encodeURIComponent(source || "turnkeyweb") });
+    return false;
+  };
+</script>
 <style>
 /* ── Page-specific overrides ── */
 .hero-headline-block{max-width:700px;}
@@ -163,36 +173,37 @@
         <span class="shimmer">winning you business.</span>
       </h1>
       <p class="hero-text" data-reveal data-reveal-delay="120">
-        Turnkey Web builds fast, credible websites and landing pages for small businesses that want more calls, better leads, and a stronger first impression — delivered in 7 days.
+        Turnkey Web builds fast, credible websites and landing pages for small businesses. One flat <strong>$250 setup</strong> — any size site — then <strong>$150–$500/mo</strong> for hosting, management, and unlimited updates.
       </p>
       <div class="hero-actions" data-reveal data-reveal-delay="180">
         <a class="btn" href="./pricing.html#quote">Get a live estimate →</a>
+        <a class="btn-ghost" href="#" onclick="return openTKWCalendly('tkw-home-hero')">Book a 15-min call</a>
         <a class="btn-ghost" href="./work.html">See case studies</a>
       </div>
       <div class="trust-bar" data-reveal data-reveal-delay="240">
         <span class="trust-pill trust-pill-stars"><span>★★★★★</span>&nbsp;5-star design</span>
-        <span class="trust-pill">First draft in 7 days</span>
-        <span class="trust-pill">Unlimited revisions</span>
-        <span class="trust-pill">Transparent pricing</span>
+        <span class="trust-pill">$250 flat setup</span>
+        <span class="trust-pill">Unlimited pages &amp; updates</span>
+        <span class="trust-pill">Cancel anytime</span>
       </div>
 
       <!-- Stats -->
       <div class="stat-band" data-reveal data-reveal-delay="300">
         <div class="stat-item">
+          <div class="stat-num">$<span>250</span></div>
+          <div class="stat-lbl">Flat Setup Fee</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">∞</div>
+          <div class="stat-lbl">Pages &amp; Updates</div>
+        </div>
+        <div class="stat-item">
           <div class="stat-num">7<span>d</span></div>
           <div class="stat-lbl">First Draft</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">∞</div>
-          <div class="stat-lbl">Revisions</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">5<span>★</span></div>
-          <div class="stat-lbl">Client Reviews</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">$<span>1k</span></div>
-          <div class="stat-lbl">Starting at</div>
+          <div class="stat-num">$<span>150</span></div>
+          <div class="stat-lbl">Monthly starts at</div>
         </div>
       </div>
     </div>

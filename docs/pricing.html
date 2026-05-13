@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Turnkey Web | Pricing & Quote Builder</title>
-<meta name="description" content="Get an instant website quote for your small business. Choose from Launch ($1,000), Growth ($1,500), or Authority ($2,000). Transparent pricing, fast delivery.">
+<meta name="description" content="One flat $250 setup fee — any size site. Then $150–$500/mo for hosting, management, and unlimited pages and unlimited updates. Simple, transparent pricing.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -87,7 +87,37 @@
 @media(max-width:600px){
   .pricing-hero-grid{grid-template-columns:1fr;}
 }
+
+/* ── Calendly inline section ── */
+.calendly-section{
+  background:linear-gradient(180deg,#fff 0%, #f7f5ff 100%);
+  border-top:1px solid var(--ice);
+  border-bottom:1px solid var(--ice);
+  padding:64px 0;position:relative;z-index:1;
+}
+.calendly-section .section-heading{max-width:560px;margin-bottom:28px;}
+.calendly-inline-shell{
+  background:var(--white);border:1px solid var(--border);border-radius:24px;
+  box-shadow:0 18px 48px rgba(76,42,165,.06);
+  overflow:hidden;
+}
+.calendly-inline-widget-shell{min-width:320px;height:700px;}
+@media(max-width:600px){.calendly-inline-widget-shell{height:1000px;}}
 </style>
+
+<!-- ── Calendly widget assets ── -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  // Single helper so every Calendly CTA shares one URL + UTM source
+  window.TKW_CALENDLY_URL = "https://calendly.com/ricky-turnkeycfo/15min-review-tkweb";
+  window.openTKWCalendly = function(source){
+    if(!window.Calendly){ window.location.href = window.TKW_CALENDLY_URL; return false; }
+    var url = window.TKW_CALENDLY_URL + "?utm_source=" + encodeURIComponent(source || "turnkeyweb");
+    window.Calendly.initPopupWidget({ url: url });
+    return false;
+  };
+</script>
 </head>
 <body class="page-pricing">
 
@@ -116,7 +146,7 @@
       <a class="active" href="./pricing.html">Pricing</a>
     </div>
     <div class="nav-actions">
-      <a class="btn-ghost" href="./work.html">See our work</a>
+      <a class="btn-ghost" href="#book-a-call" onclick="return openTKWCalendly('tkw-nav')">Book a call</a>
       <a class="btn" href="#quote">Build your quote</a>
     </div>
     <button class="nav-hamburger" aria-label="Open menu">
@@ -136,17 +166,17 @@
   <div class="container">
     <div class="pricing-hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">Transparent pricing</span>
-        <h1>Know what it costs.<br><span class="shimmer">Before you commit.</span></h1>
-        <p class="hero-text">Answer a few questions about your project and get a real estimate in under 3 minutes. No surprises. No sales call required.</p>
+        <span class="eyebrow">Simple, transparent pricing</span>
+        <h1>$250 to launch.<br><span class="shimmer">$150–$500/mo to grow.</span></h1>
+        <p class="hero-text">One flat $250 setup fee for any size site. Then a single monthly plan covering hosting, management, and unlimited pages and unlimited updates — for as long as you want it.</p>
         <div class="hero-actions">
           <a class="btn" href="#quote">Build your quote →</a>
           <a class="btn-ghost" href="./work.html">See our work</a>
         </div>
         <div class="trust-bar" style="margin-top:20px;">
           <span class="trust-pill trust-pill-stars"><span>★★★★★</span>&nbsp;5-star design</span>
-          <span class="trust-pill">First draft in 7 days</span>
-          <span class="trust-pill">Unlimited revisions</span>
+          <span class="trust-pill">$250 flat setup</span>
+          <span class="trust-pill">Unlimited pages &amp; updates</span>
         </div>
       </div>
 
@@ -242,11 +272,12 @@
               <option value="landing-page-sprint">Landing Page Sprint</option>
               <option value="business-website-build" selected>Business Website Build</option>
               <option value="website-refresh">Website Refresh</option>
-              <option value="website-care-plan">Website Care Plan</option>
+              <option value="website-care-plan">Care Plan (existing site)</option>
             </select>
+            <small class="field-help">Every project is one flat $250 setup, no matter the type.</small>
           </div>
           <div class="field-group">
-            <label>Page count</label>
+            <label>Approximate page count</label>
             <select id="pageCountBand" name="pageCountBand" required>
               <option>1 page</option>
               <option selected>2-3 pages</option>
@@ -254,6 +285,7 @@
               <option>6-8 pages</option>
               <option>9+ pages</option>
             </select>
+            <small class="field-help">Unlimited pages are included on every plan — this just helps us recommend a tier.</small>
           </div>
           <div class="field-group">
             <label>Timeline</label>
@@ -262,16 +294,6 @@
               <option>This month</option>
               <option selected>Next 30-60 days</option>
               <option>Flexible / planning ahead</option>
-            </select>
-          </div>
-          <div class="field-group">
-            <label>Budget range</label>
-            <select id="budgetBand" name="budgetBand" required>
-              <option>Under $1.5k</option>
-              <option>$1.5k-$3k</option>
-              <option selected>$3k-$6k</option>
-              <option>$6k-$10k</option>
-              <option>$10k+</option>
             </select>
           </div>
 
@@ -342,19 +364,19 @@
           <div class="offer-letter-copy">
             <div class="eyebrow">Your personalized quote</div>
             <h3 id="result-package">Here's your custom quote.</h3>
-            <p id="result-rationale">Three options built around your goals and scope. Select the tier that fits, then hit Submit — we'll take it from there.</p>
+            <p id="result-rationale">One flat $250 setup fee for any size site, then $150–$500/mo depending on the level of ongoing service you want. Pick a tier below and email to lock it in.</p>
           </div>
           <div class="offer-letter-range">
-            <span class="offer-letter-label">Your planning range</span>
-            <div class="estimate-range-value" id="result-range">$1,000 – $2,000</div>
-            <span class="offer-letter-caption">Select a tier below, then press Submit to send your quote.</span>
+            <span class="offer-letter-label">Your plan</span>
+            <div class="estimate-range-value" id="result-range">$250 setup + $150–$500/mo</div>
+            <span class="offer-letter-caption">Pick a tier below, then press Submit to send your quote.</span>
           </div>
         </div>
 
         <div class="offer-letter-meta">
-          <span class="offer-letter-pill">Three clear ways to move forward</span>
-          <span class="offer-letter-pill">Same direction, different depth</span>
-          <span class="offer-letter-pill">Select your tier below →</span>
+          <span class="offer-letter-pill">$250 setup — any size site</span>
+          <span class="offer-letter-pill">Unlimited pages &amp; updates included</span>
+          <span class="offer-letter-pill">Cancel monthly anytime</span>
         </div>
 
         <!-- Tiers rendered by JS -->
@@ -367,16 +389,33 @@
             <p id="result-addons">No extra add-ons suggested yet.</p>
             <p id="result-rationale-sub" style="font-size:12px;color:var(--gray-lt);margin-top:6px;"></p>
           </div>
-          <div class="result-actions">
+          <div class="result-actions" style="display:flex;flex-direction:column;gap:10px;align-items:flex-end;">
             <button class="btn" id="result-submit-btn" type="button" disabled style="font-size:15px;padding:14px 36px;">
-              Submit
+              Submit my quote
             </button>
-            
+            <button class="btn-ghost" type="button" onclick="return openTKWCalendly('quote-offer-panel')" style="font-size:13px;">
+              Or book a 15-min kickoff call →
+            </button>
           </div>
         </div>
 
       </div>
     </article>
+  </div>
+</section>
+
+<!-- ── BOOK A CALL ── -->
+<section class="calendly-section" id="book-a-call">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Prefer to talk first?</span>
+      <h2>Book a free 15-minute call.</h2>
+      <p class="section-copy">Skip the form — pick a time and walk through your project with Ricky directly. No pressure, no sales pitch, just a fast scope conversation.</p>
+    </div>
+    <div class="calendly-inline-shell">
+      <div class="calendly-inline-widget calendly-inline-widget-shell"
+           data-url="https://calendly.com/ricky-turnkeycfo/15min-review-tkweb?hide_event_type_details=0&hide_gdpr_banner=1&primary_color=7c3aed&utm_source=tkweb-pricing-inline"></div>
+    </div>
   </div>
 </section>
 
@@ -389,34 +428,38 @@
     </div>
     <div class="faq-grid">
       <article class="faq-card glow-card">
-        <h3>What's the difference between the three tiers?</h3>
-        <p>Launch gets you live fast and clean. Growth adds more pages, proof, and conversion polish. Authority goes deepest — SEO pages, CRM integration, and unlimited revisions for 30 days.</p>
+        <h3>How does the pricing work?</h3>
+        <p>One flat $250 setup fee — any size site, any number of pages. After we launch, you're on a monthly plan from $150–$500/mo that covers hosting, management, and unlimited updates. No build-cost surprises.</p>
       </article>
       <article class="faq-card glow-card">
-        <h3>How fast will my site be built?</h3>
-        <p>First draft within 7 days of receiving your brand questionnaire. Most projects complete in 2–3 weeks total, including revisions.</p>
+        <h3>What's actually unlimited?</h3>
+        <p>Unlimited pages, unlimited content edits, and unlimited design tweaks — for as long as you're on the monthly plan. Send requests anytime; we ship them.</p>
       </article>
       <article class="faq-card glow-card">
-        <h3>Do you also help with SEO?</h3>
-        <p>Yes. On-page SEO is included in all tiers. Local SEO page sets (3 service-area pages) are included in Authority, and available as an add-on for Launch and Growth.</p>
+        <h3>Why three tiers if pages are unlimited?</h3>
+        <p>Tiers differ in <em>how fast</em> we respond and <em>how much</em> ongoing strategy is included — not in what gets built. Launch is 48-hour email support. Growth adds priority response and monthly reviews. Authority adds same-day response, monthly strategy calls, and quarterly audits.</p>
       </article>
     </div>
     <div class="faq-accordion">
       <details class="faq-item">
-        <summary>What happens after I submit my quote?</summary>
-        <p>You'll receive a short brand questionnaire within one business day. Once returned with your assets, we start building — first draft in 7 days.</p>
+        <summary>What does the $250 setup actually cover?</summary>
+        <p>Everything to get your site live: design, build, content layout, mobile optimization, on-page SEO, hosting setup, SSL, domain connection, and unlimited revisions until you love the launch version. Same $250 whether it's 1 page or 20.</p>
       </details>
       <details class="faq-item">
-        <summary>What makes the price move up?</summary>
-        <p>More pages, e-commerce, local SEO page sets, CRM integrations, and rush timelines are the biggest movers. The quote builder accounts for all of these automatically.</p>
+        <summary>Which monthly tier should I pick?</summary>
+        <p>Most small businesses land on Growth ($300/mo). Pick Launch ($150/mo) if your site rarely changes; pick Authority ($500/mo) if you want monthly strategy calls and same-day response. You can move between tiers any time.</p>
       </details>
       <details class="faq-item">
-        <summary>Can I start with Launch and upgrade later?</summary>
-                <p>Absolutely. Many businesses start with Launch to get live quickly, then upgrade to add more pages, SEO work, or integrations. We make it easy to expand.</p>
+        <summary>Can I cancel the monthly plan?</summary>
+        <p>Yes — month-to-month, cancel anytime. If you cancel, we hand off your site files and you can host them elsewhere.</p>
       </details>
       <details class="faq-item">
-        <summary>Can you refresh my current site instead of rebuilding?</summary>
-        <p>Yes — the Website Refresh option is built for exactly that. If your site has a solid foundation, a refresh is often the smarter and faster move.</p>
+        <summary>How fast will my site launch?</summary>
+        <p>First draft within 7 days of receiving your brand questionnaire. Most sites go live in 2–3 weeks total.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can you refresh my existing site instead of rebuilding?</summary>
+        <p>Yes — pick the Refresh option in the quote builder. Same $250 setup, same monthly plan.</p>
       </details>
     </div>
     <div class="closing-cta glow-card">
@@ -450,7 +493,7 @@
   </div>
 </footer>
 
-<script src="./site.js?v=10"></script>
+<script src="./site.js?v=12"></script>
 </body>
 </html>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       

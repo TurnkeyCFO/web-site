@@ -1,166 +1,165 @@
 /* ═══════════════════════════════════════════════════
    TURNKEY WEB — site.js
-   Pricing: $1k / $1.5k / $2k spread
-   Tiers: Launch / Growth / Authority (fully differentiated)
-   Tier selection tracked + included in mailto
+   Pricing model: $250 one-time setup + $150–$500/mo
+   - Setup fee is FLAT across every project type and tier
+   - Monthly tier covers hosting, management, and UNLIMITED pages + UNLIMITED updates
+   - Tier (Launch/Growth/Authority) is chosen by site complexity, not by build cost
    ═══════════════════════════════════════════════════ */
 
-/* ── PRICING MATRIX ── */
-const packageMatrix = {
-  "landing-page-sprint":    { base: 700,  band: 700,  monthlyLow: 0,   monthlyHigh: 0   },
-  "business-website-build": { base: 1000, band: 1000, monthlyLow: 0,   monthlyHigh: 0   },
-  "website-refresh":        { base: 600,  band: 600,  monthlyLow: 0,   monthlyHigh: 0   },
-  "website-care-plan":      { base: 150,  band: 350,  monthlyLow: 150, monthlyHigh: 500 }
+/* ── FLAT SETUP FEE (one-time, all project types) ── */
+const SETUP_FEE = 250;
+
+/* ── MONTHLY TIER PRICES (recurring, hosting + unlimited updates) ── */
+const TIER_MONTHLY = {
+  launch:    150,
+  growth:    300,
+  authority: 500
 };
 
-const pageCountAdjustments = {
+/* ── COMPLEXITY SIGNALS — drive which tier is RECOMMENDED, not the price ── */
+const pageCountComplexity = {
   "1 page":    0,
   "2-3 pages": 0,
-  "4-5 pages": 250,
-  "6-8 pages": 600,
-  "9+ pages":  1000
+  "4-5 pages": 1,
+  "6-8 pages": 2,
+  "9+ pages":  3
 };
 
-const featureAdjustments = {
+const featureComplexity = {
   "Contact forms":           0,
   "Calendar booking":        0,
   "Blog/resources":          0,
   "Portfolio/case studies":  0,
   "Testimonials":            0,
   "Quote request flow":      0,
-  "CRM/email integration":   150,
+  "CRM/email integration":   1,
   "Analytics and tracking":  0,
-  "Local SEO pages":         250,
-  "E-commerce / payments":   600
+  "Local SEO pages":         1,
+  "E-commerce / payments":   2
 };
 
-const goalAdjustments = {
-  "Generate leads":             0,
-  "Look more credible":         0,
-  "Book appointments":          0,
-  "Launch paid ads":            100,
-  "Improve SEO/local discovery": 0,
-  "Refresh branding":           100
+const goalComplexity = {
+  "Generate leads":              0,
+  "Look more credible":          0,
+  "Book appointments":           0,
+  "Launch paid ads":             1,
+  "Improve SEO/local discovery": 1,
+  "Refresh branding":            0
 };
 
-const timelineAdjustments = {
-  "ASAP (under 2 weeks)":    250,
-  "This month":              100,
-  "Next 30-60 days":         0,
-  "Flexible / planning ahead": 0
-};
-
-/* ── TIER FEATURES (per project type, per tier level) ── */
+/* ── TIER FEATURES ──
+   Every tier (every project type) ALREADY includes:
+     • $250 one-time setup — covers design, build, and launch of your site
+     • Unlimited pages
+     • Unlimited content & design updates
+     • Managed hosting, SSL, uptime & security monitoring
+     • Mobile-responsive design, on-page SEO foundations
+     • First draft within 7 days, unlimited revisions until launch
+   Tiers differ in depth of ongoing service, response time, and strategic support.
+*/
 const tierFeatures = {
   "business-website-build": {
     launch: [
-      "Up to 3 pages (Home, About, Contact)",
-      "Mobile-responsive design across all devices",
-      "Contact form with spam protection",
-      "Clear headline, subhead, and CTA on every page",
-      
-      "First draft delivered within 7 days",
-      "Unlimited revisions until you love it"
+      "$250 one-time setup — any size site, any number of pages",
+      "Unlimited pages and unlimited updates — forever",
+      "Managed hosting, SSL, domain & uptime monitoring",
+      "Mobile-responsive design + on-page SEO foundations",
+      "First draft within 7 days · unlimited revisions to launch",
+      "Email support with 48-hour response"
     ],
     growth: [
       "Everything in Launch, plus:",
-      "Up to 5 pages (adds Services & Testimonials)",
-      "Testimonials section with rich social proof layout",
+      "Priority turnaround on update requests",
       "Calendly or booking widget integration",
-      "Blog section — ready to publish on day one",
-      "Enhanced lead capture with thank-you redirect",
-      "Priority turnaround & faster revision cycles"
+      "Blog or resources section ready to publish",
+      "Monthly conversion review & improvement suggestions",
+      "Email support with 24-hour response"
     ],
     authority: [
       "Everything in Growth, plus:",
-      "Up to 8 pages — full multi-section site",
-      "Custom portfolio or case study section",
-      "Email list or CRM integration (Mailchimp, HubSpot, etc.)",
-      "Performance optimization for fast load times",
-      "Live chat or inquiry widget setup",
-      "30-min post-launch strategy call included"
+      "Same-day response on update requests",
+      "CRM / email integration (Mailchimp, HubSpot, etc.)",
+      "Local SEO page sets & content expansion as needed",
+      "Monthly 30-min strategy call",
+      "Quarterly full site audit & performance tune-up"
     ]
   },
   "landing-page-sprint": {
     launch: [
-      "1 focused, high-converting landing page",
-      "Mobile-responsive & cross-browser tested",
-      "Headline, subhead, and CTA copy structure",
-      "Lead capture or contact form",
-      
-      "First draft within 5 days",
-      "Unlimited revisions until you love it"
+      "$250 one-time setup — your launch page built, designed, and shipped",
+      "Unlimited pages added later at no extra setup cost",
+      "Managed hosting, SSL & uptime monitoring",
+      "Mobile-responsive design + clean conversion structure",
+      "First draft within 5 days · unlimited revisions to launch",
+      "Email support with 48-hour response"
     ],
     growth: [
       "Everything in Launch, plus:",
-      "A/B headline variant for split testing",
-      "Trust section: logos, reviews, or proof badges",
-      "Calendly or booking embed integration",
-      "Thank-you page with follow-up CTA",
-      "Priority turnaround & faster revision cycles"
+      "A/B headline & layout variants for testing",
+      "Trust section: logos, reviews, proof badges",
+      "Calendly / booking embed integration",
+      "Priority turnaround on updates",
+      "Email support with 24-hour response"
     ],
     authority: [
       "Everything in Growth, plus:",
       "Full-scroll multi-section storytelling layout",
       "Video embed or product walkthrough section",
-      "Live chat or chatbot integration",
-      "Heatmap setup (Hotjar or similar)",
-      "CRM or email automation connection",
-      "30-min post-launch debrief call included"
+      "CRM / email automation connection",
+      "Monthly 30-min strategy call",
+      "Same-day response on update requests"
     ]
   },
   "website-refresh": {
     launch: [
-      "Design refresh of up to 3 existing pages",
-      "Updated typography, colors & spacing",
-      "Mobile responsiveness fixes throughout",
-      "Speed & image optimization pass",
-      "First draft within 7 days",
-      "Unlimited revisions until you love it"
-    ],
-    growth: [
-      "Everything in Launch, plus:",
-      "Refresh of up to 5 pages",
-      "New testimonials section added",
-      "Improved CTA placement & conversion flow",
-      "Contact form rebuild or repair",
-      "Calendly booking integration",
-      "Priority turnaround & faster revision cycles"
-    ],
-    authority: [
-      "Everything in Growth, plus:",
-      "Full brand alignment across all pages",
-      "Up to 7 pages refreshed",
-      "Core Web Vitals performance optimization",
-      "New portfolio or case study section built",
-      "Live chat or inquiry widget setup",
-      "30-min post-launch strategy call included"
-    ]
-  },
-  "website-care-plan": {
-    launch: [
-      "Monthly site maintenance & routine updates",
-      "Uptime & security monitoring",
-      "Up to 2 hours of content edits per month",
-      "Plugin & platform updates handled for you",
+      "$250 one-time setup — full refresh of your existing site",
+      "Unlimited pages and unlimited updates — forever",
+      "Managed hosting, SSL & uptime monitoring",
+      "Updated typography, colors, spacing & mobile fixes",
+      "First draft within 7 days · unlimited revisions to launch",
       "Email support with 48-hour response"
     ],
     growth: [
       "Everything in Launch, plus:",
-      "Up to 5 hours of edits per month",
-      "Monthly conversion review & improvement suggestions",
-      "Google Analytics monthly performance report",
-      "One new section or page element per month",
-      "Priority email support with 24-hour response"
+      "Priority turnaround on update requests",
+      "Improved CTA placement & conversion flow",
+      "Contact form rebuild or repair",
+      "Calendly booking integration",
+      "Email support with 24-hour response"
     ],
     authority: [
       "Everything in Growth, plus:",
-      "Up to 10 hours of edits per month",
+      "Full brand alignment across all pages",
+      "Core Web Vitals performance optimization",
+      "Portfolio or case study section built out",
+      "Monthly 30-min strategy call",
+      "Same-day response on update requests"
+    ]
+  },
+  "website-care-plan": {
+    launch: [
+      "$250 one-time setup — onboard your existing site onto our managed hosting",
+      "Unlimited pages and unlimited updates — forever",
+      "Uptime, SSL & security monitoring included",
+      "Plugin & platform updates handled for you",
+      "Routine content edits & design updates",
+      "Email support with 48-hour response"
+    ],
+    growth: [
+      "Everything in Launch, plus:",
+      "Priority turnaround on update requests",
+      "Monthly conversion review & improvement suggestions",
+      "Google Analytics monthly performance report",
+      "New section or page element added each month",
+      "Email support with 24-hour response"
+    ],
+    authority: [
+      "Everything in Growth, plus:",
       "Monthly 30-min strategy call",
       "Proactive UX improvement recommendations",
       "New blog post drafting assistance (1 per month)",
-      "Same-day priority support response",
-      "Quarterly full site audit"
+      "Quarterly full site audit",
+      "Same-day priority support response"
     ]
   }
 };
@@ -210,132 +209,104 @@ function getPayload(){
   return p;
 }
 
-/* ── COMPUTE ESTIMATE ── */
+/* ── COMPUTE ESTIMATE ──
+   New model: flat $250 setup + monthly tier price ($150 / $300 / $500).
+   Inputs influence which tier is RECOMMENDED, not the setup fee.
+*/
 function computeEstimate(payload){
   const pt  = payload.projectType    || "business-website-build";
   const pcb = payload.pageCountBand  || "2-3 pages";
   const sel = payload.features       || [];
   const gls = payload.goals          || [];
-  const tl  = payload.timeline       || "Next 30-60 days";
 
-  const base   = packageMatrix[pt] || packageMatrix["business-website-build"];
-  const pageAdj= pageCountAdjustments[pcb] || 0;
-  const tlAdj  = timelineAdjustments[tl]   || 0;
+  let complexity = pageCountComplexity[pcb] || 0;
+  sel.forEach(f => { complexity += featureComplexity[f] || 0; });
+  gls.forEach(g => { complexity += goalComplexity[g]    || 0; });
 
-  let price = base.base + pageAdj + tlAdj;
-  sel.forEach(f => { price += featureAdjustments[f] || 0; });
-  gls.forEach(g => { price += goalAdjustments[g]    || 0; });
+  /* Tier recommendation thresholds */
+  let recommendedTierIndex = 1; // Growth by default
+  if(complexity <= 1) recommendedTierIndex = 0;          // Launch
+  else if(complexity >= 4 || sel.includes("E-commerce / payments")) recommendedTierIndex = 2; // Authority
 
-  const pricedAddOns = sel.filter(f => featureAdjustments[f] > 0);
-  const complexitySignals = [
-    pricedAddOns.length > 0,
-    gls.includes("Launch paid ads"),
-    gls.includes("Refresh branding"),
-    pcb === "6-8 pages",
-    pcb === "9+ pages"
-  ].filter(Boolean).length;
-
-  let band = base.band || 1000;
-  if(pt === "website-care-plan") band = 350;
-  else if(sel.includes("E-commerce / payments") || pcb === "9+ pages") band = 1200;
-  else if(complexitySignals >= 2) band = 1000;
-
-  const low  = roundTo50(price);
-  const high = roundTo50(price + band);
+  const monthlyLow  = TIER_MONTHLY.launch;
+  const monthlyHigh = TIER_MONTHLY.authority;
+  const recommendedMonthly = [TIER_MONTHLY.launch, TIER_MONTHLY.growth, TIER_MONTHLY.authority][recommendedTierIndex];
 
   const addOns = [];
-  if(gls.includes("Improve SEO/local discovery")){
-    addOns.push("SEO foundations included");
-    if(!sel.includes("Local SEO pages") && pt !== "website-care-plan") addOns.push("Local SEO page set recommended");
-  }
-  if(sel.includes("CRM/email integration")) addOns.push("CRM integration");
-  if(sel.includes("Local SEO pages"))       addOns.push("Local SEO page set");
-  if(sel.includes("E-commerce / payments")) addOns.push("Payments setup");
-  if(gls.includes("Launch paid ads"))       addOns.push("Campaign landing page support");
-  if(gls.includes("Refresh branding"))      addOns.push("Brand polish");
-  if(tl === "ASAP (under 2 weeks)")         addOns.push("Rush delivery");
-
-  const confidence = pt === "website-care-plan" || band <= 400 ? "high" : "medium";
+  if(gls.includes("Improve SEO/local discovery")) addOns.push("SEO foundations included");
+  if(sel.includes("CRM/email integration"))       addOns.push("CRM integration");
+  if(sel.includes("Local SEO pages"))             addOns.push("Local SEO page set");
+  if(sel.includes("E-commerce / payments"))       addOns.push("Payments setup");
+  if(gls.includes("Launch paid ads"))             addOns.push("Campaign landing page support");
+  if(gls.includes("Refresh branding"))            addOns.push("Brand polish");
 
   return {
-    range: { low, high },
+    setupFee: SETUP_FEE,
+    monthlyRange: { low: monthlyLow, high: monthlyHigh },
+    recommendedTierIndex,
+    recommendedMonthly,
     recommendedPackage: humanizeProjectType(pt),
-    formattedRange: `${formatCurrency(low)} – ${formatCurrency(high)}`,
-    confidence,
+    formattedSetup: `${formatCurrency(SETUP_FEE)} setup`,
+    formattedMonthlyRange: `${formatCurrency(monthlyLow)}–${formatCurrency(monthlyHigh)}/mo`,
+    formattedRange: `${formatCurrency(SETUP_FEE)} setup + ${formatCurrency(monthlyLow)}–${formatCurrency(monthlyHigh)}/mo`,
+    confidence: complexity <= 2 ? "high" : "medium",
     addOns,
     rationale: [
-      `${humanizeProjectType(pt)} starting point`,
-      pcb === "2-3 pages" ? "up to 3 pages included" : pcb,
-      pricedAddOns.length ? `${pricedAddOns.length} priced add-on${pricedAddOns.length===1?"":"s"}` : "standard features included"
+      `${humanizeProjectType(pt)} on the Turnkey Web managed plan`,
+      "$250 one-time setup, any size site, unlimited pages",
+      "Unlimited updates included in your monthly plan"
     ],
-    monthlyRange: (base.monthlyLow || base.monthlyHigh) ? { low: base.monthlyLow, high: base.monthlyHigh } : null
+    /* legacy fields kept for downstream payload compatibility */
+    range: { low: monthlyLow, high: monthlyHigh }
   };
 }
 
-/* ── BUILD TIER OPTIONS ── */
+/* ── BUILD TIER OPTIONS ──
+   Always three tiers: Launch / Growth / Authority.
+   Price format on every tier: "$250 setup + $X/mo".
+   The recommended (highlighted) tier comes from estimate.recommendedTierIndex.
+*/
 function buildTierOptions(estimate, payload){
-  const pt   = payload.projectType || "business-website-build";
-  const ptKey = pt.replace(/-/g,"").replace("websitecareplan","websitecarep");
-  const isCarePlan = pt === "website-care-plan";
-
-  const low  = isCarePlan ? (estimate.monthlyRange?.low  || estimate.range.low)  : estimate.range.low;
-  const high = isCarePlan ? (estimate.monthlyRange?.high || estimate.range.high) : estimate.range.high;
-  const mid  = roundTo50((low + high) / 2);
-
-  const suffix = isCarePlan ? "/mo" : "";
+  const pt = payload.projectType || "business-website-build";
   const features = tierFeatures[pt] || tierFeatures["business-website-build"];
 
-  /* Personalized value statement based on goals */
-  const needsSEO     = payload.goals.includes("Improve SEO/local discovery") || payload.features.includes("Local SEO pages");
-  const needsAds     = payload.goals.includes("Launch paid ads");
-  const needsBooking = payload.goals.includes("Book appointments") || payload.features.includes("Calendar booking");
-  const needsCRM     = payload.features.includes("CRM/email integration");
+  const needsSEO     = (payload.goals||[]).includes("Improve SEO/local discovery") || (payload.features||[]).includes("Local SEO pages");
+  const needsAds     = (payload.goals||[]).includes("Launch paid ads");
+  const needsBooking = (payload.goals||[]).includes("Book appointments") || (payload.features||[]).includes("Calendar booking");
+  const needsCRM     = (payload.features||[]).includes("CRM/email integration");
 
   function valueLine(tier){
     if(tier === "launch"){
-      if(needsBooking) return "Get live fast with a clean booking path — start capturing appointments right away.";
-      if(needsAds)     return "A solid page ready to run ads to — clean structure, clear CTA, fast load time.";
-      return "Get a professional web presence live fast — the cleanest, most focused version of your project.";
+      if(needsBooking) return "Get a clean, professional site live fast with a working booking path — covered by the same flat $250 setup.";
+      if(needsAds)     return "A solid, ad-ready page with clean structure and clear CTAs — $250 setup, fully managed monthly.";
+      return "The simplest path: a professional site live fast, with hosting and unlimited updates rolled in.";
     }
     if(tier === "growth"){
-      if(needsSEO)     return "The strongest balance of trust, proof, and SEO structure — built to rank and convert.";
-      if(needsBooking) return "More trust signals + a booking system that works — the level most clients see the clearest ROI on.";
-      if(needsCRM)     return "Integrated with your CRM so every lead is captured, tracked, and followed up automatically.";
-      return "More proof, stronger conversion flow, and the depth most small businesses actually need to look established.";
+      if(needsSEO)     return "The strongest balance of trust, proof, and SEO — with priority turnaround on every update.";
+      if(needsBooking) return "More polish, more proof, and faster updates — the level most small businesses get the clearest ROI on.";
+      if(needsCRM)     return "Integrated with your CRM so every lead is captured and followed up automatically — with priority response.";
+      return "More polish, deeper conversion structure, and priority turnaround — the level most small businesses choose.";
     }
-    /* authority */
-    if(needsSEO)  return "Maximum SEO depth — service-area pages, structured content, and authority signals that compound over time.";
-    if(needsAds)  return "Built for scale: ad-ready landing support, full analytics, and CRM integration from day one.";
-    return "The most complete version — designed for businesses where trust, depth, and first-impression quality matter most.";
+    if(needsSEO) return "Maximum depth: SEO page sets, CRM integration, strategy calls, and same-day response on updates.";
+    if(needsAds) return "Built for scale: ad-ready, CRM-connected, with monthly strategy calls and same-day update response.";
+    return "The most complete monthly plan — fastest response, monthly strategy calls, and quarterly audits.";
   }
 
-  const tierNames    = isCarePlan ? ["Essential Care", "Growth Care", "Priority Care"] : ["Launch", "Growth", "Authority"];
-  const tierBadges   = ["Leanest path", "Most balanced", "Most complete"];
+  const tierNames    = ["Launch", "Growth", "Authority"];
+  const tierBadges   = ["Simplest", "Most balanced", "Most complete"];
   const tierFitLines = [
-    isCarePlan ? "Best for businesses that mainly need upkeep and light support."
-               : "Best for getting live quickly with a clean, professional presence.",
-    isCarePlan ? "Best balance of ongoing improvements and steady support."
-               : "Best for most small businesses that want stronger trust + conversion.",
-    isCarePlan ? "Best for businesses that want a proactive, hands-on website partner."
-               : "Best for businesses where authority, depth, or complexity matter most."
+    "Best for businesses that want a clean, credible site live fast.",
+    "Best for most small businesses — stronger trust + faster response.",
+    "Best for businesses where depth, SEO, and same-day support matter most."
   ];
-  const tierPrices = [
-    `${formatCurrency(low)}${suffix}`,
-    `${formatCurrency(mid)}${suffix}`,
-    `${formatCurrency(high)}${suffix}`
-  ];
+  const tierKeys     = ["launch","growth","authority"];
+  const tierMonthly  = [TIER_MONTHLY.launch, TIER_MONTHLY.growth, TIER_MONTHLY.authority];
+  const tierPrices   = tierMonthly.map(m => `${formatCurrency(SETUP_FEE)} setup + ${formatCurrency(m)}/mo`);
   const tierSummaries = [
-    isCarePlan
-      ? "Reliable monthly upkeep with updates, maintenance, and light SEO support."
-      : "A clean, credible launch with the core essentials handled professionally.",
-    isCarePlan
-      ? "The strongest balance of ongoing support, improvements, and growth-focused upkeep."
-      : "The strongest balance of polish, proof, and conversion depth for most businesses.",
-    isCarePlan
-      ? "The most hands-on option — proactive support, strategy calls, and faster response."
-      : "The most developed version — more depth, more refinement, and more strategic reach."
+    "Your site, professionally built and launched — then hosted, monitored, and updated by us every month.",
+    "Everything in Launch, plus priority updates, integrations, and monthly conversion review.",
+    "Everything in Growth, plus monthly strategy calls, quarterly audits, and same-day update response."
   ];
-  const tierKeys = ["launch","growth","authority"];
 
   return tierNames.map((name, i) => ({
     badge:    tierBadges[i],
@@ -344,7 +315,8 @@ function buildTierOptions(estimate, payload){
     fit:      tierFitLines[i],
     summary:  tierSummaries[i],
     valueLine: valueLine(tierKeys[i]),
-    points:   features[tierKeys[i]] || []
+    points:   features[tierKeys[i]] || [],
+    recommended: i === estimate.recommendedTierIndex
   }));
 }
 
@@ -354,8 +326,8 @@ function renderTierOptions(tiers){
   if(!container) return;
 
   container.innerHTML = tiers.map((tier, index) => `
-    <article class="offer-tier${index===1?" offer-tier-featured":""}">
-      ${index===1 ? '<div class="tier-highlight">⭐ Recommended</div>' : ""}
+    <article class="offer-tier${tier.recommended?" offer-tier-featured":""}">
+      ${tier.recommended ? '<div class="tier-highlight">⭐ Recommended for your scope</div>' : ""}
       <div class="tier-topline">
         <span class="tier-step">Option ${String(index+1).padStart(2,"0")}</span>
         <div class="tier-badge">${escapeHtml(tier.badge)}</div>
@@ -366,8 +338,8 @@ function renderTierOptions(tiers){
           <p class="tier-summary">${escapeHtml(tier.summary)}</p>
         </div>
         <div class="tier-price-block">
-          <span class="tier-price-prefix">Starting at</span>
-          <div class="tier-price">${escapeHtml(tier.priceLabel)}</div>
+          <span class="tier-price-prefix">$250 one-time +</span>
+          <div class="tier-price">${escapeHtml(tier.priceLabel.split('+ ')[1] || tier.priceLabel)}</div>
         </div>
       </div>
       <div class="tier-fit">${escapeHtml(tier.valueLine)}</div>
@@ -634,11 +606,7 @@ function renderPreview(payload){
   setText("preview-features-count",String(payload.features.length));
   setText("preview-addons",        est.addOns.length ? est.addOns.join(", ") : "No extra add-ons suggested yet.");
   setText("preview-rationale",     est.rationale.join(" – "));
-  setText("preview-monthly",
-    est.monthlyRange
-      ? `Monthly guidance ${formatCurrency(est.monthlyRange.low)} – ${formatCurrency(est.monthlyRange.high)}`
-      : "One-time project range"
-  );
+  setText("preview-monthly", `$250 setup + ${formatCurrency(est.monthlyRange.low)}–${formatCurrency(est.monthlyRange.high)}/mo`);
   return est;
 }
 
@@ -666,18 +634,14 @@ function renderSuccess(estimate, payload){
   renderTierOptions(tiers);
 
   setText("result-package", `Here's your custom quote${payload.firstName ? ", " + payload.firstName : ""}.`);
-  setText("result-range",
-    payload.projectType === "website-care-plan" && estimate.monthlyRange
-      ? `${formatCurrency(estimate.monthlyRange.low)} – ${formatCurrency(estimate.monthlyRange.high)}/mo`
-      : estimate.formattedRange
-  );
+  setText("result-range", `$250 setup + ${formatCurrency(estimate.monthlyRange.low)}–${formatCurrency(estimate.monthlyRange.high)}/mo`);
   setText("result-addons",
     estimate.addOns.length
-      ? `Suggested extras based on your inputs: ${estimate.addOns.join(", ")}.`
-      : "No major add-ons flagged for your scope — the tier you select covers everything you need to get started."
+      ? `Already included in your monthly plan: ${estimate.addOns.join(", ")}. Unlimited pages and unlimited updates are part of every tier.`
+      : "Unlimited pages, unlimited updates, hosting, and on-page SEO are part of every tier — no add-ons needed."
   );
   setText("result-rationale",
-    `Based on your ${estimate.recommendedPackage} scope — pick the level of polish and depth that fits your goals and timeline. Select a tier below, then email to lock it in.`
+    `One flat $250 setup fee for any size site, then $150–$500/mo depending on the level of ongoing service you want. Pick a tier below and email to lock it in.`
   );
   const noteEl = document.getElementById("result-lead-id"); if(noteEl) noteEl.style.display="none";
 
