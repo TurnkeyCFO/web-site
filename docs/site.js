@@ -79,8 +79,8 @@ const tierFeatures = {
       "Everything in Growth, plus:",
       "Same-day response on update requests",
       "CRM / email integration (Mailchimp, HubSpot, etc.)",
-      "Local SEO page sets & content expansion as needed",
-      "Monthly 30-min strategy call",
+      "Microsoft Clarity heatmaps + session recordings installed",
+      "Monthly heatmap & behavior report — what's getting clicked, where users drop off",
       "Quarterly full site audit & performance tune-up"
     ]
   },
@@ -106,7 +106,8 @@ const tierFeatures = {
       "Full-scroll multi-section storytelling layout",
       "Video embed or product walkthrough section",
       "CRM / email automation connection",
-      "Monthly 30-min strategy call",
+      "Microsoft Clarity heatmaps + session recordings installed",
+      "Monthly heatmap & behavior report — what's getting clicked, where users drop off",
       "Same-day response on update requests"
     ]
   },
@@ -132,7 +133,8 @@ const tierFeatures = {
       "Full brand alignment across all pages",
       "Core Web Vitals performance optimization",
       "Portfolio or case study section built out",
-      "Monthly 30-min strategy call",
+      "Microsoft Clarity heatmaps + session recordings installed",
+      "Monthly heatmap & behavior report — what's getting clicked, where users drop off",
       "Same-day response on update requests"
     ]
   },
@@ -155,7 +157,8 @@ const tierFeatures = {
     ],
     authority: [
       "Everything in Growth, plus:",
-      "Monthly 30-min strategy call",
+      "Microsoft Clarity heatmaps + session recordings installed",
+      "Monthly heatmap & behavior report — what's getting clicked, where users drop off",
       "Proactive UX improvement recommendations",
       "New blog post drafting assistance (1 per month)",
       "Quarterly full site audit",
@@ -591,7 +594,7 @@ Add-ons noted:  ${estimate.addOns.join(", ") || "None"}
 Please send me the next steps to get started.
 `
   );
-  return `mailto:ricky@turnkeycfo.com?subject=${subject}&body=${body}`;
+  return `mailto:rickyw@turnkeyweb.org?subject=${subject}&body=${body}`;
 }
 
 /* ── RENDER PREVIEW CARD ── */
