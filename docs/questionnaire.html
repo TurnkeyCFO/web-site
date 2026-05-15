@@ -4,14 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Website Project Questionnaire — Turnkey WEB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: #f4f6fa;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: #f0f4ff;
       color: #1a1a2e;
-      padding: 40px 20px 80px;
+      padding: 48px 20px 80px;
     }
 
     .wrapper {
@@ -21,94 +24,129 @@
 
     /* Header */
     .header {
-      background: #0055FF;
+      background: linear-gradient(135deg, #0055FF 0%, #1A0080 100%);
       color: #fff;
-      padding: 48px 48px 40px;
-      border-radius: 16px 16px 0 0;
+      padding: 52px 52px 44px;
+      border-radius: 20px 20px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 260px;
+      height: 260px;
+      background: rgba(102, 0, 204, 0.25);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 40%;
+      width: 140px;
+      height: 140px;
+      background: rgba(102, 170, 255, 0.15);
+      border-radius: 50%;
+      pointer-events: none;
     }
 
     .logo-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3.5px;
       text-transform: uppercase;
-      opacity: 0.7;
-      margin-bottom: 12px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      position: relative;
     }
 
     .header h1 {
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 800;
       line-height: 1.2;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      position: relative;
     }
 
     .header p {
       font-size: 15px;
-      opacity: 0.85;
-      line-height: 1.6;
-      max-width: 560px;
+      opacity: 0.88;
+      line-height: 1.65;
+      max-width: 540px;
+      position: relative;
     }
 
     /* Body card */
     .card {
       background: #fff;
-      padding: 0 48px 48px;
-      border-radius: 0 0 16px 16px;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+      padding: 0 52px 52px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 8px 48px rgba(0, 85, 255, 0.08), 0 2px 12px rgba(0,0,0,0.04);
     }
 
     /* Sections */
     .section {
-      padding-top: 48px;
-      border-top: 2px solid #f0f2f8;
-      margin-top: 48px;
+      padding-top: 52px;
+      border-top: 1.5px solid #eef1f9;
+      margin-top: 52px;
     }
 
     .section:first-of-type {
       border-top: none;
       margin-top: 0;
-      padding-top: 48px;
+      padding-top: 52px;
     }
 
     .section-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       background: #eef2ff;
       color: #0055FF;
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 10px;
+      font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 4px 12px;
+      padding: 5px 13px;
       border-radius: 20px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .section h2 {
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 700;
-      color: #1a1a2e;
+      color: #0f0f2e;
       margin-bottom: 6px;
     }
 
     .section-desc {
-      font-size: 13px;
+      font-size: 13.5px;
       color: #6b7280;
-      margin-bottom: 28px;
-      line-height: 1.5;
+      margin-bottom: 30px;
+      line-height: 1.6;
     }
 
     /* Form elements */
     .field {
-      margin-bottom: 24px;
+      margin-bottom: 26px;
     }
 
     .field label {
       display: block;
       font-size: 13px;
-      font-weight: 600;
-      color: #374151;
-      margin-bottom: 6px;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 7px;
     }
 
     .field label .req {
@@ -130,14 +168,14 @@
     select,
     textarea {
       width: 100%;
-      padding: 11px 14px;
+      padding: 11px 15px;
       border: 1.5px solid #e5e7eb;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 14px;
-      font-family: inherit;
+      font-family: 'Plus Jakarta Sans', inherit;
       color: #1a1a2e;
-      background: #fafafa;
-      transition: border-color 0.15s, background 0.15s;
+      background: #fafbff;
+      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
       outline: none;
     }
 
@@ -149,12 +187,13 @@
     textarea:focus {
       border-color: #0055FF;
       background: #fff;
+      box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.08);
     }
 
     textarea {
       resize: vertical;
       min-height: 90px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     /* Two-column grid */
@@ -164,9 +203,10 @@
       gap: 20px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 620px) {
       .grid-2 { grid-template-columns: 1fr; }
       .header, .card { padding-left: 24px; padding-right: 24px; }
+      .header { padding-top: 36px; padding-bottom: 32px; }
     }
 
     /* Checkbox / Radio groups */
@@ -179,84 +219,126 @@
     .check-group label, .radio-group label {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      font-weight: 400;
+      gap: 11px;
+      font-weight: 500;
       font-size: 14px;
       color: #374151;
       cursor: pointer;
+      padding: 10px 14px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 10px;
+      transition: border-color 0.12s, background 0.12s;
+    }
+
+    .check-group label:hover, .radio-group label:hover {
+      border-color: #0055FF;
+      background: #fafbff;
+    }
+
+    .check-group label:has(input:checked),
+    .radio-group label:has(input:checked) {
+      border-color: #0055FF;
+      background: #eef2ff;
+      color: #0055FF;
     }
 
     .check-group input[type="checkbox"],
     .radio-group input[type="radio"] {
       width: 16px;
       height: 16px;
-      margin-top: 2px;
+      margin-top: 1px;
       accent-color: #0055FF;
       flex-shrink: 0;
     }
 
-    /* Range */
-    .budget-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .budget-options label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #f4f6fa;
-      border: 1.5px solid #e5e7eb;
-      border-radius: 8px;
-      padding: 8px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
+    /* File upload */
+    .file-upload-area {
+      border: 2px dashed #c7d3f5;
+      border-radius: 12px;
+      padding: 24px;
+      background: #f7f9ff;
+      text-align: center;
       transition: border-color 0.15s, background 0.15s;
     }
 
-    .budget-options input[type="radio"] {
-      accent-color: #0055FF;
-    }
-
-    .budget-options label:has(input:checked) {
+    .file-upload-area:hover {
       border-color: #0055FF;
       background: #eef2ff;
-      color: #0055FF;
+    }
+
+    .file-upload-area input[type="file"] {
+      width: 100%;
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      font-size: 13px;
+      color: #6b7280;
+      cursor: pointer;
+    }
+
+    .file-upload-area input[type="file"]:focus {
+      box-shadow: none;
+      border: none;
+    }
+
+    .file-upload-label {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .file-upload-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    /* Inline interest pills */
+    .interest-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .interest-grid { grid-template-columns: 1fr; }
     }
 
     /* Submit */
     .submit-area {
-      margin-top: 48px;
-      padding-top: 32px;
-      border-top: 2px solid #f0f2f8;
+      margin-top: 52px;
+      padding-top: 36px;
+      border-top: 1.5px solid #eef1f9;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .submit-btn {
-      background: #0055FF;
+      background: linear-gradient(135deg, #0055FF 0%, #1A0080 100%);
       color: #fff;
       border: none;
-      padding: 16px 48px;
+      padding: 17px 56px;
       font-size: 15px;
-      font-weight: 700;
-      border-radius: 10px;
+      font-weight: 800;
+      font-family: 'Plus Jakarta Sans', inherit;
+      border-radius: 12px;
       cursor: pointer;
       letter-spacing: 0.3px;
-      transition: background 0.15s, transform 0.1s;
+      transition: opacity 0.15s, transform 0.12s, box-shadow 0.15s;
+      box-shadow: 0 4px 20px rgba(0, 85, 255, 0.3);
     }
 
     .submit-btn:hover {
-      background: #0044d4;
-      transform: translateY(-1px);
+      opacity: 0.92;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 85, 255, 0.35);
     }
 
     .submit-note {
-      font-size: 12px;
+      font-size: 12.5px;
       color: #9ca3af;
       text-align: center;
     }
@@ -264,9 +346,10 @@
     /* Footer */
     .footer {
       text-align: center;
-      margin-top: 32px;
+      margin-top: 36px;
       font-size: 12px;
       color: #9ca3af;
+      line-height: 1.7;
     }
 
     .footer strong {
@@ -293,7 +376,13 @@
   </div>
 
   <div class="card">
-    <form action="mailto:hello@turnkeyservices.com" method="post" enctype="text/plain">
+    <form action="https://formsubmit.co/ricky@turnkeycfo.com" method="POST" enctype="multipart/form-data">
+
+      <!-- FormSubmit configuration -->
+      <input type="hidden" name="_subject" value="New Website Project Questionnaire Submission" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value="https://turnkeyweb.org/questionnaire-thanks.html" />
 
       <!-- ── SECTION 1: About You ── -->
       <div class="section">
@@ -451,10 +540,19 @@
         </div>
 
         <div class="field">
+          <label>Upload your logo or brand assets <span class="hint">(PNG, SVG, PDF, ZIP — max 10 MB)</span></label>
+          <div class="file-upload-area">
+            <div class="file-upload-icon">📎</div>
+            <input type="file" name="brand_assets" accept=".png,.jpg,.jpeg,.svg,.pdf,.zip,.ai,.eps" multiple />
+            <p class="file-upload-label">Logo files, brand guide, reference images, or anything helpful. Multiple files OK.</p>
+          </div>
+        </div>
+
+        <div class="field">
           <label>Describe the visual style / personality you want your site to project <span class="req">*</span></label>
           <div class="check-group">
             <label><input type="checkbox" name="style" value="modern_minimal" /> Modern &amp; minimal</label>
-            <label><input type="checkbox" name="style" value="bold_bold" /> Bold &amp; high-energy</label>
+            <label><input type="checkbox" name="style" value="bold_energetic" /> Bold &amp; high-energy</label>
             <label><input type="checkbox" name="style" value="warm_friendly" /> Warm &amp; friendly / approachable</label>
             <label><input type="checkbox" name="style" value="luxury_premium" /> Luxury / premium / high-end</label>
             <label><input type="checkbox" name="style" value="corporate_professional" /> Corporate &amp; professional</label>
@@ -566,7 +664,6 @@
             <label><input type="checkbox" name="features" value="email_marketing" /> Email marketing integration (Mailchimp, Klaviyo, etc.)</label>
             <label><input type="checkbox" name="features" value="analytics" /> Analytics / conversion tracking</label>
             <label><input type="checkbox" name="features" value="multilingual" /> Multiple languages</label>
-            <label><input type="checkbox" name="features" value="accessibility" /> ADA / WCAG accessibility compliance</label>
           </div>
         </div>
 
@@ -581,11 +678,11 @@
         </div>
       </div>
 
-      <!-- ── SECTION 7: Technical & SEO ── -->
+      <!-- ── SECTION 7: Technical & Additional Services ── -->
       <div class="section">
         <div class="section-badge">Section 7</div>
-        <h2>Technical &amp; SEO</h2>
-        <p class="section-desc">The behind-the-scenes details that affect how your site performs and gets found.</p>
+        <h2>Technical &amp; Additional Services</h2>
+        <p class="section-desc">A few practical details — and a quick check on services that could amplify your results.</p>
 
         <div class="field">
           <label>Do you have a domain name (web address)? <span class="hint">(e.g. www.yourname.com)</span></label>
@@ -620,36 +717,29 @@
         </div>
 
         <div class="field">
-          <label>Is SEO (getting found on Google) important to you?</label>
+          <label>Are you interested in SEO — getting found on Google?</label>
           <div class="radio-group">
-            <label><input type="radio" name="seo_importance" value="critical" /> Critical — it's our main way of getting new customers</label>
-            <label><input type="radio" name="seo_importance" value="important" /> Important — but not the only channel</label>
-            <label><input type="radio" name="seo_importance" value="nice" /> Nice to have</label>
-            <label><input type="radio" name="seo_importance" value="no" /> Not a priority right now</label>
+            <label><input type="radio" name="seo_interest" value="yes" /> Yes — I'd like to learn more about SEO services</label>
+            <label><input type="radio" name="seo_interest" value="already" /> Already handling it / have someone for this</label>
+            <label><input type="radio" name="seo_interest" value="not_now" /> Not right now</label>
           </div>
         </div>
 
         <div class="field">
-          <label>What keywords or phrases do you want to rank for in Google? <span class="hint">(best guess is fine)</span></label>
-          <textarea name="seo_keywords" placeholder="e.g. 'bookkeeper Austin TX', 'best pizza Austin', 'family law attorney near me'…"></textarea>
-        </div>
-
-        <div class="field">
-          <label>Do you run any paid advertising (Google Ads, Facebook Ads, etc.)?</label>
-          <textarea name="paid_ads" placeholder="If yes — where does the traffic land? Any specific landing pages needed?"></textarea>
-        </div>
-
-        <div class="field">
-          <label>Do you need the website to be HIPAA, ADA, or any compliance standard?</label>
-          <textarea name="compliance" placeholder="Healthcare, legal, financial, government? Any specific compliance requirements?"></textarea>
+          <label>Are you interested in paid advertising (Google Ads, Facebook / Instagram Ads, etc.)?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="ads_interest" value="yes" /> Yes — I'd like to explore paid ads</label>
+            <label><input type="radio" name="ads_interest" value="already" /> Already running ads / have someone for this</label>
+            <label><input type="radio" name="ads_interest" value="not_now" /> Not right now</label>
+          </div>
         </div>
       </div>
 
-      <!-- ── SECTION 8: Timeline & Budget ── -->
+      <!-- ── SECTION 8: Timeline ── -->
       <div class="section">
         <div class="section-badge">Section 8</div>
-        <h2>Timeline &amp; Budget</h2>
-        <p class="section-desc">Honest answers here help us set realistic expectations and prioritize what matters most.</p>
+        <h2>Timeline</h2>
+        <p class="section-desc">Knowing your timeline helps us prioritize and plan the right way.</p>
 
         <div class="field">
           <label>When do you need the website to be live? <span class="req">*</span></label>
@@ -667,22 +757,10 @@
         </div>
 
         <div class="field">
-          <label>What is your budget range for this project? <span class="req">*</span></label>
-          <div class="budget-options">
-            <label><input type="radio" name="budget" value="under2k" /> Under $2,000</label>
-            <label><input type="radio" name="budget" value="2k_5k" /> $2,000 – $5,000</label>
-            <label><input type="radio" name="budget" value="5k_10k" /> $5,000 – $10,000</label>
-            <label><input type="radio" name="budget" value="10k_20k" /> $10,000 – $20,000</label>
-            <label><input type="radio" name="budget" value="20k_plus" /> $20,000+</label>
-            <label><input type="radio" name="budget" value="unsure" /> Not sure yet</label>
-          </div>
-        </div>
-
-        <div class="field">
           <label>Are you open to an ongoing monthly care plan (maintenance, updates, security, hosting)?</label>
           <div class="radio-group">
             <label><input type="radio" name="ongoing_plan" value="yes" /> Yes — I want someone handling it for me</label>
-            <label><input type="radio" name="ongoing_plan" value="maybe" /> Maybe — depends on the cost</label>
+            <label><input type="radio" name="ongoing_plan" value="maybe" /> Maybe — depends on the scope</label>
             <label><input type="radio" name="ongoing_plan" value="no" /> No — I'll handle it myself</label>
           </div>
         </div>
@@ -738,7 +816,7 @@
 
         <div class="field">
           <label>Is there anything unique about your business or project that we should know?</label>
-          <textarea name="unique_notes" placeholder="Special requirements, sensitivities, legal constraints, unique workflows…"></textarea>
+          <textarea name="unique_notes" placeholder="Special requirements, sensitivities, unique workflows…"></textarea>
         </div>
 
         <div class="field">
@@ -762,7 +840,7 @@
   </div>
 
   <div class="footer">
-    <strong>Turnkey WEB</strong> · hello@turnkeyservices.com · turnkeyservices.com<br/>
+    <strong>Turnkey WEB</strong> · ricky@turnkeycfo.com · turnkeyservices.com<br/>
     Powered by Turnkey Services — Austin, TX
   </div>
 
