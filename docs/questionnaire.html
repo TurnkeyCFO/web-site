@@ -679,13 +679,8 @@
 
   <!-- ══ CARD ══ -->
   <div class="card">
-    <form id="main-form" action="https://formsubmit.co/ricky@turnkeycfo.com" method="POST" enctype="multipart/form-data">
+    <form id="main-form">
 
-      <!-- FormSubmit config -->
-      <input type="hidden" name="_subject" value="New Website Project Questionnaire — Turnkey WEB" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_next" value="https://turnkeyweb.org/questionnaire-thanks.html" />
       <input type="hidden" name="selected_package" id="selected_package" value="" />
 
       <!-- ── Tier Selector ── -->
@@ -1190,42 +1185,120 @@
 <script>
   var currentTier = 0;
 
+  var WEBHOOK = 'https://script.google.com/macros/s/AKfycby3WTNHSphNeqvrSBYyFilCvP2hYRV8YCCpSgLOCThC6PheZ2hflDtLUTUmgOxBCoPT/exec';
+
   function selectTier(tier) {
     currentTier = tier;
 
-    // Update hidden input
     var names = ['', 'Starter', 'Growth', 'Pro'];
     document.getElementById('selected_package').value = names[tier] + ' ($50/mo)';
 
-    // Toggle active card
     document.querySelectorAll('.tier-card').forEach(function(card) {
       card.classList.toggle('active', parseInt(card.dataset.tier) === tier);
     });
 
-    // Show/hide tier-gated sections
     document.querySelectorAll('.tier-section').forEach(function(section) {
       var minTier = parseInt(section.dataset.minTier);
       section.classList.toggle('visible', tier >= minTier);
     });
 
-    // Show/hide tier-gated checkbox options
     document.querySelectorAll('.tier-item').forEach(function(item) {
       var minTier = parseInt(item.dataset.minTier);
       item.classList.toggle('visible', tier >= minTier);
     });
 
-    // Update prompt text
     var prompt = document.querySelector('.tier-prompt');
     if (prompt) {
       prompt.innerHTML = 'Package selected: <strong>' + names[tier] + '</strong>. Complete the form below and submit.';
     }
 
-    // Smooth scroll to first section
     var firstSection = document.querySelector('.tier-section.visible');
     if (firstSection) {
       firstSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
+
+  document.getElementById('main-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var btn = document.querySelector('.submit-btn');
+    btn.textContent = 'Submitting…';
+    btn.disabled = true;
+
+    var fd = new FormData(this);
+    var fields = {};
+    var hasFiles = false;
+    var fileNames = [];
+
+    for (var pair of fd.entries()) {
+      var key = pair[0];
+      var val = pair[1];
+      if (val instanceof File) {
+        if (val.name) { hasFiles = true; fileNames.push(val.name); }
+        continue;
+      }
+      if (fields[key] !== undefined) {
+        fields[key] = [].concat(fields[key], val);
+      } else {
+        fields[key] = val;
+      }
+    }
+
+    var pkg    = fields.selected_package   || 'Not selected';
+    var name   = fields.full_name          || '(not provided)';
+    var biz    = fields.business_name      || '(not provided)';
+    var email  = fields.email              || '(not provided)';
+    var phone  = fields.phone              || '(not provided)';
+    var indust = fields.industry           || '';
+    var desc   = fields.business_description || '';
+    var ts     = new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' });
+
+    var parts = [
+      'Package: ' + pkg,
+      indust ? 'Industry: ' + indust : '',
+      fields.primary_goal ? 'Goal: ' + fields.primary_goal : '',
+      fields.timeline     ? 'Timeline: ' + fields.timeline  : '',
+      fields.location     ? 'Location: ' + fields.location  : '',
+      fields.existing_website ? 'Existing: ' + fields.existing_website : '',
+      fields.has_brand    ? 'Brand: ' + fields.has_brand    : '',
+      fields.has_domain   ? 'Domain: ' + fields.has_domain  : '',
+      fields.growth_services ? 'Growth: ' + [].concat(fields.growth_services).join(', ') : '',
+      hasFiles ? 'Files: ' + fileNames.join(', ') : ''
+    ].filter(Boolean).join('  ·  ');
+
+    var slackText = '🌐 *New Website Questionnaire*\n' +
+      '*' + name + '*  ·  ' + biz + '  |  ' + email + '  |  ' + phone + '\n' +
+      (desc ? '*About:* ' + desc.substring(0, 160) + '\n' : '') +
+      parts + '\n' +
+      (fields.success_vision ? '*Vision:* ' + fields.success_vision.substring(0, 120) + '\n' : '') +
+      '_' + ts + ' CT_';
+
+    var flat = {};
+    for (var k in fields) {
+      flat[k] = Array.isArray(fields[k]) ? fields[k].join(', ') : fields[k];
+    }
+
+    var payload = Object.assign({}, flat, {
+      source:       'TK Web Questionnaire',
+      sheetName:    'Questionnaire',
+      timestamp:    ts,
+      _hasFiles:    hasFiles,
+      _fileNames:   fileNames.join(', '),
+      _slackNotify: true,
+      slackText:    slackText
+    });
+
+    fetch(WEBHOOK, {
+      method:  'POST',
+      mode:    'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload)
+    }).catch(function() {});
+
+    setTimeout(function() {
+      window.location.href = 'questionnaire-thanks.html';
+    }, 900);
+  });
 </script>
 
 </body>
