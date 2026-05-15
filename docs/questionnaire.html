@@ -12,135 +12,173 @@
 
     body {
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      background: #f0f4ff;
+      background: #eef2fb;
       color: #1a1a2e;
       padding: 48px 20px 80px;
+      min-height: 100vh;
+    }
+
+    /* Subtle grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 85, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 85, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .wrapper {
-      max-width: 840px;
+      max-width: 860px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     /* ── Header ── */
     .header {
       background: linear-gradient(135deg, #0055FF 0%, #1A0080 100%);
       color: #fff;
-      padding: 52px 52px 44px;
-      border-radius: 20px 20px 0 0;
+      padding: 56px 56px 48px;
+      border-radius: 24px 24px 0 0;
       position: relative;
       overflow: hidden;
     }
 
+    /* Decorative circles */
     .header::before {
       content: '';
       position: absolute;
-      top: -70px; right: -70px;
-      width: 280px; height: 280px;
-      background: rgba(102, 0, 204, 0.20);
-      border-radius: 50%;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(102, 0, 204, 0.30) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .header::after {
       content: '';
       position: absolute;
-      bottom: -50px; left: 38%;
-      width: 180px; height: 180px;
-      background: rgba(102, 170, 255, 0.12);
-      border-radius: 50%;
+      bottom: -60px; left: 35%;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(102, 170, 255, 0.18) 0%, transparent 70%);
       pointer-events: none;
     }
 
-    .header-top {
+    /* TW monogram */
+    .header-brand {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 22px;
+      gap: 14px;
+      margin-bottom: 26px;
       position: relative;
     }
 
-    .logo-label {
-      display: inline-flex;
+    .brand-icon {
+      width: 44px; height: 44px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1.5px solid rgba(255, 255, 255, 0.30);
+      border-radius: 12px;
+      display: flex;
       align-items: center;
-      gap: 7px;
-      font-size: 10px;
+      justify-content: center;
+      font-size: 15px;
       font-weight: 800;
-      letter-spacing: 3.5px;
-      text-transform: uppercase;
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      padding: 6px 14px;
-      border-radius: 20px;
+      letter-spacing: -1px;
+      color: #fff;
+      backdrop-filter: blur(4px);
     }
 
-    .logo-dot {
-      width: 7px; height: 7px;
-      background: #66AAFF;
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(102, 170, 255, 0.8);
-      flex-shrink: 0;
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name-main {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .brand-name-sub {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.60);
     }
 
     .header h1 {
-      font-size: 36px;
+      font-size: 38px;
       font-weight: 800;
-      line-height: 1.15;
+      line-height: 1.13;
       margin-bottom: 14px;
       position: relative;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.8px;
+    }
+
+    .header h1 span {
+      color: #66AAFF;
     }
 
     .header p {
       font-size: 15px;
       opacity: 0.85;
-      line-height: 1.68;
-      max-width: 520px;
+      line-height: 1.70;
+      max-width: 500px;
       position: relative;
     }
 
     /* ── Body card ── */
     .card {
       background: #fff;
-      padding: 0 52px 52px;
-      border-radius: 0 0 20px 20px;
-      box-shadow: 0 12px 60px rgba(0, 85, 255, 0.09), 0 2px 16px rgba(0, 0, 0, 0.05);
+      padding: 0 56px 56px;
+      border-radius: 0 0 24px 24px;
+      box-shadow:
+        0 16px 64px rgba(0, 85, 255, 0.10),
+        0 2px 16px rgba(0, 0, 0, 0.05),
+        inset 0 0 0 1px rgba(0, 85, 255, 0.06);
     }
 
-    /* ── Tier selector ── */
+    /* ── Tier Selector ── */
     .tier-selector {
-      padding: 44px 0 0;
+      padding: 48px 0 0;
     }
 
     .tier-intro {
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
 
     .tier-intro h3 {
-      font-size: 19px;
+      font-size: 20px;
       font-weight: 800;
       color: #0f0f2e;
-      margin-bottom: 7px;
-      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+      letter-spacing: -0.4px;
     }
 
     .tier-intro p {
-      font-size: 13.5px;
+      font-size: 14px;
       color: #6b7280;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
     .tier-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      gap: 16px;
     }
 
     .tier-card {
-      border: 2px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 24px 18px 22px;
+      border: 2px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 26px 20px 24px;
       cursor: pointer;
       transition: border-color 0.15s, background 0.15s, box-shadow 0.15s, transform 0.12s;
       background: #fafbff;
@@ -151,59 +189,78 @@
 
     .tier-card:hover {
       border-color: #0055FF;
-      background: #f5f8ff;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 24px rgba(0, 85, 255, 0.13);
+      background: #f4f7ff;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0, 85, 255, 0.14);
     }
 
     .tier-card.active {
       border-color: #0055FF;
-      background: #eef2ff;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 28px rgba(0, 85, 255, 0.20);
+      background: linear-gradient(180deg, #eef2ff 0%, #f5f8ff 100%);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0, 85, 255, 0.22);
+    }
+
+    /* Recommended badge */
+    .tier-badge {
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, #0055FF, #6600CC);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
     }
 
     .tier-check {
       display: none;
       position: absolute;
-      top: 13px; right: 13px;
-      width: 22px; height: 22px;
+      top: 14px; right: 14px;
+      width: 24px; height: 24px;
       background: #0055FF;
       border-radius: 50%;
       align-items: center;
       justify-content: center;
     }
 
-    .tier-card.active .tier-check {
-      display: flex;
-    }
+    .tier-card.active .tier-check { display: flex; }
 
     .tier-check::after {
       content: '✓';
       color: #fff;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 800;
     }
 
     .tier-name {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
       letter-spacing: 2.5px;
       text-transform: uppercase;
       color: #6600CC;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
+    .tier-card.active .tier-name { color: #0055FF; }
+
     .tier-price {
-      font-size: 30px;
+      font-size: 34px;
       font-weight: 800;
       color: #0f0f2e;
       line-height: 1;
       margin-bottom: 2px;
+      letter-spacing: -1px;
     }
 
+    .tier-card.active .tier-price { color: #0055FF; }
+
     .tier-price sup {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
       vertical-align: super;
       margin-right: 1px;
@@ -213,18 +270,16 @@
       font-size: 12px;
       font-weight: 500;
       color: #9ca3af;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .tier-divider {
       height: 1px;
       background: #e5e7eb;
-      margin: 12px 0 14px;
+      margin: 12px 0 16px;
     }
 
-    .tier-card.active .tier-divider {
-      background: rgba(0, 85, 255, 0.15);
-    }
+    .tier-card.active .tier-divider { background: rgba(0, 85, 255, 0.15); }
 
     .tier-features {
       list-style: none;
@@ -236,32 +291,30 @@
       color: #374151;
       padding: 4px 0;
       display: flex;
-      align-items: center;
-      gap: 7px;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
     }
 
     .tier-features li::before {
       content: '';
-      width: 5px; height: 5px;
+      width: 6px; height: 6px;
       background: #0055FF;
       border-radius: 50%;
       flex-shrink: 0;
+      margin-top: 4px;
     }
 
-    .tier-card.active .tier-name { color: #0055FF; }
-    .tier-card.active .tier-price { color: #0055FF; }
     .tier-card.active .tier-features li { color: #1a1a2e; }
 
     .tier-prompt {
       text-align: center;
-      margin-top: 20px;
-      font-size: 12.5px;
+      margin-top: 22px;
+      font-size: 13px;
       color: #9ca3af;
     }
 
-    .tier-prompt strong {
-      color: #0055FF;
-    }
+    .tier-prompt strong { color: #0055FF; }
 
     /* ── Sections ── */
     .section {
@@ -276,6 +329,13 @@
       padding-top: 52px;
     }
 
+    /* Left-accent section header */
+    .section-header {
+      padding-left: 16px;
+      border-left: 4px solid #0055FF;
+      margin-bottom: 28px;
+    }
+
     .section-badge {
       display: inline-flex;
       align-items: center;
@@ -288,21 +348,20 @@
       text-transform: uppercase;
       padding: 5px 13px;
       border-radius: 20px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .section h2 {
       font-size: 22px;
       font-weight: 800;
       color: #0f0f2e;
-      margin-bottom: 7px;
+      margin-bottom: 6px;
       letter-spacing: -0.3px;
     }
 
     .section-desc {
       font-size: 13.5px;
       color: #6b7280;
-      margin-bottom: 30px;
       line-height: 1.6;
     }
 
@@ -344,7 +403,7 @@
     select,
     textarea {
       width: 100%;
-      padding: 12px 16px;
+      padding: 13px 16px;
       border: 1.5px solid #e2e8f0;
       border-radius: 10px;
       font-size: 14px;
@@ -363,7 +422,7 @@
     textarea:focus {
       border-color: #0055FF;
       background: #fff;
-      box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.09);
+      box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.10);
     }
 
     textarea {
@@ -395,17 +454,18 @@
       font-size: 14px;
       color: #374151;
       cursor: pointer;
-      padding: 11px 15px;
+      padding: 12px 16px;
       border: 1.5px solid #e2e8f0;
       border-radius: 10px;
       transition: border-color 0.12s, background 0.12s;
       margin: 0;
+      line-height: 1.4;
     }
 
     .check-group label:hover,
     .radio-group label:hover {
       border-color: #0055FF;
-      background: #fafbff;
+      background: #f4f7ff;
     }
 
     .check-group label:has(input:checked),
@@ -418,19 +478,20 @@
     .check-group input[type="checkbox"],
     .radio-group input[type="radio"] {
       width: 16px; height: 16px;
-      margin-top: 2px;
+      margin-top: 1px;
       accent-color: #0055FF;
       flex-shrink: 0;
     }
 
     /* ── File upload ── */
     .file-upload-area {
-      border: 2px dashed #c7d3f5;
-      border-radius: 12px;
-      padding: 26px;
-      background: #f7f9ff;
+      border: 2px dashed #c4d4f8;
+      border-radius: 14px;
+      padding: 28px;
+      background: linear-gradient(180deg, #f7f9ff 0%, #f0f4ff 100%);
       text-align: center;
       transition: border-color 0.15s, background 0.15s;
+      position: relative;
     }
 
     .file-upload-area:hover {
@@ -455,7 +516,7 @@
     }
 
     .file-upload-icon {
-      font-size: 30px;
+      font-size: 32px;
       margin-bottom: 10px;
     }
 
@@ -469,39 +530,80 @@
     /* ── Submit ── */
     .submit-area {
       margin-top: 52px;
-      padding-top: 36px;
+      padding-top: 40px;
       border-top: 1.5px solid #eef1f9;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
     .submit-btn {
       background: linear-gradient(135deg, #0055FF 0%, #1A0080 100%);
       color: #fff;
       border: none;
-      padding: 17px 60px;
+      padding: 18px 72px;
       font-size: 15px;
       font-weight: 800;
       font-family: 'Plus Jakarta Sans', inherit;
-      border-radius: 12px;
+      border-radius: 14px;
       cursor: pointer;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.5px;
       transition: opacity 0.15s, transform 0.12s, box-shadow 0.15s;
-      box-shadow: 0 4px 22px rgba(0, 85, 255, 0.32);
+      box-shadow: 0 6px 28px rgba(0, 85, 255, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+      pointer-events: none;
     }
 
     .submit-btn:hover {
-      opacity: 0.92;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 85, 255, 0.38);
+      opacity: 0.93;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(0, 85, 255, 0.42);
     }
 
     .submit-note {
       font-size: 12.5px;
       color: #9ca3af;
       text-align: center;
+    }
+
+    /* ── Trust bar ── */
+    .trust-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 4px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: #9ca3af;
+      font-weight: 500;
+    }
+
+    .trust-item::before {
+      content: '✓';
+      width: 16px; height: 16px;
+      background: #eef2ff;
+      color: #0055FF;
+      border-radius: 50%;
+      font-size: 9px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* ── Footer ── */
@@ -520,12 +622,14 @@
       .tier-cards { grid-template-columns: 1fr; }
       .grid-2 { grid-template-columns: 1fr; }
       .header, .card { padding-left: 24px; padding-right: 24px; }
-      .header { padding-top: 36px; padding-bottom: 32px; }
-      .header h1 { font-size: 28px; }
+      .header { padding-top: 40px; padding-bottom: 36px; }
+      .header h1 { font-size: 30px; }
+      .trust-bar { flex-direction: column; gap: 10px; }
     }
 
     @media print {
       body { background: #fff; padding: 0; }
+      body::before { display: none; }
       .wrapper { max-width: 100%; }
       .header { border-radius: 0; }
       .card { box-shadow: none; }
@@ -538,14 +642,15 @@
 
   <!-- ══ HEADER ══ -->
   <div class="header">
-    <div class="header-top">
-      <div class="logo-label">
-        <span class="logo-dot"></span>
-        Turnkey WEB
+    <div class="header-brand">
+      <div class="brand-icon">TW</div>
+      <div class="brand-name">
+        <div class="brand-name-main">Turnkey WEB</div>
+        <div class="brand-name-sub">Website Design &amp; Development</div>
       </div>
     </div>
-    <h1>Website Project<br/>Questionnaire</h1>
-    <p>Start by selecting the package that fits your project. We'll ask a tailored set of questions so we can build exactly what your business needs.</p>
+    <h1>Website Project<br/><span>Questionnaire</span></h1>
+    <p>Start by selecting the package that fits your project. We'll tailor the questions so we can build exactly what your business needs.</p>
   </div>
 
   <!-- ══ CARD ══ -->
@@ -563,11 +668,12 @@
       <div class="tier-selector">
         <div class="tier-intro">
           <h3>Choose Your Package</h3>
-          <p>Select the option that best matches your project scope. Your choice reveals the right questions for your build.</p>
+          <p>Select the option that best matches your project. Your choice reveals the right questions for your build.</p>
         </div>
 
         <div class="tier-cards">
 
+          <!-- Starter -->
           <div class="tier-card" data-tier="1" onclick="selectTier(1)">
             <div class="tier-check"></div>
             <div class="tier-name">Starter</div>
@@ -576,26 +682,29 @@
             <div class="tier-divider"></div>
             <ul class="tier-features">
               <li>Up to 5 pages</li>
-              <li>Contact / lead form</li>
+              <li>Contact &amp; lead form</li>
               <li>Mobile-responsive</li>
               <li>Basic SEO setup</li>
             </ul>
           </div>
 
+          <!-- Growth -->
           <div class="tier-card" data-tier="2" onclick="selectTier(2)">
+            <div class="tier-badge">Most Popular</div>
             <div class="tier-check"></div>
             <div class="tier-name">Growth</div>
             <div class="tier-price"><sup>$</sup>50</div>
             <div class="tier-price-period">per month</div>
             <div class="tier-divider"></div>
             <ul class="tier-features">
+              <li>Everything in Starter</li>
               <li>Up to 15 pages</li>
-              <li>Brand alignment</li>
+              <li>Brand alignment &amp; style guide</li>
               <li>Content strategy</li>
-              <li>Advanced SEO</li>
             </ul>
           </div>
 
+          <!-- Pro -->
           <div class="tier-card" data-tier="3" onclick="selectTier(3)">
             <div class="tier-check"></div>
             <div class="tier-name">Pro</div>
@@ -603,10 +712,10 @@
             <div class="tier-price-period">per month</div>
             <div class="tier-divider"></div>
             <ul class="tier-features">
+              <li>Everything in Growth</li>
               <li>Unlimited pages</li>
               <li>E-commerce ready</li>
               <li>CRM &amp; integrations</li>
-              <li>Ongoing management</li>
             </ul>
           </div>
 
@@ -618,9 +727,11 @@
            SECTION 1 — About You  (Tier 1+)
       ══════════════════════════════════════════════ -->
       <div class="section tier-section" data-min-tier="1">
-        <div class="section-badge">Section 1</div>
-        <h2>About You &amp; Your Business</h2>
-        <p class="section-desc">Let's get the basics down so we know who we're building for.</p>
+        <div class="section-header">
+          <div class="section-badge">Section 1</div>
+          <h2>About You &amp; Your Business</h2>
+          <p class="section-desc">Let's get the basics so we know who we're building for.</p>
+        </div>
 
         <div class="grid-2">
           <div class="field">
@@ -664,9 +775,11 @@
            SECTION 2 — Target Audience  (Tier 2+)
       ══════════════════════════════════════════════ -->
       <div class="section tier-section" data-min-tier="2">
-        <div class="section-badge">Section 2</div>
-        <h2>Your Target Audience</h2>
-        <p class="section-desc">The best websites speak directly to the right people. Help us understand exactly who you're trying to reach.</p>
+        <div class="section-header">
+          <div class="section-badge">Section 2</div>
+          <h2>Your Target Audience</h2>
+          <p class="section-desc">The best websites speak directly to the right people. Tell us who you're trying to reach.</p>
+        </div>
 
         <div class="field">
           <label>Who is your ideal customer / client?</label>
@@ -683,7 +796,7 @@
         </div>
 
         <div class="field">
-          <label>Who are your top 2–3 competitors? <span class="hint">(include URLs if possible)</span></label>
+          <label>Who are your top 2–3 competitors? <span class="hint">(URLs welcome)</span></label>
           <textarea name="competitors" placeholder="1. competitor.com&#10;2. anothercompetitor.com&#10;3. …"></textarea>
         </div>
 
@@ -697,9 +810,11 @@
            SECTION 3 — Website Goals  (Tier 1+)
       ══════════════════════════════════════════════ -->
       <div class="section tier-section" data-min-tier="1">
-        <div class="section-badge">Section 3</div>
-        <h2>Website Goals &amp; Purpose</h2>
-        <p class="section-desc">What do you want this website to accomplish?</p>
+        <div class="section-header">
+          <div class="section-badge">Section 3</div>
+          <h2>Website Goals &amp; Purpose</h2>
+          <p class="section-desc">What do you want this website to accomplish?</p>
+        </div>
 
         <div class="field">
           <label>What is the #1 goal of your website? <span class="req">*</span></label>
@@ -719,7 +834,7 @@
         </div>
 
         <div class="field">
-          <label>Do you have an existing website? <span class="hint">(if yes, share the URL)</span></label>
+          <label>Do you have an existing website? <span class="hint">(share the URL if yes)</span></label>
           <input type="url" name="existing_website" placeholder="https://youroldsite.com" />
         </div>
 
@@ -733,9 +848,11 @@
            SECTION 4 — Design & Brand  (Tier 2+)
       ══════════════════════════════════════════════ -->
       <div class="section tier-section" data-min-tier="2">
-        <div class="section-badge">Section 4</div>
-        <h2>Design &amp; Brand</h2>
-        <p class="section-desc">Your website should feel unmistakably like you. Help us capture the right look and feel.</p>
+        <div class="section-header">
+          <div class="section-badge">Section 4</div>
+          <h2>Design &amp; Brand</h2>
+          <p class="section-desc">Your website should feel unmistakably like you. Help us capture the right look and feel.</p>
+        </div>
 
         <div class="field">
           <label>Do you have an existing brand? <span class="req">*</span></label>
@@ -773,7 +890,7 @@
         </div>
 
         <div class="field">
-          <label>List 3–5 websites you love the look/feel of <span class="hint">(any industry — just visually inspiring)</span></label>
+          <label>List 3–5 websites you love the look of <span class="hint">(any industry — just visually inspiring)</span></label>
           <textarea name="inspiration_sites" placeholder="1. https://example.com — love the clean layout&#10;2. https://example2.com — great use of color&#10;3. …"></textarea>
         </div>
 
@@ -793,23 +910,25 @@
            Tier 2: core pages · Tier 3: all pages
       ══════════════════════════════════════════════ -->
       <div class="section tier-section" data-min-tier="2">
-        <div class="section-badge">Section 5</div>
-        <h2>Pages &amp; Content</h2>
-        <p class="section-desc">Tell us what your site needs to include.</p>
+        <div class="section-header">
+          <div class="section-badge">Section 5</div>
+          <h2>Pages &amp; Content</h2>
+          <p class="section-desc">Tell us what your site needs to include.</p>
+        </div>
 
         <div class="field">
           <label>Which pages do you need? <span class="hint">(check all that apply)</span></label>
           <div class="check-group">
-            <!-- Core pages — visible Tier 2+ -->
+            <!-- Core pages — Tier 2+ -->
             <label class="tier-item" data-min-tier="2"><input type="checkbox" name="pages" value="home" /> Home</label>
             <label class="tier-item" data-min-tier="2"><input type="checkbox" name="pages" value="about" /> About Us / Our Story</label>
             <label class="tier-item" data-min-tier="2"><input type="checkbox" name="pages" value="services" /> Services</label>
             <label class="tier-item" data-min-tier="2"><input type="checkbox" name="pages" value="contact" /> Contact</label>
             <label class="tier-item" data-min-tier="2"><input type="checkbox" name="pages" value="faq" /> FAQ</label>
             <label class="tier-item" data-min-tier="2"><input type="checkbox" name="pages" value="pricing" /> Pricing</label>
-            <!-- Extended pages — visible Tier 3 only -->
+            <!-- Extended pages — Tier 3 -->
             <label class="tier-item" data-min-tier="3"><input type="checkbox" name="pages" value="products" /> Products / Shop</label>
-            <label class="tier-item" data-min-tier="3"><input type="checkbox" name="pages" value="portfolio" /> Portfolio / Work / Case Studies</label>
+            <label class="tier-item" data-min-tier="3"><input type="checkbox" name="pages" value="portfolio" /> Portfolio / Case Studies</label>
             <label class="tier-item" data-min-tier="3"><input type="checkbox" name="pages" value="team" /> Team / Staff</label>
             <label class="tier-item" data-min-tier="3"><input type="checkbox" name="pages" value="testimonials" /> Testimonials / Reviews</label>
             <label class="tier-item" data-min-tier="3"><input type="checkbox" name="pages" value="blog" /> Blog / News / Resources</label>
@@ -845,38 +964,38 @@
            SECTION 6 — Features & Functionality  (Tier 3)
       ══════════════════════════════════════════════ -->
       <div class="section tier-section" data-min-tier="3">
-        <div class="section-badge">Section 6</div>
-        <h2>Features &amp; Functionality</h2>
-        <p class="section-desc">What does your website need to DO beyond looking great?</p>
+        <div class="section-header">
+          <div class="section-badge">Section 6</div>
+          <h2>Features &amp; Functionality</h2>
+          <p class="section-desc">What does your website need to DO beyond looking great?</p>
+        </div>
 
         <div class="field">
           <label>Which features do you need? <span class="hint">(check all that apply)</span></label>
           <div class="check-group">
             <label><input type="checkbox" name="features" value="contact_form" /> Contact / inquiry form</label>
             <label><input type="checkbox" name="features" value="online_booking" /> Online appointment booking / scheduling</label>
-            <label><input type="checkbox" name="features" value="ecommerce" /> E-commerce / online store (sell products)</label>
-            <label><input type="checkbox" name="features" value="online_payments" /> Online payments / invoicing</label>
+            <label><input type="checkbox" name="features" value="ecommerce" /> E-commerce / online store</label>
+            <label><input type="checkbox" name="features" value="online_payments" /> Online payments</label>
             <label><input type="checkbox" name="features" value="live_chat" /> Live chat or chatbot</label>
             <label><input type="checkbox" name="features" value="email_capture" /> Email list / newsletter signup</label>
             <label><input type="checkbox" name="features" value="blog_cms" /> Blog with easy content management</label>
             <label><input type="checkbox" name="features" value="maps" /> Google Maps integration</label>
-            <label><input type="checkbox" name="features" value="social_feeds" /> Social media feeds (Instagram, Facebook, etc.)</label>
-            <label><input type="checkbox" name="features" value="popup_leadmag" /> Popup / lead magnet</label>
+            <label><input type="checkbox" name="features" value="social_feeds" /> Social media feeds</label>
             <label><input type="checkbox" name="features" value="reviews" /> Google / Yelp reviews display</label>
-            <label><input type="checkbox" name="features" value="members_area" /> Password-protected members / client area</label>
+            <label><input type="checkbox" name="features" value="members_area" /> Password-protected client area</label>
             <label><input type="checkbox" name="features" value="crm_integration" /> CRM integration (HubSpot, Salesforce, etc.)</label>
-            <label><input type="checkbox" name="features" value="email_marketing" /> Email marketing integration (Mailchimp, Klaviyo, etc.)</label>
             <label><input type="checkbox" name="features" value="analytics" /> Analytics / conversion tracking</label>
           </div>
         </div>
 
         <div class="field">
-          <label>Any tools or software you currently use that should connect to the website?</label>
+          <label>Any tools or software that should connect to the website?</label>
           <textarea name="integrations" placeholder="e.g. QuickBooks, Stripe, Calendly, HubSpot, Mailchimp, Zapier…"></textarea>
         </div>
 
         <div class="field">
-          <label>If you need e-commerce — what do you sell, and roughly how many products?</label>
+          <label>If you need e-commerce — what do you sell and roughly how many products?</label>
           <textarea name="ecommerce_details" placeholder="Physical products, digital downloads, services, subscriptions? Roughly how many SKUs?"></textarea>
         </div>
       </div>
@@ -885,9 +1004,11 @@
            SECTION 7 — Technical  (Tier 1+)
       ══════════════════════════════════════════════ -->
       <div class="section tier-section" data-min-tier="1">
-        <div class="section-badge">Section 7</div>
-        <h2>Technical Details</h2>
-        <p class="section-desc">A few quick practical questions before we get started.</p>
+        <div class="section-header">
+          <div class="section-badge">Section 7</div>
+          <h2>Technical Details</h2>
+          <p class="section-desc">A few quick practical questions before we get started.</p>
+        </div>
 
         <div class="field">
           <label>Do you have a domain name (web address)? <span class="hint">(e.g. www.yourname.com)</span></label>
@@ -899,7 +1020,7 @@
         </div>
 
         <div class="field">
-          <label>If yes, what is your domain and who is it registered with?</label>
+          <label>If yes, what is your domain and where is it registered?</label>
           <input type="text" name="domain_info" placeholder="e.g. mysite.com — registered at GoDaddy / Namecheap" />
         </div>
 
@@ -913,11 +1034,10 @@
         </div>
 
         <div class="field">
-          <label>Are you interested in SEO or paid advertising?</label>
+          <label>Are you interested in any of these growth services?</label>
           <div class="check-group">
-            <label><input type="checkbox" name="growth_services" value="seo" /> Yes, I want to get found on Google (SEO)</label>
-            <label><input type="checkbox" name="growth_services" value="ads" /> Yes, I'm interested in paid ads (Google / Facebook)</label>
-            <label><input type="checkbox" name="growth_services" value="neither" /> Not right now — just the website for now</label>
+            <label><input type="checkbox" name="growth_services" value="seo" /> Yes — I want to get found on Google (SEO)</label>
+            <label><input type="checkbox" name="growth_services" value="ads" /> Yes — I'm interested in paid ads (Google / Facebook)</label>
           </div>
         </div>
       </div>
@@ -926,9 +1046,11 @@
            SECTION 8 — Timeline  (Tier 1+)
       ══════════════════════════════════════════════ -->
       <div class="section tier-section" data-min-tier="1">
-        <div class="section-badge">Section 8</div>
-        <h2>Timeline</h2>
-        <p class="section-desc">Knowing your timeline helps us plan the right way.</p>
+        <div class="section-header">
+          <div class="section-badge">Section 8</div>
+          <h2>Timeline</h2>
+          <p class="section-desc">Knowing your timeline helps us plan the right way.</p>
+        </div>
 
         <div class="field">
           <label>When do you need the website to be live? <span class="req">*</span></label>
@@ -959,9 +1081,11 @@
            SECTION 9 — Communication  (Tier 3)
       ══════════════════════════════════════════════ -->
       <div class="section tier-section" data-min-tier="3">
-        <div class="section-badge">Section 9</div>
-        <h2>Communication &amp; Process</h2>
-        <p class="section-desc">How we work together matters as much as the final result.</p>
+        <div class="section-header">
+          <div class="section-badge">Section 9</div>
+          <h2>Communication &amp; Process</h2>
+          <p class="section-desc">How we work together matters as much as the final result.</p>
+        </div>
 
         <div class="field">
           <label>How do you prefer to communicate throughout the project?</label>
@@ -970,18 +1094,17 @@
             <label><input type="checkbox" name="comms_pref" value="phone" /> Phone calls</label>
             <label><input type="checkbox" name="comms_pref" value="video" /> Video calls (Zoom / Google Meet)</label>
             <label><input type="checkbox" name="comms_pref" value="text" /> Text message</label>
-            <label><input type="checkbox" name="comms_pref" value="slack" /> Slack / Teams</label>
           </div>
         </div>
 
         <div class="field">
-          <label>Who is the primary decision-maker / point of contact for this project?</label>
+          <label>Who is the primary point of contact for this project?</label>
           <input type="text" name="decision_maker" placeholder="Name and role" />
         </div>
 
         <div class="field">
           <label>Will anyone else need to review and approve work?</label>
-          <textarea name="other_approvers" placeholder="Business partner, marketing manager, executive team, board, etc.?"></textarea>
+          <textarea name="other_approvers" placeholder="Business partner, marketing manager, executive team, etc.?"></textarea>
         </div>
 
         <div class="field">
@@ -994,7 +1117,7 @@
         </div>
 
         <div class="field">
-          <label>If prior experience was frustrating — what went wrong? What do you need to be different?</label>
+          <label>If prior experience was frustrating — what went wrong?</label>
           <textarea name="prior_web_issues" placeholder="Late delivery, poor communication, didn't match the vision, bugs…"></textarea>
         </div>
       </div>
@@ -1003,9 +1126,11 @@
            SECTION 10 — Anything Else  (Tier 1+)
       ══════════════════════════════════════════════ -->
       <div class="section tier-section" data-min-tier="1">
-        <div class="section-badge">Section 10</div>
-        <h2>Anything Else?</h2>
-        <p class="section-desc">This is your chance to tell us anything we haven't asked yet.</p>
+        <div class="section-header">
+          <div class="section-badge">Section 10</div>
+          <h2>Anything Else?</h2>
+          <p class="section-desc">This is your chance to tell us anything we haven't asked yet.</p>
+        </div>
 
         <div class="field">
           <label>What would make this project a 10/10 success in your eyes?</label>
@@ -1021,7 +1146,11 @@
       <!-- ── Submit ── -->
       <div class="submit-area tier-section" data-min-tier="1">
         <button type="submit" class="submit-btn">Submit Questionnaire →</button>
-        <p class="submit-note">We'll follow up within 1 business day. Thank you for taking the time!</p>
+        <div class="trust-bar">
+          <div class="trust-item">Response within 1 business day</div>
+          <div class="trust-item">No commitment required</div>
+          <div class="trust-item">Austin, TX based team</div>
+        </div>
       </div>
 
     </form>
@@ -1040,7 +1169,7 @@
   function selectTier(tier) {
     currentTier = tier;
 
-    // Update hidden input with tier name
+    // Update hidden input
     var names = ['', 'Starter', 'Growth', 'Pro'];
     document.getElementById('selected_package').value = names[tier] + ' ($50/mo)';
 
