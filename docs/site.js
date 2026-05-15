@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════
    TURNKEY WEB — site.js
-   Pricing model: $250 one-time setup + $150–$500/mo
+   Pricing model: $250 one-time setup + $50/mo
    - Setup fee is FLAT across every project type and tier
    - Monthly tier covers hosting, management, and UNLIMITED pages + UNLIMITED updates
    - Tier (Launch/Growth/Authority) is chosen by site complexity, not by build cost
@@ -11,9 +11,9 @@ const SETUP_FEE = 250;
 
 /* ── MONTHLY TIER PRICES (recurring, hosting + unlimited updates) ── */
 const TIER_MONTHLY = {
-  launch:    150,
-  growth:    300,
-  authority: 500
+  launch:    50,
+  growth:    50,
+  authority: 50
 };
 
 /* ── COMPLEXITY SIGNALS — drive which tier is RECOMMENDED, not the price ── */
@@ -213,7 +213,7 @@ function getPayload(){
 }
 
 /* ── COMPUTE ESTIMATE ──
-   New model: flat $250 setup + monthly tier price ($150 / $300 / $500).
+   New model: flat $250 setup + monthly tier price ($50/mo all tiers).
    Inputs influence which tier is RECOMMENDED, not the setup fee.
 */
 function computeEstimate(payload){
@@ -250,8 +250,8 @@ function computeEstimate(payload){
     recommendedMonthly,
     recommendedPackage: humanizeProjectType(pt),
     formattedSetup: `${formatCurrency(SETUP_FEE)} setup`,
-    formattedMonthlyRange: `${formatCurrency(monthlyLow)}–${formatCurrency(monthlyHigh)}/mo`,
-    formattedRange: `${formatCurrency(SETUP_FEE)} setup + ${formatCurrency(monthlyLow)}–${formatCurrency(monthlyHigh)}/mo`,
+    formattedMonthlyRange: `${formatCurrency(recommendedMonthly)}/mo`,
+    formattedRange: `${formatCurrency(SETUP_FEE)} setup + ${formatCurrency(recommendedMonthly)}/mo`,
     confidence: complexity <= 2 ? "high" : "medium",
     addOns,
     rationale: [
@@ -609,7 +609,7 @@ function renderPreview(payload){
   setText("preview-features-count",String(payload.features.length));
   setText("preview-addons",        est.addOns.length ? est.addOns.join(", ") : "No extra add-ons suggested yet.");
   setText("preview-rationale",     est.rationale.join(" – "));
-  setText("preview-monthly", `$250 setup + ${formatCurrency(est.monthlyRange.low)}–${formatCurrency(est.monthlyRange.high)}/mo`);
+  setText("preview-monthly", `$250 setup + $50/mo`);
   return est;
 }
 
@@ -637,14 +637,14 @@ function renderSuccess(estimate, payload){
   renderTierOptions(tiers);
 
   setText("result-package", `Here's your custom quote${payload.firstName ? ", " + payload.firstName : ""}.`);
-  setText("result-range", `$250 setup + ${formatCurrency(estimate.monthlyRange.low)}–${formatCurrency(estimate.monthlyRange.high)}/mo`);
+  setText("result-range", `$250 setup + $50/mo`);
   setText("result-addons",
     estimate.addOns.length
       ? `Already included in your monthly plan: ${estimate.addOns.join(", ")}. Unlimited pages and unlimited updates are part of every tier.`
       : "Unlimited pages, unlimited updates, hosting, and on-page SEO are part of every tier — no add-ons needed."
   );
   setText("result-rationale",
-    `One flat $250 setup fee for any size site, then $150–$500/mo depending on the level of ongoing service you want. Pick a tier below and email to lock it in.`
+    `One flat $250 setup fee for any size site, then $50/mo covering hosting, management, and unlimited updates. Pick a tier below and email to lock it in.`
   );
   const noteEl = document.getElementById("result-lead-id"); if(noteEl) noteEl.style.display="none";
 

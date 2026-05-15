@@ -1185,8 +1185,6 @@
 <script>
   var currentTier = 0;
 
-  var WEBHOOK = 'https://script.google.com/macros/s/AKfycby3WTNHSphNeqvrSBYyFilCvP2hYRV8YCCpSgLOCThC6PheZ2hflDtLUTUmgOxBCoPT/exec';
-
   function selectTier(tier) {
     currentTier = tier;
 
@@ -1218,14 +1216,216 @@
     }
   }
 
-  document.getElementById('main-form').addEventListener('submit', function(e) {
+  function buildFormSummary(fields, hasFiles, fileNames) {
+    var labelMap = {
+      selected_package:      'Package',
+      full_name:             'Name',
+      business_name:         'Business',
+      email:                 'Email',
+      phone:                 'Phone',
+      industry:              'Industry',
+      business_description:  'Business Description',
+      location:              'Location',
+      target_audience:       'Target Audience',
+      audience_type:         'Audience Type',
+      competitors:           'Competitors',
+      differentiator:        'Differentiator',
+      primary_goal:          'Primary Goal',
+      primary_cta:           'Primary CTA',
+      existing_website:      'Existing Website',
+      current_site_dislikes: 'Current Site Dislikes',
+      has_brand:             'Existing Brand',
+      brand_colors:          'Brand Colors',
+      style:                 'Visual Style',
+      inspiration_sites:     'Inspiration Sites',
+      has_photos:            'Photography',
+      pages:                 'Pages Needed',
+      other_pages:           'Other Pages',
+      copy_owner:            'Copy Writer',
+      existing_content:      'Existing Content',
+      features:              'Features Needed',
+      integrations:          'Integrations',
+      ecommerce_details:     'E-Commerce Details',
+      has_domain:            'Domain Status',
+      domain_info:           'Domain Info',
+      self_manage:           'Self-Manage Site',
+      growth_services:       'Growth Services',
+      timeline:              'Timeline',
+      hard_deadline:         'Hard Deadline',
+      ongoing_plan:          'Ongoing Plan',
+      comms_pref:            'Communication Preference',
+      decision_maker:        'Decision Maker',
+      other_approvers:       'Other Approvers',
+      prior_web_exp:         'Prior Web Experience',
+      prior_web_issues:      'Prior Web Issues',
+      success_vision:        'Success Vision',
+      other:                 'Other Notes'
+    };
+
+    var sections = [
+      { header: 'PACKAGE', keys: ['selected_package'] },
+      { header: 'ABOUT YOUR BUSINESS', keys: ['full_name','business_name','email','phone','industry','business_description','location'] },
+      { header: 'TARGET AUDIENCE', keys: ['target_audience','audience_type','competitors','differentiator'] },
+      { header: 'WEBSITE GOALS', keys: ['primary_goal','primary_cta','existing_website','current_site_dislikes'] },
+      { header: 'DESIGN & BRAND', keys: ['has_brand','brand_colors','style','inspiration_sites','has_photos'] },
+      { header: 'PAGES & CONTENT', keys: ['pages','other_pages','copy_owner','existing_content'] },
+      { header: 'FEATURES & FUNCTIONALITY', keys: ['features','integrations','ecommerce_details'] },
+      { header: 'TECHNICAL', keys: ['has_domain','domain_info','self_manage','growth_services'] },
+      { header: 'TIMELINE', keys: ['timeline','hard_deadline','ongoing_plan'] },
+      { header: 'COMMUNICATION', keys: ['comms_pref','decision_maker','other_approvers','prior_web_exp','prior_web_issues'] },
+      { header: 'ANYTHING ELSE', keys: ['success_vision','other'] }
+    ];
+
+    var lines = ['NEW WEBSITE PROJECT QUESTIONNAIRE', ''];
+    sections.forEach(function(sec) {
+      var sectionLines = [];
+      sec.keys.forEach(function(key) {
+        var val = fields[key];
+        if (!val || (Array.isArray(val) && val.length === 0)) return;
+        var display = Array.isArray(val) ? val.join(', ') : String(val).trim();
+        if (!display) return;
+        var label = labelMap[key] || key;
+        sectionLines.push(label + ': ' + display);
+      });
+      if (sectionLines.length > 0) {
+        lines.push('--- ' + sec.header + ' ---');
+        sectionLines.forEach(function(l) { lines.push(l); });
+        lines.push('');
+      }
+    });
+
+    if (hasFiles) {
+      lines.push('--- FILES ---');
+      lines.push('Logo/Brand Files: ' + fileNames.join(', '));
+      lines.push('');
+    }
+
+    return lines.join('\n');
+  }
+
+  function showSuccessOverlay(summaryText, bizName, hasFiles) {
+    // Build Gmail URL
+    var subject = 'New Website Project Questionnaire — ' + (bizName || 'New Client');
+    var gmailUrl = 'https://mail.google.com/mail/?view=cm&to=ricky@turnkeycfo.com'
+      + '&su=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(summaryText);
+
+    // Short mailto body (abbreviated for email clients with URI limits)
+    var shortBody = summaryText.substring(0, 1800) + (summaryText.length > 1800 ? '\n\n[Full data in copied text]' : '');
+    var mailtoUrl = 'mailto:ricky@turnkeycfo.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(shortBody);
+
+    var fileNote = hasFiles
+      ? '<div style="margin:16px 0;padding:14px 18px;background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;font-size:13px;color:#9a3412;line-height:1.55;">'
+        + '📎 Please email your logo/brand files separately to <strong>ricky@turnkeycfo.com</strong> with the subject line <strong>"Brand Files — ' + (bizName || 'New Client') + '"</strong>'
+        + '</div>'
+      : '';
+
+    var html = '<div id="qs-overlay" style="'
+      + 'position:fixed;inset:0;z-index:9999;'
+      + 'background:rgba(10,15,50,0.72);'
+      + 'display:flex;align-items:center;justify-content:center;'
+      + 'padding:20px;'
+      + 'animation:qsFadeIn 0.25s ease;'
+      + '">'
+      + '<style>'
+      + '@keyframes qsFadeIn{from{opacity:0}to{opacity:1}}'
+      + '@keyframes qsSlideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}'
+      + '#qs-modal{animation:qsSlideUp 0.28s ease;}'
+      + '</style>'
+      + '<div id="qs-modal" style="'
+      + 'background:#fff;border-radius:24px;max-width:680px;width:100%;'
+      + 'max-height:90vh;overflow-y:auto;'
+      + 'box-shadow:0 32px 80px rgba(0,0,0,0.28),0 0 0 1px rgba(0,85,255,0.12);'
+      + '">'
+      + '<!-- Header -->'
+      + '<div style="'
+      + 'background:linear-gradient(135deg,#0d1647 0%,#0a0070 50%,#6600CC 100%);'
+      + 'padding:32px 36px 28px;border-radius:24px 24px 0 0;color:#fff;'
+      + '">'
+      + '<div style="font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:8px;">Turnkey WEB</div>'
+      + '<h2 style="font-size:26px;font-weight:800;margin:0 0 6px;letter-spacing:-0.4px;">Questionnaire Received ✓</h2>'
+      + '<p style="font-size:14px;opacity:0.8;margin:0;line-height:1.5;">Your responses are ready to send. Choose how to submit:</p>'
+      + '</div>'
+      + '<!-- Body -->'
+      + '<div style="padding:28px 36px 32px;">'
+      + fileNote
+      + '<!-- Gmail button -->'
+      + '<a href="' + gmailUrl + '" target="_blank" rel="noopener" style="'
+      + 'display:block;width:100%;box-sizing:border-box;'
+      + 'background:linear-gradient(135deg,#0055FF,#6600CC);'
+      + 'color:#fff;text-decoration:none;'
+      + 'padding:15px 24px;border-radius:12px;'
+      + 'font-size:14px;font-weight:800;text-align:center;'
+      + 'margin-bottom:12px;'
+      + 'box-shadow:0 6px 24px rgba(0,85,255,0.35);'
+      + '">Open in Gmail (recommended) →</a>'
+      + '<!-- mailto button -->'
+      + '<a href="' + mailtoUrl + '" style="'
+      + 'display:block;width:100%;box-sizing:border-box;'
+      + 'background:#f0f4ff;color:#0055FF;text-decoration:none;'
+      + 'padding:13px 24px;border-radius:12px;'
+      + 'font-size:13px;font-weight:700;text-align:center;'
+      + 'border:1.5px solid #c5d4ff;margin-bottom:24px;'
+      + '">Open Default Email App</a>'
+      + '<!-- Copy area -->'
+      + '<div style="margin-bottom:16px;">'
+      + '<div style="font-size:12px;font-weight:700;color:#6b748a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Or copy your responses manually:</div>'
+      + '<textarea id="qs-copy-area" readonly style="'
+      + 'width:100%;box-sizing:border-box;height:180px;'
+      + 'border:1.5px solid #d0d6e8;border-radius:10px;'
+      + 'padding:12px 14px;font-size:12px;font-family:monospace;'
+      + 'color:#374065;background:#f8f9fc;resize:vertical;line-height:1.5;'
+      + '">' + summaryText.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</textarea>'
+      + '<button onclick="'
+      + 'var ta=document.getElementById(\'qs-copy-area\');'
+      + 'ta.select();'
+      + 'document.execCommand(\'copy\');'
+      + 'this.textContent=\'✓ Copied!\';'
+      + 'this.style.background=\'#dcfce7\';'
+      + 'this.style.color=\'#166534\';'
+      + 'this.style.borderColor=\'#86efac\';'
+      + 'var b=this;setTimeout(function(){b.textContent=\'Copy All\';b.style.background=\'\';b.style.color=\'\';b.style.borderColor=\'\';},2000);'
+      + '" style="'
+      + 'margin-top:8px;padding:9px 20px;'
+      + 'background:#eef3ff;color:#0055FF;'
+      + 'border:1.5px solid #c5d4ff;border-radius:8px;'
+      + 'font-size:13px;font-weight:700;cursor:pointer;'
+      + 'font-family:inherit;'
+      + '">Copy All</button>'
+      + '</div>'
+      + '<!-- Done button -->'
+      + '<button onclick="window.location.href=\'questionnaire-thanks.html\'" style="'
+      + 'display:block;width:100%;box-sizing:border-box;'
+      + 'background:#f8f9fc;color:#374065;'
+      + 'border:1.5px solid #dde2f0;border-radius:12px;'
+      + 'padding:13px 24px;'
+      + 'font-size:13px;font-weight:700;cursor:pointer;'
+      + 'font-family:inherit;text-align:center;'
+      + '">Done — Go to confirmation page →</button>'
+      + '</div>'
+      + '</div>'
+      + '</div>';
+
+    document.body.insertAdjacentHTML('beforeend', html);
+
+    // Close on backdrop click
+    document.getElementById('qs-overlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.remove();
+      }
+    });
+  }
+
+  function handleFormSubmit(e) {
     e.preventDefault();
 
-    var btn = document.querySelector('.submit-btn');
-    btn.textContent = 'Submitting…';
-    btn.disabled = true;
+    if (currentTier === 0) {
+      alert('Please select a package first.');
+      document.querySelector('.tier-selector').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
 
-    var fd = new FormData(this);
+    var fd = new FormData(document.getElementById('main-form'));
     var fields = {};
     var hasFiles = false;
     var fileNames = [];
@@ -1244,61 +1444,13 @@
       }
     }
 
-    var pkg    = fields.selected_package   || 'Not selected';
-    var name   = fields.full_name          || '(not provided)';
-    var biz    = fields.business_name      || '(not provided)';
-    var email  = fields.email              || '(not provided)';
-    var phone  = fields.phone              || '(not provided)';
-    var indust = fields.industry           || '';
-    var desc   = fields.business_description || '';
-    var ts     = new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' });
+    var bizName = (fields.business_name || '').trim() || 'New Client';
+    var summaryText = buildFormSummary(fields, hasFiles, fileNames);
 
-    var parts = [
-      'Package: ' + pkg,
-      indust ? 'Industry: ' + indust : '',
-      fields.primary_goal ? 'Goal: ' + fields.primary_goal : '',
-      fields.timeline     ? 'Timeline: ' + fields.timeline  : '',
-      fields.location     ? 'Location: ' + fields.location  : '',
-      fields.existing_website ? 'Existing: ' + fields.existing_website : '',
-      fields.has_brand    ? 'Brand: ' + fields.has_brand    : '',
-      fields.has_domain   ? 'Domain: ' + fields.has_domain  : '',
-      fields.growth_services ? 'Growth: ' + [].concat(fields.growth_services).join(', ') : '',
-      hasFiles ? 'Files: ' + fileNames.join(', ') : ''
-    ].filter(Boolean).join('  ·  ');
+    showSuccessOverlay(summaryText, bizName, hasFiles);
+  }
 
-    var slackText = '🌐 *New Website Questionnaire*\n' +
-      '*' + name + '*  ·  ' + biz + '  |  ' + email + '  |  ' + phone + '\n' +
-      (desc ? '*About:* ' + desc.substring(0, 160) + '\n' : '') +
-      parts + '\n' +
-      (fields.success_vision ? '*Vision:* ' + fields.success_vision.substring(0, 120) + '\n' : '') +
-      '_' + ts + ' CT_';
-
-    var flat = {};
-    for (var k in fields) {
-      flat[k] = Array.isArray(fields[k]) ? fields[k].join(', ') : fields[k];
-    }
-
-    var payload = Object.assign({}, flat, {
-      source:       'TK Web Questionnaire',
-      sheetName:    'Questionnaire',
-      timestamp:    ts,
-      _hasFiles:    hasFiles,
-      _fileNames:   fileNames.join(', '),
-      _slackNotify: true,
-      slackText:    slackText
-    });
-
-    fetch(WEBHOOK, {
-      method:  'POST',
-      mode:    'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify(payload)
-    }).catch(function() {});
-
-    setTimeout(function() {
-      window.location.href = 'questionnaire-thanks.html';
-    }, 900);
-  });
+  document.getElementById('main-form').addEventListener('submit', handleFormSubmit);
 </script>
 
 </body>
