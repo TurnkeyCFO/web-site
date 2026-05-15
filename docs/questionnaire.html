@@ -1416,6 +1416,8 @@
     });
   }
 
+  var WEBHOOK = 'https://script.google.com/macros/s/AKfycby3WTNHSphNeqvrSBYyFilCvP2hYRV8YCCpSgLOCThC6PheZ2hflDtLUTUmgOxBCoPT/exec';
+
   function handleFormSubmit(e) {
     e.preventDefault();
 
@@ -1446,6 +1448,38 @@
 
     var bizName = (fields.business_name || '').trim() || 'New Client';
     var summaryText = buildFormSummary(fields, hasFiles, fileNames);
+
+    // Fire GAS webhook — no-cors, fire-and-forget, Ricky gets Slack ping automatically
+    var ts = new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' });
+    var name   = fields.full_name      || '(not provided)';
+    var email  = fields.email          || '(not provided)';
+    var phone  = fields.phone          || '(not provided)';
+    var pkg    = fields.selected_package || 'Not selected';
+
+    var slackText = '🌐 *New Website Questionnaire*\n'
+      + '*' + name + '*  ·  ' + bizName + '  |  ' + email + '  |  ' + phone + '\n'
+      + 'Package: ' + pkg
+      + (hasFiles ? '  ·  Files: ' + fileNames.join(', ') : '') + '\n'
+      + '_' + ts + ' CT_';
+
+    var flat = {};
+    for (var k in fields) {
+      flat[k] = Array.isArray(fields[k]) ? fields[k].join(', ') : fields[k];
+    }
+    fetch(WEBHOOK, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.assign({}, flat, {
+        source: 'TK Web Questionnaire',
+        sheetName: 'Questionnaire',
+        timestamp: ts,
+        _hasFiles: hasFiles,
+        _fileNames: fileNames.join(', '),
+        _slackNotify: true,
+        slackText: slackText
+      }))
+    }).catch(function() {});
 
     showSuccessOverlay(summaryText, bizName, hasFiles);
   }
