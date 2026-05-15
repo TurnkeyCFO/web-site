@@ -12,33 +12,10 @@
 
     body {
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      background: #07071a;
-      color: #e8eaf6;
+      background: #f0f2f8;
+      color: #1a2040;
       padding: 48px 20px 80px;
       min-height: 100vh;
-    }
-
-    /* Dot-grid background */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(circle, rgba(0, 85, 255, 0.18) 1px, transparent 1px);
-      background-size: 36px 36px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Ambient glow blobs */
-    body::after {
-      content: '';
-      position: fixed;
-      top: -200px; left: -200px;
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(102, 0, 204, 0.12) 0%, transparent 65%);
-      pointer-events: none;
-      z-index: 0;
     }
 
     .wrapper {
@@ -50,17 +27,14 @@
 
     /* ── Header ── */
     .header {
-      background: linear-gradient(135deg, #0d1647 0%, #100080 40%, #1A0080 70%, #200090 100%);
+      background: linear-gradient(135deg, #0d1647 0%, #0a0070 40%, #1A0080 70%, #1e008a 100%);
       color: #fff;
       padding: 56px 56px 48px;
       border-radius: 24px 24px 0 0;
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(102, 0, 204, 0.3);
-      border-bottom: none;
     }
 
-    /* Decorative top-right orb */
     .header::before {
       content: '';
       position: absolute;
@@ -70,7 +44,6 @@
       pointer-events: none;
     }
 
-    /* Bottom-center highlight */
     .header::after {
       content: '';
       position: absolute;
@@ -80,7 +53,6 @@
       pointer-events: none;
     }
 
-    /* TW monogram */
     .header-brand {
       display: flex;
       align-items: center;
@@ -91,7 +63,7 @@
 
     .brand-icon {
       width: 48px; height: 48px;
-      background: rgba(0, 85, 255, 0.25);
+      background: rgba(0, 85, 255, 0.30);
       border: 1.5px solid rgba(102, 170, 255, 0.50);
       border-radius: 14px;
       display: flex;
@@ -145,7 +117,7 @@
 
     .header p {
       font-size: 15px;
-      opacity: 0.80;
+      opacity: 0.82;
       line-height: 1.70;
       max-width: 500px;
       position: relative;
@@ -153,15 +125,14 @@
 
     /* ── Body card ── */
     .card {
-      background: #0b0b22;
+      background: #ffffff;
       padding: 0 56px 56px;
       border-radius: 0 0 24px 24px;
-      border: 1px solid rgba(102, 0, 204, 0.20);
+      border: 1px solid #dde2f0;
       border-top: none;
       box-shadow:
-        0 32px 80px rgba(0, 0, 20, 0.70),
-        0 8px 24px rgba(0, 0, 0, 0.40),
-        inset 0 1px 0 rgba(255,255,255,0.04);
+        0 24px 64px rgba(10, 20, 80, 0.10),
+        0 4px 16px rgba(10, 20, 80, 0.06);
     }
 
     /* ── Tier Selector ── */
@@ -177,14 +148,14 @@
     .tier-intro h3 {
       font-size: 20px;
       font-weight: 800;
-      color: #ffffff;
+      color: #1a2040;
       margin-bottom: 8px;
       letter-spacing: -0.4px;
     }
 
     .tier-intro p {
       font-size: 14px;
-      color: #7a84aa;
+      color: #6b748a;
       line-height: 1.6;
     }
 
@@ -195,33 +166,31 @@
     }
 
     .tier-card {
-      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      border: 1.5px solid #dde2f0;
       border-radius: 20px;
       padding: 28px 20px 24px;
       cursor: pointer;
       transition: border-color 0.18s, background 0.18s, box-shadow 0.18s, transform 0.14s;
-      background: rgba(255, 255, 255, 0.03);
+      background: #f8f9fc;
       position: relative;
       text-align: center;
       user-select: none;
-      backdrop-filter: blur(4px);
     }
 
     .tier-card:hover {
-      border-color: rgba(0, 85, 255, 0.60);
-      background: rgba(0, 85, 255, 0.06);
-      transform: translateY(-5px);
-      box-shadow: 0 12px 36px rgba(0, 85, 255, 0.18), 0 0 0 1px rgba(0, 85, 255, 0.20);
+      border-color: #0055FF;
+      background: #f0f4ff;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(0, 85, 255, 0.14), 0 0 0 1px rgba(0, 85, 255, 0.16);
     }
 
     .tier-card.active {
       border-color: #0055FF;
-      background: linear-gradient(160deg, rgba(0, 85, 255, 0.14) 0%, rgba(102, 0, 204, 0.10) 100%);
+      background: linear-gradient(160deg, #eef3ff 0%, #f5f0ff 100%);
       transform: translateY(-5px);
       box-shadow:
-        0 12px 48px rgba(0, 85, 255, 0.28),
-        0 0 0 1px rgba(0, 85, 255, 0.50),
-        0 0 60px rgba(0, 85, 255, 0.10);
+        0 12px 40px rgba(0, 85, 255, 0.18),
+        0 0 0 2px #0055FF;
     }
 
     /* Recommended badge */
@@ -238,7 +207,7 @@
       padding: 4px 14px;
       border-radius: 20px;
       white-space: nowrap;
-      box-shadow: 0 4px 16px rgba(0, 85, 255, 0.40);
+      box-shadow: 0 4px 16px rgba(0, 85, 255, 0.30);
     }
 
     .tier-check {
@@ -250,7 +219,7 @@
       border-radius: 50%;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 12px rgba(0, 85, 255, 0.50);
+      box-shadow: 0 2px 10px rgba(0, 85, 255, 0.40);
     }
 
     .tier-card.active .tier-check { display: flex; }
@@ -267,25 +236,25 @@
       font-weight: 800;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: #7a84aa;
+      color: #8090b0;
       margin-bottom: 12px;
     }
 
     .tier-card.active .tier-name {
-      color: #66AAFF;
+      color: #0055FF;
     }
 
     .tier-price {
       font-size: 38px;
       font-weight: 800;
-      color: #ffffff;
+      color: #1a2040;
       line-height: 1;
       margin-bottom: 2px;
       letter-spacing: -1.5px;
     }
 
     .tier-card.active .tier-price {
-      background: linear-gradient(135deg, #66AAFF, #a47fff);
+      background: linear-gradient(135deg, #0055FF, #6600CC);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -300,19 +269,19 @@
 
     .tier-price-period {
       font-size: 12px;
-      font-weight: 500;
-      color: #4a5270;
+      font-weight: 600;
+      color: #6b748a;
       margin-bottom: 18px;
     }
 
     .tier-divider {
       height: 1px;
-      background: rgba(255, 255, 255, 0.07);
+      background: #e4e8f4;
       margin: 12px 0 16px;
     }
 
     .tier-card.active .tier-divider {
-      background: rgba(0, 85, 255, 0.25);
+      background: rgba(0, 85, 255, 0.20);
     }
 
     .tier-features {
@@ -322,7 +291,7 @@
 
     .tier-features li {
       font-size: 12.5px;
-      color: #8090b0;
+      color: #5a6480;
       padding: 4px 0;
       display: flex;
       align-items: flex-start;
@@ -337,26 +306,25 @@
       border-radius: 50%;
       flex-shrink: 0;
       margin-top: 5px;
-      box-shadow: 0 0 6px rgba(0, 85, 255, 0.80);
     }
 
     .tier-card.active .tier-features li {
-      color: #b0bce0;
+      color: #374065;
     }
 
     .tier-prompt {
       text-align: center;
       margin-top: 22px;
       font-size: 13px;
-      color: #4a5270;
+      color: #8090b0;
     }
 
-    .tier-prompt strong { color: #66AAFF; }
+    .tier-prompt strong { color: #0055FF; }
 
     /* ── Sections ── */
     .section {
       padding-top: 52px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid #eaecf4;
       margin-top: 52px;
     }
 
@@ -366,30 +334,20 @@
       padding-top: 52px;
     }
 
-    /* Left-accent section header */
     .section-header {
       padding-left: 18px;
-      border-left: 3px solid #0055FF;
+      border-left: 3px solid transparent;
+      border-image: linear-gradient(180deg, #0055FF, #6600CC) 1;
       margin-bottom: 28px;
-      position: relative;
-    }
-
-    .section-header::before {
-      content: '';
-      position: absolute;
-      left: -1px; top: 0; bottom: 0;
-      width: 3px;
-      background: linear-gradient(180deg, #66AAFF, #6600CC);
-      border-radius: 2px;
     }
 
     .section-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(0, 85, 255, 0.12);
-      border: 1px solid rgba(0, 85, 255, 0.25);
-      color: #66AAFF;
+      background: #eef3ff;
+      border: 1px solid #c5d4ff;
+      color: #0055FF;
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 2px;
@@ -402,14 +360,14 @@
     .section h2 {
       font-size: 22px;
       font-weight: 800;
-      color: #ffffff;
+      color: #1a2040;
       margin-bottom: 6px;
       letter-spacing: -0.3px;
     }
 
     .section-desc {
       font-size: 13.5px;
-      color: #5a6480;
+      color: #6b748a;
       line-height: 1.6;
     }
 
@@ -428,18 +386,18 @@
       display: block;
       font-size: 13px;
       font-weight: 700;
-      color: #c0c8e0;
+      color: #374065;
       margin-bottom: 8px;
     }
 
     .field > label .req {
-      color: #66AAFF;
+      color: #0055FF;
       margin-left: 2px;
     }
 
     .field > label .hint {
       font-weight: 400;
-      color: #4a5270;
+      color: #8090b0;
       font-size: 12px;
       margin-left: 5px;
     }
@@ -452,13 +410,13 @@
     textarea {
       width: 100%;
       padding: 13px 16px;
-      border: 1.5px solid rgba(255, 255, 255, 0.09);
+      border: 1.5px solid #d0d6e8;
       border-radius: 10px;
       font-size: 14px;
       font-family: 'Plus Jakarta Sans', inherit;
-      color: #e8eaf6;
-      background: rgba(255, 255, 255, 0.05);
-      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+      color: #1a2040;
+      background: #ffffff;
+      transition: border-color 0.15s, box-shadow 0.15s;
       outline: none;
     }
 
@@ -467,7 +425,7 @@
     input[type="url"]::placeholder,
     input[type="tel"]::placeholder,
     textarea::placeholder {
-      color: #3a4060;
+      color: #a0a8be;
     }
 
     input[type="text"]:focus,
@@ -477,17 +435,12 @@
     select:focus,
     textarea:focus {
       border-color: #0055FF;
-      background: rgba(0, 85, 255, 0.07);
-      box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.14);
-    }
-
-    select {
-      color: #e8eaf6;
+      box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.10);
     }
 
     select option {
-      background: #0b0b22;
-      color: #e8eaf6;
+      background: #ffffff;
+      color: #1a2040;
     }
 
     textarea {
@@ -517,29 +470,29 @@
       gap: 12px;
       font-weight: 500;
       font-size: 14px;
-      color: #8090b0;
+      color: #4a5470;
       cursor: pointer;
       padding: 12px 16px;
-      border: 1.5px solid rgba(255, 255, 255, 0.07);
+      border: 1.5px solid #dde2f0;
       border-radius: 10px;
       transition: border-color 0.12s, background 0.12s, color 0.12s;
       margin: 0;
       line-height: 1.4;
-      background: rgba(255, 255, 255, 0.02);
+      background: #f8f9fc;
     }
 
     .check-group label:hover,
     .radio-group label:hover {
-      border-color: rgba(0, 85, 255, 0.45);
-      background: rgba(0, 85, 255, 0.06);
-      color: #c0c8e0;
+      border-color: #0055FF;
+      background: #f0f4ff;
+      color: #1a2040;
     }
 
     .check-group label:has(input:checked),
     .radio-group label:has(input:checked) {
       border-color: #0055FF;
-      background: rgba(0, 85, 255, 0.10);
-      color: #66AAFF;
+      background: #eef3ff;
+      color: #0055FF;
     }
 
     .check-group input[type="checkbox"],
@@ -552,10 +505,10 @@
 
     /* ── File upload ── */
     .file-upload-area {
-      border: 1.5px dashed rgba(0, 85, 255, 0.30);
+      border: 1.5px dashed #b0bcdc;
       border-radius: 14px;
       padding: 28px;
-      background: rgba(0, 85, 255, 0.04);
+      background: #f4f7ff;
       text-align: center;
       transition: border-color 0.15s, background 0.15s;
       position: relative;
@@ -563,7 +516,7 @@
 
     .file-upload-area:hover {
       border-color: #0055FF;
-      background: rgba(0, 85, 255, 0.08);
+      background: #eef3ff;
     }
 
     .file-upload-area input[type="file"] {
@@ -573,7 +526,7 @@
       box-shadow: none;
       padding: 0;
       font-size: 13px;
-      color: #5a6480;
+      color: #6b748a;
       cursor: pointer;
     }
 
@@ -589,7 +542,7 @@
 
     .file-upload-label {
       font-size: 13px;
-      color: #4a5270;
+      color: #8090b0;
       margin-top: 8px;
       line-height: 1.5;
     }
@@ -598,7 +551,7 @@
     .submit-area {
       margin-top: 52px;
       padding-top: 40px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid #eaecf4;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -618,7 +571,7 @@
       letter-spacing: 0.5px;
       transition: opacity 0.15s, transform 0.12s, box-shadow 0.15s;
       box-shadow:
-        0 6px 32px rgba(0, 85, 255, 0.45),
+        0 6px 28px rgba(0, 85, 255, 0.35),
         0 0 0 1px rgba(102, 170, 255, 0.15);
       position: relative;
       overflow: hidden;
@@ -636,13 +589,13 @@
       opacity: 0.92;
       transform: translateY(-3px);
       box-shadow:
-        0 12px 48px rgba(0, 85, 255, 0.55),
+        0 12px 44px rgba(0, 85, 255, 0.45),
         0 0 0 1px rgba(102, 170, 255, 0.25);
     }
 
     .submit-note {
       font-size: 12.5px;
-      color: #4a5270;
+      color: #8090b0;
       text-align: center;
     }
 
@@ -660,16 +613,16 @@
       align-items: center;
       gap: 6px;
       font-size: 11.5px;
-      color: #4a5270;
+      color: #8090b0;
       font-weight: 500;
     }
 
     .trust-item::before {
       content: '✓';
       width: 17px; height: 17px;
-      background: rgba(0, 85, 255, 0.15);
-      border: 1px solid rgba(0, 85, 255, 0.30);
-      color: #66AAFF;
+      background: #eef3ff;
+      border: 1px solid #c5d4ff;
+      color: #0055FF;
       border-radius: 50%;
       font-size: 9px;
       font-weight: 800;
@@ -683,11 +636,11 @@
       text-align: center;
       margin-top: 36px;
       font-size: 12px;
-      color: #3a4060;
+      color: #8090b0;
       line-height: 1.7;
     }
 
-    .footer strong { color: #66AAFF; }
+    .footer strong { color: #0055FF; }
 
     /* ── Responsive ── */
     @media (max-width: 640px) {
@@ -701,11 +654,9 @@
 
     @media print {
       body { background: #fff; padding: 0; color: #000; }
-      body::before, body::after { display: none; }
       .wrapper { max-width: 100%; }
       .header { border-radius: 0; background: #0055FF; }
       .card { box-shadow: none; background: #fff; border: none; }
-      .card * { color: #000 !important; }
       .tier-selector, .submit-area { display: none; }
     }
   </style>
