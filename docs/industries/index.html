@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Website Design by Industry | Turnkey Web — Built for Your Business, Not a Template</title>
+<meta name="description" content="Turnkey Web builds industry-specific websites for trades, home services, salons, and more across Texas. $250 flat setup, live in 7 days, $50/mo. Find your industry and see what we build.">
+<link rel="canonical" href="https://turnkeyweb.org/industries/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Website Design by Industry | Turnkey Web">
+<meta property="og:description" content="Industry-specific websites for trades, home services, salons, and more. $250 flat setup, live in 7 days. Find your industry.">
+<meta property="og:url" content="https://turnkeyweb.org/industries/">
+<meta property="og:site_name" content="Turnkey Web">
+<meta property="og:image" content="https://turnkeyweb.org/assets/tkweb-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Website Design by Industry | Turnkey Web">
+<meta name="twitter:description" content="Industry-specific websites for trades, home services, salons, and more. $250 flat setup, live in 7 days.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=8">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  window.TKW_CALENDLY_URL = "https://calendly.com/ricky-turnkeycfo/15min-review-tkweb";
+  window.openTKWCalendly = function(source){
+    if(!window.Calendly){ window.location.href = window.TKW_CALENDLY_URL; return false; }
+    window.Calendly.initPopupWidget({ url: window.TKW_CALENDLY_URL + "?utm_source=" + encodeURIComponent(source || "tkw-industries") });
+    return false;
+  };
+</script>
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Turnkey Web — Industry Website Design",
+  "description": "Website design and development for local service businesses across 30 industries in Texas. Fast, mobile-first, SEO-ready websites built specifically for each industry.",
+  "url": "https://turnkeyweb.org/industries/",
+  "areaServed": { "@type": "State", "name": "Texas" },
+  "serviceType": "Website design for local service businesses",
+  "priceRange": "$250 setup + $50/mo",
+  "provider": {
+    "@type": "Organization",
+    "name": "Turnkey Web",
+    "url": "https://turnkeyweb.org",
+    "address": { "@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX", "addressCountry": "US" }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://turnkeyweb.org/" },
+    { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://turnkeyweb.org/industries/" }
+  ]
+}
+</script>
+
+<style>
+/* ── Hub page extras ── */
+.hub-hero{padding:100px 0 64px;position:relative;z-index:1;}
+.hub-hero .eyebrow{margin-bottom:16px;}
+.hub-hero h1{font-size:clamp(36px,5.5vw,66px);line-height:1.1;font-weight:800;letter-spacing:-.03em;color:var(--dark);margin-bottom:20px;}
+.hub-hero p.hero-text{font-size:18px;line-height:1.65;color:var(--gray);max-width:620px;margin-bottom:32px;}
+.hub-hero .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+
+/* Category grouping */
+.industry-category{margin-bottom:56px;}
+.industry-category-label{
+  font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:22px;padding-bottom:10px;
+  border-bottom:2px solid rgba(124,58,237,.15);display:block;
+}
+
+/* Industry card grid — lighter version of portfolio-card */
+.ind-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.ind-card{
+  display:flex;flex-direction:column;
+  border-radius:16px;padding:22px 20px 20px;
+  background:var(--white);border:1px solid var(--border);
+  text-decoration:none;color:inherit;
+  transition:all .25s ease;
+}
+.ind-card:hover{
+  border-color:rgba(124,58,237,.35);
+  box-shadow:0 10px 40px rgba(124,58,237,.1);
+  transform:translateY(-3px);
+}
+.ind-icon{font-size:28px;margin-bottom:12px;line-height:1;}
+.ind-name{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:6px;line-height:1.25;}
+.ind-hook{font-size:12px;color:var(--gray);line-height:1.5;flex:1;}
+.ind-cta{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:11px;font-weight:700;color:var(--purple);
+  margin-top:14px;letter-spacing:.02em;
+}
+.ind-cta::after{content:'→';transition:transform .2s;}
+.ind-card:hover .ind-cta::after{transform:translateX(3px);}
+
+/* Stats band */
+.hub-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  margin:0 0 64px;
+}
+.hub-stat{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:16px;padding:24px 20px;text-align:center;
+}
+.hub-stat-val{font-size:30px;font-weight:900;color:var(--purple);letter-spacing:-.03em;margin-bottom:4px;}
+.hub-stat-label{font-size:12px;color:var(--gray);font-weight:500;line-height:1.4;}
+
+/* Trust bar */
+.hub-trust{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin-bottom:0;margin-top:32px;
+}
+
+/* Closing CTA band */
+.hub-cta-band{
+  background:linear-gradient(135deg,var(--purple-d),var(--dark-mid) 55%,var(--dark) 100%);
+  border-radius:24px;padding:52px 48px;
+  display:flex;align-items:center;justify-content:space-between;gap:32px;
+  flex-wrap:wrap;margin:64px 0 80px;position:relative;overflow:hidden;
+}
+.hub-cta-band::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 70% at 75% 50%,rgba(124,58,237,.3),transparent 60%);
+  pointer-events:none;
+}
+.hub-cta-band .eyebrow{color:rgba(167,139,250,.85);}
+.hub-cta-band h2{color:var(--white);font-size:clamp(24px,3vw,34px);margin-bottom:8px;}
+.hub-cta-band p{color:rgba(255,255,255,.65);font-size:15px;max-width:440px;}
+.hub-cta-btns{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0;position:relative;z-index:1;}
+.hub-cta-content{position:relative;z-index:1;}
+
+@media(max-width:1024px){
+  .ind-grid{grid-template-columns:repeat(3,1fr);}
+  .hub-stats{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:768px){
+  .ind-grid{grid-template-columns:repeat(2,1fr);}
+  .hub-cta-band{padding:36px 24px;}
+}
+@media(max-width:480px){
+  .ind-grid{grid-template-columns:1fr 1fr;}
+  .ind-card{padding:16px;}
+}
+</style>
+</head>
+<body class="page-industry">
+
+<!-- ── ENERGY BACKGROUND ── -->
+<div class="energy-bg" aria-hidden="true">
+  <div class="energy-orb orb-a"></div>
+  <div class="energy-orb orb-b"></div>
+  <div class="energy-orb orb-c"></div>
+  <svg class="energy-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <path class="energy-path-1" d="M1200,-100 C1000,200 700,420 450,560 C200,700 -100,730 -300,760"/>
+    <path class="energy-path-2" d="M1400,80 C1150,280 850,460 580,590 C310,720 50,750 -200,780"/>
+    <path class="energy-path-3" d="M1440,220 C1200,380 950,520 700,630 C450,740 150,760 -100,790"/>
+    <path class="energy-path-4" d="M1100,-200 C900,100 680,340 440,500 C200,660 -80,710 -320,740"/>
+  </svg>
+</div>
+
+<!-- ── NAV ── -->
+<nav class="top-nav" id="main-nav">
+  <div class="nav-shell">
+    <a class="brand-lock" href="../index.html" aria-label="Turnkey Web home">
+      <img src="../assets/tkweb-logo.png" alt="Turnkey Web" class="nav-logo" width="200" height="66">
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="index.html" aria-current="page">Industries</a>
+      <a href="../work.html">Case Studies</a>
+      <a href="../pricing.html">Pricing</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn-ghost" href="#" onclick="return openTKWCalendly('tkw-industries-nav')">Book a call</a>
+      <a class="btn" href="../pricing.html#quote">Build your quote</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="../index.html">Home</a>
+  <a href="index.html">Industries</a>
+  <a href="../work.html">Case Studies</a>
+  <a href="../pricing.html">Pricing</a>
+  <a class="btn" href="../pricing.html#quote">Build your quote →</a>
+</div>
+
+<!-- ── HERO ── -->
+<header class="hub-hero">
+  <div class="container">
+    <span class="eyebrow" data-reveal>Industries we build for</span>
+    <h1 data-reveal data-reveal-delay="60">
+      Websites built for your industry —<br>
+      not a <span class="shimmer">generic template.</span>
+    </h1>
+    <p class="hero-text" data-reveal data-reveal-delay="120">
+      A plumber's website needs to do completely different things than a day spa's. That's why every Turnkey Web site is written, structured, and optimized from the ground up for the specific way customers in your industry search, decide, and book — not just dressed up with your logo and colors.
+    </p>
+    <div class="hero-actions" data-reveal data-reveal-delay="180">
+      <a class="btn" href="../pricing.html#quote">Build your quote →</a>
+      <a class="btn-ghost" href="#" onclick="return openTKWCalendly('tkw-industries-hero')">Book a 15-min call</a>
+    </div>
+    <div class="hub-trust" data-reveal data-reveal-delay="240">
+      <span class="trust-pill trust-pill-stars"><span>★★★★★</span>&nbsp;5-star design</span>
+      <span class="trust-pill">$250 flat setup</span>
+      <span class="trust-pill">Live in 7 days</span>
+      <span class="trust-pill">$50/mo — unlimited updates</span>
+      <span class="trust-pill">Cancel anytime</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── STATS ── -->
+<section style="position:relative;z-index:1;padding-bottom:8px;">
+  <div class="container">
+    <div class="hub-stats" data-reveal>
+      <div class="hub-stat">
+        <div class="hub-stat-val">30</div>
+        <div class="hub-stat-label">Industries with dedicated, purpose-built page templates</div>
+      </div>
+      <div class="hub-stat">
+        <div class="hub-stat-val">$250</div>
+        <div class="hub-stat-label">Flat setup — any size site, any industry, no hidden fees</div>
+      </div>
+      <div class="hub-stat">
+        <div class="hub-stat-val">7 days</div>
+        <div class="hub-stat-label">First complete draft delivered after your questionnaire</div>
+      </div>
+      <div class="hub-stat">
+        <div class="hub-stat-val">$50/mo</div>
+        <div class="hub-stat-label">Hosting, management, and unlimited updates — forever</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INDUSTRY GRID ── -->
+<section class="section" style="padding-top:16px;">
+  <div class="container">
+
+    <!-- Trades & Construction -->
+    <div class="industry-category" data-reveal>
+      <span class="industry-category-label">Trades &amp; Construction</span>
+      <div class="ind-grid">
+        <a class="ind-card" href="./plumber/">
+          <span class="ind-icon">🔧</span>
+          <div class="ind-name">Plumber</div>
+          <div class="ind-hook">Emergency-first design that converts panicked homeowners into booked jobs — fast.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./electrician/">
+          <span class="ind-icon">⚡</span>
+          <div class="ind-name">Electrician</div>
+          <div class="ind-hook">Licensed-trust signals, emergency response framing, and panel-upgrade SEO built in.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./hvac/">
+          <span class="ind-icon">❄️</span>
+          <div class="ind-name">HVAC</div>
+          <div class="ind-hook">Seasonal urgency, maintenance-plan signups, and financing pages that capture TX summer leads.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./roofing/">
+          <span class="ind-icon">🏠</span>
+          <div class="ind-name">Roofing</div>
+          <div class="ind-hook">Storm-response framing, insurance-claim help, and a project gallery that builds big-ticket trust.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./general-contractor/">
+          <span class="ind-icon">🔨</span>
+          <div class="ind-name">General Contractor</div>
+          <div class="ind-hook">Project gallery, transparent process, and licensing trust for long-cycle remodel decisions.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./painting/">
+          <span class="ind-icon">🎨</span>
+          <div class="ind-name">Painting</div>
+          <div class="ind-hook">Before-and-after gallery, free estimate CTAs, and interior/exterior service pages that sell.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./concrete/">
+          <span class="ind-icon">🏗️</span>
+          <div class="ind-name">Concrete</div>
+          <div class="ind-hook">Driveway, patio, and foundation project proof — with free-estimate CTAs and durability trust.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./flooring/">
+          <span class="ind-icon">🪵</span>
+          <div class="ind-name">Flooring</div>
+          <div class="ind-hook">Showroom-feel gallery, material-type guide, and in-home estimate CTAs for hardwood, tile, and LVP.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./fencing/">
+          <span class="ind-icon">🪧</span>
+          <div class="ind-name">Fencing</div>
+          <div class="ind-hook">Material-option gallery, free quote pages, and property-value messaging for residential and commercial.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Home Services -->
+    <div class="industry-category" data-reveal>
+      <span class="industry-category-label">Home Services</span>
+      <div class="ind-grid">
+        <a class="ind-card" href="./landscaping/">
+          <span class="ind-icon">🌿</span>
+          <div class="ind-name">Landscaping</div>
+          <div class="ind-hook">Photo-first portfolio, recurring-service signups, and seasonal design/install pages that close.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./tree-service/">
+          <span class="ind-icon">🌳</span>
+          <div class="ind-name">Tree Service</div>
+          <div class="ind-hook">Insurance and arborist credentials front and center, emergency removal framing, free estimates.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./handyman/">
+          <span class="ind-icon">🪛</span>
+          <div class="ind-name">Handyman</div>
+          <div class="ind-hook">Full service list, easy online booking, reliability trust, and "no job too small" positioning.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./pest-control/">
+          <span class="ind-icon">🐛</span>
+          <div class="ind-name">Pest Control</div>
+          <div class="ind-hook">Recurring-plan signup, infestation urgency, safe-for-kids messaging, and free inspection CTAs.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./garage-door/">
+          <span class="ind-icon">🚗</span>
+          <div class="ind-name">Garage Door</div>
+          <div class="ind-hook">Emergency repair framing, broken-spring and new-install pages, and fast-service trust signals.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./pool-service/">
+          <span class="ind-icon">🏊</span>
+          <div class="ind-name">Pool Service</div>
+          <div class="ind-hook">Recurring maintenance, before-and-after pool photos, and seasonal service-plan signups.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./gutter/">
+          <span class="ind-icon">🌧️</span>
+          <div class="ind-name">Gutter</div>
+          <div class="ind-hook">Home-protection messaging, gutter guard installs, seasonal framing, and free inspection CTAs.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./house-cleaning/">
+          <span class="ind-icon">🧹</span>
+          <div class="ind-name">House Cleaning</div>
+          <div class="ind-hook">Recurring-plan booking, vetted-and-insured trust, instant online quotes, and move-in/out pages.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Exterior & Maintenance -->
+    <div class="industry-category" data-reveal>
+      <span class="industry-category-label">Exterior &amp; Maintenance</span>
+      <div class="ind-grid">
+        <a class="ind-card" href="./pressure-washing/">
+          <span class="ind-icon">💦</span>
+          <div class="ind-name">Pressure Washing</div>
+          <div class="ind-hook">Dramatic before-and-after visuals, instant quote CTAs, and curb-appeal messaging that converts.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./window-cleaning/">
+          <span class="ind-icon">🪟</span>
+          <div class="ind-name">Window Cleaning</div>
+          <div class="ind-hook">Recurring residential plans, commercial account acquisition, and streak-free results gallery.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./junk-removal/">
+          <span class="ind-icon">🚛</span>
+          <div class="ind-name">Junk Removal</div>
+          <div class="ind-hook">Instant pricing tool, same-day haul-away messaging, before-and-after photos, eco/donation trust.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./moving/">
+          <span class="ind-icon">📦</span>
+          <div class="ind-name">Moving Company</div>
+          <div class="ind-hook">Quote calculator, trust-with-belongings messaging, local and long-distance, review credibility.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Auto & Specialty -->
+    <div class="industry-category" data-reveal>
+      <span class="industry-category-label">Auto &amp; Specialty Services</span>
+      <div class="ind-grid">
+        <a class="ind-card" href="./auto-repair/">
+          <span class="ind-icon">🔩</span>
+          <div class="ind-name">Auto Repair</div>
+          <div class="ind-hook">Transparency-first design, full services list, ASE-certified trust, and easy appointment booking.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./appliance-repair/">
+          <span class="ind-icon">🫙</span>
+          <div class="ind-name">Appliance Repair</div>
+          <div class="ind-hook">Brand list, same-day framing, fast booking, and "cheaper than replacing it" conversion copy.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./locksmith/">
+          <span class="ind-icon">🔐</span>
+          <div class="ind-name">Locksmith</div>
+          <div class="ind-hook">24/7 emergency lockout, bonded-and-trusted credentials, fast-response framing, and "near me" SEO.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Salons, Spas & Personal Care -->
+    <div class="industry-category" data-reveal>
+      <span class="industry-category-label">Salons, Spas &amp; Personal Care</span>
+      <div class="ind-grid">
+        <a class="ind-card" href="./hair-salon/">
+          <span class="ind-icon">💇</span>
+          <div class="ind-name">Hair Salon</div>
+          <div class="ind-hook">Online booking front-and-center, stylist showcase, Instagram-worthy gallery, ambiance-matched design.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./nail-salon/">
+          <span class="ind-icon">💅</span>
+          <div class="ind-name">Nail Salon</div>
+          <div class="ind-hook">Nail-art gallery, services menu with pricing, booking integration, and ambiance-first aesthetics.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./barber-shop/">
+          <span class="ind-icon">✂️</span>
+          <div class="ind-name">Barber Shop</div>
+          <div class="ind-hook">Culture-driven design, cut gallery, booking and walk-in info, loyalty messaging, and location/hours.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./med-spa/">
+          <span class="ind-icon">🌸</span>
+          <div class="ind-name">Med Spa</div>
+          <div class="ind-hook">Premium feel, treatments menu, before-and-after results, consult-booking CTAs, and credentials.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./day-spa/">
+          <span class="ind-icon">🛁</span>
+          <div class="ind-name">Day Spa</div>
+          <div class="ind-hook">Packages, gift cards, online booking, and ambiance-first design that sells the experience before arrival.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+        <a class="ind-card" href="./pet-grooming/">
+          <span class="ind-icon">🐾</span>
+          <div class="ind-name">Pet Grooming</div>
+          <div class="ind-hook">Before-and-after gallery, online booking, breed-specific services, and trust signals for protective pet owners.</div>
+          <span class="ind-cta">See the page</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CLOSING CTA BAND ── -->
+<section style="position:relative;z-index:1;">
+  <div class="container">
+    <div class="hub-cta-band" data-reveal>
+      <div class="hub-cta-content">
+        <span class="eyebrow">Ready to get started?</span>
+        <h2>Don't see your industry? We build for it.</h2>
+        <p>If you serve customers locally in Texas and need a website that actually brings in business, we can build it — whether your industry is on this list or not. Flat $250 setup, first draft in 7 days, $50/mo.</p>
+      </div>
+      <div class="hub-cta-btns">
+        <a class="btn" href="../pricing.html#quote" style="background:var(--white);color:var(--purple-d);">Build your quote →</a>
+        <a class="btn-outline-white" href="#" onclick="return openTKWCalendly('tkw-industries-cta')">Book a 15-min call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container footer-shell">
+    <div class="footer-brand">
+      <img src="../assets/tkweb-logo-white.png" alt="Turnkey Web" class="footer-logo" width="280" height="132">
+      <p>Modern websites, landing pages and SEO-ready builds for small businesses that want more calls, better leads, and a stronger first impression.</p>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="index.html">Industries</a>
+      <a href="../work.html">Case Studies</a>
+      <a href="../index.html#process">How It Works</a>
+      <a href="../pricing.html">Pricing</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Turnkey Web. All rights reserved.</span>
+    <span>Austin, Texas · Website design by industry</span>
+  </div>
+</footer>
+
+<script src="../site.js?v=13"></script>
+</body>
+</html>
