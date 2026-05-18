@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | Turnkey Web</title>
+<meta name="description" content="The page you were looking for isn't here. Head back to Turnkey Web — fast, mobile-first websites for small service businesses.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#7C3AED">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2563FF;
+    --purple: #7C3AED;
+    --purple-lt: #A78BFA;
+    --dark: #0F172A;
+    --dark-mid: #1E293B;
+    --ice: #E2E8F0;
+    --gray-lt: #94A3B8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Exo 2", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(900px 600px at 70% -10%, rgba(124,58,237,.22), transparent),
+                radial-gradient(700px 500px at 10% 110%, rgba(37,99,255,.18), transparent),
+                var(--dark);
+    color: var(--ice);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 620px; text-align: center; }
+  .badge {
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--purple-lt); margin-bottom: 14px;
+  }
+  .code {
+    font-size: clamp(5rem, 22vw, 9rem); font-weight: 900; line-height: 1;
+    background: linear-gradient(120deg, var(--purple-lt), var(--blue));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    letter-spacing: -0.03em;
+  }
+  h1 { font-size: clamp(1.4rem, 5vw, 2rem); font-weight: 800; margin: 18px 0 10px; }
+  p { color: var(--gray-lt); font-size: 1.02rem; line-height: 1.6; margin: 0 auto 28px; max-width: 460px; }
+  .links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .btn {
+    font-family: inherit; font-weight: 700; font-size: 0.95rem;
+    padding: 13px 24px; border-radius: 10px; text-decoration: none;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn-primary {
+    background: linear-gradient(120deg, var(--purple), var(--blue));
+    color: #fff; box-shadow: 0 8px 24px rgba(124,58,237,.35);
+  }
+  .btn-ghost {
+    background: rgba(255,255,255,.04); color: var(--ice);
+    border: 1px solid rgba(124,58,237,.3);
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .more { margin-top: 26px; font-size: 0.9rem; color: var(--gray-lt); }
+  .more a { color: var(--purple-lt); }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="badge">Turnkey Web</div>
+    <div class="code">404</div>
+    <h1>This page took a wrong turn.</h1>
+    <p>The page you were looking for doesn't exist or may have moved. Let's get you back on track.</p>
+    <div class="links">
+      <a class="btn btn-primary" href="/">Back to home</a>
+      <a class="btn btn-ghost" href="/industries/">Websites by industry</a>
+      <a class="btn btn-ghost" href="/pricing.html">Pricing</a>
+      <a class="btn btn-ghost" href="/work.html">See our work</a>
+    </div>
+    <p class="more">Need a website fast? <a href="/">Turnkey Web</a> builds mobile-first sites for small service businesses &mdash; live in 7 days.</p>
+  </main>
+</body>
+</html>
