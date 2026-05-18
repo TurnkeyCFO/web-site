@@ -1,25 +1,30 @@
 # Turnkey Web Intake Form — Auto-Submit Setup
 
-The intake form at `turnkeyweb.org/intakeform` now **auto-submits**. On submit it:
+The intake form at `turnkeyweb.org/intakeform` is a **one-click auto-submit**.
+The visitor clicks Submit once and lands on the thank-you page. Behind that, on
+submit the backend:
 
-1. Uploads any brand files to **OneDrive** (`ricky@turnkeycfo.com` › `Turnkey Web Intake/<Business> - <Industry>/<date>/`)
-2. Posts a **Slack ping** to the **#leads** channel
+1. Posts the **full submission detail** to the **#leads** Slack channel
+2. Uploads any brand files to **OneDrive** (`ricky@turnkeycfo.com` › `Turnkey Web Intake/<Business> - <Industry>/<date>/`)
 3. **Emails** the full submission to **rickyW@turnkeyweb.org** (Reply-To = the prospect)
-4. Redirects the visitor to `questionnaire-thanks.html`
 
-No more copy/paste. The old manual-send overlay still exists, but only appears
-as a **fallback** if the auto-submit fails — so a lead is never lost.
+No copy/paste, no manual step — the visitor always goes straight to
+`questionnaire-thanks.html` once the request settles.
 
-The backend is a Cloudflare Pages Function: `functions/api/intake.js`. It deploys
-with the same `git push` as the site — no separate server.
+The backend is a Cloudflare Pages Function: `docs/functions/api/intake.js`. It
+deploys with the same `git push` as the site — no separate server.
 
 ---
 
-## What still needs to be done (one-time, ~15 min) — Ricky
+## Setup — Ricky
 
 This reuses the **existing** Azure app — the one the Financial Cents scraper
 already uses (credentials in the workspace `.env`: `AZURE_TENANT_ID`,
 `AZURE_APPLICATION_ID`, `AZURE_CLIENT_SECRET_VALUE`). No new app registration.
+
+> **Steps 1–2 (Azure) are already done** — the "TurnkeyCFO Agent" app has
+> `Files.ReadWrite.All` + `Mail.Send` granted and admin-consented. The only
+> thing left is **Step 3 — the Cloudflare environment variables.**
 
 ### 1. Add two permissions to the existing app
 
@@ -67,20 +72,12 @@ tenant). `INTAKE_EMAIL_TO` is where it lands. `SLACK_BOT_TOKEN` +
 `SLACK_CHANNEL_LEADS` drive the ping to the **#leads** channel (`C0AREP6F46N`) —
 if either is omitted the Slack step is silently skipped (files + email still run).
 
-### 4. Confirm the Functions directory location
+### 4. Functions directory — already correct (no action)
 
-Cloudflare picks up `functions/` from the **root directory of the Pages project**.
-This repo's build settings should be:
-
-- **Root directory:** `/` (repo root) — the default
-- **Build output directory:** `docs`
-- **Build command:** `exit 0` (or blank)
-
-With those settings, `functions/api/intake.js` (where it is now) is correct.
-
-> If the project's **Root directory** is set to `docs` instead, move the
-> `functions/` folder to `docs/functions/`. Check it under Pages → Settings →
-> Builds & deployments.
+The `web-site` Pages project is configured with **Root directory: `docs`**
+(confirmed via the Cloudflare API). Cloudflare compiles Functions from inside
+`docs/`, so the endpoint lives at **`docs/functions/api/intake.js`** and routes
+to **`/api/intake`**. It is already in the right place — nothing to do here.
 
 ### 5. Deploy and test
 
@@ -89,12 +86,13 @@ A `git push` of this repo triggers the Cloudflare build. Then:
 1. Open `turnkeyweb.org/intakeform`, pick a package, fill it out, attach a small
    test file, submit.
 2. Expect: button shows "Submitting…", then it redirects to the thank-you page.
-3. Check the **#leads** Slack channel for the ping.
+3. Check the **#leads** Slack channel for the full-detail card.
 4. Check `rickyW@turnkeyweb.org` for the submission email.
 5. Check `ricky@turnkeycfo.com` OneDrive → `Turnkey Web Intake/` for the file.
 
-If auto-submit fails (e.g. env vars missing), the form shows the fallback
-overlay with manual email options — the visitor still gets through.
+The visitor always reaches the thank-you page. The #leads card posts first and
+needs only the two Slack vars — so even before the Graph env vars are set, you
+still get the lead in Slack; only the OneDrive + email steps wait on that config.
 
 ---
 
@@ -103,7 +101,7 @@ overlay with manual email options — the visitor still gets through.
 | Piece | Where |
 |---|---|
 | Form | `docs/intakeform/index.html` — file upload is in Section 1, visible on all 3 plans |
-| Backend | `functions/api/intake.js` → live at `/api/intake` |
+| Backend | `docs/functions/api/intake.js` → live at `/api/intake` |
 | File storage | OneDrive of `ONEDRIVE_USER` › `Turnkey Web Intake/<Business> - <Industry>/<YYYY-MM-DD>/` |
 | Email | Graph `sendMail`, `INTAKE_EMAIL_FROM` → `INTAKE_EMAIL_TO` |
 | Slack | `chat.postMessage` to #leads (`SLACK_CHANNEL_LEADS`) on every submission |
@@ -134,6 +132,8 @@ email); the GAS webhook is backup telemetry (the spreadsheet record).
 
 - **Different recipient** → edit `INTAKE_EMAIL_TO` in Cloudflare (no code change).
 - **Different OneDrive owner / folder** → edit `ONEDRIVE_USER`; the base folder
-  name `Turnkey Web Intake` is in `functions/api/intake.js` (`ensureFolders`).
+  name `Turnkey Web Intake` is in `docs/functions/api/intake.js` (`ensureFolders`).
 - **File size cap** → client check is 10 MB in `docs/intakeform/index.html`;
-  server guard is `MAX_FILE_BYTES` in `intake.js`.
+  server guard is `MAX_FILE_BYTES` in `docs/functions/api/intake.js`.
+- **Slack message detail** → `postSlack()` in `docs/functions/api/intake.js`
+  builds one block per form section from `SECTIONS` / `LABELS`.

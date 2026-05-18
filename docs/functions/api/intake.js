@@ -4,9 +4,10 @@
  *
  * When the intake form is submitted this endpoint:
  *   1. Parses the multipart form (text fields + uploaded brand files)
- *   2. Uploads each file to OneDrive via Microsoft Graph (client-credentials)
+ *   2. Posts the full submission to the #leads Slack channel — done FIRST and
+ *      best-effort, so the lead is never lost (files excluded from the post)
+ *   3. Uploads each file to OneDrive via Microsoft Graph (client-credentials)
  *      into:  <ONEDRIVE_USER>/Turnkey Web Intake/<Business> - <Industry>/<YYYY-MM-DD>/
- *   3. Posts a Slack ping to the #leads channel (best-effort — never blocks)
  *   4. Emails the full submission to INTAKE_EMAIL_TO via Graph sendMail,
  *      with Reply-To set to the prospect so a reply goes straight to them
  *   5. Returns { ok: true, folderUrl } as JSON
@@ -98,12 +99,6 @@ const SECTIONS = [
 export async function onRequestPost(context) {
   const { request, env } = context;
   try {
-    const missing = ["AZURE_TENANT_ID", "AZURE_APPLICATION_ID", "AZURE_CLIENT_SECRET_VALUE", "ONEDRIVE_USER", "INTAKE_EMAIL_FROM", "INTAKE_EMAIL_TO"]
-      .filter((k) => !env[k]);
-    if (missing.length) {
-      return json({ ok: false, error: "Server not configured — missing: " + missing.join(", ") }, 500);
-    }
-
     const formData = await request.formData();
     const fields = {};
     const files = [];
@@ -121,6 +116,22 @@ export async function onRequestPost(context) {
       }
     }
 
+    // ── Slack ping to #leads FIRST — the guaranteed lead signal. Posted before
+    //    (and independent of) the OneDrive + email steps, so Ricky always gets
+    //    the full submission detail even if Graph config is incomplete. ──
+    try {
+      await postSlack(env, fields);
+    } catch (slackErr) {
+      console.log("Slack notify failed: " + slackErr);
+    }
+
+    // ── Files + email need the Microsoft Graph config ──
+    const missing = ["AZURE_TENANT_ID", "AZURE_APPLICATION_ID", "AZURE_CLIENT_SECRET_VALUE", "ONEDRIVE_USER", "INTAKE_EMAIL_FROM", "INTAKE_EMAIL_TO"]
+      .filter((k) => !env[k]);
+    if (missing.length) {
+      return json({ ok: false, error: "Server not configured — missing: " + missing.join(", ") }, 500);
+    }
+
     const business = (fields.business_name || "New Client").trim();
     const industry = (fields.industry || "").trim();
     const token = await getGraphToken(env);
@@ -135,13 +146,6 @@ export async function onRequestPost(context) {
         const item = await uploadFile(env, token, folder.id, file);
         uploaded.push({ name: file.name, url: item.webUrl, size: file.size });
       }
-    }
-
-    // ── Slack ping to #leads (best-effort — a Slack hiccup must not fail the submit) ──
-    try {
-      await postSlack(env, fields, uploaded, folderUrl);
-    } catch (slackErr) {
-      console.log("Slack notify failed: " + slackErr);
     }
 
     // ── Email the submission ──
@@ -258,36 +262,38 @@ async function sendEmail(env, token, fields, uploaded, folderUrl) {
   }
 }
 
-// Post a compact lead notification to the #leads Slack channel.
-// Skipped silently if SLACK_BOT_TOKEN / SLACK_CHANNEL_LEADS are not configured.
-async function postSlack(env, fields, uploaded, folderUrl) {
+// Post the full lead detail to the #leads Slack channel — every answered field,
+// grouped by section, files excluded. Skipped silently if SLACK_BOT_TOKEN /
+// SLACK_CHANNEL_LEADS are not configured.
+async function postSlack(env, fields) {
   if (!env.SLACK_BOT_TOKEN || !env.SLACK_CHANNEL_LEADS) return;
 
   const business = (fields.business_name || "New Client").trim();
   const ts = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
-  const line = (label, val) => (val && String(val).trim() ? `*${label}:* ${String(val).trim()}` : null);
-  const detail =
-    [
-      line("Contact", fields.full_name),
-      line("Email", fields.email),
-      line("Phone", fields.phone),
-      line("Package", fields.selected_package),
-      line("Industry", fields.industry),
-      line("Location", fields.location),
-    ]
-      .filter(Boolean)
-      .join("\n") || "_No detail captured._";
-
-  const filesLine = uploaded.length
-    ? `📎 *${uploaded.length} file(s) uploaded* — <${folderUrl}|Open the OneDrive folder>`
-    : "_No files uploaded._";
 
   const blocks = [
     { type: "header", text: { type: "plain_text", text: `🌐 New Website Intake — ${business}`.slice(0, 150) } },
-    { type: "section", text: { type: "mrkdwn", text: detail } },
-    { type: "section", text: { type: "mrkdwn", text: filesLine } },
-    { type: "context", elements: [{ type: "mrkdwn", text: `Submitted ${ts} CT · turnkeyweb.org/intakeform` }] },
   ];
+
+  // One Slack section block per form section — lists every field that was answered.
+  for (const sec of SECTIONS) {
+    const lines = sec.keys
+      .map((k) => {
+        const v = (fields[k] || "").trim();
+        if (!v) return null;
+        return `*${LABELS[k] || k}:* ${v.length > 700 ? v.slice(0, 700) + "…" : v}`;
+      })
+      .filter(Boolean);
+    if (!lines.length) continue;
+    let text = `*${sec.header.toUpperCase()}*\n` + lines.join("\n");
+    if (text.length > 2900) text = text.slice(0, 2900) + "…";
+    blocks.push({ type: "section", text: { type: "mrkdwn", text } });
+  }
+
+  blocks.push({
+    type: "context",
+    elements: [{ type: "mrkdwn", text: `Submitted ${ts} CT · turnkeyweb.org/intakeform` }],
+  });
 
   const res = await fetch("https://slack.com/api/chat.postMessage", {
     method: "POST",
