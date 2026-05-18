@@ -200,6 +200,28 @@
         0 0 0 2px #0055FF;
     }
 
+    /* Gentle "click me" nudge on the Most Popular (Growth) card */
+    @keyframes tierNudge {
+      0%, 70%, 100% { transform: translateY(0); }
+      80%           { transform: translateY(-8px); }
+      88%           { transform: translateY(-2px); }
+      94%           { transform: translateY(-5px); }
+    }
+
+    .tier-card[data-tier="2"]:not(.active) {
+      animation: tierNudge 2.8s ease-in-out infinite;
+    }
+
+    /* hover + selected states own the transform — pause the nudge so it can't fight them */
+    .tier-card[data-tier="2"]:hover,
+    .tier-card[data-tier="2"].active {
+      animation: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tier-card[data-tier="2"]:not(.active) { animation: none; }
+    }
+
     /* Recommended badge */
     .tier-badge {
       position: absolute;
