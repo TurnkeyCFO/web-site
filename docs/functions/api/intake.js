@@ -148,8 +148,14 @@ export async function onRequestPost(context) {
       }
     }
 
-    // ── Email the submission ──
-    await sendEmail(env, token, fields, uploaded, folderUrl);
+    // ── Email the submission — uploaded files attached. Best-effort: Slack +
+    //    OneDrive already succeeded above, so an email hiccup must not fail the
+    //    whole request. ──
+    try {
+      await sendEmail(env, token, fields, files, uploaded, folderUrl);
+    } catch (mailErr) {
+      console.log("Email send failed: " + mailErr);
+    }
 
     return json({ ok: true, folderUrl });
   } catch (err) {
@@ -241,25 +247,91 @@ async function uploadFile(env, token, folderId, file) {
   return res.json();
 }
 
-async function sendEmail(env, token, fields, uploaded, folderUrl) {
+// Email the submission to INTAKE_EMAIL_TO with every uploaded file (<=3 MB)
+// ATTACHED to the email itself — so the recipient gets the files straight in
+// their inbox, no OneDrive account-switching. Larger files stay OneDrive-only
+// (linked). Built as a draft so each attachment is its own request: the
+// one-shot sendMail action caps the whole message at 4 MB, the draft route
+// does not.
+const ATTACH_MAX_BYTES = 3 * 1024 * 1024; // per-file inline-attachment ceiling
+
+async function sendEmail(env, token, fields, files, uploaded, folderUrl) {
   const business = (fields.business_name || "New Client").trim();
-  const message = {
+  const from = encodeURIComponent(env.INTAKE_EMAIL_FROM);
+  const headers = { Authorization: "Bearer " + token, "Content-Type": "application/json" };
+
+  const attachable = files.filter((f) => f.size > 0 && f.size <= ATTACH_MAX_BYTES);
+  const attachedNames = new Set(attachable.map((f) => f.name));
+
+  const draft = {
     subject: `New Website Project Questionnaire — ${business}`,
-    body: { contentType: "HTML", content: buildEmailHtml(fields, uploaded, folderUrl) },
+    body: { contentType: "HTML", content: buildEmailHtml(fields, uploaded, folderUrl, attachedNames) },
     toRecipients: [{ emailAddress: { address: env.INTAKE_EMAIL_TO } }],
   };
   const submitter = (fields.email || "").trim();
   if (/^\S+@\S+\.\S+$/.test(submitter)) {
-    message.replyTo = [{ emailAddress: { address: submitter } }];
+    draft.replyTo = [{ emailAddress: { address: submitter } }];
   }
-  const res = await fetch(`${GRAPH}/users/${encodeURIComponent(env.INTAKE_EMAIL_FROM)}/sendMail`, {
+
+  // Nothing to attach → the one-shot sendMail action is enough.
+  if (!attachable.length) {
+    const res = await fetch(`${GRAPH}/users/${from}/sendMail`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ message: draft, saveToSentItems: true }),
+    });
+    if (res.status !== 202) {
+      throw new Error(`sendMail → ${res.status}: ${(await res.text()).slice(0, 250)}`);
+    }
+    return;
+  }
+
+  // Files to attach → create a draft, attach each file, then send the draft.
+  const dres = await fetch(`${GRAPH}/users/${from}/messages`, {
     method: "POST",
-    headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
-    body: JSON.stringify({ message, saveToSentItems: true }),
+    headers,
+    body: JSON.stringify(draft),
   });
-  if (res.status !== 202) {
-    throw new Error(`sendMail → ${res.status}: ${(await res.text()).slice(0, 250)}`);
+  if (!dres.ok) {
+    throw new Error(`Create draft → ${dres.status}: ${(await dres.text()).slice(0, 250)}`);
   }
+  const msgId = (await dres.json()).id;
+
+  for (const file of attachable) {
+    const ares = await fetch(`${GRAPH}/users/${from}/messages/${msgId}/attachments`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        "@odata.type": "#microsoft.graph.fileAttachment",
+        name: file.name,
+        contentType: file.type || "application/octet-stream",
+        contentBytes: abToBase64(await file.arrayBuffer()),
+      }),
+    });
+    if (!ares.ok) {
+      throw new Error(`Attach "${file.name}" → ${ares.status}: ${(await ares.text()).slice(0, 200)}`);
+    }
+  }
+
+  const sres = await fetch(`${GRAPH}/users/${from}/messages/${msgId}/send`, {
+    method: "POST",
+    headers: { Authorization: "Bearer " + token },
+  });
+  if (sres.status !== 202) {
+    throw new Error(`Send draft → ${sres.status}: ${(await sres.text()).slice(0, 250)}`);
+  }
+}
+
+// ArrayBuffer → base64. Workers has btoa() but no buffer encoder; chunk the
+// byte string so a large file can't blow the call stack.
+function abToBase64(buf) {
+  const bytes = new Uint8Array(buf);
+  let bin = "";
+  const CHUNK = 0x8000;
+  for (let i = 0; i < bytes.length; i += CHUNK) {
+    bin += String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK));
+  }
+  return btoa(bin);
 }
 
 // Post the full lead detail to the #leads Slack channel — every answered field,
@@ -321,8 +393,9 @@ function esc(s) {
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
-function buildEmailHtml(fields, uploaded, folderUrl) {
+function buildEmailHtml(fields, uploaded, folderUrl, attachedNames) {
   const ts = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
+  const isAttached = (name) => attachedNames && attachedNames.has(name);
   const rows = [];
   for (const sec of SECTIONS) {
     const items = sec.keys
@@ -331,7 +404,7 @@ function buildEmailHtml(fields, uploaded, folderUrl) {
     if (!items.length) continue;
     rows.push(
       `<tr><td colspan="2" style="padding:18px 0 6px;font:700 12px/1 Arial,sans-serif;` +
-        `letter-spacing:1.5px;text-transform:uppercase;color:#0055FF;">${esc(sec.header)}</td></tr>`
+        `letter-spacing:1.5px;text-transform:uppercase;color:#7C3AED;">${esc(sec.header)}</td></tr>`
     );
     for (const it of items) {
       rows.push(
@@ -346,19 +419,27 @@ function buildEmailHtml(fields, uploaded, folderUrl) {
 
   let filesBlock;
   if (uploaded.length) {
-    const links = uploaded
-      .map(
-        (f) =>
-          `<li style="margin:3px 0;"><a href="${esc(f.url)}" style="color:#0055FF;">${esc(f.name)}</a> ` +
-          `<span style="color:#8a93a6;">(${(f.size / 1024 / 1024).toFixed(2)} MB)</span></li>`
-      )
+    const items = uploaded
+      .map((f) => {
+        const mb = (f.size / 1024 / 1024).toFixed(2);
+        if (isAttached(f.name)) {
+          return `<li style="margin:3px 0;color:#1d2335;">&#128206; <strong>${esc(f.name)}</strong> ` +
+            `<span style="color:#8a93a6;">(${mb} MB &mdash; attached to this email)</span></li>`;
+        }
+        return `<li style="margin:3px 0;"><a href="${esc(f.url)}" style="color:#7C3AED;">${esc(f.name)}</a> ` +
+          `<span style="color:#8a93a6;">(${mb} MB &mdash; in the OneDrive folder)</span></li>`;
+      })
       .join("");
+    const attachedCount = uploaded.filter((f) => isAttached(f.name)).length;
+    const lead =
+      attachedCount === uploaded.length
+        ? `${uploaded.length} file(s) &mdash; attached to this email and saved to OneDrive:`
+        : `${uploaded.length} file(s) saved to OneDrive (${attachedCount} also attached to this email):`;
     filesBlock =
-      `<p style="font:600 13px/1.5 Arial,sans-serif;color:#1d2335;margin:6px 0;">` +
-      `${uploaded.length} file(s) uploaded to OneDrive:</p>` +
-      `<ul style="margin:6px 0 12px;padding-left:20px;">${links}</ul>` +
+      `<p style="font:600 13px/1.5 Arial,sans-serif;color:#1d2335;margin:6px 0;">${lead}</p>` +
+      `<ul style="margin:6px 0 12px;padding-left:20px;">${items}</ul>` +
       `<p style="margin:6px 0;"><a href="${esc(folderUrl)}" ` +
-      `style="display:inline-block;background:#0055FF;color:#fff;text-decoration:none;` +
+      `style="display:inline-block;background:#7C3AED;color:#fff;text-decoration:none;` +
       `padding:10px 20px;border-radius:8px;font:700 13px Arial,sans-serif;">Open the OneDrive folder &rarr;</a></p>`;
   } else {
     filesBlock = `<p style="font:400 13px/1.5 Arial,sans-serif;color:#8a93a6;margin:6px 0;">No files were uploaded with this submission.</p>`;
@@ -369,7 +450,7 @@ function buildEmailHtml(fields, uploaded, folderUrl) {
     `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" ` +
     `style="max-width:640px;margin:0 auto;background:#ffffff;border-radius:14px;overflow:hidden;` +
     `box-shadow:0 6px 24px rgba(13,22,71,0.08);">` +
-    `<tr><td style="background:linear-gradient(135deg,#0d1647,#0a0070);padding:26px 32px;">` +
+    `<tr><td style="background:linear-gradient(135deg,#2E1065,#5B21B6);padding:26px 32px;">` +
     `<div style="font:800 12px/1 Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;` +
     `color:rgba(255,255,255,0.6);">Turnkey WEB</div>` +
     `<div style="font:800 21px/1.3 Arial,sans-serif;color:#fff;margin-top:6px;">New Website Project Questionnaire</div>` +
@@ -379,7 +460,7 @@ function buildEmailHtml(fields, uploaded, folderUrl) {
     `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows.join("")}</table>` +
     `<hr style="border:none;border-top:1px solid #e6e9f2;margin:20px 0;">` +
     `<div style="font:700 12px/1 Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase;` +
-    `color:#0055FF;margin-bottom:10px;">Brand Files</div>${filesBlock}` +
+    `color:#7C3AED;margin-bottom:10px;">Brand Files</div>${filesBlock}` +
     `</td></tr></table></div>`
   );
 }

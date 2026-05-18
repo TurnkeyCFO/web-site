@@ -1343,7 +1343,7 @@
     // #leads Slack channel, uploads files to OneDrive, and emails the submission.
     // The visitor always lands on the thank-you page once the request settles —
     // no copy/paste, no manual step.
-    var goThanks = function() { window.location.href = 'questionnaire-thanks.html'; };
+    var goThanks = function() { window.location.href = '/questionnaire-thanks.html'; };
     fetch('/api/intake', { method: 'POST', body: fd }).then(goThanks, goThanks);
   }
 
