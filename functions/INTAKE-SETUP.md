@@ -2,9 +2,10 @@
 
 The intake form at `turnkeyweb.org/intakeform` now **auto-submits**. On submit it:
 
-1. Uploads any brand files to **OneDrive** (`ricky@turnkeycfo.com` › `Turnkey Web Intake/<date> <Business>/`)
-2. **Emails** the full submission to **rickyW@turnkeyweb.org** (Reply-To = the prospect)
-3. Redirects the visitor to `questionnaire-thanks.html`
+1. Uploads any brand files to **OneDrive** (`ricky@turnkeycfo.com` › `Turnkey Web Intake/<Business> - <Industry>/<date>/`)
+2. Posts a **Slack ping** to the **#leads** channel
+3. **Emails** the full submission to **rickyW@turnkeyweb.org** (Reply-To = the prospect)
+4. Redirects the visitor to `questionnaire-thanks.html`
 
 No more copy/paste. The old manual-send overlay still exists, but only appears
 as a **fallback** if the auto-submit fails — so a lead is never lost.
@@ -57,10 +58,14 @@ The three `AZURE_*` values are copied verbatim from the workspace `.env`:
 | `ONEDRIVE_USER` | `ricky@turnkeycfo.com` | Text |
 | `INTAKE_EMAIL_FROM` | `ricky@turnkeycfo.com` | Text |
 | `INTAKE_EMAIL_TO` | `rickyW@turnkeyweb.org` | Text |
+| `SLACK_BOT_TOKEN` | from `.env` | **Secret** |
+| `SLACK_CHANNEL_LEADS` | `C0AREP6F46N` | Text |
 
 `ONEDRIVE_USER` is whose OneDrive holds the files. `INTAKE_EMAIL_FROM` is the
 mailbox the email is sent *as* (must be a real mailbox in the turnkeycfo.com
-tenant). `INTAKE_EMAIL_TO` is where it lands.
+tenant). `INTAKE_EMAIL_TO` is where it lands. `SLACK_BOT_TOKEN` +
+`SLACK_CHANNEL_LEADS` drive the ping to the **#leads** channel (`C0AREP6F46N`) —
+if either is omitted the Slack step is silently skipped (files + email still run).
 
 ### 4. Confirm the Functions directory location
 
@@ -84,8 +89,9 @@ A `git push` of this repo triggers the Cloudflare build. Then:
 1. Open `turnkeyweb.org/intakeform`, pick a package, fill it out, attach a small
    test file, submit.
 2. Expect: button shows "Submitting…", then it redirects to the thank-you page.
-3. Check `rickyW@turnkeyweb.org` for the submission email.
-4. Check `ricky@turnkeycfo.com` OneDrive → `Turnkey Web Intake/` for the file.
+3. Check the **#leads** Slack channel for the ping.
+4. Check `rickyW@turnkeyweb.org` for the submission email.
+5. Check `ricky@turnkeycfo.com` OneDrive → `Turnkey Web Intake/` for the file.
 
 If auto-submit fails (e.g. env vars missing), the form shows the fallback
 overlay with manual email options — the visitor still gets through.
@@ -100,7 +106,8 @@ overlay with manual email options — the visitor still gets through.
 | Backend | `functions/api/intake.js` → live at `/api/intake` |
 | File storage | OneDrive of `ONEDRIVE_USER` › `Turnkey Web Intake/<Business> - <Industry>/<YYYY-MM-DD>/` |
 | Email | Graph `sendMail`, `INTAKE_EMAIL_FROM` → `INTAKE_EMAIL_TO` |
-| Secondary log | Existing Google Apps Script webhook still fires (Slack ping + Sheet row) |
+| Slack | `chat.postMessage` to #leads (`SLACK_CHANNEL_LEADS`) on every submission |
+| Secondary log | Google Apps Script webhook still fires for the Sheet row (its Slack ping is disabled) |
 
 ### OneDrive folder layout
 
@@ -118,10 +125,10 @@ The base folder and the per-client folder are reused if a client submits again;
 the dated folder is always fresh (a same-day re-submit gets `2026-05-18 1`).
 Submissions with no files create no folder — they are email-only.
 
-The Apps Script webhook is left in place on purpose: it still posts the instant
-Slack ping and logs the Sheet row, so even if the email path has a hiccup the
-lead is visible. The Function is the new primary path; the GAS webhook is backup
-telemetry.
+The Apps Script webhook is left in place for the Sheet-row log only — its Slack
+ping is disabled (`_slackNotify: false` in the form) so it does not duplicate the
+Function's #leads post. The Function is the primary path (OneDrive + Slack +
+email); the GAS webhook is backup telemetry (the spreadsheet record).
 
 ## Changing things later
 

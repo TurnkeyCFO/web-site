@@ -1512,7 +1512,9 @@
       }
     }
 
-    // Secondary log: fire the GAS webhook (Slack ping + Sheet row). Fire-and-forget.
+    // Secondary log: fire the GAS webhook for the Sheet row. Fire-and-forget.
+    // Slack notification is now handled server-side by the /api/intake Function
+    // (posts to #leads), so the GAS Slack ping is disabled below to avoid a dupe.
     var ts = new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' });
     var name   = fields.full_name      || '(not provided)';
     var email  = fields.email          || '(not provided)';
@@ -1539,7 +1541,7 @@
         timestamp: ts,
         _hasFiles: hasFiles,
         _fileNames: fileNames.join(', '),
-        _slackNotify: true,
+        _slackNotify: false,
         slackText: slackText
       }))
     }).catch(function() {});

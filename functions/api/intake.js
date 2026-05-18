@@ -6,9 +6,10 @@
  *   1. Parses the multipart form (text fields + uploaded brand files)
  *   2. Uploads each file to OneDrive via Microsoft Graph (client-credentials)
  *      into:  <ONEDRIVE_USER>/Turnkey Web Intake/<Business> - <Industry>/<YYYY-MM-DD>/
- *   3. Emails the full submission to INTAKE_EMAIL_TO via Graph sendMail,
+ *   3. Posts a Slack ping to the #leads channel (best-effort — never blocks)
+ *   4. Emails the full submission to INTAKE_EMAIL_TO via Graph sendMail,
  *      with Reply-To set to the prospect so a reply goes straight to them
- *   4. Returns { ok: true, folderUrl } as JSON
+ *   5. Returns { ok: true, folderUrl } as JSON
  *
  * Required environment variables
  * (Cloudflare dashboard > Pages project > Settings > Variables and Secrets).
@@ -20,6 +21,11 @@
  *   ONEDRIVE_USER              UPN whose OneDrive stores the files    e.g. ricky@turnkeycfo.com
  *   INTAKE_EMAIL_FROM          Mailbox the notification is sent from  e.g. ricky@turnkeycfo.com
  *   INTAKE_EMAIL_TO            Where the submission email lands       e.g. rickyW@turnkeyweb.org
+ *
+ * Optional — a Slack ping to the #leads channel on every submission
+ * (if either is unset, the Slack step is silently skipped):
+ *   SLACK_BOT_TOKEN            Slack bot token (xoxb-...)             [type: Secret]
+ *   SLACK_CHANNEL_LEADS        Slack channel id for #leads            e.g. C0AREP6F46N
  *
  * The (existing, shared) Azure app registration needs these APPLICATION
  * permissions, admin-consented:  Files.ReadWrite.All  +  Mail.Send
@@ -129,6 +135,13 @@ export async function onRequestPost(context) {
         const item = await uploadFile(env, token, folder.id, file);
         uploaded.push({ name: file.name, url: item.webUrl, size: file.size });
       }
+    }
+
+    // ── Slack ping to #leads (best-effort — a Slack hiccup must not fail the submit) ──
+    try {
+      await postSlack(env, fields, uploaded, folderUrl);
+    } catch (slackErr) {
+      console.log("Slack notify failed: " + slackErr);
     }
 
     // ── Email the submission ──
@@ -243,6 +256,53 @@ async function sendEmail(env, token, fields, uploaded, folderUrl) {
   if (res.status !== 202) {
     throw new Error(`sendMail → ${res.status}: ${(await res.text()).slice(0, 250)}`);
   }
+}
+
+// Post a compact lead notification to the #leads Slack channel.
+// Skipped silently if SLACK_BOT_TOKEN / SLACK_CHANNEL_LEADS are not configured.
+async function postSlack(env, fields, uploaded, folderUrl) {
+  if (!env.SLACK_BOT_TOKEN || !env.SLACK_CHANNEL_LEADS) return;
+
+  const business = (fields.business_name || "New Client").trim();
+  const ts = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
+  const line = (label, val) => (val && String(val).trim() ? `*${label}:* ${String(val).trim()}` : null);
+  const detail =
+    [
+      line("Contact", fields.full_name),
+      line("Email", fields.email),
+      line("Phone", fields.phone),
+      line("Package", fields.selected_package),
+      line("Industry", fields.industry),
+      line("Location", fields.location),
+    ]
+      .filter(Boolean)
+      .join("\n") || "_No detail captured._";
+
+  const filesLine = uploaded.length
+    ? `📎 *${uploaded.length} file(s) uploaded* — <${folderUrl}|Open the OneDrive folder>`
+    : "_No files uploaded._";
+
+  const blocks = [
+    { type: "header", text: { type: "plain_text", text: `🌐 New Website Intake — ${business}`.slice(0, 150) } },
+    { type: "section", text: { type: "mrkdwn", text: detail } },
+    { type: "section", text: { type: "mrkdwn", text: filesLine } },
+    { type: "context", elements: [{ type: "mrkdwn", text: `Submitted ${ts} CT · turnkeyweb.org/intakeform` }] },
+  ];
+
+  const res = await fetch("https://slack.com/api/chat.postMessage", {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + env.SLACK_BOT_TOKEN,
+      "Content-Type": "application/json; charset=utf-8",
+    },
+    body: JSON.stringify({
+      channel: env.SLACK_CHANNEL_LEADS,
+      text: `New website intake — ${business}`,
+      blocks,
+    }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!data.ok) throw new Error("chat.postMessage: " + (data.error || res.status));
 }
 
 /* ── Formatting helpers ──────────────────────────────────────────────── */
