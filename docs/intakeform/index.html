@@ -822,6 +822,15 @@
           <label>Where do you operate? <span class="hint">(city, region, nationwide, etc.)</span></label>
           <input type="text" name="location" placeholder="e.g. Austin, TX — or nationwide" />
         </div>
+
+        <div class="field">
+          <label>Upload your logo or brand assets <span class="hint">(optional — PNG, JPG, SVG, PDF, ZIP; max 10 MB each)</span></label>
+          <div class="file-upload-area">
+            <div class="file-upload-icon">📎</div>
+            <input type="file" name="brand_assets" accept=".png,.jpg,.jpeg,.svg,.pdf,.zip,.ai,.eps" multiple />
+            <p class="file-upload-label">Logo files, brand guide, photos, reference images — multiple files OK, on every plan.</p>
+          </div>
+        </div>
       </div>
 
       <!-- ══════════════════════════════════════════════
@@ -919,15 +928,6 @@
         <div class="field">
           <label>What brand colors do you use? <span class="hint">(hex codes or descriptions)</span></label>
           <input type="text" name="brand_colors" placeholder="e.g. Navy #003366, Gold #CBA135 — or just 'navy and gold'" />
-        </div>
-
-        <div class="field">
-          <label>Upload your logo or brand assets <span class="hint">(PNG, SVG, PDF, ZIP — max 10 MB)</span></label>
-          <div class="file-upload-area">
-            <div class="file-upload-icon">📎</div>
-            <input type="file" name="brand_assets" accept=".png,.jpg,.jpeg,.svg,.pdf,.zip,.ai,.eps" multiple />
-            <p class="file-upload-label">Logo files, brand guide, reference images — multiple files OK.</p>
-          </div>
         </div>
 
         <div class="field">
@@ -1340,17 +1340,17 @@
   function showSuccessOverlay(summaryText, bizName, hasFiles) {
     // Build Gmail URL
     var subject = 'New Website Project Questionnaire — ' + (bizName || 'New Client');
-    var gmailUrl = 'https://mail.google.com/mail/?view=cm&to=ricky@turnkeycfo.com'
+    var gmailUrl = 'https://mail.google.com/mail/?view=cm&to=rickyW@turnkeyweb.org'
       + '&su=' + encodeURIComponent(subject)
       + '&body=' + encodeURIComponent(summaryText);
 
     // Short mailto body (abbreviated for email clients with URI limits)
     var shortBody = summaryText.substring(0, 1800) + (summaryText.length > 1800 ? '\n\n[Full data in copied text]' : '');
-    var mailtoUrl = 'mailto:ricky@turnkeycfo.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(shortBody);
+    var mailtoUrl = 'mailto:rickyW@turnkeyweb.org?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(shortBody);
 
     var fileNote = hasFiles
       ? '<div style="margin:16px 0;padding:14px 18px;background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;font-size:13px;color:#9a3412;line-height:1.55;">'
-        + '📎 Please email your logo/brand files separately to <strong>ricky@turnkeycfo.com</strong> with the subject line <strong>"Brand Files — ' + (bizName || 'New Client') + '"</strong>'
+        + '📎 Please email your logo/brand files separately to <strong>rickyW@turnkeyweb.org</strong> with the subject line <strong>"Brand Files — ' + (bizName || 'New Client') + '"</strong>'
         + '</div>'
       : '';
 
@@ -1377,8 +1377,8 @@
       + 'padding:32px 36px 28px;border-radius:24px 24px 0 0;color:#fff;'
       + '">'
       + '<div style="font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:8px;">Turnkey WEB</div>'
-      + '<h2 style="font-size:26px;font-weight:800;margin:0 0 6px;letter-spacing:-0.4px;">Questionnaire Received ✓</h2>'
-      + '<p style="font-size:14px;opacity:0.8;margin:0;line-height:1.5;">Your responses are ready to send. Choose how to submit:</p>'
+      + '<h2 style="font-size:26px;font-weight:800;margin:0 0 6px;letter-spacing:-0.4px;">One More Step</h2>'
+      + '<p style="font-size:14px;opacity:0.8;margin:0;line-height:1.5;">We couldn\'t send this automatically — please use one of the options below so your responses reach us.</p>'
       + '</div>'
       + '<!-- Body -->'
       + '<div style="padding:28px 36px 32px;">'
@@ -1461,16 +1461,22 @@
       return;
     }
 
-    var fd = new FormData(document.getElementById('main-form'));
+    var formEl = document.getElementById('main-form');
+    var fd = new FormData(formEl);
     var fields = {};
     var hasFiles = false;
     var fileNames = [];
+    var tooBig = [];
 
     for (var pair of fd.entries()) {
       var key = pair[0];
       var val = pair[1];
       if (val instanceof File) {
-        if (val.name) { hasFiles = true; fileNames.push(val.name); }
+        if (val.name) {
+          hasFiles = true;
+          fileNames.push(val.name);
+          if (val.size > 10 * 1024 * 1024) { tooBig.push(val.name); }
+        }
         continue;
       }
       if (fields[key] !== undefined) {
@@ -1480,10 +1486,33 @@
       }
     }
 
-    var bizName = (fields.business_name || '').trim() || 'New Client';
-    var summaryText = buildFormSummary(fields, hasFiles, fileNames);
+    if (tooBig.length) {
+      alert('These files are over the 10 MB limit:\n\n' + tooBig.join('\n')
+        + '\n\nPlease compress or remove them, then submit again.');
+      return;
+    }
 
-    // Fire GAS webhook — no-cors, fire-and-forget, Ricky gets Slack ping automatically
+    var bizName = (fields.business_name || '').trim() || 'New Client';
+
+    // Lock the button so a slow file upload can't be double-submitted.
+    var btn = formEl.querySelector('.submit-btn');
+    var btnLabel = btn ? btn.textContent : '';
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+      btn.style.opacity = '0.65';
+      btn.style.cursor = 'wait';
+    }
+    function resetBtn() {
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = btnLabel;
+        btn.style.opacity = '';
+        btn.style.cursor = '';
+      }
+    }
+
+    // Secondary log: fire the GAS webhook (Slack ping + Sheet row). Fire-and-forget.
     var ts = new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' });
     var name   = fields.full_name      || '(not provided)';
     var email  = fields.email          || '(not provided)';
@@ -1515,7 +1544,27 @@
       }))
     }).catch(function() {});
 
-    showSuccessOverlay(summaryText, bizName, hasFiles);
+    // Primary submit: real auto-submit to the Pages Function. It uploads any
+    // brand files to OneDrive and emails the full submission to Ricky.
+    fetch('/api/intake', { method: 'POST', body: fd })
+      .then(function(res) {
+        return res.json().catch(function() { return {}; }).then(function(data) {
+          return { ok: res.ok && data && data.ok === true, data: data };
+        });
+      })
+      .then(function(result) {
+        if (result.ok) {
+          window.location.href = 'questionnaire-thanks.html';
+        } else {
+          throw new Error((result.data && result.data.error) || 'Submission failed.');
+        }
+      })
+      .catch(function(err) {
+        // Fallback so a submission is never lost: show the manual-send options.
+        resetBtn();
+        var summaryText = buildFormSummary(fields, hasFiles, fileNames);
+        showSuccessOverlay(summaryText, bizName, hasFiles);
+      });
   }
 
   document.getElementById('main-form').addEventListener('submit', handleFormSubmit);
