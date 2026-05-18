@@ -200,7 +200,7 @@
         0 0 0 2px #0055FF;
     }
 
-    /* Gentle "click me" nudge on the Most Popular (Growth) card */
+    /* Wave nudge — cards bounce in sequence: Starter -> Growth -> Pro */
     @keyframes tierNudge {
       0%, 70%, 100% { transform: translateY(0); }
       80%           { transform: translateY(-8px); }
@@ -208,18 +208,21 @@
       94%           { transform: translateY(-5px); }
     }
 
-    .tier-card[data-tier="2"]:not(.active) {
-      animation: tierNudge 2.8s ease-in-out infinite;
+    .tier-card:not(.active) {
+      animation: tierNudge 3.4s ease-in-out infinite;
     }
+    .tier-card[data-tier="1"]:not(.active) { animation-delay: 0s;    }
+    .tier-card[data-tier="2"]:not(.active) { animation-delay: 0.22s; }
+    .tier-card[data-tier="3"]:not(.active) { animation-delay: 0.44s; }
 
     /* hover + selected states own the transform — pause the nudge so it can't fight them */
-    .tier-card[data-tier="2"]:hover,
-    .tier-card[data-tier="2"].active {
+    .tier-card:hover,
+    .tier-card.active {
       animation: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .tier-card[data-tier="2"]:not(.active) { animation: none; }
+      .tier-card:not(.active) { animation: none; }
     }
 
     /* Recommended badge */
