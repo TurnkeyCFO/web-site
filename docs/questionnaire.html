@@ -61,6 +61,13 @@
       position: relative;
     }
 
+    .header-logo {
+      height: 124px;
+      width: auto;
+      display: block;
+      margin: -26px 0 -22px -12px;
+    }
+
     .brand-icon {
       width: 48px; height: 48px;
       background: rgba(0, 85, 255, 0.30);
@@ -667,11 +674,7 @@
   <!-- ══ HEADER ══ -->
   <div class="header">
     <div class="header-brand">
-      <div class="brand-icon">TW</div>
-      <div class="brand-name">
-        <div class="brand-name-main">Turnkey WEB</div>
-        <div class="brand-name-sub">Website Design &amp; Development</div>
-      </div>
+      <img src="assets/tkweb-logo-white.png" alt="Turnkey Web" class="header-logo" />
     </div>
     <h1>Website Project<br/><span>Questionnaire</span></h1>
     <p>Start by selecting the package that fits your project. We'll tailor the questions so we can build exactly what your business needs.</p>
@@ -696,8 +699,6 @@
           <div class="tier-card" data-tier="1" onclick="selectTier(1)">
             <div class="tier-check"></div>
             <div class="tier-name">Starter</div>
-            <div class="tier-price"><sup>$</sup>50</div>
-            <div class="tier-price-period">per month</div>
             <div class="tier-divider"></div>
             <ul class="tier-features">
               <li>Up to 5 pages</li>
@@ -712,8 +713,6 @@
             <div class="tier-badge">Most Popular</div>
             <div class="tier-check"></div>
             <div class="tier-name">Growth</div>
-            <div class="tier-price"><sup>$</sup>50</div>
-            <div class="tier-price-period">per month</div>
             <div class="tier-divider"></div>
             <ul class="tier-features">
               <li>Everything in Starter</li>
@@ -727,8 +726,6 @@
           <div class="tier-card" data-tier="3" onclick="selectTier(3)">
             <div class="tier-check"></div>
             <div class="tier-name">Pro</div>
-            <div class="tier-price"><sup>$</sup>50</div>
-            <div class="tier-price-period">per month</div>
             <div class="tier-divider"></div>
             <ul class="tier-features">
               <li>Everything in Growth</li>
@@ -1189,7 +1186,7 @@
     currentTier = tier;
 
     var names = ['', 'Starter', 'Growth', 'Pro'];
-    document.getElementById('selected_package').value = names[tier] + ' ($50/mo)';
+    document.getElementById('selected_package').value = names[tier];
 
     document.querySelectorAll('.tier-card').forEach(function(card) {
       card.classList.toggle('active', parseInt(card.dataset.tier) === tier);
