@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex — AI-Powered Revenue Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --purple:#7C3AED;--purple-light:#A78BFA;--purple-dark:#5B21B6;
+  --cyan:#06B6D4;--cyan-light:#67E8F9;
+  --dark:#0A0A0F;--dark-mid:#12121A;--dark-card:#1A1A26;
+  --white:#FFFFFF;--text-soft:rgba(255,255,255,0.65);--text-muted:rgba(255,255,255,0.35);
+  --border:rgba(255,255,255,0.08);--border-glow:rgba(124,58,237,0.4);
+}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 60px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,15,0.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:800;letter-spacing:-0.02em}
+.nav-logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--purple),var(--cyan));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--text-soft);transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-login{font-size:14px;font-weight:500;color:var(--text-soft);text-decoration:none;transition:color 0.2s}
+.nav-login:hover{color:var(--white)}
+.nav-cta{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:var(--white);padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;box-shadow:0 0 24px rgba(124,58,237,0.3)}
+.nav-cta:hover{box-shadow:0 0 32px rgba(124,58,237,0.5);transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 60px 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;overflow:hidden}
+.hero-glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.3}
+.glow1{width:600px;height:600px;background:var(--purple);top:-100px;left:50%;transform:translateX(-50%)}
+.glow2{width:400px;height:400px;background:var(--cyan);bottom:-100px;left:10%}
+.glow3{width:300px;height:300px;background:var(--purple-light);bottom:-50px;right:10%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);padding:6px 16px;border-radius:100px;font-size:13px;font-weight:500;color:var(--purple-light);margin-bottom:32px;position:relative}
+.badge-dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.3)}}
+.hero-h1{font-size:72px;font-weight:900;line-height:1.0;letter-spacing:-0.03em;margin-bottom:28px;position:relative;max-width:900px}
+.gradient-text{background:linear-gradient(135deg,var(--white) 0%,var(--purple-light) 50%,var(--cyan-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:18px;line-height:1.7;color:var(--text-soft);max-width:600px;margin:0 auto 48px;position:relative}
+.hero-btns{display:flex;gap:16px;justify-content:center;margin-bottom:64px;position:relative}
+.btn-gradient{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:var(--white);padding:16px 36px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;transition:all 0.2s;box-shadow:0 0 40px rgba(124,58,237,0.4)}
+.btn-gradient:hover{box-shadow:0 0 56px rgba(124,58,237,0.6);transform:translateY(-2px)}
+.btn-outline{border:1px solid var(--border);color:var(--white);padding:16px 36px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.2s;background:rgba(255,255,255,0.04)}
+.btn-outline:hover{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.08)}
+.hero-social-proof{display:flex;align-items:center;gap:16px;font-size:13px;color:var(--text-muted);position:relative}
+.avatars{display:flex}
+.avatar{width:32px;height:32px;border-radius:50%;border:2px solid var(--dark);background:linear-gradient(135deg,var(--purple),var(--cyan));margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.avatar:first-child{margin-left:0}
+.hero-dashboard{position:relative;max-width:960px;width:100%;margin:0 auto}
+.dashboard-preview{background:var(--dark-card);border:1px solid var(--border);border-radius:16px;padding:0;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,0.8),0 0 0 1px var(--border),inset 0 1px 0 rgba(255,255,255,0.06)}
+.dashboard-bar{background:rgba(255,255,255,0.04);padding:14px 20px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.window-dot{width:12px;height:12px;border-radius:50%}
+.w1{background:#FF5F57}.w2{background:#FFBD2E}.w3{background:#28CA41}
+.dashboard-url{flex:1;background:rgba(255,255,255,0.06);border-radius:6px;padding:6px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);text-align:center;margin:0 80px}
+.dashboard-content{padding:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px}
+.dash-kpi{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:16px}
+.dash-kpi-label{font-size:11px;color:var(--text-muted);margin-bottom:8px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em}
+.dash-kpi-val{font-size:24px;font-weight:800;letter-spacing:-0.02em}
+.dash-kpi-delta{font-size:12px;font-weight:500;margin-top:4px}
+.up{color:#34D399}.down{color:#F87171}
+.dash-chart{grid-column:1/3;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:16px}
+.dash-chart-title{font-size:12px;font-weight:600;margin-bottom:16px;color:var(--text-soft)}
+.chart-bars{display:flex;align-items:flex-end;gap:6px;height:80px}
+.bar{flex:1;border-radius:4px 4px 0 0;transition:all 0.3s;cursor:pointer}
+.bar:hover{opacity:0.8}
+.bar-purple{background:linear-gradient(180deg,var(--purple),var(--purple-dark))}
+.bar-cyan{background:linear-gradient(180deg,var(--cyan),#0891B2)}
+
+/* LOGOS */
+.logos-section{padding:40px 60px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.logos-inner{max-width:1200px;margin:0 auto;text-align:center}
+.logos-label{font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:28px}
+.logos-row{display:flex;justify-content:center;align-items:center;gap:56px;flex-wrap:wrap}
+.logo-pill{font-size:14px;font-weight:700;letter-spacing:0.05em;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.12em}
+
+/* FEATURES */
+.features{padding:100px 60px;max-width:1200px;margin:0 auto}
+.section-label{font-size:12px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple-light);margin-bottom:16px}
+.section-h2{font-size:52px;font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px}
+.section-sub{font-size:17px;color:var(--text-soft);line-height:1.7;max-width:560px;margin-bottom:64px}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.feature-card{background:var(--dark-mid);padding:40px 32px;transition:all 0.3s;cursor:default;position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,0.08),transparent);opacity:0;transition:opacity 0.3s}
+.feature-card:hover::before{opacity:1}
+.feature-icon{width:48px;height:48px;background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(6,182,212,0.2));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;border:1px solid rgba(124,58,237,0.2)}
+.feature-name{font-size:18px;font-weight:700;margin-bottom:12px}
+.feature-desc{font-size:14px;line-height:1.7;color:var(--text-soft)}
+.feature-tag{display:inline-block;background:rgba(124,58,237,0.15);color:var(--purple-light);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;margin-top:16px;border:1px solid rgba(124,58,237,0.2)}
+
+/* PRICING */
+.pricing{padding:100px 60px;background:var(--dark-mid)}
+.pricing-inner{max-width:1100px;margin:0 auto}
+.pricing-toggle{display:flex;align-items:center;gap:12px;margin-bottom:56px;justify-content:center}
+.pricing-toggle-label{font-size:14px;font-weight:500;color:var(--text-soft)}
+.toggle{width:44px;height:24px;background:var(--purple);border-radius:100px;position:relative;cursor:pointer}
+.toggle-dot{position:absolute;top:3px;right:3px;width:18px;height:18px;background:white;border-radius:50%;transition:transform 0.2s}
+.save-badge{background:rgba(52,211,153,0.15);color:#34D399;font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;border:1px solid rgba(52,211,153,0.2)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.price-card{background:var(--dark-card);border:1px solid var(--border);border-radius:16px;padding:36px;position:relative}
+.price-card.featured{border-color:var(--purple);box-shadow:0 0 48px rgba(124,58,237,0.2)}
+.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--purple),var(--cyan));color:white;font-size:12px;font-weight:700;padding:6px 20px;border-radius:100px;white-space:nowrap}
+.price-tier{font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px}
+.price-val{font-size:52px;font-weight:900;letter-spacing:-0.04em;margin-bottom:4px}
+.price-val span{font-size:20px;font-weight:500;color:var(--text-soft)}
+.price-period{font-size:13px;color:var(--text-muted);margin-bottom:28px}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.price-features li{font-size:14px;color:var(--text-soft);display:flex;align-items:center;gap:10px}
+.price-features li::before{content:'✓';color:var(--purple-light);font-weight:700;font-size:12px}
+.price-cta{display:block;text-align:center;padding:14px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s}
+.price-cta-outline{border:1px solid var(--border);color:var(--white);background:transparent}
+.price-cta-outline:hover{border-color:var(--purple-light);background:rgba(124,58,237,0.1)}
+.price-cta-filled{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:white;box-shadow:0 0 32px rgba(124,58,237,0.3)}
+.price-cta-filled:hover{box-shadow:0 0 48px rgba(124,58,237,0.5);transform:translateY(-1px)}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid var(--border);padding:48px 60px 32px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand{font-size:20px;font-weight:800;margin-bottom:16px}
+.footer-tagline{font-size:14px;color:var(--text-muted);line-height:1.6}
+.footer-col-title{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-links a{font-size:14px;color:var(--text-soft);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:32px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:13px;color:var(--text-muted)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:all 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  .hero{padding:100px 24px 60px}
+  .hero-h1{font-size:44px}
+  .hero-btns{flex-direction:column;align-items:center}
+  .dashboard-content{grid-template-columns:repeat(2,1fr)}
+  .features{padding:60px 24px}
+  .section-h2{font-size:36px}
+  .features-grid{grid-template-columns:1fr}
+  .pricing{padding:60px 24px}
+  .pricing-grid{grid-template-columns:1fr}
+  footer{padding:48px 24px 32px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-bottom{flex-direction:column;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><div class="nav-logo-icon">⚡</div>Apex</div>
+  <ul class="nav-links">
+    <li><a href="#product">Product</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#pricing">Docs</a></li>
+    <li><a href="#product">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#pricing" class="nav-login">Sign in</a>
+    <a href="#pricing" class="nav-cta">Start free trial →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-glow glow1"></div>
+    <div class="hero-glow glow2"></div>
+    <div class="hero-glow glow3"></div>
+  </div>
+  <div class="hero-badge"><div class="badge-dot"></div>Now with GPT-5 integration · See what's new</div>
+  <h1 class="hero-h1"><span class="gradient-text">Revenue intelligence</span><br>that actually works.</h1>
+  <p class="hero-sub">Apex unifies your pipeline, predicts churn before it happens, and surfaces revenue opportunities your team doesn't have time to find. Powered by AI built for GTM teams.</p>
+  <div class="hero-btns">
+    <a href="#pricing" class="btn-gradient">Start free — no credit card</a>
+    <a href="#product" class="btn-outline">▶ Watch 2-min demo</a>
+  </div>
+  <div class="hero-social-proof">
+    <div class="avatars">
+      <div class="avatar">JK</div><div class="avatar">AM</div><div class="avatar">RS</div><div class="avatar">TL</div><div class="avatar">+</div>
+    </div>
+    <span>Trusted by <strong style="color:white">12,400+</strong> revenue teams worldwide</span>
+  </div>
+</section>
+
+<div style="padding:60px 60px 0;max-width:1200px;margin:0 auto" class="reveal">
+  <div class="dashboard-preview">
+    <div class="dashboard-bar">
+      <div class="window-dot w1"></div><div class="window-dot w2"></div><div class="window-dot w3"></div>
+      <div class="dashboard-url">app.apexrevenue.com/dashboard</div>
+    </div>
+    <div class="dashboard-content">
+      <div class="dash-kpi"><div class="dash-kpi-label">ARR</div><div class="dash-kpi-val" style="color:#A78BFA">$4.2M</div><div class="dash-kpi-delta up">↑ +23% MoM</div></div>
+      <div class="dash-kpi"><div class="dash-kpi-label">Pipeline</div><div class="dash-kpi-val" style="color:#67E8F9">$1.8M</div><div class="dash-kpi-delta up">↑ +41% YoY</div></div>
+      <div class="dash-kpi"><div class="dash-kpi-label">Churn Risk</div><div class="dash-kpi-val" style="color:#F87171">2.1%</div><div class="dash-kpi-delta down">↓ Flagged 6</div></div>
+      <div class="dash-kpi"><div class="dash-kpi-label">Win Rate</div><div class="dash-kpi-val" style="color:#34D399">64%</div><div class="dash-kpi-delta up">↑ +8pts</div></div>
+      <div class="dash-chart">
+        <div class="dash-chart-title">Revenue by Month · Q1–Q4</div>
+        <div class="chart-bars">
+          <div class="bar bar-purple" style="height:40%"></div>
+          <div class="bar bar-purple" style="height:52%"></div>
+          <div class="bar bar-purple" style="height:45%"></div>
+          <div class="bar bar-cyan" style="height:60%"></div>
+          <div class="bar bar-cyan" style="height:68%"></div>
+          <div class="bar bar-cyan" style="height:74%"></div>
+          <div class="bar bar-purple" style="height:82%"></div>
+          <div class="bar bar-purple" style="height:88%"></div>
+          <div class="bar bar-cyan" style="height:95%"></div>
+          <div class="bar bar-cyan" style="height:100%"></div>
+          <div class="bar" style="height:60%;background:rgba(255,255,255,0.1);border:1px dashed rgba(255,255,255,0.2)"></div>
+          <div class="bar" style="height:70%;background:rgba(255,255,255,0.06);border:1px dashed rgba(255,255,255,0.15)"></div>
+        </div>
+      </div>
+      <div class="dash-chart">
+        <div class="dash-chart-title">AI Signals · This Week</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px"><span style="color:#F87171">⚠ Churn risk: Acme Corp</span><span style="color:rgba(255,255,255,0.4)">89% confidence</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px"><span style="color:#34D399">↑ Upsell: Stripe Inc</span><span style="color:rgba(255,255,255,0.4)">3× usage spike</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px"><span style="color:#A78BFA">◉ Hot lead: Shopify</span><span style="color:rgba(255,255,255,0.4)">ICP match: 94%</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px"><span style="color:#67E8F9">✓ Deal closed: $84K</span><span style="color:rgba(255,255,255,0.4)">Cloudflare</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="logos-section" id="solutions" style="margin-top:60px">
+  <div class="logos-inner">
+    <div class="logos-label">Trusted by teams at</div>
+    <div class="logos-row">
+      <div class="logo-pill">Stripe</div>
+      <div class="logo-pill">Notion</div>
+      <div class="logo-pill">Vercel</div>
+      <div class="logo-pill">Linear</div>
+      <div class="logo-pill">Figma</div>
+      <div class="logo-pill">Loom</div>
+      <div class="logo-pill">Retool</div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="product">
+  <div class="section-label">Platform</div>
+  <h2 class="section-h2">Everything your <span class="gradient-text">revenue team</span> needs.</h2>
+  <p class="section-sub">One platform that replaces five tools. Built for modern GTM teams that move fast and demand accuracy.</p>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon">🔮</div>
+      <div class="feature-name">AI Deal Intelligence</div>
+      <div class="feature-desc">Our model analyzes 400+ signals per deal to predict win probability, surface blockers, and recommend the next best action — before your reps ask.</div>
+      <div class="feature-tag">AI-Powered</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">📡</div>
+      <div class="feature-name">Real-Time Pipeline</div>
+      <div class="feature-desc">Live pipeline visibility synced from Salesforce, HubSpot, and your custom CRM. No manual updates. Always accurate. Drill from board to deal in two clicks.</div>
+      <div class="feature-tag">Real-Time</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-name">Churn Prediction</div>
+      <div class="feature-desc">Identify at-risk accounts 90 days before they churn. Automated playbooks trigger CSM outreach the moment signals appear in product usage or engagement data.</div>
+      <div class="feature-tag">Predictive</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">📊</div>
+      <div class="feature-name">Revenue Forecasting</div>
+      <div class="feature-desc">Bottom-up and top-down forecasts built on historical actuals and AI projections. Scenario modeling for best-case, base-case, and downside in one click.</div>
+      <div class="feature-tag">Forecasting</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🔗</div>
+      <div class="feature-name">Native Integrations</div>
+      <div class="feature-desc">Connects to 80+ tools out of the box — Slack, Outreach, Gong, Snowflake, BigQuery, Looker, Marketo, and more. Full REST API + webhooks for custom workflows.</div>
+      <div class="feature-tag">80+ Integrations</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🛡️</div>
+      <div class="feature-name">Enterprise Security</div>
+      <div class="feature-desc">SOC 2 Type II certified. GDPR and CCPA compliant. SSO via Okta, Azure AD, and Google. Role-based access controls, audit logs, and data residency options.</div>
+      <div class="feature-tag">SOC 2 Certified</div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="section-label" style="text-align:center">Pricing</div>
+      <h2 class="section-h2" style="text-align:center">Simple, <span class="gradient-text">transparent</span> pricing.</h2>
+      <div class="pricing-toggle">
+        <span class="pricing-toggle-label">Monthly</span>
+        <div class="toggle"><div class="toggle-dot"></div></div>
+        <span class="pricing-toggle-label">Annual</span>
+        <span class="save-badge">Save 20%</span>
+      </div>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Starter</div>
+        <div class="price-val">$49<span>/mo</span></div>
+        <div class="price-period">per seat · billed annually</div>
+        <ul class="price-features">
+          <li>Up to 5 seats</li>
+          <li>CRM sync (1 source)</li>
+          <li>Basic AI forecasting</li>
+          <li>Pipeline dashboards</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#pricing" class="price-cta price-cta-outline">Get Started</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-tier">Growth</div>
+        <div class="price-val">$129<span>/mo</span></div>
+        <div class="price-period">per seat · billed annually</div>
+        <ul class="price-features">
+          <li>Unlimited seats</li>
+          <li>All CRM integrations</li>
+          <li>Full AI deal intelligence</li>
+          <li>Churn prediction</li>
+          <li>Custom dashboards</li>
+          <li>Slack + Gong integration</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#pricing" class="price-cta price-cta-filled">Start Free Trial</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Enterprise</div>
+        <div class="price-val" style="font-size:36px;padding-top:8px">Custom</div>
+        <div class="price-period">Volume pricing available</div>
+        <ul class="price-features">
+          <li>Everything in Growth</li>
+          <li>Dedicated CSM</li>
+          <li>Custom AI model training</li>
+          <li>Data residency options</li>
+          <li>SLA guarantees</li>
+          <li>SSO + advanced RBAC</li>
+          <li>White-glove onboarding</li>
+        </ul>
+        <a href="#pricing" class="price-cta price-cta-outline">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">⚡ Apex</div>
+      <div class="footer-tagline">AI-powered revenue intelligence for modern GTM teams. Close more deals, prevent churn, grow faster.</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Product</div>
+      <ul class="footer-links">
+        <li><a href="#product">Features</a></li>
+        <li><a href="#solutions">Integrations</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#product">Changelog</a></li>
+        <li><a href="#product">Roadmap</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#solutions">About</a></li>
+        <li><a href="#solutions">Blog</a></li>
+        <li><a href="#solutions">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Security</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Support</div>
+      <ul class="footer-links">
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">API Reference</a></li>
+        <li><a href="#">Status</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Apex Technologies, Inc. · All rights reserved.</div>
+    <div class="footer-copy">Privacy · Terms · Cookies</div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

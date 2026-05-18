@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Revenue Intelligence — Bridge AI That Finds the Revenue You're Leaving Behind</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050810;--card:#0A0F1E;--card2:#0E1428;--border:#1A2240;
+  --pink:#FF2D78;--pink-lt:#FF6BA0;--cyan:#00E5FF;--purple:#8B5CF6;
+  --white:#F0F4FF;--muted:#6B7A9F;--muted2:#8892B0;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden}
+
+/* ── GRID BACKGROUND ── */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(255,45,120,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,45,120,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(5,8,16,.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,45,120,.15);
+  padding:0 48px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-size:17px;font-weight:900;letter-spacing:-.03em;
+  display:flex;align-items:center;gap:10px;
+}
+.nav-logo .apex{color:var(--white)}
+.nav-logo .tag{
+  font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--pink);border:1px solid rgba(255,45,120,.4);
+  padding:3px 8px;border-radius:4px;
+}
+.nav-right{display:flex;align-items:center;gap:24px}
+.nav-link{font-size:13px;font-weight:500;color:var(--muted2);text-decoration:none;transition:color .2s}
+.nav-link:hover{color:var(--white)}
+.nav-cta{
+  background:linear-gradient(135deg,var(--pink),#C0185A);
+  color:var(--white);font-size:13px;font-weight:700;
+  padding:9px 22px;border-radius:7px;text-decoration:none;
+  transition:opacity .2s;letter-spacing:.01em;
+}
+.nav-cta:hover{opacity:.85}
+
+/* ── HERO ── */
+.hero{
+  position:relative;z-index:1;
+  padding:100px 48px 80px;
+  text-align:center;max-width:960px;margin:0 auto;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,45,120,.08);border:1px solid rgba(255,45,120,.25);
+  color:var(--pink-lt);font-size:11px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:32px;
+}
+.badge-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--pink);
+  animation:blink 1.6s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
+
+h1{
+  font-size:clamp(40px,6.5vw,76px);font-weight:900;
+  line-height:1.03;letter-spacing:-.04em;margin-bottom:24px;
+}
+h1 .grad{
+  background:linear-gradient(135deg,var(--pink) 0%,var(--pink-lt) 50%,var(--cyan) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-size:18px;font-weight:400;color:var(--muted2);
+  line-height:1.7;max-width:600px;margin:0 auto 44px;
+}
+.hero-form{
+  display:flex;gap:10px;max-width:520px;margin:0 auto 18px;flex-wrap:wrap;justify-content:center;
+}
+.hero-input{
+  flex:1;min-width:220px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,45,120,.25);
+  color:var(--white);padding:15px 20px;border-radius:8px;
+  font-size:15px;font-family:'Inter',sans-serif;outline:none;
+  transition:border-color .2s;
+}
+.hero-input:focus{border-color:var(--pink)}
+.hero-input::placeholder{color:var(--muted)}
+.hero-btn{
+  background:linear-gradient(135deg,var(--pink),#B01050);
+  color:var(--white);font-size:15px;font-weight:800;
+  padding:15px 32px;border-radius:8px;border:none;cursor:pointer;
+  letter-spacing:.01em;transition:transform .15s,opacity .15s;
+  font-family:'Inter',sans-serif;white-space:nowrap;
+}
+.hero-btn:hover{transform:translateY(-1px);opacity:.92}
+.hero-micro{font-size:12px;color:var(--muted);margin-top:2px}
+.hero-micro strong{color:var(--cyan)}
+
+/* ── GLOW ── */
+.glow-orb{
+  position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px);z-index:0;
+}
+.orb-hero-pink{
+  width:500px;height:400px;
+  background:radial-gradient(circle,rgba(255,45,120,.18),transparent 70%);
+  top:-60px;left:50%;transform:translateX(-50%);
+}
+.orb-hero-cyan{
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(0,229,255,.08),transparent 70%);
+  top:100px;right:5%;
+}
+
+/* ── LOGO STRIP ── */
+.logos{
+  position:relative;z-index:1;
+  padding:36px 48px;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  text-align:center;
+}
+.logos-label{
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:22px;
+}
+.logos-row{
+  display:flex;justify-content:center;align-items:center;
+  gap:48px;flex-wrap:wrap;opacity:.35;
+}
+.logo-item{font-size:15px;font-weight:800;letter-spacing:-.02em;color:var(--white)}
+
+/* ── STATS ── */
+.stats-band{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.stat{background:var(--bg);padding:36px 24px;text-align:center}
+.stat-n{
+  font-size:44px;font-weight:900;letter-spacing:-.04em;
+  background:linear-gradient(135deg,var(--pink-lt),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.stat-l{font-size:12px;color:var(--muted2);margin-top:6px;line-height:1.5}
+
+/* ── SECTION SHARED ── */
+.section{position:relative;z-index:1;padding:88px 48px}
+.section-label{
+  font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--pink);text-align:center;margin-bottom:12px;
+}
+.section-h{
+  font-size:clamp(28px,4vw,44px);font-weight:800;
+  text-align:center;letter-spacing:-.04em;margin-bottom:12px;line-height:1.1;
+}
+.section-sub{
+  font-size:15px;color:var(--muted2);text-align:center;
+  max-width:560px;margin:0 auto 52px;line-height:1.7;
+}
+
+/* ── HOW IT WORKS ── */
+.how-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;background:var(--border);
+  max-width:1000px;margin:0 auto;border-radius:14px;overflow:hidden;
+}
+.how-step{
+  background:var(--card);padding:36px 28px;
+  position:relative;transition:background .2s;
+}
+.how-step:hover{background:var(--card2)}
+.step-num{
+  font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--pink);
+  margin-bottom:20px;display:flex;align-items:center;gap:8px;
+}
+.step-num::after{content:'';flex:1;height:1px;background:rgba(255,45,120,.2)}
+.step-icon{font-size:32px;margin-bottom:14px}
+.step-name{font-size:17px;font-weight:700;margin-bottom:8px;letter-spacing:-.02em}
+.step-desc{font-size:13px;color:var(--muted2);line-height:1.65}
+
+/* ── FEATURES ── */
+.features-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;max-width:1000px;margin:0 auto;
+}
+.feat{
+  background:var(--card);border:1px solid var(--border);
+  padding:28px 24px;border-radius:12px;
+  transition:border-color .2s,transform .2s;
+}
+.feat:hover{border-color:rgba(255,45,120,.35);transform:translateY(-2px)}
+.feat-icon{
+  width:46px;height:46px;border-radius:10px;
+  background:rgba(255,45,120,.1);border:1px solid rgba(255,45,120,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin-bottom:16px;
+}
+.feat-name{font-size:15px;font-weight:700;margin-bottom:6px;letter-spacing:-.02em}
+.feat-desc{font-size:13px;color:var(--muted2);line-height:1.65}
+
+/* ── TESTIMONIALS ── */
+.testi-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;max-width:1000px;margin:0 auto;
+}
+.testi{
+  background:var(--card);border:1px solid var(--border);
+  padding:26px;border-radius:12px;
+}
+.testi-stars{color:var(--pink);font-size:13px;margin-bottom:12px}
+.testi-q{font-size:14px;line-height:1.65;color:var(--white);margin-bottom:16px;font-style:italic}
+.testi-author{
+  display:flex;align-items:center;gap:10px;
+  font-size:12px;color:var(--muted2);
+}
+.testi-avatar{
+  width:34px;height:34px;border-radius:50%;
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;flex-shrink:0;color:var(--white);
+}
+.testi-name{font-weight:700;color:var(--white);font-size:13px}
+
+/* ── BOTTOM CTA ── */
+.bottom-cta{
+  position:relative;z-index:1;
+  background:linear-gradient(135deg,rgba(255,45,120,.12) 0%,rgba(139,92,246,.08) 50%,rgba(0,229,255,.05) 100%);
+  border-top:1px solid rgba(255,45,120,.2);border-bottom:1px solid rgba(255,45,120,.2);
+  padding:88px 48px;text-align:center;overflow:hidden;
+}
+.bottom-cta h2{
+  font-size:clamp(30px,5vw,52px);font-weight:900;
+  letter-spacing:-.04em;margin-bottom:14px;line-height:1.05;
+}
+.bottom-cta p{font-size:16px;color:var(--muted2);margin-bottom:36px}
+.cta-pills{
+  display:flex;justify-content:center;gap:12px;flex-wrap:wrap;
+  margin-top:28px;
+}
+.cta-pill{
+  display:flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:600;color:var(--muted2);
+}
+.cta-pill::before{content:'✓';color:var(--cyan);font-size:13px;font-weight:900}
+
+footer{
+  position:relative;z-index:1;
+  padding:28px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:var(--muted);
+  border-top:1px solid var(--border);flex-wrap:wrap;gap:8px;
+}
+.footer-logo{font-size:14px;font-weight:900;letter-spacing:-.02em;color:rgba(255,255,255,.35)}
+
+@media(max-width:768px){
+  .nav{padding:0 20px}
+  .hero{padding:72px 20px 60px}
+  .stats-band{grid-template-columns:1fr 1fr}
+  .how-grid,.features-grid,.testi-grid{grid-template-columns:1fr}
+  .section{padding:64px 20px}
+  .bottom-cta{padding:64px 20px}
+  .logos{padding:28px 20px}.logos-row{gap:24px}
+  footer{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <span class="apex">Apex Revenue Intelligence</span>
+    <span class="tag">Bridge AI</span>
+  </div>
+  <div class="nav-right">
+    <a class="nav-link" href="#how">How it works</a>
+    <a class="nav-link" href="#features">Features</a>
+    <a class="nav-cta" href="#cta">Request Access →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="position:relative">
+  <div class="glow-orb orb-hero-pink"></div>
+  <div class="glow-orb orb-hero-cyan"></div>
+  <div class="hero-badge"><span class="badge-dot"></span>Powered by Bridge AI — Revenue Intelligence Layer</div>
+  <h1>Find the revenue<br>you're <span class="grad">leaving behind.</span></h1>
+  <p class="hero-sub">Apex connects your CRM, billing, and usage data into a single AI-powered layer that surfaces at-risk accounts, expansion opportunities, and pipeline gaps — before your team notices.</p>
+  <div class="hero-form" id="cta">
+    <input class="hero-input" type="email" placeholder="Work email address">
+    <button class="hero-btn">Request Early Access</button>
+  </div>
+  <p class="hero-micro">No credit card required · <strong>14-day free trial</strong> · Setup in under 60 minutes</p>
+</section>
+
+<!-- LOGOS -->
+<div class="logos">
+  <div class="logos-label">Trusted by growth-stage SaaS teams</div>
+  <div class="logos-row">
+    <span class="logo-item">Meridian</span>
+    <span class="logo-item">Voltara</span>
+    <span class="logo-item">SiftCloud</span>
+    <span class="logo-item">NovaSales</span>
+    <span class="logo-item">Corient</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stat"><div class="stat-n">43%</div><div class="stat-l">more expansion revenue<br>identified in 90 days</div></div>
+  <div class="stat"><div class="stat-n">2.1×</div><div class="stat-l">faster churn detection<br>vs. manual reporting</div></div>
+  <div class="stat"><div class="stat-n">$280K</div><div class="stat-l">average pipeline surfaced<br>per 50-seat team</div></div>
+  <div class="stat"><div class="stat-n">&lt;1hr</div><div class="stat-l">time to full integration<br>with your existing stack</div></div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="section-label">How it works</div>
+  <h2 class="section-h">Three steps to total revenue visibility.</h2>
+  <p class="section-sub">Bridge AI runs in the background, continuously syncing your data and surfacing signals your team can act on today.</p>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="step-num">01</div>
+      <div class="step-icon">🔌</div>
+      <div class="step-name">Connect your stack</div>
+      <div class="step-desc">Native integrations with Salesforce, HubSpot, Stripe, Chargebee, and 40+ tools. One-click OAuth — no engineering required.</div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">02</div>
+      <div class="step-icon">🧠</div>
+      <div class="step-name">Bridge AI maps your revenue</div>
+      <div class="step-desc">Our AI correlates product usage, billing events, support activity, and CRM signals into a unified revenue health score for every account.</div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">03</div>
+      <div class="step-icon">⚡</div>
+      <div class="step-name">Act on the signals</div>
+      <div class="step-desc">Get daily digests, Slack alerts, and Salesforce tasks for expansion-ready accounts, churn risks, and stalled deals — automatically routed to the right rep.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features" style="padding-top:0">
+  <div class="section-label">Platform features</div>
+  <h2 class="section-h">Everything your revenue team needs.</h2>
+  <p class="section-sub">Built for VP of Sales, CSM teams, and RevOps leaders who are tired of stitching together spreadsheets.</p>
+  <div class="features-grid">
+    <div class="feat">
+      <div class="feat-icon">📡</div>
+      <div class="feat-name">Real-time account health</div>
+      <div class="feat-desc">AI-generated health scores update continuously based on login frequency, feature adoption, support volume, and payment behavior.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🎯</div>
+      <div class="feat-name">Expansion opportunity engine</div>
+      <div class="feat-desc">Bridge AI identifies which accounts are ready to expand — and why — ranked by revenue potential and likelihood to close.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🚨</div>
+      <div class="feat-name">Churn prediction & alerts</div>
+      <div class="feat-desc">Catch at-risk accounts 30–60 days before renewal. Automatic CSM alerts with suggested save playbooks included.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📊</div>
+      <div class="feat-name">Revenue intelligence dashboard</div>
+      <div class="feat-desc">One view of ARR, NRR, churn rate, expansion pipeline, and at-risk MRR — updated live, not from last month's export.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🤝</div>
+      <div class="feat-name">CRM enrichment & sync</div>
+      <div class="feat-desc">Apex writes account health data, opportunity scores, and risk flags directly back into your CRM so reps always work from one source of truth.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🔁</div>
+      <div class="feat-name">Renewal forecasting</div>
+      <div class="feat-desc">Predict renewal outcomes 90 days out with AI-calibrated confidence scores, giving your team time to act before it's too late.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="padding-top:0">
+  <div class="section-label">What teams say</div>
+  <h2 class="section-h">Revenue teams love what they can finally see.</h2>
+  <div class="testi-grid">
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-q">"We found $180K in expansion opportunities within the first two weeks. It was sitting in accounts we thought were dormant."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">MR</div>
+        <div><div class="testi-name">Marcus R.</div><div>VP of Sales · Voltara</div></div>
+      </div>
+    </div>
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-q">"Apex flagged a $40K account at churn risk that was about to quietly lapse. We saved it with one call. That's the whole ROI right there."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">SL</div>
+        <div><div class="testi-name">Sarah L.</div><div>Head of CS · SiftCloud</div></div>
+      </div>
+    </div>
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-q">"Our RevOps team used to spend 3 days a month building this dashboard manually. Now it updates itself and we spend that time actually selling."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">DK</div>
+        <div><div class="testi-name">Derek K.</div><div>RevOps Lead · NovaSales</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <h2>Your next $500K in revenue<br>is already in your CRM.</h2>
+  <p>Apex Revenue Intelligence finds it for you — in under an hour.</p>
+  <div class="hero-form">
+    <input class="hero-input" type="email" placeholder="Work email address">
+    <button class="hero-btn">Get Early Access →</button>
+  </div>
+  <div class="cta-pills">
+    <span class="cta-pill">14-day free trial</span>
+    <span class="cta-pill">No credit card required</span>
+    <span class="cta-pill">Cancel anytime</span>
+    <span class="cta-pill">GDPR compliant</span>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Apex Revenue Intelligence™</div>
+  <span>© 2025 Apex Revenue Intelligence. All rights reserved.</span>
+  <span>Powered by Bridge AI</span>
+</footer>
+
+</body>
+</html>

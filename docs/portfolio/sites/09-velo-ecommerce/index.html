@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELO — SS25 Performance Cycling Apparel</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Syne+Mono&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#030303;--lime:#BFFF00;--dark:#0F0F0F;--mid:#1A1A1A;--gray:#5A5A5A;--white:#fff}
+body{font-family:'Syne',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+/* STICKY MINIMAL HEADER */
+header{position:sticky;top:0;z-index:100;background:var(--black);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:56px}
+.logo{font-size:22px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.logo span{color:var(--lime)}
+.header-nav{display:flex;gap:0}
+.header-nav a{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;padding:0 16px;height:56px;display:flex;align-items:center;transition:color .2s}
+.header-nav a:hover{color:var(--white)}
+.header-actions{display:flex;gap:16px;align-items:center}
+.cart{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);text-decoration:none}
+/* MARQUEE */
+.marquee-band{background:var(--lime);overflow:hidden;height:36px;display:flex;align-items:center}
+.marquee-track{display:flex;gap:0;animation:marquee 18s linear infinite;white-space:nowrap}
+.marquee-item{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--black);padding:0 36px}
+.marquee-dot{color:var(--black);opacity:.4;padding:0 8px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* HERO — product-first full bleed */
+.hero{position:relative;height:calc(100vh - 92px);display:flex;align-items:flex-end;overflow:hidden}
+.hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=2000&q=90') center/cover no-repeat;filter:grayscale(20%)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,3,3,.88) 0%,rgba(3,3,3,.4) 50%,transparent 100%)}
+.hero-content{position:relative;z-index:2;padding:0 80px 80px;max-width:700px}
+.drop-tag{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:var(--black);padding:5px 14px;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px}
+.drop-dot{width:6px;height:6px;border-radius:50%;background:var(--black);animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-size:clamp(80px,11vw,160px);font-weight:800;line-height:.88;letter-spacing:-.02em;text-transform:uppercase}
+h1 em{font-style:italic;color:var(--lime);display:block}
+.hero-sub{font-size:14px;font-weight:400;color:rgba(255,255,255,.55);line-height:1.65;margin-top:20px;margin-bottom:32px;max-width:400px}
+.hero-btns{display:flex;gap:2px}
+.btn-lime{background:var(--lime);color:var(--black);padding:15px 36px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:opacity .2s}
+.btn-lime:hover{opacity:.85}
+.btn-outline{border:1px solid rgba(255,255,255,.2);color:var(--white);padding:15px 36px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:border-color .2s}
+.btn-outline:hover{border-color:var(--lime);color:var(--lime)}
+/* PRODUCT GRID — dominant, full width */
+.products{padding:80px 48px;border-top:1px solid rgba(255,255,255,.06)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* TECH STRIP */
+.tech-strip{background:var(--mid);padding:60px 80px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border-top:1px solid rgba(255,255,255,.06)}
+.tech-item{padding:32px 28px;border-right:1px solid rgba(255,255,255,.06);text-align:center}
+.tech-item:last-child{border-right:none}
+.tech-icon{font-size:28px;margin-bottom:12px}
+.tech-name{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.tech-desc{font-size:11px;color:var(--gray);line-height:1.5}
+/* ABOUT STRIP */
+.about-strip{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
+.about-img{overflow:hidden}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-text{background:#111;padding:80px 72px;display:flex;flex-direction:column;justify-content:center}
+.about-eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime);margin-bottom:16px}
+.about-h{font-size:clamp(32px,4vw,52px);font-weight:800;text-transform:uppercase;line-height:.92;margin-bottom:24px}
+.about-p{font-size:14px;font-weight:400;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:32px}
+footer{background:#060606;border-top:1px solid rgba(255,255,255,.05);padding:20px 48px;display:flex;justify-content:space-between;font-family:'Syne Mono',monospace;font-size:11px;color:var(--gray);flex-wrap:wrap;gap:10px}
+@media(max-width:768px){
+  header{padding:0 20px}.header-nav{display:none}
+  .hero-content{padding:0 24px 60px}.hero-btns{flex-direction:column}
+  .gallery-section{padding:48px 20px}
+  .products-grid{grid-template-columns:1fr}
+  .tech-strip{grid-template-columns:1fr 1fr;padding:40px 24px}
+  .about-strip{grid-template-columns:1fr}
+  .about-img{min-height:300px}.about-text{padding:48px 24px}
+  footer{flex-direction:column;text-align:center;padding:16px 24px}
+}
+
+.gallery-section{padding:80px 48px;border-top:1px solid rgba(255,255,255,.06)}
+.gallery-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px;gap:40px}
+.gallery-eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime);margin-bottom:8px}
+.gallery-h{font-size:clamp(36px,5vw,64px);font-weight:800;text-transform:uppercase;line-height:.92}
+.gallery-h span{color:var(--lime)}
+.gallery-sub{font-size:14px;font-weight:300;color:var(--gray);max-width:320px;line-height:1.7;padding-top:8px}
+
+
+
+
+
+
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">VE<span>LO</span></div>
+  <nav class="header-nav">
+    <a href="#gallery">Shop</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </nav>
+  <div class="header-actions"><a href="#gallery" class="cart">Cart (0)</a></div>
+</header>
+<div class="marquee-band">
+  <div class="marquee-track">
+    <span class="marquee-item">SS25 Collection — Out Now</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">Ships Worldwide</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">Recycled Fabrics</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">Aerodynamic Construction</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">SS25 Collection — Out Now</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">Ships Worldwide</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">Recycled Fabrics</span><span class="marquee-dot">◆</span>
+    <span class="marquee-item">Aerodynamic Construction</span><span class="marquee-dot">◆</span>
+  </div>
+</div>
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="drop-tag"><div class="drop-dot"></div>SS25 — Drop Now Live</div>
+    <h1>RIDE<br>LIKE IT<br><em>MATTERS.</em></h1>
+    <p class="hero-sub">VELO engineers cycling apparel for riders who refuse to compromise. Aerodynamic, sustainable, and built for the demands of real performance.</p>
+    <div class="hero-btns">
+      <a href="#gallery" class="btn-lime">Explore Our Rides</a>
+      <a href="#about" class="btn-outline">Our Story</a>
+    </div>
+  </div>
+</section>
+<section class="gallery-section" id="gallery">
+  <div class="gallery-header">
+    <div>
+      <div class="gallery-eyebrow">Built for the Road</div>
+      <h2 class="gallery-h">Engineered for<br><span>performance.</span></h2>
+    </div>
+    <p class="gallery-sub">Every VELO piece is developed alongside competitive cyclists — tested in real race conditions before it ever reaches you.</p>
+  </div>
+</section>
+<div class="tech-strip">
+  <div class="tech-item"><div class="tech-icon">⚡</div><div class="tech-name">Aero Fabric</div><div class="tech-desc">5–8 second savings per km over standard cycling textiles</div></div>
+  <div class="tech-item"><div class="tech-icon">♻️</div><div class="tech-name">100% Recycled</div><div class="tech-desc">All fabrics sourced from recycled ocean plastic and textile waste</div></div>
+  <div class="tech-item"><div class="tech-icon">💧</div><div class="tech-name">Sweat Control</div><div class="tech-desc">4-way stretch moisture transport keeping you cool under load</div></div>
+  <div class="tech-item"><div class="tech-icon">🏁</div><div class="tech-name">Race Tested</div><div class="tech-desc">Worn by 3 national-level cyclists at the 2024 Texas Championships</div></div>
+</div>
+<section class="about-strip" id="about">
+  <div class="about-img"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=80" alt="VELO engineering"></div>
+  <div class="about-text">
+    <div class="about-eyebrow">Built Different</div>
+    <h2 class="about-h">MADE FOR<br>RIDERS,<br>BY RIDERS.</h2>
+    <p class="about-p">VELO started in a garage in Austin in 2019. Two cyclists, one sewing machine, and a refusal to accept mediocre kit. We've shipped to 42 countries since.</p>
+    <a href="#about" class="btn-lime" style="align-self:flex-start">Our Story</a>
+  </div>
+</section>
+<div id="contact" style="display:none"></div>
+<footer><span>© 2025 VELO Cycling Co.</span><span>Austin, Texas</span><span>hello@velocycling.com</span></footer>
+</body></html>

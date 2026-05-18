@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opal Photography — Editorial & Portrait, Austin TX</title>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Jost:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#080808;--dark:#111;--white:#F8F8F6;--gold:#C9A870;--muted:#666;--rule:rgba(248,248,246,.07)}
+body{font-family:'Jost',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+/* FLOATING MINIMAL NAV — photographer aesthetic */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:28px 60px;display:flex;justify-content:space-between;align-items:center;mix-blend-mode:normal;background:linear-gradient(180deg,rgba(8,8,8,.6) 0%,transparent 100%)}
+nav.solid{background:rgba(8,8,8,.96);backdrop-filter:blur(12px);padding:18px 60px}
+.nav-logo{font-family:'Tenor Sans',sans-serif;font-size:16px;letter-spacing:.2em;text-transform:uppercase;color:var(--white)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(248,248,246,.45);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-inquire{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px}
+/* MASONRY GALLERY — the entire site */
+.gallery-intro{padding:140px 60px 48px;display:flex;justify-content:space-between;align-items:flex-end}
+.gi-text h1{font-family:'Tenor Sans',sans-serif;font-size:clamp(40px,6vw,80px);line-height:.95;letter-spacing:.04em;color:var(--white)}
+.gi-text h1 em{font-style:italic;font-family:'Jost',serif;color:var(--gold)}
+.gi-meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.7;max-width:220px}
+/* CSS COLUMNS MASONRY */
+.masonry{columns:4;column-gap:3px;padding:0 3px;margin-bottom:3px}
+.masonry-item{break-inside:avoid;margin-bottom:3px;position:relative;overflow:hidden;cursor:pointer;display:block}
+.masonry-item img{width:100%;display:block;transition:transform .5s,filter .3s;filter:brightness(.92)}
+.masonry-item:hover img{transform:scale(1.04);filter:brightness(.65)}
+.masonry-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;opacity:0;transition:opacity .3s;background:linear-gradient(0deg,rgba(8,8,8,.7) 0%,transparent 60%)}
+.masonry-item:hover .masonry-overlay{opacity:1}
+.mo-cat{font-size:9px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.mo-name{font-family:'Tenor Sans',sans-serif;font-size:14px;letter-spacing:.06em;color:var(--white)}
+/* SERVICES STRIP — dark, centered */
+.services{background:var(--dark);border-top:1px solid var(--rule);padding:72px 60px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:60px}
+.svc{padding:48px 40px;border-right:1px solid var(--rule)}
+.svc:last-child{border-right:none}
+.svc-num{font-family:'Tenor Sans',sans-serif;font-size:52px;color:rgba(248,248,246,.05);line-height:1;margin-bottom:16px}
+.svc-name{font-family:'Tenor Sans',sans-serif;font-size:20px;letter-spacing:.06em;color:var(--white);margin-bottom:10px}
+.svc-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.75;margin-bottom:16px}
+.svc-price{font-size:12px;font-weight:400;color:var(--gold);letter-spacing:.08em}
+/* ABOUT STRIP */
+.about{padding:80px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;border-top:1px solid var(--rule)}
+.about-text h2{font-family:'Tenor Sans',sans-serif;font-size:clamp(32px,4vw,52px);letter-spacing:.04em;color:var(--white);line-height:1.1;margin-bottom:20px}
+.about-text h2 em{font-style:italic;color:var(--gold)}
+.about-text p{font-size:14px;font-weight:300;line-height:1.85;color:var(--muted);margin-bottom:14px}
+.about-img img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;filter:grayscale(15%)}
+/* CONTACT — dark, centered */
+.contact{background:var(--dark);border-top:1px solid var(--rule);padding:80px 60px;text-align:center}
+.contact h2{font-family:'Tenor Sans',sans-serif;font-size:clamp(36px,5vw,64px);letter-spacing:.04em;color:var(--white);margin-bottom:12px}
+.contact h2 em{font-style:italic;color:var(--gold)}
+.contact p{font-size:14px;font-weight:300;color:var(--muted);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+.contact-form{max-width:500px;margin:0 auto;text-align:left}
+.cf-label{display:block;font-size:9px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.cf-input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--white);padding:10px 0;font-family:'Jost',sans-serif;font-size:14px;outline:none;margin-bottom:20px;transition:border-color .2s}
+.cf-input:focus{border-bottom-color:var(--gold)}
+.cf-input::placeholder{color:rgba(248,248,246,.15)}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cf-btn{width:100%;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:14px;font-family:'Tenor Sans',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:6px}
+.cf-btn:hover{background:var(--gold);color:var(--black)}
+footer{border-top:1px solid var(--rule);padding:24px 60px;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);flex-wrap:wrap;gap:8px}
+@media(max-width:900px){
+  nav{padding:18px 20px}.nav-links{display:none}
+  .gallery-intro{flex-direction:column;align-items:flex-start;gap:20px;padding:100px 20px 32px}
+  .gi-meta{text-align:left}
+  .masonry{columns:2}
+  .services{grid-template-columns:1fr;padding:48px 20px}.svc{border-right:none;border-bottom:1px solid var(--rule);padding:36px 0}
+  .about{grid-template-columns:1fr;padding:60px 20px;gap:48px}.about-img{display:none}
+  .contact{padding:60px 20px}.cf-row{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center;padding:18px 20px}
+}
+</style>
+</head>
+<body>
+<nav id="mainnav">
+  <div class="nav-logo">Opal</div>
+  <div class="nav-links"><a href="#gallery">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+  <a href="#contact" class="nav-inquire">Inquire</a>
+</nav>
+
+<div class="gallery-intro">
+  <div class="gi-text">
+    <h1>Portraits.<br>Stories.<br><em>Truth.</em></h1>
+  </div>
+  <div class="gi-meta">Editorial & portrait photography.<br>Austin, Texas.<br>Available worldwide.<br><br>Selected: Texas Monthly, Vogue MX,<br>W Magazine, Austin Chronicle.</div>
+</div>
+
+<!-- MASONRY GALLERY IS THE HOMEPAGE -->
+<div class="masonry" id="gallery">
+  <div class="masonry-item"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80" alt="Editorial"><div class="masonry-overlay"><div class="mo-cat">Editorial</div><div class="mo-name">Texas Monthly · Winter 2024</div></div></div>
+  <div class="masonry-item"><img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=80" alt="Landscape"><div class="masonry-overlay"><div class="mo-cat">Landscape</div><div class="mo-name">Hill Country Series</div></div></div>
+  <div class="masonry-item"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" alt="Commercial"><div class="masonry-overlay"><div class="mo-cat">Commercial</div><div class="mo-name">Freda Salvador · SS25</div></div></div>
+  <div class="masonry-item"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=85" alt="Portrait"><div class="masonry-overlay"><div class="mo-cat">Portrait</div><div class="mo-name">Artist Series Vol. 3</div></div></div>
+  <div class="masonry-item"><img src="https://images.unsplash.com/photo-1558618048-bfb7e3a9f4bc?w=600&q=85" alt="Editorial 2"><div class="masonry-overlay"><div class="mo-cat">Editorial</div><div class="mo-name">Architecture Issue</div></div></div>
+  <div class="masonry-item"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=80" alt="Portrait 2"><div class="masonry-overlay"><div class="mo-cat">Portrait</div><div class="mo-name">Maria Santos · Personal</div></div></div>
+  <div class="masonry-item"><img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=400&q=80" alt="Portrait 3"><div class="masonry-overlay"><div class="mo-cat">Portrait</div><div class="mo-name">The Founders Series</div></div></div>
+  <div class="masonry-item"><img src="https://images.unsplash.com/photo-1444636978941-f1c44c6e1e2a?w=600&q=80" alt="Landscape 2"><div class="masonry-overlay"><div class="mo-cat">Landscape</div><div class="mo-name">Big Bend Solitude</div></div></div>
+  <div class="masonry-item"><img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&q=80" alt="Lifestyle"><div class="masonry-overlay"><div class="mo-cat">Lifestyle</div><div class="mo-name">Austin FC Campaign</div></div></div>
+  <div class="masonry-item"><img src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=500&q=80" alt="Wedding 2"><div class="masonry-overlay"><div class="mo-cat">Wedding</div><div class="mo-name">Magnolia Estate · Sept 2024</div></div></div>
+  <div class="masonry-item"><img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&q=80" alt="Portrait 4"><div class="masonry-overlay"><div class="mo-cat">Portrait</div><div class="mo-name">Musician Series · Jake Reed</div></div></div>
+</div>
+
+<div class="services" id="services">
+  <div class="svc"><div class="svc-num">01</div><div class="svc-name">Editorial</div><div class="svc-desc">Magazine features, brand campaigns, and creative editorial projects. Published in Texas Monthly, Vogue MX, W Magazine.</div><div class="svc-price">From $1,200 / day</div></div>
+  <div class="svc"><div class="svc-num">02</div><div class="svc-name">Portrait</div><div class="svc-desc">Individuals, families, executives, and artists. Studio and on-location. Prints available in limited editions.</div><div class="svc-price">From $450 / session</div></div>
+  <div class="svc"><div class="svc-num">03</div><div class="svc-name">Weddings</div><div class="svc-desc">Full-day documentary wedding coverage. Intimate to grand. Austin and destination weddings worldwide.</div><div class="svc-price">From $3,800 / day</div></div>
+</div>
+
+<section class="about" id="about">
+  <div class="about-text">
+    <h2>Photography is<br>about <em>recognition.</em></h2>
+    <p>I'm Elise Opal. I've been making photographs professionally since 2013 — first in New York, then Austin, then everywhere I've been sent or drawn to since.</p>
+    <p>My work is defined by patience. I wait for the image to arrive, not the other way around. It takes longer. The results are different.</p>
+    <p>I work alone. Every photograph is mine in every sense.</p>
+  </div>
+  <div class="about-img"><img src="https://images.unsplash.com/photo-1493106641515-5cd0b2e9d4b8?w=800&q=80" alt="Elise Opal"></div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Let's make<br>something <em>real.</em></h2>
+  <p>I take on a limited number of projects each year. Tell me about yours.</p>
+  <div class="contact-form">
+    <form onsubmit="return false">
+      <div class="cf-row"><div><label class="cf-label">Name</label><input class="cf-input" type="text" placeholder="Your name"></div><div><label class="cf-label">Email</label><input class="cf-input" type="email" placeholder="Your email"></div></div>
+      <label class="cf-label">Project Type</label>
+      <select class="cf-input"><option value="" disabled selected>Select one...</option><option>Editorial</option><option>Portrait</option><option>Wedding</option><option>Commercial</option><option>Other</option></select>
+      <label class="cf-label">Tell Me About It</label>
+      <input class="cf-input" type="text" placeholder="What are you working on?">
+      <button class="cf-btn">Send Inquiry</button>
+    </form>
+  </div>
+</section>
+<footer><span>© 2025 Opal Photography LLC · Austin, TX</span><span>elise@opalphotography.com</span><span>Available Worldwide</span></footer>
+<script>
+const nav=document.getElementById('mainnav');
+window.addEventListener('scroll',()=>nav.classList.toggle('solid',window.scrollY>80));
+</script>
+</body></html>

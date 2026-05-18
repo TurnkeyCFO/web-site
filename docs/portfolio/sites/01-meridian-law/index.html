@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Law Group — Dallas, Texas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#1A1209;--ink-soft:#3D2E1E;--gold:#B8960C;--cream:#F7F4EE;--cream-mid:#EDE8DE;--rule:rgba(26,18,9,.14)}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+/* MASTHEAD */
+.masthead{border-bottom:3px double var(--ink);padding:18px 60px 14px;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:20px}
+.mast-side{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);line-height:1.8}
+.mast-side:last-child{text-align:right}
+.wordmark{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;letter-spacing:.18em;text-transform:uppercase;text-align:center;line-height:1}
+.wordmark-sub{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-top:5px;text-align:center}
+nav{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin-top:10px;padding:8px 60px;display:flex;justify-content:center;gap:44px}
+nav a{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+nav a:hover{color:var(--gold)}
+/* HERO - full width editorial image with text overlay */
+.hero{position:relative;height:70vh;overflow:hidden;display:flex;align-items:flex-end}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,18,9,.88) 0%,rgba(26,18,9,.5) 55%,rgba(26,18,9,.2) 100%)}
+.hero-content{position:relative;z-index:2;padding:60px;max-width:720px}
+.kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.kicker::before{content:'';width:24px;height:1px;background:var(--gold)}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,7vw,88px);font-weight:300;line-height:1.04;letter-spacing:-.01em;color:var(--cream)}
+h1 em{font-style:italic;color:var(--gold)}
+.deck{font-size:14px;line-height:1.75;color:rgba(247,244,238,.65);max-width:480px;margin-top:18px;margin-bottom:28px}
+.cta{display:inline-block;background:var(--gold);color:var(--cream);padding:13px 28px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:opacity .2s}
+.cta:hover{opacity:.85}
+/* STATS BAND */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
+.stat{padding:28px 32px;border-right:1px solid rgba(247,244,238,.08);text-align:center}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--gold);line-height:1}
+.stat-l{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,238,.4);margin-top:4px}
+/* PRACTICE AREAS */
+.practices{padding:72px 60px;border-bottom:1px solid var(--rule)} 
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.section-h{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:300;color:var(--ink);line-height:1.1}
+.section-h em{font-style:italic}
+.practices-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule)}
+.prac{background:var(--cream);padding:32px 24px;border-top:3px solid transparent;transition:border-color .2s}
+.prac:hover{border-top-color:var(--gold)}
+.prac-n{font-family:'Cormorant Garamond',serif;font-size:11px;color:var(--gold);margin-bottom:6px}
+.prac-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;margin-bottom:8px;color:var(--ink)}
+.prac-desc{font-size:12px;line-height:1.65;color:var(--ink-soft)}
+/* ATTORNEYS */
+.attorneys{background:var(--ink);padding:72px 60px} 
+.atty-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:32px}
+.atty-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.atty{background:#150E06;padding:0;overflow:hidden;transition:background .2s}
+.atty:hover{background:#1F1508}
+.atty-img-wrap{aspect-ratio:3/4;overflow:hidden}
+.atty-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(10%);transition:transform .4s}
+.atty:hover .atty-img-wrap img{transform:scale(1.04)}
+.atty-body{padding:20px 22px}
+.atty-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:3px}
+.atty-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.atty-bio{font-size:12px;line-height:1.6;color:rgba(247,244,238,.45)}
+/* TESTIMONIALS */
+.testis{background:var(--cream-mid);border-top:1px solid var(--rule);padding:56px 60px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px} 
+.testi-stars{color:var(--gold);margin-bottom:10px;letter-spacing:.08em}
+.testi-q{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;line-height:1.55;margin-bottom:10px;color:var(--ink)}
+.testi-by{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+/* CONTACT */
+.contact{padding:60px;display:grid;grid-template-columns:1fr 1px 1fr;gap:0;border-bottom:1px solid var(--rule)}
+.contact-left{padding-right:60px}
+.contact-right{padding-left:60px}
+.contact-h{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.1;margin-bottom:22px}
+.contact-h em{font-style:italic;color:var(--gold)}
+.detail{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:13px;color:var(--ink-soft)}
+.detail strong{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);width:72px;flex-shrink:0;margin-top:1px}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:5px}
+.fg input,.fg select,.fg textarea{width:100%;border:none;border-bottom:1px solid var(--rule);background:transparent;padding:8px 0;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);outline:none}
+.fg input:focus,.fg textarea:focus{border-bottom-color:var(--gold)}
+.fg textarea{height:72px;resize:none}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sub{background:var(--ink);color:var(--cream);border:none;padding:13px 32px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;margin-top:6px}
+.sub:hover{background:var(--gold)}
+footer{border-top:3px double var(--ink);padding:18px 60px;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+@media(max-width:768px){
+  .masthead{grid-template-columns:1fr;text-align:center;padding:18px 20px}.mast-side{display:none}
+  nav{padding:8px 20px;gap:16px;flex-wrap:wrap}
+  .hero-content{padding:32px 20px}
+  .stats{grid-template-columns:1fr 1fr}
+  .practices{padding:48px 20px}.practices-grid{grid-template-columns:1fr 1fr}
+  .attorneys{padding:48px 20px}.atty-grid{grid-template-columns:1fr}
+  .testis{grid-template-columns:1fr;padding:40px 20px;gap:24px}
+  .contact{grid-template-columns:1fr;padding:40px 20px}
+  .contact-left,.contact-right{padding:0;margin-bottom:28px}
+  .fg2{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:6px;text-align:center;padding:16px 20px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="masthead">
+    <div class="mast-side">Established 1994 · Dallas, Texas<br>AV Preeminent® · Board Certified</div>
+    <div><div class="wordmark">Meridian</div><div class="wordmark-sub">Law Group · Counsel · Advocacy · Results</div></div>
+    <div class="mast-side">214.555.0190<br>meridianlaw.com</div>
+  </div>
+  <nav>
+    <a href="#practice">Practice Areas</a>
+    <a href="#attorneys">Attorneys</a>
+    <a href="#results">Results</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" style="color:var(--gold)">Schedule Consultation →</a>
+  </nav>
+</header>
+
+<!-- FULL-WIDTH HERO with law office/boardroom image -->
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=1600&q=90" alt="Meridian Law Group">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="kicker">Dallas · Texas · Since 1994</div>
+    <h1>When the stakes<br>are <em>highest</em>,<br>choose Meridian.</h1>
+    <p class="deck">For three decades, Meridian Law Group has delivered decisive outcomes for corporations, families, and individuals navigating the most complex matters in law.</p>
+    <a href="#contact" class="cta">Request Consultation →</a>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats">
+  <div class="stat"><div class="stat-n">$2.4B</div><div class="stat-l">In client recoveries</div></div>
+  <div class="stat"><div class="stat-n">97%</div><div class="stat-l">Case success rate</div></div>
+  <div class="stat"><div class="stat-n">30yr</div><div class="stat-l">Years in practice</div></div>
+  <div class="stat"><div class="stat-n">200+</div><div class="stat-l">Jury trials won</div></div>
+</div>
+
+<!-- PRACTICE AREAS -->
+<section class="practices" id="practice">
+  <div class="section-head">
+    <div><div class="eyebrow">What We Do</div><div class="section-h">Practice <em>Areas</em></div></div>
+    <a href="#contact" style="font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-decoration:none">Schedule Consultation →</a>
+  </div>
+  <div class="practices-grid">
+    <div class="prac"><div class="prac-n">I.</div><div class="prac-name">Corporate Litigation</div><div class="prac-desc">Shareholder disputes, M&A conflicts, breach of contract, and complex commercial litigation at every level of court.</div></div>
+    <div class="prac"><div class="prac-n">II.</div><div class="prac-name">Real Estate Law</div><div class="prac-desc">Acquisitions, title disputes, development agreements, and landlord-tenant matters for institutional and private clients.</div></div>
+    <div class="prac"><div class="prac-n">III.</div><div class="prac-name">Estate Planning</div><div class="prac-desc">Wills, trusts, probate, and generational wealth transfer for high-net-worth families and business owners.</div></div>
+    <div class="prac"><div class="prac-n">IV.</div><div class="prac-name">Criminal Defense</div><div class="prac-desc">Federal and state criminal defense for individuals and executives facing serious charges at any stage.</div></div>
+  </div>
+</section>
+
+<!-- ATTORNEYS - dark section with full portrait photos -->
+<div class="attorneys" id="attorneys">
+  <div class="atty-label">Our Attorneys</div>
+  <div class="atty-grid">
+    <div class="atty">
+      <div class="atty-img-wrap"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=92" alt="Robert Meridian"></div>
+      <div class="atty-body"><div class="atty-name">Robert Meridian</div><div class="atty-title">Founding Partner · Corporate Litigation</div><div class="atty-bio">30 years. Former federal prosecutor. Tried 200+ cases to verdict. The attorney other attorneys hire.</div></div>
+    </div>
+    <div class="atty">
+      <div class="atty-img-wrap"><img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&q=90" alt="Diana Reyes"></div>
+      <div class="atty-body"><div class="atty-name">Diana Reyes</div><div class="atty-title">Partner · Real Estate & Estate Law</div><div class="atty-bio">Harvard Law '02. Orchestrated $800M+ in real estate transactions. Best Lawyers in America 9 consecutive years.</div></div>
+    </div>
+    <div class="atty">
+      <div class="atty-img-wrap"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=90" alt="James Okafor"></div>
+      <div class="atty-body"><div class="atty-name">James Okafor</div><div class="atty-title">Partner · Criminal Defense</div><div class="atty-bio">Georgetown Law '08. 14 consecutive federal acquittals. Board Certified Criminal Law · Texas Board of Legal Specialization.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="testis" id="results">
+  <div><div class="testi-stars">★★★★★</div><div class="testi-q">"Meridian handled our corporate dispute with precision and tenacity I've never seen from a firm. We won every count."</div><div class="testi-by">CEO, Fortune 500 Company · Dallas, TX</div></div>
+  <div><div class="testi-stars">★★★★★</div><div class="testi-q">"After my indictment I thought my life was over. James got every charge dismissed. The finest criminal attorney in Texas."</div><div class="testi-by">Executive · Federal Case · 2023</div></div>
+  <div><div class="testi-stars">★★★★★</div><div class="testi-q">"Diana structured our family trust with artfulness no other attorney had proposed. Our estate plan is airtight for generations."</div><div class="testi-by">Family Office Client · Dallas, TX</div></div>
+</div>
+
+<div class="contact" id="contact">
+  <div class="contact-left">
+    <h2 class="contact-h">Begin your<br><em>consultation</em><br>today.</h2>
+    <div class="detail"><strong>Phone</strong>214.555.0190 · Available 24/7</div>
+    <div class="detail"><strong>Address</strong>1700 Pacific Ave, Suite 3400, Dallas TX 75201</div>
+    <div class="detail"><strong>Hours</strong>Mon–Fri 8am–7pm · Sat by appointment</div>
+    <div class="detail"><strong>Email</strong>counsel@meridianlaw.com</div>
+  </div>
+  <div style="background:var(--rule);width:1px"></div>
+  <div class="contact-right">
+    <form onsubmit="return false">
+      <div class="fg2"><div class="fg"><label>First Name</label><input type="text" placeholder="Robert"></div><div class="fg"><label>Last Name</label><input type="text" placeholder="Smith"></div></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="r.smith@company.com"></div>
+      <div class="fg"><label>Phone</label><input type="tel" placeholder="(214) 555-0100"></div>
+      <div class="fg"><label>Practice Area</label><select><option>Corporate Litigation</option><option>Real Estate Law</option><option>Estate Planning</option><option>Criminal Defense</option><option>Other</option></select></div>
+      <div class="fg"><label>Brief Description</label><textarea placeholder="Describe your legal matter..."></textarea></div>
+      <button class="sub">Request Consultation</button>
+    </form>
+  </div>
+</div>
+<footer><span>© 2025 Meridian Law Group PLLC</span><span>Meridian · Counsel · Advocacy · Results</span><span>Attorney Advertising · Prior results do not guarantee similar outcomes</span></footer>
+</body></html>

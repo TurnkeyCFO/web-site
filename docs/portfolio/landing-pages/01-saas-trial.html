@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CloseIQ — Close More Deals in 30 Days or Your Money Back</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#060C14;--card:#0D1521;--border:#1E2D40;--blue:#2563EB;--blue-light:#3B82F6;--cyan:#06B6D4;--white:#F8FAFC;--muted:#94A3B8;--green:#10B981}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden}
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(6,12,20,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:18px;font-weight:800;letter-spacing:-.03em}
+.nav-logo span{color:var(--cyan)}
+.nav-cta{background:var(--blue);color:var(--white);font-size:13px;font-weight:600;padding:8px 20px;border-radius:6px;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:var(--blue-light)}
+/* HERO */
+.hero{padding:80px 40px 60px;text-align:center;max-width:900px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);color:var(--cyan);font-size:12px;font-weight:600;letter-spacing:.06em;padding:6px 14px;border-radius:20px;margin-bottom:28px}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+h1{font-size:clamp(38px,6vw,68px);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:20px}
+h1 .grad{background:linear-gradient(135deg,var(--blue-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:18px;font-weight:400;color:var(--muted);line-height:1.65;max-width:580px;margin:0 auto 36px}
+/* CTA FORM */
+.cta-form{display:flex;gap:8px;max-width:480px;margin:0 auto 16px;flex-wrap:wrap}
+.cta-input{flex:1;min-width:200px;background:var(--card);border:1px solid var(--border);color:var(--white);padding:14px 18px;border-radius:8px;font-size:15px;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
+.cta-input:focus{border-color:var(--blue)}
+.cta-input::placeholder{color:var(--muted)}
+.cta-btn{background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--white);font-size:15px;font-weight:700;padding:14px 28px;border-radius:8px;border:none;cursor:pointer;white-space:nowrap;transition:opacity .2s;font-family:'Inter',sans-serif}
+.cta-btn:hover{opacity:.9}
+.hero-micro{font-size:12px;color:var(--muted);text-align:center}
+.hero-micro span{color:var(--green)}
+/* LOGOS */
+.logos{padding:40px;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.logos-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.logos-row{display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap;opacity:.45}
+.logo-item{font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--white)}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border)}
+.stat{background:var(--bg);padding:32px 24px;text-align:center}
+.stat-n{font-size:40px;font-weight:800;letter-spacing:-.03em;background:linear-gradient(135deg,var(--white),var(--muted));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-l{font-size:13px;color:var(--muted);margin-top:4px}
+/* FEATURES */
+.features{padding:80px 40px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);text-align:center;margin-bottom:12px}
+.section-h{font-size:clamp(28px,4vw,42px);font-weight:800;text-align:center;letter-spacing:-.03em;margin-bottom:48px;line-height:1.1}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1000px;margin:0 auto}
+.feat{background:var(--card);border:1px solid var(--border);padding:28px 24px;border-radius:12px;transition:border-color .2s}
+.feat:hover{border-color:var(--blue)}
+.feat-icon{width:44px;height:44px;background:rgba(37,99,235,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.feat-name{font-size:16px;font-weight:700;margin-bottom:6px}
+.feat-desc{font-size:13px;color:var(--muted);line-height:1.6}
+/* TESTIMONIALS */
+.testis{padding:0 40px 80px}
+.testis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1000px;margin:0 auto}
+.testi{background:var(--card);border:1px solid var(--border);padding:24px;border-radius:12px}
+.testi-stars{color:#F59E0B;font-size:13px;margin-bottom:10px}
+.testi-q{font-size:14px;line-height:1.6;color:var(--white);margin-bottom:14px}
+.testi-author{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.testi-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+/* BOTTOM CTA */
+.bottom-cta{background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(6,182,212,.1));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:72px 40px;text-align:center}
+.bottom-cta h2{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.03em;margin-bottom:12px}
+.bottom-cta p{font-size:16px;color:var(--muted);margin-bottom:32px}
+.guarantee{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--green);margin-top:16px}
+footer{padding:24px 40px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-top:1px solid var(--border);flex-wrap:wrap;gap:8px}
+@media(max-width:640px){
+  .nav{padding:0 20px}.hero{padding:60px 20px 40px}
+  .stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:span 2}
+  .features-grid,.testis-grid{grid-template-columns:1fr}
+  .features,.testis,.bottom-cta{padding-left:20px;padding-right:20px}
+  .logos{padding:28px 20px}.logos-row{gap:20px}
+  footer{flex-direction:column;padding:20px}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">Close<span>IQ</span></div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <a href="#features" style="font-size:13px;color:var(--muted);text-decoration:none;display:none" class="nav-link">Features</a>
+    <a href="#trial" class="nav-cta">Start Free Trial</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">🚀 Trusted by 4,200+ sales teams worldwide</div>
+  <h1>Close <span class="grad">47% more deals</span> without working more hours.</h1>
+  <p class="hero-sub">CloseIQ uses AI to analyze your pipeline, coach your reps in real-time, and surface the exact actions that convert prospects into revenue. No guesswork.</p>
+  <div class="cta-form" id="trial">
+    <input class="cta-input" type="email" placeholder="Enter your work email">
+    <button class="cta-btn" onclick="this.textContent='Starting trial...';setTimeout(()=>this.textContent='Check your email ✓',1500)">Start Free Trial →</button>
+  </div>
+  <div class="hero-micro"><span>✓ No credit card required</span> &nbsp;·&nbsp; 14-day free trial &nbsp;·&nbsp; Setup in 4 minutes</div>
+</section>
+
+<div class="logos">
+  <div class="logos-label">Trusted by teams at</div>
+  <div class="logos-row">
+    <span class="logo-item">Salesforce</span>
+    <span class="logo-item">HubSpot</span>
+    <span class="logo-item">Zendesk</span>
+    <span class="logo-item">Outreach</span>
+    <span class="logo-item">Gong</span>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-n">47%</div><div class="stat-l">Average deal close rate increase</div></div>
+  <div class="stat"><div class="stat-n">2.3×</div><div class="stat-l">Pipeline velocity improvement</div></div>
+  <div class="stat"><div class="stat-n">9 min</div><div class="stat-l">Average time to first insight</div></div>
+</div>
+
+<section class="features" id="features">
+  <div class="section-label">Why CloseIQ</div>
+  <h2 class="section-h">Everything your team needs<br>to hit quota — consistently.</h2>
+  <div class="features-grid">
+    <div class="feat"><div class="feat-icon">🎯</div><div class="feat-name">Deal Intelligence</div><div class="feat-desc">AI scores every deal in your pipeline and tells you exactly which ones to prioritize this week.</div></div>
+    <div class="feat"><div class="feat-icon">💬</div><div class="feat-name">Real-Time Coaching</div><div class="feat-desc">Live call analysis surfaces winning phrases, competitor mentions, and objection patterns as they happen.</div></div>
+    <div class="feat"><div class="feat-icon">📊</div><div class="feat-name">Forecast Accuracy</div><div class="feat-desc">Eliminate pipeline guesswork with AI-powered forecasts that are 91% accurate — even two quarters out.</div></div>
+    <div class="feat"><div class="feat-icon">⚡</div><div class="feat-name">CRM Auto-Logging</div><div class="feat-desc">Every call, email, and meeting captured and synced to Salesforce or HubSpot automatically.</div></div>
+    <div class="feat"><div class="feat-icon">🔄</div><div class="feat-name">Playbook Enforcement</div><div class="feat-desc">Ensure every rep follows your best-performing playbooks on every call, every time — without micromanaging.</div></div>
+    <div class="feat"><div class="feat-icon">📈</div><div class="feat-name">Revenue Analytics</div><div class="feat-desc">Board-ready dashboards that show what's working, what's leaking, and where to invest next quarter.</div></div>
+  </div>
+</section>
+
+<section class="testis">
+  <div class="testis-grid">
+    <div class="testi"><div class="testi-stars">★★★★★</div><div class="testi-q">"CloseIQ helped us hit 140% of quota last quarter. The deal intelligence is unlike anything I've used before."</div><div class="testi-author"><div class="testi-avatar">MR</div><div><strong>Marcus R.</strong> · VP Sales, Fintech startup</div></div></div>
+    <div class="testi"><div class="testi-stars">★★★★★</div><div class="testi-q">"Setup took literally 4 minutes. By day 3, our reps were getting real-time coaching on live calls. Mind-blowing."</div><div class="testi-author"><div class="testi-avatar">JK</div><div><strong>Jamie K.</strong> · Sales Manager, B2B SaaS</div></div></div>
+    <div class="testi"><div class="testi-stars">★★★★★</div><div class="testi-q">"We replaced three separate tools with CloseIQ and cut our sales stack cost by 60% while improving results."</div><div class="testi-author"><div class="testi-avatar">AL</div><div><strong>Aisha L.</strong> · CRO, Series B company</div></div></div>
+  </div>
+</section>
+
+<section class="bottom-cta">
+  <h2>Your competition is already using AI.<br>Are you?</h2>
+  <p>Join 4,200+ sales teams closing more deals with less effort. Start your free trial today.</p>
+  <div class="cta-form" style="justify-content:center">
+    <input class="cta-input" type="email" placeholder="Work email address">
+    <button class="cta-btn" onclick="this.textContent='Starting trial...';setTimeout(()=>this.textContent='Check your email ✓',1500)">Get Started Free →</button>
+  </div>
+  <div class="guarantee">✓ 30-day money-back guarantee &nbsp;·&nbsp; No credit card required</div>
+</section>
+
+<footer>
+  <span>© 2025 CloseIQ, Inc. · All rights reserved</span>
+  <span>Privacy Policy · Terms of Service · Security</span>
+</footer>
+</body></html>
