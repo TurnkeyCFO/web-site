@@ -1,0 +1,9 @@
+# Brightleaf Family Dental
+# NOTE: This is an unindexed preview build. Every page also carries a
+# <meta name="robots" content="noindex,nofollow"> tag. When the site is
+# promoted to the production domain, replace the preview URLs below.
+
+User-agent: *
+Disallow:
+
+Sitemap: https://turnkeyweb.org/previews/brightleaf-family-dental-dental-practice-921e69/sitemap.xml
