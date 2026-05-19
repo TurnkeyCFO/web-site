@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Illustrative diagram of teeth with a gap and a chipped tooth before cosmetic treatment">
+  <defs><linearGradient id="cb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EAF7F1"/><stop offset="1" stop-color="#F4FAF7"/></linearGradient></defs>
+  <rect width="400" height="300" fill="url(#cb)"/>
+  <circle cx="58" cy="56" r="40" fill="#D1F0E6" opacity="0.55"/>
+  <circle cx="350" cy="248" r="48" fill="#D1F0E6" opacity="0.4"/>
+  <path d="M36 150 Q200 116 364 150 L364 124 Q200 90 36 124 Z" fill="#BDE9D9"/>
+  <g stroke="#0F766E" stroke-width="2.5" fill="#FBFAF6">
+    <rect x="52" y="126" width="30" height="86" rx="15"/>
+    <rect x="95" y="126" width="30" height="86" rx="15"/>
+    <rect x="138" y="150" width="30" height="62" rx="15"/>
+    <rect x="181" y="126" width="30" height="86" rx="15"/>
+    <rect x="248" y="126" width="30" height="86" rx="15"/>
+    <rect x="291" y="126" width="30" height="86" rx="15"/>
+    <rect x="334" y="126" width="30" height="86" rx="15"/>
+  </g>
+  <path d="M227 150 v52" stroke="#B79A57" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8"/>
+  <text x="200" y="266" text-anchor="middle" font-family="'Plus Jakarta Sans',Segoe UI,sans-serif" font-size="17" font-weight="700" fill="#566169">Before — gap &amp; chipped tooth</text>
+</svg>
