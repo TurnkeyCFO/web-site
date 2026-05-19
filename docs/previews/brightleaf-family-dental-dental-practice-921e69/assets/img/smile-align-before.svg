@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Illustrative diagram of uneven, crowded teeth before clear-aligner treatment">
+  <defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EAF7F1"/><stop offset="1" stop-color="#F4FAF7"/></linearGradient></defs>
+  <rect width="400" height="300" fill="url(#ab)"/>
+  <circle cx="58" cy="56" r="40" fill="#D1F0E6" opacity="0.55"/>
+  <circle cx="350" cy="248" r="48" fill="#D1F0E6" opacity="0.4"/>
+  <path d="M36 158 Q200 104 364 158 L364 130 Q200 76 36 130 Z" fill="#BDE9D9"/>
+  <g stroke="#0F766E" stroke-width="2.5">
+    <rect x="56" y="132" width="30" height="86" rx="15" fill="#FBFAF6" transform="rotate(-9 71 175)"/>
+    <rect x="99" y="124" width="30" height="86" rx="15" fill="#FBFAF6" transform="rotate(6 114 167)"/>
+    <rect x="142" y="138" width="30" height="86" rx="15" fill="#FBFAF6" transform="rotate(-4 157 181)"/>
+    <rect x="185" y="121" width="30" height="86" rx="15" fill="#FBFAF6" transform="rotate(8 200 164)"/>
+    <rect x="228" y="135" width="30" height="86" rx="15" fill="#FBFAF6" transform="rotate(-7 243 178)"/>
+    <rect x="271" y="126" width="30" height="86" rx="15" fill="#FBFAF6" transform="rotate(5 286 169)"/>
+    <rect x="314" y="133" width="30" height="86" rx="15" fill="#FBFAF6" transform="rotate(-10 329 176)"/>
+  </g>
+  <text x="200" y="266" text-anchor="middle" font-family="'Plus Jakarta Sans',Segoe UI,sans-serif" font-size="17" font-weight="700" fill="#566169">Before — uneven spacing</text>
+</svg>
