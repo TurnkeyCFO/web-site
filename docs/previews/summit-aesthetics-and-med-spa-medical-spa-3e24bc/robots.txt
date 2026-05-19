@@ -1,0 +1,6 @@
+# Summit Aesthetics & Med Spa
+# Preview build served from a subpath -- not for indexing.
+User-agent: *
+Disallow: /
+
+Sitemap: https://www.summitaesthetics.com/sitemap.xml
