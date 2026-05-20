@@ -460,61 +460,76 @@
     </div>
 
     <div class="chat-shell">
-      <div class="chat-block">
-        <div class="chat-header">
-          <div class="chat-avatar" aria-hidden="true"></div>
-          <div class="chat-header-meta">
+      <div class="im-phone">
+        <div class="im-bar">
+          <div class="im-avatar" aria-hidden="true"></div>
+          <div class="im-bar-meta">
             <strong>Kendra Washington</strong>
-            <span>Usually replies in a few hours</span>
+            <span><i class="im-dot"></i> Active now &middot; replies in a few hours</span>
           </div>
         </div>
-        <form data-chat novalidate>
-          <div class="chat-row2">
-            <div class="chat-field">
-              <input type="text" name="name" id="chat-name" placeholder=" " autocomplete="name" required>
-              <label for="chat-name">Your name</label>
-            </div>
-            <div class="chat-field">
-              <input type="email" name="email" id="chat-email" placeholder=" " autocomplete="email" required>
-              <label for="chat-email">Your email</label>
+
+        <div class="im-stage" data-im-stage>
+          <div class="im-day">Today &middot; just now</div>
+
+          <div class="im-row im-row-in">
+            <div class="im-avatar im-avatar-sm" aria-hidden="true"></div>
+            <div class="im-bubble im-bubble-in">
+              Hey &mdash; I&rsquo;m Kendra. Tell me a little about where you are with your goals and I&rsquo;ll reply personally, usually within a few hours.
             </div>
           </div>
-          <div class="chat-field">
-            <textarea name="message" id="chat-msg" placeholder=" " required></textarea>
-            <label for="chat-msg">Tell Kendra a bit about your goals</label>
+
+          <div data-im-preview></div>
+
+          <div class="im-row im-row-in im-typing" data-im-typing hidden>
+            <div class="im-avatar im-avatar-sm" aria-hidden="true"></div>
+            <div class="im-bubble im-bubble-in im-typing-dots"><span></span><span></span><span></span></div>
           </div>
-          <button type="submit" class="chat-send">
-            Send to Kendra
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>
-          </button>
-          <div class="chat-typing" aria-live="polite">
-            <span class="chat-typing-dots"><span></span><span></span><span></span></span>
-            <span>Sending to Kendra&hellip;</span>
+        </div>
+
+        <div class="im-chips" role="group" aria-label="Quick replies">
+          <button type="button" data-im-chip="I want personalized 1:1 coaching.">1:1 coaching</button>
+          <button type="button" data-im-chip="What does pricing look like?">Pricing</button>
+          <button type="button" data-im-chip="I'm new to fitness &mdash; where do I start?">New to this</button>
+          <button type="button" data-im-chip="Can we hop on a free 20-min call?">Free call</button>
+        </div>
+
+        <form data-chat class="im-compose" novalidate>
+          <div class="im-mini-row">
+            <input type="text" name="name" id="chat-name" placeholder="Your name" autocomplete="name" required>
+            <input type="email" name="email" id="chat-email" placeholder="Your email" autocomplete="email" required>
+          </div>
+          <div class="im-input-row">
+            <input type="text" name="message" id="chat-msg" placeholder="Message Kendra&hellip;" required>
+            <button type="submit" class="im-send" aria-label="Send message">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+            </button>
           </div>
         </form>
-        <div class="chat-ok" aria-live="polite">
-          <div class="chat-ok-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <h4>Got it &mdash; Kendra will reply within a few hours.</h4>
+
+        <div class="im-ok" data-im-ok aria-live="polite" hidden>
+          <div class="im-ok-check"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h4>Sent &mdash; Kendra will reply within a few hours.</h4>
           <p>Meanwhile, follow her daily wins.</p>
-          <a class="chat-ok-cta" href="https://www.instagram.com/empowerher.healthcoaching" rel="noopener">Follow on Instagram <span aria-hidden="true">&rarr;</span></a>
+          <a class="im-ok-cta" href="https://www.instagram.com/empowerher.healthcoaching" rel="noopener">Follow on Instagram <span aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
 
       <div class="chat-quick">
         <a href="sms:+15125550100?&body=Hi%20Kendra%20%E2%80%94%20I%20want%20to%20chat%20about%20coaching.">
-          <svg class="icon-sms" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <svg class="icon-sms" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           Text
         </a>
         <a href="https://wa.me/15125550100?text=Hi%20Kendra%20%E2%80%94%20I%20want%20to%20chat%20about%20coaching." rel="noopener">
-          <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 14.3c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.5c-1.7 0-3.4-.5-4.9-1.3l-3.5.9.9-3.4c-1-1.6-1.5-3.4-1.5-5.2 0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10z"/></svg>
+          <svg class="icon-wa" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M17.6 14.3c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.5c-1.7 0-3.4-.5-4.9-1.3l-3.5.9.9-3.4c-1-1.6-1.5-3.4-1.5-5.2 0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10z"/></svg>
           WhatsApp
         </a>
         <a href="https://www.instagram.com/empowerher.healthcoaching" rel="noopener">
-          <svg class="icon-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          <svg class="icon-ig" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
           Instagram
         </a>
         <a href="mailto:healthcoachingask@gmail.com?subject=Coaching%20question">
-          <svg class="icon-em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          <svg class="icon-em" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
           Email
         </a>
       </div>
