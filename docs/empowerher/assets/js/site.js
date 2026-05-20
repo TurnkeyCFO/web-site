@@ -1,69 +1,89 @@
-// EmpowerHer Fitness — minimal vanilla JS
+// EmpowerHer v2 — mobile menu, carousel, exit-intent, lead-magnet, video modal
 (function () {
-  const nav = document.querySelector('.nav');
-  const onScroll = () => { if (window.scrollY > 8) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); };
-  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-
-  const burger = document.querySelector('.nav-burger');
-  const links = document.querySelector('.nav-links');
-  if (burger && links) {
-    burger.addEventListener('click', () => links.classList.toggle('open'));
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  // ---------- Mobile menu ----------
+  const ham = document.querySelector('.hamburger');
+  const menu = document.querySelector('.mobile-menu');
+  const closeBtn = document.querySelector('.mobile-menu .close');
+  if (ham && menu) {
+    ham.addEventListener('click', () => { menu.classList.add('open'); document.body.style.overflow = 'hidden'; });
+    if (closeBtn) closeBtn.addEventListener('click', () => { menu.classList.remove('open'); document.body.style.overflow = ''; });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.classList.remove('open'); document.body.style.overflow = ''; }));
   }
 
-  // Reveal on scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { rootMargin: '-40px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Message Kendra quick buttons → open the right channel pre-filled
-  const KENDRA = {
-    email: 'healthcoachingask@gmail.com',
-    igHandle: 'empowerher_health_coaching_',
-    // phone not public — sms/wa fall back to mailto with same body
-    phone: null,
-    applyForm: 'https://forms.gle/HTjLUFARbwv1Cbys9'
-  };
-
-  function openChannel(channel, body) {
-    const subject = 'EmpowerHer Fitness — coaching inquiry';
-    const enc = encodeURIComponent(body);
-    let url;
-    if (channel === 'email') url = `mailto:${KENDRA.email}?subject=${encodeURIComponent(subject)}&body=${enc}`;
-    else if (channel === 'instagram') url = `https://ig.me/m/${KENDRA.igHandle}`;
-    else if (channel === 'sms' && KENDRA.phone) url = `sms:${KENDRA.phone}?&body=${enc}`;
-    else if (channel === 'whatsapp' && KENDRA.phone) url = `https://wa.me/${KENDRA.phone.replace(/\D/g,'')}?text=${enc}`;
-    else url = `mailto:${KENDRA.email}?subject=${encodeURIComponent(subject)}&body=${enc}`;
-    window.location.href = url;
+  // ---------- Testimonial carousel ----------
+  const slides = document.querySelectorAll('.testimonial');
+  const dots = document.querySelectorAll('.carousel-dots button');
+  if (slides.length > 1) {
+    let i = 0;
+    const show = (n) => {
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === n));
+      dots.forEach((d, idx) => d.classList.toggle('active', idx === n));
+      i = n;
+    };
+    dots.forEach((d, idx) => d.addEventListener('click', () => show(idx)));
+    setInterval(() => show((i + 1) % slides.length), 6000);
   }
 
-  document.querySelectorAll('[data-msg]').forEach(card => {
-    card.addEventListener('click', (e) => {
-      const body = card.getAttribute('data-msg') || '';
-      const channel = card.getAttribute('data-channel') || 'email';
-      openChannel(channel, body);
-    });
-  });
+  // ---------- Exit-intent (desktop only) ----------
+  const exit = document.querySelector('.exit-modal');
+  if (exit && window.matchMedia('(min-width: 860px)').matches) {
+    let shown = false;
+    const trigger = (e) => {
+      if (shown) return;
+      if (e.clientY < 8 && e.relatedTarget === null) {
+        shown = true;
+        exit.classList.add('show');
+        try { localStorage.setItem('eh_exit_shown', '1'); } catch (_) {}
+      }
+    };
+    if (!localStorage.getItem('eh_exit_shown')) {
+      document.addEventListener('mouseout', trigger);
+    }
+    const closeExit = exit.querySelector('.close');
+    if (closeExit) closeExit.addEventListener('click', () => exit.classList.remove('show'));
+    exit.addEventListener('click', (e) => { if (e.target === exit) exit.classList.remove('show'); });
+  }
 
-  // Channel buttons (use the last-clicked quick-button message if any, else generic)
-  let lastMsg = "Hi Kendra! I came across EmpowerHer Fitness and I'd love to learn more about coaching with you.";
-  document.querySelectorAll('[data-msg]').forEach(card => {
-    card.addEventListener('mouseenter', () => { lastMsg = card.getAttribute('data-msg') || lastMsg; });
-    card.addEventListener('focus', () => { lastMsg = card.getAttribute('data-msg') || lastMsg; });
-  });
-  document.querySelectorAll('[data-channel-only]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  // ---------- Lead-magnet forms (capture and confirm) ----------
+  document.querySelectorAll('form[data-lead]').forEach(f => {
+    f.addEventListener('submit', (e) => {
       e.preventDefault();
-      openChannel(btn.getAttribute('data-channel-only'), lastMsg);
+      const email = f.querySelector('input[type=email]').value.trim();
+      if (!email || !email.includes('@')) return;
+      // Open mailto to kendra with prefilled subject
+      const subject = encodeURIComponent('Send me the 7-day kickstart guide');
+      const body = encodeURIComponent('Email: ' + email + '\n\nHi Kendra — please send me the free 7-day kickstart guide. Thanks!');
+      window.location.href = 'mailto:kendra@empowerher-healthcoaching.com?subject=' + subject + '&body=' + body;
+      f.innerHTML = '<p class="ok" style="color:white;font-weight:600;">Thanks! Your email app just opened — hit send to get the guide.</p>';
     });
   });
 
-  // Toast
-  window.showToast = function (msg) {
-    let t = document.querySelector('.toast');
-    if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
-    t.textContent = msg; t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2400);
-  };
+  // ---------- Video modal ----------
+  document.querySelectorAll('[data-video]').forEach(el => {
+    el.addEventListener('click', () => {
+      alert("Kendra's intro video is coming soon! In the meantime, message her on Instagram @empowerher.healthcoaching to chat.");
+    });
+  });
+
+  // ---------- Animate stat counters on view ----------
+  const counters = document.querySelectorAll('[data-count]');
+  if (counters.length && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseFloat(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        let cur = 0;
+        const step = target / 30;
+        const t = setInterval(() => {
+          cur += step;
+          if (cur >= target) { cur = target; clearInterval(t); }
+          el.textContent = (target % 1 === 0 ? Math.round(cur) : cur.toFixed(1)) + suffix;
+        }, 40);
+        obs.unobserve(el);
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(c => obs.observe(c));
+  }
 })();
