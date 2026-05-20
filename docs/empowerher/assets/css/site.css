@@ -451,6 +451,15 @@ strong { color: var(--ink); font-weight: 700; }
   transform: rotate(-.5deg);
 }
 .hero-photo.hero-photo-video { aspect-ratio: 9/16; }
+@media (max-width: 859px) {
+  .hero-photo.hero-photo-video {
+    max-width: 300px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    transform: rotate(-.4deg);
+  }
+}
 .hero-photo::after {
   content: "";
   position: absolute; inset: 0;
