@@ -450,19 +450,24 @@ strong { color: var(--ink); font-weight: 700; }
   position: relative;
   transform: rotate(-.5deg);
 }
+.hero-photo.hero-photo-video { aspect-ratio: 9/16; }
 .hero-photo::after {
   content: "";
   position: absolute; inset: 0;
   background: linear-gradient(160deg, rgba(226,248,248,.02) 0%, rgba(91,117,117,.06) 100%);
   pointer-events: none;
+  z-index: 1;
 }
-.hero-photo img {
+.hero-photo img,
+.hero-photo video {
   width: 100%; height: 100%;
   object-fit: cover;
   filter: saturate(1.04) brightness(1.02);
   transition: transform 8s var(--ease-out);
+  display: block;
 }
-.hero-photo:hover img { transform: scale(1.04); }
+.hero-photo:hover img,
+.hero-photo:hover video { transform: scale(1.04); }
 
 .proof-ticker {
   display: flex; gap: 18px;
