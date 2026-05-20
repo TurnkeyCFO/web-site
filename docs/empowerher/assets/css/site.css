@@ -516,3 +516,164 @@ body { padding-bottom: 90px; }
 
 /* misc utilities */
 .text-center { text-align: center; }
+
+/* ========== v3 additions ========== */
+
+/* ---------- Testimonial wall (homepage grid) ---------- */
+.testimonial-wall {
+  display: grid; gap: 18px;
+  grid-template-columns: 1fr;
+  margin-top: 40px;
+}
+@media (min-width: 720px) { .testimonial-wall { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1020px) { .testimonial-wall { grid-template-columns: repeat(3, 1fr); } }
+.t-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  display: flex; flex-direction: column;
+  transition: all .2s;
+}
+.t-card:hover { box-shadow: var(--shadow); border-color: var(--mint-strong); transform: translateY(-2px); }
+.t-card .t-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.t-card .t-avatar {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--mint); color: var(--sage-deep);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 1.1rem; flex-shrink: 0;
+}
+.t-card .t-meta strong { display: block; color: var(--ink); font-size: .98rem; }
+.t-card .t-meta span { color: var(--body); font-size: .85rem; }
+.t-card .stars { color: #E0A800; font-size: .92rem; margin-bottom: 10px; }
+.t-card blockquote {
+  margin: 0 0 12px;
+  color: var(--ink-soft); font-size: .98rem; line-height: 1.55;
+  font-style: italic; flex: 1;
+}
+.t-card .t-tag {
+  display: inline-block;
+  background: var(--mint); color: var(--sage-deep);
+  padding: 5px 12px; border-radius: 999px;
+  font-size: .78rem; font-weight: 700;
+  align-self: flex-start;
+}
+
+/* ---------- Resources page ---------- */
+.resource-grid {
+  display: grid; gap: 22px;
+  grid-template-columns: 1fr;
+  margin-top: 30px;
+}
+@media (min-width: 720px) { .resource-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1020px) { .resource-grid { grid-template-columns: repeat(3, 1fr); } }
+.r-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 26px 22px;
+  display: flex; flex-direction: column;
+  position: relative;
+  transition: all .2s;
+}
+.r-card:hover { box-shadow: var(--shadow); border-color: var(--sage); transform: translateY(-3px); }
+.r-card .r-ic {
+  width: 54px; height: 54px;
+  background: var(--mint); color: var(--sage-deep);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.r-card .r-ic svg { width: 28px; height: 28px; }
+.r-card h3 { color: var(--ink); margin-bottom: 8px; font-size: 1.1rem; }
+.r-card .r-desc { color: var(--body); font-size: .94rem; line-height: 1.5; flex: 1; margin-bottom: 14px; }
+.r-card .r-meta { font-size: .82rem; color: var(--sage-deep); font-weight: 600; margin-bottom: 14px; }
+.r-card .badge-soon {
+  position: absolute; top: 16px; right: 16px;
+  background: var(--mint-strong); color: var(--sage-deep);
+  padding: 5px 12px; border-radius: 999px;
+  font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
+}
+.r-card .r-price {
+  font-size: 1.4rem; font-weight: 800; color: var(--ink);
+  margin-bottom: 8px;
+}
+.r-card ul.r-incl {
+  list-style: none; padding: 0; margin: 0 0 18px;
+  font-size: .9rem;
+}
+.r-card ul.r-incl li {
+  padding: 5px 0 5px 22px; position: relative; color: var(--ink-soft);
+}
+.r-card ul.r-incl li::before {
+  content: "\2713"; color: var(--sage); font-weight: 800;
+  position: absolute; left: 0;
+}
+
+/* ---------- Chat field (homepage Message Kendra section) ---------- */
+.chat-block {
+  background: white;
+  border: 2px solid var(--mint-strong);
+  border-radius: var(--radius-lg);
+  padding: 30px 26px;
+  max-width: 640px; margin: 0 auto;
+  box-shadow: var(--shadow);
+}
+.chat-block h3 { color: var(--ink); margin-bottom: 6px; font-size: 1.3rem; }
+.chat-block .sub { color: var(--body); font-size: .96rem; margin-bottom: 18px; }
+.chat-block form { display: flex; flex-direction: column; gap: 12px; }
+.chat-block input, .chat-block textarea {
+  padding: 14px 16px;
+  border: 1.5px solid var(--rule);
+  border-radius: 12px;
+  font-family: inherit; font-size: 1rem;
+  width: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  transition: border .2s;
+}
+.chat-block input:focus, .chat-block textarea:focus {
+  outline: none; border-color: var(--sage);
+}
+.chat-block textarea { resize: vertical; min-height: 110px; }
+.chat-block .row2 { display: grid; gap: 12px; grid-template-columns: 1fr; }
+@media (min-width: 600px) { .chat-block .row2 { grid-template-columns: 1fr 1fr; } }
+.chat-block button {
+  background: var(--sage); color: white;
+  padding: 14px 24px; border: none; border-radius: 999px;
+  font-family: inherit; font-weight: 700; font-size: 1rem;
+  cursor: pointer; min-height: 52px;
+  transition: all .2s;
+}
+.chat-block button:hover { background: var(--sage-deep); transform: translateY(-1px); }
+.chat-block .chat-ok {
+  background: var(--mint); color: var(--sage-deep);
+  padding: 14px 18px; border-radius: 12px;
+  font-weight: 600; font-size: .95rem; margin-top: 12px;
+}
+.chat-quick {
+  display: grid; gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 18px;
+  max-width: 640px; margin-left: auto; margin-right: auto;
+}
+@media (min-width: 600px) { .chat-quick { grid-template-columns: repeat(4, 1fr); } }
+.chat-quick a {
+  background: white; color: var(--sage-deep);
+  border: 1.5px solid var(--mint-strong);
+  padding: 12px 10px; border-radius: 12px;
+  text-align: center; font-weight: 600; font-size: .9rem;
+  transition: all .2s;
+}
+.chat-quick a:hover { background: var(--mint); border-color: var(--sage); }
+
+/* ---------- Blog (reserved — not built v3 because source site has none) ---------- */
+
+/* ---------- Resources page hero ---------- */
+.page-hero {
+  background: linear-gradient(180deg, var(--mint) 0%, var(--paper) 100%);
+  padding: 60px 0 50px;
+  text-align: center;
+}
+.page-hero h1 { max-width: 740px; margin: 0 auto 14px; }
+.page-hero p { max-width: 620px; margin: 0 auto; font-size: 1.06rem; color: var(--body); }
