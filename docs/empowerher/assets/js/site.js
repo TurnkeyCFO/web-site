@@ -51,6 +51,10 @@
       carousel.addEventListener('mouseenter', function () { paused = true; });
       carousel.addEventListener('mouseleave', function () { paused = false; });
     }
+    var prevBtn = document.querySelector('.carousel-prev');
+    var nextBtn = document.querySelector('.carousel-next');
+    if (prevBtn) prevBtn.addEventListener('click', function () { show((i - 1 + slides.length) % slides.length); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { show((i + 1) % slides.length); });
     setInterval(function () { if (!paused) show((i + 1) % slides.length); }, 6000);
 
     // Keyboard
