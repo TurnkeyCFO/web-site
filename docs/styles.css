@@ -150,27 +150,16 @@ p{line-height:1.72;}
    only when <body class="engine-on"> — natural-flow layout is
    restored if JS doesn't run.
 ════════════════════════════════════════════════════════════════ */
-body.engine-on{overflow-x:hidden;}
-body.engine-on{transform-style:preserve-3d;}
-body.engine-on > .page-wrap,
-body.engine-on > .nav-wrap,
-body.engine-on > .top-nav,
-body.engine-on > .mobile-nav,
-body.engine-on > footer.footer,
-body.engine-on > nav,
-body.engine-on > header.hero,
-body.engine-on > header.hub-hero,
-body.engine-on > main,
-body.engine-on > section{display:none !important;}
-/* Re-show only the engine surfaces */
-body.engine-on > .top-nav.is-chrome,
-body.engine-on > .mobile-nav.is-chrome,
-body.engine-on > #stage,
-body.engine-on > #scroll-driver,
-body.engine-on > .scroll-hint-fly,
-body.engine-on > .rail-fly,
-body.engine-on > .energy-bg{display:initial !important;}
-body.engine-on > .top-nav.is-chrome{display:block !important;}
+body.engine-on{overflow-x:hidden;transform-style:preserve-3d;}
+/* Hide all natural-flow direct children of body except the chrome the engine keeps */
+body.engine-on > *{display:none !important;}
+body.engine-on > #stage{display:block !important;}
+body.engine-on > #scroll-driver{display:block !important;}
+body.engine-on > .scroll-hint-fly{display:flex !important;}
+body.engine-on > .rail-fly{display:flex !important;}
+body.engine-on > .energy-bg{display:block !important;}
+body.engine-on > .top-nav.is-chrome{display:flex !important;}
+/* mobile-nav keeps its own open/closed state — leave it hidden by default and let nav JS toggle */
 
 /* The stage — fixed camera viewport. Never scrolls. */
 #stage{
