@@ -137,51 +137,114 @@ p{line-height:1.72;}
   transform:translateY(-3px);
 }
 
-/* ── CAMERA-DOLLY SCROLL ENGINE ──
-   Body sits in a perspective stage. Every top-level <section>/<header> is a
-   "shot" that the camera flies through as you scroll. A rAF loop in site.js
-   sets each shot's --d (signed distance from camera, in viewport heights)
-   and the CSS below maps that to translateZ + scale + blur + opacity so
-   shots zoom forward out of the depths, lock at the camera plane while you
-   read, then rush past your face with motion blur as the next one rises. */
-html{perspective:1500px;perspective-origin:50% 42%;}
-body{transform-style:preserve-3d;}
-.fly-shot{
-  /* defaults — overwritten every frame by --d */
-  --d:0;
-  transform-style:preserve-3d;
-  backface-visibility:hidden;
-  will-change:transform,opacity,filter;
-  transform:
-    translateZ(calc(var(--d) * -560px))
-    scale(calc(1 - clamp(0, var(--d), 1) * 0.18 + clamp(-1, var(--d), 0) * 0.22));
-  filter:blur(calc(clamp(0, var(--d) - 0.45, 1) * 14px + clamp(0, -1 * var(--d) - 0.35, 1) * 4px));
-  opacity:calc(1 - clamp(0, var(--d) - 0.55, 1) * 1.4 - clamp(0, -1 * var(--d) - 0.85, 1) * 1.2);
-  transition:transform 60ms linear,filter 60ms linear,opacity 60ms linear;
-}
-.fly-shot.fly-locked{
-  /* set by JS once the camera passes the shot, so it stays parked behind
-     instead of jittering when you stop scrolling */
-  transform:translateZ(560px) scale(1.18);
-  opacity:0;filter:blur(14px);
-}
-@media(max-width:768px){
-  html{perspective:1000px;}
-  .fly-shot{
-    transform:
-      translateZ(calc(var(--d) * -340px))
-      scale(calc(1 - clamp(0, var(--d), 1) * 0.12 + clamp(-1, var(--d), 0) * 0.14));
-    filter:blur(calc(clamp(0, var(--d) - 0.45, 1) * 8px));
-  }
-}
-@media(prefers-reduced-motion:reduce){
-  html{perspective:none;}
-  .fly-shot{transform:none !important;filter:none !important;opacity:1 !important;}
-}
-/* Existing reveal hook kept for delay-staggered children — purely fade now */
-[data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+/* ── REVEAL (used when engine is OFF) ── */
+[data-reveal]{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
 [data-reveal].in-view{opacity:1;transform:none;}
 [data-reveal][data-reveal-delay]{transition-delay:var(--reveal-delay,0ms);}
+
+/* ════════════════════════════════════════════════════════════════
+   FLY-FORWARD ENGINE (engine-on)
+   Mirrors the turnkeyai.org mechanic: a fixed perspective #stage,
+   panels stacked in z-space, an invisible #scroll-driver giving the
+   page real scrollable height, a rAF camera in site.js. Activated
+   only when <body class="engine-on"> — natural-flow layout is
+   restored if JS doesn't run.
+════════════════════════════════════════════════════════════════ */
+body.engine-on{overflow-x:hidden;}
+body.engine-on{transform-style:preserve-3d;}
+body.engine-on > .page-wrap,
+body.engine-on > .nav-wrap,
+body.engine-on > .top-nav,
+body.engine-on > .mobile-nav,
+body.engine-on > footer.footer,
+body.engine-on > nav,
+body.engine-on > header.hero,
+body.engine-on > header.hub-hero,
+body.engine-on > main,
+body.engine-on > section{display:none !important;}
+/* Re-show only the engine surfaces */
+body.engine-on > .top-nav.is-chrome,
+body.engine-on > .mobile-nav.is-chrome,
+body.engine-on > #stage,
+body.engine-on > #scroll-driver,
+body.engine-on > .scroll-hint-fly,
+body.engine-on > .rail-fly,
+body.engine-on > .energy-bg{display:initial !important;}
+body.engine-on > .top-nav.is-chrome{display:block !important;}
+
+/* The stage — fixed camera viewport. Never scrolls. */
+#stage{
+  position:fixed;inset:0;z-index:10;
+  perspective:1500px;perspective-origin:50% 48%;
+  pointer-events:none;
+}
+/* Each panel occupies the same fixed rectangle, layered in z-space */
+#stage .panel{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  padding:84px 5vw 64px;
+  will-change:transform,opacity,filter;
+  backface-visibility:hidden;
+  opacity:0;
+  transform-style:preserve-3d;
+}
+#stage .panel-inner{
+  width:100%;max-width:1200px;
+  transform-origin:center center;   /* JS fit-to-viewport scales here */
+  max-height:calc(100vh - 148px);
+  overflow:visible;
+}
+/* Hidden invisible spacer — the ONLY thing giving the page real scroll height */
+#scroll-driver{
+  position:relative;width:1px;
+  height:854vh;            /* JS overwrites: N * PANEL_VH */
+  pointer-events:none;visibility:hidden;
+}
+
+/* Scroll hint */
+.scroll-hint-fly{
+  position:fixed;left:50%;bottom:22px;transform:translateX(-50%);
+  z-index:40;display:flex;flex-direction:column;align-items:center;gap:8px;
+  font:700 10px/1 'Plus Jakarta Sans',system-ui,sans-serif;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gray-lt,#64748B);
+  transition:opacity .5s;pointer-events:none;
+}
+.scroll-hint-fly-bar{width:1.5px;height:32px;background:rgba(15,23,42,.18);border-radius:2px;overflow:hidden;position:relative;}
+.scroll-hint-fly-bar i{position:absolute;left:0;right:0;top:0;height:40%;background:var(--purple,#7C3AED);border-radius:2px;animation:flyhint 1.9s cubic-bezier(.22,.61,.36,1) infinite;}
+@keyframes flyhint{0%{transform:translateY(-100%)}60%,100%{transform:translateY(250%)}}
+.scroll-hint-fly.gone{opacity:0;}
+
+/* Chapter rail */
+.rail-fly{
+  position:fixed;right:20px;top:50%;transform:translateY(-50%);
+  z-index:40;display:flex;flex-direction:column;gap:12px;pointer-events:auto;
+}
+.rail-fly-step{
+  display:flex;align-items:center;gap:10px;border:0;background:none;cursor:pointer;
+  font:700 10px/1 'Plus Jakarta Sans',system-ui,sans-serif;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(15,23,42,.45);
+  transition:color .35s;padding:0;
+}
+.rail-fly-step .tick{width:16px;height:1.5px;background:currentColor;opacity:.55;border-radius:2px;transition:width .35s cubic-bezier(.22,.61,.36,1),opacity .35s,background .35s;}
+.rail-fly-step:hover{color:rgba(15,23,42,.75);}
+.rail-fly-step.is-active{color:#0F172A;}
+.rail-fly-step.is-active .tick{width:32px;opacity:1;background:var(--purple,#7C3AED);box-shadow:0 0 10px rgba(124,58,237,.45);}
+
+/* Engine-on nav re-styling: float the existing nav as fixed chrome */
+body.engine-on > .top-nav.is-chrome{position:fixed;top:0;left:0;right:0;z-index:60;pointer-events:none;}
+body.engine-on > .top-nav.is-chrome > *{pointer-events:auto;}
+
+@media(max-width:768px){
+  #stage{perspective:1100px;}
+  #stage .panel{padding:74px 18px 56px;}
+  #stage .panel-inner{max-height:calc(100vh - 130px);}
+  .rail-fly{display:none;}
+}
+@media(prefers-reduced-motion:reduce){
+  #stage{perspective:none;}
+  #stage .panel{position:relative;inset:auto;opacity:1 !important;transform:none !important;filter:none !important;}
+  #scroll-driver{display:none !important;}
+}
 
 /* ════════════════════════════════
    ENERGY BACKGROUND
