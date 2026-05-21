@@ -137,31 +137,51 @@ p{line-height:1.72;}
   transform:translateY(-3px);
 }
 
-/* ── FLY-FORWARD REVEAL ──
-   Sections start deep in 3D space and zoom forward into the camera as they enter.
-   Body owns the perspective so every reveal shares one vanishing point. */
-html{perspective:1400px;perspective-origin:50% 38%;}
-[data-reveal]{
-  opacity:0;
-  transform:translate3d(0,42px,-420px) scale(.82);
-  filter:blur(8px);
-  transition:opacity .95s cubic-bezier(.16,.84,.3,1),
-             transform 1.05s cubic-bezier(.16,.84,.3,1),
-             filter .85s ease;
+/* ── CAMERA-DOLLY SCROLL ENGINE ──
+   Body sits in a perspective stage. Every top-level <section>/<header> is a
+   "shot" that the camera flies through as you scroll. A rAF loop in site.js
+   sets each shot's --d (signed distance from camera, in viewport heights)
+   and the CSS below maps that to translateZ + scale + blur + opacity so
+   shots zoom forward out of the depths, lock at the camera plane while you
+   read, then rush past your face with motion blur as the next one rises. */
+html{perspective:1500px;perspective-origin:50% 42%;}
+body{transform-style:preserve-3d;}
+.fly-shot{
+  /* defaults — overwritten every frame by --d */
+  --d:0;
   transform-style:preserve-3d;
-  will-change:opacity,transform,filter;
   backface-visibility:hidden;
+  will-change:transform,opacity,filter;
+  transform:
+    translateZ(calc(var(--d) * -560px))
+    scale(calc(1 - clamp(0, var(--d), 1) * 0.18 + clamp(-1, var(--d), 0) * 0.22));
+  filter:blur(calc(clamp(0, var(--d) - 0.45, 1) * 14px + clamp(0, -1 * var(--d) - 0.35, 1) * 4px));
+  opacity:calc(1 - clamp(0, var(--d) - 0.55, 1) * 1.4 - clamp(0, -1 * var(--d) - 0.85, 1) * 1.2);
+  transition:transform 60ms linear,filter 60ms linear,opacity 60ms linear;
 }
-[data-reveal].in-view{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0);}
-[data-reveal][data-reveal-delay]{transition-delay:var(--reveal-delay,0ms);}
+.fly-shot.fly-locked{
+  /* set by JS once the camera passes the shot, so it stays parked behind
+     instead of jittering when you stop scrolling */
+  transform:translateZ(560px) scale(1.18);
+  opacity:0;filter:blur(14px);
+}
 @media(max-width:768px){
-  html{perspective:900px;}
-  [data-reveal]{transform:translate3d(0,28px,-220px) scale(.9);filter:blur(5px);transition-duration:.85s,.9s,.7s;}
+  html{perspective:1000px;}
+  .fly-shot{
+    transform:
+      translateZ(calc(var(--d) * -340px))
+      scale(calc(1 - clamp(0, var(--d), 1) * 0.12 + clamp(-1, var(--d), 0) * 0.14));
+    filter:blur(calc(clamp(0, var(--d) - 0.45, 1) * 8px));
+  }
 }
 @media(prefers-reduced-motion:reduce){
   html{perspective:none;}
-  [data-reveal]{opacity:1 !important;transform:none !important;filter:none !important;transition:none !important;}
+  .fly-shot{transform:none !important;filter:none !important;opacity:1 !important;}
 }
+/* Existing reveal hook kept for delay-staggered children — purely fade now */
+[data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+[data-reveal].in-view{opacity:1;transform:none;}
+[data-reveal][data-reveal-delay]{transition-delay:var(--reveal-delay,0ms);}
 
 /* ════════════════════════════════
    ENERGY BACKGROUND

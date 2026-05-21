@@ -720,6 +720,65 @@ function revealOnScroll(){
   document.querySelectorAll("[data-reveal]").forEach(n=>obs.observe(n));
 }
 
+/* ── CAMERA-DOLLY SCROLL ENGINE ──
+   Tags every top-level <section>/<header> as a "shot". A rAF loop reads
+   the viewport position and writes each shot's --d (signed distance from
+   camera, in viewport-heights). CSS maps --d → translateZ + scale + blur
+   + opacity, so as you scroll the camera flies forward through the deck:
+   the upcoming shot rises out of the depths and locks, then rushes past
+   your face with motion blur as the next one zooms up. */
+function flyForwardEngine(){
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  // Pick the natural top-level "shots" on the page. The video-hero on the
+  // home page is excluded — it owns its own 7-sec reveal mechanic.
+  const sel = [
+    "header.hero","header.hub-hero",
+    "main > section",
+    "body > section",
+    "body > main > section"
+  ].join(",");
+  const shots = Array.from(document.querySelectorAll(sel)).filter(s => {
+    if(s.closest(".video-hero")) return false;
+    if(s.classList.contains("footer")) return false;
+    return s.offsetHeight > 0;
+  });
+  if(!shots.length) return;
+  shots.forEach(s => s.classList.add("fly-shot"));
+
+  let scheduled = false;
+  function update(){
+    scheduled = false;
+    const vh = window.innerHeight || 1;
+    // "camera" is anchored at the upper-third of the viewport — that's
+    // the spot where a shot is read most comfortably (matches the TKAI rail).
+    const cam = window.scrollY + vh * 0.35;
+    shots.forEach(s => {
+      const top = s.getBoundingClientRect().top + window.scrollY;
+      const h   = s.offsetHeight || vh;
+      // Distance from camera in viewport-heights. Negative = ahead (deep),
+      // 0 = locked under camera, positive = passed (rushing away).
+      let d = (cam - (top + h * 0.5)) / vh;
+      // Clamp range so far-off shots don't pile up extreme values
+      d = Math.max(-1.6, Math.min(1.6, d));
+      s.style.setProperty("--d", d.toFixed(3));
+      // Hard-park shots well past the camera so they don't ghost back
+      if(d > 1.25) s.classList.add("fly-locked");
+      else s.classList.remove("fly-locked");
+    });
+  }
+  function onScroll(){
+    if(scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(update);
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  window.addEventListener("resize", onScroll);
+  // Initial paint — twice, once now and once after layout settles
+  update();
+  requestAnimationFrame(update);
+  setTimeout(update, 200);
+}
+
 /* ── GLOW CARDS ── */
 function bindGlowCards(){
   document.querySelectorAll(".glow-card").forEach(card=>{
@@ -781,3 +840,4 @@ revealOnScroll();
 bindGlowCards();
 bindParallax();
 bindNav();
+flyForwardEngine();
