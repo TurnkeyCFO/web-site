@@ -137,10 +137,31 @@ p{line-height:1.72;}
   transform:translateY(-3px);
 }
 
-/* ── REVEAL ANIMATIONS ── */
-[data-reveal]{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
-[data-reveal].in-view{opacity:1;transform:none;}
+/* ── FLY-FORWARD REVEAL ──
+   Sections start deep in 3D space and zoom forward into the camera as they enter.
+   Body owns the perspective so every reveal shares one vanishing point. */
+html{perspective:1400px;perspective-origin:50% 38%;}
+[data-reveal]{
+  opacity:0;
+  transform:translate3d(0,42px,-420px) scale(.82);
+  filter:blur(8px);
+  transition:opacity .95s cubic-bezier(.16,.84,.3,1),
+             transform 1.05s cubic-bezier(.16,.84,.3,1),
+             filter .85s ease;
+  transform-style:preserve-3d;
+  will-change:opacity,transform,filter;
+  backface-visibility:hidden;
+}
+[data-reveal].in-view{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0);}
 [data-reveal][data-reveal-delay]{transition-delay:var(--reveal-delay,0ms);}
+@media(max-width:768px){
+  html{perspective:900px;}
+  [data-reveal]{transform:translate3d(0,28px,-220px) scale(.9);filter:blur(5px);transition-duration:.85s,.9s,.7s;}
+}
+@media(prefers-reduced-motion:reduce){
+  html{perspective:none;}
+  [data-reveal]{opacity:1 !important;transform:none !important;filter:none !important;transition:none !important;}
+}
 
 /* ════════════════════════════════
    ENERGY BACKGROUND
