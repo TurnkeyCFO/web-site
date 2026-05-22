@@ -145,7 +145,14 @@
   display:inline-block;
   animation:section-shimmer 9s linear infinite;
   letter-spacing:-.02em;
+  line-height:1.18;
+  padding-bottom:.14em;
+  overflow:visible;
 }
+/* Belt-and-suspenders: ensure inline-block descenders never clip via any
+   inherited overflow on .section-heading or parents. */
+.section-heading{overflow:visible;}
+.section-heading h2 *{overflow:visible;}
 @keyframes section-shimmer{0%{background-position:0% 50%;}100%{background-position:280% 50%;}}
 
 /* Eyebrows — stronger gradient pill on every section */
