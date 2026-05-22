@@ -773,6 +773,21 @@ function bindNav(){
   }
 }
 
+/* ── Sitewide ambient aurora — inject once per page ── */
+function injectAurora(){
+  if(document.querySelector('.tkw-aurora')) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'tkw-aurora';
+  wrap.setAttribute('aria-hidden','true');
+  wrap.innerHTML =
+    '<span class="aur-orb aur-1"></span>'+
+    '<span class="aur-orb aur-2"></span>'+
+    '<span class="aur-orb aur-3"></span>'+
+    '<span class="aur-orb aur-4"></span>';
+  document.body.insertBefore(wrap, document.body.firstChild);
+}
+injectAurora();
+
 /* ── INIT ── */
 updateChoicePills();
 updateLockState();
