@@ -712,12 +712,17 @@ function revealOnScroll(){
   document.querySelectorAll("[data-reveal-delay]").forEach(n=>{
     n.style.setProperty("--reveal-delay",`${Number(n.dataset.revealDelay||0)}ms`);
   });
+  const targets = document.querySelectorAll("[data-reveal]");
   const obs = new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){ entry.target.classList.add("in-view"); obs.unobserve(entry.target); }
     });
   },{threshold:0.12});
-  document.querySelectorAll("[data-reveal]").forEach(n=>obs.observe(n));
+  targets.forEach(n=>obs.observe(n));
+  // Safety net — if the observer fails to fire for any reason within 400ms
+  // (e.g. ancestor transform / containing-block edge cases), force-reveal so
+  // content is never stuck invisible.
+  setTimeout(()=>{ targets.forEach(n=>n.classList.add("in-view")); }, 400);
 }
 
 /* ── GLOW CARDS ── */
