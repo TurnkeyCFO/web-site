@@ -84,6 +84,11 @@ body{
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
 }
+/* Override solid-white section backgrounds so the ambient ground shows through. */
+.reviews-section,
+section.section{
+  background:transparent !important;
+}
 @keyframes aur-float-a{
   0%,100%{transform:translate(0,0) scale(1);}
   50%{transform:translate(60px,-40px) scale(1.06);}
