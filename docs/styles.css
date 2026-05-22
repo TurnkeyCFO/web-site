@@ -30,14 +30,15 @@
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{
   font-family:'Plus Jakarta Sans',sans-serif;
-  /* Layered ambient background — bold lavender + warm peach + soft sky, never plain white */
+  /* Layered ambient background — bold lavender + warm peach + soft sky, stretches over the
+     full document height so every section sits on tinted ground rather than plain white. */
   background:
-    radial-gradient(ellipse 1200px 800px at 78% 6%,  rgba(167,139,250,.38) 0%, rgba(167,139,250,0) 60%),
-    radial-gradient(ellipse 1100px 900px at 8% 32%,  rgba(125,211,252,.30) 0%, rgba(125,211,252,0) 65%),
-    radial-gradient(ellipse 1300px 1000px at 92% 68%,rgba(124,58,237,.34)  0%, rgba(124,58,237,0)  65%),
-    radial-gradient(ellipse 1100px 800px at 10% 96%, rgba(255,200,168,.38) 0%, rgba(255,200,168,0) 65%),
-    linear-gradient(180deg,#F5EFFB 0%,#EDE3F7 32%,#FBEFE6 64%,#E9DDF7 100%);
-  background-attachment:fixed,fixed,fixed,fixed,fixed;
+    radial-gradient(ellipse 70% 18% at 78% 18%,  rgba(167,139,250,.55) 0%, rgba(167,139,250,0) 70%),
+    radial-gradient(ellipse 60% 22% at 8% 38%,   rgba(125,211,252,.45) 0%, rgba(125,211,252,0) 70%),
+    radial-gradient(ellipse 80% 25% at 92% 58%,  rgba(124,58,237,.50)  0%, rgba(124,58,237,0)  70%),
+    radial-gradient(ellipse 70% 22% at 12% 78%,  rgba(255,200,168,.55) 0%, rgba(255,200,168,0) 70%),
+    radial-gradient(ellipse 60% 18% at 80% 92%,  rgba(167,139,250,.40) 0%, rgba(167,139,250,0) 70%),
+    linear-gradient(180deg,#F4EBFC 0%,#EAD9F7 22%,#F8E6D6 44%,#E6D2F7 66%,#FAEFE3 84%,#E8D8F5 100%);
   color:var(--dark);
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
