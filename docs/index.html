@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Turnkey Web | Websites for Small Businesses</title>
-<meta name="description" content="Turnkey Web builds fast, mobile-first websites for small service businesses. Live in about 7 days. Book a free 15-minute call and get more calls today.">
+<meta name="description" content="Turnkey Web builds fast, mobile-first websites for small service businesses. First draft live in 3 days — guaranteed, or you don't pay. Book a free 15-minute call.">
 <link rel="canonical" href="https://turnkeyweb.org/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Turnkey Web | Websites for Small Businesses">
-<meta property="og:description" content="Turnkey Web builds fast, mobile-first websites for small service businesses. Live in about 7 days. Book a free 15-minute call and get more calls today.">
+<meta property="og:description" content="Turnkey Web builds fast, mobile-first websites for small service businesses. First draft live in 3 days — guaranteed, or you don't pay. Book a free 15-minute call.">
 <meta property="og:url" content="https://turnkeyweb.org/">
 <meta property="og:site_name" content="Turnkey Web">
 <meta property="og:image" content="https://turnkeyweb.org/assets/tkweb-logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Turnkey Web | Websites for Small Businesses">
-<meta name="twitter:description" content="Turnkey Web builds fast, mobile-first websites for small service businesses. Live in about 7 days. Book a free 15-minute call and get more calls today.">
+<meta name="twitter:description" content="Turnkey Web builds fast, mobile-first websites for small service businesses. First draft live in 3 days — guaranteed, or you don't pay. Book a free 15-minute call.">
 <meta name="theme-color" content="#7C3AED">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -131,6 +131,38 @@
 @media(max-width:480px){
   .roadmap-track{grid-template-columns:1fr 1fr;}
 }
+
+/* Avatar photo override — testimonials */
+.rc-avatar{padding:0 !important;overflow:hidden;background:#EDE9FE;}
+.rc-avatar img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;}
+
+/* FAQ section */
+.faq-section{padding:72px 0 96px;position:relative;z-index:1;background:linear-gradient(180deg,var(--white) 0%,var(--bg) 100%);}
+.faq-list{max-width:780px;margin:40px auto 0;display:flex;flex-direction:column;gap:14px;}
+.faq-item{
+  background:var(--white);border:1px solid var(--border);border-radius:16px;
+  padding:0;overflow:hidden;transition:border-color .25s,box-shadow .25s,transform .25s;
+}
+.faq-item[open]{border-color:rgba(124,58,237,.35);box-shadow:0 10px 28px rgba(124,58,237,.10);}
+.faq-item summary{
+  list-style:none;cursor:pointer;
+  padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  font-weight:700;font-size:16px;color:#0F172A;letter-spacing:-.01em;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{
+  content:"+";font-size:24px;font-weight:400;color:#7C3AED;line-height:1;
+  transition:transform .25s;flex-shrink:0;
+}
+.faq-item[open] summary::after{content:"−";transform:none;}
+.faq-answer{padding:0 24px 22px;color:#475569;font-size:15px;line-height:1.65;}
+.faq-answer p{margin:0 0 10px;}
+.faq-answer p:last-child{margin-bottom:0;}
+.faq-answer strong{color:#0F172A;}
+@media(max-width:600px){
+  .faq-item summary{padding:18px 18px;font-size:15px;}
+  .faq-answer{padding:0 18px 18px;font-size:14.5px;}
+}
 </style>
 
 <script type="application/ld+json">
@@ -223,9 +255,20 @@
       <span class="vh-line1">Your website should <span class="vh-strike">look good.</span></span>
       <span class="vh-line2"><span class="vh-shimmer">Generate customers.</span></span>
     </h1>
-    <p class="video-hero-sub">Turnkey Web builds fast, credible websites for small businesses — with unlimited pages, unlimited updates, and a first draft live in about 7 days. Your site shouldn't sit there. It should book the call.</p>
+    <p class="video-hero-sub">Turnkey Web builds fast, credible websites for small businesses — with unlimited pages, unlimited updates, and a site that's built to book the call.</p>
+
+    <div class="hero-guarantee">
+      <div class="guarantee-badge">
+        <span class="guarantee-icon" aria-hidden="true">⚡</span>
+        <div class="guarantee-text">
+          <strong>The 3-Day Guarantee</strong>
+          <span>First draft live in 3 days — or you don't pay.</span>
+        </div>
+      </div>
+      <a href="#" onclick="return openTKWCalendly('tkw-hero-guarantee')" class="btn btn-video-cta btn-guarantee-cta" data-cta="book-call-guarantee">Book a 15-min call →</a>
+    </div>
+
     <div class="video-hero-cta">
-      <a href="#" onclick="return openTKWCalendly('tkw-video-hero')" class="btn btn-video-cta" data-cta="book-call-video-hero">Book a 15-min call →</a>
       <a href="#process" class="btn-ghost btn-video-ghost">See how it works</a>
     </div>
   </div>
@@ -251,6 +294,34 @@
   @keyframes vh-shimmer{0%{background-position:0% 50%;}100%{background-position:280% 50%;}}
   .video-hero-sub{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif !important;font-size:clamp(1.05rem,1.5vw,1.35rem);font-weight:400;line-height:1.55;color:#1E293B;max-width:760px;margin:0 auto 28px;text-align:center;}
   .video-hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .hero-guarantee{
+    display:inline-flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;
+    background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+    border:1.5px solid rgba(124,58,237,.25);border-radius:100px;
+    padding:10px 14px 10px 22px;margin:0 auto 22px;max-width:760px;
+    box-shadow:0 10px 30px rgba(124,58,237,.18),0 0 0 6px rgba(124,58,237,.06);
+    animation:guarantee-pulse 3.2s ease-in-out infinite;
+  }
+  @keyframes guarantee-pulse{
+    0%,100%{box-shadow:0 10px 30px rgba(124,58,237,.18),0 0 0 6px rgba(124,58,237,.06);}
+    50%{box-shadow:0 12px 36px rgba(124,58,237,.28),0 0 0 8px rgba(124,58,237,.1);}
+  }
+  .guarantee-badge{display:flex;align-items:center;gap:14px;text-align:left;}
+  .guarantee-icon{
+    font-size:26px;line-height:1;
+    background:linear-gradient(135deg,#5B21B6 0%,#7C3AED 50%,#2563FF 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 2px 4px rgba(124,58,237,.35));
+  }
+  .guarantee-text{display:flex;flex-direction:column;line-height:1.25;}
+  .guarantee-text strong{font-size:15px;font-weight:800;color:#0F172A;letter-spacing:-.01em;}
+  .guarantee-text span{font-size:13px;color:#475569;font-weight:500;}
+  .btn-guarantee-cta{padding:11px 24px !important;font-size:.95rem !important;white-space:nowrap;}
+  @media(max-width:680px){
+    .hero-guarantee{flex-direction:column;gap:14px;padding:16px 20px;border-radius:22px;}
+    .guarantee-badge{flex-direction:row;align-items:center;}
+    .btn-guarantee-cta{width:100%;text-align:center;}
+  }
   .btn-video-cta{background:linear-gradient(135deg,#5B21B6 0%,#7C3AED 50%,#2563FF 100%);color:#fff;padding:14px 30px;border-radius:100px;font-weight:700;text-decoration:none;display:inline-block;box-shadow:0 10px 28px rgba(124,58,237,.35);transition:transform .25s,box-shadow .25s;}
   .btn-video-cta:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(124,58,237,.45);}
   .btn-video-ghost{background:rgba(255,255,255,.85);backdrop-filter:blur(8px);color:#5B21B6;border:1.5px solid rgba(124,58,237,.25);padding:13px 26px;border-radius:100px;font-weight:700;text-decoration:none;display:inline-block;transition:background .25s,border-color .25s;}
@@ -310,7 +381,7 @@
         <div class="roadmap-num">04</div>
         <div class="roadmap-icon">🔨</div>
         <div class="roadmap-title">We Build</div>
-        <div class="roadmap-desc">Once we have your assets, we go heads-down. Your first complete draft is delivered within 7 days — ready to review.</div>
+        <div class="roadmap-desc">Once we have your assets, we go heads-down. Your first complete draft is delivered within 3 days — guaranteed, or you don't pay.</div>
       </div>
 
       <div class="roadmap-step" data-reveal data-reveal-delay="320">
@@ -348,7 +419,7 @@
         <div class="rc-stars">★★★★★</div>
         <p class="rc-text">We went from zero online presence to three new client calls in the first week. The site looked so professional that people assumed we'd been doing this for years.</p>
         <div class="rc-author">
-          <div class="rc-avatar">SK</div>
+          <div class="rc-avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&h=120&fit=crop&crop=faces&auto=format&q=80" alt="Sarah K." loading="lazy"></div>
           <div><div class="rc-name">Sarah K.</div><div class="rc-role">Owner · Local Plumbing Company</div></div>
         </div>
       </div>
@@ -357,7 +428,7 @@
         <div class="rc-stars">★★★★★</div>
         <p class="rc-text">Ricky built our law firm site in five days. We're already ranking on the first page of Google for our main practice area. The ROI was almost immediate.</p>
         <div class="rc-author">
-          <div class="rc-avatar">MT</div>
+          <div class="rc-avatar"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=120&h=120&fit=crop&crop=faces&auto=format&q=80" alt="Michael T." loading="lazy"></div>
           <div><div class="rc-name">Michael T.</div><div class="rc-role">Managing Partner · Law Firm</div></div>
         </div>
       </div>
@@ -366,7 +437,7 @@
         <div class="rc-stars">★★★★★</div>
         <p class="rc-text">I needed something that looked serious and converted leads. We booked two new advisory clients in the first month — and I'm confident the website is the reason.</p>
         <div class="rc-author">
-          <div class="rc-avatar">DL</div>
+          <div class="rc-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=faces&auto=format&q=80" alt="David L." loading="lazy"></div>
           <div><div class="rc-name">David L.</div><div class="rc-role">Financial Advisor · Austin, TX</div></div>
         </div>
       </div>
@@ -375,7 +446,7 @@
         <div class="rc-stars">★★★★★</div>
         <p class="rc-text">Our old site was actively hurting us. The new one makes people trust us before they even call — and our consultation requests have more than doubled since we launched.</p>
         <div class="rc-author">
-          <div class="rc-avatar">JM</div>
+          <div class="rc-avatar"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&h=120&fit=crop&crop=faces&auto=format&q=80" alt="Jessica M." loading="lazy"></div>
           <div><div class="rc-name">Jessica M.</div><div class="rc-role">Owner · Lumina Med Spa</div></div>
         </div>
       </div>
@@ -384,7 +455,7 @@
         <div class="rc-stars">★★★★★</div>
         <p class="rc-text">Clear process, fast delivery, exactly what we needed. Our online booking rate went up and I can point directly to the new website as the reason why.</p>
         <div class="rc-author">
-          <div class="rc-avatar">CR</div>
+          <div class="rc-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=faces&auto=format&q=80" alt="Carlos R." loading="lazy"></div>
           <div><div class="rc-name">Carlos R.</div><div class="rc-role">Owner · Ironclad Construction</div></div>
         </div>
       </div>
@@ -393,7 +464,7 @@
         <div class="rc-stars">★★★★★</div>
         <p class="rc-text">The Turnkey team delivered something I'm genuinely proud to send people to. Night and day from what we had before — and it took less than two weeks from start to launch.</p>
         <div class="rc-author">
-          <div class="rc-avatar">AW</div>
+          <div class="rc-avatar"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&crop=faces&auto=format&q=80" alt="Amanda W." loading="lazy"></div>
           <div><div class="rc-name">Amanda W.</div><div class="rc-role">Realtor · Crestwood Realty</div></div>
         </div>
       </div>
@@ -450,6 +521,83 @@
     <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;" data-reveal>
       <a class="btn" href="./work.html">Browse all case studies</a>
       <a class="btn-ghost" href="#" onclick="return openTKWCalendly('tkw-home-work')">Book a 15-min call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-heading" data-reveal>
+      <span class="eyebrow">Frequently asked</span>
+      <h2>Questions before you book.</h2>
+      <p class="section-copy">Everything most small business owners ask before working with us — straight answers, no fluff.</p>
+    </div>
+    <div class="faq-list">
+
+      <details class="faq-item" data-reveal>
+        <summary>How is this different from Wix, Squarespace, or building it myself?</summary>
+        <div class="faq-answer">
+          <p>DIY platforms hand you a blank canvas and a steep learning curve. Most owners end up with a site that <em>looks like a template</em> — and converts like one. We build a custom site designed around how <strong>your</strong> customers actually decide to call you, with unlimited revisions until it's right. You stay focused on running the business; we handle the website.</p>
+        </div>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary>What does the 3-Day Guarantee actually mean?</summary>
+        <div class="faq-answer">
+          <p>Once we have your assets from the brand questionnaire, your first complete draft is live for review within 3 days. If we miss that window for any reason on our end, <strong>you don't pay</strong>. Simple as that.</p>
+          <p>The clock starts when your questionnaire is complete — not when you book the call.</p>
+        </div>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary>What if I don't love the first draft?</summary>
+        <div class="faq-answer">
+          <p>That's what unlimited revisions are for. We refine — swap sections, change copy, rework the design — until you genuinely love it. We don't launch a site you're not proud of.</p>
+        </div>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary>Do I own the website when it's done?</summary>
+        <div class="faq-answer">
+          <p>Yes. Full ownership of the code, the content, the domain, and the hosting account. We don't hold anything hostage. If you ever decide to part ways, the entire site goes with you.</p>
+        </div>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary>What's included? Hosting? SEO? Edits after launch?</summary>
+        <div class="faq-answer">
+          <p><strong>Included in every build:</strong> custom design, unlimited pages, mobile-first responsive layout, fast hosting setup, on-page SEO foundation (titles, meta, schema, sitemap), Google Business Profile alignment, and a clean handoff.</p>
+          <p><strong>After launch:</strong> ongoing edits and updates are part of our monthly plan — text changes, new sections, new pages, photo swaps, whatever you need. No "change request" fees, no per-edit billing.</p>
+        </div>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary>How much does it cost?</summary>
+        <div class="faq-answer">
+          <p>Build pricing is set per project based on scope and complexity — most service-business sites land between <strong>$2,000 and $6,000</strong> for the initial build, with a flat monthly plan for ongoing updates and hosting after launch.</p>
+          <p>On the 15-minute call we'll quote you an exact number for your project before you commit to anything.</p>
+        </div>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary>I'm not in Austin — can you still work with me?</summary>
+        <div class="faq-answer">
+          <p>Yes. We're based in Austin, TX but we build sites for businesses anywhere in the U.S. The entire process is remote — short calls, a questionnaire, async reviews. Most clients never need to meet in person.</p>
+        </div>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary>Will my site rank on Google?</summary>
+        <div class="faq-answer">
+          <p>Every site is built with strong on-page SEO foundations — proper titles, meta tags, schema markup, fast load times, mobile-first, and a clean sitemap submitted to Google Search Console. That gets you eligible to rank.</p>
+          <p>Sustained ranking (especially for competitive keywords) takes ongoing content and link work. We offer SEO as a separate service if you want to push beyond the foundation.</p>
+        </div>
+      </details>
+
+    </div>
+    <div style="text-align:center;margin-top:48px;" data-reveal>
+      <a class="btn" href="#" onclick="return openTKWCalendly('tkw-home-faq')" style="font-size:15px;padding:15px 36px;">Book a 15-min call →</a>
     </div>
   </div>
 </section>
