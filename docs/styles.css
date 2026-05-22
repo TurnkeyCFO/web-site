@@ -234,6 +234,35 @@ p{line-height:1.72;}
 .brand-lock{display:flex;align-items:center;gap:0;text-decoration:none;}
 .nav-logo{height:99px;width:auto;}
 @media(max-width:768px){.nav-logo{height:72px;}}
+
+/* ── Sitewide section header gradient + eyebrow pill ────────────────── */
+.section-heading h2,
+.guides-hero h1,
+.guides-cta h2{
+  background:linear-gradient(120deg,#5B21B6 0%,#7C3AED 22%,#A78BFA 42%,#2563FF 55%,#A78BFA 70%,#7C3AED 85%,#5B21B6 100%);
+  background-size:280% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  display:inline-block;
+  animation:tkw-section-shimmer 9s linear infinite;
+  letter-spacing:-.02em;
+  line-height:1.18;
+  padding-bottom:.14em;
+  overflow:visible;
+}
+@keyframes tkw-section-shimmer{0%{background-position:0% 50%;}100%{background-position:280% 50%;}}
+.section-heading,.guides-hero,.guides-cta{overflow:visible;}
+.section-heading h2 *,.guides-hero h1 *,.guides-cta h2 *{overflow:visible;}
+
+.section-heading .eyebrow,
+.guides-hero .eyebrow,
+.guide-card-eyebrow{
+  display:inline-block;padding:6px 14px;border-radius:100px;
+  background:linear-gradient(135deg,rgba(91,33,182,.10) 0%,rgba(124,58,237,.14) 50%,rgba(37,99,255,.10) 100%);
+  border:1px solid rgba(124,58,237,.22);
+  color:#5B21B6;font-weight:700;letter-spacing:.12em;font-size:11.5px;
+  text-transform:uppercase;margin-bottom:14px;
+}
 .nav-links{display:flex;align-items:center;gap:4px;}
 .nav-links a{
   font-size:14px;font-weight:600;color:var(--slate);
