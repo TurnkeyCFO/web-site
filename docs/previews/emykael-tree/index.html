@@ -3,18 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>E. Mykael Tree Trimming & Removal — La Marque, TX | 5.0★ Family-Owned Tree Service</title>
+<title>E. Mykael Tree Trimming &amp; Removal — La Marque, TX | 5.0★ Family-Owned Tree Service</title>
 <meta name="description" content="Family-owned, 5.0-star tree trimming, removal, stump grinding & landscaping serving La Marque, Galveston County & the greater Houston-Galveston area. Call Mike at (713) 320-3128 for a free quote." />
-<meta name="theme-color" content="#1F3A2E" />
+<meta name="theme-color" content="#0B1410" />
 
-<!-- Open Graph -->
-<meta property="og:title" content="E. Mykael Tree Trimming & Removal Service" />
+<meta property="og:title" content="E. Mykael Tree Trimming &amp; Removal Service" />
 <meta property="og:description" content="La Marque's 5.0-star family-owned tree service. Trimming, removal, stump grinding, landscaping." />
 <meta property="og:type" content="website" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -22,557 +21,707 @@
     theme: {
       extend: {
         colors: {
-          cream:   '#FAF6EE',
-          bone:    '#F2ECDD',
-          forest:  '#1F3A2E',
-          moss:    '#2F5A3F',
-          sage:    '#7A8B6B',
-          bark:    '#4A3528',
-          amber:   '#C08A3E',
-          ink:     '#1B2520',
-          muted:   '#5A6157',
+          night:    '#070C0A',
+          deep:     '#0B1410',
+          forest:   '#13231C',
+          moss:     '#26513D',
+          sage:     '#7FA88C',
+          glow:     '#9EE5B7',
+          amber:    '#E0A857',
+          amberHot: '#F4C97A',
+          bone:     '#F3EBDA',
+          cream:    '#FAF6EE',
+          ink:      '#0A0F0D',
         },
         fontFamily: {
           sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
           display: ['Fraunces', 'Georgia', 'serif'],
         },
-        boxShadow: {
-          'soft': '0 2px 24px -8px rgba(31,58,46,0.18)',
-          'lift': '0 24px 60px -20px rgba(31,58,46,0.35)',
-        }
       }
     }
   }
 </script>
 
 <style>
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1B2520; background: #FAF6EE; }
-  .font-display { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; letter-spacing: -0.02em; }
-  .grain { background-image: radial-gradient(rgba(31,58,46,0.04) 1px, transparent 1px); background-size: 4px 4px; }
-  .hero-overlay { background: linear-gradient(100deg, rgba(27,37,32,0.86) 0%, rgba(27,37,32,0.72) 45%, rgba(27,37,32,0.45) 75%, rgba(27,37,32,0.35) 100%); }
-  .img-frame { transition: transform .5s ease, box-shadow .5s ease; }
-  .img-frame:hover { transform: translateY(-4px); box-shadow: 0 24px 60px -20px rgba(31,58,46,0.35); }
-  .marquee { animation: marquee 40s linear infinite; }
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .underline-grow { position: relative; }
-  .underline-grow::after {
-    content:''; position:absolute; left:0; right:0; bottom:-4px; height:2px;
-    background: currentColor; transform: scaleX(0); transform-origin: left;
-    transition: transform .35s ease;
+  :root {
+    --amber: #E0A857;
+    --amberHot: #F4C97A;
+    --glow: #9EE5B7;
   }
-  .underline-grow:hover::after { transform: scaleX(1); }
-  .leaf-divider { display:flex; align-items:center; gap:14px; color:#7A8B6B; }
-  .leaf-divider::before, .leaf-divider::after { content:''; flex:1; height:1px; background: currentColor; opacity:.4; }
+  html, body { background: #070C0A; color: #F3EBDA; }
+  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  .font-display { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; letter-spacing: -0.025em; }
+
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: hidden; }
+
+  .glass {
+    background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+  }
+  .glass-amber {
+    background: linear-gradient(135deg, rgba(224,168,87,0.14), rgba(224,168,87,0.04));
+    border: 1px solid rgba(224,168,87,0.22);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .glass-dark {
+    background: linear-gradient(135deg, rgba(7,12,10,0.65), rgba(11,20,16,0.55));
+    border: 1px solid rgba(158,229,183,0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .halo-amber { box-shadow: 0 0 60px -10px rgba(224,168,87,0.45), 0 0 120px -30px rgba(244,201,122,0.25); }
+  .halo-glow  { box-shadow: 0 0 80px -10px rgba(158,229,183,0.35); }
+  .text-glow  { text-shadow: 0 0 40px rgba(224,168,87,0.55), 0 0 8px rgba(244,201,122,0.4); }
+
+  #bg-canvas, #tree-canvas {
+    position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
+  }
+
+  .grain::before {
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:0.06; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
+  }
+
+  .reveal { opacity: 0; transform: translateY(40px); }
+
+  @keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .float-y { animation: float-y 6s ease-in-out infinite; }
+
+  .marquee { animation: marquee 50s linear infinite; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  .grad-text {
+    background: linear-gradient(120deg, #F4C97A 0%, #E0A857 35%, #9EE5B7 75%, #7FA88C 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .grad-border {
+    position: relative; border-radius: 24px; background: rgba(11,20,16,0.7); backdrop-filter: blur(18px);
+  }
+  .grad-border::before {
+    content:''; position:absolute; inset:-1px; border-radius:25px; padding:1px;
+    background: linear-gradient(135deg, rgba(244,201,122,0.5), rgba(158,229,183,0.3), rgba(224,168,87,0.1));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events:none;
+  }
+
+  @keyframes pulseDot { 0%,100% { opacity:1; transform: translateY(0); } 50% { opacity:0.3; transform: translateY(6px); } }
+  .pulse-dot { animation: pulseDot 2.4s ease-in-out infinite; }
+
+  #cursor-blob {
+    position: fixed; top:0; left:0; width: 260px; height: 260px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(244,201,122,0.18) 0%, rgba(224,168,87,0.05) 40%, transparent 70%);
+    pointer-events: none; mix-blend-mode: screen; z-index: 60;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+  }
+  @media (hover: none) { #cursor-blob { display: none; } }
+
+  .nav-blur { background: linear-gradient(180deg, rgba(7,12,10,0.85), rgba(7,12,10,0)); }
+
+  .lift { transition: transform 0.6s cubic-bezier(0.22,1,0.36,1), box-shadow 0.6s ease, border-color 0.4s ease; }
+  .lift:hover { transform: translateY(-8px) scale(1.01); border-color: rgba(244,201,122,0.4); }
+
+  .img-frame { overflow: hidden; border-radius: 24px; }
+  .img-frame img { transition: transform 1.2s cubic-bezier(0.22,1,0.36,1); }
+  .img-frame:hover img { transform: scale(1.06); }
+
+  .hud-grid {
+    background-image:
+      linear-gradient(to right, rgba(158,229,183,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(158,229,183,0.05) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .vignette::after {
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(7,12,10,0.85) 100%);
+  }
+
+  .div-line { height:1px; background: linear-gradient(90deg, transparent, rgba(158,229,183,0.3), transparent); }
+
+  .chip {
+    display:inline-flex; align-items:center; gap:8px; padding: 6px 14px;
+    background: rgba(224,168,87,0.08);
+    border: 1px solid rgba(224,168,87,0.25);
+    border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #F4C97A;
+  }
+  .chip-dot { width: 6px; height: 6px; border-radius: 50%; background: #F4C97A; box-shadow: 0 0 12px #F4C97A; }
+
+  .ulgrow { position: relative; }
+  .ulgrow::after {
+    content:''; position:absolute; left:0; right:0; bottom:-4px; height:1px;
+    background: linear-gradient(90deg, #F4C97A, #9EE5B7);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .5s cubic-bezier(0.22,1,0.36,1);
+  }
+  .ulgrow:hover::after { transform: scaleX(1); }
+
+  canvas { user-select: none; }
+
+  .splitline { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.1em; }
+  .splitline > span { display: inline-block; transform: translateY(110%); }
+
+  .orb {
+    width: 56px; height: 56px; border-radius: 16px;
+    background: linear-gradient(135deg, rgba(244,201,122,0.25), rgba(158,229,183,0.1));
+    border: 1px solid rgba(244,201,122,0.3);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: inset 0 0 20px rgba(244,201,122,0.15);
+  }
+
+  .marq-text { color: rgba(243,235,218,0.45); }
 </style>
 </head>
-<body class="bg-cream text-ink antialiased">
+<body class="bg-night text-bone">
 
-<!-- ============ TOP BAR ============ -->
-<div class="bg-forest text-cream text-sm">
-  <div class="max-w-7xl mx-auto px-6 py-2 flex flex-wrap items-center justify-between gap-y-1">
-    <div class="flex items-center gap-4">
+<div id="cursor-blob"></div>
+
+<!-- ============ TOP UTILITY BAR ============ -->
+<div class="relative z-40 border-b border-bone/5 bg-night/80 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto px-6 py-2.5 flex flex-wrap items-center justify-between gap-y-1 text-[12px] text-bone/70">
+    <div class="flex items-center gap-5">
       <span class="hidden sm:inline-flex items-center gap-2">
-        <svg class="w-4 h-4 text-amber" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.955a1 1 0 00.95.69h4.158c.969 0 1.371 1.24.588 1.81l-3.363 2.445a1 1 0 00-.364 1.118l1.286 3.955c.3.921-.755 1.688-1.54 1.118l-3.363-2.445a1 1 0 00-1.176 0L5.49 18.018c-.784.57-1.838-.197-1.539-1.118l1.286-3.955a1 1 0 00-.364-1.118L1.51 9.382c-.783-.57-.38-1.81.588-1.81h4.158a1 1 0 00.95-.69l1.286-3.955z"/></svg>
-        5.0 ★ · 32+ five-star reviews
+        <span class="text-amberHot">★ ★ ★ ★ ★</span>
+        <span>5.0 · 32+ verified reviews</span>
       </span>
       <span class="inline-flex items-center gap-2">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        La Marque, TX · Serving Galveston County
+        <svg class="w-3.5 h-3.5 text-glow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        La Marque, TX · Galveston County
       </span>
     </div>
-    <a href="tel:+17133203128" class="font-medium hover:text-amber transition">📞 (713) 320-3128</a>
+    <a href="tel:+17133203128" class="font-medium text-amberHot hover:text-bone transition">(713) 320-3128 · Call Mike</a>
   </div>
 </div>
 
 <!-- ============ NAV ============ -->
-<header class="absolute top-9 left-0 right-0 z-30">
-  <nav class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-3 text-cream">
-      <span class="w-10 h-10 rounded-full bg-cream/15 backdrop-blur-sm border border-cream/30 flex items-center justify-center">
-        <svg class="w-6 h-6 text-cream" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C9 2 7 4 7 7c-2 0-3.5 1.5-3.5 3.5S5 14 7 14c-1.5 0-3 1-3 3s1.5 3 3 3h10c1.5 0 3-1 3-3s-1.5-3-3-3c2 0 3.5-1.5 3.5-3.5S19 7 17 7c0-3-2-5-5-5zm-1 18v-6h2v6h-2z"/></svg>
+<header id="site-nav" class="fixed top-9 left-0 right-0 z-40 nav-blur transition-all duration-500">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <span class="w-11 h-11 rounded-2xl glass-amber flex items-center justify-center halo-amber">
+        <svg class="w-6 h-6 text-amberHot" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C9 2 7 4 7 7c-2 0-3.5 1.5-3.5 3.5S5 14 7 14c-1.5 0-3 1-3 3s1.5 3 3 3h10c1.5 0 3-1 3-3s-1.5-3-3-3c2 0 3.5-1.5 3.5-3.5S19 7 17 7c0-3-2-5-5-5zm-1 18v-6h2v6h-2z"/></svg>
       </span>
       <div class="leading-tight">
-        <div class="font-display text-xl font-semibold tracking-tight">E. Mykael</div>
-        <div class="text-[11px] uppercase tracking-[0.18em] text-cream/70">Tree Service · La Marque</div>
+        <div class="font-display text-xl font-medium tracking-tight text-bone">E. Mykael</div>
+        <div class="text-[10px] uppercase tracking-[0.22em] text-bone/50">Tree Service · Est. La Marque</div>
       </div>
     </a>
-    <div class="hidden md:flex items-center gap-8 text-cream/90 text-sm font-medium">
-      <a href="#services" class="underline-grow">Services</a>
-      <a href="#about" class="underline-grow">About Mike</a>
-      <a href="#gallery" class="underline-grow">Our Work</a>
-      <a href="#reviews" class="underline-grow">Reviews</a>
-      <a href="#contact" class="underline-grow">Service Area</a>
+    <div class="hidden md:flex items-center gap-9 text-bone/75 text-[13px] font-medium">
+      <a href="#services" class="ulgrow">Services</a>
+      <a href="#about" class="ulgrow">Mike &amp; Christina</a>
+      <a href="#gallery" class="ulgrow">Our Work</a>
+      <a href="#reviews" class="ulgrow">Reviews</a>
+      <a href="#contact" class="ulgrow">Service Area</a>
     </div>
-    <a href="tel:+17133203128" class="hidden sm:inline-flex items-center gap-2 bg-amber hover:bg-amber/90 text-ink font-semibold px-5 py-2.5 rounded-full transition shadow-soft">
+    <a href="tel:+17133203128" class="hidden sm:inline-flex items-center gap-2 glass-amber text-amberHot font-semibold px-5 py-2.5 rounded-full transition hover:halo-amber text-sm">
+      <span class="w-1.5 h-1.5 rounded-full bg-amberHot animate-pulse"></span>
       Free Quote
     </a>
   </nav>
 </header>
 
 <!-- ============ HERO ============ -->
-<section id="top" class="relative min-h-[92vh] flex items-center overflow-hidden">
-  <img src="https://images.unsplash.com/photo-1778629948588-67f3a83fb68e?w=2400&q=80&auto=format&fit=crop"
-       alt="Texas residential home framed by mature shade trees"
-       class="absolute inset-0 w-full h-full object-cover" />
-  <div class="absolute inset-0 hero-overlay"></div>
+<section id="top" class="relative min-h-screen flex items-center overflow-hidden grain vignette">
+  <canvas id="bg-canvas"></canvas>
 
-  <div class="relative max-w-7xl mx-auto px-6 pt-32 pb-20 w-full">
-    <div class="max-w-3xl text-cream">
-      <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cream/10 border border-cream/25 text-xs uppercase tracking-[0.18em] mb-6">
-        <span class="w-1.5 h-1.5 rounded-full bg-amber"></span>
-        Family-owned · La Marque, TX
-      </span>
-      <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-medium leading-[1.02] mb-6">
-        Honest tree work,<br/>
-        <span class="text-amber italic">done right</span> the first time.
+  <div class="absolute inset-y-0 right-0 w-full lg:w-[55%] opacity-90 pointer-events-none">
+    <canvas id="tree-canvas"></canvas>
+  </div>
+
+  <div class="absolute inset-0 hud-grid opacity-40 pointer-events-none"></div>
+
+  <div class="absolute top-1/3 -left-32 w-[420px] h-[420px] rounded-full bg-amber/10 blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-glow/5 blur-3xl pointer-events-none float-y"></div>
+
+  <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-night pointer-events-none z-10"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 pt-40 pb-32 w-full z-20">
+    <div class="max-w-3xl">
+      <div class="chip mb-7 reveal" data-reveal>
+        <span class="chip-dot"></span>
+        Family-owned · La Marque · Texas
+      </div>
+
+      <h1 class="font-display text-5xl sm:text-6xl lg:text-[5.5rem] font-light leading-[0.98] mb-8 text-bone">
+        <span class="block splitline" data-split>Honest tree work,</span>
+        <span class="block splitline" data-split><em class="italic grad-text">done right —</em></span>
+        <span class="block splitline" data-split>the first time.</span>
       </h1>
-      <p class="text-lg sm:text-xl text-cream/85 mb-10 max-w-2xl leading-relaxed">
+
+      <p class="text-lg sm:text-xl text-bone/70 mb-12 max-w-2xl leading-relaxed reveal" data-reveal>
         For the families of La Marque, Texas City and Galveston County — Mike and Christina run a small, careful crew that trims, removes, grinds and clears with the same care they'd give their own yard.
       </p>
 
-      <div class="flex flex-wrap items-center gap-4 mb-12">
+      <div class="flex flex-wrap items-center gap-5 mb-16 reveal" data-reveal>
         <a href="tel:+17133203128"
-           class="inline-flex items-center gap-3 bg-amber hover:bg-amber/90 text-ink font-semibold px-7 py-4 rounded-full shadow-lift transition group">
+           class="group relative inline-flex items-center gap-3 bg-gradient-to-r from-amber to-amberHot text-ink font-semibold px-8 py-4 rounded-full halo-amber transition-all hover:scale-[1.02]">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
           Call (713) 320-3128
         </a>
-        <a href="#services" class="inline-flex items-center gap-2 text-cream border-b border-cream/40 pb-1 hover:border-amber hover:text-amber transition">
-          See what we do
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        <a href="#services" class="group inline-flex items-center gap-2 text-bone/80 hover:text-amberHot transition">
+          <span class="ulgrow">See what we do</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
       </div>
 
-      <!-- Trust strip -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl pt-8 border-t border-cream/15">
-        <div>
-          <div class="font-display text-3xl text-amber">5.0★</div>
-          <div class="text-xs uppercase tracking-wider text-cream/70 mt-1">Avg. Rating</div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl reveal" data-reveal>
+        <div class="glass rounded-2xl p-5">
+          <div class="font-display text-3xl text-amberHot">5.0★</div>
+          <div class="text-[10px] uppercase tracking-[0.2em] text-bone/55 mt-2">Avg. Rating</div>
         </div>
-        <div>
-          <div class="font-display text-3xl text-amber">32+</div>
-          <div class="text-xs uppercase tracking-wider text-cream/70 mt-1">5-Star Reviews</div>
+        <div class="glass rounded-2xl p-5">
+          <div class="font-display text-3xl text-amberHot">32+</div>
+          <div class="text-[10px] uppercase tracking-[0.2em] text-bone/55 mt-2">5-Star Reviews</div>
         </div>
-        <div>
-          <div class="font-display text-3xl text-amber">100%</div>
-          <div class="text-xs uppercase tracking-wider text-cream/70 mt-1">Cleanup, Always</div>
+        <div class="glass rounded-2xl p-5">
+          <div class="font-display text-3xl text-amberHot">100%</div>
+          <div class="text-[10px] uppercase tracking-[0.2em] text-bone/55 mt-2">Cleanup, Always</div>
         </div>
-        <div>
-          <div class="font-display text-3xl text-amber">Free</div>
-          <div class="text-xs uppercase tracking-wider text-cream/70 mt-1">On-Site Quotes</div>
+        <div class="glass rounded-2xl p-5">
+          <div class="font-display text-3xl text-amberHot">Free</div>
+          <div class="text-[10px] uppercase tracking-[0.2em] text-bone/55 mt-2">On-Site Quotes</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- scroll cue -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/60 text-xs uppercase tracking-[0.25em] flex flex-col items-center gap-2">
-    <span>Keep scrolling</span>
-    <div class="w-px h-10 bg-cream/40 animate-pulse"></div>
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-bone/50 text-[10px] uppercase tracking-[0.3em] flex flex-col items-center gap-3 z-20">
+    <span>Scroll</span>
+    <div class="w-px h-12 bg-gradient-to-b from-amberHot/60 to-transparent">
+      <div class="w-1.5 h-1.5 rounded-full bg-amberHot -ml-[3px] pulse-dot"></div>
+    </div>
   </div>
 </section>
 
 <!-- ============ TRUST MARQUEE ============ -->
-<section class="bg-bone py-5 border-y border-forest/10 overflow-hidden">
-  <div class="flex marquee whitespace-nowrap text-forest/70 text-sm font-medium uppercase tracking-[0.22em]">
-    <div class="flex items-center gap-12 px-6">
-      <span>★ Family-Owned & Operated</span><span class="text-amber">✦</span>
-      <span>Licensed Tree Care</span><span class="text-amber">✦</span>
-      <span>Free On-Site Estimates</span><span class="text-amber">✦</span>
-      <span>Serving Galveston County</span><span class="text-amber">✦</span>
-      <span>Clean Yard Guarantee</span><span class="text-amber">✦</span>
-      <span>32+ Five-Star Reviews</span><span class="text-amber">✦</span>
+<section class="relative py-6 border-y border-bone/5 bg-deep overflow-hidden">
+  <div class="flex marquee whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.32em] marq-text">
+    <div class="flex items-center gap-14 px-8">
+      <span>★ Family-Owned &amp; Operated</span><span class="text-amber/60">✦</span>
+      <span>Licensed Tree Care</span><span class="text-amber/60">✦</span>
+      <span>Free On-Site Estimates</span><span class="text-amber/60">✦</span>
+      <span>Serving Galveston County</span><span class="text-amber/60">✦</span>
+      <span>Clean Yard Guarantee</span><span class="text-amber/60">✦</span>
+      <span>32+ Five-Star Reviews</span><span class="text-amber/60">✦</span>
     </div>
-    <div class="flex items-center gap-12 px-6" aria-hidden="true">
-      <span>★ Family-Owned & Operated</span><span class="text-amber">✦</span>
-      <span>Licensed Tree Care</span><span class="text-amber">✦</span>
-      <span>Free On-Site Estimates</span><span class="text-amber">✦</span>
-      <span>Serving Galveston County</span><span class="text-amber">✦</span>
-      <span>Clean Yard Guarantee</span><span class="text-amber">✦</span>
-      <span>32+ Five-Star Reviews</span><span class="text-amber">✦</span>
+    <div class="flex items-center gap-14 px-8" aria-hidden="true">
+      <span>★ Family-Owned &amp; Operated</span><span class="text-amber/60">✦</span>
+      <span>Licensed Tree Care</span><span class="text-amber/60">✦</span>
+      <span>Free On-Site Estimates</span><span class="text-amber/60">✦</span>
+      <span>Serving Galveston County</span><span class="text-amber/60">✦</span>
+      <span>Clean Yard Guarantee</span><span class="text-amber/60">✦</span>
+      <span>32+ Five-Star Reviews</span><span class="text-amber/60">✦</span>
     </div>
   </div>
 </section>
 
 <!-- ============ SERVICES ============ -->
-<section id="services" class="py-24 sm:py-32 grain">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="max-w-2xl mb-16">
-      <span class="text-amber text-sm font-semibold uppercase tracking-[0.2em]">What we do</span>
-      <h2 class="font-display text-4xl sm:text-5xl font-medium mt-3 mb-5 leading-[1.05]">
-        The full canopy of care — from <em class="text-moss">crown to stump</em>.
+<section id="services" class="relative py-32 sm:py-40 grain overflow-hidden">
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-amber/5 blur-3xl pointer-events-none"></div>
+  <div class="absolute inset-0 hud-grid opacity-20 pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="max-w-3xl mb-20">
+      <div class="chip mb-6 reveal" data-reveal>
+        <span class="chip-dot"></span> What we do
+      </div>
+      <h2 class="font-display text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.02] mb-7 reveal" data-reveal>
+        The full canopy of care —<br/>
+        from <em class="italic grad-text">crown</em> to <em class="italic grad-text">stump</em>.
       </h2>
-      <p class="text-lg text-muted leading-relaxed">
+      <p class="text-lg text-bone/65 leading-relaxed max-w-2xl reveal" data-reveal>
         Whether you've got a single palm leaning over the pool or a storm-damaged oak threatening the house, Mike's crew shows up on time, works clean, and leaves your yard looking better than when we arrived.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
 
-      <!-- Service card 1 -->
-      <article class="group bg-white rounded-3xl overflow-hidden shadow-soft border border-forest/5 img-frame">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1626828476637-5bd713ef9f22?w=900&q=80&auto=format&fit=crop"
-               alt="Arborist trimming branches" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+      <article class="group glass-dark rounded-3xl overflow-hidden lift reveal" data-reveal>
+        <div class="aspect-[4/3] overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1626828476637-5bd713ef9f22?w=900&q=80&auto=format&fit=crop" alt="Arborist trimming branches" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-deep/30 to-transparent"></div>
         </div>
-        <div class="p-8">
-          <div class="text-amber text-2xl mb-2">✦</div>
-          <h3 class="font-display text-2xl font-semibold mb-3">Tree Trimming & Pruning</h3>
-          <p class="text-muted leading-relaxed">Shape, thin and lift your canopy for a healthier tree and a safer yard. We handle live oaks, pecans, palms — the whole Gulf Coast lineup.</p>
+        <div class="p-8 -mt-2 relative">
+          <div class="orb mb-5"><svg class="w-6 h-6 text-amberHot" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M12 7l-4-4M12 7l4-4M12 13l-5-5M12 13l5-5M12 19l-6-6M12 19l6-6"/></svg></div>
+          <h3 class="font-display text-2xl font-medium mb-3 text-bone">Tree Trimming &amp; Pruning</h3>
+          <p class="text-bone/60 leading-relaxed text-[15px]">Shape, thin and lift your canopy for a healthier tree and a safer yard. We handle live oaks, pecans, palms — the whole Gulf Coast lineup.</p>
         </div>
       </article>
 
-      <!-- Service card 2 -->
-      <article class="group bg-white rounded-3xl overflow-hidden shadow-soft border border-forest/5 img-frame">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1574359173269-291f060e6fe1?w=900&q=80&auto=format&fit=crop"
-               alt="Large tree removal" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+      <article class="group glass-dark rounded-3xl overflow-hidden lift reveal" data-reveal>
+        <div class="aspect-[4/3] overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1574359173269-291f060e6fe1?w=900&q=80&auto=format&fit=crop" alt="Large tree removal" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-deep/30 to-transparent"></div>
         </div>
-        <div class="p-8">
-          <div class="text-amber text-2xl mb-2">✦</div>
-          <h3 class="font-display text-2xl font-semibold mb-3">Full Tree Removal</h3>
-          <p class="text-muted leading-relaxed">Dead, dying, leaning, or just in the wrong place — we take it down piece by piece, with rigging when the space is tight and care every step.</p>
-        </div>
-      </article>
-
-      <!-- Service card 3 -->
-      <article class="group bg-white rounded-3xl overflow-hidden shadow-soft border border-forest/5 img-frame">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1474742509976-ddec6b387356?w=900&q=80&auto=format&fit=crop"
-               alt="Chainsaw cutting a stump, sawdust flying" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
-        </div>
-        <div class="p-8">
-          <div class="text-amber text-2xl mb-2">✦</div>
-          <h3 class="font-display text-2xl font-semibold mb-3">Stump Grinding</h3>
-          <p class="text-muted leading-relaxed">Don't live with that stump for one more season. We grind it below grade so you can sod, plant or just stop tripping over it.</p>
+        <div class="p-8 -mt-2 relative">
+          <div class="orb mb-5"><svg class="w-6 h-6 text-amberHot" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l-3 6h6l-3-6zM9 8v6M15 8v6M9 14h6M9 14l-2 4M15 14l2 4M11 22h2"/></svg></div>
+          <h3 class="font-display text-2xl font-medium mb-3 text-bone">Full Tree Removal</h3>
+          <p class="text-bone/60 leading-relaxed text-[15px]">Dead, dying, leaning, or just in the wrong place — we take it down piece by piece, with rigging when the space is tight and care every step.</p>
         </div>
       </article>
 
-      <!-- Service card 4 -->
-      <article class="group bg-white rounded-3xl overflow-hidden shadow-soft border border-forest/5 img-frame">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1684515569681-674b494baa74?w=900&q=80&auto=format&fit=crop"
-               alt="Palm tree alongside a modern residential home" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+      <article class="group glass-dark rounded-3xl overflow-hidden lift reveal" data-reveal>
+        <div class="aspect-[4/3] overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1474742509976-ddec6b387356?w=900&q=80&auto=format&fit=crop" alt="Chainsaw cutting a stump" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-deep/30 to-transparent"></div>
         </div>
-        <div class="p-8">
-          <div class="text-amber text-2xl mb-2">✦</div>
-          <h3 class="font-display text-2xl font-semibold mb-3">Palm Tree Service</h3>
-          <p class="text-muted leading-relaxed">Skinned, trimmed and shaped right — the way a palm should look. Especially the ones leaning over a pool, deck or driveway.</p>
-        </div>
-      </article>
-
-      <!-- Service card 5 -->
-      <article class="group bg-white rounded-3xl overflow-hidden shadow-soft border border-forest/5 img-frame">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1779636489807-ffad2fc04e8e?w=900&q=80&auto=format&fit=crop"
-               alt="Crew clearing brush along a residential fence line in Texas" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
-        </div>
-        <div class="p-8">
-          <div class="text-amber text-2xl mb-2">✦</div>
-          <h3 class="font-display text-2xl font-semibold mb-3">Brush & Lot Clearing</h3>
-          <p class="text-muted leading-relaxed">Overgrown lot? Storm cleanup? Hauling? We clear it, chip it, haul it off — and leave the property looking ready to build, sell, or just sit in.</p>
+        <div class="p-8 -mt-2 relative">
+          <div class="orb mb-5"><svg class="w-6 h-6 text-amberHot" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="11" stroke-dasharray="2 3"/></svg></div>
+          <h3 class="font-display text-2xl font-medium mb-3 text-bone">Stump Grinding</h3>
+          <p class="text-bone/60 leading-relaxed text-[15px]">Don't live with that stump for one more season. We grind it below grade so you can sod, plant or just stop tripping over it.</p>
         </div>
       </article>
 
-      <!-- Service card 6 -->
-      <article class="group bg-white rounded-3xl overflow-hidden shadow-soft border border-forest/5 img-frame">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1779636489744-76eb81c44925?w=900&q=80&auto=format&fit=crop"
-               alt="Landscaping a residential front yard with a mature oak tree" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+      <article class="group glass-dark rounded-3xl overflow-hidden lift reveal" data-reveal>
+        <div class="aspect-[4/3] overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1684515569681-674b494baa74?w=900&q=80&auto=format&fit=crop" alt="Palm tree by modern home" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-deep/30 to-transparent"></div>
         </div>
-        <div class="p-8">
-          <div class="text-amber text-2xl mb-2">✦</div>
-          <h3 class="font-display text-2xl font-semibold mb-3">Landscaping</h3>
-          <p class="text-muted leading-relaxed">Once the tree work is done, we'll help you put the yard back together — fresh sod, mulch, hedge trimming and clean-line landscape touch-ups.</p>
+        <div class="p-8 -mt-2 relative">
+          <div class="orb mb-5"><svg class="w-6 h-6 text-amberHot" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22V10M12 10c-3-3-7-3-7-3s2 5 7 3zM12 10c3-3 7-3 7-3s-2 5-7 3zM12 10c0-4 3-7 3-7s-1 5-3 7zM12 10c0-4-3-7-3-7s1 5 3 7z"/></svg></div>
+          <h3 class="font-display text-2xl font-medium mb-3 text-bone">Palm Tree Service</h3>
+          <p class="text-bone/60 leading-relaxed text-[15px]">Skinned, trimmed and shaped right — the way a palm should look. Especially the ones leaning over a pool, deck or driveway.</p>
+        </div>
+      </article>
+
+      <article class="group glass-dark rounded-3xl overflow-hidden lift reveal" data-reveal>
+        <div class="aspect-[4/3] overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1779636489807-ffad2fc04e8e?w=900&q=80&auto=format&fit=crop" alt="Crew clearing brush" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-deep/30 to-transparent"></div>
+        </div>
+        <div class="p-8 -mt-2 relative">
+          <div class="orb mb-5"><svg class="w-6 h-6 text-amberHot" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20l4-12 4 6 4-10 4 16M4 20h16"/></svg></div>
+          <h3 class="font-display text-2xl font-medium mb-3 text-bone">Brush &amp; Lot Clearing</h3>
+          <p class="text-bone/60 leading-relaxed text-[15px]">Overgrown lot? Storm cleanup? Hauling? We clear it, chip it, haul it off — and leave the property looking ready to build, sell, or just sit in.</p>
+        </div>
+      </article>
+
+      <article class="group glass-dark rounded-3xl overflow-hidden lift reveal" data-reveal>
+        <div class="aspect-[4/3] overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1779636489744-76eb81c44925?w=900&q=80&auto=format&fit=crop" alt="Front yard landscaping with mature oak" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-deep/30 to-transparent"></div>
+        </div>
+        <div class="p-8 -mt-2 relative">
+          <div class="orb mb-5"><svg class="w-6 h-6 text-amberHot" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V11l7-5 7 5v10M9 21v-6h6v6"/></svg></div>
+          <h3 class="font-display text-2xl font-medium mb-3 text-bone">Landscaping</h3>
+          <p class="text-bone/60 leading-relaxed text-[15px]">Once the tree work is done, we'll help you put the yard back together — fresh sod, mulch, hedge trimming and clean-line landscape touch-ups.</p>
         </div>
       </article>
 
     </div>
 
-    <div class="text-center mt-14">
-      <a href="tel:+17133203128" class="inline-flex items-center gap-3 bg-forest hover:bg-moss text-cream font-semibold px-7 py-4 rounded-full transition shadow-soft">
+    <div class="text-center mt-20 reveal" data-reveal>
+      <a href="tel:+17133203128" class="inline-flex items-center gap-3 glass-amber text-amberHot font-semibold px-8 py-4 rounded-full transition hover:halo-amber">
         Get a free quote — call (713) 320-3128
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
     </div>
   </div>
+
+  <div class="div-line max-w-7xl mx-auto mt-32"></div>
 </section>
 
 <!-- ============ ABOUT MIKE ============ -->
-<section id="about" class="py-24 sm:py-32 bg-forest text-cream relative overflow-hidden">
-  <div class="absolute inset-0 opacity-20">
-    <img src="https://images.unsplash.com/photo-1761401395640-5c45422f2a99?w=2000&q=80&auto=format&fit=crop"
-         alt="" class="w-full h-full object-cover" />
+<section id="about" class="relative py-32 sm:py-40 overflow-hidden bg-deep">
+  <div class="absolute inset-0 opacity-30 pointer-events-none">
+    <img src="https://images.unsplash.com/photo-1761401395640-5c45422f2a99?w=2000&q=80&auto=format&fit=crop" alt="" class="w-full h-full object-cover" />
   </div>
-  <div class="absolute inset-0 bg-gradient-to-r from-forest via-forest/95 to-forest/70"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-night via-night/95 to-night/60 pointer-events-none"></div>
+  <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-amber/10 blur-3xl pointer-events-none"></div>
 
   <div class="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
     <div>
-      <span class="text-amber text-sm font-semibold uppercase tracking-[0.2em]">Meet the owner</span>
-      <h2 class="font-display text-4xl sm:text-5xl font-medium mt-3 mb-6 leading-[1.05]">
-        Mike & Christina —<br/>
-        <em class="text-amber">your neighbors</em>, not a franchise.
+      <div class="chip mb-6 reveal" data-reveal>
+        <span class="chip-dot"></span> Meet the owners
+      </div>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-light mb-7 leading-[1.04] reveal" data-reveal>
+        Mike &amp; Christina —<br/>
+        <em class="italic grad-text">your neighbors</em>,<br/>
+        not a franchise.
       </h2>
-      <p class="text-cream/85 text-lg leading-relaxed mb-6">
-        E. Mykael Tree Service was built on a simple promise from Mike: <strong class="text-cream">"I'll take care of your trees like they were in my own yard."</strong> No high-pressure sales. No surprise add-ons. No shortcuts on cleanup.
+      <p class="text-bone/75 text-lg leading-relaxed mb-6 reveal" data-reveal>
+        E. Mykael Tree Service was built on a simple promise from Mike: <strong class="text-bone">"I'll take care of your trees like they were in my own yard."</strong> No high-pressure sales. No surprise add-ons. No shortcuts on cleanup.
       </p>
-      <p class="text-cream/85 text-lg leading-relaxed mb-8">
+      <p class="text-bone/75 text-lg leading-relaxed mb-10 reveal" data-reveal>
         Most of our work comes from neighbors recommending us to other neighbors — which is exactly why we treat every job like the next one depends on it. Because it does.
       </p>
 
       <div class="grid sm:grid-cols-2 gap-5">
-        <div class="flex gap-3">
-          <div class="text-amber text-xl">✓</div>
+        <div class="flex gap-3 reveal" data-reveal>
+          <div class="w-8 h-8 rounded-full glass-amber flex items-center justify-center shrink-0 mt-0.5">
+            <svg class="w-4 h-4 text-amberHot" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          </div>
           <div>
-            <div class="font-semibold">Honest pricing, in writing</div>
-            <div class="text-cream/70 text-sm">Free on-site quote before any work begins.</div>
+            <div class="font-semibold text-bone">Honest pricing, in writing</div>
+            <div class="text-bone/55 text-sm">Free on-site quote before any work begins.</div>
           </div>
         </div>
-        <div class="flex gap-3">
-          <div class="text-amber text-xl">✓</div>
+        <div class="flex gap-3 reveal" data-reveal>
+          <div class="w-8 h-8 rounded-full glass-amber flex items-center justify-center shrink-0 mt-0.5">
+            <svg class="w-4 h-4 text-amberHot" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          </div>
           <div>
-            <div class="font-semibold">Insured & careful</div>
-            <div class="text-cream/70 text-sm">We protect your property, fence, and flowerbeds.</div>
+            <div class="font-semibold text-bone">Insured &amp; careful</div>
+            <div class="text-bone/55 text-sm">We protect your property, fence, and flowerbeds.</div>
           </div>
         </div>
-        <div class="flex gap-3">
-          <div class="text-amber text-xl">✓</div>
+        <div class="flex gap-3 reveal" data-reveal>
+          <div class="w-8 h-8 rounded-full glass-amber flex items-center justify-center shrink-0 mt-0.5">
+            <svg class="w-4 h-4 text-amberHot" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          </div>
           <div>
-            <div class="font-semibold">Show-up-when-we-say</div>
-            <div class="text-cream/70 text-sm">If something changes, you'll get a call — not a no-show.</div>
+            <div class="font-semibold text-bone">Show-up-when-we-say</div>
+            <div class="text-bone/55 text-sm">If something changes, you'll get a call — not a no-show.</div>
           </div>
         </div>
-        <div class="flex gap-3">
-          <div class="text-amber text-xl">✓</div>
+        <div class="flex gap-3 reveal" data-reveal>
+          <div class="w-8 h-8 rounded-full glass-amber flex items-center justify-center shrink-0 mt-0.5">
+            <svg class="w-4 h-4 text-amberHot" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          </div>
           <div>
-            <div class="font-semibold">Spotless cleanup</div>
-            <div class="text-cream/70 text-sm">Yard looks untouched — except for the better-looking trees.</div>
+            <div class="font-semibold text-bone">Spotless cleanup</div>
+            <div class="text-bone/55 text-sm">Yard looks untouched — except for the better-looking trees.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="relative">
-      <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-lift">
-        <img src="https://images.unsplash.com/photo-1669065054992-3151b15aab08?w=1200&q=80&auto=format&fit=crop"
-             alt="Tree professional at work"
-             class="w-full h-full object-cover" />
+    <div class="relative reveal" data-reveal>
+      <div class="aspect-[4/5] img-frame halo-amber relative">
+        <img src="https://images.unsplash.com/photo-1669065054992-3151b15aab08?w=1200&q=80&auto=format&fit=crop" alt="Tree professional at work" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-night/60 to-transparent"></div>
       </div>
-      <div class="absolute -bottom-6 -left-6 bg-amber text-ink rounded-2xl p-6 shadow-lift max-w-[220px]">
-        <div class="font-display text-4xl font-semibold leading-none">5.0★</div>
-        <div class="text-sm font-medium mt-2 leading-snug">Across every review on every platform.</div>
+      <div class="absolute -bottom-8 -left-8 grad-border p-7 max-w-[240px] halo-amber float-y">
+        <div class="font-display text-5xl font-medium leading-none grad-text">5.0★</div>
+        <div class="text-sm text-bone/80 mt-3 leading-snug">Across every review on every platform.</div>
+      </div>
+      <div class="absolute -top-6 -right-4 glass rounded-2xl px-4 py-3 text-xs uppercase tracking-[0.2em] text-bone/70">
+        <span class="text-amberHot">●</span> Live · Locally owned
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ GALLERY ============ -->
-<section id="gallery" class="py-24 sm:py-32">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+<section id="gallery" class="relative py-32 sm:py-40 overflow-hidden">
+  <div class="absolute inset-0 hud-grid opacity-15 pointer-events-none"></div>
+  <div class="absolute top-1/2 -right-40 w-[500px] h-[500px] rounded-full bg-glow/5 blur-3xl pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="flex flex-wrap items-end justify-between gap-8 mb-14">
       <div class="max-w-2xl">
-        <span class="text-amber text-sm font-semibold uppercase tracking-[0.2em]">Our work</span>
-        <h2 class="font-display text-4xl sm:text-5xl font-medium mt-3 leading-[1.05]">
-          A few <em class="text-moss">trees later</em>.
+        <div class="chip mb-6 reveal" data-reveal>
+          <span class="chip-dot"></span> Field log
+        </div>
+        <h2 class="font-display text-4xl sm:text-6xl font-light leading-[1.04] reveal" data-reveal>
+          A few <em class="italic grad-text">trees later</em>.
         </h2>
       </div>
-      <p class="text-muted max-w-md">From overgrown lots to leaning oaks — here's a slice of recent jobs around La Marque, Texas City, Hitchcock, and Dickinson.</p>
+      <p class="text-bone/60 max-w-md reveal" data-reveal>From overgrown lots to leaning oaks — here's a slice of recent jobs around La Marque, Texas City, Hitchcock, and Dickinson.</p>
     </div>
 
-    <div class="grid grid-cols-12 grid-rows-2 gap-4 sm:gap-5 h-[700px] sm:h-[640px]">
-      <div class="col-span-12 sm:col-span-7 row-span-2 img-frame rounded-3xl overflow-hidden shadow-soft">
-        <img src="https://images.unsplash.com/photo-1588878309774-4b3f42a19a8f?w=1400&q=80&auto=format&fit=crop"
-             alt="Tree work" class="w-full h-full object-cover" />
+    <div class="grid grid-cols-12 grid-rows-2 gap-4 sm:gap-5 h-[700px] sm:h-[680px]">
+      <div class="col-span-12 sm:col-span-7 row-span-2 img-frame relative reveal" data-reveal>
+        <img src="https://images.unsplash.com/photo-1588878309774-4b3f42a19a8f?w=1400&q=80&auto=format&fit=crop" alt="Tree work" class="w-full h-full object-cover" loading="lazy" />
+        <div class="absolute bottom-5 left-5 chip">Hitchcock · Live oak</div>
       </div>
-      <div class="col-span-6 sm:col-span-5 img-frame rounded-3xl overflow-hidden shadow-soft">
-        <img src="https://images.unsplash.com/photo-1631300313270-227604e71ea5?w=1000&q=80&auto=format&fit=crop"
-             alt="Arborist climbing" class="w-full h-full object-cover" />
+      <div class="col-span-6 sm:col-span-5 img-frame relative reveal" data-reveal>
+        <img src="https://images.unsplash.com/photo-1631300313270-227604e71ea5?w=1000&q=80&auto=format&fit=crop" alt="Arborist climbing" class="w-full h-full object-cover" loading="lazy" />
+        <div class="absolute bottom-5 left-5 chip">La Marque · Removal</div>
       </div>
-      <div class="col-span-3 sm:col-span-2 img-frame rounded-3xl overflow-hidden shadow-soft">
-        <img src="https://images.unsplash.com/photo-1644308852777-c129f2182388?w=600&q=80&auto=format&fit=crop"
-             alt="Tree care" class="w-full h-full object-cover" />
+      <div class="col-span-3 sm:col-span-2 img-frame relative reveal" data-reveal>
+        <img src="https://images.unsplash.com/photo-1644308852777-c129f2182388?w=600&q=80&auto=format&fit=crop" alt="Tree care" class="w-full h-full object-cover" loading="lazy" />
       </div>
-      <div class="col-span-3 sm:col-span-3 img-frame rounded-3xl overflow-hidden shadow-soft">
-        <img src="https://images.unsplash.com/photo-1709560723503-538158e48db8?w=800&q=80&auto=format&fit=crop"
-             alt="Tree service" class="w-full h-full object-cover" />
+      <div class="col-span-3 sm:col-span-3 img-frame relative reveal" data-reveal>
+        <img src="https://images.unsplash.com/photo-1709560723503-538158e48db8?w=800&q=80&auto=format&fit=crop" alt="Tree service" class="w-full h-full object-cover" loading="lazy" />
+        <div class="absolute bottom-5 left-5 chip">Dickinson · Cleanup</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ REVIEWS ============ -->
-<section id="reviews" class="py-24 sm:py-32 bg-bone">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="max-w-2xl mx-auto text-center mb-16">
-      <span class="text-amber text-sm font-semibold uppercase tracking-[0.2em]">What neighbors say</span>
-      <h2 class="font-display text-4xl sm:text-5xl font-medium mt-3 mb-5 leading-[1.05]">
-        32+ five-star reviews. <em class="text-moss">Not one less.</em>
+<section id="reviews" class="relative py-32 sm:py-40 bg-deep overflow-hidden">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-amber/5 blur-3xl pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="max-w-2xl mx-auto text-center mb-20">
+      <div class="chip mb-6 reveal" data-reveal style="margin-left:auto;margin-right:auto;">
+        <span class="chip-dot"></span> What neighbors say
+      </div>
+      <h2 class="font-display text-4xl sm:text-6xl font-light mt-3 mb-7 leading-[1.04] reveal" data-reveal>
+        32+ five-star reviews.<br/>
+        <em class="italic grad-text">Not one less.</em>
       </h2>
-      <div class="flex items-center justify-center gap-1 text-amber text-2xl">
+      <div class="flex items-center justify-center gap-1 text-amberHot text-2xl text-glow reveal" data-reveal>
         ★ ★ ★ ★ ★
       </div>
-      <p class="text-muted mt-3">From Birdeye, Nextdoor, and good old word-of-mouth.</p>
+      <p class="text-bone/55 mt-4 reveal" data-reveal>From Birdeye, Nextdoor, and good old word-of-mouth.</p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- review -->
-      <figure class="bg-white rounded-3xl p-8 shadow-soft border border-forest/5 flex flex-col">
-        <div class="text-amber text-lg mb-4">★ ★ ★ ★ ★</div>
-        <blockquote class="text-ink/85 leading-relaxed mb-6 flex-1">
-          "Totally satisfied with the work Mike did. He cut down and removed a large branch. I would definitely use him again."
-        </blockquote>
-        <figcaption class="flex items-center gap-3 pt-4 border-t border-forest/10">
-          <div class="w-10 h-10 rounded-full bg-moss text-cream font-semibold flex items-center justify-center">NS</div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+
+      <figure class="glass-dark rounded-3xl p-8 lift flex flex-col reveal" data-reveal>
+        <div class="text-amberHot text-lg mb-5 text-glow">★ ★ ★ ★ ★</div>
+        <blockquote class="text-bone/80 leading-relaxed mb-6 flex-1">"Totally satisfied with the work Mike did. He cut down and removed a large branch. I would definitely use him again."</blockquote>
+        <figcaption class="flex items-center gap-3 pt-5 border-t border-bone/10">
+          <div class="w-10 h-10 rounded-full glass-amber text-amberHot font-semibold flex items-center justify-center">NS</div>
           <div>
-            <div class="font-semibold text-sm">Nathan Saunders</div>
-            <div class="text-xs text-muted">Verified · Birdeye</div>
+            <div class="font-semibold text-sm text-bone">Nathan Saunders</div>
+            <div class="text-xs text-bone/45">Verified · Birdeye</div>
           </div>
         </figcaption>
       </figure>
 
-      <figure class="bg-white rounded-3xl p-8 shadow-soft border border-forest/5 flex flex-col">
-        <div class="text-amber text-lg mb-4">★ ★ ★ ★ ★</div>
-        <blockquote class="text-ink/85 leading-relaxed mb-6 flex-1">
-          "Professional crew and very respectful of my property while trimming the palms alongside the pool. Highly recommend!"
-        </blockquote>
-        <figcaption class="flex items-center gap-3 pt-4 border-t border-forest/10">
-          <div class="w-10 h-10 rounded-full bg-amber text-ink font-semibold flex items-center justify-center">RB</div>
+      <figure class="glass-dark rounded-3xl p-8 lift flex flex-col reveal" data-reveal>
+        <div class="text-amberHot text-lg mb-5 text-glow">★ ★ ★ ★ ★</div>
+        <blockquote class="text-bone/80 leading-relaxed mb-6 flex-1">"Professional crew and very respectful of my property while trimming the palms alongside the pool. Highly recommend!"</blockquote>
+        <figcaption class="flex items-center gap-3 pt-5 border-t border-bone/10">
+          <div class="w-10 h-10 rounded-full glass-amber text-amberHot font-semibold flex items-center justify-center">RB</div>
           <div>
-            <div class="font-semibold text-sm">Roxanne Barton</div>
-            <div class="text-xs text-muted">Verified · Birdeye</div>
+            <div class="font-semibold text-sm text-bone">Roxanne Barton</div>
+            <div class="text-xs text-bone/45">Verified · Birdeye</div>
           </div>
         </figcaption>
       </figure>
 
-      <figure class="bg-white rounded-3xl p-8 shadow-soft border border-forest/5 flex flex-col">
-        <div class="text-amber text-lg mb-4">★ ★ ★ ★ ★</div>
-        <blockquote class="text-ink/85 leading-relaxed mb-6 flex-1">
-          "The best tree trimming company of all time, and he also does great landscaping. I recommend this company to the world."
-        </blockquote>
-        <figcaption class="flex items-center gap-3 pt-4 border-t border-forest/10">
-          <div class="w-10 h-10 rounded-full bg-bark text-cream font-semibold flex items-center justify-center">DD</div>
+      <figure class="glass-dark rounded-3xl p-8 lift flex flex-col reveal" data-reveal>
+        <div class="text-amberHot text-lg mb-5 text-glow">★ ★ ★ ★ ★</div>
+        <blockquote class="text-bone/80 leading-relaxed mb-6 flex-1">"The best tree trimming company of all time, and he also does great landscaping. I recommend this company to the world."</blockquote>
+        <figcaption class="flex items-center gap-3 pt-5 border-t border-bone/10">
+          <div class="w-10 h-10 rounded-full glass-amber text-amberHot font-semibold flex items-center justify-center">DD</div>
           <div>
-            <div class="font-semibold text-sm">Deon Davis Jr.</div>
-            <div class="text-xs text-muted">Verified · Birdeye</div>
+            <div class="font-semibold text-sm text-bone">Deon Davis Jr.</div>
+            <div class="text-xs text-bone/45">Verified · Birdeye</div>
           </div>
         </figcaption>
       </figure>
 
-      <figure class="bg-white rounded-3xl p-8 shadow-soft border border-forest/5 flex flex-col">
-        <div class="text-amber text-lg mb-4">★ ★ ★ ★ ★</div>
-        <blockquote class="text-ink/85 leading-relaxed mb-6 flex-1">
-          "I noticed this company while they were working on my neighbor's tree and decided to inquire about their pricing. After speaking with Mike I scheduled service — couldn't be happier."
-        </blockquote>
-        <figcaption class="flex items-center gap-3 pt-4 border-t border-forest/10">
-          <div class="w-10 h-10 rounded-full bg-moss text-cream font-semibold flex items-center justify-center">AP</div>
+      <figure class="glass-dark rounded-3xl p-8 lift flex flex-col reveal" data-reveal>
+        <div class="text-amberHot text-lg mb-5 text-glow">★ ★ ★ ★ ★</div>
+        <blockquote class="text-bone/80 leading-relaxed mb-6 flex-1">"I noticed this company while they were working on my neighbor's tree and decided to inquire about pricing. After speaking with Mike I scheduled service — couldn't be happier."</blockquote>
+        <figcaption class="flex items-center gap-3 pt-5 border-t border-bone/10">
+          <div class="w-10 h-10 rounded-full glass-amber text-amberHot font-semibold flex items-center justify-center">AP</div>
           <div>
-            <div class="font-semibold text-sm">Angela Phillips</div>
-            <div class="text-xs text-muted">Verified · Birdeye</div>
+            <div class="font-semibold text-sm text-bone">Angela Phillips</div>
+            <div class="text-xs text-bone/45">Verified · Birdeye</div>
           </div>
         </figcaption>
       </figure>
 
-      <figure class="bg-white rounded-3xl p-8 shadow-soft border border-forest/5 flex flex-col">
-        <div class="text-amber text-lg mb-4">★ ★ ★ ★ ★</div>
-        <blockquote class="text-ink/85 leading-relaxed mb-6 flex-1">
-          "Very reasonable quote, started the job promptly on a Sunday, and finished the next day. Yard looked PERFECT when they were done."
-        </blockquote>
-        <figcaption class="flex items-center gap-3 pt-4 border-t border-forest/10">
-          <div class="w-10 h-10 rounded-full bg-amber text-ink font-semibold flex items-center justify-center">LM</div>
+      <figure class="glass-dark rounded-3xl p-8 lift flex flex-col reveal" data-reveal>
+        <div class="text-amberHot text-lg mb-5 text-glow">★ ★ ★ ★ ★</div>
+        <blockquote class="text-bone/80 leading-relaxed mb-6 flex-1">"Very reasonable quote, started the job promptly on a Sunday, and finished the next day. Yard looked PERFECT when they were done."</blockquote>
+        <figcaption class="flex items-center gap-3 pt-5 border-t border-bone/10">
+          <div class="w-10 h-10 rounded-full glass-amber text-amberHot font-semibold flex items-center justify-center">LM</div>
           <div>
-            <div class="font-semibold text-sm">Local Neighbor</div>
-            <div class="text-xs text-muted">Verified · Nextdoor</div>
+            <div class="font-semibold text-sm text-bone">Local Neighbor</div>
+            <div class="text-xs text-bone/45">Verified · Nextdoor</div>
           </div>
         </figcaption>
       </figure>
 
-      <figure class="bg-forest text-cream rounded-3xl p-8 shadow-lift flex flex-col">
-        <div class="text-amber text-lg mb-4">★ ★ ★ ★ ★</div>
-        <blockquote class="font-display text-2xl leading-snug mb-6 flex-1">
-          "A local and affordable hidden gem for tree work."
-        </blockquote>
-        <a href="tel:+17133203128" class="inline-flex items-center gap-2 text-amber font-semibold hover:underline">
+      <figure class="grad-border p-8 halo-amber flex flex-col reveal" data-reveal>
+        <div class="text-amberHot text-lg mb-5 text-glow">★ ★ ★ ★ ★</div>
+        <blockquote class="font-display text-2xl leading-snug mb-6 flex-1 text-bone">"A local and affordable hidden gem for tree work."</blockquote>
+        <a href="tel:+17133203128" class="inline-flex items-center gap-2 text-amberHot font-semibold hover:translate-x-1 transition">
           Become the next 5-star neighbor →
         </a>
       </figure>
+
     </div>
   </div>
 </section>
 
 <!-- ============ SERVICE AREA ============ -->
-<section id="contact" class="py-24 sm:py-32">
-  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-5 gap-12">
+<section id="contact" class="relative py-32 sm:py-40 overflow-hidden">
+  <div class="absolute inset-0 hud-grid opacity-15 pointer-events-none"></div>
+  <div class="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full bg-amber/5 blur-3xl pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-5 gap-12">
     <div class="lg:col-span-2">
-      <span class="text-amber text-sm font-semibold uppercase tracking-[0.2em]">Service area</span>
-      <h2 class="font-display text-4xl sm:text-5xl font-medium mt-3 mb-6 leading-[1.05]">
-        Based in <em class="text-moss">La Marque</em>. Working all over the Gulf Coast.
+      <div class="chip mb-6 reveal" data-reveal>
+        <span class="chip-dot"></span> Service area
+      </div>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-light mb-7 leading-[1.04] reveal" data-reveal>
+        Based in <em class="italic grad-text">La Marque</em>.<br/>
+        Working all over the Gulf Coast.
       </h2>
-      <p class="text-muted text-lg leading-relaxed mb-8">
+      <p class="text-bone/65 text-lg leading-relaxed mb-10 reveal" data-reveal>
         We're proud to call La Marque home, and we serve the surrounding towns most days of the week. If you're nearby and don't see your town on this list, just give Mike a call — odds are we're already working in your area.
       </p>
 
-      <div class="grid grid-cols-2 gap-x-6 gap-y-3 text-ink/85 mb-10">
-        <div class="flex items-center gap-2"><span class="text-amber">•</span> La Marque</div>
-        <div class="flex items-center gap-2"><span class="text-amber">•</span> Texas City</div>
-        <div class="flex items-center gap-2"><span class="text-amber">•</span> Hitchcock</div>
-        <div class="flex items-center gap-2"><span class="text-amber">•</span> Dickinson</div>
-        <div class="flex items-center gap-2"><span class="text-amber">•</span> Santa Fe</div>
-        <div class="flex items-center gap-2"><span class="text-amber">•</span> League City</div>
-        <div class="flex items-center gap-2"><span class="text-amber">•</span> Bacliff</div>
-        <div class="flex items-center gap-2"><span class="text-amber">•</span> Kemah</div>
-        <div class="flex items-center gap-2"><span class="text-amber">•</span> Galveston</div>
-        <div class="flex items-center gap-2"><span class="text-amber">•</span> Friendswood</div>
+      <div class="grid grid-cols-2 gap-x-6 gap-y-3 text-bone/80 mb-10 reveal" data-reveal>
+        <div class="flex items-center gap-2"><span class="text-amberHot">●</span> La Marque</div>
+        <div class="flex items-center gap-2"><span class="text-amberHot">●</span> Texas City</div>
+        <div class="flex items-center gap-2"><span class="text-amberHot">●</span> Hitchcock</div>
+        <div class="flex items-center gap-2"><span class="text-amberHot">●</span> Dickinson</div>
+        <div class="flex items-center gap-2"><span class="text-amberHot">●</span> Santa Fe</div>
+        <div class="flex items-center gap-2"><span class="text-amberHot">●</span> League City</div>
+        <div class="flex items-center gap-2"><span class="text-amberHot">●</span> Bacliff</div>
+        <div class="flex items-center gap-2"><span class="text-amberHot">●</span> Kemah</div>
+        <div class="flex items-center gap-2"><span class="text-amberHot">●</span> Galveston</div>
+        <div class="flex items-center gap-2"><span class="text-amberHot">●</span> Friendswood</div>
       </div>
 
-      <a href="tel:+17133203128"
-         class="inline-flex items-center gap-3 bg-amber hover:bg-amber/90 text-ink font-semibold px-7 py-4 rounded-full shadow-soft transition">
+      <a href="tel:+17133203128" class="inline-flex items-center gap-3 bg-gradient-to-r from-amber to-amberHot text-ink font-semibold px-8 py-4 rounded-full halo-amber transition hover:scale-[1.02] reveal" data-reveal>
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
         Call (713) 320-3128
       </a>
     </div>
 
-    <div class="lg:col-span-3 bg-white rounded-3xl shadow-soft border border-forest/5 p-8 sm:p-10">
-      <h3 class="font-display text-2xl font-semibold mb-6">Get a free quote</h3>
+    <div class="lg:col-span-3 glass-dark rounded-3xl p-8 sm:p-10 reveal" data-reveal>
+      <h3 class="font-display text-3xl font-light mb-7 text-bone">Get a free quote</h3>
       <div class="space-y-5">
 
-        <div class="flex items-start gap-4 p-5 rounded-2xl bg-bone">
-          <div class="w-11 h-11 rounded-full bg-forest text-cream flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        <div class="flex items-start gap-4 p-5 rounded-2xl glass">
+          <div class="orb shrink-0">
+            <svg class="w-5 h-5 text-amberHot" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
           </div>
           <div class="flex-1">
-            <div class="text-xs uppercase tracking-wider text-muted mb-1">Call or text Mike</div>
-            <a href="tel:+17133203128" class="font-display text-2xl font-semibold text-forest hover:text-amber transition">(713) 320-3128</a>
+            <div class="text-[10px] uppercase tracking-[0.2em] text-bone/50 mb-1">Call or text Mike</div>
+            <a href="tel:+17133203128" class="font-display text-2xl font-medium text-amberHot hover:text-bone transition">(713) 320-3128</a>
           </div>
         </div>
 
-        <div class="flex items-start gap-4 p-5 rounded-2xl bg-bone">
-          <div class="w-11 h-11 rounded-full bg-forest text-cream flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <div class="flex items-start gap-4 p-5 rounded-2xl glass">
+          <div class="orb shrink-0">
+            <svg class="w-5 h-5 text-amberHot" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </div>
           <div class="flex-1">
-            <div class="text-xs uppercase tracking-wider text-muted mb-1">Based in</div>
-            <div class="font-semibold">813 Hudler St, La Marque, TX 77568</div>
+            <div class="text-[10px] uppercase tracking-[0.2em] text-bone/50 mb-1">Based in</div>
+            <div class="font-semibold text-bone">813 Hudler St, La Marque, TX 77568</div>
           </div>
         </div>
 
-        <div class="flex items-start gap-4 p-5 rounded-2xl bg-bone">
-          <div class="w-11 h-11 rounded-full bg-forest text-cream flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div class="flex items-start gap-4 p-5 rounded-2xl glass">
+          <div class="orb shrink-0">
+            <svg class="w-5 h-5 text-amberHot" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
           <div class="flex-1">
-            <div class="text-xs uppercase tracking-wider text-muted mb-1">Hours</div>
-            <div class="font-semibold">Mon – Fri · 9:00 AM – 6:00 PM</div>
-            <div class="text-sm text-muted">Saturday & Sunday by appointment</div>
+            <div class="text-[10px] uppercase tracking-[0.2em] text-bone/50 mb-1">Hours</div>
+            <div class="font-semibold text-bone">Mon – Fri · 9:00 AM – 6:00 PM</div>
+            <div class="text-sm text-bone/55">Saturday &amp; Sunday by appointment</div>
           </div>
         </div>
 
-        <div class="flex items-start gap-4 p-5 rounded-2xl bg-forest text-cream">
-          <div class="w-11 h-11 rounded-full bg-amber text-ink flex items-center justify-center shrink-0">
+        <div class="flex items-start gap-4 p-5 rounded-2xl glass-amber halo-amber">
+          <div class="w-11 h-11 rounded-2xl bg-amberHot text-ink flex items-center justify-center shrink-0">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
           </div>
           <div class="flex-1">
-            <div class="text-xs uppercase tracking-wider text-cream/70 mb-1">Quotes are always</div>
-            <div class="font-semibold text-lg">Free · On-site · No pressure</div>
+            <div class="text-[10px] uppercase tracking-[0.2em] text-bone/70 mb-1">Quotes are always</div>
+            <div class="font-semibold text-lg text-bone">Free · On-site · No pressure</div>
           </div>
         </div>
 
@@ -582,54 +731,64 @@
 </section>
 
 <!-- ============ FINAL CTA ============ -->
-<section class="relative py-24 overflow-hidden">
-  <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=2000&q=80&auto=format&fit=crop"
-       alt="" class="absolute inset-0 w-full h-full object-cover" />
-  <div class="absolute inset-0 bg-forest/85"></div>
-  <div class="relative max-w-4xl mx-auto px-6 text-center text-cream">
-    <h2 class="font-display text-4xl sm:text-6xl font-medium leading-[1.05] mb-6">
+<section class="relative py-32 sm:py-40 overflow-hidden">
+  <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=2000&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25" />
+  <div class="absolute inset-0 bg-gradient-to-b from-night via-night/85 to-night"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-amber/10 blur-3xl pointer-events-none"></div>
+
+  <div class="relative max-w-4xl mx-auto px-6 text-center">
+    <div class="chip mb-7 mx-auto reveal" data-reveal style="display:inline-flex;">
+      <span class="chip-dot"></span> Let's get to work
+    </div>
+    <h2 class="font-display text-4xl sm:text-7xl font-light leading-[1.02] mb-8 reveal" data-reveal>
       Got a tree on your mind?<br/>
-      <em class="text-amber">Let's take a look.</em>
+      <em class="italic grad-text">Let's take a look.</em>
     </h2>
-    <p class="text-cream/85 text-lg mb-10 max-w-2xl mx-auto">
+    <p class="text-bone/70 text-lg mb-12 max-w-2xl mx-auto reveal" data-reveal>
       One short call with Mike and you'll know exactly what it costs, what it'll look like when we're done, and when we can get out there.
     </p>
     <a href="tel:+17133203128"
-       class="inline-flex items-center gap-3 bg-amber hover:bg-amber/90 text-ink font-semibold px-8 py-4 rounded-full text-lg shadow-lift transition">
+       class="inline-flex items-center gap-3 bg-gradient-to-r from-amber to-amberHot text-ink font-semibold px-10 py-5 rounded-full text-lg halo-amber transition hover:scale-[1.02] reveal" data-reveal>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
       Call (713) 320-3128
     </a>
   </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer class="bg-ink text-cream/80 py-14">
+<footer class="bg-night text-bone/65 py-16 border-t border-bone/5">
   <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-3 gap-10">
     <div>
-      <div class="font-display text-2xl text-cream mb-3">E. Mykael Tree Service</div>
-      <p class="text-cream/60 text-sm leading-relaxed">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-10 h-10 rounded-2xl glass-amber flex items-center justify-center">
+          <svg class="w-5 h-5 text-amberHot" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C9 2 7 4 7 7c-2 0-3.5 1.5-3.5 3.5S5 14 7 14c-1.5 0-3 1-3 3s1.5 3 3 3h10c1.5 0 3-1 3-3s-1.5-3-3-3c2 0 3.5-1.5 3.5-3.5S19 7 17 7c0-3-2-5-5-5zm-1 18v-6h2v6h-2z"/></svg>
+        </span>
+        <div class="font-display text-2xl text-bone">E. Mykael Tree Service</div>
+      </div>
+      <p class="text-bone/50 text-sm leading-relaxed">
         Family-owned tree trimming, removal, stump grinding and landscaping. Serving La Marque, Texas City and Galveston County, Texas.
       </p>
     </div>
     <div>
-      <div class="text-xs uppercase tracking-[0.2em] text-amber mb-3">Contact</div>
-      <a href="tel:+17133203128" class="block text-cream hover:text-amber transition font-semibold">(713) 320-3128</a>
-      <div class="text-sm text-cream/60 mt-2">813 Hudler St, La Marque, TX 77568</div>
-      <div class="text-sm text-cream/60 mt-1">Mon – Fri · 9 AM – 6 PM</div>
+      <div class="text-[10px] uppercase tracking-[0.22em] text-amberHot mb-4">Contact</div>
+      <a href="tel:+17133203128" class="block text-bone hover:text-amberHot transition font-semibold text-lg">(713) 320-3128</a>
+      <div class="text-sm text-bone/50 mt-2">813 Hudler St, La Marque, TX 77568</div>
+      <div class="text-sm text-bone/50 mt-1">Mon – Fri · 9 AM – 6 PM</div>
     </div>
     <div>
-      <div class="text-xs uppercase tracking-[0.2em] text-amber mb-3">Services</div>
-      <ul class="text-sm space-y-1.5 text-cream/70">
-        <li>Tree Trimming & Pruning</li>
+      <div class="text-[10px] uppercase tracking-[0.22em] text-amberHot mb-4">Services</div>
+      <ul class="text-sm space-y-2 text-bone/60">
+        <li>Tree Trimming &amp; Pruning</li>
         <li>Tree Removal</li>
         <li>Stump Grinding</li>
         <li>Palm Tree Service</li>
-        <li>Brush & Lot Clearing</li>
+        <li>Brush &amp; Lot Clearing</li>
         <li>Landscaping</li>
       </ul>
     </div>
   </div>
-  <div class="max-w-7xl mx-auto px-6 mt-10 pt-6 border-t border-cream/10 text-xs text-cream/50 flex flex-wrap justify-between gap-2">
-    <div>© 2026 E. Mykael Tree Trimming & Removal Service. All rights reserved.</div>
+  <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-bone/5 text-xs text-bone/40 flex flex-wrap justify-between gap-2">
+    <div>© 2026 E. Mykael Tree Trimming &amp; Removal Service. All rights reserved.</div>
     <div>La Marque, TX · 5.0★ · Family-owned since the very first job.</div>
   </div>
 </footer>
@@ -662,5 +821,315 @@
 }
 </script>
 
+<!-- ============ LIBS ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<script>
+(function() {
+  'use strict';
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ============ LENIS ============
+  let lenis = null;
+  if (window.Lenis && !prefersReduced) {
+    lenis = new Lenis({
+      duration: 1.1,
+      easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smoothWheel: true,
+      smoothTouch: false,
+    });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    if (window.ScrollTrigger) {
+      lenis.on('scroll', ScrollTrigger.update);
+    }
+  }
+
+  // ============ NAV STATE ============
+  const nav = document.getElementById('site-nav');
+  function onScroll() {
+    if (!nav) return;
+    const y = window.scrollY || document.documentElement.scrollTop;
+    if (y > 80) {
+      nav.style.background = 'rgba(7,12,10,0.85)';
+      nav.style.backdropFilter = 'blur(20px) saturate(140%)';
+      nav.style.webkitBackdropFilter = 'blur(20px) saturate(140%)';
+      nav.style.borderBottom = '1px solid rgba(243,235,218,0.06)';
+    } else {
+      nav.style.background = '';
+      nav.style.backdropFilter = '';
+      nav.style.webkitBackdropFilter = '';
+      nav.style.borderBottom = '';
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ============ CURSOR BLOB ============
+  const blob = document.getElementById('cursor-blob');
+  let bx = -500, by = -500, tx = -500, ty = -500;
+  if (blob && !('ontouchstart' in window)) {
+    window.addEventListener('mousemove', function(e){ tx = e.clientX; ty = e.clientY; });
+    (function blobLoop(){
+      bx += (tx - bx) * 0.12;
+      by += (ty - by) * 0.12;
+      blob.style.transform = 'translate(' + bx + 'px, ' + by + 'px) translate(-50%,-50%)';
+      requestAnimationFrame(blobLoop);
+    })();
+  }
+
+  // ============ SPLIT-LINE TYPOGRAPHY PREP ============
+  document.querySelectorAll('[data-split]').forEach(function(el){
+    const html = el.innerHTML;
+    el.innerHTML = '<span>' + html + '</span>';
+  });
+
+  // ============ GSAP REVEALS ============
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.set('[data-split] > span', { y: '110%' });
+    gsap.to('[data-split] > span', {
+      y: '0%', duration: 1.15, ease: 'expo.out', stagger: 0.14, delay: 0.25
+    });
+
+    gsap.utils.toArray('[data-reveal]').forEach(function(el){
+      gsap.fromTo(el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0, duration: 0.95, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+
+    // Crawler / no-scroll safety net: after 6s force everything visible
+    setTimeout(function(){
+      document.querySelectorAll('[data-reveal]').forEach(function(el){
+        if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      });
+    }, 6000);
+
+    gsap.utils.toArray('.float-y').forEach(function(h){
+      gsap.to(h, {
+        y: -30, ease: 'none',
+        scrollTrigger: { trigger: h, scrub: true, start: 'top bottom', end: 'bottom top' }
+      });
+    });
+  } else {
+    // Fallback: reveal everything if GSAP missing
+    document.querySelectorAll('.reveal,[data-reveal]').forEach(function(el){
+      el.style.opacity = '1'; el.style.transform = 'none';
+    });
+    document.querySelectorAll('[data-split] > span').forEach(function(el){
+      el.style.transform = 'none';
+    });
+  }
+
+  // ============ HERO PARTICLE BG (canvas 2D — embers / pollen drift) ============
+  (function particleBg() {
+    const canvas = document.getElementById('bg-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h, parts;
+    const isMobile = window.innerWidth < 768;
+    const COUNT = prefersReduced ? 0 : (isMobile ? 35 : 85);
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = canvas.parentElement.getBoundingClientRect();
+      w = rect.width; h = rect.height;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function init() {
+      parts = [];
+      for (let i = 0; i < COUNT; i++) {
+        parts.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: 0.6 + Math.random() * 2.1,
+          vx: -0.15 + Math.random() * 0.3,
+          vy: 0.1 + Math.random() * 0.45,
+          a: 0.15 + Math.random() * 0.55,
+          twk: Math.random() * Math.PI * 2,
+          hue: Math.random() < 0.65 ? 'amber' : 'glow',
+        });
+      }
+    }
+    function tick() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < parts.length; i++) {
+        const p = parts[i];
+        p.twk += 0.02;
+        p.x += p.vx + Math.sin(p.twk) * 0.15;
+        p.y += p.vy;
+        if (p.y > h + 4) { p.y = -4; p.x = Math.random() * w; }
+        if (p.x < -4) p.x = w + 4;
+        if (p.x > w + 4) p.x = -4;
+        const c = p.hue === 'amber' ? 'rgba(244,201,122,' + p.a + ')' : 'rgba(158,229,183,' + (p.a * 0.7) + ')';
+        const glowR = p.r * 4;
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowR);
+        g.addColorStop(0, c);
+        g.addColorStop(1, 'transparent');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = c;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+    resize(); init(); tick();
+    window.addEventListener('resize', function(){ resize(); init(); });
+  })();
+
+  // ============ HERO 3D WIREFRAME TREE (Three.js) ============
+  (function tree3d() {
+    if (!window.THREE) return;
+    const canvas = document.getElementById('tree-canvas');
+    if (!canvas) return;
+
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x070C0A, 0.04);
+
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.set(0, 1.5, 12);
+
+    const treeGroup = new THREE.Group();
+    scene.add(treeGroup);
+
+    const lineMat = new THREE.LineBasicMaterial({ color: 0xF4C97A, transparent: true, opacity: 0.55 });
+    const lineMatSoft = new THREE.LineBasicMaterial({ color: 0x9EE5B7, transparent: true, opacity: 0.35 });
+
+    const positions = [];
+    const positionsSoft = [];
+    const leafPositions = [];
+
+    function branch(x1, y1, z1, len, angleY, angleZ, depth) {
+      if (depth <= 0 || len < 0.15) {
+        leafPositions.push(x1, y1, z1);
+        return;
+      }
+      const dy = Math.cos(angleZ) * len;
+      const dh = Math.sin(angleZ) * len;
+      const dx = Math.cos(angleY) * dh;
+      const dz = Math.sin(angleY) * dh;
+      const x2 = x1 + dx, y2 = y1 + dy, z2 = z1 + dz;
+      if (depth > 2) positions.push(x1, y1, z1, x2, y2, z2);
+      else positionsSoft.push(x1, y1, z1, x2, y2, z2);
+
+      const branches = depth > 3 ? 3 : 2;
+      for (let i = 0; i < branches; i++) {
+        const spread = 0.55;
+        const newAngleY = angleY + (Math.random() - 0.5) * Math.PI * 1.2;
+        const newAngleZ = angleZ + (Math.random() - 0.3) * spread;
+        branch(x2, y2, z2, len * (0.65 + Math.random() * 0.1), newAngleY, newAngleZ, depth - 1);
+      }
+    }
+
+    // Seed deterministic-ish — three trunks for fullness
+    branch(0, -3, 0, 2.4, 0, 0, 7);
+
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    const trunkLines = new THREE.LineSegments(geo, lineMat);
+    treeGroup.add(trunkLines);
+
+    const geoSoft = new THREE.BufferGeometry();
+    geoSoft.setAttribute('position', new THREE.Float32BufferAttribute(positionsSoft, 3));
+    const tipLines = new THREE.LineSegments(geoSoft, lineMatSoft);
+    treeGroup.add(tipLines);
+
+    const leafGeo = new THREE.BufferGeometry();
+    leafGeo.setAttribute('position', new THREE.Float32BufferAttribute(leafPositions, 3));
+    const leafMat = new THREE.PointsMaterial({
+      color: 0xF4C97A, size: 0.12, transparent: true, opacity: 0.85,
+      blending: THREE.AdditiveBlending, depthWrite: false
+    });
+    const leaves = new THREE.Points(leafGeo, leafMat);
+    treeGroup.add(leaves);
+
+    // Ambient float-around particles
+    const ambientCount = 250;
+    const ambientGeo = new THREE.BufferGeometry();
+    const ambientPos = new Float32Array(ambientCount * 3);
+    for (let i = 0; i < ambientCount; i++) {
+      ambientPos[i * 3]     = (Math.random() - 0.5) * 14;
+      ambientPos[i * 3 + 1] = (Math.random() - 0.5) * 10;
+      ambientPos[i * 3 + 2] = (Math.random() - 0.5) * 8;
+    }
+    ambientGeo.setAttribute('position', new THREE.BufferAttribute(ambientPos, 3));
+    const ambientMat = new THREE.PointsMaterial({
+      color: 0x9EE5B7, size: 0.04, transparent: true, opacity: 0.5,
+      blending: THREE.AdditiveBlending, depthWrite: false
+    });
+    const ambient = new THREE.Points(ambientGeo, ambientMat);
+    scene.add(ambient);
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      const w = rect.width, h = rect.height;
+      if (w === 0 || h === 0) return;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    let mouseX = 0, mouseY = 0, tgtX = 0, tgtY = 0;
+    window.addEventListener('mousemove', function(e){
+      tgtX = (e.clientX / window.innerWidth - 0.5) * 0.4;
+      tgtY = (e.clientY / window.innerHeight - 0.5) * 0.2;
+    });
+
+    let t = 0;
+    function animate() {
+      t += 0.005;
+      mouseX += (tgtX - mouseX) * 0.05;
+      mouseY += (tgtY - mouseY) * 0.05;
+      treeGroup.rotation.y = t * 0.5 + mouseX * 0.6;
+      treeGroup.rotation.x = Math.sin(t * 0.3) * 0.05 + mouseY * 0.3;
+      ambient.rotation.y = -t * 0.05;
+      ambient.rotation.x = Math.sin(t * 0.1) * 0.02;
+
+      leafMat.opacity = 0.7 + Math.sin(t * 1.5) * 0.15;
+      lineMat.opacity = 0.5 + Math.sin(t * 0.8) * 0.07;
+
+      renderer.render(scene, camera);
+      if (!prefersReduced) requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+
+  // ============ ANCHOR SMOOTH SCROLL via Lenis ============
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      const id = a.getAttribute('href');
+      if (id === '#' || !id) return;
+      const tgt = document.querySelector(id);
+      if (!tgt) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(tgt, { offset: -60, duration: 1.4 });
+      else tgt.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+})();
+</script>
 </body>
 </html>
