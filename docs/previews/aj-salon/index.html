@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>AJ Salon — Full-Service Hair Salon in Richland Hills, TX</title>
-<meta name="description" content="AJ Salon in Richland Hills, TX — full-service hair salon led by Amy Tran. Cuts, color, styling, men's & kids cuts. Nextdoor Neighborhood Favorite 2019 & 2021. Walk-ins welcome.">
+<meta name="description" content="AJ Salon — independent full-service hair studio on Glenview Drive in Richland Hills, TX. Color, cuts, long-hair specialty, kids' cuts. 2x Nextdoor Neighborhood Favorite. Walk-ins welcome.">
 <link rel="canonical" href="https://turnkeyweb.org/previews/aj-salon/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,14 +21,8 @@ tailwind.config = {
         sans: ['Inter', 'system-ui', 'sans-serif']
       },
       colors: {
-        cream:    '#FBF6F1',
-        bone:     '#F4ECE3',
-        blush:    '#E9C9C0',
-        rose:     '#C68A85',
-        mauve:    '#8C5A65',
-        plum:     '#3F1F2A',
-        gold:     '#B98D52',
-        ink:      '#231419'
+        cream:'#FBF6F1', bone:'#F4ECE3', blush:'#E9C9C0', rose:'#C68A85',
+        mauve:'#8C5A65', plum:'#3F1F2A', gold:'#B98D52', ink:'#231419'
       }
     }
   }
@@ -36,99 +30,203 @@ tailwind.config = {
 </script>
 
 <style>
-  html, body { background:#FBF6F1; color:#231419; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
+  :root { --plum:#3F1F2A; --mauve:#8C5A65; --rose:#C68A85; --blush:#E9C9C0; --gold:#B98D52; --cream:#FBF6F1; --bone:#F4ECE3; --ink:#231419; }
+  *{ -webkit-tap-highlight-color: transparent; }
+  html, body { background:var(--cream); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
   body { overflow-x:hidden; }
-  .font-display { font-family:'Cormorant Garamond', serif; letter-spacing:-0.01em; }
+  .font-display { font-family:'Cormorant Garamond', serif; letter-spacing:-0.012em; }
+
+  /* Ambient floating glow blobs */
+  .ambient-blob { position:absolute; border-radius:50%; filter:blur(80px); opacity:.45; pointer-events:none; will-change:transform; }
+  .blob-1 { width:520px; height:520px; background:radial-gradient(circle, rgba(198,138,133,.6), transparent 60%); top:-180px; right:-160px; animation: drift1 22s ease-in-out infinite; }
+  .blob-2 { width:420px; height:420px; background:radial-gradient(circle, rgba(185,141,82,.45), transparent 60%); bottom:-120px; left:-80px; animation: drift2 26s ease-in-out infinite; }
+  .blob-3 { width:380px; height:380px; background:radial-gradient(circle, rgba(233,201,192,.55), transparent 65%); top:40%; left:-100px; animation: drift1 30s ease-in-out infinite reverse; }
+  @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(40px,-30px) scale(1.08);} }
+  @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-50px,40px) scale(1.1);} }
+
+  /* Gradient text */
   .grad-text {
-    background: linear-gradient(120deg, #8C5A65 0%, #B98D52 60%, #C68A85 100%);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    background: linear-gradient(120deg, #8C5A65 0%, #B98D52 55%, #C68A85 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    background-size: 200% 100%; animation: shimmer 8s linear infinite;
   }
+  @keyframes shimmer { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
   .hero-bg {
+    position:relative; overflow:hidden;
     background:
-      radial-gradient(ellipse 60% 50% at 70% 30%, rgba(198,138,133,.55), transparent 60%),
-      radial-gradient(ellipse 50% 45% at 20% 75%, rgba(185,141,82,.35), transparent 65%),
+      radial-gradient(ellipse 70% 55% at 75% 25%, rgba(198,138,133,.30), transparent 65%),
+      radial-gradient(ellipse 50% 45% at 15% 80%, rgba(185,141,82,.22), transparent 65%),
       linear-gradient(180deg,#FBF6F1 0%, #F4ECE3 100%);
   }
-  .grain::before {
-    content:""; position:absolute; inset:0; pointer-events:none; opacity:.06; mix-blend-mode:multiply;
+  .grain::after {
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
     background-image: radial-gradient(#231419 1px, transparent 1px); background-size: 3px 3px;
   }
+
   .card {
-    background: linear-gradient(180deg, rgba(255,255,255,.78) 0%, rgba(244,236,227,.65) 100%);
-    backdrop-filter: blur(10px) saturate(110%);
-    -webkit-backdrop-filter: blur(10px) saturate(110%);
-    border: 1px solid rgba(140,90,101,.18);
-    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 18px 40px -22px rgba(63,31,42,.25);
+    position:relative;
+    background: linear-gradient(180deg, rgba(255,255,255,.82) 0%, rgba(244,236,227,.55) 100%);
+    backdrop-filter: blur(12px) saturate(115%);
+    -webkit-backdrop-filter: blur(12px) saturate(115%);
+    border: 1px solid rgba(140,90,101,.16);
+    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 22px 50px -28px rgba(63,31,42,.22);
+    transition: transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s cubic-bezier(.2,.7,.2,1), border-color .4s;
+    overflow:hidden;
   }
+  .card::before {
+    content:""; position:absolute; left:0; top:0; height:2px; width:0%;
+    background: linear-gradient(90deg, var(--mauve), var(--gold));
+    transition: width .65s cubic-bezier(.2,.7,.2,1);
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 38px 60px -28px rgba(63,31,42,.28); border-color: rgba(140,90,101,.32); }
+  .card:hover::before { width:100%; }
+
   .chip {
     display:inline-flex; align-items:center; gap:.5rem;
-    padding:.4rem .8rem; border-radius:999px;
+    padding:.4rem .85rem; border-radius:999px;
     background: rgba(233,201,192,.45);
-    border: 1px solid rgba(140,90,101,.25);
-    color:#3F1F2A; font-size:.78rem; font-weight:500; letter-spacing:.04em; text-transform:uppercase;
+    border: 1px solid rgba(140,90,101,.22);
+    color:#3F1F2A; font-size:.74rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase;
   }
-  .chip-dot { width:.4rem; height:.4rem; border-radius:999px; background:#B98D52; box-shadow:0 0 10px #B98D52; }
+  .chip-dot { width:.42rem; height:.42rem; border-radius:999px; background:#B98D52; box-shadow:0 0 12px #B98D52; animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.55; transform:scale(.9)} }
+
   .btn-primary {
-    display:inline-flex; align-items:center; gap:.55rem;
-    padding:.95rem 1.5rem; border-radius:999px;
+    position:relative; display:inline-flex; align-items:center; gap:.6rem;
+    padding:1rem 1.65rem; border-radius:999px;
     background: linear-gradient(135deg,#8C5A65 0%, #3F1F2A 100%); color:#FBF6F1;
     font-weight:600; letter-spacing:.02em;
-    box-shadow: 0 14px 30px -12px rgba(63,31,42,.55), 0 0 0 1px rgba(255,255,255,.1) inset;
-    transition: transform .25s ease, box-shadow .25s ease;
+    box-shadow: 0 18px 36px -14px rgba(63,31,42,.55), 0 0 0 1px rgba(255,255,255,.08) inset;
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, filter .35s;
+    overflow:hidden;
   }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -12px rgba(63,31,42,.6); }
+  .btn-primary::after {
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.25) 50%, transparent 70%);
+    transform: translateX(-120%); transition: transform .9s cubic-bezier(.2,.7,.2,1);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 26px 46px -16px rgba(63,31,42,.65); filter:brightness(1.05); }
+  .btn-primary:hover::after { transform: translateX(120%); }
+
   .btn-ghost {
     display:inline-flex; align-items:center; gap:.55rem;
-    padding:.9rem 1.4rem; border-radius:999px;
+    padding:.95rem 1.5rem; border-radius:999px;
     border: 1px solid rgba(140,90,101,.45); color:#3F1F2A; font-weight:600;
-    background: rgba(255,255,255,.4); backdrop-filter: blur(6px);
+    background: rgba(255,255,255,.45); backdrop-filter: blur(8px);
+    transition: background .35s, border-color .35s, transform .35s;
   }
-  .btn-ghost:hover { background: rgba(255,255,255,.7); }
-  .divider-flourish {
-    display:flex; align-items:center; justify-content:center; gap:1rem; color:#B98D52;
-  }
+  .btn-ghost:hover { background: rgba(255,255,255,.85); border-color: rgba(140,90,101,.75); transform: translateY(-3px); }
+
+  .divider-flourish { display:flex; align-items:center; justify-content:center; gap:1rem; color:var(--gold); }
   .divider-flourish::before, .divider-flourish::after {
     content:""; flex:1; max-width:120px; height:1px;
-    background: linear-gradient(90deg, transparent, rgba(185,141,82,.55), transparent);
+    background: linear-gradient(90deg, transparent, rgba(185,141,82,.6), transparent);
   }
-  [data-reveal] { opacity:0; transform: translateY(28px); }
+
+  [data-reveal] { opacity:0; transform: translateY(36px); }
   [data-split] > span { display:inline-block; }
+
+  /* Hero photo tiles with float */
   .photo-tile {
-    aspect-ratio: 3 / 4; border-radius: 1.25rem; overflow:hidden;
+    border-radius: 1.25rem; overflow:hidden; position:relative;
     background-size:cover; background-position:center;
-    box-shadow: 0 30px 60px -30px rgba(63,31,42,.45), 0 0 0 1px rgba(140,90,101,.15);
+    box-shadow: 0 40px 70px -30px rgba(63,31,42,.45), 0 0 0 1px rgba(140,90,101,.15);
+    will-change: transform;
   }
-  .accent-line { height:1px; background:linear-gradient(90deg, transparent, rgba(140,90,101,.4), transparent); }
+  .photo-tile::after {
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(180deg, transparent 55%, rgba(63,31,42,.35) 100%);
+  }
+  .float-slow { animation: floatSlow 7s ease-in-out infinite; }
+  .float-mid  { animation: floatMid  6s ease-in-out infinite; }
+  .float-fast { animation: floatFast 5.4s ease-in-out infinite; }
+  @keyframes floatSlow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+  @keyframes floatMid  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-22px)} }
+  @keyframes floatFast { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+  /* Marquee */
+  .marquee {
+    overflow:hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  .marquee-track {
+    display:flex; gap:3.5rem; width:max-content;
+    animation: scrollX 38s linear infinite;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes scrollX { from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+  .marquee-item { display:inline-flex; align-items:center; gap:1.4rem; color:var(--plum); font-size:1.7rem; letter-spacing:.01em; }
+  .marquee-item .dot { width:.5rem; height:.5rem; border-radius:999px; background: var(--gold); }
+
+  /* About image with clip-path reveal */
+  .reveal-image {
+    aspect-ratio: 4/5; border-radius: 1.25rem; overflow:hidden;
+    background-size:cover; background-position:center;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1.4s cubic-bezier(.2,.7,.2,1);
+    box-shadow: 0 30px 70px -30px rgba(63,31,42,.45);
+  }
+  .reveal-image.in { clip-path: inset(0 0 0% 0); }
+
+  .accent-line {
+    position:relative; height:1px;
+    background:linear-gradient(90deg, transparent, rgba(140,90,101,.45), transparent);
+  }
+
   .stick-bar {
     position:fixed; bottom:0; left:0; right:0; z-index:50;
     background:linear-gradient(180deg, rgba(251,246,241,.6), rgba(251,246,241,.98));
     backdrop-filter: blur(14px);
     border-top:1px solid rgba(140,90,101,.2);
     padding: .65rem 1rem calc(.65rem + env(safe-area-inset-bottom));
-    display:none;
+    display:none; gap:.5rem;
   }
-  @media (max-width: 768px) { .stick-bar { display:flex; gap:.5rem; } }
+  @media (max-width: 768px) { .stick-bar { display:flex; } }
+
   .nav-blur {
-    background: rgba(251,246,241,.7);
-    backdrop-filter: blur(12px) saturate(120%);
+    background: rgba(251,246,241,.72);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
     border-bottom: 1px solid rgba(140,90,101,.12);
   }
+
   .svc-icon {
-    width:42px;height:42px;border-radius:999px;
+    width:46px;height:46px;border-radius:999px;
     background: linear-gradient(135deg,#E9C9C0, #B98D52);
     display:grid; place-items:center; color:#FBF6F1;
-    box-shadow: 0 6px 18px -6px rgba(140,90,101,.55);
+    box-shadow: 0 10px 24px -8px rgba(140,90,101,.55);
+    transition: transform .45s cubic-bezier(.2,.7,.2,1);
   }
-  .star { color:#B98D52; }
-  details > summary { list-style:none; cursor:pointer; }
-  details > summary::-webkit-details-marker { display:none; }
+  .card:hover .svc-icon { transform: rotate(-6deg) scale(1.06); }
+
+  .star { color: var(--gold); letter-spacing:.18em; }
+
   .open-pill {
-    display:inline-flex; align-items:center; gap:.45rem;
-    padding:.3rem .75rem; border-radius:999px;
-    background: rgba(154,196,159,.25); border:1px solid rgba(80,140,90,.4);
-    color:#1f3a26; font-size:.75rem; font-weight:600;
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.35rem .85rem; border-radius:999px;
+    background: rgba(154,196,159,.22); border:1px solid rgba(80,140,90,.4);
+    color:#1f3a26; font-size:.78rem; font-weight:600;
   }
-  .open-dot { width:.45rem; height:.45rem; border-radius:999px; background:#4a9d62; box-shadow:0 0 8px #4a9d62; }
+  .open-dot { width:.45rem; height:.45rem; border-radius:999px; background:#4a9d62; box-shadow:0 0 10px #4a9d62; animation: pulse 2s ease-in-out infinite; }
+
+  .stat-num { font-variant-numeric: tabular-nums; }
+  .underline-grow {
+    position:relative; display:inline-block;
+  }
+  .underline-grow::after {
+    content:""; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+    background: linear-gradient(90deg, var(--mauve), var(--gold));
+    transition: width .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .underline-grow:hover::after { width:100%; }
+
+  /* Section connecting strokes */
+  .section-bridge {
+    position:relative; height:1px; max-width: 200px; margin: 0 auto;
+    background: linear-gradient(90deg, transparent, rgba(140,90,101,.35), transparent);
+  }
 </style>
 </head>
 <body>
@@ -136,93 +234,126 @@ tailwind.config = {
 <!-- NAV -->
 <header class="nav-blur sticky top-0 z-40">
   <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-3">
+    <a href="#top" class="flex items-center gap-3 underline-grow">
       <span class="font-display text-2xl text-plum tracking-wide">AJ <span class="grad-text">Salon</span></span>
     </a>
-    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-ink/80">
-      <a href="#services" class="hover:text-mauve transition">Services</a>
-      <a href="#about" class="hover:text-mauve transition">About</a>
-      <a href="#reviews" class="hover:text-mauve transition">Reviews</a>
-      <a href="#visit" class="hover:text-mauve transition">Visit</a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink/80">
+      <a href="#services" class="underline-grow hover:text-mauve transition">Services</a>
+      <a href="#story" class="underline-grow hover:text-mauve transition">Story</a>
+      <a href="#voices" class="underline-grow hover:text-mauve transition">Voices</a>
+      <a href="#visit" class="underline-grow hover:text-mauve transition">Visit</a>
     </nav>
-    <a href="tel:+18176163110" class="btn-primary text-sm hidden sm:inline-flex">
+    <a href="tel:+16822509401" class="btn-primary text-sm hidden sm:inline-flex">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      (817) 616-3110
+      (682) 250-9401
     </a>
   </div>
 </header>
 
 <!-- HERO -->
-<section id="top" class="hero-bg grain relative overflow-hidden">
-  <div class="max-w-6xl mx-auto px-5 pt-14 pb-20 md:pt-24 md:pb-32 relative">
-    <div class="grid md:grid-cols-12 gap-10 items-center">
+<section id="top" class="hero-bg grain relative">
+  <div class="ambient-blob blob-1"></div>
+  <div class="ambient-blob blob-2"></div>
+  <div class="ambient-blob blob-3"></div>
+
+  <div class="max-w-6xl mx-auto px-5 pt-16 pb-24 md:pt-24 md:pb-32 relative">
+    <div class="grid md:grid-cols-12 gap-12 items-center">
       <div class="md:col-span-7">
         <div class="flex items-center gap-2 mb-6" data-reveal>
           <span class="chip"><span class="chip-dot"></span> Nextdoor Neighborhood Favorite · 2019 + 2021</span>
         </div>
-        <h1 class="font-display text-5xl md:text-7xl leading-[1.02] text-plum" data-reveal data-split>
+        <h1 class="font-display text-5xl md:text-7xl lg:text-[5.4rem] leading-[1.03] text-plum" data-reveal data-split>
           The independent <em class="italic grad-text">Richland Hills</em> salon where regulars become family.
         </h1>
-        <p class="mt-7 text-lg md:text-xl text-ink/75 max-w-xl leading-relaxed" data-reveal>
-          AJ Salon is a full-service hair studio led by Amy Tran on Glenview Drive. Tailored cuts, dimensional color, polished styling — for the whole family. Walk-ins welcome; appointments preferred.
+        <p class="mt-8 text-lg md:text-xl text-ink/75 max-w-xl leading-relaxed" data-reveal>
+          A full-service hair studio led by <strong>Amy Tran</strong> on Glenview Drive — tailored cuts, dimensional color, long-hair specialty, and styling for the whole family. Walk-ins welcome; appointments preferred.
         </p>
-        <div class="mt-9 flex flex-wrap gap-3" data-reveal>
-          <a href="tel:+18176163110" class="btn-primary">
+        <div class="mt-10 flex flex-wrap gap-3" data-reveal>
+          <a href="tel:+16822509401" class="btn-primary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Call (817) 616-3110
+            Call (682) 250-9401
           </a>
           <a href="#services" class="btn-ghost">See the menu →</a>
         </div>
-        <div class="mt-10 flex items-center gap-8 text-sm text-ink/70" data-reveal>
-          <div><span class="open-pill"><span class="open-dot"></span> Open today · 10 AM – 7 PM</span></div>
-          <div class="hidden sm:block">★ ★ ★ ★ ★ <span class="text-ink/60 ml-1">Neighborhood favorite</span></div>
+
+        <!-- Inline stats absorb the old trust strip -->
+        <div class="mt-12 grid grid-cols-3 gap-6 max-w-lg" data-reveal>
+          <div>
+            <div class="font-display text-4xl text-plum stat-num" data-count="15">0</div>
+            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Years on<br>Glenview</div>
+          </div>
+          <div>
+            <div class="font-display text-4xl text-plum stat-num" data-count="2">0</div>
+            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Nextdoor<br>Favorite years</div>
+          </div>
+          <div>
+            <div class="font-display text-4xl text-plum">Walk-ins</div>
+            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Welcome<br>daily</div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex items-center gap-5 text-sm text-ink/70" data-reveal>
+          <span class="open-pill"><span class="open-dot"></span> Open today · 10 AM – 7 PM</span>
+          <span class="hidden sm:inline-flex items-center gap-2"><span class="star">★ ★ ★ ★ ★</span><span class="text-ink/55">Neighborhood favorite</span></span>
         </div>
       </div>
 
-      <div class="md:col-span-5">
-        <div class="grid grid-cols-2 gap-4">
-          <div class="photo-tile" style="background-image:linear-gradient(160deg,rgba(63,31,42,.35),rgba(63,31,42,0)),url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80')" data-reveal></div>
-          <div class="photo-tile mt-10" style="background-image:linear-gradient(160deg,rgba(63,31,42,.3),rgba(63,31,42,0)),url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80')" data-reveal></div>
-          <div class="photo-tile" style="background-image:linear-gradient(160deg,rgba(63,31,42,.3),rgba(63,31,42,0)),url('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=900&q=80')" data-reveal></div>
-          <div class="photo-tile mt-10" style="background-image:linear-gradient(160deg,rgba(63,31,42,.3),rgba(63,31,42,0)),url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=900&q=80')" data-reveal></div>
+      <div class="md:col-span-5 relative" data-reveal>
+        <div class="relative h-[560px] md:h-[640px]">
+          <!-- Three asymmetric tiles, parallax-driven -->
+          <div class="photo-tile float-slow absolute"
+               style="width:62%; aspect-ratio:3/4; left:0; top:6%;
+                      background-image:url('https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=900&q=85')"
+               data-parallax="0.18"></div>
+          <div class="photo-tile float-mid absolute"
+               style="width:48%; aspect-ratio:3/4; right:0; top:0;
+                      background-image:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=85')"
+               data-parallax="-0.12"></div>
+          <div class="photo-tile float-fast absolute"
+               style="width:52%; aspect-ratio:1/1; right:6%; bottom:0;
+                      background-image:url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=85')"
+               data-parallax="0.08"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRUSTED ROW -->
-<section class="border-y border-mauve/15 bg-bone/40">
-  <div class="max-w-6xl mx-auto px-5 py-7 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-    <div data-reveal>
-      <div class="font-display text-3xl text-plum">15+ yrs</div>
-      <div class="text-xs uppercase tracking-widest text-ink/60 mt-1">On Glenview Dr.</div>
-    </div>
-    <div data-reveal>
-      <div class="font-display text-3xl text-plum">2x</div>
-      <div class="text-xs uppercase tracking-widest text-ink/60 mt-1">Nextdoor Favorite</div>
-    </div>
-    <div data-reveal>
-      <div class="font-display text-3xl text-plum">All Ages</div>
-      <div class="text-xs uppercase tracking-widest text-ink/60 mt-1">Women · Men · Kids</div>
-    </div>
-    <div data-reveal>
-      <div class="font-display text-3xl text-plum">Walk-Ins</div>
-      <div class="text-xs uppercase tracking-widest text-ink/60 mt-1">Welcome</div>
+<!-- MARQUEE -->
+<section class="py-5 border-y border-mauve/15 bg-bone/40">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="dot"></span> Dimensional Color</span>
+      <span class="marquee-item italic grad-text">Long-Hair Specialty</span>
+      <span class="marquee-item"><span class="dot"></span> Precision Cuts</span>
+      <span class="marquee-item italic">Balayage</span>
+      <span class="marquee-item"><span class="dot"></span> Polished Blowouts</span>
+      <span class="marquee-item italic grad-text">Family-Friendly</span>
+      <span class="marquee-item"><span class="dot"></span> Smoothing & Relaxers</span>
+      <span class="marquee-item italic">Walk-Ins Welcome</span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item"><span class="dot"></span> Dimensional Color</span>
+      <span class="marquee-item italic grad-text">Long-Hair Specialty</span>
+      <span class="marquee-item"><span class="dot"></span> Precision Cuts</span>
+      <span class="marquee-item italic">Balayage</span>
+      <span class="marquee-item"><span class="dot"></span> Polished Blowouts</span>
+      <span class="marquee-item italic grad-text">Family-Friendly</span>
+      <span class="marquee-item"><span class="dot"></span> Smoothing & Relaxers</span>
+      <span class="marquee-item italic">Walk-Ins Welcome</span>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="py-24 md:py-32">
+<section id="services" class="py-28 md:py-36 relative">
   <div class="max-w-6xl mx-auto px-5">
-    <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
-      <div class="divider-flourish text-sm uppercase tracking-[.3em] mb-4">The Menu</div>
-      <h2 class="font-display text-4xl md:text-5xl text-plum">Full-service hair, <em class="italic grad-text">honest pricing</em>.</h2>
-      <p class="mt-4 text-ink/70">Color, cut, and styling for the whole family. Tell us what you want — Amy and the team will tell you straight what works for your hair.</p>
+    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5">The Menu</div>
+      <h2 class="font-display text-4xl md:text-6xl text-plum leading-tight">Full-service hair, <em class="italic grad-text">honest pricing</em>.</h2>
+      <p class="mt-5 text-ink/70 max-w-xl mx-auto">Color, cut, and styling for the whole family. Tell us what you want — Amy and the team will tell you straight what works for your hair.</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-5">
+    <div class="grid md:grid-cols-3 gap-6">
       <div class="card rounded-2xl p-7" data-reveal>
         <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <h3 class="font-display text-2xl text-plum mb-2">Women's Cuts & Styling</h3>
@@ -231,17 +362,12 @@ tailwind.config = {
       <div class="card rounded-2xl p-7" data-reveal>
         <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22v-7a4 4 0 0 1 4-4"/></svg></div>
         <h3 class="font-display text-2xl text-plum mb-2">Color & Highlights</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">All-over color, balayage, foils, gloss, gray blending, and color correction. We use the consultation to set realistic, beautiful results before we ever pick up a brush.</p>
+        <p class="text-ink/70 text-sm leading-relaxed">All-over color, balayage, foils, gloss, gray blending, and color correction. The consultation sets realistic, beautiful results before we ever pick up a brush.</p>
       </div>
       <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
-        <h3 class="font-display text-2xl text-plum mb-2">Men's Cuts</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Clipper work, scissor cuts, fades, and beard trims. Honest pricing, no-fuss appointments. Neighbors say we're the chain-salon alternative they've been looking for.</p>
-      </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-        <h3 class="font-display text-2xl text-plum mb-2">Kids' Cuts</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Patient, friendly cuts for first-timers and everyday trims. The chair gets lower; the conversation gets sillier. We make it easy on parents.</p>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Special-Occasion Styling</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Updos, blowouts, and event-ready styling for weddings, graduations, dates, and family photos. Book ahead so we can plan the look with you.</p>
       </div>
       <div class="card rounded-2xl p-7" data-reveal>
         <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12c0-3.866 3.134-7 7-7s7 3.134 7 7-3.134 7-7 7-7-3.134-7-7z"/><path d="M12 5v14"/></svg></div>
@@ -249,109 +375,116 @@ tailwind.config = {
         <p class="text-ink/70 text-sm leading-relaxed">Professional relaxers and smoothing treatments. We assess hair condition first and recommend the gentlest service that gets you the result you want.</p>
       </div>
       <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg></div>
-        <h3 class="font-display text-2xl text-plum mb-2">Special-Occasion Styling</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Updos, blowouts, and event-ready styling for weddings, graduations, dates, and family photos. Book in advance so we can plan the look with you.</p>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Kids' Cuts</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Patient, friendly cuts for first-timers and everyday trims. The chair gets lower; the conversation gets sillier. We make it easy on parents.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Men's Cuts</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Clipper work, scissor cuts, fades, and beard trims when partners and brothers tag along. Honest pricing, no-fuss appointments.</p>
       </div>
     </div>
 
-    <div class="mt-10 text-center text-sm text-ink/60" data-reveal>
-      Pricing varies by hair length, density, and service. Call for a fast quote — <a href="tel:+18176163110" class="text-mauve underline underline-offset-4 hover:text-plum">(817) 616-3110</a>.
+    <div class="mt-12 text-center text-sm text-ink/60" data-reveal>
+      Pricing varies by hair length, density, and service. Call for a fast quote — <a href="tel:+16822509401" class="text-mauve underline-grow hover:text-plum font-medium">(682) 250-9401</a>.
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="bg-bone/50 py-24 md:py-32 relative">
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-12 items-center">
+<div class="section-bridge"></div>
+
+<!-- STORY (about — absorbs the trust signals) -->
+<section id="story" class="py-28 md:py-36 bg-bone/45 relative overflow-hidden">
+  <div class="ambient-blob blob-3" style="opacity:.3"></div>
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-14 items-center relative">
     <div class="md:col-span-5">
-      <div class="photo-tile" style="aspect-ratio: 4/5; background-image: linear-gradient(160deg,rgba(63,31,42,.35),rgba(63,31,42,0)), url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1000&q=80')" data-reveal></div>
+      <div class="reveal-image" data-reveal-image
+           style="background-image: linear-gradient(160deg,rgba(63,31,42,.28),rgba(63,31,42,0)), url('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1000&q=85')"></div>
     </div>
     <div class="md:col-span-7" data-reveal>
-      <div class="divider-flourish text-sm uppercase tracking-[.3em] mb-4 justify-start">About</div>
-      <h2 class="font-display text-4xl md:text-5xl text-plum leading-tight">
+      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 justify-start">Our Story</div>
+      <h2 class="font-display text-4xl md:text-6xl text-plum leading-[1.05]">
         Run by <em class="italic grad-text">Amy Tran</em>, on Glenview since the neighborhood knew it.
       </h2>
-      <p class="mt-6 text-ink/75 leading-relaxed">
-        AJ Salon is the kind of place where your stylist knows your kid's name, your color history, and what you said about your last vacation. Amy and her team built this independent salon to be the opposite of a strip-mall chain — same chair, same hands, every visit.
+      <p class="mt-7 text-ink/75 leading-relaxed text-lg">
+        AJ Salon is the kind of place where your stylist knows your kid's name, your color history, and what you said about your last vacation. Amy and her team built this independent salon to be the opposite of a strip-mall chain — <strong>same chair, same hands, every visit</strong>.
       </p>
-      <p class="mt-4 text-ink/75 leading-relaxed">
+      <p class="mt-4 text-ink/75 leading-relaxed text-lg">
         Neighbors keep voting us a <strong>Nextdoor Neighborhood Favorite</strong> — twice and counting. We take it as our standing assignment to earn it again.
       </p>
-      <div class="mt-7 flex flex-wrap gap-2">
+      <div class="mt-9 flex flex-wrap gap-2">
         <span class="chip">Women's color specialist</span>
         <span class="chip">Long-hair expert</span>
         <span class="chip">Family-friendly</span>
         <span class="chip">Walk-ins welcome</span>
-        <span class="chip">Credit cards accepted</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section id="reviews" class="py-24 md:py-32">
+<!-- VOICES (reviews) -->
+<section id="voices" class="py-28 md:py-36 relative">
   <div class="max-w-6xl mx-auto px-5">
-    <div class="text-center mb-14" data-reveal>
-      <div class="divider-flourish text-sm uppercase tracking-[.3em] mb-4">What Neighbors Say</div>
-      <h2 class="font-display text-4xl md:text-5xl text-plum">Voted favorite, twice. <em class="italic grad-text">Earned, never bought.</em></h2>
+    <div class="text-center mb-16" data-reveal>
+      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5">Neighborhood Voices</div>
+      <h2 class="font-display text-4xl md:text-6xl text-plum leading-tight">Voted favorite, twice. <em class="italic grad-text">Earned, never bought.</em></h2>
     </div>
-    <div class="grid md:grid-cols-3 gap-5">
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="star mb-3">★ ★ ★ ★ ★</div>
-        <p class="font-display text-xl text-plum leading-snug">"Color work for women — and they actually listen before they start mixing."</p>
-        <p class="mt-4 text-xs uppercase tracking-widest text-ink/55">Verified Nextdoor neighbor</p>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card rounded-2xl p-8" data-reveal>
+        <div class="star mb-4 text-lg">★ ★ ★ ★ ★</div>
+        <p class="font-display text-2xl text-plum leading-snug">"Color work for women — and they actually listen before they start mixing."</p>
+        <div class="accent-line my-5"></div>
+        <p class="text-xs uppercase tracking-[.25em] text-ink/55">Verified Nextdoor neighbor</p>
       </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="star mb-3">★ ★ ★ ★ ★</div>
-        <p class="font-display text-xl text-plum leading-snug">"Best long-hair cuts in Richland Hills. I drive past three salons to come here."</p>
-        <p class="mt-4 text-xs uppercase tracking-widest text-ink/55">Verified Nextdoor neighbor</p>
+      <div class="card rounded-2xl p-8" data-reveal>
+        <div class="star mb-4 text-lg">★ ★ ★ ★ ★</div>
+        <p class="font-display text-2xl text-plum leading-snug">"Best long-hair cuts in Richland Hills. I drive past three salons to come here."</p>
+        <div class="accent-line my-5"></div>
+        <p class="text-xs uppercase tracking-[.25em] text-ink/55">Verified Nextdoor neighbor</p>
       </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="star mb-3">★ ★ ★ ★ ★</div>
-        <p class="font-display text-xl text-plum leading-snug">"The chain-salon alternative we needed. Same chair, same hands, every visit."</p>
-        <p class="mt-4 text-xs uppercase tracking-widest text-ink/55">Verified Nextdoor neighbor</p>
+      <div class="card rounded-2xl p-8" data-reveal>
+        <div class="star mb-4 text-lg">★ ★ ★ ★ ★</div>
+        <p class="font-display text-2xl text-plum leading-snug">"The chain-salon alternative we needed. Same chair, same hands, every visit."</p>
+        <div class="accent-line my-5"></div>
+        <p class="text-xs uppercase tracking-[.25em] text-ink/55">Verified Nextdoor neighbor</p>
       </div>
     </div>
-    <div class="text-center mt-10" data-reveal>
+    <div class="text-center mt-12" data-reveal>
       <a href="https://www.yelp.com/biz/aj-salon-richland-hills" target="_blank" rel="noopener" class="btn-ghost">Read more on Yelp →</a>
     </div>
   </div>
 </section>
 
-<!-- VISIT / HOURS / MAP -->
-<section id="visit" class="bg-bone/50 py-24 md:py-32">
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-10">
+<!-- VISIT -->
+<section id="visit" class="py-28 md:py-36 bg-bone/45">
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-12">
     <div class="md:col-span-5" data-reveal>
-      <div class="divider-flourish text-sm uppercase tracking-[.3em] mb-4 justify-start">Visit</div>
-      <h2 class="font-display text-4xl md:text-5xl text-plum leading-tight">Come see us on <em class="italic grad-text">Glenview Drive</em>.</h2>
+      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 justify-start">Visit</div>
+      <h2 class="font-display text-4xl md:text-6xl text-plum leading-[1.05]">Come see us on <em class="italic grad-text">Glenview Drive</em>.</h2>
 
-      <div class="mt-8 space-y-5">
-        <div class="card rounded-2xl p-5 flex items-start gap-4">
+      <div class="mt-10 space-y-5">
+        <div class="card rounded-2xl p-6 flex items-start gap-5">
           <div class="svc-icon shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div>
-            <div class="text-xs uppercase tracking-widest text-ink/55">Address</div>
-            <div class="font-display text-xl text-plum mt-1">7269 Glenview Dr</div>
+            <div class="text-[11px] uppercase tracking-[.3em] text-ink/55">Address</div>
+            <div class="font-display text-2xl text-plum mt-1">7269 Glenview Dr</div>
             <div class="text-ink/70">Richland Hills, TX 76180</div>
-            <a href="https://www.google.com/maps/search/?api=1&query=7269+Glenview+Dr+Richland+Hills+TX+76180" target="_blank" rel="noopener" class="text-mauve text-sm font-semibold underline underline-offset-4 mt-2 inline-block">Get directions →</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=7269+Glenview+Dr+Richland+Hills+TX+76180" target="_blank" rel="noopener" class="text-mauve text-sm font-semibold underline-grow mt-2 inline-block">Get directions →</a>
           </div>
         </div>
-        <div class="card rounded-2xl p-5 flex items-start gap-4">
+        <div class="card rounded-2xl p-6 flex items-start gap-5">
           <div class="svc-icon shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
           <div>
-            <div class="text-xs uppercase tracking-widest text-ink/55">Phone</div>
-            <a href="tel:+18176163110" class="font-display text-xl text-plum mt-1 block">(817) 616-3110</a>
-            <div class="text-ink/70 text-sm">Walk-ins welcome, appointments preferred</div>
+            <div class="text-[11px] uppercase tracking-[.3em] text-ink/55">Phone</div>
+            <a href="tel:+16822509401" class="font-display text-2xl text-plum mt-1 block underline-grow">(682) 250-9401</a>
+            <div class="text-ink/70 text-sm">Walk-ins welcome · appointments preferred</div>
           </div>
         </div>
-        <div class="card rounded-2xl p-5">
-          <div class="text-xs uppercase tracking-widest text-ink/55 mb-3">Hours</div>
+        <div class="card rounded-2xl p-6">
+          <div class="text-[11px] uppercase tracking-[.3em] text-ink/55 mb-3">Hours</div>
           <div class="space-y-1.5 text-ink/80">
-            <div class="flex justify-between"><span>Monday</span><span>10 AM – 7 PM</span></div>
-            <div class="flex justify-between"><span>Tuesday</span><span>10 AM – 7 PM</span></div>
-            <div class="flex justify-between"><span>Wednesday</span><span>10 AM – 7 PM</span></div>
-            <div class="flex justify-between"><span>Thursday</span><span>10 AM – 7 PM</span></div>
-            <div class="flex justify-between"><span>Friday</span><span>10 AM – 7 PM</span></div>
+            <div class="flex justify-between"><span>Monday – Friday</span><span>10 AM – 7 PM</span></div>
             <div class="flex justify-between"><span>Saturday</span><span>10 AM – 6 PM</span></div>
             <div class="flex justify-between text-ink/55"><span>Sunday</span><span>Closed</span></div>
           </div>
@@ -363,7 +496,7 @@ tailwind.config = {
       <div class="card rounded-3xl overflow-hidden">
         <iframe
           src="https://www.google.com/maps?q=7269+Glenview+Dr,+Richland+Hills,+TX+76180&output=embed"
-          width="100%" height="560" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          width="100%" height="640" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           title="AJ Salon location map"></iframe>
       </div>
     </div>
@@ -371,31 +504,31 @@ tailwind.config = {
 </section>
 
 <!-- CTA -->
-<section class="relative overflow-hidden">
-  <div class="hero-bg grain relative">
-    <div class="max-w-4xl mx-auto px-5 py-24 md:py-32 text-center relative">
-      <h2 class="font-display text-4xl md:text-6xl text-plum leading-tight" data-reveal>
-        Ready for the chair? <em class="italic grad-text">Let's book you in.</em>
-      </h2>
-      <p class="mt-5 text-ink/75 max-w-xl mx-auto" data-reveal>
-        Call now and we'll find you a slot — or walk in during open hours and we'll do our best to take you same-day.
-      </p>
-      <div class="mt-9 flex flex-wrap justify-center gap-3" data-reveal>
-        <a href="tel:+18176163110" class="btn-primary text-lg">Call (817) 616-3110</a>
-        <a href="https://www.google.com/maps/search/?api=1&query=7269+Glenview+Dr+Richland+Hills+TX+76180" target="_blank" rel="noopener" class="btn-ghost text-lg">Get directions</a>
-      </div>
+<section class="relative overflow-hidden hero-bg grain">
+  <div class="ambient-blob blob-1" style="opacity:.35"></div>
+  <div class="ambient-blob blob-2" style="opacity:.35"></div>
+  <div class="max-w-4xl mx-auto px-5 py-28 md:py-36 text-center relative">
+    <h2 class="font-display text-5xl md:text-7xl text-plum leading-[1.05]" data-reveal>
+      Ready for the chair? <em class="italic grad-text">Let's book you in.</em>
+    </h2>
+    <p class="mt-6 text-ink/75 max-w-xl mx-auto text-lg" data-reveal>
+      Call now and we'll find you a slot — or walk in during open hours and we'll do our best to take you same-day.
+    </p>
+    <div class="mt-10 flex flex-wrap justify-center gap-3" data-reveal>
+      <a href="tel:+16822509401" class="btn-primary text-lg">Call (682) 250-9401</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=7269+Glenview+Dr+Richland+Hills+TX+76180" target="_blank" rel="noopener" class="btn-ghost text-lg">Get directions</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t border-mauve/15 bg-bone/40 py-10">
+<footer class="border-t border-mauve/15 bg-bone/50 py-10">
   <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-ink/65">
-    <div class="font-display text-xl text-plum">AJ Salon</div>
-    <div>7269 Glenview Dr · Richland Hills, TX 76180 · (817) 616-3110</div>
+    <div class="font-display text-xl text-plum">AJ <span class="grad-text">Salon</span></div>
+    <div>7269 Glenview Dr · Richland Hills, TX 76180 · (682) 250-9401</div>
     <div class="flex items-center gap-5">
-      <a href="https://www.facebook.com/AJ.Salon.Glenview/" target="_blank" rel="noopener" class="hover:text-mauve">Facebook</a>
-      <a href="https://www.yelp.com/biz/aj-salon-richland-hills" target="_blank" rel="noopener" class="hover:text-mauve">Yelp</a>
+      <a href="https://www.facebook.com/AJ.Salon.Glenview/" target="_blank" rel="noopener" class="underline-grow hover:text-mauve">Facebook</a>
+      <a href="https://www.yelp.com/biz/aj-salon-richland-hills" target="_blank" rel="noopener" class="underline-grow hover:text-mauve">Yelp</a>
     </div>
   </div>
   <div class="text-center text-xs text-ink/40 mt-3">© <span id="yr"></span> AJ Salon · All rights reserved</div>
@@ -403,7 +536,7 @@ tailwind.config = {
 
 <!-- Mobile sticky bar -->
 <div class="stick-bar">
-  <a href="tel:+18176163110" class="btn-primary flex-1 justify-center text-sm">Call now</a>
+  <a href="tel:+16822509401" class="btn-primary flex-1 justify-center text-sm">Call now</a>
   <a href="https://www.google.com/maps/search/?api=1&query=7269+Glenview+Dr+Richland+Hills+TX+76180" target="_blank" rel="noopener" class="btn-ghost flex-1 justify-center text-sm">Directions</a>
 </div>
 
@@ -415,7 +548,7 @@ tailwind.config = {
   "name":"AJ Salon",
   "image":"https://turnkeyweb.org/previews/aj-salon/og.jpg",
   "url":"https://turnkeyweb.org/previews/aj-salon/",
-  "telephone":"+1-817-616-3110",
+  "telephone":"+1-682-250-9401",
   "priceRange":"$$",
   "address":{"@type":"PostalAddress","streetAddress":"7269 Glenview Dr","addressLocality":"Richland Hills","addressRegion":"TX","postalCode":"76180","addressCountry":"US"},
   "geo":{"@type":"GeoCoordinates","latitude":32.815,"longitude":-97.227},
@@ -435,36 +568,72 @@ tailwind.config = {
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-// Smooth scroll
+// Lenis smooth scroll
 (function(){
-  if (window.Lenis) {
-    const lenis = new Lenis({ duration: 1.1, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href');
-        if (id.length>1 && document.querySelector(id)) {
-          e.preventDefault();
-          lenis.scrollTo(document.querySelector(id), { offset:-70 });
-        }
-      });
+  if (!window.Lenis) return;
+  const lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+  if (window.ScrollTrigger) { lenis.on('scroll', ScrollTrigger.update); }
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if (id.length>1 && document.querySelector(id)) {
+        e.preventDefault();
+        lenis.scrollTo(document.querySelector(id), { offset:-70 });
+      }
     });
-  }
+  });
 })();
 
-// Split typography
+// Split typography (preserve inner HTML)
 document.querySelectorAll('[data-split]').forEach(function(el){
   el.innerHTML = '<span>' + el.innerHTML + '</span>';
 });
 
-// GSAP reveals
+// GSAP reveals + parallax + count-up
 if (window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
+
+  // Standard reveals
   gsap.utils.toArray('[data-reveal]').forEach(function(el){
-    gsap.fromTo(el, {opacity:0,y:28},
-      {opacity:1,y:0,duration:0.9,ease:'power3.out',
-       scrollTrigger:{trigger:el,start:'top 92%',toggleActions:'play none none none'}});
+    gsap.fromTo(el, {opacity:0,y:36},
+      {opacity:1,y:0,duration:1.05,ease:'power3.out',
+       scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'}});
+  });
+
+  // Hero photo parallax — extra motion on top of CSS float
+  gsap.utils.toArray('[data-parallax]').forEach(function(el){
+    const speed = parseFloat(el.dataset.parallax) || 0.1;
+    gsap.to(el, {
+      y: () => speed * 220,
+      ease: 'none',
+      scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+    });
+  });
+
+  // Reveal-image clip-path
+  document.querySelectorAll('[data-reveal-image]').forEach(function(el){
+    ScrollTrigger.create({
+      trigger: el, start: 'top 85%',
+      onEnter: ()=> el.classList.add('in')
+    });
+  });
+
+  // Count-up stats
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = (target === 15) ? '+' : '×';
+    const obj = { v: 0 };
+    ScrollTrigger.create({
+      trigger: el, start: 'top 88%',
+      onEnter: ()=> {
+        gsap.to(obj, {
+          v: target, duration: 1.6, ease: 'power2.out',
+          onUpdate: ()=> { el.textContent = Math.round(obj.v) + suffix; }
+        });
+      }
+    });
   });
 }
 
@@ -474,6 +643,14 @@ setTimeout(function(){
     if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
       el.style.opacity='1'; el.style.transform='none';
     }
+  });
+  document.querySelectorAll('[data-reveal-image]').forEach(function(el){
+    el.classList.add('in');
+  });
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    const t = parseInt(el.dataset.count, 10);
+    const suffix = (t === 15) ? '+' : '×';
+    if (el.textContent === '0' || el.textContent.trim() === '') el.textContent = t + suffix;
   });
 }, 6000);
 </script>
