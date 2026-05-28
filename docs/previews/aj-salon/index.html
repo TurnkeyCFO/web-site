@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AJ Salon — Full-Service Hair Salon in Richland Hills, TX</title>
+<meta name="description" content="AJ Salon in Richland Hills, TX — full-service hair salon led by Amy Tran. Cuts, color, styling, men's & kids cuts. Nextdoor Neighborhood Favorite 2019 & 2021. Walk-ins welcome.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/aj-salon/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['"Cormorant Garamond"', 'serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif']
+      },
+      colors: {
+        cream:    '#FBF6F1',
+        bone:     '#F4ECE3',
+        blush:    '#E9C9C0',
+        rose:     '#C68A85',
+        mauve:    '#8C5A65',
+        plum:     '#3F1F2A',
+        gold:     '#B98D52',
+        ink:      '#231419'
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  html, body { background:#FBF6F1; color:#231419; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
+  body { overflow-x:hidden; }
+  .font-display { font-family:'Cormorant Garamond', serif; letter-spacing:-0.01em; }
+  .grad-text {
+    background: linear-gradient(120deg, #8C5A65 0%, #B98D52 60%, #C68A85 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-bg {
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 30%, rgba(198,138,133,.55), transparent 60%),
+      radial-gradient(ellipse 50% 45% at 20% 75%, rgba(185,141,82,.35), transparent 65%),
+      linear-gradient(180deg,#FBF6F1 0%, #F4ECE3 100%);
+  }
+  .grain::before {
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.06; mix-blend-mode:multiply;
+    background-image: radial-gradient(#231419 1px, transparent 1px); background-size: 3px 3px;
+  }
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,.78) 0%, rgba(244,236,227,.65) 100%);
+    backdrop-filter: blur(10px) saturate(110%);
+    -webkit-backdrop-filter: blur(10px) saturate(110%);
+    border: 1px solid rgba(140,90,101,.18);
+    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 18px 40px -22px rgba(63,31,42,.25);
+  }
+  .chip {
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.4rem .8rem; border-radius:999px;
+    background: rgba(233,201,192,.45);
+    border: 1px solid rgba(140,90,101,.25);
+    color:#3F1F2A; font-size:.78rem; font-weight:500; letter-spacing:.04em; text-transform:uppercase;
+  }
+  .chip-dot { width:.4rem; height:.4rem; border-radius:999px; background:#B98D52; box-shadow:0 0 10px #B98D52; }
+  .btn-primary {
+    display:inline-flex; align-items:center; gap:.55rem;
+    padding:.95rem 1.5rem; border-radius:999px;
+    background: linear-gradient(135deg,#8C5A65 0%, #3F1F2A 100%); color:#FBF6F1;
+    font-weight:600; letter-spacing:.02em;
+    box-shadow: 0 14px 30px -12px rgba(63,31,42,.55), 0 0 0 1px rgba(255,255,255,.1) inset;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -12px rgba(63,31,42,.6); }
+  .btn-ghost {
+    display:inline-flex; align-items:center; gap:.55rem;
+    padding:.9rem 1.4rem; border-radius:999px;
+    border: 1px solid rgba(140,90,101,.45); color:#3F1F2A; font-weight:600;
+    background: rgba(255,255,255,.4); backdrop-filter: blur(6px);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,.7); }
+  .divider-flourish {
+    display:flex; align-items:center; justify-content:center; gap:1rem; color:#B98D52;
+  }
+  .divider-flourish::before, .divider-flourish::after {
+    content:""; flex:1; max-width:120px; height:1px;
+    background: linear-gradient(90deg, transparent, rgba(185,141,82,.55), transparent);
+  }
+  [data-reveal] { opacity:0; transform: translateY(28px); }
+  [data-split] > span { display:inline-block; }
+  .photo-tile {
+    aspect-ratio: 3 / 4; border-radius: 1.25rem; overflow:hidden;
+    background-size:cover; background-position:center;
+    box-shadow: 0 30px 60px -30px rgba(63,31,42,.45), 0 0 0 1px rgba(140,90,101,.15);
+  }
+  .accent-line { height:1px; background:linear-gradient(90deg, transparent, rgba(140,90,101,.4), transparent); }
+  .stick-bar {
+    position:fixed; bottom:0; left:0; right:0; z-index:50;
+    background:linear-gradient(180deg, rgba(251,246,241,.6), rgba(251,246,241,.98));
+    backdrop-filter: blur(14px);
+    border-top:1px solid rgba(140,90,101,.2);
+    padding: .65rem 1rem calc(.65rem + env(safe-area-inset-bottom));
+    display:none;
+  }
+  @media (max-width: 768px) { .stick-bar { display:flex; gap:.5rem; } }
+  .nav-blur {
+    background: rgba(251,246,241,.7);
+    backdrop-filter: blur(12px) saturate(120%);
+    border-bottom: 1px solid rgba(140,90,101,.12);
+  }
+  .svc-icon {
+    width:42px;height:42px;border-radius:999px;
+    background: linear-gradient(135deg,#E9C9C0, #B98D52);
+    display:grid; place-items:center; color:#FBF6F1;
+    box-shadow: 0 6px 18px -6px rgba(140,90,101,.55);
+  }
+  .star { color:#B98D52; }
+  details > summary { list-style:none; cursor:pointer; }
+  details > summary::-webkit-details-marker { display:none; }
+  .open-pill {
+    display:inline-flex; align-items:center; gap:.45rem;
+    padding:.3rem .75rem; border-radius:999px;
+    background: rgba(154,196,159,.25); border:1px solid rgba(80,140,90,.4);
+    color:#1f3a26; font-size:.75rem; font-weight:600;
+  }
+  .open-dot { width:.45rem; height:.45rem; border-radius:999px; background:#4a9d62; box-shadow:0 0 8px #4a9d62; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav-blur sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <span class="font-display text-2xl text-plum tracking-wide">AJ <span class="grad-text">Salon</span></span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-ink/80">
+      <a href="#services" class="hover:text-mauve transition">Services</a>
+      <a href="#about" class="hover:text-mauve transition">About</a>
+      <a href="#reviews" class="hover:text-mauve transition">Reviews</a>
+      <a href="#visit" class="hover:text-mauve transition">Visit</a>
+    </nav>
+    <a href="tel:+18176163110" class="btn-primary text-sm hidden sm:inline-flex">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (817) 616-3110
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero-bg grain relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5 pt-14 pb-20 md:pt-24 md:pb-32 relative">
+    <div class="grid md:grid-cols-12 gap-10 items-center">
+      <div class="md:col-span-7">
+        <div class="flex items-center gap-2 mb-6" data-reveal>
+          <span class="chip"><span class="chip-dot"></span> Nextdoor Neighborhood Favorite · 2019 + 2021</span>
+        </div>
+        <h1 class="font-display text-5xl md:text-7xl leading-[1.02] text-plum" data-reveal data-split>
+          The independent <em class="italic grad-text">Richland Hills</em> salon where regulars become family.
+        </h1>
+        <p class="mt-7 text-lg md:text-xl text-ink/75 max-w-xl leading-relaxed" data-reveal>
+          AJ Salon is a full-service hair studio led by Amy Tran on Glenview Drive. Tailored cuts, dimensional color, polished styling — for the whole family. Walk-ins welcome; appointments preferred.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-3" data-reveal>
+          <a href="tel:+18176163110" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call (817) 616-3110
+          </a>
+          <a href="#services" class="btn-ghost">See the menu →</a>
+        </div>
+        <div class="mt-10 flex items-center gap-8 text-sm text-ink/70" data-reveal>
+          <div><span class="open-pill"><span class="open-dot"></span> Open today · 10 AM – 7 PM</span></div>
+          <div class="hidden sm:block">★ ★ ★ ★ ★ <span class="text-ink/60 ml-1">Neighborhood favorite</span></div>
+        </div>
+      </div>
+
+      <div class="md:col-span-5">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="photo-tile" style="background-image:linear-gradient(160deg,rgba(63,31,42,.35),rgba(63,31,42,0)),url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80')" data-reveal></div>
+          <div class="photo-tile mt-10" style="background-image:linear-gradient(160deg,rgba(63,31,42,.3),rgba(63,31,42,0)),url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80')" data-reveal></div>
+          <div class="photo-tile" style="background-image:linear-gradient(160deg,rgba(63,31,42,.3),rgba(63,31,42,0)),url('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=900&q=80')" data-reveal></div>
+          <div class="photo-tile mt-10" style="background-image:linear-gradient(160deg,rgba(63,31,42,.3),rgba(63,31,42,0)),url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=900&q=80')" data-reveal></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED ROW -->
+<section class="border-y border-mauve/15 bg-bone/40">
+  <div class="max-w-6xl mx-auto px-5 py-7 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div data-reveal>
+      <div class="font-display text-3xl text-plum">15+ yrs</div>
+      <div class="text-xs uppercase tracking-widest text-ink/60 mt-1">On Glenview Dr.</div>
+    </div>
+    <div data-reveal>
+      <div class="font-display text-3xl text-plum">2x</div>
+      <div class="text-xs uppercase tracking-widest text-ink/60 mt-1">Nextdoor Favorite</div>
+    </div>
+    <div data-reveal>
+      <div class="font-display text-3xl text-plum">All Ages</div>
+      <div class="text-xs uppercase tracking-widest text-ink/60 mt-1">Women · Men · Kids</div>
+    </div>
+    <div data-reveal>
+      <div class="font-display text-3xl text-plum">Walk-Ins</div>
+      <div class="text-xs uppercase tracking-widest text-ink/60 mt-1">Welcome</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+      <div class="divider-flourish text-sm uppercase tracking-[.3em] mb-4">The Menu</div>
+      <h2 class="font-display text-4xl md:text-5xl text-plum">Full-service hair, <em class="italic grad-text">honest pricing</em>.</h2>
+      <p class="mt-4 text-ink/70">Color, cut, and styling for the whole family. Tell us what you want — Amy and the team will tell you straight what works for your hair.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Women's Cuts & Styling</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Precision shaping for short, mid-length, and the long-hair specialty Amy's known for. Includes shampoo, conditioning, and a finished blowout.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22v-7a4 4 0 0 1 4-4"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Color & Highlights</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">All-over color, balayage, foils, gloss, gray blending, and color correction. We use the consultation to set realistic, beautiful results before we ever pick up a brush.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Men's Cuts</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Clipper work, scissor cuts, fades, and beard trims. Honest pricing, no-fuss appointments. Neighbors say we're the chain-salon alternative they've been looking for.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Kids' Cuts</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Patient, friendly cuts for first-timers and everyday trims. The chair gets lower; the conversation gets sillier. We make it easy on parents.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12c0-3.866 3.134-7 7-7s7 3.134 7 7-3.134 7-7 7-7-3.134-7-7z"/><path d="M12 5v14"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Smoothing & Relaxers</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Professional relaxers and smoothing treatments. We assess hair condition first and recommend the gentlest service that gets you the result you want.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Special-Occasion Styling</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Updos, blowouts, and event-ready styling for weddings, graduations, dates, and family photos. Book in advance so we can plan the look with you.</p>
+      </div>
+    </div>
+
+    <div class="mt-10 text-center text-sm text-ink/60" data-reveal>
+      Pricing varies by hair length, density, and service. Call for a fast quote — <a href="tel:+18176163110" class="text-mauve underline underline-offset-4 hover:text-plum">(817) 616-3110</a>.
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="bg-bone/50 py-24 md:py-32 relative">
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-12 items-center">
+    <div class="md:col-span-5">
+      <div class="photo-tile" style="aspect-ratio: 4/5; background-image: linear-gradient(160deg,rgba(63,31,42,.35),rgba(63,31,42,0)), url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1000&q=80')" data-reveal></div>
+    </div>
+    <div class="md:col-span-7" data-reveal>
+      <div class="divider-flourish text-sm uppercase tracking-[.3em] mb-4 justify-start">About</div>
+      <h2 class="font-display text-4xl md:text-5xl text-plum leading-tight">
+        Run by <em class="italic grad-text">Amy Tran</em>, on Glenview since the neighborhood knew it.
+      </h2>
+      <p class="mt-6 text-ink/75 leading-relaxed">
+        AJ Salon is the kind of place where your stylist knows your kid's name, your color history, and what you said about your last vacation. Amy and her team built this independent salon to be the opposite of a strip-mall chain — same chair, same hands, every visit.
+      </p>
+      <p class="mt-4 text-ink/75 leading-relaxed">
+        Neighbors keep voting us a <strong>Nextdoor Neighborhood Favorite</strong> — twice and counting. We take it as our standing assignment to earn it again.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-2">
+        <span class="chip">Women's color specialist</span>
+        <span class="chip">Long-hair expert</span>
+        <span class="chip">Family-friendly</span>
+        <span class="chip">Walk-ins welcome</span>
+        <span class="chip">Credit cards accepted</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-14" data-reveal>
+      <div class="divider-flourish text-sm uppercase tracking-[.3em] mb-4">What Neighbors Say</div>
+      <h2 class="font-display text-4xl md:text-5xl text-plum">Voted favorite, twice. <em class="italic grad-text">Earned, never bought.</em></h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="star mb-3">★ ★ ★ ★ ★</div>
+        <p class="font-display text-xl text-plum leading-snug">"Color work for women — and they actually listen before they start mixing."</p>
+        <p class="mt-4 text-xs uppercase tracking-widest text-ink/55">Verified Nextdoor neighbor</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="star mb-3">★ ★ ★ ★ ★</div>
+        <p class="font-display text-xl text-plum leading-snug">"Best long-hair cuts in Richland Hills. I drive past three salons to come here."</p>
+        <p class="mt-4 text-xs uppercase tracking-widest text-ink/55">Verified Nextdoor neighbor</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="star mb-3">★ ★ ★ ★ ★</div>
+        <p class="font-display text-xl text-plum leading-snug">"The chain-salon alternative we needed. Same chair, same hands, every visit."</p>
+        <p class="mt-4 text-xs uppercase tracking-widest text-ink/55">Verified Nextdoor neighbor</p>
+      </div>
+    </div>
+    <div class="text-center mt-10" data-reveal>
+      <a href="https://www.yelp.com/biz/aj-salon-richland-hills" target="_blank" rel="noopener" class="btn-ghost">Read more on Yelp →</a>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT / HOURS / MAP -->
+<section id="visit" class="bg-bone/50 py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-10">
+    <div class="md:col-span-5" data-reveal>
+      <div class="divider-flourish text-sm uppercase tracking-[.3em] mb-4 justify-start">Visit</div>
+      <h2 class="font-display text-4xl md:text-5xl text-plum leading-tight">Come see us on <em class="italic grad-text">Glenview Drive</em>.</h2>
+
+      <div class="mt-8 space-y-5">
+        <div class="card rounded-2xl p-5 flex items-start gap-4">
+          <div class="svc-icon shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="text-xs uppercase tracking-widest text-ink/55">Address</div>
+            <div class="font-display text-xl text-plum mt-1">7269 Glenview Dr</div>
+            <div class="text-ink/70">Richland Hills, TX 76180</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=7269+Glenview+Dr+Richland+Hills+TX+76180" target="_blank" rel="noopener" class="text-mauve text-sm font-semibold underline underline-offset-4 mt-2 inline-block">Get directions →</a>
+          </div>
+        </div>
+        <div class="card rounded-2xl p-5 flex items-start gap-4">
+          <div class="svc-icon shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="text-xs uppercase tracking-widest text-ink/55">Phone</div>
+            <a href="tel:+18176163110" class="font-display text-xl text-plum mt-1 block">(817) 616-3110</a>
+            <div class="text-ink/70 text-sm">Walk-ins welcome, appointments preferred</div>
+          </div>
+        </div>
+        <div class="card rounded-2xl p-5">
+          <div class="text-xs uppercase tracking-widest text-ink/55 mb-3">Hours</div>
+          <div class="space-y-1.5 text-ink/80">
+            <div class="flex justify-between"><span>Monday</span><span>10 AM – 7 PM</span></div>
+            <div class="flex justify-between"><span>Tuesday</span><span>10 AM – 7 PM</span></div>
+            <div class="flex justify-between"><span>Wednesday</span><span>10 AM – 7 PM</span></div>
+            <div class="flex justify-between"><span>Thursday</span><span>10 AM – 7 PM</span></div>
+            <div class="flex justify-between"><span>Friday</span><span>10 AM – 7 PM</span></div>
+            <div class="flex justify-between"><span>Saturday</span><span>10 AM – 6 PM</span></div>
+            <div class="flex justify-between text-ink/55"><span>Sunday</span><span>Closed</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:col-span-7" data-reveal>
+      <div class="card rounded-3xl overflow-hidden">
+        <iframe
+          src="https://www.google.com/maps?q=7269+Glenview+Dr,+Richland+Hills,+TX+76180&output=embed"
+          width="100%" height="560" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="AJ Salon location map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative overflow-hidden">
+  <div class="hero-bg grain relative">
+    <div class="max-w-4xl mx-auto px-5 py-24 md:py-32 text-center relative">
+      <h2 class="font-display text-4xl md:text-6xl text-plum leading-tight" data-reveal>
+        Ready for the chair? <em class="italic grad-text">Let's book you in.</em>
+      </h2>
+      <p class="mt-5 text-ink/75 max-w-xl mx-auto" data-reveal>
+        Call now and we'll find you a slot — or walk in during open hours and we'll do our best to take you same-day.
+      </p>
+      <div class="mt-9 flex flex-wrap justify-center gap-3" data-reveal>
+        <a href="tel:+18176163110" class="btn-primary text-lg">Call (817) 616-3110</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=7269+Glenview+Dr+Richland+Hills+TX+76180" target="_blank" rel="noopener" class="btn-ghost text-lg">Get directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-mauve/15 bg-bone/40 py-10">
+  <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-ink/65">
+    <div class="font-display text-xl text-plum">AJ Salon</div>
+    <div>7269 Glenview Dr · Richland Hills, TX 76180 · (817) 616-3110</div>
+    <div class="flex items-center gap-5">
+      <a href="https://www.facebook.com/AJ.Salon.Glenview/" target="_blank" rel="noopener" class="hover:text-mauve">Facebook</a>
+      <a href="https://www.yelp.com/biz/aj-salon-richland-hills" target="_blank" rel="noopener" class="hover:text-mauve">Yelp</a>
+    </div>
+  </div>
+  <div class="text-center text-xs text-ink/40 mt-3">© <span id="yr"></span> AJ Salon · All rights reserved</div>
+</footer>
+
+<!-- Mobile sticky bar -->
+<div class="stick-bar">
+  <a href="tel:+18176163110" class="btn-primary flex-1 justify-center text-sm">Call now</a>
+  <a href="https://www.google.com/maps/search/?api=1&query=7269+Glenview+Dr+Richland+Hills+TX+76180" target="_blank" rel="noopener" class="btn-ghost flex-1 justify-center text-sm">Directions</a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HairSalon",
+  "name":"AJ Salon",
+  "image":"https://turnkeyweb.org/previews/aj-salon/og.jpg",
+  "url":"https://turnkeyweb.org/previews/aj-salon/",
+  "telephone":"+1-817-616-3110",
+  "priceRange":"$$",
+  "address":{"@type":"PostalAddress","streetAddress":"7269 Glenview Dr","addressLocality":"Richland Hills","addressRegion":"TX","postalCode":"76180","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":32.815,"longitude":-97.227},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"19:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"18:00"}
+  ],
+  "sameAs":["https://www.facebook.com/AJ.Salon.Glenview/","https://www.yelp.com/biz/aj-salon-richland-hills"]
+}
+</script>
+
+<!-- Libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Smooth scroll
+(function(){
+  if (window.Lenis) {
+    const lenis = new Lenis({ duration: 1.1, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if (id.length>1 && document.querySelector(id)) {
+          e.preventDefault();
+          lenis.scrollTo(document.querySelector(id), { offset:-70 });
+        }
+      });
+    });
+  }
+})();
+
+// Split typography
+document.querySelectorAll('[data-split]').forEach(function(el){
+  el.innerHTML = '<span>' + el.innerHTML + '</span>';
+});
+
+// GSAP reveals
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('[data-reveal]').forEach(function(el){
+    gsap.fromTo(el, {opacity:0,y:28},
+      {opacity:1,y:0,duration:0.9,ease:'power3.out',
+       scrollTrigger:{trigger:el,start:'top 92%',toggleActions:'play none none none'}});
+  });
+}
+
+// Crawler / screenshot safety net
+setTimeout(function(){
+  document.querySelectorAll('[data-reveal]').forEach(function(el){
+    if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+      el.style.opacity='1'; el.style.transform='none';
+    }
+  });
+}, 6000);
+</script>
+</body>
+</html>
