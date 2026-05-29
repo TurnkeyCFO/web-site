@@ -594,7 +594,7 @@ Add-ons noted:  ${estimate.addOns.join(", ") || "None"}
 Please send me the next steps to get started.
 `
   );
-  return `mailto:rickyw@turnkeyweb.org?subject=${subject}&body=${body}`;
+  return `mailto:Ricky@TurnkeyWEB.org?subject=${subject}&body=${body}`;
 }
 
 /* ── RENDER PREVIEW CARD ── */

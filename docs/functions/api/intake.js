@@ -21,7 +21,7 @@
  *   AZURE_CLIENT_SECRET_VALUE  App registration client secret        [type: Secret]
  *   ONEDRIVE_USER              UPN whose OneDrive stores the files    e.g. ricky@turnkeycfo.com
  *   INTAKE_EMAIL_FROM          Mailbox the notification is sent from  e.g. ricky@turnkeycfo.com
- *   INTAKE_EMAIL_TO            Where the submission email lands       e.g. rickyW@turnkeyweb.org
+ *   INTAKE_EMAIL_TO            Where the submission email lands       e.g. Ricky@TurnkeyWEB.org
  *
  * Optional — a Slack ping to the #leads channel on every submission
  * (if either is unset, the Slack step is silently skipped):
