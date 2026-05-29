@@ -309,18 +309,20 @@
 
         <form id="form" autocomplete="on" novalidate>
           <div class="grid">
-            <div>
+            <div class="full">
               <label for="requester_name">Your name <span class="req">*</span></label>
               <input id="requester_name" name="requester_name" class="input" required placeholder="David / Daniel / Eldine / Ricky">
-            </div>
-            <div>
-              <label for="requester_email">Your email <span class="req">*</span></label>
-              <input id="requester_email" name="requester_email" class="input" type="email" required placeholder="david@turnkeyweb.org">
             </div>
 
             <div class="full">
               <label for="business_name">Business name <span class="req">*</span></label>
               <input id="business_name" name="business_name" class="input" required placeholder="e.g. AJ Salon">
+            </div>
+
+            <div class="full">
+              <label for="hubspot_link">HubSpot profile link <span style="color:#7c779a; font-weight:500; text-transform:none; letter-spacing:0">(optional)</span></label>
+              <input id="hubspot_link" name="hubspot_link" class="input" type="url" placeholder="https://app.hubspot.com/contacts/245973988/contact/12345  (or /company/12345)">
+              <span class="hint">If they're already in HubSpot, drop the contact or company URL — we'll pull phone, address, website, and notes straight from the record.</span>
             </div>
 
             <div class="full">
@@ -334,18 +336,9 @@
               <textarea id="business_description" name="business_description" class="textarea" placeholder="A sentence or two on services, who they serve, and what makes them different."></textarea>
             </div>
 
-            <div>
+            <div class="full">
               <label for="brand_vibe">Brand notes / vibe (optional)</label>
               <textarea id="brand_vibe" name="brand_vibe" class="textarea" placeholder="Brand colors, must-haves, style references, or anything to avoid."></textarea>
-            </div>
-            <div>
-              <label for="assets_link">Drive / Downloads folder with logo + photos (optional)</label>
-              <textarea id="assets_link" name="assets_link" class="textarea" placeholder="Paste a Google Drive folder link or describe where the logo + client photos live. Real photos always beat stock."></textarea>
-            </div>
-
-            <div class="full">
-              <label for="city">City / location (optional but recommended)</label>
-              <input id="city" name="city" class="input" placeholder="e.g. Richland Hills, TX — helps disambiguate when multiple businesses share a name">
             </div>
           </div>
 
@@ -392,7 +385,7 @@
     err.classList.remove('show'); err.textContent = '';
 
     if (!form.checkValidity()) {
-      err.textContent = 'Please fill in your name, email, and the business name.';
+      err.textContent = 'Please fill in your name and the business name.';
       err.classList.add('show');
       return;
     }

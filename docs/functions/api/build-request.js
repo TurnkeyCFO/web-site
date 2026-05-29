@@ -19,24 +19,20 @@
 
 const FIELD_LABELS = {
   requester_name:       "Submitted by",
-  requester_email:      "Requester email",
   business_name:        "Business",
-  city:                 "Location",
+  hubspot_link:         "HubSpot profile",
   business_links:       "Links to research",
   business_description: "What they do",
   brand_vibe:           "Brand notes / vibe",
-  assets_link:          "Logo + photo source",
 };
 
 const FIELD_ORDER = [
   "requester_name",
-  "requester_email",
   "business_name",
-  "city",
+  "hubspot_link",
   "business_links",
   "business_description",
   "brand_vibe",
-  "assets_link",
 ];
 
 export async function onRequestPost({ request, env }) {
@@ -58,9 +54,8 @@ export async function onRequestPost({ request, env }) {
     // Minimal validation — protect against empty submits.
     const business = (fields.business_name || "").trim();
     const requester = (fields.requester_name || "").trim();
-    const email = (fields.requester_email || "").trim();
-    if (!business || !requester || !email) {
-      return json({ ok: false, error: "Business name, your name, and your email are required." }, 400);
+    if (!business || !requester) {
+      return json({ ok: false, error: "Business name and your name are required." }, 400);
     }
 
     // Slack post is best-effort but logged loudly if it fails.
@@ -152,4 +147,3 @@ function json(obj, status) {
     headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
   });
 }
-
