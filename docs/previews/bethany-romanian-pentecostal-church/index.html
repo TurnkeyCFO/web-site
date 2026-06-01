@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Bethany Romanian Pentecostal Church — Abbotsford, BC</title>
-<meta name="description" content="Bethany Romanian Pentecostal Church — a Romanian-speaking Pentecostal congregation on McMillan Road in Abbotsford, BC. Worship, prayer, Bible study, children's classes, youth ministry, youth orchestra, and outreach across the Fraser Valley and Lower Mainland. Everyone welcome.">
+<title>Bethany Romanian Pentecostal Church — Biserica Penticostală Betania · Abbotsford, BC</title>
+<meta name="description" content="Biserica Penticostală Română Betania — a Romanian Pentecostal church on McMillan Road in Abbotsford, BC. Worship and prayer in Romanian, Bible study, children's ministry, youth and orchestra, and outreach across the Fraser Valley. Credință · Familie · Moștenire.">
 <link rel="canonical" href="https://turnkeyweb.org/previews/bethany-romanian-pentecostal-church/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E1A2F'/%3E%3Cpath d='M14.6 8h2.8v4.2H21v2.8h-3.6V25h-2.8V15H11v-2.8h3.6z' fill='%23C39A4E'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%236E1B25'/%3E%3Cpath d='M16 4l12 12-12 12L4 16z' fill='none' stroke='%23C99A45' stroke-width='2'/%3E%3Cpath d='M14.8 9h2.4v3.4H21v2.4h-3.8V25h-2.4V14.8H11v-2.4h3.8z' fill='%23C99A45'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -18,13 +18,15 @@ tailwind.config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'serif'],
+        display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif']
       },
       colors: {
-        cream:'#FAF6EF', bone:'#F1E9DC', wheat:'#E4D2A8',
-        midnight:'#0E1A2F', navy:'#1C3055', royal:'#2E5AA8',
-        gold:'#C39A4E', goldSoft:'#A9813B', dove:'#B9C4CE', ink:'#1A2433'
+        wine:'#6E1B25', wineDeep:'#551019', wineBright:'#8A2433',
+        indigo:'#1B2440', indigoDeep:'#121A33',
+        brass:'#C99A45', brassLite:'#E0C27E', brassDeep:'#A87C30',
+        bone:'#F3E8D4', boneDeep:'#E8D7B8', oat:'#FAF2E2',
+        forest:'#3C5743', ink:'#241A14'
       }
     }
   }
@@ -32,566 +34,474 @@ tailwind.config = {
 </script>
 
 <style>
-  :root {
-    --midnight:#0E1A2F; --navy:#1C3055; --royal:#2E5AA8; --gold:#C39A4E; --gold-soft:#A9813B;
-    --cream:#FAF6EF; --bone:#F1E9DC; --wheat:#E4D2A8; --dove:#B9C4CE; --ink:#1A2433;
+  :root{
+    --wine:#6E1B25; --wine-deep:#551019; --wine-bright:#8A2433;
+    --indigo:#1B2440; --indigo-deep:#121A33;
+    --brass:#C99A45; --brass-lite:#E0C27E; --brass-deep:#A87C30;
+    --bone:#F3E8D4; --bone-deep:#E8D7B8; --oat:#FAF2E2;
+    --forest:#3C5743; --ink:#241A14;
   }
   *{ -webkit-tap-highlight-color: transparent; }
-  html, body { background:var(--cream); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
-  body { overflow-x:hidden; }
-  .font-display { font-family:'Cormorant Garamond', serif; letter-spacing:-0.012em; }
+  html,body{ background:var(--oat); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
+  body{ overflow-x:hidden; }
+  .font-display{ font-family:'Bricolage Grotesque', sans-serif; letter-spacing:-0.02em; }
+  .ro{ font-family:'Bricolage Grotesque', sans-serif; }
 
-  /* Ambient blobs — navy + gold */
-  .ambient-blob { position:absolute; border-radius:50%; filter:blur(80px); opacity:.42; pointer-events:none; will-change:transform; }
-  .blob-1 { width:520px; height:520px; background:radial-gradient(circle, rgba(46,90,168,.30), transparent 60%); top:-180px; right:-160px; animation: drift1 24s ease-in-out infinite; }
-  .blob-2 { width:420px; height:420px; background:radial-gradient(circle, rgba(195,154,78,.34), transparent 60%); bottom:-120px; left:-80px; animation: drift2 28s ease-in-out infinite; }
-  .blob-3 { width:380px; height:380px; background:radial-gradient(circle, rgba(28,48,85,.20), transparent 65%); top:40%; left:-100px; animation: drift1 32s ease-in-out infinite reverse; }
-  @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(40px,-30px) scale(1.08);} }
-  @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-50px,40px) scale(1.1);} }
+  /* ---------- Folk embroidery band (SVG pattern, crisp + seamless) ---------- */
+  .folk-band{ display:block; width:100%; height:30px; line-height:0; }
+  .folk-band svg{ display:block; width:100%; height:30px; }
+  .folk-band.tall{ height:38px; } .folk-band.tall svg{ height:38px; }
 
-  /* Gradient text — navy -> royal -> gold */
-  .grad-text {
-    background: linear-gradient(120deg, #1C3055 0%, #2E5AA8 45%, #C39A4E 100%);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-    background-size: 200% 100%; animation: shimmer 8s linear infinite;
-  }
-  @keyframes shimmer { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+  /* ---------- Reveals & motion ---------- */
+  [data-reveal]{ opacity:0; transform:translateY(34px); }
+  [data-reveal-x]{ opacity:0; transform:translateX(40px); }
+  [data-split] > span{ display:inline-block; }
 
-  .hero-bg {
-    position:relative; overflow:hidden;
-    background:
-      radial-gradient(ellipse 70% 55% at 75% 22%, rgba(46,90,168,.16), transparent 65%),
-      radial-gradient(ellipse 55% 50% at 12% 78%, rgba(195,154,78,.18), transparent 65%),
-      linear-gradient(180deg,#FAF6EF 0%, #F1E9DC 100%);
-  }
-  .grain::after {
-    content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
-    background-image: radial-gradient(#1A2433 1px, transparent 1px); background-size: 3px 3px;
-  }
-
-  .card {
-    position:relative;
-    background: linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(241,233,220,.55) 100%);
-    backdrop-filter: blur(12px) saturate(115%);
-    -webkit-backdrop-filter: blur(12px) saturate(115%);
-    border: 1px solid rgba(28,48,85,.12);
-    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 22px 50px -28px rgba(14,26,47,.22);
-    transition: transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s cubic-bezier(.2,.7,.2,1), border-color .4s;
-    overflow:hidden;
-  }
-  .card::before {
-    content:""; position:absolute; left:0; top:0; height:2px; width:0%;
-    background: linear-gradient(90deg, var(--navy), var(--gold));
-    transition: width .65s cubic-bezier(.2,.7,.2,1);
-  }
-  .card:hover { transform: translateY(-6px); box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 38px 60px -28px rgba(14,26,47,.32); border-color: rgba(28,48,85,.26); }
-  .card:hover::before { width:100%; }
-
-  .chip {
-    display:inline-flex; align-items:center; gap:.5rem;
-    padding:.4rem .85rem; border-radius:999px;
-    background: rgba(14,26,47,.92);
-    border: 1px solid rgba(195,154,78,.45);
-    color:#FAF6EF; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
-  }
-  .chip-dot { width:.45rem; height:.45rem; border-radius:999px; background:var(--gold); box-shadow:0 0 12px var(--gold); animation: pulse 2.4s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.55; transform:scale(.9)} }
-
-  .chip-soft {
-    display:inline-flex; align-items:center; gap:.5rem;
-    padding:.4rem .85rem; border-radius:999px;
-    background: rgba(46,90,168,.12);
-    border: 1px solid rgba(28,48,85,.20);
-    color:#1C3055; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
-  }
-
-  .btn-primary {
+  /* ---------- Buttons ---------- */
+  .btn-brass{
     position:relative; display:inline-flex; align-items:center; gap:.6rem;
-    padding:1rem 1.65rem; border-radius:999px;
-    background: linear-gradient(135deg,#1C3055 0%, #0E1A2F 100%); color:var(--wheat);
-    font-weight:700; letter-spacing:.02em;
-    box-shadow: 0 18px 36px -14px rgba(14,26,47,.55), 0 0 0 1px rgba(195,154,78,.25) inset;
-    transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, filter .35s, color .35s;
-    overflow:hidden;
+    padding:1rem 1.7rem; border-radius:2px;
+    background:linear-gradient(135deg,var(--brass) 0%, var(--brass-deep) 100%); color:var(--wine-deep);
+    font-weight:700; letter-spacing:.02em; overflow:hidden;
+    box-shadow:0 16px 30px -14px rgba(201,154,69,.6);
+    transition:transform .35s cubic-bezier(.2,.7,.2,1), filter .35s, box-shadow .35s;
   }
-  .btn-primary::after {
-    content:""; position:absolute; inset:0;
-    background: linear-gradient(120deg, transparent 30%, rgba(195,154,78,.35) 50%, transparent 70%);
-    transform: translateX(-120%); transition: transform .9s cubic-bezier(.2,.7,.2,1);
-  }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 26px 46px -16px rgba(14,26,47,.7), 0 0 0 1px var(--gold) inset; color:#fff; }
-  .btn-primary:hover::after { transform: translateX(120%); }
+  .btn-brass::after{ content:""; position:absolute; inset:0;
+    background:linear-gradient(120deg,transparent 30%, rgba(255,255,255,.4) 50%, transparent 70%);
+    transform:translateX(-120%); transition:transform .9s cubic-bezier(.2,.7,.2,1); }
+  .btn-brass:hover{ transform:translateY(-3px); filter:brightness(1.04); }
+  .btn-brass:hover::after{ transform:translateX(120%); }
 
-  .btn-ghost {
+  .btn-outline{
     display:inline-flex; align-items:center; gap:.55rem;
-    padding:.95rem 1.5rem; border-radius:999px;
-    border: 1px solid rgba(28,48,85,.45); color:var(--navy); font-weight:600;
-    background: rgba(255,255,255,.5); backdrop-filter: blur(8px);
-    transition: background .35s, border-color .35s, transform .35s, color .35s;
+    padding:.95rem 1.55rem; border-radius:2px;
+    border:1.5px solid currentColor; font-weight:600;
+    transition:background .35s, color .35s, transform .35s;
   }
-  .btn-ghost:hover { background: var(--navy); border-color: var(--navy); color: var(--wheat); transform: translateY(-3px); }
+  .btn-outline.on-wine{ color:var(--bone); }
+  .btn-outline.on-wine:hover{ background:var(--bone); color:var(--wine); transform:translateY(-3px); }
+  .btn-outline.on-light{ color:var(--wine); }
+  .btn-outline.on-light:hover{ background:var(--wine); color:var(--bone); transform:translateY(-3px); }
 
-  .btn-gold {
-    position:relative; display:inline-flex; align-items:center; gap:.6rem;
-    padding:1rem 1.65rem; border-radius:999px;
-    background: var(--gold); color: var(--midnight);
-    font-weight:700; letter-spacing:.02em;
-    box-shadow: 0 18px 36px -14px rgba(195,154,78,.55);
-    transition: transform .35s, filter .35s;
-  }
-  .btn-gold:hover { transform: translateY(-3px); filter:brightness(1.05); }
+  /* ---------- Chips ---------- */
+  .chip{ display:inline-flex; align-items:center; gap:.5rem; padding:.38rem .85rem; border-radius:2px;
+    background:rgba(110,27,37,.07); border:1px solid rgba(110,27,37,.22); color:var(--wine);
+    font-size:.72rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
+  .chip-dot{ width:.42rem; height:.42rem; transform:rotate(45deg); background:var(--brass); }
 
-  .divider-flourish { display:flex; align-items:center; justify-content:center; gap:1rem; color:var(--gold); }
-  .divider-flourish::before, .divider-flourish::after {
-    content:""; flex:1; max-width:120px; height:1px;
-    background: linear-gradient(90deg, transparent, rgba(195,154,78,.7), transparent);
-  }
+  /* ---------- Photo: framed + warm duotone (art-directed, not stocky) ---------- */
+  .frame{ position:relative; background:var(--wine-deep); padding:10px;
+    box-shadow:0 50px 80px -36px rgba(37,26,20,.6); }
+  .frame::before{ content:""; position:absolute; inset:4px; border:1px solid rgba(201,154,69,.55); pointer-events:none; z-index:3; }
+  .frame .ph{ position:relative; overflow:hidden; background-size:cover; background-position:center;
+    filter:sepia(.34) saturate(1.05) contrast(1.04); }
+  .frame .ph::after{ content:""; position:absolute; inset:0; mix-blend-mode:multiply;
+    background:linear-gradient(150deg, rgba(110,27,37,.42), rgba(27,36,64,.34)); }
+  .arch{ border-radius:140px 140px 6px 6px; }
 
-  [data-reveal] { opacity:0; transform: translateY(36px); }
-  [data-split] > span { display:inline-block; }
+  /* ---------- Hero ---------- */
+  .hero{ position:relative; background:
+      radial-gradient(ellipse 60% 50% at 78% 14%, rgba(138,36,51,.55), transparent 60%),
+      radial-gradient(ellipse 50% 50% at 8% 86%, rgba(27,36,64,.45), transparent 62%),
+      linear-gradient(165deg,var(--wine) 0%, var(--wine-deep) 100%); overflow:hidden; }
+  .medallion{ position:absolute; width:760px; height:760px; top:-200px; left:-220px; opacity:.10;
+    animation:spin 90s linear infinite; pointer-events:none; }
+  @keyframes spin{ to{ transform:rotate(360deg);} }
+  .vlabel{ writing-mode:vertical-rl; text-orientation:mixed; letter-spacing:.36em; }
 
-  .photo-tile {
-    border-radius: 1.25rem; overflow:hidden; position:relative;
-    background-color:#1C3055; background-size:cover; background-position:center;
-    box-shadow: 0 40px 70px -30px rgba(14,26,47,.5), 0 0 0 1px rgba(28,48,85,.18), 0 0 0 4px rgba(195,154,78,0);
-    will-change: transform; transition: box-shadow .6s;
-  }
-  .photo-tile:hover { box-shadow: 0 40px 70px -30px rgba(14,26,47,.55), 0 0 0 1px rgba(28,48,85,.22), 0 0 0 4px rgba(195,154,78,.4); }
-  .photo-tile::after {
-    content:""; position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(14,26,47,.05) 0%, transparent 45%, rgba(14,26,47,.42) 100%);
-  }
-  .float-slow { animation: floatSlow 7s ease-in-out infinite; }
-  .float-mid  { animation: floatMid  6s ease-in-out infinite; }
-  .float-fast { animation: floatFast 5.4s ease-in-out infinite; }
-  @keyframes floatSlow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
-  @keyframes floatMid  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-22px)} }
-  @keyframes floatFast { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  /* ---------- Ministry editorial rows ---------- */
+  .mrow{ position:relative; border-top:1px solid rgba(36,26,20,.16); transition:background .4s; }
+  .mrow:last-child{ border-bottom:1px solid rgba(36,26,20,.16); }
+  .mrow:hover{ background:rgba(110,27,37,.04); }
+  .mrow .mnum{ font-family:'Bricolage Grotesque'; color:var(--brass-deep); transition:transform .5s cubic-bezier(.2,.7,.2,1), color .4s; }
+  .mrow:hover .mnum{ transform:translateX(6px); color:var(--wine); }
+  .mrow .marrow{ opacity:0; transform:translateX(-10px); transition:opacity .4s, transform .4s; }
+  .mrow:hover .marrow{ opacity:1; transform:translateX(0); }
+  .diamond-bullet{ width:12px; height:12px; transform:rotate(45deg); border:2px solid var(--brass); display:inline-block; }
 
-  /* Marquee — navy band with gold text. Brand moment. */
-  .marquee-band {
-    background: var(--midnight); color: var(--gold);
-    border-top: 1px solid rgba(195,154,78,.25); border-bottom: 1px solid rgba(195,154,78,.25);
-    position:relative; overflow:hidden;
-  }
-  .marquee {
-    overflow:hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-            mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  }
-  .marquee-track {
-    display:flex; gap:3.5rem; width:max-content;
-    animation: scrollX 38s linear infinite;
-    font-family: 'Cormorant Garamond', serif;
-  }
-  .marquee-band:hover .marquee-track { animation-play-state: paused; }
-  @keyframes scrollX { from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
-  .marquee-item { display:inline-flex; align-items:center; gap:1.4rem; font-size:1.7rem; letter-spacing:.015em; color:#FAF6EF; }
-  .marquee-item.accent { color: var(--gold); font-style: italic; }
-  .marquee-item .dot { width:.5rem; height:.5rem; border-radius:999px; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+  /* ---------- Ledger (gatherings) ---------- */
+  .ledger-row{ display:flex; align-items:baseline; gap:1rem; padding:1.1rem 0; border-bottom:1px dashed rgba(224,194,126,.35); }
+  .ledger-row:last-child{ border-bottom:0; }
+  .dotfill{ flex:1; border-bottom:1px dotted rgba(224,194,126,.45); transform:translateY(-4px); }
 
-  .reveal-image {
-    aspect-ratio: 4/5; border-radius: 1.25rem; overflow:hidden;
-    background-color:#1C3055; background-size:cover; background-position:center;
-    clip-path: inset(0 0 100% 0);
-    transition: clip-path 1.4s cubic-bezier(.2,.7,.2,1);
-    box-shadow: 0 30px 70px -30px rgba(14,26,47,.55);
-  }
-  .reveal-image.in { clip-path: inset(0 0 0% 0); }
+  /* ---------- First-visit columns ---------- */
+  .fv-ico{ width:60px; height:60px; display:grid; place-items:center; transform:rotate(45deg);
+    border:1.5px solid var(--brass); background:rgba(201,154,69,.08); margin-bottom:1.4rem; }
+  .fv-ico svg{ transform:rotate(-45deg); color:var(--wine); }
 
-  .accent-line {
-    position:relative; height:1px;
-    background:linear-gradient(90deg, transparent, rgba(195,154,78,.55), transparent);
-  }
+  /* ---------- nav ---------- */
+  .nav-blur{ background:rgba(250,242,226,.86); backdrop-filter:blur(12px) saturate(120%);
+    -webkit-backdrop-filter:blur(12px) saturate(120%); border-bottom:1px solid rgba(110,27,37,.12); }
+  .underline-grow{ position:relative; }
+  .underline-grow::after{ content:""; position:absolute; left:0; bottom:-4px; height:2px; width:0;
+    background:var(--wine); transition:width .45s cubic-bezier(.2,.7,.2,1); }
+  .underline-grow:hover::after{ width:100%; }
 
-  .stick-bar {
-    position:fixed; bottom:0; left:0; right:0; z-index:50;
-    background:linear-gradient(180deg, rgba(250,246,239,.6), rgba(250,246,239,.98));
-    backdrop-filter: blur(14px);
-    border-top:1px solid rgba(28,48,85,.18);
-    padding: .65rem 1rem calc(.65rem + env(safe-area-inset-bottom));
-    display:none; gap:.5rem;
-  }
-  @media (max-width: 768px) { .stick-bar { display:flex; } }
+  .stick-bar{ position:fixed; bottom:0; left:0; right:0; z-index:50;
+    background:var(--wine); border-top:2px solid var(--brass);
+    padding:.6rem 1rem calc(.6rem + env(safe-area-inset-bottom)); display:none; gap:.55rem; }
+  @media (max-width:768px){ .stick-bar{ display:flex; } }
 
-  .nav-blur {
-    background: rgba(250,246,239,.8);
-    backdrop-filter: blur(14px) saturate(120%);
-    -webkit-backdrop-filter: blur(14px) saturate(120%);
-    border-bottom: 1px solid rgba(28,48,85,.10);
-  }
-
-  .svc-icon {
-    width:46px;height:46px;border-radius:999px;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--midnight) 100%);
-    display:grid; place-items:center; color: var(--gold);
-    box-shadow: 0 10px 24px -8px rgba(14,26,47,.55), 0 0 0 1px rgba(195,154,78,.2) inset;
-    transition: transform .45s cubic-bezier(.2,.7,.2,1);
-  }
-  .card:hover .svc-icon { transform: rotate(-6deg) scale(1.06); }
-
-  .star { color: var(--gold); letter-spacing:.18em; text-shadow: 0 0 12px rgba(195,154,78,.45); }
-
-  .open-pill {
-    display:inline-flex; align-items:center; gap:.5rem;
-    padding:.35rem .85rem; border-radius:999px;
-    background: rgba(46,90,168,.14); border:1px solid rgba(46,90,168,.4);
-    color:#1C3055; font-size:.78rem; font-weight:600;
-  }
-  .open-dot { width:.45rem; height:.45rem; border-radius:999px; background:var(--royal); box-shadow:0 0 10px var(--royal); animation: pulse 2s ease-in-out infinite; }
-
-  .stat-num { font-variant-numeric: tabular-nums; }
-  .underline-grow { position:relative; display:inline-block; }
-  .underline-grow::after {
-    content:""; position:absolute; left:0; bottom:-3px; height:2px; width:0;
-    background: linear-gradient(90deg, var(--navy), var(--gold));
-    transition: width .5s cubic-bezier(.2,.7,.2,1);
-  }
-  .underline-grow:hover::after { width:100%; }
-
-  .section-bridge {
-    position:relative; height:1px; max-width: 200px; margin: 0 auto;
-    background: linear-gradient(90deg, transparent, rgba(195,154,78,.5), transparent);
-  }
-
-  /* Brand mark */
-  .brand-mark { display:grid; place-items:center; border-radius:14px; background:var(--midnight); box-shadow: 0 8px 20px -8px rgba(14,26,47,.6), 0 0 0 1px rgba(195,154,78,.25) inset; }
-
-  /* CTA brand band — navy background, gold accents */
-  .brand-band { position:relative; background: var(--midnight); color: #FAF6EF; overflow:hidden; }
-  .brand-band::before {
-    content:""; position:absolute; inset:0; pointer-events:none;
-    background:
-      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(46,90,168,.30), transparent 60%),
-      radial-gradient(ellipse 50% 45% at 15% 75%, rgba(195,154,78,.16), transparent 65%);
-  }
-  .brand-band .grain::after { background-image: radial-gradient(rgba(195,154,78,.25) 1px, transparent 1px); opacity:.10; }
+  .brand-mark{ display:grid; place-items:center; }
+  .grain::after{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.06; mix-blend-mode:overlay;
+    background-image:radial-gradient(rgba(255,255,255,.6) 1px, transparent 1px); background-size:3px 3px; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ============ SVG defs: folk embroidery patterns + medallion ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Light band: motif in wine + brass on bone -->
+    <pattern id="folkLight" width="48" height="30" patternUnits="userSpaceOnUse">
+      <rect width="48" height="30" fill="#F3E8D4"/>
+      <line x1="0" y1="4" x2="48" y2="4" stroke="#C99A45" stroke-width="1.1"/>
+      <line x1="0" y1="26" x2="48" y2="26" stroke="#C99A45" stroke-width="1.1"/>
+      <path d="M0 15 L24 5 L48 15 L24 25 Z" fill="none" stroke="#6E1B25" stroke-width="1.5"/>
+      <path d="M10 15 L24 9 L38 15 L24 21 Z" fill="#C99A45"/>
+      <path d="M24 11.5 V18.5 M20.5 15 H27.5" stroke="#6E1B25" stroke-width="1.4"/>
+      <path d="M0 15 L6 11 M0 15 L6 19 M48 15 L42 11 M48 15 L42 19" stroke="#8A2433" stroke-width="1.2"/>
+    </pattern>
+    <!-- Brass band: motif in brass + bone on transparent (for wine/indigo bg) -->
+    <pattern id="folkBrass" width="48" height="30" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="4" x2="48" y2="4" stroke="#C99A45" stroke-width="1.1"/>
+      <line x1="0" y1="26" x2="48" y2="26" stroke="#C99A45" stroke-width="1.1"/>
+      <path d="M0 15 L24 5 L48 15 L24 25 Z" fill="none" stroke="#E0C27E" stroke-width="1.5"/>
+      <path d="M10 15 L24 9 L38 15 L24 21 Z" fill="#C99A45"/>
+      <path d="M24 11.5 V18.5 M20.5 15 H27.5" stroke="#F3E8D4" stroke-width="1.4"/>
+      <path d="M0 15 L6 11 M0 15 L6 19 M48 15 L42 11 M48 15 L42 19" stroke="#E0C27E" stroke-width="1.2"/>
+    </pattern>
+  </defs>
+</svg>
+
+<!-- Medallion (reusable) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="rosette">
+    <g fill="none" stroke="#E0C27E" stroke-width="2">
+      <path d="M380 60 L520 240 L700 380 L520 520 L380 700 L240 520 L60 380 L240 240 Z"/>
+      <path d="M380 130 L470 290 L630 380 L470 470 L380 630 L290 470 L130 380 L290 290 Z"/>
+      <circle cx="380" cy="380" r="120"/>
+      <circle cx="380" cy="380" r="60"/>
+      <path d="M380 200 L380 560 M200 380 L560 380 M255 255 L505 505 M505 255 L255 505"/>
+    </g>
+  </g>
+</defs></svg>
+
+<!-- ============ NAV ============ -->
 <header class="nav-blur sticky top-0 z-40">
   <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
     <a href="#top" class="flex items-center gap-3 group">
-      <span class="brand-mark w-10 h-10 transition-transform group-hover:scale-[1.05]">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9.2c0-2 1.6-3.4 3-4.6C9.2 2.9 9.6 2 10.5 2c.8 0 1 .9 1.4 1.7" stroke="#C39A4E" stroke-width="1.4" stroke-linecap="round" opacity=".9"/><path d="M10.6 11.2h2.8V7.3h2.7v2.8h-2.7V22h-2.8V10.1H8v-2.8h2.6z" fill="#C39A4E"/></svg>
+      <span class="brand-mark w-11 h-11 transition-transform group-hover:scale-[1.05]">
+        <svg width="40" height="40" viewBox="0 0 44 44"><rect width="44" height="44" rx="5" fill="#6E1B25"/><path d="M22 6l16 16-16 16L6 22z" fill="none" stroke="#C99A45" stroke-width="2"/><path d="M20.4 12h3.2v4.6H28v3.2h-4.4V34h-3.2V19.8H15v-3.2h5.4z" fill="#C99A45"/></svg>
       </span>
       <span class="leading-tight">
-        <span class="block font-display text-xl text-navy">Bethany</span>
-        <span class="block text-[10px] uppercase tracking-[.22em] text-ink/55">Romanian Pentecostal Church</span>
+        <span class="block font-display font-extrabold text-xl text-wine">BETHANY</span>
+        <span class="block text-[10px] uppercase tracking-[.24em] text-ink/55">Biserica Penticostală Betania</span>
       </span>
     </a>
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink/80">
-      <a href="#about" class="underline-grow hover:text-navy transition">About</a>
-      <a href="#ministries" class="underline-grow hover:text-navy transition">Ministries</a>
-      <a href="#expect" class="underline-grow hover:text-navy transition">First Visit</a>
-      <a href="#visit" class="underline-grow hover:text-navy transition">Visit</a>
+    <nav class="hidden md:flex items-center gap-9 text-sm font-semibold text-ink/80">
+      <a href="#about" class="underline-grow hover:text-wine transition">Despre · About</a>
+      <a href="#ministries" class="underline-grow hover:text-wine transition">Slujbe · Ministries</a>
+      <a href="#program" class="underline-grow hover:text-wine transition">Program · Times</a>
+      <a href="#visit" class="underline-grow hover:text-wine transition">Vizită · Visit</a>
     </nav>
-    <a href="tel:+16048326008" class="btn-primary text-sm hidden sm:inline-flex">
+    <a href="tel:+16048326008" class="btn-brass text-sm hidden sm:inline-flex">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       (604) 832-6008
     </a>
   </div>
 </header>
 
-<!-- HERO -->
-<section id="top" class="hero-bg grain relative">
-  <div class="ambient-blob blob-1"></div>
-  <div class="ambient-blob blob-2"></div>
-  <div class="ambient-blob blob-3"></div>
+<!-- folk band under nav -->
+<div class="folk-band tall"><svg preserveAspectRatio="xMidYMid slice"><rect width="100%" height="100%" fill="url(#folkLight)"/></svg></div>
 
-  <div class="max-w-6xl mx-auto px-5 pt-16 pb-24 md:pt-24 md:pb-32 relative">
+<!-- ============ HERO ============ -->
+<section id="top" class="hero grain relative">
+  <svg class="medallion"><use href="#rosette"/></svg>
+  <div class="max-w-6xl mx-auto px-5 pt-16 pb-20 md:pt-20 md:pb-24 relative">
     <div class="grid md:grid-cols-12 gap-12 items-center">
       <div class="md:col-span-7">
-        <div class="flex items-center gap-2 mb-6" data-reveal>
-          <span class="chip"><span class="chip-dot"></span> Abbotsford, BC · Romanian Pentecostal</span>
+        <div class="flex items-center gap-3 mb-7" data-reveal>
+          <span class="chip" style="background:rgba(201,154,69,.14);border-color:rgba(201,154,69,.4);color:var(--brass-lite)"><span class="chip-dot"></span> Abbotsford, British Columbia</span>
         </div>
-        <h1 class="font-display text-5xl md:text-7xl lg:text-[5.2rem] leading-[1.04] text-navy" data-reveal data-split>
-          A Romanian church family in the heart of the <em class="italic grad-text">Fraser Valley</em>.
+        <h1 class="font-display font-extrabold text-bone leading-[.96] text-6xl md:text-8xl" data-reveal data-split>
+          Credință.<br>Familie.<br><span style="color:var(--brass-lite)">Moștenire.</span>
         </h1>
-        <p class="mt-8 text-lg md:text-xl text-ink/75 max-w-xl leading-relaxed" data-reveal>
-          Bethany Romanian Pentecostal Church gathers on McMillan Road in Abbotsford to worship, pray, and grow in God's Word — in our heart language. Whether you grew up in the Romanian Pentecostal community or are visiting for the first time, there's a place for you here.
+        <p class="mt-7 text-brassLite/90 text-sm uppercase tracking-[.28em] font-semibold" data-reveal>Faith · Family · Heritage</p>
+        <p class="mt-6 text-lg md:text-xl text-bone/80 max-w-xl leading-relaxed" data-reveal>
+          Biserica Penticostală Română Betania — a Romanian Pentecostal church on McMillan Road in Abbotsford. We gather to worship, pray, and open the Scriptures in our heart language. Whether you were raised in the Romanian church or are coming for the very first time, there's a place for you at this table.
         </p>
-        <div class="mt-10 flex flex-wrap gap-3" data-reveal>
-          <a href="tel:+16048326008" class="btn-primary">
+        <div class="mt-9 flex flex-wrap gap-3" data-reveal>
+          <a href="tel:+16048326008" class="btn-brass">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Call (604) 832-6008
           </a>
-          <a href="#visit" class="btn-ghost">Plan your visit →</a>
-        </div>
-
-        <div class="mt-12 grid grid-cols-3 gap-6 max-w-lg" data-reveal>
-          <div>
-            <div class="font-display text-4xl text-navy stat-num" data-count="2" data-suffix="">0</div>
-            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Weekly<br>gatherings</div>
-          </div>
-          <div>
-            <div class="font-display text-4xl text-navy stat-num" data-count="100" data-suffix="%">0</div>
-            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Romanian-language<br>worship</div>
-          </div>
-          <div>
-            <div class="font-display text-4xl text-navy">All ages</div>
-            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Kids · Youth<br>· Adults</div>
-          </div>
-        </div>
-
-        <div class="mt-8 flex items-center gap-5 text-sm text-ink/70" data-reveal>
-          <span class="open-pill"><span class="open-dot"></span> Gathers Friday &amp; Saturday evenings</span>
-          <span class="hidden sm:inline-flex items-center gap-2"><span class="star">✦</span><span class="text-ink/55">Everyone welcome</span></span>
+          <a href="#program" class="btn-outline on-wine">See gathering times →</a>
         </div>
       </div>
 
-      <div class="md:col-span-5 relative" data-reveal>
-        <div class="relative h-[560px] md:h-[640px]">
-          <div class="photo-tile float-slow absolute"
-               style="width:62%; aspect-ratio:3/4; left:0; top:6%;
-                      background-image:url('https://images.unsplash.com/photo-1473177104440-ffee2f376098?w=900&q=80')"
-               data-parallax="0.18"
-               aria-label="Church sanctuary interior"></div>
-          <div class="photo-tile float-mid absolute"
-               style="width:48%; aspect-ratio:3/4; right:0; top:0;
-                      background-image:url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=700&q=80')"
-               data-parallax="-0.12"
-               aria-label="An open Bible"></div>
-          <div class="photo-tile float-fast absolute"
-               style="width:52%; aspect-ratio:1/1; right:6%; bottom:0;
-                      background-image:url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=700&q=80')"
-               data-parallax="0.08"
-               aria-label="Stained glass window"></div>
+      <div class="md:col-span-5 relative flex justify-center" data-reveal-x>
+        <span class="vlabel absolute -left-2 top-6 text-[10px] uppercase text-brassLite/70 hidden md:block">Est. în credință</span>
+        <div class="frame w-[78%] md:w-[84%]" data-parallax="0.12">
+          <div class="ph arch" style="aspect-ratio:3/4; background-image:url('https://images.unsplash.com/photo-1473177104440-ffee2f376098?w=900&q=80')" aria-label="Church sanctuary interior"></div>
         </div>
       </div>
     </div>
   </div>
+  <div class="folk-band tall"><svg preserveAspectRatio="xMidYMid slice"><rect width="100%" height="100%" fill="url(#folkBrass)"/></svg></div>
 </section>
 
-<!-- MARQUEE — navy + gold brand band -->
-<section class="marquee-band py-5">
-  <div class="marquee">
-    <div class="marquee-track">
-      <span class="marquee-item"><span class="dot"></span> Worship in Romanian</span>
-      <span class="marquee-item accent">Prayer</span>
-      <span class="marquee-item"><span class="dot"></span> Bible Study</span>
-      <span class="marquee-item accent">Children's Classes</span>
-      <span class="marquee-item"><span class="dot"></span> Youth Ministry</span>
-      <span class="marquee-item accent">Youth Orchestra</span>
-      <span class="marquee-item"><span class="dot"></span> Community Outreach</span>
-      <span class="marquee-item accent">Everyone Welcome</span>
-      <!-- duplicate for seamless loop -->
-      <span class="marquee-item"><span class="dot"></span> Worship in Romanian</span>
-      <span class="marquee-item accent">Prayer</span>
-      <span class="marquee-item"><span class="dot"></span> Bible Study</span>
-      <span class="marquee-item accent">Children's Classes</span>
-      <span class="marquee-item"><span class="dot"></span> Youth Ministry</span>
-      <span class="marquee-item accent">Youth Orchestra</span>
-      <span class="marquee-item"><span class="dot"></span> Community Outreach</span>
-      <span class="marquee-item accent">Everyone Welcome</span>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT / STORY -->
-<section id="about" class="py-28 md:py-36 bg-bone/45 relative overflow-hidden">
-  <div class="ambient-blob blob-1" style="opacity:.24"></div>
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-14 items-center relative">
-    <div class="md:col-span-5">
-      <div class="reveal-image" data-reveal-image
-           style="background-image: linear-gradient(160deg,rgba(14,26,47,.28),rgba(14,26,47,0)), url('https://images.unsplash.com/photo-1438032005730-c779502df39b?w=900&q=80')"></div>
-    </div>
-    <div class="md:col-span-7" data-reveal>
-      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 justify-start text-navy">Our Church</div>
-      <h2 class="font-display text-4xl md:text-6xl text-navy leading-[1.05]">
-        Rooted in the Word, <em class="italic grad-text">gathered as family</em>.
+<!-- ============ ABOUT ============ -->
+<section id="about" class="bg-oat py-24 md:py-32 relative">
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-12 md:gap-16 items-start">
+    <div class="md:col-span-6" data-reveal>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="diamond-bullet"></span>
+        <span class="text-xs uppercase tracking-[.34em] text-wine font-semibold">Despre noi · Our Church</span>
+      </div>
+      <h2 class="font-display font-bold text-wine text-4xl md:text-6xl leading-[1.02]">
+        Rooted in the Word,<br>gathered as <span style="color:var(--brass-deep)">o familie</span>.
       </h2>
-      <p class="mt-7 text-ink/75 leading-relaxed text-lg">
-        Bethany is a Romanian-speaking Pentecostal congregation in Abbotsford, in the heart of British Columbia's Fraser Valley. Week by week, families come together to worship, pray, and open the Scriptures — in the language that feels most like home.
+    </div>
+    <div class="md:col-span-6 md:pt-4" data-reveal>
+      <p class="text-ink/80 text-lg leading-relaxed">
+        Bethany is a Romanian-speaking Pentecostal congregation in Abbotsford, set in the heart of British Columbia's Fraser Valley. Week by week, families come together to worship, to pray, and to open the Scriptures — in the language that still feels most like home.
       </p>
-      <p class="mt-4 text-ink/75 leading-relaxed text-lg">
-        From children's classes and a youth orchestra to outreach across the Lower Mainland, the life of our church reaches every generation. We believe the Gospel is good news for the whole family — and the door is always open to anyone who wants to come and see.
+      <p class="mt-5 text-ink/80 text-lg leading-relaxed">
+        From children's classes and a youth orchestra to outreach across the Lower Mainland, the life of our church reaches every generation. We believe the Gospel is good news for the whole family — and our door is always open to anyone who wants to come and see.
       </p>
-      <div class="mt-9 flex flex-wrap gap-2">
-        <span class="chip-soft">Romanian-language</span>
-        <span class="chip-soft">Spirit-filled</span>
-        <span class="chip-soft">Bible-centered</span>
-        <span class="chip-soft">Family-focused</span>
-        <span class="chip-soft">Every generation</span>
+      <div class="mt-8 flex flex-wrap gap-2.5">
+        <span class="chip">Romanian-language</span>
+        <span class="chip">Spirit-filled</span>
+        <span class="chip">Bible-centered</span>
+        <span class="chip">Every generation</span>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-bridge"></div>
+<div class="folk-band"><svg preserveAspectRatio="xMidYMid slice"><rect width="100%" height="100%" fill="url(#folkLight)"/></svg></div>
 
-<!-- MINISTRIES -->
-<section id="ministries" class="py-28 md:py-36 relative">
-  <div class="max-w-6xl mx-auto px-5">
-    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
-      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 text-navy">Life of the Church</div>
-      <h2 class="font-display text-4xl md:text-6xl text-navy leading-tight">Ways we <em class="italic grad-text">gather &amp; serve</em>.</h2>
-      <p class="mt-5 text-ink/70 max-w-xl mx-auto">There's a place for every age and every season of faith at Bethany — from the youngest children to the seasoned saints who built this church.</p>
+<!-- ============ MINISTRIES — editorial numbered rows ============ -->
+<section id="ministries" class="bg-bone py-24 md:py-32">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="text-center mb-14 md:mb-16" data-reveal>
+      <div class="flex items-center justify-center gap-3 mb-5">
+        <span class="diamond-bullet"></span>
+        <span class="text-xs uppercase tracking-[.34em] text-wine font-semibold">Slujbe · Life of the Church</span>
+        <span class="diamond-bullet"></span>
+      </div>
+      <h2 class="font-display font-bold text-wine text-4xl md:text-6xl">Ways we gather &amp; serve</h2>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M7 8l5-5 5 5"/><path d="M5 21h14"/></svg></div>
-        <h3 class="font-display text-2xl text-navy mb-2">Worship &amp; Prayer</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Spirit-filled worship and prayer services in the Romanian language — the heart of our week, where the whole church lifts its voice together.</p>
-      </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h7a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z"/><path d="M20 4h-7a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h7z"/></svg></div>
-        <h3 class="font-display text-2xl text-navy mb-2">Bible Study &amp; Teaching</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Studying the Scriptures together so faith is built on a sure foundation — for new believers and lifelong followers of Christ alike.</p>
-      </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.2"/><path d="M5 21c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></div>
-        <h3 class="font-display text-2xl text-navy mb-2">Children's Ministry</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Instructional classes for children and teenagers — teaching the next generation to know and love Jesus in word and song.</p>
-      </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-        <h3 class="font-display text-2xl text-navy mb-2">Youth &amp; Orchestra</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">A vibrant youth ministry and a youth orchestra that practices and performs — giving young people a place to grow, serve, and use their gifts.</p>
-      </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M2.5 12h19M12 2.5c2.7 2.6 4 6 4 9.5s-1.3 6.9-4 9.5c-2.7-2.6-4-6-4-9.5s1.3-6.9 4-9.5z"/></svg></div>
-        <h3 class="font-display text-2xl text-navy mb-2">Community Outreach</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Sharing the love of Christ through outreach to communities across the Fraser Valley and the Lower Mainland.</p>
-      </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div>
-        <h3 class="font-display text-2xl text-navy mb-2">Baptisms &amp; Dedications</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Walking with families through the milestones of faith — believer's baptism, weddings, and the dedication of children to the Lord.</p>
-      </div>
-    </div>
-
-    <div class="mt-12 text-center text-sm text-ink/60" data-reveal>
-      Want to know more before you come? Call us anytime — <a href="tel:+16048326008" class="text-navy underline-grow font-semibold">(604) 832-6008</a>.
+    <div>
+      <a href="#program" class="mrow grid grid-cols-[auto,1fr,auto] gap-5 md:gap-8 items-center py-7 md:py-8" data-reveal>
+        <div class="mnum font-bold text-3xl md:text-5xl w-12 md:w-16">01</div>
+        <div>
+          <h3 class="font-display font-bold text-2xl md:text-3xl text-ink">Worship &amp; Prayer</h3>
+          <p class="text-ink/60 text-sm md:text-base mt-1"><span class="ro text-wine font-semibold">Închinare și Rugăciune</span> — Spirit-filled services in Romanian, the heartbeat of our week.</p>
+        </div>
+        <div class="marrow text-brass text-2xl">→</div>
+      </a>
+      <a href="#program" class="mrow grid grid-cols-[auto,1fr,auto] gap-5 md:gap-8 items-center py-7 md:py-8" data-reveal>
+        <div class="mnum font-bold text-3xl md:text-5xl w-12 md:w-16">02</div>
+        <div>
+          <h3 class="font-display font-bold text-2xl md:text-3xl text-ink">Bible Study &amp; Teaching</h3>
+          <p class="text-ink/60 text-sm md:text-base mt-1"><span class="ro text-wine font-semibold">Studiu Biblic</span> — building faith on a sure foundation, for new and lifelong believers.</p>
+        </div>
+        <div class="marrow text-brass text-2xl">→</div>
+      </a>
+      <a href="#program" class="mrow grid grid-cols-[auto,1fr,auto] gap-5 md:gap-8 items-center py-7 md:py-8" data-reveal>
+        <div class="mnum font-bold text-3xl md:text-5xl w-12 md:w-16">03</div>
+        <div>
+          <h3 class="font-display font-bold text-2xl md:text-3xl text-ink">Children's Ministry</h3>
+          <p class="text-ink/60 text-sm md:text-base mt-1"><span class="ro text-wine font-semibold">Lucrarea cu Copiii</span> — classes for children and teens, teaching the next generation to love Jesus.</p>
+        </div>
+        <div class="marrow text-brass text-2xl">→</div>
+      </a>
+      <a href="#program" class="mrow grid grid-cols-[auto,1fr,auto] gap-5 md:gap-8 items-center py-7 md:py-8" data-reveal>
+        <div class="mnum font-bold text-3xl md:text-5xl w-12 md:w-16">04</div>
+        <div>
+          <h3 class="font-display font-bold text-2xl md:text-3xl text-ink">Youth &amp; Orchestra</h3>
+          <p class="text-ink/60 text-sm md:text-base mt-1"><span class="ro text-wine font-semibold">Tineret și Orchestră</span> — a youth ministry and orchestra where young people grow, serve, and play.</p>
+        </div>
+        <div class="marrow text-brass text-2xl">→</div>
+      </a>
+      <a href="#about" class="mrow grid grid-cols-[auto,1fr,auto] gap-5 md:gap-8 items-center py-7 md:py-8" data-reveal>
+        <div class="mnum font-bold text-3xl md:text-5xl w-12 md:w-16">05</div>
+        <div>
+          <h3 class="font-display font-bold text-2xl md:text-3xl text-ink">Community Outreach</h3>
+          <p class="text-ink/60 text-sm md:text-base mt-1"><span class="ro text-wine font-semibold">Misiune și Evanghelizare</span> — sharing the love of Christ across the Fraser Valley and Lower Mainland.</p>
+        </div>
+        <div class="marrow text-brass text-2xl">→</div>
+      </a>
+      <a href="tel:+16048326008" class="mrow grid grid-cols-[auto,1fr,auto] gap-5 md:gap-8 items-center py-7 md:py-8" data-reveal>
+        <div class="mnum font-bold text-3xl md:text-5xl w-12 md:w-16">06</div>
+        <div>
+          <h3 class="font-display font-bold text-2xl md:text-3xl text-ink">Baptisms &amp; Dedications</h3>
+          <p class="text-ink/60 text-sm md:text-base mt-1"><span class="ro text-wine font-semibold">Botez și Binecuvântări</span> — walking with families through baptism, weddings, and dedications.</p>
+        </div>
+        <div class="marrow text-brass text-2xl">→</div>
+      </a>
     </div>
   </div>
 </section>
 
-<div class="section-bridge"></div>
+<div class="folk-band"><svg preserveAspectRatio="xMidYMid slice"><rect width="100%" height="100%" fill="url(#folkLight)"/></svg></div>
 
-<!-- FIRST VISIT — what to expect (no fabricated reviews) -->
-<section id="expect" class="py-24 md:py-28 bg-bone/45 relative">
+<!-- ============ PROGRAM — ledger panel on indigo ============ -->
+<section id="program" class="bg-indigo grain relative py-24 md:py-32 text-bone overflow-hidden">
+  <svg class="medallion" style="opacity:.07; left:auto; right:-260px; top:-160px"><use href="#rosette"/></svg>
+  <div class="max-w-5xl mx-auto px-5 grid md:grid-cols-12 gap-12 md:gap-16 items-center relative">
+    <div class="md:col-span-5" data-reveal>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="diamond-bullet" style="border-color:var(--brass-lite)"></span>
+        <span class="text-xs uppercase tracking-[.34em] text-brassLite font-semibold">Program · Gatherings</span>
+      </div>
+      <h2 class="font-display font-bold text-4xl md:text-6xl leading-[1.02]">When we<br>come together</h2>
+      <p class="mt-6 text-bone/70 leading-relaxed italic font-display text-xl">
+        „Veniți la Mine, toți cei trudiți și împovărați, și Eu vă voi da odihnă.”
+      </p>
+      <p class="text-bone/45 text-sm mt-2">— Matei 11:28</p>
+    </div>
+    <div class="md:col-span-7 md:pl-10 md:border-l border-brass/30" data-reveal-x>
+      <div class="ledger-row">
+        <span class="font-display font-bold text-2xl md:text-3xl">Vineri <span class="text-bone/50 text-lg font-normal">· Friday</span></span>
+        <span class="dotfill"></span>
+        <span class="font-display text-xl md:text-2xl text-brassLite">7:00 – 9:00 PM</span>
+      </div>
+      <div class="ledger-row">
+        <span class="font-display font-bold text-2xl md:text-3xl">Sâmbătă <span class="text-bone/50 text-lg font-normal">· Saturday</span></span>
+        <span class="dotfill"></span>
+        <span class="font-display text-xl md:text-2xl text-brassLite">5:00 – 8:00 PM</span>
+      </div>
+      <p class="mt-7 text-bone/60 text-sm leading-relaxed">
+        Our weekly schedule is updated regularly. Please call <a href="tel:+16048326008" class="text-brassLite font-semibold underline-grow">(604) 832-6008</a> to confirm service times — including Sunday gatherings — before your first visit.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIRST VISIT ============ -->
+<section id="visit-intro" class="bg-oat py-24 md:py-28">
   <div class="max-w-6xl mx-auto px-5">
     <div class="text-center mb-14" data-reveal>
-      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 text-navy">Your First Visit</div>
-      <h2 class="font-display text-4xl md:text-6xl text-navy leading-tight">Thinking of <em class="italic grad-text">coming by?</em></h2>
-      <p class="mt-5 text-ink/70 max-w-xl mx-auto">Here's what to expect when you walk through the doors at Bethany.</p>
+      <div class="flex items-center justify-center gap-3 mb-5">
+        <span class="diamond-bullet"></span>
+        <span class="text-xs uppercase tracking-[.34em] text-wine font-semibold">Bine ați venit · Your First Visit</span>
+        <span class="diamond-bullet"></span>
+      </div>
+      <h2 class="font-display font-bold text-wine text-4xl md:text-6xl">Thinking of coming by?</h2>
     </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="card rounded-2xl p-8" data-reveal>
-        <div class="star mb-4 text-lg">✦</div>
-        <p class="font-display text-2xl text-navy leading-snug">Come as you are. You don't need to know anyone — you'll be greeted like family from the first hello.</p>
-        <div class="accent-line my-5"></div>
-        <p class="text-xs uppercase tracking-[.25em] text-ink/55">A warm welcome</p>
+    <div class="grid md:grid-cols-3 gap-10 md:gap-8 text-center">
+      <div data-reveal>
+        <div class="fv-ico mx-auto"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
+        <h3 class="font-display font-bold text-2xl text-ink">A warm welcome</h3>
+        <p class="ro text-wine text-sm font-semibold mt-1">Bine ai venit</p>
+        <p class="text-ink/65 mt-3 leading-relaxed max-w-xs mx-auto">You don't need to know anyone. You'll be greeted like family from the very first hello.</p>
       </div>
-      <div class="card rounded-2xl p-8" data-reveal>
-        <div class="star mb-4 text-lg">✦</div>
-        <p class="font-display text-2xl text-navy leading-snug">Worship in Romanian — singing, prayer, and the preaching of the Word in our heart language.</p>
-        <div class="accent-line my-5"></div>
-        <p class="text-xs uppercase tracking-[.25em] text-ink/55">A piece of home</p>
+      <div data-reveal>
+        <div class="fv-ico mx-auto"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M7 8l5-5 5 5M5 21h14"/></svg></div>
+        <h3 class="font-display font-bold text-2xl text-ink">Worship in Romanian</h3>
+        <p class="ro text-wine text-sm font-semibold mt-1">În limba română</p>
+        <p class="text-ink/65 mt-3 leading-relaxed max-w-xs mx-auto">Singing, prayer, and the preaching of the Word — in the heart language of our community.</p>
       </div>
-      <div class="card rounded-2xl p-8" data-reveal>
-        <div class="star mb-4 text-lg">✦</div>
-        <p class="font-display text-2xl text-navy leading-snug">Bring the whole family. Children's classes and youth ministry mean there's a place for every age.</p>
-        <div class="accent-line my-5"></div>
-        <p class="text-xs uppercase tracking-[.25em] text-ink/55">For every generation</p>
+      <div data-reveal>
+        <div class="fv-ico mx-auto"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15.5 20c0-2 .8-3.6 2.2-4.6"/></svg></div>
+        <h3 class="font-display font-bold text-2xl text-ink">For the whole family</h3>
+        <p class="ro text-wine text-sm font-semibold mt-1">Pentru toată familia</p>
+        <p class="text-ink/65 mt-3 leading-relaxed max-w-xs mx-auto">Children's classes and a vibrant youth ministry mean there's a place for every age.</p>
       </div>
-    </div>
-    <div class="text-center mt-12" data-reveal>
-      <a href="#visit" class="btn-ghost">See gathering times &amp; directions →</a>
     </div>
   </div>
 </section>
 
-<!-- VISIT -->
-<section id="visit" class="py-28 md:py-36">
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-12">
+<div class="folk-band"><svg preserveAspectRatio="xMidYMid slice"><rect width="100%" height="100%" fill="url(#folkLight)"/></svg></div>
+
+<!-- ============ VISIT / MAP ============ -->
+<section id="visit" class="bg-bone py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-12 items-stretch">
     <div class="md:col-span-5" data-reveal>
-      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 justify-start text-navy">Visit Us</div>
-      <h2 class="font-display text-4xl md:text-6xl text-navy leading-[1.05]">Find us on <em class="italic grad-text">McMillan Road</em>.</h2>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="diamond-bullet"></span>
+        <span class="text-xs uppercase tracking-[.34em] text-wine font-semibold">Vizită · Visit Us</span>
+      </div>
+      <h2 class="font-display font-bold text-wine text-4xl md:text-6xl leading-[1.02]">Find us on McMillan Road</h2>
 
-      <div class="mt-10 space-y-5">
-        <div class="card rounded-2xl p-6 flex items-start gap-5">
-          <div class="svc-icon shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div>
-            <div class="text-[11px] uppercase tracking-[.3em] text-ink/55">Address</div>
-            <div class="font-display text-2xl text-navy mt-1">3130 McMillan Road</div>
-            <div class="text-ink/70">Abbotsford, BC V2S 6A8</div>
-            <a href="https://www.google.com/maps/search/?api=1&query=3130+McMillan+Rd+Abbotsford+BC+V2S+6A8" target="_blank" rel="noopener" class="text-navy font-semibold underline-grow mt-2 inline-block">Get directions →</a>
-          </div>
+      <div class="mt-9 space-y-6">
+        <div>
+          <div class="text-[11px] uppercase tracking-[.3em] text-ink/45 mb-1">Address · Adresă</div>
+          <div class="font-display font-bold text-2xl text-ink">3130 McMillan Road</div>
+          <div class="text-ink/70">Abbotsford, BC V2S 6A8</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=3130+McMillan+Rd+Abbotsford+BC+V2S+6A8" target="_blank" rel="noopener" class="text-wine font-semibold underline-grow mt-2 inline-block">Get directions →</a>
         </div>
-        <div class="card rounded-2xl p-6 flex items-start gap-5">
-          <div class="svc-icon shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-          <div>
-            <div class="text-[11px] uppercase tracking-[.3em] text-ink/55">Phone</div>
-            <a href="tel:+16048326008" class="font-display text-2xl text-navy mt-1 block underline-grow">(604) 832-6008</a>
-            <div class="text-ink/70 text-sm">We'd love to hear from you</div>
-          </div>
+        <div class="h-px bg-wine/15"></div>
+        <div>
+          <div class="text-[11px] uppercase tracking-[.3em] text-ink/45 mb-1">Phone · Telefon</div>
+          <a href="tel:+16048326008" class="font-display font-bold text-2xl text-ink underline-grow">(604) 832-6008</a>
+          <div class="text-ink/65 text-sm mt-1">We'd love to hear from you.</div>
         </div>
-        <div class="card rounded-2xl p-6">
-          <div class="text-[11px] uppercase tracking-[.3em] text-ink/55 mb-3">Gathering Times</div>
-          <div class="space-y-1.5 text-ink/80">
-            <div class="flex justify-between"><span>Friday — Evening Service</span><span class="font-medium">7:00 – 9:00 PM</span></div>
-            <div class="flex justify-between"><span>Saturday — Evening Service</span><span class="font-medium">5:00 – 8:00 PM</span></div>
-          </div>
-          <div class="mt-4 text-xs text-ink/55 leading-relaxed">Our weekly schedule is updated regularly. Please call <a href="tel:+16048326008" class="text-navy underline-grow font-semibold">(604) 832-6008</a> to confirm service times before your first visit.</div>
+        <div class="h-px bg-wine/15"></div>
+        <div>
+          <div class="text-[11px] uppercase tracking-[.3em] text-ink/45 mb-1">Gatherings · Program</div>
+          <div class="text-ink/80">Friday 7–9 PM · Saturday 5–8 PM</div>
+          <div class="text-ink/50 text-sm mt-1">Call to confirm the full weekly schedule.</div>
         </div>
       </div>
     </div>
-
-    <div class="md:col-span-7" data-reveal>
-      <div class="card rounded-3xl overflow-hidden">
-        <iframe
-          src="https://www.google.com/maps?q=3130+McMillan+Rd,+Abbotsford,+BC+V2S+6A8&output=embed"
-          width="100%" height="640" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="Bethany Romanian Pentecostal Church location map"></iframe>
+    <div class="md:col-span-7" data-reveal-x>
+      <div class="frame h-full">
+        <div class="ph" style="filter:none">
+          <iframe src="https://www.google.com/maps?q=3130+McMillan+Rd,+Abbotsford,+BC+V2S+6A8&output=embed"
+            width="100%" height="560" style="border:0; display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Bethany Romanian Pentecostal Church location map"></iframe>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA — Brand band (navy + gold) -->
-<section class="brand-band">
-  <div class="grain"></div>
-  <div class="max-w-4xl mx-auto px-5 py-28 md:py-36 text-center relative">
-    <div class="flex justify-center mb-8" data-reveal>
-      <span class="brand-mark w-20 h-20">
-        <svg width="42" height="42" viewBox="0 0 24 24" fill="none"><path d="M6 9.2c0-2 1.6-3.4 3-4.6C9.2 2.9 9.6 2 10.5 2c.8 0 1 .9 1.4 1.7" stroke="#C39A4E" stroke-width="1.2" stroke-linecap="round" opacity=".9"/><path d="M10.6 11.2h2.8V7.3h2.7v2.8h-2.7V22h-2.8V10.1H8v-2.8h2.6z" fill="#C39A4E"/></svg>
-      </span>
-    </div>
-    <h2 class="font-display text-5xl md:text-7xl leading-[1.05] text-cream" data-reveal>
-      You're welcome at Bethany.<br><em class="italic" style="color:var(--gold)">Come and worship with us.</em>
+<!-- ============ CTA ============ -->
+<div class="folk-band tall"><svg preserveAspectRatio="xMidYMid slice"><rect width="100%" height="100%" fill="url(#folkLight)"/></svg></div>
+<section class="hero grain relative">
+  <svg class="medallion" style="left:auto; right:-240px; top:auto; bottom:-260px; opacity:.10"><use href="#rosette"/></svg>
+  <div class="max-w-3xl mx-auto px-5 py-24 md:py-32 text-center relative">
+    <span class="brand-mark w-20 h-20 mx-auto mb-8 block" data-reveal>
+      <svg width="78" height="78" viewBox="0 0 44 44"><path d="M22 4l18 18-18 18L4 22z" fill="none" stroke="#E0C27E" stroke-width="1.6"/><path d="M20.4 12h3.2v4.6H28v3.2h-4.4V34h-3.2V19.8H15v-3.2h5.4z" fill="#E0C27E"/></svg>
+    </span>
+    <h2 class="font-display font-extrabold text-bone text-5xl md:text-7xl leading-[1.02]" data-reveal>
+      Vino și te închină<br><span style="color:var(--brass-lite)">cu noi.</span>
     </h2>
-    <p class="mt-6 text-cream/75 max-w-xl mx-auto text-lg" data-reveal>
-      Whether you're new to the Fraser Valley, looking for a Romanian-speaking church home, or simply curious — we'd be honored to have you join us.
+    <p class="mt-5 text-brassLite/90 uppercase tracking-[.28em] text-sm font-semibold" data-reveal>Come and worship with us</p>
+    <p class="mt-6 text-bone/80 text-lg max-w-xl mx-auto" data-reveal>
+      Whether you're new to the Fraser Valley, looking for a Romanian-speaking church home, or simply curious — we would be honored to have you with us.
     </p>
     <div class="mt-10 flex flex-wrap justify-center gap-3" data-reveal>
-      <a href="tel:+16048326008" class="btn-gold text-lg">Call (604) 832-6008</a>
-      <a href="https://www.google.com/maps/search/?api=1&query=3130+McMillan+Rd+Abbotsford+BC+V2S+6A8" target="_blank" rel="noopener" class="btn-ghost text-lg" style="background:transparent;border-color:var(--gold);color:var(--gold)">Get directions</a>
+      <a href="tel:+16048326008" class="btn-brass text-lg">Call (604) 832-6008</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=3130+McMillan+Rd+Abbotsford+BC+V2S+6A8" target="_blank" rel="noopener" class="btn-outline on-wine text-lg">Get directions</a>
     </div>
   </div>
 </section>
+<div class="folk-band tall"><svg preserveAspectRatio="xMidYMid slice"><rect width="100%" height="100%" fill="url(#folkBrass)"/></svg></div>
 
-<!-- FOOTER -->
-<footer class="bg-midnight text-cream/70 py-10">
-  <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-5 text-sm">
+<!-- ============ FOOTER ============ -->
+<footer class="bg-indigoDeep text-bone/65 py-12">
+  <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-center md:text-left">
     <div class="flex items-center gap-3">
-      <span class="brand-mark w-10 h-10">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M10.6 11.2h2.8V7.3h2.7v2.8h-2.7V22h-2.8V10.1H8v-2.8h2.6z" fill="#C39A4E"/></svg>
+      <span class="brand-mark w-11 h-11">
+        <svg width="40" height="40" viewBox="0 0 44 44"><path d="M22 6l16 16-16 16L6 22z" fill="none" stroke="#C99A45" stroke-width="2"/><path d="M20.4 12h3.2v4.6H28v3.2h-4.4V34h-3.2V19.8H15v-3.2h5.4z" fill="#C99A45"/></svg>
       </span>
-      <span class="font-display text-xl text-cream">Bethany Romanian Pentecostal Church</span>
+      <span class="font-display font-bold text-lg text-bone">Biserica Penticostală Betania</span>
     </div>
-    <div>3130 McMillan Rd · Abbotsford, BC V2S 6A8 · <a href="tel:+16048326008" style="color:var(--gold)" class="underline-grow">(604) 832-6008</a></div>
+    <div>3130 McMillan Rd · Abbotsford, BC V2S 6A8 · <a href="tel:+16048326008" class="text-brassLite underline-grow">(604) 832-6008</a></div>
   </div>
-  <div class="text-center text-xs text-cream/40 mt-4">© <span id="yr"></span> Bethany Romanian Pentecostal Church · Abbotsford, BC</div>
+  <div class="text-center text-xs text-bone/35 mt-5">© <span id="yr"></span> Bethany Romanian Pentecostal Church · Abbotsford, BC · Credință · Familie · Moștenire</div>
 </footer>
 
 <!-- Mobile sticky bar -->
 <div class="stick-bar">
-  <a href="tel:+16048326008" class="btn-primary flex-1 justify-center text-sm">Call now</a>
-  <a href="https://www.google.com/maps/search/?api=1&query=3130+McMillan+Rd+Abbotsford+BC+V2S+6A8" target="_blank" rel="noopener" class="btn-ghost flex-1 justify-center text-sm">Directions</a>
+  <a href="tel:+16048326008" class="btn-brass flex-1 justify-center text-sm">Call now</a>
+  <a href="https://www.google.com/maps/search/?api=1&query=3130+McMillan+Rd+Abbotsford+BC+V2S+6A8" target="_blank" rel="noopener" class="btn-outline on-wine flex-1 justify-center text-sm" style="color:var(--bone);border-color:var(--bone)">Directions</a>
 </div>
 
 <!-- JSON-LD -->
@@ -600,9 +510,10 @@ tailwind.config = {
   "@context":"https://schema.org",
   "@type":"Church",
   "name":"Bethany Romanian Pentecostal Church",
+  "alternateName":"Biserica Penticostală Română Betania",
   "url":"https://turnkeyweb.org/previews/bethany-romanian-pentecostal-church/",
   "telephone":"+1-604-832-6008",
-  "description":"A Romanian-speaking Pentecostal congregation in Abbotsford, BC offering worship, prayer, Bible study, children's ministry, youth ministry, a youth orchestra, and community outreach across the Fraser Valley and Lower Mainland.",
+  "description":"A Romanian-speaking Pentecostal congregation in Abbotsford, BC offering worship and prayer in Romanian, Bible study, children's ministry, youth ministry, a youth orchestra, and community outreach across the Fraser Valley and Lower Mainland.",
   "address":{"@type":"PostalAddress","streetAddress":"3130 McMillan Road","addressLocality":"Abbotsford","addressRegion":"BC","postalCode":"V2S 6A8","addressCountry":"CA"},
   "geo":{"@type":"GeoCoordinates","latitude":49.0631,"longitude":-122.2964},
   "openingHoursSpecification":[
@@ -616,82 +527,46 @@ tailwind.config = {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 (function(){
-  if (!window.Lenis) return;
-  const lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-  requestAnimationFrame(raf);
-  if (window.ScrollTrigger) { lenis.on('scroll', ScrollTrigger.update); }
+  if(!window.Lenis) return;
+  const lenis = new Lenis({ duration:1.15, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)) });
+  function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+  if(window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click', e=>{
-      const id = a.getAttribute('href');
-      if (id.length>1 && document.querySelector(id)) {
-        e.preventDefault();
-        lenis.scrollTo(document.querySelector(id), { offset:-70 });
-      }
+      const id=a.getAttribute('href');
+      if(id.length>1 && document.querySelector(id)){ e.preventDefault(); lenis.scrollTo(document.querySelector(id),{offset:-70}); }
     });
   });
 })();
 
-document.querySelectorAll('[data-split]').forEach(function(el){
-  el.innerHTML = '<span>' + el.innerHTML + '</span>';
-});
+document.querySelectorAll('[data-split]').forEach(el=>{ el.innerHTML='<span>'+el.innerHTML+'</span>'; });
 
-if (window.gsap && window.ScrollTrigger) {
+if(window.gsap && window.ScrollTrigger){
   gsap.registerPlugin(ScrollTrigger);
-
-  gsap.utils.toArray('[data-reveal]').forEach(function(el){
-    gsap.fromTo(el, {opacity:0,y:36},
-      {opacity:1,y:0,duration:1.05,ease:'power3.out',
-       scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'}});
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:1.0,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'}});
   });
-
-  gsap.utils.toArray('[data-parallax]').forEach(function(el){
-    const speed = parseFloat(el.dataset.parallax) || 0.1;
-    gsap.to(el, {
-      y: () => speed * 220, ease: 'none',
-      scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
-    });
+  gsap.utils.toArray('[data-reveal-x]').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,x:40},{opacity:1,x:0,duration:1.1,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
   });
-
-  document.querySelectorAll('[data-reveal-image]').forEach(function(el){
-    ScrollTrigger.create({ trigger: el, start: 'top 85%', onEnter: ()=> el.classList.add('in') });
-  });
-
-  document.querySelectorAll('[data-count]').forEach(function(el){
-    const target = parseInt(el.dataset.count, 10);
-    const suffix = el.dataset.suffix || '';
-    const obj = { v: 0 };
-    ScrollTrigger.create({
-      trigger: el, start: 'top 88%',
-      onEnter: ()=> {
-        gsap.to(obj, {
-          v: target, duration: 1.6, ease: 'power2.out',
-          onUpdate: ()=> { el.textContent = Math.round(obj.v) + suffix; }
-        });
-      }
-    });
+  gsap.utils.toArray('[data-parallax]').forEach(el=>{
+    const s=parseFloat(el.dataset.parallax)||0.1;
+    gsap.to(el,{y:()=>s*180,ease:'none',scrollTrigger:{trigger:el,start:'top bottom',end:'bottom top',scrub:0.6}});
   });
 }
 
 // Crawler / screenshot safety net
 setTimeout(function(){
-  document.querySelectorAll('[data-reveal]').forEach(function(el){
-    if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
-      el.style.opacity='1'; el.style.transform='none';
-    }
+  document.querySelectorAll('[data-reveal],[data-reveal-x]').forEach(function(el){
+    if(parseFloat(getComputedStyle(el).opacity)<0.05){ el.style.opacity='1'; el.style.transform='none'; }
   });
-  document.querySelectorAll('[data-reveal-image]').forEach(function(el){ el.classList.add('in'); });
-  document.querySelectorAll('[data-count]').forEach(function(el){
-    const t = parseInt(el.dataset.count, 10);
-    const suffix = el.dataset.suffix || '';
-    if (el.textContent === '0' || el.textContent.trim() === '') el.textContent = t + suffix;
-  });
-}, 6000);
+},6000);
 </script>
 </body>
 </html>
