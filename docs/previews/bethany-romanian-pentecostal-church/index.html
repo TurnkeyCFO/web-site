@@ -97,6 +97,8 @@ tailwind.config = {
     filter:sepia(.34) saturate(1.05) contrast(1.04); }
   .frame .ph::after{ content:""; position:absolute; inset:0; mix-blend-mode:multiply;
     background:linear-gradient(150deg, rgba(110,27,37,.42), rgba(27,36,64,.34)); }
+  .frame .ph.plain{ filter:none; }
+  .frame .ph.plain::after{ content:none; }
   .arch{ border-radius:140px 140px 6px 6px; }
 
   /* ---------- Hero ---------- */
@@ -451,7 +453,7 @@ tailwind.config = {
     </div>
     <div class="md:col-span-7" data-reveal-x>
       <div class="frame h-full">
-        <div class="ph" style="filter:none">
+        <div class="ph plain">
           <iframe src="https://www.google.com/maps?q=3130+McMillan+Rd,+Abbotsford,+BC+V2S+6A8&output=embed"
             width="100%" height="560" style="border:0; display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             title="Bethany Romanian Pentecostal Church location map"></iframe>
