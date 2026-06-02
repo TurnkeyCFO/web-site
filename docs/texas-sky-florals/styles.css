@@ -124,6 +124,15 @@ nav ul a.active{color:var(--denim)}
 .phero h1 em{color:var(--butter);font-weight:500}
 .phero .sub{font-family:var(--display);font-style:italic;font-size:clamp(18px,2vw,23px);color:var(--paper);
   max-width:600px;margin-top:16px;text-shadow:0 2px 14px rgba(39,63,99,.6)}
+/* tall portrait hero (story) — full-bleed bg, copy anchored bottom-left clear of the subject */
+.phero.tall{min-height:86vh}
+.phero.tall h1{font-size:clamp(40px,5.4vw,72px)}
+.phero .scrim.diag{background:
+  linear-gradient(105deg,rgba(39,63,99,.62) 0%,rgba(39,63,99,.26) 34%,rgba(39,63,99,0) 56%),
+  linear-gradient(0deg,rgba(43,42,36,.5),rgba(43,42,36,0) 32%)}
+.phero .copy-wrap{max-width:560px}
+@media(max-width:860px){.phero.tall{min-height:78vh}
+  .phero .scrim.diag{background:linear-gradient(0deg,rgba(39,63,99,.68),rgba(39,63,99,.12) 52%,rgba(39,63,99,.30) 100%)}}
 
 /* split page hero — text panel + full photo (no overlap) */
 .phero-split{display:grid;grid-template-columns:1.04fr 1fr;min-height:86vh;position:relative;z-index:2;border-bottom:1px solid var(--line)}
