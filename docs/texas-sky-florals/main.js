@@ -60,12 +60,12 @@
 
   // hero text load
   window.addEventListener('load', function(){
-    d.querySelectorAll('.hero .rv, .phero .rv').forEach(function(el,i){
+    d.querySelectorAll('.hero .rv, .phero .rv, .phero-split .rv, .phero-split .rv-r').forEach(function(el,i){
       el.style.transitionDelay = (0.12 + i*0.13)+'s'; el.classList.add('in');
     });
   });
   // fallback if load already fired
-  setTimeout(function(){ d.querySelectorAll('.hero .rv, .phero .rv').forEach(function(el){ el.classList.add('in'); }); }, 900);
+  setTimeout(function(){ d.querySelectorAll('.hero .rv, .phero .rv, .phero-split .rv, .phero-split .rv-r').forEach(function(el){ el.classList.add('in'); }); }, 900);
 
   // lightbox for any [data-lb] image
   var imgs = Array.prototype.slice.call(d.querySelectorAll('[data-lb] img'));
