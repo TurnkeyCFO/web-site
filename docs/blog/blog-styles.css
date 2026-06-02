@@ -1,12 +1,12 @@
 /* Turnkey Web — Blog stylesheet
    Light theme, clean and minimal. Plus Jakarta Sans (shared Turnkey family
-   typography). Turnkey Web blue is the primary brand accent.
+   typography). Turnkey Web purple is the primary brand accent.
    Generated/owned by seo-content-engine — do not hand-edit on the live site;
    edit templates/tkweb/blog-styles.css in the skill and re-publish. */
 
 :root {
-  --tk-emerald: #0055FF;       /* Turnkey Web brand accent — bars, eyebrow */
-  --tk-link:    #0044cc;       /* readable blue for text links on white */
+  --tk-emerald: #7C3AED;       /* Turnkey Web brand accent (purple) — bars, eyebrow */
+  --tk-link:    #6D28D9;       /* readable purple for text links on white */
   --tk-bg:      #ffffff;
   --tk-soft:    #f5f7fa;       /* soft tint for the CTA box */
   --tk-border:  #e6e8ec;
