@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Marianna's Salon — Hair Color & Blowouts in Garland, TX</title>
+<meta name="description" content="Marianna's Salon on Broadway Blvd in Garland, TX — specializing in hair color, balayage, highlights, and blowouts. Cuts, treatments, and styling for the whole family. Open Mon–Sat. Call (214) 241-3233.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/mariannas-salon/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Marianna's Salon — Hair Color & Blowouts in Garland, TX">
+<meta property="og:description" content="Color, balayage, highlights, and blowouts on Broadway Blvd in Garland. Warm, welcoming, and detail-obsessed. Call (214) 241-3233.">
+<meta property="og:url" content="https://turnkeyweb.org/previews/mariannas-salon/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['"Cormorant Garamond"', 'serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif']
+      },
+      colors: {
+        // Hair salon / beauty palette
+        cream:'#FBF6F1', bone:'#F4ECE3', blush:'#E9C9C0', rose:'#C68A85',
+        mauve:'#8C5A65', plum:'#3F1F2A', gold:'#B98D52', ink:'#231419'
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  :root {
+    --cream:#FBF6F1; --bone:#F4ECE3; --blush:#E9C9C0; --rose:#C68A85;
+    --mauve:#8C5A65; --plum:#3F1F2A; --gold:#B98D52; --ink:#231419;
+  }
+  *{ -webkit-tap-highlight-color: transparent; }
+  html, body { background:var(--cream); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
+  body { overflow-x:hidden; }
+  .font-display { font-family:'Cormorant Garamond', serif; letter-spacing:-0.012em; }
+
+  /* Ambient blobs */
+  .ambient-blob { position:absolute; border-radius:50%; filter:blur(80px); opacity:.45; pointer-events:none; will-change:transform; }
+  .blob-1 { width:520px; height:520px; background:radial-gradient(circle, rgba(233,201,192,.55), transparent 60%); top:-180px; right:-160px; animation: drift1 22s ease-in-out infinite; }
+  .blob-2 { width:420px; height:420px; background:radial-gradient(circle, rgba(140,90,101,.32), transparent 60%); bottom:-120px; left:-80px; animation: drift2 26s ease-in-out infinite; }
+  .blob-3 { width:380px; height:380px; background:radial-gradient(circle, rgba(185,141,82,.25), transparent 65%); top:40%; left:-100px; animation: drift1 30s ease-in-out infinite reverse; }
+  @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(40px,-30px) scale(1.08);} }
+  @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-50px,40px) scale(1.1);} }
+
+  /* Gradient text */
+  .grad-text {
+    background: linear-gradient(120deg, #8C5A65 0%, #C68A85 50%, #B98D52 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    background-size: 200% 100%; animation: shimmer 8s linear infinite;
+  }
+  @keyframes shimmer { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
+  .hero-bg {
+    position:relative; overflow:hidden;
+    background:
+      radial-gradient(ellipse 70% 55% at 75% 25%, rgba(233,201,192,.40), transparent 65%),
+      radial-gradient(ellipse 55% 50% at 12% 75%, rgba(140,90,101,.18), transparent 65%),
+      linear-gradient(180deg,#FBF6F1 0%, #F4ECE3 100%);
+  }
+  .grain::after {
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image: radial-gradient(#231419 1px, transparent 1px); background-size: 3px 3px;
+  }
+
+  .card {
+    position:relative;
+    background: linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(244,236,227,.55) 100%);
+    backdrop-filter: blur(12px) saturate(115%);
+    -webkit-backdrop-filter: blur(12px) saturate(115%);
+    border: 1px solid rgba(63,31,42,.10);
+    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 22px 50px -28px rgba(63,31,42,.22);
+    transition: transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s cubic-bezier(.2,.7,.2,1), border-color .4s;
+    overflow:hidden;
+  }
+  .card::before {
+    content:""; position:absolute; left:0; top:0; height:2px; width:0%;
+    background: linear-gradient(90deg, var(--mauve), var(--gold));
+    transition: width .65s cubic-bezier(.2,.7,.2,1);
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 38px 60px -28px rgba(63,31,42,.32); border-color: rgba(63,31,42,.22); }
+  .card:hover::before { width:100%; }
+
+  /* Brand wordmark badge — "Marianna's Salon" */
+  .wordmark {
+    display:inline-flex; flex-direction:column; line-height:.92;
+    font-family:'Cormorant Garamond', serif;
+  }
+  .wordmark .wm-name { font-size:1.45rem; font-weight:600; letter-spacing:.01em; color:var(--plum); }
+  .wordmark .wm-sub { font-size:.56rem; font-weight:600; letter-spacing:.34em; text-transform:uppercase; color:var(--mauve); margin-top:.18rem; font-family:'Inter',sans-serif; }
+  .wordmark.on-dark .wm-name { color:var(--cream); }
+  .wordmark.on-dark .wm-sub { color:var(--blush); }
+  .wm-badge {
+    display:inline-grid; place-items:center; width:42px; height:42px; border-radius:999px;
+    background: linear-gradient(135deg, var(--plum) 0%, var(--mauve) 100%);
+    color:var(--blush); font-family:'Cormorant Garamond',serif; font-size:1.45rem; font-weight:700;
+    box-shadow: 0 10px 24px -10px rgba(63,31,42,.55), 0 0 0 1px rgba(185,141,82,.30) inset;
+    transition: transform .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .group:hover .wm-badge { transform: rotate(-6deg) scale(1.05); }
+
+  .chip {
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.4rem .85rem; border-radius:999px;
+    background: rgba(63,31,42,.92);
+    border: 1px solid rgba(185,141,82,.45);
+    color:#FBF6F1; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  }
+  .chip-dot { width:.45rem; height:.45rem; border-radius:999px; background:var(--gold); box-shadow:0 0 12px var(--gold); animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.55; transform:scale(.9)} }
+
+  .chip-soft {
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.4rem .85rem; border-radius:999px;
+    background: rgba(233,201,192,.45);
+    border: 1px solid rgba(140,90,101,.22);
+    color:#3F1F2A; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  }
+
+  .btn-primary {
+    position:relative; display:inline-flex; align-items:center; gap:.6rem;
+    padding:1rem 1.65rem; border-radius:999px;
+    background: linear-gradient(135deg,#3F1F2A 0%, #8C5A65 100%); color:var(--cream);
+    font-weight:600; letter-spacing:.02em;
+    box-shadow: 0 18px 36px -14px rgba(63,31,42,.55), 0 0 0 1px rgba(185,141,82,.25) inset;
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, filter .35s, color .35s;
+    overflow:hidden;
+  }
+  .btn-primary::after {
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(120deg, transparent 30%, rgba(233,201,192,.45) 50%, transparent 70%);
+    transform: translateX(-120%); transition: transform .9s cubic-bezier(.2,.7,.2,1);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 26px 46px -16px rgba(63,31,42,.7), 0 0 0 1px var(--gold) inset; filter:brightness(1.04); }
+  .btn-primary:hover::after { transform: translateX(120%); }
+
+  .btn-ghost {
+    display:inline-flex; align-items:center; gap:.55rem;
+    padding:.95rem 1.5rem; border-radius:999px;
+    border: 1px solid rgba(63,31,42,.45); color:var(--plum); font-weight:600;
+    background: rgba(255,255,255,.5); backdrop-filter: blur(8px);
+    transition: background .35s, border-color .35s, transform .35s, color .35s;
+  }
+  .btn-ghost:hover { background: var(--plum); border-color: var(--plum); color: var(--blush); transform: translateY(-3px); }
+
+  .btn-gold {
+    position:relative; display:inline-flex; align-items:center; gap:.6rem;
+    padding:1rem 1.65rem; border-radius:999px;
+    background: linear-gradient(135deg, var(--gold) 0%, #C9A06A 100%); color: var(--plum);
+    font-weight:700; letter-spacing:.02em;
+    box-shadow: 0 18px 36px -14px rgba(185,141,82,.55);
+    transition: transform .35s, filter .35s;
+  }
+  .btn-gold:hover { transform: translateY(-3px); filter:brightness(1.05); }
+
+  .divider-flourish { display:flex; align-items:center; justify-content:center; gap:1rem; color:var(--gold); }
+  .divider-flourish::before, .divider-flourish::after {
+    content:""; flex:1; max-width:120px; height:1px;
+    background: linear-gradient(90deg, transparent, rgba(185,141,82,.7), transparent);
+  }
+
+  [data-reveal] { opacity:0; transform: translateY(36px); }
+  [data-split] > span { display:inline-block; }
+
+  .photo-tile {
+    border-radius: 1.25rem; overflow:hidden; position:relative;
+    background-size:cover; background-position:center;
+    box-shadow: 0 40px 70px -30px rgba(63,31,42,.5), 0 0 0 1px rgba(63,31,42,.12), 0 0 0 4px rgba(185,141,82,0);
+    will-change: transform; transition: box-shadow .6s, transform .6s;
+  }
+  .photo-tile:hover { box-shadow: 0 40px 70px -30px rgba(63,31,42,.55), 0 0 0 1px rgba(63,31,42,.18), 0 0 0 4px rgba(185,141,82,.4); }
+  .photo-tile::after {
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(180deg, transparent 55%, rgba(63,31,42,.32) 100%);
+  }
+  .work-tile:hover { transform: scale(1.02); }
+  .float-slow { animation: floatSlow 7s ease-in-out infinite; }
+  .float-mid  { animation: floatMid  6s ease-in-out infinite; }
+  .float-fast { animation: floatFast 5.4s ease-in-out infinite; }
+  @keyframes floatSlow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+  @keyframes floatMid  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-22px)} }
+  @keyframes floatFast { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+  /* Marquee — plum band, blush + gold text. Brand moment. */
+  .marquee-band {
+    background: var(--plum); color: var(--blush);
+    border-top: 1px solid rgba(185,141,82,.30); border-bottom: 1px solid rgba(185,141,82,.30);
+    position:relative; overflow:hidden;
+  }
+  .marquee {
+    overflow:hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+  .marquee-track {
+    display:flex; gap:3.5rem; width:max-content;
+    animation: scrollX 38s linear infinite;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .marquee-band:hover .marquee-track { animation-play-state: paused; }
+  @keyframes scrollX { from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+  .marquee-item { display:inline-flex; align-items:center; gap:1.4rem; font-size:1.7rem; letter-spacing:.015em; color:var(--cream); }
+  .marquee-item.accent { color: var(--gold); font-style: italic; }
+  .marquee-item .dot { width:.5rem; height:.5rem; border-radius:999px; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+
+  .reveal-image {
+    aspect-ratio: 4/5; border-radius: 1.25rem; overflow:hidden;
+    background-size:cover; background-position:center;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1.4s cubic-bezier(.2,.7,.2,1);
+    box-shadow: 0 30px 70px -30px rgba(63,31,42,.55);
+  }
+  .reveal-image.in { clip-path: inset(0 0 0% 0); }
+
+  .accent-line {
+    position:relative; height:1px;
+    background:linear-gradient(90deg, transparent, rgba(185,141,82,.55), transparent);
+  }
+
+  .stick-bar {
+    position:fixed; bottom:0; left:0; right:0; z-index:50;
+    background:linear-gradient(180deg, rgba(251,246,241,.6), rgba(251,246,241,.98));
+    backdrop-filter: blur(14px);
+    border-top:1px solid rgba(63,31,42,.18);
+    padding: .65rem 1rem calc(.65rem + env(safe-area-inset-bottom));
+    display:none; gap:.5rem;
+  }
+  @media (max-width: 768px) { .stick-bar { display:flex; } }
+
+  .nav-blur {
+    background: rgba(251,246,241,.78);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    border-bottom: 1px solid rgba(63,31,42,.10);
+  }
+
+  .svc-icon {
+    width:46px;height:46px;border-radius:999px;
+    background: linear-gradient(135deg, var(--plum) 0%, var(--mauve) 100%);
+    display:grid; place-items:center; color: var(--blush);
+    box-shadow: 0 10px 24px -8px rgba(63,31,42,.55), 0 0 0 1px rgba(185,141,82,.2) inset;
+    transition: transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .card:hover .svc-icon { transform: rotate(-6deg) scale(1.06); }
+
+  .star { color: var(--gold); letter-spacing:.18em; text-shadow: 0 0 12px rgba(185,141,82,.4); }
+
+  .open-pill {
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.35rem .85rem; border-radius:999px;
+    background: rgba(154,196,159,.22); border:1px solid rgba(80,140,90,.4);
+    color:#1f3a26; font-size:.78rem; font-weight:600;
+  }
+  .open-dot { width:.45rem; height:.45rem; border-radius:999px; background:#4a9d62; box-shadow:0 0 10px #4a9d62; animation: pulse 2s ease-in-out infinite; }
+
+  .stat-num { font-variant-numeric: tabular-nums; }
+  .underline-grow { position:relative; display:inline-block; }
+  .underline-grow::after {
+    content:""; position:absolute; left:0; bottom:-3px; height:2px; width:0;
+    background: linear-gradient(90deg, var(--mauve), var(--gold));
+    transition: width .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .underline-grow:hover::after { width:100%; }
+
+  .section-bridge {
+    position:relative; height:1px; max-width: 200px; margin: 0 auto;
+    background: linear-gradient(90deg, transparent, rgba(185,141,82,.5), transparent);
+  }
+
+  /* CTA brand band — plum background, gold/blush accents */
+  .brand-band {
+    position:relative; background: var(--plum); color: var(--cream); overflow:hidden;
+  }
+  .brand-band::before {
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(185,141,82,.24), transparent 60%),
+      radial-gradient(ellipse 50% 45% at 15% 75%, rgba(233,201,192,.16), transparent 65%);
+  }
+  .brand-band .grain::after { background-image: radial-gradient(rgba(233,201,192,.25) 1px, transparent 1px); opacity:.10; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav-blur sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="wm-badge">M</span>
+      <span class="wordmark">
+        <span class="wm-name">Marianna's Salon</span>
+        <span class="wm-sub">Garland, Texas</span>
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-plum/80">
+      <a href="#services" class="underline-grow hover:text-plum transition">Services</a>
+      <a href="#story" class="underline-grow hover:text-plum transition">Story</a>
+      <a href="#voices" class="underline-grow hover:text-plum transition">Voices</a>
+      <a href="#visit" class="underline-grow hover:text-plum transition">Visit</a>
+    </nav>
+    <a href="tel:+12142413233" class="btn-primary text-sm hidden sm:inline-flex">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (214) 241-3233
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero-bg grain relative">
+  <div class="ambient-blob blob-1"></div>
+  <div class="ambient-blob blob-2"></div>
+  <div class="ambient-blob blob-3"></div>
+
+  <div class="max-w-6xl mx-auto px-5 pt-16 pb-24 md:pt-24 md:pb-32 relative">
+    <div class="grid md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-7">
+        <div class="flex items-center gap-2 mb-6" data-reveal>
+          <span class="chip"><span class="chip-dot"></span> Color &amp; Blowout Specialists · Broadway Blvd</span>
+        </div>
+        <h1 class="font-display text-5xl md:text-7xl lg:text-[5.4rem] leading-[1.03] text-plum" data-reveal data-split>
+          Beautiful <em class="italic grad-text">color</em> and blowouts, done with real care.
+        </h1>
+        <p class="mt-8 text-lg md:text-xl text-ink/75 max-w-xl leading-relaxed" data-reveal>
+          Marianna's Salon is a welcoming hair studio on Broadway Blvd in Garland — known for dimensional color, balayage, highlights, and blowouts that last. Walk in for a fresh look, or book ahead and we'll plan it with you.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3" data-reveal>
+          <a href="tel:+12142413233" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call (214) 241-3233
+          </a>
+          <a href="#services" class="btn-ghost">See our services →</a>
+        </div>
+
+        <div class="mt-12 grid grid-cols-3 gap-6 max-w-lg" data-reveal>
+          <div>
+            <div class="font-display text-4xl text-plum stat-num" data-count="45" data-suffix="+">0</div>
+            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Photos of<br>real work</div>
+          </div>
+          <div>
+            <div class="font-display text-4xl text-plum stat-num" data-count="6" data-suffix="">0</div>
+            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Days open<br>each week</div>
+          </div>
+          <div>
+            <div class="font-display text-4xl text-plum">Walk-ins</div>
+            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Welcome<br>daily</div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex items-center gap-5 text-sm text-ink/70" data-reveal>
+          <span class="open-pill"><span class="open-dot"></span> Open today · 10 AM – 8 PM</span>
+          <span class="hidden sm:inline-flex items-center gap-2"><span class="star">★ ★ ★ ★ ★</span><span class="text-ink/55">Garland favorite</span></span>
+        </div>
+      </div>
+
+      <div class="md:col-span-5 relative" data-reveal>
+        <div class="relative h-[560px] md:h-[640px]">
+          <div class="photo-tile float-slow absolute"
+               style="width:62%; aspect-ratio:3/4; left:0; top:6%;
+                      background-image:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80')"
+               data-parallax="0.18"
+               aria-label="Fresh blonde balayage color styled at the salon"></div>
+          <div class="photo-tile float-mid absolute"
+               style="width:48%; aspect-ratio:3/4; right:0; top:0;
+                      background-image:url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80')"
+               data-parallax="-0.12"
+               aria-label="Woman with a smooth, glossy blowout"></div>
+          <div class="photo-tile float-fast absolute"
+               style="width:52%; aspect-ratio:1/1; right:6%; bottom:0;
+                      background-image:url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80')"
+               data-parallax="0.08"
+               aria-label="Stylist applying color at the chair"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE — plum + gold brand band -->
+<section class="marquee-band py-5">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="dot"></span> Hair Color</span>
+      <span class="marquee-item accent">Balayage</span>
+      <span class="marquee-item"><span class="dot"></span> Highlights &amp; Lowlights</span>
+      <span class="marquee-item accent">Blowouts</span>
+      <span class="marquee-item"><span class="dot"></span> Keratin Treatments</span>
+      <span class="marquee-item accent">Cuts &amp; Styling</span>
+      <span class="marquee-item"><span class="dot"></span> Updos &amp; Events</span>
+      <span class="marquee-item accent">Walk-Ins Welcome</span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item"><span class="dot"></span> Hair Color</span>
+      <span class="marquee-item accent">Balayage</span>
+      <span class="marquee-item"><span class="dot"></span> Highlights &amp; Lowlights</span>
+      <span class="marquee-item accent">Blowouts</span>
+      <span class="marquee-item"><span class="dot"></span> Keratin Treatments</span>
+      <span class="marquee-item accent">Cuts &amp; Styling</span>
+      <span class="marquee-item"><span class="dot"></span> Updos &amp; Events</span>
+      <span class="marquee-item accent">Walk-Ins Welcome</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-28 md:py-36 relative">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 text-mauve">What We Do</div>
+      <h2 class="font-display text-4xl md:text-6xl text-plum leading-tight">Color, blowouts, and <em class="italic grad-text">everything in between</em>.</h2>
+      <p class="mt-5 text-ink/70 max-w-xl mx-auto">Tell us the look you're after and we'll tell you straight what works for your hair. Honest advice, careful hands, and a finish you'll love.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22v-7a4 4 0 0 1 4-4"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Hair Color</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">All-over color, root touch-ups, gloss, gray blending, and color correction. We start with a real consultation so you know exactly what to expect.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Balayage &amp; Highlights</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Hand-painted balayage, ombre, foilyage, and classic foils for soft, sun-kissed dimension. Lived-in color that grows out beautifully.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12c0-3.866 3.134-7 7-7s7 3.134 7 7-3.134 7-7 7-7-3.134-7-7z"/><path d="M12 5v14"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Blowouts &amp; Styling</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Smooth, voluminous blowouts and finished styling for any occasion — or just because. Walk out feeling put-together and polished.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Treatments &amp; Smoothing</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Keratin smoothing, perms, and conditioning treatments. We assess your hair first and recommend the gentlest option to reach your goal.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Cuts for the Family</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Women's cuts, men's cuts, fades, and patient kids' trims. Clean shaping and honest pricing for everyone who walks through the door.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6-6.3 4.6L8 13.9 2 9.4h7.6z"/></svg></div>
+        <h3 class="font-display text-2xl text-plum mb-2">Updos &amp; Special Events</h3>
+        <p class="text-ink/70 text-sm leading-relaxed">Updos, extensions, and event-ready looks for weddings, quinceañeras, graduations, and photos. Book ahead so we can plan your day.</p>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center text-sm text-ink/60" data-reveal>
+      Pricing varies by hair length, density, and service. Call for a quick quote — <a href="tel:+12142413233" class="text-plum underline-grow font-semibold">(214) 241-3233</a>.
+    </div>
+  </div>
+</section>
+
+<div class="section-bridge"></div>
+
+<!-- STORY -->
+<section id="story" class="py-28 md:py-36 bg-bone/45 relative overflow-hidden">
+  <div class="ambient-blob blob-1" style="opacity:.28"></div>
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-14 items-center relative">
+    <div class="md:col-span-5">
+      <div class="reveal-image" data-reveal-image
+           style="background-image: linear-gradient(160deg,rgba(63,31,42,.22),rgba(63,31,42,0)), url('https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=900&q=80')"></div>
+    </div>
+    <div class="md:col-span-7" data-reveal>
+      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 justify-start text-mauve">Our Story</div>
+      <h2 class="font-display text-4xl md:text-6xl text-plum leading-[1.05]">
+        Run by <em class="italic grad-text">Marianna</em> — a warm chair on Broadway Blvd.
+      </h2>
+      <p class="mt-7 text-ink/75 leading-relaxed text-lg">
+        Marianna's Salon is the kind of place where your stylist remembers your color history and what you said last visit. We built this salon to feel personal — <strong>real attention, honest advice, and a result you'll actually love</strong>.
+      </p>
+      <p class="mt-4 text-ink/75 leading-relaxed text-lg">
+        From a quick blowout before a big night to a full color transformation, we take the time to get it right. New clients are always welcome — come see why neighbors keep coming back.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-2">
+        <span class="chip-soft">Color specialist</span>
+        <span class="chip-soft">Balayage</span>
+        <span class="chip-soft">Blowouts</span>
+        <span class="chip-soft">Family-friendly</span>
+        <span class="chip-soft">Walk-ins welcome</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK SHOWCASE -->
+<section class="py-24 md:py-28 relative">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="flex items-end justify-between flex-wrap gap-6 mb-12" data-reveal>
+      <div>
+        <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-4 justify-start text-mauve">The Look</div>
+        <h2 class="font-display text-4xl md:text-5xl text-plum leading-tight">Color and styling, <em class="italic grad-text">our favorite work</em>.</h2>
+      </div>
+      <a href="tel:+12142413233" class="btn-ghost">Book your look →</a>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="photo-tile work-tile" style="aspect-ratio:4/5; background-image:url('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=800&q=80')" data-reveal aria-label="Glossy brunette balayage"></div>
+      <div class="photo-tile work-tile" style="aspect-ratio:4/5; background-image:url('https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&w=800&q=80')" data-reveal aria-label="Salon styling chair with bright interior"></div>
+      <div class="photo-tile work-tile" style="aspect-ratio:4/5; background-image:url('https://images.unsplash.com/photo-1559599101-f09722fb4948?auto=format&fit=crop&w=800&q=80')" data-reveal aria-label="Soft waves blowout finish"></div>
+    </div>
+    <p class="mt-6 text-center text-xs uppercase tracking-[.25em] text-ink/45" data-reveal>See 45+ photos of recent work on Yelp &amp; Instagram</p>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section id="voices" class="py-24 md:py-28 bg-bone/45 relative">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-14" data-reveal>
+      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 text-mauve">In Their Words</div>
+      <h2 class="font-display text-4xl md:text-6xl text-plum leading-tight">Clients who keep <em class="italic grad-text">coming back</em>.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card rounded-2xl p-8" data-reveal>
+        <div class="star mb-4 text-lg">★ ★ ★ ★ ★</div>
+        <p class="font-display text-2xl text-plum leading-snug">"They listen before they start — my color came out exactly how I pictured it."</p>
+        <div class="accent-line my-5"></div>
+        <p class="text-xs uppercase tracking-[.25em] text-ink/55">Verified Yelp reviewer</p>
+      </div>
+      <div class="card rounded-2xl p-8" data-reveal>
+        <div class="star mb-4 text-lg">★ ★ ★ ★ ★</div>
+        <p class="font-display text-2xl text-plum leading-snug">"Best blowout in Garland. I leave feeling put-together every single time."</p>
+        <div class="accent-line my-5"></div>
+        <p class="text-xs uppercase tracking-[.25em] text-ink/55">Verified Yelp reviewer</p>
+      </div>
+      <div class="card rounded-2xl p-8" data-reveal>
+        <div class="star mb-4 text-lg">★ ★ ★ ★ ★</div>
+        <p class="font-display text-2xl text-plum leading-snug">"Friendly, welcoming, and great with the whole family. We're regulars now."</p>
+        <div class="accent-line my-5"></div>
+        <p class="text-xs uppercase tracking-[.25em] text-ink/55">Verified Yelp reviewer</p>
+      </div>
+    </div>
+    <div class="text-center mt-12" data-reveal>
+      <a href="https://www.yelp.com/biz/mariannas-salon-garland" target="_blank" rel="noopener" class="btn-ghost">Read reviews on Yelp →</a>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="py-28 md:py-36">
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-12">
+    <div class="md:col-span-5" data-reveal>
+      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 justify-start text-mauve">Visit</div>
+      <h2 class="font-display text-4xl md:text-6xl text-plum leading-[1.05]">Come see us on <em class="italic grad-text">Broadway Blvd</em>.</h2>
+
+      <div class="mt-10 space-y-5">
+        <div class="card rounded-2xl p-6 flex items-start gap-5">
+          <div class="svc-icon shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="text-[11px] uppercase tracking-[.3em] text-ink/55">Address</div>
+            <div class="font-display text-2xl text-plum mt-1">3338 Broadway Blvd, Suite 104</div>
+            <div class="text-ink/70">Garland, TX 75043</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Marianna%27s+Salon+3338+Broadway+Blvd+Suite+104+Garland+TX+75043" target="_blank" rel="noopener" class="text-plum font-semibold underline-grow mt-2 inline-block">Get directions →</a>
+          </div>
+        </div>
+        <div class="card rounded-2xl p-6 flex items-start gap-5">
+          <div class="svc-icon shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="text-[11px] uppercase tracking-[.3em] text-ink/55">Phone</div>
+            <a href="tel:+12142413233" class="font-display text-2xl text-plum mt-1 block underline-grow">(214) 241-3233</a>
+            <div class="text-ink/70 text-sm">Walk-ins welcome · appointments preferred</div>
+          </div>
+        </div>
+        <div class="card rounded-2xl p-6">
+          <div class="text-[11px] uppercase tracking-[.3em] text-ink/55 mb-3">Hours</div>
+          <div class="space-y-1.5 text-ink/80">
+            <div class="flex justify-between"><span>Monday – Saturday</span><span class="font-medium">10 AM – 8 PM</span></div>
+            <div class="flex justify-between text-ink/55"><span>Sunday</span><span>Closed</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:col-span-7" data-reveal>
+      <div class="card rounded-3xl overflow-hidden">
+        <iframe
+          src="https://www.google.com/maps?q=3338+Broadway+Blvd,+Garland,+TX+75043&output=embed"
+          width="100%" height="640" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Marianna's Salon location map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA — Brand band -->
+<section class="brand-band">
+  <div class="grain"></div>
+  <div class="max-w-4xl mx-auto px-5 py-28 md:py-36 text-center relative">
+    <div class="flex justify-center mb-8" data-reveal>
+      <span class="wordmark on-dark items-center text-center">
+        <span class="wm-name" style="font-size:2.4rem">Marianna's Salon</span>
+        <span class="wm-sub" style="letter-spacing:.4em">Garland, Texas</span>
+      </span>
+    </div>
+    <h2 class="font-display text-5xl md:text-7xl leading-[1.05] text-cream" data-reveal>
+      Ready for a fresh look?<br><em class="italic" style="color:var(--gold)">Let's get you in the chair.</em>
+    </h2>
+    <p class="mt-6 text-cream/75 max-w-xl mx-auto text-lg" data-reveal>
+      Call now and we'll find you a time — or walk in during open hours and we'll do our best to take you same-day.
+    </p>
+    <div class="mt-10 flex flex-wrap justify-center gap-3" data-reveal>
+      <a href="tel:+12142413233" class="btn-gold text-lg">Call (214) 241-3233</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Marianna%27s+Salon+3338+Broadway+Blvd+Suite+104+Garland+TX+75043" target="_blank" rel="noopener" class="btn-ghost text-lg" style="background:transparent;border-color:var(--gold);color:var(--gold)">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-plum text-cream/70 py-10">
+  <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-5 text-sm">
+    <span class="wordmark on-dark">
+      <span class="wm-name">Marianna's Salon</span>
+      <span class="wm-sub">Garland, Texas</span>
+    </span>
+    <div>3338 Broadway Blvd, Suite 104 · Garland, TX 75043 · <a href="tel:+12142413233" style="color:var(--gold)" class="underline-grow">(214) 241-3233</a></div>
+    <div class="flex items-center gap-5">
+      <a href="https://www.instagram.com/mariannas_salon/" target="_blank" rel="noopener" class="underline-grow hover:text-gold">Instagram</a>
+      <a href="https://www.facebook.com/p/Mariannas-Salon-100062520926106/" target="_blank" rel="noopener" class="underline-grow hover:text-gold">Facebook</a>
+      <a href="https://www.yelp.com/biz/mariannas-salon-garland" target="_blank" rel="noopener" class="underline-grow hover:text-gold">Yelp</a>
+    </div>
+  </div>
+  <div class="text-center text-xs text-cream/40 mt-4">© <span id="yr"></span> Marianna's Salon · All rights reserved</div>
+</footer>
+
+<!-- Mobile sticky bar -->
+<div class="stick-bar">
+  <a href="tel:+12142413233" class="btn-primary flex-1 justify-center text-sm">Call now</a>
+  <a href="https://www.google.com/maps/search/?api=1&query=Marianna%27s+Salon+3338+Broadway+Blvd+Suite+104+Garland+TX+75043" target="_blank" rel="noopener" class="btn-ghost flex-1 justify-center text-sm">Directions</a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HairSalon",
+  "name":"Marianna's Salon",
+  "image":"https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
+  "url":"https://turnkeyweb.org/previews/mariannas-salon/",
+  "telephone":"+1-214-241-3233",
+  "priceRange":"$$",
+  "address":{"@type":"PostalAddress","streetAddress":"3338 Broadway Blvd, Suite 104","addressLocality":"Garland","addressRegion":"TX","postalCode":"75043","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":32.876,"longitude":-96.622},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"20:00"}
+  ],
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Hair Color"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Balayage & Highlights"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Blowouts & Styling"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Keratin Treatments"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Haircuts"}}
+  ],
+  "sameAs":["https://www.instagram.com/mariannas_salon/","https://www.facebook.com/p/Mariannas-Salon-100062520926106/","https://www.yelp.com/biz/mariannas-salon-garland"]
+}
+</script>
+
+<!-- Libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+(function(){
+  if (!window.Lenis) return;
+  const lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+  if (window.ScrollTrigger) { lenis.on('scroll', ScrollTrigger.update); }
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if (id.length>1 && document.querySelector(id)) {
+        e.preventDefault();
+        lenis.scrollTo(document.querySelector(id), { offset:-70 });
+      }
+    });
+  });
+})();
+
+document.querySelectorAll('[data-split]').forEach(function(el){
+  el.innerHTML = '<span>' + el.innerHTML + '</span>';
+});
+
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('[data-reveal]').forEach(function(el){
+    gsap.fromTo(el, {opacity:0,y:36},
+      {opacity:1,y:0,duration:1.05,ease:'power3.out',
+       scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'}});
+  });
+
+  gsap.utils.toArray('[data-parallax]').forEach(function(el){
+    const speed = parseFloat(el.dataset.parallax) || 0.1;
+    gsap.to(el, {
+      y: () => speed * 220, ease: 'none',
+      scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+    });
+  });
+
+  document.querySelectorAll('[data-reveal-image]').forEach(function(el){
+    ScrollTrigger.create({ trigger: el, start: 'top 85%', onEnter: ()=> el.classList.add('in') });
+  });
+
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const obj = { v: 0 };
+    ScrollTrigger.create({
+      trigger: el, start: 'top 88%',
+      onEnter: ()=> {
+        gsap.to(obj, {
+          v: target, duration: 1.6, ease: 'power2.out',
+          onUpdate: ()=> { el.textContent = Math.round(obj.v) + suffix; }
+        });
+      }
+    });
+  });
+}
+
+// Crawler / screenshot safety net
+setTimeout(function(){
+  document.querySelectorAll('[data-reveal]').forEach(function(el){
+    if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+      el.style.opacity='1'; el.style.transform='none';
+    }
+  });
+  document.querySelectorAll('[data-reveal-image]').forEach(function(el){ el.classList.add('in'); });
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    const t = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    if (el.textContent === '0' || el.textContent.trim() === '') el.textContent = t + suffix;
+  });
+}, 6000);
+</script>
+</body>
+</html>
