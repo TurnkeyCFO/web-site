@@ -44,6 +44,8 @@ const LABELS = {
   phone: "Phone",
   industry: "Industry",
   business_description: "Business Description",
+  services_offered: "Services Offered",
+  trust_numbers: "Trust / Credibility Numbers",
   location: "Location",
   target_audience: "Target Audience",
   audience_type: "Audience Type",
@@ -55,6 +57,7 @@ const LABELS = {
   current_site_dislikes: "Current Site Dislikes",
   has_brand: "Existing Brand",
   brand_colors: "Brand Colors",
+  brand_fonts: "Brand Fonts",
   style: "Visual Style",
   inspiration_sites: "Inspiration Sites",
   has_photos: "Photography",
@@ -79,6 +82,7 @@ const LABELS = {
   prior_web_exp: "Prior Web Experience",
   prior_web_issues: "Prior Web Issues",
   must_have_sections: "Specific Pages / Sections Wanted",
+  testimonials: "Customer Reviews / Testimonials",
   specific_language: "Specific Language / Wording",
   success_vision: "Success Vision",
   other: "Other Notes",
@@ -86,16 +90,16 @@ const LABELS = {
 
 const SECTIONS = [
   { header: "Package", keys: ["selected_package"] },
-  { header: "About the Business", keys: ["full_name", "business_name", "email", "phone", "industry", "business_description", "location"] },
+  { header: "About the Business", keys: ["full_name", "business_name", "email", "phone", "industry", "business_description", "services_offered", "trust_numbers", "location"] },
   { header: "Target Audience", keys: ["target_audience", "audience_type", "competitors", "differentiator"] },
   { header: "Website Goals", keys: ["primary_goal", "primary_cta", "existing_website", "current_site_dislikes"] },
-  { header: "Design & Brand", keys: ["has_brand", "brand_colors", "style", "inspiration_sites", "has_photos"] },
+  { header: "Design & Brand", keys: ["has_brand", "brand_colors", "brand_fonts", "style", "inspiration_sites", "has_photos"] },
   { header: "Pages & Content", keys: ["pages", "other_pages", "page_content_details", "copy_owner", "existing_content"] },
   { header: "Features & Functionality", keys: ["features", "integrations", "ecommerce_details"] },
   { header: "Technical", keys: ["has_domain", "domain_info", "self_manage", "growth_services"] },
   { header: "Timeline", keys: ["timeline", "hard_deadline", "ongoing_plan"] },
   { header: "Communication", keys: ["comms_pref", "decision_maker", "other_approvers", "prior_web_exp", "prior_web_issues"] },
-  { header: "Your Specifics & Anything Else", keys: ["must_have_sections", "specific_language", "success_vision", "other"] },
+  { header: "Your Specifics & Anything Else", keys: ["must_have_sections", "testimonials", "specific_language", "success_vision", "other"] },
 ];
 
 /* ── Entry points ────────────────────────────────────────────────────── */
