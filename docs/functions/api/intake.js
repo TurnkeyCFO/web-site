@@ -60,6 +60,7 @@ const LABELS = {
   has_photos: "Photography",
   pages: "Pages Needed",
   other_pages: "Other Pages",
+  page_content_details: "Page Content / Sections",
   copy_owner: "Copy Writer",
   existing_content: "Existing Content",
   features: "Features Needed",
@@ -77,6 +78,8 @@ const LABELS = {
   other_approvers: "Other Approvers",
   prior_web_exp: "Prior Web Experience",
   prior_web_issues: "Prior Web Issues",
+  must_have_sections: "Specific Pages / Sections Wanted",
+  specific_language: "Specific Language / Wording",
   success_vision: "Success Vision",
   other: "Other Notes",
 };
@@ -87,12 +90,12 @@ const SECTIONS = [
   { header: "Target Audience", keys: ["target_audience", "audience_type", "competitors", "differentiator"] },
   { header: "Website Goals", keys: ["primary_goal", "primary_cta", "existing_website", "current_site_dislikes"] },
   { header: "Design & Brand", keys: ["has_brand", "brand_colors", "style", "inspiration_sites", "has_photos"] },
-  { header: "Pages & Content", keys: ["pages", "other_pages", "copy_owner", "existing_content"] },
+  { header: "Pages & Content", keys: ["pages", "other_pages", "page_content_details", "copy_owner", "existing_content"] },
   { header: "Features & Functionality", keys: ["features", "integrations", "ecommerce_details"] },
   { header: "Technical", keys: ["has_domain", "domain_info", "self_manage", "growth_services"] },
   { header: "Timeline", keys: ["timeline", "hard_deadline", "ongoing_plan"] },
   { header: "Communication", keys: ["comms_pref", "decision_maker", "other_approvers", "prior_web_exp", "prior_web_issues"] },
-  { header: "Anything Else", keys: ["success_vision", "other"] },
+  { header: "Your Specifics & Anything Else", keys: ["must_have_sections", "specific_language", "success_vision", "other"] },
 ];
 
 /* ── Entry points ────────────────────────────────────────────────────── */
