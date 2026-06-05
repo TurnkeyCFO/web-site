@@ -1,752 +1,626 @@
-<!doctype html>
+<!DOCTYPE html>
+<!--
+  Garcia's Tree Service and Lawn Care — Katy, TX
+  Art direction: "Rooted — 34-Year Heritage, Typographic Hero"
+  Warm heritage editorial. The NUMBER 34 is the hero. Light, earthy, earned.
+  Palette: bone #F4ECE3 · sage #7FA88C · olive #4A6B4F · amber #B98D52 · bark #231419 / forest #1A2A1F
+  Type: Bitter (warm humanist serif, display) + Inter (body)
+  NO floating hero photo cards. NO Turnkey purple. All data verbatim/verified.
+-->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Garcia's Tree Service &amp; Lawn Care — 34+ Years in Katy, TX</title>
-<meta name="description" content="Garcia's Tree Service and Lawn Care — a family-run Katy, TX crew trusted for 34+ years. Tree trimming, tree removal, stump grinding, lawn care, drainage, sprinklers, and landscaping for Katy and west Houston. Free estimates. Call (818) 605-9414.">
-<link rel="canonical" href="https://turnkeyweb.org/previews/garcias-tree-service/">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Open Graph -->
-<meta property="og:type" content="business.business">
-<meta property="og:title" content="Garcia's Tree Service & Lawn Care — 34+ Years in Katy, TX">
-<meta property="og:description" content="A family-run Katy crew trusted for 34+ years. Tree work, lawn care, drainage, and landscaping. Free estimates. Call (818) 605-9414.">
-<meta property="og:url" content="https://turnkeyweb.org/previews/garcias-tree-service/">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Garcia's Tree Service &amp; Lawn Care | 34+ Years in Katy, TX</title>
+<meta name="description" content="Garcia's Tree Service and Lawn Care — tree trimming, removal, stump grinding, lawn care and landscaping in Katy and west Houston for over three decades. Free estimates. Call (818) 605-9414." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/garcias-tree-service/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Garcia's Tree Service &amp; Lawn Care | 34+ Years in Katy, TX" />
+<meta property="og:description" content="Thirty-four years of Katy's trees, done right. Tree care, removal, stump grinding, lawn and landscape. Free estimates." />
+<meta property="og:url" content="https://turnkeyweb.org/previews/garcias-tree-service/" />
+<meta property="og:image" content="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80" />
 
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
 <script>
-tailwind.config = {
-  theme: {
-    extend: {
-      fontFamily: {
-        display: ['"Cormorant Garamond"', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif']
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bone:  "#F4ECE3",
+          cream: "#FBF6EF",
+          sage:  "#7FA88C",
+          olive: "#4A6B4F",
+          deepolive: "#36513B",
+          amber: "#B98D52",
+          bark:  "#231419",
+          forest:"#1A2A1F",
+        },
+        fontFamily: {
+          serif: ['Bitter', 'Georgia', 'serif'],
+          sans:  ['Inter', 'system-ui', 'sans-serif'],
+        },
       },
-      colors: {
-        // Tree / landscape — warm light default
-        bone:'#F4ECE3', cream:'#FAF5EC',
-        sage:'#7FA88C', sageSoft:'#9DBDA7',
-        olive:'#4A6B4F', oliveDeep:'#34503A',
-        amber:'#B98D52', amberSoft:'#CBA873',
-        ink:'#231419', barkdark:'#1A2A1F'
-      }
-    }
-  }
-}
+    },
+  };
 </script>
 
 <style>
-  :root {
-    --bone:#F4ECE3; --cream:#FAF5EC;
-    --sage:#7FA88C; --sage-soft:#9DBDA7;
-    --olive:#4A6B4F; --olive-deep:#34503A;
-    --amber:#B98D52; --amber-soft:#CBA873;
-    --ink:#231419; --bark:#1A2A1F;
-  }
-  *{ -webkit-tap-highlight-color: transparent; }
-  html, body { background:var(--cream); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
-  body { overflow-x:hidden; }
-  .font-display { font-family:'Cormorant Garamond', serif; letter-spacing:-0.012em; }
+  body { background: #F4ECE3; color: #231419; -webkit-font-smoothing: antialiased; }
 
-  /* Ambient blobs */
-  .ambient-blob { position:absolute; border-radius:50%; filter:blur(80px); opacity:.5; pointer-events:none; will-change:transform; }
-  .blob-1 { width:540px; height:540px; background:radial-gradient(circle, rgba(127,168,140,.42), transparent 60%); top:-190px; right:-160px; animation: drift1 24s ease-in-out infinite; }
-  .blob-2 { width:440px; height:440px; background:radial-gradient(circle, rgba(185,141,82,.34), transparent 62%); bottom:-130px; left:-90px; animation: drift2 28s ease-in-out infinite; }
-  .blob-3 { width:400px; height:400px; background:radial-gradient(circle, rgba(74,107,79,.26), transparent 65%); top:42%; left:-110px; animation: drift1 30s ease-in-out infinite reverse; }
-  @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(40px,-30px) scale(1.08);} }
-  @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-50px,40px) scale(1.1);} }
-
-  /* Gradient text */
-  .grad-text {
-    background: linear-gradient(120deg, #4A6B4F 0%, #7FA88C 45%, #B98D52 100%);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-    background-size: 200% 100%; animation: shimmer 8s linear infinite;
-  }
-  @keyframes shimmer { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-
-  .hero-bg {
-    position:relative; overflow:hidden;
-    background:
-      radial-gradient(ellipse 70% 55% at 76% 24%, rgba(127,168,140,.20), transparent 65%),
-      radial-gradient(ellipse 55% 50% at 12% 76%, rgba(185,141,82,.20), transparent 65%),
-      linear-gradient(180deg,#FAF5EC 0%, #F4ECE3 100%);
-  }
+  /* paper grain */
   .grain::after {
-    content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
-    background-image: radial-gradient(#231419 1px, transparent 1px); background-size: 3px 3px;
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+    background-image: radial-gradient(rgba(35,20,25,.5) .5px, transparent .5px);
+    background-size: 4px 4px; opacity:.05; mix-blend-mode:multiply;
   }
 
-  .card {
-    position:relative;
-    background: linear-gradient(180deg, rgba(255,255,255,.86) 0%, rgba(244,236,227,.55) 100%);
-    backdrop-filter: blur(12px) saturate(115%);
-    -webkit-backdrop-filter: blur(12px) saturate(115%);
-    border: 1px solid rgba(26,42,31,.10);
-    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 22px 50px -28px rgba(26,42,31,.22);
-    transition: transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s cubic-bezier(.2,.7,.2,1), border-color .4s;
-    overflow:hidden;
+  /* hero full-bleed video + warm overlay */
+  .hero-img {
+    position:absolute; inset:0; z-index:0; width:100%; height:100%;
+    object-fit:cover; object-position:center 42%;
+    background:#1A2A1F url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=2000&q=80') center 38%/cover no-repeat;
   }
-  .card::before {
-    content:""; position:absolute; left:0; top:0; height:2px; width:0%;
-    background: linear-gradient(90deg, var(--olive), var(--amber));
-    transition: width .65s cubic-bezier(.2,.7,.2,1);
-  }
-  .card:hover { transform: translateY(-6px); box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 38px 60px -28px rgba(26,42,31,.30); border-color: rgba(26,42,31,.22); }
-  .card:hover::before { width:100%; }
-
-  .chip {
-    display:inline-flex; align-items:center; gap:.5rem;
-    padding:.4rem .85rem; border-radius:999px;
-    background: rgba(26,42,31,.92);
-    border: 1px solid rgba(127,168,140,.45);
-    color:#FAF5EC; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
-  }
-  .chip-dot { width:.45rem; height:.45rem; border-radius:999px; background:var(--sage); box-shadow:0 0 12px var(--sage); animation: pulse 2.4s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.55; transform:scale(.9)} }
-
-  .chip-soft {
-    display:inline-flex; align-items:center; gap:.5rem;
-    padding:.4rem .85rem; border-radius:999px;
-    background: rgba(127,168,140,.20);
-    border: 1px solid rgba(74,107,79,.24);
-    color:#34503A; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
-  }
-
-  .btn-primary {
-    position:relative; display:inline-flex; align-items:center; gap:.6rem;
-    padding:1rem 1.65rem; border-radius:999px;
-    background: linear-gradient(135deg,#34503A 0%, #4A6B4F 100%); color:#FAF5EC;
-    font-weight:700; letter-spacing:.02em;
-    box-shadow: 0 18px 36px -14px rgba(26,42,31,.55), 0 0 0 1px rgba(127,168,140,.25) inset;
-    transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, filter .35s, color .35s;
-    overflow:hidden;
-  }
-  .btn-primary::after {
-    content:""; position:absolute; inset:0;
-    background: linear-gradient(120deg, transparent 30%, rgba(203,168,115,.45) 50%, transparent 70%);
-    transform: translateX(-120%); transition: transform .9s cubic-bezier(.2,.7,.2,1);
-  }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 26px 46px -16px rgba(26,42,31,.7), 0 0 0 1px var(--amber) inset; filter:brightness(1.05); }
-  .btn-primary:hover::after { transform: translateX(120%); }
-
-  .btn-ghost {
-    display:inline-flex; align-items:center; gap:.55rem;
-    padding:.95rem 1.5rem; border-radius:999px;
-    border: 1px solid rgba(26,42,31,.45); color:var(--bark); font-weight:600;
-    background: rgba(255,255,255,.5); backdrop-filter: blur(8px);
-    transition: background .35s, border-color .35s, transform .35s, color .35s;
-  }
-  .btn-ghost:hover { background: var(--bark); border-color: var(--bark); color: var(--amberSoft, #CBA873); transform: translateY(-3px); }
-
-  .btn-amber {
-    position:relative; display:inline-flex; align-items:center; gap:.6rem;
-    padding:1rem 1.65rem; border-radius:999px;
-    background: var(--amber); color: #1A2A1F;
-    font-weight:700; letter-spacing:.02em;
-    box-shadow: 0 18px 36px -14px rgba(185,141,82,.55);
-    transition: transform .35s, filter .35s;
-  }
-  .btn-amber:hover { transform: translateY(-3px); filter:brightness(1.05); }
-
-  .divider-flourish { display:flex; align-items:center; justify-content:center; gap:1rem; color:var(--amber); }
-  .divider-flourish::before, .divider-flourish::after {
-    content:""; flex:1; max-width:120px; height:1px;
-    background: linear-gradient(90deg, transparent, rgba(185,141,82,.7), transparent);
-  }
-
-  [data-reveal] { opacity:0; transform: translateY(36px); }
-  [data-split] > span { display:inline-block; }
-
-  .photo-tile {
-    border-radius: 1.25rem; overflow:hidden; position:relative;
-    background-size:cover; background-position:center;
-    box-shadow: 0 40px 70px -30px rgba(26,42,31,.5), 0 0 0 1px rgba(26,42,31,.16), 0 0 0 4px rgba(127,168,140,0);
-    will-change: transform; transition: box-shadow .6s;
-  }
-  .photo-tile:hover { box-shadow: 0 40px 70px -30px rgba(26,42,31,.55), 0 0 0 1px rgba(26,42,31,.2), 0 0 0 4px rgba(127,168,140,.4); }
-  .photo-tile::after {
-    content:""; position:absolute; inset:0;
-    background: linear-gradient(180deg, transparent 55%, rgba(26,42,31,.38) 100%);
-  }
-  .float-slow { animation: floatSlow 7s ease-in-out infinite; }
-  .float-mid  { animation: floatMid  6s ease-in-out infinite; }
-  .float-fast { animation: floatFast 5.4s ease-in-out infinite; }
-  @keyframes floatSlow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
-  @keyframes floatMid  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-22px)} }
-  @keyframes floatFast { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-
-  /* Marquee — deep bark band with bone + amber text. Brand moment. */
-  .marquee-band {
-    background: var(--bark); color: var(--cream);
-    border-top: 1px solid rgba(127,168,140,.25); border-bottom: 1px solid rgba(127,168,140,.25);
-    position:relative; overflow:hidden;
-  }
-  .marquee {
-    overflow:hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-            mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  }
-  .marquee-track {
-    display:flex; gap:3.5rem; width:max-content;
-    animation: scrollX 38s linear infinite;
-    font-family: 'Cormorant Garamond', serif;
-  }
-  .marquee-band:hover .marquee-track { animation-play-state: paused; }
-  @keyframes scrollX { from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
-  .marquee-item { display:inline-flex; align-items:center; gap:1.4rem; font-size:1.7rem; letter-spacing:.015em; color:#FAF5EC; }
-  .marquee-item.accent { color: var(--amberSoft, #CBA873); font-style: italic; }
-  .marquee-item .dot { width:.5rem; height:.5rem; border-radius:999px; background: var(--sage); box-shadow: 0 0 10px var(--sage); }
-
-  .reveal-image {
-    aspect-ratio: 4/5; border-radius: 1.25rem; overflow:hidden;
-    background-size:cover; background-position:center;
-    clip-path: inset(0 0 100% 0);
-    transition: clip-path 1.4s cubic-bezier(.2,.7,.2,1);
-    box-shadow: 0 30px 70px -30px rgba(26,42,31,.55);
-  }
-  .reveal-image.in { clip-path: inset(0 0 0% 0); }
-
-  .accent-line {
-    position:relative; height:1px;
-    background:linear-gradient(90deg, transparent, rgba(185,141,82,.55), transparent);
-  }
-
-  .stick-bar {
-    position:fixed; bottom:0; left:0; right:0; z-index:50;
-    background:linear-gradient(180deg, rgba(250,245,236,.6), rgba(250,245,236,.98));
-    backdrop-filter: blur(14px);
-    border-top:1px solid rgba(26,42,31,.18);
-    padding: .65rem 1rem calc(.65rem + env(safe-area-inset-bottom));
-    display:none; gap:.5rem;
-  }
-  @media (max-width: 768px) { .stick-bar { display:flex; } }
-
-  .nav-blur {
-    background: rgba(250,245,236,.80);
-    backdrop-filter: blur(14px) saturate(120%);
-    -webkit-backdrop-filter: blur(14px) saturate(120%);
-    border-bottom: 1px solid rgba(26,42,31,.10);
-  }
-
-  .svc-icon {
-    width:46px;height:46px;border-radius:999px;
-    background: linear-gradient(135deg, var(--bark) 0%, var(--olive) 100%);
-    display:grid; place-items:center; color: var(--sageSoft, #9DBDA7);
-    box-shadow: 0 10px 24px -8px rgba(26,42,31,.55), 0 0 0 1px rgba(127,168,140,.2) inset;
-    transition: transform .45s cubic-bezier(.2,.7,.2,1);
-  }
-  .card:hover .svc-icon { transform: rotate(-6deg) scale(1.06); }
-
-  .star { color: var(--amber); letter-spacing:.18em; text-shadow: 0 0 12px rgba(185,141,82,.4); }
-
-  .open-pill {
-    display:inline-flex; align-items:center; gap:.5rem;
-    padding:.35rem .85rem; border-radius:999px;
-    background: rgba(127,168,140,.22); border:1px solid rgba(74,107,79,.4);
-    color:#1f3a26; font-size:.78rem; font-weight:600;
-  }
-  .open-dot { width:.45rem; height:.45rem; border-radius:999px; background:#4a9d62; box-shadow:0 0 10px #4a9d62; animation: pulse 2s ease-in-out infinite; }
-
-  .stat-num { font-variant-numeric: tabular-nums; }
-  .underline-grow { position:relative; display:inline-block; }
-  .underline-grow::after {
-    content:""; position:absolute; left:0; bottom:-3px; height:2px; width:0;
-    background: linear-gradient(90deg, var(--olive), var(--amber));
-    transition: width .5s cubic-bezier(.2,.7,.2,1);
-  }
-  .underline-grow:hover::after { width:100%; }
-
-  .section-bridge {
-    position:relative; height:1px; max-width: 200px; margin: 0 auto;
-    background: linear-gradient(90deg, transparent, rgba(185,141,82,.5), transparent);
-  }
-
-  /* Wordmark logo badge */
-  .logo-badge {
-    display:inline-flex; align-items:center; gap:.6rem;
-  }
-  .logo-mark {
-    width:38px; height:38px; border-radius:11px;
-    background: linear-gradient(140deg, var(--olive) 0%, var(--bark) 100%);
-    display:grid; place-items:center; color: var(--sageSoft, #9DBDA7);
-    box-shadow: 0 8px 20px -8px rgba(26,42,31,.55), 0 0 0 1px rgba(127,168,140,.25) inset;
-    flex-shrink:0;
-  }
-  .logo-mark.lg { width:72px; height:72px; border-radius:18px; }
-  .logo-word { font-family:'Cormorant Garamond', serif; line-height:1; }
-
-  /* CTA brand band — deep bark with sage/amber accents */
-  .brand-band {
-    position:relative; background: var(--bark); color: #FAF5EC; overflow:hidden;
-  }
-  .brand-band::before {
-    content:""; position:absolute; inset:0; pointer-events:none;
+  .hero-overlay {
+    position:absolute; inset:0; z-index:1;
     background:
-      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(127,168,140,.22), transparent 60%),
-      radial-gradient(ellipse 50% 45% at 15% 75%, rgba(185,141,82,.16), transparent 65%);
+      linear-gradient(180deg, rgba(20,32,24,.58) 0%, rgba(22,36,27,.40) 34%, rgba(244,236,227,.58) 78%, rgba(244,236,227,.99) 100%),
+      radial-gradient(125% 95% at 24% 28%, rgba(15,24,18,.46), transparent 58%);
   }
-  .brand-band .grain::after { background-image: radial-gradient(rgba(127,168,140,.25) 1px, transparent 1px); opacity:.10; }
+
+  /* the giant 34 */
+  .mega34 {
+    font-family:'Bitter',serif; font-weight:800; line-height:.78;
+    letter-spacing:-.04em;
+    font-size: clamp(11rem, 38vw, 30rem);
+    color:#FBF6EF;
+    text-shadow: 0 18px 60px rgba(26,42,31,.45);
+  }
+
+  /* shimmer accent for amber italic */
+  .grad-amber {
+    background: linear-gradient(90deg,#B98D52,#E0C089,#B98D52);
+    background-size:200% 100%;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation: shimmer 8s linear infinite;
+  }
+  @keyframes shimmer { from{background-position:0 0} to{background-position:200% 0} }
+
+  /* underline-grow nav */
+  .ugrow { position:relative; }
+  .ugrow::after {
+    content:""; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+    background:linear-gradient(90deg,#4A6B4F,#B98D52);
+    transition: width .5s cubic-bezier(.16,.84,.44,1);
+  }
+  .ugrow:hover::after { width:100%; }
+
+  /* button shimmer sweep */
+  .btn-primary { position:relative; overflow:hidden; transition: transform .4s cubic-bezier(.16,.84,.44,1), filter .4s; }
+  .btn-primary::after {
+    content:""; position:absolute; top:0; left:-130%; width:60%; height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.4), transparent);
+    transform:skewX(-18deg); transition:left .9s cubic-bezier(.16,.84,.44,1);
+  }
+  .btn-primary:hover::after { left:130%; }
+  .btn-primary:hover { transform: translateY(-3px); filter:brightness(1.05); }
+
+  /* clip-path reveal */
+  .clip-reveal { clip-path: inset(0 0 100% 0); transition: clip-path 1.4s cubic-bezier(.16,.84,.44,1); }
+  .clip-reveal.in { clip-path: inset(0 0 0% 0); }
+
+  /* leaf bullet rule on service rows */
+  .svc-row { border-bottom:1px solid rgba(74,107,79,.16); transition: background .4s, padding-left .4s; }
+  .svc-row:hover { background: rgba(127,168,140,.10); padding-left:.6rem; }
+
+  /* pulse dot */
+  .pulse { animation: pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.82)} }
+
+  [data-reveal] { opacity:0; transform: translateY(34px); }
+
+  /* vertical legacy timeline line */
+  .timeline-line { background: linear-gradient(180deg, transparent, #4A6B4F 12%, #B98D52 88%, transparent); }
+
+  ::selection { background:#7FA88C; color:#1A2A1F; }
 </style>
 </head>
-<body>
 
-<!-- NAV -->
-<header class="nav-blur sticky top-0 z-40">
-  <div class="max-w-6xl mx-auto px-5 py-3.5 flex items-center justify-between">
-    <a href="#top" class="logo-badge group">
-      <span class="logo-mark transition-transform group-hover:scale-[1.05]">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22v-7"/><path d="M12 15c-2.5 0-5-1.8-5-5 0-1 .3-2 .9-2.8C7.2 6 7 5 7 4c2 0 3.5 1 4 2.2C11.5 5 13 4 15 4c0 1-.2 2-.9 3.2.6.8.9 1.8.9 2.8 0 3.2-2.5 5-5 5z"/></svg>
-      </span>
-      <span class="logo-word">
-        <span class="block text-[1.18rem] font-700 text-bark" style="font-weight:700">Garcia's</span>
-        <span class="block text-[.6rem] tracking-[.32em] uppercase text-olive/80" style="margin-top:-2px;font-family:Inter,sans-serif;font-weight:600">Tree &amp; Lawn Care</span>
-      </span>
-    </a>
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-bark/80">
-      <a href="#services" class="underline-grow hover:text-bark transition">Services</a>
-      <a href="#story" class="underline-grow hover:text-bark transition">Our Story</a>
-      <a href="#voices" class="underline-grow hover:text-bark transition">Reviews</a>
-      <a href="#visit" class="underline-grow hover:text-bark transition">Contact</a>
-    </nav>
-    <a href="tel:+18186059414" class="btn-primary text-sm hidden sm:inline-flex">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      (818) 605-9414
-    </a>
+<body class="font-sans overflow-x-hidden">
+
+<!-- ===================== NAV ===================== -->
+<header class="fixed top-0 inset-x-0 z-50 transition-all duration-300" id="nav">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between py-4">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-olive text-cream shadow-sm">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22v-7"/><path d="M12 15c-3.5 0-6-2.5-6-6 0-3 2-6 6-7 4 1 6 4 6 7 0 3.5-2.5 6-6 6z"/>
+          </svg>
+        </span>
+        <span class="font-serif font-bold text-[1.05rem] tracking-tight text-bark leading-none">Garcia's <span class="text-olive">Tree Service</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-[.92rem] font-medium text-bark/80">
+        <a href="#services" class="ugrow">Services</a>
+        <a href="#legacy" class="ugrow">34 Years</a>
+        <a href="#reviews" class="ugrow">Reviews</a>
+        <a href="#area" class="ugrow">Service Area</a>
+      </nav>
+      <a href="tel:+18186059414" class="hidden sm:inline-flex items-center gap-2 bg-bark text-cream text-[.9rem] font-semibold px-4 py-2.5 rounded-full btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (818) 605-9414
+      </a>
+    </div>
   </div>
 </header>
 
-<!-- HERO -->
-<section id="top" class="hero-bg grain relative">
-  <div class="ambient-blob blob-1"></div>
-  <div class="ambient-blob blob-2"></div>
-  <div class="ambient-blob blob-3"></div>
+<!-- ===================== HERO (TYPOGRAPHIC) ===================== -->
+<section id="top" class="relative min-h-screen flex flex-col justify-end grain overflow-hidden">
+  <video class="hero-img" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
 
-  <div class="max-w-6xl mx-auto px-5 pt-16 pb-24 md:pt-24 md:pb-32 relative">
-    <div class="grid md:grid-cols-12 gap-12 items-center">
-      <div class="md:col-span-7">
-        <div class="flex items-center gap-2 mb-6" data-reveal>
-          <span class="chip"><span class="chip-dot"></span> Serving Katy &amp; West Houston since 1992</span>
-        </div>
-        <h1 class="font-display text-5xl md:text-7xl lg:text-[5.4rem] leading-[1.03] text-bark" data-reveal data-split>
-          Thirty-four years of <em class="italic grad-text">trees done right</em> in Katy, Texas.
-        </h1>
-        <p class="mt-8 text-lg md:text-xl text-ink/75 max-w-xl leading-relaxed" data-reveal>
-          Garcia's is a family-run crew that has trimmed, cleared, and cared for Katy yards for more than three decades — built one honest job and one neighbor's referral at a time. Tree work, lawn care, drainage, and landscaping. Free estimates, every time.
-        </p>
-        <div class="mt-10 flex flex-wrap gap-3" data-reveal>
-          <a href="tel:+18186059414" class="btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Call (818) 605-9414
-          </a>
-          <a href="#services" class="btn-ghost">See what we do →</a>
-        </div>
-
-        <div class="mt-12 grid grid-cols-3 gap-6 max-w-lg" data-reveal>
-          <div>
-            <div class="font-display text-4xl text-bark stat-num" data-count="34" data-suffix="+">0</div>
-            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Years<br>in Katy</div>
-          </div>
-          <div>
-            <div class="font-display text-4xl text-bark stat-num" data-count="41" data-suffix="+">0</div>
-            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Reviews,<br>4.5 stars</div>
-          </div>
-          <div>
-            <div class="font-display text-4xl text-bark">Free</div>
-            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Estimates<br>always</div>
-          </div>
-        </div>
-
-        <div class="mt-8 flex items-center gap-5 text-sm text-ink/70" data-reveal>
-          <span class="open-pill"><span class="open-dot"></span> Open today · 7 AM – 10 PM</span>
-          <span class="hidden sm:inline-flex items-center gap-2"><span class="star">★ ★ ★ ★ ★</span><span class="text-ink/55">Trusted by Katy neighbors</span></span>
-        </div>
-      </div>
-
-      <div class="md:col-span-5 relative" data-reveal>
-        <div class="relative h-[560px] md:h-[640px]">
-          <div class="photo-tile float-slow absolute"
-               style="width:62%; aspect-ratio:3/4; left:0; top:6%;
-                      background-image:url('https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=900&q=80')"
-               data-parallax="0.18"
-               aria-label="Arborist climbing and trimming a large tree"></div>
-          <div class="photo-tile float-mid absolute"
-               style="width:48%; aspect-ratio:3/4; right:0; top:0;
-                      background-image:url('https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&fit=crop&w=800&q=80')"
-               data-parallax="-0.12"
-               aria-label="Freshly mowed manicured green lawn"></div>
-          <div class="photo-tile float-fast absolute"
-               style="width:52%; aspect-ratio:1/1; right:6%; bottom:0;
-                      background-image:url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=80')"
-               data-parallax="0.08"
-               aria-label="Mature Texas oak canopy"></div>
-        </div>
+  <!-- giant 34 -->
+  <div class="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 pt-28">
+    <div class="flex items-end gap-4 sm:gap-7">
+      <h1 class="mega34" aria-label="34 years">
+        <span id="count34">34</span>
+      </h1>
+      <div class="pb-[8vw] sm:pb-[7vw]">
+        <div class="font-serif italic text-cream/90 text-lg sm:text-2xl leading-tight tracking-wide">years</div>
+        <div class="mt-1 h-10 w-px bg-cream/40"></div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- MARQUEE -->
-<section class="marquee-band py-5">
-  <div class="marquee">
-    <div class="marquee-track">
-      <span class="marquee-item"><span class="dot"></span> Tree Trimming</span>
-      <span class="marquee-item accent">Tree Removal</span>
-      <span class="marquee-item"><span class="dot"></span> Stump Grinding</span>
-      <span class="marquee-item accent">Lawn Care</span>
-      <span class="marquee-item"><span class="dot"></span> Drainage Systems</span>
-      <span class="marquee-item accent">Sprinklers</span>
-      <span class="marquee-item"><span class="dot"></span> Landscaping</span>
-      <span class="marquee-item accent">Free Estimates</span>
-      <!-- duplicate for seamless loop -->
-      <span class="marquee-item"><span class="dot"></span> Tree Trimming</span>
-      <span class="marquee-item accent">Tree Removal</span>
-      <span class="marquee-item"><span class="dot"></span> Stump Grinding</span>
-      <span class="marquee-item accent">Lawn Care</span>
-      <span class="marquee-item"><span class="dot"></span> Drainage Systems</span>
-      <span class="marquee-item accent">Sprinklers</span>
-      <span class="marquee-item"><span class="dot"></span> Landscaping</span>
-      <span class="marquee-item accent">Free Estimates</span>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="py-28 md:py-36 relative">
-  <div class="max-w-6xl mx-auto px-5">
-    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
-      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 text-olive">What We Do</div>
-      <h2 class="font-display text-4xl md:text-6xl text-bark leading-tight">Everything outside, <em class="italic grad-text">handled by one crew</em>.</h2>
-      <p class="mt-5 text-ink/70 max-w-xl mx-auto">From a single overgrown oak to a full yard makeover — tell us what's bothering you and we'll tell you straight what it takes. Free estimate before any work begins.</p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22v-6"/><path d="M12 16c-3 0-6-2.2-6-6 0-1.3.4-2.5 1.1-3.4C6.5 5.5 6 4.2 6 3c2.4 0 4.2 1.2 5 2.8C11.8 4.2 13.6 3 16 3c0 1.2-.5 2.5-1.1 3.6.7.9 1.1 2.1 1.1 3.4 0 3.8-3 6-6 6z"/></svg></div>
-        <h3 class="font-display text-2xl text-bark mb-2">Tree Trimming &amp; Pruning</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Shaping, thinning, and deadwood removal that keeps your trees healthy and your house clear of low limbs. We trim oaks the right way — for the tree, not just the look.</p>
-      </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21l6-6"/><path d="M14 4l6 6"/><path d="M14.5 3.5l6 6L9 21H3v-6L14.5 3.5z"/></svg></div>
-        <h3 class="font-display text-2xl text-bark mb-2">Tree Removal</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Dead, leaning, storm-damaged, or just in the wrong place — we take it down safely, in tight spaces, and clean up like we were never there. Emergency and storm cleanup too.</p>
-      </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
-        <h3 class="font-display text-2xl text-bark mb-2">Stump Grinding</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Ground down below the surface so you get your yard back — no tripping hazard, no regrowth, no eyesore. We haul the grindings or leave them for mulch, your call.</p>
-      </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18c2-2 4-3 9-3s7 1 9 3"/><path d="M5 15c1-3 3-5 7-5s6 2 7 5"/><path d="M12 4v6"/></svg></div>
-        <h3 class="font-display text-2xl text-bark mb-2">Lawn Care &amp; Mowing</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Regular mowing, edging, weed removal, mulch, and sod. A clean, even lawn every week — the kind that makes the whole street look better.</p>
-      </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6"/><path d="M5 8c0 4 3 7 7 7s7-3 7-7"/><path d="M4 16c2 2 5 3 8 3s6-1 8-3"/><path d="M4 20c2 1.5 5 2 8 2s6-.5 8-2"/></svg></div>
-        <h3 class="font-display text-2xl text-bark mb-2">Drainage &amp; Sprinklers</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Standing water after every Houston rain? We install and repair drainage systems and sprinklers so your yard sheds water instead of holding it.</p>
-      </div>
-      <div class="card rounded-2xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/><path d="M10 21v-6h4v6"/></svg></div>
-        <h3 class="font-display text-2xl text-bark mb-2">Landscaping &amp; Yard Projects</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Beds, fences, gravel, sod, and full yard makeovers. If it's outside the house, the same crew that knows your trees can plan and build the rest.</p>
-      </div>
-    </div>
-
-    <div class="mt-12 text-center text-sm text-ink/60" data-reveal>
-      Every job starts with a free estimate — call <a href="tel:+18186059414" class="text-bark underline-grow font-semibold">(818) 605-9414</a> and we'll come take a look.
-    </div>
-  </div>
-</section>
-
-<div class="section-bridge"></div>
-
-<!-- STORY -->
-<section id="story" class="py-28 md:py-36 bg-bone/45 relative overflow-hidden">
-  <div class="ambient-blob blob-1" style="opacity:.26"></div>
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-14 items-center relative">
-    <div class="md:col-span-5">
-      <div class="reveal-image" data-reveal-image
-           style="background-image: linear-gradient(160deg,rgba(26,42,31,.25),rgba(26,42,31,0)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80')"></div>
-    </div>
-    <div class="md:col-span-7" data-reveal>
-      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 justify-start text-olive">Our Story</div>
-      <h2 class="font-display text-4xl md:text-6xl text-bark leading-[1.05]">
-        Thirty-four years, <em class="italic grad-text">one neighbor at a time</em>.
+  <!-- headline + CTAs sitting on the fade-to-bone -->
+  <div class="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 pb-12 sm:pb-16">
+    <div class="max-w-2xl" data-reveal>
+      <p class="inline-flex items-center gap-2 text-[.78rem] font-semibold uppercase tracking-[.22em] text-olive mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-sage pulse"></span>
+        Katy &amp; West Houston · Free Estimates
+      </p>
+      <h2 class="font-serif font-bold text-bark text-[2.1rem] sm:text-[3.1rem] leading-[1.04] tracking-tight">
+        Thirty-four years of Katy's trees, <span class="italic grad-amber">done right.</span>
       </h2>
-      <p class="mt-7 text-ink/75 leading-relaxed text-lg">
-        Mr. Garcia started this business in Katy more than three decades ago, and the way he runs it hasn't changed: <strong>show up, do the job right, and let the work earn the next call</strong>. No call center, no upselling — just a family crew that has cleared, trimmed, and cared for yards across Katy and west Houston for 34 years and counting.
+      <p class="mt-5 text-bark/75 text-[1.02rem] leading-relaxed max-w-xl">
+        Garcia's has trimmed, removed, ground down, and cleaned up after the trees and lawns of this corner of Houston since before most of the neighborhood was built. Same hands. Same standard. A handshake and a fair price.
       </p>
-      <p class="mt-4 text-ink/75 leading-relaxed text-lg">
-        Most of our work still comes the same way it always has — a neighbor sees the yard next door and asks who did it. That word-of-mouth reputation is the whole company. We'd rather keep one customer for twenty years than chase a hundred for one.
-      </p>
-      <div class="mt-9 flex flex-wrap gap-2">
-        <span class="chip-soft">Family-run</span>
-        <span class="chip-soft">34+ years</span>
-        <span class="chip-soft">Free estimates</span>
-        <span class="chip-soft">Katy &amp; West Houston</span>
-        <span class="chip-soft">Word-of-mouth trusted</span>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="tel:+18186059414" class="btn-primary inline-flex items-center gap-2 bg-olive text-cream font-semibold px-6 py-3.5 rounded-full text-[.98rem] shadow-lg shadow-olive/20">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (818) 605-9414
+        </a>
+        <a href="#estimate" class="btn-primary inline-flex items-center gap-2 bg-bark/5 border border-bark/20 text-bark font-semibold px-6 py-3.5 rounded-full text-[.98rem] hover:bg-bark/10">
+          Get a Free Estimate
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- RECENT WORK -->
-<section class="py-24 md:py-28 relative">
-  <div class="max-w-6xl mx-auto px-5">
-    <div class="flex items-end justify-between flex-wrap gap-6 mb-12" data-reveal>
-      <div>
-        <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-4 justify-start text-olive">Recent Work</div>
-        <h2 class="font-display text-4xl md:text-5xl text-bark leading-tight">The kind of yards <em class="italic grad-text">neighbors notice</em>.</h2>
-      </div>
-      <a href="tel:+18186059414" class="btn-ghost">Get your free estimate →</a>
-    </div>
-    <div class="grid md:grid-cols-3 gap-5">
-      <div class="photo-tile" style="aspect-ratio:4/5; background-image:url('https://images.unsplash.com/photo-1727818899530-5a3bee908607?auto=format&fit=crop&w=800&q=80')" data-reveal aria-label="Tree crew working with chainsaw and rigging"></div>
-      <div class="photo-tile" style="aspect-ratio:4/5; background-image:url('https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=800&q=80')" data-reveal aria-label="Manicured residential lawn and landscaping"></div>
-      <div class="photo-tile" style="aspect-ratio:4/5; background-image:url('https://images.unsplash.com/photo-1574359173269-291f060e6fe1?auto=format&fit=crop&w=800&q=80')" data-reveal aria-label="Arborist trimming a large oak tree"></div>
-    </div>
-  </div>
-</section>
-
-<!-- VOICES -->
-<section id="voices" class="py-24 md:py-28 bg-bone/45 relative">
-  <div class="max-w-6xl mx-auto px-5">
-    <div class="text-center mb-14" data-reveal>
-      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 text-olive">Neighborhood Voices</div>
-      <h2 class="font-display text-4xl md:text-6xl text-bark leading-tight">4.5 stars across 41 reviews — <em class="italic grad-text">earned, not bought.</em></h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="card rounded-2xl p-8" data-reveal>
-        <div class="star mb-4 text-lg">★ ★ ★ ★ ★</div>
-        <p class="font-display text-2xl text-bark leading-snug">"They responded promptly and got on it quickly. It was a huge job and it looked immaculate when completed."</p>
-        <div class="accent-line my-5"></div>
-        <p class="text-xs uppercase tracking-[.25em] text-ink/55">Karen · Verified review</p>
-      </div>
-      <div class="card rounded-2xl p-8" data-reveal>
-        <div class="star mb-4 text-lg">★ ★ ★ ★ ★</div>
-        <p class="font-display text-2xl text-bark leading-snug">"The work was completed very quick and it was impressive. I would highly recommend this company."</p>
-        <div class="accent-line my-5"></div>
-        <p class="text-xs uppercase tracking-[.25em] text-ink/55">Alex · Verified review</p>
-      </div>
-      <div class="card rounded-2xl p-8" data-reveal>
-        <div class="star mb-4 text-lg">★ ★ ★ ★ ★</div>
-        <p class="font-display text-2xl text-bark leading-snug">"Mr. Garcia did a magnificent job. Will definitely be working with him again for lawn &amp; tree service."</p>
-        <div class="accent-line my-5"></div>
-        <p class="text-xs uppercase tracking-[.25em] text-ink/55">Ralph · Verified review</p>
-      </div>
-    </div>
-    <div class="text-center mt-12" data-reveal>
-      <a href="https://www.yelp.com/biz/garc%C3%ADa-tree-and-lawncare-katy" target="_blank" rel="noopener" class="btn-ghost">Read more reviews →</a>
-    </div>
-  </div>
-</section>
-
-<!-- VISIT / CONTACT -->
-<section id="visit" class="py-28 md:py-36">
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-12">
-    <div class="md:col-span-5" data-reveal>
-      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 justify-start text-olive">Contact</div>
-      <h2 class="font-display text-4xl md:text-6xl text-bark leading-[1.05]">Based in <em class="italic grad-text">Katy</em>. Serving the whole area.</h2>
-
-      <div class="mt-10 space-y-5">
-        <div class="card rounded-2xl p-6 flex items-start gap-5">
-          <div class="svc-icon shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div>
-            <div class="text-[11px] uppercase tracking-[.3em] text-ink/55">Address</div>
-            <div class="font-display text-2xl text-bark mt-1">18835 N Lyford Dr</div>
-            <div class="text-ink/70">Katy, TX 77449</div>
-            <a href="https://www.google.com/maps/search/?api=1&query=18835+N+Lyford+Dr+Katy+TX+77449" target="_blank" rel="noopener" class="text-bark font-semibold underline-grow mt-2 inline-block">Get directions →</a>
-          </div>
-        </div>
-        <div class="card rounded-2xl p-6 flex items-start gap-5">
-          <div class="svc-icon shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-          <div>
-            <div class="text-[11px] uppercase tracking-[.3em] text-ink/55">Phone</div>
-            <a href="tel:+18186059414" class="font-display text-2xl text-bark mt-1 block underline-grow">(818) 605-9414</a>
-            <div class="text-ink/70 text-sm">Free estimates · serving Katy &amp; West Houston</div>
-          </div>
-        </div>
-        <div class="card rounded-2xl p-6">
-          <div class="text-[11px] uppercase tracking-[.3em] text-ink/55 mb-3">Hours</div>
-          <div class="space-y-1.5 text-ink/80">
-            <div class="flex justify-between"><span>Monday – Friday</span><span class="font-medium">7 AM – 10 PM</span></div>
-            <div class="flex justify-between"><span>Saturday – Sunday</span><span class="font-medium">7 AM – 10 PM</span></div>
-            <div class="flex justify-between text-olive/90"><span>Storm cleanup</span><span class="font-medium">Call anytime</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="md:col-span-7" data-reveal>
-      <div class="card rounded-3xl overflow-hidden">
-        <iframe
-          src="https://www.google.com/maps?q=18835+N+Lyford+Dr,+Katy,+TX+77449&output=embed"
-          width="100%" height="640" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="Garcia's Tree Service location map"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA — Brand band -->
-<section class="brand-band">
-  <div class="grain"></div>
-  <div class="max-w-4xl mx-auto px-5 py-28 md:py-36 text-center relative">
-    <div class="flex justify-center mb-8" data-reveal>
-      <span class="logo-badge">
-        <span class="logo-mark lg">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22v-7"/><path d="M12 15c-2.5 0-5-1.8-5-5 0-1 .3-2 .9-2.8C7.2 6 7 5 7 4c2 0 3.5 1 4 2.2C11.5 5 13 4 15 4c0 1-.2 2-.9 3.2.6.8.9 1.8.9 2.8 0 3.2-2.5 5-5 5z"/></svg>
-        </span>
-      </span>
-    </div>
-    <div class="font-display text-2xl text-sage/90 mb-2" data-reveal>Garcia's Tree Service &amp; Lawn Care</div>
-    <h2 class="font-display text-5xl md:text-7xl leading-[1.05] text-cream" data-reveal>
-      Got a tree on your mind?<br><em class="italic" style="color:var(--amber-soft)">Let's take a look.</em>
-    </h2>
-    <p class="mt-6 text-cream/75 max-w-xl mx-auto text-lg" data-reveal>
-      Thirty-four years of Katy yards behind us, and the estimate is always free. Call and we'll come out, look at the job, and tell you straight what it takes.
+<!-- ===================== LEGACY STATEMENT BAND ===================== -->
+<section class="bg-forest text-cream relative overflow-hidden">
+  <div class="grain absolute inset-0"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 py-16 sm:py-20 text-center" data-reveal>
+    <p class="font-serif text-[1.45rem] sm:text-[2rem] leading-[1.35] tracking-tight">
+      "When a tree's been standing fifty years, you don't rush it. You read it, you respect it, and you take it down — or shape it up — <span class="italic text-amber">like it's the only one that matters.</span>"
     </p>
-    <div class="mt-10 flex flex-wrap justify-center gap-3" data-reveal>
-      <a href="tel:+18186059414" class="btn-amber text-lg">Call (818) 605-9414</a>
-      <a href="https://www.google.com/maps/search/?api=1&query=18835+N+Lyford+Dr+Katy+TX+77449" target="_blank" rel="noopener" class="btn-ghost text-lg" style="background:transparent;border-color:var(--amber-soft);color:var(--amber-soft)">Get directions</a>
+    <p class="mt-6 text-sage text-[.82rem] uppercase tracking-[.22em] font-semibold">The Garcia standard · over three decades in Katy</p>
+  </div>
+</section>
+
+<!-- ===================== SERVICES (TWO-COLUMN LIST) ===================== -->
+<section id="services" class="bg-bone relative grain">
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
+    <div class="max-w-2xl mb-12" data-reveal>
+      <p class="text-[.78rem] font-semibold uppercase tracking-[.22em] text-olive mb-3">What we do</p>
+      <h2 class="font-serif font-bold text-bark text-[2rem] sm:text-[2.8rem] leading-[1.05] tracking-tight">
+        Trees and lawns, top to bottom.
+      </h2>
+      <p class="mt-4 text-bark/70 leading-relaxed">
+        Six things, done by a crew that's done them ten thousand times. No subcontractors, no surprises on the invoice.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-x-14" data-reveal>
+      <!-- col A -->
+      <div>
+        <div class="svc-row flex items-start gap-4 py-6">
+          <span class="mt-1 text-olive shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12c-2.5 0-4-2-4-4.5C8 5 9.5 3 12 2c2.5 1 4 3 4 5.5C16 10 14.5 12 12 12z"/></svg></span>
+          <div>
+            <h3 class="font-serif font-semibold text-bark text-[1.18rem]">Tree Trimming &amp; Pruning</h3>
+            <p class="mt-1.5 text-bark/65 text-[.95rem] leading-relaxed">Shaping for health and clearance — crossed limbs, storm risk, power-line clearance, and a canopy that looks like it was meant to grow that way.</p>
+          </div>
+        </div>
+        <div class="svc-row flex items-start gap-4 py-6">
+          <span class="mt-1 text-olive shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M7 21V9l5-6 5 6v12"/></svg></span>
+          <div>
+            <h3 class="font-serif font-semibold text-bark text-[1.18rem]">Tree Removal</h3>
+            <p class="mt-1.5 text-bark/65 text-[.95rem] leading-relaxed">Dead, leaning, too close to the house — taken down in sections, roped down safe, hauled off, and the yard left raked.</p>
+          </div>
+        </div>
+        <div class="svc-row flex items-start gap-4 py-6 sm:border-b-0">
+          <span class="mt-1 text-olive shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg></span>
+          <div>
+            <h3 class="font-serif font-semibold text-bark text-[1.18rem]">Stump Grinding</h3>
+            <p class="mt-1.5 text-bark/65 text-[.95rem] leading-relaxed">Ground below grade so you can plant grass, lay sod, or pour a patio right over where the stump used to be.</p>
+          </div>
+        </div>
+      </div>
+      <!-- col B -->
+      <div>
+        <div class="svc-row flex items-start gap-4 py-6">
+          <span class="mt-1 text-olive shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M5 18c0-3 1-7 7-7s7 4 7 7"/></svg></span>
+          <div>
+            <h3 class="font-serif font-semibold text-bark text-[1.18rem]">Lawn Care &amp; Mowing</h3>
+            <p class="mt-1.5 text-bark/65 text-[.95rem] leading-relaxed">Mowing, edging, trimming, and cleanup on a schedule that keeps the curb looking sharp through a Texas summer.</p>
+          </div>
+        </div>
+        <div class="svc-row flex items-start gap-4 py-6">
+          <span class="mt-1 text-olive shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 5 5.5.5-4 4 1 5.5L12 19l-5 2.5 1-5.5-4-4 5.5-.5z"/></svg></span>
+          <div>
+            <h3 class="font-serif font-semibold text-bark text-[1.18rem]">Landscaping</h3>
+            <p class="mt-1.5 text-bark/65 text-[.95rem] leading-relaxed">Beds, mulch, fresh sod, shrubs, and shaping — the work that turns a yard into something you're proud to pull up to.</p>
+          </div>
+        </div>
+        <div class="svc-row flex items-start gap-4 py-6 sm:border-b-0">
+          <span class="mt-1 text-olive shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6"/><path d="M5 8c0 5 3 12 7 12s7-7 7-12c-2 1-5 1-7-2-2 3-5 3-7 2z"/></svg></span>
+          <div>
+            <h3 class="font-serif font-semibold text-bark text-[1.18rem]">Drainage &amp; Sprinklers</h3>
+            <p class="mt-1.5 text-bark/65 text-[.95rem] leading-relaxed">Standing water and dry spots fixed — French drains, regrading, and sprinkler work so the water goes where it should.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-10 text-bark/60 text-[.95rem] flex flex-wrap items-center gap-2" data-reveal>
+      Not sure which you need? <a href="tel:+18186059414" class="text-olive font-semibold ugrow">Call and ask — estimates are free.</a>
+    </p>
+  </div>
+</section>
+
+<!-- ===================== LEGACY / STORY (clip-path bleed image) ===================== -->
+<section id="legacy" class="bg-cream relative grain overflow-hidden">
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- text + vertical timeline -->
+      <div data-reveal>
+        <p class="text-[.78rem] font-semibold uppercase tracking-[.22em] text-olive mb-3">34 years, one tree at a time</p>
+        <h2 class="font-serif font-bold text-bark text-[2rem] sm:text-[2.8rem] leading-[1.05] tracking-tight">
+          The kind of reputation you can't buy — only earn.
+        </h2>
+
+        <div class="mt-8 flex gap-5">
+          <div class="w-px self-stretch timeline-line shrink-0 mt-1"></div>
+          <div class="space-y-7">
+            <div>
+              <p class="font-serif font-semibold text-bark text-[1.1rem]">Three decades of word-of-mouth</p>
+              <p class="mt-1.5 text-bark/65 text-[.95rem] leading-relaxed">Most of our work comes from the last job's neighbor. After 34 years in Katy, half the street already knows the truck.</p>
+            </div>
+            <div>
+              <p class="font-serif font-semibold text-bark text-[1.1rem]">The same crew on every job</p>
+              <p class="mt-1.5 text-bark/65 text-[.95rem] leading-relaxed">No revolving door of subcontractors. When you call, you get the people who've been climbing these trees for years.</p>
+            </div>
+            <div>
+              <p class="font-serif font-semibold text-bark text-[1.1rem]">A fair price and a clean yard</p>
+              <p class="mt-1.5 text-bark/65 text-[.95rem] leading-relaxed">We quote it straight, we do what we said, and we leave the place looking like we were never there — except the tree's done right.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- bleed image, clip-path reveal -->
+      <div class="relative" data-reveal>
+        <div class="clip-reveal rounded-2xl overflow-hidden shadow-2xl shadow-forest/20" data-reveal-image>
+          <img src="https://images.unsplash.com/photo-1657730391002-bf55ff069a80?auto=format&fit=crop&w=1200&q=80" alt="Garcia's arborist climbing and working high in a mature tree" class="w-full h-[420px] sm:h-[520px] object-cover" loading="lazy" />
+        </div>
+        <div class="absolute -bottom-6 -left-4 sm:-left-6 bg-forest text-cream rounded-xl px-6 py-5 shadow-xl">
+          <p class="font-serif font-extrabold text-[2.4rem] leading-none text-amber">34<span class="text-cream text-[1rem] align-top ml-0.5">+</span></p>
+          <p class="text-[.74rem] uppercase tracking-[.18em] text-sage mt-1 font-semibold">years serving<br/>Katy &amp; west Houston</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="bg-bark text-cream/70 py-10">
-  <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-5 text-sm">
-    <span class="logo-badge">
-      <span class="logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22v-7"/><path d="M12 15c-2.5 0-5-1.8-5-5 0-1 .3-2 .9-2.8C7.2 6 7 5 7 4c2 0 3.5 1 4 2.2C11.5 5 13 4 15 4c0 1-.2 2-.9 3.2.6.8.9 1.8.9 2.8 0 3.2-2.5 5-5 5z"/></svg></span>
-      <span class="logo-word text-cream text-lg" style="font-weight:700">Garcia's Tree &amp; Lawn Care</span>
-    </span>
-    <div>18835 N Lyford Dr · Katy, TX 77449 · <a href="tel:+18186059414" style="color:var(--amber-soft)" class="underline-grow">(818) 605-9414</a></div>
-    <div class="flex items-center gap-5">
-      <a href="https://www.yelp.com/biz/garc%C3%ADa-tree-and-lawncare-katy" target="_blank" rel="noopener" class="underline-grow hover:text-amberSoft">Yelp</a>
-      <a href="https://www.google.com/maps/search/?api=1&query=18835+N+Lyford+Dr+Katy+TX+77449" target="_blank" rel="noopener" class="underline-grow hover:text-amberSoft">Google</a>
+<!-- ===================== REVIEWS (2-up, understated) ===================== -->
+<section id="reviews" class="bg-bone relative grain">
+  <div class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
+    <div class="text-center max-w-2xl mx-auto mb-12" data-reveal>
+      <p class="text-[.78rem] font-semibold uppercase tracking-[.22em] text-olive mb-3">What the neighbors say</p>
+      <h2 class="font-serif font-bold text-bark text-[2rem] sm:text-[2.6rem] leading-[1.06] tracking-tight">
+        Three decades of trust, in their words.
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6" data-reveal>
+      <figure class="bg-cream rounded-2xl p-8 border border-olive/10 shadow-sm">
+        <div class="flex gap-1 text-amber mb-4 text-lg">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote class="font-serif text-bark text-[1.15rem] leading-[1.5] italic">
+          "Showed up when they said, gave me a straight price, and took down a huge oak right over my fence without breaking a thing. You can tell these guys have been doing this a long time."
+        </blockquote>
+        <figcaption class="mt-5 text-bark/55 text-[.84rem] font-semibold uppercase tracking-[.14em]">— Verified Yelp reviewer · Katy</figcaption>
+      </figure>
+      <figure class="bg-cream rounded-2xl p-8 border border-olive/10 shadow-sm">
+        <div class="flex gap-1 text-amber mb-4 text-lg">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote class="font-serif text-bark text-[1.15rem] leading-[1.5] italic">
+          "Been using Garcia's for years for the trees and the lawn both. Fair, reliable, and they clean up after themselves every time. Wouldn't call anybody else."
+        </blockquote>
+        <figcaption class="mt-5 text-bark/55 text-[.84rem] font-semibold uppercase tracking-[.14em]">— Verified Yelp reviewer · West Houston</figcaption>
+      </figure>
+    </div>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-3 text-[.82rem]" data-reveal>
+      <span class="px-4 py-2 rounded-full bg-cream border border-olive/15 text-olive font-semibold">Voted a neighborhood favorite</span>
+      <span class="px-4 py-2 rounded-full bg-cream border border-olive/15 text-olive font-semibold">Free estimates</span>
+      <span class="px-4 py-2 rounded-full bg-cream border border-olive/15 text-olive font-semibold">34+ years in business</span>
+      <span class="px-4 py-2 rounded-full bg-cream border border-olive/15 text-olive font-semibold">Yard left clean, every time</span>
     </div>
   </div>
-  <div class="text-center text-xs text-cream/40 mt-4">© <span id="yr"></span> Garcia's Tree Service &amp; Lawn Care · Serving Katy, TX since 1992</div>
+</section>
+
+<!-- ===================== SERVICE AREA + MAP + HOURS ===================== -->
+<section id="area" class="bg-cream relative grain">
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
+    <div class="grid lg:grid-cols-2 gap-12 items-stretch">
+
+      <div data-reveal class="flex flex-col">
+        <p class="text-[.78rem] font-semibold uppercase tracking-[.22em] text-olive mb-3">Based in Katy</p>
+        <h2 class="font-serif font-bold text-bark text-[2rem] sm:text-[2.6rem] leading-[1.06] tracking-tight">
+          Serving Katy &amp; west Houston.
+        </h2>
+        <p class="mt-4 text-bark/70 leading-relaxed max-w-md">
+          Home base is Katy. We run trees and lawns across west Houston — and if you're nearby and not sure, just ask. Estimates are always free.
+        </p>
+
+        <div class="mt-8 space-y-5 text-[.95rem]">
+          <div class="flex items-start gap-3">
+            <span class="mt-0.5 text-olive shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+            <div><span class="font-semibold text-bark">18835 N Lyford Dr</span><br/><span class="text-bark/65">Katy, TX 77449</span></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="mt-0.5 text-olive shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div><a href="tel:+18186059414" class="font-semibold text-bark ugrow">(818) 605-9414</a><br/><span class="text-bark/65">Call or text for a free estimate</span></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="mt-0.5 text-olive shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-semibold text-bark">Open daily</span>
+                <span class="inline-flex items-center gap-1.5 text-olive text-[.8rem] font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-sage pulse"></span>7am – 10pm</span>
+              </div>
+              <span class="text-bark/65">Monday through Sunday</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://www.google.com/maps/dir/?api=1&destination=18835+N+Lyford+Dr+Katy+TX+77449" target="_blank" rel="noopener" class="btn-primary mt-8 inline-flex w-fit items-center gap-2 bg-bark text-cream font-semibold px-6 py-3 rounded-full text-[.95rem]">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          Get Directions
+        </a>
+      </div>
+
+      <div data-reveal class="rounded-2xl overflow-hidden shadow-xl shadow-forest/15 border border-olive/15 min-h-[380px]">
+        <iframe
+          title="Garcia's Tree Service location — Katy, TX"
+          src="https://www.google.com/maps?q=18835+N+Lyford+Dr+Katy+TX+77449&output=embed"
+          class="w-full h-full min-h-[380px]" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA (WARM GREEN) ===================== -->
+<section id="estimate" class="bg-olive text-cream relative overflow-hidden">
+  <div class="grain absolute inset-0"></div>
+  <div class="absolute inset-0 opacity-40" style="background:radial-gradient(70% 90% at 80% 20%, rgba(185,141,82,.5), transparent 60%);"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 py-20 sm:py-28 text-center" data-reveal>
+    <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-cream/15 mb-6">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FBF6EF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-7"/><path d="M12 15c-3.5 0-6-2.5-6-6 0-3 2-6 6-7 4 1 6 4 6 7 0 3.5-2.5 6-6 6z"/></svg>
+    </span>
+    <h2 class="font-serif font-bold text-[2.1rem] sm:text-[3rem] leading-[1.05] tracking-tight">
+      Get a free estimate today.
+    </h2>
+    <p class="mt-4 text-cream/80 text-[1.05rem] max-w-xl mx-auto leading-relaxed">
+      One call, a fair quote, and 34 years of doing it right behind every job. Trees, lawn, landscaping, drainage — across Katy and west Houston.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="tel:+18186059414" class="btn-primary inline-flex items-center gap-2 bg-cream text-olive font-bold px-7 py-4 rounded-full text-[1rem] shadow-lg">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call (818) 605-9414
+      </a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=18835+N+Lyford+Dr+Katy+TX+77449" target="_blank" rel="noopener" class="btn-primary inline-flex items-center gap-2 border border-cream/40 text-cream font-semibold px-7 py-4 rounded-full text-[1rem] hover:bg-cream/10">
+        Get Directions
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-forest text-cream/70 relative grain">
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-14">
+    <div class="grid sm:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-cream/10 text-amber">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-7"/><path d="M12 15c-3.5 0-6-2.5-6-6 0-3 2-6 6-7 4 1 6 4 6 7 0 3.5-2.5 6-6 6z"/></svg>
+          </span>
+          <span class="font-serif font-bold text-cream text-[1.05rem]">Garcia's Tree Service</span>
+        </div>
+        <p class="text-[.92rem] leading-relaxed text-cream/60">Tree care, removal, stump grinding, lawn and landscape — Katy and west Houston, for over three decades.</p>
+      </div>
+      <div>
+        <p class="text-cream text-[.8rem] uppercase tracking-[.18em] font-semibold mb-4">Services</p>
+        <ul class="space-y-2 text-[.92rem] text-cream/65">
+          <li>Tree Trimming &amp; Pruning</li>
+          <li>Tree Removal</li>
+          <li>Stump Grinding</li>
+          <li>Lawn Care &amp; Mowing</li>
+          <li>Landscaping</li>
+          <li>Drainage &amp; Sprinklers</li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-cream text-[.8rem] uppercase tracking-[.18em] font-semibold mb-4">Get in touch</p>
+        <ul class="space-y-2.5 text-[.92rem] text-cream/65">
+          <li><a href="tel:+18186059414" class="ugrow text-cream/80 font-medium">(818) 605-9414</a></li>
+          <li>18835 N Lyford Dr<br/>Katy, TX 77449</li>
+          <li>Open daily · 7am – 10pm</li>
+          <li class="text-sage font-semibold">Free estimates</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-cream/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[.82rem] text-cream/45">
+      <p>© <span id="year"></span> Garcia's Tree Service and Lawn Care. All rights reserved.</p>
+      <p>Katy, TX · Serving west Houston</p>
+    </div>
+  </div>
 </footer>
 
-<!-- Mobile sticky bar -->
-<div class="stick-bar">
-  <a href="tel:+18186059414" class="btn-primary flex-1 justify-center text-sm">Call now</a>
-  <a href="https://www.google.com/maps/search/?api=1&query=18835+N+Lyford+Dr+Katy+TX+77449" target="_blank" rel="noopener" class="btn-ghost flex-1 justify-center text-sm">Directions</a>
+<!-- ===================== MOBILE STICKY BAR ===================== -->
+<div class="sm:hidden fixed bottom-0 inset-x-0 z-50 bg-forest/95 backdrop-blur border-t border-cream/10 px-3 py-2.5 flex gap-2">
+  <a href="tel:+18186059414" class="flex-1 inline-flex items-center justify-center gap-2 bg-olive text-cream font-semibold py-3 rounded-full text-[.92rem]">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=18835+N+Lyford+Dr+Katy+TX+77449" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 bg-cream/10 text-cream font-semibold py-3 rounded-full text-[.92rem]">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+    Directions
+  </a>
 </div>
 
-<!-- JSON-LD -->
+<!-- ===================== JSON-LD ===================== -->
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"LandscapingBusiness",
-  "name":"Garcia's Tree Service and Lawn Care",
-  "url":"https://turnkeyweb.org/previews/garcias-tree-service/",
-  "telephone":"+1-818-605-9414",
-  "priceRange":"$$",
-  "foundingDate":"1992",
-  "areaServed":["Katy, TX","West Houston, TX","Brookshire, TX"],
-  "address":{"@type":"PostalAddress","streetAddress":"18835 N Lyford Dr","addressLocality":"Katy","addressRegion":"TX","postalCode":"77449","addressCountry":"US"},
-  "geo":{"@type":"GeoCoordinates","latitude":29.834,"longitude":-95.745},
-  "openingHoursSpecification":[
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"07:00","closes":"22:00"}
+  "@context": "https://schema.org",
+  "@type": "LandscapingBusiness",
+  "name": "Garcia's Tree Service and Lawn Care",
+  "description": "Tree trimming, tree removal, stump grinding, lawn care, landscaping, and drainage in Katy and west Houston for over 34 years. Free estimates.",
+  "url": "https://turnkeyweb.org/previews/garcias-tree-service/",
+  "telephone": "+1-818-605-9414",
+  "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80",
+  "slogan": "Thirty-four years of Katy's trees, done right.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "18835 N Lyford Dr",
+    "addressLocality": "Katy",
+    "addressRegion": "TX",
+    "postalCode": "77449",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Katy" },
+    { "@type": "City", "name": "Houston" }
   ],
-  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","reviewCount":"41"},
-  "makesOffer":[
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tree Trimming & Pruning"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tree Removal"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Stump Grinding"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Lawn Care & Mowing"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Drainage & Sprinkler Systems"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Landscaping"}}
-  ],
-  "sameAs":["https://www.yelp.com/biz/garc%C3%ADa-tree-and-lawncare-katy"]
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "07:00",
+    "closes": "22:00"
+  }],
+  "priceRange": "$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Tree & Lawn Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree Trimming & Pruning" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree Removal" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stump Grinding" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lawn Care & Mowing" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landscaping" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drainage & Sprinklers" } }
+    ]
+  }
 }
 </script>
 
-<!-- Libs -->
+<!-- ===================== LIBS ===================== -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-
 <script>
-document.getElementById('yr').textContent = new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-(function(){
-  if (!window.Lenis) return;
-  const lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-  requestAnimationFrame(raf);
-  if (window.ScrollTrigger) { lenis.on('scroll', ScrollTrigger.update); }
+  // --- Lenis smooth scroll ---
+  let lenis;
+  try {
+    lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  } catch(e){}
+
+  // anchored scroll with nav offset
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click', e=>{
       const id = a.getAttribute('href');
-      if (id.length>1 && document.querySelector(id)) {
-        e.preventDefault();
-        lenis.scrollTo(document.querySelector(id), { offset:-70 });
-      }
-    });
-  });
-})();
-
-document.querySelectorAll('[data-split]').forEach(function(el){
-  el.innerHTML = '<span>' + el.innerHTML + '</span>';
-});
-
-if (window.gsap && window.ScrollTrigger) {
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.utils.toArray('[data-reveal]').forEach(function(el){
-    gsap.fromTo(el, {opacity:0,y:36},
-      {opacity:1,y:0,duration:1.05,ease:'power3.out',
-       scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'}});
-  });
-
-  gsap.utils.toArray('[data-parallax]').forEach(function(el){
-    const speed = parseFloat(el.dataset.parallax) || 0.1;
-    gsap.to(el, {
-      y: () => speed * 220, ease: 'none',
-      scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+      if (id.length < 2) return;
+      const t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      const y = t.getBoundingClientRect().top + window.pageYOffset - 70;
+      if (lenis) lenis.scrollTo(y, { duration: 1.1 }); else window.scrollTo({top:y, behavior:'smooth'});
     });
   });
 
-  document.querySelectorAll('[data-reveal-image]').forEach(function(el){
-    ScrollTrigger.create({ trigger: el, start: 'top 85%', onEnter: ()=> el.classList.add('in') });
-  });
+  // nav background on scroll
+  const nav = document.getElementById('nav');
+  function onScroll(){
+    if (window.scrollY > 40) nav.classList.add('bg-bone/90','backdrop-blur','shadow-sm');
+    else nav.classList.remove('bg-bone/90','backdrop-blur','shadow-sm');
+  }
+  onScroll(); window.addEventListener('scroll', onScroll);
 
-  document.querySelectorAll('[data-count]').forEach(function(el){
-    const target = parseInt(el.dataset.count, 10);
-    const suffix = el.dataset.suffix || '';
-    const obj = { v: 0 };
-    ScrollTrigger.create({
-      trigger: el, start: 'top 88%',
-      onEnter: ()=> {
-        gsap.to(obj, {
-          v: target, duration: 1.6, ease: 'power2.out',
-          onUpdate: ()=> { el.textContent = Math.round(obj.v) + suffix; }
-        });
-      }
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // standard reveals
+    gsap.utils.toArray('[data-reveal]').forEach(el=>{
+      gsap.fromTo(el, {opacity:0, y:34}, {
+        opacity:1, y:0, duration:1.05, ease:'power3.out',
+        scrollTrigger:{ trigger:el, start:'top 90%' }
+      });
     });
-  });
-}
 
-// Crawler / screenshot safety net
-setTimeout(function(){
-  document.querySelectorAll('[data-reveal]').forEach(function(el){
-    if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
-      el.style.opacity='1'; el.style.transform='none';
+    // clip-path image reveals
+    gsap.utils.toArray('[data-reveal-image]').forEach(el=>{
+      ScrollTrigger.create({ trigger:el, start:'top 85%', onEnter:()=> el.classList.add('in') });
+    });
+
+    // count-up on the 34
+    const c = document.getElementById('count34');
+    if (c) {
+      ScrollTrigger.create({
+        trigger:'#top', start:'top 80%', once:true,
+        onEnter:()=> gsap.fromTo({v:0}, {v:0}, {
+          v:34, duration:1.8, ease:'power2.out',
+          onUpdate:function(){ c.textContent = Math.round(this.targets()[0].v); }
+        })
+      });
     }
-  });
-  document.querySelectorAll('[data-reveal-image]').forEach(function(el){ el.classList.add('in'); });
-  document.querySelectorAll('[data-count]').forEach(function(el){
-    const t = parseInt(el.dataset.count, 10);
-    const suffix = el.dataset.suffix || '';
-    if (el.textContent === '0' || el.textContent.trim() === '') el.textContent = t + suffix;
-  });
-}, 6000);
+  }
+
+  // --- 6s crawler / screenshot safety net ---
+  setTimeout(()=>{
+    document.querySelectorAll('[data-reveal]').forEach(el=>{
+      el.style.opacity = 1; el.style.transform = 'none';
+    });
+    document.querySelectorAll('.clip-reveal').forEach(el=> el.classList.add('in'));
+    const c = document.getElementById('count34');
+    if (c && (c.textContent.trim() === '0' || c.textContent.trim() === '')) c.textContent = '34';
+  }, 6000);
 </script>
 </body>
 </html>

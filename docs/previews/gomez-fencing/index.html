@@ -1,736 +1,639 @@
-<!doctype html>
+<!DOCTYPE html>
+<!--
+  Gomez Fencing Installs and Repairs LLC — prospect preview
+  Art direction: "Built To Last — Industrial / Blueprint" (DARK, dramatic, masculine).
+  Hero = full-bleed cinematic photo + heavy dark gradient + bottom-left condensed UPPERCASE headline. NO floating photo cards.
+  Palette: coal #141210 / ink #1A1411 · cedar #A4632B / #7A4A22 · safety amber #E0A857 · steel #7A8B95 · bone #F4ECE3
+  Type: Oswald (condensed display) + Inter (body). No logo -> "GOMEZ FENCING" wordmark badge.
+-->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Gomez Fencing — Fence Installation &amp; Repair in Fresno &amp; Greater Houston, TX</title>
-<meta name="description" content="Gomez Fencing Installs and Repairs LLC — wood, cedar, privacy, and pool fences built and repaired across Fresno, Sugar Land, Sienna, Missouri City, and Greater Houston for 20+ years. 5-star rated. Payment plans available. Call (210) 595-9810.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gomez Fencing Installs and Repairs LLC | Fence Contractor in Greater Houston</title>
+<meta name="description" content="Gomez Fencing Installs and Repairs — 20+ years building straight, lasting fences across Greater Houston. Wood, cedar, privacy, pool & dog fences, custom fabrication and repairs. 5.0 stars. Payment plans available. Free quotes. Call (210) 595-9810.">
 <link rel="canonical" href="https://turnkeyweb.org/previews/gomez-fencing/">
-
 <meta property="og:type" content="website">
-<meta property="og:title" content="Gomez Fencing — Fence Installation & Repair in Greater Houston, TX">
-<meta property="og:description" content="Wood, cedar, privacy, and pool fences built to last. Serving Fresno, Sugar Land, Sienna, and Missouri City for 20+ years. 5-star rated. Payment plans available.">
+<meta property="og:title" content="Gomez Fencing Installs and Repairs LLC | Greater Houston Fence Contractor">
+<meta property="og:description" content="20+ years. 5.0 stars. Wood, cedar, privacy, pool & dog fences, custom fabrication and repairs. Payment plans available. Free quotes.">
 <meta property="og:url" content="https://turnkeyweb.org/previews/gomez-fencing/">
-<meta property="og:image" content="https://images.unsplash.com/photo-1531824475211-72594993ce2a?auto=format&fit=crop&w=1200&q=70">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta property="og:image" content="https://images.unsplash.com/photo-1604015641586-6fa03629f976?auto=format&fit=crop&w=1600&q=80">
+<meta name="theme-color" content="#141210">
 
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <script>
-tailwind.config = {
-  theme: {
-    extend: {
-      fontFamily: {
-        display: ['Oswald', 'sans-serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif']
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Oswald', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          coal:   '#141210',
+          ink:    '#1A1411',
+          panel:  '#221A14',
+          cedar:  '#A4632B',
+          cedardk:'#7A4A22',
+          amber:  '#E0A857',
+          steel:  '#7A8B95',
+          bone:   '#F4ECE3',
+        },
       },
-      colors: {
-        // Construction/contractor palette warmed toward cedar
-        bone:'#F4ECE3', sand:'#E7D8C4', amber:'#E0A857', cedar:'#A4632B',
-        cedarDk:'#7A4A22', steel:'#7A8B95', steelDk:'#566069',
-        ink:'#231419', coal:'#1A1411'
-      }
-    }
-  }
-}
+    },
+  };
 </script>
 
 <style>
-  :root {
-    --bone:#F4ECE3; --sand:#E7D8C4; --amber:#E0A857; --cedar:#A4632B; --cedar-dk:#7A4A22;
-    --steel:#7A8B95; --steel-dk:#566069; --ink:#231419; --coal:#1A1411;
+  html { scroll-behavior: smooth; }
+  body { background:#141210; color:#F4ECE3; font-family:'Inter',sans-serif; overflow-x:hidden; }
+  ::selection { background:#E0A857; color:#141210; }
+
+  .font-display { font-family:'Oswald',sans-serif; }
+  .tracking-wider2 { letter-spacing:.14em; }
+
+  /* Blueprint grid texture */
+  .blueprint::before {
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:.06;
+    background-image:
+      linear-gradient(rgba(122,139,149,.6) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(122,139,149,.6) 1px, transparent 1px);
+    background-size:46px 46px;
   }
-  *{ -webkit-tap-highlight-color: transparent; }
-  html, body { background:var(--bone); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
-  body { overflow-x:hidden; }
-  .font-display { font-family:'Oswald', sans-serif; letter-spacing:.005em; text-transform:uppercase; }
 
-  /* Ambient blobs */
-  .ambient-blob { position:absolute; border-radius:50%; filter:blur(80px); opacity:.4; pointer-events:none; will-change:transform; }
-  .blob-1 { width:520px; height:520px; background:radial-gradient(circle, rgba(224,168,87,.4), transparent 60%); top:-180px; right:-160px; animation: drift1 22s ease-in-out infinite; }
-  .blob-2 { width:420px; height:420px; background:radial-gradient(circle, rgba(164,99,43,.34), transparent 60%); bottom:-120px; left:-80px; animation: drift2 26s ease-in-out infinite; }
-  .blob-3 { width:380px; height:380px; background:radial-gradient(circle, rgba(122,139,149,.3), transparent 65%); top:40%; left:-100px; animation: drift1 30s ease-in-out infinite reverse; }
-  @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(40px,-30px) scale(1.08);} }
-  @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-50px,40px) scale(1.1);} }
-
-  /* Gradient text shimmer */
-  .grad-text {
-    background: linear-gradient(120deg, #A4632B 0%, #E0A857 50%, #C98B3F 100%);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-    background-size: 200% 100%; animation: shimmer 8s linear infinite;
-  }
-  @keyframes shimmer { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-
-  .hero-bg {
-    position:relative; overflow:hidden;
+  /* Hero */
+  .hero-photo { background-size:cover; background-position:center; }
+  .hero-veil {
     background:
-      radial-gradient(ellipse 70% 55% at 75% 22%, rgba(224,168,87,.22), transparent 65%),
-      radial-gradient(ellipse 55% 50% at 12% 78%, rgba(164,99,43,.18), transparent 65%),
-      linear-gradient(180deg,#F4ECE3 0%, #E7D8C4 100%);
-  }
-  .grain::after {
-    content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
-    background-image: radial-gradient(#231419 1px, transparent 1px); background-size: 3px 3px;
+      linear-gradient(90deg, rgba(10,8,6,.92) 0%, rgba(10,8,6,.55) 42%, rgba(10,8,6,.25) 100%),
+      linear-gradient(0deg, rgba(10,8,6,.96) 2%, rgba(10,8,6,.30) 48%, rgba(10,8,6,.55) 100%);
   }
 
-  .card {
-    position:relative;
-    background: linear-gradient(180deg, rgba(255,255,255,.82) 0%, rgba(231,216,196,.5) 100%);
-    backdrop-filter: blur(12px) saturate(115%);
-    -webkit-backdrop-filter: blur(12px) saturate(115%);
-    border: 1px solid rgba(26,20,17,.10);
-    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 22px 50px -28px rgba(26,20,17,.22);
-    transition: transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s cubic-bezier(.2,.7,.2,1), border-color .4s;
-    overflow:hidden;
-  }
-  .card::before {
-    content:""; position:absolute; left:0; top:0; height:2px; width:0%;
-    background: linear-gradient(90deg, var(--cedar-dk), var(--amber));
-    transition: width .65s cubic-bezier(.2,.7,.2,1);
-  }
-  .card:hover { transform: translateY(-6px); box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 38px 60px -28px rgba(26,20,17,.34); border-color: rgba(26,20,17,.25); }
-  .card:hover::before { width:100%; }
+  /* Amber rule */
+  .amber-rule { height:4px; width:64px; background:linear-gradient(90deg,#E0A857,#A4632B); }
 
-  .chip {
-    display:inline-flex; align-items:center; gap:.5rem;
-    padding:.4rem .85rem; border-radius:999px;
-    background: rgba(26,20,17,.92);
-    border: 1px solid rgba(224,168,87,.45);
-    color:#F4ECE3; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
-  }
-  .chip-dot { width:.45rem; height:.45rem; border-radius:999px; background:var(--amber); box-shadow:0 0 12px var(--amber); animation: pulse 2.4s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.55; transform:scale(.9)} }
+  /* Marquee */
+  .marquee { overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); }
+  .marquee-track { display:flex; gap:2.75rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state:paused; }
+  @keyframes scrollX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-  .chip-soft {
-    display:inline-flex; align-items:center; gap:.5rem;
-    padding:.4rem .85rem; border-radius:999px;
-    background: rgba(224,168,87,.2);
-    border: 1px solid rgba(164,99,43,.28);
-    color:#5d3a1c; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  /* Button shimmer */
+  .btn-amber { position:relative; overflow:hidden; transition:transform .35s cubic-bezier(.2,.7,.3,1), filter .35s; }
+  .btn-amber::after {
+    content:''; position:absolute; top:0; left:-130%; width:60%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent);
+    transform:skewX(-18deg); transition:left .85s cubic-bezier(.2,.7,.3,1);
   }
+  .btn-amber:hover { transform:translateY(-3px); filter:brightness(1.06); }
+  .btn-amber:hover::after { left:130%; }
 
-  .btn-primary {
-    position:relative; display:inline-flex; align-items:center; gap:.6rem;
-    padding:1rem 1.65rem; border-radius:.7rem;
-    background: linear-gradient(135deg,#A4632B 0%, #7A4A22 100%); color:#FBF3E6;
-    font-weight:700; letter-spacing:.02em;
-    box-shadow: 0 18px 36px -14px rgba(122,74,34,.6), 0 0 0 1px rgba(224,168,87,.3) inset;
-    transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, filter .35s, color .35s;
-    overflow:hidden;
-  }
-  .btn-primary::after {
-    content:""; position:absolute; inset:0;
-    background: linear-gradient(120deg, transparent 30%, rgba(255,236,205,.4) 50%, transparent 70%);
-    transform: translateX(-120%); transition: transform .9s cubic-bezier(.2,.7,.2,1);
-  }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 26px 46px -16px rgba(122,74,34,.75), 0 0 0 1px var(--amber) inset; filter:brightness(1.04); }
-  .btn-primary:hover::after { transform: translateX(120%); }
+  .btn-ghost { transition:transform .35s cubic-bezier(.2,.7,.3,1), border-color .35s, color .35s, background .35s; }
+  .btn-ghost:hover { transform:translateY(-3px); border-color:#E0A857; color:#141210; background:#E0A857; }
 
-  .btn-ghost {
-    display:inline-flex; align-items:center; gap:.55rem;
-    padding:.95rem 1.5rem; border-radius:.7rem;
-    border: 1px solid rgba(26,20,17,.5); color:var(--ink); font-weight:600;
-    background: rgba(255,255,255,.5); backdrop-filter: blur(8px);
-    transition: background .35s, border-color .35s, transform .35s, color .35s;
-  }
-  .btn-ghost:hover { background: var(--coal); border-color: var(--coal); color: var(--amber); transform: translateY(-3px); }
+  /* Service checklist row */
+  .svc-row { transition:transform .4s cubic-bezier(.2,.7,.3,1), background .4s, border-color .4s; }
+  .svc-row:hover { transform:translateX(6px); background:rgba(164,99,43,.10); border-color:#A4632B; }
 
-  .btn-amber {
-    position:relative; display:inline-flex; align-items:center; gap:.6rem;
-    padding:1rem 1.65rem; border-radius:.7rem;
-    background: var(--amber); color: var(--coal);
-    font-weight:700; letter-spacing:.02em;
-    box-shadow: 0 18px 36px -14px rgba(224,168,87,.55);
-    transition: transform .35s, filter .35s;
-  }
-  .btn-amber:hover { transform: translateY(-3px); filter:brightness(1.05); }
+  /* Process step number */
+  .step-num { font-family:'Oswald',sans-serif; line-height:.8; -webkit-text-stroke:1.5px #A4632B; color:transparent; }
 
-  .divider-flourish { display:flex; align-items:center; justify-content:center; gap:1rem; color:var(--cedar); font-weight:600; }
-  .divider-flourish::before, .divider-flourish::after {
-    content:""; flex:1; max-width:120px; height:1px;
-    background: linear-gradient(90deg, transparent, rgba(164,99,43,.7), transparent);
-  }
+  /* Style strip */
+  .strip { position:relative; overflow:hidden; }
+  .strip-img { transition:transform 1.1s cubic-bezier(.2,.7,.3,1), filter 1.1s; transform:scale(1.06); filter:grayscale(.25) brightness(.62); }
+  .strip:hover .strip-img { transform:scale(1.12); filter:grayscale(0) brightness(.78); }
 
-  [data-reveal] { opacity:0; transform: translateY(36px); }
-  [data-split] > span { display:inline-block; }
+  /* Reveal */
+  [data-reveal] { opacity:0; transform:translateY(34px); }
+  [data-reveal-x] { opacity:0; transform:translateX(-40px); }
+  [data-reveal-image] { clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.2,.7,.3,1); }
+  [data-reveal-image].in { clip-path:inset(0 0 0% 0); }
 
-  .photo-tile {
-    border-radius: .9rem; overflow:hidden; position:relative;
-    background-size:cover; background-position:center;
-    box-shadow: 0 40px 70px -30px rgba(26,20,17,.5), 0 0 0 1px rgba(26,20,17,.16), 0 0 0 4px rgba(224,168,87,0);
-    will-change: transform; transition: box-shadow .6s;
-  }
-  .photo-tile:hover { box-shadow: 0 40px 70px -30px rgba(26,20,17,.55), 0 0 0 1px rgba(26,20,17,.2), 0 0 0 4px rgba(224,168,87,.45); }
-  .photo-tile::after {
-    content:""; position:absolute; inset:0;
-    background: linear-gradient(180deg, transparent 55%, rgba(26,20,17,.4) 100%);
-  }
-  .float-slow { animation: floatSlow 7s ease-in-out infinite; }
-  .float-mid  { animation: floatMid  6s ease-in-out infinite; }
-  .float-fast { animation: floatFast 5.4s ease-in-out infinite; }
-  @keyframes floatSlow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
-  @keyframes floatMid  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-22px)} }
-  @keyframes floatFast { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .pulse-dot { animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.78)} }
 
-  /* Marquee — coal strip with amber text. Brand moment. */
-  .marquee-band {
-    background: var(--coal); color: var(--amber);
-    border-top: 1px solid rgba(224,168,87,.25); border-bottom: 1px solid rgba(224,168,87,.25);
-    position:relative; overflow:hidden;
-  }
-  .marquee {
-    overflow:hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-            mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  }
-  .marquee-track {
-    display:flex; gap:3.5rem; width:max-content;
-    animation: scrollX 38s linear infinite;
-    font-family: 'Oswald', sans-serif; text-transform:uppercase;
-  }
-  .marquee-band:hover .marquee-track { animation-play-state: paused; }
-  @keyframes scrollX { from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
-  .marquee-item { display:inline-flex; align-items:center; gap:1.4rem; font-size:1.6rem; letter-spacing:.06em; color:#F4ECE3; }
-  .marquee-item.accent { color: var(--amber); font-style: italic; }
-  .marquee-item .dot { width:.5rem; height:.5rem; border-radius:999px; background: var(--amber); box-shadow: 0 0 10px var(--amber); }
+  .nav-link { position:relative; }
+  .nav-link::after { content:''; position:absolute; left:0; bottom:-4px; height:1.5px; width:0; background:#E0A857; transition:width .45s cubic-bezier(.2,.7,.3,1); }
+  .nav-link:hover::after { width:100%; }
 
-  .reveal-image {
-    aspect-ratio: 4/5; border-radius: .9rem; overflow:hidden;
-    background-size:cover; background-position:center;
-    clip-path: inset(0 0 100% 0);
-    transition: clip-path 1.4s cubic-bezier(.2,.7,.2,1);
-    box-shadow: 0 30px 70px -30px rgba(26,20,17,.55);
-  }
-  .reveal-image.in { clip-path: inset(0 0 0% 0); }
-
-  .accent-line {
-    position:relative; height:1px;
-    background:linear-gradient(90deg, transparent, rgba(224,168,87,.6), transparent);
-  }
-
-  .stick-bar {
-    position:fixed; bottom:0; left:0; right:0; z-index:50;
-    background:linear-gradient(180deg, rgba(244,236,227,.6), rgba(244,236,227,.98));
-    backdrop-filter: blur(14px);
-    border-top:1px solid rgba(26,20,17,.18);
-    padding: .65rem 1rem calc(.65rem + env(safe-area-inset-bottom));
-    display:none; gap:.5rem;
-  }
-  @media (max-width: 768px) { .stick-bar { display:flex; } }
-
-  .nav-blur {
-    background: rgba(244,236,227,.8);
-    backdrop-filter: blur(14px) saturate(120%);
-    -webkit-backdrop-filter: blur(14px) saturate(120%);
-    border-bottom: 1px solid rgba(26,20,17,.10);
-  }
-
-  .svc-icon {
-    width:46px;height:46px;border-radius:.6rem;
-    background: linear-gradient(135deg, var(--cedar) 0%, var(--cedar-dk) 100%);
-    display:grid; place-items:center; color: #FBF3E6;
-    box-shadow: 0 10px 24px -8px rgba(122,74,34,.55), 0 0 0 1px rgba(224,168,87,.25) inset;
-    transition: transform .45s cubic-bezier(.2,.7,.2,1);
-  }
-  .card:hover .svc-icon { transform: rotate(-6deg) scale(1.06); }
-
-  .star { color: var(--amber); letter-spacing:.18em; text-shadow: 0 0 12px rgba(224,168,87,.45); }
-
-  .open-pill {
-    display:inline-flex; align-items:center; gap:.5rem;
-    padding:.35rem .85rem; border-radius:999px;
-    background: rgba(122,139,149,.18); border:1px solid rgba(86,96,105,.4);
-    color:#33414a; font-size:.78rem; font-weight:600;
-  }
-  .open-dot { width:.45rem; height:.45rem; border-radius:999px; background:#4a9d62; box-shadow:0 0 10px #4a9d62; animation: pulse 2s ease-in-out infinite; }
-
-  .stat-num { font-variant-numeric: tabular-nums; }
-  .underline-grow { position:relative; display:inline-block; }
-  .underline-grow::after {
-    content:""; position:absolute; left:0; bottom:-3px; height:2px; width:0;
-    background: linear-gradient(90deg, var(--cedar-dk), var(--amber));
-    transition: width .5s cubic-bezier(.2,.7,.2,1);
-  }
-  .underline-grow:hover::after { width:100%; }
-
-  .section-bridge {
-    position:relative; height:1px; max-width: 200px; margin: 0 auto;
-    background: linear-gradient(90deg, transparent, rgba(224,168,87,.5), transparent);
-  }
-
-  /* Wordmark badge logo */
-  .logo-badge {
-    display:inline-flex; align-items:center; gap:.55rem;
-    font-family:'Oswald',sans-serif; text-transform:uppercase; font-weight:700;
-    letter-spacing:.04em; line-height:1;
-  }
-  .logo-mark {
-    width:34px; height:34px; border-radius:.5rem;
-    background: linear-gradient(135deg, var(--cedar) 0%, var(--cedar-dk) 100%);
-    display:grid; place-items:center; color:var(--amber);
-    box-shadow: 0 6px 16px -6px rgba(122,74,34,.6), 0 0 0 1px rgba(224,168,87,.3) inset;
-  }
-
-  /* CTA brand band — coal background, amber accents */
-  .brand-band {
-    position:relative; background: var(--coal); color: #F4ECE3; overflow:hidden;
-  }
-  .brand-band::before {
-    content:""; position:absolute; inset:0; pointer-events:none;
-    background:
-      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(224,168,87,.22), transparent 60%),
-      radial-gradient(ellipse 50% 45% at 15% 75%, rgba(164,99,43,.18), transparent 65%);
-  }
-  .brand-band .grain::after { background-image: radial-gradient(rgba(224,168,87,.25) 1px, transparent 1px); opacity:.1; }
+  .wordmark { font-family:'Oswald',sans-serif; font-weight:700; letter-spacing:.04em; }
 </style>
 </head>
-<body>
 
-<!-- NAV -->
-<header class="nav-blur sticky top-0 z-40">
-  <div class="max-w-6xl mx-auto px-5 py-3.5 flex items-center justify-between">
-    <a href="#top" class="logo-badge text-ink group">
-      <span class="logo-mark transition-transform group-hover:scale-[1.05]">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 21V8l4-3 4 3 4-3 4 3v13"/><path d="M4 13h16M4 17h16"/></svg>
-      </span>
-      <span class="text-lg">Gomez<span class="text-cedar"> Fencing</span></span>
-    </a>
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink/80">
-      <a href="#services" class="underline-grow hover:text-ink transition">Services</a>
-      <a href="#work" class="underline-grow hover:text-ink transition">Recent Work</a>
-      <a href="#story" class="underline-grow hover:text-ink transition">Story</a>
-      <a href="#voices" class="underline-grow hover:text-ink transition">Reviews</a>
-      <a href="#visit" class="underline-grow hover:text-ink transition">Service Area</a>
-    </nav>
-    <a href="tel:+12105959810" class="btn-primary text-sm hidden sm:inline-flex">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      (210) 595-9810
-    </a>
+<body class="font-body antialiased">
+
+<!-- ===== NAV ===== -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-[68px]">
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="wordmark inline-flex items-center bg-cedar text-coal px-2.5 py-1.5 text-sm leading-none rounded-sm border border-amber/40">GF</span>
+        <span class="wordmark text-bone text-lg leading-none">GOMEZ <span class="text-amber">FENCING</span></span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-9 text-[13px] font-display font-500 tracking-wider2 uppercase text-bone/75">
+        <a href="#build" class="nav-link">What We Build</a>
+        <a href="#process" class="nav-link">Our Process</a>
+        <a href="#styles" class="nav-link">Styles</a>
+        <a href="#area" class="nav-link">Service Area</a>
+      </nav>
+      <a href="tel:+12105959810" class="hidden sm:inline-flex items-center gap-2 bg-amber text-coal font-display font-600 tracking-wider2 uppercase text-[13px] px-5 py-2.5 rounded-sm btn-amber">
+        <span class="w-1.5 h-1.5 rounded-full bg-coal pulse-dot"></span>(210) 595-9810
+      </a>
+    </div>
   </div>
 </header>
 
-<!-- HERO -->
-<section id="top" class="hero-bg grain relative">
-  <div class="ambient-blob blob-1"></div>
-  <div class="ambient-blob blob-2"></div>
-  <div class="ambient-blob blob-3"></div>
+<!-- ===== HERO (full-bleed cinematic, no cards) ===== -->
+<section id="top" class="relative min-h-[100svh] flex flex-col">
+  <div class="hero-photo absolute inset-0" style="background-image:url('https://images.unsplash.com/photo-1604015641586-6fa03629f976?auto=format&fit=crop&w=1600&q=80');"></div>
+  <div class="hero-veil absolute inset-0"></div>
+  <div class="blueprint absolute inset-0"></div>
 
-  <div class="max-w-6xl mx-auto px-5 pt-16 pb-24 md:pt-24 md:pb-32 relative">
-    <div class="grid md:grid-cols-12 gap-12 items-center">
-      <div class="md:col-span-7">
-        <div class="flex items-center gap-2 mb-6" data-reveal>
-          <span class="chip"><span class="chip-dot"></span> 5.0 Stars · 40 Reviews · 20+ Years in Houston</span>
-        </div>
-        <h1 class="font-display text-5xl md:text-7xl lg:text-[5rem] leading-[1.02] text-ink" data-reveal data-split>
-          Built straight. Built to last. <em class="not-italic grad-text">Greater Houston fences</em> done right.
+  <!-- top trust bar -->
+  <div class="relative z-10 border-b border-bone/10 backdrop-blur-[2px] bg-coal/30 mt-[68px]">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-3 flex flex-wrap items-center gap-x-7 gap-y-1 text-[11px] sm:text-xs font-display font-500 tracking-wider2 uppercase text-bone/85">
+      <span class="flex items-center gap-2"><span class="text-amber font-700 text-sm count-up" data-target="20" data-suffix="+">0+</span> Years Building</span>
+      <span class="text-bone/25">/</span>
+      <span class="flex items-center gap-2 text-amber">★★★★★ <span class="text-bone/85">5.0 Rated</span></span>
+      <span class="text-bone/25 hidden sm:inline">/</span>
+      <span class="hidden sm:inline">Payment Plans Available</span>
+      <span class="text-bone/25 hidden md:inline">/</span>
+      <span class="hidden md:inline">Free Quotes</span>
+    </div>
+  </div>
+
+  <!-- headline anchored bottom-left -->
+  <div class="relative z-10 flex-1 flex items-end">
+    <div class="max-w-7xl w-full mx-auto px-5 sm:px-8 pb-14 sm:pb-20">
+      <div class="max-w-3xl">
+        <p data-reveal class="font-display font-500 tracking-wider2 uppercase text-amber text-xs sm:text-sm mb-5">Gomez Fencing Installs &amp; Repairs &middot; Greater Houston</p>
+        <h1 data-reveal class="font-display font-700 uppercase text-bone leading-[0.92] text-[15vw] sm:text-7xl lg:text-[5.6rem]">
+          Built Straight.<br><span class="text-amber">Built To Last.</span>
         </h1>
-        <p class="mt-8 text-lg md:text-xl text-ink/75 max-w-xl leading-relaxed" data-reveal>
-          Gomez Fencing builds and repairs wood, cedar, privacy, and pool fences across <strong>Fresno, Sugar Land, Sienna, and Missouri City</strong>. Run by <strong>Alex Gomez</strong> — two decades of clean lines, solid posts, and fences neighbors stop to ask about. <strong>Payment plans available.</strong>
+        <p data-reveal class="mt-6 text-bone/80 text-base sm:text-lg max-w-xl leading-relaxed">
+          Wood, cedar, privacy, pool and dog fences — designed, built, and stood behind by a Houston crew with 20+ years on the post-hole digger. Clean lines, square gates, fences that hold up.
         </p>
-        <div class="mt-10 flex flex-wrap gap-3" data-reveal>
-          <a href="tel:+12105959810" class="btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Call for a free quote
+        <div data-reveal class="mt-9 flex flex-col sm:flex-row gap-3.5">
+          <a href="tel:+12105959810" class="inline-flex items-center justify-center gap-2.5 bg-amber text-coal font-display font-600 tracking-wider2 uppercase text-sm px-7 py-4 rounded-sm btn-amber">
+            Call (210) 595-9810
           </a>
-          <a href="#services" class="btn-ghost">See what we build →</a>
-        </div>
-
-        <div class="mt-12 grid grid-cols-3 gap-6 max-w-lg" data-reveal>
-          <div>
-            <div class="font-display text-4xl text-ink stat-num" data-count="20">0</div>
-            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Years<br>fencing Houston</div>
-          </div>
-          <div>
-            <div class="font-display text-4xl text-ink stat-num" data-count="40">0</div>
-            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">5-star<br>reviews</div>
-          </div>
-          <div>
-            <div class="font-display text-4xl text-ink">Free</div>
-            <div class="text-[11px] uppercase tracking-[.2em] text-ink/55 mt-1">Same-day<br>quotes</div>
-          </div>
-        </div>
-
-        <div class="mt-8 flex items-center gap-5 text-sm text-ink/70" data-reveal>
-          <span class="open-pill"><span class="open-dot"></span> Open today · 7 AM – 9 PM</span>
-          <span class="hidden sm:inline-flex items-center gap-2"><span class="star">★ ★ ★ ★ ★</span><span class="text-ink/55">5.0 across 40 reviews</span></span>
-        </div>
-      </div>
-
-      <div class="md:col-span-5 relative" data-reveal>
-        <div class="relative h-[560px] md:h-[640px]">
-          <div class="photo-tile float-slow absolute"
-               style="width:62%; aspect-ratio:3/4; left:0; top:6%;
-                      background-image:url('https://images.unsplash.com/photo-1531824475211-72594993ce2a?auto=format&fit=crop&w=900&q=72')"
-               data-parallax="0.18"
-               aria-label="New cedar privacy fence along a residential backyard"></div>
-          <div class="photo-tile float-mid absolute"
-               style="width:48%; aspect-ratio:3/4; right:0; top:0;
-                      background-image:url('https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=800&q=72')"
-               data-parallax="-0.12"
-               aria-label="Wood fence boards and posts under construction"></div>
-          <div class="photo-tile float-fast absolute"
-               style="width:52%; aspect-ratio:1/1; right:6%; bottom:0;
-                      background-image:url('https://images.unsplash.com/photo-1593285247650-cd7bb44adcfd?auto=format&fit=crop&w=800&q=72')"
-               data-parallax="0.08"
-               aria-label="Finished wood privacy fence in a Texas backyard"></div>
+          <a href="#quote" class="inline-flex items-center justify-center gap-2.5 border border-bone/40 text-bone font-display font-600 tracking-wider2 uppercase text-sm px-7 py-4 rounded-sm btn-ghost">
+            Get a Free Quote
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<section class="marquee-band py-5">
+<!-- ===== MARQUEE ===== -->
+<div class="bg-cedardk border-y border-amber/20 py-3.5">
   <div class="marquee">
-    <div class="marquee-track">
-      <span class="marquee-item"><span class="dot"></span> Wood Fence Installation</span>
-      <span class="marquee-item accent">Cedar Fences</span>
-      <span class="marquee-item"><span class="dot"></span> Privacy Fences</span>
-      <span class="marquee-item accent">Pool Fences</span>
-      <span class="marquee-item"><span class="dot"></span> Fence Repair</span>
-      <span class="marquee-item accent">Custom Fabrication</span>
-      <span class="marquee-item"><span class="dot"></span> Rail Fences</span>
-      <span class="marquee-item accent">Backyard Decking</span>
+    <div class="marquee-track font-display font-500 tracking-wider2 uppercase text-sm text-bone/90">
+      <span>Privacy Fences</span><span class="text-amber">&bull;</span>
+      <span>Cedar &amp; Wood</span><span class="text-amber">&bull;</span>
+      <span>Pool Fencing</span><span class="text-amber">&bull;</span>
+      <span>Dog Fences</span><span class="text-amber">&bull;</span>
+      <span>Custom Fabrication</span><span class="text-amber">&bull;</span>
+      <span>Rail Fences</span><span class="text-amber">&bull;</span>
+      <span>Repairs &amp; Replacement</span><span class="text-amber">&bull;</span>
+      <span>Backyard Decking</span><span class="text-amber">&bull;</span>
       <!-- duplicate for seamless loop -->
-      <span class="marquee-item"><span class="dot"></span> Wood Fence Installation</span>
-      <span class="marquee-item accent">Cedar Fences</span>
-      <span class="marquee-item"><span class="dot"></span> Privacy Fences</span>
-      <span class="marquee-item accent">Pool Fences</span>
-      <span class="marquee-item"><span class="dot"></span> Fence Repair</span>
-      <span class="marquee-item accent">Custom Fabrication</span>
-      <span class="marquee-item"><span class="dot"></span> Rail Fences</span>
-      <span class="marquee-item accent">Backyard Decking</span>
+      <span>Privacy Fences</span><span class="text-amber">&bull;</span>
+      <span>Cedar &amp; Wood</span><span class="text-amber">&bull;</span>
+      <span>Pool Fencing</span><span class="text-amber">&bull;</span>
+      <span>Dog Fences</span><span class="text-amber">&bull;</span>
+      <span>Custom Fabrication</span><span class="text-amber">&bull;</span>
+      <span>Rail Fences</span><span class="text-amber">&bull;</span>
+      <span>Repairs &amp; Replacement</span><span class="text-amber">&bull;</span>
+      <span>Backyard Decking</span><span class="text-amber">&bull;</span>
     </div>
   </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="py-28 md:py-36 relative">
-  <div class="max-w-6xl mx-auto px-5">
-    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
-      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5">What We Build</div>
-      <h2 class="font-display text-4xl md:text-6xl text-ink leading-tight">Every fence, <em class="not-italic grad-text">built to hold the line</em>.</h2>
-      <p class="mt-5 text-ink/70 max-w-xl mx-auto normal-case">New builds, custom layouts, or a tired old fence that needs to go — we handle it all, and we tell you straight what your yard needs before we start.</p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="card rounded-xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V6M9 21V6M14 21V6M19 21V6M3 9h18M3 14h18"/></svg></div>
-        <h3 class="font-display text-2xl text-ink mb-2 normal-case">Wood &amp; Cedar Fences</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Cedar pickets, treated pine, and custom wood layouts set on solid posts. Clean lines that stand up to Gulf-Coast heat, rain, and wind for years.</p>
-      </div>
-      <div class="card rounded-xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v16M16 4v16"/></svg></div>
-        <h3 class="font-display text-2xl text-ink mb-2 normal-case">Privacy Fence Installation</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Full-height privacy fencing with tight, gap-free boards — keep the neighbors out of your business and your backyard yours. Custom heights and cap-and-trim options available.</p>
-      </div>
-      <div class="card rounded-xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M6 12V6M10 12V6M14 12V6M18 12V6"/><path d="M4 18a8 8 0 0 0 16 0"/></svg></div>
-        <h3 class="font-display text-2xl text-ink mb-2 normal-case">Pool &amp; Dog Fences</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Code-minded pool fencing and secure dog-run enclosures. Keep kids and pets safe with fencing built to the right height and spacing for your property.</p>
-      </div>
-      <div class="card rounded-xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 7h20M2 17h20"/><circle cx="7" cy="12" r="1.5"/><circle cx="17" cy="7" r="1.5"/></svg></div>
-        <h3 class="font-display text-2xl text-ink mb-2 normal-case">Rail Fences &amp; Custom Fabrication</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">2-rail and 3-rail ranch fencing, plus custom fabrication and fence design for layouts that aren't off-the-shelf. Tell us the vision — we'll build it.</p>
-      </div>
-      <div class="card rounded-xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-        <h3 class="font-display text-2xl text-ink mb-2 normal-case">Repairs &amp; Rotting-Fence Replacement</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Leaning posts, storm damage, rotted pickets, sagging gates — we repair what's worth saving and replace what isn't. Honest assessment first, every time.</p>
-      </div>
-      <div class="card rounded-xl p-7" data-reveal>
-        <div class="svc-icon mb-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V10l9-6 9 6v11"/><path d="M3 14h18M9 21v-6h6v6"/></svg></div>
-        <h3 class="font-display text-2xl text-ink mb-2 normal-case">Backyard Decking</h3>
-        <p class="text-ink/70 text-sm leading-relaxed">Custom wood decking to match your new fence and finish the yard. One crew, one clean look, from the deck boards to the back gate.</p>
-      </div>
-    </div>
-
-    <div class="mt-12 text-center text-sm text-ink/60 normal-case" data-reveal>
-      Payment plans available. Free same-day quotes — call <a href="tel:+12105959810" class="text-cedar underline-grow font-semibold">(210) 595-9810</a>.
-    </div>
-  </div>
-</section>
-
-<div class="section-bridge"></div>
-
-<!-- STORY -->
-<section id="story" class="py-28 md:py-36 bg-sand/40 relative overflow-hidden">
-  <div class="ambient-blob blob-1" style="opacity:.24"></div>
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-14 items-center relative">
-    <div class="md:col-span-5">
-      <div class="reveal-image" data-reveal-image
-           style="background-image: linear-gradient(160deg,rgba(26,20,17,.18),rgba(26,20,17,0)), url('https://images.unsplash.com/photo-1584225064281-429e7fce4961?auto=format&fit=crop&w=900&q=72')"></div>
-    </div>
-    <div class="md:col-span-7" data-reveal>
-      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 justify-start">Our Story</div>
-      <h2 class="font-display text-4xl md:text-6xl text-ink leading-[1.04]">
-        Run by <em class="not-italic grad-text">Alex Gomez</em> — building Houston's fences for 20+ years.
-      </h2>
-      <p class="mt-7 text-ink/75 leading-relaxed text-lg">
-        Gomez Fencing started with a simple promise: show up, build it right, and stand behind the work. Twenty years and hundreds of fences later, that's still the whole playbook — <strong>solid posts, tight boards, and a straight line you can be proud of</strong>.
-      </p>
-      <p class="mt-4 text-ink/75 leading-relaxed text-lg">
-        From Fresno out through Sugar Land, Sienna, and Missouri City, neighbors keep calling Gomez back and sending their friends. <strong>5.0 stars across 40 reviews</strong> — earned one clean install at a time.
-      </p>
-      <div class="mt-9 flex flex-wrap gap-2">
-        <span class="chip-soft">Family-run</span>
-        <span class="chip-soft">20+ years</span>
-        <span class="chip-soft">Free quotes</span>
-        <span class="chip-soft">Payment plans</span>
-        <span class="chip-soft">5-star rated</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WORK SHOWCASE -->
-<section id="work" class="py-24 md:py-28 relative">
-  <div class="max-w-6xl mx-auto px-5">
-    <div class="flex items-end justify-between flex-wrap gap-6 mb-12" data-reveal>
-      <div>
-        <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-4 justify-start">Recent Work</div>
-        <h2 class="font-display text-4xl md:text-5xl text-ink leading-tight">Fences that <em class="not-italic grad-text">hold up</em> and <em class="not-italic grad-text">look it</em>.</h2>
-      </div>
-      <a href="tel:+12105959810" class="btn-ghost">Get your free quote →</a>
-    </div>
-    <div class="grid md:grid-cols-3 gap-5">
-      <div class="photo-tile" style="aspect-ratio:4/5; background-image:url('https://images.unsplash.com/photo-1601042860368-debed90085e0?auto=format&fit=crop&w=800&q=72')" data-reveal aria-label="Tall wood privacy fence along a property line"></div>
-      <div class="photo-tile" style="aspect-ratio:4/5; background-image:url('https://images.unsplash.com/photo-1604015641586-6fa03629f976?auto=format&fit=crop&w=800&q=72')" data-reveal aria-label="Cedar fence boards with horizontal rails"></div>
-      <div class="photo-tile" style="aspect-ratio:4/5; background-image:url('https://images.unsplash.com/photo-1599635492191-094d4ff14123?auto=format&fit=crop&w=800&q=72')" data-reveal aria-label="Finished backyard wood fence and gate"></div>
-    </div>
-  </div>
-</section>
-
-<!-- VOICES -->
-<section id="voices" class="py-24 md:py-28 bg-sand/40 relative">
-  <div class="max-w-6xl mx-auto px-5">
-    <div class="text-center mb-14" data-reveal>
-      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5">What Neighbors Say</div>
-      <h2 class="font-display text-4xl md:text-6xl text-ink leading-tight">Five stars, <em class="not-italic grad-text">forty times over</em>.</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="card rounded-xl p-8" data-reveal>
-        <div class="star mb-4 text-lg">★ ★ ★ ★ ★</div>
-        <p class="font-display text-2xl text-ink leading-snug normal-case">"Excellent service, excellent quality install. Would definitely use Gomez Fencing again."</p>
-        <div class="accent-line my-5"></div>
-        <p class="text-xs uppercase tracking-[.25em] text-ink/55">Mark · Verified review</p>
-      </div>
-      <div class="card rounded-xl p-8" data-reveal>
-        <div class="star mb-4 text-lg">★ ★ ★ ★ ★</div>
-        <p class="font-display text-2xl text-ink leading-snug normal-case">"Mr. Gomez was punctual and did a quality job repairing my fence. I'd recommend his services to family and friends."</p>
-        <div class="accent-line my-5"></div>
-        <p class="text-xs uppercase tracking-[.25em] text-ink/55">Keith · Verified review</p>
-      </div>
-      <div class="card rounded-xl p-8" data-reveal>
-        <div class="star mb-4 text-lg">★ ★ ★ ★ ★</div>
-        <p class="font-display text-2xl text-ink leading-snug normal-case">"Fast communication, very flexible on scheduling and pricing, and the workmanship is unmatched."</p>
-        <div class="accent-line my-5"></div>
-        <p class="text-xs uppercase tracking-[.25em] text-ink/55">Will · Verified review</p>
-      </div>
-    </div>
-    <div class="text-center mt-12" data-reveal>
-      <a href="https://www.yelp.com/biz/gomez-fencing-fresno" target="_blank" rel="noopener" class="btn-ghost">Read more reviews →</a>
-    </div>
-  </div>
-</section>
-
-<!-- VISIT / SERVICE AREA -->
-<section id="visit" class="py-28 md:py-36">
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-12 gap-12">
-    <div class="md:col-span-5" data-reveal>
-      <div class="divider-flourish text-xs uppercase tracking-[.4em] mb-5 justify-start">Service Area</div>
-      <h2 class="font-display text-4xl md:text-6xl text-ink leading-[1.04]">Serving <em class="not-italic grad-text">Greater Houston</em>.</h2>
-      <p class="mt-5 text-ink/70 normal-case max-w-md">Based in Fresno, building and repairing fences across Sugar Land, Sienna, Missouri City, Bellaire, and the surrounding Fort Bend &amp; Houston metro.</p>
-
-      <div class="mt-9 space-y-5">
-        <div class="card rounded-xl p-6 flex items-start gap-5">
-          <div class="svc-icon shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div>
-            <div class="text-[11px] uppercase tracking-[.3em] text-ink/55">Based In</div>
-            <div class="font-display text-2xl text-ink mt-1 normal-case">2535 Illinois St</div>
-            <div class="text-ink/70">Fresno, TX 77545</div>
-            <a href="https://www.google.com/maps/search/?api=1&query=2535+Illinois+St+Fresno+TX+77545" target="_blank" rel="noopener" class="text-cedar font-semibold underline-grow mt-2 inline-block">Get directions →</a>
-          </div>
-        </div>
-        <div class="card rounded-xl p-6 flex items-start gap-5">
-          <div class="svc-icon shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-          <div>
-            <div class="text-[11px] uppercase tracking-[.3em] text-ink/55">Phone</div>
-            <a href="tel:+12105959810" class="font-display text-2xl text-ink mt-1 block underline-grow normal-case">(210) 595-9810</a>
-            <div class="text-ink/70 text-sm">Free same-day quotes · payment plans available</div>
-          </div>
-        </div>
-        <div class="card rounded-xl p-6">
-          <div class="text-[11px] uppercase tracking-[.3em] text-ink/55 mb-3">Hours</div>
-          <div class="space-y-1.5 text-ink/80">
-            <div class="flex justify-between"><span>Monday – Friday</span><span class="font-medium">7 AM – 9 PM</span></div>
-            <div class="flex justify-between"><span>Saturday</span><span class="font-medium">7 AM – 9 PM</span></div>
-            <div class="flex justify-between"><span>Sunday</span><span class="font-medium">7 AM – 9 PM</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="md:col-span-7" data-reveal>
-      <div class="card rounded-2xl overflow-hidden">
-        <iframe
-          src="https://www.google.com/maps?q=2535+Illinois+St,+Fresno,+TX+77545&output=embed"
-          width="100%" height="640" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="Gomez Fencing service area map — Fresno, TX"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA — brand band -->
-<section class="brand-band">
-  <div class="grain"></div>
-  <div class="max-w-4xl mx-auto px-5 py-28 md:py-36 text-center relative">
-    <div class="flex justify-center mb-8" data-reveal>
-      <span class="logo-badge text-bone text-2xl">
-        <span class="logo-mark" style="width:52px;height:52px;border-radius:.7rem">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 21V8l4-3 4 3 4-3 4 3v13"/><path d="M4 13h16M4 17h16"/></svg>
-        </span>
-        <span>Gomez<span class="text-amber"> Fencing</span></span>
-      </span>
-    </div>
-    <h2 class="font-display text-5xl md:text-7xl leading-[1.04] text-bone" data-reveal>
-      Ready for a fence<br>done right?<br><em class="not-italic" style="color:var(--amber)">Let's get you a quote.</em>
-    </h2>
-    <p class="mt-6 text-bone/75 max-w-xl mx-auto text-lg normal-case" data-reveal>
-      Call now for a free same-day quote on a new fence, a repair, or a rotting-fence replacement. Payment plans available — ask Alex when you call.
-    </p>
-    <div class="mt-10 flex flex-wrap justify-center gap-3" data-reveal>
-      <a href="tel:+12105959810" class="btn-amber text-lg">Call (210) 595-9810</a>
-      <a href="https://www.google.com/maps/search/?api=1&query=2535+Illinois+St+Fresno+TX+77545" target="_blank" rel="noopener" class="btn-ghost text-lg" style="background:transparent;border-color:var(--amber);color:var(--amber)">Get directions</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-coal text-bone/70 py-10">
-  <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-5 text-sm">
-    <span class="logo-badge text-bone text-lg">
-      <span class="logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 21V8l4-3 4 3 4-3 4 3v13"/><path d="M4 13h16M4 17h16"/></svg></span>
-      <span>Gomez<span class="text-amber"> Fencing</span></span>
-    </span>
-    <div class="text-center normal-case">2535 Illinois St · Fresno, TX 77545 · <a href="tel:+12105959810" style="color:var(--amber)" class="underline-grow">(210) 595-9810</a></div>
-    <div class="flex items-center gap-5">
-      <a href="https://www.facebook.com/Gomezfencing117/" target="_blank" rel="noopener" class="underline-grow hover:text-amber">Facebook</a>
-      <a href="https://www.yelp.com/biz/gomez-fencing-fresno" target="_blank" rel="noopener" class="underline-grow hover:text-amber">Yelp</a>
-    </div>
-  </div>
-  <div class="text-center text-xs text-bone/40 mt-4">© <span id="yr"></span> Gomez Fencing Installs and Repairs LLC · All rights reserved</div>
-</footer>
-
-<!-- Mobile sticky bar -->
-<div class="stick-bar">
-  <a href="tel:+12105959810" class="btn-primary flex-1 justify-center text-sm">Call now</a>
-  <a href="https://www.google.com/maps/search/?api=1&query=2535+Illinois+St+Fresno+TX+77545" target="_blank" rel="noopener" class="btn-ghost flex-1 justify-center text-sm">Directions</a>
 </div>
 
-<!-- JSON-LD -->
+<!-- ===== WHAT WE BUILD (dark checklist, 2-col) ===== -->
+<section id="build" class="relative bg-ink py-24 sm:py-28 blueprint">
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div class="lg:col-span-4" data-reveal>
+        <div class="amber-rule mb-6"></div>
+        <h2 class="font-display font-700 uppercase text-bone text-4xl sm:text-5xl leading-[0.95]">What We<br>Build</h2>
+        <p class="mt-6 text-bone/70 leading-relaxed">
+          One crew, every kind of fence. From a full privacy-line install to a rotted-panel fix, Alex and the team handle design, fabrication, and the build — residential first, custom always welcome.
+        </p>
+        <a href="#quote" class="mt-8 inline-flex items-center gap-2 text-amber font-display font-600 tracking-wider2 uppercase text-sm nav-link">Start a project &rarr;</a>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="grid sm:grid-cols-2 gap-3.5">
+          <div class="svc-row flex items-center gap-4 border border-bone/12 rounded-sm px-5 py-4" data-reveal>
+            <span class="text-amber font-display font-700 text-lg">&#10003;</span><span class="font-display font-500 uppercase tracking-wide text-bone">Privacy Fence</span>
+          </div>
+          <div class="svc-row flex items-center gap-4 border border-bone/12 rounded-sm px-5 py-4" data-reveal>
+            <span class="text-amber font-display font-700 text-lg">&#10003;</span><span class="font-display font-500 uppercase tracking-wide text-bone">Wood Fence</span>
+          </div>
+          <div class="svc-row flex items-center gap-4 border border-bone/12 rounded-sm px-5 py-4" data-reveal>
+            <span class="text-amber font-display font-700 text-lg">&#10003;</span><span class="font-display font-500 uppercase tracking-wide text-bone">Cedar Fence</span>
+          </div>
+          <div class="svc-row flex items-center gap-4 border border-bone/12 rounded-sm px-5 py-4" data-reveal>
+            <span class="text-amber font-display font-700 text-lg">&#10003;</span><span class="font-display font-500 uppercase tracking-wide text-bone">Pool Fence</span>
+          </div>
+          <div class="svc-row flex items-center gap-4 border border-bone/12 rounded-sm px-5 py-4" data-reveal>
+            <span class="text-amber font-display font-700 text-lg">&#10003;</span><span class="font-display font-500 uppercase tracking-wide text-bone">Dog Fence</span>
+          </div>
+          <div class="svc-row flex items-center gap-4 border border-bone/12 rounded-sm px-5 py-4" data-reveal>
+            <span class="text-amber font-display font-700 text-lg">&#10003;</span><span class="font-display font-500 uppercase tracking-wide text-bone">Rail Fences (2 &amp; 3-Rail)</span>
+          </div>
+          <div class="svc-row flex items-center gap-4 border border-bone/12 rounded-sm px-5 py-4" data-reveal>
+            <span class="text-amber font-display font-700 text-lg">&#10003;</span><span class="font-display font-500 uppercase tracking-wide text-bone">Custom Fabrication</span>
+          </div>
+          <div class="svc-row flex items-center gap-4 border border-bone/12 rounded-sm px-5 py-4" data-reveal>
+            <span class="text-amber font-display font-700 text-lg">&#10003;</span><span class="font-display font-500 uppercase tracking-wide text-bone">Custom Fence Construction</span>
+          </div>
+          <div class="svc-row flex items-center gap-4 border border-bone/12 rounded-sm px-5 py-4" data-reveal>
+            <span class="text-amber font-display font-700 text-lg">&#10003;</span><span class="font-display font-500 uppercase tracking-wide text-bone">Fence Design</span>
+          </div>
+          <div class="svc-row flex items-center gap-4 border border-bone/12 rounded-sm px-5 py-4" data-reveal>
+            <span class="text-amber font-display font-700 text-lg">&#10003;</span><span class="font-display font-500 uppercase tracking-wide text-bone">Backyard Decking</span>
+          </div>
+          <div class="svc-row flex items-center gap-4 border border-bone/12 rounded-sm px-5 py-4" data-reveal>
+            <span class="text-amber font-display font-700 text-lg">&#10003;</span><span class="font-display font-500 uppercase tracking-wide text-bone">General Repairs &amp; Maintenance</span>
+          </div>
+          <div class="svc-row flex items-center gap-4 border border-bone/12 rounded-sm px-5 py-4" data-reveal>
+            <span class="text-amber font-display font-700 text-lg">&#10003;</span><span class="font-display font-500 uppercase tracking-wide text-bone">Rotting Fence Replacement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OUR PROCESS (signature numbered walkthrough) ===== -->
+<section id="process" class="relative bg-coal py-24 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-14" data-reveal>
+      <div class="amber-rule mb-6"></div>
+      <h2 class="font-display font-700 uppercase text-bone text-4xl sm:text-5xl leading-[0.95]">Our Process</h2>
+      <p class="mt-5 text-bone/70 leading-relaxed">No surprises, no runaround. Four steps from your first call to a fence you can lean on.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-bone/10 border border-bone/10 rounded-sm overflow-hidden">
+      <div class="bg-coal p-8 sm:p-9 group hover:bg-panel transition-colors duration-500" data-reveal>
+        <div class="step-num text-7xl sm:text-8xl mb-6">01</div>
+        <h3 class="font-display font-600 uppercase tracking-wide text-amber text-lg mb-3">Free Quote</h3>
+        <p class="text-bone/70 text-sm leading-relaxed">We come out, walk the line, and give you a straight number — no charge, no pressure. Payment plans available if you need them.</p>
+      </div>
+      <div class="bg-coal p-8 sm:p-9 group hover:bg-panel transition-colors duration-500" data-reveal>
+        <div class="step-num text-7xl sm:text-8xl mb-6">02</div>
+        <h3 class="font-display font-600 uppercase tracking-wide text-amber text-lg mb-3">Design</h3>
+        <p class="text-bone/70 text-sm leading-relaxed">Pick your material and style — cedar, wood, privacy, pool, rail. We size the gates, set the layout, and confirm every detail before a post goes in.</p>
+      </div>
+      <div class="bg-coal p-8 sm:p-9 group hover:bg-panel transition-colors duration-500" data-reveal>
+        <div class="step-num text-7xl sm:text-8xl mb-6">03</div>
+        <h3 class="font-display font-600 uppercase tracking-wide text-amber text-lg mb-3">Build</h3>
+        <p class="text-bone/70 text-sm leading-relaxed">Posts set plumb, panels run straight, gates swing true. 20+ years of doing it right means it gets done clean the first time.</p>
+      </div>
+      <div class="bg-coal p-8 sm:p-9 group hover:bg-panel transition-colors duration-500" data-reveal>
+        <div class="step-num text-7xl sm:text-8xl mb-6">04</div>
+        <h3 class="font-display font-600 uppercase tracking-wide text-amber text-lg mb-3">We Stand Behind It</h3>
+        <p class="text-bone/70 text-sm leading-relaxed">If something's not right, we make it right. A Gomez fence is built to last — and we back the work we put in the ground.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FENCE STYLES (full-bleed image strips) ===== -->
+<section id="styles" class="bg-ink">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 pt-24 sm:pt-28 pb-12">
+    <div class="max-w-2xl" data-reveal>
+      <div class="amber-rule mb-6"></div>
+      <h2 class="font-display font-700 uppercase text-bone text-4xl sm:text-5xl leading-[0.95]">Fence Styles</h2>
+      <p class="mt-5 text-bone/70 leading-relaxed">Pick the look that fits your yard. Every style built to the same standard.</p>
+    </div>
+  </div>
+
+  <a href="#quote" class="strip block relative h-[42vw] min-h-[220px] max-h-[360px]">
+    <div class="strip-img absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1601042860368-debed90085e0?auto=format&fit=crop&w=1600&q=80');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-coal/85 via-coal/30 to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-8 h-full flex items-center">
+      <div data-reveal-x>
+        <span class="font-display font-500 tracking-wider2 uppercase text-amber text-xs">Style 01</span>
+        <h3 class="font-display font-700 uppercase text-bone text-4xl sm:text-6xl leading-none mt-1">Wood</h3>
+        <p class="text-bone/75 mt-3 max-w-md text-sm sm:text-base">Classic board fence, built square and solid for the long Houston haul.</p>
+      </div>
+    </div>
+  </a>
+
+  <a href="#quote" class="strip block relative h-[42vw] min-h-[220px] max-h-[360px]">
+    <div class="strip-img absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1584225064281-429e7fce4961?auto=format&fit=crop&w=1600&q=80');"></div>
+    <div class="absolute inset-0 bg-gradient-to-l from-coal/85 via-coal/30 to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-8 h-full flex items-center justify-end text-right">
+      <div data-reveal-x>
+        <span class="font-display font-500 tracking-wider2 uppercase text-amber text-xs">Style 02</span>
+        <h3 class="font-display font-700 uppercase text-bone text-4xl sm:text-6xl leading-none mt-1">Cedar</h3>
+        <p class="text-bone/75 mt-3 max-w-md text-sm sm:text-base ml-auto">Warm-toned, rot-resistant cedar that ages beautifully and stands up to weather.</p>
+      </div>
+    </div>
+  </a>
+
+  <a href="#quote" class="strip block relative h-[42vw] min-h-[220px] max-h-[360px]">
+    <div class="strip-img absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1599635492191-094d4ff14123?auto=format&fit=crop&w=1600&q=80');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-coal/85 via-coal/30 to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-8 h-full flex items-center">
+      <div data-reveal-x>
+        <span class="font-display font-500 tracking-wider2 uppercase text-amber text-xs">Style 03</span>
+        <h3 class="font-display font-700 uppercase text-bone text-4xl sm:text-6xl leading-none mt-1">Privacy</h3>
+        <p class="text-bone/75 mt-3 max-w-md text-sm sm:text-base">Full-height, no-gap panels that keep your backyard yours.</p>
+      </div>
+    </div>
+  </a>
+
+  <a href="#quote" class="strip block relative h-[42vw] min-h-[220px] max-h-[360px]">
+    <div class="strip-img absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1531824475211-72594993ce2a?auto=format&fit=crop&w=1600&q=80');"></div>
+    <div class="absolute inset-0 bg-gradient-to-l from-coal/85 via-coal/30 to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-8 h-full flex items-center justify-end text-right">
+      <div data-reveal-x>
+        <span class="font-display font-500 tracking-wider2 uppercase text-amber text-xs">Style 04</span>
+        <h3 class="font-display font-700 uppercase text-bone text-4xl sm:text-6xl leading-none mt-1">Pool</h3>
+        <p class="text-bone/75 mt-3 max-w-md text-sm sm:text-base ml-auto">Code-minded pool fencing — secure, clean-lined, and built to keep everyone safe.</p>
+      </div>
+    </div>
+  </a>
+</section>
+
+<!-- ===== TESTIMONIAL BAND ===== -->
+<section class="relative bg-cedardk py-20 sm:py-24 blueprint">
+  <div class="relative max-w-4xl mx-auto px-5 sm:px-8 text-center" data-reveal>
+    <div class="text-amber font-display text-2xl tracking-[.4em] mb-6">★★★★★</div>
+    <p class="font-display font-500 uppercase text-bone text-2xl sm:text-4xl leading-tight">
+      &ldquo;Straight lines, solid gates, and a crew that showed up when they said they would. The fence looks like it'll outlast the house.&rdquo;
+    </p>
+    <p class="mt-7 font-display font-500 tracking-wider2 uppercase text-bone/70 text-sm">Verified Google reviewer &middot; 5.0 rating</p>
+  </div>
+</section>
+
+<!-- ===== SERVICE AREA ===== -->
+<section id="area" class="bg-coal py-24 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div data-reveal>
+        <div class="amber-rule mb-6"></div>
+        <h2 class="font-display font-700 uppercase text-bone text-4xl sm:text-5xl leading-[0.95]">Serving<br>Greater Houston</h2>
+        <p class="mt-5 text-bone/70 leading-relaxed max-w-md">
+          Based in Fresno, building fences across the south and west side of the metro. If you're in the neighborhood, we'll come give you a straight quote.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-2.5">
+          <span class="font-display font-500 tracking-wide uppercase text-xs text-bone border border-bone/20 rounded-sm px-3.5 py-2">Fresno</span>
+          <span class="font-display font-500 tracking-wide uppercase text-xs text-bone border border-bone/20 rounded-sm px-3.5 py-2">Sugar Land</span>
+          <span class="font-display font-500 tracking-wide uppercase text-xs text-bone border border-bone/20 rounded-sm px-3.5 py-2">Sienna Plantation</span>
+          <span class="font-display font-500 tracking-wide uppercase text-xs text-bone border border-bone/20 rounded-sm px-3.5 py-2">Missouri City</span>
+          <span class="font-display font-500 tracking-wide uppercase text-xs text-bone border border-bone/20 rounded-sm px-3.5 py-2">Bellaire</span>
+        </div>
+
+        <div class="mt-9 grid sm:grid-cols-2 gap-5">
+          <div class="border-l-2 border-amber pl-4">
+            <p class="font-display font-500 tracking-wider2 uppercase text-xs text-amber mb-1.5">Address</p>
+            <p class="text-bone/85 text-sm leading-relaxed">2535 Illinois St<br>Fresno, TX 77545</p>
+          </div>
+          <div class="border-l-2 border-amber pl-4">
+            <p class="font-display font-500 tracking-wider2 uppercase text-xs text-amber mb-1.5">Hours</p>
+            <p class="text-bone/85 text-sm leading-relaxed">Mon&ndash;Sun<br>7:00 AM &ndash; 9:00 PM</p>
+          </div>
+          <div class="border-l-2 border-amber pl-4">
+            <p class="font-display font-500 tracking-wider2 uppercase text-xs text-amber mb-1.5">Phone</p>
+            <a href="tel:+12105959810" class="text-bone/85 text-sm hover:text-amber transition-colors">(210) 595-9810</a>
+          </div>
+          <div class="border-l-2 border-amber pl-4">
+            <p class="font-display font-500 tracking-wider2 uppercase text-xs text-amber mb-1.5">Owner</p>
+            <p class="text-bone/85 text-sm leading-relaxed">Alex Gomez<br>20+ years experience</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal class="rounded-sm overflow-hidden border border-bone/15">
+        <iframe
+          title="Gomez Fencing service area map"
+          src="https://www.google.com/maps?q=2535+Illinois+St,+Fresno,+TX+77545&output=embed"
+          class="w-full h-[420px]"
+          style="border:0;"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA (high-contrast amber) ===== -->
+<section id="quote" class="relative bg-amber text-coal py-24 sm:py-28 blueprint overflow-hidden">
+  <div class="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <span class="wordmark inline-flex items-center bg-coal text-amber px-4 py-2 text-sm leading-none rounded-sm mb-7">GOMEZ FENCING</span>
+    <h2 data-reveal class="font-display font-700 uppercase text-coal text-5xl sm:text-7xl leading-[0.92]">
+      Get A Free Quote
+    </h2>
+    <p data-reveal class="mt-6 text-coal/80 text-lg max-w-xl mx-auto leading-relaxed">
+      Tell us what you've got in mind. We'll walk the line, give you a straight number, and get your fence on the schedule. <span class="font-600">Payment plans available.</span>
+    </p>
+    <div data-reveal class="mt-9 flex flex-col sm:flex-row gap-3.5 justify-center">
+      <a href="tel:+12105959810" class="inline-flex items-center justify-center gap-2.5 bg-coal text-bone font-display font-600 tracking-wider2 uppercase text-sm px-8 py-4 rounded-sm btn-amber">
+        Call (210) 595-9810
+      </a>
+      <a href="https://www.google.com/maps?q=2535+Illinois+St,+Fresno,+TX+77545" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2.5 border-2 border-coal text-coal font-display font-600 tracking-wider2 uppercase text-sm px-8 py-4 rounded-sm hover:bg-coal hover:text-amber transition-colors duration-300">
+        Get Directions
+      </a>
+    </div>
+    <p data-reveal class="mt-7 font-display font-500 tracking-wider2 uppercase text-coal/70 text-xs">20+ Years &middot; 5.0 Rated &middot; Open 7 Days &middot; Free Quotes</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-coal border-t border-bone/10 pt-16 pb-28 sm:pb-12">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <span class="wordmark inline-flex items-center bg-cedar text-coal px-2.5 py-1.5 text-sm leading-none rounded-sm border border-amber/40">GF</span>
+          <span class="wordmark text-bone text-lg leading-none">GOMEZ <span class="text-amber">FENCING</span></span>
+        </div>
+        <p class="text-bone/55 text-sm leading-relaxed">Gomez Fencing Installs and Repairs LLC. Building straight, lasting fences across Greater Houston for 20+ years.</p>
+      </div>
+      <div>
+        <p class="font-display font-500 tracking-wider2 uppercase text-xs text-amber mb-4">What We Build</p>
+        <ul class="space-y-2 text-bone/60 text-sm">
+          <li>Privacy &amp; Wood Fences</li>
+          <li>Cedar &amp; Rail Fences</li>
+          <li>Pool &amp; Dog Fences</li>
+          <li>Custom Fabrication</li>
+          <li>Repairs &amp; Replacement</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-display font-500 tracking-wider2 uppercase text-xs text-amber mb-4">Service Area</p>
+        <ul class="space-y-2 text-bone/60 text-sm">
+          <li>Fresno</li>
+          <li>Sugar Land</li>
+          <li>Sienna Plantation</li>
+          <li>Missouri City</li>
+          <li>Bellaire</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-display font-500 tracking-wider2 uppercase text-xs text-amber mb-4">Contact</p>
+        <ul class="space-y-2 text-bone/60 text-sm">
+          <li><a href="tel:+12105959810" class="hover:text-amber transition-colors">(210) 595-9810</a></li>
+          <li>2535 Illinois St<br>Fresno, TX 77545</li>
+          <li>Mon&ndash;Sun &middot; 7AM&ndash;9PM</li>
+          <li class="text-amber">Payment Plans Available</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-14 pt-7 border-t border-bone/10 flex flex-col sm:flex-row justify-between items-center gap-3 text-bone/40 text-xs">
+      <p>&copy; <span id="yr">2026</span> Gomez Fencing Installs and Repairs LLC. All rights reserved.</p>
+      <p class="font-display tracking-wider2 uppercase">Built Straight &middot; Built To Last</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE STICKY BAR ===== -->
+<div class="fixed bottom-0 inset-x-0 z-50 sm:hidden grid grid-cols-2 border-t border-amber/30 font-display font-600 tracking-wider2 uppercase text-sm">
+  <a href="tel:+12105959810" class="bg-amber text-coal py-4 flex items-center justify-center gap-2">Call Now</a>
+  <a href="https://www.google.com/maps?q=2535+Illinois+St,+Fresno,+TX+77545" target="_blank" rel="noopener" class="bg-panel text-bone py-4 flex items-center justify-center gap-2 border-l border-amber/30">Directions</a>
+</div>
+
+<!-- ===== JSON-LD ===== -->
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"GeneralContractor",
-  "name":"Gomez Fencing Installs and Repairs LLC",
-  "description":"Wood, cedar, privacy, and pool fence installation and repair serving Fresno, Sugar Land, Sienna, Missouri City, and Greater Houston for over 20 years. Payment plans available.",
-  "url":"https://turnkeyweb.org/previews/gomez-fencing/",
-  "telephone":"+1-210-595-9810",
-  "priceRange":"$$",
-  "address":{"@type":"PostalAddress","streetAddress":"2535 Illinois St","addressLocality":"Fresno","addressRegion":"TX","postalCode":"77545","addressCountry":"US"},
-  "geo":{"@type":"GeoCoordinates","latitude":29.5391,"longitude":-95.4513},
-  "areaServed":["Fresno TX","Sugar Land TX","Sienna TX","Missouri City TX","Bellaire TX","Houston TX"],
-  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"40"},
-  "openingHoursSpecification":[
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"07:00","closes":"21:00"}
-  ],
-  "sameAs":["https://www.facebook.com/Gomezfencing117/","https://www.yelp.com/biz/gomez-fencing-fresno"]
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "Gomez Fencing Installs and Repairs LLC",
+  "image": "https://images.unsplash.com/photo-1604015641586-6fa03629f976?auto=format&fit=crop&w=1600&q=80",
+  "url": "https://turnkeyweb.org/previews/gomez-fencing/",
+  "telephone": "+1-210-595-9810",
+  "founder": "Alex Gomez",
+  "priceRange": "$$",
+  "paymentAccepted": "Cash, Card, Payment Plans",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2535 Illinois St",
+    "addressLocality": "Fresno",
+    "addressRegion": "TX",
+    "postalCode": "77545",
+    "addressCountry": "US"
+  },
+  "areaServed": ["Fresno TX", "Sugar Land TX", "Sienna Plantation TX", "Missouri City TX", "Bellaire TX", "Greater Houston"],
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "07:00",
+    "closes": "21:00"
+  }],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "bestRating": "5"
+  },
+  "makesOffer": [
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Privacy Fence Installation"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Wood Fence Installation"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Cedar Fence Installation"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pool Fence Installation"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Dog Fence Installation"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Custom Fence Fabrication"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Rail Fences"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Backyard Decking"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Fence Repairs and Maintenance"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Rotting Fence Replacement"}}
+  ]
 }
 </script>
 
-<!-- Libs -->
+<!-- ===== LIBS ===== -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-
 <script>
-document.getElementById('yr').textContent = new Date().getFullYear();
+  document.getElementById('yr').textContent = new Date().getFullYear();
 
-(function(){
-  if (!window.Lenis) return;
-  const lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-  requestAnimationFrame(raf);
-  if (window.ScrollTrigger) { lenis.on('scroll', ScrollTrigger.update); }
+  // --- Lenis smooth scroll ---
+  let lenis;
+  try {
+    lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    if (window.gsap && window.ScrollTrigger) { lenis.on('scroll', ScrollTrigger.update); }
+  } catch(e){}
+
+  // anchored scroll with nav offset
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click', e=>{
       const id = a.getAttribute('href');
-      if (id.length>1 && document.querySelector(id)) {
-        e.preventDefault();
-        lenis.scrollTo(document.querySelector(id), { offset:-70 });
-      }
-    });
-  });
-})();
-
-document.querySelectorAll('[data-split]').forEach(function(el){
-  el.innerHTML = '<span>' + el.innerHTML + '</span>';
-});
-
-if (window.gsap && window.ScrollTrigger) {
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.utils.toArray('[data-reveal]').forEach(function(el){
-    gsap.fromTo(el, {opacity:0,y:36},
-      {opacity:1,y:0,duration:1.05,ease:'power3.out',
-       scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'}});
-  });
-
-  gsap.utils.toArray('[data-parallax]').forEach(function(el){
-    const speed = parseFloat(el.dataset.parallax) || 0.1;
-    gsap.to(el, {
-      y: () => speed * 220, ease: 'none',
-      scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+      if (id.length < 2) return;
+      const t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      const y = t.getBoundingClientRect().top + window.pageYOffset - 68;
+      if (lenis) lenis.scrollTo(y, { duration: 1.1 }); else window.scrollTo({top:y, behavior:'smooth'});
     });
   });
 
-  document.querySelectorAll('[data-reveal-image]').forEach(function(el){
-    ScrollTrigger.create({ trigger: el, start: 'top 85%', onEnter: ()=> el.classList.add('in') });
-  });
+  // nav background on scroll
+  const nav = document.getElementById('nav');
+  function navState(){
+    if (window.pageYOffset > 40) nav.classList.add('bg-coal/90','backdrop-blur-md','border-b','border-bone/10','shadow-lg');
+    else nav.classList.remove('bg-coal/90','backdrop-blur-md','border-b','border-bone/10','shadow-lg');
+  }
+  navState(); window.addEventListener('scroll', navState, {passive:true});
 
-  document.querySelectorAll('[data-count]').forEach(function(el){
-    const target = parseInt(el.dataset.count, 10);
-    const suffix = '+';
-    const obj = { v: 0 };
-    ScrollTrigger.create({
-      trigger: el, start: 'top 88%',
-      onEnter: ()=> {
-        gsap.to(obj, {
-          v: target, duration: 1.6, ease: 'power2.out',
-          onUpdate: ()=> { el.textContent = Math.round(obj.v) + suffix; }
-        });
-      }
+  // --- GSAP reveals ---
+  if (window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray('[data-reveal]').forEach(el=>{
+      gsap.fromTo(el, {opacity:0, y:34}, {
+        opacity:1, y:0, duration:1.0, ease:'power3.out',
+        scrollTrigger:{ trigger:el, start:'top 90%' }
+      });
     });
-  });
-}
 
-// Crawler / screenshot safety net
-setTimeout(function(){
-  document.querySelectorAll('[data-reveal]').forEach(function(el){
-    if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
-      el.style.opacity='1'; el.style.transform='none';
-    }
-  });
-  document.querySelectorAll('[data-reveal-image]').forEach(function(el){ el.classList.add('in'); });
-  document.querySelectorAll('[data-count]').forEach(function(el){
-    const t = parseInt(el.dataset.count, 10);
-    if (el.textContent === '0' || el.textContent.trim() === '') el.textContent = t + '+';
-  });
-}, 6000);
+    gsap.utils.toArray('[data-reveal-x]').forEach(el=>{
+      gsap.fromTo(el, {opacity:0, x:-40}, {
+        opacity:1, x:0, duration:1.0, ease:'power3.out',
+        scrollTrigger:{ trigger:el, start:'top 88%' }
+      });
+    });
+
+    document.querySelectorAll('[data-reveal-image]').forEach(el=>{
+      ScrollTrigger.create({ trigger:el, start:'top 85%', onEnter:()=> el.classList.add('in') });
+    });
+
+    // count-up
+    document.querySelectorAll('.count-up').forEach(el=>{
+      const target = parseFloat(el.dataset.target)||0;
+      const suffix = el.dataset.suffix||'';
+      ScrollTrigger.create({
+        trigger:el, start:'top 95%', once:true,
+        onEnter:()=> gsap.to({v:0}, {v:target, duration:1.6, ease:'power2.out',
+          onUpdate:function(){ el.textContent = Math.round(this.targets()[0].v)+suffix; }})
+      });
+    });
+  }
+
+  // --- 6-second screenshot/crawler safety net ---
+  setTimeout(()=>{
+    document.querySelectorAll('[data-reveal]').forEach(el=>{
+      if (getComputedStyle(el).opacity === '0'){ el.style.opacity='1'; el.style.transform='none'; }
+    });
+    document.querySelectorAll('[data-reveal-x]').forEach(el=>{
+      if (getComputedStyle(el).opacity === '0'){ el.style.opacity='1'; el.style.transform='none'; }
+    });
+    document.querySelectorAll('[data-reveal-image]').forEach(el=> el.classList.add('in'));
+    document.querySelectorAll('.count-up').forEach(el=>{
+      if (el.textContent.trim().startsWith('0')) el.textContent = (el.dataset.target||'')+(el.dataset.suffix||'');
+    });
+  }, 6000);
 </script>
 </body>
 </html>
