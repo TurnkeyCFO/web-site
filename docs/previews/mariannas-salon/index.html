@@ -20,7 +20,7 @@
 <meta property="og:title" content="Marianna's Salon | Color & Blowout Studio in Garland, TX" />
 <meta property="og:description" content="Garland's women's color and blowout studio. Balayage, highlights, blowouts, and cuts by Marianna." />
 <meta property="og:url" content="https://turnkeyweb.org/previews/mariannas-salon/" />
-<meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80" />
+<meta property="og:image" content="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=1200&q=80" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -143,54 +143,53 @@
 
 <a id="top"></a>
 
-<!-- ============ HERO — SPLIT EDITORIAL ============ -->
-<section class="relative min-h-screen grid lg:grid-cols-[1.05fr_1fr] overflow-hidden">
-  <!-- left: cream/blush editorial panel -->
-  <div class="grain relative z-10 bg-gradient-to-br from-cream via-bone to-blush/40 flex items-center">
-    <span class="blob blob-1"></span>
-    <span class="blob blob-2"></span>
-    <div class="relative z-10 px-6 sm:px-12 lg:px-16 xl:px-20 py-32 lg:py-0 max-w-2xl">
-      <p class="flex items-center gap-3 text-[12px] uppercase tracking-[0.34em] text-mauve mb-7" data-reveal>
+<!-- ============ HERO — FULL-BLEED VIDEO ============ -->
+<section class="relative min-h-screen overflow-hidden bg-plum">
+  <!-- video background: woman's hair in motion (B&W cinematic) -->
+  <video class="hero-video absolute inset-0 w-full h-full object-cover"
+    autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg"
+    style="object-position:center 28%;">
+    <source src="assets/hero.mp4" type="video/mp4" />
+  </video>
+
+  <!-- legibility scrims: plum-tinted, heavier on the left where the text lives -->
+  <div class="absolute inset-0" style="background:linear-gradient(90deg, rgba(35,20,25,.82) 0%, rgba(35,20,25,.58) 36%, rgba(35,20,25,.20) 66%, rgba(63,31,42,.34) 100%);"></div>
+  <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(35,20,25,.50) 0%, transparent 26%, transparent 58%, rgba(35,20,25,.62) 100%);"></div>
+
+  <!-- content, lower-left editorial -->
+  <div class="relative z-10 min-h-screen max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 flex items-center">
+    <div class="max-w-2xl py-32">
+      <p class="flex items-center gap-3 text-[12px] uppercase tracking-[0.34em] text-blush mb-7" data-reveal>
         <span class="w-2 h-2 rounded-full bg-rose dot-pulse"></span>
         Garland, Texas &middot; Color &amp; Blowouts
       </p>
 
-      <h1 class="font-serif font-light text-plum leading-[0.92] text-[14vw] sm:text-[9rem] lg:text-[7.5rem] xl:text-[8.5rem] tracking-[-0.02em]" data-reveal>
+      <h1 class="font-serif font-light text-cream leading-[0.92] text-[15vw] sm:text-[8rem] lg:text-[8.5rem] tracking-[-0.02em]" style="text-shadow:0 6px 40px rgba(0,0,0,.45);" data-reveal>
         Color,<br />
         <span class="grad-accent italic font-normal">perfected.</span>
       </h1>
 
       <div class="hairline w-40 my-8" data-reveal></div>
 
-      <p class="text-ink/72 text-lg leading-relaxed max-w-md mb-10" data-reveal>
+      <p class="text-cream/85 text-lg leading-relaxed max-w-md mb-10" style="text-shadow:0 2px 18px rgba(0,0,0,.5);" data-reveal>
         A women's hair studio in Garland built around two things done exceptionally well — beautiful, lived-in color and blowouts you'll want to recreate every morning. Sit back. You're in good hands.
       </p>
 
       <div class="flex flex-wrap items-center gap-4" data-reveal>
-        <a href="tel:+12142413233" class="btn-primary inline-flex items-center gap-2 rounded-full bg-plum text-cream px-7 py-4 text-sm font-medium tracking-wide">
+        <a href="tel:+12142413233" class="btn-primary inline-flex items-center gap-2 rounded-full bg-cream text-plum px-7 py-4 text-sm font-semibold tracking-wide">
           Call to book
         </a>
-        <a href="#visit" class="btn-outline inline-flex items-center gap-2 rounded-full border border-mauve/40 text-plum px-7 py-4 text-sm font-medium tracking-wide hover:bg-plum hover:text-cream hover:border-plum">
+        <a href="#visit" class="btn-outline inline-flex items-center gap-2 rounded-full border border-cream/55 text-cream px-7 py-4 text-sm font-medium tracking-wide hover:bg-cream hover:text-plum hover:border-cream">
           Visit the studio
         </a>
       </div>
     </div>
   </div>
 
-  <!-- right: full-bleed image bleeding off the edge -->
-  <div class="relative min-h-[55vh] lg:min-h-screen overflow-hidden">
-    <img data-reveal-image
-      src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=80"
-      alt="Stylist applying hair color at Marianna's Salon in Garland"
-      class="clip-img absolute inset-0 w-full h-full object-cover object-center" />
-    <div class="absolute inset-0 bg-gradient-to-r from-cream/40 via-transparent to-transparent lg:from-cream/30"></div>
-    <!-- floating caption tag -->
-    <div class="absolute bottom-8 right-8 z-10 hidden sm:block">
-      <div class="backdrop-blur-md bg-plum/35 border border-cream/25 rounded-2xl px-5 py-4 text-cream">
-        <p class="font-serif italic text-lg leading-none">the color chair</p>
-        <p class="text-[11px] uppercase tracking-[0.24em] text-cream/75 mt-1.5">3338 Broadway Blvd</p>
-      </div>
-    </div>
+  <!-- scroll cue -->
+  <div class="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 text-cream/70">
+    <span class="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+    <span class="w-px h-9 bg-gradient-to-b from-cream/70 to-transparent"></span>
   </div>
 </section>
 
@@ -228,8 +227,8 @@
     <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-24">
       <div class="relative order-1 overflow-hidden rounded-[2rem]" data-reveal>
         <img data-reveal-image
-          src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1400&q=80"
-          alt="Rich, dimensional hair color result"
+          src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=1400&q=80"
+          alt="Rich, dimensional hair color result on long hair"
           class="clip-img w-full h-[440px] lg:h-[520px] object-cover lift" />
       </div>
       <div class="order-2" data-reveal>
@@ -254,8 +253,8 @@
       </div>
       <div class="relative order-1 lg:order-2 overflow-hidden rounded-[2rem]" data-reveal>
         <img data-reveal-image
-          src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1400&q=80"
-          alt="Balayage and highlights at the salon"
+          src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1400&q=80"
+          alt="Soft, dimensional balayage and highlights"
           class="clip-img w-full h-[440px] lg:h-[520px] object-cover lift" />
       </div>
     </div>
@@ -264,8 +263,8 @@
     <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
       <div class="relative order-1 overflow-hidden rounded-[2rem]" data-reveal>
         <img data-reveal-image
-          src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=1400&q=80"
-          alt="Smooth, voluminous blowout"
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1400&q=80"
+          alt="Smooth, voluminous blowout with long waves"
           class="clip-img w-full h-[440px] lg:h-[520px] object-cover lift" />
       </div>
       <div class="order-2" data-reveal>
@@ -286,8 +285,8 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-[1fr_1.15fr] gap-12 lg:gap-20 items-center relative z-10">
     <div class="relative" data-reveal>
       <img data-reveal-image
-        src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80"
-        alt="Marianna, owner and stylist"
+        src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80"
+        alt="Marianna, owner and stylist, with a client at the salon"
         class="clip-img w-full h-[520px] object-cover rounded-[2.5rem]" />
       <div class="absolute -bottom-6 -right-4 sm:right-6 backdrop-blur-md bg-cream/10 border border-cream/20 rounded-2xl px-6 py-4">
         <p class="font-serif italic text-2xl text-blush">Marianna</p>
@@ -447,7 +446,7 @@
   "@context": "https://schema.org",
   "@type": "HairSalon",
   "name": "Marianna's Salon",
-  "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
+  "image": "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=1200&q=80",
   "url": "https://turnkeyweb.org/previews/mariannas-salon/",
   "telephone": "+1-214-241-3233",
   "priceRange": "$$",
