@@ -1,0 +1,593 @@
+<!doctype html>
+<!--
+  Doc's Slushies — College Station, TX (est. 2025)
+  Mobile frozen-drink / slushie bar: parties · tailgates · weddings & events
+  Brand: Aggie maroon #5E1A24 + cream, gold thread. Real logo + product photo + hero video used.
+  Build: Turnkey Web prospect draft. Preview-only. Real data only — packages framed custom-quoted, flavors rotating, contact -> real Instagram. No fabricated phone/price/license claims.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Doc's Slushies — Aggieland's Mobile Frozen-Drink Bar | College Station, TX</title>
+<meta name="description" content="Doc's Slushies brings the frozen-drink bar to your College Station tailgate, wedding, or party. Slushie machines, frozen cocktails & lemonades — set-up and breakdown handled. Serving Aggieland & the Brazos Valley since 2025." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/docs-slushies/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Doc's Slushies — Aggieland's Mobile Frozen-Drink Bar" />
+<meta property="og:description" content="Slushie machines & frozen cocktails rolled right to your College Station tailgate, wedding, or party. Serving Aggieland & the Brazos Valley since 2025." />
+<meta property="og:image" content="assets/hero-poster.jpg" />
+<link rel="icon" href="assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      maroon:    "#5E1A24",
+      maroonDeep:"#34090F",
+      maroonInk: "#240609",
+      cream:     "#F5ECDD",
+      bone:      "#FCF8F0",
+      gold:      "#C8A24A",
+      goldSoft:  "#E6CE92",
+      frost:     "#DCE7EC",
+      brick:     "#7C2A33",
+    },
+    fontFamily: {
+      slab:   ['"Alfa Slab One"','serif'],
+      serif:  ['Fraunces','Georgia','serif'],
+      sans:   ['"DM Sans"','system-ui','sans-serif'],
+    }
+  }}
+}
+</script>
+<style>
+  html{ -webkit-font-smoothing:antialiased; scroll-behavior:smooth; }
+  body{ font-family:'DM Sans',system-ui,sans-serif; background:#FCF8F0; color:#240609; }
+  ::selection{ background:#5E1A24; color:#F5ECDD; }
+
+  .ff-serif{ font-family:'Fraunces',Georgia,serif; }
+  .ff-slab{ font-family:'Alfa Slab One',serif; }
+
+  /* gold gradient text accent */
+  .grad-gold{
+    background:linear-gradient(92deg,#C8A24A 0%,#E6CE92 45%,#C8A24A 100%);
+    background-size:220% auto;-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent; animation:shimmer 9s linear infinite;
+  }
+  @keyframes shimmer{ to{ background-position:220% center; } }
+
+  /* hero video */
+  .hero-video{ object-fit:cover; object-position:center 42%; }
+  .hero-scrim{
+    background:
+      linear-gradient(86deg, rgba(36,6,9,.93) 0%, rgba(52,9,15,.80) 34%, rgba(52,9,15,.34) 70%, rgba(52,9,15,.16) 100%),
+      linear-gradient(0deg, rgba(36,6,9,.92) 2%, rgba(52,9,15,.30) 42%, rgba(52,9,15,.42) 100%),
+      radial-gradient(120% 90% at 22% 64%, rgba(36,6,9,.55), transparent 60%);
+  }
+  .frost-grain{
+    background-image:radial-gradient(rgba(255,255,255,.16) 1px, transparent 1.4px);
+    background-size:4px 4px; opacity:.5;
+  }
+
+  /* condensation / frosty noise on maroon bands */
+  .frost-tex{
+    background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.5px);
+    background-size:5px 5px;
+  }
+
+  /* marquee */
+  .marq{ display:flex; overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent); mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent); }
+  .marq-track{ display:flex; flex:0 0 auto; gap:0; animation:scrollx 34s linear infinite; }
+  .marq:hover .marq-track{ animation-play-state:paused; }
+  @keyframes scrollx{ to{ transform:translateX(-50%);} }
+
+  /* buttons */
+  .btn-primary{ position:relative; overflow:hidden; transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
+  .btn-primary::after{ content:""; position:absolute; inset:0; transform:translateX(-130%); background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.42) 50%,transparent 65%); transition:transform .7s; }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 18px 40px -16px rgba(52,9,15,.6); }
+  .btn-primary:hover::after{ transform:translateX(130%); }
+
+  /* reveal */
+  [data-reveal]{ opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal].in{ opacity:1; transform:none; }
+
+  /* nav underline */
+  .nav-link{ position:relative; }
+  .nav-link::after{ content:""; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:linear-gradient(90deg,#C8A24A,#E6CE92); transition:width .45s cubic-bezier(.2,.8,.2,1); }
+  .nav-link:hover::after{ width:100%; }
+
+  /* package / flavor cards */
+  .pcard{ position:relative; transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s; }
+  .pcard::before{ content:""; position:absolute; left:0; top:0; height:4px; width:0%; background:linear-gradient(90deg,#C8A24A,#E6CE92); transition:width .5s cubic-bezier(.2,.8,.2,1); }
+  .pcard:hover{ transform:translateY(-7px); box-shadow:0 26px 50px -24px rgba(52,9,15,.45); }
+  .pcard:hover::before{ width:100%; }
+
+  .flavor{ transition:transform .3s, box-shadow .3s; }
+  .flavor:hover{ transform:translateY(-5px); box-shadow:0 16px 30px -18px rgba(52,9,15,.5); }
+
+  .chip-dot{ animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:.45; transform:scale(.8);} }
+
+  /* clip reveal */
+  .clip-img{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.2,.8,.2,1); }
+  .clip-img.in{ clip-path:inset(0 0 0% 0); }
+
+  details.faq{ border-bottom:1px solid rgba(94,26,36,.16); }
+  details.faq summary{ list-style:none; cursor:pointer; }
+  details.faq summary::-webkit-details-marker{ display:none; }
+  details.faq .plus{ transition:transform .35s; }
+  details.faq[open] .plus{ transform:rotate(45deg); }
+
+  .logo-badge{ background:#F5ECDD; border-radius:9999px; box-shadow:0 10px 30px -12px rgba(52,9,15,.5); }
+</style>
+</head>
+
+<body class="bg-bone text-maroonInk">
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div id="navbar" class="mt-3 flex items-center justify-between rounded-full border border-maroon/10 bg-cream/85 backdrop-blur-md px-4 py-2.5 shadow-[0_10px_30px_-18px_rgba(52,9,15,.5)] transition-all duration-500">
+      <a href="#top" class="flex items-center gap-2.5">
+        <img src="assets/logo.png" alt="Doc's Slushies" class="h-10 w-10 rounded-full object-contain logo-badge p-1" />
+        <span class="ff-serif text-[15px] font-semibold tracking-tight text-maroon hidden sm:block leading-none">Doc's Slushies<span class="block text-[10px] tracking-[.22em] text-maroon/60 font-sans mt-0.5">COLLEGE STATION · EST. 2025</span></span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-7 text-[13.5px] font-medium text-maroon/85">
+        <a href="#packages"  class="nav-link">Packages</a>
+        <a href="#tailgate"  class="nav-link">Tailgating</a>
+        <a href="#weddings"  class="nav-link">Weddings</a>
+        <a href="#flavors"   class="nav-link">Flavors</a>
+        <a href="#gallery"   class="nav-link">Pictures</a>
+        <a href="#faq"       class="nav-link">FAQ</a>
+        <a href="#about"     class="nav-link">About</a>
+      </nav>
+      <a href="#contact" class="btn-primary inline-flex items-center gap-2 rounded-full bg-maroon px-5 py-2.5 text-[13px] font-bold tracking-wide text-cream">
+        Check a Date
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative min-h-[100svh] w-full overflow-hidden bg-maroonDeep">
+  <video class="hero-video absolute inset-0 h-full w-full" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
+    <source src="assets/hero.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-scrim absolute inset-0"></div>
+  <div class="frost-grain absolute inset-0 pointer-events-none"></div>
+
+  <div class="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 sm:px-8 pb-16 sm:pb-20 pt-32">
+    <div class="max-w-3xl">
+      <p data-reveal class="mb-5 inline-flex items-center gap-2.5 rounded-full border border-cream/25 bg-maroonInk/30 px-4 py-1.5 text-[11px] font-semibold tracking-[.2em] text-goldSoft">
+        <span class="h-1.5 w-1.5 rounded-full bg-gold chip-dot"></span>
+        HOWDY FROM COLLEGE STATION · EST. 2025
+      </p>
+      <h1 data-reveal class="ff-slab text-cream leading-[.96] text-[12.5vw] sm:text-[8.5vw] lg:text-[6.4rem]" style="text-shadow:0 8px 50px rgba(0,0,0,.5);">
+        Aggieland's<br>frozen-drink bar,<br><span class="grad-gold">rolled to your party.</span>
+      </h1>
+      <p data-reveal class="mt-6 max-w-xl text-[17px] sm:text-[18px] leading-relaxed text-cream/90" style="text-shadow:0 2px 18px rgba(0,0,0,.5);">
+        Slushie machines, frozen cocktails &amp; ice-cold lemonades — wheeled right up to your tailgate, wedding, or backyard throwdown. We pour, we restock, we clean up. You just hold the cup.
+      </p>
+      <div data-reveal class="mt-8 flex flex-wrap items-center gap-3.5">
+        <a href="#contact" class="btn-primary inline-flex items-center gap-2 rounded-full bg-cream px-7 py-3.5 text-[14px] font-bold tracking-wide text-maroon">
+          Check your date →
+        </a>
+        <a href="#packages" class="inline-flex items-center gap-2 rounded-full border border-cream/45 bg-cream/5 px-7 py-3.5 text-[14px] font-semibold tracking-wide text-cream transition hover:bg-cream/15">
+          See the packages
+        </a>
+      </div>
+      <div data-reveal class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-2 text-[12px] font-medium tracking-[.14em] text-cream/70">
+        <span>TAILGATES</span><span class="text-gold/70">/</span>
+        <span>WEDDINGS</span><span class="text-gold/70">/</span>
+        <span>BIRTHDAYS</span><span class="text-gold/70">/</span>
+        <span>CORPORATE</span><span class="text-gold/70">/</span>
+        <span>21+ OR FAMILY-FRIENDLY</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 right-6 z-10 hidden sm:flex items-center gap-2 text-cream/55 text-[11px] tracking-[.25em]">
+    SCROLL <span class="inline-block h-7 w-px bg-cream/40 animate-pulse"></span>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="bg-maroon text-cream frost-tex border-y border-maroonInk/30">
+  <div class="marq py-3.5">
+    <div class="marq-track ff-serif italic text-[19px] sm:text-[22px]">
+      <span class="flex shrink-0">
+        <em class="px-7">Frozen Margaritas</em><span class="px-1 text-gold">✦</span>
+        <em class="px-7">Texas Lemonade</em><span class="px-1 text-gold">✦</span>
+        <em class="px-7">Cherry Limeade</em><span class="px-1 text-gold">✦</span>
+        <em class="px-7">Blue Raspberry</em><span class="px-1 text-gold">✦</span>
+        <em class="px-7">Piña Colada</em><span class="px-1 text-gold">✦</span>
+        <em class="px-7">Frozen Sangria</em><span class="px-1 text-gold">✦</span>
+        <em class="px-7">Tailgate-Ready</em><span class="px-1 text-gold">✦</span>
+      </span>
+      <span class="flex shrink-0" aria-hidden="true">
+        <em class="px-7">Frozen Margaritas</em><span class="px-1 text-gold">✦</span>
+        <em class="px-7">Texas Lemonade</em><span class="px-1 text-gold">✦</span>
+        <em class="px-7">Cherry Limeade</em><span class="px-1 text-gold">✦</span>
+        <em class="px-7">Blue Raspberry</em><span class="px-1 text-gold">✦</span>
+        <em class="px-7">Piña Colada</em><span class="px-1 text-gold">✦</span>
+        <em class="px-7">Frozen Sangria</em><span class="px-1 text-gold">✦</span>
+        <em class="px-7">Tailgate-Ready</em><span class="px-1 text-gold">✦</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ INTRO / VALUE ============ -->
+<section class="bg-bone py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div class="lg:col-span-5" data-reveal>
+        <p class="text-[12px] font-bold tracking-[.24em] text-brick mb-4">WHAT IS DOC'S?</p>
+        <h2 class="ff-serif text-[2.4rem] sm:text-[3rem] leading-[1.04] text-maroon">
+          The bar shows up. <span class="italic">You take the credit.</span>
+        </h2>
+        <p class="mt-6 text-[16.5px] leading-relaxed text-maroonInk/75">
+          Doc's Slushies is College Station's roll-up frozen-drink bar. We bring the machines, the flavors, and the cups straight to your spot — Northgate to the Brazos Valley — and pour all event long. Family-friendly slushes for the kids' table, spiked frozen cocktails for the grown folks, and zero cleanup left to you.
+        </p>
+        <a href="#contact" class="mt-7 inline-flex items-center gap-2 text-[14px] font-bold text-maroon border-b-2 border-gold pb-0.5 hover:gap-3 transition-all">
+          Lock in your date →
+        </a>
+      </div>
+      <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+        <div class="pcard rounded-2xl border border-maroon/12 bg-cream p-6" data-reveal>
+          <div class="text-3xl">🧊</div>
+          <h3 class="ff-serif text-[1.35rem] text-maroon mt-3">We bring the bar to you</h3>
+          <p class="mt-2 text-[14.5px] leading-relaxed text-maroonInk/70">Self-contained frozen-drink station rolls right up to your tailgate lot, venue, or backyard.</p>
+        </div>
+        <div class="pcard rounded-2xl border border-maroon/12 bg-cream p-6" data-reveal style="transition-delay:.06s">
+          <div class="text-3xl">🍹</div>
+          <h3 class="ff-serif text-[1.35rem] text-maroon mt-3">Spiked or family-friendly</h3>
+          <p class="mt-2 text-[14.5px] leading-relaxed text-maroonInk/70">Build a 21+ frozen-cocktail menu or keep it all-ages with lemonades and fruit slushes. Your call.</p>
+        </div>
+        <div class="pcard rounded-2xl border border-maroon/12 bg-cream p-6" data-reveal style="transition-delay:.12s">
+          <div class="text-3xl">🤙</div>
+          <h3 class="ff-serif text-[1.35rem] text-maroon mt-3">Set-up &amp; breakdown handled</h3>
+          <p class="mt-2 text-[14.5px] leading-relaxed text-maroonInk/70">We arrive early, pour all event, restock as we go, and pack it out clean. You never touch a thing.</p>
+        </div>
+        <div class="pcard rounded-2xl border border-maroon/12 bg-cream p-6" data-reveal style="transition-delay:.18s">
+          <div class="text-3xl">👍</div>
+          <h3 class="ff-serif text-[1.35rem] text-maroon mt-3">Born &amp; based in Aggieland</h3>
+          <p class="mt-2 text-[14.5px] leading-relaxed text-maroonInk/70">Local to College Station and proud of it. We know game-day weekends, and we know how to keep a line moving.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PACKAGES ============ -->
+<section id="packages" class="bg-cream py-20 sm:py-28 border-y border-maroon/10">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-2xl mb-12" data-reveal>
+      <p class="text-[12px] font-bold tracking-[.24em] text-brick mb-3">PARTY PACKAGES</p>
+      <h2 class="ff-serif text-[2.5rem] sm:text-[3.2rem] leading-[1.02] text-maroon">Pick a starting point. We tailor the rest.</h2>
+      <p class="mt-4 text-[16px] text-maroonInk/70">Every event is quoted to its headcount, hours, and flavor lineup — these are the most-booked shapes to build from. Tell us the date and we'll send a clean quote.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <!-- Backyard -->
+      <div class="pcard rounded-3xl border border-maroon/12 bg-bone p-7 flex flex-col" data-reveal>
+        <p class="ff-slab text-[13px] tracking-wide text-brick">THE BACKYARD</p>
+        <h3 class="ff-serif text-[1.7rem] text-maroon mt-1">Birthdays &amp; backyards</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-maroonInk/70">Small-to-mid gatherings — birthdays, graduations, block parties, kid-friendly afternoons.</p>
+        <ul class="mt-5 space-y-2.5 text-[14px] text-maroonInk/80">
+          <li class="flex gap-2.5"><span class="text-gold">◆</span> One or two flavor taps</li>
+          <li class="flex gap-2.5"><span class="text-gold">◆</span> Cups, ice &amp; service included</li>
+          <li class="flex gap-2.5"><span class="text-gold">◆</span> Family-friendly or 21+ menu</li>
+          <li class="flex gap-2.5"><span class="text-gold">◆</span> Set-up &amp; breakdown handled</li>
+        </ul>
+        <a href="#contact" class="btn-primary mt-7 inline-flex justify-center rounded-full bg-maroon/10 border border-maroon/25 px-5 py-3 text-[13.5px] font-bold text-maroon hover:bg-maroon hover:text-cream transition-colors">Get a quote</a>
+      </div>
+      <!-- Tailgate (featured) -->
+      <div class="pcard rounded-3xl border-2 border-maroon bg-maroon text-cream p-7 flex flex-col relative overflow-hidden frost-tex" data-reveal style="transition-delay:.07s">
+        <span class="absolute top-5 right-5 rounded-full bg-gold/90 text-maroonDeep text-[10px] font-bold tracking-wider px-3 py-1">MOST BOOKED</span>
+        <p class="ff-slab text-[13px] tracking-wide text-goldSoft">THE TAILGATE</p>
+        <h3 class="ff-serif text-[1.7rem] mt-1">Game-day in the lot</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-cream/80">Built for College Station Saturdays — high volume, fast pours, maroon everywhere.</p>
+        <ul class="mt-5 space-y-2.5 text-[14px] text-cream/90">
+          <li class="flex gap-2.5"><span class="text-gold">◆</span> Multi-tap, high-throughput setup</li>
+          <li class="flex gap-2.5"><span class="text-gold">◆</span> Frozen margaritas &amp; spiked options</li>
+          <li class="flex gap-2.5"><span class="text-gold">◆</span> Lot-friendly, self-powered station</li>
+          <li class="flex gap-2.5"><span class="text-gold">◆</span> We keep the line moving all day</li>
+        </ul>
+        <a href="#contact" class="btn-primary mt-7 inline-flex justify-center rounded-full bg-cream px-5 py-3 text-[13.5px] font-bold text-maroon">Book game day</a>
+      </div>
+      <!-- Big Event -->
+      <div class="pcard rounded-3xl border border-maroon/12 bg-bone p-7 flex flex-col" data-reveal style="transition-delay:.14s">
+        <p class="ff-slab text-[13px] tracking-wide text-brick">THE BIG EVENT</p>
+        <h3 class="ff-serif text-[1.7rem] text-maroon mt-1">Weddings &amp; corporate</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-maroonInk/70">Polished service for weddings, receptions, corporate mixers, and large venue events.</p>
+        <ul class="mt-5 space-y-2.5 text-[14px] text-maroonInk/80">
+          <li class="flex gap-2.5"><span class="text-gold">◆</span> Signature frozen-cocktail menu</li>
+          <li class="flex gap-2.5"><span class="text-gold">◆</span> Custom flavors to match your colors</li>
+          <li class="flex gap-2.5"><span class="text-gold">◆</span> Uniformed, on-time service</li>
+          <li class="flex gap-2.5"><span class="text-gold">◆</span> Indoor or outdoor venues</li>
+        </ul>
+        <a href="#contact" class="btn-primary mt-7 inline-flex justify-center rounded-full bg-maroon/10 border border-maroon/25 px-5 py-3 text-[13.5px] font-bold text-maroon hover:bg-maroon hover:text-cream transition-colors">Get a quote</a>
+      </div>
+    </div>
+    <p class="mt-7 text-center text-[13.5px] text-maroonInk/55" data-reveal>Headcount, hours, and flavor count drive the final price — every quote is custom. <a href="#contact" class="text-maroon font-semibold underline decoration-gold underline-offset-2">Ask for yours →</a></p>
+  </div>
+</section>
+
+<!-- ============ TAILGATING band ============ -->
+<section id="tailgate" class="relative bg-maroonDeep text-cream overflow-hidden">
+  <div class="frost-tex absolute inset-0 opacity-60"></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8 py-20 sm:py-28 grid lg:grid-cols-2 gap-12 items-center">
+    <div data-reveal>
+      <p class="text-[12px] font-bold tracking-[.24em] text-goldSoft mb-4">TAILGATING IN AGGIELAND</p>
+      <h2 class="ff-slab text-[2.6rem] sm:text-[3.6rem] leading-[.98]">Maroon out.<br><span class="grad-gold">Pour up.</span></h2>
+      <p class="mt-6 max-w-lg text-[16.5px] leading-relaxed text-cream/85">
+        Nothing beats a frozen drink in your hand when the Brazos Valley sun is cooking the lot. Doc's rolls a self-powered station into your game-day spot, keeps the taps flowing through kickoff, and packs out clean so you can get to the stadium. Family-friendly slushes for the little Aggies, frozen cocktails for everybody else.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3 text-[12px] font-semibold tracking-wide">
+        <span class="rounded-full border border-cream/25 px-4 py-1.5">Self-powered setup</span>
+        <span class="rounded-full border border-cream/25 px-4 py-1.5">High-volume pours</span>
+        <span class="rounded-full border border-cream/25 px-4 py-1.5">21+ &amp; all-ages</span>
+        <span class="rounded-full border border-cream/25 px-4 py-1.5">Lot-friendly</span>
+      </div>
+      <a href="#contact" class="btn-primary mt-9 inline-flex items-center gap-2 rounded-full bg-cream px-7 py-3.5 text-[14px] font-bold text-maroon">Reserve a game-day weekend →</a>
+    </div>
+    <div data-reveal class="relative">
+      <div class="clip-img overflow-hidden rounded-3xl border border-cream/15 shadow-2xl">
+        <img src="assets/machine.png" alt="Doc's Slushies branded frozen-drink dispenser pouring fresh lemonade slush at an event" class="w-full h-[420px] object-cover object-center" />
+      </div>
+      <div class="absolute -bottom-5 -left-3 logo-badge h-20 w-20 p-2 rotate-[-6deg] hidden sm:block">
+        <img src="assets/logo.png" alt="" class="h-full w-full object-contain" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WEDDINGS & EVENTS ============ -->
+<section id="weddings" class="bg-bone py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div data-reveal class="order-2 lg:order-1 relative">
+      <div class="clip-img overflow-hidden rounded-3xl border border-maroon/12 shadow-xl">
+        <video class="w-full h-[440px] object-cover" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
+          <source src="assets/hero.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+    <div data-reveal class="order-1 lg:order-2">
+      <p class="text-[12px] font-bold tracking-[.24em] text-brick mb-4">WEDDINGS &amp; EVENTS</p>
+      <h2 class="ff-serif text-[2.5rem] sm:text-[3.2rem] leading-[1.02] text-maroon">A signature frozen drink, <span class="italic">made for your day.</span></h2>
+      <p class="mt-6 text-[16.5px] leading-relaxed text-maroonInk/75">
+        Give your guests something they'll actually remember — a frozen-cocktail bar matched to your colors and named for the two of you. From receptions to rehearsal dinners to corporate mixers, Doc's brings polished, on-time service and a menu built around your event, not a fixed template.
+      </p>
+      <ul class="mt-7 grid sm:grid-cols-2 gap-x-6 gap-y-3 text-[14.5px] text-maroonInk/80">
+        <li class="flex gap-2.5"><span class="text-gold mt-0.5">◆</span> Custom signature flavors</li>
+        <li class="flex gap-2.5"><span class="text-gold mt-0.5">◆</span> His &amp; hers frozen pours</li>
+        <li class="flex gap-2.5"><span class="text-gold mt-0.5">◆</span> Indoor or outdoor venues</li>
+        <li class="flex gap-2.5"><span class="text-gold mt-0.5">◆</span> Clean, uniformed service</li>
+      </ul>
+      <a href="#contact" class="btn-primary mt-8 inline-flex items-center gap-2 rounded-full bg-maroon px-7 py-3.5 text-[14px] font-bold text-cream">Plan your event →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLAVORS ============ -->
+<section id="flavors" class="bg-maroon text-cream py-20 sm:py-28 frost-tex">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-2xl mb-12" data-reveal>
+      <p class="text-[12px] font-bold tracking-[.24em] text-goldSoft mb-3">THE FLAVORS</p>
+      <h2 class="ff-serif text-[2.5rem] sm:text-[3.2rem] leading-[1.02]">Crowd favorites on rotation.</h2>
+      <p class="mt-4 text-[16px] text-cream/80">A taste of what we pour — the lineup rotates with the season and gets dialed in to your event. Want something custom for your colors or theme? We'll mix it.</p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <!-- flavor tiles -->
+      <div class="flavor rounded-2xl bg-cream/5 border border-cream/15 p-6 text-center" data-reveal><div class="text-3xl mb-2">🍋</div><h3 class="ff-serif text-[1.2rem]">Texas Lemonade</h3><p class="text-[12.5px] text-cream/60 mt-1">All-ages</p></div>
+      <div class="flavor rounded-2xl bg-cream/5 border border-cream/15 p-6 text-center" data-reveal style="transition-delay:.04s"><div class="text-3xl mb-2">🍒</div><h3 class="ff-serif text-[1.2rem]">Cherry Limeade</h3><p class="text-[12.5px] text-cream/60 mt-1">All-ages</p></div>
+      <div class="flavor rounded-2xl bg-cream/5 border border-cream/15 p-6 text-center" data-reveal style="transition-delay:.08s"><div class="text-3xl mb-2">🫐</div><h3 class="ff-serif text-[1.2rem]">Blue Raspberry</h3><p class="text-[12.5px] text-cream/60 mt-1">All-ages</p></div>
+      <div class="flavor rounded-2xl bg-cream/5 border border-cream/15 p-6 text-center" data-reveal style="transition-delay:.12s"><div class="text-3xl mb-2">🍓</div><h3 class="ff-serif text-[1.2rem]">Strawberry</h3><p class="text-[12.5px] text-cream/60 mt-1">All-ages</p></div>
+      <div class="flavor rounded-2xl bg-cream/5 border border-cream/15 p-6 text-center" data-reveal><div class="text-3xl mb-2">🍹</div><h3 class="ff-serif text-[1.2rem]">Frozen Margarita</h3><p class="text-[12.5px] text-goldSoft mt-1">21+ spiked</p></div>
+      <div class="flavor rounded-2xl bg-cream/5 border border-cream/15 p-6 text-center" data-reveal style="transition-delay:.04s"><div class="text-3xl mb-2">🍷</div><h3 class="ff-serif text-[1.2rem]">Frozen Sangria</h3><p class="text-[12.5px] text-goldSoft mt-1">21+ spiked</p></div>
+      <div class="flavor rounded-2xl bg-cream/5 border border-cream/15 p-6 text-center" data-reveal style="transition-delay:.08s"><div class="text-3xl mb-2">🥥</div><h3 class="ff-serif text-[1.2rem]">Piña Colada</h3><p class="text-[12.5px] text-goldSoft mt-1">21+ or virgin</p></div>
+      <div class="flavor rounded-2xl bg-cream/5 border border-cream/15 p-6 text-center" data-reveal style="transition-delay:.12s"><div class="text-3xl mb-2">🍑</div><h3 class="ff-serif text-[1.2rem]">Peach Bellini</h3><p class="text-[12.5px] text-goldSoft mt-1">21+ spiked</p></div>
+    </div>
+    <p class="mt-8 text-[14px] text-cream/65" data-reveal>Plus a rotating seasonal board. <a href="#contact" class="text-goldSoft font-semibold underline underline-offset-2">Ask for the full current menu →</a></p>
+  </div>
+</section>
+
+<!-- ============ GALLERY / PICTURES ============ -->
+<section id="gallery" class="bg-cream py-20 sm:py-28 border-y border-maroon/10">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-10" data-reveal>
+      <div>
+        <p class="text-[12px] font-bold tracking-[.24em] text-brick mb-3">PICTURES</p>
+        <h2 class="ff-serif text-[2.5rem] sm:text-[3.2rem] leading-[1.02] text-maroon">Straight from the cart.</h2>
+      </div>
+      <a href="https://www.instagram.com/docs.slushies/" target="_blank" rel="noopener" class="text-[14px] font-bold text-maroon border-b-2 border-gold pb-0.5 hover:gap-2 inline-flex items-center gap-1.5 transition-all">Follow @docs.slushies →</a>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="rounded-2xl overflow-hidden border border-maroon/12 row-span-2 lg:col-span-2" data-reveal>
+        <video class="w-full h-full min-h-[280px] object-cover" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg"><source src="assets/hero.mp4" type="video/mp4" /></video>
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-maroon/12" data-reveal style="transition-delay:.05s">
+        <img src="assets/machine.png" alt="Doc's Slushies twin-tap frozen-drink dispenser at an event" class="w-full h-full min-h-[180px] object-cover" />
+      </div>
+      <div class="rounded-2xl bg-maroon text-cream flex flex-col items-center justify-center p-6 text-center frost-tex" data-reveal style="transition-delay:.1s">
+        <img src="assets/logo.png" alt="Doc's Slushies" class="h-20 w-20 object-contain logo-badge p-2 mb-3" />
+        <p class="ff-serif italic text-[15px] text-cream/85">College Station, TX</p>
+        <p class="text-[11px] tracking-[.2em] text-goldSoft mt-1">EST. 2025</p>
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-maroon/12 bg-bone flex items-center justify-center p-6 text-center" data-reveal style="transition-delay:.15s">
+        <p class="ff-serif text-[1.15rem] text-maroon leading-snug">More pours from recent<br>tailgates &amp; weddings on<br><a href="https://www.instagram.com/docs.slushies/" target="_blank" rel="noopener" class="underline decoration-gold underline-offset-2">Instagram</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="bg-bone py-20 sm:py-28">
+  <div class="mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="mb-10" data-reveal>
+      <p class="text-[12px] font-bold tracking-[.24em] text-brick mb-3">FAQ</p>
+      <h2 class="ff-serif text-[2.5rem] sm:text-[3.2rem] leading-[1.02] text-maroon">Good questions, straight answers.</h2>
+    </div>
+    <div data-reveal>
+      <details class="faq py-5" open>
+        <summary class="flex items-center justify-between gap-4 ff-serif text-[1.2rem] text-maroon">Do you serve alcoholic frozen drinks? <span class="plus text-gold text-2xl leading-none">+</span></summary>
+        <p class="mt-3 text-[15px] leading-relaxed text-maroonInk/75">We can build a 21+ spiked menu (frozen margaritas, sangria, and more) or keep it completely family-friendly with lemonades and fruit slushes — or run both side by side. Tell us your event and we'll walk you through the right setup.</p>
+      </details>
+      <details class="faq py-5">
+        <summary class="flex items-center justify-between gap-4 ff-serif text-[1.2rem] text-maroon">What areas do you serve? <span class="plus text-gold text-2xl leading-none">+</span></summary>
+        <p class="mt-3 text-[15px] leading-relaxed text-maroonInk/75">We're based in College Station and serve Bryan–College Station and the surrounding Brazos Valley. Traveling a bit farther for the right event? Just ask — we'll let you know.</p>
+      </details>
+      <details class="faq py-5">
+        <summary class="flex items-center justify-between gap-4 ff-serif text-[1.2rem] text-maroon">How much power and space do you need? <span class="plus text-gold text-2xl leading-none">+</span></summary>
+        <p class="mt-3 text-[15px] leading-relaxed text-maroonInk/75">Our station fits a standard tailgate lot, backyard, or venue corner. We'll confirm power needs when we scope your event — and for spots without easy power, we'll plan around it.</p>
+      </details>
+      <details class="faq py-5">
+        <summary class="flex items-center justify-between gap-4 ff-serif text-[1.2rem] text-maroon">How many people can one machine serve? <span class="plus text-gold text-2xl leading-none">+</span></summary>
+        <p class="mt-3 text-[15px] leading-relaxed text-maroonInk/75">It depends on headcount and how long you want the taps flowing. We size the number of machines and flavors to your guest count so the line keeps moving the whole time.</p>
+      </details>
+      <details class="faq py-5">
+        <summary class="flex items-center justify-between gap-4 ff-serif text-[1.2rem] text-maroon">How far ahead should I book? <span class="plus text-gold text-2xl leading-none">+</span></summary>
+        <p class="mt-3 text-[15px] leading-relaxed text-maroonInk/75">The sooner the better — game-day weekends and wedding season fill up fast in Aggieland. Send your date and we'll confirm availability and hold it for you.</p>
+      </details>
+      <details class="faq py-5">
+        <summary class="flex items-center justify-between gap-4 ff-serif text-[1.2rem] text-maroon">Do you handle setup and cleanup? <span class="plus text-gold text-2xl leading-none">+</span></summary>
+        <p class="mt-3 text-[15px] leading-relaxed text-maroonInk/75">Always. We arrive early, set up, pour and restock through your event, then break down and pack out clean. You don't lift a finger.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="relative bg-maroonDeep text-cream overflow-hidden">
+  <div class="frost-tex absolute inset-0 opacity-50"></div>
+  <div class="relative mx-auto max-w-4xl px-5 sm:px-8 py-20 sm:py-28 text-center">
+    <img src="assets/logo.png" alt="Doc's Slushies" class="h-28 w-28 object-contain logo-badge p-3 mx-auto mb-7" data-reveal />
+    <p class="text-[12px] font-bold tracking-[.24em] text-goldSoft mb-4" data-reveal>ABOUT DOC'S</p>
+    <h2 class="ff-serif text-[2.3rem] sm:text-[3rem] leading-[1.06]" data-reveal>Aggieland local, since day one.</h2>
+    <p class="mt-6 text-[17px] leading-relaxed text-cream/85" data-reveal>
+      Doc's Slushies started in 2025 with a simple idea: every great College Station gathering — tailgate, wedding, birthday, or backyard hang — is better with a cold frozen drink in hand and nobody stuck working the bar. So we built a roll-up frozen-drink bar that shows up, pours all event, and packs out clean. Maroon to the core, proud to be local, and here to make your party the one people talk about.
+    </p>
+    <a href="#contact" class="btn-primary mt-9 inline-flex items-center gap-2 rounded-full bg-cream px-7 py-3.5 text-[14px] font-bold text-maroon" data-reveal>Let's plan yours →</a>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="bg-cream py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+    <div data-reveal>
+      <p class="text-[12px] font-bold tracking-[.24em] text-brick mb-4">CHECK A DATE</p>
+      <h2 class="ff-serif text-[2.6rem] sm:text-[3.4rem] leading-[1.02] text-maroon">Tell us about<br><span class="italic">your party.</span></h2>
+      <p class="mt-5 text-[16.5px] leading-relaxed text-maroonInk/75 max-w-md">
+        Send the date, the headcount, and a little about the event. We'll check availability and send back a clean, custom quote. Fastest way to reach us is a DM on Instagram.
+      </p>
+      <div class="mt-8 space-y-4">
+        <a href="https://www.instagram.com/docs.slushies/" target="_blank" rel="noopener" class="flex items-center gap-4 rounded-2xl border border-maroon/15 bg-bone p-4 hover:border-maroon/35 transition group">
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-maroon text-cream text-lg">◐</span>
+          <span><span class="block text-[11px] tracking-[.2em] text-maroonInk/55">INSTAGRAM</span><span class="ff-serif text-[1.15rem] text-maroon group-hover:underline decoration-gold underline-offset-2">@docs.slushies</span></span>
+        </a>
+        <a href="https://docsfoodbevco.com/" target="_blank" rel="noopener" class="flex items-center gap-4 rounded-2xl border border-maroon/15 bg-bone p-4 hover:border-maroon/35 transition group">
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-maroon text-cream text-lg">🌐</span>
+          <span><span class="block text-[11px] tracking-[.2em] text-maroonInk/55">ONLINE</span><span class="ff-serif text-[1.15rem] text-maroon group-hover:underline decoration-gold underline-offset-2">docsfoodbevco.com</span></span>
+        </a>
+        <div class="flex items-center gap-4 rounded-2xl border border-maroon/15 bg-bone p-4">
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-maroon text-cream text-lg">📍</span>
+          <span><span class="block text-[11px] tracking-[.2em] text-maroonInk/55">SERVICE AREA</span><span class="ff-serif text-[1.15rem] text-maroon">College Station &amp; the Brazos Valley</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inquiry form -->
+    <form data-reveal class="rounded-3xl border border-maroon/12 bg-bone p-7 sm:p-8 shadow-[0_24px_60px_-30px_rgba(52,9,15,.45)]" onsubmit="event.preventDefault(); this.querySelector('.formnote').classList.remove('hidden');">
+      <h3 class="ff-serif text-[1.6rem] text-maroon">Request a quote</h3>
+      <p class="text-[13.5px] text-maroonInk/60 mt-1 mb-6">No obligation — we'll get back fast.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <label class="block"><span class="text-[12px] font-semibold tracking-wide text-maroonInk/70">Your name</span>
+          <input type="text" required class="mt-1.5 w-full rounded-xl border border-maroon/15 bg-cream px-4 py-3 text-[15px] outline-none focus:border-maroon/50 focus:ring-2 focus:ring-gold/40" placeholder="First &amp; last" /></label>
+        <label class="block"><span class="text-[12px] font-semibold tracking-wide text-maroonInk/70">Phone or email</span>
+          <input type="text" required class="mt-1.5 w-full rounded-xl border border-maroon/15 bg-cream px-4 py-3 text-[15px] outline-none focus:border-maroon/50 focus:ring-2 focus:ring-gold/40" placeholder="Best way to reach you" /></label>
+        <label class="block"><span class="text-[12px] font-semibold tracking-wide text-maroonInk/70">Event date</span>
+          <input type="text" class="mt-1.5 w-full rounded-xl border border-maroon/15 bg-cream px-4 py-3 text-[15px] outline-none focus:border-maroon/50 focus:ring-2 focus:ring-gold/40" placeholder="MM / DD / YYYY" /></label>
+        <label class="block"><span class="text-[12px] font-semibold tracking-wide text-maroonInk/70">Event type</span>
+          <select class="mt-1.5 w-full rounded-xl border border-maroon/15 bg-cream px-4 py-3 text-[15px] outline-none focus:border-maroon/50 focus:ring-2 focus:ring-gold/40">
+            <option>Tailgate / game day</option><option>Wedding</option><option>Birthday / backyard</option><option>Corporate / mixer</option><option>Other</option>
+          </select></label>
+      </div>
+      <label class="block mt-4"><span class="text-[12px] font-semibold tracking-wide text-maroonInk/70">Headcount &amp; details</span>
+        <textarea rows="3" class="mt-1.5 w-full rounded-xl border border-maroon/15 bg-cream px-4 py-3 text-[15px] outline-none focus:border-maroon/50 focus:ring-2 focus:ring-gold/40" placeholder="How many guests, flavor ideas, 21+ or family-friendly, location…"></textarea></label>
+      <button type="submit" class="btn-primary mt-6 w-full rounded-full bg-maroon px-6 py-4 text-[14px] font-bold tracking-wide text-cream">Send my request →</button>
+      <p class="formnote hidden mt-4 text-center text-[13.5px] text-maroon">Thanks! For the fastest reply, also shoot us a DM <a href="https://www.instagram.com/docs.slushies/" target="_blank" rel="noopener" class="font-bold underline decoration-gold underline-offset-2">@docs.slushies</a>.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-maroonInk text-cream/80 frost-tex">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 py-14">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="sm:col-span-2">
+        <div class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="Doc's Slushies" class="h-14 w-14 object-contain logo-badge p-1.5" />
+          <div><p class="ff-serif text-[1.3rem] text-cream">Doc's Slushies</p><p class="text-[11px] tracking-[.2em] text-goldSoft">COLLEGE STATION, TEXAS · EST. 2025</p></div>
+        </div>
+        <p class="mt-5 max-w-sm text-[14.5px] leading-relaxed text-cream/65">Aggieland's mobile frozen-drink bar. We bring the slushie machines, frozen cocktails, and ice-cold lemonades to your tailgate, wedding, or party — set-up and cleanup handled.</p>
+      </div>
+      <div>
+        <p class="text-[11px] font-bold tracking-[.2em] text-goldSoft mb-4">EXPLORE</p>
+        <ul class="space-y-2.5 text-[14px]">
+          <li><a href="#packages" class="hover:text-cream transition">Party Packages</a></li>
+          <li><a href="#tailgate" class="hover:text-cream transition">Tailgating</a></li>
+          <li><a href="#weddings" class="hover:text-cream transition">Weddings &amp; Events</a></li>
+          <li><a href="#flavors" class="hover:text-cream transition">Flavors</a></li>
+          <li><a href="#faq" class="hover:text-cream transition">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-[11px] font-bold tracking-[.2em] text-goldSoft mb-4">GET IN TOUCH</p>
+        <ul class="space-y-2.5 text-[14px]">
+          <li><a href="https://www.instagram.com/docs.slushies/" target="_blank" rel="noopener" class="hover:text-cream transition">Instagram @docs.slushies</a></li>
+          <li><a href="https://docsfoodbevco.com/" target="_blank" rel="noopener" class="hover:text-cream transition">docsfoodbevco.com</a></li>
+          <li><a href="#contact" class="hover:text-cream transition">Request a quote</a></li>
+          <li class="text-cream/55">College Station &amp; Brazos Valley</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 border-t border-cream/12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-cream/45">
+      <p>© <span id="yr"></span> Doc's Slushies. All rights reserved.</p>
+      <p>Howdy &amp; thanks for stopping by. 🥤</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="fixed bottom-0 inset-x-0 z-50 lg:hidden bg-maroon/95 backdrop-blur border-t border-cream/15 px-3 py-2.5 flex gap-2.5">
+  <a href="#contact" class="flex-1 rounded-full bg-cream text-maroon text-center text-[13.5px] font-bold py-3">Check a Date</a>
+  <a href="https://www.instagram.com/docs.slushies/" target="_blank" rel="noopener" class="flex-1 rounded-full border border-cream/40 text-cream text-center text-[13.5px] font-bold py-3">Message Us</a>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // nav shrink on scroll
+  const navbar = document.getElementById('navbar');
+  addEventListener('scroll', () => {
+    if (scrollY > 30) navbar.classList.add('!py-1.5','shadow-lg');
+    else navbar.classList.remove('!py-1.5','shadow-lg');
+  });
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.12, rootMargin:'0px 0px -8% 0px' });
+  document.querySelectorAll('[data-reveal], .clip-img').forEach(el => io.observe(el));
+
+  // 6s crawler / screenshot safety net — force everything visible
+  setTimeout(() => {
+    document.querySelectorAll('[data-reveal], .clip-img').forEach(el => el.classList.add('in'));
+  }, 6000);
+</script>
+</body>
+</html>
