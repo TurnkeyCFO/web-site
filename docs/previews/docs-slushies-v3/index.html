@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Doc's Slushies — CONCEPT 2: maroon-bg video preload reveal -> maroon infinite-3D site.
+  Doc's Slushies — CONCEPT 3: maroon-bg video preload reveal -> video KEEPS looping in the hero bg, then variety sections.
   Newest video (maroon ice-explosion) as the reveal, Doc's overlay, seamless dissolve into a
   fixed maroon infinite-3D background. Aggie Maroon #500000, video-matched base #3E0F13,
   official A&M fonts. Single immersive page. Preview / local-review concept.
@@ -108,7 +108,10 @@ section{padding:clamp(64px,9vw,120px) 0;position:relative}
 [data-rev].in{opacity:1;transform:none}
 
 /* HERO */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:80px}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:80px;position:relative;overflow:hidden}
+.hbv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hbv-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(36,6,9,.9) 0%,rgba(58,9,15,.62) 42%,rgba(58,9,15,.32) 75%,rgba(58,9,15,.2) 100%),linear-gradient(0deg,rgba(36,6,9,.85) 0%,rgba(58,9,15,.2) 38%,transparent 60%)}
+.hero .wrap{position:relative;z-index:2}
 .h-hero{font-family:'Work Sans';font-weight:800;line-height:.95;letter-spacing:-.02em;font-size:clamp(2.8rem,9vw,6.2rem);text-shadow:0 10px 60px rgba(0,0,0,.5)}
 .h-hero .accent{color:var(--rose);font-weight:500;font-style:italic}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Oswald';letter-spacing:.3em;text-transform:uppercase;font-size:11.5px;color:var(--rose)}
@@ -226,7 +229,7 @@ footer .wrap{padding:46px 22px 30px}
 <main class="page" id="top">
 
   <!-- HERO -->
-  <section class="hero"><div class="wrap">
+  <section class="hero"><video class="hbv" autoplay muted loop playsinline preload="auto" poster="assets/reveal-poster.jpg"><source src="assets/reveal.webm" type="video/webm"/><source src="assets/reveal.mp4" type="video/mp4"/></video><div class="hbv-scrim"></div><div class="wrap">
     <span class="eyebrow" data-rev><span class="d"></span> Aggieland's frozen-drink machine rental</span>
     <h1 class="h-hero" data-rev style="margin-top:18px;max-width:15ch">Frozen. Ice-cold.<br><span class="accent">Maroon to the core.</span></h1>
     <p class="lead" data-rev style="margin-top:20px;max-width:46ch">We roll the machines to your tailgate, wedding, or backyard, set them up, and handle pickup. You bring the crew &mdash; and any spirits you'd like to add.</p>
