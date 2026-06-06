@@ -97,6 +97,16 @@ a{color:inherit;text-decoration:none}
 .h-sec{font-family:'Work Sans',sans-serif;font-weight:800;line-height:1.02;letter-spacing:-.015em;color:var(--maroon);font-size:clamp(2rem,4.6vw,3.1rem)}
 .lead{font-size:clamp(16px,2.1vw,18.5px);line-height:1.6}
 
+/* maroon gradient shimmer on headers */
+@keyframes shim{to{background-position:220% center}}
+.h-sec{background:linear-gradient(100deg,#500000 0%,#7a0b0b 28%,#A23B46 50%,#7a0b0b 72%,#500000 100%);
+  background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shim 8s linear infinite}
+.h-page{background:linear-gradient(100deg,#F6F1E9 0%,#E7C9C9 36%,#FFFFFF 50%,#E7C9C9 64%,#F6F1E9 100%);
+  background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shim 8s linear infinite}
+/* on maroon backgrounds the section header needs the light shimmer instead */
+.sec-maroon .h-sec,.cta-band .h-sec{background:linear-gradient(100deg,#F6F1E9 0%,#E7C9C9 36%,#FFFFFF 50%,#E7C9C9 64%,#F6F1E9 100%);
+  background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shim 8s linear infinite}
+
 /* ---------- SECTION + GRID ---------- */
 section{padding:clamp(60px,8vw,108px) 0}
 .sec-cream{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -214,7 +224,8 @@ footer a:hover{color:#fff}
 }
 
 /* ============ HOME cinematic preload + black hero ============ */
-body.home{background:#000}
+/* Only the hero is black; content below sits on the A&M cream/bone theme (readable). */
+body.home{background:var(--bone)}
 .hero{background:#000}
 .hero video{transform:scale(1.12);filter:blur(12px) brightness(.45);opacity:0;transition:opacity 1.3s ease,filter 1.7s ease}
 body.ready .hero video{opacity:1;filter:none;animation:kb 22s ease-in-out infinite alternate}
@@ -223,10 +234,10 @@ body.ready .hero video{opacity:1;filter:none;animation:kb 22s ease-in-out infini
   background:radial-gradient(40% 40% at 30% 72%,rgba(122,11,11,.22),transparent 70%),radial-gradient(34% 34% at 72% 28%,rgba(80,0,0,.18),transparent 70%);animation:breathe 9s ease-in-out infinite alternate}
 body.ready .glow{opacity:1}
 @keyframes breathe{from{transform:scale(1)}to{transform:scale(1.08) translateY(-2%)}}
-.tick{position:absolute;width:24px;height:24px;border:1px solid rgba(246,241,233,.3);opacity:0;transition:opacity 1s ease .9s;z-index:5}
-body.ready .tick{opacity:1}
-.tick.tl{top:24px;left:24px;border-right:0;border-bottom:0}.tick.tr{top:24px;right:24px;border-left:0;border-bottom:0}
-.tick.bl{bottom:24px;left:24px;border-right:0;border-top:0}.tick.br{bottom:24px;right:24px;border-left:0;border-top:0}
+.vtick{position:absolute;width:24px;height:24px;border:1px solid rgba(246,241,233,.3);opacity:0;transition:opacity 1s ease .9s;z-index:5}
+body.ready .vtick{opacity:1}
+.vtick.tl{top:24px;left:24px;border-right:0;border-bottom:0}.vtick.tr{top:24px;right:24px;border-left:0;border-bottom:0}
+.vtick.bl{bottom:24px;left:24px;border-right:0;border-top:0}.vtick.br{bottom:24px;right:24px;border-left:0;border-top:0}
 .loopbar{position:absolute;left:0;bottom:0;height:2px;width:100%;z-index:6;background:rgba(246,241,233,.08);opacity:0;transition:opacity 1s ease 1.3s}
 body.ready .loopbar{opacity:1}
 .loopbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--maroon),var(--maroon-lit,#7a0b0b));box-shadow:0 0 12px rgba(122,11,11,.7)}
