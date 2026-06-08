@@ -1,35 +1,30 @@
 <!doctype html>
 <!--
-  Fort Worth Transmission Service - Turnkey Web prospect build (DRAFT v1)
-  Business: Fort Worth Transmission Service (formerly Ponce's Transmission), owner Ernesto.
-  1300 NW 25th St, Fort Worth, TX 76164 - (817) 988-2260 - transmission specialist.
-  Source data: HubSpot record + Facebook + Google/Yelp (Ponce's history). New listing has
-  no reviews yet -> NO fabricated reviews; leans on the honest "specialist + reborn shop" story.
-
-  ART DIRECTION (deliberately divergent from selena-auto-towing):
-   - Hero: SPLIT EDITORIAL on a dark graphite panel (oversized condensed type left, full-bleed
-     gearbox photo right). NOT a full-bleed photo+overlay, NOT a floating card cluster.
-   - Type: Saira Condensed (engineered/condensed display) + Sora (geometric body). NOT Anton/Inter.
-   - Palette: precision-engineering steel + graphite, with a transmission-fluid amber/oxblood
-     signature owning the CTA + closing band. NOT red+royal-blue+gold.
-   - SIGNATURE MOMENT: a "P R N D 2 1" gear-selector rail whose active position advances through
-     the repair-process steps on scroll. No other build has it.
-  Photos (Pexels, http 200 + subject-verified):
-   - hero gearbox   7568427
-   - under-lift tech 6870328
-   - car on 2-post lift 4116170
+  Fort Worth Transmission Service - Turnkey Web prospect build (DRAFT v2 - LIGHT)
+  REBUILT 2026-06-08 from their REAL Facebook page (/p/Fort-Worth-Transmission-61560928552410/).
+  Real facts pulled from their own About + posts:
+    - Established 1979 (formerly Ponce's Transmission); "back where we started" at 1300 NW 25th St.
+    - Owned & operated by Joe & Arlene Ponce (family-owned). Joe Ponce Jr. is civic-active locally.
+    - Specializes MOSTLY in Ford, Chevy, Dodge & GMC AUTOMATIC transmissions. Trucks, SUVs, vans.
+    - "We Have A Payment Plan." "Call Day and After Hours." (817) 988-2260. 1300 NW 25th St, FW 76164.
+  Real BRAND palette sampled from their storefront signage:
+    mint-green wall + terracotta-orange wall + purple stripe + iconic YELLOW signs w/ black text + red phone.
+  Light-first per Ricky. Yellow/black CTA = their literal signage aesthetic. Real storefront photos used
+  throughout (assets/storefront.jpg, storefront-alt.jpg, promo.jpg). One on-subject gearbox accent (Pexels 7568427).
+  Owner correction: their own page says Joe & Arlene Ponce (earlier CRM note "Ernesto" not used).
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Fort Worth Transmission Service | Transmission Repair &amp; Rebuilds - Fort Worth, TX</title>
-<meta name="description" content="Fort Worth's transmission specialists. Rebuilds, replacements, clutches, diagnostics, differentials & transfer cases - foreign & domestic, cars & fleet. Formerly Ponce's Transmission. Free check-engine scan. Call (817) 988-2260." />
+<title>Fort Worth Transmission Service | Automatic Transmission Repair Since 1979 - Fort Worth, TX</title>
+<meta name="description" content="Family-owned transmission shop in Fort Worth since 1979 (formerly Ponce's Transmission). Automatic transmission rebuilds, diagnostics & repair - Ford, Chevy, Dodge, GMC, trucks, SUVs & vans. Payment plans. Call day & after hours: (817) 988-2260." />
 <link rel="canonical" href="https://turnkeyweb.org/previews/fort-worth-transmission-service/" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Fort Worth Transmission Service - Transmission Specialists" />
-<meta property="og:description" content="Transmissions are all we do. Rebuilds, diagnostics, clutches, fleet - foreign & domestic. Formerly Ponce's Transmission. Free check-engine scan. (817) 988-2260." />
-<meta name="theme-color" content="#14171C" />
+<meta property="og:title" content="Fort Worth Transmission Service - Automatic Transmission Specialists Since 1979" />
+<meta property="og:description" content="Fort Worth's family-owned transmission shop since 1979. Ford, Chevy, Dodge & GMC automatics, trucks, SUVs & vans. Payment plans. Day & after hours. (817) 988-2260." />
+<meta property="og:image" content="https://turnkeyweb.org/previews/fort-worth-transmission-service/assets/storefront.jpg" />
+<meta name="theme-color" content="#C85A33" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800;900&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -38,9 +33,12 @@
 tailwind.config = {
   theme: { extend: {
     colors: {
-      coal:'#0E1115', ink:'#14171C', graphite:'#1C2128', steel:'#8C97A1', mist:'#C6CDD3',
-      bone:'#F3EFE8', cream:'#FAF7F1', line:'#E4DCD0',
-      amber:'#E8912B', amberDeep:'#C5751B', atf:'#9B2E22', atfDeep:'#7A2017'
+      paper:'#FBF7EF', cream:'#F4ECDC', card:'#FFFFFF',
+      terra:'#C85A33', terraDeep:'#A8401F',
+      mint:'#3FA579', mintSoft:'#DCEFE6',
+      sign:'#F5C400', signInk:'#20242A',
+      grape:'#6E5B96', red:'#C8202A',
+      ink:'#20242A', slate:'#5C6470', line:'#E7DECC'
     },
     fontFamily:{ display:['"Saira Condensed"','sans-serif'], body:['Sora','sans-serif'] }
   }}
@@ -48,176 +46,168 @@ tailwind.config = {
 </script>
 <style>
   html{scroll-behavior:smooth}
-  body{background:#FAF7F1;color:#14171C;font-family:'Sora',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{background:#FBF7EF;color:#20242A;font-family:'Sora',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   .display{font-family:'Saira Condensed',sans-serif;letter-spacing:.005em;line-height:.92}
-  .eyebrow{font-family:'Saira Condensed',sans-serif;letter-spacing:.28em;text-transform:uppercase}
-  ::selection{background:#E8912B;color:#14171C}
+  .eyebrow{font-family:'Saira Condensed',sans-serif;letter-spacing:.26em;text-transform:uppercase}
+  ::selection{background:#F5C400;color:#20242A}
 
-  /* signature: machined "torque" rule - a thin amber bar with a notch pattern */
-  .torque-rule{height:5px;border-radius:5px;background:#14171C;position:relative;overflow:hidden}
-  .torque-rule::after{content:"";position:absolute;inset:0;margin:auto;height:2px;
-    background:repeating-linear-gradient(90deg,#E8912B 0 18px,transparent 18px 30px)}
+  /* their signage motif: yellow plate w/ black text */
+  .sign-badge{background:#F5C400;color:#20242A;border:2px solid #20242A;border-radius:7px;font-family:'Saira Condensed',sans-serif;font-weight:800;letter-spacing:.04em}
 
-  .hero-photo{background:
-    linear-gradient(90deg,rgba(14,17,21,.92) 0%,rgba(14,17,21,.30) 42%,rgba(14,17,21,.05) 100%),
-    url('https://images.pexels.com/photos/7568427/pexels-photo-7568427.jpeg?auto=compress&cs=tinysrgb&w=1500') center/cover no-repeat;}
-  .band-lift{background:
-    linear-gradient(180deg,rgba(14,17,21,.86),rgba(14,17,21,.55) 45%,rgba(14,17,21,.9)),
-    url('https://images.pexels.com/photos/6870328/pexels-photo-6870328.jpeg?auto=compress&cs=tinysrgb&w=1600') center 28%/cover no-repeat;}
-  .shop-photo{background:
-    linear-gradient(90deg,rgba(14,17,21,.55),rgba(14,17,21,.12) 60%,transparent),
-    url('https://images.pexels.com/photos/4116170/pexels-photo-4116170.jpeg?auto=compress&cs=tinysrgb&w=1100') center/cover no-repeat;}
+  .gearbox{background:
+    linear-gradient(90deg,rgba(32,36,42,.04),rgba(32,36,42,.0) 60%),
+    url('https://images.pexels.com/photos/7568427/pexels-photo-7568427.jpeg?auto=compress&cs=tinysrgb&w=1100') center/cover no-repeat;}
 
-  .grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
-    background-image:radial-gradient(#000 1px,transparent 1px);background-size:3px 3px}
-
-  .pulse-dot{width:9px;height:9px;border-radius:50%;background:#E8912B;box-shadow:0 0 0 0 rgba(232,145,43,.6);animation:pulse 2.2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,145,43,.5)}70%{box-shadow:0 0 0 13px rgba(232,145,43,0)}100%{box-shadow:0 0 0 0 rgba(232,145,43,0)}}
-
-  .btn-amber{position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,filter .25s}
-  .btn-amber:hover{transform:translateY(-3px);filter:brightness(1.05);box-shadow:0 18px 38px -14px rgba(232,145,43,.55)}
-  .btn-amber::after{content:"";position:absolute;inset:0;transform:translateX(-130%);
-    background:linear-gradient(110deg,transparent 0%,rgba(255,255,255,.45) 50%,transparent 100%);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-  .btn-amber:hover::after{transform:translateX(130%)}
-  .btn-ghost{transition:background .25s,color .25s,border-color .25s,transform .25s}
-  .btn-ghost:hover{transform:translateY(-3px);background:rgba(243,239,232,.08)}
+  .btn-sign{position:relative;overflow:hidden;background:#F5C400;color:#20242A;border:2px solid #20242A;
+    transition:transform .25s ease,box-shadow .25s ease,filter .25s}
+  .btn-sign:hover{transform:translateY(-3px);filter:brightness(1.03);box-shadow:0 16px 34px -14px rgba(32,36,42,.45)}
+  .btn-sign::after{content:"";position:absolute;inset:0;transform:translateX(-130%);
+    background:linear-gradient(110deg,transparent,rgba(255,255,255,.55) 50%,transparent);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .btn-sign:hover::after{transform:translateX(130%)}
+  .btn-terra{transition:transform .25s,box-shadow .25s,background .25s}
+  .btn-terra:hover{transform:translateY(-3px);background:#A8401F;box-shadow:0 16px 34px -14px rgba(200,90,51,.5)}
+  .btn-ghost{transition:background .25s,transform .25s,border-color .25s}
+  .btn-ghost:hover{transform:translateY(-3px);background:rgba(32,36,42,.05)}
 
   .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-  .marquee-track{display:flex;gap:3rem;width:max-content;animation:scrollX 36s linear infinite}
+  .marquee-track{display:flex;gap:2.8rem;width:max-content;animation:scrollX 34s linear infinite}
   .marquee:hover .marquee-track{animation-play-state:paused}
   @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  .svc{position:relative;background:#fff;border:1px solid #E4DCD0;border-radius:14px;overflow:hidden;
+  .svc{position:relative;background:#fff;border:1px solid #E7DECC;border-radius:14px;overflow:hidden;
     transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .5s,box-shadow .5s}
-  .svc::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,#E8912B,#9B2E22);transition:width .6s cubic-bezier(.2,.7,.2,1)}
-  .svc:hover{transform:translateY(-6px);border-color:#d8cdbb;box-shadow:0 24px 48px -28px rgba(20,23,28,.4)}
+  .svc::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,#C85A33,#F5C400);transition:width .6s cubic-bezier(.2,.7,.2,1)}
+  .svc:hover{transform:translateY(-6px);border-color:#e0d3b8;box-shadow:0 24px 48px -30px rgba(32,36,42,.32)}
   .svc:hover::before{width:100%}
-  .svc:hover .svc-ic{transform:rotate(-8deg) scale(1.08);color:#C5751B}
+  .svc:hover .svc-ic{transform:rotate(-8deg) scale(1.08);color:#C85A33}
   .svc-ic{transition:transform .5s,color .5s}
 
-  /* SIGNATURE: gear-selector process rail */
+  .photo-frame{box-shadow:0 30px 60px -28px rgba(32,36,42,.45);border:6px solid #fff;border-radius:18px;overflow:hidden}
+
+  /* SIGNATURE: gear-selector process rail (light) */
   .gate{display:flex;align-items:center;gap:0;font-family:'Saira Condensed',sans-serif;font-weight:800}
-  .gate .pos{position:relative;color:#3A424C;transition:color .45s ease;padding:0 .55rem}
-  .gate .pos.active{color:#E8912B}
+  .gate .pos{position:relative;color:#C9BFA8;transition:color .45s ease;padding:0 .55rem}
+  .gate .pos.active{color:#C85A33}
   .gate .pos.active::after{content:"";position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);
-    width:10px;height:10px;border-radius:50%;background:#E8912B;box-shadow:0 0 16px 2px rgba(232,145,43,.6)}
-  .gate .bar{flex:1;height:2px;background:#262C34}
-  .pstep{transition:opacity .5s,transform .5s;opacity:.4}
+    width:10px;height:10px;border-radius:50%;background:#C85A33;box-shadow:0 0 14px 2px rgba(200,90,51,.5)}
+  .gate .bar{flex:1;height:2px;background:#E7DECC}
+  .pstep{transition:opacity .5s,transform .5s;opacity:.45}
   .pstep.on{opacity:1}
-  .pstep.on .pstep-num{color:#E8912B;-webkit-text-stroke:0;}
-  .pstep-num{font-family:'Saira Condensed',sans-serif;-webkit-text-stroke:1.5px #E8912B;color:transparent;transition:color .4s}
+  .pstep-num{font-family:'Saira Condensed',sans-serif;-webkit-text-stroke:1.5px #C85A33;color:transparent;transition:color .4s}
+  .pstep.on .pstep-num{color:#C85A33;-webkit-text-stroke:0}
 
   [data-reveal]{opacity:0;transform:translateY(32px)}
   a.ug{position:relative}
-  a.ug::after{content:"";position:absolute;left:0;bottom:-3px;height:2px;width:0;background:linear-gradient(90deg,#E8912B,#9B2E22);transition:width .45s}
+  a.ug::after{content:"";position:absolute;left:0;bottom:-3px;height:2px;width:0;background:linear-gradient(90deg,#C85A33,#F5C400);transition:width .45s}
   a.ug:hover::after{width:100%}
-  .open-dot{width:8px;height:8px;border-radius:50%;background:#3FB27F;box-shadow:0 0 0 0 rgba(63,178,127,.5);animation:pulse2 2.4s infinite}
-  @keyframes pulse2{0%{box-shadow:0 0 0 0 rgba(63,178,127,.5)}70%{box-shadow:0 0 0 10px rgba(63,178,127,0)}100%{box-shadow:0 0 0 0 rgba(63,178,127,0)}}
+  .open-dot{width:8px;height:8px;border-radius:50%;background:#3FA579;box-shadow:0 0 0 0 rgba(63,165,121,.5);animation:pulse2 2.4s infinite}
+  @keyframes pulse2{0%{box-shadow:0 0 0 0 rgba(63,165,121,.5)}70%{box-shadow:0 0 0 10px rgba(63,165,121,0)}100%{box-shadow:0 0 0 0 rgba(63,165,121,0)}}
 </style>
 </head>
 <body class="font-body">
 
 <!-- ===== top utility strip ===== -->
-<div class="bg-coal text-mist text-[12.5px]">
+<div class="bg-ink text-cream text-[12.5px]">
   <div class="max-w-7xl mx-auto px-5 py-2 flex items-center justify-between gap-3">
-    <span class="hidden sm:flex items-center gap-2"><span class="open-dot"></span> Free check-engine scan &amp; written estimate</span>
-    <span class="flex items-center gap-2"><span class="eyebrow text-amber text-[11px]">Northside Fort Worth</span><span class="text-steel">&middot; 1300 NW 25th St</span></span>
-    <a href="tel:+18179882260" class="ug font-semibold text-bone">(817) 988-2260</a>
+    <span class="hidden sm:flex items-center gap-2"><span class="open-dot"></span> Family-owned in Fort Worth since 1979</span>
+    <span class="flex items-center gap-2"><span class="eyebrow text-sign text-[11px]">We have a payment plan</span><span class="text-slate hidden md:inline">&middot; Call day &amp; after hours</span></span>
+    <a href="tel:+18179882260" class="ug font-semibold text-paper">(817) 988-2260</a>
   </div>
 </div>
 
 <!-- ===== nav ===== -->
-<header id="nav" class="sticky top-0 z-50 bg-coal/95 backdrop-blur border-b border-white/5">
+<header id="nav" class="sticky top-0 z-50 bg-paper/95 backdrop-blur border-b border-line">
   <div class="max-w-7xl mx-auto px-5 h-[68px] flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-3 group">
-      <span class="inline-flex items-center justify-center rounded-md bg-amber text-coal font-display font-900 text-[19px] w-10 h-10 leading-none">FW</span>
+    <a href="#top" class="flex items-center gap-3">
+      <span class="sign-badge inline-flex items-center justify-center text-[18px] w-11 h-10 leading-none">FW</span>
       <span class="leading-tight">
-        <span class="block display text-bone text-[21px] font-800 tracking-wide">FORT WORTH TRANSMISSION</span>
-        <span class="block eyebrow text-amber text-[10px]">Transmission Specialists &middot; Est. as Ponce's</span>
+        <span class="block display text-ink text-[21px] font-800 tracking-wide">FORT WORTH TRANSMISSION</span>
+        <span class="block eyebrow text-terra text-[10px]">Automatic Transmissions &middot; Since 1979</span>
       </span>
     </a>
-    <nav class="hidden lg:flex items-center gap-8 text-[14px] text-mist">
-      <a href="#services" class="ug hover:text-bone">Services</a>
-      <a href="#process" class="ug hover:text-bone">How it works</a>
-      <a href="#why" class="ug hover:text-bone">Why a specialist</a>
-      <a href="#visit" class="ug hover:text-bone">Visit</a>
+    <nav class="hidden lg:flex items-center gap-8 text-[14px] text-slate">
+      <a href="#services" class="ug hover:text-ink">Services</a>
+      <a href="#process" class="ug hover:text-ink">How it works</a>
+      <a href="#story" class="ug hover:text-ink">Since 1979</a>
+      <a href="#visit" class="ug hover:text-ink">Visit</a>
     </nav>
-    <a href="tel:+18179882260" class="btn-amber bg-amber text-coal font-semibold rounded-full px-5 py-2.5 text-[14px] flex items-center gap-2">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <a href="tel:+18179882260" class="btn-sign rounded-full px-5 py-2.5 text-[14px] flex items-center gap-2">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       Call now
     </a>
   </div>
 </header>
 
-<!-- ===== hero: split editorial, dark ===== -->
-<section id="top" class="relative grain bg-coal text-bone">
-  <div class="max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_.95fr] min-h-[88vh]">
-    <!-- left: type -->
-    <div class="relative z-10 px-5 sm:px-8 py-16 lg:py-24 flex flex-col justify-center">
-      <span class="eyebrow text-amber text-[12.5px] mb-5 flex items-center gap-3"><span class="w-8 h-px bg-amber inline-block"></span>Fort Worth, TX &middot; Foreign &amp; Domestic</span>
-      <h1 class="display font-900 text-[16vw] sm:text-[12vw] lg:text-[6.6rem] text-bone" data-split>
-        TRANSMISSIONS<br><span class="text-amber">ARE ALL</span> WE DO.
+<!-- ===== hero: light split editorial w/ real storefront ===== -->
+<section id="top" class="relative bg-paper overflow-hidden">
+  <div class="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full opacity-50" style="background:radial-gradient(circle,#DCEFE6,transparent 62%)"></div>
+  <div class="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full opacity-50" style="background:radial-gradient(circle,#F7E6C9,transparent 62%)"></div>
+  <div class="relative max-w-7xl mx-auto px-5 grid lg:grid-cols-[1.02fr_.98fr] gap-10 lg:gap-12 items-center py-14 lg:py-20">
+    <div>
+      <span class="eyebrow text-terra text-[12.5px] mb-5 flex items-center gap-3"><span class="w-8 h-px bg-terra inline-block"></span>Fort Worth, TX &middot; Family-owned since 1979</span>
+      <h1 class="display font-900 text-[15vw] sm:text-[10.5vw] lg:text-[6.2rem] text-ink" data-split>
+        YOUR TRANSMISSION,<br><span class="text-terra">DONE RIGHT</span> SINCE 1979.
       </h1>
-      <p class="mt-6 max-w-xl text-[16px] sm:text-[17px] text-mist leading-relaxed">
-        Rebuilds, replacements, clutches, diagnostics, differentials and transfer cases - done by a
-        dedicated transmission shop, not a general garage that subs it out.
-        <span class="text-bone font-medium">Formerly Ponce's Transmission - same expert hands, new name.</span>
+      <p class="mt-6 max-w-xl text-[16px] sm:text-[17px] text-slate leading-relaxed">
+        The neighborhood transmission shop on NW 25th - <span class="text-ink font-medium">formerly Ponce's Transmission</span>,
+        owned and operated by the Ponce family. Automatic rebuilds, diagnostics and repair for
+        Ford, Chevy, Dodge &amp; GMC - cars, trucks, SUVs &amp; vans.
       </p>
       <div class="mt-8 flex flex-col sm:flex-row gap-3">
-        <a href="tel:+18179882260" class="btn-amber bg-amber text-coal font-semibold rounded-full px-7 py-3.5 text-[15px] text-center flex items-center justify-center gap-2">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:+18179882260" class="btn-sign rounded-full px-7 py-3.5 text-[16px] text-center flex items-center justify-center gap-2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           (817) 988-2260
         </a>
-        <a href="#visit" class="btn-ghost border border-white/20 text-bone rounded-full px-7 py-3.5 text-[15px] text-center">Get directions</a>
+        <a href="#visit" class="btn-ghost border border-ink/20 text-ink rounded-full px-7 py-3.5 text-[16px] text-center">Get directions</a>
       </div>
-      <!-- honest "stat" trio: facts, not fabricated numbers -->
-      <div class="mt-10 grid grid-cols-3 gap-4 max-w-lg">
-        <div><div class="display text-amber text-3xl font-800">FREE</div><div class="text-[12px] text-steel mt-1">Diagnostic scan</div></div>
-        <div><div class="display text-bone text-3xl font-800">100%</div><div class="text-[12px] text-steel mt-1">Transmission focus</div></div>
-        <div><div class="display text-bone text-3xl font-800">ALL</div><div class="text-[12px] text-steel mt-1">Makes &amp; models</div></div>
+      <div class="mt-9 grid grid-cols-3 gap-4 max-w-lg">
+        <div><div class="display text-terra text-4xl font-900">1979</div><div class="text-[12px] text-slate mt-1">Family-owned since</div></div>
+        <div><div class="display text-ink text-4xl font-900">4</div><div class="text-[12px] text-slate mt-1">Ford&middot;Chevy&middot;Dodge&middot;GMC</div></div>
+        <div><div class="display text-ink text-4xl font-900">$$$</div><div class="text-[12px] text-slate mt-1">Payment plans</div></div>
       </div>
     </div>
-    <!-- right: gearbox photo bleed -->
-    <div class="relative hero-photo min-h-[46vh] lg:min-h-full">
-      <div class="absolute bottom-5 right-5 bg-coal/70 backdrop-blur border border-white/10 rounded-lg px-4 py-2.5 text-[12px] text-mist flex items-center gap-2">
-        <span class="pulse-dot"></span> Built &amp; road-tested in-house
+    <div class="relative">
+      <div class="photo-frame">
+        <img src="assets/storefront.jpg" alt="Fort Worth Transmission Service shop on NW 25th Street - green and orange building with yellow signs" class="w-full h-auto block" width="960" height="556" />
       </div>
+      <div class="absolute -bottom-4 left-5 sign-badge px-4 py-2 text-[13px]">1300 NW 25TH ST &middot; FORT WORTH</div>
     </div>
   </div>
 </section>
 
-<!-- ===== marquee ===== -->
-<div class="bg-amber text-coal py-3.5">
+<!-- ===== marquee (their signage colors) ===== -->
+<div class="bg-terra text-paper py-3.5">
   <div class="marquee">
     <div class="marquee-track eyebrow text-[14px] font-700">
-      <span>Automatic rebuilds</span><span>&bull;</span><span>Manual &amp; clutch</span><span>&bull;</span><span>Re-manufactured units</span><span>&bull;</span><span>Diagnostics</span><span>&bull;</span><span>Differentials</span><span>&bull;</span><span>Transfer cases</span><span>&bull;</span><span>Fleet service</span><span>&bull;</span><span>Foreign &amp; domestic</span><span>&bull;</span>
-      <span>Automatic rebuilds</span><span>&bull;</span><span>Manual &amp; clutch</span><span>&bull;</span><span>Re-manufactured units</span><span>&bull;</span><span>Diagnostics</span><span>&bull;</span><span>Differentials</span><span>&bull;</span><span>Transfer cases</span><span>&bull;</span><span>Fleet service</span><span>&bull;</span><span>Foreign &amp; domestic</span><span>&bull;</span>
+      <span>Automatic transmissions</span><span class="text-sign">&bull;</span><span>Rebuilds</span><span class="text-sign">&bull;</span><span>Ford &middot; Chevy &middot; Dodge &middot; GMC</span><span class="text-sign">&bull;</span><span>Trucks &middot; SUVs &middot; Vans</span><span class="text-sign">&bull;</span><span>Diagnostics</span><span class="text-sign">&bull;</span><span>Payment plans</span><span class="text-sign">&bull;</span><span>Day &amp; after hours</span><span class="text-sign">&bull;</span><span>Since 1979</span><span class="text-sign">&bull;</span>
+      <span>Automatic transmissions</span><span class="text-sign">&bull;</span><span>Rebuilds</span><span class="text-sign">&bull;</span><span>Ford &middot; Chevy &middot; Dodge &middot; GMC</span><span class="text-sign">&bull;</span><span>Trucks &middot; SUVs &middot; Vans</span><span class="text-sign">&bull;</span><span>Diagnostics</span><span class="text-sign">&bull;</span><span>Payment plans</span><span class="text-sign">&bull;</span><span>Day &amp; after hours</span><span class="text-sign">&bull;</span><span>Since 1979</span><span class="text-sign">&bull;</span>
     </div>
   </div>
 </div>
 
 <!-- ===== why a specialist ===== -->
 <section id="why" class="relative bg-cream py-20 sm:py-24">
-  <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-[.95fr_1.05fr] gap-12 items-center">
+  <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
     <div data-reveal>
-      <span class="eyebrow text-atf text-[12.5px]">Why a specialist</span>
-      <h2 class="display font-800 text-ink text-5xl sm:text-6xl mt-3 leading-[.95]">A general shop guesses.<br>A specialist <span class="text-atf">knows.</span></h2>
-      <p class="mt-6 text-[16px] text-ink/75 leading-relaxed max-w-xl">
-        A transmission is the most complex assembly in your vehicle - hundreds of precision parts
-        under constant load. Most repair shops send transmission work out the door. We don't. It's
-        the only thing we do, all day, every day.
+      <span class="eyebrow text-terra text-[12.5px]">Why a specialist</span>
+      <h2 class="display font-800 text-ink text-5xl sm:text-6xl mt-3 leading-[.95]">A general shop guesses.<br>A specialist <span class="text-terra">knows.</span></h2>
+      <p class="mt-6 text-[16px] text-slate leading-relaxed max-w-xl">
+        A transmission is the most complex assembly in your vehicle. Most repair shops send that work
+        out the door. We don't - it's what this shop has done on NW 25th since 1979. Automatic
+        rebuilds and diagnostics, done in-house and road-tested before you get your keys back.
       </p>
-      <ul class="mt-7 space-y-3.5 text-[15px] text-ink/80">
-        <li class="flex gap-3"><span class="text-amber mt-1">&#9656;</span> Honest diagnosis first - we tell you if it's a sensor or a solenoid before anyone talks rebuild.</li>
-        <li class="flex gap-3"><span class="text-amber mt-1">&#9656;</span> Rebuilt in-house and road-tested before it goes back to you.</li>
-        <li class="flex gap-3"><span class="text-amber mt-1">&#9656;</span> Foreign &amp; domestic, automatic &amp; manual, cars, trucks &amp; fleet.</li>
+      <ul class="mt-7 space-y-3.5 text-[15px] text-ink/85">
+        <li class="flex gap-3"><span class="text-mint mt-[2px]">&#10003;</span> Honest diagnosis first - we tell you what it actually needs before anyone talks rebuild.</li>
+        <li class="flex gap-3"><span class="text-mint mt-[2px]">&#10003;</span> Ford, Chevy, Dodge &amp; GMC automatics - cars, trucks, SUVs &amp; vans.</li>
+        <li class="flex gap-3"><span class="text-mint mt-[2px]">&#10003;</span> Payment plans available, and we answer day &amp; after hours.</li>
       </ul>
     </div>
-    <div class="relative rounded-2xl overflow-hidden shop-photo min-h-[360px] lg:min-h-[440px]" data-reveal>
+    <div class="relative rounded-2xl overflow-hidden gearbox min-h-[320px] lg:min-h-[400px] border border-line" data-reveal>
+      <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent,rgba(32,36,42,.55))"></div>
       <div class="absolute inset-0 flex items-end p-6">
-        <div class="text-bone">
-          <div class="eyebrow text-amber text-[11px] mb-1">In the bay</div>
-          <div class="display text-3xl font-800 leading-none">Every job, road-tested.</div>
+        <div class="text-paper">
+          <div class="eyebrow text-sign text-[11px] mb-1">Built &amp; road-tested in-house</div>
+          <div class="display text-3xl font-800 leading-none">Transmissions are all we do.</div>
         </div>
       </div>
     </div>
@@ -225,62 +215,59 @@ tailwind.config = {
 </section>
 
 <!-- ===== services ===== -->
-<section id="services" class="bg-bone py-20 sm:py-24">
+<section id="services" class="bg-paper py-20 sm:py-24">
   <div class="max-w-7xl mx-auto px-5">
     <div class="max-w-2xl" data-reveal>
-      <span class="eyebrow text-atf text-[12.5px]">What we fix</span>
-      <h2 class="display font-800 text-ink text-5xl sm:text-6xl mt-3">Full transmission service</h2>
-      <p class="mt-4 text-[16px] text-ink/70">From a fluid-and-filter service to a complete rebuild - one shop, start to finish.</p>
+      <span class="eyebrow text-terra text-[12.5px]">What we do</span>
+      <h2 class="display font-800 text-ink text-5xl sm:text-6xl mt-3">Automatic transmission, start to finish</h2>
+      <p class="mt-4 text-[16px] text-slate">From a fluid-and-filter service to a full rebuild - one shop, since 1979.</p>
     </div>
     <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- card -->
       <div class="svc p-6" data-reveal>
-        <div class="svc-ic text-amber mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <div class="svc-ic text-terra mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
         <h3 class="display text-2xl font-700 text-ink">Automatic rebuilds</h3>
-        <p class="mt-2 text-[14.5px] text-ink/70 leading-relaxed">Complete teardown, inspection, and rebuild with quality components - then road-tested before pickup.</p>
+        <p class="mt-2 text-[14.5px] text-slate leading-relaxed">Complete teardown, inspection and rebuild with quality parts - then road-tested before pickup.</p>
       </div>
       <div class="svc p-6" data-reveal>
-        <div class="svc-ic text-amber mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v20M5 5l14 14M19 5L5 19"/><circle cx="12" cy="12" r="2.4"/></svg></div>
-        <h3 class="display text-2xl font-700 text-ink">Clutch &amp; manual</h3>
-        <p class="mt-2 text-[14.5px] text-ink/70 leading-relaxed">Clutch replacement, manual gearbox repair, and shifter issues - diagnosed and fixed right.</p>
-      </div>
-      <div class="svc p-6" data-reveal>
-        <div class="svc-ic text-amber mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h4l2 5 4-14 2 9h6"/></svg></div>
+        <div class="svc-ic text-terra mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h4l2 5 4-14 2 9h6"/></svg></div>
         <h3 class="display text-2xl font-700 text-ink">Computer diagnostics</h3>
-        <p class="mt-2 text-[14.5px] text-ink/70 leading-relaxed">Check-engine light or slipping shifts? A full scan tells us whether it's electronic or internal - free.</p>
+        <p class="mt-2 text-[14.5px] text-slate leading-relaxed">Check-engine light or slipping shifts? We scan and road-test to find the real cause first.</p>
       </div>
       <div class="svc p-6" data-reveal>
-        <div class="svc-ic text-amber mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2"/></svg></div>
+        <div class="svc-ic text-terra mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17h2l1-5h12l1 5h2"/><circle cx="7" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/><path d="M6 12V8h8l3 4"/></svg></div>
+        <h3 class="display text-2xl font-700 text-ink">Trucks, SUVs &amp; vans</h3>
+        <p class="mt-2 text-[14.5px] text-slate leading-relaxed">From the daily driver to the work truck - heavier-duty drivetrains are right in our wheelhouse.</p>
+      </div>
+      <div class="svc p-6" data-reveal>
+        <div class="svc-ic text-terra mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2"/></svg></div>
         <h3 class="display text-2xl font-700 text-ink">Fluid &amp; filter service</h3>
-        <p class="mt-2 text-[14.5px] text-ink/70 leading-relaxed">The maintenance that prevents the rebuild. Proper fluid, new filter, and a pressure check.</p>
+        <p class="mt-2 text-[14.5px] text-slate leading-relaxed">The maintenance that prevents the rebuild - proper fluid, new filter and a pressure check.</p>
       </div>
       <div class="svc p-6" data-reveal>
-        <div class="svc-ic text-amber mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="12" r="3"/><path d="M10 12h4"/></svg></div>
+        <div class="svc-ic text-terra mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="12" r="3"/><path d="M10 12h4"/></svg></div>
         <h3 class="display text-2xl font-700 text-ink">Differentials &amp; transfer cases</h3>
-        <p class="mt-2 text-[14.5px] text-ink/70 leading-relaxed">Driveline noise, 4WD problems, rear-end whine - the rest of the drivetrain, handled here too.</p>
+        <p class="mt-2 text-[14.5px] text-slate leading-relaxed">Driveline noise, 4WD trouble, rear-end whine - the rest of the drivetrain, handled here too.</p>
       </div>
       <div class="svc p-6" data-reveal>
-        <div class="svc-ic text-amber mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17h2l1-5h12l1 5h2"/><circle cx="7" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/><path d="M6 12V8h8l3 4"/></svg></div>
-        <h3 class="display text-2xl font-700 text-ink">Fleet &amp; commercial</h3>
-        <p class="mt-2 text-[14.5px] text-ink/70 leading-relaxed">Keep your trucks moving. Priority diagnostics and turnaround for work vehicles and fleets.</p>
+        <div class="svc-ic text-terra mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h13l2 4h3v5h-2M3 7v9h2"/><circle cx="8" cy="18" r="1.8"/><circle cx="18" cy="18" r="1.8"/></svg></div>
+        <h3 class="display text-2xl font-700 text-ink">Payment plans</h3>
+        <p class="mt-2 text-[14.5px] text-slate leading-relaxed">A transmission shouldn't wreck your month. Ask about a payment plan when you call.</p>
       </div>
     </div>
-    <p class="mt-9 text-[15px] text-ink/70" data-reveal>Don't see your problem? <a href="tel:+18179882260" class="ug text-atf font-semibold">Call (817) 988-2260</a> - if it's in the drivetrain, we work on it.</p>
+    <p class="mt-9 text-[15px] text-slate" data-reveal>Not sure what's wrong? <a href="tel:+18179882260" class="ug text-terra font-semibold">Call (817) 988-2260</a> - day or after hours - and we'll take a look.</p>
   </div>
 </section>
 
-<!-- ===== SIGNATURE: gear-selector process rail ===== -->
-<section id="process" class="relative grain bg-graphite text-bone py-20 sm:py-24 overflow-hidden">
+<!-- ===== SIGNATURE: gear-selector process rail (light) ===== -->
+<section id="process" class="relative bg-cream py-20 sm:py-24 overflow-hidden">
   <div class="max-w-6xl mx-auto px-5">
     <div class="text-center max-w-2xl mx-auto" data-reveal>
-      <span class="eyebrow text-amber text-[12.5px]">How a repair runs</span>
-      <h2 class="display font-800 text-5xl sm:text-6xl mt-3">No surprises. Shift by shift.</h2>
-      <p class="mt-4 text-[16px] text-mist">You always know where your vehicle is in the process - and what it'll cost - before any work begins.</p>
+      <span class="eyebrow text-terra text-[12.5px]">How a repair runs</span>
+      <h2 class="display font-800 text-ink text-5xl sm:text-6xl mt-3">No surprises. Shift by shift.</h2>
+      <p class="mt-4 text-[16px] text-slate">You always know where your vehicle is in the process - and what it'll cost - before any work begins.</p>
     </div>
-
-    <!-- the gear selector -->
     <div class="mt-12 mb-12 max-w-3xl mx-auto" data-reveal>
-      <div id="gate" class="gate text-[26px] sm:text-[34px] justify-center">
+      <div id="gate" class="gate text-[26px] sm:text-[34px] justify-center text-ink">
         <span class="pos" data-pos="0">P</span><span class="bar"></span>
         <span class="pos" data-pos="1">R</span><span class="bar"></span>
         <span class="pos" data-pos="2">N</span><span class="bar"></span>
@@ -289,38 +276,46 @@ tailwind.config = {
         <span class="pos" data-pos="5">1</span>
       </div>
     </div>
-
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-9">
-      <div class="pstep" data-pstep="0"><div class="pstep-num display text-5xl font-900">01</div><h3 class="display text-2xl font-700 mt-2">Free diagnostic scan</h3><p class="text-[14.5px] text-mist mt-1.5 leading-relaxed">We pull the codes and road-test it to find the real cause - sensor, solenoid, or internal.</p></div>
-      <div class="pstep" data-pstep="1"><div class="pstep-num display text-5xl font-900">02</div><h3 class="display text-2xl font-700 mt-2">Honest written estimate</h3><p class="text-[14.5px] text-mist mt-1.5 leading-relaxed">A clear quote up front. If a fluid service fixes it, we say so - we don't upsell a rebuild.</p></div>
-      <div class="pstep" data-pstep="2"><div class="pstep-num display text-5xl font-900">03</div><h3 class="display text-2xl font-700 mt-2">Repair or rebuild</h3><p class="text-[14.5px] text-mist mt-1.5 leading-relaxed">Done in-house by transmission techs with quality parts - not farmed out to a third party.</p></div>
-      <div class="pstep" data-pstep="3"><div class="pstep-num display text-5xl font-900">04</div><h3 class="display text-2xl font-700 mt-2">Road-tested</h3><p class="text-[14.5px] text-mist mt-1.5 leading-relaxed">Every transmission is tested under real driving load before it goes back in your hands.</p></div>
-      <div class="pstep" data-pstep="4"><div class="pstep-num display text-5xl font-900">05</div><h3 class="display text-2xl font-700 mt-2">Backed by a warranty</h3><p class="text-[14.5px] text-mist mt-1.5 leading-relaxed">Ask about the warranty on rebuilds and re-manufactured units when you call for your quote.</p></div>
+      <div class="pstep" data-pstep="0"><div class="pstep-num display text-5xl font-900">01</div><h3 class="display text-2xl font-700 mt-2 text-ink">Diagnostic scan</h3><p class="text-[14.5px] text-slate mt-1.5 leading-relaxed">We pull the codes and road-test it to find the real cause - sensor, solenoid, or internal.</p></div>
+      <div class="pstep" data-pstep="1"><div class="pstep-num display text-5xl font-900">02</div><h3 class="display text-2xl font-700 mt-2 text-ink">Honest written estimate</h3><p class="text-[14.5px] text-slate mt-1.5 leading-relaxed">A clear quote up front - and a payment plan if you need one. If a service fixes it, we say so.</p></div>
+      <div class="pstep" data-pstep="2"><div class="pstep-num display text-5xl font-900">03</div><h3 class="display text-2xl font-700 mt-2 text-ink">Repair or rebuild</h3><p class="text-[14.5px] text-slate mt-1.5 leading-relaxed">Done in-house by transmission techs with quality parts - not farmed out to a third party.</p></div>
+      <div class="pstep" data-pstep="3"><div class="pstep-num display text-5xl font-900">04</div><h3 class="display text-2xl font-700 mt-2 text-ink">Road-tested</h3><p class="text-[14.5px] text-slate mt-1.5 leading-relaxed">Every transmission is tested under real driving load before it goes back in your hands.</p></div>
+      <div class="pstep" data-pstep="4"><div class="pstep-num display text-5xl font-900">05</div><h3 class="display text-2xl font-700 mt-2 text-ink">Back on the road</h3><p class="text-[14.5px] text-slate mt-1.5 leading-relaxed">Pick it up day or after hours - we work around the people who keep Fort Worth moving.</p></div>
       <div class="pstep flex items-center" data-pstep="5">
-        <a href="tel:+18179882260" class="btn-amber bg-amber text-coal font-semibold rounded-full px-6 py-3.5 text-[15px] inline-flex items-center gap-2">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Start with a free scan
+        <a href="tel:+18179882260" class="btn-sign rounded-full px-6 py-3.5 text-[15px] inline-flex items-center gap-2">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Start with a call
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== legacy / trust ===== -->
-<section class="relative band-lift text-bone py-24">
-  <div class="max-w-4xl mx-auto px-5 text-center" data-reveal>
-    <span class="eyebrow text-amber text-[12.5px]">The shop on NW 25th</span>
-    <h2 class="display font-800 text-5xl sm:text-6xl mt-3 leading-[.95]">Ponce's, reborn as<br>Fort Worth Transmission.</h2>
-    <p class="mt-6 text-[17px] text-mist leading-relaxed max-w-2xl mx-auto">
-      The same trusted Northside transmission shop, now under a name that says exactly what we do.
-      Owner Ernesto and the crew bring the same hands-on, no-shortcuts approach that built the
-      reputation here on NW 25th - just with a sign that's easier to find.
-    </p>
-    <div class="mt-9 flex flex-wrap justify-center gap-3 text-[13px]">
-      <span class="border border-white/20 rounded-full px-4 py-2">Family-run shop</span>
-      <span class="border border-white/20 rounded-full px-4 py-2">Straight talk, fair prices</span>
-      <span class="border border-white/20 rounded-full px-4 py-2">Foreign &amp; domestic</span>
-      <span class="border border-white/20 rounded-full px-4 py-2">Free check-engine scan</span>
+<!-- ===== story / since 1979 ===== -->
+<section id="story" class="bg-paper py-20 sm:py-24">
+  <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="relative" data-reveal>
+      <div class="photo-frame"><img src="assets/storefront-alt.jpg" alt="Fort Worth Transmission Service storefront on NW 25th Street, Fort Worth" class="w-full h-auto block" width="590" height="330" /></div>
+      <div class="absolute -top-4 -right-3 sign-badge px-4 py-2 text-[13px]">SINCE 1979</div>
+    </div>
+    <div data-reveal>
+      <span class="eyebrow text-terra text-[12.5px]">The shop on NW 25th</span>
+      <h2 class="display font-800 text-ink text-5xl sm:text-6xl mt-3 leading-[.95]">Formerly Ponce's - <span class="text-terra">back where it started.</span></h2>
+      <p class="mt-6 text-[16px] text-slate leading-relaxed">
+        Owned and operated by Joe &amp; Arlene Ponce, this has been a trusted Fort Worth transmission
+        shop since 1979 - first as Ponce's Transmission, now as Fort Worth Transmission Service,
+        proudly back at the original spot on NW 25th. Same family, same hands-on, no-shortcuts work.
+      </p>
+      <div class="mt-7 grid grid-cols-2 gap-4">
+        <div class="bg-mintSoft rounded-xl p-5 border border-line"><div class="display text-3xl font-900 text-mint">45+ yrs</div><div class="text-[13px] text-slate mt-1">on NW 25th Street</div></div>
+        <div class="bg-cream rounded-xl p-5 border border-line"><div class="display text-3xl font-900 text-terra">Family</div><div class="text-[13px] text-slate mt-1">owned &amp; operated</div></div>
+      </div>
+      <div class="mt-7 flex flex-wrap gap-2.5 text-[13px]">
+        <span class="border border-ink/15 rounded-full px-4 py-2">Straight talk, fair prices</span>
+        <span class="border border-ink/15 rounded-full px-4 py-2">Payment plans</span>
+        <span class="border border-ink/15 rounded-full px-4 py-2">Day &amp; after hours</span>
+      </div>
     </div>
   </div>
 </section>
@@ -329,31 +324,28 @@ tailwind.config = {
 <section id="visit" class="bg-cream py-20 sm:py-24">
   <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-10 items-stretch">
     <div data-reveal>
-      <span class="eyebrow text-atf text-[12.5px]">Visit the shop</span>
+      <span class="eyebrow text-terra text-[12.5px]">Visit the shop</span>
       <h2 class="display font-800 text-ink text-5xl sm:text-6xl mt-3">Drop by or call ahead</h2>
-      <p class="mt-4 text-[16px] text-ink/70 max-w-md">Slipping shifts, a check-engine light, or just want it looked at? Bring it by - or call and we'll get you scheduled fast.</p>
-
+      <p class="mt-4 text-[16px] text-slate max-w-md">Look for the green-and-orange building with the yellow signs on NW 25th. Bring it by, or call and we'll get you scheduled - day or after hours.</p>
       <div class="mt-8 space-y-5">
         <div class="flex items-start gap-4">
-          <span class="text-amber mt-1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <div><div class="display text-xl font-700 text-ink">Address</div><div class="text-[15px] text-ink/75">1300 NW 25th St<br>Fort Worth, TX 76164</div></div>
+          <span class="text-terra mt-1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><div class="display text-xl font-700 text-ink">Address</div><div class="text-[15px] text-slate">1300 NW 25th St<br>Fort Worth, TX 76164</div></div>
         </div>
         <div class="flex items-start gap-4">
-          <span class="text-amber mt-1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-          <div><div class="display text-xl font-700 text-ink">Phone</div><a href="tel:+18179882260" class="ug text-[15px] text-atf font-semibold">(817) 988-2260</a></div>
+          <span class="text-terra mt-1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div><div class="display text-xl font-700 text-ink">Phone</div><a href="tel:+18179882260" class="ug text-[15px] text-terra font-semibold">(817) 988-2260</a></div>
         </div>
         <div class="flex items-start gap-4">
-          <span class="text-amber mt-1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-          <div><div class="display text-xl font-700 text-ink">Hours</div><div class="text-[15px] text-ink/75">Call ahead - <a href="tel:+18179882260" class="ug text-atf font-semibold">(817) 988-2260</a> - and we'll confirm today's hours and get you in.</div></div>
+          <span class="text-terra mt-1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><div class="display text-xl font-700 text-ink">Hours</div><div class="text-[15px] text-slate">We answer day &amp; after hours - call <a href="tel:+18179882260" class="ug text-terra font-semibold">(817) 988-2260</a> and we'll get you in.</div></div>
         </div>
       </div>
-
       <div class="mt-8 flex flex-col sm:flex-row gap-3">
-        <a href="tel:+18179882260" class="btn-amber bg-amber text-coal font-semibold rounded-full px-7 py-3.5 text-[15px] text-center">Call (817) 988-2260</a>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=1300+NW+25th+St+Fort+Worth+TX+76164" target="_blank" rel="noopener" class="border border-ink/20 text-ink rounded-full px-7 py-3.5 text-[15px] text-center hover:bg-ink/5 transition">Get directions</a>
+        <a href="tel:+18179882260" class="btn-sign rounded-full px-7 py-3.5 text-[15px] text-center">Call (817) 988-2260</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=1300+NW+25th+St+Fort+Worth+TX+76164" target="_blank" rel="noopener" class="btn-terra bg-terra text-paper rounded-full px-7 py-3.5 text-[15px] text-center">Get directions</a>
       </div>
     </div>
-
     <div class="rounded-2xl overflow-hidden border border-line min-h-[380px]" data-reveal>
       <iframe title="Fort Worth Transmission Service map" width="100%" height="100%" style="border:0;min-height:380px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
         src="https://www.google.com/maps?q=1300+NW+25th+St,+Fort+Worth,+TX+76164&output=embed"></iframe>
@@ -362,58 +354,59 @@ tailwind.config = {
 </section>
 
 <!-- ===== closing CTA ===== -->
-<section class="relative bg-coal text-bone py-20 grain overflow-hidden">
-  <div class="absolute inset-0 opacity-[.14]" style="background:radial-gradient(circle at 80% 30%, #E8912B, transparent 55%), radial-gradient(circle at 10% 90%, #9B2E22, transparent 50%)"></div>
+<section class="relative bg-terra text-paper py-20 overflow-hidden">
+  <div class="absolute inset-0 opacity-[.16]" style="background:radial-gradient(circle at 82% 28%, #F5C400, transparent 55%), radial-gradient(circle at 12% 88%, #3FA579, transparent 52%)"></div>
   <div class="relative max-w-4xl mx-auto px-5 text-center" data-reveal>
-    <span class="inline-flex items-center justify-center rounded-md bg-amber text-coal font-display font-900 text-2xl w-14 h-14 leading-none mb-6">FW</span>
-    <h2 class="display font-900 text-5xl sm:text-7xl leading-[.92]">Don't ignore a slipping<br>transmission.</h2>
-    <p class="mt-5 text-[17px] text-mist max-w-xl mx-auto">A free scan today can save a rebuild tomorrow. Call the specialists on NW 25th.</p>
+    <span class="sign-badge inline-flex items-center justify-center text-2xl w-16 h-14 leading-none mb-6">FW</span>
+    <h2 class="display font-900 text-5xl sm:text-7xl leading-[.92]">Slipping shifts?<br>Don't wait on it.</h2>
+    <p class="mt-5 text-[17px] text-paper/90 max-w-xl mx-auto">Call the family shop Fort Worth has trusted since 1979 - we'll take a look, give it to you straight, and work out a payment plan if you need one.</p>
     <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="tel:+18179882260" class="btn-amber bg-amber text-coal font-semibold rounded-full px-8 py-4 text-[16px] flex items-center justify-center gap-2">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <a href="tel:+18179882260" class="btn-sign rounded-full px-8 py-4 text-[16px] flex items-center justify-center gap-2">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         (817) 988-2260
       </a>
-      <a href="#visit" class="btn-ghost border border-white/25 text-bone rounded-full px-8 py-4 text-[16px]">Find the shop</a>
+      <a href="#visit" class="btn-ghost border border-paper/40 text-paper rounded-full px-8 py-4 text-[16px]">Find the shop</a>
     </div>
   </div>
 </section>
 
 <!-- ===== footer ===== -->
-<footer class="bg-black text-mist py-12">
+<footer class="bg-ink text-cream/80 py-12">
   <div class="max-w-7xl mx-auto px-5 grid sm:grid-cols-3 gap-8">
     <div>
       <div class="flex items-center gap-3 mb-3">
-        <span class="inline-flex items-center justify-center rounded-md bg-amber text-coal font-display font-900 text-[17px] w-9 h-9 leading-none">FW</span>
-        <span class="display text-bone text-lg font-800 tracking-wide">FORT WORTH TRANSMISSION</span>
+        <span class="sign-badge inline-flex items-center justify-center text-[17px] w-10 h-9 leading-none">FW</span>
+        <span class="display text-paper text-lg font-800 tracking-wide">FORT WORTH TRANSMISSION</span>
       </div>
-      <p class="text-[13.5px] leading-relaxed text-steel">Transmission specialists in Northside Fort Worth. Formerly Ponce's Transmission. Foreign &amp; domestic, cars, trucks &amp; fleet.</p>
+      <p class="text-[13.5px] leading-relaxed text-cream/60">Family-owned automatic transmission shop in Fort Worth since 1979. Formerly Ponce's Transmission. Ford, Chevy, Dodge &amp; GMC - cars, trucks, SUVs &amp; vans.</p>
     </div>
     <div class="text-[14px]">
-      <div class="eyebrow text-amber text-[11px] mb-3">Services</div>
-      <ul class="space-y-1.5 text-steel">
-        <li>Automatic rebuilds</li><li>Clutch &amp; manual</li><li>Diagnostics</li><li>Differentials &amp; transfer cases</li><li>Fleet service</li>
+      <div class="eyebrow text-sign text-[11px] mb-3">Services</div>
+      <ul class="space-y-1.5 text-cream/65">
+        <li>Automatic rebuilds</li><li>Diagnostics</li><li>Trucks, SUVs &amp; vans</li><li>Differentials &amp; transfer cases</li><li>Payment plans</li>
       </ul>
     </div>
     <div class="text-[14px]">
-      <div class="eyebrow text-amber text-[11px] mb-3">Visit</div>
-      <p class="text-steel">1300 NW 25th St<br>Fort Worth, TX 76164</p>
-      <a href="tel:+18179882260" class="ug text-bone font-semibold inline-block mt-2">(817) 988-2260</a>
+      <div class="eyebrow text-sign text-[11px] mb-3">Visit</div>
+      <p class="text-cream/65">1300 NW 25th St<br>Fort Worth, TX 76164</p>
+      <a href="tel:+18179882260" class="ug text-paper font-semibold inline-block mt-2">(817) 988-2260</a>
+      <p class="text-cream/50 text-[12.5px] mt-1">Call day &amp; after hours</p>
     </div>
   </div>
-  <div class="max-w-7xl mx-auto px-5 mt-9 pt-6 border-t border-white/10 text-[12px] text-steel flex flex-col sm:flex-row justify-between gap-2">
+  <div class="max-w-7xl mx-auto px-5 mt-9 pt-6 border-t border-white/10 text-[12px] text-cream/50 flex flex-col sm:flex-row justify-between gap-2">
     <span>&copy; <span id="yr"></span> Fort Worth Transmission Service. All rights reserved.</span>
-    <span>Fort Worth, TX &middot; Foreign &amp; Domestic &middot; Free check-engine scan</span>
+    <span>Fort Worth, TX &middot; Family-owned since 1979</span>
   </div>
 </footer>
 
 <!-- ===== mobile sticky call/directions bar ===== -->
-<div class="fixed bottom-0 inset-x-0 z-50 lg:hidden bg-coal/95 backdrop-blur border-t border-white/10 grid grid-cols-2">
-  <a href="tel:+18179882260" class="flex items-center justify-center gap-2 py-3.5 text-bone font-semibold text-[15px]">
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+<div class="fixed bottom-0 inset-x-0 z-50 lg:hidden bg-ink/95 backdrop-blur border-t border-white/10 grid grid-cols-2">
+  <a href="tel:+18179882260" class="flex items-center justify-center gap-2 py-3.5 text-paper font-semibold text-[15px]">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     Call
   </a>
-  <a href="https://www.google.com/maps/dir/?api=1&destination=1300+NW+25th+St+Fort+Worth+TX+76164" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3.5 bg-amber text-coal font-semibold text-[15px]">
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=1300+NW+25th+St+Fort+Worth+TX+76164" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3.5 bg-sign text-signInk font-bold text-[15px]">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
     Directions
   </a>
 </div>
@@ -425,12 +418,14 @@ tailwind.config = {
   "@type":"AutoRepair",
   "name":"Fort Worth Transmission Service",
   "alternateName":"Ponce's Transmission",
-  "description":"Transmission repair specialists in Fort Worth, TX. Automatic rebuilds, clutch & manual repair, diagnostics, differentials & transfer cases, fleet service. Foreign & domestic. Free check-engine scan.",
+  "description":"Family-owned automatic transmission repair shop in Fort Worth, TX since 1979. Automatic transmission rebuilds, diagnostics, fluid service, differentials & transfer cases for Ford, Chevy, Dodge & GMC - cars, trucks, SUVs & vans. Payment plans available.",
+  "foundingDate":"1979",
   "telephone":"+1-817-988-2260",
   "url":"https://turnkeyweb.org/previews/fort-worth-transmission-service/",
+  "image":"https://turnkeyweb.org/previews/fort-worth-transmission-service/assets/storefront.jpg",
   "address":{"@type":"PostalAddress","streetAddress":"1300 NW 25th St","addressLocality":"Fort Worth","addressRegion":"TX","postalCode":"76164","addressCountry":"US"},
   "areaServed":"Fort Worth, TX",
-  "knowsAbout":["transmission rebuild","transmission repair","clutch replacement","transmission diagnostics","differential repair","transfer case repair","fleet transmission service"]
+  "knowsAbout":["automatic transmission rebuild","transmission repair","transmission diagnostics","Ford transmission","Chevy transmission","Dodge transmission","GMC transmission","differential repair","transfer case repair"]
 }
 </script>
 
@@ -440,17 +435,13 @@ tailwind.config = {
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
-
-// split-line headline (preserve inner HTML)
 document.querySelectorAll('[data-split]').forEach(el => { el.innerHTML = '<span>' + el.innerHTML + '</span>'; });
 
-// Lenis smooth scroll
 let lenis;
 try {
   lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
   function raf(time){ lenis.raf(time); requestAnimationFrame(raf); } requestAnimationFrame(raf);
 } catch(e){}
-// anchored smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', e=>{
     const id = a.getAttribute('href'); if(id.length<2) return;
@@ -464,14 +455,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 if (window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
   if (lenis) lenis.on('scroll', ScrollTrigger.update);
-
-  // reveals
   gsap.utils.toArray('[data-reveal]').forEach(el=>{
-    gsap.fromTo(el, {opacity:0, y:36}, {opacity:1, y:0, duration:1.0, ease:'power3.out',
+    gsap.fromTo(el, {opacity:0, y:34}, {opacity:1, y:0, duration:1.0, ease:'power3.out',
       scrollTrigger:{trigger:el, start:'top 90%'}});
   });
-
-  // SIGNATURE: gear-selector advances through the process steps on scroll
   const positions = gsap.utils.toArray('#gate .pos');
   const steps = gsap.utils.toArray('.pstep');
   function setActive(i){
@@ -485,7 +472,6 @@ if (window.gsap && window.ScrollTrigger) {
   setActive(0);
 }
 
-// REQUIRED screenshot / crawler safety net
 setTimeout(()=>{
   document.querySelectorAll('[data-reveal]').forEach(el=>{
     if (getComputedStyle(el).opacity === '0'){ el.style.opacity=1; el.style.transform='none'; }
