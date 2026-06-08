@@ -53,7 +53,7 @@ tailwind.config = {
   /* PRELOADER: stylized 3D scan opener on infinite black -> reveal site */
   .preload{position:fixed;inset:0;z-index:9999;background:#000;overflow:hidden;perspective:1400px;
     transition:opacity .95s cubic-bezier(.7,0,.3,1), filter .95s ease;
-    animation:preloadSafety 0s linear 9.5s forwards}
+    animation:preloadSafety 0s linear 7.5s forwards}
   .preload.done{opacity:0;pointer-events:none;filter:blur(8px)}
   .preload.done .pl-video{transform:scale(1.14)}
   .preload.done .pl-stage{transform:translateY(-14px) scale(1.05);opacity:0}
@@ -67,13 +67,18 @@ tailwind.config = {
     transform-style:preserve-3d;transition:transform .95s cubic-bezier(.7,0,.3,1),opacity .8s ease}
   .pl-eyebrow{font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:.24em;
     font-size:11.5px;color:#F25C1F;opacity:0;animation:plUp .9s cubic-bezier(.2,.7,.2,1) .25s forwards}
-  .pl-head{font-family:'Archivo Black',sans-serif;line-height:.94;color:#fff;margin-top:14px;
+  .pl-head{position:relative;font-family:'Archivo Black',sans-serif;line-height:.94;color:#fff;margin-top:14px;
     text-shadow:0 6px 30px rgba(0,0,0,.7)}
+  /* continuous light sweep across the headline while the site loads */
+  .pl-head::after{content:"";position:absolute;inset:-4% -12%;pointer-events:none;mix-blend-mode:overlay;
+    background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.5) 50%,transparent 62%);
+    transform:translateX(-115%);animation:plShine 3.2s ease-in-out 1.6s infinite}
   .pl-head .pl-l{display:block;opacity:0;transform:translateY(26px) rotateX(38deg);transform-origin:50% 100%;
-    animation:plReveal 1s cubic-bezier(.2,.7,.2,1) forwards;font-size:clamp(28px,6.2vw,64px)}
-  .pl-head .pl-l:nth-child(1){animation-delay:.40s}
-  .pl-head .pl-l:nth-child(2){animation-delay:.56s}
-  .pl-head .pl-l:nth-child(3){animation-delay:.72s;color:#F25C1F}
+    animation:plReveal .9s cubic-bezier(.2,.7,.2,1) forwards;font-size:clamp(28px,6.2vw,64px)}
+  .pl-head .pl-l:nth-child(1){animation-delay:.22s}
+  .pl-head .pl-l:nth-child(2){animation-delay:.36s}
+  .pl-head .pl-l:nth-child(3){color:#F25C1F;
+    animation:plReveal .9s cubic-bezier(.2,.7,.2,1) .50s forwards, plGlow 2.2s ease-in-out 1.5s infinite}
   .pl-sub{font-family:'Sora',sans-serif;font-size:13.5px;color:#C8CFD5;margin-top:16px;opacity:0;
     animation:plUp .9s ease .98s forwards}
   .pl-progress{position:absolute;left:0;bottom:0;width:100%;height:3px;background:rgba(255,255,255,.08)}
@@ -84,6 +89,9 @@ tailwind.config = {
   .pl-skip:hover{color:#F25C1F;border-color:#F25C1F}
   @keyframes plReveal{to{opacity:1;transform:translateY(0) rotateX(0)}}
   @keyframes plUp{to{opacity:1}}
+  @keyframes plShine{0%{transform:translateX(-115%)}55%,100%{transform:translateX(115%)}}
+  @keyframes plGlow{0%,100%{text-shadow:0 6px 30px rgba(0,0,0,.7),0 0 0 rgba(242,92,31,0)}
+    50%{text-shadow:0 6px 30px rgba(0,0,0,.7),0 0 26px rgba(242,92,31,.7)}}
   @keyframes preloadSafety{to{opacity:0;visibility:hidden;pointer-events:none}}
   @media (prefers-reduced-motion: reduce){ .pl-head .pl-l,.pl-eyebrow,.pl-sub{animation-duration:.01s;opacity:1;transform:none} }
 
@@ -147,8 +155,8 @@ tailwind.config = {
 
 <!-- ===== PRELOADER: 3D scan opener entering the site ===== -->
 <div id="preload" class="preload" role="dialog" aria-label="Intro">
-  <video id="preloadVid" class="pl-video" autoplay muted playsinline preload="auto" poster="assets/preloader-poster.jpg">
-    <source src="assets/preloader.mp4" type="video/mp4" />
+  <video id="preloadVid" class="pl-video" autoplay muted playsinline preload="auto" poster="assets/preloader-poster.jpg?v=2">
+    <source src="assets/preloader.mp4?v=2" type="video/mp4" />
   </video>
   <div class="pl-scrim"></div>
   <div class="pl-stage">
@@ -454,12 +462,15 @@ tailwind.config = {
   }
   if(skip){ skip.addEventListener('click', finish); }
   if(vid){
+    // Speed the clip up so the intro finishes ~2s sooner while keeping the whole
+    // animation (rate = dur/(dur-2), capped). 7s clip -> ~5s load.
+    vid.addEventListener('loadedmetadata', ()=>{ const d=vid.duration||0; if(d>2.6){ vid.playbackRate=Math.min(1.7,Math.max(1,d/(d-2))); } });
     vid.addEventListener('timeupdate', ()=>{ if(bar&&vid.duration){ bar.style.width=Math.min(100,(vid.currentTime/vid.duration)*100)+'%'; } });
-    vid.addEventListener('ended', ()=> setTimeout(finish, 260));
+    vid.addEventListener('ended', ()=> setTimeout(finish, 180));
     vid.addEventListener('error', ()=> setTimeout(finish, 300));
     const p=vid.play && vid.play(); if(p&&p.catch){ p.catch(()=>{}); }
   }
-  setTimeout(finish, 9000);
+  setTimeout(finish, 7000);
   window.addEventListener('load', ()=>{ if(vid && vid.readyState<2) setTimeout(()=>{ if(!done) finish(); }, 3000); });
 })();
 
