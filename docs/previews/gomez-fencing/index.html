@@ -121,6 +121,27 @@
   .nav-link:hover::after { width:100%; }
 
   .wordmark { font-family:'Oswald',sans-serif; font-weight:700; letter-spacing:.04em; }
+
+  /* Recent Work gallery */
+  .gal-item { position:relative; overflow:hidden; border-radius:2px; cursor:pointer; border:1px solid rgba(244,236,227,.08); }
+  .gal-item img { width:100%; height:100%; object-fit:cover; transition:transform 1s cubic-bezier(.2,.7,.3,1), filter .6s; filter:brightness(.84) saturate(1.03); }
+  .gal-item:hover img { transform:scale(1.06); filter:brightness(.98) saturate(1.05); }
+  .gal-item::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(10,8,6,.72)); pointer-events:none; }
+  .gal-cap { position:absolute; left:15px; bottom:13px; z-index:2; }
+  .gal-plus { position:absolute; top:12px; right:13px; z-index:2; width:30px; height:30px; display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(244,236,227,.45); border-radius:3px; color:#F4ECE3; font-size:20px; line-height:1; opacity:0; transform:translateY(-4px); transition:opacity .4s, transform .4s; background:rgba(10,8,6,.35); }
+  .gal-item:hover .gal-plus { opacity:1; transform:translateY(0); }
+
+  /* Lightbox */
+  #lightbox { position:fixed; inset:0; z-index:100; background:rgba(8,6,5,.95); display:none; align-items:center; justify-content:center; padding:6vw 4vw; }
+  #lightbox.open { display:flex; }
+  #lightbox img { max-width:94vw; max-height:86vh; border-radius:3px; box-shadow:0 30px 90px rgba(0,0,0,.65); }
+  #lightbox .lb-close { position:absolute; top:18px; right:24px; color:#F4ECE3; font-size:34px; line-height:1; cursor:pointer; opacity:.8; transition:opacity .25s; }
+  #lightbox .lb-close:hover { opacity:1; }
+  #lightbox .lb-nav { position:absolute; top:50%; transform:translateY(-50%); color:#F4ECE3; font-size:46px; line-height:1; cursor:pointer; padding:14px 20px; user-select:none; opacity:.65; transition:opacity .25s; }
+  #lightbox .lb-nav:hover { opacity:1; }
+  #lightbox .lb-prev { left:6px; } #lightbox .lb-next { right:6px; }
+  #lightbox .lb-cap { position:absolute; bottom:22px; left:0; right:0; text-align:center; color:#F4ECE3; }
 </style>
 </head>
 
@@ -130,14 +151,14 @@
 <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex items-center justify-between h-[68px]">
-      <a href="#top" class="flex items-center gap-3 group">
-        <span class="wordmark inline-flex items-center bg-cedar text-coal px-2.5 py-1.5 text-sm leading-none rounded-sm border border-amber/40">GF</span>
-        <span class="wordmark text-bone text-lg leading-none">GOMEZ <span class="text-amber">FENCING</span></span>
+      <a href="#top" class="flex items-center group">
+        <img src="assets/logo.png" alt="Gomez Fencing — Installs and Repairs" class="h-12 sm:h-[52px] w-auto rounded-sm transition-transform duration-500 group-hover:scale-[1.04]" />
       </a>
       <nav class="hidden lg:flex items-center gap-9 text-[13px] font-display font-500 tracking-wider2 uppercase text-bone/75">
         <a href="#build" class="nav-link">What We Build</a>
         <a href="#process" class="nav-link">Our Process</a>
         <a href="#styles" class="nav-link">Styles</a>
+        <a href="#work" class="nav-link">Recent Work</a>
         <a href="#area" class="nav-link">Service Area</a>
       </nav>
       <a href="tel:+12105959810" class="hidden sm:inline-flex items-center gap-2 bg-amber text-coal font-display font-600 tracking-wider2 uppercase text-[13px] px-5 py-2.5 rounded-sm btn-amber">
@@ -367,6 +388,63 @@
   </a>
 </section>
 
+<!-- ===== RECENT WORK (real photo gallery + lightbox) ===== -->
+<section id="work" class="bg-coal py-24 sm:py-28 blueprint">
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-12" data-reveal>
+      <div class="amber-rule mb-6"></div>
+      <h2 class="font-display font-700 uppercase text-bone text-4xl sm:text-5xl leading-[0.95]">Recent Work</h2>
+      <p class="mt-5 text-bone/70 leading-relaxed">Real fences in real Houston yards — driveway gates, cedar privacy lines, pool enclosures and custom builds straight from the Gomez crew.</p>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-[150px] sm:auto-rows-[208px] lg:auto-rows-[232px]">
+      <div class="gal-item col-span-2 row-span-1" data-full="assets/work/gate.jpg" data-cap="Custom Estate Driveway Gate" data-reveal>
+        <img src="assets/work/gate.jpg" alt="Custom black estate driveway gate with ranch rail fence — Gomez Fencing" loading="lazy">
+        <span class="gal-plus">+</span>
+        <span class="gal-cap font-display font-500 tracking-wider2 uppercase text-bone text-xs sm:text-sm">Estate Driveway Gate</span>
+      </div>
+      <div class="gal-item" data-full="assets/work/cedar.jpg" data-cap="Stained Cedar Privacy Gate with Decorative Hardware" data-reveal>
+        <img src="assets/work/cedar.jpg" alt="Freshly stained cedar privacy fence with double gate and decorative hinges — Gomez Fencing" loading="lazy">
+        <span class="gal-plus">+</span>
+        <span class="gal-cap font-display font-500 tracking-wider2 uppercase text-bone text-xs sm:text-sm">Stained Cedar Gate</span>
+      </div>
+      <div class="gal-item" data-full="assets/work/night.jpg" data-cap="Custom Steel-Frame Horizontal Cedar Gate" data-reveal>
+        <img src="assets/work/night.jpg" alt="Custom horizontal cedar fence on black steel frame — Gomez Fencing" loading="lazy">
+        <span class="gal-plus">+</span>
+        <span class="gal-cap font-display font-500 tracking-wider2 uppercase text-bone text-xs sm:text-sm">Custom Steel &amp; Cedar</span>
+      </div>
+      <div class="gal-item" data-full="assets/work/pool.jpg" data-cap="Poolside Cedar Privacy Fence" data-reveal>
+        <img src="assets/work/pool.jpg" alt="Cedar privacy fence around a landscaped pool — Gomez Fencing" loading="lazy">
+        <span class="gal-plus">+</span>
+        <span class="gal-cap font-display font-500 tracking-wider2 uppercase text-bone text-xs sm:text-sm">Poolside Privacy</span>
+      </div>
+      <div class="gal-item" data-full="assets/work/woodrun.jpg" data-cap="Long Cedar Privacy Run" data-reveal>
+        <img src="assets/work/woodrun.jpg" alt="Long cedar privacy fence run along a side yard — Gomez Fencing" loading="lazy">
+        <span class="gal-plus">+</span>
+        <span class="gal-cap font-display font-500 tracking-wider2 uppercase text-bone text-xs sm:text-sm">Cedar Privacy Run</span>
+      </div>
+      <div class="gal-item col-span-2" data-full="assets/work/boardgold.jpg" data-cap="Board-on-Board Cedar Privacy Fence" data-reveal>
+        <img src="assets/work/boardgold.jpg" alt="Board-on-board cedar privacy fence at golden hour — Gomez Fencing" loading="lazy">
+        <span class="gal-plus">+</span>
+        <span class="gal-cap font-display font-500 tracking-wider2 uppercase text-bone text-xs sm:text-sm">Board-on-Board Cedar</span>
+      </div>
+    </div>
+
+    <div class="mt-10" data-reveal>
+      <a href="#quote" class="inline-flex items-center gap-2 text-amber font-display font-600 tracking-wider2 uppercase text-sm nav-link">Get this on your yard &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LIGHTBOX ===== -->
+<div id="lightbox" aria-hidden="true">
+  <span class="lb-close" data-lb-close>&times;</span>
+  <span class="lb-nav lb-prev" data-lb-prev>&#8249;</span>
+  <img id="lb-img" src="" alt="Gomez Fencing project">
+  <span class="lb-nav lb-next" data-lb-next>&#8250;</span>
+  <p class="lb-cap font-display font-500 tracking-wider2 uppercase text-sm" id="lb-cap"></p>
+</div>
+
 <!-- ===== TESTIMONIAL BAND ===== -->
 <section class="relative bg-cedardk py-20 sm:py-24 blueprint">
   <div class="relative max-w-4xl mx-auto px-5 sm:px-8 text-center" data-reveal>
@@ -432,7 +510,7 @@
 <!-- ===== CTA (high-contrast amber) ===== -->
 <section id="quote" class="relative bg-amber text-coal py-24 sm:py-28 blueprint overflow-hidden">
   <div class="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
-    <span class="wordmark inline-flex items-center bg-coal text-amber px-4 py-2 text-sm leading-none rounded-sm mb-7">GOMEZ FENCING</span>
+    <img src="assets/logo.png" alt="Gomez Fencing — Installs and Repairs" class="h-20 w-auto rounded-sm mb-7 inline-block shadow-lg ring-1 ring-coal/20" />
     <h2 data-reveal class="font-display font-700 uppercase text-coal text-5xl sm:text-7xl leading-[0.92]">
       Get A Free Quote
     </h2>
@@ -456,9 +534,8 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
       <div>
-        <div class="flex items-center gap-3 mb-5">
-          <span class="wordmark inline-flex items-center bg-cedar text-coal px-2.5 py-1.5 text-sm leading-none rounded-sm border border-amber/40">GF</span>
-          <span class="wordmark text-bone text-lg leading-none">GOMEZ <span class="text-amber">FENCING</span></span>
+        <div class="mb-5">
+          <img src="assets/logo.png" alt="Gomez Fencing — Installs and Repairs" class="h-16 w-auto rounded-sm" />
         </div>
         <p class="text-bone/55 text-sm leading-relaxed">Gomez Fencing Installs and Repairs LLC. Building straight, lasting fences across Greater Houston for 20+ years.</p>
       </div>
@@ -558,6 +635,36 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // --- Lightbox (Recent Work gallery) ---
+  (function(){
+    const items = Array.from(document.querySelectorAll('.gal-item'));
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbCap = document.getElementById('lb-cap');
+    if (!lb || !items.length) return;
+    let idx = 0;
+    const show = i => {
+      idx = (i + items.length) % items.length;
+      const el = items[idx];
+      lbImg.src = el.getAttribute('data-full');
+      lbImg.alt = el.querySelector('img') ? el.querySelector('img').alt : 'Gomez Fencing project';
+      lbCap.textContent = el.getAttribute('data-cap') || '';
+    };
+    const open = i => { show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; };
+    const close = () => { lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; };
+    items.forEach((el,i)=> el.addEventListener('click', ()=> open(i)));
+    lb.querySelector('[data-lb-close]').addEventListener('click', close);
+    lb.querySelector('[data-lb-prev]').addEventListener('click', e=>{ e.stopPropagation(); show(idx-1); });
+    lb.querySelector('[data-lb-next]').addEventListener('click', e=>{ e.stopPropagation(); show(idx+1); });
+    lb.addEventListener('click', e=>{ if (e.target === lb) close(); });
+    document.addEventListener('keydown', e=>{
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(idx-1);
+      else if (e.key === 'ArrowRight') show(idx+1);
+    });
+  })();
 
   // --- Lenis smooth scroll ---
   let lenis;
