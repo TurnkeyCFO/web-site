@@ -126,6 +126,14 @@
   .timeline-line { background: linear-gradient(180deg, transparent, #4A6B4F 12%, #B98D52 88%, transparent); }
 
   ::selection { background:#7FA88C; color:#1A2A1F; }
+
+  /* nav color states: light over the dark hero (top), dark once the solid bg appears on scroll */
+  #nav .logo-text   { color:#FBF6EF; transition:color .3s ease; }
+  #nav .logo-accent { color:#A9C8B0; transition:color .3s ease; }
+  #nav .nav-link    { color:rgba(251,246,239,.9); transition:color .3s ease; }
+  #nav.scrolled .logo-text   { color:#231419; }
+  #nav.scrolled .logo-accent { color:#4A6B4F; }
+  #nav.scrolled .nav-link    { color:rgba(35,20,25,.8); }
 </style>
 </head>
 
@@ -141,13 +149,13 @@
             <path d="M12 22v-7"/><path d="M12 15c-3.5 0-6-2.5-6-6 0-3 2-6 6-7 4 1 6 4 6 7 0 3.5-2.5 6-6 6z"/>
           </svg>
         </span>
-        <span class="font-serif font-bold text-[1.05rem] tracking-tight text-bark leading-none">Garcia's <span class="text-olive">Tree Service</span></span>
+        <span class="font-serif font-bold text-[1.05rem] tracking-tight leading-none logo-text">Garcia's <span class="logo-accent">Tree Service</span></span>
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-[.92rem] font-medium text-bark/80">
-        <a href="#services" class="ugrow">Services</a>
-        <a href="#legacy" class="ugrow">34 Years</a>
-        <a href="#reviews" class="ugrow">Reviews</a>
-        <a href="#area" class="ugrow">Service Area</a>
+      <nav class="hidden md:flex items-center gap-8 text-[.92rem] font-medium">
+        <a href="#services" class="ugrow nav-link">Services</a>
+        <a href="#legacy" class="ugrow nav-link">34 Years</a>
+        <a href="#reviews" class="ugrow nav-link">Reviews</a>
+        <a href="#area" class="ugrow nav-link">Service Area</a>
       </nav>
       <a href="tel:+18186059414" class="hidden sm:inline-flex items-center gap-2 bg-bark text-cream text-[.9rem] font-semibold px-4 py-2.5 rounded-full btn-primary">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -578,8 +586,8 @@
   // nav background on scroll
   const nav = document.getElementById('nav');
   function onScroll(){
-    if (window.scrollY > 40) nav.classList.add('bg-bone/90','backdrop-blur','shadow-sm');
-    else nav.classList.remove('bg-bone/90','backdrop-blur','shadow-sm');
+    if (window.scrollY > 40) nav.classList.add('bg-bone/90','backdrop-blur','shadow-sm','scrolled');
+    else nav.classList.remove('bg-bone/90','backdrop-blur','shadow-sm','scrolled');
   }
   onScroll(); window.addEventListener('scroll', onScroll);
 
