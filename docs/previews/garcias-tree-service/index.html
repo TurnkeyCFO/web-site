@@ -134,6 +134,29 @@
   #nav.scrolled .logo-text   { color:#231419; }
   #nav.scrolled .logo-accent { color:#4A6B4F; }
   #nav.scrolled .nav-link    { color:rgba(35,20,25,.8); }
+
+  /* logo badge — white plaque keeps the dark logo legible over both the hero and the scrolled bar */
+  .logo-badge { display:inline-flex; align-items:center; background:#fff; border-radius:13px;
+    padding:7px 13px; box-shadow:0 3px 16px rgba(26,42,31,.20); transition:box-shadow .3s ease, transform .4s ease; }
+  .logo-badge:hover { transform:translateY(-1px); box-shadow:0 6px 22px rgba(26,42,31,.26); }
+  #nav.scrolled .logo-badge { box-shadow:0 1px 8px rgba(26,42,31,.14); }
+  .logo-img { height:42px; width:auto; display:block; }
+  @media (max-width:640px){ .logo-img { height:33px; } .logo-badge{ padding:6px 10px; border-radius:11px; } }
+
+  /* full-bleed "the result" lawn band */
+  .work-band { background:#1A2A1F; }
+  .work-band-bg { position:absolute; inset:0; z-index:0;
+    background:url('assets/work-lawn-wide.jpg') center 55%/cover no-repeat; }
+  @media (min-width:768px){ .work-band-bg { background-attachment:fixed; } }
+
+  /* recent-work gallery cards */
+  .work-card { position:relative; border-radius:1rem; overflow:hidden; box-shadow:0 8px 30px rgba(26,42,31,.13); }
+  .work-card img { width:100%; height:300px; object-fit:cover; display:block;
+    transition:transform .9s cubic-bezier(.16,.84,.44,1); }
+  .work-card:hover img { transform:scale(1.06); }
+  .work-card figcaption { position:absolute; inset:auto 0 0 0; padding:1.4rem 1.1rem .9rem;
+    color:#FBF6EF; font-size:.9rem; font-weight:600; letter-spacing:.01em;
+    background:linear-gradient(0deg, rgba(13,21,16,.85), rgba(13,21,16,.0)); }
 </style>
 </head>
 
@@ -143,13 +166,10 @@
 <header class="fixed top-0 inset-x-0 z-50 transition-all duration-300" id="nav">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex items-center justify-between py-4">
-      <a href="#top" class="flex items-center gap-2.5 group">
-        <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-olive text-cream shadow-sm">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22v-7"/><path d="M12 15c-3.5 0-6-2.5-6-6 0-3 2-6 6-7 4 1 6 4 6 7 0 3.5-2.5 6-6 6z"/>
-          </svg>
+      <a href="#top" class="flex items-center group" aria-label="Garcia's Service and Lawn Care — home">
+        <span class="logo-badge">
+          <img src="assets/logo-mark.png" alt="Garcia's Service and Lawn Care" class="logo-img" />
         </span>
-        <span class="font-serif font-bold text-[1.05rem] tracking-tight leading-none logo-text">Garcia's <span class="logo-accent">Tree Service</span></span>
       </a>
       <nav class="hidden md:flex items-center gap-8 text-[.92rem] font-medium">
         <a href="#services" class="ugrow nav-link">Services</a>
@@ -292,6 +312,21 @@
   </div>
 </section>
 
+<!-- ===================== WORK BAND (clean lawn, full-bleed) ===================== -->
+<section class="work-band relative overflow-hidden" aria-label="A freshly mowed, manicured lawn">
+  <div class="work-band-bg"></div>
+  <div class="absolute inset-0" style="background:linear-gradient(90deg, rgba(13,21,16,.74) 0%, rgba(13,21,16,.34) 52%, rgba(13,21,16,.10) 100%);"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-24 sm:py-32" data-reveal>
+    <p class="text-[.78rem] font-semibold uppercase tracking-[.22em] text-sage mb-3" style="text-shadow:0 2px 14px rgba(0,0,0,.5);">The result</p>
+    <h2 class="font-serif font-bold text-cream text-[1.9rem] sm:text-[2.7rem] leading-[1.08] tracking-tight max-w-2xl" style="text-shadow:0 4px 26px rgba(0,0,0,.55);">
+      The yard, left better than we found it.
+    </h2>
+    <p class="mt-4 text-cream/85 leading-relaxed max-w-xl" style="text-shadow:0 2px 16px rgba(0,0,0,.5);">
+      Edged, mowed, raked, and hauled off — every job ends with a lawn the whole street notices.
+    </p>
+  </div>
+</section>
+
 <!-- ===================== LEGACY / STORY (clip-path bleed image) ===================== -->
 <section id="legacy" class="bg-cream relative grain overflow-hidden">
   <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
@@ -426,6 +461,35 @@
           class="w-full h-full min-h-[380px]" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RECENT WORK GALLERY ===================== -->
+<section class="bg-bone relative grain">
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
+    <div class="max-w-2xl mb-12" data-reveal>
+      <p class="text-[.78rem] font-semibold uppercase tracking-[.22em] text-olive mb-3">Recent work</p>
+      <h2 class="font-serif font-bold text-bark text-[2rem] sm:text-[2.8rem] leading-[1.05] tracking-tight">
+        A few yards we've left better.
+      </h2>
+      <p class="mt-4 text-bark/70 leading-relaxed">
+        Clean lawns, fresh landscaping, and curb appeal that lasts — across Katy and west Houston.
+      </p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" data-reveal>
+      <figure class="work-card">
+        <img src="assets/work-1.jpg" alt="Manicured front-yard lawn at a Katy-area home" loading="lazy" />
+        <figcaption>Edged &amp; mowed — curb appeal that lasts</figcaption>
+      </figure>
+      <figure class="work-card">
+        <img src="assets/work-2.jpg" alt="Landscaped garden beds, hedges, and a tidy path" loading="lazy" />
+        <figcaption>Beds, hedges &amp; a clean garden path</figcaption>
+      </figure>
+      <figure class="work-card sm:col-span-2 lg:col-span-1">
+        <img src="assets/work-3.jpg" alt="Freshly landscaped yard with groomed turf and stone path" loading="lazy" />
+        <figcaption>Fresh landscaping, groomed turf</figcaption>
+      </figure>
     </div>
   </div>
 </section>
