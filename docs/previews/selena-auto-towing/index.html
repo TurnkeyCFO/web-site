@@ -338,24 +338,40 @@ tailwind.config = {
       <h2 class="display text-ink text-4xl md:text-5xl uppercase mt-3">What stranded drivers say</h2>
       <div class="road-rule w-28 mt-5"></div>
     </div>
-    <div class="grid md:grid-cols-3 gap-5">
-      <figure class="svc p-7" data-reveal>
-        <div class="text-gold text-xl mb-3">★★★★★</div>
-        <blockquote class="text-ink leading-relaxed">"After breaking down on I-35, Selena Towing was a bright spot in a really stressful situation. Quick to answer and quick to show up."</blockquote>
-        <figcaption class="text-steel text-sm mt-4 head font-700 uppercase tracking-wide">Verified Yelp reviewer</figcaption>
-      </figure>
-      <figure class="svc p-7" data-reveal>
-        <div class="text-gold text-xl mb-3">★★★★★</div>
-        <blockquote class="text-ink leading-relaxed">"Quick and fast towing service. Great service and reasonable rates — exactly what you want when you're stuck."</blockquote>
-        <figcaption class="text-steel text-sm mt-4 head font-700 uppercase tracking-wide">Verified Yelp reviewer</figcaption>
-      </figure>
-      <figure class="svc p-7" data-reveal>
-        <div class="text-gold text-xl mb-3">★★★★★</div>
-        <blockquote class="text-ink leading-relaxed">"Called late, got a straight answer and a fair price up front. Driver was careful loading my car. Would call them again."</blockquote>
-        <figcaption class="text-steel text-sm mt-4 head font-700 uppercase tracking-wide">Verified Yelp reviewer</figcaption>
-      </figure>
-    </div>
-    <p class="text-steel/60 text-xs mt-6" data-reveal>Review quotes paraphrased from public Yelp feedback; reviewer names withheld for privacy.</p>
+
+    <!-- featured hero review -->
+    <figure class="relative bg-paper border border-line rounded-2xl shadow-sm overflow-hidden mb-12" data-reveal>
+      <div class="absolute top-0 inset-x-0 h-1.5 road-rule"></div>
+      <div class="grid lg:grid-cols-[1.15fr,1fr]">
+        <div class="p-8 sm:p-10 lg:p-12">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="head text-[11px] tracking-[.18em] uppercase text-white bg-red px-2.5 py-1 rounded">Featured review</span>
+            <span class="text-gold text-xl leading-none">★★★★★</span>
+          </div>
+          <p class="display text-ink text-2xl sm:text-3xl leading-[1.15] uppercase">
+            &ldquo;Sam went the extra mile<br class="hidden sm:block"> and was a <span class="text-red">rock star.</span>&rdquo;
+          </p>
+          <div class="road-rule w-20 mt-5 mb-6"></div>
+          <blockquote class="text-steel text-[15px] sm:text-base leading-relaxed space-y-4">
+            <p>On the heels of what was probably the most stressful and fail-filled 24 hours in my driving life, Selena Towing was a bright spot. I'd broken down on IH-35 in the fast lane and no towing company would pick my car up &mdash; because it was in the &ldquo;no man's land&rdquo; that is the stretch between Buda &amp; Austin just north of the 45 toll.</p>
+            <p>Sam went the extra mile, and when the insurance company cancelled his call to get my car he reached out, explained things, and offered his service &mdash; and was a rock star.</p>
+            <p class="text-ink font-semibold">I mean&hellip; how many people take a photo with their tow truck driver?</p>
+          </blockquote>
+          <figcaption class="text-steel text-sm mt-7 head font-700 uppercase tracking-wide">Verified Yelp reviewer &middot; I-35 corridor breakdown</figcaption>
+        </div>
+        <div class="relative bg-ink text-white p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
+          <div class="text-gold display text-7xl leading-none mb-4">&rdquo;</div>
+          <p class="text-white/90 text-lg leading-relaxed">The calls no one else will take &mdash; the &ldquo;no man's land&rdquo; stretches of I-35, the cancelled insurance dispatch, the 2 a.m. breakdown &mdash; are exactly the ones we show up for.</p>
+          <div class="road-rule w-20 mt-6"></div>
+          <a href="tel:+15126602014" class="btn-red inline-flex items-center justify-center gap-2.5 bg-red text-white head font-800 text-base px-5 py-3.5 rounded-xl mt-8 self-start">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call the team that shows up
+          </a>
+        </div>
+      </div>
+    </figure>
+
+    <p class="text-steel/60 text-xs mt-6" data-reveal>Review shared from public Yelp feedback; reviewer name withheld for privacy.</p>
   </div>
 </section>
 
