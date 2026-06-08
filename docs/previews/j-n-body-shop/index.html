@@ -53,7 +53,7 @@ tailwind.config = {
   /* PRELOADER: stylized 3D scan opener on infinite black -> reveal site */
   .preload{position:fixed;inset:0;z-index:9999;background:#000;overflow:hidden;perspective:1400px;
     transition:opacity .95s cubic-bezier(.7,0,.3,1), filter .95s ease;
-    animation:preloadSafety 0s linear 7.5s forwards}
+    animation:preloadSafety 0s linear 6.5s forwards}
   .preload.done{opacity:0;pointer-events:none;filter:blur(8px)}
   .preload.done .pl-video{transform:scale(1.14)}
   .preload.done .pl-stage{transform:translateY(-14px) scale(1.05);opacity:0}
@@ -462,15 +462,15 @@ tailwind.config = {
   }
   if(skip){ skip.addEventListener('click', finish); }
   if(vid){
-    // Speed the clip up so the intro finishes ~2s sooner while keeping the whole
-    // animation (rate = dur/(dur-2), capped). 7s clip -> ~5s load.
-    vid.addEventListener('loadedmetadata', ()=>{ const d=vid.duration||0; if(d>2.6){ vid.playbackRate=Math.min(1.7,Math.max(1,d/(d-2))); } });
+    // Speed the clip up so the intro finishes ~3s sooner while keeping the whole
+    // animation (rate = dur/(dur-3), capped). 7s clip -> ~4s load.
+    vid.addEventListener('loadedmetadata', ()=>{ const d=vid.duration||0; if(d>3.6){ vid.playbackRate=Math.min(1.85,Math.max(1,d/(d-3))); } });
     vid.addEventListener('timeupdate', ()=>{ if(bar&&vid.duration){ bar.style.width=Math.min(100,(vid.currentTime/vid.duration)*100)+'%'; } });
     vid.addEventListener('ended', ()=> setTimeout(finish, 180));
     vid.addEventListener('error', ()=> setTimeout(finish, 300));
     const p=vid.play && vid.play(); if(p&&p.catch){ p.catch(()=>{}); }
   }
-  setTimeout(finish, 7000);
+  setTimeout(finish, 6000);
   window.addEventListener('load', ()=>{ if(vid && vid.readyState<2) setTimeout(()=>{ if(!done) finish(); }, 3000); });
 })();
 
