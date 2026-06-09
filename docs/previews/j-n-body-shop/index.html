@@ -156,7 +156,7 @@ tailwind.config = {
 <!-- ===== PRELOADER: 3D scan opener entering the site ===== -->
 <div id="preload" class="preload" role="dialog" aria-label="Intro">
   <video id="preloadVid" class="pl-video" autoplay muted playsinline preload="auto" poster="assets/preloader-poster.jpg?v=2">
-    <source src="assets/preloader.mp4?v=2" type="video/mp4" />
+    <source src="assets/preloader.mp4?v=3" type="video/mp4" />
   </video>
   <div class="pl-scrim"></div>
   <div class="pl-stage">
@@ -462,9 +462,9 @@ tailwind.config = {
   }
   if(skip){ skip.addEventListener('click', finish); }
   if(vid){
-    // Speed the clip up so the intro finishes ~3s sooner while keeping the whole
-    // animation (rate = dur/(dur-3), capped). 7s clip -> ~4s load.
-    vid.addEventListener('loadedmetadata', ()=>{ const d=vid.duration||0; if(d>3.6){ vid.playbackRate=Math.min(1.85,Math.max(1,d/(d-3))); } });
+    // The clip is trimmed to end on the finished car. Play it to a fixed ~4s
+    // intro (rate = dur/4, capped) so it's snappy without rushing the open.
+    vid.addEventListener('loadedmetadata', ()=>{ const d=vid.duration||0; if(d>1){ vid.playbackRate=Math.min(1.9,Math.max(1,d/4.0)); } });
     vid.addEventListener('timeupdate', ()=>{ if(bar&&vid.duration){ bar.style.width=Math.min(100,(vid.currentTime/vid.duration)*100)+'%'; } });
     vid.addEventListener('ended', ()=> setTimeout(finish, 180));
     vid.addEventListener('error', ()=> setTimeout(finish, 300));
