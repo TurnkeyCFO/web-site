@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://theharbourcompany.com/consultations">
 <meta property="og:title" content="Schedule a Consultation — The Harbour Company">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Raleway:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="assets/styles.css">
 </head>
@@ -35,7 +35,7 @@
 </div>
 
 <header class="page-hero">
-  <div class="hero-media"><img data-fallback src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=2100&q=80" alt="Refined sitting room"></div>
+  <div class="hero-media"><img data-fallback src="assets/img/tezza-1527.jpg" alt="Refined sitting room"></div>
   <div class="hero-scrim"></div>
   <div class="wrap hero-content">
     <div data-reveal><span class="eyebrow" style="color:var(--brass-2)">Your home. Our care.</span></div>
@@ -66,22 +66,8 @@
       </div>
     </div>
 
-    <div class="card" data-reveal style="padding:2.6rem">
-      <h3 style="font-size:1.5rem;margin-bottom:1.4rem">Request your consultation</h3>
-      <form onsubmit="event.preventDefault();this.querySelector('.ok').style.display='block';this.querySelector('button').textContent='Sent — we\'ll be in touch';">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.1rem">
-          <div><label class="fl">First name</label><input class="field" required placeholder="First"></div>
-          <div><label class="fl">Last name</label><input class="field" required placeholder="Last"></div>
-        </div>
-        <div style="margin-bottom:1.1rem"><label class="fl">Email</label><input class="field" type="email" required placeholder="you@email.com"></div>
-        <div style="margin-bottom:1.1rem"><label class="fl">Phone</label><input class="field" type="tel" placeholder="(   )    -    "></div>
-        <div style="margin-bottom:1.1rem"><label class="fl">What are you considering?</label>
-          <select class="field"><option>Renovation</option><option>Reconstruction</option><option>Restoration</option><option>Concierge home management</option><option>Not sure yet</option></select>
-        </div>
-        <div style="margin-bottom:1.4rem"><label class="fl">Tell us about your home</label><textarea class="field" rows="4" placeholder="A few words about the space and your vision…"></textarea></div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Request consultation</button>
-        <p class="ok" style="display:none;color:var(--brass);margin-top:1rem;font-size:.9rem">Thank you — we can't wait to hear from you.</p>
-      </form>
+    <div data-reveal>
+      <div id="acuity-inline"></div>
       <p style="margin-top:1.2rem;font-size:.85rem;color:var(--taupe)">Prefer to talk? Call <a href="tel:+14104249185" style="color:var(--brass);font-weight:600">(410) 424-9185</a> or email <a href="mailto:hello@theharbourcompany.com" style="color:var(--brass);font-weight:600">hello@theharbourcompany.com</a>.</p>
     </div>
   </div>
