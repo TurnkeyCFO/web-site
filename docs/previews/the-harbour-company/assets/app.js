@@ -91,7 +91,7 @@
         '<div class="ac-step show" data-step="0"><div class="ac-h">Select an appointment type</div><div class="ac-svc"></div><div class="acuity-powered" style="margin-top:1.4rem">Powered by Acuity Scheduling &middot; demo</div></div>',
         '<div class="ac-step" data-step="1"><div class="ac-h">Choose a date &amp; time</div><div class="ac-grid"><div class="ac-cal"><div class="ac-cal-head"><button class="ac-nav ac-prev">&#8249;</button><b class="ac-month"></b><button class="ac-nav ac-next">&#8250;</button></div><div class="ac-dow">'+DOW.map(d=>'<span>'+d+'</span>').join('')+'</div><div class="ac-days"></div></div><div><div class="acuity-powered" style="margin-bottom:.7rem">Available times</div><div class="ac-times"><div class="ac-times-empty">Select a date to see times.</div></div></div></div><div class="ac-foot"><button class="ac-back" data-to="0">&#8249; Back</button></div></div>',
         '<div class="ac-step" data-step="2"><div class="ac-h">Your details</div><div class="ac-summary"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:0 0 1rem"><input class="field" placeholder="First name"><input class="field" placeholder="Last name"></div><input class="field" placeholder="Email" type="email" style="margin-bottom:1rem"><input class="field" placeholder="Phone" type="tel" style="margin-bottom:1.2rem"><div class="ac-foot"><button class="ac-back" data-to="1">&#8249; Back</button><button class="btn btn-primary ac-confirm-btn" type="button">Confirm booking</button></div></div>',
-        '<div class="ac-step" data-step="3"><div class="ac-confirm"><div class="ac-check"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ac-h" style="margin-bottom:.4rem">You are booked.</div><p style="color:#6B5D52;max-width:380px;margin:0 auto 1.2rem">A confirmation and calendar invite are on their way. We cannot wait to see your home.</p><div class="ac-summary" style="text-align:left;max-width:380px;margin:0 auto"></div><p class="acuity-powered" style="margin-top:1.4rem">Demo only &middot; no appointment was actually scheduled</p></div></div>',
+        '<div class="ac-step" data-step="3"><div class="ac-confirm"><div class="ac-check"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ac-h" style="margin-bottom:.4rem">You are booked.</div><p style="color:#52606a;max-width:380px;margin:0 auto 1.2rem">A confirmation and calendar invite are on their way. We cannot wait to see your home.</p><div class="ac-summary" style="text-align:left;max-width:380px;margin:0 auto"></div><p class="acuity-powered" style="margin-top:1.4rem">Demo only &middot; no appointment was actually scheduled</p></div></div>',
       '</div>'
     ].join('');
 
@@ -165,4 +165,51 @@
   document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
   const slot=document.getElementById('acuity-inline');
   if(slot) slot.appendChild(widget(true));
+})();
+
+/* ===== Video preloader (home only) — painpoint -> Harbour solution ===== */
+(function(){
+  const pl=document.getElementById('preloader');
+  if(!pl) return;
+  const phases=pl.querySelectorAll('.pl-phase');
+  const vid=document.getElementById('pl-video');
+  const bar=document.getElementById('pl-bar');
+  const skip=document.getElementById('pl-skip');
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let dismissed=false;
+
+  function dismiss(){
+    if(dismissed) return; dismissed=true;
+    pl.classList.add('done');
+    document.body.style.overflow='';
+    try{sessionStorage.setItem('harbourIntroSeen','1');}catch(e){}
+    setTimeout(()=>pl.remove(),1000);
+  }
+
+  // already seen this session, or reduced motion -> skip entirely
+  let seen=false; try{seen=sessionStorage.getItem('harbourIntroSeen')==='1';}catch(e){}
+  if(seen || reduce){ pl.remove(); return; }
+
+  document.body.style.overflow='hidden';
+  const show=i=>phases.forEach((p,n)=>p.classList.toggle('show',n===i));
+
+  // phase timing (video is ~7s): Q first, solution second
+  show(0);
+  const t1=setTimeout(()=>show(1),3500);
+
+  // progress bar tied to playback (fallback to timer)
+  let dur=7;
+  if(vid){
+    vid.addEventListener('loadedmetadata',()=>{ if(vid.duration && isFinite(vid.duration)) dur=vid.duration; });
+    vid.addEventListener('timeupdate',()=>{ if(vid.duration) bar.style.width=Math.min(100,(vid.currentTime/vid.duration)*100)+'%'; });
+    vid.addEventListener('ended',dismiss);
+    // some browsers block autoplay; play attempt + fallback
+    const pr=vid.play&&vid.play(); if(pr&&pr.catch) pr.catch(()=>{});
+  }
+  // hard fallback: dismiss after duration + buffer even if 'ended' never fires
+  const t2=setTimeout(dismiss,7600);
+  // animate bar by timer as backstop
+  let s=0; const ti=setInterval(()=>{ s+=0.1; if(bar && (!vid||!vid.duration)) bar.style.width=Math.min(100,(s/dur)*100)+'%'; if(s>=dur+0.6){clearInterval(ti);} },100);
+
+  skip&&skip.addEventListener('click',()=>{clearTimeout(t1);clearTimeout(t2);dismiss();});
 })();
