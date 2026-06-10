@@ -105,9 +105,54 @@
   .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(11,11,13,.7));opacity:.65;transition:opacity .5s}
   .tile:hover::after{opacity:.4}
   .tile-cap{position:absolute;left:0;bottom:0;padding:.9rem 1rem;z-index:2}
+  /* ---------- preloader / intro ---------- */
+  html.intro-lock, html.intro-lock body{overflow:hidden;height:100%}
+  #preloader{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;background:#0B0B0D;overflow:hidden;transition:opacity .7s ease,visibility .7s}
+  #preloader.done{opacity:0;visibility:hidden;pointer-events:none}
+  .pl-video{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;position:relative;z-index:1}
+  @media (min-width:640px){.pl-video{width:min(92vw,1080px)}}
+  .pl-glow{position:absolute;width:82vmin;height:82vmin;border-radius:50%;background:radial-gradient(circle,rgba(201,162,75,.20),transparent 62%);filter:blur(42px);animation:plpulse 4.2s ease-in-out infinite;z-index:0}
+  @keyframes plpulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.9;transform:scale(1.09)}}
+  .pl-vignette{position:absolute;inset:0;pointer-events:none;z-index:2;background:radial-gradient(ellipse at center,transparent 52%,rgba(11,11,13,.88))}
+  .pl-grain{position:absolute;inset:0;pointer-events:none;z-index:2;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:3px 3px;mix-blend-mode:overlay;opacity:.5}
+  .pl-outro{position:absolute;left:0;right:0;bottom:11%;text-align:center;z-index:3;opacity:0;transform:translateY(12px);transition:opacity .9s ease,transform .9s ease;pointer-events:none}
+  .pl-outro.show{opacity:1;transform:none;pointer-events:auto}
+  .pl-enter{display:inline-block;margin-top:.65rem;color:#0B0B0D;background:#C9A24B;border-radius:9999px;padding:.72rem 1.7rem;transition:transform .4s,filter .4s;animation:plbob 2.4s ease-in-out infinite}
+  .pl-enter:hover{transform:translateY(-3px);filter:brightness(1.08)}
+  @keyframes plbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+  .pl-skip{position:absolute;top:max(1.3rem,env(safe-area-inset-top));right:1.3rem;z-index:4;padding:.5rem .95rem;border:1px solid rgba(244,239,230,.18);border-radius:9999px;background:rgba(11,11,13,.4);color:#9AA0A8;transition:color .3s,border-color .3s,background .3s}
+  .pl-skip:hover{color:#F4EFE6;border-color:#C9A24B;background:rgba(201,162,75,.08)}
+  .pl-bar{position:absolute;left:0;bottom:0;height:3px;width:100%;z-index:4;background:rgba(255,255,255,.06)}
+  .pl-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#C9A24B,#EAD08A);box-shadow:0 0 14px rgba(201,162,75,.7);transition:width .15s linear}
 </style>
 </head>
 <body class="bg-ink text-bone">
+
+<!-- ====================== PRELOADER / INTRO ====================== -->
+<div id="preloader" aria-label="5 Star Cutz intro" role="dialog">
+  <div class="pl-glow"></div>
+  <video id="plVideo" class="pl-video" muted playsinline autoplay preload="auto" poster="assets/preloader-poster.jpg">
+    <source src="assets/preloader.webm" type="video/webm" />
+    <source src="assets/preloader.mp4" type="video/mp4" />
+  </video>
+  <div class="pl-vignette"></div>
+  <div class="pl-grain"></div>
+  <div id="plOutro" class="pl-outro">
+    <p class="eyebrow text-[10px] sm:text-[11px] text-gold">Little Rock · S University Ave</p>
+    <button id="plEnter" type="button" class="pl-enter head font-600 tracking-[.16em] text-sm">ENTER THE SHOP →</button>
+  </div>
+  <button id="plSkip" type="button" class="pl-skip head text-[11px] tracking-[.22em]">SKIP</button>
+  <div class="pl-bar"><span id="plBar"></span></div>
+</div>
+<script>
+(function(){
+  var pl=document.getElementById('preloader'); if(!pl) return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var seen; try{ seen=sessionStorage.getItem('fsc_intro')==='1'; }catch(e){}
+  if(seen||reduce){ pl.style.display='none'; return; }
+  document.documentElement.classList.add('intro-lock');
+})();
+</script>
 
 <!-- ====================== NAV ====================== -->
 <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
@@ -591,6 +636,45 @@
       }});
     });
   }
+
+  // ---- Preloader / intro controller ----
+  (function(){
+    var pl=document.getElementById('preloader');
+    if(!pl || pl.style.display==='none'){ if(lenis){try{lenis.start();}catch(e){}} return; }
+    var v=document.getElementById('plVideo'),
+        bar=document.getElementById('plBar'),
+        outro=document.getElementById('plOutro'),
+        enter=document.getElementById('plEnter'),
+        skip=document.getElementById('plSkip'),
+        done=false;
+    if(lenis){ try{ lenis.stop(); }catch(e){} }
+    function dismiss(){
+      if(done) return; done=true;
+      try{ sessionStorage.setItem('fsc_intro','1'); }catch(e){}
+      pl.classList.add('done');
+      document.documentElement.classList.remove('intro-lock');
+      if(lenis){ try{ lenis.scrollTo(0,{immediate:true}); lenis.start(); }catch(e){} }
+      window.scrollTo(0,0);
+      setTimeout(function(){ pl.style.display='none'; }, 760);
+    }
+    var DUR=7.04;
+    v.addEventListener('timeupdate', function(){
+      var d=v.duration||DUR, p=Math.min(1, v.currentTime/d);
+      bar.style.width=(p*100)+'%';
+      if(v.currentTime > (d-1.5)) outro.classList.add('show');
+    });
+    v.addEventListener('ended', function(){
+      bar.style.width='100%'; outro.classList.add('show');
+      setTimeout(dismiss, 650);
+    });
+    // attempt autoplay; if the browser blocks it, surface ENTER immediately
+    try{ var pr=v.play(); if(pr&&pr.catch){ pr.catch(function(){ outro.classList.add('show'); }); } }catch(e){ outro.classList.add('show'); }
+    enter.addEventListener('click', dismiss);
+    skip.addEventListener('click', dismiss);
+    // safety nets: show ENTER by 8s, force-dismiss by 11s so the site is never trapped
+    setTimeout(function(){ if(!done) outro.classList.add('show'); }, 8000);
+    setTimeout(dismiss, 11000);
+  })();
 
   // ---- 6s crawler / screenshot safety net ----
   setTimeout(()=>{
