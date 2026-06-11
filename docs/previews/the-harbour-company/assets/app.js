@@ -177,7 +177,8 @@
   const skip=document.getElementById('pl-skip');
   const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   let dismissed=false;
-  const EXIT_AT=5.9; // seconds — wipe to the site here, before the clip darkens (~6.5s)
+  const FREEZE_AT=5.9; // seconds — pause on the finished-kitchen frame (clip darkens ~6.5s)
+  const EXIT_AT=7.4;   // seconds — wipe to the site here (holds the phase-2 read +1.5s on the frozen frame)
 
   function dismiss(){
     if(dismissed) return; dismissed=true;
@@ -199,20 +200,17 @@
   show(0);
   const t1=setTimeout(()=>show(1),3500);
 
-  // progress bar tied to playback (fallback to timer)
-  let dur=7;
   if(vid){
-    vid.addEventListener('loadedmetadata',()=>{ if(vid.duration && isFinite(vid.duration)) dur=vid.duration; });
-    // bar fills over the part of the clip we actually show (up to the wipe), not the full 7s
-    vid.addEventListener('timeupdate',()=>{ bar.style.width=Math.min(100,(vid.currentTime/EXIT_AT)*100)+'%'; });
     // some browsers block autoplay; play attempt + fallback
     const pr=vid.play&&vid.play(); if(pr&&pr.catch) pr.catch(()=>{});
   }
-  // Exit while the renovated kitchen is fully formed and held (it darkens/flips back ~6.5s),
-  // so the left->right wipe hands straight into the live site with no dead frame.
+  // Freeze the clip on the fully-formed renovated kitchen (it darkens/flips back ~6.5s),
+  // so the held phase-2 read sits on the bright frame, not the dark end of the clip.
+  const tf=setTimeout(()=>{ try{ if(vid && !vid.paused) vid.pause(); }catch(e){} }, FREEZE_AT*1000);
+  // Then wipe into the live site.
   const t2=setTimeout(dismiss,EXIT_AT*1000);
-  // animate bar by timer as backstop (autoplay blocked / no metadata)
-  let s=0; const ti=setInterval(()=>{ s+=0.1; if(bar && (!vid||!vid.duration)) bar.style.width=Math.min(100,(s/EXIT_AT)*100)+'%'; if(s>=EXIT_AT){clearInterval(ti);} },100);
+  // progress bar by wall clock over the full pre-wipe window (independent of the paused video)
+  let s=0; const ti=setInterval(()=>{ s+=0.1; if(bar) bar.style.width=Math.min(100,(s/EXIT_AT)*100)+'%'; if(s>=EXIT_AT){clearInterval(ti);} },100);
 
-  skip&&skip.addEventListener('click',()=>{clearTimeout(t1);clearTimeout(t2);dismiss();});
+  skip&&skip.addEventListener('click',()=>{clearTimeout(t1);clearTimeout(t2);clearTimeout(tf);clearInterval(ti);dismiss();});
 })();
