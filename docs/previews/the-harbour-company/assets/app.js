@@ -177,13 +177,15 @@
   const skip=document.getElementById('pl-skip');
   const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   let dismissed=false;
+  const EXIT_AT=5.9; // seconds — wipe to the site here, before the clip darkens (~6.5s)
 
   function dismiss(){
     if(dismissed) return; dismissed=true;
-    pl.classList.add('done');
+    try{ if(vid && !vid.paused) vid.pause(); }catch(e){}   // freeze the finished-kitchen frame
+    pl.classList.add('wipe');                                // left->right wipe reveals the live site
     document.body.style.overflow='';
     try{sessionStorage.setItem('harbourIntroSeen','1');}catch(e){}
-    setTimeout(()=>pl.remove(),1000);
+    setTimeout(()=>pl.remove(),1150);
   }
 
   // already seen this session, or reduced motion -> skip entirely
@@ -201,15 +203,16 @@
   let dur=7;
   if(vid){
     vid.addEventListener('loadedmetadata',()=>{ if(vid.duration && isFinite(vid.duration)) dur=vid.duration; });
-    vid.addEventListener('timeupdate',()=>{ if(vid.duration) bar.style.width=Math.min(100,(vid.currentTime/vid.duration)*100)+'%'; });
-    vid.addEventListener('ended',dismiss);
+    // bar fills over the part of the clip we actually show (up to the wipe), not the full 7s
+    vid.addEventListener('timeupdate',()=>{ bar.style.width=Math.min(100,(vid.currentTime/EXIT_AT)*100)+'%'; });
     // some browsers block autoplay; play attempt + fallback
     const pr=vid.play&&vid.play(); if(pr&&pr.catch) pr.catch(()=>{});
   }
-  // hard fallback: dismiss after duration + buffer even if 'ended' never fires
-  const t2=setTimeout(dismiss,7600);
-  // animate bar by timer as backstop
-  let s=0; const ti=setInterval(()=>{ s+=0.1; if(bar && (!vid||!vid.duration)) bar.style.width=Math.min(100,(s/dur)*100)+'%'; if(s>=dur+0.6){clearInterval(ti);} },100);
+  // Exit while the renovated kitchen is fully formed and held (it darkens/flips back ~6.5s),
+  // so the left->right wipe hands straight into the live site with no dead frame.
+  const t2=setTimeout(dismiss,EXIT_AT*1000);
+  // animate bar by timer as backstop (autoplay blocked / no metadata)
+  let s=0; const ti=setInterval(()=>{ s+=0.1; if(bar && (!vid||!vid.duration)) bar.style.width=Math.min(100,(s/EXIT_AT)*100)+'%'; if(s>=EXIT_AT){clearInterval(ti);} },100);
 
   skip&&skip.addEventListener('click',()=>{clearTimeout(t1);clearTimeout(t2);dismiss();});
 })();
