@@ -92,11 +92,9 @@ tailwind.config = {
   /* before/after slider */
   .ba{position:relative;overflow:hidden;border-radius:1.25rem;cursor:ew-resize;user-select:none;touch-action:none}
   .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .ba .after{filter:saturate(1.18) brightness(1.12) contrast(1.02)}
-  .ba .before-wrap{position:absolute;inset:0;width:50%;overflow:hidden}
-  .ba .before{filter:saturate(.32) brightness(.62) contrast(1.05) sepia(.28);width:100%;height:100%}
-  .ba .before-wrap .blabel{position:absolute;left:1rem;top:1rem}
-  .ba .alabel{position:absolute;right:1rem;top:1rem}
+  .ba .before{clip-path:inset(0 50% 0 0)}
+  .ba .blabel{position:absolute;left:1rem;top:1rem;z-index:2}
+  .ba .alabel{position:absolute;right:1rem;top:1rem;z-index:2}
   .ba .handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#FBF7EF;transform:translateX(-1px);box-shadow:0 0 0 1px rgba(25,21,18,.15)}
   .ba .knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;
     background:#FBF7EF;color:#1E342B;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(25,21,18,.6);font-size:13px;font-weight:700}
@@ -309,11 +307,9 @@ tailwind.config = {
     </div>
 
     <div class="ba aspect-[16/10] sm:aspect-[2/1] max-w-4xl mx-auto ring-1 ring-bone/20" id="ba" data-reveal>
-      <img src="assets/washing.jpg" class="after" alt="House siding after a DC Home Solutions pressure wash — bright and clean" />
-      <div class="before-wrap" id="baBefore">
-        <img src="assets/washing.jpg" class="before" alt="House siding before pressure washing — dull and grimy" />
-        <span class="blabel lbl-chip">Before</span>
-      </div>
+      <img src="assets/washing.jpg" class="after" alt="Brick steps after a DC Home Solutions pressure wash — bright and clean" />
+      <img src="assets/washing.jpg" class="before" id="baBefore" alt="Brick steps before pressure washing — dull and grimy" />
+      <span class="blabel lbl-chip">Before</span>
       <span class="alabel lbl-chip" style="background:rgba(193,95,60,.85)">After</span>
       <div class="handle" id="baHandle"><span class="knob">↔</span></div>
     </div>
@@ -610,7 +606,7 @@ if(window.gsap){
 (function(){
   const ba=document.getElementById('ba'); if(!ba) return;
   const before=document.getElementById('baBefore'), handle=document.getElementById('baHandle');
-  function set(p){ p=Math.max(2,Math.min(98,p)); before.style.width=p+'%'; handle.style.left=p+'%'; }
+  function set(p){ p=Math.max(2,Math.min(98,p)); before.style.clipPath='inset(0 '+(100-p)+'% 0 0)'; handle.style.left=p+'%'; }
   function fromEvent(e){
     const r=ba.getBoundingClientRect();
     const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
