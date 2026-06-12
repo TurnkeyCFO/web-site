@@ -11,17 +11,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f4f7ff;
+    --bg:#f7f5ff;
     --ink:#0b1437;
-    --blue:#4f6bff;
-    --blue-2:#8aa2ff;
-    --blue-deep:#2e3fd6;
+    --blue:#7c3aed;
+    --blue-2:#a78bfa;
+    --blue-deep:#5b21b6;
     --gold:#ffd34d;
     --green:#34d399;
     --muted:#5b6b8c;
     --card:rgba(255,255,255,.72);
-    --line:rgba(79,107,255,.16);
-    --shadow:0 30px 70px -30px rgba(28,42,120,.45);
+    --line:rgba(124,58,237,.16);
+    --shadow:0 30px 70px -30px rgba(60,28,120,.45);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -37,10 +37,10 @@
   body::before{
     content:"";position:fixed;inset:0;z-index:-2;
     background:
-      radial-gradient(1100px 600px at 12% -6%, rgba(79,107,255,.18), transparent 60%),
-      radial-gradient(900px 600px at 92% 8%, rgba(138,162,255,.20), transparent 60%),
-      radial-gradient(900px 700px at 50% 118%, rgba(79,107,255,.12), transparent 60%),
-      linear-gradient(180deg,#ffffff 0%, #f1f5ff 55%, #eaf0ff 100%);
+      radial-gradient(1100px 600px at 12% -6%, rgba(124,58,237,.18), transparent 60%),
+      radial-gradient(900px 600px at 92% 8%, rgba(167,139,250,.20), transparent 60%),
+      radial-gradient(900px 700px at 50% 118%, rgba(124,58,237,.12), transparent 60%),
+      linear-gradient(180deg,#ffffff 0%, #f3eefe 55%, #ece4ff 100%);
   }
   #bg3d{position:fixed;inset:0;z-index:-1;pointer-events:none}
   /* grain */
@@ -56,7 +56,7 @@
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{height:34px;width:auto;display:block}
   .pill{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-        color:var(--blue-deep);background:rgba(79,107,255,.10);border:1px solid var(--line);
+        color:var(--blue-deep);background:rgba(124,58,237,.10);border:1px solid var(--line);
         padding:8px 14px;border-radius:999px}
 
   /* ---------- hero ---------- */
@@ -68,7 +68,7 @@
            padding:10px 18px;border-radius:999px;margin-bottom:30px}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(52,211,153,.18);animation:pulse 2s infinite}
   @keyframes pulse{50%{box-shadow:0 0 0 9px rgba(52,211,153,0)}}
-  .pop{font-size:clamp(3rem,8vw,5.5rem);line-height:1;margin-bottom:6px;filter:drop-shadow(0 10px 18px rgba(79,107,255,.25))}
+  .pop{font-size:clamp(3rem,8vw,5.5rem);line-height:1;margin-bottom:6px;filter:drop-shadow(0 10px 18px rgba(124,58,237,.25))}
   h1{font-weight:800;font-size:clamp(3.4rem,10vw,8.2rem);line-height:.92;letter-spacing:-.035em;
      background:linear-gradient(180deg,#0b1437 0%, #29336b 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
   h1 .grad{background:linear-gradient(100deg,var(--blue) 0%, var(--blue-2) 60%, var(--blue) 100%);
@@ -82,9 +82,9 @@
   .cta{position:relative;display:inline-flex;align-items:center;gap:18px;text-decoration:none;
        padding:22px 36px;border-radius:18px;color:#fff;font-weight:800;font-size:1.18rem;
        background:linear-gradient(120deg,var(--blue-deep),var(--blue) 55%, var(--blue-2));
-       box-shadow:0 22px 48px -16px rgba(46,63,214,.7), inset 0 1px 0 rgba(255,255,255,.4);
+       box-shadow:0 22px 48px -16px rgba(91,33,182,.7), inset 0 1px 0 rgba(255,255,255,.4);
        overflow:hidden;transform:translateZ(0);transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s}
-  .cta:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 30px 60px -16px rgba(46,63,214,.78)}
+  .cta:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 30px 60px -16px rgba(91,33,182,.78)}
   .cta:active{transform:translateY(-1px) scale(.995)}
   .cta .price{display:flex;flex-direction:column;line-height:1;text-align:left}
   .cta .price .big{font-size:1.32rem}
@@ -124,14 +124,14 @@
   .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:22px;
         padding:30px 26px;backdrop-filter:blur(14px);box-shadow:var(--shadow);
         transform-style:preserve-3d;transition:transform .2s ease, box-shadow .3s;will-change:transform}
-  .card:hover{box-shadow:0 40px 80px -28px rgba(46,63,214,.5)}
+  .card:hover{box-shadow:0 40px 80px -28px rgba(91,33,182,.5)}
   .card .ico{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-size:1.7rem;
-    background:linear-gradient(135deg,rgba(79,107,255,.16),rgba(138,162,255,.10));
+    background:linear-gradient(135deg,rgba(124,58,237,.16),rgba(167,139,250,.10));
     border:1px solid var(--line);margin-bottom:18px;transform:translateZ(40px)}
   .card h3{font-size:1.18rem;font-weight:700;margin-bottom:8px;transform:translateZ(26px)}
   .card p{color:var(--muted);font-size:.96rem;line-height:1.5;font-weight:500;transform:translateZ(16px)}
   .card .sheen{position:absolute;inset:0;border-radius:22px;opacity:0;transition:opacity .3s;pointer-events:none;
-    background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%), rgba(79,107,255,.16), transparent 45%)}
+    background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%), rgba(124,58,237,.16), transparent 45%)}
   .card:hover .sheen{opacity:1}
 
   /* ---------- steps ---------- */
@@ -145,11 +145,11 @@
 
   /* ---------- final CTA band ---------- */
   .band{position:relative;margin:30px 0 90px;border-radius:34px;overflow:hidden;
-        background:linear-gradient(125deg,#1a2a8f 0%, var(--blue-deep) 45%, var(--blue) 100%);
-        box-shadow:0 50px 90px -40px rgba(46,63,214,.8);text-align:center;padding:74px 28px}
+        background:linear-gradient(125deg,#3b0d99 0%, var(--blue-deep) 45%, var(--blue) 100%);
+        box-shadow:0 50px 90px -40px rgba(91,33,182,.8);text-align:center;padding:74px 28px}
   .band::before{content:"";position:absolute;inset:0;opacity:.5;
     background:radial-gradient(600px 300px at 18% 0%, rgba(255,255,255,.22), transparent 60%),
-              radial-gradient(500px 300px at 100% 120%, rgba(138,162,255,.5), transparent 60%)}
+              radial-gradient(500px 300px at 100% 120%, rgba(167,139,250,.5), transparent 60%)}
   .band h2{position:relative;color:#fff;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.02em;line-height:1.05}
   .band p{position:relative;color:rgba(255,255,255,.82);margin:16px auto 0;max-width:520px;font-weight:500;font-size:1.06rem}
   .band .cta{margin-top:34px;background:#fff;color:var(--blue-deep);
@@ -246,7 +246,7 @@
 /* ---------- confetti burst on load + a celebratory volley ---------- */
 function burst(){
   if(typeof confetti!=="function") return;
-  var colors=["#4f6bff","#8aa2ff","#ffd34d","#34d399","#2e3fd6","#ffffff"];
+  var colors=["#7c3aed","#a78bfa","#ffd34d","#34d399","#5b21b6","#ffffff"];
   confetti({particleCount:120,spread:78,origin:{y:.62},colors:colors,scalar:1.05});
   setTimeout(function(){confetti({particleCount:80,angle:60,spread:65,origin:{x:0,y:.7},colors:colors});},180);
   setTimeout(function(){confetti({particleCount:80,angle:120,spread:65,origin:{x:1,y:.7},colors:colors});},340);
@@ -261,13 +261,13 @@ window.addEventListener("load",function(){setTimeout(burst,420);});
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
   renderer.setSize(window.innerWidth,window.innerHeight);
   var scene=new THREE.Scene();
-  scene.fog=new THREE.FogExp2(0xeaf0ff,0.045);
+  scene.fog=new THREE.FogExp2(0xefe9ff,0.045);
   var camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,100);
   camera.position.z=14;
 
   scene.add(new THREE.AmbientLight(0xffffff,0.85));
-  var key=new THREE.DirectionalLight(0x9db0ff,1.1); key.position.set(5,8,7); scene.add(key);
-  var fill=new THREE.DirectionalLight(0x4f6bff,0.7); fill.position.set(-7,-4,4); scene.add(fill);
+  var key=new THREE.DirectionalLight(0xc4b0ff,1.1); key.position.set(5,8,7); scene.add(key);
+  var fill=new THREE.DirectionalLight(0x7c3aed,0.7); fill.position.set(-7,-4,4); scene.add(fill);
 
   var geos=[
     new THREE.IcosahedronGeometry(1,0),
@@ -276,7 +276,7 @@ window.addEventListener("load",function(){setTimeout(burst,420);});
     new THREE.DodecahedronGeometry(1,0),
     new THREE.TetrahedronGeometry(1.1,0)
   ];
-  var palette=[0x4f6bff,0x8aa2ff,0x6f86ff,0xffffff,0xbcd0ff];
+  var palette=[0x7c3aed,0xa78bfa,0x9333ea,0xffffff,0xd6c2ff];
   var shapes=[];
   var N=18;
   for(var i=0;i<N;i++){
