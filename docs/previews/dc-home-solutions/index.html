@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<!--
+  DC Home Solutions — Clarksville, TN
+  Turnkey Web preview build. Real data only.
+  Owner: Daymel Castellano · Phone: (931) 516-3848 · Clarksville TN 37040
+  Hours: Mon–Sat 8:00a–5:00p, Sun closed · A+ BBB · 35 Nextdoor recs · est. 2021
+  Art direction: warm craftsman home-improvement. Type: Fraunces + Inter.
+  Palette: designer-paint — deep pine green (#1E342B), clay (#C15F3C), brass (#C2883F) on warm bone.
+  Signature moment: draggable "Grime -> Gone" before/after wash slider.
+  Photos: licensed Pexels stock, correct-subject (painting / exterior / pressure wash / fence / drywall).
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DC Home Solutions | Painting, Exterior &amp; Renovation — Clarksville, TN</title>
+<meta name="description" content="DC Home Solutions is Clarksville's owner-operated home improvement crew — interior &amp; exterior painting, pressure washing, fences, decks, drywall, and renovations. A+ BBB. Call (931) 516-3848 for a free estimate." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/dc-home-solutions/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="DC Home Solutions — Clarksville Home Improvement &amp; Painting" />
+<meta property="og:description" content="Owner-operated painting, pressure washing, fences, decks &amp; renovation in Clarksville, TN. A+ BBB. Free estimates — (931) 516-3848." />
+<meta property="og:url" content="https://turnkeyweb.org/previews/dc-home-solutions/" />
+<meta property="og:image" content="https://turnkeyweb.org/previews/dc-home-solutions/assets/hero.jpg" />
+<meta name="theme-color" content="#1E342B" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      bone:'#F4EEE3', paper:'#FBF7EF', pine:'#1E342B', pine2:'#2C4A3D',
+      clay:'#C15F3C', brass:'#C2883F', sage:'#8FA992', ink:'#191512'
+    },
+    fontFamily: { display:['Fraunces','serif'], sans:['Inter','sans-serif'] }
+  }}
+}
+</script>
+<style>
+  html{scroll-behavior:auto}
+  body{background:#F4EEE3;color:#191512;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .display{font-family:'Fraunces',serif}
+  ::selection{background:#C15F3C;color:#FBF7EF}
+
+  /* gradient shimmer accent */
+  .grad-text{background:linear-gradient(100deg,#C15F3C,#C2883F,#C15F3C);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shim 9s linear infinite}
+  @keyframes shim{to{background-position:-200% 0}}
+
+  /* ambient grain */
+  .grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+    background-image:radial-gradient(#191512 1px,transparent 1.4px);background-size:4px 4px}
+
+  /* buttons */
+  .btn{position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),filter .4s}
+  .btn:hover{transform:translateY(-3px);filter:brightness(1.04)}
+  .btn::after{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-18deg);transition:left .9s cubic-bezier(.2,.7,.3,1)}
+  .btn:hover::after{left:130%}
+
+  /* nav underline */
+  .ul-grow{position:relative}
+  .ul-grow::after{content:"";position:absolute;left:0;bottom:-3px;height:1.5px;width:0;background:linear-gradient(90deg,#C15F3C,#C2883F);transition:width .5s cubic-bezier(.2,.7,.3,1)}
+  .ul-grow:hover::after{width:100%}
+
+  /* service rows */
+  .craft-row{transition:background .5s ease}
+  .craft-row:hover{background:#FBF7EF}
+  .craft-row .num{transition:color .5s,transform .5s}
+  .craft-row:hover .num{color:#C15F3C;transform:translateX(4px)}
+  .craft-row .arr{opacity:0;transform:translateX(-8px);transition:opacity .5s,transform .5s}
+  .craft-row:hover .arr{opacity:1;transform:translateX(0)}
+
+  /* review cards */
+  .vcard{transition:transform .55s cubic-bezier(.2,.7,.3,1),box-shadow .55s}
+  .vcard:hover{transform:translateY(-6px);box-shadow:0 28px 60px -30px rgba(25,21,18,.45)}
+
+  /* marquee */
+  .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+  .mtrack{display:flex;gap:3rem;width:max-content;animation:mq 34s linear infinite}
+  .marquee:hover .mtrack{animation-play-state:paused}
+  @keyframes mq{to{transform:translateX(-50%)}}
+
+  /* pulse dot */
+  .pdot{animation:pulse 2.3s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.5;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+
+  /* reveal */
+  [data-reveal]{opacity:0;transform:translateY(34px)}
+  [data-img]{clip-path:inset(0 0 100% 0)}
+
+  /* before/after slider */
+  .ba{position:relative;overflow:hidden;border-radius:1.25rem;cursor:ew-resize;user-select:none;touch-action:none}
+  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .ba .after{filter:saturate(1.18) brightness(1.12) contrast(1.02)}
+  .ba .before-wrap{position:absolute;inset:0;width:50%;overflow:hidden}
+  .ba .before{filter:saturate(.32) brightness(.62) contrast(1.05) sepia(.28);width:100%;height:100%}
+  .ba .before-wrap .blabel{position:absolute;left:1rem;top:1rem}
+  .ba .alabel{position:absolute;right:1rem;top:1rem}
+  .ba .handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#FBF7EF;transform:translateX(-1px);box-shadow:0 0 0 1px rgba(25,21,18,.15)}
+  .ba .knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;
+    background:#FBF7EF;color:#1E342B;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(25,21,18,.6);font-size:13px;font-weight:700}
+
+  .lbl-chip{backdrop-filter:blur(6px);background:rgba(25,21,18,.55);color:#FBF7EF;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:.35rem .7rem;border-radius:999px;font-weight:600}
+
+  .eyebrow{letter-spacing:.32em;text-transform:uppercase;font-size:11px;font-weight:600}
+  .ring1{box-shadow:inset 0 0 0 1px rgba(25,21,18,.1)}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="fixed top-0 inset-x-0 z-50 transition-all duration-500" id="nav">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-[68px]">
+    <a href="#top" class="flex items-center gap-2.5 group">
+      <span class="inline-grid place-items-center w-9 h-9 rounded-md bg-pine text-bone display font-600 text-[15px] leading-none ring1">DC</span>
+      <span class="leading-tight">
+        <span class="block display text-[17px] font-600 text-ink tracking-tight" id="navname">DC Home Solutions</span>
+        <span class="block text-[10px] tracking-[.22em] uppercase text-pine/70 font-600" id="navsub">Clarksville · Home Improvement</span>
+      </span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-[14px] font-500 text-ink/80">
+      <a href="#craft" class="ul-grow">What We Do</a>
+      <a href="#transform" class="ul-grow">Transformation</a>
+      <a href="#owner" class="ul-grow">The Owner</a>
+      <a href="#voices" class="ul-grow">Reviews</a>
+      <a href="#visit" class="ul-grow">Service Area</a>
+    </nav>
+    <a href="tel:+19315163848" class="btn hidden sm:inline-flex items-center gap-2 rounded-full bg-pine text-bone px-5 py-2.5 text-[13.5px] font-600">
+      <span class="w-1.5 h-1.5 rounded-full bg-brass pdot"></span>(931) 516-3848
+    </a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden">
+  <img src="assets/hero.jpg" alt="DC Home Solutions painters refinishing a home exterior in Clarksville, TN" class="absolute inset-0 w-full h-full object-cover object-center" />
+  <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(25,21,18,.55) 0%,rgba(30,52,43,.35) 38%,rgba(30,52,43,.78) 78%,rgba(30,52,43,.95) 100%)"></div>
+  <div class="absolute inset-0 grain"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pb-12 sm:pb-16 pt-28">
+    <div class="max-w-3xl">
+      <div class="flex items-center gap-3 mb-5" data-reveal>
+        <span class="lbl-chip">Owner-Operated · Est. 2021</span>
+        <span class="text-bone/85 text-[12.5px] font-500 flex items-center gap-1.5">
+          <span class="text-brass">★★★★★</span> A+ BBB
+        </span>
+      </div>
+      <h1 class="display text-bone font-500 leading-[.96] tracking-[-.02em] text-[clamp(2.7rem,8vw,5.6rem)]" data-split>
+        One craftsman for <span class="italic grad-text">your whole home.</span>
+      </h1>
+      <p class="mt-6 text-bone/85 text-[clamp(1rem,2.4vw,1.2rem)] leading-relaxed max-w-xl font-400" data-reveal>
+        Interior &amp; exterior painting, pressure washing, fences, decks, drywall and full renovations — done right by a Clarksville crew that treats your house like their own.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-3.5" data-reveal>
+        <a href="#estimate" class="btn inline-flex items-center gap-2 rounded-full bg-clay text-paper px-7 py-3.5 text-[15px] font-600">Get a free estimate</a>
+        <a href="tel:+19315163848" class="btn inline-flex items-center gap-2 rounded-full bg-bone/10 ring-1 ring-bone/30 text-bone px-6 py-3.5 text-[15px] font-600 backdrop-blur-sm">
+          Call (931) 516-3848
+        </a>
+      </div>
+    </div>
+
+    <!-- inline trust card -->
+    <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-px rounded-2xl overflow-hidden ring-1 ring-bone/15 max-w-3xl" data-reveal>
+      <div class="bg-pine/55 backdrop-blur-md px-5 py-4">
+        <div class="display text-bone text-[clamp(1.5rem,4vw,2rem)] font-600"><span class="cu" data-to="35" data-suf="+">0</span></div>
+        <div class="text-bone/70 text-[11px] tracking-[.16em] uppercase mt-1">Neighbor recs</div>
+      </div>
+      <div class="bg-pine/55 backdrop-blur-md px-5 py-4">
+        <div class="display text-bone text-[clamp(1.5rem,4vw,2rem)] font-600">5.0<span class="text-brass">★</span></div>
+        <div class="text-bone/70 text-[11px] tracking-[.16em] uppercase mt-1">Rated reviews</div>
+      </div>
+      <div class="bg-pine/55 backdrop-blur-md px-5 py-4">
+        <div class="display text-bone text-[clamp(1.5rem,4vw,2rem)] font-600"><span class="cu" data-to="5" data-suf="">0</span> yrs</div>
+        <div class="text-bone/70 text-[11px] tracking-[.16em] uppercase mt-1">Serving Clarksville</div>
+      </div>
+      <div class="bg-pine/55 backdrop-blur-md px-5 py-4">
+        <div class="display text-bone text-[clamp(1.5rem,4vw,2rem)] font-600">A+</div>
+        <div class="text-bone/70 text-[11px] tracking-[.16em] uppercase mt-1">BBB rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="bg-pine text-bone py-3.5 marquee">
+  <div class="mtrack items-center text-[13px] tracking-[.18em] uppercase font-500">
+    <span>Interior Painting</span><span class="text-brass">◆</span>
+    <span class="italic grad-text">Exterior Painting</span><span class="text-brass">◆</span>
+    <span>Pressure Washing</span><span class="text-brass">◆</span>
+    <span class="italic grad-text">Fence Installation</span><span class="text-brass">◆</span>
+    <span>Deck Building &amp; Staining</span><span class="text-brass">◆</span>
+    <span class="italic grad-text">Drywall Repair</span><span class="text-brass">◆</span>
+    <span>Renovations</span><span class="text-brass">◆</span>
+    <span>Interior Painting</span><span class="text-brass">◆</span>
+    <span class="italic grad-text">Exterior Painting</span><span class="text-brass">◆</span>
+    <span>Pressure Washing</span><span class="text-brass">◆</span>
+    <span class="italic grad-text">Fence Installation</span><span class="text-brass">◆</span>
+    <span>Deck Building &amp; Staining</span><span class="text-brass">◆</span>
+    <span>Drywall Repair</span><span class="text-brass">◆</span>
+    <span class="italic grad-text">Renovations</span><span class="text-brass">◆</span>
+  </div>
+</div>
+
+<!-- ===== CRAFT / SERVICES ===== -->
+<section id="craft" class="relative bg-bone py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      <!-- left: heading + image -->
+      <div class="lg:col-span-5 lg:sticky lg:top-24">
+        <p class="eyebrow text-clay mb-4" data-reveal>What We Do</p>
+        <h2 class="display text-ink font-500 leading-[1.02] tracking-[-.02em] text-[clamp(2rem,4.6vw,3.1rem)]" data-reveal>
+          Top to bottom, <span class="italic">inside and out.</span>
+        </h2>
+        <p class="mt-5 text-ink/70 leading-relaxed text-[15.5px] max-w-md" data-reveal>
+          Most homes need more than one trade. DC Home Solutions handles the whole list — so you make one call, deal with one crew, and get one standard of finish across every job.
+        </p>
+        <div class="mt-8 rounded-2xl overflow-hidden ring1" data-img>
+          <img src="assets/exterior.jpg" alt="DC Home Solutions craftsman painting exterior window trim from a ladder" class="w-full h-[300px] object-cover" />
+        </div>
+        <a href="#estimate" class="mt-7 btn inline-flex items-center gap-2 rounded-full bg-pine text-bone px-6 py-3 text-[14px] font-600" data-reveal>Start your project</a>
+      </div>
+
+      <!-- right: numbered craft list -->
+      <div class="lg:col-span-7">
+        <div class="divide-y divide-ink/10 border-y border-ink/10" data-reveal>
+          <!-- row -->
+          <a href="#estimate" class="craft-row group flex items-start gap-5 sm:gap-7 px-2 sm:px-4 py-6">
+            <span class="num display text-[26px] font-500 text-ink/30 w-10 shrink-0">01</span>
+            <span class="flex-1">
+              <span class="flex items-center gap-3">
+                <span class="display text-[20px] sm:text-[22px] font-600 text-ink">Interior &amp; Exterior Painting</span>
+                <span class="arr text-clay text-lg">→</span>
+              </span>
+              <span class="block mt-1.5 text-ink/65 text-[14.5px] leading-relaxed">Walls, ceilings, trim, siding and front doors — prepped properly, cut clean, and finished to last. Our most-requested work.</span>
+            </span>
+          </a>
+          <a href="#estimate" class="craft-row group flex items-start gap-5 sm:gap-7 px-2 sm:px-4 py-6">
+            <span class="num display text-[26px] font-500 text-ink/30 w-10 shrink-0">02</span>
+            <span class="flex-1">
+              <span class="flex items-center gap-3">
+                <span class="display text-[20px] sm:text-[22px] font-600 text-ink">Pressure &amp; Soft Washing</span>
+                <span class="arr text-clay text-lg">→</span>
+              </span>
+              <span class="block mt-1.5 text-ink/65 text-[14.5px] leading-relaxed">Siding, driveways, walkways and decks brought back to life — years of grime gone, surfaces ready to seal or paint.</span>
+            </span>
+          </a>
+          <a href="#estimate" class="craft-row group flex items-start gap-5 sm:gap-7 px-2 sm:px-4 py-6">
+            <span class="num display text-[26px] font-500 text-ink/30 w-10 shrink-0">03</span>
+            <span class="flex-1">
+              <span class="flex items-center gap-3">
+                <span class="display text-[20px] sm:text-[22px] font-600 text-ink">Fences &amp; Decks</span>
+                <span class="arr text-clay text-lg">→</span>
+              </span>
+              <span class="block mt-1.5 text-ink/65 text-[14.5px] leading-relaxed">New fence installs, covered decks built from scratch, plus staining and sealing to protect what you already have.</span>
+            </span>
+          </a>
+          <a href="#estimate" class="craft-row group flex items-start gap-5 sm:gap-7 px-2 sm:px-4 py-6">
+            <span class="num display text-[26px] font-500 text-ink/30 w-10 shrink-0">04</span>
+            <span class="flex-1">
+              <span class="flex items-center gap-3">
+                <span class="display text-[20px] sm:text-[22px] font-600 text-ink">Drywall Repair</span>
+                <span class="arr text-clay text-lg">→</span>
+              </span>
+              <span class="block mt-1.5 text-ink/65 text-[14.5px] leading-relaxed">Holes, cracks, water damage and seams patched, sanded and blended so the wall looks like nothing ever happened.</span>
+            </span>
+          </a>
+          <a href="#estimate" class="craft-row group flex items-start gap-5 sm:gap-7 px-2 sm:px-4 py-6">
+            <span class="num display text-[26px] font-500 text-ink/30 w-10 shrink-0">05</span>
+            <span class="flex-1">
+              <span class="flex items-center gap-3">
+                <span class="display text-[20px] sm:text-[22px] font-600 text-ink">Wallpaper Hang &amp; Removal</span>
+                <span class="arr text-clay text-lg">→</span>
+              </span>
+              <span class="block mt-1.5 text-ink/65 text-[14.5px] leading-relaxed">Dated paper stripped without wrecking the wall, or fresh paper hung straight and bubble-free.</span>
+            </span>
+          </a>
+          <a href="#estimate" class="craft-row group flex items-start gap-5 sm:gap-7 px-2 sm:px-4 py-6">
+            <span class="num display text-[26px] font-500 text-ink/30 w-10 shrink-0">06</span>
+            <span class="flex-1">
+              <span class="flex items-center gap-3">
+                <span class="display text-[20px] sm:text-[22px] font-600 text-ink">General Renovations</span>
+                <span class="arr text-clay text-lg">→</span>
+              </span>
+              <span class="block mt-1.5 text-ink/65 text-[14.5px] leading-relaxed">Bigger refreshes that touch a few trades at once — handled by one accountable crew from start to finish.</span>
+            </span>
+          </a>
+        </div>
+        <p class="mt-6 text-ink/55 text-[13.5px] italic display">Not sure which one you need? Describe the job and we'll tell you straight.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SIGNATURE: TRANSFORMATION SLIDER ===== -->
+<section id="transform" class="relative bg-pine text-bone py-20 sm:py-28 overflow-hidden grain">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <p class="eyebrow text-brass mb-4" data-reveal>The Difference, Dragged Into View</p>
+      <h2 class="display font-500 leading-[1.02] tracking-[-.02em] text-[clamp(2rem,5vw,3.3rem)]" data-reveal>
+        Grime in. <span class="italic grad-text">Gone out.</span>
+      </h2>
+      <p class="mt-4 text-bone/75 text-[15.5px] leading-relaxed" data-reveal>
+        Drag the handle. The left is what years of weather leave behind — the right is what a DC Home Solutions wash gives back. Same surface, two very different days.
+      </p>
+    </div>
+
+    <div class="ba aspect-[16/10] sm:aspect-[2/1] max-w-4xl mx-auto ring-1 ring-bone/20" id="ba" data-reveal>
+      <img src="assets/washing.jpg" class="after" alt="House siding after a DC Home Solutions pressure wash — bright and clean" />
+      <div class="before-wrap" id="baBefore">
+        <img src="assets/washing.jpg" class="before" alt="House siding before pressure washing — dull and grimy" />
+        <span class="blabel lbl-chip">Before</span>
+      </div>
+      <span class="alabel lbl-chip" style="background:rgba(193,95,60,.85)">After</span>
+      <div class="handle" id="baHandle"><span class="knob">↔</span></div>
+    </div>
+    <p class="text-center text-bone/55 text-[13px] mt-5 display italic">A real wand, real water, real pressure — no chemicals you have to worry about around the kids or the garden.</p>
+  </div>
+</section>
+
+<!-- ===== OWNER / STORY ===== -->
+<section id="owner" class="relative bg-paper py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="order-2 lg:order-1">
+      <p class="eyebrow text-clay mb-4" data-reveal>The Owner</p>
+      <h2 class="display text-ink font-500 leading-[1.04] tracking-[-.02em] text-[clamp(2rem,4.6vw,3.1rem)]" data-reveal>
+        You'll work with <span class="italic">Daymel</span> — start to finish.
+      </h2>
+      <div class="mt-6 space-y-5 text-ink/75 text-[16px] leading-relaxed max-w-xl" data-reveal>
+        <p>DC Home Solutions has been an owner-operated fixture in Clarksville since 2021. When you call, you reach <span class="font-600 text-ink">Daymel Castellano</span> — the same person who quotes the work, runs the crew, and answers your questions while it's underway.</p>
+        <p>That's why neighbors keep recommending him: prompt replies, honest pricing, and a habit of going past the estimate — fixing the small things he notices along the way. No call centers, no rotating subcontractors, no surprises on the invoice.</p>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-x-8 gap-y-4" data-reveal>
+        <div>
+          <div class="display text-[26px] font-600 text-pine">A+</div>
+          <div class="text-ink/55 text-[12px] tracking-[.14em] uppercase">BBB Rated</div>
+        </div>
+        <div>
+          <div class="display text-[26px] font-600 text-pine">100%</div>
+          <div class="text-ink/55 text-[12px] tracking-[.14em] uppercase">Owner on every job</div>
+        </div>
+        <div>
+          <div class="display text-[26px] font-600 text-pine">Bilingual</div>
+          <div class="text-ink/55 text-[12px] tracking-[.14em] uppercase">English &amp; Español</div>
+        </div>
+      </div>
+    </div>
+    <div class="order-1 lg:order-2">
+      <div class="relative rounded-[1.4rem] overflow-hidden ring1" data-img>
+        <img src="assets/story.jpg" alt="DC Home Solutions painting a home exterior facade on a sunny Clarksville day" class="w-full h-[420px] sm:h-[520px] object-cover" />
+        <div class="absolute bottom-4 left-4 right-4 rounded-xl bg-pine/85 backdrop-blur-md px-5 py-4 ring-1 ring-bone/10">
+          <p class="display italic text-bone text-[17px] leading-snug">"He keeps you informed the whole way — and the work speaks for itself."</p>
+          <p class="text-bone/60 text-[12px] mt-1.5 tracking-[.1em] uppercase">— What Clarksville neighbors say</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VOICES / REVIEWS ===== -->
+<section id="voices" class="relative bg-bone py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-12">
+      <div>
+        <p class="eyebrow text-clay mb-4" data-reveal>In Their Words</p>
+        <h2 class="display text-ink font-500 leading-[1.02] tracking-[-.02em] text-[clamp(2rem,4.6vw,3rem)]" data-reveal>
+          35 neighbors recommend it. <span class="italic">Here's why.</span>
+        </h2>
+      </div>
+      <div class="text-ink/60 text-[14px] flex items-center gap-2" data-reveal>
+        <span class="text-brass text-lg">★★★★★</span> 5.0 on Yelp · A+ BBB
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <figure class="vcard bg-paper rounded-2xl p-7 ring1" data-reveal>
+        <div class="text-brass text-[15px] mb-4">★★★★★</div>
+        <blockquote class="display text-ink text-[19px] leading-snug">"DC Solutions was recommended to me by another company I trust. I cannot express how professional this company is."</blockquote>
+        <figcaption class="mt-5 flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-pine text-bone grid place-items-center display font-600 text-[14px]">A</span>
+          <span class="text-[13.5px]"><span class="font-600 text-ink block">Andrea W.</span><span class="text-ink/55">Verified Yelp reviewer</span></span>
+        </figcaption>
+      </figure>
+
+      <figure class="vcard bg-paper rounded-2xl p-7 ring1" data-reveal>
+        <div class="text-brass text-[15px] mb-4">★★★★★</div>
+        <blockquote class="display text-ink text-[19px] leading-snug">"Very professional, fast and reliable. He was very responsive on all my questions — very quality work."</blockquote>
+        <figcaption class="mt-5 flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-clay text-paper grid place-items-center display font-600 text-[14px]">B</span>
+          <span class="text-[13.5px]"><span class="font-600 text-ink block">Brad J.</span><span class="text-ink/55">Verified Yelp reviewer</span></span>
+        </figcaption>
+      </figure>
+
+      <figure class="vcard bg-paper rounded-2xl p-7 ring1" data-reveal>
+        <div class="text-brass text-[15px] mb-4">★★★★★</div>
+        <blockquote class="display text-ink text-[19px] leading-snug">"I highly — more than 100% — recommend this company for sure."</blockquote>
+        <figcaption class="mt-5 flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-brass text-ink grid place-items-center display font-600 text-[14px]">C</span>
+          <span class="text-[13.5px]"><span class="font-600 text-ink block">Celina B.</span><span class="text-ink/55">Verified Yelp reviewer · deck renovation</span></span>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="mt-7 text-ink/55 text-[13.5px] display italic">"I will be contacting you again for any future projects." — M. W., verified customer</p>
+  </div>
+</section>
+
+<!-- ===== VISIT / SERVICE AREA ===== -->
+<section id="visit" class="relative bg-pine text-bone py-20 sm:py-28 overflow-hidden grain">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="eyebrow text-brass mb-4" data-reveal>Service Area &amp; Hours</p>
+      <h2 class="display font-500 leading-[1.04] tracking-[-.02em] text-[clamp(2rem,4.6vw,3rem)]" data-reveal>
+        Proudly serving <span class="italic grad-text">Clarksville</span> &amp; nearby.
+      </h2>
+      <p class="mt-5 text-bone/75 text-[15.5px] leading-relaxed max-w-md" data-reveal>
+        Based in Clarksville, TN 37040 and working homes across Montgomery County. Reach out for a free, no-pressure estimate — most calls get a same-day reply.
+      </p>
+
+      <div class="mt-8 grid sm:grid-cols-2 gap-4" data-reveal>
+        <div class="rounded-xl bg-bone/[.06] ring-1 ring-bone/15 px-5 py-4">
+          <div class="text-bone/55 text-[11px] tracking-[.16em] uppercase mb-1">Call or text</div>
+          <a href="tel:+19315163848" class="display text-bone text-[22px] font-600 ul-grow">(931) 516-3848</a>
+        </div>
+        <div class="rounded-xl bg-bone/[.06] ring-1 ring-bone/15 px-5 py-4">
+          <div class="text-bone/55 text-[11px] tracking-[.16em] uppercase mb-1">Based in</div>
+          <div class="display text-bone text-[22px] font-600">Clarksville, TN</div>
+        </div>
+      </div>
+
+      <div class="mt-4 rounded-xl bg-bone/[.06] ring-1 ring-bone/15 px-5 py-4" data-reveal>
+        <div class="flex items-center justify-between">
+          <span class="flex items-center gap-2 text-bone/55 text-[11px] tracking-[.16em] uppercase">
+            <span class="w-1.5 h-1.5 rounded-full bg-sage pdot"></span> Hours
+          </span>
+        </div>
+        <dl class="mt-3 grid grid-cols-2 gap-y-1.5 text-[14px]">
+          <dt class="text-bone/70">Monday – Saturday</dt><dd class="text-right text-bone font-500">8:00a – 5:00p</dd>
+          <dt class="text-bone/70">Sunday</dt><dd class="text-right text-bone/55">Closed</dd>
+        </dl>
+      </div>
+
+      <a href="#estimate" class="mt-7 btn inline-flex items-center gap-2 rounded-full bg-clay text-paper px-7 py-3.5 text-[15px] font-600" data-reveal>Request my free estimate</a>
+    </div>
+
+    <div class="rounded-[1.4rem] overflow-hidden ring-1 ring-bone/20 h-[340px] sm:h-[460px]" data-reveal>
+      <iframe title="DC Home Solutions service area — Clarksville, TN" src="https://www.google.com/maps?q=Clarksville,Tennessee&output=embed" width="100%" height="100%" style="border:0;filter:grayscale(.2) contrast(1.05)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="estimate" class="relative bg-bone py-20 sm:py-28">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <span class="inline-grid place-items-center w-14 h-14 rounded-xl bg-pine text-bone display font-600 text-[22px] mx-auto ring1" data-reveal>DC</span>
+    <h2 class="mt-6 display text-ink font-500 leading-[1.02] tracking-[-.02em] text-[clamp(2.2rem,6vw,4rem)]" data-reveal>
+      Let's make your home <span class="italic grad-text">look new again.</span>
+    </h2>
+    <p class="mt-5 text-ink/70 text-[clamp(1rem,2.3vw,1.18rem)] leading-relaxed max-w-xl mx-auto" data-reveal>
+      One crew, one standard, one call. Tell Daymel what you're picturing and get an honest estimate — no pressure, no fine print.
+    </p>
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-4" data-reveal>
+      <a href="tel:+19315163848" class="btn inline-flex items-center gap-2.5 rounded-full bg-pine text-bone px-8 py-4 text-[16px] font-600">
+        <span class="w-2 h-2 rounded-full bg-brass pdot"></span> (931) 516-3848
+      </a>
+      <a href="#top" class="btn inline-flex items-center gap-2 rounded-full bg-transparent ring-1 ring-ink/25 text-ink px-7 py-4 text-[16px] font-600">Back to top</a>
+    </div>
+    <p class="mt-6 text-ink/50 text-[13px]">Mon–Sat 8a–5p · Clarksville, TN · A+ BBB · Hablamos Español</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-ink text-bone/80">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14">
+    <div class="grid sm:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-grid place-items-center w-9 h-9 rounded-md bg-pine text-bone display font-600 text-[15px]">DC</span>
+          <span class="display text-bone text-[18px] font-600">DC Home Solutions</span>
+        </div>
+        <p class="text-bone/55 text-[14px] leading-relaxed max-w-xs">Owner-operated home improvement in Clarksville, TN — painting, washing, fences, decks, drywall &amp; renovation.</p>
+      </div>
+      <div>
+        <div class="text-bone/45 text-[11px] tracking-[.18em] uppercase mb-4">Services</div>
+        <ul class="space-y-2 text-[14px] text-bone/70">
+          <li><a href="#craft" class="ul-grow">Interior &amp; Exterior Painting</a></li>
+          <li><a href="#craft" class="ul-grow">Pressure &amp; Soft Washing</a></li>
+          <li><a href="#craft" class="ul-grow">Fences &amp; Decks</a></li>
+          <li><a href="#craft" class="ul-grow">Drywall &amp; Renovation</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-bone/45 text-[11px] tracking-[.18em] uppercase mb-4">Get in touch</div>
+        <a href="tel:+19315163848" class="display text-bone text-[22px] font-600 ul-grow">(931) 516-3848</a>
+        <p class="text-bone/55 text-[14px] mt-3">Clarksville, TN 37040</p>
+        <p class="text-bone/55 text-[14px]">Mon–Sat 8:00a–5:00p</p>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-bone/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12.5px] text-bone/40">
+      <p>© <span id="yr">2026</span> DC Home Solutions · Clarksville, Tennessee</p>
+      <p>Website preview by <span class="text-bone/60">Turnkey Web</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE STICKY BAR ===== -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-pine/95 backdrop-blur-md ring-1 ring-bone/10 px-3 py-2.5 flex gap-2.5">
+  <a href="tel:+19315163848" class="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-clay text-paper py-3 text-[14.5px] font-600">
+    <span class="w-1.5 h-1.5 rounded-full bg-bone pdot"></span> Call now
+  </a>
+  <a href="#estimate" class="flex-1 inline-flex items-center justify-center rounded-full bg-bone/10 ring-1 ring-bone/25 text-bone py-3 text-[14.5px] font-600">Free estimate</a>
+</div>
+
+<!-- ===== JSON-LD ===== -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"GeneralContractor",
+  "name":"DC Home Solutions",
+  "image":"https://turnkeyweb.org/previews/dc-home-solutions/assets/hero.jpg",
+  "url":"https://turnkeyweb.org/previews/dc-home-solutions/",
+  "telephone":"+1-931-516-3848",
+  "founder":"Daymel Castellano",
+  "foundingDate":"2021-05-01",
+  "priceRange":"$$",
+  "address":{"@type":"PostalAddress","addressLocality":"Clarksville","addressRegion":"TN","postalCode":"37040","addressCountry":"US"},
+  "areaServed":{"@type":"City","name":"Clarksville, TN"},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"17:00"}
+  ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"35"},
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Interior & Exterior Painting"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pressure & Soft Washing"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Fence Installation & Staining"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Deck Building & Staining"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Drywall Repair"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"General Renovations"}}
+  ]
+}
+</script>
+
+<!-- ===== LIBS ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* split headline preserving inner HTML */
+document.querySelectorAll('[data-split]').forEach(el=>{ el.innerHTML = '<span>'+el.innerHTML+'</span>'; });
+
+/* Lenis smooth scroll */
+let lenis;
+try{
+  lenis = new Lenis({ duration:1.15, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)) });
+  function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+}catch(e){}
+
+/* nav shrink */
+const nav=document.getElementById('nav');
+function navState(y){
+  if(y>40){ nav.style.background='rgba(244,238,227,.92)'; nav.style.backdropFilter='blur(12px)'; nav.style.boxShadow='0 1px 0 rgba(25,21,18,.08)';
+    document.getElementById('navname').style.color='#191512'; document.getElementById('navsub').style.color='rgba(30,52,43,.7)';
+    nav.querySelectorAll('nav a').forEach(a=>a.style.color='rgba(25,21,18,.8)');
+  } else { nav.style.background='transparent'; nav.style.backdropFilter='none'; nav.style.boxShadow='none';
+    document.getElementById('navname').style.color='#FBF7EF'; document.getElementById('navsub').style.color='rgba(251,247,239,.7)';
+    nav.querySelectorAll('nav a').forEach(a=>a.style.color='rgba(251,247,239,.85)');
+  }
+}
+navState(0);
+
+/* anchored smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href'); if(id.length<2) return;
+    const t=document.querySelector(id); if(!t) return;
+    e.preventDefault();
+    const y=t.getBoundingClientRect().top + window.pageYOffset - 64;
+    if(lenis) lenis.scrollTo(y,{duration:1.1}); else window.scrollTo({top:y,behavior:'smooth'});
+  });
+});
+
+/* GSAP reveals */
+if(window.gsap){
+  gsap.registerPlugin(ScrollTrigger);
+  if(lenis) lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:1,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 90%'}});
+  });
+  gsap.utils.toArray('[data-img]').forEach(el=>{
+    gsap.to(el,{clipPath:'inset(0 0 0% 0)',duration:1.3,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 85%'}});
+  });
+  /* count-up */
+  document.querySelectorAll('.cu').forEach(el=>{
+    const to=+el.dataset.to, suf=el.dataset.suf||'';
+    ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>{
+      gsap.to({v:0},{v:to,duration:1.5,ease:'power2.out',onUpdate(){el.textContent=Math.round(this.targets()[0].v)+suf;}});
+    }});
+  });
+  ScrollTrigger.create({start:0,end:99999,onUpdate:self=>navState(self.scroll())});
+}
+
+/* ===== signature before/after slider ===== */
+(function(){
+  const ba=document.getElementById('ba'); if(!ba) return;
+  const before=document.getElementById('baBefore'), handle=document.getElementById('baHandle');
+  function set(p){ p=Math.max(2,Math.min(98,p)); before.style.width=p+'%'; handle.style.left=p+'%'; }
+  function fromEvent(e){
+    const r=ba.getBoundingClientRect();
+    const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
+    set(x/r.width*100);
+  }
+  let drag=false;
+  ba.addEventListener('mousedown',e=>{drag=true;fromEvent(e);});
+  window.addEventListener('mousemove',e=>{if(drag)fromEvent(e);});
+  window.addEventListener('mouseup',()=>drag=false);
+  ba.addEventListener('touchstart',e=>{drag=true;fromEvent(e);},{passive:true});
+  ba.addEventListener('touchmove',e=>{if(drag)fromEvent(e);},{passive:true});
+  ba.addEventListener('touchend',()=>drag=false);
+  /* gentle auto-hint on first view */
+  if(window.ScrollTrigger){
+    ScrollTrigger.create({trigger:ba,start:'top 70%',once:true,onEnter(){
+      let p=50,dir=1,n=0;
+      const id=setInterval(()=>{ p+=dir*1.6; if(p>64){dir=-1} if(p<40){dir=1} set(p); if(++n>26){clearInterval(id);set(50);} },18);
+    }});
+  }
+})();
+
+/* ===== 6s crawler / screenshot safety net ===== */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{
+    if(getComputedStyle(el).opacity==='0'){ el.style.opacity='1'; el.style.transform='none'; }
+  });
+  document.querySelectorAll('[data-img]').forEach(el=>{ el.style.clipPath='inset(0 0 0% 0)'; });
+  document.querySelectorAll('.cu').forEach(el=>{ if(el.textContent.trim()==='0'){ el.textContent=el.dataset.to+(el.dataset.suf||''); } });
+},6000);
+</script>
+</body>
+</html>
