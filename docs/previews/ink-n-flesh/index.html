@@ -130,10 +130,90 @@
   .underline-grow:hover::after{width:100%;}
 
   .hairline{height:1px; background:linear-gradient(90deg,transparent,rgba(200,162,76,.4),transparent);}
+
+  /* ===== INTRO PRELOADER (first 4s of the studio reel, then lift into the site) ===== */
+  #preloader{position:fixed; inset:0; z-index:120; background:#0A0A0C; display:flex; align-items:center; justify-content:center; overflow:hidden;
+    transition:opacity 1.05s cubic-bezier(.4,0,.2,1), transform 1.2s cubic-bezier(.2,.7,.2,1), filter 1.05s ease;}
+  #preloader.done{opacity:0; transform:scale(1.07); filter:blur(10px); pointer-events:none;}
+  #preloader video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.92;}
+  #preloader .pl-grad{position:absolute; inset:0;
+    background:linear-gradient(180deg,rgba(10,10,12,.55) 0%,rgba(10,10,12,.30) 42%,rgba(10,10,12,.92) 100%);}
+  #preloader .pl-vig{position:absolute; inset:0; box-shadow:inset 0 0 260px 70px rgba(0,0,0,.92); pointer-events:none;}
+  #pl-content{position:relative; z-index:4; text-align:center; padding:0 1.5rem; transform:translateY(-2%);}
+  #pl-bar{height:2px; width:min(300px,62vw); margin:1.5rem auto 0; background:rgba(239,233,222,.16); overflow:hidden; border-radius:3px;}
+  #pl-bar i{display:block; height:100%; width:0; background:linear-gradient(90deg,#D23B2E,#C8A24C); transition:width .25s linear;}
+  #pl-skip{opacity:0; animation:plFade 1s ease 1.2s forwards;}
+  @keyframes plFade{to{opacity:1;}}
+  html.pl-lock, body.pl-lock{overflow:hidden !important; height:100%;}
+  @media (prefers-reduced-motion: reduce){ #preloader{display:none !important;} }
 </style>
 </head>
 
 <body class="bg-ink text-bone">
+
+<!-- ================= INTRO PRELOADER ================= -->
+<div id="preloader" class="grain" role="dialog" aria-label="Ink N Flesh intro">
+  <video id="pl-video" muted playsinline autoplay preload="auto" poster="assets/intro-poster.jpg">
+    <source src="assets/intro.mp4" type="video/mp4" />
+  </video>
+  <div class="pl-grad"></div>
+  <div class="ambient amb-verm w-[460px] h-[460px]" style="top:-140px; right:-90px; animation:drift1 24s ease-in-out infinite;"></div>
+  <div class="ambient amb-gold w-[360px] h-[360px]" style="bottom:-120px; left:-90px; animation:drift2 28s ease-in-out infinite;"></div>
+  <div class="pl-vig"></div>
+  <div id="pl-content">
+    <div class="tracky text-[11px] sm:text-[12px] text-gold uppercase mb-5">Atlanta &middot; GA</div>
+    <div id="pl-word" class="stencil display text-[16vw] sm:text-[11vw] lg:text-[8.5rem] leading-[.88]">
+      <span>INK</span> <span class="accent">N</span> <span>FLESH</span>
+    </div>
+    <div class="script text-2xl sm:text-3xl text-bone/85 mt-1">custom tattoos &amp; piercings</div>
+    <div id="pl-bar"><i></i></div>
+    <button id="pl-skip" class="mt-6 text-[11px] tracking-[.3em] uppercase text-ash hover:text-bone transition">Tap to enter</button>
+  </div>
+</div>
+<script>
+(function(){
+  var pl = document.getElementById('preloader');
+  if(!pl) return;
+  var html = document.documentElement, body = document.body;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ pl.parentNode && pl.parentNode.removeChild(pl); return; }
+  html.classList.add('pl-lock'); body.classList.add('pl-lock');
+
+  var done = false;
+  function dismiss(){
+    if(done) return; done = true;
+    pl.classList.add('done');
+    html.classList.remove('pl-lock'); body.classList.remove('pl-lock');
+    try { document.querySelector('#top .stencil').classList.add('filled'); } catch(e){}
+    setTimeout(function(){ if(pl.parentNode) pl.parentNode.removeChild(pl); }, 1200);
+  }
+
+  // fill the preloader wordmark just after the reel starts
+  setTimeout(function(){ var w=document.getElementById('pl-word'); if(w) w.classList.add('filled'); }, 650);
+
+  var v = document.getElementById('pl-video');
+  var bar = document.querySelector('#pl-bar i');
+  var CAP = 4.0; // first 4 seconds only
+
+  // progress bar fills smoothly over CAP, driven by rAF (works even if autoplay is blocked)
+  var start = performance.now();
+  (function tick(now){
+    if(done) return;
+    var pct = Math.min(100, ((now - start) / (CAP * 1000)) * 100);
+    if(bar) bar.style.width = pct + '%';
+    if(pct < 100) requestAnimationFrame(tick);
+  })(start);
+
+  if(v){
+    var p = v.play(); if(p && p.catch) p.catch(function(){});
+    v.addEventListener('ended', dismiss);
+  }
+  // hard reveal at CAP + small buffer, no matter what (autoplay blocked / load fail)
+  setTimeout(dismiss, CAP * 1000 + 250);
+  document.getElementById('pl-skip').addEventListener('click', function(e){ e.stopPropagation(); dismiss(); });
+  pl.addEventListener('click', dismiss);
+})();
+</script>
 
 <!-- ================= NAV ================= -->
 <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
