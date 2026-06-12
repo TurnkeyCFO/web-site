@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<!--
+  Ink N Flesh Tattoo Studios — bespoke prospect build (DRAFT for approval)
+  Business: Ink N Flesh Tattoo Studios · Atlanta, GA
+  Artist/Owner: Malo
+  Phone: (678) 656-6761 · 4400 Chamblee Dunwoody Rd, Atlanta, GA 30341
+  IG: @ink.n.flesh_tattoos.atl · @i_n_f_malo
+  Art direction: dark cinematic editorial · Anton + Barlow · blood-red accent #C8202F
+  Signature interaction: horizontal-scroll flash/portfolio rail
+  Photos: correct-subject tattoo stock (Pexels), HTTP-verified 200
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ink N Flesh Tattoo Studios | Custom Tattoos &amp; Piercings — Atlanta, GA</title>
+<meta name="description" content="Ink N Flesh Tattoo Studios in Atlanta, GA. Custom tattoos, black &amp; grey, lettering, cover-ups, piercings, and tattoo removal by artist Malo. Book your session — (678) 656-6761." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/ink-n-flesh/" />
+<meta property="og:title" content="Ink N Flesh Tattoo Studios — Atlanta, GA" />
+<meta property="og:description" content="Custom tattoos &amp; piercings by Malo. Clean, affordable, on time. Book your session in Atlanta." />
+<meta property="og:type" content="business.business" />
+<meta property="og:url" content="https://turnkeyweb.org/previews/ink-n-flesh/" />
+<meta name="theme-color" content="#0A0A0B" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:   '#0A0A0B',
+          coal:  '#141416',
+          slate2:'#1E1E22',
+          bone:  '#EDE7DD',
+          ash:   '#9A9AA2',
+          blood: '#C8202F',
+          bloodd:'#9C141F',
+        },
+        fontFamily: {
+          display: ['Anton', 'sans-serif'],
+          cond:    ['"Barlow Condensed"', 'sans-serif'],
+          body:    ['Barlow', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#0A0A0B; color:#EDE7DD; font-family:'Barlow',sans-serif; overflow-x:hidden; }
+  ::selection { background:#C8202F; color:#fff; }
+  .display { font-family:'Anton',sans-serif; letter-spacing:.01em; }
+  .cond { font-family:'Barlow Condensed',sans-serif; }
+  .grain::after {
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.07; z-index:2;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .reveal { opacity:0; transform:translateY(34px); filter:blur(6px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1), filter .9s ease; }
+  .reveal.in { opacity:1; transform:none; filter:blur(0); }
+  .marquee { display:flex; width:max-content; animation:scrollx 26s linear infinite; }
+  @keyframes scrollx { to { transform:translateX(-50%); } }
+  .rail { scrollbar-width:none; -ms-overflow-style:none; }
+  .rail::-webkit-scrollbar { display:none; }
+  .uline { background-image:linear-gradient(#C8202F,#C8202F); background-size:0% 2px; background-repeat:no-repeat; background-position:0 100%; transition:background-size .4s ease; }
+  .uline:hover { background-size:100% 2px; }
+  .lift { transition:transform .5s cubic-bezier(.2,.7,.2,1), border-color .5s ease; }
+  .lift:hover { transform:translateY(-6px); border-color:#C8202F; }
+  @media (prefers-reduced-motion: reduce) { .reveal{opacity:1!important;transform:none!important;filter:none!important;} .marquee{animation:none;} }
+</style>
+</head>
+<body class="font-body antialiased">
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16 sm:h-20">
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="display text-blood text-2xl sm:text-3xl leading-none">INK<span class="text-bone">N</span>FLESH</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 cond text-sm tracking-widest uppercase text-bone/80">
+      <a href="#work" class="uline">Work</a>
+      <a href="#services" class="uline">Services</a>
+      <a href="#artist" class="uline">The Artist</a>
+      <a href="#visit" class="uline">Visit</a>
+    </nav>
+    <a href="tel:+16786566761" class="hidden sm:inline-flex items-center gap-2 bg-blood hover:bg-bloodd transition-colors text-white cond uppercase tracking-widest text-sm font-600 px-5 py-2.5 rounded-sm">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (678) 656-6761
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-[100svh] flex items-end grain overflow-hidden">
+  <img src="https://images.pexels.com/photos/4125586/pexels-photo-4125586.jpeg?auto=compress&cs=tinysrgb&w=1600"
+       alt="Tattoo artist applying a custom tattoo at Ink N Flesh in Atlanta" loading="eager"
+       class="absolute inset-0 w-full h-full object-cover" />
+  <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/40"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-ink/80 to-transparent"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 pb-16 sm:pb-24">
+    <div class="flex items-center gap-3 mb-5 reveal">
+      <span class="h-px w-10 bg-blood"></span>
+      <span class="cond uppercase tracking-[0.3em] text-xs sm:text-sm text-bone/80">Atlanta, GA &middot; Est. on Chamblee Dunwoody</span>
+    </div>
+    <h1 class="display leading-[0.86] reveal">
+      <span class="block text-[18vw] sm:text-[13vw] lg:text-[10.5rem] text-bone">INK <span class="text-blood">N</span></span>
+      <span class="block text-[18vw] sm:text-[13vw] lg:text-[10.5rem] text-bone -mt-2 sm:-mt-4">FLESH</span>
+    </h1>
+    <p class="mt-6 max-w-xl text-lg sm:text-xl text-bone/85 reveal">
+      Custom tattoos and piercings by <span class="text-bone font-600">Malo</span> — clean, honest, and done right the first time. Bring the idea. We&rsquo;ll make it permanent.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center gap-4 reveal">
+      <a href="#visit" class="inline-flex items-center gap-2 bg-blood hover:bg-bloodd transition-colors text-white cond uppercase tracking-widest font-600 px-7 py-3.5 rounded-sm">
+        Book a Session
+      </a>
+      <a href="tel:+16786566761" class="inline-flex items-center gap-2 border border-bone/30 hover:border-blood text-bone cond uppercase tracking-widest font-600 px-7 py-3.5 rounded-sm transition-colors">
+        Call the Shop
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="bg-blood text-white py-3 overflow-hidden border-y border-black/20">
+  <div class="marquee cond uppercase tracking-[0.25em] text-sm font-600">
+    <span class="flex">
+      <em class="not-italic px-6">Custom Tattoos</em><em class="not-italic px-6">&bull;</em>
+      <em class="not-italic px-6">Black &amp; Grey</em><em class="not-italic px-6">&bull;</em>
+      <em class="not-italic px-6">Lettering &amp; Script</em><em class="not-italic px-6">&bull;</em>
+      <em class="not-italic px-6">Cover-Ups</em><em class="not-italic px-6">&bull;</em>
+      <em class="not-italic px-6">Piercings</em><em class="not-italic px-6">&bull;</em>
+      <em class="not-italic px-6">Tattoo Removal</em><em class="not-italic px-6">&bull;</em>
+    </span>
+    <span class="flex" aria-hidden="true">
+      <em class="not-italic px-6">Custom Tattoos</em><em class="not-italic px-6">&bull;</em>
+      <em class="not-italic px-6">Black &amp; Grey</em><em class="not-italic px-6">&bull;</em>
+      <em class="not-italic px-6">Lettering &amp; Script</em><em class="not-italic px-6">&bull;</em>
+      <em class="not-italic px-6">Cover-Ups</em><em class="not-italic px-6">&bull;</em>
+      <em class="not-italic px-6">Piercings</em><em class="not-italic px-6">&bull;</em>
+      <em class="not-italic px-6">Tattoo Removal</em><em class="not-italic px-6">&bull;</em>
+    </span>
+  </div>
+</div>
+
+<!-- THE ARTIST -->
+<section id="artist" class="relative py-20 sm:py-28 bg-coal">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="relative reveal">
+      <div class="absolute -inset-3 border border-blood/40 rounded-sm translate-x-3 translate-y-3"></div>
+      <img src="https://images.pexels.com/photos/6593432/pexels-photo-6593432.jpeg?auto=compress&cs=tinysrgb&w=1100"
+           alt="Malo focused on a tattoo at Ink N Flesh Tattoo Studios" loading="lazy"
+           class="relative w-full h-[420px] sm:h-[540px] object-cover rounded-sm grayscale-[15%]" />
+    </div>
+    <div>
+      <div class="flex items-center gap-3 mb-5 reveal">
+        <span class="h-px w-10 bg-blood"></span>
+        <span class="cond uppercase tracking-[0.3em] text-xs text-blood">The Artist</span>
+      </div>
+      <h2 class="display text-4xl sm:text-6xl leading-[0.95] text-bone reveal">A STEADY HAND<br>AND AN HONEST<br><span class="text-blood">PRICE.</span></h2>
+      <p class="mt-6 text-lg text-bone/80 reveal">
+        Malo has built Ink N Flesh on a simple reputation: a clean station, a careful line, and a session that starts and ends when it&rsquo;s supposed to. Clients drive across Atlanta for it.
+      </p>
+      <p class="mt-4 text-lg text-bone/80 reveal">
+        From a mother&rsquo;s name in her real handwriting to bold black-and-grey pieces, every tattoo is drawn around you — never traced off a template. Walk in with a reference or just an idea; you&rsquo;ll leave with something you&rsquo;re proud to wear.
+      </p>
+      <div class="mt-8 grid grid-cols-3 gap-6 reveal">
+        <div><div class="display text-4xl text-blood">100%</div><div class="cond uppercase tracking-widest text-xs text-ash mt-1">Custom Work</div></div>
+        <div><div class="display text-4xl text-blood">Sterile</div><div class="cond uppercase tracking-widest text-xs text-ash mt-1">Single-Use Setup</div></div>
+        <div><div class="display text-4xl text-blood">On&nbsp;Time</div><div class="cond uppercase tracking-widest text-xs text-ash mt-1">Every Session</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-20 sm:py-28 bg-ink relative grain">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4 reveal"><span class="h-px w-10 bg-blood"></span><span class="cond uppercase tracking-[0.3em] text-xs text-blood">What We Do</span></div>
+        <h2 class="display text-5xl sm:text-7xl leading-none text-bone reveal">THE MENU</h2>
+      </div>
+      <p class="max-w-sm text-bone/70 reveal">Consultations are free. Pricing is quoted up front once we see the piece — no surprises at the chair.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10 rounded-sm overflow-hidden">
+      <!-- card -->
+      <div class="lift bg-coal p-8 reveal">
+        <span class="display text-2xl text-blood">01</span>
+        <h3 class="cond uppercase tracking-wide text-2xl text-bone mt-3">Custom Tattoos</h3>
+        <p class="text-bone/70 mt-2">Drawn for you from a reference or a rough idea. Any size, color or black-only.</p>
+      </div>
+      <div class="lift bg-coal p-8 reveal">
+        <span class="display text-2xl text-blood">02</span>
+        <h3 class="cond uppercase tracking-wide text-2xl text-bone mt-3">Black &amp; Grey</h3>
+        <p class="text-bone/70 mt-2">Smooth shading, portraits, and fine-line work with depth that lasts.</p>
+      </div>
+      <div class="lift bg-coal p-8 reveal">
+        <span class="display text-2xl text-blood">03</span>
+        <h3 class="cond uppercase tracking-wide text-2xl text-bone mt-3">Lettering &amp; Script</h3>
+        <p class="text-bone/70 mt-2">Names, dates, and real handwriting carried over exactly as written.</p>
+      </div>
+      <div class="lift bg-coal p-8 reveal">
+        <span class="display text-2xl text-blood">04</span>
+        <h3 class="cond uppercase tracking-wide text-2xl text-bone mt-3">Cover-Ups</h3>
+        <p class="text-bone/70 mt-2">Turn an old or unwanted tattoo into something you actually want to keep.</p>
+      </div>
+      <div class="lift bg-coal p-8 reveal">
+        <span class="display text-2xl text-blood">05</span>
+        <h3 class="cond uppercase tracking-wide text-2xl text-bone mt-3">Piercings</h3>
+        <p class="text-bone/70 mt-2">Ear, nose, and more — clean technique with quality, body-safe jewelry.</p>
+      </div>
+      <div class="lift bg-coal p-8 reveal">
+        <span class="display text-2xl text-blood">06</span>
+        <h3 class="cond uppercase tracking-wide text-2xl text-bone mt-3">Tattoo Removal</h3>
+        <p class="text-bone/70 mt-2">Fading or fully clearing old ink so you can start fresh.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO RAIL (signature interaction) -->
+<section id="work" class="py-20 sm:py-28 bg-coal overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-end justify-between mb-10">
+    <div>
+      <div class="flex items-center gap-3 mb-4 reveal"><span class="h-px w-10 bg-blood"></span><span class="cond uppercase tracking-[0.3em] text-xs text-blood">The Work</span></div>
+      <h2 class="display text-5xl sm:text-7xl leading-none text-bone reveal">FRESH INK</h2>
+    </div>
+    <span class="hidden sm:block cond uppercase tracking-widest text-xs text-ash reveal">Drag / scroll &rarr;</span>
+  </div>
+
+  <div id="rail" class="rail flex gap-4 sm:gap-6 overflow-x-auto px-5 sm:px-8 pb-4 cursor-grab snap-x">
+    <figure class="snap-start shrink-0 w-[78vw] sm:w-[420px] reveal">
+      <img src="https://images.pexels.com/photos/28991534/pexels-photo-28991534.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Detailed custom tattoo work" loading="lazy" class="w-full h-[460px] sm:h-[520px] object-cover rounded-sm" />
+    </figure>
+    <figure class="snap-start shrink-0 w-[78vw] sm:w-[420px] reveal">
+      <img src="https://images.pexels.com/photos/35645871/pexels-photo-35645871.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Black and grey tattoo craftsmanship" loading="lazy" class="w-full h-[460px] sm:h-[520px] object-cover rounded-sm" />
+    </figure>
+    <figure class="snap-start shrink-0 w-[78vw] sm:w-[420px] reveal">
+      <img src="https://images.pexels.com/photos/28991646/pexels-photo-28991646.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Professional tattooing at the studio" loading="lazy" class="w-full h-[460px] sm:h-[520px] object-cover rounded-sm" />
+    </figure>
+    <figure class="snap-start shrink-0 w-[78vw] sm:w-[420px] reveal">
+      <img src="https://images.pexels.com/photos/23349907/pexels-photo-23349907.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Tattoo station prepared for a session" loading="lazy" class="w-full h-[460px] sm:h-[520px] object-cover rounded-sm" />
+    </figure>
+    <figure class="snap-start shrink-0 w-[78vw] sm:w-[420px] reveal">
+      <img src="https://images.pexels.com/photos/27530517/pexels-photo-27530517.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Custom tattoo design in progress" loading="lazy" class="w-full h-[460px] sm:h-[520px] object-cover rounded-sm" />
+    </figure>
+    <figure class="snap-start shrink-0 w-[78vw] sm:w-[420px] reveal">
+      <img src="https://images.pexels.com/photos/30775725/pexels-photo-30775725.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Close detail of finished tattoo" loading="lazy" class="w-full h-[460px] sm:h-[520px] object-cover rounded-sm" />
+    </figure>
+  </div>
+  <p class="max-w-7xl mx-auto px-5 sm:px-8 mt-6 text-bone/60 text-sm reveal">
+    See more on Instagram &mdash;
+    <a href="https://www.instagram.com/ink.n.flesh_tattoos.atl/" target="_blank" rel="noopener" class="text-blood uline">@ink.n.flesh_tattoos.atl</a>
+  </p>
+</section>
+
+<!-- REVIEWS -->
+<section class="py-20 sm:py-28 bg-ink relative grain">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
+    <div class="text-center mb-14">
+      <div class="flex items-center justify-center gap-3 mb-4 reveal"><span class="h-px w-10 bg-blood"></span><span class="cond uppercase tracking-[0.3em] text-xs text-blood">Word of Mouth</span><span class="h-px w-10 bg-blood"></span></div>
+      <h2 class="display text-5xl sm:text-7xl leading-none text-bone reveal">WHAT CLIENTS SAY</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <blockquote class="lift bg-coal border border-white/10 rounded-sm p-8 reveal">
+        <div class="text-blood text-xl tracking-widest mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="text-bone/90 text-lg leading-relaxed">&ldquo;Malo was amazing &mdash; he was clean, nice, affordable, and TIMELY.&rdquo;</p>
+        <footer class="cond uppercase tracking-widest text-xs text-ash mt-6">Damo &middot; Verified reviewer</footer>
+      </blockquote>
+      <blockquote class="lift bg-coal border border-white/10 rounded-sm p-8 reveal">
+        <div class="text-blood text-xl tracking-widest mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="text-bone/90 text-lg leading-relaxed">&ldquo;Got my mom&rsquo;s name in her handwriting, which is really sentimental to me &mdash; he did a wonderful job.&rdquo;</p>
+        <footer class="cond uppercase tracking-widest text-xs text-ash mt-6">Verified Google reviewer</footer>
+      </blockquote>
+      <blockquote class="lift bg-coal border border-white/10 rounded-sm p-8 reveal">
+        <div class="text-blood text-xl tracking-widest mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="text-bone/90 text-lg leading-relaxed">&ldquo;Malo is a wonderful artist with true talent!!&rdquo;</p>
+        <footer class="cond uppercase tracking-widest text-xs text-ash mt-6">Verified reviewer</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT / BOOK -->
+<section id="visit" class="py-20 sm:py-28 bg-coal">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 items-stretch">
+    <div>
+      <div class="flex items-center gap-3 mb-4 reveal"><span class="h-px w-10 bg-blood"></span><span class="cond uppercase tracking-[0.3em] text-xs text-blood">Visit the Shop</span></div>
+      <h2 class="display text-5xl sm:text-7xl leading-none text-bone reveal">FIND US</h2>
+      <p class="mt-6 text-lg text-bone/80 reveal">Tucked on Chamblee Dunwoody Rd in Atlanta. Appointments are recommended for tattoos &mdash; walk-ins welcome when a chair is open.</p>
+
+      <div class="mt-8 space-y-5">
+        <a href="https://www.google.com/maps/search/?api=1&query=Ink+N+Flesh+Tattoo+Studios+4400+Chamblee+Dunwoody+Rd+Atlanta+GA+30341" target="_blank" rel="noopener" class="flex items-start gap-4 group reveal">
+          <span class="mt-1 text-blood"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span><span class="cond uppercase tracking-widest text-xs text-ash block">Address</span><span class="text-bone text-lg group-hover:text-blood transition-colors">4400 Chamblee Dunwoody Rd<br>Atlanta, GA 30341</span></span>
+        </a>
+        <a href="tel:+16786566761" class="flex items-start gap-4 group reveal">
+          <span class="mt-1 text-blood"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span><span class="cond uppercase tracking-widest text-xs text-ash block">Call / Text</span><span class="text-bone text-lg group-hover:text-blood transition-colors">(678) 656-6761</span></span>
+        </a>
+        <div class="flex items-start gap-4 reveal">
+          <span class="mt-1 text-blood"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <span>
+            <span class="cond uppercase tracking-widest text-xs text-ash block">Hours</span>
+            <span class="text-bone/90 text-base leading-relaxed block mt-1">
+              Mon &ndash; Wed &middot; <span class="text-ash">By appointment</span><br>
+              Thu &middot; 11:00 AM &ndash; 11:30 PM<br>
+              Fri &ndash; Sat &middot; <span class="text-ash">By appointment</span><br>
+              Sun &middot; 12:00 PM &ndash; 9:00 PM
+            </span>
+            <span class="text-ash text-sm block mt-2">Call or DM to book &mdash; sessions by appointment, walk-ins when available.</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-4 reveal">
+        <a href="tel:+16786566761" class="inline-flex items-center gap-2 bg-blood hover:bg-bloodd transition-colors text-white cond uppercase tracking-widest font-600 px-7 py-3.5 rounded-sm">Book Now</a>
+        <a href="https://www.instagram.com/ink.n.flesh_tattoos.atl/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 border border-bone/30 hover:border-blood text-bone cond uppercase tracking-widest font-600 px-7 py-3.5 rounded-sm transition-colors">Instagram</a>
+      </div>
+    </div>
+
+    <div class="relative min-h-[360px] reveal">
+      <div class="absolute -inset-2 border border-blood/30 rounded-sm"></div>
+      <iframe
+        title="Map to Ink N Flesh Tattoo Studios"
+        class="relative w-full h-full min-h-[360px] rounded-sm grayscale contrast-125"
+        style="border:0; filter:grayscale(1) invert(0.92) contrast(0.9);"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=4400+Chamblee+Dunwoody+Rd,+Atlanta,+GA+30341&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="bg-blood relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-16 sm:py-24 text-center relative z-10">
+    <h2 class="display text-4xl sm:text-7xl leading-[0.95] text-white reveal">READY TO GET INKED?</h2>
+    <p class="mt-5 text-white/90 text-lg max-w-xl mx-auto reveal">Free consultations. Honest quotes. A clean chair waiting for you in Atlanta.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4 reveal">
+      <a href="tel:+16786566761" class="inline-flex items-center gap-2 bg-ink hover:bg-black transition-colors text-bone cond uppercase tracking-widest font-600 px-8 py-4 rounded-sm">Call (678) 656-6761</a>
+      <a href="#visit" class="inline-flex items-center gap-2 border border-white/50 hover:bg-white hover:text-blood transition-colors text-white cond uppercase tracking-widest font-600 px-8 py-4 rounded-sm">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink border-t border-white/10 py-12">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <div class="text-center sm:text-left">
+      <span class="display text-blood text-3xl leading-none">INK<span class="text-bone">N</span>FLESH</span>
+      <p class="text-ash text-sm mt-2">4400 Chamblee Dunwoody Rd, Atlanta, GA 30341 &middot; (678) 656-6761</p>
+    </div>
+    <div class="flex items-center gap-6 cond uppercase tracking-widest text-sm text-bone/70">
+      <a href="https://www.instagram.com/ink.n.flesh_tattoos.atl/" target="_blank" rel="noopener" class="uline">@ink.n.flesh_tattoos.atl</a>
+      <a href="https://www.instagram.com/i_n_f_malo/" target="_blank" rel="noopener" class="uline">@i_n_f_malo</a>
+    </div>
+  </div>
+  <p class="text-center text-ash/60 text-xs mt-8">&copy; <span id="yr"></span> Ink N Flesh Tattoo Studios. All rights reserved.</p>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="sm:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-2 border-t border-white/10">
+  <a href="tel:+16786566761" class="bg-coal text-bone cond uppercase tracking-widest text-sm font-600 py-4 text-center">Call</a>
+  <a href="#visit" class="bg-blood text-white cond uppercase tracking-widest text-sm font-600 py-4 text-center">Book</a>
+</div>
+
+<!-- Lenis smooth scroll -->
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Lenis smooth scroll + anchored links
+  let lenis;
+  try {
+    lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href'); if(id.length>1){ e.preventDefault(); const el=document.querySelector(id); if(el) lenis.scrollTo(el,{offset:-70}); }
+      });
+    });
+  } catch(e){}
+
+  // Nav background on scroll
+  const nav=document.getElementById('nav');
+  const onScroll=()=>{ if(window.scrollY>40){ nav.classList.add('bg-ink/90','backdrop-blur','shadow-lg','shadow-black/40'); } else { nav.classList.remove('bg-ink/90','backdrop-blur','shadow-lg','shadow-black/40'); } };
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  // Reveal on intersect
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  },{threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%6*60)+'ms'; io.observe(el); });
+
+  // 6s crawler/screenshot safety net — force-reveal everything
+  setTimeout(()=>{ document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }, 6000);
+
+  // Portfolio rail: drag to scroll
+  const rail=document.getElementById('rail');
+  if(rail){
+    let down=false, startX, sl;
+    rail.addEventListener('pointerdown', e=>{ down=true; rail.classList.add('cursor-grabbing'); startX=e.pageX; sl=rail.scrollLeft; });
+    window.addEventListener('pointerup', ()=>{ down=false; rail.classList.remove('cursor-grabbing'); });
+    rail.addEventListener('pointermove', e=>{ if(!down) return; rail.scrollLeft = sl - (e.pageX-startX); });
+  }
+</script>
+</body>
+</html>
