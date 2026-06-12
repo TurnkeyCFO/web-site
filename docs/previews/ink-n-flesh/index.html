@@ -206,10 +206,11 @@
 
   if(v){
     var p = v.play(); if(p && p.catch) p.catch(function(){});
-    v.addEventListener('ended', dismiss);
+    // hold the last frame if the clip runs a hair short, so the full 4s window always shows
+    v.addEventListener('ended', function(){ try{ v.pause(); v.currentTime = Math.max(0, (v.duration||CAP) - 0.05); }catch(e){} });
   }
-  // hard reveal at CAP + small buffer, no matter what (autoplay blocked / load fail)
-  setTimeout(dismiss, CAP * 1000 + 250);
+  // deterministic reveal at the full 4s mark (also covers autoplay-blocked / load-fail)
+  setTimeout(dismiss, CAP * 1000 + 200);
   document.getElementById('pl-skip').addEventListener('click', function(e){ e.stopPropagation(); dismiss(); });
   pl.addEventListener('click', dismiss);
 })();
