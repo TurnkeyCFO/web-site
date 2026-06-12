@@ -110,10 +110,89 @@
   .stamp { transform:rotate(-9deg); }
   .hero-frame { box-shadow: 0 40px 80px -30px rgba(26,24,21,.55); }
   .torn-edge { clip-path: polygon(0 0,100% 0,100% calc(100% - 14px),96% 100%,90% calc(100% - 10px),84% 100%,78% calc(100% - 11px),70% 100%,62% calc(100% - 9px),54% 100%,46% calc(100% - 11px),38% 100%,30% calc(100% - 9px),22% 100%,14% calc(100% - 11px),7% 100%,0 calc(100% - 9px)); }
+
+  /* ===== PRELOADER: video opener on black -> reveal site (J&N clip, Dan's brand) ===== */
+  .preload{position:fixed;inset:0;z-index:9999;background:#000;overflow:hidden;perspective:1400px;
+    transition:opacity .95s cubic-bezier(.7,0,.3,1), filter .95s ease;
+    animation:preloadSafety 0s linear 6.5s forwards}
+  .preload.done{opacity:0;pointer-events:none;filter:blur(8px)}
+  .preload.done .pl-video{transform:scale(1.14)}
+  .preload.done .pl-stage{transform:translateY(-14px) scale(1.05);opacity:0}
+  .pl-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;
+    transform:scale(1.02);transition:transform .95s cubic-bezier(.7,0,.3,1)}
+  @media (max-width:640px){ .pl-video{object-fit:contain} }
+  .pl-scrim{position:absolute;inset:0;background:
+    radial-gradient(120% 90% at 50% 44%, transparent 36%, rgba(0,0,0,.55) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,0) 24%, rgba(0,0,0,0) 52%, rgba(0,0,0,.86) 100%)}
+  .pl-stage{position:absolute;left:0;right:0;bottom:10%;text-align:center;padding:0 22px;
+    transform-style:preserve-3d;transition:transform .95s cubic-bezier(.7,0,.3,1),opacity .8s ease}
+  .pl-eyebrow{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.24em;
+    font-size:11px;color:#C08A3E;opacity:0;animation:plUp .9s cubic-bezier(.2,.7,.2,1) .25s forwards}
+  .pl-head{position:relative;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;line-height:.94;color:#FBF7F0;
+    margin-top:14px;letter-spacing:-.01em;text-shadow:0 6px 30px rgba(0,0,0,.7)}
+  .pl-head::after{content:"";position:absolute;inset:-4% -12%;pointer-events:none;mix-blend-mode:overlay;
+    background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.5) 50%,transparent 62%);
+    transform:translateX(-115%);animation:plShine 3.2s ease-in-out 1.6s infinite}
+  .pl-head .pl-l{display:block;opacity:0;transform:translateY(26px) rotateX(38deg);transform-origin:50% 100%;
+    animation:plReveal .9s cubic-bezier(.2,.7,.2,1) forwards;font-size:clamp(28px,6.2vw,64px)}
+  .pl-head .pl-l:nth-child(1){animation-delay:.22s}
+  .pl-head .pl-l:nth-child(2){animation-delay:.36s}
+  .pl-head .pl-l:nth-child(3){color:#A8362B;
+    animation:plReveal .9s cubic-bezier(.2,.7,.2,1) .50s forwards, plGlow 2.2s ease-in-out 1.5s infinite}
+  .pl-sub{font-family:'Inter',sans-serif;font-size:13.5px;color:#C8CFD5;margin-top:16px;opacity:0;
+    animation:plUp .9s ease .98s forwards}
+  .pl-progress{position:absolute;left:0;bottom:0;width:100%;height:3px;background:rgba(255,255,255,.08)}
+  .pl-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#A8362B,#C08A3E);transition:width .2s linear}
+  .pl-skip{position:absolute;right:16px;bottom:14px;z-index:3;font-family:'Space Mono',monospace;
+    letter-spacing:.1em;text-transform:uppercase;font-size:11px;color:#cfd5db;background:rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:7px 14px;cursor:pointer;backdrop-filter:blur(4px)}
+  .pl-skip:hover{color:#C08A3E;border-color:#C08A3E}
+  @keyframes plReveal{to{opacity:1;transform:translateY(0) rotateX(0)}}
+  @keyframes plUp{to{opacity:1}}
+  @keyframes plShine{0%{transform:translateX(-115%)}55%,100%{transform:translateX(115%)}}
+  @keyframes plGlow{0%,100%{text-shadow:0 6px 30px rgba(0,0,0,.7),0 0 0 rgba(168,54,43,0)}
+    50%{text-shadow:0 6px 30px rgba(0,0,0,.7),0 0 26px rgba(168,54,43,.7)}}
+  @keyframes preloadSafety{to{opacity:0;visibility:hidden;pointer-events:none}}
+  @media (prefers-reduced-motion: reduce){ .pl-head .pl-l,.pl-eyebrow,.pl-sub{animation-duration:.01s;opacity:1;transform:none} }
+
+  /* ===== before/after drag slider (J&N images, Dan's brand) ===== */
+  .ba{position:relative;width:100%;aspect-ratio:4/3;border-radius:18px;overflow:hidden;user-select:none;
+    box-shadow:0 40px 80px -36px rgba(26,24,21,.55);border:1px solid rgba(26,24,21,.12);cursor:ew-resize;touch-action:pan-y}
+  @media (min-width:768px){ .ba{aspect-ratio:16/10} }
+  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;display:block}
+  .ba-before{position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path}
+  .ba-tag{position:absolute;top:14px;z-index:4;font-family:'Space Mono',monospace;letter-spacing:.18em;
+    font-size:11px;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+  .ba-tag.b{left:14px;background:rgba(26,24,21,.85);color:#FBF7F0}
+  .ba-tag.a{right:14px;background:#A8362B;color:#FBF7F0}
+  .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#FBF7F0;z-index:5;transform:translateX(-50%);
+    box-shadow:0 0 0 1px rgba(26,24,21,.15)}
+  .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;
+    background:#FBF7F0;display:flex;align-items:center;justify-content:center;color:#1A1815;
+    box-shadow:0 8px 22px -6px rgba(26,24,21,.5);font-family:'Bricolage Grotesque',sans-serif;font-weight:800}
 </style>
 </head>
 
 <body>
+
+<!-- ============ PRELOADER: video opener entering the site ============ -->
+<div id="preload" class="preload" role="dialog" aria-label="Intro">
+  <video id="preloadVid" class="pl-video" autoplay muted playsinline preload="auto" poster="assets/preloader-poster.jpg?v=1">
+    <source src="assets/preloader.mp4?v=1" type="video/mp4" />
+  </video>
+  <div class="pl-scrim"></div>
+  <div class="pl-stage">
+    <div class="pl-eyebrow">Dan's Auto Body &middot; Lewisville, TX &middot; Owner-operated</div>
+    <h1 class="pl-head">
+      <span class="pl-l">DINGED.</span>
+      <span class="pl-l">DENTED.</span>
+      <span class="pl-l">DONE RIGHT.</span>
+    </h1>
+    <div class="pl-sub">Honest collision &amp; body work, by Dan himself.</div>
+  </div>
+  <div class="pl-progress"><i id="plBar"></i></div>
+  <button id="plSkip" class="pl-skip">Skip intro &rsaquo;</button>
+</div>
 
 <!-- ============ NAV ============ -->
 <header id="top" class="fixed top-0 inset-x-0 z-50 transition-all duration-300" data-nav>
@@ -129,6 +208,7 @@
 
       <nav class="hidden md:flex items-center gap-8 text-[14px] font-medium text-ink/75">
         <a href="#work" class="ulink">The Work</a>
+        <a href="#beforeafter" class="ulink">Before &amp; After</a>
         <a href="#compare" class="ulink">Why Dan</a>
         <a href="#services" class="ulink">Services</a>
         <a href="#visit" class="ulink">Visit</a>
@@ -293,6 +373,32 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ BEFORE / AFTER DRAG SLIDER ============ -->
+<section id="beforeafter" class="relative py-20 lg:py-28 bg-paper2 paper-grid overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8">
+    <div class="max-w-2xl mb-10" data-reveal>
+      <div class="ticket-label text-iron mb-4">Before &amp; after</div>
+      <h2 class="font-display font-extrabold leading-[1.02] tracking-tight text-[clamp(2rem,4.6vw,3.3rem)]">
+        What comes in &rarr; what drives out.
+      </h2>
+      <p class="mt-5 text-[1.04rem] leading-relaxed text-ink/72">
+        Drag the handle. Collision damage in, a factory-match finish out &mdash; that's the whole job,
+        done by the same set of honest hands.
+      </p>
+    </div>
+    <div class="ba" id="ba" data-reveal>
+      <img class="ba-base" src="assets/after.jpg" alt="Car fully repaired and refinished after body work" />
+      <span class="ba-tag a">After</span>
+      <div class="ba-before" id="baBefore">
+        <img src="assets/before.jpg" alt="The same car with front-end collision damage before repair" />
+      </div>
+      <span class="ba-tag b">Before</span>
+      <div class="ba-handle" id="baHandle"><div class="ba-knob">&harr;</div></div>
+    </div>
+    <p class="mt-4 text-[13.5px] text-ink/55" data-reveal>Real repair work &mdash; a front-end collision brought back to a factory finish.</p>
   </div>
 </section>
 
@@ -665,6 +771,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script>
+  // ---- PRELOADER ---- video opener on black -> reveal site.
+  // Ends on video 'ended' OR Skip OR 6s hard cap OR error. Never traps the page.
+  (function(){
+    const pre=document.getElementById('preload');
+    const vid=document.getElementById('preloadVid');
+    const bar=document.getElementById('plBar');
+    const skip=document.getElementById('plSkip');
+    if(!pre){return;}
+    document.documentElement.style.overflow='hidden';
+    let done=false;
+    function finish(){
+      if(done) return; done=true;
+      pre.classList.add('done');
+      document.documentElement.style.overflow='';
+      setTimeout(()=>{ if(pre&&pre.parentNode) pre.parentNode.removeChild(pre); }, 1000);
+    }
+    if(skip){ skip.addEventListener('click', finish); }
+    if(vid){
+      vid.addEventListener('loadedmetadata', ()=>{ const d=vid.duration||0; if(d>1){ vid.playbackRate=Math.min(1.9,Math.max(1,d/4.0)); } });
+      vid.addEventListener('timeupdate', ()=>{ if(bar&&vid.duration){ bar.style.width=Math.min(100,(vid.currentTime/vid.duration)*100)+'%'; } });
+      vid.addEventListener('ended', ()=> setTimeout(finish, 180));
+      vid.addEventListener('error', ()=> setTimeout(finish, 300));
+      const p=vid.play && vid.play(); if(p&&p.catch){ p.catch(()=>{}); }
+    }
+    setTimeout(finish, 6000);
+    window.addEventListener('load', ()=>{ if(vid && vid.readyState<2) setTimeout(()=>{ if(!done) finish(); }, 3000); });
+  })();
+
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   // split-line headline (preserve inner HTML)
@@ -730,6 +864,31 @@
       });
     });
   }
+
+  // ---- before/after drag slider ----
+  (function(){
+    const ba=document.getElementById('ba'); if(!ba) return;
+    const before=document.getElementById('baBefore');
+    const handle=document.getElementById('baHandle');
+    function setPct(p){ p=Math.max(2,Math.min(98,p)); before.style.clipPath='inset(0 '+(100-p)+'% 0 0)'; handle.style.left=p+'%'; }
+    function fromEvent(e){
+      const r=ba.getBoundingClientRect();
+      const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
+      setPct((x/r.width)*100);
+    }
+    let drag=false;
+    const down=e=>{drag=true; fromEvent(e);};
+    const move=e=>{ if(drag){ fromEvent(e); if(e.cancelable && e.touches) e.preventDefault(); } };
+    const up=()=>{drag=false;};
+    ba.addEventListener('mousedown',down); window.addEventListener('mousemove',move); window.addEventListener('mouseup',up);
+    ba.addEventListener('touchstart',down,{passive:true}); window.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',up);
+    let hinted=false;
+    function hint(){ if(hinted) return; hinted=true;
+      let t=0; const id=setInterval(()=>{ t+=1; setPct(50+Math.sin(t/3)*16); if(t>9){clearInterval(id); setPct(50);} },45);
+    }
+    if(window.ScrollTrigger){ ScrollTrigger.create({trigger:ba,start:'top 70%',once:true,onEnter:hint}); }
+    else { setTimeout(hint,1200); }
+  })();
 
   // ---- 6s crawler / screenshot safety net (REQUIRED) ----
   setTimeout(() => {
