@@ -122,11 +122,32 @@ tailwind.config = {
 
   [data-reveal]{opacity:0;transform:translateY(34px)}
   .route-path{stroke-dasharray:1;stroke-dashoffset:1}
-  .hero-img{filter:saturate(1.02) contrast(1.02)}
+  .hero-img{filter:saturate(1.04) contrast(1.03)}
+
+  /* preloader */
+  body.loading{overflow:hidden}
+  .pl-grain{background-image:radial-gradient(#fff 1px,transparent 1px);background-size:3px 3px;mix-blend-mode:overlay;pointer-events:none}
+  #preload .pl-mark{animation:plPop .7s cubic-bezier(.2,.8,.2,1) both, plFloat 2.6s ease-in-out 0.7s infinite}
+  @keyframes plPop{0%{opacity:0;transform:translateY(10px) scale(.86)}100%{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes plFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  #preload.done{transform:translateY(-100%);transition:transform .9s cubic-bezier(.76,0,.24,1)}
 </style>
 </head>
 
 <body class="overflow-x-hidden">
+
+<!-- PRELOADER -->
+<div id="preload" class="fixed inset-0 z-[100] bg-navy text-bone grid place-items-center overflow-hidden">
+  <div class="pl-grain absolute inset-0 opacity-[.06]"></div>
+  <div class="relative text-center px-6">
+    <span class="pl-mark inline-block display font-900 text-navy bg-amber rounded-2xl px-5 py-3 leading-none text-3xl tracking-tight shadow-[0_18px_40px_-12px_rgba(232,162,61,.6)]">ABM</span>
+    <div class="pl-word mt-5 display font-800 text-bone text-lg tracking-tight">Abilene's Best Movers</div>
+    <div class="pl-sub mt-1 text-[11px] text-amber font-700 tracking-[.22em] uppercase">Loading your move</div>
+    <div class="mt-6 mx-auto h-[3px] w-44 rounded-full bg-bone/15 overflow-hidden">
+      <div id="plBar" class="h-full w-0 rounded-full bg-gradient-to-r from-amber to-amberD"></div>
+    </div>
+  </div>
+</div>
 
 <!-- NAV -->
 <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
@@ -187,13 +208,15 @@ tailwind.config = {
         <span class="inline-flex items-center gap-2"><span class="text-amber">✓</span> Homes · apartments · offices</span>
       </div>
     </div>
-    <!-- right image -->
+    <!-- right media — cinematic moving reel -->
     <div class="relative min-h-[52vh] lg:min-h-full">
-      <img src="assets/hero.jpg" alt="An Abilene's Best Movers crew member carefully packing fragile glassware into a labeled moving box" class="hero-img absolute inset-0 w-full h-full object-cover" />
+      <video class="hero-img absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="auto" poster="assets/hero.jpg" aria-label="Abilene's Best Movers crew taping a box, loading the truck, and finishing a move at golden hour">
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
       <div class="absolute inset-0 bg-gradient-to-r from-navy via-navy/30 to-transparent lg:from-navy lg:via-navy/10"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent"></div>
-      <div class="absolute bottom-5 right-5 rounded-xl bg-navy/70 backdrop-blur border border-white/10 px-4 py-2.5 text-[12px] text-bone/85 font-600">
-        Packed &amp; protected — every box
+      <div class="absolute bottom-5 right-5 inline-flex items-center gap-2 rounded-xl bg-navy/70 backdrop-blur border border-white/10 px-4 py-2.5 text-[12px] text-bone/85 font-600">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber pulse"></span> Packed, loaded &amp; on the road
       </div>
     </div>
   </div>
@@ -303,9 +326,9 @@ tailwind.config = {
     <!-- route -->
     <div class="relative mt-16">
       <!-- SVG path drawn on scroll (desktop) -->
-      <svg id="routeSvg" class="hidden md:block absolute left-0 right-0 top-[42px] w-full h-24 overflow-visible" viewBox="0 0 1000 80" preserveAspectRatio="none" fill="none">
-        <path d="M40 40 C 220 -10, 280 90, 480 40 S 760 -10, 960 40" stroke="#1F3A5F" stroke-width="3" stroke-linecap="round"/>
-        <path id="routeDraw" class="route-path" d="M40 40 C 220 -10, 280 90, 480 40 S 760 -10, 960 40" stroke="#E8A23D" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 9"/>
+      <svg id="routeSvg" class="hidden md:block absolute left-0 right-0 top-0 w-full h-[68px] overflow-visible" viewBox="0 0 1000 80" preserveAspectRatio="none" fill="none">
+        <path d="M40 40 C 220 20, 300 60, 500 40 S 780 20, 960 40" stroke="#1F3A5F" stroke-width="3" stroke-linecap="round"/>
+        <path id="routeDraw" class="route-path" d="M40 40 C 220 20, 300 60, 500 40 S 780 20, 960 40" stroke="#E8A23D" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 9"/>
       </svg>
 
       <div class="grid md:grid-cols-4 gap-9 md:gap-5 relative">
@@ -519,6 +542,23 @@ tailwind.config = {
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
   gsap.registerPlugin(ScrollTrigger);
+
+  // preloader — fill the bar, then curtain-wipe up
+  (function(){
+    const pre=document.getElementById('preload'), bar=document.getElementById('plBar');
+    if(!pre){return;}
+    document.body.classList.add('loading');
+    let p=0;
+    const tick=setInterval(()=>{ p=Math.min(96,p+Math.random()*22); if(bar) bar.style.width=p+'%'; },140);
+    const finish=()=>{
+      clearInterval(tick); if(bar) bar.style.width='100%';
+      setTimeout(()=>{ pre.classList.add('done'); document.body.classList.remove('loading');
+        setTimeout(()=>pre.remove(), 950); }, 320);
+    };
+    let done=false; const go=()=>{ if(done) return; done=true; finish(); };
+    window.addEventListener('load', ()=>setTimeout(go, 600));
+    setTimeout(go, 3200); // hard cap so it never hangs
+  })();
 
   // split headline (preserve inner HTML / em accents)
   document.querySelectorAll('[data-split]').forEach(el => { el.innerHTML = '<span style="display:inline-block">'+el.innerHTML+'</span>'; });
