@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Website Design by Industry | Turnkey Web</title>
+<meta name="description" content="Website design built around your trade. Turnkey Web builds fast, mobile-first, lead-generating websites for plumbers, electricians, HVAC, roofers, salons, and more.">
+<link rel="canonical" href="https://turnkeyweb.org/industries/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Website Design by Industry | Turnkey Web">
+<meta property="og:description" content="Website design built around your trade. Fast, mobile-first, lead-generating websites for service businesses — plumbers, electricians, HVAC, roofers, salons, and more.">
+<meta property="og:url" content="https://turnkeyweb.org/industries/">
+<meta property="og:site_name" content="Turnkey Web">
+<meta property="og:image" content="https://turnkeyweb.org/assets/tkweb-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Website Design by Industry | Turnkey Web">
+<meta name="twitter:description" content="Website design built around your trade. Fast, mobile-first, lead-generating websites for service businesses.">
+<meta name="theme-color" content="#7C3AED">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=1779480354">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  window.TKW_CALENDLY_URL = "https://calendly.com/ricky-turnkeycfo/15min-review-tkweb";
+  window.openTKWCalendly = function(source){
+    if(!window.Calendly){ window.location.href = window.TKW_CALENDLY_URL; return false; }
+    window.Calendly.initPopupWidget({ url: window.TKW_CALENDLY_URL + "?utm_source=" + encodeURIComponent(source || "turnkeyweb") });
+    return false;
+  };
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://turnkeyweb.org/" },
+    { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://turnkeyweb.org/industries/" }
+  ]
+}
+</script>
+<style>
+.ind-hero{padding:150px 0 20px;position:relative;z-index:1;}
+.ind-hero .container{max-width:880px;text-align:center;}
+.crumb{font-size:12px;color:var(--gray-lt);margin-bottom:16px;}
+.crumb a{color:var(--gray);font-weight:600;}
+.crumb a:hover{color:var(--purple);}
+.ind-hero h1{color:var(--dark);margin-bottom:18px;font-size:clamp(32px,5vw,56px);line-height:1.05;letter-spacing:-.03em;}
+.ind-hero h1 .grad{background:linear-gradient(120deg,#5B21B6 0%,#7C3AED 30%,#A78BFA 50%,#2563FF 70%,#7C3AED 100%);background-size:240% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:tkw-section-shimmer 9s linear infinite;}
+.ind-hero p{font-size:clamp(16px,2vw,18px);color:var(--gray);line-height:1.72;max-width:640px;margin:0 auto;}
+.ind-hero .btn{margin-top:26px;}
+.ind-section{position:relative;z-index:1;padding:36px 0 72px;}
+.ind-section .container{max-width:1040px;}
+.ind-intro{max-width:760px;margin:0 auto 40px;}
+.ind-intro p{font-size:16.5px;color:var(--slate);line-height:1.8;margin-bottom:16px;}
+.ind-intro strong{color:var(--dark);font-weight:700;}
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.ind-tile{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:rgba(255,255,255,.80);backdrop-filter:blur(8px);
+  border:1px solid var(--border);border-radius:14px;
+  padding:18px 20px;text-decoration:none;color:inherit;
+  font-size:14.5px;font-weight:700;
+  transition:border-color .25s,box-shadow .25s,transform .25s,background .25s;
+}
+.ind-tile:hover{border-color:rgba(124,58,237,.32);box-shadow:0 12px 38px rgba(124,58,237,.12);transform:translateY(-3px);background:#fff;}
+.ind-tile .it-label{color:var(--dark);line-height:1.3;}
+.ind-tile .it-arrow{color:var(--purple);font-weight:800;flex-shrink:0;transition:transform .2s;}
+.ind-tile:hover .it-arrow{transform:translateX(4px);}
+.ind-tile.is-soon{cursor:default;opacity:.72;}
+.ind-tile.is-soon:hover{transform:none;box-shadow:none;border-color:var(--border);background:rgba(255,255,255,.80);}
+.ind-tile .it-soon{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-lt);flex-shrink:0;}
+.inline-cta{background:linear-gradient(135deg,var(--purple-d) 0%,var(--purple) 55%,var(--blue) 100%);border-radius:18px;padding:36px;margin:48px auto 0;max-width:760px;text-align:center;}
+.inline-cta h3{color:#fff;font-size:22px;margin-bottom:8px;}
+.inline-cta p{color:rgba(255,255,255,.85);font-size:14.5px;margin-bottom:18px;max-width:480px;margin-left:auto;margin-right:auto;}
+.inline-cta .btn{background:#fff;color:var(--purple-d);}
+@media(max-width:768px){.ind-grid{grid-template-columns:1fr 1fr;}.ind-hero{padding:118px 0 16px;}}
+@media(max-width:480px){.ind-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body class="page-guide">
+
+<div class="energy-bg" aria-hidden="true">
+  <div class="energy-orb orb-a"></div>
+  <div class="energy-orb orb-b"></div>
+  <div class="energy-orb orb-c"></div>
+  <svg class="energy-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <path class="energy-path-1" d="M1200,-100 C1000,200 700,420 450,560 C200,700 -100,730 -300,760"/>
+    <path class="energy-path-2" d="M1400,80 C1150,280 850,460 580,590 C310,720 50,750 -200,780"/>
+    <path class="energy-path-3" d="M1440,220 C1200,380 950,520 700,630 C450,740 150,760 -100,790"/>
+    <path class="energy-path-4" d="M1100,-200 C900,100 680,340 440,500 C200,660 -80,710 -320,740"/>
+  </svg>
+</div>
+
+<!-- ── NAV ── -->
+<nav class="top-nav" id="main-nav">
+  <div class="nav-shell">
+    <a class="brand-lock" href="../index.html" aria-label="Turnkey Web home">
+      <img src="../assets/tkweb-logo.png" alt="Turnkey Web" class="nav-logo">
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a class="active" href="./index.html">Industries</a>
+      <a href="../work.html">Case Studies</a>
+      <a href="../guides/">Guides</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn-ghost" href="../work.html">See our work</a>
+      <a class="nav-phone" href="tel:+17372481346" data-cta="phone-header" style="font-weight:700;white-space:nowrap;align-self:center">&#9742; (737)&nbsp;248-1346</a>
+      <a class="btn" href="#" onclick="return openTKWCalendly('tkw-industries-nav')">Book a call</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="../index.html">Home</a>
+  <a href="./index.html">Industries</a>
+  <a href="../work.html">Case Studies</a>
+  <a href="../guides/">Guides</a>
+  <a class="btn" href="#" onclick="return openTKWCalendly('tkw-industries-mobilenav')">Book a 15-min call →</a>
+</div>
+
+<!-- ── HERO ── -->
+<header class="ind-hero">
+  <div class="container">
+    <p class="crumb"><a href="../index.html">Home</a> › Industries</p>
+    <span class="eyebrow">Website design by industry</span>
+    <h1>A website built around <span class="grad">your trade.</span></h1>
+    <p>Every service business gets found, hired, and judged a little differently. We build websites tuned to how your customers actually search and decide — so your site does the work of bringing in the next job.</p>
+    <a class="btn" href="#" onclick="return openTKWCalendly('tkw-industries-hero')">Book a 15-min call →</a>
+  </div>
+</header>
+
+<!-- ── INTRO + GRID ── -->
+<section class="ind-section">
+  <div class="container">
+    <div class="ind-intro">
+      <p>A great service-business website isn't generic. The way a homeowner picks a plumber at 9pm with a flooded kitchen is nothing like how someone chooses a med spa, weighs a roofing contractor, or books a haircut. The urgency is different, the trust signals are different, and the search terms are different — so the website should be too.</p>
+      <p>That's the idea behind our industry pages: <strong>practical, no-fluff guidance on what a website needs to do for your specific trade</strong>, and what we build in for it by default. Whether you run trucks, a chair, or a storefront, the goal is the same — a fast, credible, mobile-first site that turns searchers into booked work.</p>
+      <p>Pick your industry below. Don't see an exact match? <a href="#" onclick="return openTKWCalendly('tkw-industries-intro')" style="color:var(--purple);font-weight:700;">Book a call</a> — we build for service businesses of every kind.</p>
+    </div>
+
+    <div class="ind-grid">
+      <a class="ind-tile" href="./appliance-repair/"><span class="it-label">Appliance Repair Website Design</span></a>
+      <a class="ind-tile" href="./auto-repair/"><span class="it-label">Auto Repair Website Design</span></a>
+      <a class="ind-tile" href="./barber-shop/"><span class="it-label">Barber Shop Website Design</span></a>
+      <a class="ind-tile" href="./concrete/"><span class="it-label">Concrete Contractor Website Design</span></a>
+      <a class="ind-tile" href="./day-spa/"><span class="it-label">Day Spa Website Design</span></a>
+      <a class="ind-tile" href="./electrician/"><span class="it-label">Electrician Website Design</span></a>
+      <a class="ind-tile" href="./fencing/"><span class="it-label">Fencing Contractor Website Design</span></a>
+      <a class="ind-tile" href="./flooring/"><span class="it-label">Flooring Company Website Design</span></a>
+      <a class="ind-tile" href="./garage-door/"><span class="it-label">Garage Door Website Design</span></a>
+      <a class="ind-tile" href="./general-contractor/"><span class="it-label">General Contractor Website Design</span></a>
+      <a class="ind-tile" href="./gutter/"><span class="it-label">Gutter Company Website Design</span></a>
+      <a class="ind-tile" href="./hair-salon/"><span class="it-label">Hair Salon Website Design</span></a>
+      <a class="ind-tile" href="./handyman/"><span class="it-label">Handyman Website Design</span></a>
+      <a class="ind-tile" href="./house-cleaning/"><span class="it-label">House Cleaning Website Design</span></a>
+      <a class="ind-tile" href="./hvac/"><span class="it-label">HVAC Website Design</span></a>
+      <a class="ind-tile" href="./junk-removal/"><span class="it-label">Junk Removal Website Design</span></a>
+      <a class="ind-tile" href="./landscaping/"><span class="it-label">Landscaping Website Design</span></a>
+      <a class="ind-tile" href="./locksmith/"><span class="it-label">Locksmith Website Design</span></a>
+      <a class="ind-tile" href="./med-spa/"><span class="it-label">Med Spa Website Design</span></a>
+      <a class="ind-tile" href="./moving/"><span class="it-label">Moving Company Website Design</span></a>
+      <a class="ind-tile" href="./nail-salon/"><span class="it-label">Nail Salon Website Design</span></a>
+      <a class="ind-tile" href="./painting/"><span class="it-label">Painting Company Website Design</span></a>
+      <a class="ind-tile" href="./pest-control/"><span class="it-label">Pest Control Website Design</span></a>
+      <a class="ind-tile" href="./pet-grooming/"><span class="it-label">Pet Grooming Website Design</span></a>
+      <a class="ind-tile" href="./plumber/"><span class="it-label">Plumber Website Design</span><span class="it-arrow">→</span></a>
+      <a class="ind-tile" href="./pool-service/"><span class="it-label">Pool Service Website Design</span></a>
+      <a class="ind-tile" href="./pressure-washing/"><span class="it-label">Pressure Washing Website Design</span></a>
+      <a class="ind-tile" href="./roofing/"><span class="it-label">Roofing Company Website Design</span></a>
+      <a class="ind-tile" href="./tree-service/"><span class="it-label">Tree Service Website Design</span></a>
+      <a class="ind-tile" href="./window-cleaning/"><span class="it-label">Window Cleaning Website Design</span></a>
+    </div>
+
+    <div class="inline-cta">
+      <h3>Don't see your industry — or ready to get started?</h3>
+      <p>Book a free 15-minute call. We build fast, lead-generating websites for service businesses of every kind. First draft live in 3 days, guaranteed, or you don't pay.</p>
+      <a class="btn" href="#" onclick="return openTKWCalendly('tkw-industries-closing')">Book a 15-min call →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container footer-shell">
+    <div class="footer-brand">
+      <img src="../assets/tkweb-logo-white.png" alt="Turnkey Web" class="footer-logo">
+      <p>Modern websites, landing pages, and SEO-ready builds for small businesses that want more calls, better leads, and a stronger first impression.</p>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="./index.html">Industries</a>
+      <a href="../guides/">Guides</a>
+      <a href="../work.html">Case Studies</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Turnkey Web. All rights reserved.</span>
+    <span><a href="tel:+17372481346" data-cta="phone-footer" style="color:inherit">&#9742; (737) 248-1346</a></span>
+    <span>Austin, Texas</span>
+  </div>
+</footer>
+
+<script src="../site.js?v=1779480354"></script>
+</body>
+</html>
