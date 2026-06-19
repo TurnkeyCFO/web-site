@@ -18,12 +18,14 @@ const GRAPH = "https://graph.microsoft.com/v1.0";
 
 const FIELDS = [
   ["full_name", "Name"],
-  ["business_name", "Business"],
+  ["business_name", "Business / Company"],
   ["email", "Email"],
   ["phone", "Phone"],
-  ["business_type", "Business Type"],
+  ["business_type", "Industry / What They Do"],
+  ["location", "Location"],
+  ["services_offered", "Main Services / Products"],
   ["existing_website", "Current Website"],
-  ["details", "About the Business"],
+  ["details", "Notes / Style Preferences"],
 ];
 
 export async function onRequestPost(context) {
