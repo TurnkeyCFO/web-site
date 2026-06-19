@@ -149,10 +149,10 @@
     animation:kp-spin 9s linear infinite;opacity:.92;}
   @keyframes kp-spin{to{transform:rotate(360deg);}}
   #kinnor-preloader .kp-script{font-family:'Parisienne',cursive;color:#D9531E;font-size:2rem;text-align:center;margin:1.1rem 0 0;opacity:0;transform:translateY(8px) rotate(-1.5deg);
-    animation:kp-fade .9s ease forwards;animation-delay:2.4s;text-shadow:1px 1px 0 #1C3155;}
+    animation:kp-fade .9s ease forwards;animation-delay:4.6s;text-shadow:1px 1px 0 #1C3155;}
   @keyframes kp-fade{to{opacity:1;transform:translateY(0) rotate(-1.5deg);}}
   #kinnor-preloader .kp-bar{position:absolute;left:0;right:0;bottom:0;height:8px;background:rgba(28,49,85,.12);}
-  #kinnor-preloader .kp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#D9531E,#27437E);animation:kp-load 3.9s linear forwards;}
+  #kinnor-preloader .kp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#D9531E,#27437E);animation:kp-load 6.8s linear forwards;}
   @keyframes kp-load{to{width:100%;}}
   #kinnor-preloader .kp-curtain{position:absolute;bottom:8px;left:0;right:0;height:22px;background-image:linear-gradient(45deg,#27437E 25%,transparent 25%,transparent 75%,#27437E 75%),linear-gradient(45deg,#27437E 25%,transparent 25%,transparent 75%,#27437E 75%);background-size:22px 22px;background-position:0 0,11px 11px;background-color:#EFE6CF;}
   #kinnor-preloader .kp-skip{position:absolute;bottom:22px;right:22px;background:transparent;border:2px solid #1C3155;color:#1C3155;font:600 12px 'Plus Jakarta Sans',sans-serif;letter-spacing:.06em;padding:7px 16px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s;}
@@ -173,7 +173,7 @@
       pl.classList.add('kp-out'); html.style.overflow='';
       setTimeout(function(){ if(pl&&pl.parentNode)pl.parentNode.removeChild(pl); },1050); }
     if(vid){ var p=vid.play(); if(p&&p.catch)p.catch(function(){}); vid.addEventListener('ended',done); }
-    setTimeout(done,4300); // hard cap just past 4s
+    setTimeout(done,7300); // hard cap just past 4s
     pl.querySelector('.kp-skip').addEventListener('click',done);
   })();
 </script>

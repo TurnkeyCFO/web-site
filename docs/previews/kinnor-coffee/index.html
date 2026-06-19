@@ -108,10 +108,10 @@
   #kinnor-preloader .kp-stage{position:relative;width:min(86vw,820px);}
   #kinnor-preloader .kp-video{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 40px 80px -40px rgba(33,64,94,.45);background:#FBFAF5;}
   #kinnor-preloader .kp-script{font-family:'Parisienne',cursive;color:#5F7E9C;font-size:2rem;text-align:center;margin:1.1rem 0 0;opacity:0;transform:translateY(8px);
-    animation:kp-fade .9s ease forwards;animation-delay:2.4s;}
+    animation:kp-fade .9s ease forwards;animation-delay:4.6s;}
   @keyframes kp-fade{to{opacity:1;transform:translateY(0);}}
   #kinnor-preloader .kp-bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(33,64,94,.10);}
-  #kinnor-preloader .kp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#5F7E9C,#21405E);animation:kp-load 3.9s linear forwards;}
+  #kinnor-preloader .kp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#5F7E9C,#21405E);animation:kp-load 6.8s linear forwards;}
   @keyframes kp-load{to{width:100%;}}
   #kinnor-preloader .kp-skip{position:absolute;bottom:22px;right:22px;background:transparent;border:1px solid rgba(33,64,94,.3);color:#21405E;font:500 12px 'Inter',sans-serif;letter-spacing:.06em;padding:7px 16px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s,border-color .25s;}
   #kinnor-preloader .kp-skip:hover{background:#21405E;color:#fff;border-color:#21405E;}
@@ -130,7 +130,7 @@
       pl.classList.add('kp-out'); html.style.overflow='';
       setTimeout(function(){ if(pl&&pl.parentNode)pl.parentNode.removeChild(pl); },950); }
     if(vid){ var p=vid.play(); if(p&&p.catch)p.catch(function(){}); vid.addEventListener('ended',done); }
-    setTimeout(done,4300);
+    setTimeout(done,7300);
     pl.querySelector('.kp-skip').addEventListener('click',done);
   })();
 </script>

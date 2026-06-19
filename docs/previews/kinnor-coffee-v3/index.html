@@ -149,10 +149,10 @@
     animation:kp-spin 9s linear infinite;opacity:.92;}
   @keyframes kp-spin{to{transform:rotate(360deg);}}
   #kinnor-preloader .kp-script{font-family:'Parisienne',cursive;color:#D9531E;font-size:2rem;text-align:center;margin:1.1rem 0 0;opacity:0;transform:translateY(8px) rotate(-1.5deg);
-    animation:kp-fade .9s ease forwards;animation-delay:2.4s;text-shadow:1px 1px 0 #1C3155;}
+    animation:kp-fade .9s ease forwards;animation-delay:4.6s;text-shadow:1px 1px 0 #1C3155;}
   @keyframes kp-fade{to{opacity:1;transform:translateY(0) rotate(-1.5deg);}}
   #kinnor-preloader .kp-bar{position:absolute;left:0;right:0;bottom:0;height:8px;background:rgba(28,49,85,.12);}
-  #kinnor-preloader .kp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#D9531E,#27437E);animation:kp-load 3.9s linear forwards;}
+  #kinnor-preloader .kp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#D9531E,#27437E);animation:kp-load 6.8s linear forwards;}
   @keyframes kp-load{to{width:100%;}}
   #kinnor-preloader .kp-curtain{position:absolute;bottom:8px;left:0;right:0;height:22px;background-image:linear-gradient(45deg,#27437E 25%,transparent 25%,transparent 75%,#27437E 75%),linear-gradient(45deg,#27437E 25%,transparent 25%,transparent 75%,#27437E 75%);background-size:22px 22px;background-position:0 0,11px 11px;background-color:#EFE6CF;}
   #kinnor-preloader .kp-skip{position:absolute;bottom:22px;right:22px;background:transparent;border:2px solid #1C3155;color:#1C3155;font:600 12px 'Plus Jakarta Sans',sans-serif;letter-spacing:.06em;padding:7px 16px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s;}
@@ -173,7 +173,7 @@
       pl.classList.add('kp-out'); html.style.overflow='';
       setTimeout(function(){ if(pl&&pl.parentNode)pl.parentNode.removeChild(pl); },1050); }
     if(vid){ var p=vid.play(); if(p&&p.catch)p.catch(function(){}); vid.addEventListener('ended',done); }
-    setTimeout(done,4300); // hard cap just past 4s
+    setTimeout(done,7300); // hard cap just past 4s
     pl.querySelector('.kp-skip').addEventListener('click',done);
   })();
 </script>
@@ -245,10 +245,10 @@
       <div class="absolute -bottom-8 -right-2 sm:-right-6 w-36 sm:w-52 rotate-3">
         <div class="checker p-1.5 rounded-[1.2rem] shadow-[5px_5px_0_#D9531E]">
           <div class="rounded-[0.9rem] overflow-hidden border-[3px] border-navy">
-            <img src="assets/real-cocktail.jpg" alt="A craft cocktail at Kinnor after dark" class="w-full h-40 sm:h-56 object-cover" />
+            <img src="assets/stock-cocktail-1.jpg" alt="A craft cocktail at Kinnor" class="w-full h-40 sm:h-56 object-cover" />
           </div>
         </div>
-        <span class="absolute -top-3 left-3 rounded-full bg-navy text-creamlt text-[10px] font-bold uppercase tracking-wide px-3 py-1 border-2 border-creamlt">☾ After dark</span>
+        <span class="absolute -top-3 left-3 rounded-full bg-navy text-creamlt text-[10px] font-bold uppercase tracking-wide px-3 py-1 border-2 border-creamlt">☾ By night</span>
       </div>
       <!-- lyre badge -->
       <div class="retro-panel rust absolute -top-5 -left-3 sm:left-4 px-5 py-3 -rotate-3">
@@ -303,11 +303,11 @@
         </div>
       </article>
       <article class="card rust retro-panel rust overflow-hidden" data-reveal>
-        <div class="aspect-[16/10] overflow-hidden border-b-[3px] border-navy"><img src="assets/real-cocktail.jpg" alt="A Kinnor signature cocktail" class="w-full h-full object-cover" /></div>
+        <div class="aspect-[16/10] overflow-hidden border-b-[3px] border-navy"><img src="assets/stock-cocktail-2.jpg" alt="Espresso martinis at the Kinnor bar" class="w-full h-full object-cover" /></div>
         <div class="p-7 sm:p-9 text-ink">
           <p class="text-[11px] font-bold tracking-[0.2em] uppercase text-navy mb-3">☾ By Night · &rsquo;til 8pm</p>
           <h3 class="font-serif font-bold text-2xl mb-3">Cocktails, with intention.</h3>
-          <p class="text-ink/75 leading-relaxed text-[15px] font-medium">An espresso martini worth the trip, plus Kinnor originals like the Velvet Underground and Easy Lover, and local taps from 5 Stones. Same craft, after dark.</p>
+          <p class="text-ink/75 leading-relaxed text-[15px] font-medium">An espresso martini worth the trip, plus Kinnor originals like the Velvet Underground and Easy Lover, and local taps from 5 Stones. The same craft, by night.</p>
         </div>
       </article>
     </div>
@@ -371,14 +371,14 @@
 <!-- checker divider -->
 <div class="checker checker-band"></div>
 
-<!-- ===================== COCKTAIL SPOTLIGHT (after dark, stronger) ===================== -->
+<!-- ===================== COCKTAIL SPOTLIGHT (evening, stronger) ===================== -->
 <section class="relative bg-cream py-20 sm:py-28 grain overflow-hidden">
   <span class="star8 text-navy spin absolute hidden sm:block" style="top:60px;left:6%;font-size:38px;opacity:.85;"></span>
   <div class="mx-auto max-w-7xl px-5 sm:px-8 relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
     <div class="order-2 lg:order-1" data-reveal>
       <span class="star8 text-rust mb-4 inline-block" style="font-size:26px;"></span>
       <p class="text-[12px] font-bold tracking-[0.3em] uppercase text-rust mb-3">☾ When the sun goes down</p>
-      <h2 class="font-serif font-bold text-4xl sm:text-5xl text-ink leading-tight mb-5">The same house, poured after dark.</h2>
+      <h2 class="font-serif font-bold text-4xl sm:text-5xl text-ink leading-tight mb-5">The same house, poured by night.</h2>
       <p class="text-ink/75 leading-relaxed font-medium mb-7 max-w-md">The espresso machine doesn&rsquo;t clock out — it just changes shifts. The bar runs on the same care as the coffee: house lavender, real citrus, cold brew pulled to order. An espresso martini worth the trip, Kinnor originals you won&rsquo;t find anywhere else, and local 5 Stones taps.</p>
       <div class="space-y-3 mb-8 max-w-md">
         <div class="retro-panel px-5 py-3.5 flex items-center justify-between gap-4"><div><div class="font-serif font-bold text-lg text-ink">Espresso Martini</div><div class="text-xs text-mute font-medium">the one regulars come back for</div></div><span class="font-serif font-black text-rust text-xl">12</span></div>
@@ -411,7 +411,7 @@
   <span class="star8 text-rust spin absolute hidden lg:block" style="top:80px;left:7%;font-size:44px;opacity:.85;"></span>
   <div class="mx-auto max-w-6xl px-5 sm:px-8 relative z-10">
     <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
-      <p class="text-[12px] font-bold tracking-[0.3em] uppercase text-rustlt mb-3">After Dark</p>
+      <p class="text-[12px] font-bold tracking-[0.3em] uppercase text-rustlt mb-3">By Night</p>
       <h2 class="retro3d cream text-5xl sm:text-6xl">THE BAR<br/>AT KINNOR.</h2>
     </div>
     <div class="grid md:grid-cols-3 gap-x-10 gap-y-10">
@@ -447,7 +447,7 @@
           <li class="flex justify-between gap-3"><span class="font-medium">Shepherd Juice<span class="block text-xs text-creamlt/60">dry-hopped pale ale</span></span><span class="text-rustlt font-bold">7</span></li>
           <li class="flex justify-between gap-3"><span class="font-medium">Jonathan</span><span class="text-rustlt font-bold">7</span></li>
         </ul>
-        <p class="mt-6 text-xs text-creamlt/50 font-medium">The full coffee menu is available after dark, too.</p>
+        <p class="mt-6 text-xs text-creamlt/50 font-medium">The full coffee menu is available all evening, too.</p>
       </div>
     </div>
   </div>
