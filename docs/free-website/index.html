@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Website for Your Business | Turnkey Web</title>
+<meta name="description" content="We design your business website for free. Love it? Keep it live for just $147/month — hosting, edits, and support included. No build fee, no call, no commitment.">
+<meta name="theme-color" content="#7C3AED">
+<meta property="og:title" content="Get a Professional Website — Built Free | Turnkey Web">
+<meta property="og:description" content="See a free first draft of your business website. Keep it for $147/month, everything included. No build fee. No sales call.">
+<meta property="og:image" content="https://turnkeyweb.org/assets/tkweb-logo.png">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/assets/tkweb-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#7C3AED; --purple-d:#5B21B6; --purple-dd:#2E1065; --purple-lt:#A78BFA;
+    --ink:#191427; --muted:#5b6478; --line:#ece9f6; --bg:#fbfaff; --card:#ffffff;
+    --ok:#16a34a;
+    --shadow:0 10px 40px rgba(46,16,101,.10); --shadow-sm:0 4px 18px rgba(46,16,101,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Exo 2',sans-serif;line-height:1.12;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--purple) 0%,var(--purple-d) 100%);color:#fff;font-weight:700;font-size:16px;padding:15px 30px;border-radius:14px;border:0;cursor:pointer;box-shadow:0 8px 24px rgba(124,58,237,.32);transition:transform .15s ease,box-shadow .15s ease}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(124,58,237,.42)}
+  .btn-lg{font-size:18px;padding:18px 38px}
+  .eyebrow{font-family:'Exo 2',sans-serif;font-weight:800;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--purple)}
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(251,250,255,.85);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .nav img{height:30px;display:block}
+  .nav .hpill{display:flex;align-items:center;gap:8px}
+  .nav .free-tag{font-weight:700;font-size:13px;color:var(--purple-d);background:#f1ebff;padding:7px 13px;border-radius:999px}
+  .nav .btn{padding:11px 20px;font-size:14px}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;padding:74px 0 64px;text-align:center}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;background:
+    radial-gradient(640px 360px at 50% -8%,rgba(124,58,237,.16),transparent 70%),
+    radial-gradient(500px 320px at 88% 18%,rgba(167,139,250,.16),transparent 70%)}
+  .hero>*{position:relative;z-index:1}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px;color:var(--purple-d);margin-bottom:22px}
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(22,163,74,.15)}
+  h1.head{font-size:clamp(34px,6vw,58px);font-weight:900;max-width:14ch;margin:0 auto 18px}
+  h1.head .grad{background:linear-gradient(120deg,var(--purple) 0%,var(--purple-lt) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-size:clamp(17px,2.4vw,21px);color:var(--muted);max-width:46ch;margin:0 auto 30px}
+  .sub b{color:var(--ink);font-weight:700}
+  .cta-row{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .micro{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center}
+  .micro span{display:inline-flex;align-items:center;gap:6px}
+  .micro .ck{color:var(--ok);font-weight:800}
+
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:780px;margin:46px auto 0}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow-sm)}
+  .stat .n{font-family:'Exo 2',sans-serif;font-weight:900;font-size:26px;color:var(--purple-d)}
+  .stat .l{font-size:13.5px;color:var(--muted);font-weight:600}
+
+  /* sections */
+  section.band{padding:72px 0}
+  .sec-head{text-align:center;max-width:38ch;margin:0 auto 46px}
+  .sec-head h2{font-size:clamp(27px,4vw,40px);font-weight:800;margin:10px 0 12px}
+  .sec-head p{color:var(--muted);font-size:17px}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 26px;box-shadow:var(--shadow-sm);position:relative}
+  .step .num{font-family:'Exo 2',sans-serif;font-weight:900;font-size:15px;color:#fff;background:linear-gradient(135deg,var(--purple),var(--purple-d));width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .step h3{font-size:20px;font-weight:800;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:15.5px}
+
+  /* included grid */
+  .feat-band{background:linear-gradient(180deg,#fff 0%,#f7f3ff 100%)}
+  .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .feat{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm)}
+  .feat .ic{flex:0 0 42px;width:42px;height:42px;border-radius:12px;background:#f1ebff;display:flex;align-items:center;justify-content:center;font-size:21px}
+  .feat h3{font-size:16.5px;font-weight:800;margin-bottom:3px}
+  .feat p{color:var(--muted);font-size:14.5px;line-height:1.5}
+  .price-note{text-align:center;margin-top:34px;font-size:16px;color:var(--muted)}
+  .price-note b{color:var(--ink)}
+
+  /* for-who chips */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:760px;margin:0 auto}
+  .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-weight:600;font-size:14.5px;color:var(--purple-d);box-shadow:var(--shadow-sm)}
+
+  /* form */
+  .form-band{background:linear-gradient(135deg,var(--purple-dd) 0%,var(--purple-d) 100%);color:#fff}
+  .form-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+  .form-copy .eyebrow{color:var(--purple-lt)}
+  .form-copy h2{font-size:clamp(28px,4vw,42px);font-weight:900;margin:10px 0 16px;color:#fff}
+  .form-copy p{color:rgba(255,255,255,.82);font-size:17px;margin-bottom:22px}
+  .form-copy ul{list-style:none;display:grid;gap:12px}
+  .form-copy li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;color:rgba(255,255,255,.92)}
+  .form-copy li .ck{color:#a7f3d0;font-weight:900;flex:0 0 auto}
+  .card{background:#fff;border-radius:22px;padding:30px;box-shadow:0 24px 60px rgba(10,5,30,.4);color:var(--ink)}
+  .card h3{font-size:21px;font-weight:800;margin-bottom:4px}
+  .card .csub{color:var(--muted);font-size:14.5px;margin-bottom:20px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-weight:600;font-size:13.5px;margin-bottom:6px;color:#3a3550}
+  .field label .req{color:var(--purple)}
+  .field input,.field textarea,.field select{width:100%;font-family:inherit;font-size:15.5px;color:var(--ink);background:#fbfaff;border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;transition:border-color .15s,box-shadow .15s}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:0;border-color:var(--purple-lt);box-shadow:0 0 0 4px rgba(124,58,237,.12);background:#fff}
+  .field textarea{min-height:84px;resize:vertical}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .card .btn{width:100%;justify-content:center;margin-top:6px}
+  .card .formfine{text-align:center;font-size:12.5px;color:var(--muted);margin-top:13px}
+  .success{display:none;text-align:center;padding:24px 6px}
+  .success .em{font-size:46px;margin-bottom:10px}
+  .success h3{font-size:23px;font-weight:800;margin-bottom:8px}
+  .success p{color:var(--muted);font-size:15.5px;max-width:34ch;margin:0 auto}
+  .err{display:none;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;border-radius:10px;padding:11px 13px;font-size:14px;margin-bottom:12px}
+
+  /* faq */
+  .faq{max-width:760px;margin:0 auto;display:grid;gap:12px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 22px;box-shadow:var(--shadow-sm)}
+  summary{font-weight:700;font-size:16.5px;padding:17px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:'Exo 2',sans-serif;font-weight:800;font-size:24px;color:var(--purple);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--muted);font-size:15.5px;padding:0 0 18px}
+
+  /* footer */
+  footer{background:#140d2b;color:rgba(255,255,255,.7);padding:42px 0;text-align:center}
+  footer img{height:26px;margin-bottom:14px;opacity:.95}
+  footer p{font-size:13.5px}
+  footer a{color:var(--purple-lt);font-weight:600}
+
+  @media(max-width:860px){
+    .stats{grid-template-columns:1fr;max-width:360px}
+    .steps,.feats{grid-template-columns:1fr}
+    .form-grid{grid-template-columns:1fr;gap:30px}
+    .nav .free-tag{display:none}
+    section.band{padding:56px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="https://turnkeyweb.org"><img src="/assets/tkweb-logo.svg" alt="Turnkey Web" onerror="this.src='/assets/tkweb-logo.png'"></a>
+    <div class="hpill">
+      <span class="free-tag">First draft 100% free</span>
+      <a href="#request" class="btn">Get My Free Site</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <div class="badge"><span class="dot"></span> No call. No commitment. Just your free draft.</div>
+    <h1 class="head">Your business deserves a real website. <span class="grad">We'll build it free.</span></h1>
+    <p class="sub">Tell us about your business and we'll design your first draft at no cost. Love it? Keep it live for just <b>$147/month</b> — hosting, edits, and support all included. <b>No build fee, ever.</b></p>
+    <div class="cta-row">
+      <a href="#request" class="btn btn-lg">Request My Free Site →</a>
+      <div class="micro">
+        <span><span class="ck">✓</span> Takes 60 seconds</span>
+        <span><span class="ck">✓</span> No sales call</span>
+        <span><span class="ck">✓</span> Cancel anytime</span>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">$0</div><div class="l">To get your first draft</div></div>
+      <div class="stat"><div class="n">$147<span style="font-size:15px">/mo</span></div><div class="l">Everything included to stay live</div></div>
+      <div class="stat"><div class="n">Days</div><div class="l">Not weeks — see your draft fast</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">How it works</div><h2>Three steps. Zero pressure.</h2><p>No meetings, no contracts, no risk. You only pay if you love what we build.</p></div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Tell us about your business</h3><p>Fill out one quick form — about 60 seconds. No call, no meeting, no back-and-forth.</p></div>
+      <div class="step"><div class="num">2</div><h3>We build your free draft</h3><p>Our team designs a custom, mobile-ready website for your business — completely on us.</p></div>
+      <div class="step"><div class="num">3</div><h3>Love it? Go live for $147/mo</h3><p>We publish, host, and maintain it. Unlimited edits and support included. Cancel anytime.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDED -->
+<section class="band feat-band">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">What's included</div><h2>One simple price. Everything handled.</h2><p>No setup fees, no surprise charges, no touching code. $147/month covers it all.</p></div>
+    <div class="feats">
+      <div class="feat"><div class="ic">⚡</div><div><h3>Fast hosting &amp; SSL</h3><p>Secure, lightning-fast hosting — fully managed for you.</p></div></div>
+      <div class="feat"><div class="ic">✏️</div><div><h3>Unlimited edits</h3><p>Need a change? Send it over — text and photo updates anytime.</p></div></div>
+      <div class="feat"><div class="ic">📱</div><div><h3>Mobile-optimized</h3><p>Looks sharp and loads fast on every phone, tablet, and laptop.</p></div></div>
+      <div class="feat"><div class="ic">🛠️</div><div><h3>Updates &amp; support</h3><p>We keep your site current, online, and running — you never lift a finger.</p></div></div>
+      <div class="feat"><div class="ic">🌐</div><div><h3>Domain help</h3><p>Connect your domain or get a new one — we handle the setup.</p></div></div>
+      <div class="feat"><div class="ic">🎯</div><div><h3>Built to convert</h3><p>Designed to turn visitors into calls, bookings, and customers.</p></div></div>
+    </div>
+    <p class="price-note">Free first draft. Then <b>$147/month</b> — month-to-month, cancel anytime. <b>No build fee.</b></p>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Who it's for</div><h2>Perfect for local &amp; service businesses</h2><p>If customers find you on Google, you need a site that looks the part.</p></div>
+    <div class="chips">
+      <span class="chip">Plumbers</span><span class="chip">Electricians</span><span class="chip">Landscapers</span>
+      <span class="chip">Roofers</span><span class="chip">HVAC</span><span class="chip">Cleaning services</span>
+      <span class="chip">Salons &amp; barbers</span><span class="chip">Auto shops</span><span class="chip">Contractors</span>
+      <span class="chip">Restaurants &amp; cafés</span><span class="chip">Gyms &amp; trainers</span><span class="chip">Consultants</span>
+      <span class="chip">…and any small business</span>
+    </div>
+  </div>
+</section>
+
+<!-- REQUEST FORM -->
+<section class="band form-band" id="request">
+  <div class="wrap">
+    <div class="form-grid">
+      <div class="form-copy">
+        <div class="eyebrow">Request your free site</div>
+        <h2>Get your free draft started</h2>
+        <p>One short form and you're done. We'll design your first draft and send it your way — no call, no commitment.</p>
+        <ul>
+          <li><span class="ck">✓</span> A real, custom draft built for your business</li>
+          <li><span class="ck">✓</span> Zero cost to see it — pay only if you love it</li>
+          <li><span class="ck">✓</span> No phone call or meeting required</li>
+          <li><span class="ck">✓</span> We do all the work — you just review</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <form id="freeForm" novalidate>
+          <div id="formErr" class="err"></div>
+          <h3>Tell us about your business</h3>
+          <p class="csub">Takes about 60 seconds.</p>
+
+          <div class="row2">
+            <div class="field"><label>Your name <span class="req">*</span></label><input name="full_name" required autocomplete="name"></div>
+            <div class="field"><label>Business name <span class="req">*</span></label><input name="business_name" required autocomplete="organization"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Email <span class="req">*</span></label><input type="email" name="email" required autocomplete="email"></div>
+            <div class="field"><label>Phone</label><input type="tel" name="phone" autocomplete="tel"></div>
+          </div>
+          <div class="field"><label>What does your business do? <span class="req">*</span></label><input name="business_type" placeholder="e.g. Plumbing, salon, landscaping…" required></div>
+          <div class="field"><label>Current website (if you have one)</label><input name="existing_website" placeholder="yoursite.com — or leave blank"></div>
+          <div class="field"><label>Anything you want on your site?</label><textarea name="details" placeholder="Services, hours, what makes you great, a color you like… (optional)"></textarea></div>
+
+          <!-- honeypot -->
+          <div class="hp"><label>Company URL</label><input name="company_url" tabindex="-1" autocomplete="off"></div>
+
+          <button type="submit" class="btn" id="submitBtn">Request My Free Site →</button>
+          <p class="formfine">No payment required. We'll start on your free draft right away.</p>
+        </form>
+
+        <div class="success" id="successBox">
+          <div class="em">🎉</div>
+          <h3>Request received!</h3>
+          <p>We're starting on your free draft now and will reach out at the email you gave us. Keep an eye on your inbox.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Questions</div><h2>What to expect</h2></div>
+    <div class="faq">
+      <details open><summary>Is the first draft really free?</summary><p>Yes — 100%. We design a real first draft of your website at no cost. You only pay if you love it and want it live.</p></details>
+      <details><summary>What's the catch?</summary><p>There isn't one. We're confident you'll love it. If you do, it's $147/month to publish, host, and maintain. If not, no hard feelings and no charge.</p></details>
+      <details><summary>What does the $147/month include?</summary><p>Everything: hosting, SSL security, unlimited content edits, ongoing updates, support, and domain help. One flat price to keep your site live and current — no setup or build fee.</p></details>
+      <details><summary>Do I have to get on a call?</summary><p>Nope. The whole point is frictionless — fill out the short form and we handle the rest. No call, no meeting required.</p></details>
+      <details><summary>How fast will I see my draft?</summary><p>Usually within a few days of your request. We'll email you when it's ready to review.</p></details>
+      <details><summary>Is there a contract?</summary><p>No. It's month-to-month and you can cancel anytime.</p></details>
+    </div>
+    <div style="text-align:center;margin-top:38px"><a href="#request" class="btn btn-lg">Request My Free Site →</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="/assets/tkweb-logo-white.png" alt="Turnkey Web">
+    <p>Professional websites for small businesses. Free to start, $147/month to keep it live.</p>
+    <p style="margin-top:8px">© <span id="yr"></span> Turnkey Web · <a href="https://turnkeyweb.org">turnkeyweb.org</a></p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const form = document.getElementById('freeForm');
+  const btn = document.getElementById('submitBtn');
+  const errBox = document.getElementById('formErr');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errBox.style.display = 'none';
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (!data.full_name || !data.business_name || !data.email || !data.business_type) {
+      errBox.textContent = 'Please fill in your name, business, email, and what your business does.';
+      errBox.style.display = 'block'; return;
+    }
+    btn.disabled = true; const orig = btn.textContent; btn.textContent = 'Sending…';
+    try {
+      const res = await fetch('/api/free-site', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const out = await res.json().catch(() => ({}));
+      if (res.ok && out.ok) {
+        form.style.display = 'none';
+        document.getElementById('successBox').style.display = 'block';
+        document.getElementById('successBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        throw new Error(out.error || 'Something went wrong.');
+      }
+    } catch (ex) {
+      errBox.textContent = (ex.message || 'Something went wrong') + ' You can also email hello@turnkeyweb.org.';
+      errBox.style.display = 'block';
+      btn.disabled = false; btn.textContent = orig;
+    }
+  });
+</script>
+</body>
+</html>
