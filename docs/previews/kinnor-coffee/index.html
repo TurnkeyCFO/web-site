@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<!--
+  Kinnor Coffee — New Braunfels, TX  | DRAFT preview for approval
+  Art direction: cinematic warm-dark coffee-by-day / cocktails-by-night lounge.
+  Brand color sourced from the actual cream wordmark logo (#E8E0C8).
+  Signature interaction: Day <-> Night mode toggle that morphs hero photo,
+  accent color (amber coffee <-> lavender cocktail), and copy — mirrors the
+  business's own dual identity (third place: morning cafe / evening lounge).
+  Type: Fraunces (warm editorial display, fits the script logo + vinyl vibe) + Inter.
+  Real data: owners Aaron & Ashley Brown; (830) 632-5146; 540 S Castell Ave.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kinnor Coffee — Specialty Coffee & Craft Cocktails | New Braunfels, TX</title>
+<meta name="description" content="Kinnor Coffee is a family-owned specialty coffee shop by day and craft cocktail lounge by night in downtown New Braunfels. House-made syrups, vinyl records, real dishes. 540 S Castell Ave." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/kinnor-coffee/" />
+<meta property="og:title" content="Kinnor Coffee — Specialty Coffee & Craft Cocktails" />
+<meta property="og:description" content="People passionate for community and craft. Coffee by day, cocktails by night, in the heart of New Braunfels." />
+<meta property="og:type" content="business.business" />
+<meta property="og:url" content="https://turnkeyweb.org/previews/kinnor-coffee/" />
+<meta property="og:image" content="https://turnkeyweb.org/previews/kinnor-coffee/assets/latte-top.jpg" />
+<meta name="theme-color" content="#1A1410" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          espresso: '#1A1410', deep: '#120D0A', cocoa: '#2A1F18', bark: '#3A2A20',
+          cream: '#E8E0C8', linen: '#F4EEDD', amber: '#D2A152', amberlt: '#E2BD78',
+          lav: '#A98AC0', lavdeep: '#7C5E94', clay: '#B5734A'
+        },
+        fontFamily: { serif: ['Fraunces','serif'], sans: ['Inter','sans-serif'] }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#1A1410; color:#E8E0C8; font-family:'Inter',sans-serif; overflow-x:hidden; }
+  .font-serif { font-family:'Fraunces',serif; }
+  ::selection { background:#D2A152; color:#1A1410; }
+
+  /* day / night themed accent — driven by a body class */
+  :root { --accent:#D2A152; --accent-lt:#E2BD78; }
+  body.is-night { --accent:#A98AC0; --accent-lt:#C4ABD6; }
+  .accent { color:var(--accent); }
+  .accent-bg { background:var(--accent); }
+  .accent-br { border-color:var(--accent); }
+
+  /* grain + warmth */
+  .grain::after { content:''; position:absolute; inset:0; pointer-events:none;
+    background-image:radial-gradient(rgba(232,224,200,.05) 1px, transparent 1px);
+    background-size:3px 3px; mix-blend-mode:overlay; opacity:.5; }
+
+  .ambient { position:absolute; border-radius:50%; filter:blur(90px); opacity:.30; pointer-events:none; will-change:transform; }
+
+  .grad-text { background:linear-gradient(100deg,var(--accent),#E8E0C8,var(--accent-lt));
+    background-size:200% 100%; -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:shimmer 9s linear infinite; }
+  @keyframes shimmer { from{background-position:0% 50%} to{background-position:200% 50%} }
+
+  .marquee { overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marquee-track { display:flex; gap:3rem; width:max-content; animation:scrollX 42s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state:paused; }
+  @keyframes scrollX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  .btn-primary { position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.2,.7,.3,1), filter .4s; }
+  .btn-primary:hover { transform:translateY(-3px); filter:brightness(1.06); }
+  .btn-primary::after { content:''; position:absolute; top:0; left:-130%; width:60%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-18deg); transition:left .85s cubic-bezier(.2,.7,.3,1); }
+  .btn-primary:hover::after { left:130%; }
+
+  .card { transition:transform .55s cubic-bezier(.2,.7,.3,1), box-shadow .55s, border-color .55s; position:relative; }
+  .card:hover { transform:translateY(-6px); border-color:var(--accent); box-shadow:0 30px 60px -28px rgba(0,0,0,.7); }
+
+  .underline-grow { position:relative; }
+  .underline-grow::after { content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+    background:linear-gradient(90deg,var(--accent),var(--accent-lt)); transition:width .5s cubic-bezier(.2,.7,.3,1); }
+  .underline-grow:hover::after { width:100%; }
+
+  .pulse-dot { animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.82)} }
+
+  [data-reveal] { opacity:0; transform:translateY(34px); }
+  .reveal-img { clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.16,1,.3,1); }
+  .reveal-img.in { clip-path:inset(0 0 0% 0); }
+
+  .hero-photo { transition:opacity 1.1s ease; }
+  .toggle-knob { transition:transform .5s cubic-bezier(.2,.7,.3,1), background .5s; }
+  body.is-night .toggle-knob { transform:translateX(28px); }
+  .day-only,.night-only { transition:opacity .5s ease; }
+  body.is-night .day-only { display:none; }
+  body:not(.is-night) .night-only { display:none; }
+
+  .vhr { background:linear-gradient(90deg,transparent,rgba(232,224,200,.25),transparent); }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ===================== NAV ===================== -->
+<header id="top" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" data-nav>
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex items-center justify-between h-[68px]">
+      <a href="#top" class="flex items-center gap-3">
+        <img src="assets/kinnor-logo.png" alt="Kinnor Coffee" class="h-9 w-auto" />
+      </a>
+      <nav class="hidden lg:flex items-center gap-9 text-[13px] tracking-wide text-cream/75">
+        <a href="#duality" class="underline-grow hover:text-cream transition-colors">Day &amp; Night</a>
+        <a href="#craft" class="underline-grow hover:text-cream transition-colors">The Craft</a>
+        <a href="#menu" class="underline-grow hover:text-cream transition-colors">Menu</a>
+        <a href="#room" class="underline-grow hover:text-cream transition-colors">The Room</a>
+        <a href="#visit" class="underline-grow hover:text-cream transition-colors">Visit</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <!-- signature day/night toggle -->
+        <button id="modeToggle" aria-label="Toggle day or night" class="hidden sm:flex items-center gap-2 rounded-full border border-cream/20 bg-deep/60 px-2 py-1.5">
+          <span class="text-[15px] leading-none day-only">☀️</span>
+          <span class="relative h-4 w-12 rounded-full bg-cream/15">
+            <span class="toggle-knob absolute top-0.5 left-0.5 h-3 w-3 rounded-full accent-bg"></span>
+          </span>
+          <span class="text-[15px] leading-none night-only">🌙</span>
+        </button>
+        <a href="tel:+18306325146" class="hidden sm:inline-flex items-center text-[13px] text-cream/80 hover:text-cream transition-colors">(830) 632-5146</a>
+        <a href="#visit" class="btn-primary inline-flex items-center accent-bg text-espresso text-[13px] font-semibold px-4 py-2.5 rounded-full">Plan a Visit</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="relative min-h-[100svh] flex items-end overflow-hidden grain">
+  <!-- day + night hero photos cross-fade -->
+  <img src="assets/latte-top.jpg" alt="Hand-poured latte at Kinnor Coffee" class="hero-photo day-only absolute inset-0 w-full h-full object-cover" />
+  <img src="assets/cocktail-night.jpg" alt="Craft cocktail at Kinnor's evening lounge" class="hero-photo night-only absolute inset-0 w-full h-full object-cover" />
+  <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(18,13,10,.55) 0%, rgba(18,13,10,.25) 38%, rgba(18,13,10,.86) 100%)"></div>
+  <div class="ambient" style="width:560px;height:560px;background:radial-gradient(circle,var(--accent),transparent 62%);top:-160px;right:-140px"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl w-full px-5 sm:px-8 pb-16 sm:pb-24 pt-32">
+    <p class="flex items-center gap-2.5 text-[12px] tracking-[0.32em] uppercase text-cream/70 mb-6">
+      <span class="h-1.5 w-1.5 rounded-full accent-bg pulse-dot"></span>
+      New Braunfels, Texas · Est. 2020
+    </p>
+    <h1 class="font-serif font-light leading-[0.95] text-cream text-[15vw] sm:text-[8.4vw] lg:text-[7.2rem] max-w-5xl" data-split>
+      Your <span class="italic grad-text day-only">morning ritual</span><span class="italic grad-text night-only">evening unwind</span>,<br/>poured by hand.
+    </h1>
+    <p class="mt-7 max-w-xl text-cream/75 text-lg leading-relaxed">
+      A specialty coffee shop by day and a craft cocktail lounge by night — house-made syrups, real dishes, records spinning. People passionate for community and craft.
+    </p>
+
+    <div class="mt-9 flex flex-wrap items-center gap-4">
+      <a href="#menu" class="btn-primary inline-flex items-center gap-2 accent-bg text-espresso font-semibold px-7 py-4 rounded-full">
+        <span class="day-only">See the coffee menu</span><span class="night-only">See the cocktail menu</span>
+      </a>
+      <a href="tel:+18306325146" class="inline-flex items-center gap-2 border border-cream/25 text-cream px-7 py-4 rounded-full hover:bg-cream/10 transition-colors">
+        Call (830) 632-5146
+      </a>
+    </div>
+
+    <!-- stats band -->
+    <div class="mt-14 grid grid-cols-3 gap-6 max-w-2xl border-t border-cream/15 pt-7">
+      <div><div class="font-serif text-4xl text-cream" data-count data-target="100" data-suffix="%">0%</div><div class="text-[11px] tracking-[0.2em] uppercase text-cream/55 mt-1">House-made syrups</div></div>
+      <div><div class="font-serif text-4xl text-cream" data-count data-target="2" data-prefix="’" data-suffix="0">0</div><div class="text-[11px] tracking-[0.2em] uppercase text-cream/55 mt-1">Serving since 2020</div></div>
+      <div><div class="font-serif text-4xl text-cream" data-count data-target="0" data-zero="No">0</div><div class="text-[11px] tracking-[0.2em] uppercase text-cream/55 mt-1">Drive-throughs</div></div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-cream/45 text-[11px] tracking-[0.25em] uppercase flex flex-col items-center gap-2">
+    Scroll <span class="h-7 w-px bg-cream/30"></span>
+  </div>
+</section>
+
+<!-- ===================== PHILOSOPHY BAND ===================== -->
+<section class="relative bg-deep py-20 sm:py-28">
+  <div class="mx-auto max-w-4xl px-5 sm:px-8 text-center">
+    <p class="text-[12px] tracking-[0.3em] uppercase accent mb-7">The Third Place</p>
+    <p class="font-serif text-2xl sm:text-[2.4rem] leading-[1.35] text-cream/90">
+      “We want to be that <span class="italic accent">third place</span> — not your home, not your work, but where you meet with people, slow down, and get looked in the eye.”
+    </p>
+    <p class="mt-7 text-cream/55 text-sm tracking-wide">— Ashley &amp; Aaron Brown, owners</p>
+  </div>
+</section>
+
+<!-- value marquee -->
+<div class="marquee bg-espresso border-y border-cream/10 py-5">
+  <div class="marquee-track text-cream/60 font-serif text-xl italic">
+    <span>Specialty coffee</span><span class="accent">•</span><span>House-made syrups</span><span class="accent">•</span><span>Craft cocktails</span><span class="accent">•</span><span>Served in real dishes</span><span class="accent">•</span><span>Records spinning</span><span class="accent">•</span><span>Community &amp; craft</span><span class="accent">•</span>
+    <span>Specialty coffee</span><span class="accent">•</span><span>House-made syrups</span><span class="accent">•</span><span>Craft cocktails</span><span class="accent">•</span><span>Served in real dishes</span><span class="accent">•</span><span>Records spinning</span><span class="accent">•</span><span>Community &amp; craft</span><span class="accent">•</span>
+  </div>
+</div>
+
+<!-- ===================== DUALITY (signature) ===================== -->
+<section id="duality" class="relative bg-espresso py-20 sm:py-28 grain overflow-hidden">
+  <div class="ambient" style="width:520px;height:520px;background:radial-gradient(circle,#7C5E94,transparent 60%);bottom:-180px;left:-160px;opacity:.22"></div>
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
+    <div class="max-w-2xl mb-14" data-reveal>
+      <p class="text-[12px] tracking-[0.3em] uppercase accent mb-4">One Room, Two Moods</p>
+      <h2 class="font-serif text-4xl sm:text-5xl text-cream leading-tight">A morning café that becomes an evening lounge.</h2>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-6">
+      <!-- DAY -->
+      <article class="card rounded-2xl border border-cream/12 overflow-hidden bg-cocoa/40" data-reveal>
+        <div class="aspect-[16/10] overflow-hidden"><img src="assets/latte.jpg" alt="Latte and pour-over coffee" class="w-full h-full object-cover" /></div>
+        <div class="p-7 sm:p-9">
+          <p class="text-[11px] tracking-[0.28em] uppercase mb-3" style="color:#D2A152">☀️ By Day · 7am</p>
+          <h3 class="font-serif text-2xl text-cream mb-3">Coffee, dialed in.</h3>
+          <p class="text-cream/70 leading-relaxed text-[15px]">Americanos and lattes done right — syrups made in-house from fresh-cut vanilla beans, floral lavender, and chocolate ganache. No paper cups. Your drink, delivered to your table in a real dish.</p>
+        </div>
+      </article>
+      <!-- NIGHT -->
+      <article class="card rounded-2xl border border-cream/12 overflow-hidden bg-cocoa/40" data-reveal>
+        <div class="aspect-[16/10] overflow-hidden"><img src="assets/cocktail-day.jpg" alt="Craft cocktail at Kinnor" class="w-full h-full object-cover" /></div>
+        <div class="p-7 sm:p-9">
+          <p class="text-[11px] tracking-[0.28em] uppercase mb-3" style="color:#A98AC0">🌙 By Night · 'til 10pm Fri–Sat</p>
+          <h3 class="font-serif text-2xl text-cream mb-3">Cocktails, with intention.</h3>
+          <p class="text-cream/70 leading-relaxed text-[15px]">An espresso martini that earns the rave reviews, plus originals like the Velvet Underground (gin &amp; lavender) and the Easy Lover (fermented orange-peel wine, butterfly-pea, lime &amp; honey). Same care, after dark.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CRAFT ===================== -->
+<section id="craft" class="relative bg-deep py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="relative" data-reveal>
+        <div class="reveal-img rounded-2xl overflow-hidden" data-reveal-image>
+          <img src="assets/pour.jpg" alt="Espresso being pulled at Kinnor Coffee" class="w-full h-[480px] object-cover" />
+        </div>
+        <div class="absolute -bottom-6 -right-4 hidden sm:block bg-espresso border border-cream/15 rounded-xl px-6 py-4 shadow-2xl">
+          <div class="font-serif text-3xl accent">In-house</div>
+          <div class="text-[11px] tracking-[0.2em] uppercase text-cream/55">every syrup, every day</div>
+        </div>
+      </div>
+      <div data-reveal>
+        <p class="text-[12px] tracking-[0.3em] uppercase accent mb-4">Why It Tastes Better</p>
+        <h2 class="font-serif text-4xl sm:text-5xl text-cream leading-tight mb-7">The craft is in the details most places skip.</h2>
+        <ul class="space-y-6">
+          <li class="flex gap-4">
+            <span class="font-serif text-2xl accent shrink-0 w-9">01</span>
+            <div><h3 class="text-cream font-medium mb-1">Syrups made from scratch</h3><p class="text-cream/65 text-[15px] leading-relaxed">Lavender, vanilla from fresh-cut beans, chocolate ganache — all natural, all made on-site. It's the reason regulars call it the best vanilla latte they've ever had.</p></div>
+          </li>
+          <li class="flex gap-4">
+            <span class="font-serif text-2xl accent shrink-0 w-9">02</span>
+            <div><h3 class="text-cream font-medium mb-1">Served in real dishes</h3><p class="text-cream/65 text-[15px] leading-relaxed">No to-go-cup default. Drinks come to your table on real ceramic — an invitation to stay, not rush.</p></div>
+          </li>
+          <li class="flex gap-4">
+            <span class="font-serif text-2xl accent shrink-0 w-9">03</span>
+            <div><h3 class="text-cream font-medium mb-1">Brought to you, personally</h3><p class="text-cream/65 text-[15px] leading-relaxed">Staff deliver every order by hand and look you in the eye. Hospitality is the whole point.</p></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MENU ===================== -->
+<section id="menu" class="relative bg-espresso py-20 sm:py-28 grain">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+      <p class="text-[12px] tracking-[0.3em] uppercase accent mb-4">A Taste of the Menu</p>
+      <h2 class="font-serif text-4xl sm:text-5xl text-cream leading-tight">From the first pour to the last sip.</h2>
+      <p class="mt-4 text-cream/55 text-sm">Toggle ☀️ / 🌙 up top to switch the room — same here.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- coffee column -->
+      <div class="rounded-2xl border border-cream/12 bg-cocoa/30 p-7 sm:p-9" data-reveal>
+        <h3 class="font-serif text-2xl text-cream mb-6 flex items-center gap-2"><span style="color:#D2A152">☀️</span> By Day</h3>
+        <ul class="divide-y divide-cream/10">
+          <li class="py-3.5 flex justify-between gap-4"><span class="text-cream/85">Vanilla Bean Latte</span><span class="text-cream/45 text-sm italic">house vanilla syrup</span></li>
+          <li class="py-3.5 flex justify-between gap-4"><span class="text-cream/85">Lavender Latte</span><span class="text-cream/45 text-sm italic">floral &amp; smooth</span></li>
+          <li class="py-3.5 flex justify-between gap-4"><span class="text-cream/85">Classic Americano</span><span class="text-cream/45 text-sm italic">clean &amp; balanced</span></li>
+          <li class="py-3.5 flex justify-between gap-4"><span class="text-cream/85">Mocha</span><span class="text-cream/45 text-sm italic">chocolate ganache</span></li>
+          <li class="py-3.5 flex justify-between gap-4"><span class="text-cream/85">Cinnamon Roll &amp; Pastries</span><span class="text-cream/45 text-sm italic">fresh daily</span></li>
+        </ul>
+      </div>
+      <!-- cocktail column -->
+      <div class="rounded-2xl border border-cream/12 bg-cocoa/30 p-7 sm:p-9" data-reveal>
+        <h3 class="font-serif text-2xl text-cream mb-6 flex items-center gap-2"><span style="color:#A98AC0">🌙</span> By Night</h3>
+        <ul class="divide-y divide-cream/10">
+          <li class="py-3.5 flex justify-between gap-4"><span class="text-cream/85">Espresso Martini</span><span class="text-cream/45 text-sm italic">the local rave</span></li>
+          <li class="py-3.5 flex justify-between gap-4"><span class="text-cream/85">Velvet Underground</span><span class="text-cream/45 text-sm italic">gin &amp; lavender</span></li>
+          <li class="py-3.5 flex justify-between gap-4"><span class="text-cream/85">Easy Lover</span><span class="text-cream/45 text-sm italic">orange-peel wine, butterfly-pea</span></li>
+          <li class="py-3.5 flex justify-between gap-4"><span class="text-cream/85">Seasonal Originals</span><span class="text-cream/45 text-sm italic">ask the bar</span></li>
+          <li class="py-3.5 flex justify-between gap-4"><span class="text-cream/85">Coffee, after dark</span><span class="text-cream/45 text-sm italic">the day menu, still on</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="text-center text-cream/40 text-xs mt-8">Menu items shown for preview; full menu &amp; pricing in-shop.</p>
+  </div>
+</section>
+
+<!-- ===================== THE ROOM ===================== -->
+<section id="room" class="relative bg-deep py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-6 items-stretch">
+      <div class="lg:col-span-5 flex flex-col justify-center" data-reveal>
+        <p class="text-[12px] tracking-[0.3em] uppercase accent mb-4">The Room</p>
+        <h2 class="font-serif text-4xl sm:text-5xl text-cream leading-tight mb-5">A little house on Castell, built to make you stay.</h2>
+        <p class="text-cream/70 leading-relaxed mb-4">Big leather couches. A wall of vinyl behind the counter, records playing all day. Warm light and quiet corners — the kind of room you settle into for an hour and lose track of time.</p>
+        <p class="text-cream/70 leading-relaxed">It's intentional. Everything here is designed to slow you down.</p>
+      </div>
+      <div class="lg:col-span-7 grid grid-cols-2 gap-4">
+        <div class="overflow-hidden rounded-2xl col-span-2 h-64 sm:h-80" data-reveal><img src="assets/interior.jpg" alt="Kinnor Coffee cozy interior" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" /></div>
+        <div class="overflow-hidden rounded-2xl h-48 sm:h-60" data-reveal><img src="assets/vinyl.jpg" alt="Vinyl records spinning at Kinnor" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" /></div>
+        <div class="overflow-hidden rounded-2xl h-48 sm:h-60" data-reveal><img src="assets/pastry.jpg" alt="Fresh pastries at Kinnor Coffee" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VOICES ===================== -->
+<section class="relative bg-espresso py-20 sm:py-28 grain">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="text-center mb-14" data-reveal>
+      <p class="text-[12px] tracking-[0.3em] uppercase accent mb-4">What People Say</p>
+      <h2 class="font-serif text-4xl sm:text-5xl text-cream">Loved by New Braunfels.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <figure class="card rounded-2xl border border-cream/12 bg-cocoa/30 p-7" data-reveal>
+        <div class="accent text-2xl mb-3">★★★★★</div>
+        <blockquote class="text-cream/85 leading-relaxed font-serif text-lg italic">“Probably the best vanilla latte I've ever had — and they make their own syrups on-site, all natural.”</blockquote>
+        <figcaption class="mt-5 text-cream/50 text-sm">Verified Yelp reviewer</figcaption>
+      </figure>
+      <figure class="card rounded-2xl border border-cream/12 bg-cocoa/30 p-7" data-reveal>
+        <div class="accent text-2xl mb-3">★★★★★</div>
+        <blockquote class="text-cream/85 leading-relaxed font-serif text-lg italic">“Great coffee by day and the cocktails are insanely good too. The espresso martinis are stellar.”</blockquote>
+        <figcaption class="mt-5 text-cream/50 text-sm">Verified Google reviewer</figcaption>
+      </figure>
+      <figure class="card rounded-2xl border border-cream/12 bg-cocoa/30 p-7" data-reveal>
+        <div class="accent text-2xl mb-3">★★★★★</div>
+        <blockquote class="text-cream/85 leading-relaxed font-serif text-lg italic">“A cozy haven in a charming little house — attention to detail in every drink, and the warmest welcome.”</blockquote>
+        <figcaption class="mt-5 text-cream/50 text-sm">Verified Yelp reviewer</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISIT ===================== -->
+<section id="visit" class="relative bg-deep py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+      <div data-reveal>
+        <p class="text-[12px] tracking-[0.3em] uppercase accent mb-4">Find Us</p>
+        <h2 class="font-serif text-4xl sm:text-5xl text-cream leading-tight mb-8">In the heart of New Braunfels.</h2>
+
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <span class="accent mt-1">📍</span>
+            <div><div class="text-cream font-medium">540 S Castell Ave</div><div class="text-cream/60 text-sm">New Braunfels, TX 78130</div>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=540+S+Castell+Ave+New+Braunfels+TX+78130" target="_blank" rel="noopener" class="accent text-sm underline-grow inline-block mt-1">Get directions →</a></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="accent mt-1">📞</span>
+            <div><a href="tel:+18306325146" class="text-cream font-medium hover:underline">(830) 632-5146</a><div class="text-cream/60 text-sm">Call ahead anytime</div></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="accent mt-1">🕑</span>
+            <div class="w-full max-w-sm">
+              <div class="text-cream font-medium mb-2 flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-green-400 pulse-dot"></span> Hours</div>
+              <ul class="text-sm text-cream/70 space-y-1.5">
+                <li class="flex justify-between"><span>Monday</span><span>7:00a – 7:00p</span></li>
+                <li class="flex justify-between text-cream/40"><span>Tuesday</span><span>Closed</span></li>
+                <li class="flex justify-between"><span>Wed – Thursday</span><span>7:00a – 7:00p</span></li>
+                <li class="flex justify-between"><span>Friday</span><span>7:00a – 10:00p</span></li>
+                <li class="flex justify-between"><span>Saturday</span><span>7:00a – 10:00p</span></li>
+                <li class="flex justify-between"><span>Sunday</span><span>7:00a – 7:00p</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <a href="tel:+18306325146" class="btn-primary inline-flex items-center gap-2 accent-bg text-espresso font-semibold px-7 py-4 rounded-full mt-9">Call Kinnor</a>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden border border-cream/15 min-h-[420px]" data-reveal>
+        <iframe title="Kinnor Coffee map" src="https://www.google.com/maps?q=540+S+Castell+Ave,+New+Braunfels,+TX+78130&output=embed" width="100%" height="100%" style="border:0;min-height:420px;filter:grayscale(.3) contrast(1.05) brightness(.92)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLOSING CTA ===================== -->
+<section class="relative bg-espresso py-24 sm:py-32 grain overflow-hidden text-center">
+  <div class="ambient" style="width:600px;height:600px;background:radial-gradient(circle,var(--accent),transparent 62%);top:50%;left:50%;transform:translate(-50%,-50%);opacity:.18"></div>
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8" data-reveal>
+    <img src="assets/kinnor-logo.png" alt="Kinnor Coffee" class="h-16 w-auto mx-auto mb-8" />
+    <h2 class="font-serif text-4xl sm:text-6xl text-cream leading-[1.05] mb-6">Come in for the coffee.<br/><span class="italic grad-text">Stay for the room.</span></h2>
+    <p class="text-cream/70 text-lg mb-9 max-w-xl mx-auto">Whether it's a 7am pour-over or a nightcap with friends — there's a seat for you on Castell Ave.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="https://www.google.com/maps/dir/?api=1&destination=540+S+Castell+Ave+New+Braunfels+TX+78130" target="_blank" rel="noopener" class="btn-primary inline-flex items-center gap-2 accent-bg text-espresso font-semibold px-8 py-4 rounded-full">Get Directions</a>
+      <a href="tel:+18306325146" class="inline-flex items-center gap-2 border border-cream/25 text-cream px-8 py-4 rounded-full hover:bg-cream/10 transition-colors">(830) 632-5146</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-deep border-t border-cream/10 py-14">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid sm:grid-cols-3 gap-10 items-start">
+      <div>
+        <img src="assets/kinnor-logo.png" alt="Kinnor Coffee" class="h-10 w-auto mb-4" />
+        <p class="text-cream/55 text-sm leading-relaxed max-w-xs">People passionate for community and craft. Specialty coffee &amp; craft cocktails in downtown New Braunfels.</p>
+      </div>
+      <div>
+        <div class="text-cream font-medium mb-3 text-sm tracking-wide">Visit</div>
+        <p class="text-cream/60 text-sm leading-relaxed">540 S Castell Ave<br/>New Braunfels, TX 78130<br/><a href="tel:+18306325146" class="hover:text-cream transition-colors">(830) 632-5146</a></p>
+      </div>
+      <div>
+        <div class="text-cream font-medium mb-3 text-sm tracking-wide">Hours</div>
+        <p class="text-cream/60 text-sm leading-relaxed">Mon · Wed–Thu · Sun 7a–7p<br/>Fri–Sat 7a–10p<br/>Tuesday closed</p>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-cream/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-cream/40 text-xs">
+      <span>© 2026 Kinnor Coffee · New Braunfels, Texas</span>
+      <span>Owned by Aaron &amp; Ashley Brown</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== MOBILE STICKY BAR ===================== -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-deep/95 backdrop-blur border-t border-cream/15 flex">
+  <a href="tel:+18306325146" class="flex-1 py-3.5 text-center text-cream text-sm font-medium border-r border-cream/15">📞 Call</a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=540+S+Castell+Ave+New+Braunfels+TX+78130" target="_blank" rel="noopener" class="flex-1 py-3.5 text-center accent text-sm font-semibold">📍 Directions</a>
+</div>
+
+<!-- ===================== JSON-LD ===================== -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"CafeOrCoffeeShop",
+  "name":"Kinnor Coffee",
+  "description":"Family-owned specialty coffee shop by day and craft cocktail lounge by night in downtown New Braunfels, Texas. House-made syrups and craft cocktails.",
+  "url":"https://turnkeyweb.org/previews/kinnor-coffee/",
+  "telephone":"+1-830-632-5146",
+  "servesCuisine":["Coffee","Cocktails"],
+  "priceRange":"$$",
+  "image":"https://turnkeyweb.org/previews/kinnor-coffee/assets/latte-top.jpg",
+  "address":{"@type":"PostalAddress","streetAddress":"540 S Castell Ave","addressLocality":"New Braunfels","addressRegion":"TX","postalCode":"78130","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":29.6988,"longitude":-98.1247},
+  "founder":["Aaron Brown","Ashley Brown"],
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Wednesday","Thursday","Sunday"],"opens":"07:00","closes":"19:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"07:00","closes":"22:00"}
+  ]
+}
+</script>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+  // split-line headline (preserve <em>/<span> inner HTML)
+  document.querySelectorAll('[data-split]').forEach(el => { el.innerHTML = '<span>'+el.innerHTML+'</span>'; });
+
+  // Lenis smooth scroll
+  let lenis;
+  try {
+    lenis = new Lenis({ duration:1.15, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)) });
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  } catch(e){}
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href'); if(id.length<2) return;
+      const t=document.querySelector(id); if(!t) return; e.preventDefault();
+      if(lenis) lenis.scrollTo(t,{offset:-70}); else t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  // nav scrolled state
+  const nav=document.querySelector('[data-nav]');
+  const onScroll=()=>{ if(window.scrollY>40){ nav.classList.add('bg-deep/90','backdrop-blur','shadow-lg','border-b','border-cream/10'); } else { nav.classList.remove('bg-deep/90','backdrop-blur','shadow-lg','border-b','border-cream/10'); } };
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+  // day / night signature toggle (auto-set by local clock, user-overridable)
+  const body=document.body;
+  const hr=new Date().getHours();
+  if(hr>=17 || hr<6) body.classList.add('is-night');
+  document.getElementById('modeToggle').addEventListener('click',()=>body.classList.toggle('is-night'));
+
+  // reveals
+  if(window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('[data-reveal]').forEach(el=>{
+      gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:1.05,ease:'power3.out',
+        scrollTrigger:{trigger:el,start:'top 90%'}});
+    });
+    document.querySelectorAll('[data-reveal-image]').forEach(el=>{
+      ScrollTrigger.create({trigger:el,start:'top 85%',onEnter:()=>el.classList.add('in')});
+    });
+    // count-up
+    document.querySelectorAll('[data-count]').forEach(el=>{
+      const target=parseFloat(el.dataset.target);
+      const suffix=el.dataset.suffix||''; const prefix=el.dataset.prefix||''; const zero=el.dataset.zero;
+      ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>{
+        if(target===0){ el.textContent = zero || '0'; return; }
+        gsap.to({v:0},{v:target,duration:1.5,ease:'power2.out',onUpdate:function(){
+          el.textContent=prefix+Math.round(this.targets()[0].v)+suffix;
+        }});
+      }});
+    });
+  }
+
+  // screenshot / crawler safety net
+  setTimeout(()=>{
+    document.querySelectorAll('[data-reveal]').forEach(el=>{ if(getComputedStyle(el).opacity==='0'){ el.style.opacity=1; el.style.transform='none'; }});
+    document.querySelectorAll('[data-reveal-image]').forEach(el=>el.classList.add('in'));
+    document.querySelectorAll('[data-count]').forEach(el=>{
+      if(el.textContent.trim()==='0'){ const z=el.dataset.zero; const t=parseFloat(el.dataset.target);
+        el.textContent = t===0 ? (z||'0') : ((el.dataset.prefix||'')+t+(el.dataset.suffix||'')); }
+    });
+  },6000);
+</script>
+</body>
+</html>
