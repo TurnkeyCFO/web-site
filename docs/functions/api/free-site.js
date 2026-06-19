@@ -22,6 +22,10 @@
 
 const GRAPH = "https://graph.microsoft.com/v1.0";
 
+// Submission-notification recipient (overrides the shared INTAKE_EMAIL_TO env,
+// which is rickyw@…; free-site notifications go to ricky@turnkeyweb.org).
+const EMAIL_TO = "ricky@turnkeyweb.org";
+
 // Lead-log fields (#leads card + email).
 const LEAD_FIELDS = [
   ["full_name", "Name"],
@@ -176,7 +180,7 @@ async function postLead(env, f) {
 
 /* ── Best-effort email ───────────────────────────────────────────────────── */
 async function sendEmail(env, f) {
-  const need = ["AZURE_TENANT_ID", "AZURE_APPLICATION_ID", "AZURE_CLIENT_SECRET_VALUE", "INTAKE_EMAIL_FROM", "INTAKE_EMAIL_TO"];
+  const need = ["AZURE_TENANT_ID", "AZURE_APPLICATION_ID", "AZURE_CLIENT_SECRET_VALUE", "INTAKE_EMAIL_FROM"];
   if (need.some((k) => !env[k])) return;
   const token = await getGraphToken(env);
   const business = (f.business_name || f.full_name || "New lead").trim();
@@ -194,7 +198,7 @@ async function sendEmail(env, f) {
   const draft = {
     subject: `New Free Site Request — ${business}`,
     body: { contentType: "HTML", content: html },
-    toRecipients: [{ emailAddress: { address: env.INTAKE_EMAIL_TO } }],
+    toRecipients: [{ emailAddress: { address: EMAIL_TO } }],
   };
   const submitter = (f.email || "").trim();
   if (/^\S+@\S+\.\S+$/.test(submitter)) draft.replyTo = [{ emailAddress: { address: submitter } }];
