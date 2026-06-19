@@ -1,0 +1,497 @@
+<!doctype html>
+<!--
+  Turnkey CFO — prospect preview (Turnkey Web build)
+  Art direction: calm editorial typographic hero (NO photo-card cluster) + a CSS-rendered
+  live KPI dashboard as the signature moment (on-brand — they sell live dashboards).
+  Type: Exo 2 (Turnkey brand display) + Inter body. Palette from official TK CFO brand:
+  emerald gradient #00C853 -> #00E676 over warm-white, ink near-black, deep-forest dark band.
+  All facts (phone, services, testimonials, metrics) from turnkeycfo.com research.
+  Brief: "simpler than my existing site" -> fewer sections, generous whitespace, one accent.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Turnkey CFO — Bookkeeping & Monthly Close for Growing Businesses | Austin, TX</title>
+<meta name="description" content="Clean books, on-time monthly close, and live financial dashboards. Turnkey CFO handles bookkeeping, payroll, 1099s, and AP/AR for growing businesses nationwide. Based in Austin, TX." />
+<link rel="canonical" href="https://turnkeycfo.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Turnkey CFO — Bookkeeping & Monthly Close" />
+<meta property="og:description" content="Clean books, monthly close, and live dashboards for growing businesses. Austin, TX — serving clients nationwide." />
+<meta property="og:url" content="https://turnkeycfo.com/" />
+<meta name="theme-color" content="#0B2A20" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        paper: '#FBFCFB', bone: '#F2F6F3', mint: '#E6F8EF',
+        ink: '#0E1512', slate: '#46564E',
+        emerald: '#00C853', lime: '#00E676', forest: '#0B2A20', pine: '#103A2B',
+      },
+      fontFamily: { display: ['"Exo 2"','sans-serif'], body: ['Inter','sans-serif'] },
+    }}
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: Inter, sans-serif; background: #FBFCFB; color: #0E1512; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3,.font-display { font-family: "Exo 2", sans-serif; }
+
+  /* gradient ink + shimmer on the accent word */
+  .grad { background: linear-gradient(100deg,#00C853,#00E676 55%,#15B377); -webkit-background-clip:text; background-clip:text; color:transparent; background-size:220% 100%; animation: shimmer 9s linear infinite; }
+  @keyframes shimmer { from{background-position:0% 50%} to{background-position:220% 50%} }
+
+  /* ambient emerald glow */
+  .glow { position:absolute; border-radius:50%; filter:blur(90px); opacity:.5; pointer-events:none; will-change:transform; }
+  .glow-a { width:540px;height:540px; background:radial-gradient(circle,#9bf2c8,transparent 62%); top:-200px; right:-160px; animation:drift 24s ease-in-out infinite; }
+  .glow-b { width:460px;height:460px; background:radial-gradient(circle,#c7f5dd,transparent 62%); bottom:-180px; left:-140px; animation:drift2 28s ease-in-out infinite; }
+  @keyframes drift { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,-34px) scale(1.08)} }
+  @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-34px,30px) scale(1.06)} }
+
+  .grain::after { content:''; position:absolute; inset:0; pointer-events:none; opacity:.04; mix-blend-mode:multiply;
+    background-image: radial-gradient(#0E1512 1px, transparent 1px); background-size:4px 4px; }
+
+  /* nav underline grow */
+  .ul { position:relative; }
+  .ul::after { content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:linear-gradient(90deg,#00C853,#00E676); transition:width .45s cubic-bezier(.2,.7,.2,1); }
+  .ul:hover::after { width:100%; }
+
+  /* buttons */
+  .btn-p { position:relative; overflow:hidden; background:#0E1512; color:#fff; transition:transform .3s ease, box-shadow .3s ease, filter .3s ease; }
+  .btn-p:hover { transform:translateY(-3px); box-shadow:0 18px 40px -16px rgba(14,21,18,.55); filter:brightness(1.04); }
+  .btn-p::after { content:''; position:absolute; top:0; left:-130%; width:60%; height:100%; background:linear-gradient(100deg,transparent,rgba(0,230,118,.45),transparent); transform:skewX(-18deg); transition:left .9s cubic-bezier(.2,.7,.2,1); }
+  .btn-p:hover::after { left:130%; }
+  .btn-g { background:linear-gradient(100deg,#00C853,#00E676); color:#062014; transition:transform .3s ease, box-shadow .3s ease; }
+  .btn-g:hover { transform:translateY(-3px); box-shadow:0 18px 42px -14px rgba(0,200,83,.5); }
+
+  /* cards */
+  .card { position:relative; background:#fff; border:1px solid #E4ECE7; transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s, border-color .5s; }
+  .card::before { content:''; position:absolute; top:0; left:0; height:3px; width:0; background:linear-gradient(90deg,#00C853,#00E676); transition:width .6s cubic-bezier(.2,.7,.2,1); }
+  .card:hover { transform:translateY(-7px); box-shadow:0 26px 50px -28px rgba(14,21,18,.3); border-color:#CFE8DA; }
+  .card:hover::before { width:100%; }
+
+  .chip { background:#fff; border:1px solid #DCE8E2; transition:all .35s ease; }
+  .chip:hover { border-color:#9be3bf; background:#F1FBF5; transform:translateY(-2px); }
+
+  .dot { width:8px;height:8px;border-radius:50%; background:#00C853; animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.7)} }
+
+  /* dashboard signature */
+  .dash { background:linear-gradient(170deg,#0E1512,#103A2B 130%); box-shadow:0 40px 90px -40px rgba(8,30,20,.7), inset 0 1px 0 rgba(255,255,255,.06); }
+  .bar { width:100%; background:linear-gradient(180deg,#00E676,#00C853); border-radius:5px 5px 2px 2px; transform-origin:bottom; transform:scaleY(0); transition:transform 1.1s cubic-bezier(.2,.8,.2,1); }
+  .bar.in { transform:scaleY(1); }
+
+  [data-reveal]{opacity:0; transform:translateY(34px); transition:opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1);}
+  [data-reveal].in{opacity:1; transform:none;}
+
+  .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);}
+  .mtrack{display:flex;gap:3rem;width:max-content;animation:scrollX 34s linear infinite;}
+  .marquee:hover .mtrack{animation-play-state:paused;}
+  @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- NAV -->
+<header class="fixed top-0 inset-x-0 z-50 transition-all duration-300" id="nav">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="mt-3 flex items-center justify-between rounded-2xl border border-[#E4ECE7]/80 bg-paper/85 backdrop-blur-xl px-4 sm:px-6 py-3 shadow-[0_10px_30px_-22px_rgba(14,21,18,.4)]">
+      <a href="#top" class="flex items-center gap-2.5">
+        <img src="assets/logo-black.png" alt="Turnkey CFO" class="h-8 w-auto" />
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-[13.5px] font-medium text-slate">
+        <a href="#services" class="ul hover:text-ink">Services</a>
+        <a href="#how" class="ul hover:text-ink">How it works</a>
+        <a href="#clients" class="ul hover:text-ink">Clients</a>
+        <a href="#industries" class="ul hover:text-ink">Industries</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="tel:+17372481346" class="hidden sm:flex items-center gap-2 text-[13.5px] font-semibold text-ink hover:text-emerald transition">
+          <span class="dot"></span>(737) 248-1346
+        </a>
+        <a href="#contact" class="btn-g rounded-full px-4 sm:px-5 py-2.5 text-[13px] font-bold">Get a quote</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative grain overflow-hidden pt-36 sm:pt-44 pb-20 sm:pb-28">
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 relative">
+    <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 lg:gap-16 items-center">
+      <!-- copy -->
+      <div>
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#CFE8DA] bg-mint px-3.5 py-1.5 text-[12.5px] font-semibold text-pine" data-reveal>
+          <span class="dot"></span> Bookkeeping firm · Austin, TX · serving the U.S.
+        </div>
+        <h1 class="mt-6 font-display font-extrabold tracking-tight text-ink text-[2.7rem] sm:text-6xl lg:text-[4.4rem] leading-[1.03]" data-reveal>
+          Clean books.<br />On-time close.<br /><span class="grad">Clarity</span> you can run on.
+        </h1>
+        <p class="mt-6 max-w-xl text-[1.06rem] leading-relaxed text-slate" data-reveal>
+          Turnkey CFO keeps your bookkeeping current, closes the month on schedule, and hands you a live dashboard of the numbers that matter — so you spend less time in the books and more time growing.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-3.5" data-reveal>
+          <a href="#contact" class="btn-p rounded-full px-7 py-3.5 text-[14.5px] font-bold">Get a free quote</a>
+          <a href="tel:+17372481346" class="rounded-full border border-[#D7E4DD] bg-white px-7 py-3.5 text-[14.5px] font-bold text-ink hover:border-emerald hover:text-emerald transition">Call (737) 248-1346</a>
+        </div>
+        <p class="mt-5 text-[13px] font-medium text-slate" data-reveal>Financial clarity. Confident growth.</p>
+      </div>
+
+      <!-- signature: live dashboard -->
+      <div class="relative" data-reveal>
+        <div class="dash rounded-[26px] p-6 sm:p-7 text-white relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <img src="assets/logo-white.png" alt="" class="h-6 w-auto opacity-95" />
+            </div>
+            <span class="inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-lime/90"><span class="dot"></span>Live · this month</span>
+          </div>
+
+          <div class="mt-6 grid grid-cols-2 gap-3.5">
+            <div class="rounded-2xl bg-white/[.05] border border-white/10 p-4">
+              <div class="text-[11px] uppercase tracking-wider text-white/55 font-semibold">Net income</div>
+              <div class="mt-1.5 text-2xl font-display font-bold text-white">$<span class="cu" data-target="84200" data-pre="">0</span></div>
+              <div class="text-[11.5px] font-semibold text-lime mt-1">▲ 12.4% vs last mo.</div>
+            </div>
+            <div class="rounded-2xl bg-white/[.05] border border-white/10 p-4">
+              <div class="text-[11px] uppercase tracking-wider text-white/55 font-semibold">Cash on hand</div>
+              <div class="mt-1.5 text-2xl font-display font-bold text-white">$<span class="cu" data-target="212800">0</span></div>
+              <div class="text-[11.5px] font-semibold text-lime mt-1">▲ healthy runway</div>
+            </div>
+          </div>
+
+          <div class="mt-4 rounded-2xl bg-white/[.05] border border-white/10 p-4">
+            <div class="flex items-center justify-between">
+              <div class="text-[11px] uppercase tracking-wider text-white/55 font-semibold">Revenue · last 7 months</div>
+              <div class="text-[11.5px] font-semibold text-white/70">close on time</div>
+            </div>
+            <div class="mt-4 flex items-end gap-2.5 h-28">
+              <div class="flex-1 flex flex-col justify-end"><div class="bar" style="height:52%"></div></div>
+              <div class="flex-1 flex flex-col justify-end"><div class="bar" style="height:61%"></div></div>
+              <div class="flex-1 flex flex-col justify-end"><div class="bar" style="height:48%"></div></div>
+              <div class="flex-1 flex flex-col justify-end"><div class="bar" style="height:73%"></div></div>
+              <div class="flex-1 flex flex-col justify-end"><div class="bar" style="height:66%"></div></div>
+              <div class="flex-1 flex flex-col justify-end"><div class="bar" style="height:88%"></div></div>
+              <div class="flex-1 flex flex-col justify-end"><div class="bar" style="height:100%"></div></div>
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-center justify-between rounded-2xl bg-lime/10 border border-lime/25 px-4 py-3">
+            <span class="text-[12.5px] font-semibold text-white">Books reconciled & closed</span>
+            <span class="text-[12.5px] font-bold text-lime">100% · on schedule</span>
+          </div>
+        </div>
+        <div class="absolute -inset-3 -z-10 rounded-[34px] bg-gradient-to-br from-mint to-bone"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STAT BAND -->
+<section class="border-y border-[#E4ECE7] bg-white">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+    <div data-reveal><div class="font-display text-4xl font-extrabold text-ink"><span class="cu" data-target="10">0</span>+</div><div class="mt-1 text-[13px] font-medium text-slate">Active clients</div></div>
+    <div data-reveal><div class="font-display text-4xl font-extrabold text-ink"><span class="cu" data-target="100">0</span>%</div><div class="mt-1 text-[13px] font-medium text-slate">Client retention</div></div>
+    <div data-reveal><div class="font-display text-4xl font-extrabold text-ink"><span class="cu" data-target="3.1" data-dec="1">0</span> hrs</div><div class="mt-1 text-[13px] font-medium text-slate">Saved per week, on average</div></div>
+    <div data-reveal><div class="font-display text-4xl font-extrabold text-ink"><span class="cu" data-target="24">0</span> hr</div><div class="mt-1 text-[13px] font-medium text-slate">Typical response time</div></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee bg-forest py-3.5">
+  <div class="mtrack text-white/85 text-[13px] font-semibold uppercase tracking-[.18em]">
+    <span>Bookkeeping</span><span class="text-lime">•</span><span>Monthly close</span><span class="text-lime">•</span><span>Payroll</span><span class="text-lime">•</span><span>1099s</span><span class="text-lime">•</span><span>AP / AR</span><span class="text-lime">•</span><span>Live dashboards</span><span class="text-lime">•</span><span>Catch-up & cleanup</span><span class="text-lime">•</span>
+    <span>Bookkeeping</span><span class="text-lime">•</span><span>Monthly close</span><span class="text-lime">•</span><span>Payroll</span><span class="text-lime">•</span><span>1099s</span><span class="text-lime">•</span><span>AP / AR</span><span class="text-lime">•</span><span>Live dashboards</span><span class="text-lime">•</span><span>Catch-up & cleanup</span><span class="text-lime">•</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <span class="text-[12.5px] font-bold uppercase tracking-[.2em] text-emerald">What we handle</span>
+      <h2 class="mt-3 font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-ink">Your whole back office, run for you.</h2>
+      <p class="mt-4 text-[1.05rem] text-slate">One team for the books, the close, and the numbers — no patchwork of tools and freelancers.</p>
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="h-11 w-11 rounded-xl bg-mint grid place-items-center text-emerald font-display font-extrabold text-lg">₿</div>
+        <h3 class="mt-5 font-display text-xl font-bold text-ink">Bookkeeping & monthly close</h3>
+        <p class="mt-2.5 text-[14.5px] leading-relaxed text-slate">Categorized, reconciled books and a clean P&amp;L, balance sheet, and cash flow delivered every month — closed on schedule.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="h-11 w-11 rounded-xl bg-mint grid place-items-center text-emerald font-display font-extrabold text-lg">◷</div>
+        <h3 class="mt-5 font-display text-xl font-bold text-ink">Payroll processing</h3>
+        <p class="mt-2.5 text-[14.5px] leading-relaxed text-slate">Run payroll on time with taxes withheld, filed, and reconciled into your books — no missed deadlines.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="h-11 w-11 rounded-xl bg-mint grid place-items-center text-emerald font-display font-extrabold text-lg">§</div>
+        <h3 class="mt-5 font-display text-xl font-bold text-ink">1099 contractor management</h3>
+        <p class="mt-2.5 text-[14.5px] leading-relaxed text-slate">Contractors tracked all year and 1099s prepared and filed at year-end without the January scramble.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="h-11 w-11 rounded-xl bg-mint grid place-items-center text-emerald font-display font-extrabold text-lg">⇄</div>
+        <h3 class="mt-5 font-display text-xl font-bold text-ink">Accounts payable & receivable</h3>
+        <p class="mt-2.5 text-[14.5px] leading-relaxed text-slate">Bills paid and invoices collected on a steady cadence so cash keeps moving and nothing slips.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="h-11 w-11 rounded-xl bg-mint grid place-items-center text-emerald font-display font-extrabold text-lg">▦</div>
+        <h3 class="mt-5 font-display text-xl font-bold text-ink">Live financial dashboards</h3>
+        <p class="mt-2.5 text-[14.5px] leading-relaxed text-slate">A real-time scorecard of revenue, margin, and cash — the KPIs you actually run the business on.</p>
+      </div>
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="h-11 w-11 rounded-xl bg-mint grid place-items-center text-emerald font-display font-extrabold text-lg">↺</div>
+        <h3 class="mt-5 font-display text-xl font-bold text-ink">Catch-up & cleanup</h3>
+        <p class="mt-2.5 text-[14.5px] leading-relaxed text-slate">Behind or messy? We get months of back-books reconciled and current, then keep them that way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="py-20 sm:py-28 bg-bone border-y border-[#E4ECE7]">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <span class="text-[12.5px] font-bold uppercase tracking-[.2em] text-emerald">Getting started</span>
+      <h2 class="mt-3 font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-ink">Simple to start. Steady from there.</h2>
+    </div>
+    <div class="mt-12 grid md:grid-cols-3 gap-6">
+      <div class="relative bg-white rounded-2xl border border-[#E4ECE7] p-7" data-reveal>
+        <div class="font-display text-5xl font-extrabold text-mint">01</div>
+        <h3 class="mt-3 font-display text-xl font-bold text-ink">Quick intro call</h3>
+        <p class="mt-2.5 text-[14.5px] leading-relaxed text-slate">We learn your business, your tools, and where the books stand today — then send a clear, fixed quote.</p>
+      </div>
+      <div class="relative bg-white rounded-2xl border border-[#E4ECE7] p-7" data-reveal>
+        <div class="font-display text-5xl font-extrabold text-mint">02</div>
+        <h3 class="mt-3 font-display text-xl font-bold text-ink">We get current</h3>
+        <p class="mt-2.5 text-[14.5px] leading-relaxed text-slate">Onboarding, cleanup if needed, and your accounts connected — so we start from a set of books you can trust.</p>
+      </div>
+      <div class="relative bg-white rounded-2xl border border-[#E4ECE7] p-7" data-reveal>
+        <div class="font-display text-5xl font-extrabold text-mint">03</div>
+        <h3 class="mt-3 font-display text-xl font-bold text-ink">Monthly rhythm</h3>
+        <p class="mt-2.5 text-[14.5px] leading-relaxed text-slate">Each month closes on time with reports and a live dashboard — and we're a 24-hour reply away in between.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS / TESTIMONIALS -->
+<section id="clients" class="py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <span class="text-[12.5px] font-bold uppercase tracking-[.2em] text-emerald">What clients say</span>
+      <h2 class="mt-3 font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-ink">Founders, pastors, and operators trust the numbers.</h2>
+    </div>
+    <div class="mt-12 grid md:grid-cols-2 gap-5">
+      <figure class="card rounded-2xl p-7" data-reveal>
+        <div class="text-lime text-xl">★★★★★</div>
+        <blockquote class="mt-3 text-[1.05rem] leading-relaxed text-ink font-medium">"I have been looking for a true finance partner like this!"</blockquote>
+        <figcaption class="mt-4 text-[13.5px] font-semibold text-slate">Lauren — CEO, The Harbour Company</figcaption>
+      </figure>
+      <figure class="card rounded-2xl p-7" data-reveal>
+        <div class="text-lime text-xl">★★★★★</div>
+        <blockquote class="mt-3 text-[1.05rem] leading-relaxed text-ink font-medium">"Our finances have never been clearer."</blockquote>
+        <figcaption class="mt-4 text-[13.5px] font-semibold text-slate">Dakota — Lead Pastor, Heirloom Church</figcaption>
+      </figure>
+      <figure class="card rounded-2xl p-7" data-reveal>
+        <div class="text-lime text-xl">★★★★★</div>
+        <blockquote class="mt-3 text-[1.05rem] leading-relaxed text-ink font-medium">"They cleaned up our multi-fund nonprofit books — finally accurate and on time."</blockquote>
+        <figcaption class="mt-4 text-[13.5px] font-semibold text-slate">Christy — Director, Village of Hope Maui</figcaption>
+      </figure>
+      <figure class="card rounded-2xl p-7" data-reveal>
+        <div class="text-lime text-xl">★★★★★</div>
+        <blockquote class="mt-3 text-[1.05rem] leading-relaxed text-ink font-medium">"Full bookkeeping, payroll, and 1099 workflow handled in week one."</blockquote>
+        <figcaption class="mt-4 text-[13.5px] font-semibold text-slate">Jake — Founder, Build AI</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries" class="py-20 sm:py-28 bg-forest text-white relative overflow-hidden">
+  <div class="glow glow-a" style="opacity:.18"></div>
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 relative">
+    <div class="max-w-2xl" data-reveal>
+      <span class="text-[12.5px] font-bold uppercase tracking-[.2em] text-lime">Who we serve</span>
+      <h2 class="mt-3 font-display text-4xl sm:text-5xl font-extrabold tracking-tight">Bookkeeping built around your industry.</h2>
+      <p class="mt-4 text-[1.05rem] text-white/70">We tailor the chart of accounts and reporting to how your business actually runs — across 20+ industries.</p>
+    </div>
+    <div class="mt-10 flex flex-wrap gap-3" data-reveal>
+      <span class="rounded-full border border-white/15 bg-white/[.06] px-4 py-2 text-[13.5px] font-semibold">Construction & trades</span>
+      <span class="rounded-full border border-white/15 bg-white/[.06] px-4 py-2 text-[13.5px] font-semibold">Restaurants & cafés</span>
+      <span class="rounded-full border border-white/15 bg-white/[.06] px-4 py-2 text-[13.5px] font-semibold">Nonprofits & churches</span>
+      <span class="rounded-full border border-white/15 bg-white/[.06] px-4 py-2 text-[13.5px] font-semibold">Medical & dental</span>
+      <span class="rounded-full border border-white/15 bg-white/[.06] px-4 py-2 text-[13.5px] font-semibold">Professional services</span>
+      <span class="rounded-full border border-white/15 bg-white/[.06] px-4 py-2 text-[13.5px] font-semibold">Agencies & startups</span>
+      <span class="rounded-full border border-white/15 bg-white/[.06] px-4 py-2 text-[13.5px] font-semibold">Real estate</span>
+      <span class="rounded-full border border-white/15 bg-white/[.06] px-4 py-2 text-[13.5px] font-semibold">E-commerce & retail</span>
+      <span class="rounded-full border border-lime/40 bg-lime/10 px-4 py-2 text-[13.5px] font-semibold text-lime">+ 12 more</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section id="contact" class="py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="relative overflow-hidden rounded-[30px] bg-white border border-[#E4ECE7] grid lg:grid-cols-2 gap-0">
+      <div class="p-9 sm:p-12" data-reveal>
+        <img src="assets/logo-black.png" alt="Turnkey CFO" class="h-9 w-auto" />
+        <h2 class="mt-6 font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-ink leading-[1.05]">Ready for books you don't have to think about?</h2>
+        <p class="mt-4 text-[1.05rem] text-slate max-w-md">Tell us where things stand and we'll send a clear, fixed quote — no jargon, no pressure.</p>
+        <div class="mt-8 flex flex-wrap items-center gap-3.5">
+          <a href="tel:+17372481346" class="btn-g rounded-full px-7 py-3.5 text-[14.5px] font-bold">Call (737) 248-1346</a>
+          <a href="https://turnkeycfo.com/instant-estimate" class="btn-p rounded-full px-7 py-3.5 text-[14.5px] font-bold">Get an instant estimate</a>
+        </div>
+        <div class="mt-7 flex items-center gap-2 text-[13.5px] font-medium text-slate"><span class="dot"></span>Austin, TX · serving clients nationwide</div>
+      </div>
+      <div class="relative min-h-[300px] bg-bone">
+        <iframe
+          title="Austin, TX"
+          src="https://www.google.com/maps?q=Austin,%20Texas&output=embed"
+          class="absolute inset-0 h-full w-full grayscale-[.2]" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-forest text-white">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 py-14">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="sm:col-span-2 lg:col-span-1">
+        <img src="assets/logo-white.png" alt="Turnkey CFO" class="h-9 w-auto" />
+        <p class="mt-4 text-[14px] leading-relaxed text-white/60 max-w-xs">Financial clarity. Confident growth. Bookkeeping, close, and live reporting for growing businesses.</p>
+      </div>
+      <div>
+        <div class="text-[12px] uppercase tracking-[.18em] font-bold text-lime">Services</div>
+        <ul class="mt-4 space-y-2.5 text-[14px] text-white/70">
+          <li><a href="#services" class="hover:text-white transition">Bookkeeping & close</a></li>
+          <li><a href="#services" class="hover:text-white transition">Payroll</a></li>
+          <li><a href="#services" class="hover:text-white transition">1099s</a></li>
+          <li><a href="#services" class="hover:text-white transition">AP / AR</a></li>
+          <li><a href="#services" class="hover:text-white transition">Live dashboards</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[12px] uppercase tracking-[.18em] font-bold text-lime">Company</div>
+        <ul class="mt-4 space-y-2.5 text-[14px] text-white/70">
+          <li><a href="#how" class="hover:text-white transition">How it works</a></li>
+          <li><a href="#clients" class="hover:text-white transition">Clients</a></li>
+          <li><a href="#industries" class="hover:text-white transition">Industries</a></li>
+          <li><a href="#contact" class="hover:text-white transition">Get a quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[12px] uppercase tracking-[.18em] font-bold text-lime">Contact</div>
+        <ul class="mt-4 space-y-2.5 text-[14px] text-white/70">
+          <li><a href="tel:+17372481346" class="hover:text-white transition">(737) 248-1346</a></li>
+          <li>Austin, TX</li>
+          <li>Serving clients nationwide</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12.5px] text-white/45">
+      <span>© 2026 Turnkey CFO. All rights reserved.</span>
+      <span>Bookkeeping · Payroll · 1099 · AP/AR · Reporting</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-paper/95 backdrop-blur-xl border-t border-[#E4ECE7] px-4 py-3 flex gap-3">
+  <a href="tel:+17372481346" class="flex-1 btn-p rounded-full py-3 text-center text-[13.5px] font-bold">Call now</a>
+  <a href="#contact" class="flex-1 btn-g rounded-full py-3 text-center text-[13.5px] font-bold">Get a quote</a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AccountingService",
+  "name":"Turnkey CFO",
+  "description":"Bookkeeping, monthly close, payroll, 1099, AP/AR, and live financial dashboards for growing businesses.",
+  "url":"https://turnkeycfo.com/",
+  "telephone":"+1-737-248-1346",
+  "areaServed":"United States",
+  "slogan":"Financial clarity. Confident growth.",
+  "address":{"@type":"PostalAddress","addressLocality":"Austin","addressRegion":"TX","addressCountry":"US"},
+  "priceRange":"$$"
+}
+</script>
+
+<!-- LIBS + MOTION -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+  // Lenis smooth scroll
+  try {
+    const lenis = new Lenis({ duration:1.15, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)) });
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href'); if(id.length<2) return;
+        const el=document.querySelector(id); if(!el) return;
+        e.preventDefault(); lenis.scrollTo(el,{offset:-72});
+      });
+    });
+  } catch(e){}
+
+  // nav shadow on scroll
+  const nav=document.getElementById('nav');
+  const onScroll=()=>{ nav.classList.toggle('shadow-lg', window.scrollY>20); };
+  window.addEventListener('scroll', onScroll);
+
+  // reveals
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('[data-reveal]').forEach(el=>{
+      ScrollTrigger.create({ trigger:el, start:'top 90%', once:true,
+        onEnter:()=>el.classList.add('in') });
+    });
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in'));
+  }
+
+  // count-up
+  function countUp(el){
+    const target=parseFloat(el.dataset.target); const dec=parseInt(el.dataset.dec||'0');
+    const start=performance.now(); const dur=1500;
+    function step(now){
+      const p=Math.min(1,(now-start)/dur); const e=1-Math.pow(1-p,3);
+      const val=target*e;
+      el.textContent = dec? val.toFixed(dec) : Math.round(val).toLocaleString('en-US');
+      if(p<1) requestAnimationFrame(step); else el.textContent = dec? target.toFixed(dec) : target.toLocaleString('en-US');
+    }
+    requestAnimationFrame(step);
+  }
+  document.querySelectorAll('.cu').forEach(el=>{
+    if(window.ScrollTrigger){ ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:()=>countUp(el)}); }
+    else countUp(el);
+  });
+
+  // bars
+  document.querySelectorAll('.bar').forEach((b,i)=>{
+    if(window.ScrollTrigger){ ScrollTrigger.create({trigger:b,start:'top 95%',once:true,onEnter:()=>setTimeout(()=>b.classList.add('in'), i*90)}); }
+    else b.classList.add('in');
+  });
+
+  // screenshot / crawler safety net (6s)
+  setTimeout(()=>{
+    document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in'));
+    document.querySelectorAll('.bar').forEach(b=>b.classList.add('in'));
+    document.querySelectorAll('.cu').forEach(el=>{
+      if(el.textContent.trim()==='0'){ const t=parseFloat(el.dataset.target); const d=parseInt(el.dataset.dec||'0'); el.textContent=d?t.toFixed(d):t.toLocaleString('en-US'); }
+    });
+  }, 6000);
+</script>
+</body>
+</html>
