@@ -512,7 +512,7 @@
     try{
       const res=await fetch('/api/free-site',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
       const out=await res.json().catch(()=>({}));
-      if(res.ok&&out.ok){form.style.display='none';const ok=document.getElementById('okBox');ok.style.display='block';ok.scrollIntoView({behavior:'smooth',block:'center'});}
+      if(res.ok&&out.ok){try{if(window.gtag)gtag('event','conversion',{'send_to':'AW-17845290805/TxZuCH_C4MEoE1WOpsiC'});}catch(_){}form.style.display='none';const ok=document.getElementById('okBox');ok.style.display='block';ok.scrollIntoView({behavior:'smooth',block:'center'});}
       else{throw new Error(out.error||'Something went wrong.');}
     }catch(ex){errBox.textContent=(ex.message||'Something went wrong')+' You can also email hello@turnkeyweb.org.';errBox.style.display='block';btn.disabled=false;btn.innerHTML=o;}
   });
