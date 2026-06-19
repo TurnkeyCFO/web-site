@@ -3,20 +3,27 @@
  * Route:  POST /api/free-site   (turnkeyweb.org/api/free-site)
  *
  * Frictionless landing-page form (no call, no meeting). On submit it:
- *   1. Posts the request to the #leads Slack channel (the guaranteed signal)
- *   2. Best-effort emails the request to INTAKE_EMAIL_TO via Microsoft Graph
- *      (never fails the request if Graph config is absent)
- *   3. Returns { ok: true }
+ *   1. Posts a **BUILD REQUEST** card to #tkweb in the EXACT format the
+ *      `turnkey-web-site-builder` / build-request-listener pipeline watches for
+ *      — so the submission auto-kicks off the full research → draft → iterate →
+ *      DRAFT-preview-in-Slack process (the same one the /build-request form uses).
+ *   2. Posts a lead card to #leads (the lead log of record).
+ *   3. Best-effort emails the request to INTAKE_EMAIL_TO via Microsoft Graph.
+ *   4. Returns { ok: true } as long as the build trigger OR the lead post landed.
  *
- * Reuses the SAME env vars already configured for /api/intake:
- *   SLACK_BOT_TOKEN, SLACK_CHANNEL_LEADS  (Slack ping)
- *   AZURE_TENANT_ID, AZURE_APPLICATION_ID, AZURE_CLIENT_SECRET_VALUE,
- *   INTAKE_EMAIL_FROM, INTAKE_EMAIL_TO    (optional email; best-effort)
+ * Env vars (already configured on this Pages project for /api/intake +
+ * /api/build-request):
+ *   SLACK_BOT_TOKEN                              (Secret)
+ *   SLACK_CHANNEL_TKWEB   #tkweb id (build pipeline)   e.g. C0B3P1H77MY
+ *   SLACK_CHANNEL_LEADS   #leads id (lead log)         e.g. C0AREP6F46N
+ *   AZURE_TENANT_ID / AZURE_APPLICATION_ID / AZURE_CLIENT_SECRET_VALUE,
+ *   INTAKE_EMAIL_FROM / INTAKE_EMAIL_TO          (optional email; best-effort)
  */
 
 const GRAPH = "https://graph.microsoft.com/v1.0";
 
-const FIELDS = [
+// Lead-log fields (#leads card + email).
+const LEAD_FIELDS = [
   ["full_name", "Name"],
   ["business_name", "Business / Company"],
   ["email", "Email"],
@@ -31,24 +38,28 @@ const FIELDS = [
 export async function onRequestPost(context) {
   const { request, env } = context;
   try {
-    const fields = await parseBody(request);
+    const f = await parseBody(request);
 
-    // basic honeypot — bots fill hidden "company_url"; humans never see it
-    if ((fields.company_url || "").trim()) return json({ ok: true });
+    // honeypot — bots fill the hidden "company_url"; humans never see it
+    if ((f.company_url || "").trim()) return json({ ok: true });
 
-    if (!(fields.full_name || "").trim() && !(fields.business_name || "").trim() && !(fields.email || "").trim()) {
+    if (!(f.full_name || "").trim() || !(f.business_name || "").trim() || !(f.email || "").trim()) {
       return json({ ok: false, error: "Please add your name, business, and email." }, 400);
     }
 
-    let slackOk = false;
-    try { slackOk = await postSlack(env, fields); } catch (e) { console.log("slack:", e); }
+    // 1) THE BUILD TRIGGER — post the BUILD REQUEST card to #tkweb. This is the
+    //    primary action: it kicks off the same auto-build the team loves.
+    let buildOk = false;
+    try { buildOk = await postBuildRequest(env, f); } catch (e) { console.log("build trigger:", e); }
 
-    // best-effort email — never blocks the response
-    try { await sendEmail(env, fields); } catch (e) { console.log("email:", e); }
+    // 2) Lead log to #leads.
+    let leadOk = false;
+    try { leadOk = await postLead(env, f); } catch (e) { console.log("lead post:", e); }
 
-    // Slack is the capture of record. If it isn't configured, surface an error
-    // so the page can show the fallback contact — never silently drop a lead.
-    if (!slackOk && !(env.SLACK_BOT_TOKEN && env.SLACK_CHANNEL_LEADS)) {
+    // 3) Best-effort email — never blocks.
+    try { await sendEmail(env, f); } catch (e) { console.log("email:", e); }
+
+    if (!buildOk && !leadOk && !(env.SLACK_BOT_TOKEN && (env.SLACK_CHANNEL_TKWEB || env.SLACK_CHANNEL_LEADS))) {
       return json({ ok: false, error: "We couldn't submit that — please email hello@turnkeyweb.org." }, 502);
     }
     return json({ ok: true });
@@ -63,23 +74,85 @@ export async function onRequest() {
 
 async function parseBody(request) {
   const ct = (request.headers.get("content-type") || "").toLowerCase();
-  if (ct.includes("application/json")) {
-    return await request.json().catch(() => ({}));
-  }
+  if (ct.includes("application/json")) return await request.json().catch(() => ({}));
   const fd = await request.formData();
   const o = {};
   for (const [k, v] of fd.entries()) if (typeof v === "string") o[k] = v;
   return o;
 }
 
-async function postSlack(env, fields) {
-  if (!env.SLACK_BOT_TOKEN || !env.SLACK_CHANNEL_LEADS) return false;
-  const business = (fields.business_name || fields.full_name || "New lead").trim();
+/* ── BUILD REQUEST card → #tkweb (mirrors /api/build-request so the build
+      agent's matcher fires identically) ─────────────────────────────────── */
+async function postBuildRequest(env, f) {
+  if (!env.SLACK_BOT_TOKEN || !env.SLACK_CHANNEL_TKWEB) {
+    throw new Error("SLACK_BOT_TOKEN or SLACK_CHANNEL_TKWEB missing");
+  }
+  const business = (f.business_name || "New Client").trim();
+  const requester = (f.full_name || "").trim();
   const ts = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
 
-  const lines = FIELDS
+  // Compose the build agent's expected fields from the prospect's inputs.
+  const descParts = [];
+  if ((f.business_type || "").trim()) descParts.push((f.business_type).trim());
+  if ((f.location || "").trim()) descParts.push("based in " + (f.location).trim());
+  let description = descParts.join(" ");
+  if ((f.services_offered || "").trim()) description += (description ? ". " : "") + "Services: " + (f.services_offered).trim();
+  if (!description) description = "(no description provided)";
+
+  const links = (f.existing_website || "").trim();
+  const vibe = (f.details || "").trim();
+  const contact = [f.email, f.phone].map((x) => (x || "").trim()).filter(Boolean).join(" · ");
+
+  // NOTE: only build-agent field labels go in the parsed body (contact lives in
+  // the context block below, so it never pollutes the "Brand notes / vibe" parse).
+  const fieldLines = [
+    ["Submitted by", requester],
+    ["Business", business],
+    ["Links to research", links],
+    ["What they do", description],
+    ["Brand notes / vibe", vibe],
+  ]
+    .filter(([, v]) => v)
+    .map(([l, v]) => `*${l}:* ${v.length > 1200 ? v.slice(0, 1200) + "…" : v}`)
+    .join("\n");
+
+  // The literal trigger phrase the turnkey-web-site-builder skill watches for.
+  const text = `**BUILD REQUEST** — ${business}\n*Turnkey web site - ${business}*\n\n${fieldLines}\n\n_Submitted ${ts} CT · turnkeyweb.org/free-website (free-site offer)_`;
+
+  const blocks = [
+    { type: "header", text: { type: "plain_text", text: `🛠️ Build Request — ${business}`.slice(0, 150) } },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text:
+          `*Trigger:* \`Turnkey web site - ${business}\`\n` +
+          `_Free-site landing-page request — the build agent will research the business, draft the site, iterate to 9/10, and post a *DRAFT* preview link back to this channel._`,
+      },
+    },
+    { type: "divider" },
+    { type: "section", text: { type: "mrkdwn", text: fieldLines.length > 2900 ? fieldLines.slice(0, 2900) + "…" : fieldLines } },
+    { type: "context", elements: [{ type: "mrkdwn", text: `Submitted by *${requester}* · ${contact || "no contact"} · ${ts} CT · turnkeyweb.org/free-website` }] },
+  ];
+
+  const res = await fetch("https://slack.com/api/chat.postMessage", {
+    method: "POST",
+    headers: { Authorization: "Bearer " + env.SLACK_BOT_TOKEN, "Content-Type": "application/json; charset=utf-8" },
+    body: JSON.stringify({ channel: env.SLACK_CHANNEL_TKWEB, text, blocks, unfurl_links: false, unfurl_media: false }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!data.ok) throw new Error("tkweb chat.postMessage: " + (data.error || res.status));
+  return true;
+}
+
+/* ── Lead log → #leads ───────────────────────────────────────────────────── */
+async function postLead(env, f) {
+  if (!env.SLACK_BOT_TOKEN || !env.SLACK_CHANNEL_LEADS) return false;
+  const business = (f.business_name || f.full_name || "New lead").trim();
+  const ts = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
+  const lines = LEAD_FIELDS
     .map(([k, label]) => {
-      const v = (fields[k] || "").trim();
+      const v = (f[k] || "").trim();
       return v ? `*${label}:* ${v.length > 800 ? v.slice(0, 800) + "…" : v}` : null;
     })
     .filter(Boolean)
@@ -87,8 +160,8 @@ async function postSlack(env, fields) {
 
   const blocks = [
     { type: "header", text: { type: "plain_text", text: `🆓 Free Site Request — ${business}`.slice(0, 150) } },
-    { type: "section", text: { type: "mrkdwn", text: lines || "(no details provided)" } },
-    { type: "context", elements: [{ type: "mrkdwn", text: `Submitted ${ts} CT · turnkeyweb.org/free-website` }] },
+    { type: "section", text: { type: "mrkdwn", text: lines || "(no details)" } },
+    { type: "context", elements: [{ type: "mrkdwn", text: `Auto-building now → see #tkweb for the DRAFT · ${ts} CT · turnkeyweb.org/free-website` }] },
   ];
 
   const res = await fetch("https://slack.com/api/chat.postMessage", {
@@ -97,37 +170,34 @@ async function postSlack(env, fields) {
     body: JSON.stringify({ channel: env.SLACK_CHANNEL_LEADS, text: `Free site request — ${business}`, blocks }),
   });
   const data = await res.json().catch(() => ({}));
-  if (!data.ok) throw new Error("chat.postMessage: " + (data.error || res.status));
+  if (!data.ok) throw new Error("leads chat.postMessage: " + (data.error || res.status));
   return true;
 }
 
-async function sendEmail(env, fields) {
+/* ── Best-effort email ───────────────────────────────────────────────────── */
+async function sendEmail(env, f) {
   const need = ["AZURE_TENANT_ID", "AZURE_APPLICATION_ID", "AZURE_CLIENT_SECRET_VALUE", "INTAKE_EMAIL_FROM", "INTAKE_EMAIL_TO"];
   if (need.some((k) => !env[k])) return;
-
   const token = await getGraphToken(env);
-  const business = (fields.business_name || fields.full_name || "New lead").trim();
+  const business = (f.business_name || f.full_name || "New lead").trim();
   const from = encodeURIComponent(env.INTAKE_EMAIL_FROM);
-
-  const rows = FIELDS.map(([k, label]) => {
-    const v = (fields[k] || "").trim();
+  const rows = LEAD_FIELDS.map(([k, label]) => {
+    const v = (f[k] || "").trim();
     if (!v) return "";
     return `<tr><td style="padding:6px 14px 6px 0;font:600 13px/1.5 Arial,sans-serif;color:#5b6478;vertical-align:top;white-space:nowrap;">${esc(label)}</td><td style="padding:6px 0;font:400 13px/1.5 Arial,sans-serif;color:#1d2335;">${esc(v)}</td></tr>`;
   }).join("");
   const ts = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
   const html =
     `<div style="background:#f4f6fb;padding:24px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(13,22,71,0.08);">` +
-    `<tr><td style="background:linear-gradient(135deg,#2E1065,#5B21B6);padding:24px 30px;"><div style="font:800 12px/1 Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);">Turnkey WEB</div><div style="font:800 20px/1.3 Arial,sans-serif;color:#fff;margin-top:6px;">New Free Site Request</div><div style="font:400 13px Arial,sans-serif;color:rgba(255,255,255,.75);margin-top:4px;">Submitted ${esc(ts)} CT</div></td></tr>` +
+    `<tr><td style="background:linear-gradient(135deg,#2E1065,#5B21B6);padding:24px 30px;"><div style="font:800 12px/1 Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);">Turnkey WEB</div><div style="font:800 20px/1.3 Arial,sans-serif;color:#fff;margin-top:6px;">New Free Site Request</div><div style="font:400 13px Arial,sans-serif;color:rgba(255,255,255,.75);margin-top:4px;">Auto-build kicked off · ${esc(ts)} CT</div></td></tr>` +
     `<tr><td style="padding:14px 30px 24px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows}</table></td></tr></table></div>`;
-
   const draft = {
     subject: `New Free Site Request — ${business}`,
     body: { contentType: "HTML", content: html },
     toRecipients: [{ emailAddress: { address: env.INTAKE_EMAIL_TO } }],
   };
-  const submitter = (fields.email || "").trim();
+  const submitter = (f.email || "").trim();
   if (/^\S+@\S+\.\S+$/.test(submitter)) draft.replyTo = [{ emailAddress: { address: submitter } }];
-
   await fetch(`${GRAPH}/users/${from}/sendMail`, {
     method: "POST",
     headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
