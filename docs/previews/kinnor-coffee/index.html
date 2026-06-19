@@ -538,8 +538,9 @@
     document.querySelectorAll('[data-reveal]').forEach(el=>{if(getComputedStyle(el).opacity==='0'){el.style.opacity=1;el.style.transform='none';}});
     document.querySelectorAll('[data-reveal-image]').forEach(el=>el.classList.add('in'));
     document.querySelectorAll('[data-count]').forEach(el=>{
-      if(el.textContent.trim()==='0'){const z=el.dataset.zero,t=parseFloat(el.dataset.target),s=el.dataset.suffix||'',p=el.dataset.plain;
-        el.textContent=t===0?(z||'0'):(p?String(t):t+s);}
+      const t=parseFloat(el.dataset.target),s=el.dataset.suffix||'',z=el.dataset.zero,p=el.dataset.plain;
+      const want=t===0?(z||'0'):(p?String(t):t+s);
+      if(el.textContent.trim()!==want) el.textContent=want;
     });
   },6000);
 </script>
