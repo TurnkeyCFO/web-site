@@ -512,9 +512,12 @@
     const BASE=1280;
     function fit(){const w=view.clientWidth,h=view.clientHeight,s=w/BASE;ifr.style.width=BASE+'px';ifr.style.height=Math.round(h/s)+'px';ifr.style.transform='scale('+s+')';}
     fit();window.addEventListener('resize',fit);
-    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){ifr.addEventListener('load',()=>{fit();ifr.classList.add('on');});ifr.src='https://docs-slushies.com';io.disconnect();}})},{rootMargin:'250px'});
-    io.observe(view);
-    if(stage&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    // Load the live external iframe on DESKTOP ONLY. On phones the scaled third-party
+    // site (plus its autoplay video) can exhaust memory and crash/reload the tab on
+    // scroll, so mobile keeps the static screenshot (the .pv-view background image).
+    if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+      const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){ifr.addEventListener('load',()=>{fit();ifr.classList.add('on');});ifr.src='https://docs-slushies.com';io.disconnect();}})},{rootMargin:'250px'});
+      io.observe(view);
       stage.addEventListener('mousemove',(ev)=>{const r=stage.getBoundingClientRect(),px=(ev.clientX-r.left)/r.width-.5,py=(ev.clientY-r.top)/r.height-.5;frame.classList.add('tilt');frame.style.transform='perspective(1500px) rotateY('+(px*8)+'deg) rotateX('+(-py*7)+'deg) translateY(-4px)';});
       stage.addEventListener('mouseleave',()=>{frame.style.transform='';setTimeout(()=>frame.classList.remove('tilt'),220);});
     }
