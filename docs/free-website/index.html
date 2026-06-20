@@ -250,6 +250,23 @@
     .hero{padding:70px 0 64px}
   }
   @media(max-width:520px){.r2{grid-template-columns:1fr}}
+  /* --- CRO: progressive form, sticky CTA, why-free, examples --- */
+  .whyfree{font-size:14px;color:var(--muted);max-width:48ch;margin:-16px auto 28px;line-height:1.5}
+  .more{margin:2px 0 8px;border:1px dashed #d9cff0;border-radius:12px;background:#fbfaff}
+  .more>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;font-weight:700;font-size:14px;color:var(--violet-d)}
+  .more>summary::-webkit-details-marker{display:none}
+  .more .more-opt{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+  .more[open]>summary{border-bottom:1px solid var(--hair)}
+  .more-in{padding:14px}
+  .more-in .field:last-child{margin-bottom:0}
+  .pv-more{text-align:center;margin-top:16px;font-size:14.5px;color:var(--muted)}
+  .pv-more a{color:var(--violet-d);font-weight:600;text-decoration:underline}
+  .msticky{display:none}
+  @media(max-width:880px){
+    .msticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:200;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(251,247,241,.93);backdrop-filter:saturate(160%) blur(12px);border-top:1px solid var(--hair);box-shadow:0 -8px 24px rgba(46,16,101,.10)}
+    .msticky a{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;font-weight:700;font-size:16px;color:#fff;background:linear-gradient(135deg,#8b5cf6 0%,var(--violet-d) 100%);padding:15px 22px;border-radius:13px;box-shadow:0 10px 24px rgba(124,58,237,.34)}
+    body{padding-bottom:76px}
+  }
 </style>
 </head>
 <body>
@@ -273,12 +290,13 @@
     <div class="h-badge rv in"><span class="dot"></span> No call · No commitment · Just your free draft</div>
     <h1 class="head rv in" data-d="1">The website your business deserves — <span class="shine">built free.</span></h1>
     <p class="sub rv in" data-d="2">Tell us about your business and we'll design your first draft at no cost. Love it? Keep it live for just <b>$147/month</b> — hosting, unlimited edits, and support all included. <b>No build fee. No sales call.</b></p>
+    <p class="whyfree rv in" data-d="2">Why free? We're confident that once you see it, you'll want to keep it — most do.</p>
     <div class="cta rv in" data-d="3">
       <a href="#request" class="btn btn-lg">Request My Free Site
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <div class="trust">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Takes 90 seconds</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Takes 30 seconds</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> No payment to start</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cancel anytime</span>
       </div>
@@ -309,6 +327,7 @@
     </div>
     <div class="pv-cta rv"><a href="#request" class="btn btn-lg">I want a site like this
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <p class="pv-more rv">More real builds: <a href="https://docs-slushies.com" target="_blank" rel="noopener">Doc's Slushies</a> &middot; <a href="https://turnkeyweb.org/texas-sky-florals/" target="_blank" rel="noopener">Texas Sky Florals</a></p>
   </div>
 </section>
 
@@ -341,7 +360,7 @@
     <div class="steps">
       <div class="step rv" data-d="1"><span class="sn"></span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"/></svg></div>
-        <h3>Tell us about your business</h3><p>One quick form — about 90 seconds. No call, no meeting. The more you share, the better your draft.</p></div>
+        <h3>Tell us about your business</h3><p>One quick form — about 30 seconds. No call, no meeting. The more you share, the better your draft.</p></div>
       <div class="step rv" data-d="2"><span class="sn"></span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></div>
         <h3>We design your free draft</h3><p>Our team builds a custom, mobile-ready website for your business — completely on us, in days.</p></div>
@@ -402,7 +421,7 @@
         <form id="freeForm" novalidate>
           <div id="formErr" class="err"></div>
           <h3>Tell us about your business</h3>
-          <p class="cs">The more you share, the better your first draft. Takes about 90 seconds.</p>
+          <p class="cs">Four quick details and you're done — about 30 seconds.</p>
 
           <div class="r2">
             <div class="field"><label>Your name <span class="rq">*</span></label><input name="full_name" required autocomplete="name"></div>
@@ -410,15 +429,21 @@
           </div>
           <div class="r2">
             <div class="field"><label>Email <span class="rq">*</span></label><input type="email" name="email" required autocomplete="email"></div>
-            <div class="field"><label>Phone</label><input type="tel" name="phone" autocomplete="tel"></div>
-          </div>
-          <div class="r2">
             <div class="field"><label>What does your business do? <span class="rq">*</span></label><input name="business_type" required placeholder="e.g. Plumbing, salon, landscaping"></div>
-            <div class="field"><label>Location (city, state)</label><input name="location" autocomplete="address-level2" placeholder="e.g. Austin, TX"></div>
           </div>
-          <div class="field"><label>Main services or products you offer</label><textarea name="services_offered" placeholder="e.g. Drain cleaning, water heater repair, emergency service — the things customers hire you for"></textarea></div>
-          <div class="field"><label>Current website (if you have one)</label><input name="existing_website" placeholder="yoursite.com — or leave blank"></div>
-          <div class="field"><label>Anything else? Style, colors, what makes you stand out</label><textarea name="details" placeholder="Hours, service area, a tagline, brand colors you like, what makes you better than the competition… (optional)"></textarea></div>
+
+          <details class="more">
+            <summary><span>+ Add details for an even better draft</span><span class="more-opt">optional</span></summary>
+            <div class="more-in">
+              <div class="r2">
+                <div class="field"><label>Phone</label><input type="tel" name="phone" autocomplete="tel"></div>
+                <div class="field"><label>Location (city, state)</label><input name="location" autocomplete="address-level2" placeholder="e.g. Austin, TX"></div>
+              </div>
+              <div class="field"><label>Main services or products you offer</label><textarea name="services_offered" placeholder="e.g. Drain cleaning, water heater repair, emergency service — the things customers hire you for"></textarea></div>
+              <div class="field"><label>Current website (if you have one)</label><input name="existing_website" placeholder="yoursite.com — or leave blank"></div>
+              <div class="field"><label>Anything else? Style, colors, what makes you stand out</label><textarea name="details" placeholder="Hours, service area, a tagline, brand colors you like, what makes you better than the competition…"></textarea></div>
+            </div>
+          </details>
 
           <div class="hp"><label>Company URL</label><input name="company_url" tabindex="-1" autocomplete="off"></div>
 
@@ -462,6 +487,8 @@
     <p style="margin-top:8px">© <span id="yr"></span> Turnkey Web · <a href="https://turnkeyweb.org">turnkeyweb.org</a></p>
   </div>
 </footer>
+
+<div class="msticky"><a href="#request">Request My Free Site &rarr;</a></div>
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
