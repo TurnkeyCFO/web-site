@@ -219,26 +219,6 @@
   .wcard:hover .wimg img{transform:scale(1.06)}
   .wmeta{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;font-weight:600;font-size:16px}
   .wtag{font-size:12.5px;color:var(--acc-l)}
-
-  /* full portfolio grid (the long browsable list) */
-  .pf{padding:8px 0 clamp(78px,10vh,128px)}
-  .pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:50px}
-  .pf-card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg2);transition:border-color .4s,transform .5s var(--e1)}
-  .pf-card:hover{border-color:rgba(196,181,253,.45);transform:translateY(-5px)}
-  .pf-bar{display:flex;align-items:center;gap:6px;padding:10px 13px;border-bottom:1px solid var(--line)}
-  .pf-bar i{width:8px;height:8px;border-radius:50%;background:rgba(236,231,242,.16);display:block;flex:0 0 auto}
-  .pf-url{margin-left:8px;font-size:11px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .pf-img{aspect-ratio:16/10;overflow:hidden;background:#000}
-  .pf-img img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .9s var(--e1)}
-  .pf-card:hover .pf-img img{transform:scale(1.06)}
-  .pf-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 17px}
-  .pf-nm{font-weight:700;font-size:15px;letter-spacing:-.01em}
-  .pf-tag{font-size:11.5px;color:var(--acc-l);text-align:right;flex:0 0 auto}
-  .pf-extra{display:none}
-  .pf-grid.show-all .pf-extra{display:block}
-  .pf-more{display:flex;justify-content:center;margin-top:40px}
-  @media(max-width:920px){.pf-grid{grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}.pf{padding:0 0 60px}}
-  @media(max-width:560px){.pf-grid{grid-template-columns:1fr}}
   /* contextual cursor label */
   .cur .lbl{font-family:var(--body);font-weight:600;font-size:12px;color:#fff;white-space:nowrap;opacity:0;transform:scale(.5);transition:opacity .2s,transform .25s var(--e1)}
   .cur.label{display:grid;place-items:center;width:auto;height:auto;padding:11px 18px;border-radius:100px;background:var(--acc);border-color:transparent;mix-blend-mode:normal}
@@ -366,37 +346,8 @@
       <div class="wmeta"><span>Kinnor Coffee</span><span class="wtag">Coffee &amp; cocktails</span></div>
     </a>
   </div>
-</section>
-
-<!-- FULL PORTFOLIO GRID -->
-<section class="pf" id="portfolio">
-  <div class="wrap">
-    <p class="small state rv" style="padding:0;color:var(--acc-l)">The full portfolio</p>
-    <h2 class="rwords" style="margin-top:18px;font-size:clamp(30px,5vw,68px);max-width:18ch">Twenty live sites. Have a look around.</h2>
-    <p class="rv" style="color:var(--mut);font-size:18px;max-width:48ch;margin-top:22px">Real businesses, real launches — salons, trades, med spas, auto shops, cafes and more. Tap any card to open the live site.</p>
-    <div class="pf-grid">
-      <a class="pf-card rv" href="https://jollyball.pages.dev" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">jollyball.pages.dev</span></div><div class="pf-img"><img src="shots/jollyball.jpg" alt="JollyBall website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">JollyBall</span><span class="pf-tag">Live sports league</span></div></a>
-      <a class="pf-card rv" href="https://docs-slushies.com" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">docs-slushies.com</span></div><div class="pf-img"><img src="shots/slushies.jpg" alt="Doc's Slushies website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Doc's Slushies</span><span class="pf-tag">Frozen drink rental</span></div></a>
-      <a class="pf-card rv" href="https://turnkeyweb.org/previews/aj-salon/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">aj-salon</span></div><div class="pf-img"><img src="shots/aj-salon.jpg" alt="AJ Salon website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">AJ Salon</span><span class="pf-tag">Hair salon</span></div></a>
-      <a class="pf-card rv" href="https://turnkeyweb.org/previews/summit-aesthetics-and-med-spa-medical-spa-3e24bc/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">summit-aesthetics</span></div><div class="pf-img"><img src="shots/summit-aesthetics.jpg" alt="Summit Aesthetics Med Spa website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Summit Aesthetics</span><span class="pf-tag">Med spa</span></div></a>
-      <a class="pf-card rv" href="https://ricky11west.github.io/prestige-commercial-landscaping/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">prestige-landscaping</span></div><div class="pf-img"><img src="shots/prestige.png" alt="Prestige Commercial Landscaping website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Prestige Landscaping</span><span class="pf-tag">Commercial landscaping</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/kinnor-coffee-v3/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">kinnor-coffee</span></div><div class="pf-img"><img src="shots/kinnor.jpg" alt="Kinnor Coffee website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Kinnor Coffee</span><span class="pf-tag">Coffee &amp; cocktails</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/flower-street-atx/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">flower-street-atx</span></div><div class="pf-img"><img src="shots/flower-street-atx.jpg" alt="Flower Street ATX website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Flower Street ATX</span><span class="pf-tag">Floral studio</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/brightleaf-family-dental-dental-practice-921e69/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">brightleaf-dental</span></div><div class="pf-img"><img src="shots/brightleaf-dental.jpg" alt="Brightleaf Family Dental website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Brightleaf Family Dental</span><span class="pf-tag">Dental practice</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/red-oak-mobile-detailing-mobile-auto-detailing-7eb8c1/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">red-oak-detailing</span></div><div class="pf-img"><img src="shots/red-oak-detailing.jpg" alt="Red Oak Mobile Detailing website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Red Oak Detailing</span><span class="pf-tag">Mobile detailing</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/mariannas-salon/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">mariannas-salon</span></div><div class="pf-img"><img src="shots/mariannas-salon.jpg" alt="Marianna's Salon website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Marianna's Salon</span><span class="pf-tag">Hair salon</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/ink-n-flesh/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">ink-n-flesh</span></div><div class="pf-img"><img src="shots/inknflesh.jpg" alt="Ink N Flesh website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Ink N Flesh</span><span class="pf-tag">Tattoo studio</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/j-n-body-shop/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">j-n-body-shop</span></div><div class="pf-img"><img src="shots/jnbody.jpg" alt="J&amp;N Body Shop website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">J&amp;N Body Shop</span><span class="pf-tag">Collision &amp; paint</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/gomez-fencing/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">gomez-fencing</span></div><div class="pf-img"><img src="shots/gomez-fencing.jpg" alt="Gomez Fencing website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Gomez Fencing</span><span class="pf-tag">Fencing</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/garcias-tree-service/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">garcias-tree-service</span></div><div class="pf-img"><img src="shots/garcias-tree.jpg" alt="Garcia's Tree Service website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Garcia's Tree Service</span><span class="pf-tag">Tree service</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/5star-cutz/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">5star-cutz</span></div><div class="pf-img"><img src="shots/5star-cutz.jpg" alt="5 Star Cutz website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">5 Star Cutz</span><span class="pf-tag">Barber shop</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/dans-auto-body-repair/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">dans-auto-body-repair</span></div><div class="pf-img"><img src="shots/dans-auto-body.jpg" alt="Dan's Auto Body Repair website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Dan's Auto Body</span><span class="pf-tag">Auto body repair</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/dc-home-solutions/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">dc-home-solutions</span></div><div class="pf-img"><img src="shots/dc-home-solutions.jpg" alt="DC Home Solutions website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">DC Home Solutions</span><span class="pf-tag">Home services</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/fort-worth-transmission-service/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">fort-worth-transmission</span></div><div class="pf-img"><img src="shots/fort-worth-transmission.jpg" alt="Fort Worth Transmission Service website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">FW Transmission</span><span class="pf-tag">Auto repair</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/selena-auto-towing/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">selena-auto-towing</span></div><div class="pf-img"><img src="shots/selena-auto-towing.jpg" alt="Selena Auto &amp; Towing website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Selena Auto &amp; Towing</span><span class="pf-tag">Towing</span></div></a>
-      <a class="pf-card rv pf-extra" href="https://turnkeyweb.org/previews/abilenes-best-movers/" target="_blank" rel="noopener" data-cursor-label="View live"><div class="pf-bar"><i></i><i></i><i></i><span class="pf-url">abilenes-best-movers</span></div><div class="pf-img"><img src="shots/abilenes-movers.jpg" alt="Abilene's Best Movers website" loading="lazy"></div><div class="pf-meta"><span class="pf-nm">Abilene's Best Movers</span><span class="pf-tag">Moving</span></div></a>
-    </div>
-    <div class="pf-more"><button class="btn alt magnetic" id="pfMore" data-cursor>View all 20 sites <span class="ar">&rarr;</span></button></div>
+  <div class="wrap" style="margin-top:44px;display:flex;justify-content:center">
+    <a class="btn alt magnetic" href="/work.html" data-cursor>View the full portfolio <span class="ar">&rarr;</span></a>
   </div>
 </section>
 
@@ -745,17 +696,6 @@
       el.addEventListener('mouseleave',function(){el.style.transform='';});
     });
   }
-
-  /* ---- portfolio: keep it short, reveal the rest only on click ---- */
-  (function(){
-    var btn=document.getElementById('pfMore');if(!btn)return;
-    btn.addEventListener('click',function(){
-      var grid=document.querySelector('.pf-grid');if(grid)grid.classList.add('show-all');
-      document.querySelectorAll('.pf-extra').forEach(function(c){c.style.opacity=1;c.style.transform='none';});
-      var wrap=btn.closest('.pf-more');if(wrap)wrap.style.display='none';
-      if(window.ScrollTrigger)ScrollTrigger.refresh();
-    });
-  })();
 
   /* ---- live form → /api/free-site (fires the auto-build pipeline → DRAFT in Slack) ---- */
   var form=document.getElementById('freeForm'),subBtn=document.getElementById('submitBtn'),errBox=document.getElementById('formErr');
