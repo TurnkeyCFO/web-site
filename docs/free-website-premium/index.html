@@ -152,6 +152,27 @@
   .foot-big{font-family:var(--disp);font-weight:800;font-size:clamp(60px,15vw,240px);line-height:.82;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px var(--line);white-space:nowrap}
   .foot-row{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:40px;color:var(--mut);font-size:13.5px;flex-wrap:wrap}
 
+  /* showcase / real work */
+  .work{padding:clamp(90px,12vh,160px) 0;overflow:hidden}
+  .work .wrap{margin-bottom:48px}
+  .work-track{display:flex;gap:24px;padding:6px 30px 30px;overflow-x:auto;scroll-snap-type:x proximity;cursor:grab;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .work-track::-webkit-scrollbar{display:none}
+  .work-track.drag{cursor:grabbing}
+  .wcard{flex:0 0 min(560px,84vw);scroll-snap-align:center;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bg2);transition:border-color .4s,transform .5s var(--e1)}
+  .wcard:hover{border-color:rgba(196,181,253,.45)}
+  .wbar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .wdot{width:9px;height:9px;border-radius:50%;background:rgba(236,231,242,.18)}
+  .wurl{margin-left:10px;font-size:12px;color:var(--mut)}
+  .wimg{aspect-ratio:16/10;overflow:hidden;background:#000}
+  .wimg img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .9s var(--e1)}
+  .wcard:hover .wimg img{transform:scale(1.06)}
+  .wmeta{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;font-weight:600;font-size:16px}
+  .wtag{font-size:12.5px;color:var(--acc-l)}
+  /* contextual cursor label */
+  .cur .lbl{font-family:var(--body);font-weight:600;font-size:12px;color:#fff;white-space:nowrap;opacity:0;transform:scale(.5);transition:opacity .2s,transform .25s var(--e1)}
+  .cur.label{display:grid;place-items:center;width:auto;height:auto;padding:11px 18px;border-radius:100px;background:var(--acc);border-color:transparent;mix-blend-mode:normal}
+  .cur.label .lbl{opacity:1;transform:scale(1)}
+
   @media(max-width:920px){
     .hero-foot{flex-direction:column;align-items:flex-start;gap:26px}
     .prow{grid-template-columns:1fr;gap:14px;padding:38px 0}
@@ -166,7 +187,7 @@
 <body class="lock">
 
 <div id="pre"><div class="pl">FREE</div><div class="pr" id="preNum">0</div></div>
-<div class="cur" id="cur"></div><div class="cur-d" id="curD"></div>
+<div class="cur" id="cur"><span class="lbl" id="curLbl"></span></div><div class="cur-d" id="curD"></div>
 <div class="prog" id="prog"></div>
 
 <header>
@@ -200,6 +221,31 @@
     <p class="small rv">Why it matters</p>
     <h2 class="rwords">Your website is the first handshake. Make it feel like <span class="acc">ten grand.</span></h2>
     <p class="rv">If customers find you on Google, a sharp site is the difference between a call and a scroll-past. We build it for you. You only pay if you love it.</p>
+  </div>
+</section>
+
+<!-- SHOWCASE -->
+<section class="work" id="work">
+  <div class="wrap">
+    <p class="small state rv" style="padding:0;color:var(--acc-l)">Recent work</p>
+    <h2 class="rwords" style="margin-top:18px;font-size:clamp(30px,5vw,68px);max-width:18ch">Real sites. Real businesses. Built by us.</h2>
+  </div>
+  <div class="work-track" id="workTrack" data-cursor-label="Drag">
+    <a class="wcard" href="https://turnkeyweb.org/texas-sky-florals/" target="_blank" rel="noopener" data-cursor-label="View live">
+      <div class="wbar"><span class="wdot"></span><span class="wdot"></span><span class="wdot"></span><span class="wurl">texas-sky-florals</span></div>
+      <div class="wimg"><img src="shots/florals.jpg" alt="Texas Sky Florals website" loading="lazy"></div>
+      <div class="wmeta"><span>Texas Sky Florals</span><span class="wtag">Wedding florals</span></div>
+    </a>
+    <a class="wcard" href="https://docs-slushies.com" target="_blank" rel="noopener" data-cursor-label="View live">
+      <div class="wbar"><span class="wdot"></span><span class="wdot"></span><span class="wdot"></span><span class="wurl">docs-slushies.com</span></div>
+      <div class="wimg"><img src="shots/slushies.jpg" alt="Doc's Slushies website" loading="lazy"></div>
+      <div class="wmeta"><span>Doc's Slushies</span><span class="wtag">Frozen drink rental</span></div>
+    </a>
+    <a class="wcard" href="https://jollyball.pages.dev" target="_blank" rel="noopener" data-cursor-label="View live">
+      <div class="wbar"><span class="wdot"></span><span class="wdot"></span><span class="wdot"></span><span class="wurl">jollyball</span></div>
+      <div class="wimg"><img src="shots/jollyball.jpg" alt="JollyBall website" loading="lazy"></div>
+      <div class="wmeta"><span>JollyBall</span><span class="wtag">Live sports show</span></div>
+    </a>
   </div>
 </section>
 
@@ -427,10 +473,22 @@
     var cur=document.getElementById('cur'),cd=document.getElementById('curD'),mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my;
     addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cd.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';},{passive:true});
     (function cl(){cx+=(mx-cx)*.16;cy+=(my-cy)*.16;cur.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';requestAnimationFrame(cl);})();
+    var curLbl=document.getElementById('curLbl');
     document.querySelectorAll('a,button,[data-cursor],input,textarea,summary').forEach(function(el){
       el.addEventListener('mouseenter',function(){cur.classList.add('grow');});
       el.addEventListener('mouseleave',function(){cur.classList.remove('grow');});
     });
+    document.querySelectorAll('[data-cursor-label]').forEach(function(el){
+      el.addEventListener('mouseenter',function(){curLbl.textContent=el.getAttribute('data-cursor-label');cur.classList.add('label');cur.classList.remove('grow');cd.style.opacity=0;});
+      el.addEventListener('mouseleave',function(){cur.classList.remove('label');cd.style.opacity=1;});
+    });
+    var tr=document.getElementById('workTrack');
+    if(tr){var dn=false,sx=0,sl=0,mv=0;
+      tr.addEventListener('mousedown',function(e){dn=true;mv=0;sx=e.pageX;sl=tr.scrollLeft;tr.classList.add('drag');});
+      addEventListener('mouseup',function(){dn=false;tr.classList.remove('drag');});
+      tr.addEventListener('mousemove',function(e){if(!dn)return;e.preventDefault();mv+=Math.abs(e.movementX);tr.scrollLeft=sl-(e.pageX-sx)*1.25;});
+      tr.addEventListener('click',function(e){if(mv>6){e.preventDefault();e.stopPropagation();}},true);
+    }
     document.querySelectorAll('.magnetic').forEach(function(el){
       el.addEventListener('mousemove',function(e){var r=el.getBoundingClientRect();el.style.transform='translate('+(e.clientX-(r.left+r.width/2))*.35+'px,'+(e.clientY-(r.top+r.height/2))*.5+'px)';});
       el.addEventListener('mouseleave',function(){el.style.transform='';});
