@@ -185,10 +185,17 @@
 
   @media(max-width:920px){
     .hero-foot{flex-direction:column;align-items:flex-start;gap:26px}
-    .prow{grid-template-columns:1fr;gap:14px;padding:38px 0}
+    /* tighten the loose mobile vertical rhythm — vh-based section padding stacked into huge gaps */
+    .state{padding:70px 0}
+    .work{padding:56px 0 30px}
+    .proc{padding:24px 0 64px}
+    .prow{grid-template-columns:1fr;gap:14px;padding:34px 0}
+    .feat-band{padding:72px 0}
     .fgrid{grid-template-columns:1fr;gap:14px}
     .f1,.f2,.f3,.f4,.f5,.f6{grid-column:auto}.f6{flex-direction:column;align-items:flex-start}
-    .stats{grid-template-columns:1fr;gap:40px}
+    .stats{grid-template-columns:1fr;gap:28px;padding:58px 0}
+    .guar{padding:74px 0}
+    .form-s{padding:70px 0}
     .fg{grid-template-columns:1fr;gap:34px}.fg .fl{position:static}
   }
   @media(max-width:540px){.r2{grid-template-columns:1fr}}
