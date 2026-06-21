@@ -9,29 +9,35 @@
 <link rel="icon" href="/assets/tkweb-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0a0a0c;--bg2:#101015;--ink:#ECE7F2;--mut:rgba(236,231,242,.52);--mut2:rgba(236,231,242,.32);
     --acc:#8b5cf6;--acc-l:#c4b5fd;--line:rgba(236,231,242,.1);
-    --disp:'Bricolage Grotesque',sans-serif;--body:'Plus Jakarta Sans',system-ui,sans-serif;
+    --disp:'Plus Jakarta Sans',system-ui,sans-serif;--body:'Plus Jakarta Sans',system-ui,sans-serif;
     --e1:cubic-bezier(.16,1,.3,1);--e2:cubic-bezier(.7,0,.2,1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%;background:#08080b}
-  body{font-family:var(--body);background:transparent;color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  html{-webkit-text-size-adjust:100%;background:var(--bg)}
+  body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   body.lock{overflow:hidden;height:100vh}
-  h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:.96;letter-spacing:-.03em}
+  h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.0;letter-spacing:-.025em}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1240px;margin:0 auto;padding:0 30px}
   .acc{color:var(--acc-l)}
 
-  /* word-mask reveal */
-  .rwords .m{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
-  .rwords .w{display:inline-block}
+  /* word-mask reveal — generous bottom room so descenders (g, y, p) never clip */
+  .rwords{padding-bottom:.06em}
+  .rwords .m{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.28em;margin-bottom:-.28em;line-height:1.04}
+  .rwords .w{display:inline-block;padding-bottom:.04em}
   .rline{overflow:hidden}.rline>*{display:block;transform:translateY(110%)}
   .rv{opacity:0;transform:translateY(30px)}
   @media(prefers-reduced-motion:reduce){.rwords .w,.rline>*{transform:none}.rv{opacity:1;transform:none}}
+
+  /* gradient shimmer for key accent words/headers */
+  .shine{background:linear-gradient(100deg,#c4b5fd 0%,#7c5cff 22%,#5b8cff 45%,#c4b5fd 68%,#8b5cf6 100%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 6.5s linear infinite;padding-right:.04em}
+  @keyframes shine{to{background-position:220% center}}
+  @media(prefers-reduced-motion:reduce){.shine{animation:none}}
 
   /* preloader */
   #pre{position:fixed;inset:0;z-index:5000;background:var(--bg);display:flex;align-items:flex-end;justify-content:space-between;padding:40px 30px}
@@ -58,11 +64,11 @@
 
   /* HERO */
   .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:7vh;overflow:hidden}
-  #gl{position:fixed;inset:0;z-index:0;width:100vw;height:100vh;display:block}
+  #gl{position:absolute;inset:0;z-index:0;width:100%;height:100%;display:block}
   .hero-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(10,10,12,.92),rgba(10,10,12,.25) 55%,rgba(10,10,12,.5));pointer-events:none}
   .hero .wrap{position:relative;z-index:2;width:100%}
   .over{font-family:var(--body);font-weight:600;font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);margin-bottom:30px}
-  h1.disp{font-size:clamp(48px,9.2vw,150px);letter-spacing:-.045em;line-height:.92;max-width:15ch;font-weight:800}
+  h1.disp{font-size:clamp(46px,8.8vw,142px);letter-spacing:-.03em;line-height:1.0;max-width:15ch;font-weight:800}
   .hero .sub{font-size:clamp(16px,1.5vw,21px);color:var(--mut);max-width:42ch;margin:34px 0 0;font-weight:400}
   .hero .sub b{color:var(--ink);font-weight:600}
   .hero-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-top:42px}
@@ -82,8 +88,8 @@
   .marq .t em{color:var(--acc-l);font-style:normal}
 
   section{position:relative}
-  /* content flow sits above the fixed galaxy; translucent scrim lets it bleed through */
-  #flow{position:relative;z-index:2;background:rgba(10,10,12,.6)}
+  /* content flow (galaxy stays in the hero only) */
+  #flow{position:relative;z-index:2;background:var(--bg)}
   /* STATEMENT */
   .state{padding:clamp(110px,16vh,200px) 0}
   .state h2{font-size:clamp(34px,5.6vw,86px);letter-spacing:-.04em;max-width:16ch;line-height:1.02}
@@ -100,7 +106,7 @@
   .prow:hover .pn{-webkit-text-stroke-color:var(--acc-l);color:rgba(196,181,253,.08);transition:.5s var(--e1)}
 
   /* FEATURES — asymmetric grid */
-  .feat-band{background:rgba(18,18,24,.46);padding:clamp(110px,15vh,180px) 0;border-top:1px solid var(--line)}
+  .feat-band{background:var(--bg2);padding:clamp(110px,15vh,180px) 0;border-top:1px solid var(--line)}
   .fgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:60px}
   .f{border:1px solid var(--line);border-radius:20px;padding:34px;background:rgba(255,255,255,.012);transition:border-color .4s,background .4s,transform .5s var(--e1)}
   .f:hover{border-color:rgba(196,181,253,.4);background:rgba(196,181,253,.04);transform:translateY(-4px)}
@@ -205,7 +211,7 @@
   <div class="hero-veil"></div>
   <div class="wrap">
     <p class="over rv">Free website design · No call · No commitment</p>
-    <h1 class="disp rwords">The website your business <span class="acc">deserves.</span></h1>
+    <h1 class="disp rwords">The website your business <span class="acc shine">deserves.</span></h1>
     <p class="sub rv">We design your first draft at <b>zero cost</b>. Love it? Keep it live for <b>$147/month</b>, everything handled. No build fee. No sales call.</p>
     <div class="hero-foot">
       <a href="#request" class="btn magnetic" data-cursor>Get my free site <span class="ar">&rarr;</span></a>
@@ -223,7 +229,7 @@
 <section class="state">
   <div class="wrap">
     <p class="small rv">Why it matters</p>
-    <h2 class="rwords">Your website is the first handshake. Make it feel like <span class="acc">ten grand.</span></h2>
+    <h2 class="rwords">Your website is the first handshake. Make it feel like <span class="acc shine">ten grand.</span></h2>
     <p class="rv">If customers find you on Google, a sharp site is the difference between a call and a scroll-past. We build it for you. You only pay if you love it.</p>
   </div>
 </section>
@@ -299,7 +305,7 @@
 <section class="guar">
   <div class="wrap">
     <p class="small state rv" style="padding:0;color:var(--acc-l)">Our promise</p>
-    <h2 class="rwords" style="margin-top:24px">Love it, or it's <span class="em">free.</span></h2>
+    <h2 class="rwords" style="margin-top:24px">Love it, or it's <span class="em shine">free.</span></h2>
     <p class="rv">Unlimited revisions until you love it, or you don't pay a dime. No build fee, no contracts, cancel anytime.</p>
   </div>
 </section>
@@ -428,8 +434,8 @@
     scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),mat));
     function sz(){var w=cv.clientWidth,h=cv.clientHeight;rnd.setSize(w,h,false);u.uRes.value.set(w,h);}
     sz();addEventListener('resize',sz);
-    var hero=document.getElementById('hero'),vis=!document.hidden;
-    document.addEventListener('visibilitychange',function(){vis=!document.hidden;});
+    var hero=document.getElementById('hero'),vis=true;
+    new IntersectionObserver(function(e){vis=e[0].isIntersecting;}).observe(hero);
     var tmx=.5,tmy=.5;
     if(fine)addEventListener('mousemove',function(e){tmx=e.clientX/innerWidth;tmy=1-e.clientY/innerHeight;},{passive:true});
     var t0=Date.now();
