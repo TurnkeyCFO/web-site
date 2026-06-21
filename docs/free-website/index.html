@@ -235,13 +235,14 @@
   .pv-view{position:relative;width:100%;height:452px;overflow:hidden;background:#fff url(/assets/preview-docs-slushies.png) top center/cover no-repeat}
   .pv-view iframe{position:absolute;top:0;left:0;border:0;transform-origin:0 0;pointer-events:none;opacity:0;transition:opacity .5s}
   .pv-view iframe.on{opacity:1}
+  .pv-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;display:none;background:#1a0a1f}
   .pv-cta{text-align:center;margin-top:40px}
 
   @media(max-width:880px){
     .guar-in{gap:24px;text-align:center;flex-direction:column}
     .guar-tx{max-width:none}
     .pv-view{height:340px}
-    body::after{display:none}  /* drop full-screen grain blend on phones — frees compositing for the live iframe */
+    .pv-vid{display:block}
     .pv-badge{font-size:12px;top:-13px;right:6px}
     .stats{grid-template-columns:1fr;max-width:380px}
     .steps,.feats{grid-template-columns:1fr}
@@ -322,6 +323,10 @@
           <span class="pv-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> docs-slushies.com</span>
         </div>
         <div class="pv-view" id="pvView">
+          <video class="pv-vid" autoplay muted loop playsinline preload="metadata" poster="/assets/preview-docs-slushies.png">
+            <source src="https://docs-slushies.com/assets/reveal.mp4" type="video/mp4">
+            <source src="https://docs-slushies.com/assets/reveal.webm" type="video/webm">
+          </video>
           <iframe id="pvIframe" title="Live preview — a site we built" loading="lazy" scrolling="no" tabindex="-1"></iframe>
         </div>
       </div>
@@ -502,13 +507,12 @@
     const BASE=1280;
     function fit(){const w=view.clientWidth,h=view.clientHeight,s=w/BASE;ifr.style.width=BASE+'px';ifr.style.height=Math.round(h/s)+'px';ifr.style.transform='scale('+s+')';}
     fit();window.addEventListener('resize',fit);
-    // Load the live embedded site on ALL devices (mobile + desktop). Mobile stability:
-    // the full-viewport grain overlay is disabled on phones (see CSS) to free up
-    // compositing headroom for the scaled iframe.
-    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){ifr.addEventListener('load',()=>{fit();ifr.classList.add('on');});ifr.src='https://docs-slushies.com';io.disconnect();}})},{rootMargin:'250px'});
-    io.observe(view);
-    // 3D mouse-tilt is desktop-only (needs a fine pointer)
+    // Load the live external iframe on DESKTOP ONLY. On phones the scaled third-party
+    // site (plus its autoplay video) can exhaust memory and crash/reload the tab on
+    // scroll, so mobile keeps the static screenshot (the .pv-view background image).
     if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+      const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){ifr.addEventListener('load',()=>{fit();ifr.classList.add('on');});ifr.src='https://docs-slushies.com';io.disconnect();}})},{rootMargin:'250px'});
+      io.observe(view);
       stage.addEventListener('mousemove',(ev)=>{const r=stage.getBoundingClientRect(),px=(ev.clientX-r.left)/r.width-.5,py=(ev.clientY-r.top)/r.height-.5;frame.classList.add('tilt');frame.style.transform='perspective(1500px) rotateY('+(px*8)+'deg) rotateX('+(-py*7)+'deg) translateY(-4px)';});
       stage.addEventListener('mouseleave',()=>{frame.style.transform='';setTimeout(()=>frame.classList.remove('tilt'),220);});
     }
