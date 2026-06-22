@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Turnkey Studio — Selected Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+  :root{
+    --cream:#f3ede3;        /* warm off-white */
+    --cream-2:#efe7da;
+    --ink:#2b2622;          /* warm near-black */
+    --ink-soft:#6b6258;
+    --line:rgba(43,38,34,.16);
+    --gap: clamp(20px, 4vw, 56px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* soft radial warmth */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 40%, #f8f2e8 0%, var(--cream) 55%, var(--cream-2) 100%);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:40;
+    padding:22px var(--gap) 18px;
+  }
+  .nav-row{display:flex;align-items:center;justify-content:space-between;}
+  .nav-mark{font-family:'Tenor Sans';letter-spacing:.34em;font-size:13px;text-transform:uppercase;padding-left:.34em;}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--ink-soft);
+    transition:color .35s ease;
+  }
+  .nav-links a:hover{color:var(--ink)}
+  .nav-rule{height:1px;background:var(--line);margin-top:16px;transform-origin:left;}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+  .hamburger span{width:24px;height:1.5px;background:var(--ink);display:block;transition:.35s}
+
+  /* ---------- HERO STAGE ---------- */
+  #stage{position:fixed;inset:0;z-index:10;}
+  #scene{position:absolute;inset:0;display:block;touch-action:none;cursor:grab}
+  #scene.grabbing{cursor:grabbing}
+
+  .hero-caption{
+    position:fixed;left:var(--gap);bottom:38px;z-index:20;max-width:300px;pointer-events:none;
+  }
+  .hero-caption .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px}
+  .hero-caption h1{font-family:'Tenor Sans';font-weight:400;font-size:clamp(20px,2vw,26px);line-height:1.25;}
+  .hint{
+    position:fixed;right:var(--gap);bottom:42px;z-index:20;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+    display:flex;align-items:center;gap:10px;pointer-events:none;
+  }
+  .hint .dot{width:6px;height:6px;border-radius:50%;background:var(--ink);opacity:.5;animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.7);opacity:.15}}
+
+  /* ---------- PROJECT PAGE ---------- */
+  #project{position:fixed;inset:0;z-index:30;pointer-events:none;}
+  #project .pj-text{
+    position:absolute;left:var(--gap);top:0;height:100%;width:min(40%,440px);
+    display:flex;flex-direction:column;justify-content:center;gap:18px;opacity:0;
+  }
+  #project .pj-index{font-size:11px;letter-spacing:.24em;color:var(--ink-soft);text-transform:uppercase}
+  #project .pj-title{font-family:'Tenor Sans';font-size:clamp(34px,5vw,64px);line-height:1.02;}
+  #project .pj-cat{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+  #project .pj-body{font-weight:300;font-size:15px;line-height:1.7;color:#4a423a;max-width:38ch}
+  #project .pj-meta{display:flex;gap:30px;margin-top:8px;flex-wrap:wrap}
+  #project .pj-meta div span{display:block}
+  #project .pj-meta .k{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:5px}
+  #project .pj-meta .v{font-family:'Tenor Sans';font-size:15px}
+  .pj-back{
+    position:fixed;left:var(--gap);top:84px;z-index:34;pointer-events:auto;cursor:pointer;
+    background:none;border:0;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+    display:flex;align-items:center;gap:10px;opacity:0;visibility:hidden;
+  }
+  .pj-back svg{width:22px;height:8px}
+
+  /* the flying image clone */
+  #flyer{
+    position:fixed;z-index:31;pointer-events:none;overflow:hidden;
+    background-size:cover;background-position:center;will-change:transform,width,height,left,top;
+    box-shadow:0 30px 80px -30px rgba(43,38,34,.4);
+    border-radius:2px;
+  }
+
+  /* loader */
+  #loader{position:fixed;inset:0;z-index:60;background:var(--cream);display:flex;align-items:center;justify-content:center;transition:opacity .8s ease}
+  #loader .l-mark{font-family:'Tenor Sans';letter-spacing:.4em;font-size:14px;text-transform:uppercase;padding-left:.4em;color:var(--ink)}
+  #loader .l-bar{position:absolute;bottom:0;left:0;height:2px;width:0;background:var(--ink);opacity:.5}
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width:880px){
+    .nav-links{position:fixed;inset:0;background:var(--cream);flex-direction:column;justify-content:center;gap:28px;transform:translateY(-100%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:45}
+    .nav-links.open{transform:translateY(0)}
+    .nav-links a{font-size:18px;letter-spacing:.18em}
+    .hamburger{display:flex;z-index:50}
+    .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+    .hero-caption{max-width:60%;bottom:26px}
+    .hint{display:none}
+    #project .pj-text{width:auto;left:var(--gap);right:var(--gap);top:auto;bottom:34px;height:auto;justify-content:flex-end}
+    #project .pj-title{font-size:34px}
+    #project .pj-body{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){ .dot{animation:none} }
+</style>
+</head>
+<body>
+
+  <div id="loader"><div class="l-mark">Turnkey Studio</div><div class="l-bar"></div></div>
+
+  <nav>
+    <div class="nav-row">
+      <div class="nav-mark">Turnkey&nbsp;Studio</div>
+      <div class="nav-links" id="navLinks">
+        <a href="#">Work</a><a href="#">Studio</a><a href="#">Journal</a><a href="#">Contact</a>
+      </div>
+      <button class="hamburger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-rule"></div>
+  </nav>
+
+  <div id="stage"><canvas id="scene"></canvas></div>
+
+  <div class="hero-caption">
+    <div class="eyebrow">Selected Work — 2026</div>
+    <h1>An animated orbit of the things we've made.</h1>
+  </div>
+  <div class="hint"><span class="dot"></span>Drag to spin · click a project</div>
+
+  <!-- project page -->
+  <div id="project">
+    <div class="pj-text">
+      <div class="pj-index">Project 00</div>
+      <div class="pj-title">Title</div>
+      <div class="pj-cat">Category</div>
+      <div class="pj-body">Description</div>
+      <div class="pj-meta">
+        <div><span class="k">Year</span><span class="v" data-year>2026</span></div>
+        <div><span class="k">Discipline</span><span class="v" data-disc>Brand &amp; Web</span></div>
+        <div><span class="k">Role</span><span class="v">Design + Build</span></div>
+      </div>
+    </div>
+  </div>
+  <button class="pj-back" id="back"><svg viewBox="0 0 22 8"><path d="M0 4h21M4 1L1 4l3 3" stroke="currentColor" fill="none" stroke-width="1"/></svg>Back to orbit</button>
+  <div id="flyer"></div>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+const isMobile = matchMedia('(max-width:880px)').matches;
+
+/* ---------------- DATA ---------------- */
+const PROJECTS = [
+  {t:"Solstice",  c:"Brand & Web",     d:"A warm, editorial identity and site for a boutique roastery — typography that breathes and a checkout that disappears.", disc:"Identity · Web", year:"2026", seed:"solstice7"},
+  {t:"Marrow",    c:"Editorial",       d:"An online magazine built around long-form reading. Quiet motion, generous margins, and a rhythm that respects attention.", disc:"Editorial · CMS", year:"2025", seed:"marrow3"},
+  {t:"Verdant",   c:"E-commerce",      d:"A plant studio storefront where every product page feels hand-arranged. Headless, fast, and unmistakably theirs.", disc:"Commerce", year:"2026", seed:"verdant9"},
+  {t:"Halcyon",   c:"Identity",        d:"Naming, mark, and a living brand system for a calm-tech startup. One idea, expressed with restraint.", disc:"Brand System", year:"2025", seed:"halcyon2"},
+  {t:"Lumen",     c:"Product",         d:"A product marketing site with a single contained 3D moment — enough wow to be remembered, light enough to stay fast.", disc:"Product · Motion", year:"2026", seed:"lumen5"},
+  {t:"Atlas",     c:"Motion",          d:"A scroll-driven story for an architecture firm. Pinned scenes, masked reveals, weighted easing throughout.", disc:"Motion · Web", year:"2025", seed:"atlas8"},
+  {t:"Faro",      c:"Packaging",       d:"Packaging and a small site for an olive-oil maker. Off-white, gold foil, and photography that does the selling.", disc:"Packaging", year:"2026", seed:"faro4"},
+  {t:"Noor",      c:"Art Direction",   d:"Art direction and a portfolio for a photographer — the work front and center, the interface barely there.", disc:"Art Direction", year:"2025", seed:"noor6"},
+  {t:"Kindred",   c:"Campaign",        d:"A launch campaign and microsite for a community space. Built in days, tuned to convert, easy to hand off.", disc:"Campaign", year:"2026", seed:"kindred1"},
+];
+const N = PROJECTS.length;
+
+/* ---------------- THREE SETUP ---------------- */
+const canvas = document.getElementById('scene');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, 0.1, 100);
+camera.position.set(0,0,7.4);
+
+const RADIUS = isMobile ? 2.35 : 2.65;
+const HW = 0.50, HH = 0.62;          // card half-size
+const GOLD = Math.PI*(3-Math.sqrt(5));
+
+/* warm, cohesive palette per project — self-contained, no external images */
+const PAL = [
+  ['#cda87f','#9c6f4e','#ecd6b2'], ['#cb8b6c','#9c5a45','#f0cdb8'], ['#d6c19f','#b29469','#f1e3c8'],
+  ['#c89a8f','#9a6a64','#ecd0c9'], ['#cca766','#9f7a3a','#f0dca6'], ['#bcae9c','#897a68','#e8ddcb'],
+  ['#cf9d6a','#a0683b','#f2d6ab'], ['#cda6a0','#9f746e','#eed3cd'], ['#bdb083','#8c8052','#ece2bb'],
+];
+function spaced(cx,t,x,y,ls){let cur=x;for(const ch of t){cx.fillText(ch,cur,y);cur+=cx.measureText(ch).width+ls;}}
+function drawTile(cx,W,H,p,i){
+  const pal=PAL[i%PAL.length];
+  cx.clearRect(0,0,W,H);
+  // base gradient (diagonal for life)
+  const g=cx.createLinearGradient(0,0,W*0.3,H);
+  g.addColorStop(0,pal[2]); g.addColorStop(0.45,pal[0]); g.addColorStop(1,pal[1]);
+  cx.fillStyle=g; cx.fillRect(0,0,W,H);
+  // soft generative motif: large offset circle + arc, seeded by index
+  const seed=(i*97+13)%360;
+  cx.save();
+  cx.globalAlpha=0.16; cx.fillStyle=pal[2];
+  cx.beginPath(); cx.arc(W*(0.2+(seed%50)/100), H*0.32, W*0.42, 0, Math.PI*2); cx.fill();
+  cx.globalAlpha=0.10; cx.strokeStyle=pal[1]; cx.lineWidth=W*0.012;
+  cx.beginPath(); cx.arc(W*0.72, H*(0.55+(seed%30)/200), W*0.34, 0, Math.PI*2); cx.stroke();
+  cx.restore();
+  // grain via subtle noise lines
+  cx.save(); cx.globalAlpha=0.05; cx.strokeStyle='#3a2a1a'; cx.lineWidth=1;
+  for(let y=0;y<H;y+=7){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y+((i*y)%5));cx.stroke();}
+  cx.restore();
+  // bottom vignette for text legibility
+  const v=cx.createLinearGradient(0,H*0.45,0,H);
+  v.addColorStop(0,'rgba(30,20,12,0)'); v.addColorStop(1,'rgba(30,20,12,0.55)');
+  cx.fillStyle=v; cx.fillRect(0,0,W,H);
+  // index top-left
+  cx.fillStyle='rgba(247,240,228,0.85)'; cx.textBaseline='top';
+  cx.font='400 '+Math.round(W*0.05)+'px "Tenor Sans", serif';
+  spaced(cx,String(i+1).padStart(2,'0'),W*0.08,H*0.07,W*0.012);
+  // category eyebrow
+  cx.fillStyle='rgba(247,240,228,0.78)';
+  cx.font='400 '+Math.round(W*0.038)+'px "Plus Jakarta Sans", sans-serif';
+  cx.textBaseline='alphabetic';
+  spaced(cx,p.c.toUpperCase(),W*0.08,H*0.84,W*0.018);
+  // title
+  cx.fillStyle='#f7f0e4';
+  cx.font='400 '+Math.round(W*0.13)+'px "Tenor Sans", serif';
+  cx.fillText(p.t,W*0.075,H*0.93);
+}
+function makeCard(p, i){
+  const W=700, H=Math.round(700*(HH/HW));
+  const cnv=document.createElement('canvas'); cnv.width=W; cnv.height=H;
+  const cx=cnv.getContext('2d');
+  drawTile(cx,W,H,p,i);
+  const tex=new THREE.CanvasTexture(cnv);
+  tex.colorSpace=THREE.SRGBColorSpace||tex.colorSpace;
+  tex.anisotropy=Math.min(8, renderer.capabilities.getMaxAnisotropy());
+  try{ p.dataURL=cnv.toDataURL('image/jpeg',0.92); }catch(e){ p.dataURL=null; }
+  // redraw once webfonts are ready so Tenor Sans is used (not fallback serif)
+  if(document.fonts){ document.fonts.ready.then(()=>{ drawTile(cx,W,H,p,i); tex.needsUpdate=true; try{p.dataURL=cnv.toDataURL('image/jpeg',0.92);}catch(e){} }); }
+
+  const mat=new THREE.MeshBasicMaterial({map:tex, transparent:true, depthTest:false, depthWrite:false, opacity:0});
+  const mesh=new THREE.Mesh(new THREE.PlaneGeometry(HW*2, HH*2), mat);
+  mesh.userData.proj=i; scene.add(mesh);
+  const y=1-(i/(N-1))*2, r=Math.sqrt(Math.max(0,1-y*y)), th=i*GOLD;
+  const dir=new THREE.Vector3(Math.cos(th)*r, y, Math.sin(th)*r);
+  return {mesh, mat, dir, phase: (i*1.7)%(Math.PI*2), hover:0};
+}
+const cards = PROJECTS.map(makeCard);
+
+/* center logo as a 3D plane so cards pass in front of / behind it */
+const logoCnv=document.createElement('canvas'); logoCnv.width=512; logoCnv.height=512;
+(function(){const c=logoCnv.getContext('2d');c.clearRect(0,0,512,512);
+  c.fillStyle='#2b2622';c.textAlign='center';c.textBaseline='middle';
+  c.font='600 70px "Tenor Sans", serif';
+  c.save();
+  // letter-spacing emulation
+  const txt='TURNKEY';let ls=18;let tw=0;for(const ch of txt)tw+=c.measureText(ch).width+ls;tw-=ls;
+  let x=256-tw/2;for(const ch of txt){const w=c.measureText(ch).width;c.fillText(ch,x+w/2,236);x+=w+ls;}
+  c.restore();
+  c.font='400 22px "Tenor Sans", serif';c.fillStyle='#6b6258';
+  // spaced subtitle
+  const sub='S T U D I O';c.fillText(sub,256,286);
+})();
+const logoTex=new THREE.CanvasTexture(logoCnv);
+const logo=new THREE.Mesh(new THREE.PlaneGeometry(2.0,2.0),
+  new THREE.MeshBasicMaterial({map:logoTex,transparent:true,depthTest:false,depthWrite:false,opacity:0}));
+scene.add(logo);
+// re-render logo once font is ready
+document.fonts && document.fonts.ready.then(()=>{ setTimeout(()=>{logoTex.needsUpdate=true;
+  const c=logoCnv.getContext('2d');c.clearRect(0,0,512,512);
+  c.fillStyle='#2b2622';c.textAlign='center';c.textBaseline='middle';c.font='600 70px "Tenor Sans", serif';
+  const txt='TURNKEY';let ls=18,tw=0;for(const ch of txt)tw+=c.measureText(ch).width+ls;tw-=ls;
+  let x=256-tw/2;for(const ch of txt){const w=c.measureText(ch).width;c.fillText(ch,x+w/2,236);x+=w+ls;}
+  c.font='400 20px "Tenor Sans", serif';c.fillStyle='#6b6258';
+  let ss='STUDIO',ls2=14,tw2=0;for(const ch of ss)tw2+=c.measureText(ch).width+ls2;tw2-=ls2;
+  let x2=256-tw2/2;for(const ch of ss){const w=c.measureText(ch).width;c.fillText(ch,x2+w/2,290);x2+=w+ls2;}
+  logoTex.needsUpdate=true;},300);});
+
+/* ---------------- MOTION STATE ---------------- */
+const IDLE = (Math.PI*2)/50;          // one slow rotation / 50s
+let rotY = 0, vel = IDLE, tilt = isMobile ? 0.55 : 0.32;
+let dragging=false, lastX=0, lastY=0, paused=false;
+const clock = new THREE.Clock();
+const tmp = new THREE.Vector3();
+
+const YUP = new THREE.Vector3(0,1,0);
+const XAX = new THREE.Vector3(1,0,0);
+function layout(t, dt){
+  for(const card of cards){
+    const bf = card.bloom===undefined?1:card.bloom;   // 0..1 load bloom
+    // rotate base dir: spin around Y, then fixed tilt around X (mobile = more vertical sweep)
+    tmp.copy(card.dir).applyAxisAngle(YUP, rotY);
+    tmp.applyAxisAngle(XAX, tilt);
+    // bob (out of sync)
+    const bob = reduce?0:Math.sin(t*0.6 + card.phase)*0.05;
+    const R = RADIUS*bf;
+    const px = tmp.x*R, py = tmp.y*R + bob, pz = tmp.z*R;
+
+    // hover: ease toward 1 when hovered, pull toward camera + scale
+    const want = card===hovered?1:0;
+    card.hover += (want-card.hover)*Math.min(1,dt*8);
+    const pull = card.hover*0.9;
+    const sc = (1 + card.hover*0.18)*bf;
+
+    card.mesh.position.set(px, py, pz + pull);
+    card.mesh.scale.setScalar(Math.max(0.001,sc));
+    card.mesh.lookAt(camera.position);                // billboard
+
+    // opacity by depth (far = faint) unless hovered; fold in bloom fade
+    const depth = (pz+RADIUS)/(2*RADIUS);             // 0 far .. 1 near
+    const base = (0.40 + depth*0.60);
+    if(!transition.active){
+      const target = (card.hover>0.02 ? Math.max(base, 0.55+card.hover*0.45) : base) * bf;
+      card.mat.opacity += (target - card.mat.opacity)*0.2;
+    }
+    card.mesh.userData.z = pz; // for sort
+  }
+  logo.lookAt(camera.position);
+  logo.userData.z = 0;
+}
+
+/* ---------------- POINTER / RAYCAST ---------------- */
+const ray=new THREE.Raycaster(); const ndc=new THREE.Vector2();
+let hovered=null;
+function setNDC(e){const r=canvas.getBoundingClientRect();ndc.x=((e.clientX-r.left)/r.width)*2-1;ndc.y=-((e.clientY-r.top)/r.height)*2+1;}
+function pick(){ray.setFromCamera(ndc,camera);const hit=ray.intersectObjects(cards.map(c=>c.mesh),false);return hit[0]?hit[0].object:null;}
+
+const SENS = 0.0075;          // radians per px dragged
+let downX=0,downY=0,moved=0;
+canvas.addEventListener('pointerdown',e=>{
+  if(transition.active)return;
+  dragging=true;lastX=e.clientX;downX=e.clientX;downY=e.clientY;moved=0;
+  canvas.classList.add('grabbing');try{canvas.setPointerCapture(e.pointerId);}catch(_){}
+});
+canvas.addEventListener('pointermove',e=>{
+  setNDC(e);
+  if(dragging){
+    const dx=e.clientX-lastX; lastX=e.clientX;
+    rotY += dx*SENS;
+    vel = dx*SENS/0.016;                                  // carry angular velocity for release momentum
+    moved += Math.abs(e.clientX-downX)+Math.abs(e.clientY-downY);
+  }else if(!transition.active && !paused){
+    const m=pick(); hovered=m?cards[m.userData.proj]:null;
+    canvas.style.cursor = hovered? 'pointer':'grab';
+  }
+});
+function endDrag(){if(!dragging)return;dragging=false;canvas.classList.remove('grabbing');}
+canvas.addEventListener('pointerup',e=>{
+  if(!transition.active && moved<6){ setNDC(e); const m=pick(); if(m){endDrag();return openProject(cards[m.userData.proj]);} }
+  endDrag();
+});
+canvas.addEventListener('pointercancel',endDrag);
+canvas.addEventListener('pointerleave',()=>{if(!dragging)hovered=null;});
+
+/* ---------------- TRANSITION ---------------- */
+const transition={active:false};
+const flyer=document.getElementById('flyer');
+const pj=document.getElementById('project');
+const pjText=pj.querySelector('.pj-text');
+const back=document.getElementById('back');
+
+function toScreen(v){const p=v.clone().project(camera);return{x:(p.x*0.5+0.5)*innerWidth,y:(-p.y*0.5+0.5)*innerHeight};}
+function cardRect(card){
+  const c=card.mesh.position;
+  const right=new THREE.Vector3().subVectors(camera.position,c).normalize().cross(new THREE.Vector3(0,1,0)).normalize();
+  const up=new THREE.Vector3(0,1,0);
+  const s=card.mesh.scale.x;
+  const tl=toScreen(c.clone().addScaledVector(right,-HW*s).addScaledVector(up,HH*s));
+  const br=toScreen(c.clone().addScaledVector(right, HW*s).addScaledVector(up,-HH*s));
+  return{left:Math.min(tl.x,br.x),top:Math.min(tl.y,br.y),w:Math.abs(br.x-tl.x),h:Math.abs(br.y-tl.y)};
+}
+
+function openProject(card){
+  if(transition.active)return;
+  transition.active=true; paused=true; hovered=null; canvas.style.cursor='default';
+  const p=PROJECTS[card.userData?card.userData.proj:cards.indexOf(card)];
+  const idx = cards.indexOf(card);
+  const data = PROJECTS[idx];
+  const rect=cardRect(card);
+
+  // flyer clone sits exactly over the 3D card
+  flyer.style.cssText += `display:block;left:${rect.left}px;top:${rect.top}px;width:${rect.w}px;height:${rect.h}px;opacity:1;border-radius:2px;`;
+  flyer.style.backgroundImage = data.dataURL? `url(${data.dataURL})` : `url(https://picsum.photos/seed/${data.seed}/600/740)`;
+
+  // fill text
+  pjText.querySelector('.pj-index').textContent='Project '+String(idx+1).padStart(2,'0');
+  pjText.querySelector('.pj-title').textContent=data.t;
+  pjText.querySelector('.pj-cat').textContent=data.c;
+  pjText.querySelector('.pj-body').textContent=data.d;
+  pjText.querySelector('[data-year]').textContent=data.year;
+  pjText.querySelector('[data-disc]').textContent=data.disc;
+
+  // target rect: right half on desktop, top on mobile
+  let tw,th,tl,tt;
+  if(isMobile){ tw=innerWidth*0.86; th=innerHeight*0.46; tl=(innerWidth-tw)/2; tt=innerHeight*0.10; }
+  else { th=innerHeight*0.74; tw=th*(HW/HH); const maxw=innerWidth*0.46; if(tw>maxw){tw=maxw;th=tw*(HH/HW);} tl=innerWidth-tw-(innerWidth*0.06); tt=(innerHeight-th)/2; }
+
+  const tl0=gsap.timeline();
+  // 1) others fade out (canvas cards + logo) — clone stays fixed = clicked "holds"
+  tl0.to(cards.map(c=>c.mat).filter(m=>m!==card.mat).concat(logo.material),{opacity:0,duration:0.55,ease:'power2.out'},0);
+  tl0.to(card.mat,{opacity:0,duration:0.35,ease:'power2.out'},0.15); // 3D clicked fades; DOM clone carries it
+  document.querySelector('.hero-caption').style.transition='opacity .4s'; document.querySelector('.hero-caption').style.opacity=0;
+  document.querySelector('.hint').style.opacity=0;
+  // 2) clone relocates + resizes to fill
+  tl0.to(flyer,{left:tl,top:tt,width:tw,height:th,duration:0.95,ease:'power3.inOut'},0.45);
+  // 3) text fades in element-by-element
+  gsap.set(pjText,{opacity:1});
+  const els=pjText.querySelectorAll('.pj-index,.pj-title,.pj-cat,.pj-body,.pj-meta');
+  gsap.set(els,{y:18,opacity:0});
+  tl0.to(els,{y:0,opacity:1,duration:0.6,stagger:0.08,ease:'power2.out'},1.15);
+  tl0.set(back,{visibility:'visible'},1.1).to(back,{opacity:1,duration:0.4},1.1);
+}
+
+function closeProject(){
+  const data = PROJECTS[currentIdx()];
+  const tl0=gsap.timeline({onComplete:()=>{flyer.style.display='none';transition.active=false;paused=false;}});
+  gsap.to(back,{opacity:0,duration:0.3});
+  gsap.to(pjText,{opacity:0,duration:0.35});
+  // shrink clone back toward the orbit center area then hand back to 3D
+  const cx=innerWidth/2, cy=innerHeight/2;
+  tl0.to(flyer,{left:cx-40,top:cy-50,width:80,height:100,opacity:0,duration:0.8,ease:'power3.inOut'},0);
+  tl0.to(cards.map(c=>c.mat).concat(logo.material),{opacity:0.7,duration:0.6,ease:'power2.out'},0.35);
+  document.querySelector('.hero-caption').style.opacity=1;
+  document.querySelector('.hint').style.opacity=1;
+  back.style.visibility='hidden';
+}
+function currentIdx(){return Number(pjText.querySelector('.pj-index').textContent.replace('Project ',''))-1;}
+back.addEventListener('click',closeProject);
+
+/* ---------------- LOAD-IN BLOOM ---------------- */
+function bloomIn(){
+  // each card blooms outward from center (radius 0 -> full) + fades in, staggered
+  cards.forEach((c,i)=>{
+    c.bloom=0;
+    gsap.to(c,{bloom:1,duration:1.3,delay:0.2+i*0.07,ease:'power3.out'});
+  });
+  gsap.to(logo.material,{opacity:1,duration:1.3,delay:0.15,ease:'power2.out'});
+}
+
+/* ---------------- RENDER LOOP ---------------- */
+function tick(){
+  const dt=Math.min(0.05,clock.getDelta());
+  const t=clock.elapsedTime;
+  if(!paused){
+    if(!dragging){
+      vel += (IDLE - vel)*0.04;          // release momentum eases back to idle drift
+      rotY += (reduce?IDLE:vel)*dt;
+    }
+  }
+  layout(t,dt);
+  // painter-order sort (depthTest off): farthest first so transparency layers right
+  const all=[...cards.map(c=>c.mesh), logo];
+  all.sort((a,b)=>a.userData.z - b.userData.z);
+  all.forEach((m,i)=>m.renderOrder=i);
+  renderer.render(scene,camera);
+  requestAnimationFrame(tick);
+}
+
+function resize(){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);}
+addEventListener('resize',resize);
+
+/* ---------------- BOOT ---------------- */
+function boot(){
+  resize();
+  tick();
+  bloomIn();
+  const ld=document.getElementById('loader');
+  gsap.to('#loader .l-bar',{width:'100%',duration:1.1,ease:'power1.inOut'});
+  setTimeout(()=>{ld.style.opacity=0;setTimeout(()=>ld.style.display='none',800);},1200);
+}
+boot();
+
+/* nav */
+const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');navLinks.classList.toggle('open');});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();burger.classList.remove('open');navLinks.classList.remove('open');}));
+</script>
+</body>
+</html>
