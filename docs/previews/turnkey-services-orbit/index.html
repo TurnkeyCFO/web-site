@@ -153,7 +153,7 @@ const SERVICES=[
    pain:'a brand that looks amateur, inconsistent across every surface, and quietly costs you deals before the first call.',
    out:'a brand identity, UI/UX system, and motion language that signals premium — so clients show up pre-sold on your standards.',
    href:'#',cta:'Launching soon',live:false},
-  {key:'rec',label:'Recruiting',name:'Turnkey Recruiting',tag:'The right people, placed to last.',brand:'#DC2626',deep:'#5C0A12',
+  {key:'rec',label:'Recruiting',name:'Turnkey Recruiting',tag:'The right people, placed to last.',brand:'#DC2626',deep:'#5C0A12',badge:false,
    pain:'slow hires, mismatched candidates, and recruiters who send résumés instead of the operators who actually move your business.',
    out:'senior-level finance, operations, and revenue hires — sourced, vetted, and placed in weeks, not months.',
    href:'#',cta:'Launching soon',live:false},
@@ -184,32 +184,31 @@ const bgMat=new THREE.ShaderMaterial({
       return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);}
     float fbm(vec2 p){float v=0.0,a=0.5;for(int i=0;i<5;i++){v+=a*vn(p);p*=2.0;a*=0.5;}return v;}
     void main(){
-      vec2 uv=vUv; vec2 p=vec2(uv.x*uAspect,uv.y); float t=uTime*0.06;
+      vec2 uv=vUv; vec2 p=vec2(uv.x*uAspect,uv.y); float t=uTime*0.12; // 2x speed
       // organic flow warp
       vec2 w=vec2(fbm(p*1.2+vec2(0.0,t)),fbm(p*1.2+vec2(4.0,-t)));
       vec2 pw=p*1.4+w*0.9;
       // plasma energy filaments (ridged noise -> glowing veins)
       float vein=1.0-abs(fbm(pw*1.7+vec2(t*0.5,0.0))*2.0-1.0); vein=pow(vein,2.4);
-      // sweeping energy wave (slowly rotating direction)
+      // sweeping energy wave (rotating direction)
       float ang=t*0.12; vec2 dir=vec2(cos(ang),sin(ang));
       float wave=0.5+0.5*sin(dot(p-0.5,dir)*7.0+fbm(pw)*5.0-t*1.4);
-      // solar flare: soft bright core slowly orbiting off-centre
+      // solar flare: soft bright core orbiting off-centre
       vec2 fc=vec2(0.5+0.42*cos(t*0.3),0.5+0.34*sin(t*0.27));
       float flare=exp(-distance(p,vec2(fc.x*uAspect,fc.y))*2.5);
       float e=clamp(vein*0.7+wave*0.32+flare*0.6,0.0,1.0);
-      // colour flow across the brand palette
-      float cf=fbm(p*0.6+vec2(t*0.4,2.0));
-      vec3 col=mix(c1,c2,smoothstep(0.30,0.80,cf));
-      col=mix(col,c0,smoothstep(0.45,0.90,wave));
-      col=mix(col,c3,smoothstep(0.60,1.0,vein)*0.7);
-      col=mix(col,c4,flare*0.8);
+      // Turnkey Services silver / white energy (monochrome, no brand hues)
+      vec3 sLight=vec3(0.90,0.92,0.95), sMid=vec3(0.70,0.73,0.79), sSteel=vec3(0.50,0.53,0.60);
+      vec3 col=mix(sMid,sLight,smoothstep(0.30,0.85,wave));
+      col=mix(col,sSteel,smoothstep(0.60,1.0,vein)*0.85);
+      col=mix(col,vec3(1.0),flare*0.9); // white-hot flare core
       // envelope: calm behind centre, energetic toward edges
       float dist=distance(uv,vec2(0.5));
       float env=smoothstep(0.12,0.62,dist);
-      float intensity=mix(0.05,0.50,env)*(0.4+0.6*e);
+      float intensity=mix(0.05,0.55,env)*(0.4+0.6*e);
       vec3 base=vec3(0.980,0.976,0.969);
-      vec3 outc=mix(base,col,clamp(intensity,0.0,0.58));
-      outc+=col*flare*0.10; // flare bloom
+      vec3 outc=mix(base,col,clamp(intensity,0.0,0.60));
+      outc+=vec3(1.0)*flare*0.08; // flare bloom
       gl_FragColor=vec4(outc,1.0);}`
 });
 const bgMesh=new THREE.Mesh(new THREE.PlaneGeometry(1,1),bgMat);
@@ -255,13 +254,15 @@ function drawTile(cx,W,H,s,logoImg){
     const ar=logoImg.naturalWidth/logoImg.naturalHeight;let dw=availW,dh=dw/ar;if(dh>availH){dh=availH;dw=dh*ar;}
     cx.drawImage(logoImg, chX+(chW-dw)/2, chY+(chH-dh)/2, dw, dh);
   }
-  // coming-soon
-  if(!s.live){
-    cx.save();rr(cx,m,m,cw,ch,rad);cx.clip();cx.fillStyle='rgba(8,8,10,0.32)';cx.fillRect(m,m,cw,ch);cx.restore();
-    const bw=W*0.30,bh=H*0.045,bx=m+cw-bw-W*0.02,by=chY+chH+H*0.02;
-    rr(cx,bx,by,bw,bh,bh/2);cx.fillStyle='rgba(255,255,255,0.92)';cx.fill();
-    cx.fillStyle=s.deep;cx.font='700 '+Math.round(W*0.030)+'px "Plus Jakarta Sans",sans-serif';cx.textAlign='center';cx.textBaseline='middle';
-    spaced(cx,'COMING SOON',bx+bw*0.5-W*0.028,by+bh/2,W*0.004);cx.textAlign='left';
+  // coming-soon (badge + dim) — skipped entirely when badge:false (Recruiting)
+  if(!s.live && s.badge!==false){
+    cx.save();rr(cx,m,m,cw,ch,rad);cx.clip();cx.fillStyle='rgba(8,8,10,0.30)';cx.fillRect(m,m,cw,ch);cx.restore();
+    const txt='COMING SOON', fs=Math.round(W*0.027), ls=W*0.004;
+    cx.font='700 '+fs+'px "Plus Jakarta Sans",sans-serif';cx.textBaseline='middle';cx.textAlign='left';
+    let tw=0;for(const ch2 of txt)tw+=cx.measureText(ch2).width+ls;tw-=ls;
+    const padx=W*0.028, bw=tw+padx*2, bh=fs*1.95, bx=m+cw-bw-W*0.045, by=chY+chH+H*0.02;
+    rr(cx,bx,by,bw,bh,bh/2);cx.fillStyle='rgba(255,255,255,0.94)';cx.fill();
+    cx.fillStyle=s.deep;spaced(cx,txt,bx+padx,by+bh/2,ls);
   }
   // label + tagline (bottom)
   cx.fillStyle='#fff';cx.textBaseline='alphabetic';
