@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="./_logos.js"></script>
+<script src="./_logos.js?v=3"></script>
 <style>
   :root{ --bg:#FAFAFA; --ink:#0A0A0A; --ink-soft:#6A6A72; --line:rgba(10,10,10,.12); --gap: clamp(18px, 4vw, 60px); }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -100,7 +100,7 @@
   <div id="loader"><div class="l-mark">Turnkey <span>Services</span></div><div class="l-bar"></div></div>
 
   <nav><div class="nav-row">
-    <a href="#" aria-label="Turnkey Services"><img class="nav-logo" id="navLogo" alt="Turnkey Services"></a>
+    <a href="#" id="navLink" aria-label="Turnkey Services"><img class="nav-logo" id="navLogo" alt="Turnkey Services"></a>
     <div class="nav-links" id="navLinks">
       <a href="#">Services</a><a href="#">About</a><a href="#">Contact</a>
       <a class="cta" href="https://calendly.com/ricky-turnkeycfo/15min-intro-call" target="_blank" rel="noreferrer">Book a call</a>
@@ -184,17 +184,23 @@ const bgMat=new THREE.ShaderMaterial({
       return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);}
     float fbm(vec2 p){float v=0.0,a=0.5;for(int i=0;i<5;i++){v+=a*vn(p);p*=2.0;a*=0.5;}return v;}
     void main(){
-      vec2 uv=vUv; vec2 p=vec2(uv.x*uAspect,uv.y)*1.5; float t=uTime*0.03;
-      vec2 q=vec2(fbm(p+vec2(0.0,t)),fbm(p+vec2(5.2,-t)));
-      float n=fbm(p+q*1.4+vec2(t*0.5,0.0));
-      vec3 col=mix(c0,c1,smoothstep(0.2,0.8,fbm(p*0.6+vec2(t,0.3))));
-      col=mix(col,c2,smoothstep(0.3,0.9,q.x));
-      col=mix(col,c3,smoothstep(0.4,0.95,q.y)*0.7);
-      col=mix(col,c4,smoothstep(0.5,1.0,n)*0.4);
+      vec2 uv=vUv; vec2 p=vec2(uv.x*uAspect,uv.y)*0.9; float t=uTime*0.05;
+      // large drifting domain warp -> soft flowing aurora regions
+      vec2 w=vec2(fbm(p*0.9+vec2(0.0,t)),fbm(p*0.9+vec2(3.1,-t*0.8)));
+      float f1=fbm(p*0.8+w*1.6+vec2(t*0.4,0.0));
+      float f2=fbm(p*1.1+w*1.2+vec2(-t*0.3,1.7));
+      float f3=fbm(p*0.5+vec2(t*0.6,4.0));
+      vec3 col=c1;
+      col=mix(col,c2,smoothstep(0.35,0.78,f1));
+      col=mix(col,c0,smoothstep(0.42,0.85,f2));
+      col=mix(col,c3,smoothstep(0.55,0.95,f1*f2));
+      col=mix(col,c4,smoothstep(0.65,1.0,f3)*0.6);
+      // envelope: vivid toward edges, calm behind the centre logo
+      float dist=distance(uv,vec2(0.5,0.5));
+      float env=smoothstep(0.10,0.60,dist);
+      float intensity=mix(0.08,0.58,env)*(0.55+0.45*f1);
       vec3 base=vec3(0.980,0.976,0.969);
-      float intensity=0.17*smoothstep(0.08,0.92,n);
-      vec3 outc=mix(base,col,intensity);
-      outc+=(1.0-uv.y)*0.012;
+      vec3 outc=mix(base,col,clamp(intensity,0.0,0.62));
       gl_FragColor=vec4(outc,1.0);}`
 });
 const bgMesh=new THREE.Mesh(new THREE.PlaneGeometry(1,1),bgMat);
@@ -317,20 +323,29 @@ function drawLogo(){const c=logoCnv.getContext('2d');const W=logoCnv.width,H=log
   const g=c.createRadialGradient(W/2,H*0.52,0,W/2,H*0.52,W*0.58);
   g.addColorStop(0,'rgba(250,250,252,0.94)');g.addColorStop(0.5,'rgba(250,250,252,0.5)');g.addColorStop(1,'rgba(250,250,252,0)');
   c.fillStyle=g;c.fillRect(0,0,W,H);
-  if(tksImg.complete&&tksImg.naturalWidth){const pad=W*0.07,aw=W-pad*2,ah=H-pad*2;
+  if(tksImg.complete&&tksImg.naturalWidth){const pad=W*0.05,aw=W-pad*2,ah=H-pad*2;
     const ar=tksImg.naturalWidth/tksImg.naturalHeight;let dw=aw,dh=dw/ar;if(dh>ah){dh=ah;dw=dh*ar;}
-    c.drawImage(tksImg,(W-dw)/2,(H-dh)/2,dw,dh);}
+    c.drawImage(tksImg,(W-dw)/2,(H-dh)/2,dw,dh);
+  }else{ // fallback if logo asset unavailable — never render blank
+    c.textAlign='center';c.fillStyle='#0A0A0A';c.font='800 '+Math.round(W*0.12)+'px "Plus Jakarta Sans",sans-serif';
+    c.fillText('TURNKEY',W/2,H*0.50);
+    c.fillStyle='#6A6A72';c.font='600 '+Math.round(W*0.05)+'px "Plus Jakarta Sans",sans-serif';
+    c.fillText('S E R V I C E S',W/2,H*0.62);
+  }
 }
 drawLogo();
 const logoTex=new THREE.CanvasTexture(logoCnv);logoTex.colorSpace=THREE.SRGBColorSpace||logoTex.colorSpace;
 logoTex.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
-const LW=isMobile?2.5:2.95, LH=LW/LR;
+const LW=isMobile?2.7:3.3, LH=LW/LR;
 const logo=new THREE.Mesh(new THREE.PlaneGeometry(LW,LH),new THREE.MeshBasicMaterial({map:logoTex,transparent:true,depthTest:false,depthWrite:false,opacity:0}));
 scene.add(logo);
 tksImg.onload=()=>{drawLogo();logoTex.needsUpdate=true;};
-if(LG.tks) tksImg.src=LG.tks;
-/* nav logo */
-const navLogo=document.getElementById('navLogo'); if(navLogo&&LG.tks) navLogo.src=LG.tks;
+tksImg.onerror=()=>{drawLogo();logoTex.needsUpdate=true;};
+if(LG.tks){tksImg.src=LG.tks;} else {drawLogo();logoTex.needsUpdate=true;}
+/* nav logo (with text fallback so it never renders empty) */
+const navWrap=document.getElementById('navLink');const navLogo=document.getElementById('navLogo');
+if(LG.tks){navLogo.src=LG.tks;}
+else{navWrap.innerHTML='<span class="nav-mark">Turnkey <span>Services</span></span>';}
 
 /* motion */
 const IDLE=(Math.PI*2)/55;let rotY=0,vel=IDLE,tilt=isMobile?0.5:0.28;
