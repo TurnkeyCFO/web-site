@@ -64,9 +64,15 @@ tailwind.config = {
 </script>
 
 <style>
-  html { scroll-behavior: smooth; }
+  /* nav clearance: anchor jumps land below the fixed nav (mobile nav is taller) */
+  html { scroll-padding-top: 132px; }
+  @media (min-width:1024px){ html { scroll-padding-top: 92px; } }
   body { background:#08080A; color:#F1E9DC; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
   ::selection { background:#FF6A1A; color:#08080A; }
+
+  /* GPU-only reveal: opacity + translateY, will-change while animating */
+  [data-reveal]{ will-change: opacity, transform; }
+  [data-reveal].is-in{ will-change: auto; }
 
   .font-display { letter-spacing:.012em; line-height:.9; }
 
@@ -172,6 +178,9 @@ tailwind.config = {
   .open-dot{ animation:pulse 2.2s ease-in-out infinite; }
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
 
+  /* mobile: the scrubbed sweep is disabled (desktop-only), so rest the highlight in a visible spot */
+  @media (max-width:767px){ .chrome-sweep{ left:24%; } }
+
   @media (prefers-reduced-motion: reduce){
     .grad-hot{ animation:none; background-position:30% 0; }
     .ticker-track, .blob-a, .blob-b, .open-dot{ animation:none; }
@@ -215,7 +224,7 @@ tailwind.config = {
   <canvas id="spark-canvas" aria-hidden="true"></canvas>
   <div class="hero-scrim"></div>
 
-  <div class="relative z-10 mx-auto max-w-7xl px-5 md:px-8 pb-16 md:pb-24 w-full">
+  <div class="relative z-10 mx-auto max-w-7xl px-5 md:px-8 pt-36 pb-16 md:pt-28 md:pb-24 w-full">
     <p class="mb-3 flex items-center gap-3 text-sm uppercase tracking-[.34em] text-steel" data-reveal>
       <span class="h-px w-10 bg-molten"></span> Ocala &amp; Marion County · Since 1985
     </p>
@@ -643,83 +652,94 @@ tailwind.config = {
 
 <!-- ============ THREE.JS WEBGL SPARK HERO (premium showpiece) ============ -->
 <script type="module">
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canvas = document.getElementById('spark-canvas');
-  // Bot/screenshot heuristic: very headless UAs or reduced-motion → keep static poster only.
-  const looksLikeBot = /HeadlessChrome|puppeteer|playwright|bot|crawl/i.test(navigator.userAgent);
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const looksLikeBot  = /HeadlessChrome|puppeteer|playwright|bot|crawl/i.test(navigator.userAgent);
+  const isMobile      = window.matchMedia('(max-width: 767px)').matches;
+  const lowPower      = (navigator.hardwareConcurrency || 8) <= 4;
 
-  if (canvas && !reduceMotion && !looksLikeBot) {
-    import('three').then((THREE) => {
-      try {
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2)); // cap DPR 2
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
-        camera.position.z = 14;
+  // A phone / low-power / reduced-motion / bot gets the static poster only — never run the ember field while scrolling on mobile.
+  const runWebGL = canvas && !reduceMotion && !looksLikeBot && !isMobile && !lowPower;
 
-        const COUNT = window.innerWidth < 768 ? 280 : 560;
-        const positions = new Float32Array(COUNT * 3);
-        const speeds = new Float32Array(COUNT);
-        const drift = new Float32Array(COUNT);
-        const sizes = new Float32Array(COUNT);
-        const W = 34, H = 22;
-        for (let i = 0; i < COUNT; i++){
-          positions[i*3]   = (Math.random() - 0.5) * W;
-          positions[i*3+1] = (Math.random() - 0.5) * H;
-          positions[i*3+2] = (Math.random() - 0.5) * 10;
-          speeds[i] = 0.6 + Math.random() * 1.7;     // upward rise
-          drift[i]  = (Math.random() - 0.5) * 0.6;   // lateral wander
-          sizes[i]  = 0.5 + Math.random() * 1.8;
-        }
-        const geo = new THREE.BufferGeometry();
-        geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        geo.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1));
+  if (runWebGL) {
+    // Lazy-init after first paint so WebGL never blocks paint.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      import('three').then((THREE) => {
+        try {
+          const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true, powerPreference:'high-performance' });
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2)); // cap DPR 2 (desktop only path)
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+          camera.position.z = 14;
 
-        // round, glowing ember sprite
-        const c = document.createElement('canvas'); c.width = c.height = 64;
-        const ctx = c.getContext('2d');
-        const g = ctx.createRadialGradient(32,32,0,32,32,32);
-        g.addColorStop(0,'rgba(255,240,210,1)');
-        g.addColorStop(0.25,'rgba(255,179,71,0.95)');
-        g.addColorStop(0.55,'rgba(255,106,26,0.55)');
-        g.addColorStop(1,'rgba(255,106,26,0)');
-        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(32,32,32,0,Math.PI*2); ctx.fill();
-        const sprite = new THREE.CanvasTexture(c);
-
-        const mat = new THREE.PointsMaterial({
-          size: 0.42, map: sprite, transparent: true, depthWrite: false,
-          blending: THREE.AdditiveBlending, sizeAttenuation: true, opacity: 0.9
-        });
-        const points = new THREE.Points(geo, mat);
-        scene.add(points);
-
-        function resize(){
-          const r = canvas.getBoundingClientRect();
-          renderer.setSize(r.width, r.height, false);
-          camera.aspect = r.width / r.height; camera.updateProjectionMatrix();
-        }
-        resize(); window.addEventListener('resize', resize);
-
-        let running = true, t = 0;
-        document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) loop(); });
-
-        const pos = geo.attributes.position.array;
-        function loop(){
-          if (!running) return;
-          t += 0.016;
+          const COUNT = 520;
+          const positions = new Float32Array(COUNT * 3);
+          const speeds = new Float32Array(COUNT);
+          const drift = new Float32Array(COUNT);
+          const W = 34, H = 22;
           for (let i = 0; i < COUNT; i++){
-            pos[i*3+1] += speeds[i] * 0.03;                       // rise
-            pos[i*3]   += Math.sin(t + i) * 0.004 + drift[i]*0.01; // wander
-            if (pos[i*3+1] > H/2){ pos[i*3+1] = -H/2; pos[i*3] = (Math.random()-0.5)*W; }
+            positions[i*3]   = (Math.random() - 0.5) * W;
+            positions[i*3+1] = (Math.random() - 0.5) * H;
+            positions[i*3+2] = (Math.random() - 0.5) * 10;
+            speeds[i] = 0.6 + Math.random() * 1.7;     // upward rise
+            drift[i]  = (Math.random() - 0.5) * 0.6;   // lateral wander
           }
-          geo.attributes.position.needsUpdate = true;
-          points.rotation.z = Math.sin(t*0.05) * 0.03;
-          renderer.render(scene, camera);
-          requestAnimationFrame(loop);
-        }
-        loop();
-      } catch(e){ /* WebGL unavailable → poster remains */ }
-    }).catch(()=>{ /* import failed → poster remains */ });
+          const geo = new THREE.BufferGeometry();
+          geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+          // round, glowing ember sprite
+          const c = document.createElement('canvas'); c.width = c.height = 64;
+          const ctx = c.getContext('2d');
+          const g = ctx.createRadialGradient(32,32,0,32,32,32);
+          g.addColorStop(0,'rgba(255,240,210,1)');
+          g.addColorStop(0.25,'rgba(255,179,71,0.95)');
+          g.addColorStop(0.55,'rgba(255,106,26,0.55)');
+          g.addColorStop(1,'rgba(255,106,26,0)');
+          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(32,32,32,0,Math.PI*2); ctx.fill();
+          const sprite = new THREE.CanvasTexture(c);
+
+          const mat = new THREE.PointsMaterial({
+            size: 0.42, map: sprite, transparent: true, depthWrite: false,
+            blending: THREE.AdditiveBlending, sizeAttenuation: true, opacity: 0.9
+          });
+          const points = new THREE.Points(geo, mat);
+          scene.add(points);
+
+          function resize(){
+            const r = canvas.getBoundingClientRect();
+            renderer.setSize(r.width, r.height, false);
+            camera.aspect = r.width / r.height; camera.updateProjectionMatrix();
+          }
+          resize(); window.addEventListener('resize', resize);
+
+          // pause when tab hidden OR when the hero scrolls offscreen
+          let tabVisible = true, onScreen = true, rafId = null, t = 0;
+          const pos = geo.attributes.position.array;
+          function frame(){
+            if (!tabVisible || !onScreen){ rafId = null; return; }
+            t += 0.016;
+            for (let i = 0; i < COUNT; i++){
+              pos[i*3+1] += speeds[i] * 0.03;                        // rise
+              pos[i*3]   += Math.sin(t + i) * 0.004 + drift[i]*0.01; // wander
+              if (pos[i*3+1] > H/2){ pos[i*3+1] = -H/2; pos[i*3] = (Math.random()-0.5)*W; }
+            }
+            geo.attributes.position.needsUpdate = true;
+            points.rotation.z = Math.sin(t*0.05) * 0.03;
+            renderer.render(scene, camera);
+            rafId = requestAnimationFrame(frame);
+          }
+          function start(){ if (rafId == null && tabVisible && onScreen) rafId = requestAnimationFrame(frame); }
+
+          document.addEventListener('visibilitychange', () => { tabVisible = !document.hidden; start(); });
+          // IntersectionObserver: stop rendering once the hero leaves the viewport (don't animate while reading the footer)
+          new IntersectionObserver((entries) => {
+            onScreen = entries[0].isIntersecting; start();
+          }, { threshold: 0 }).observe(canvas);
+
+          start();
+        } catch(e){ /* WebGL unavailable → poster remains */ }
+      }).catch(()=>{ /* import failed → poster remains */ });
+    }));
   }
 </script>
 
@@ -731,27 +751,44 @@ tailwind.config = {
   document.querySelectorAll('[data-split]').forEach(el => { el.innerHTML = '<span>' + el.innerHTML + '</span>'; });
 
   let gsapReady = typeof gsap !== 'undefined';
-  if (gsapReady) gsap.registerPlugin(ScrollTrigger);
+  if (gsapReady) {
+    gsap.registerPlugin(ScrollTrigger);
+    // stop the mobile URL-bar show/hide from refreshing ScrollTrigger mid-scroll (the "buggy as it loads" feel)
+    ScrollTrigger.config({ ignoreMobileResize: true });
+  }
 
-  /* Lenis smooth scroll */
+  /* Lenis smooth scroll — ONE rAF loop, driven by the GSAP ticker (two loops = desktop lag). smoothTouch off = native momentum on phones. */
   try {
-    const lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); } requestAnimationFrame(raf);
-    if (gsapReady) lenis.on('scroll', ScrollTrigger.update);
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false,
+    });
+    if (gsapReady) {
+      gsap.ticker.add((time)=> lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+      lenis.on('scroll', ScrollTrigger.update);
+    } else {
+      function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+    }
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const id = a.getAttribute('href'); if (id.length < 2) return;
         const target = document.querySelector(id); if (!target) return;
-        e.preventDefault(); lenis.scrollTo(target, { offset: -80 });
+        e.preventDefault(); lenis.scrollTo(target, { offset: -70 });
       });
     });
   } catch(e){}
 
   if (gsapReady) {
-    /* reveals */
+    /* reveals — GPU-only (opacity + translateY), once, ≤0.7s, start early so nothing animates mid-viewport; drop will-change after landing */
     gsap.utils.toArray('[data-reveal]').forEach(el => {
-      gsap.fromTo(el, {opacity:0, y:34}, {opacity:1, y:0, duration:1.0, ease:'power3.out',
-        scrollTrigger:{ trigger:el, start:'top 90%' }});
+      gsap.fromTo(el, {opacity:0, y:30}, {
+        opacity:1, y:0, duration:0.65, ease:'power2.out',
+        scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+        onComplete(){ el.classList.add('is-in'); }
+      });
     });
 
     /* count-up */
@@ -765,17 +802,21 @@ tailwind.config = {
 
     /* clip image reveal */
     gsap.utils.toArray('[data-clip]').forEach(el => {
-      ScrollTrigger.create({ trigger: el, start:'top 85%', once:true, onEnter(){ el.classList.add('in'); }});
+      ScrollTrigger.create({ trigger: el, start:'top 88%', once:true, onEnter(){ el.classList.add('in'); }});
     });
 
-    /* SIGNATURE: chrome light-sweep glides across the surface as the ledger scrolls */
-    const sweep = document.getElementById('chrome-sweep');
-    if (sweep) {
-      gsap.fromTo(sweep, { left: '-50%' }, {
-        left: '108%', ease: 'none',
-        scrollTrigger:{ trigger:'#services', start:'top 80%', end:'bottom 30%', scrub:0.7 }
-      });
-    }
+    /* SIGNATURE: chrome light-sweep — scroll-scrubbed, DESKTOP ONLY (scrub fights native touch scroll) */
+    ScrollTrigger.matchMedia({
+      "(min-width: 768px)": function(){
+        const sweep = document.getElementById('chrome-sweep');
+        if (sweep) {
+          gsap.fromTo(sweep, { left: '-50%' }, {
+            left: '108%', ease: 'none',
+            scrollTrigger:{ trigger:'#services', start:'top 80%', end:'bottom 30%', scrub:0.7 }
+          });
+        }
+      }
+    });
   }
 
   /* ---- 6s crawler / screenshot safety net ---- */

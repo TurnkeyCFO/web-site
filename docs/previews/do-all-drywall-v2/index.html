@@ -58,6 +58,7 @@ tailwind.config = {
 }
 </script>
 <style>
+  html { scroll-padding-top:78px; }
   html, body { background:#F3EEE6; color:#15181C; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
   ::selection { background:#2C5C7A; color:#FBF9F5; }
   .font-display { font-family:'Space Grotesk',sans-serif; }
@@ -150,7 +151,8 @@ tailwind.config = {
   .pulse { animation:pulse 2.3s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
 
-  [data-reveal]{ opacity:0; transform:translateY(32px); }
+  [data-reveal]{ opacity:0; transform:translateY(28px); will-change:opacity, transform; }
+  [data-reveal].is-in{ will-change:auto; }
 
   .edge-num { font-family:'Space Grotesk',sans-serif; line-height:.85; }
 
@@ -612,11 +614,20 @@ tailwind.config = {
 <script type="module">
   // Light-sweep "finishing wall": a plane that settles from a noisy rough normal into a smooth
   // finish as a soft light bar sweeps across. Poster image stays behind as the fallback.
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const canvas = document.getElementById('hero-canvas');
-  if (canvas && !reduce) {
+  // Perf: lazy-init after first paint, downgrade to static poster on mobile / low-power /
+  // reduced-motion, DPR capped (1.5 mobile / 2 desktop), render loop paused when tab hidden
+  // OR when the hero canvas is scrolled offscreen.
+  const reduce  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  const lowPower = (navigator.hardwareConcurrency || 8) <= 4;
+  const canvas  = document.getElementById('hero-canvas');
+
+  // Downgrade: phones / low-power / reduced-motion never run the shader loop — poster stays.
+  function initHero(){
+    if (!canvas || reduce || isMobile || lowPower) return;
     try {
-      const THREE = await import('three');
+      const THREE_P = import('three');
+      THREE_P.then(THREE => {
       const scene = new THREE.Scene();
       const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
       const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
@@ -693,7 +704,7 @@ tailwind.config = {
       resize();
       window.addEventListener('resize', resize);
 
-      let raf, t0 = performance.now(), running = true;
+      let raf = 0, t0 = performance.now(), running = false, onscreen = true, visible = true;
       function loop(now){
         if (!running) return;
         const t = (now - t0) / 1000;
@@ -704,14 +715,25 @@ tailwind.config = {
         renderer.render(scene, camera);
         raf = requestAnimationFrame(loop);
       }
-      raf = requestAnimationFrame(loop);
+      function start(){ if (running) return; running = true; t0 = performance.now() - uniforms.uTime.value*1000; raf = requestAnimationFrame(loop); }
+      function stop(){ running = false; cancelAnimationFrame(raf); }
+      function sync(){ (onscreen && visible) ? start() : stop(); }
 
       // pause when tab hidden
-      document.addEventListener('visibilitychange', ()=>{
-        if (document.hidden){ running=false; cancelAnimationFrame(raf); }
-        else { running=true; t0 = performance.now(); raf = requestAnimationFrame(loop); }
+      document.addEventListener('visibilitychange', ()=>{ visible = !document.hidden; sync(); });
+      // pause when the hero canvas is scrolled offscreen (never render while reading the footer)
+      if ('IntersectionObserver' in window){
+        new IntersectionObserver(es=>{ onscreen = es[0].isIntersecting; sync(); }, { threshold:0 }).observe(canvas);
+      }
+      sync();
       });
     } catch(e){ /* poster fallback remains visible */ }
+  }
+
+  // Lazy-init after first paint — never block paint on WebGL.
+  if (canvas && !reduce && !isMobile && !lowPower){
+    if ('requestIdleCallback' in window) requestIdleCallback(initHero, { timeout: 1200 });
+    else requestAnimationFrame(()=> setTimeout(initHero, 0));
   }
 </script>
 
@@ -722,13 +744,28 @@ tailwind.config = {
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  /* ---------- Lenis smooth scroll ---------- */
+  if (window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });   // mobile URL-bar resize won't refresh mid-scroll
+  }
+
+  /* ---------- Lenis smooth scroll — ONE rAF loop, driven by the GSAP ticker ---------- */
   let lenis;
   try {
-    lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+    lenis = new Lenis({
+      duration: 1.15,
+      smoothTouch: false,                                 // phones keep native momentum
+      easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t))
+    });
+    if (window.gsap){
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time)=> lenis.raf(time * 1000));   // single rAF source
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      // fallback if GSAP failed to load
+      function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+    }
   } catch(e){}
 
   /* anchored scroll */
@@ -739,7 +776,7 @@ tailwind.config = {
       const t = document.querySelector(id);
       if (!t) return;
       e.preventDefault();
-      const y = t.getBoundingClientRect().top + window.pageYOffset - 70;
+      const y = t.getBoundingClientRect().top + window.pageYOffset - 78;
       if (lenis) lenis.scrollTo(y, { duration: 1.1 }); else window.scrollTo({top:y, behavior:'smooth'});
     });
   });
@@ -749,20 +786,20 @@ tailwind.config = {
   const onScroll = ()=>{ if (window.scrollY > 40) nav.classList.add('nav-scrolled'); else nav.classList.remove('nav-scrolled'); };
   window.addEventListener('scroll', onScroll); onScroll();
 
-  /* ---------- GSAP reveals ---------- */
+  /* ---------- GSAP reveals (GPU-only, once, short — no mid-viewport animation) ---------- */
   if (window.gsap && window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger);
 
     gsap.utils.toArray('[data-reveal]').forEach(el=>{
-      gsap.fromTo(el, {opacity:0, y:32}, {
-        opacity:1, y:0, duration:1.0, ease:'power3.out',
-        scrollTrigger:{ trigger:el, start:'top 90%' }
+      gsap.fromTo(el, {opacity:0, y:28}, {
+        opacity:1, y:0, duration:0.7, ease:'power3.out',
+        scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+        onComplete:()=> el.classList.add('is-in')   // drops will-change once landed
       });
     });
 
     /* clip-path image reveals */
     document.querySelectorAll('[data-reveal-image]').forEach(el=>{
-      ScrollTrigger.create({ trigger:el, start:'top 85%', onEnter:()=> el.classList.add('in') });
+      ScrollTrigger.create({ trigger:el, start:'top 88%', once:true, onEnter:()=> el.classList.add('in') });
     });
 
     /* count-up stats */
@@ -779,14 +816,22 @@ tailwind.config = {
       });
     });
 
-    /* signature: process progress meter driven by scroll through the process grid */
-    const fill = document.getElementById('proc-fill');
-    const grid = document.getElementById('proc-grid');
-    if (fill && grid) {
-      ScrollTrigger.create({
-        trigger: grid, start:'top 80%', end:'bottom 60%', scrub:0.5,
-        onUpdate: self => { fill.style.width = (self.progress * 100).toFixed(1) + '%'; }
-      });
+    /* signature: process progress meter — scrubbed, so DESKTOP ONLY (scrub fights touch scroll) */
+    ScrollTrigger.matchMedia({
+      "(min-width: 768px)": function(){
+        const fill = document.getElementById('proc-fill');
+        const grid = document.getElementById('proc-grid');
+        if (fill && grid) {
+          ScrollTrigger.create({
+            trigger: grid, start:'top 80%', end:'bottom 60%', scrub:0.5,
+            onUpdate: self => { fill.style.width = (self.progress * 100).toFixed(1) + '%'; }
+          });
+        }
+      }
+    });
+    /* on mobile the meter simply shows full (no scrub) so the rail isn't an empty line */
+    if (window.matchMedia('(max-width: 767px)').matches){
+      const fill = document.getElementById('proc-fill'); if (fill) fill.style.width = '100%';
     }
   }
 
@@ -794,6 +839,7 @@ tailwind.config = {
   setTimeout(()=>{
     document.querySelectorAll('[data-reveal]').forEach(el=>{
       if (parseFloat(getComputedStyle(el).opacity) < 0.95){ el.style.opacity = 1; el.style.transform = 'none'; }
+      el.classList.add('is-in');
     });
     document.querySelectorAll('[data-reveal-image]').forEach(el=> el.classList.add('in'));
     document.querySelectorAll('.count').forEach(el=>{
