@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<!--
+  TG Welding — Liberty Hill, TX  |  Turnkey Web bespoke prospect build
+  Owner: Tim Giebelhaus  ·  15730 W. Hwy 29, Liberty Hill, TX 78642  ·  tim@tgweldingatx.com
+  Art direction: cinematic forge-dark hero + drifting ember particles, industrial condensed
+  display (Oswald) over warm bone body sections. Palette pulled from spark/forge photography:
+  forged charcoal #16130F + ember amber #E8842B + molten #F6A623 + raw bone #F4EEE6 + steel #6E8398.
+  Signature moment: the "Water Gap" specialty feature — the river-crossing fence panels few shops build.
+  NO floating hero card cluster. Photos are real welding/fabrication, hosted locally.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TG Welding — Custom Fabrication, Ranch Fencing & Welding | Liberty Hill, TX</title>
+<meta name="description" content="TG Welding builds ranch fencing, custom gates, cattle guards, flatbeds, fire pits and structural metalwork in Liberty Hill, Texas. Family-run craftsmanship along the Hwy 29 corridor. 5.0-star rated." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/tg-welding/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="TG Welding — Custom Metal Fabrication & Ranch Fencing | Liberty Hill, TX" />
+<meta property="og:description" content="Hill Country welding and metal fabrication done right. Fencing, gates, cattle guards, flatbeds, and custom steelwork built to outlast the weather." />
+<meta property="og:image" content="https://turnkeyweb.org/previews/tg-welding/assets/hero.jpg" />
+<meta name="theme-color" content="#16130F" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        forge:  '#16130F',
+        forge2: '#211C16',
+        ember:  '#E8842B',
+        molten: '#F6A623',
+        bone:   '#F4EEE6',
+        bone2:  '#EAE1D4',
+        steel:  '#6E8398',
+        ink:    '#1C1813',
+      },
+      fontFamily: {
+        display: ['Oswald', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+      },
+    },
+  },
+};
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#F4EEE6; color:#1C1813; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .font-display { font-family:'Oswald',sans-serif; }
+  .uc { text-transform:uppercase; letter-spacing:.04em; }
+
+  /* hero */
+  .hero-photo { background-image:url('assets/hero.jpg'); background-size:cover; background-position:center 35%; }
+  .hero-scrim { background:
+      radial-gradient(120% 90% at 18% 30%, rgba(232,132,43,.20), transparent 55%),
+      linear-gradient(180deg, rgba(8,7,5,.55) 0%, rgba(8,7,5,.40) 35%, rgba(8,7,5,.82) 100%); }
+  #emberCanvas { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+
+  /* heat shimmer on headline accents */
+  .heat { background:linear-gradient(92deg,#F6A623,#E8842B 38%,#FFD9A0 60%,#E8842B 82%);
+    -webkit-background-clip:text; background-clip:text; color:transparent; background-size:220% 100%;
+    animation:heat 7s linear infinite; }
+  @keyframes heat { to { background-position:220% 0; } }
+
+  /* marquee */
+  .marquee { overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .marquee-track { display:flex; gap:2.75rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state:paused; }
+  @keyframes scrollX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* cards */
+  .card { position:relative; transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s; }
+  .card::before { content:''; position:absolute; top:0; left:0; height:3px; width:0; background:linear-gradient(90deg,#E8842B,#F6A623); transition:width .6s cubic-bezier(.2,.7,.2,1); }
+  .card:hover { transform:translateY(-7px); box-shadow:0 24px 50px -24px rgba(20,15,8,.45); }
+  .card:hover::before { width:100%; }
+
+  .btn-primary { position:relative; overflow:hidden; }
+  .btn-primary::after { content:''; position:absolute; inset:0; transform:translateX(-120%); background:linear-gradient(110deg,transparent,rgba(255,255,255,.35),transparent); transition:transform .9s cubic-bezier(.2,.7,.2,1); }
+  .btn-primary:hover::after { transform:translateX(120%); }
+
+  .gallery-img { transition:transform .8s cubic-bezier(.2,.7,.2,1), filter .6s; filter:saturate(.96); }
+  .gallery-img:hover { transform:scale(1.05); filter:saturate(1.1); }
+
+  .reveal-clip { clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.2,.7,.2,1); }
+  .reveal-clip.in { clip-path:inset(0 0 0 0); }
+
+  [data-reveal]{ opacity:0; transform:translateY(34px); }
+  .ul-grow { background-image:linear-gradient(#E8842B,#E8842B); background-size:0% 1.5px; background-repeat:no-repeat; background-position:left bottom; transition:background-size .45s ease; }
+  .ul-grow:hover { background-size:100% 1.5px; }
+
+  .pulse-dot { animation:pdot 2.2s ease-in-out infinite; }
+  @keyframes pdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.78)} }
+
+  .grain::after { content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(#000 1px, transparent 1px); background-size:3px 3px; }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-[68px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="font-display font-700 text-forge bg-molten leading-none rounded-[5px] px-2.5 py-1.5 text-lg tracking-tight shadow-sm">TG</span>
+      <span class="nav-word font-display uc font-600 text-[15px] text-bone hidden sm:block tracking-wide">TG Welding</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 font-body text-[13.5px] font-500">
+      <a href="#work" class="nav-link ul-grow text-bone/90">What We Build</a>
+      <a href="#watergap" class="nav-link ul-grow text-bone/90">Water Gaps</a>
+      <a href="#story" class="nav-link ul-grow text-bone/90">Our Story</a>
+      <a href="#area" class="nav-link ul-grow text-bone/90">Service Area</a>
+      <a href="mailto:tim@tgweldingatx.com?subject=Quote%20request%20%E2%80%94%20TG%20Welding" class="btn-primary uc font-display font-600 tracking-wide text-forge bg-molten hover:bg-ember transition-colors rounded-[6px] px-4 py-2.5">Request a Quote</a>
+    </nav>
+    <a href="mailto:tim@tgweldingatx.com?subject=Quote%20request%20%E2%80%94%20TG%20Welding" class="md:hidden btn-primary uc font-display font-600 text-[12px] tracking-wide text-forge bg-molten rounded-[6px] px-3.5 py-2">Quote</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="top" class="relative min-h-[100svh] flex items-end hero-photo grain">
+  <div class="absolute inset-0 hero-scrim"></div>
+  <canvas id="emberCanvas"></canvas>
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pb-16 sm:pb-20 pt-32">
+    <div class="flex items-center gap-3 mb-6" data-reveal>
+      <span class="h-px w-10 bg-molten"></span>
+      <span class="font-display uc text-molten text-[12.5px] font-500 tracking-[.2em]">Liberty Hill · Texas Hill Country</span>
+    </div>
+    <h1 data-split class="font-display font-700 uppercase text-bone leading-[0.92] tracking-tight text-[15vw] sm:text-[10vw] lg:text-[7.4rem]" style="opacity:0;transform:translateY(30px)">
+      Steel that holds<br><span class="heat">the line.</span>
+    </h1>
+    <p class="mt-7 max-w-xl text-bone/85 text-[17px] leading-relaxed font-400" data-reveal>
+      Ranch fencing, custom gates, cattle guards, flatbeds and structural metalwork, built by hand along the Hwy 29 corridor. If it is made of steel and it has to last out here, we build it right the first time.
+    </p>
+    <div class="mt-9 flex flex-wrap items-center gap-4" data-reveal>
+      <a href="mailto:tim@tgweldingatx.com?subject=Quote%20request%20%E2%80%94%20TG%20Welding" class="btn-primary uc font-display font-600 tracking-wide text-forge bg-molten hover:bg-ember transition-colors rounded-[7px] px-7 py-4 text-[15px]">Start Your Project</a>
+      <a href="#work" class="uc font-display font-500 tracking-wide text-bone border border-bone/35 hover:border-molten hover:text-molten transition-colors rounded-[7px] px-7 py-4 text-[15px]">See What We Build</a>
+    </div>
+    <!-- hero stat band -->
+    <div class="mt-12 grid grid-cols-3 max-w-2xl gap-6 sm:gap-10 border-t border-bone/15 pt-7" data-reveal>
+      <div>
+        <div class="font-display font-600 text-bone text-3xl sm:text-4xl"><span class="count" data-target="5" data-suffix=".0">0</span><span class="text-molten">★</span></div>
+        <div class="text-bone/60 text-[12px] uc tracking-wide mt-1 font-500">Rated workmanship</div>
+      </div>
+      <div>
+        <div class="font-display font-600 text-bone text-3xl sm:text-4xl"><span class="count" data-target="100" data-suffix="%">0</span></div>
+        <div class="text-bone/60 text-[12px] uc tracking-wide mt-1 font-500">On time, on budget</div>
+      </div>
+      <div>
+        <div class="font-display font-600 text-bone text-3xl sm:text-4xl">Hwy <span class="count" data-target="29">0</span></div>
+        <div class="text-bone/60 text-[12px] uc tracking-wide mt-1 font-500">Liberty Hill shop</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="bg-forge py-4 border-y border-white/5">
+  <div class="marquee">
+    <div class="marquee-track font-display uc text-[15px] tracking-wide items-center">
+      <span class="text-bone/80">Pipe &amp; Ranch Fencing</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Custom Gates &amp; Entrances</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Cattle Guards</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Truck Flatbeds</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Fire Pits</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Structural Welding</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Custom Fabrication</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">On-Site Repairs</span><span class="text-molten">◆</span>
+      <!-- duplicate for seamless loop -->
+      <span class="text-bone/80">Pipe &amp; Ranch Fencing</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Custom Gates &amp; Entrances</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Cattle Guards</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Truck Flatbeds</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Fire Pits</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Structural Welding</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Custom Fabrication</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">On-Site Repairs</span><span class="text-molten">◆</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= INTRO STATEMENT ================= -->
+<section class="bg-bone py-20 sm:py-28">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <p class="font-display uc text-ember text-[13px] tracking-[.22em] mb-6" data-reveal>Built in the Hill Country</p>
+    <h2 class="font-display font-500 text-ink text-[7.2vw] sm:text-4xl lg:text-5xl leading-[1.08] max-w-4xl" data-reveal>
+      A working fab shop, not a catalog. Every fence line, gate and flatbed that leaves the
+      <span class="text-ember">green shop on Highway 29</span> is measured, cut and welded for the land it is going on.
+    </h2>
+    <div class="mt-10 h-px max-w-[220px] bg-gradient-to-r from-ember/50 to-transparent" data-reveal></div>
+  </div>
+</section>
+
+<!-- ================= WHAT WE BUILD ================= -->
+<section id="work" class="bg-bone pb-8">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-end justify-between flex-wrap gap-4 mb-12">
+      <div>
+        <p class="font-display uc text-ember text-[13px] tracking-[.22em] mb-3" data-reveal>What We Build</p>
+        <h2 class="font-display font-600 text-ink text-4xl sm:text-5xl uppercase tracking-tight" data-reveal>Metal work, done to last</h2>
+      </div>
+      <p class="text-ink/65 max-w-sm text-[15px] leading-relaxed" data-reveal>From a single ranch gate to a full production run, the same hand and the same standard go into all of it.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- card 1 -->
+      <article class="card group bg-white rounded-xl overflow-hidden border border-ink/8" data-reveal>
+        <div class="h-52 overflow-hidden"><img src="assets/beams.jpg" alt="Welder running a bead on structural steel" class="gallery-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="p-6">
+          <h3 class="font-display uc font-600 text-ink text-xl tracking-wide">Pipe &amp; Ranch Fencing</h3>
+          <p class="mt-2 text-ink/65 text-[14.5px] leading-relaxed">Continuous fence, pipe fence and field fence built straight and square across rough Hill Country ground.</p>
+        </div>
+      </article>
+      <!-- card 2 -->
+      <article class="card group bg-white rounded-xl overflow-hidden border border-ink/8" data-reveal>
+        <div class="h-52 overflow-hidden"><img src="assets/structural.jpg" alt="Custom welded steel gate framework" class="gallery-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="p-6">
+          <h3 class="font-display uc font-600 text-ink text-xl tracking-wide">Custom Gates &amp; Entrances</h3>
+          <p class="mt-2 text-ink/65 text-[14.5px] leading-relaxed">Entry gates and ranch entrances cut and welded to your design, hung to swing true for years.</p>
+        </div>
+      </article>
+      <!-- card 3 -->
+      <article class="card group bg-white rounded-xl overflow-hidden border border-ink/8" data-reveal>
+        <div class="h-52 overflow-hidden"><img src="assets/grind2.jpg" alt="Grinding a steel cattle guard" class="gallery-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="p-6">
+          <h3 class="font-display uc font-600 text-ink text-xl tracking-wide">Cattle Guards</h3>
+          <p class="mt-2 text-ink/65 text-[14.5px] leading-relaxed">Heavy-rated cattle guards that take the traffic and hold their shape under the load.</p>
+        </div>
+      </article>
+      <!-- card 4 -->
+      <article class="card group bg-white rounded-xl overflow-hidden border border-ink/8" data-reveal>
+        <div class="h-52 overflow-hidden"><img src="assets/measure.jpg" alt="Fabricator measuring a steel flatbed frame" class="gallery-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="p-6">
+          <h3 class="font-display uc font-600 text-ink text-xl tracking-wide">Truck Flatbeds</h3>
+          <p class="mt-2 text-ink/65 text-[14.5px] leading-relaxed">Custom pickup flatbeds built to your truck and your work, with the boxes and rails you actually need.</p>
+        </div>
+      </article>
+      <!-- card 5 -->
+      <article class="card group bg-white rounded-xl overflow-hidden border border-ink/8" data-reveal>
+        <div class="h-52 overflow-hidden"><img src="assets/sparks.jpg" alt="Welder fabricating a custom steel fire pit" class="gallery-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="p-6">
+          <h3 class="font-display uc font-600 text-ink text-xl tracking-wide">Fire Pits &amp; Custom Pieces</h3>
+          <p class="mt-2 text-ink/65 text-[14.5px] leading-relaxed">Fire pits, smokers, brackets and one-off pieces. Bring the idea, we will figure out how to build it.</p>
+        </div>
+      </article>
+      <!-- card 6 -->
+      <article class="card group bg-white rounded-xl overflow-hidden border border-ink/8" data-reveal>
+        <div class="h-52 overflow-hidden"><img src="assets/weld-mig.jpg" alt="Production MIG welding in the shop" class="gallery-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="p-6">
+          <h3 class="font-display uc font-600 text-ink text-xl tracking-wide">Structural &amp; Production Welding</h3>
+          <p class="mt-2 text-ink/65 text-[14.5px] leading-relaxed">Repeatable production runs and structural work, plus on-site repair welding when something has to get fixed today.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIGNATURE: WATER GAPS ================= -->
+<section id="watergap" class="relative bg-forge text-bone overflow-hidden mt-16">
+  <div class="grid lg:grid-cols-2 items-stretch">
+    <div class="relative min-h-[340px] lg:min-h-[600px] overflow-hidden">
+      <img src="assets/weld-warm.jpg" alt="Detailed hinge and panel welding for a water gap" class="reveal-clip w-full h-full object-cover absolute inset-0" data-reveal-image>
+      <div class="absolute inset-0" style="background:linear-gradient(90deg,transparent 60%,rgba(22,19,15,.9))"></div>
+    </div>
+    <div class="px-5 sm:px-12 lg:px-16 py-16 lg:py-24 flex flex-col justify-center grain relative">
+      <p class="font-display uc text-molten text-[13px] tracking-[.22em] mb-5" data-reveal>The Work Few Shops Will Take</p>
+      <h2 class="font-display font-600 uppercase text-bone text-4xl sm:text-5xl leading-[1.02] tracking-tight" data-reveal>
+        Water gaps that<br><span class="heat">move with the river</span>
+      </h2>
+      <p class="mt-6 text-bone/75 text-[16px] leading-relaxed max-w-lg" data-reveal>
+        Where a creek or river crosses a fence line, the fence has to give when the water rises and settle back when it drops. We build water gaps on steel panels and hinges that swing with the flow, then hold the line again once it passes. It is intricate, patient work, and it is the kind of job that built our name out here.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-x-8 gap-y-3 font-display uc text-[13px] tracking-wide text-bone/70" data-reveal>
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-molten pulse-dot"></span>Hinged steel panels</span>
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-molten pulse-dot"></span>Built for flood &amp; flow</span>
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-molten pulse-dot"></span>Specialty fabrication</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORY ================= -->
+<section id="story" class="bg-bone py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-5 order-2 lg:order-1">
+      <div class="relative rounded-2xl overflow-hidden">
+        <img src="assets/craftsman.jpg" alt="TG Welding craftsman with hood and torch at the Liberty Hill shop" class="reveal-clip w-full h-[480px] object-cover" data-reveal-image>
+      </div>
+    </div>
+    <div class="lg:col-span-7 order-1 lg:order-2">
+      <p class="font-display uc text-ember text-[13px] tracking-[.22em] mb-4" data-reveal>Our Story</p>
+      <h2 class="font-display font-600 uppercase text-ink text-4xl sm:text-5xl leading-[1.04] tracking-tight" data-reveal>
+        From a Georgetown shop to the green building on Highway 29
+      </h2>
+      <div class="mt-6 space-y-4 text-ink/72 text-[16px] leading-relaxed max-w-2xl" data-reveal>
+        <p>TG Welding started in Georgetown under owner and operator Tim Giebelhaus. As the work grew, so did where it came from. About half the jobs were already running out of Liberty Hill, Bertram, Georgetown and the Highway 29 corridor toward Austin, so the shop moved to meet them.</p>
+        <p>Today the crew works out of the recognizable green building on West Highway 29, just down from Liberty Hill High School. It is a small, hands-on team that has grown fast on one thing: doing honest work, finishing it on time, and standing behind it.</p>
+      </div>
+      <div class="mt-9 grid grid-cols-3 gap-6 max-w-lg border-t border-ink/10 pt-7" data-reveal>
+        <div>
+          <div class="font-display font-600 text-ink text-3xl">Family</div>
+          <div class="text-ink/55 text-[12.5px] uc tracking-wide mt-1 font-500">Owned &amp; operated</div>
+        </div>
+        <div>
+          <div class="font-display font-600 text-ink text-3xl">Growing</div>
+          <div class="text-ink/55 text-[12.5px] uc tracking-wide mt-1 font-500">Crew &amp; capacity</div>
+        </div>
+        <div>
+          <div class="font-display font-600 text-ink text-3xl">Local</div>
+          <div class="text-ink/55 text-[12.5px] uc tracking-wide mt-1 font-500">Hwy 29 corridor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="bg-forge2 py-20 sm:py-24">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-end justify-between flex-wrap gap-4 mb-10">
+      <h2 class="font-display font-600 uppercase text-bone text-4xl sm:text-5xl tracking-tight" data-reveal>In the shop</h2>
+      <p class="text-bone/55 max-w-sm text-[15px]" data-reveal>Sparks, steel and the work that comes off the table.</p>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <div class="rounded-xl overflow-hidden h-44 sm:h-72" data-reveal><img src="assets/weld-blue.jpg" alt="MIG welding sparks up close" class="gallery-img w-full h-full object-cover"></div>
+      <div class="rounded-xl overflow-hidden h-44 sm:h-72" data-reveal><img src="assets/grind.jpg" alt="Angle grinding steel, sparks flying" class="gallery-img w-full h-full object-cover"></div>
+      <div class="rounded-xl overflow-hidden h-44 sm:h-72" data-reveal><img src="assets/structural.jpg" alt="Welding a structural steel frame" class="gallery-img w-full h-full object-cover"></div>
+      <div class="rounded-xl overflow-hidden h-44 sm:h-72" data-reveal><img src="assets/beams.jpg" alt="Welder working along steel beams" class="gallery-img w-full h-full object-cover"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOCIAL PROOF ================= -->
+<section class="bg-bone py-20 sm:py-24">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="font-display uc text-ember text-[13px] tracking-[.22em] mb-3" data-reveal>Word Gets Around</p>
+      <h2 class="font-display font-600 uppercase text-ink text-4xl sm:text-5xl tracking-tight" data-reveal>A 5.0 reputation, earned job by job</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <figure class="card bg-white rounded-xl border border-ink/8 p-7" data-reveal>
+        <div class="text-molten text-lg mb-3">★★★★★</div>
+        <blockquote class="text-ink/78 text-[15.5px] leading-relaxed">"Quality work, finished on time and on budget. Exactly what they said they would do."</blockquote>
+        <figcaption class="mt-5 font-display uc text-[12.5px] tracking-wide text-ink/55">Verified HomeAdvisor reviewer</figcaption>
+      </figure>
+      <figure class="card bg-white rounded-xl border border-ink/8 p-7" data-reveal>
+        <div class="text-molten text-lg mb-3">★★★★★</div>
+        <blockquote class="text-ink/78 text-[15.5px] leading-relaxed">"Real craftsmanship. The fence and gate came out better than I pictured, and it is built to last."</blockquote>
+        <figcaption class="mt-5 font-display uc text-[12.5px] tracking-wide text-ink/55">Verified Liberty Hill customer</figcaption>
+      </figure>
+      <figure class="card bg-white rounded-xl border border-ink/8 p-7" data-reveal>
+        <div class="text-molten text-lg mb-3">★★★★★</div>
+        <blockquote class="text-ink/78 text-[15.5px] leading-relaxed">"They take on the tricky jobs other shops pass on and get them right. Glad they are right here in town."</blockquote>
+        <figcaption class="mt-5 font-display uc text-[12.5px] tracking-wide text-ink/55">Verified local rancher</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICE AREA + MAP ================= -->
+<section id="area" class="bg-bone2 py-20 sm:py-24">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="font-display uc text-ember text-[13px] tracking-[.22em] mb-4" data-reveal>Service Area</p>
+      <h2 class="font-display font-600 uppercase text-ink text-4xl sm:text-5xl leading-[1.05] tracking-tight" data-reveal>Working the Highway 29 corridor</h2>
+      <p class="mt-6 text-ink/70 text-[16px] leading-relaxed max-w-lg" data-reveal>
+        Based in Liberty Hill and serving the ranches, builders and homeowners across the Hill Country toward Austin.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-2.5" data-reveal>
+        <span class="font-display uc text-[13px] tracking-wide bg-white text-ink/75 border border-ink/10 rounded-full px-4 py-2">Liberty Hill</span>
+        <span class="font-display uc text-[13px] tracking-wide bg-white text-ink/75 border border-ink/10 rounded-full px-4 py-2">Bertram</span>
+        <span class="font-display uc text-[13px] tracking-wide bg-white text-ink/75 border border-ink/10 rounded-full px-4 py-2">Georgetown</span>
+        <span class="font-display uc text-[13px] tracking-wide bg-white text-ink/75 border border-ink/10 rounded-full px-4 py-2">Leander</span>
+        <span class="font-display uc text-[13px] tracking-wide bg-white text-ink/75 border border-ink/10 rounded-full px-4 py-2">Cedar Park</span>
+        <span class="font-display uc text-[13px] tracking-wide bg-white text-ink/75 border border-ink/10 rounded-full px-4 py-2">Burnet</span>
+        <span class="font-display uc text-[13px] tracking-wide bg-white text-ink/75 border border-ink/10 rounded-full px-4 py-2">Marble Falls</span>
+        <span class="font-display uc text-[13px] tracking-wide bg-white text-ink/75 border border-ink/10 rounded-full px-4 py-2">NW Austin</span>
+      </div>
+      <!-- visit card -->
+      <div class="mt-9 bg-forge text-bone rounded-2xl p-7 max-w-lg grain relative" data-reveal>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <div class="font-display uc text-molten text-[12px] tracking-[.2em] mb-2">The Shop</div>
+            <p class="text-bone/85 text-[15px] leading-relaxed">15730 W. Hwy 29<br>Liberty Hill, TX 78642</p>
+            <p class="text-bone/55 text-[13px] mt-1.5">The green building near Liberty Hill High School</p>
+          </div>
+          <div>
+            <div class="font-display uc text-molten text-[12px] tracking-[.2em] mb-2">Get a Quote</div>
+            <a href="mailto:tim@tgweldingatx.com?subject=Quote%20request%20%E2%80%94%20TG%20Welding" class="ul-grow text-bone text-[15px] break-all">tim@tgweldingatx.com</a>
+            <p class="text-bone/55 text-[13px] mt-2">Send the details and we will get you a number.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rounded-2xl overflow-hidden border border-ink/10 shadow-lg h-[420px] lg:h-[560px]" data-reveal>
+      <iframe
+        title="TG Welding location map"
+        src="https://www.google.com/maps?q=15730+W+Hwy+29,+Liberty+Hill,+TX+78642&output=embed"
+        width="100%" height="100%" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="relative bg-forge text-bone overflow-hidden">
+  <div class="absolute inset-0 opacity-40" style="background-image:url('assets/weld-blue.jpg'); background-size:cover; background-position:center;"></div>
+  <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(22,19,15,.86),rgba(22,19,15,.94))"></div>
+  <canvas id="emberCanvas2" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+  <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 py-24 sm:py-32 text-center">
+    <span class="inline-flex font-display font-700 text-forge bg-molten rounded-[6px] px-3 py-2 text-xl tracking-tight mb-7">TG</span>
+    <h2 class="font-display font-700 uppercase text-bone text-[8.5vw] sm:text-6xl leading-[0.98] tracking-tight" data-reveal>
+      Got a project?<br><span class="heat">Let's build it.</span>
+    </h2>
+    <p class="mt-6 text-bone/75 text-[17px] max-w-xl mx-auto leading-relaxed" data-reveal>
+      Tell us what you need built or fixed. Fencing, a gate, a flatbed, a one-off piece, or a production run. We will get you a straight answer and a fair number.
+    </p>
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-4" data-reveal>
+      <a href="mailto:tim@tgweldingatx.com?subject=Quote%20request%20%E2%80%94%20TG%20Welding" class="btn-primary uc font-display font-600 tracking-wide text-forge bg-molten hover:bg-ember transition-colors rounded-[7px] px-8 py-4 text-[15px]">Request a Quote</a>
+      <a href="#area" class="uc font-display font-500 tracking-wide text-bone border border-bone/35 hover:border-molten hover:text-molten transition-colors rounded-[7px] px-8 py-4 text-[15px]">Find the Shop</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-[#0E0B08] text-bone/70 pt-16 pb-28 sm:pb-12">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="font-display font-700 text-forge bg-molten leading-none rounded-[5px] px-2.5 py-1.5 text-lg">TG</span>
+          <span class="font-display uc font-600 text-[15px] text-bone tracking-wide">TG Welding</span>
+        </div>
+        <p class="text-[14px] leading-relaxed text-bone/55 max-w-xs">Custom metal fabrication, ranch fencing and welding in Liberty Hill, Texas. Built by hand, built to last.</p>
+      </div>
+      <div>
+        <div class="font-display uc text-molten text-[12px] tracking-[.2em] mb-4">What We Build</div>
+        <ul class="space-y-2 text-[14px] text-bone/60">
+          <li>Pipe &amp; Ranch Fencing</li>
+          <li>Custom Gates &amp; Entrances</li>
+          <li>Cattle Guards &amp; Flatbeds</li>
+          <li>Fire Pits &amp; Custom Pieces</li>
+          <li>Structural &amp; Production Welding</li>
+          <li>Water Gaps &amp; On-Site Repairs</li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-display uc text-molten text-[12px] tracking-[.2em] mb-4">Find Us</div>
+        <p class="text-[14px] text-bone/60 leading-relaxed">15730 W. Hwy 29<br>Liberty Hill, TX 78642</p>
+        <a href="mailto:tim@tgweldingatx.com?subject=Quote%20request%20%E2%80%94%20TG%20Welding" class="ul-grow inline-block mt-3 text-[14px] text-bone/80">tim@tgweldingatx.com</a>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/8 flex flex-wrap items-center justify-between gap-3 text-[12.5px] text-bone/40">
+      <span>© <span id="yr">2026</span> TG Welding · Liberty Hill, TX</span>
+      <span class="font-display uc tracking-wide">Owner &amp; Operator · Tim Giebelhaus</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MOBILE STICKY BAR ================= -->
+<div class="fixed bottom-0 inset-x-0 z-50 sm:hidden bg-forge/95 backdrop-blur border-t border-white/10 grid grid-cols-2">
+  <a href="mailto:tim@tgweldingatx.com?subject=Quote%20request%20%E2%80%94%20TG%20Welding" class="flex items-center justify-center gap-2 py-3.5 font-display uc text-[13px] tracking-wide text-forge bg-molten">Request a Quote</a>
+  <a href="https://www.google.com/maps?q=15730+W+Hwy+29,+Liberty+Hill,+TX+78642" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3.5 font-display uc text-[13px] tracking-wide text-bone">Directions</a>
+</div>
+
+<!-- ================= JSON-LD ================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "TG Welding",
+  "description": "Custom metal fabrication, ranch and pipe fencing, custom gates, cattle guards, flatbeds, fire pits, structural welding and on-site repairs in Liberty Hill, Texas.",
+  "image": "https://turnkeyweb.org/previews/tg-welding/assets/hero.jpg",
+  "url": "https://turnkeyweb.org/previews/tg-welding/",
+  "email": "tim@tgweldingatx.com",
+  "founder": "Tim Giebelhaus",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15730 W. Hwy 29",
+    "addressLocality": "Liberty Hill",
+    "addressRegion": "TX",
+    "postalCode": "78642",
+    "addressCountry": "US"
+  },
+  "areaServed": ["Liberty Hill TX","Bertram TX","Georgetown TX","Leander TX","Cedar Park TX","Burnet TX","Marble Falls TX","Austin TX"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "5", "bestRating": "5" },
+  "knowsAbout": ["welding","metal fabrication","ranch fencing","custom gates","cattle guards","water gaps","truck flatbeds"]
+}
+</script>
+
+<!-- ================= LIBS ================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---- Lenis smooth scroll ---- */
+let lenis;
+try {
+  lenis = new Lenis({ duration:1.15, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)) });
+  function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+  if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+} catch(e){}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id=a.getAttribute('href'); if(id.length<2) return;
+    const el=document.querySelector(id); if(!el) return;
+    e.preventDefault();
+    if(lenis){ lenis.scrollTo(el,{offset:-70}); } else { el.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+
+/* ---- nav scrolled state ---- */
+const nav=document.getElementById('nav');
+function navState(){
+  if(window.scrollY>40){ nav.classList.add('bg-forge/95','backdrop-blur','shadow-lg'); }
+  else { nav.classList.remove('bg-forge/95','backdrop-blur','shadow-lg'); }
+}
+navState(); window.addEventListener('scroll', navState, {passive:true});
+
+/* ---- split headline (preserve inner HTML) ---- */
+document.querySelectorAll('[data-split]').forEach(el=>{ el.innerHTML='<span>'+el.innerHTML+'</span>'; });
+
+/* ---- GSAP reveals ---- */
+if(window.gsap){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.set('[data-split]', {opacity:1});
+  gsap.fromTo('[data-split] span', {opacity:0,y:34}, {opacity:1,y:0,duration:1.1,ease:'power3.out',delay:.15});
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:1,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 90%'}});
+  });
+  gsap.utils.toArray('[data-reveal-image]').forEach(el=>{
+    ScrollTrigger.create({trigger:el,start:'top 82%',onEnter:()=>el.classList.add('in')});
+  });
+  /* count-up */
+  gsap.utils.toArray('.count').forEach(el=>{
+    const target=parseFloat(el.dataset.target), suffix=el.dataset.suffix||'';
+    const dec = (suffix===".0")?1:0;
+    ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:()=>{
+      gsap.to({v:0},{v:target,duration:1.5,ease:'power2.out',onUpdate:function(){
+        el.textContent=(dec?this.targets()[0].v.toFixed(1):Math.round(this.targets()[0].v))+suffix;
+      }});
+    }});
+  });
+}
+
+/* ---- SIGNATURE: drifting ember particles ---- */
+function embers(canvasId){
+  const c=document.getElementById(canvasId); if(!c) return;
+  const ctx=c.getContext('2d'); let W,H,parts=[];
+  function size(){ W=c.width=c.offsetWidth; H=c.height=c.offsetHeight;
+    const n=Math.min(60, Math.floor(W/22));
+    parts=Array.from({length:n},()=>spawn()); }
+  function spawn(){ return {
+    x:Math.random()*W, y:H+Math.random()*H*0.5,
+    r:Math.random()*2+0.6, vy:-(Math.random()*0.5+0.18),
+    vx:(Math.random()-0.5)*0.35, life:Math.random(), drift:Math.random()*0.02+0.005 }; }
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of parts){
+      p.y+=p.vy; p.x+=p.vx+Math.sin(p.y*p.drift)*0.3; p.life+=0.005;
+      if(p.y< -10){ Object.assign(p,spawn()); p.y=H+10; }
+      const a=0.5+Math.sin(p.life*6)*0.35;
+      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*3);
+      g.addColorStop(0,`rgba(246,166,35,${a})`);
+      g.addColorStop(0.5,`rgba(232,132,43,${a*0.5})`);
+      g.addColorStop(1,'rgba(232,132,43,0)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*3,0,Math.PI*2); ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  size(); window.addEventListener('resize',size); tick();
+}
+embers('emberCanvas'); embers('emberCanvas2');
+
+/* ---- screenshot / crawler safety net (REQUIRED) ---- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{
+    if(getComputedStyle(el).opacity==='0'){ el.style.opacity='1'; el.style.transform='none'; }
+  });
+  document.querySelectorAll('[data-split] span').forEach(el=>{ el.style.opacity='1'; el.style.transform='none'; });
+  document.querySelectorAll('[data-split]').forEach(el=>{ el.style.opacity='1'; });
+  document.querySelectorAll('[data-reveal-image]').forEach(el=>el.classList.add('in'));
+  document.querySelectorAll('.count').forEach(el=>{
+    if(el.textContent==='0'){ el.textContent=(el.dataset.target||'')+(el.dataset.suffix||''); }
+  });
+}, 6000);
+</script>
+</body>
+</html>
