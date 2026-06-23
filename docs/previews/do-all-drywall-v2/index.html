@@ -90,8 +90,32 @@ tailwind.config = {
   /* nav */
   .nav-scrolled { background:rgba(243,238,230,0.86); backdrop-filter:blur(14px); border-bottom:1px solid rgba(21,24,28,0.08); }
 
+  /* brand lockup — house mark + wordmark; legible over the dark hero (light) and the light scrolled nav (ink) */
+  .brand-word{ color:#F3EEE6; text-shadow:0 1px 10px rgba(0,0,0,.55); transition:color .4s, text-shadow .4s; }
+  .brand-mark{ stroke:#9CC4DB; filter:drop-shadow(0 1px 6px rgba(0,0,0,.5)); transition:stroke .4s, filter .4s; }
+  .nav-scrolled .brand-word{ color:#15181C; text-shadow:none; }
+  .nav-scrolled .brand-mark{ stroke:#2C5C7A; filter:none; }
+
+  /* preloader — one-time intro video, then reveal */
+  #preloader{ position:fixed; inset:0; z-index:9999; background:#0C1014; display:flex; align-items:center; justify-content:center; opacity:1; transition:opacity .7s ease; }
+  #preloader.is-hidden{ opacity:0; pointer-events:none; }
+  #pre-video{ width:100%; height:100%; object-fit:cover; }
+  #preloader::after{ content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(180deg, rgba(12,16,20,.30) 0%, rgba(12,16,20,.20) 45%, rgba(12,16,20,.70) 100%); }
+  .pre-word{ position:absolute; z-index:2; bottom:13%; left:50%; transform:translateX(-50%); white-space:nowrap;
+    color:#F3EEE6; font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:.01em;
+    font-size:clamp(1.4rem,4.4vw,2.6rem); text-shadow:0 2px 20px rgba(0,0,0,.65); opacity:0; animation:preWord .8s ease .35s forwards; }
+  .pre-word .pw-accent{ font-family:'Newsreader',serif; font-style:italic; font-weight:500; }
+  @keyframes preWord{ to{ opacity:1; } }
+  #pre-skip{ position:absolute; z-index:3; bottom:8%; right:6%; color:#F3EEE6; background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.28); border-radius:999px; padding:.5rem 1.15rem; font-size:.78rem;
+    letter-spacing:.05em; text-transform:uppercase; cursor:pointer; backdrop-filter:blur(6px); transition:background .3s; }
+  #pre-skip:hover{ background:rgba(255,255,255,.20); }
+  html.pre-lock, body.pre-lock{ overflow:hidden !important; }
+  @media (prefers-reduced-motion: reduce){ #preloader{ display:none; } }
+
   /* hero */
-  .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .hero-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   /* layered scrim — vertical (top/bottom) + left wash so the white type stays AA-legible
      over the bright mid-band of the finish-loop video */
   .hero-scrim  { position:absolute; inset:0; background:
@@ -183,15 +207,52 @@ tailwind.config = {
 
 <body class="overflow-x-hidden">
 
+<!-- ============ PRELOADER — one-time intro video, then reveal the site ============ -->
+<div id="preloader">
+  <video id="pre-video" muted playsinline preload="auto" poster="assets/hero-poster.jpg" aria-hidden="true">
+    <source src="assets/hero-loop.mp4" type="video/mp4">
+  </video>
+  <div class="pre-word">Do All Drywall <span class="pw-accent">— finished smooth.</span></div>
+  <button id="pre-skip" type="button" aria-label="Skip intro">Skip</button>
+</div>
+<script>
+  (function(){
+    var pre = document.getElementById('preloader');
+    if (!pre) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var seen = false; try { seen = sessionStorage.getItem('dad_intro_seen') === '1'; } catch(e){}
+    function hide(){
+      pre.classList.add('is-hidden');
+      document.documentElement.classList.remove('pre-lock');
+      document.body.classList.remove('pre-lock');
+      try { sessionStorage.setItem('dad_intro_seen','1'); } catch(e){}
+      setTimeout(function(){ if (pre && pre.parentNode) pre.parentNode.removeChild(pre); }, 800);
+    }
+    // skip the intro on reduced-motion or if already seen this session
+    if (reduce || seen){ hide(); return; }
+    document.documentElement.classList.add('pre-lock');
+    document.body.classList.add('pre-lock');
+    var v = document.getElementById('pre-video');
+    var done = false;
+    function finish(){ if (done) return; done = true; hide(); }
+    if (v){
+      v.addEventListener('ended', finish);
+      var p = v.play();
+      if (p && p.catch) p.catch(function(){ /* autoplay blocked (mobile) — the cap timeout reveals the site */ });
+    }
+    var skip = document.getElementById('pre-skip');
+    if (skip) skip.addEventListener('click', finish);
+    // hard cap so the intro never blocks too long (also covers autoplay-blocked mobile)
+    setTimeout(finish, 4200);
+  })();
+</script>
+
 <!-- ============ NAV ============ -->
 <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
   <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-[70px] flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-3 group">
-      <span class="inline-flex items-center gap-1.5 bg-ink text-paper rounded-[8px] px-2.5 py-1.5 leading-none">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4F86A6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
-        <span class="font-display font-700 tight text-sm">DAD</span>
-      </span>
-      <span class="font-display font-600 tight text-ink text-[1.02rem] leading-none hidden sm:block">Do All Drywall</span>
+    <a href="#top" class="flex items-center gap-2.5 group">
+      <svg class="brand-mark" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
+      <span class="brand-word font-display font-700 tight text-[1.06rem] leading-none">Do All Drywall</span>
     </a>
     <div class="hidden lg:flex items-center gap-8 text-[0.92rem] text-slate2 font-medium">
       <a href="#services" class="ul-grow hover:text-ink transition">Services</a>
@@ -211,12 +272,9 @@ tailwind.config = {
 
 <!-- ============ HERO (Three.js light-sweep finish + poster fallback) ============ -->
 <section id="top" class="relative min-h-[100svh] flex items-center overflow-hidden grain">
-  <!-- hero background: the real drywall-finish loop — a glowing light edge healing a taped
-       seam into a perfectly smooth wall. Poster frame shows before play / on reduced-motion. -->
-  <video class="hero-video" autoplay muted loop playsinline preload="metadata"
-         poster="assets/hero-poster.jpg" aria-hidden="true">
-    <source src="assets/hero-loop.mp4" type="video/mp4">
-  </video>
+  <!-- hero background: the V1 finishing photo (real drywall finisher, raking light) — Ricky's pick -->
+  <img class="hero-photo" src="https://images.pexels.com/photos/6474308/pexels-photo-6474308.jpeg?auto=compress&cs=tinysrgb&w=1900"
+       alt="Drywall finisher applying joint compound to a fresh seam in Lincoln, NE" />
   <div class="hero-scrim"></div>
 
   <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pt-28 pb-20">
@@ -634,25 +692,6 @@ tailwind.config = {
   <a href="#visit" class="flex-1 btn rounded-full py-3 text-center text-[0.92rem] font-semibold border border-paper/35 text-paper">Free estimate</a>
 </div>
 
-<!-- ============ HERO VIDEO — real drywall-finish loop; respect reduced-motion ============ -->
-<script>
-  // The hero is a real, web-optimized video loop (autoplay/muted/loop/playsinline). It's light
-  // (~1.2MB) and runs on desktop + mobile. For reduced-motion users we pause it and keep the
-  // poster frame. Pause when the tab is hidden OR the hero is scrolled offscreen (no wasted decode).
-  (function(){
-    var v = document.querySelector('.hero-video');
-    if (!v) return;
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce){ v.removeAttribute('autoplay'); try { v.pause(); } catch(e){} return; }
-    var hero = document.getElementById('top');
-    var onscreen = true, visible = true;
-    function sync(){ try { (onscreen && visible) ? v.play() : v.pause(); } catch(e){} }
-    document.addEventListener('visibilitychange', function(){ visible = !document.hidden; sync(); });
-    if ('IntersectionObserver' in window && hero){
-      new IntersectionObserver(function(es){ onscreen = es[0].isIntersecting; sync(); }, { threshold: 0 }).observe(hero);
-    }
-  })();
-</script>
 
 <!-- ============ MOTION SCRIPTS ============ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
