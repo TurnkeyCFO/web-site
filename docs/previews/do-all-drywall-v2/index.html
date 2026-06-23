@@ -4,9 +4,11 @@
   Art direction: quiet-luxury / "raking light on a smooth finish." Warm bone + drywall-white base,
   charcoal ink, steel grey, single deep slate-blue accent (#2C5C7A) carrying CTAs, dots, headers.
   Type: Space Grotesk (display) + Newsreader italic (craft accents) + Inter (body).
-  Premium showpiece: Three.js r160 WebGL hero — a softly-lit plane whose surface settles from a
-  noisy/rough normal into a perfectly smooth finish as a slow light bar sweeps across it. Static
-  poster behind the canvas for reduced-motion + screenshot fallback. Type overlaid with a scrim.
+  Premium showpiece: full-bleed HERO VIDEO — the real Higgsfield-rendered drywall-finish loop
+  (a glowing light edge healing a taped seam into a smooth wall), web-optimized to ~1.2MB,
+  autoplay/muted/loop/playsinline with a poster frame fallback (reduced-motion + screenshots),
+  paused when hidden/offscreen. A warm "finish line" hairline draws in under the headline to echo
+  the on-screen light edge; layered scrim keeps the white type AA-legible over the bright mid-band.
   Signature moment: a horizontal "How a wall gets finished" 4-step process rail with a scroll-driven
   progress meter (replaces V1's drag seam-wipe).
   All facts verbatim from V1: BBB A+ since 2023, BuildZoom 90, licensed NE, est. 2019, Classic
@@ -89,10 +91,27 @@ tailwind.config = {
   .nav-scrolled { background:rgba(243,238,230,0.86); backdrop-filter:blur(14px); border-bottom:1px solid rgba(21,24,28,0.08); }
 
   /* hero */
-  #hero-canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
-  .hero-poster { position:absolute; inset:0; background-size:cover; background-position:center; }
-  .hero-scrim  { position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(12,16,20,0.72) 0%, rgba(12,16,20,0.40) 42%, rgba(12,16,20,0.78) 100%); }
+  .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  /* layered scrim — vertical (top/bottom) + left wash so the white type stays AA-legible
+     over the bright mid-band of the finish-loop video */
+  .hero-scrim  { position:absolute; inset:0; background:
+    linear-gradient(180deg, rgba(12,16,20,0.74) 0%, rgba(12,16,20,0.50) 42%, rgba(12,16,20,0.86) 100%),
+    linear-gradient(90deg,  rgba(12,16,20,0.64) 0%, rgba(12,16,20,0.22) 58%, rgba(12,16,20,0.00) 100%); }
+
+  /* signature "finish line" — a warm light hairline that draws across on load, echoing the
+     glowing edge in the hero video (the seam being finished) */
+  .hero-finish { display:flex; align-items:center; gap:0.95rem; margin-top:1.7rem; }
+  .finish-line { position:relative; display:block; height:2px; width:clamp(58px,16vw,170px);
+    background:linear-gradient(90deg, rgba(224,168,82,0), rgba(224,168,82,0.95));
+    transform-origin:left; transform:scaleX(0);
+    animation:drawFinish 1.15s cubic-bezier(.2,.7,.2,1) .55s forwards;
+    box-shadow:0 0 16px rgba(224,168,82,.45); }
+  .finish-line::after { content:""; position:absolute; right:-3px; top:50%; transform:translateY(-50%);
+    width:7px; height:7px; border-radius:50%; background:#F2C982; box-shadow:0 0 12px 3px rgba(242,201,130,.8); }
+  @keyframes drawFinish { to { transform:scaleX(1); } }
+  .hero-kicker { font-family:'Newsreader',serif; font-style:italic; color:#F5EEE1;
+    font-size:clamp(1.05rem,2.1vw,1.38rem); letter-spacing:.2px; text-shadow:0 1px 12px rgba(0,0,0,.55); }
+  @media (prefers-reduced-motion: reduce){ .finish-line{ animation:none; transform:scaleX(1); } }
   .grain::after{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:overlay;
     background-image:radial-gradient(rgba(255,255,255,.9) 0.5px, transparent 0.6px); background-size:3px 3px; }
 
@@ -192,9 +211,12 @@ tailwind.config = {
 
 <!-- ============ HERO (Three.js light-sweep finish + poster fallback) ============ -->
 <section id="top" class="relative min-h-[100svh] flex items-center overflow-hidden grain">
-  <!-- static poster behind canvas: real smooth-finished wall in raking light -->
-  <div class="hero-poster" style="background-image:url('https://images.pexels.com/photos/6474471/pexels-photo-6474471.jpeg?auto=compress&cs=tinysrgb&w=1900')" aria-hidden="true"></div>
-  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <!-- hero background: the real drywall-finish loop — a glowing light edge healing a taped
+       seam into a perfectly smooth wall. Poster frame shows before play / on reduced-motion. -->
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata"
+         poster="assets/hero-poster.jpg" aria-hidden="true">
+    <source src="assets/hero-loop.mp4" type="video/mp4">
+  </video>
   <div class="hero-scrim"></div>
 
   <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pt-28 pb-20">
@@ -207,6 +229,11 @@ tailwind.config = {
       Walls that look
       <span class="block">like they were never <span class="grad-text font-serif-i font-medium">touched.</span></span>
     </h1>
+
+    <div class="hero-finish" data-reveal>
+      <span class="finish-line"></span>
+      <span class="hero-kicker">From taped seam to flawless finish.</span>
+    </div>
 
     <p class="mt-8 max-w-xl text-paper/90 text-[1.07rem] leading-relaxed" data-reveal>
       A licensed, BBB A+ drywall crew in Lincoln — hanging, taping, and finishing new builds, remodels, ceilings, and repairs until the surface reads perfectly smooth. Run hands-on by the two owners who do the work.
@@ -607,134 +634,24 @@ tailwind.config = {
   <a href="#visit" class="flex-1 btn rounded-full py-3 text-center text-[0.92rem] font-semibold border border-paper/35 text-paper">Free estimate</a>
 </div>
 
-<!-- ============ THREE.JS HERO (deferred ESM, import-map r160) ============ -->
-<script type="importmap">
-{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
-</script>
-<script type="module">
-  // Light-sweep "finishing wall": a plane that settles from a noisy rough normal into a smooth
-  // finish as a soft light bar sweeps across. Poster image stays behind as the fallback.
-  // Perf: lazy-init after first paint, downgrade to static poster on mobile / low-power /
-  // reduced-motion, DPR capped (1.5 mobile / 2 desktop), render loop paused when tab hidden
-  // OR when the hero canvas is scrolled offscreen.
-  const reduce  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isMobile = window.matchMedia('(max-width: 767px)').matches;
-  const lowPower = (navigator.hardwareConcurrency || 8) <= 4;
-  const canvas  = document.getElementById('hero-canvas');
-
-  // Downgrade: phones / low-power / reduced-motion never run the shader loop — poster stays.
-  function initHero(){
-    if (!canvas || reduce || isMobile || lowPower) return;
-    try {
-      const THREE_P = import('three');
-      THREE_P.then(THREE => {
-      const scene = new THREE.Scene();
-      const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-      const uniforms = {
-        uTime:    { value: 0 },
-        uRes:     { value: new THREE.Vector2(1,1) },
-        uSweep:   { value: 0.0 },   // 0..1 position of the smoothing light bar
-      };
-
-      const material = new THREE.ShaderMaterial({
-        uniforms,
-        transparent: true,
-        vertexShader: `
-          varying vec2 vUv;
-          void main(){ vUv = uv; gl_Position = vec4(position, 1.0); }
-        `,
-        fragmentShader: `
-          precision highp float;
-          varying vec2 vUv;
-          uniform float uTime; uniform float uSweep; uniform vec2 uRes;
-
-          // hash + value noise
-          float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }
-          float noise(vec2 p){
-            vec2 i=floor(p), f=fract(p);
-            float a=hash(i), b=hash(i+vec2(1.,0.)), c=hash(i+vec2(0.,1.)), d=hash(i+vec2(1.,1.));
-            vec2 u=f*f*(3.-2.*f);
-            return mix(mix(a,b,u.x), mix(c,d,u.x), u.y);
-          }
-          float fbm(vec2 p){
-            float v=0.0, a=0.5;
-            for(int i=0;i<5;i++){ v+=a*noise(p); p*=2.03; a*=0.5; }
-            return v;
-          }
-          void main(){
-            vec2 uv = vUv;
-            vec2 asp = vec2(uRes.x/uRes.y, 1.0);
-            // surface roughness (rough taped-wall normal)
-            float n = fbm(uv*asp*7.0 + vec2(uTime*0.02, 0.0));
-            float grit = fbm(uv*asp*38.0)*0.5;
-
-            // a soft vertical light bar sweeping left->right; ahead of it = rough, behind = smooth
-            float bar = uSweep;                    // 0..1 across screen
-            float dx = uv.x - bar;
-            // smoothness factor: 1 = fully finished (behind the bar), 0 = rough (ahead)
-            float smoothF = smoothstep(0.06, -0.06, dx);
-            float rough = mix(n*0.6 + grit, n*0.12, smoothF);
-
-            // raking-light highlight right at the bar (the trowel/light edge)
-            float edge = exp(-pow(dx*14.0, 2.0)) * 0.9;
-
-            // base luminance: subtle blue-grey wall, brighter where finished
-            float base = 0.12 + rough*0.10 + smoothF*0.05;
-            vec3 col = mix(vec3(0.10,0.13,0.16), vec3(0.20,0.30,0.38), smoothF*0.6);
-            col += vec3(0.35,0.55,0.70) * edge;    // slate-blue light edge
-            col += base*0.4;
-            // keep it subtle behind text — overall low alpha; scrim CSS layer adds contrast
-            float alpha = 0.55;
-            gl_FragColor = vec4(col, alpha);
-          }
-        `,
-      });
-
-      const quad = new THREE.Mesh(new THREE.PlaneGeometry(2,2), material);
-      scene.add(quad);
-
-      function resize(){
-        const w = canvas.clientWidth, h = canvas.clientHeight;
-        renderer.setSize(w, h, false);
-        uniforms.uRes.value.set(w, h);
-      }
-      resize();
-      window.addEventListener('resize', resize);
-
-      let raf = 0, t0 = performance.now(), running = false, onscreen = true, visible = true;
-      function loop(now){
-        if (!running) return;
-        const t = (now - t0) / 1000;
-        uniforms.uTime.value = t;
-        // sweep cycles slowly 0..1 then resets, with a long smooth pause showing finished wall
-        const cyc = (t * 0.10) % 1.4;               // ~14s per cycle
-        uniforms.uSweep.value = Math.min(1.05, cyc);
-        renderer.render(scene, camera);
-        raf = requestAnimationFrame(loop);
-      }
-      function start(){ if (running) return; running = true; t0 = performance.now() - uniforms.uTime.value*1000; raf = requestAnimationFrame(loop); }
-      function stop(){ running = false; cancelAnimationFrame(raf); }
-      function sync(){ (onscreen && visible) ? start() : stop(); }
-
-      // pause when tab hidden
-      document.addEventListener('visibilitychange', ()=>{ visible = !document.hidden; sync(); });
-      // pause when the hero canvas is scrolled offscreen (never render while reading the footer)
-      if ('IntersectionObserver' in window){
-        new IntersectionObserver(es=>{ onscreen = es[0].isIntersecting; sync(); }, { threshold:0 }).observe(canvas);
-      }
-      sync();
-      });
-    } catch(e){ /* poster fallback remains visible */ }
-  }
-
-  // Lazy-init after first paint — never block paint on WebGL.
-  if (canvas && !reduce && !isMobile && !lowPower){
-    if ('requestIdleCallback' in window) requestIdleCallback(initHero, { timeout: 1200 });
-    else requestAnimationFrame(()=> setTimeout(initHero, 0));
-  }
+<!-- ============ HERO VIDEO — real drywall-finish loop; respect reduced-motion ============ -->
+<script>
+  // The hero is a real, web-optimized video loop (autoplay/muted/loop/playsinline). It's light
+  // (~1.2MB) and runs on desktop + mobile. For reduced-motion users we pause it and keep the
+  // poster frame. Pause when the tab is hidden OR the hero is scrolled offscreen (no wasted decode).
+  (function(){
+    var v = document.querySelector('.hero-video');
+    if (!v) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce){ v.removeAttribute('autoplay'); try { v.pause(); } catch(e){} return; }
+    var hero = document.getElementById('top');
+    var onscreen = true, visible = true;
+    function sync(){ try { (onscreen && visible) ? v.play() : v.pause(); } catch(e){} }
+    document.addEventListener('visibilitychange', function(){ visible = !document.hidden; sync(); });
+    if ('IntersectionObserver' in window && hero){
+      new IntersectionObserver(function(es){ onscreen = es[0].isIntersecting; sync(); }, { threshold: 0 }).observe(hero);
+    }
+  })();
 </script>
 
 <!-- ============ MOTION SCRIPTS ============ -->
