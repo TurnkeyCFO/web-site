@@ -38,8 +38,10 @@
           inksoft:"#4B4036",
           teal:   "#2E6E66",
           tealdk: "#1E4B45",
-          coral:  "#DD6B4F",
+          coral:  "#B8442A",
+          rust:   "#A23B22",
           gold:   "#D8A23B",
+          goldlt: "#F0C56B",
           sage:   "#9FB08C",
           olive:  "#3C4A33",
         },
@@ -88,9 +90,9 @@
   /* due-date stamp */
   .stamp{
     font-family:'Spline Sans Mono',monospace;font-weight:600;text-transform:uppercase;
-    letter-spacing:.12em;border:3px solid #DD6B4F;color:#DD6B4F;border-radius:8px;
+    letter-spacing:.12em;border:3px solid #A23B22;color:#A23B22;border-radius:8px;
     padding:.55rem 1rem;display:inline-block;transform:rotate(-7deg);
-    box-shadow:0 0 0 1px rgba(221,107,79,.25) inset;opacity:.92;
+    box-shadow:0 0 0 1px rgba(162,59,34,.25) inset;opacity:1;
   }
 
   .ambient-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;pointer-events:none;will-change:transform;}
@@ -163,11 +165,11 @@
       <a href="#top" class="flex items-center gap-3 group">
         <span class="inline-flex flex-col items-center justify-center rounded-lg bg-teal text-paper2 px-2.5 py-1.5 leading-none shadow-sm">
           <span class="font-display text-lg font-700">KL</span>
-          <span class="mono text-[7px] tracking-[.2em] mt-0.5 text-gold">THRIFT</span>
+          <span class="mono text-[7px] tracking-[.2em] mt-0.5 text-paper2/85">THRIFT</span>
         </span>
         <span class="hidden sm:flex flex-col leading-tight">
           <span class="font-display text-[1.05rem] font-600 text-ink">Kyle Library Thrift Shop</span>
-          <span class="mono text-[.62rem] tracking-[.18em] text-teal uppercase">Friends of the Kyle Library</span>
+          <span class="mono text-[.62rem] tracking-[.18em] text-tealdk uppercase">Friends of the Kyle Library</span>
         </span>
       </a>
       <nav class="hidden lg:flex items-center gap-7 text-[.92rem] font-500 text-inksoft">
@@ -179,7 +181,7 @@
       </nav>
       <div class="flex items-center gap-2">
         <a href="https://www.google.com/maps?q=100+W+Lockhart+St,+Kyle,+TX+78640" target="_blank" rel="noopener"
-           class="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-teal/40 text-teal px-3.5 py-2 text-sm font-600 hover:bg-teal hover:text-paper2 transition">
+           class="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-teal/50 text-tealdk px-3.5 py-2 text-sm font-600 hover:bg-teal hover:text-paper2 transition">
           Directions
         </a>
         <a href="tel:+15122681036"
@@ -265,7 +267,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 relative">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <div>
-        <p class="kicker text-coral mb-4" data-reveal>The give-back loop</p>
+        <p class="kicker text-rust mb-4" data-reveal>The give-back loop</p>
         <h2 class="font-display text-4xl sm:text-5xl lg:text-[3.4rem] font-600 leading-[1.05] text-ink" data-reveal>
           Every item you buy is <span class="grad-text">checked out</span> to the Kyle Public Library.
         </h2>
@@ -289,7 +291,7 @@
         </div>
         <div class="card rounded-2xl bg-coral text-paper2 p-6 sm:p-7">
           <div class="font-display text-5xl sm:text-6xl font-700"><span class="count" data-target="150" data-suffix="+">0</span></div>
-          <p class="mt-2 text-sm font-600 text-paper2/95">happy Google reviews</p>
+          <p class="mt-2 text-sm font-600 text-paper2">happy Google reviews</p>
         </div>
         <div class="card rounded-2xl bg-paper2 border border-ink/10 p-6 sm:p-7">
           <div class="font-display text-5xl sm:text-6xl font-700 text-olive"><span class="count" data-target="6" data-suffix="">0</span></div>
@@ -305,7 +307,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-12">
       <div>
-        <p class="kicker text-coral mb-3" data-reveal>What's on the shelves</p>
+        <p class="kicker text-rust mb-3" data-reveal>What's on the shelves</p>
         <h2 class="font-display text-4xl sm:text-5xl font-600 text-ink leading-[1.05] max-w-xl" data-reveal>
           A little of <span class="grad-text">everything</span> — and it changes every day.
         </h2>
@@ -391,7 +393,7 @@
         <img src="https://images.unsplash.com/photo-1688233814747-e0d07982770e?auto=format&fit=crop&w=1100&q=80" alt="Cozy, treasure-packed corner of the Kyle Library Thrift Shop" class="w-full h-[340px] sm:h-[440px] object-cover" />
       </div>
       <div class="lg:col-span-6">
-        <p class="kicker text-gold mb-4" data-reveal>Fresh finds</p>
+        <p class="kicker text-goldlt mb-4" data-reveal>Fresh finds</p>
         <h2 class="font-display text-4xl sm:text-5xl font-600 leading-[1.05]" data-reveal>
           New treasures land <span class="grad-text-dk">every single day</span>.
         </h2>
@@ -400,11 +402,11 @@
         </p>
         <div class="mt-8 grid sm:grid-cols-2 gap-4" data-reveal>
           <div class="rounded-2xl bg-paper2/10 border border-paper2/15 p-5">
-            <p class="mono text-xs tracking-widest text-gold uppercase mb-1">Furniture arrivals</p>
+            <p class="mono text-xs tracking-widest text-goldlt uppercase mb-1">Furniture arrivals</p>
             <p class="text-paper2/90 text-sm leading-relaxed">Big pieces rotate fast. Pop in to see what just hit the floor.</p>
           </div>
           <div class="rounded-2xl bg-paper2/10 border border-paper2/15 p-5">
-            <p class="mono text-xs tracking-widest text-gold uppercase mb-1">Weekly deals</p>
+            <p class="mono text-xs tracking-widest text-goldlt uppercase mb-1">Weekly deals</p>
             <p class="text-paper2/90 text-sm leading-relaxed">Follow our Facebook &amp; Instagram for current discount days and sale alerts.</p>
           </div>
         </div>
@@ -421,7 +423,7 @@
 <section class="bg-paper py-20 sm:py-28 paper-edge">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="text-center max-w-2xl mx-auto mb-14">
-      <p class="kicker text-coral mb-3" data-reveal>Loved by the neighborhood</p>
+      <p class="kicker text-rust mb-3" data-reveal>Loved by the neighborhood</p>
       <h2 class="font-display text-4xl sm:text-5xl font-600 text-ink leading-[1.05]" data-reveal>
         A <span class="grad-text">4.5-star</span> treasure hunt, in their words.
       </h2>
@@ -430,7 +432,7 @@
 
     <div class="grid md:grid-cols-3 gap-5">
       <figure class="card rounded-2xl bg-paper2 border border-ink/10 p-7" data-reveal>
-        <div class="text-gold text-lg mb-3">★★★★★</div>
+        <div class="text-rust text-lg mb-3">★★★★★</div>
         <blockquote class="font-display text-xl text-ink leading-snug">“It feels like a treasure hunt — I'm in love with this thrift shop.”</blockquote>
         <figcaption class="mt-4 mono text-xs tracking-widest text-inksoft/80 uppercase">Verified Google reviewer</figcaption>
       </figure>
@@ -440,7 +442,7 @@
         <figcaption class="mt-4 mono text-xs tracking-widest text-paper2/70 uppercase">Verified Google reviewer</figcaption>
       </figure>
       <figure class="card rounded-2xl bg-paper2 border border-ink/10 p-7" data-reveal>
-        <div class="text-gold text-lg mb-3">★★★★★</div>
+        <div class="text-rust text-lg mb-3">★★★★★</div>
         <blockquote class="font-display text-xl text-ink leading-snug">“True thrift-shop prices and a wonderful selection of household and clothes.”</blockquote>
         <figcaption class="mt-4 mono text-xs tracking-widest text-inksoft/80 uppercase">Verified Google reviewer</figcaption>
       </figure>
@@ -458,7 +460,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <div>
-        <p class="kicker text-coral mb-4" data-reveal>Donation drop-off</p>
+        <p class="kicker text-rust mb-4" data-reveal>Donation drop-off</p>
         <h2 class="font-display text-4xl sm:text-5xl font-600 text-ink leading-[1.05]" data-reveal>
           Your closet clean-out <span class="grad-text">funds a library</span>.
         </h2>
@@ -495,7 +497,7 @@
 <section id="involved" class="relative bg-olive text-paper2 py-20 sm:py-28 overflow-hidden grain">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 relative">
     <div class="max-w-2xl mb-12">
-      <p class="kicker text-gold mb-4" data-reveal>Get involved</p>
+      <p class="kicker text-goldlt mb-4" data-reveal>Get involved</p>
       <h2 class="font-display text-4xl sm:text-5xl font-600 leading-[1.05]" data-reveal>
         It takes a <span class="grad-text-dk">community</span> to keep a library thriving.
       </h2>
@@ -525,7 +527,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
       <div>
-        <p class="kicker text-coral mb-4" data-reveal>Find us in Kyle</p>
+        <p class="kicker text-rust mb-4" data-reveal>Find us in Kyle</p>
         <h2 class="font-display text-4xl sm:text-5xl font-600 text-ink leading-[1.05]" data-reveal>
           Come <span class="grad-text">dig in</span>.
         </h2>
@@ -535,12 +537,12 @@
 
         <div class="mt-8 grid sm:grid-cols-2 gap-4">
           <div class="rounded-2xl bg-paper2 border border-ink/10 p-6" data-reveal>
-            <p class="mono text-xs tracking-widest text-coral uppercase mb-2">Address</p>
+            <p class="mono text-xs tracking-widest text-rust uppercase mb-2">Address</p>
             <p class="font-600 text-ink leading-snug">100 W. Lockhart St.<br/>Kyle, TX 78640</p>
             <a href="https://www.google.com/maps?q=100+W+Lockhart+St,+Kyle,+TX+78640" target="_blank" rel="noopener" class="inline-block mt-3 text-teal font-600 underline-grow text-sm">Get directions →</a>
           </div>
           <div class="rounded-2xl bg-paper2 border border-ink/10 p-6" data-reveal>
-            <p class="mono text-xs tracking-widest text-coral uppercase mb-2">Hours</p>
+            <p class="mono text-xs tracking-widest text-rust uppercase mb-2">Hours</p>
             <ul class="text-sm text-ink space-y-1">
               <li class="flex justify-between"><span>Mon – Sat</span><span class="font-600">9:00a – 6:00p</span></li>
               <li class="flex justify-between text-inksoft"><span>Sunday</span><span class="font-600">Closed</span></li>
@@ -548,11 +550,11 @@
             <p class="mt-3 mono text-[.66rem] text-inksoft/80 leading-snug">Holiday hours are posted in-store &amp; on Facebook.</p>
           </div>
           <div class="rounded-2xl bg-paper2 border border-ink/10 p-6" data-reveal>
-            <p class="mono text-xs tracking-widest text-coral uppercase mb-2">Call</p>
+            <p class="mono text-xs tracking-widest text-rust uppercase mb-2">Call</p>
             <a href="tel:+15122681036" class="font-display text-2xl font-600 text-teal underline-grow">(512) 268-1036</a>
           </div>
           <div class="rounded-2xl bg-paper2 border border-ink/10 p-6" data-reveal>
-            <p class="mono text-xs tracking-widest text-coral uppercase mb-2">Email</p>
+            <p class="mono text-xs tracking-widest text-rust uppercase mb-2">Email</p>
             <a href="mailto:kylethriftshop@yahoo.com" class="font-600 text-ink underline-grow break-all">kylethriftshop@yahoo.com</a>
             <p class="mt-2 text-xs text-inksoft">Questions, donations &amp; volunteering.</p>
           </div>
@@ -573,7 +575,7 @@
 <section class="bg-paper2 py-20 sm:py-24">
   <div class="max-w-3xl mx-auto px-4 sm:px-6">
     <div class="text-center mb-12">
-      <p class="kicker text-coral mb-3" data-reveal>Good to know</p>
+      <p class="kicker text-rust mb-3" data-reveal>Good to know</p>
       <h2 class="font-display text-4xl sm:text-5xl font-600 text-ink leading-[1.05]" data-reveal>Questions, answered</h2>
     </div>
     <div class="space-y-3">
@@ -606,8 +608,8 @@
   <div class="ambient-blob blob-1" style="opacity:.25"></div>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative">
     <span class="inline-flex flex-col items-center justify-center rounded-xl bg-teal text-paper2 px-4 py-3 leading-none shadow-lg mb-7" data-reveal>
-      <span class="font-display text-2xl font-700">KL</span>
-      <span class="mono text-[8px] tracking-[.25em] mt-1 text-gold">THRIFT · KYLE TX</span>
+      <span class="font-display text-2xl font-700 text-goldlt">KL</span>
+      <span class="mono text-[8px] tracking-[.25em] mt-1 text-paper2/85">THRIFT · KYLE TX</span>
     </span>
     <h2 class="font-display text-4xl sm:text-6xl font-600 leading-[1.04]" data-reveal>
       Your next <span class="grad-text-dk">favorite thing</span> is on a shelf right now.
@@ -630,24 +632,24 @@
         <div class="flex items-center gap-3 mb-4">
           <span class="inline-flex flex-col items-center justify-center rounded-lg bg-paper2 text-tealdk px-2.5 py-1.5 leading-none">
             <span class="font-display text-lg font-700">KL</span>
-            <span class="mono text-[7px] tracking-[.2em] mt-0.5 text-coral">THRIFT</span>
+            <span class="mono text-[7px] tracking-[.2em] mt-0.5 text-rust">THRIFT</span>
           </span>
           <span class="font-display text-lg font-600 text-paper2">Kyle Library Thrift Shop</span>
         </div>
         <p class="text-sm leading-relaxed text-paper2/75">A community thrift store operated by The Friends of the Kyle Library. Every purchase supports the Kyle Public Library.</p>
       </div>
       <div>
-        <p class="mono text-xs tracking-widest text-gold uppercase mb-4">Visit</p>
+        <p class="mono text-xs tracking-widest text-goldlt uppercase mb-4">Visit</p>
         <p class="text-sm leading-relaxed">100 W. Lockhart St.<br/>Kyle, TX 78640</p>
         <p class="text-sm mt-3">Mon–Sat · 9a–6p<br/>Sunday · Closed</p>
       </div>
       <div>
-        <p class="mono text-xs tracking-widest text-gold uppercase mb-4">Contact</p>
+        <p class="mono text-xs tracking-widest text-goldlt uppercase mb-4">Contact</p>
         <a href="tel:+15122681036" class="block text-sm underline-grow">(512) 268-1036</a>
         <a href="mailto:kylethriftshop@yahoo.com" class="block text-sm underline-grow mt-2 break-all">kylethriftshop@yahoo.com</a>
       </div>
       <div>
-        <p class="mono text-xs tracking-widest text-gold uppercase mb-4">Follow</p>
+        <p class="mono text-xs tracking-widest text-goldlt uppercase mb-4">Follow</p>
         <a href="https://www.facebook.com/kylelibrarythriftshopinkyle/" target="_blank" rel="noopener" class="block text-sm underline-grow">Facebook</a>
         <a href="https://www.instagram.com/kylethriftshop/" target="_blank" rel="noopener" class="block text-sm underline-grow mt-2">Instagram</a>
         <a href="#shelves" class="block text-sm underline-grow mt-2">Shop the shelves</a>
