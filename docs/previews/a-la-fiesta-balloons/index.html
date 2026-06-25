@@ -64,6 +64,12 @@ tailwind.config = {
   body{ background:var(--cream); color:#2A1530; font-family:'Inter',system-ui,sans-serif; overflow-x:hidden; }
   ::selection{ background:var(--fuchsia); color:#fff; }
   h1,h2,h3,.disp{ font-family:'Unbounded',system-ui,sans-serif; letter-spacing:-.01em; }
+  /* guarantee weight utilities (Tailwind CDN doesn't emit numeric font-* classes) */
+  .font-500{ font-weight:500 !important; } .font-600{ font-weight:600 !important; }
+  .font-700{ font-weight:700 !important; } .font-800{ font-weight:800 !important; }
+  /* photo-card caption scrim + legibility shadow */
+  .imgcard-scrim{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(27,12,41,0) 20%,rgba(27,12,41,.55) 58%,rgba(27,12,41,.95) 100%); }
+  .imgcard-cap h3,.imgcard-cap p{ text-shadow:0 1px 12px rgba(27,12,41,.9); }
 
   /* shimmer — used ONLY over dark backgrounds (hero scrim + grape bands) so AA always clears */
   .grad-text{
@@ -135,7 +141,7 @@ tailwind.config = {
         <a href="#how" class="underline-anim">How It Works</a>
         <a href="#why" class="underline-anim">Why Us</a>
       </nav>
-      <a href="https://www.instagram.com/ala.fiestaballoons/" target="_blank" rel="noopener" class="btn-mag btn-primary inline-flex items-center gap-2 text-[14px] font-700 text-cream px-4 sm:px-5 py-2.5 rounded-full shadow-lg" style="background:linear-gradient(100deg,#E11D74,#F7A60B);box-shadow:0 10px 26px -8px rgba(225,29,116,.7)">
+      <a href="https://www.instagram.com/ala.fiestaballoons/" target="_blank" rel="noopener" class="btn-mag btn-primary inline-flex items-center gap-2 text-[14px] font-700 text-cream bg-grape px-4 sm:px-5 py-2.5 rounded-full shadow-lg" style="box-shadow:0 10px 26px -8px rgba(39,18,58,.6)">
         Book Your Fiesta
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
@@ -214,7 +220,7 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
       <div class="max-w-2xl">
-        <span class="reveal inline-block text-[12px] font-700 uppercase tracking-[.25em] text-fuchsia2 mb-5">What We Create</span>
+        <span class="reveal inline-block text-[12px] font-700 uppercase tracking-[.25em] text-magenta mb-5">What We Create</span>
         <h2 class="reveal font-display font-700 text-grape text-[2.3rem] sm:text-[3.2rem] leading-[1.04] tracking-tight">
           The backdrop your whole party gathers around.
         </h2>
@@ -230,8 +236,8 @@ tailwind.config = {
       <!-- big feature: organic garlands -->
       <article class="reveal lift gallery-item sm:col-span-2 lg:row-span-2 rounded-[1.6rem] overflow-hidden relative min-h-[360px] sm:min-h-[440px] shadow-xl" style="box-shadow:0 30px 60px -34px rgba(39,18,58,.5)">
         <div class="ratio absolute inset-0"><img src="assets/festive-star.jpg" alt="Organic balloon garland in coral, mint and silver with a foil star" loading="lazy"/></div>
-        <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(27,12,41,0) 35%,rgba(27,12,41,.86) 100%)"></div>
-        <div class="absolute bottom-0 p-7">
+        <div class="imgcard-scrim"></div>
+        <div class="imgcard-cap absolute bottom-0 p-7">
           <h3 class="font-display font-700 text-cream text-[1.7rem] leading-tight">Organic garlands &amp; arches</h3>
           <p class="text-cream/85 text-[14.5px] mt-2 max-w-sm leading-relaxed">Lush, hand-clustered balloon runs in any palette &mdash; the signature piece behind your cake, your stage, or your front door.</p>
         </div>
@@ -240,8 +246,8 @@ tailwind.config = {
       <!-- backdrops -->
       <article class="reveal lift gallery-item rounded-[1.6rem] overflow-hidden relative min-h-[210px] shadow-lg">
         <div class="ratio absolute inset-0"><img src="assets/babyshower.jpg" alt="Elegant baby shower balloon backdrop with neon sign" loading="lazy"/></div>
-        <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(27,12,41,0) 40%,rgba(27,12,41,.84) 100%)"></div>
-        <div class="absolute bottom-0 p-6">
+        <div class="imgcard-scrim"></div>
+        <div class="imgcard-cap absolute bottom-0 p-6">
           <h3 class="font-display font-600 text-cream text-[1.25rem]">Backdrops &amp; arch walls</h3>
           <p class="text-cream/80 text-[13.5px] mt-1.5 leading-relaxed">A finished photo wall guests line up to stand in front of.</p>
         </div>
@@ -250,8 +256,8 @@ tailwind.config = {
       <!-- marquee numbers -->
       <article class="reveal lift gallery-item rounded-[1.6rem] overflow-hidden relative min-h-[210px] shadow-lg">
         <div class="ratio absolute inset-0"><img src="assets/first-bday.jpg" alt="Pink and gold balloon garland with giant marquee ONE letters" loading="lazy"/></div>
-        <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(27,12,41,0) 40%,rgba(27,12,41,.84) 100%)"></div>
-        <div class="absolute bottom-0 p-6">
+        <div class="imgcard-scrim"></div>
+        <div class="imgcard-cap absolute bottom-0 p-6">
           <h3 class="font-display font-600 text-cream text-[1.25rem]">Marquee numbers &amp; letters</h3>
           <p class="text-cream/80 text-[13.5px] mt-1.5 leading-relaxed">Big glowing milestones &mdash; first birthdays to the big ones.</p>
         </div>
@@ -260,20 +266,20 @@ tailwind.config = {
       <!-- columns / themed -->
       <article class="reveal lift gallery-item rounded-[1.6rem] overflow-hidden relative min-h-[210px] shadow-lg">
         <div class="ratio absolute inset-0"><img src="assets/arch-gifts.jpg" alt="Sage and gold balloon arch with marquee letter and favor table" loading="lazy"/></div>
-        <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(27,12,41,0) 40%,rgba(27,12,41,.84) 100%)"></div>
-        <div class="absolute bottom-0 p-6">
+        <div class="imgcard-scrim"></div>
+        <div class="imgcard-cap absolute bottom-0 p-6">
           <h3 class="font-display font-600 text-cream text-[1.25rem]">Columns &amp; themed sets</h3>
           <p class="text-cream/80 text-[13.5px] mt-1.5 leading-relaxed">Matching columns, table accents and full themed scenes.</p>
         </div>
       </article>
 
       <!-- text tile: any occasion -->
-      <article class="reveal lift rounded-[1.6rem] p-7 flex flex-col justify-between min-h-[210px] text-cream" style="background:linear-gradient(135deg,#E11D74,#F7A60B)">
-        <div>
+      <article class="reveal lift rounded-[1.6rem] p-7 flex flex-col justify-between min-h-[210px] text-cream relative overflow-hidden" style="background:#B3175C"><span class="absolute -top-10 -right-8 w-40 h-40 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(247,166,11,.55),transparent 65%)"></span>
+        <div class="relative">
           <h3 class="font-display font-700 text-[1.4rem] leading-tight">Built for every celebration</h3>
-          <p class="text-cream/90 text-[13.5px] mt-2 leading-relaxed">Birthdays, baby showers, grand openings, corporate events &mdash; and every celebration in between.</p>
+          <p class="text-cream text-[13.5px] mt-2 leading-relaxed">Birthdays, baby showers, grand openings, corporate events &mdash; and every celebration in between.</p>
         </div>
-        <a href="https://www.instagram.com/ala.fiestaballoons/" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 text-[14px] font-700 text-grape bg-cream px-4 py-2.5 rounded-full self-start">
+        <a href="https://www.instagram.com/ala.fiestaballoons/" target="_blank" rel="noopener" class="relative mt-4 inline-flex items-center gap-2 text-[14px] font-700 text-grape bg-cream px-4 py-2.5 rounded-full self-start">
           Start a design <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </article>
@@ -315,7 +321,7 @@ tailwind.config = {
 <section id="how" class="relative bg-cream py-24 sm:py-32">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="max-w-2xl mb-14">
-      <span class="reveal inline-block text-[12px] font-700 uppercase tracking-[.25em] text-fuchsia2 mb-5">How It Works</span>
+      <span class="reveal inline-block text-[12px] font-700 uppercase tracking-[.25em] text-magenta mb-5">How It Works</span>
       <h2 class="reveal font-display font-700 text-grape text-[2.3rem] sm:text-[3.2rem] leading-[1.04] tracking-tight">
         Three easy steps to your big day.
       </h2>
@@ -327,14 +333,14 @@ tailwind.config = {
         <span class="font-display font-800 text-[3.4rem] leading-none" style="color:#E11D74">01</span>
         <h3 class="font-display font-600 text-grape text-[1.4rem] mt-4">Send us a message</h3>
         <p class="text-ink/75 text-[14.5px] mt-2.5 leading-relaxed flex-1">DM us on Instagram or Facebook with your date, location, and a few of your colors or inspiration pics. Tell us the vibe &mdash; we&rsquo;ll take it from there.</p>
-        <a href="https://www.instagram.com/ala.fiestaballoons/" target="_blank" rel="noopener" class="mt-5 inline-flex items-center gap-2 font-700 text-fuchsia2 text-[14.5px]">Message us <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="https://www.instagram.com/ala.fiestaballoons/" target="_blank" rel="noopener" class="mt-5 inline-flex items-center gap-2 font-700 text-magenta text-[14.5px]">Message us <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <!-- step 2 -->
       <div class="reveal lift rounded-3xl bg-white border border-shell p-8 flex flex-col min-h-[260px] shadow-sm md:-translate-y-3">
-        <span class="font-display font-800 text-[3.4rem] leading-none" style="color:#F7A60B">02</span>
+        <span class="font-display font-800 text-[3.4rem] leading-none" style="color:#C26A00">02</span>
         <h3 class="font-display font-600 text-grape text-[1.4rem] mt-4">We design your install</h3>
         <p class="text-ink/75 text-[14.5px] mt-2.5 leading-relaxed flex-1">We map a custom palette and layout for your space &mdash; garland, arch, backdrop, columns, marquee numbers &mdash; and confirm every detail before your date.</p>
-        <span class="mt-5 inline-flex items-center gap-2 font-700 text-amber2 text-[14.5px]">Custom to your colors</span>
+        <span class="mt-5 inline-flex items-center gap-2 font-700 text-magenta text-[14.5px]">Custom to your colors</span>
       </div>
       <!-- step 3 -->
       <div class="reveal lift rounded-3xl bg-white border border-shell p-8 flex flex-col min-h-[260px] shadow-sm">
