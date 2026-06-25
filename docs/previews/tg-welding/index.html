@@ -123,7 +123,12 @@ tailwind.config = {
 
 <!-- ================= HERO ================= -->
 <section id="top" class="relative min-h-[100svh] flex items-end hero-photo grain">
-  <div class="absolute inset-0 hero-scrim"></div>
+  <!-- Cinematic welding hero video (Higgsfield image-to-video; loops behind scrim) -->
+  <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted loop playsinline preload="auto" poster="assets/tg-weld-poster.jpg" aria-hidden="true" style="object-position:64% center">
+    <source src="assets/tg-weld-hero.webm" type="video/webm" />
+    <source src="assets/tg-weld-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="absolute inset-0 hero-scrim z-[1]"></div>
   <canvas id="emberCanvas"></canvas>
   <img src="assets/tg-logo-mark-white.png" alt="" aria-hidden="true" class="pointer-events-none select-none absolute z-[2] right-3 sm:right-10 top-24 sm:top-28 w-44 sm:w-72 lg:w-80 opacity-[0.06]" />
   <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pb-16 sm:pb-20 pt-32">
