@@ -701,14 +701,14 @@ if (window.gsap && window.ScrollTrigger){
     const arr=geo.attributes.position.array;
     function loop(){
       if(!running) return;
-      t+=.01;
+      t+=.006;
       for(let i=0;i<COUNT;i++){
-        arr[i*3+1]-=spd[i]*6;                       // drift down
-        arr[i*3]+=Math.sin(t+sway[i])*.012;         // gentle sway
+        arr[i*3+1]-=spd[i]*1.1;                     // drift down (slow settle)
+        arr[i*3]+=Math.sin(t+sway[i])*.005;         // gentle sway
         if(arr[i*3+1]<-13){ arr[i*3+1]=13; arr[i*3]=(Math.random()-.5)*34; }
       }
       geo.attributes.position.needsUpdate=true;
-      pts.rotation.y=Math.sin(t*.1)*.06;
+      pts.rotation.y=Math.sin(t*.1)*.03;
       renderer.render(scene,cam);
       requestAnimationFrame(loop);
     }
