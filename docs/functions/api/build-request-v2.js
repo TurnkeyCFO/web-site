@@ -21,6 +21,8 @@
 const FIELD_LABELS = {
   requester_name:       "Submitted by",
   business_name:        "Business",
+  client_name:          "Client name",
+  client_email:         "Client email",
   hubspot_link:         "HubSpot profile",
   business_links:       "Links to research",
   business_description: "What they do",
@@ -30,6 +32,8 @@ const FIELD_LABELS = {
 const FIELD_ORDER = [
   "requester_name",
   "business_name",
+  "client_name",
+  "client_email",
   "hubspot_link",
   "business_links",
   "business_description",
@@ -55,8 +59,16 @@ export async function onRequestPost({ request, env }) {
     // Minimal validation — protect against empty submits.
     const business = (fields.business_name || "").trim();
     const requester = (fields.requester_name || "").trim();
+    const clientName = (fields.client_name || "").trim();
+    const clientEmail = (fields.client_email || "").trim();
     if (!business || !requester) {
       return json({ ok: false, error: "Business name and your name are required." }, 400);
+    }
+    if (!clientName) {
+      return json({ ok: false, error: "Client name is required." }, 400);
+    }
+    if (!clientEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clientEmail)) {
+      return json({ ok: false, error: "A valid client email is required." }, 400);
     }
 
     // Slack post is best-effort but logged loudly if it fails.

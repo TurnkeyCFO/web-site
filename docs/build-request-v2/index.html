@@ -302,7 +302,7 @@
       <div id="form-state">
         <div class="stamp"><span class="bar"></span> Build Request</div>
         <h2 class="section-title">Tell us about the client</h2>
-        <p class="section-desc">The more we know up front, the closer the first draft lands. Only two fields are required — the rest helps us avoid generic stock vibes.</p>
+        <p class="section-desc">The more we know up front, the closer the first draft lands. Only four fields are required — the rest helps us avoid generic stock vibes.</p>
 
         <form id="form" autocomplete="on" novalidate>
           <div class="grid">
@@ -314,6 +314,18 @@
             <div class="full">
               <label for="business_name">Business name <span class="req">*</span></label>
               <input id="business_name" name="business_name" class="input" required placeholder="e.g. AJ Salon">
+            </div>
+
+            <div class="full">
+              <label for="client_name">Client name <span class="req">*</span></label>
+              <input id="client_name" name="client_name" class="input" required placeholder="e.g. Amanda Jones">
+              <span class="hint">The contact person at the business — who we'd address the follow-up to.</span>
+            </div>
+
+            <div class="full">
+              <label for="client_email">Client email <span class="req">*</span></label>
+              <input id="client_email" name="client_email" class="input" type="email" required placeholder="owner@business.com">
+              <span class="hint">Where the client can be reached — used to follow up once the draft is approved.</span>
             </div>
 
             <div class="full">
@@ -382,7 +394,7 @@
     err.classList.remove('show'); err.textContent = '';
 
     if (!form.checkValidity()) {
-      err.textContent = 'Please fill in your name and the business name.';
+      err.textContent = 'Please fill in your name, the business name, the client name, and a valid client email.';
       err.classList.add('show');
       return;
     }
