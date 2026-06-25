@@ -30,8 +30,9 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        magenta: '#E60094',
-        hot:     '#FF2DAE',
+        magenta: '#CC0084',
+        vivid:   '#E60094',
+        hot:     '#FF3DB4',
         blush:   '#F8C9E4',
         petal:   '#FBE7F2',
         cream:   '#FCF5F0',
@@ -100,8 +101,8 @@ tailwind.config = {
   /* Buttons */
   .btn { position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:.55rem; font-weight:600; letter-spacing:.01em; transition:transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s, filter .35s; }
   .btn:hover { transform:translateY(-3px); }
-  .btn-primary { background:#E60094; color:#fff; box-shadow:0 14px 34px -12px rgba(230,0,148,.6); }
-  .btn-primary:hover { filter:brightness(1.05); box-shadow:0 20px 44px -12px rgba(230,0,148,.7); }
+  .btn-primary { background:#CC0084; color:#fff; box-shadow:0 14px 34px -12px rgba(204,0,132,.6); }
+  .btn-primary:hover { filter:brightness(1.08); box-shadow:0 20px 44px -12px rgba(204,0,132,.7); }
   .btn-primary::after { content:""; position:absolute; inset:0; background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.42) 50%,transparent 65%); transform:translateX(-130%); transition:transform .9s cubic-bezier(.2,.7,.3,1); }
   .btn-primary:hover::after { transform:translateX(130%); }
   .btn-ghost { border:1.5px solid rgba(255,255,255,.6); color:#fff; backdrop-filter:blur(4px); }
@@ -122,6 +123,12 @@ tailwind.config = {
   .ul-grow { position:relative; }
   .ul-grow::after { content:""; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:linear-gradient(90deg,#E60094,#FF55BE); transition:width .45s cubic-bezier(.2,.7,.3,1); }
   .ul-grow:hover::after { width:100%; }
+
+  /* Nav link color flips with scroll state (light over dark hero, dark on cream) */
+  #nav .nav-links a { color: rgba(255,255,255,.92); text-shadow: 0 1px 10px rgba(15,4,9,.45); }
+  #nav .nav-links a:hover { color:#fff; }
+  #nav.scrolled .nav-links a { color: rgba(42,22,32,.82); text-shadow:none; }
+  #nav.scrolled .nav-links a:hover { color:#2A1620; }
 
   .hero-photo { filter:saturate(1.04) contrast(1.03); }
   #aroma { position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; }
@@ -144,7 +151,7 @@ tailwind.config = {
           <img src="assets/logo.png" alt="Bella la Brew — Coffee Bar &amp; Unique Boutique" class="h-7 w-auto" />
         </span>
       </a>
-      <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-espresso/80">
+      <nav class="nav-links hidden lg:flex items-center gap-8 text-[15px] font-medium">
         <a href="#story" class="ul-grow hover:text-espresso">Our Story</a>
         <a href="#menu" class="ul-grow hover:text-espresso">Menu</a>
         <a href="#boutique" class="ul-grow hover:text-espresso">Boutique</a>
@@ -164,13 +171,13 @@ tailwind.config = {
   <!-- static poster (real photo) — always present so screenshots/low-power see a complete hero -->
   <img src="assets/hero-latte.jpg" alt="An iced latte from Bella la Brew on a cool mint table in Rockport, Texas" class="hero-photo absolute inset-0 w-full h-full object-cover z-0" />
   <!-- scrims for AA legibility over the photo -->
-  <div class="absolute inset-0 z-[1] bg-gradient-to-t from-plum/92 via-plum/55 to-plum/35"></div>
-  <div class="absolute inset-0 z-[1] bg-gradient-to-r from-plum/70 via-transparent to-transparent"></div>
+  <div class="absolute inset-0 z-[1] bg-gradient-to-t from-plum/96 via-plum/78 to-plum/48"></div>
+  <div class="absolute inset-0 z-[1] bg-gradient-to-tr from-plum/90 via-plum/45 to-transparent"></div>
   <!-- WebGL aroma bokeh (lazy, behind type, above scrim) -->
   <canvas id="aroma"></canvas>
 
   <div class="relative z-10 mx-auto max-w-7xl w-full px-5 sm:px-6 pb-16 sm:pb-20 pt-32">
-    <p class="font-script text-hot text-3xl sm:text-4xl leading-none mb-3" data-reveal>Eat. Drink. Relax.</p>
+    <p class="font-script text-[#FF8DCB] text-3xl sm:text-4xl leading-none mb-3" style="text-shadow:0 2px 14px rgba(15,4,9,.6)" data-reveal>Eat. Drink. Relax.</p>
     <h1 class="font-display font-black text-white leading-[0.96] tracking-tight text-[14vw] sm:text-7xl lg:text-[5.6rem] max-w-4xl" data-reveal>
       Rockport's comfy little <span class="grad-text">coffee bar</span><br class="hidden sm:block"/> &amp; unique boutique.
     </h1>
@@ -187,7 +194,7 @@ tailwind.config = {
     <!-- hero stat strip -->
     <div class="mt-12 flex flex-wrap items-center gap-x-9 gap-y-4" data-reveal>
       <div class="flex items-center gap-2.5">
-        <span class="text-hot text-xl">★★★★★</span>
+        <span class="text-hot text-2xl">★★★★★</span>
         <span class="text-white/90 text-sm"><b class="text-white" data-count="4.8" data-dec="1">0</b> on Google · <b class="text-white" data-count="192" data-suffix="+">0</b> reviews</span>
       </div>
       <div class="hidden sm:block h-8 w-px bg-white/20"></div>
@@ -241,9 +248,9 @@ tailwind.config = {
         <p>We pour locally roasted, single-origin coffee, whip up frappes you can't get anywhere else, and stock the cases with fresh light eats and sweet treats. Then we wrapped a unique boutique around it all — so you can sip and shop in one stop.</p>
       </div>
       <div class="mt-8 flex flex-wrap gap-3" data-reveal>
-        <span class="chip rounded-full bg-petal text-magenta text-sm font-semibold px-4 py-2"><span class="chip-dot"></span>Locally roasted</span>
-        <span class="chip rounded-full bg-petal text-magenta text-sm font-semibold px-4 py-2"><span class="chip-dot"></span>Single origin</span>
-        <span class="chip rounded-full bg-petal text-magenta text-sm font-semibold px-4 py-2"><span class="chip-dot"></span>Made fresh daily</span>
+        <span class="chip rounded-full bg-petal text-[#9E0068] text-sm font-semibold px-4 py-2"><span class="chip-dot"></span>Locally roasted</span>
+        <span class="chip rounded-full bg-petal text-[#9E0068] text-sm font-semibold px-4 py-2"><span class="chip-dot"></span>Single origin</span>
+        <span class="chip rounded-full bg-petal text-[#9E0068] text-sm font-semibold px-4 py-2"><span class="chip-dot"></span>Made fresh daily</span>
       </div>
     </div>
     <div class="lg:col-span-6 order-1 lg:order-2">
@@ -372,13 +379,13 @@ tailwind.config = {
       </p>
       <div class="grid grid-cols-3 gap-3" data-reveal>
         <div class="rounded-xl bg-white px-3 py-4 text-center ring-1 ring-magenta/10">
-          <p class="font-display text-magenta text-xl font-bold">Tees</p><p class="text-espresso/55 text-xs mt-1">& apparel</p>
+          <p class="font-display text-magenta text-xl font-bold">Tees</p><p class="text-espresso/70 text-xs mt-1">& apparel</p>
         </div>
         <div class="rounded-xl bg-white px-3 py-4 text-center ring-1 ring-magenta/10">
-          <p class="font-display text-magenta text-xl font-bold">Gifts</p><p class="text-espresso/55 text-xs mt-1">& goods</p>
+          <p class="font-display text-magenta text-xl font-bold">Gifts</p><p class="text-espresso/70 text-xs mt-1">& goods</p>
         </div>
         <div class="rounded-xl bg-white px-3 py-4 text-center ring-1 ring-magenta/10">
-          <p class="font-display text-magenta text-xl font-bold">Local</p><p class="text-espresso/55 text-xs mt-1">arts & living</p>
+          <p class="font-display text-magenta text-xl font-bold">Local</p><p class="text-espresso/70 text-xs mt-1">arts & living</p>
         </div>
       </div>
     </div>
@@ -392,7 +399,7 @@ tailwind.config = {
         </div>
         <div class="rounded-[1.5rem] bg-magenta text-white p-6 flex flex-col justify-center shadow-xl" data-reveal>
           <p class="font-display text-3xl font-bold leading-tight">One stop.</p>
-          <p class="text-blush/90 mt-1.5 text-sm leading-relaxed">Coffee, a sweet treat, and a little something to take home — all under one cozy roof.</p>
+          <p class="text-white mt-1.5 text-sm leading-relaxed">Coffee, a sweet treat, and a little something to take home — all under one cozy roof.</p>
         </div>
       </div>
     </div>
@@ -419,27 +426,27 @@ tailwind.config = {
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
       <figure class="card rounded-2xl bg-white p-7 ring-1 ring-magenta/10 shadow-sm" data-reveal>
-        <div class="text-hot text-lg mb-3">★★★★★</div>
+        <div class="text-hot text-2xl mb-3">★★★★★</div>
         <blockquote class="text-espresso/80 leading-relaxed">"Great coffee and food. The staff were all very friendly and went above and beyond to make it a pleasant experience."</blockquote>
-        <figcaption class="mt-4 text-sm font-semibold text-espresso">Whitney P. <span class="font-normal text-espresso/45">· Google review</span></figcaption>
+        <figcaption class="mt-4 text-sm font-semibold text-espresso">Whitney P. <span class="font-normal text-espresso/60">· Google review</span></figcaption>
       </figure>
       <figure class="card rounded-2xl bg-white p-7 ring-1 ring-magenta/10 shadow-sm" data-reveal>
-        <div class="text-hot text-lg mb-3">★★★★★</div>
+        <div class="text-hot text-2xl mb-3">★★★★★</div>
         <blockquote class="text-espresso/80 leading-relaxed">"Coffee was delicious, as were the pastries… they have a cute little shop area to purchase anything from t-shirts to hand soap."</blockquote>
-        <figcaption class="mt-4 text-sm font-semibold text-espresso">Lindsay Blackmon <span class="font-normal text-espresso/45">· Google review</span></figcaption>
+        <figcaption class="mt-4 text-sm font-semibold text-espresso">Lindsay Blackmon <span class="font-normal text-espresso/60">· Google review</span></figcaption>
       </figure>
       <figure class="card rounded-2xl bg-magenta text-white p-7 shadow-lg" data-reveal>
-        <div class="text-blush text-lg mb-3">★★★★★</div>
+        <div class="text-white text-2xl mb-3">★★★★★</div>
         <blockquote class="leading-relaxed">"The environment was so cute &amp; welcoming. Our coffee was delicious, as well as the kolaches &amp; blueberry scone. 10/10 recommend this coffee shop!"</blockquote>
         <figcaption class="mt-4 text-sm font-semibold text-white">Verified Google reviewer</figcaption>
       </figure>
       <figure class="card rounded-2xl bg-white p-7 ring-1 ring-magenta/10 shadow-sm" data-reveal>
-        <div class="text-hot text-lg mb-3">★★★★★</div>
+        <div class="text-hot text-2xl mb-3">★★★★★</div>
         <blockquote class="text-espresso/80 leading-relaxed">"The ladies there are always accommodating. They get to know regulars well and have great recommendations when you want to try something new — and they're super supportive of local business, arts and living!"</blockquote>
         <figcaption class="mt-4 text-sm font-semibold text-espresso">Verified Google reviewer</figcaption>
       </figure>
       <figure class="card rounded-2xl bg-white p-7 ring-1 ring-magenta/10 shadow-sm" data-reveal>
-        <div class="text-hot text-lg mb-3">★★★★★</div>
+        <div class="text-hot text-2xl mb-3">★★★★★</div>
         <blockquote class="text-espresso/80 leading-relaxed">"The menu is awesome and I loved the Pumpkin Mocha. I enjoyed the setting and of course I loved the boutique — what girl doesn't love a little shopping while sipping an amazing coffee? I'll definitely be back!"</blockquote>
         <figcaption class="mt-4 text-sm font-semibold text-espresso">Verified Google reviewer</figcaption>
       </figure>
@@ -628,8 +635,8 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 (function(){
   const nav = document.getElementById('nav');
   const onScroll = () => {
-    if (window.scrollY > 40) nav.classList.add('bg-cream/90','backdrop-blur','shadow-sm');
-    else nav.classList.remove('bg-cream/90','backdrop-blur','shadow-sm');
+    if (window.scrollY > 40) nav.classList.add('bg-cream/90','backdrop-blur','shadow-sm','scrolled');
+    else nav.classList.remove('bg-cream/90','backdrop-blur','shadow-sm','scrolled');
   };
   onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
 })();
