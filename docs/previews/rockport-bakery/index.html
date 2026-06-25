@@ -115,6 +115,8 @@ tailwind.config = {
   [data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
 
   .scallop{ height:34px; width:100%; display:block; }
+  .stars{ display:inline-flex; gap:2px; }
+  .stars svg{ width:19px; height:19px; }
 
   @media (max-width:767px){
     .hero-photo{ background-position:center 30%; }
@@ -381,7 +383,13 @@ tailwind.config = {
       <div class="flex items-center gap-3 bg-white rounded-2xl px-5 py-3 shadow-sm self-start">
         <div class="font-display text-4xl font-semibold text-teal">4.0</div>
         <div>
-          <div class="text-gold text-lg leading-none">★★★★<span class="text-ink/25">★</span></div>
+          <div class="stars leading-none">
+            <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#E2D2B2"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          </div>
           <div class="text-ink/60 text-sm mt-0.5">238 Google reviews</div>
         </div>
       </div>
@@ -389,19 +397,37 @@ tailwind.config = {
 
     <div class="grid md:grid-cols-3 gap-6">
       <figure class="card bg-white rounded-3xl p-7 shadow-[0_24px_60px_-34px_rgba(11,79,83,.4)]" data-reveal>
-        <div class="text-gold text-lg mb-3">★★★★★</div>
+        <div class="stars mb-3">
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+        </div>
         <blockquote class="text-ink/80 leading-relaxed">"Absolutely amazing. The apple fritters are absolutely amazing — they're big enough for three people. Very nice people working here, very friendly and the food was absolutely fantastic."</blockquote>
         <figcaption class="mt-5 font-semibold text-teal">Dylan M. <span class="font-normal text-ink/50 text-sm">· Google review</span></figcaption>
       </figure>
 
       <figure class="card bg-white rounded-3xl p-7 shadow-[0_24px_60px_-34px_rgba(11,79,83,.4)]" data-reveal>
-        <div class="text-gold text-lg mb-3">★★★★<span class="text-ink/20">★</span></div>
+        <div class="stars mb-3">
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#E2D2B2"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+        </div>
         <blockquote class="text-ink/80 leading-relaxed">"Quirky bakery with a coastal-meets-vintage vibe. They offer a wide range of treats from donuts and cookies to cannolis. We were greeted right away, and the donuts were fresh and tasty. Worth a stop in Rockport — especially for the donuts."</blockquote>
         <figcaption class="mt-5 font-semibold text-teal">Alyssa M. <span class="font-normal text-ink/50 text-sm">· Google review</span></figcaption>
       </figure>
 
       <figure class="card bg-white rounded-3xl p-7 shadow-[0_24px_60px_-34px_rgba(11,79,83,.4)]" data-reveal>
-        <div class="text-gold text-lg mb-3">★★★★<span class="text-ink/20">★</span></div>
+        <div class="stars mb-3">
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#E2D2B2"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+        </div>
         <blockquote class="text-ink/80 leading-relaxed">"I was greeted right away with friendly service and told what the favorites were. I got their pigs in a blanket and cinnamon roll — all delicious."</blockquote>
         <figcaption class="mt-5 font-semibold text-teal">Elizabeth W. <span class="font-normal text-ink/50 text-sm">· Google review</span></figcaption>
       </figure>
