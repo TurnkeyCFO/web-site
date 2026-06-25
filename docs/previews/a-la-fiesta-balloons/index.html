@@ -152,6 +152,11 @@ tailwind.config = {
 <!-- ===================== HERO ===================== -->
 <section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden">
   <div class="absolute inset-0" style="background-image:url('assets/arch-vibrant.jpg');background-size:cover;background-position:center"></div>
+  <!-- Festive balloon-arch hero video (Higgsfield image-to-video from the real arch photo; loops behind scrim) -->
+  <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="auto" poster="assets/fiesta-poster.jpg" aria-hidden="true">
+    <source src="assets/fiesta-hero.webm" type="video/webm" />
+    <source src="assets/fiesta-hero.mp4" type="video/mp4" />
+  </video>
   <!-- scrim for legibility -->
   <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(27,12,41,.62) 0%,rgba(27,12,41,.34) 30%,rgba(27,12,41,.70) 74%,rgba(27,12,41,.93) 100%)"></div>
   <!-- floating-balloon field showpiece -->

@@ -127,6 +127,11 @@ tailwind.config = {
 <!-- ===================== HERO ===================== -->
 <section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden">
   <div class="hero-photo absolute inset-0" style="background-image:url('assets/photos/hero-sunflower.jpg')"></div>
+  <!-- Cinematic iced-coffee hero video (Higgsfield; loops behind scrim) -->
+  <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="auto" poster="assets/dg-poster.jpg" aria-hidden="true">
+    <source src="assets/dg-hero.webm" type="video/webm" />
+    <source src="assets/dg-hero.mp4" type="video/mp4" />
+  </video>
   <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(36,19,9,.62) 0%,rgba(36,19,9,.48) 32%,rgba(36,19,9,.82) 76%,rgba(36,19,9,.95) 100%)"></div>
   <canvas id="steam" class="absolute inset-0 w-full h-full pointer-events-none" style="mix-blend-mode:screen;opacity:.7"></canvas>
 
