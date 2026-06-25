@@ -29,7 +29,7 @@ tailwind.config = {
   theme: { extend: {
     colors: {
       aqua:'#2FB6BE', aquadeep:'#0E6E73', teal:'#0B4F53', seafoam:'#BFE7E4',
-      pink:'#F4A8B8', rose:'#B14A63', berry:'#7E2B43',
+      pink:'#F4A8B8', pinklt:'#F8C2CE', rose:'#B14A63', berry:'#7E2B43',
       caramel:'#C98A3C', gold:'#E0A857',
       cream:'#FBF4E9', sand:'#F3E7D2', ink:'#241F1E'
     },
@@ -71,8 +71,8 @@ tailwind.config = {
   /* hero */
   .hero-photo{ background-image:url('assets/hero-storefront.jpg'); background-size:cover; background-position:center 38%; }
   .hero-scrim{ background:
-      linear-gradient(180deg, rgba(11,79,83,.30) 0%, rgba(11,79,83,.18) 38%, rgba(11,79,83,.72) 100%),
-      linear-gradient(95deg, rgba(11,79,83,.74) 0%, rgba(11,79,83,.30) 46%, rgba(11,79,83,.05) 78%); }
+      linear-gradient(180deg, rgba(11,79,83,.34) 0%, rgba(11,79,83,.22) 34%, rgba(11,79,83,.82) 100%),
+      linear-gradient(95deg, rgba(11,79,83,.80) 0%, rgba(11,79,83,.40) 48%, rgba(11,79,83,.08) 80%); }
   #sugar{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:.9; }
 
   .btn{ display:inline-flex; align-items:center; gap:.5rem; font-weight:600; border-radius:999px;
@@ -82,8 +82,8 @@ tailwind.config = {
   .btn-primary::after{ content:''; position:absolute; inset:0; transform:translateX(-130%);
     background:linear-gradient(105deg,transparent,rgba(255,255,255,.45),transparent); transition:transform .9s; }
   .btn-primary:hover::after{ transform:translateX(130%); }
-  .btn-ghost{ background:rgba(251,244,233,.12); color:#FBF4E9; border:1.5px solid rgba(251,244,233,.5); backdrop-filter:blur(4px); }
-  .btn-ghost:hover{ background:rgba(251,244,233,.22); transform:translateY(-3px); }
+  .btn-ghost{ background:rgba(11,79,83,.45); color:#FBF4E9; border:1.5px solid rgba(251,244,233,.55); backdrop-filter:blur(4px); }
+  .btn-ghost:hover{ background:rgba(11,79,83,.62); transform:translateY(-3px); }
   .btn-teal{ background:#0E6E73; color:#FBF4E9; box-shadow:0 12px 30px -12px rgba(14,110,115,.7); }
   .btn-teal:hover{ transform:translateY(-3px); filter:brightness(1.07); }
 
@@ -128,8 +128,8 @@ tailwind.config = {
 <header class="fixed top-0 inset-x-0 z-50 nav-blur border-b border-aquadeep/10">
   <div class="max-w-7xl mx-auto px-5 md:px-8 h-[68px] flex items-center justify-between">
     <a href="#top" class="flex items-center gap-3 group">
-      <span class="inline-flex flex-col items-center justify-center rounded-lg bg-aqua px-2.5 py-1 shadow-sm">
-        <span class="wordmark text-pink text-[12px] md:text-[13px]">ROCKPORT</span>
+      <span class="inline-flex flex-col items-center justify-center rounded-lg bg-teal px-2.5 py-1 shadow-sm ring-1 ring-aqua/40">
+        <span class="wordmark text-pinklt text-[12px] md:text-[13px]">ROCKPORT</span>
         <span class="wordmark text-cream text-[15px] md:text-[17px] -mt-0.5">BAKERY</span>
       </span>
     </a>
@@ -153,14 +153,14 @@ tailwind.config = {
 
   <div class="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-8 pb-16 md:pb-24 pt-32">
     <div class="max-w-3xl">
-      <span class="chip bg-cream/15 text-cream border border-cream/30 mb-6">
+      <span class="chip text-cream border border-cream/30 mb-6" style="background:rgba(11,79,83,.55)">
         <span class="chip-dot"></span> Rockport &amp; Fulton, on the Texas coast
       </span>
       <h1 class="font-display text-cream font-semibold leading-[.96] text-[2.7rem] sm:text-6xl md:text-[5.4rem]" data-split>
         Donuts, kolaches &amp;<br class="hidden sm:block"> custom cakes —
         <span class="grad-text italic">baked fresh by the bay.</span>
       </h1>
-      <p class="mt-6 text-cream/90 text-lg md:text-xl max-w-xl leading-relaxed">
+      <p class="mt-6 text-cream text-lg md:text-xl max-w-xl leading-relaxed" style="text-shadow:0 1px 12px rgba(11,79,83,.55)">
         A little aqua bakery on Business 35 where the apple fritters are as big as your head,
         the kolaches come out warm, and the cakes are made for your big day. Open Wednesday through Sunday.
       </p>
@@ -188,7 +188,7 @@ tailwind.config = {
           <div class="text-cream/70 text-xs uppercase tracking-[.18em] mt-1">Reviews &amp; counting</div>
         </div>
         <div class="border-l border-cream/25 pl-9">
-          <div class="font-display text-cream text-3xl md:text-4xl font-semibold">6<span class="text-gold text-xl align-top">AM</span></div>
+          <div class="font-display text-cream text-3xl md:text-4xl font-semibold">6<span class="text-seafoam text-xl align-top">AM</span></div>
           <div class="text-cream/70 text-xs uppercase tracking-[.18em] mt-1">Fresh, Wed–Sun</div>
         </div>
       </div>
@@ -197,7 +197,7 @@ tailwind.config = {
 </section>
 
 <!-- ===================== MARQUEE ===================== -->
-<div class="bg-aquadeep py-4 marquee">
+<div class="bg-teal py-4 marquee">
   <div class="marquee-track text-cream font-display text-xl md:text-2xl">
     <span class="flex gap-12 items-center pr-12">
       <span>Apple Fritters</span><span class="text-gold">✦</span>
@@ -226,7 +226,7 @@ tailwind.config = {
 <section id="case" class="relative bg-cream py-20 md:py-28">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
     <div class="max-w-2xl mb-12 md:mb-16" data-reveal>
-      <span class="text-rose font-semibold tracking-[.2em] uppercase text-xs">Fresh out of the case</span>
+      <span class="text-berry font-semibold tracking-[.2em] uppercase text-xs">Fresh out of the case</span>
       <h2 class="font-display text-4xl md:text-6xl font-semibold text-teal mt-3 leading-[1.02]">
         Everything's <span class="grad-text-dark italic">made that morning.</span>
       </h2>
@@ -244,7 +244,7 @@ tailwind.config = {
           <img src="assets/apple-fritter.jpg" alt="Rockport Bakery apple fritters, glazed and fresh" class="w-full h-full object-cover" loading="lazy" />
         </div>
         <div class="sm:w-1/2 p-7 md:p-9 flex flex-col justify-center">
-          <span class="chip bg-caramel/15 text-caramel self-start mb-3">The signature</span>
+          <span class="chip bg-caramel/20 self-start mb-3" style="color:#6E4715">The signature</span>
           <h3 class="font-display text-3xl md:text-4xl font-semibold text-teal leading-tight">The Apple Fritter</h3>
           <p class="text-ink/70 mt-3 leading-relaxed">
             Golden, craggy, and glazed all the way through — big enough to share three ways
@@ -269,7 +269,7 @@ tailwind.config = {
           <h3 class="font-display text-2xl font-semibold">Kolaches &amp; pigs-in-a-blanket</h3>
           <p class="text-cream/75 mt-2 text-[15px]">Sausage &amp; cheese, jalapeño &amp; cheese, plain — plus pigs in a blanket and savory rolls.</p>
         </div>
-        <span class="text-gold text-sm font-semibold mt-4">Warm by 6 AM</span>
+        <span class="text-seafoam text-sm font-semibold mt-4">Warm by 6 AM</span>
       </article>
 
       <!-- breakfast tacos -->
@@ -288,7 +288,7 @@ tailwind.config = {
           <h3 class="font-display text-2xl font-semibold text-berry">A sweet tooth's corner</h3>
           <p class="text-ink/70 mt-2 text-[15px]">Cinnamon rolls, long johns, bear claws, cannoli, danishes, turnovers, cookies, scones, and pie by the slice.</p>
         </div>
-        <span class="text-rose text-sm font-semibold mt-4">Cash &amp; card welcome</span>
+        <span class="text-berry text-sm font-semibold mt-4">Cash &amp; card welcome</span>
       </article>
     </div>
   </div>
@@ -300,7 +300,7 @@ tailwind.config = {
   <div class="blob" style="width:420px;height:420px;background:radial-gradient(circle,#2FB6BE,transparent 62%);bottom:-160px;right:-110px;"></div>
   <div class="relative max-w-7xl mx-auto px-5 md:px-8 py-20 md:py-28 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
     <div data-reveal>
-      <span class="text-pink font-semibold tracking-[.2em] uppercase text-xs">For the big day</span>
+      <span class="text-pinklt font-semibold tracking-[.2em] uppercase text-xs">For the big day</span>
       <h2 class="font-display text-4xl md:text-6xl font-semibold mt-3 leading-[1.02]">
         Custom <span class="grad-text italic">wedding &amp; birthday</span> cakes.
       </h2>
@@ -349,7 +349,7 @@ tailwind.config = {
     </div>
 
     <div class="order-1 lg:order-2" data-reveal>
-      <span class="text-rose font-semibold tracking-[.2em] uppercase text-xs">Our corner of the coast</span>
+      <span class="text-berry font-semibold tracking-[.2em] uppercase text-xs">Our corner of the coast</span>
       <h2 class="font-display text-4xl md:text-6xl font-semibold text-teal mt-3 leading-[1.02]">
         Aqua walls, pink letters, <span class="grad-text-dark italic">and a fish tank in the back.</span>
       </h2>
@@ -375,7 +375,7 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-5 md:px-8">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12" data-reveal>
       <div>
-        <span class="text-rose font-semibold tracking-[.2em] uppercase text-xs">From the neighbors</span>
+        <span class="text-berry font-semibold tracking-[.2em] uppercase text-xs">From the neighbors</span>
         <h2 class="font-display text-4xl md:text-6xl font-semibold text-teal mt-3 leading-[1.02]">Loved on the bay.</h2>
       </div>
       <div class="flex items-center gap-3 bg-white rounded-2xl px-5 py-3 shadow-sm self-start">
@@ -413,7 +413,7 @@ tailwind.config = {
 <section id="visit" class="relative bg-cream py-20 md:py-28">
   <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
     <div data-reveal>
-      <span class="text-rose font-semibold tracking-[.2em] uppercase text-xs">Come see us</span>
+      <span class="text-berry font-semibold tracking-[.2em] uppercase text-xs">Come see us</span>
       <h2 class="font-display text-4xl md:text-6xl font-semibold text-teal mt-3 leading-[1.02]">
         On the corner of <span class="grad-text-dark italic">35 &amp; Broadway.</span>
       </h2>
@@ -485,8 +485,8 @@ tailwind.config = {
 <footer class="bg-teal text-cream/80 pt-16 pb-28 md:pb-12">
   <div class="max-w-7xl mx-auto px-5 md:px-8 grid md:grid-cols-3 gap-10">
     <div>
-      <span class="inline-flex flex-col items-center justify-center rounded-lg bg-aqua px-3 py-1.5 shadow-sm">
-        <span class="wordmark text-pink text-[13px]">ROCKPORT</span>
+      <span class="inline-flex flex-col items-center justify-center rounded-lg bg-aquadeep px-3 py-1.5 shadow-sm ring-1 ring-aqua/40">
+        <span class="wordmark text-pinklt text-[13px]">ROCKPORT</span>
         <span class="wordmark text-cream text-[17px] -mt-0.5">BAKERY</span>
       </span>
       <p class="mt-4 text-cream/70 text-[15px] max-w-xs">A little aqua bakery on the Texas coast — donuts, kolaches, and custom cakes, fresh Wednesday through Sunday.</p>
