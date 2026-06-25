@@ -59,6 +59,7 @@ tailwind.config = {
     background-size:220% auto; -webkit-background-clip:text; background-clip:text;
     color:transparent; -webkit-text-fill-color:transparent;
     animation:shimmer 6s linear infinite;
+    padding-bottom:.16em; margin-bottom:-.16em;
   }
   @keyframes shimmer{ to{ background-position:220% center; } }
   .reveal{ opacity:0; transform:translate3d(0,28px,0); }
@@ -126,7 +127,7 @@ tailwind.config = {
 <!-- ===================== HERO ===================== -->
 <section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden">
   <div class="hero-photo absolute inset-0" style="background-image:url('assets/photos/hero-sunflower.jpg')"></div>
-  <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(36,19,9,.55) 0%,rgba(36,19,9,.30) 32%,rgba(36,19,9,.72) 78%,rgba(36,19,9,.92) 100%)"></div>
+  <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(36,19,9,.62) 0%,rgba(36,19,9,.48) 32%,rgba(36,19,9,.82) 76%,rgba(36,19,9,.95) 100%)"></div>
   <canvas id="steam" class="absolute inset-0 w-full h-full pointer-events-none" style="mix-blend-mode:screen;opacity:.7"></canvas>
 
   <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pb-16 sm:pb-20 pt-32">
@@ -208,7 +209,7 @@ tailwind.config = {
     <div class="lg:col-span-6 order-1 lg:order-2">
       <div class="reveal relative">
         <div class="tilt ratio rounded-[1.6rem] shadow-2xl aspect-[4/5]" style="box-shadow:0 40px 80px -30px rgba(36,19,9,.5)">
-          <img src="assets/photos/interior.jpg" alt="Cozy leather-armchair seating inside Kyle's Daily Grind" loading="lazy" />
+          <img src="assets/photos/community.jpg" alt="Regulars and friends gathered together inside Kyle's Daily Grind" loading="lazy" />
         </div>
         <div class="absolute -bottom-6 -left-4 sm:-left-8 bg-cream rounded-2xl shadow-xl px-5 py-4 border border-sand/60 max-w-[230px]">
           <div class="flex items-center gap-1 text-caramel text-sm">★★★★★</div>
@@ -275,13 +276,6 @@ tailwind.config = {
           <div class="p-6">
             <h3 class="font-display font-600 text-[1.45rem]">Pull Up to the Drive-Thru</h3>
             <p class="text-cream/65 text-[14.5px] mt-2 leading-relaxed">Running late? Swing through on West Center Street and we'll have your usual ready to go.</p>
-          </div>
-        </article>
-        <article class="menu-card shrink-0 w-[78vw] sm:w-[360px] rounded-3xl overflow-hidden bg-cocoa/60 border border-white/8 lift">
-          <div class="ratio aspect-[5/4]"><img src="assets/photos/community.jpg" alt="A community group gathered inside Kyle's Daily Grind" loading="lazy"/></div>
-          <div class="p-6">
-            <h3 class="font-display font-600 text-[1.45rem]">Locally Loved</h3>
-            <p class="text-cream/65 text-[14.5px] mt-2 leading-relaxed">From youth groups to morning regulars, the whole town grinds here — come find your seat.</p>
           </div>
         </article>
         <!-- closing CTA card -->
