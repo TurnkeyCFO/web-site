@@ -20,6 +20,8 @@
 <meta property="og:description" content="Hill Country welding and metal fabrication done right. Fencing, gates, cattle guards, flatbeds, and custom steelwork built to outlast the weather." />
 <meta property="og:image" content="https://turnkeyweb.org/previews/tg-welding/assets/hero.jpg" />
 <meta name="theme-color" content="#16130F" />
+<link rel="icon" type="image/png" href="assets/tg-favicon.png" />
+<link rel="apple-touch-icon" href="assets/tg-favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -103,8 +105,8 @@ tailwind.config = {
 <!-- ================= NAV ================= -->
 <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 h-[68px] flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-3 group">
-      <span class="font-display font-700 text-forge bg-molten leading-none rounded-[5px] px-2.5 py-1.5 text-lg tracking-tight shadow-sm">TG</span>
+    <a href="#top" class="flex items-center gap-2.5 group">
+      <img src="assets/tg-logo-mark-white.png" alt="TG Welding logo" class="h-9 w-auto select-none transition-transform duration-300 group-hover:scale-105" />
       <span class="nav-word font-display uc font-600 text-[15px] text-bone hidden sm:block tracking-wide">TG Welding</span>
     </a>
     <nav class="hidden md:flex items-center gap-7 font-body text-[13.5px] font-500">
@@ -122,6 +124,7 @@ tailwind.config = {
 <section id="top" class="relative min-h-[100svh] flex items-end hero-photo grain">
   <div class="absolute inset-0 hero-scrim"></div>
   <canvas id="emberCanvas"></canvas>
+  <img src="assets/tg-logo-mark-white.png" alt="" aria-hidden="true" class="pointer-events-none select-none absolute z-[2] right-3 sm:right-10 top-24 sm:top-28 w-44 sm:w-72 lg:w-80 opacity-[0.06]" />
   <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pb-16 sm:pb-20 pt-32">
     <div class="flex items-center gap-3 mb-6" data-reveal>
       <span class="h-px w-10 bg-molten"></span>
@@ -131,7 +134,7 @@ tailwind.config = {
       Steel that holds<br><span class="heat">the line.</span>
     </h1>
     <p class="mt-7 max-w-xl text-bone/85 text-[17px] leading-relaxed font-400" data-reveal>
-      Ranch fencing, custom gates, cattle guards, flatbeds and structural metalwork, built by hand along the Hwy 29 corridor. If it is made of steel and it has to last out here, we build it right the first time.
+      Ranch fencing, custom gates, cattle guards, flatbeds, boat docks, container offices and one-off metal art, built by hand along the Hwy 29 corridor. If it is made of steel and it has to last out here, we build it right the first time.
     </p>
     <div class="mt-9 flex flex-wrap items-center gap-4" data-reveal>
       <a href="mailto:tim@tgweldingatx.com?subject=Quote%20request%20%E2%80%94%20TG%20Welding" class="btn-primary uc font-display font-600 tracking-wide text-forge bg-molten hover:bg-ember transition-colors rounded-[7px] px-7 py-4 text-[15px]">Start Your Project</a>
@@ -167,6 +170,9 @@ tailwind.config = {
       <span class="text-bone/80">Structural Welding</span><span class="text-molten">◆</span>
       <span class="text-bone/80">Custom Fabrication</span><span class="text-molten">◆</span>
       <span class="text-bone/80">On-Site Repairs</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Custom Metal Art</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Container Offices</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Boat Docks &amp; Lifts</span><span class="text-molten">◆</span>
       <!-- duplicate for seamless loop -->
       <span class="text-bone/80">Pipe &amp; Ranch Fencing</span><span class="text-molten">◆</span>
       <span class="text-bone/80">Custom Gates &amp; Entrances</span><span class="text-molten">◆</span>
@@ -176,6 +182,9 @@ tailwind.config = {
       <span class="text-bone/80">Structural Welding</span><span class="text-molten">◆</span>
       <span class="text-bone/80">Custom Fabrication</span><span class="text-molten">◆</span>
       <span class="text-bone/80">On-Site Repairs</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Custom Metal Art</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Container Offices</span><span class="text-molten">◆</span>
+      <span class="text-bone/80">Boat Docks &amp; Lifts</span><span class="text-molten">◆</span>
     </div>
   </div>
 </div>
@@ -214,7 +223,7 @@ tailwind.config = {
       </article>
       <!-- card 2 -->
       <article class="card group bg-white rounded-xl overflow-hidden border border-ink/8" data-reveal>
-        <div class="h-52 overflow-hidden"><img src="assets/structural.jpg" alt="Custom welded steel gate framework" class="gallery-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="h-52 overflow-hidden"><img src="assets/ig-ranch-entrance.jpg" alt="Custom ranch entrance and gateway built by TG Welding" class="gallery-img w-full h-full object-cover" loading="lazy"></div>
         <div class="p-6">
           <h3 class="font-display uc font-600 text-ink text-xl tracking-wide">Custom Gates &amp; Entrances</h3>
           <p class="mt-2 text-ink/65 text-[14.5px] leading-relaxed">Entry gates and ranch entrances cut and welded to your design, hung to swing true for years.</p>
@@ -238,15 +247,15 @@ tailwind.config = {
       </article>
       <!-- card 5 -->
       <article class="card group bg-white rounded-xl overflow-hidden border border-ink/8" data-reveal>
-        <div class="h-52 overflow-hidden"><img src="assets/sparks.jpg" alt="Welder fabricating a custom steel fire pit" class="gallery-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="h-52 overflow-hidden"><img src="assets/ig-metal-flag-art.jpg" alt="Custom welded We the People metal flag art by TG Welding" class="gallery-img w-full h-full object-cover" loading="lazy"></div>
         <div class="p-6">
-          <h3 class="font-display uc font-600 text-ink text-xl tracking-wide">Fire Pits &amp; Custom Pieces</h3>
-          <p class="mt-2 text-ink/65 text-[14.5px] leading-relaxed">Fire pits, smokers, brackets and one-off pieces. Bring the idea, we will figure out how to build it.</p>
+          <h3 class="font-display uc font-600 text-ink text-xl tracking-wide">Custom Metal Art &amp; Pieces</h3>
+          <p class="mt-2 text-ink/65 text-[14.5px] leading-relaxed">Metal flags, signs, fire pits and one-off art pieces. Bring the idea, we will figure out how to build it.</p>
         </div>
       </article>
       <!-- card 6 -->
       <article class="card group bg-white rounded-xl overflow-hidden border border-ink/8" data-reveal>
-        <div class="h-52 overflow-hidden"><img src="assets/weld-mig.jpg" alt="Production MIG welding in the shop" class="gallery-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="h-52 overflow-hidden"><img src="assets/ig-shop-furniture.jpg" alt="Production fabrication and metal builds at the TG Welding shop" class="gallery-img w-full h-full object-cover" loading="lazy"></div>
         <div class="p-6">
           <h3 class="font-display uc font-600 text-ink text-xl tracking-wide">Structural &amp; Production Welding</h3>
           <p class="mt-2 text-ink/65 text-[14.5px] leading-relaxed">Repeatable production runs and structural work, plus on-site repair welding when something has to get fixed today.</p>
@@ -315,18 +324,45 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ================= GALLERY ================= -->
+<!-- ================= INSTAGRAM GALLERY ================= -->
 <section class="bg-forge2 py-20 sm:py-24">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="flex items-end justify-between flex-wrap gap-4 mb-10">
-      <h2 class="font-display font-600 uppercase text-bone text-4xl sm:text-5xl tracking-tight" data-reveal>In the shop</h2>
-      <p class="text-bone/55 max-w-sm text-[15px]" data-reveal>Sparks, steel and the work that comes off the table.</p>
+    <div class="flex items-end justify-between flex-wrap gap-5 mb-10">
+      <div>
+        <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="font-display uc text-molten text-[13px] tracking-[.22em] mb-3 inline-block ul-grow" data-reveal>@tg.welding</a>
+        <h2 class="font-display font-600 uppercase text-bone text-4xl sm:text-5xl tracking-tight" data-reveal>Straight from the shop</h2>
+        <p class="text-bone/55 max-w-md text-[15px] mt-3" data-reveal>Real jobs off the table in Liberty Hill, posted as they roll out the door.</p>
+      </div>
+      <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="btn-primary uc font-display font-600 tracking-wide text-forge bg-molten hover:bg-ember transition-colors rounded-[7px] px-5 py-3 text-[13.5px] inline-flex items-center gap-2" data-reveal>
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14c-.3.76-.5 1.63-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.63.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zM18.41 4.15a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+        Follow on Instagram
+      </a>
     </div>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-      <div class="rounded-xl overflow-hidden h-44 sm:h-72" data-reveal><img src="assets/weld-blue.jpg" alt="MIG welding sparks up close" class="gallery-img w-full h-full object-cover"></div>
-      <div class="rounded-xl overflow-hidden h-44 sm:h-72" data-reveal><img src="assets/grind.jpg" alt="Angle grinding steel, sparks flying" class="gallery-img w-full h-full object-cover"></div>
-      <div class="rounded-xl overflow-hidden h-44 sm:h-72" data-reveal><img src="assets/structural.jpg" alt="Welding a structural steel frame" class="gallery-img w-full h-full object-cover"></div>
-      <div class="rounded-xl overflow-hidden h-44 sm:h-72" data-reveal><img src="assets/beams.jpg" alt="Welder working along steel beams" class="gallery-img w-full h-full object-cover"></div>
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+      <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="group relative rounded-xl overflow-hidden block aspect-square" data-reveal>
+        <img src="assets/ig-metal-flag-art.jpg" alt="Custom welded metal flag art on a wood wall" class="gallery-img w-full h-full object-cover">
+        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">Custom Metal Art</span>
+      </a>
+      <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="group relative rounded-xl overflow-hidden block aspect-square" data-reveal>
+        <img src="assets/ig-container-office.jpg" alt="Shipping container converted into an office by TG Welding" class="gallery-img w-full h-full object-cover">
+        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">Container Offices</span>
+      </a>
+      <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="group relative rounded-xl overflow-hidden block aspect-square" data-reveal>
+        <img src="assets/ig-boat-dock.jpg" alt="Custom boat dock and lift fabricated by TG Welding" class="gallery-img w-full h-full object-cover">
+        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">Boat Docks &amp; Lifts</span>
+      </a>
+      <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="group relative rounded-xl overflow-hidden block aspect-square" data-reveal>
+        <img src="assets/ig-shop-furniture.jpg" alt="Fabricated metal furniture and builds at the TG Welding shop" class="gallery-img w-full h-full object-cover">
+        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">Fabrication &amp; Builds</span>
+      </a>
+      <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="group relative rounded-xl overflow-hidden block aspect-square" data-reveal>
+        <img src="assets/ig-ranch-entrance.jpg" alt="Ranch entrance and driveway gateway built by TG Welding" class="gallery-img w-full h-full object-cover">
+        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">Ranch Entrances</span>
+      </a>
+      <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="group relative rounded-xl overflow-hidden block aspect-square" data-reveal>
+        <img src="assets/ig-pond-build.jpg" alt="On-property metal work by TG Welding in the Texas Hill Country" class="gallery-img w-full h-full object-cover">
+        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">On the Property</span>
+      </a>
     </div>
   </div>
 </section>
@@ -389,6 +425,7 @@ tailwind.config = {
             <div class="font-display uc text-molten text-[12px] tracking-[.2em] mb-2">Get a Quote</div>
             <a href="mailto:tim@tgweldingatx.com?subject=Quote%20request%20%E2%80%94%20TG%20Welding" class="ul-grow text-bone text-[15px] break-all">tim@tgweldingatx.com</a>
             <p class="text-bone/55 text-[13px] mt-2">Send the details and we will get you a number.</p>
+            <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="ul-grow inline-flex items-center gap-2 mt-3 text-bone/80 text-[14px]"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.77.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14c-.3.76-.5 1.63-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.63.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zM18.41 4.15a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>@tg.welding</a>
           </div>
         </div>
       </div>
@@ -408,7 +445,7 @@ tailwind.config = {
   <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(22,19,15,.86),rgba(22,19,15,.94))"></div>
   <canvas id="emberCanvas2" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
   <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 py-24 sm:py-32 text-center">
-    <span class="inline-flex font-display font-700 text-forge bg-molten rounded-[6px] px-3 py-2 text-xl tracking-tight mb-7">TG</span>
+    <img src="assets/tg-logo-mark-white.png" alt="TG Welding" class="inline-block h-16 sm:h-20 w-auto mb-7 select-none" />
     <h2 class="font-display font-700 uppercase text-bone text-[8.5vw] sm:text-6xl leading-[0.98] tracking-tight" data-reveal>
       Got a project?<br><span class="heat">Let's build it.</span>
     </h2>
@@ -427,8 +464,8 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="grid sm:grid-cols-3 gap-10">
       <div>
-        <div class="flex items-center gap-3 mb-4">
-          <span class="font-display font-700 text-forge bg-molten leading-none rounded-[5px] px-2.5 py-1.5 text-lg">TG</span>
+        <div class="flex items-center gap-2.5 mb-4">
+          <img src="assets/tg-logo-mark-white.png" alt="TG Welding logo" class="h-10 w-auto select-none" />
           <span class="font-display uc font-600 text-[15px] text-bone tracking-wide">TG Welding</span>
         </div>
         <p class="text-[14px] leading-relaxed text-bone/55 max-w-xs">Custom metal fabrication, ranch fencing and welding in Liberty Hill, Texas. Built by hand, built to last.</p>
@@ -439,7 +476,8 @@ tailwind.config = {
           <li>Pipe &amp; Ranch Fencing</li>
           <li>Custom Gates &amp; Entrances</li>
           <li>Cattle Guards &amp; Flatbeds</li>
-          <li>Fire Pits &amp; Custom Pieces</li>
+          <li>Custom Metal Art &amp; Signs</li>
+          <li>Container Offices &amp; Boat Docks</li>
           <li>Structural &amp; Production Welding</li>
           <li>Water Gaps &amp; On-Site Repairs</li>
         </ul>
@@ -448,6 +486,7 @@ tailwind.config = {
         <div class="font-display uc text-molten text-[12px] tracking-[.2em] mb-4">Find Us</div>
         <p class="text-[14px] text-bone/60 leading-relaxed">15730 W. Hwy 29<br>Liberty Hill, TX 78642</p>
         <a href="mailto:tim@tgweldingatx.com?subject=Quote%20request%20%E2%80%94%20TG%20Welding" class="ul-grow inline-block mt-3 text-[14px] text-bone/80">tim@tgweldingatx.com</a>
+        <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="ul-grow inline-flex items-center gap-2 mt-2 text-[14px] text-bone/80"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.77.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14c-.3.76-.5 1.63-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.63.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zM18.41 4.15a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>@tg.welding</a>
       </div>
     </div>
     <div class="mt-12 pt-6 border-t border-white/8 flex flex-wrap items-center justify-between gap-3 text-[12.5px] text-bone/40">
@@ -474,6 +513,7 @@ tailwind.config = {
   "url": "https://turnkeyweb.org/previews/tg-welding/",
   "email": "tim@tgweldingatx.com",
   "founder": "Tim Giebelhaus",
+  "sameAs": ["https://www.instagram.com/tg.welding/"],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "15730 W. Hwy 29",
@@ -484,7 +524,7 @@ tailwind.config = {
   },
   "areaServed": ["Liberty Hill TX","Bertram TX","Georgetown TX","Leander TX","Cedar Park TX","Burnet TX","Marble Falls TX","Austin TX"],
   "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "5", "bestRating": "5" },
-  "knowsAbout": ["welding","metal fabrication","ranch fencing","custom gates","cattle guards","water gaps","truck flatbeds"]
+  "knowsAbout": ["welding","metal fabrication","ranch fencing","custom gates","cattle guards","water gaps","truck flatbeds","custom metal art","shipping container offices","boat docks and lifts","structural welding"]
 }
 </script>
 
