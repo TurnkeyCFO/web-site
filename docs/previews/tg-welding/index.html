@@ -50,6 +50,7 @@ tailwind.config = {
 </script>
 <style>
   html { scroll-behavior: smooth; }
+  section[id], [id] { scroll-margin-top: 78px; }
   body { background:#F4EEE6; color:#1C1813; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
   .font-display { font-family:'Oswald',sans-serif; }
   .uc { text-transform:uppercase; letter-spacing:.04em; }
@@ -341,27 +342,27 @@ tailwind.config = {
     <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
       <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="group relative rounded-xl overflow-hidden block aspect-square" data-reveal>
         <img src="assets/ig-metal-flag-art.jpg" alt="Custom welded metal flag art on a wood wall" class="gallery-img w-full h-full object-cover">
-        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">Custom Metal Art</span>
+        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/80 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">Custom Metal Art</span>
       </a>
       <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="group relative rounded-xl overflow-hidden block aspect-square" data-reveal>
         <img src="assets/ig-container-office.jpg" alt="Shipping container converted into an office by TG Welding" class="gallery-img w-full h-full object-cover">
-        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">Container Offices</span>
+        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/80 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">Container Offices</span>
       </a>
       <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="group relative rounded-xl overflow-hidden block aspect-square" data-reveal>
         <img src="assets/ig-boat-dock.jpg" alt="Custom boat dock and lift fabricated by TG Welding" class="gallery-img w-full h-full object-cover">
-        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">Boat Docks &amp; Lifts</span>
+        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/80 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">Boat Docks &amp; Lifts</span>
       </a>
       <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="group relative rounded-xl overflow-hidden block aspect-square" data-reveal>
         <img src="assets/ig-shop-furniture.jpg" alt="Fabricated metal furniture and builds at the TG Welding shop" class="gallery-img w-full h-full object-cover">
-        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">Fabrication &amp; Builds</span>
+        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/80 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">Fabrication &amp; Builds</span>
       </a>
       <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="group relative rounded-xl overflow-hidden block aspect-square" data-reveal>
         <img src="assets/ig-ranch-entrance.jpg" alt="Ranch entrance and driveway gateway built by TG Welding" class="gallery-img w-full h-full object-cover">
-        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">Ranch Entrances</span>
+        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/80 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">Ranch Entrances</span>
       </a>
       <a href="https://www.instagram.com/tg.welding/" target="_blank" rel="noopener" class="group relative rounded-xl overflow-hidden block aspect-square" data-reveal>
         <img src="assets/ig-pond-build.jpg" alt="On-property metal work by TG Welding in the Texas Hill Country" class="gallery-img w-full h-full object-cover">
-        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">On the Property</span>
+        <span class="absolute inset-x-0 bottom-0 p-3.5 text-bone text-[12.5px] font-display uc tracking-wide bg-gradient-to-t from-black/80 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">On the Property</span>
       </a>
     </div>
   </div>
@@ -531,23 +532,16 @@ tailwind.config = {
 <!-- ================= LIBS ================= -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-/* ---- Lenis smooth scroll ---- */
-let lenis;
-try {
-  lenis = new Lenis({ duration:1.15, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)) });
-  function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
-  if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
-} catch(e){}
+/* ---- native scroll (immediate, no smooth-scroll hijack) + anchor jumps ---- */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', e=>{
     const id=a.getAttribute('href'); if(id.length<2) return;
     const el=document.querySelector(id); if(!el) return;
     e.preventDefault();
-    if(lenis){ lenis.scrollTo(el,{offset:-70}); } else { el.scrollIntoView({behavior:'smooth'}); }
+    el.scrollIntoView({behavior:'smooth', block:'start'});
   });
 });
 
