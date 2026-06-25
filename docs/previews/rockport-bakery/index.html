@@ -128,9 +128,17 @@ tailwind.config = {
 
 <!-- ===================== BRAND INTRO (cinematic preloader, plays once) ===================== -->
 <style>
-  #tk-intro{position:fixed;inset:0;z-index:99999;background:#FBF6EF;display:flex;align-items:center;justify-content:center;opacity:1;transition:opacity .6s ease}
+  #tk-intro{position:fixed;inset:0;z-index:99999;background:#0C2E30;display:flex;align-items:center;justify-content:center;opacity:1;transition:opacity .6s ease}
   #tk-intro.tk-done{opacity:0}
   #tk-intro video{width:100%;height:100%;object-fit:contain}
+  #tk-intro .tk-od{position:absolute;inset:0;pointer-events:none;background:radial-gradient(125% 95% at 50% 84%,rgba(0,0,0,.68),rgba(0,0,0,.22) 50%,rgba(0,0,0,0) 78%)}
+  #tk-intro .tk-ot{position:absolute;left:0;right:0;bottom:10%;padding:0 6vw;text-align:center;color:#fff;pointer-events:none}
+  #tk-intro .tk-ok{font:600 clamp(10px,1.3vw,13px)/1 system-ui,sans-serif;letter-spacing:.34em;text-transform:uppercase;color:#2FB6BE;opacity:0;animation:tk-up .7s .25s forwards}
+  #tk-intro .tk-on{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(30px,6.6vw,78px);line-height:.96;margin:.16em 0 .05em;text-shadow:0 6px 34px rgba(0,0,0,.6);opacity:0;animation:tk-up .8s .45s forwards}
+  #tk-intro .tk-orule{height:2px;width:0;background:#2FB6BE;margin:.42em auto .55em;border-radius:2px;animation:tk-rule .7s .95s forwards}
+  #tk-intro .tk-otag{font:500 clamp(12px,1.7vw,18px)/1.35 'Fraunces',serif;color:rgba(255,255,255,.92);text-shadow:0 2px 18px rgba(0,0,0,.55);opacity:0;animation:tk-up .8s 1.1s forwards}
+  @keyframes tk-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  @keyframes tk-rule{from{width:0}to{width:90px}}
   #tk-skip{position:absolute;bottom:18px;right:22px;font:600 12px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#2FB6BE;background:transparent;border:0;cursor:pointer;opacity:.7}
   @media (prefers-reduced-motion:reduce){#tk-intro{display:none}}
 </style>
@@ -139,6 +147,13 @@ tailwind.config = {
     <source src="assets/intro.webm" type="video/webm" />
     <source src="assets/intro.mp4" type="video/mp4" />
   </video>
+  <div class="tk-od"></div>
+  <div class="tk-ot">
+    <div class="tk-ok">Rockport, Texas</div>
+    <div class="tk-on">Rockport Bakery</div>
+    <div class="tk-orule"></div>
+    <div class="tk-otag">Fresh-baked on the coast.</div>
+  </div>
   <button id="tk-skip" aria-label="Skip intro">Skip</button>
 </div>
 <script>
