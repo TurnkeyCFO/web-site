@@ -158,6 +158,29 @@
 </head>
 <body class="antialiased">
 
+<!-- ===================== BRAND INTRO (cinematic preloader, plays once) ===================== -->
+<style>
+  #tk-intro{position:fixed;inset:0;z-index:99999;background:#14100B;display:flex;align-items:center;justify-content:center;opacity:1;transition:opacity .6s ease}
+  #tk-intro.tk-done{opacity:0}
+  #tk-intro video{width:100%;height:100%;object-fit:cover}
+  #tk-skip{position:absolute;bottom:18px;right:22px;font:600 12px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#d8c39a;background:transparent;border:0;cursor:pointer;opacity:.7}
+  @media (prefers-reduced-motion:reduce){#tk-intro{display:none}}
+</style>
+<div id="tk-intro">
+  <video id="tk-introv" autoplay muted playsinline preload="auto" poster="assets/intro-poster.jpg">
+    <source src="assets/intro.webm" type="video/webm" />
+    <source src="assets/intro.mp4" type="video/mp4" />
+  </video>
+  <button id="tk-skip" aria-label="Skip intro">Skip</button>
+</div>
+<script>
+(function(){var el=document.getElementById('tk-intro');if(!el)return;var v=document.getElementById('tk-introv');var done=false;
+function end(){if(done)return;done=true;el.classList.add('tk-done');setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},700);}
+v.addEventListener('ended',end);v.addEventListener('error',end);var p=v.play();if(p&&p.catch)p.catch(end);
+var sk=document.getElementById('tk-skip');if(sk)sk.addEventListener('click',end);
+setTimeout(end,6000);})();
+</script>
+
 <!-- ░░ NAV ░░ -->
 <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -198,11 +221,6 @@
   <img src="assets/klt-poster.jpg"
        alt="Warm, treasure-filled interior of the Kyle Library Thrift Shop in Kyle, Texas"
        class="absolute inset-0 w-full h-full object-cover" />
-  <!-- Cozy library-thrift ambiance hero video (Higgsfield; loops behind scrim) -->
-  <video class="absolute inset-0 w-full h-full object-cover z-[1]" autoplay muted loop playsinline preload="auto" poster="assets/klt-poster.jpg" aria-hidden="true">
-    <source src="assets/klt-hero.webm" type="video/webm" />
-    <source src="assets/klt-hero.mp4" type="video/mp4" />
-  </video>
   <div class="absolute inset-0 hero-scrim z-[2]"></div>
 
   <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pb-14 sm:pb-20 pt-36">
