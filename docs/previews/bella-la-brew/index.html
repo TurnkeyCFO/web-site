@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--
+  Bella la Brew Coffee Bar — Rockport, TX  (DRAFT prospect build for Turnkey Web)
+  Art direction: boutique coffee-bar. Brand magenta #E60094 (sampled from real logo) + warm cream + espresso plum.
+  Display: Playfair Display · Script accent: Caveat · Body: Inter  (deliberately divergent from kyles-daily-grind / Fraunces+DM Sans)
+  Showpiece: Three.js pink "aroma" bokeh field over a real GBP photo, with static poster fallback.
+  All facts (phone, address, hours, menu, reviews, photos) from bellalabrew.com + Google Business Profile. No fabrication.
+-->
+<title>Bella la Brew | Coffee Bar &amp; Unique Boutique in Rockport, TX</title>
+<meta name="description" content="Bella la Brew is Rockport's comfy coffee bar &amp; unique boutique on Hwy 35 N — locally roasted coffee, specialty frappes, teas, light eats, sweet treats, and a little shopping. Eat. Drink. Relax. Since 2014." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/bella-la-brew/" />
+<meta property="og:type" content="business.business" />
+<meta property="og:title" content="Bella la Brew — Coffee Bar &amp; Unique Boutique, Rockport TX" />
+<meta property="og:description" content="Locally roasted coffee, specialty frappes, teas &amp; sweet treats with a unique boutique. Eat. Drink. Relax. Since 2014." />
+<meta property="og:image" content="https://turnkeyweb.org/previews/bella-la-brew/assets/hero-latte.jpg" />
+<meta name="theme-color" content="#E60094" />
+<link rel="icon" href="assets/logo.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Caveat:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        magenta: '#E60094',
+        hot:     '#FF2DAE',
+        blush:   '#F8C9E4',
+        petal:   '#FBE7F2',
+        cream:   '#FCF5F0',
+        sand:    '#F6E9DD',
+        latte:   '#C98A5E',
+        espresso:'#2A1620',
+        plum:    '#190810',
+      },
+      fontFamily: {
+        display: ['"Playfair Display"', 'serif'],
+        script:  ['"Caveat"', 'cursive'],
+        sans:    ['Inter', 'system-ui', 'sans-serif'],
+      },
+    },
+  },
+};
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+
+<style>
+  :root { --nav-h: 76px; }
+  * { -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: auto; scroll-padding-top: var(--nav-h); }
+  body { background: #FCF5F0; color: #2A1620; font-family: Inter, sans-serif; overflow-x: hidden; }
+
+  ::selection { background: #E60094; color: #fff; }
+
+  .font-display { font-family: "Playfair Display", serif; }
+  .font-script  { font-family: "Caveat", cursive; }
+
+  /* Animated shimmer on key headers (brand-tinted, min-lightness floor for AA) */
+  .grad-text {
+    background: linear-gradient(100deg, #E60094 0%, #FF55BE 28%, #C20A7C 52%, #FF55BE 76%, #E60094 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: shimmer 9s linear infinite;
+  }
+  @keyframes shimmer { from { background-position: 0% 50%; } to { background-position: 220% 50%; } }
+
+  /* Ambient blobs */
+  .ambient { position:absolute; border-radius:50%; filter:blur(78px); opacity:.5; pointer-events:none; will-change:transform; z-index:0; }
+  .blob-a { width:480px; height:480px; background:radial-gradient(circle,#FF2DAE,transparent 62%); animation:drift1 24s ease-in-out infinite; }
+  .blob-b { width:560px; height:560px; background:radial-gradient(circle,#F8C9E4,transparent 64%); animation:drift2 28s ease-in-out infinite; }
+  @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(46px,-34px) scale(1.08);} }
+  @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-40px,30px) scale(1.06);} }
+
+  /* Reveals — GPU only */
+  [data-reveal] { opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  [data-reveal].in { opacity:1; transform:none; }
+  [data-clip] { clip-path: inset(0 0 100% 0); will-change:clip-path; }
+  [data-clip].in { clip-path: inset(0 0 0% 0); transition: clip-path 1.3s cubic-bezier(.16,.84,.34,1); }
+
+  /* Marquee */
+  .marquee { overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); }
+  .marquee-track { display:flex; gap:2.6rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state:paused; }
+  @keyframes scrollX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* Buttons */
+  .btn { position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:.55rem; font-weight:600; letter-spacing:.01em; transition:transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s, filter .35s; }
+  .btn:hover { transform:translateY(-3px); }
+  .btn-primary { background:#E60094; color:#fff; box-shadow:0 14px 34px -12px rgba(230,0,148,.6); }
+  .btn-primary:hover { filter:brightness(1.05); box-shadow:0 20px 44px -12px rgba(230,0,148,.7); }
+  .btn-primary::after { content:""; position:absolute; inset:0; background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.42) 50%,transparent 65%); transform:translateX(-130%); transition:transform .9s cubic-bezier(.2,.7,.3,1); }
+  .btn-primary:hover::after { transform:translateX(130%); }
+  .btn-ghost { border:1.5px solid rgba(255,255,255,.6); color:#fff; backdrop-filter:blur(4px); }
+  .btn-ghost:hover { border-color:#fff; background:rgba(255,255,255,.12); }
+  .btn-dark { border:1.5px solid rgba(42,22,32,.28); color:#2A1620; }
+  .btn-dark:hover { border-color:#E60094; color:#E60094; }
+
+  /* Cards */
+  .card { position:relative; transition:transform .55s cubic-bezier(.2,.7,.3,1), box-shadow .55s; }
+  .card::before { content:""; position:absolute; top:0; left:0; height:3px; width:0%; background:linear-gradient(90deg,#E60094,#FF55BE); transition:width .6s cubic-bezier(.2,.7,.3,1); border-radius:3px; }
+  .card:hover { transform:translateY(-7px); box-shadow:0 28px 60px -28px rgba(25,8,16,.4); }
+  .card:hover::before { width:100%; }
+
+  .chip { display:inline-flex; align-items:center; gap:.5rem; }
+  .chip-dot { width:7px; height:7px; border-radius:50%; background:#E60094; animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:.45; transform:scale(.8);} }
+
+  .ul-grow { position:relative; }
+  .ul-grow::after { content:""; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:linear-gradient(90deg,#E60094,#FF55BE); transition:width .45s cubic-bezier(.2,.7,.3,1); }
+  .ul-grow:hover::after { width:100%; }
+
+  .hero-photo { filter:saturate(1.04) contrast(1.03); }
+  #aroma { position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; }
+  .grain::after { content:""; position:absolute; inset:0; background-image:radial-gradient(rgba(25,8,16,.5) 1px, transparent 1px); background-size:4px 4px; opacity:.05; mix-blend-mode:multiply; pointer-events:none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .grad-text { animation:none; } .marquee-track { animation:none; } .ambient { animation:none; }
+  }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ============================== NAV ============================== -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex items-center justify-between h-[var(--nav-h)]">
+      <a href="#top" class="flex items-center gap-2.5">
+        <span class="inline-flex items-center rounded-xl bg-white/95 ring-1 ring-magenta/15 px-2.5 py-1.5 shadow-sm">
+          <img src="assets/logo.png" alt="Bella la Brew — Coffee Bar &amp; Unique Boutique" class="h-7 w-auto" />
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-espresso/80">
+        <a href="#story" class="ul-grow hover:text-espresso">Our Story</a>
+        <a href="#menu" class="ul-grow hover:text-espresso">Menu</a>
+        <a href="#boutique" class="ul-grow hover:text-espresso">Boutique</a>
+        <a href="#reviews" class="ul-grow hover:text-espresso">Reviews</a>
+        <a href="#visit" class="ul-grow hover:text-espresso">Visit</a>
+      </nav>
+      <a href="tel:+13612051833" class="btn btn-primary rounded-full px-5 py-2.5 text-sm">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="hidden sm:inline">(361) 205-1833</span><span class="sm:hidden">Call</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================== HERO ============================== -->
+<section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden grain bg-plum">
+  <!-- static poster (real photo) — always present so screenshots/low-power see a complete hero -->
+  <img src="assets/hero-latte.jpg" alt="An iced latte from Bella la Brew on a cool mint table in Rockport, Texas" class="hero-photo absolute inset-0 w-full h-full object-cover z-0" />
+  <!-- scrims for AA legibility over the photo -->
+  <div class="absolute inset-0 z-[1] bg-gradient-to-t from-plum/92 via-plum/55 to-plum/35"></div>
+  <div class="absolute inset-0 z-[1] bg-gradient-to-r from-plum/70 via-transparent to-transparent"></div>
+  <!-- WebGL aroma bokeh (lazy, behind type, above scrim) -->
+  <canvas id="aroma"></canvas>
+
+  <div class="relative z-10 mx-auto max-w-7xl w-full px-5 sm:px-6 pb-16 sm:pb-20 pt-32">
+    <p class="font-script text-hot text-3xl sm:text-4xl leading-none mb-3" data-reveal>Eat. Drink. Relax.</p>
+    <h1 class="font-display font-black text-white leading-[0.96] tracking-tight text-[14vw] sm:text-7xl lg:text-[5.6rem] max-w-4xl" data-reveal>
+      Rockport's comfy little <span class="grad-text">coffee bar</span><br class="hidden sm:block"/> &amp; unique boutique.
+    </h1>
+    <p class="mt-6 text-blush/95 text-lg sm:text-xl max-w-xl leading-relaxed" data-reveal>
+      Locally roasted coffee, specialty frappes, teas &amp; sweet treats — plus a little shopping. Nestled in the heart of Rockport since 2014.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center gap-3.5" data-reveal>
+      <a href="#menu" class="btn btn-primary rounded-full px-7 py-3.5 text-[15px]">See the Menu
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="tel:+13612051833" class="btn btn-ghost rounded-full px-7 py-3.5 text-[15px]">Call &amp; Order Ahead</a>
+    </div>
+
+    <!-- hero stat strip -->
+    <div class="mt-12 flex flex-wrap items-center gap-x-9 gap-y-4" data-reveal>
+      <div class="flex items-center gap-2.5">
+        <span class="text-hot text-xl">★★★★★</span>
+        <span class="text-white/90 text-sm"><b class="text-white" data-count="4.8" data-dec="1">0</b> on Google · <b class="text-white" data-count="192" data-suffix="+">0</b> reviews</span>
+      </div>
+      <div class="hidden sm:block h-8 w-px bg-white/20"></div>
+      <div class="text-white/90 text-sm"><b class="text-white font-display text-2xl mr-1">10</b>+ years on Hwy 35 N</div>
+      <div class="hidden sm:block h-8 w-px bg-white/20"></div>
+      <div class="text-white/90 text-sm">Open <b class="text-white">7 days</b> a week</div>
+    </div>
+  </div>
+
+  <!-- scroll cue -->
+  <div class="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-1.5 text-white/60">
+    <span class="text-[11px] tracking-[0.25em] uppercase">Scroll</span>
+    <span class="w-px h-7 bg-gradient-to-b from-white/60 to-transparent"></span>
+  </div>
+</section>
+
+<!-- ============================== MARQUEE ============================== -->
+<div class="bg-magenta py-3.5 sm:py-4 marquee select-none">
+  <div class="marquee-track items-center text-white">
+    <!-- duplicated inline for seamless loop -->
+    <span class="flex items-center gap-2.6">
+      <span class="font-display italic text-lg sm:text-2xl px-1">Specialty Coffees</span><span class="text-blush">✦</span>
+      <span class="text-lg sm:text-2xl px-1">Teas &amp; Sweets</span><span class="text-blush">✦</span>
+      <span class="font-display italic text-lg sm:text-2xl px-1">Unique Boutique</span><span class="text-blush">✦</span>
+      <span class="text-lg sm:text-2xl px-1">Locally Roasted</span><span class="text-blush">✦</span>
+      <span class="font-display italic text-lg sm:text-2xl px-1">Light Eats</span><span class="text-blush">✦</span>
+      <span class="text-lg sm:text-2xl px-1">Curbside &amp; Order Ahead</span><span class="text-blush">✦</span>
+    </span>
+    <span class="flex items-center gap-2.6" aria-hidden="true">
+      <span class="font-display italic text-lg sm:text-2xl px-1">Specialty Coffees</span><span class="text-blush">✦</span>
+      <span class="text-lg sm:text-2xl px-1">Teas &amp; Sweets</span><span class="text-blush">✦</span>
+      <span class="font-display italic text-lg sm:text-2xl px-1">Unique Boutique</span><span class="text-blush">✦</span>
+      <span class="text-lg sm:text-2xl px-1">Locally Roasted</span><span class="text-blush">✦</span>
+      <span class="font-display italic text-lg sm:text-2xl px-1">Light Eats</span><span class="text-blush">✦</span>
+      <span class="text-lg sm:text-2xl px-1">Curbside &amp; Order Ahead</span><span class="text-blush">✦</span>
+    </span>
+  </div>
+</div>
+
+<!-- ============================== STORY ============================== -->
+<section id="story" class="relative py-24 sm:py-32 bg-cream overflow-hidden">
+  <span class="ambient blob-b" style="top:-160px; left:-180px;"></span>
+  <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class="lg:col-span-6 order-2 lg:order-1">
+      <p class="font-script text-magenta text-3xl mb-2" data-reveal>Hey there, neighbor</p>
+      <h2 class="font-display font-extrabold text-espresso text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.04] mb-6" data-reveal>
+        A cozy spot to <span class="italic">slow down</span> in the heart of Rockport.
+      </h2>
+      <div class="space-y-5 text-espresso/75 text-lg leading-relaxed" data-reveal>
+        <p>Bella la Brew has been nestled in the heart of the Rockport, TX area since 2014. This cozy little establishment is built on one simple passion — giving you a warm spot to relax and enjoy the company of others over a great cup of joe or a tasty treat.</p>
+        <p>We pour locally roasted, single-origin coffee, whip up frappes you can't get anywhere else, and stock the cases with fresh light eats and sweet treats. Then we wrapped a unique boutique around it all — so you can sip and shop in one stop.</p>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-3" data-reveal>
+        <span class="chip rounded-full bg-petal text-magenta text-sm font-semibold px-4 py-2"><span class="chip-dot"></span>Locally roasted</span>
+        <span class="chip rounded-full bg-petal text-magenta text-sm font-semibold px-4 py-2"><span class="chip-dot"></span>Single origin</span>
+        <span class="chip rounded-full bg-petal text-magenta text-sm font-semibold px-4 py-2"><span class="chip-dot"></span>Made fresh daily</span>
+      </div>
+    </div>
+    <div class="lg:col-span-6 order-1 lg:order-2">
+      <div class="relative">
+        <div class="overflow-hidden rounded-[1.75rem] shadow-[0_40px_80px_-40px_rgba(25,8,16,.5)]" data-clip>
+          <img src="assets/barista.jpg" alt="A Bella la Brew barista named Rebekah serving a fresh latte in a handmade ceramic mug" class="w-full h-[clamp(360px,52vh,560px)] object-cover" />
+        </div>
+        <div class="absolute -bottom-6 -left-4 sm:-left-6 bg-white rounded-2xl shadow-xl px-5 py-4 ring-1 ring-magenta/10" data-reveal>
+          <p class="font-display text-3xl font-bold text-magenta leading-none">Since '14</p>
+          <p class="text-espresso/60 text-xs mt-1 tracking-wide uppercase">Rockport born &amp; brewed</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== MENU ============================== -->
+<section id="menu" class="relative py-24 sm:py-32 bg-plum text-white overflow-hidden grain">
+  <span class="ambient blob-a" style="top:-140px; right:-160px; opacity:.4;"></span>
+  <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="max-w-2xl mb-14">
+      <p class="font-script text-hot text-3xl mb-1" data-reveal>What's on the bar</p>
+      <h2 class="font-display font-black text-4xl sm:text-5xl lg:text-6xl leading-[1.02]" data-reveal>The <span class="grad-text">menu</span>.</h2>
+      <p class="mt-4 text-blush/85 text-lg" data-reveal>Real espresso classics, frappes with names you'll remember, organic loose-leaf tea, and a case full of light eats &amp; sweets.</p>
+    </div>
+
+    <!-- signature sips feature row -->
+    <p class="text-white/55 text-xs tracking-[0.28em] uppercase mb-5" data-reveal>Signature sips</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+      <div class="card rounded-2xl bg-white/[0.04] ring-1 ring-white/10 p-6" data-reveal>
+        <p class="font-display text-2xl font-bold text-white">Messy Yessi</p>
+        <p class="text-blush/70 text-sm mt-1.5">House specialty frappe — the one regulars come back for.</p>
+      </div>
+      <div class="card rounded-2xl bg-white/[0.04] ring-1 ring-white/10 p-6" data-reveal>
+        <p class="font-display text-2xl font-bold text-white">Pink Tiki</p>
+        <p class="text-blush/70 text-sm mt-1.5">Tiki Energy — natural caffeine from green coffee beans.</p>
+      </div>
+      <div class="card rounded-2xl bg-white/[0.04] ring-1 ring-white/10 p-6" data-reveal>
+        <p class="font-display text-2xl font-bold text-white">The Sammie</p>
+        <p class="text-blush/70 text-sm mt-1.5">A house-favorite signature coffee, made the Bella way.</p>
+      </div>
+      <div class="card rounded-2xl bg-white/[0.04] ring-1 ring-white/10 p-6" data-reveal>
+        <p class="font-display text-2xl font-bold text-white">Campfire</p>
+        <p class="text-blush/70 text-sm mt-1.5">Toasty, sweet &amp; cozy — like a s'more in a cup.</p>
+      </div>
+    </div>
+
+    <!-- full menu columns -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
+      <div data-reveal>
+        <h3 class="font-display text-2xl font-bold text-hot mb-4 flex items-center gap-2">Espresso &amp; Coffee</h3>
+        <ul class="space-y-2 text-blush/85 text-[15px] leading-relaxed">
+          <li>Latte · Cappuccino · Breve</li>
+          <li>Café Mocha · White Mocha · Toasty White Mocha</li>
+          <li>Caramel Macchiato · Americano · Shot in the Dark</li>
+          <li>Dirty Chai · Snicker Doodle</li>
+          <li>Drip Coffee · Cold Brew · Nitro Brew</li>
+          <li>Chocolate Covered Strawberry</li>
+        </ul>
+      </div>
+      <div data-reveal>
+        <h3 class="font-display text-2xl font-bold text-hot mb-4">Specialty Frappes</h3>
+        <ul class="space-y-2 text-blush/85 text-[15px] leading-relaxed">
+          <li>Messy Yessi · Funky Monkey</li>
+          <li>Puddin' &amp; Pie · Oreo</li>
+          <li>Strawberries &amp; Cream</li>
+          <li>Orange Dreamsicle</li>
+          <li>Give Me S'More · Nitro Frappe</li>
+          <li>Caramel &amp; Mocha Frappe</li>
+        </ul>
+      </div>
+      <div data-reveal>
+        <h3 class="font-display text-2xl font-bold text-hot mb-4">Not Your Coffee?</h3>
+        <ul class="space-y-2 text-blush/85 text-[15px] leading-relaxed">
+          <li>Matcha Latte · Chai Tea Latte</li>
+          <li>London Fog · Hot Chocolate</li>
+          <li>Arnold Palmer · Lemonade</li>
+          <li>Pink Tiki &amp; Blue Tiki energy</li>
+          <li><span class="text-white/55 text-sm">"Two Leaves &amp; a Bud" organic teas:</span></li>
+          <li class="text-sm">Earl Grey · Chamomile · Jasmine Petal · Peppermint · Tropical Green · Alpine Berry</li>
+        </ul>
+      </div>
+      <div data-reveal>
+        <h3 class="font-display text-2xl font-bold text-hot mb-4">Light Eats</h3>
+        <ul class="space-y-2 text-blush/85 text-[15px] leading-relaxed">
+          <li>Homemade Quiche &amp; Crustless Quiche</li>
+          <li>Pig in the Blanket · Little Smokies</li>
+          <li>Sausage Cheese Pretzel Wrap</li>
+          <li>Bagels</li>
+        </ul>
+      </div>
+      <div data-reveal>
+        <h3 class="font-display text-2xl font-bold text-hot mb-4">Sweet Treats</h3>
+        <ul class="space-y-2 text-blush/85 text-[15px] leading-relaxed">
+          <li>Scones · Muffins · Danish</li>
+          <li>Chocolate Croissant · Turnovers</li>
+          <li>Lemon Burst Macaroon Bar</li>
+          <li>Fresh pastries, daily</li>
+        </ul>
+      </div>
+      <div data-reveal>
+        <h3 class="font-display text-2xl font-bold text-hot mb-4">Grab &amp; Go</h3>
+        <ul class="space-y-2 text-blush/85 text-[15px] leading-relaxed">
+          <li>Topo Chico · Mexican Soda</li>
+          <li>Smartwater · Tropicana Juice</li>
+          <li>Bottled sodas</li>
+          <li class="text-white/55 text-sm pt-1">Add-ons: extra shot · cloud foam · drizzles · flavor pumps · Tajín · chamoy</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="mt-12 text-white/45 text-sm" data-reveal>Menu reflects current offerings on bellalabrew.com — seasonal specials rotate. Prices &amp; availability in shop.</p>
+  </div>
+</section>
+
+<!-- ============================== BOUTIQUE (signature section) ============================== -->
+<section id="boutique" class="relative py-24 sm:py-32 bg-petal overflow-hidden">
+  <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 grid lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-5">
+      <p class="font-script text-magenta text-3xl mb-2" data-reveal>The part nobody expects</p>
+      <h2 class="font-display font-extrabold text-espresso text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] mb-6" data-reveal>
+        Sip <span class="text-magenta">&amp;</span> shop the <span class="italic">unique boutique</span>.
+      </h2>
+      <p class="text-espresso/75 text-lg leading-relaxed mb-7" data-reveal>
+        Bella la Brew isn't just a coffee bar — it's a little boutique, too. Browse tees, gifts, hand soaps, and finds from local artists while your latte gets made. As one regular put it, "what girl doesn't love a little shopping while sipping on an amazing coffee?"
+      </p>
+      <div class="grid grid-cols-3 gap-3" data-reveal>
+        <div class="rounded-xl bg-white px-3 py-4 text-center ring-1 ring-magenta/10">
+          <p class="font-display text-magenta text-xl font-bold">Tees</p><p class="text-espresso/55 text-xs mt-1">& apparel</p>
+        </div>
+        <div class="rounded-xl bg-white px-3 py-4 text-center ring-1 ring-magenta/10">
+          <p class="font-display text-magenta text-xl font-bold">Gifts</p><p class="text-espresso/55 text-xs mt-1">& goods</p>
+        </div>
+        <div class="rounded-xl bg-white px-3 py-4 text-center ring-1 ring-magenta/10">
+          <p class="font-display text-magenta text-xl font-bold">Local</p><p class="text-espresso/55 text-xs mt-1">arts & living</p>
+        </div>
+      </div>
+    </div>
+    <div class="lg:col-span-7">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="overflow-hidden rounded-[1.5rem] shadow-xl col-span-2" data-clip>
+          <img src="assets/sleeve.jpg" alt="A Bella la Brew iced coffee in a branded specialty-coffee sleeve" class="w-full h-[clamp(220px,32vh,320px)] object-cover" />
+        </div>
+        <div class="overflow-hidden rounded-[1.5rem] shadow-xl" data-clip>
+          <img src="assets/food.jpg" alt="Coffee and a fresh-baked scone on a colorful woven placemat at Bella la Brew" class="w-full h-[clamp(180px,26vh,260px)] object-cover" />
+        </div>
+        <div class="rounded-[1.5rem] bg-magenta text-white p-6 flex flex-col justify-center shadow-xl" data-reveal>
+          <p class="font-display text-3xl font-bold leading-tight">One stop.</p>
+          <p class="text-blush/90 mt-1.5 text-sm leading-relaxed">Coffee, a sweet treat, and a little something to take home — all under one cozy roof.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== REVIEWS ============================== -->
+<section id="reviews" class="relative py-24 sm:py-32 bg-cream overflow-hidden">
+  <span class="ambient blob-a" style="bottom:-180px; left:-150px; opacity:.35;"></span>
+  <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-12">
+      <div>
+        <p class="font-script text-magenta text-3xl mb-1" data-reveal>Word around Rockport</p>
+        <h2 class="font-display font-extrabold text-espresso text-4xl sm:text-5xl lg:text-6xl leading-[1.02]" data-reveal>Loved by locals <span class="italic">&amp;</span> visitors.</h2>
+      </div>
+      <div class="flex items-center gap-3 shrink-0" data-reveal>
+        <div class="text-right">
+          <p class="font-display text-4xl font-bold text-magenta leading-none"><span data-count="4.8" data-dec="1">0</span></p>
+          <p class="text-espresso/55 text-xs mt-1">Google · <span data-count="192" data-suffix="+">0</span> reviews</p>
+        </div>
+        <span class="text-hot text-2xl leading-none">★★★★★</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <figure class="card rounded-2xl bg-white p-7 ring-1 ring-magenta/10 shadow-sm" data-reveal>
+        <div class="text-hot text-lg mb-3">★★★★★</div>
+        <blockquote class="text-espresso/80 leading-relaxed">"Great coffee and food. The staff were all very friendly and went above and beyond to make it a pleasant experience."</blockquote>
+        <figcaption class="mt-4 text-sm font-semibold text-espresso">Whitney P. <span class="font-normal text-espresso/45">· Google review</span></figcaption>
+      </figure>
+      <figure class="card rounded-2xl bg-white p-7 ring-1 ring-magenta/10 shadow-sm" data-reveal>
+        <div class="text-hot text-lg mb-3">★★★★★</div>
+        <blockquote class="text-espresso/80 leading-relaxed">"Coffee was delicious, as were the pastries… they have a cute little shop area to purchase anything from t-shirts to hand soap."</blockquote>
+        <figcaption class="mt-4 text-sm font-semibold text-espresso">Lindsay Blackmon <span class="font-normal text-espresso/45">· Google review</span></figcaption>
+      </figure>
+      <figure class="card rounded-2xl bg-magenta text-white p-7 shadow-lg" data-reveal>
+        <div class="text-blush text-lg mb-3">★★★★★</div>
+        <blockquote class="leading-relaxed">"The environment was so cute &amp; welcoming. Our coffee was delicious, as well as the kolaches &amp; blueberry scone. 10/10 recommend this coffee shop!"</blockquote>
+        <figcaption class="mt-4 text-sm font-semibold text-white">Verified Google reviewer</figcaption>
+      </figure>
+      <figure class="card rounded-2xl bg-white p-7 ring-1 ring-magenta/10 shadow-sm" data-reveal>
+        <div class="text-hot text-lg mb-3">★★★★★</div>
+        <blockquote class="text-espresso/80 leading-relaxed">"The ladies there are always accommodating. They get to know regulars well and have great recommendations when you want to try something new — and they're super supportive of local business, arts and living!"</blockquote>
+        <figcaption class="mt-4 text-sm font-semibold text-espresso">Verified Google reviewer</figcaption>
+      </figure>
+      <figure class="card rounded-2xl bg-white p-7 ring-1 ring-magenta/10 shadow-sm" data-reveal>
+        <div class="text-hot text-lg mb-3">★★★★★</div>
+        <blockquote class="text-espresso/80 leading-relaxed">"The menu is awesome and I loved the Pumpkin Mocha. I enjoyed the setting and of course I loved the boutique — what girl doesn't love a little shopping while sipping an amazing coffee? I'll definitely be back!"</blockquote>
+        <figcaption class="mt-4 text-sm font-semibold text-espresso">Verified Google reviewer</figcaption>
+      </figure>
+      <div class="rounded-2xl bg-espresso text-white p-7 flex flex-col justify-center shadow-lg" data-reveal>
+        <p class="font-display text-3xl font-bold leading-tight mb-2">4.8 out of 5</p>
+        <p class="text-white/70 text-sm leading-relaxed">Hundreds of Rockport locals and Gulf-coast visitors keep coming back. Come find out why.</p>
+        <a href="#visit" class="mt-4 text-hot font-semibold text-sm ul-grow w-fit">Plan your visit →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== VISIT ============================== -->
+<section id="visit" class="relative py-24 sm:py-32 bg-sand overflow-hidden">
+  <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 grid lg:grid-cols-2 gap-12 lg:gap-14 items-stretch">
+    <div data-reveal>
+      <p class="font-script text-magenta text-3xl mb-1">Come say hi</p>
+      <h2 class="font-display font-extrabold text-espresso text-4xl sm:text-5xl lg:text-6xl leading-[1.02] mb-8">Find us on Hwy 35 N.</h2>
+
+      <div class="space-y-5">
+        <div class="flex items-start gap-4">
+          <span class="mt-1 shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-magenta text-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div>
+            <p class="font-semibold text-espresso">Harbor Oaks Shopping Center</p>
+            <p class="text-espresso/70">2818 Hwy 35 N, Rockport, TX 78382</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="mt-1 shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-magenta text-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div>
+            <p class="font-semibold text-espresso">Call &amp; text ahead</p>
+            <p class="text-espresso/70"><a href="tel:+13612051833" class="ul-grow hover:text-magenta">(361) 205-1833</a> · text orders (361) 205-2470</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="mt-1 shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-magenta text-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div class="w-full">
+            <p class="font-semibold text-espresso mb-2">Hours</p>
+            <div class="grid grid-cols-2 gap-x-6 gap-y-1 text-espresso/70 text-[15px] max-w-sm">
+              <span>Mon – Fri</span><span class="text-right tabular-nums">6:45a – 3:30p</span>
+              <span>Saturday</span><span class="text-right tabular-nums">7:30a – 2:00p</span>
+              <span>Sunday</span><span class="text-right tabular-nums">7:30a – 2:00p</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Bella+la+Brew+2818+Hwy+35+N+Rockport+TX+78382" target="_blank" rel="noopener" class="btn btn-primary rounded-full px-6 py-3 text-sm">Get Directions</a>
+        <a href="tel:+13612051833" class="btn btn-dark rounded-full px-6 py-3 text-sm">Call the Bar</a>
+      </div>
+      <p class="mt-5 text-espresso/55 text-sm">Order ahead on the <b class="text-espresso/75">Joe Coffee App</b> · delivery via <b class="text-espresso/75">Favor</b> · curbside pickup available.</p>
+    </div>
+
+    <div class="rounded-[1.75rem] overflow-hidden shadow-[0_40px_80px_-40px_rgba(25,8,16,.5)] min-h-[360px] ring-1 ring-magenta/10" data-reveal>
+      <iframe
+        title="Map to Bella la Brew, 2818 Hwy 35 N, Rockport TX"
+        src="https://www.google.com/maps?q=Bella+la+Brew+2818+Hwy+35+N+Rockport+TX+78382&output=embed"
+        width="100%" height="100%" style="border:0; min-height:360px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CLOSING CTA ============================== -->
+<section class="relative py-24 sm:py-28 bg-plum text-white overflow-hidden grain">
+  <span class="ambient blob-a" style="top:-120px; left:50%; transform:translateX(-50%); opacity:.45;"></span>
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-6 text-center">
+    <span class="inline-flex items-center rounded-2xl bg-white px-4 py-2.5 shadow-lg mb-8" data-reveal>
+      <img src="assets/logo.png" alt="Bella la Brew" class="h-9 w-auto" />
+    </span>
+    <h2 class="font-display font-black text-4xl sm:text-5xl lg:text-6xl leading-[1.03] mb-5" data-reveal>
+      Your table at the <span class="grad-text">coffee bar</span> is waiting.
+    </h2>
+    <p class="text-blush/90 text-lg max-w-xl mx-auto mb-9" data-reveal>Eat. Drink. Relax. Then take a little something home. We'll have the coffee on.</p>
+    <div class="flex flex-wrap justify-center gap-3.5" data-reveal>
+      <a href="tel:+13612051833" class="btn btn-primary rounded-full px-8 py-4 text-base">Call (361) 205-1833</a>
+      <a href="#menu" class="btn btn-ghost rounded-full px-8 py-4 text-base">Browse the Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="bg-[#120509] text-white/70 pt-16 pb-28 sm:pb-12">
+  <div class="mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="lg:col-span-2">
+        <span class="inline-flex items-center rounded-xl bg-white px-3 py-2 shadow mb-4">
+          <img src="assets/logo.png" alt="Bella la Brew — Coffee Bar &amp; Unique Boutique" class="h-8 w-auto" />
+        </span>
+        <p class="max-w-sm text-white/55 leading-relaxed">A comfy coffee bar &amp; unique boutique serving locally roasted coffee, teas &amp; sweet treats in the heart of Rockport, Texas. Eat. Drink. Relax. — since 2014.</p>
+      </div>
+      <div>
+        <p class="text-white font-semibold mb-3">Visit</p>
+        <p class="text-white/55 leading-relaxed text-sm">2818 Hwy 35 N<br/>Rockport, TX 78382<br/>Harbor Oaks Shopping Center</p>
+        <a href="tel:+13612051833" class="inline-block mt-3 text-hot font-semibold ul-grow">(361) 205-1833</a>
+      </div>
+      <div>
+        <p class="text-white font-semibold mb-3">Hours</p>
+        <div class="text-white/55 text-sm space-y-1">
+          <p>Mon–Fri · 6:45a – 3:30p</p>
+          <p>Sat · 7:30a – 2:00p</p>
+          <p>Sun · 7:30a – 2:00p</p>
+        </div>
+        <div class="flex gap-3 mt-4">
+          <a href="https://www.instagram.com/bellalabrew/" target="_blank" rel="noopener" class="hover:text-magenta" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.facebook.com/BellalaBrewRockport/" target="_blank" rel="noopener" class="hover:text-magenta" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v7h3v-7h2.5l.5-3H14V9z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 pt-7 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-sm text-white/40">
+      <p>© <span id="yr">2026</span> Bella la Brew Coffee Bar · Rockport, TX</p>
+      <p>Eat. Drink. Relax.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================== MOBILE STICKY BAR ============================== -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur border-t border-magenta/15 px-3 py-2.5 flex gap-2.5 shadow-[0_-8px_24px_-12px_rgba(25,8,16,.3)]">
+  <a href="tel:+13612051833" class="btn btn-primary flex-1 justify-center rounded-full py-3 text-sm">Call</a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=Bella+la+Brew+2818+Hwy+35+N+Rockport+TX+78382" target="_blank" rel="noopener" class="btn btn-dark flex-1 justify-center rounded-full py-3 text-sm">Directions</a>
+  <a href="#menu" class="btn flex-1 justify-center rounded-full py-3 text-sm bg-petal text-magenta font-semibold">Menu</a>
+</div>
+
+<!-- ============================== JSON-LD ============================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "Bella la Brew Coffee Bar",
+  "description": "Comfy coffee bar and unique boutique serving locally roasted coffee, specialty frappes, teas, light eats and sweet treats in Rockport, TX.",
+  "image": "https://turnkeyweb.org/previews/bella-la-brew/assets/hero-latte.jpg",
+  "url": "https://www.bellalabrew.com",
+  "telephone": "+1-361-205-1833",
+  "priceRange": "$",
+  "servesCuisine": ["Coffee", "Tea", "Pastries"],
+  "foundingDate": "2014",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2818 Hwy 35 N",
+    "addressLocality": "Rockport",
+    "addressRegion": "TX",
+    "postalCode": "78382",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 28.0631, "longitude": -97.0641 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "06:45", "closes": "15:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "07:30", "closes": "14:00" }
+  ],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "192" },
+  "sameAs": [
+    "https://www.facebook.com/BellalaBrewRockport/",
+    "https://www.instagram.com/bellalabrew/"
+  ]
+}
+</script>
+
+<!-- ============================== SCRIPTS ============================== -->
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- Lenis smooth scroll — single GSAP ticker ---------- */
+(function(){
+  if (!window.Lenis) return;
+  const lenis = new Lenis({ duration: 1.1, easing: t => Math.min(1, 1.001 - Math.pow(2, -10*t)), smoothWheel: true, smoothTouch: false });
+  if (window.gsap) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.ticker.add(t => lenis.raf(t*1000));
+    gsap.ticker.lagSmoothing(0);
+    lenis.on('scroll', ScrollTrigger.update);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+  } else {
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href'); if (id.length < 2) return;
+      const t = document.querySelector(id); if (!t) return;
+      e.preventDefault(); lenis.scrollTo(t, { offset: -64 });
+    });
+  });
+  window.__lenis = lenis;
+})();
+
+/* ---------- Nav scrolled state ---------- */
+(function(){
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 40) nav.classList.add('bg-cream/90','backdrop-blur','shadow-sm');
+    else nav.classList.remove('bg-cream/90','backdrop-blur','shadow-sm');
+  };
+  onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
+})();
+
+/* ---------- Reveals + clip + count-up ---------- */
+(function(){
+  if (!window.gsap) return;
+  gsap.utils.toArray('[data-reveal]').forEach(el => {
+    ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true,
+      onEnter: () => gsap.to(el, { opacity:1, y:0, duration:.7, ease:'power3.out', onStart:()=>el.classList.add('in'), onComplete:()=>el.style.willChange='auto' }) });
+  });
+  gsap.utils.toArray('[data-clip]').forEach(el => {
+    ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: () => el.classList.add('in') });
+  });
+  gsap.utils.toArray('[data-count]').forEach(el => {
+    const target = parseFloat(el.dataset.count), dec = parseInt(el.dataset.dec||'0'), suf = el.dataset.suffix||'';
+    ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true, onEnter: () => {
+      gsap.to({ v:0 }, { v:target, duration:1.5, ease:'power2.out', onUpdate(){ el.textContent = this.targets()[0].v.toFixed(dec) + suf; } });
+    }});
+  });
+})();
+
+/* ---------- Three.js aroma bokeh hero showpiece (lazy, fallback-safe) ---------- */
+(function(){
+  const canvas = document.getElementById('aroma');
+  if (!canvas) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const small  = window.matchMedia('(max-width: 767px)').matches;
+  const lowCPU = (navigator.hardwareConcurrency || 8) <= 4;
+  // The real photo + scrim already make a complete hero; only enhance on capable devices.
+  if (reduce || (small && lowCPU)) return;
+
+  import('three').then(THREE => {
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, small ? 1.5 : 2));
+    const scene = new THREE.Scene();
+    const cam = new THREE.PerspectiveCamera(60, 1, 0.1, 100); cam.position.z = 14;
+
+    function size(){ const w = canvas.clientWidth, h = canvas.clientHeight; renderer.setSize(w,h,false); cam.aspect = w/h; cam.updateProjectionMatrix(); }
+
+    // soft round bokeh sprite
+    const c = document.createElement('canvas'); c.width = c.height = 64;
+    const g = c.getContext('2d'); const grad = g.createRadialGradient(32,32,0,32,32,32);
+    grad.addColorStop(0,'rgba(255,255,255,0.95)'); grad.addColorStop(0.35,'rgba(255,150,210,0.55)'); grad.addColorStop(1,'rgba(255,90,190,0)');
+    g.fillStyle = grad; g.beginPath(); g.arc(32,32,32,0,Math.PI*2); g.fill();
+    const tex = new THREE.CanvasTexture(c);
+
+    const N = small ? 70 : 150;
+    const geo = new THREE.BufferGeometry();
+    const pos = new Float32Array(N*3), spd = new Float32Array(N), siz = new Float32Array(N), off = new Float32Array(N);
+    const palette = [ new THREE.Color('#E60094'), new THREE.Color('#FF55BE'), new THREE.Color('#F8C9E4'), new THREE.Color('#FFFFFF') ];
+    const col = new Float32Array(N*3);
+    for (let i=0;i<N;i++){
+      pos[i*3] = (Math.random()-0.5)*26; pos[i*3+1] = (Math.random()-0.5)*20; pos[i*3+2] = (Math.random()-0.5)*10;
+      spd[i] = 0.4 + Math.random()*1.1; siz[i] = 0.25 + Math.random()*0.9; off[i] = Math.random()*Math.PI*2;
+      const cc = palette[Math.floor(Math.random()*palette.length)];
+      col[i*3]=cc.r; col[i*3+1]=cc.g; col[i*3+2]=cc.b;
+    }
+    geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+    geo.setAttribute('color', new THREE.BufferAttribute(col,3));
+    const mat = new THREE.PointsMaterial({ size:0.9, map:tex, vertexColors:true, transparent:true, opacity:0.7, depthWrite:false, blending:THREE.AdditiveBlending, sizeAttenuation:true });
+    const pts = new THREE.Points(geo, mat); scene.add(pts);
+
+    size();
+    let running = true, raf = 0, t0 = 0;
+    function loop(t){
+      if (!running) return;
+      const tt = t*0.001;
+      const p = geo.attributes.position.array;
+      for (let i=0;i<N;i++){
+        p[i*3+1] += spd[i]*0.012;                      // drift up like aroma
+        p[i*3]   += Math.sin(tt*0.5 + off[i])*0.004;   // gentle sway
+        if (p[i*3+1] > 11){ p[i*3+1] = -11; p[i*3] = (Math.random()-0.5)*26; }
+      }
+      geo.attributes.position.needsUpdate = true;
+      pts.rotation.z = Math.sin(tt*0.05)*0.04;
+      renderer.render(scene, cam);
+      raf = requestAnimationFrame(loop);
+    }
+    function start(){ if (!running){ running=true; raf=requestAnimationFrame(loop);} else if(!raf){ raf=requestAnimationFrame(loop);} }
+    function stop(){ running=false; cancelAnimationFrame(raf); raf=0; }
+    raf = requestAnimationFrame(loop);
+
+    window.addEventListener('resize', size, { passive:true });
+    document.addEventListener('visibilitychange', () => document.hidden ? stop() : (running=true, start()));
+    // pause when hero scrolled offscreen
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting){ running=true; start(); } else { stop(); } }, { threshold:0 });
+    io.observe(canvas);
+  }).catch(()=>{ /* photo + scrim remain — complete hero either way */ });
+})();
+
+/* ---------- 6s crawler / screenshot safety net ---------- */
+setTimeout(() => {
+  document.querySelectorAll('[data-reveal]').forEach(el => { el.style.opacity=1; el.style.transform='none'; el.classList.add('in'); });
+  document.querySelectorAll('[data-clip]').forEach(el => el.classList.add('in'));
+  document.querySelectorAll('[data-count]').forEach(el => {
+    if (el.textContent === '0' || el.textContent === '0.0') {
+      const dec = parseInt(el.dataset.dec||'0'); el.textContent = parseFloat(el.dataset.count).toFixed(dec) + (el.dataset.suffix||'');
+    }
+  });
+}, 6000);
+</script>
+</body>
+</html>
