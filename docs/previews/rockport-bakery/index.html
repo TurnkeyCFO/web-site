@@ -73,7 +73,6 @@ tailwind.config = {
   .hero-scrim{ background:
       linear-gradient(180deg, rgba(11,79,83,.34) 0%, rgba(11,79,83,.22) 34%, rgba(11,79,83,.82) 100%),
       linear-gradient(95deg, rgba(11,79,83,.80) 0%, rgba(11,79,83,.40) 48%, rgba(11,79,83,.08) 80%); }
-  #sugar{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:.9; }
 
   .btn{ display:inline-flex; align-items:center; gap:.5rem; font-weight:600; border-radius:999px;
     transition:transform .3s cubic-bezier(.2,.7,.2,1), filter .3s, box-shadow .3s; position:relative; overflow:hidden; }
@@ -189,7 +188,6 @@ setTimeout(end,6000);})();
 <!-- ===================== HERO ===================== -->
 <section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden hero-photo">
   <div class="absolute inset-0 hero-scrim"></div>
-  <canvas id="sugar"></canvas>
 
   <div class="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-8 pb-16 md:pb-24 pt-32">
     <div class="max-w-3xl">
@@ -659,62 +657,6 @@ if (window.gsap && window.ScrollTrigger){
     }});
   });
 }
-
-/* ---------- Three.js powdered-sugar / sea-foam particle hero (showpiece) ---------- */
-(function(){
-  const canvas=document.getElementById('sugar');
-  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const mobile=window.matchMedia('(max-width:767px)').matches;
-  const lowPower=(navigator.hardwareConcurrency||8)<=4;
-  if(!canvas || reduce){ if(canvas) canvas.style.display='none'; return; }
-
-  import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js').then(THREE=>{
-    const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:false});
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile?1.4:2));
-    const scene=new THREE.Scene();
-    const cam=new THREE.PerspectiveCamera(60,1,.1,100); cam.position.z=14;
-
-    const COUNT = mobile||lowPower ? 220 : 520;
-    const geo=new THREE.BufferGeometry();
-    const pos=new Float32Array(COUNT*3), spd=new Float32Array(COUNT), sway=new Float32Array(COUNT);
-    for(let i=0;i<COUNT;i++){
-      pos[i*3]  =(Math.random()-.5)*34;
-      pos[i*3+1]=(Math.random()-.5)*26;
-      pos[i*3+2]=(Math.random()-.5)*14;
-      spd[i]=.006+Math.random()*.02; sway[i]=Math.random()*Math.PI*2;
-    }
-    geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-    const tex=(()=>{ const c=document.createElement('canvas'); c.width=c.height=64; const x=c.getContext('2d');
-      const g=x.createRadialGradient(32,32,0,32,32,32); g.addColorStop(0,'rgba(255,255,255,1)'); g.addColorStop(.4,'rgba(255,250,240,.7)'); g.addColorStop(1,'rgba(255,255,255,0)');
-      x.fillStyle=g; x.beginPath(); x.arc(32,32,32,0,Math.PI*2); x.fill(); return new THREE.CanvasTexture(c); })();
-    const mat=new THREE.PointsMaterial({size:mobile?.32:.4,map:tex,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,opacity:.85,color:0xffffff});
-    const pts=new THREE.Points(geo,mat); scene.add(pts);
-
-    function resize(){ const r=canvas.getBoundingClientRect(); renderer.setSize(r.width,r.height,false); cam.aspect=r.width/r.height; cam.updateProjectionMatrix(); }
-    resize(); window.addEventListener('resize',resize);
-
-    let running=true, t=0;
-    document.addEventListener('visibilitychange',()=>{ running=!document.hidden; if(running) loop(); });
-    const io=new IntersectionObserver(es=>{ es.forEach(e=>{ running=e.isIntersecting; if(running) loop(); }); },{threshold:0});
-    io.observe(canvas);
-
-    const arr=geo.attributes.position.array;
-    function loop(){
-      if(!running) return;
-      t+=.006;
-      for(let i=0;i<COUNT;i++){
-        arr[i*3+1]-=spd[i]*1.1;                     // drift down (slow settle)
-        arr[i*3]+=Math.sin(t+sway[i])*.005;         // gentle sway
-        if(arr[i*3+1]<-13){ arr[i*3+1]=13; arr[i*3]=(Math.random()-.5)*34; }
-      }
-      geo.attributes.position.needsUpdate=true;
-      pts.rotation.y=Math.sin(t*.1)*.03;
-      renderer.render(scene,cam);
-      requestAnimationFrame(loop);
-    }
-    loop();
-  }).catch(()=>{ canvas.style.display='none'; });
-})();
 
 /* ---------- 6s screenshot / crawler safety net ---------- */
 setTimeout(()=>{
