@@ -62,7 +62,7 @@
   nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;
       max-width:1180px;margin:0 auto;padding:26px 28px}
   .brand{display:flex;align-items:center;gap:12px}
-  .brand img{height:34px;width:auto;display:block}
+  .brand img{height:102px;width:auto;display:block}
   .pill{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
         color:var(--blue-deep);background:rgba(124,58,237,.10);border:1px solid var(--line);
         padding:8px 14px;border-radius:999px}
@@ -166,14 +166,65 @@
 
   footer{padding:40px 28px 60px;text-align:center;color:var(--muted);font-size:.9rem;font-weight:500}
   footer .fb{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px}
-  footer .fb img{height:26px}
+  footer .fb img{height:130px}
   footer a{color:var(--blue-deep);text-decoration:none;font-weight:600}
 
   @media(max-width:860px){
     .grid,.steps{grid-template-columns:1fr}
     nav .pill{display:none}
-    header{min-height:88vh}
+    header{min-height:auto}
     .sec{padding:64px 0}
+  }
+
+  /* ---------- phones ---------- */
+  @media(max-width:640px){
+    .wrap{padding:0 24px}
+    nav{padding:18px 24px}
+    .brand img{height:90px}
+
+    header{min-height:auto;padding:24px 24px 56px}
+    .eyebrow{font-size:.72rem;letter-spacing:.16em;padding:9px 14px;margin-bottom:22px}
+    .pop{font-size:clamp(2.6rem,16vw,3.4rem);margin-bottom:10px}
+    h1{font-size:clamp(2.4rem,11.5vw,3.8rem);line-height:.98;letter-spacing:-.025em;overflow-wrap:break-word;hyphens:auto}
+    .sub{font-size:1.08rem;margin-top:20px;max-width:none;padding:0 2px}
+
+    /* full-width CTAs with generous tap targets */
+    .cta-row{margin-top:32px;gap:14px;width:100%}
+    .cta{width:100%;justify-content:center;gap:14px;padding:20px 22px;font-size:1.1rem;border-radius:16px}
+    .cta .price{flex:1;text-align:left}
+    .cta .price .big{font-size:1.16rem}
+    .trust{font-size:.82rem;text-align:center;justify-content:center}
+
+    .scroll-hint{display:none}
+
+    .label{font-size:.72rem;letter-spacing:.16em}
+    .h2{font-size:clamp(1.9rem,8vw,2.5rem)}
+    .h2 br{display:none}
+    .lead{font-size:1.04rem;max-width:none}
+
+    .grid{margin-top:34px;gap:16px}
+    .card{padding:26px 22px;border-radius:18px}
+    .card .ico{width:52px;height:52px;font-size:1.5rem;margin-bottom:14px}
+    .card h3{font-size:1.12rem}
+    .card p{font-size:1rem}
+
+    .steps{margin-top:34px;gap:16px}
+    .step{padding:26px 22px;border-radius:18px}
+    .step .n{font-size:2.2rem}
+
+    .band{margin:24px 0 64px;padding:48px 22px;border-radius:26px}
+    .band h2{font-size:clamp(1.85rem,7vw,2.4rem)}
+    .band p{font-size:1.02rem}
+    .band .cta{margin-top:28px;width:100%}
+
+    footer{padding:34px 20px 52px}
+  }
+
+  /* Honor reduced-motion + kill GPU-heavy effects where they cost the most on phones */
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .reveal{opacity:1;transform:none}
+    html{scroll-behavior:auto}
   }
 </style>
 </head>
@@ -244,7 +295,7 @@
 
 <footer>
   <div class="fb"><img src="logo.png" alt="Turnkey Web"></div>
-  Turnkey Web · Austin, TX · <a href="mailto:ricky@turnkeycfo.com">ricky@turnkeycfo.com</a><br>
+  Turnkey Web · Austin, TX · <a href="mailto:ricky@turnkeyweb.org">ricky@turnkeyweb.org</a><br>
   <span style="opacity:.7">Questions before you start? Just reply to your welcome email.</span>
 </footer>
 
@@ -265,8 +316,17 @@ window.addEventListener("load",function(){setTimeout(burst,420);});
 (function(){
   var canvas=document.getElementById("bg3d");
   if(!window.THREE) return;
-  var renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+
+  /* Mobile / low-power detection — the WebGL scene is the heaviest thing on
+     the page, so on small screens and reduced-motion we either skip it or run
+     a much lighter version to protect battery, frame rate, and scroll smoothness. */
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var smallScreen  = Math.min(window.innerWidth, window.innerHeight) < 700 ||
+                     (window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+  if(reduceMotion){ canvas.style.display="none"; return; }  // CSS gradient backdrop stands in
+
+  var renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:!smallScreen,powerPreference:"low-power"});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, smallScreen?1.5:2));
   renderer.setSize(window.innerWidth,window.innerHeight);
   var scene=new THREE.Scene();
   scene.fog=new THREE.FogExp2(0xefe9ff,0.045);
@@ -286,7 +346,7 @@ window.addEventListener("load",function(){setTimeout(burst,420);});
   ];
   var palette=[0x7c3aed,0xa78bfa,0x9333ea,0xffffff,0xd6c2ff];
   var shapes=[];
-  var N=18;
+  var N=smallScreen?8:18;
   for(var i=0;i<N;i++){
     var g=geos[i%geos.length];
     var glassy=Math.random()>0.45;
@@ -316,8 +376,13 @@ window.addEventListener("load",function(){setTimeout(burst,420);});
     ty=(e.clientY/window.innerHeight-0.5);
   });
 
-  var t=0;
+  var t=0,running=true;
+  document.addEventListener("visibilitychange",function(){
+    running=!document.hidden;
+    if(running) animate();
+  });
   function animate(){
+    if(!running) return;
     requestAnimationFrame(animate);
     t+=0.01;
     mx+=(tx-mx)*0.04; my+=(ty-my)*0.04;
@@ -333,10 +398,18 @@ window.addEventListener("load",function(){setTimeout(burst,420);});
   }
   animate();
 
+  var lastW=window.innerWidth, rtimer;
   window.addEventListener("resize",function(){
-    camera.aspect=window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth,window.innerHeight);
+    /* On touch devices, scrolling shows/hides the address bar and fires resize
+       with only a height change — ignore those so we don't thrash the GPU. */
+    if(smallScreen && window.innerWidth===lastW) return;
+    lastW=window.innerWidth;
+    clearTimeout(rtimer);
+    rtimer=setTimeout(function(){
+      camera.aspect=window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth,window.innerHeight);
+    },150);
   });
 })();
 
