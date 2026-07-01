@@ -113,6 +113,13 @@ tailwind.config = {
   .tile:hover img{ transform:scale(1.06); }
   .tile figcaption{ text-shadow:0 1px 10px rgba(16,24,28,.85), 0 1px 2px rgba(16,24,28,.9); }
 
+  /* finish tabs — mobile swipe affordance */
+  .finish-tabs::-webkit-scrollbar{ display:none; }
+  .finish-tabs{ scrollbar-width:none; }
+  @media (max-width:1023px){
+    .finish-tabs{ -webkit-mask-image:linear-gradient(90deg,#000 0,#000 88%,transparent); mask-image:linear-gradient(90deg,#000 0,#000 88%,transparent); }
+  }
+
   /* marquee */
   .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); }
   .marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 34s linear infinite; }
@@ -223,7 +230,7 @@ tailwind.config = {
 </div>
 
 <!-- ============ SERVICES (numbered index) ============ -->
-<section id="services" class="bg-paper py-24 sm:py-32 relative grain">
+<section id="services" class="bg-paper py-14 sm:py-24 md:py-32 relative grain">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="max-w-2xl" data-reveal>
       <span class="text-[12px] tracking-[0.2em] uppercase text-cedar font-600">What we do</span>
@@ -289,7 +296,7 @@ tailwind.config = {
 </section>
 
 <!-- ============ SIGNATURE: FINISH SELECTOR ============ -->
-<section id="finishes" class="bg-bone py-24 sm:py-32 relative">
+<section id="finishes" class="bg-bone py-14 sm:py-24 md:py-32 relative">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="max-w-2xl mb-12" data-reveal>
       <span class="text-[12px] tracking-[0.2em] uppercase text-cedar font-600">Choose your look</span>
@@ -299,20 +306,20 @@ tailwind.config = {
 
     <div class="grid lg:grid-cols-[300px_1fr] gap-8 items-start">
       <!-- tabs -->
-      <div role="tablist" aria-label="Siding finishes" class="flex lg:flex-col gap-2.5 overflow-x-auto pb-1">
-        <button role="tab" aria-selected="true" data-finish="lap" class="finish-tab text-left rounded-xl border border-slate/15 px-5 py-4 min-w-[180px] text-slate/70 font-600">
+      <div role="tablist" aria-label="Siding finishes" class="finish-tabs flex lg:flex-col gap-2.5 overflow-x-auto pb-1 -mx-5 px-5 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0 snap-x snap-mandatory lg:snap-none">
+        <button role="tab" aria-selected="true" data-finish="lap" class="finish-tab shrink-0 snap-start text-left rounded-xl border border-slate/15 px-5 py-4 min-w-[168px] lg:min-w-[180px] text-slate/70 font-600">
           <span class="font-display text-[18px] block text-slate">Lap Siding</span>
           <span class="text-[12.5px] font-400 text-slate/55">Classic horizontal courses</span>
         </button>
-        <button role="tab" aria-selected="false" data-finish="bb" class="finish-tab text-left rounded-xl border border-slate/15 px-5 py-4 min-w-[180px] text-slate/70 font-600">
+        <button role="tab" aria-selected="false" data-finish="bb" class="finish-tab shrink-0 snap-start text-left rounded-xl border border-slate/15 px-5 py-4 min-w-[168px] lg:min-w-[180px] text-slate/70 font-600">
           <span class="font-display text-[18px] block text-slate">Board &amp; Batten</span>
           <span class="text-[12.5px] font-400 text-slate/55">Tall, modern vertical lines</span>
         </button>
-        <button role="tab" aria-selected="false" data-finish="shake" class="finish-tab text-left rounded-xl border border-slate/15 px-5 py-4 min-w-[180px] text-slate/70 font-600">
+        <button role="tab" aria-selected="false" data-finish="shake" class="finish-tab shrink-0 snap-start text-left rounded-xl border border-slate/15 px-5 py-4 min-w-[168px] lg:min-w-[180px] text-slate/70 font-600">
           <span class="font-display text-[18px] block text-slate">Cedar Shake</span>
           <span class="text-[12.5px] font-400 text-slate/55">Warm, textured character</span>
         </button>
-        <button role="tab" aria-selected="false" data-finish="stucco" class="finish-tab text-left rounded-xl border border-slate/15 px-5 py-4 min-w-[180px] text-slate/70 font-600">
+        <button role="tab" aria-selected="false" data-finish="stucco" class="finish-tab shrink-0 snap-start text-left rounded-xl border border-slate/15 px-5 py-4 min-w-[168px] lg:min-w-[180px] text-slate/70 font-600">
           <span class="font-display text-[18px] block text-slate">Stucco &amp; Wall Finish</span>
           <span class="text-[12.5px] font-400 text-slate/55">Seamless, sculpted surfaces</span>
         </button>
@@ -342,7 +349,7 @@ tailwind.config = {
 </section>
 
 <!-- ============ WHY POPOV (dark craft band + bleed photo) ============ -->
-<section id="why" class="relative bg-slate text-bone py-24 sm:py-32 overflow-hidden grain">
+<section id="why" class="relative bg-slate text-bone py-14 sm:py-24 md:py-32 overflow-hidden grain">
   <div class="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:block">
     <img data-reveal-img src="assets/lap_house.jpg" alt="Detail of newly installed green lap siding against a blue sky" class="w-full h-full object-cover opacity-90" />
     <div class="absolute inset-0 bg-gradient-to-r from-slate via-slate/50 to-transparent"></div>
@@ -385,7 +392,7 @@ tailwind.config = {
 </section>
 
 <!-- ============ WORK SHOWCASE (tilt tiles) ============ -->
-<section id="work" class="bg-paper py-24 sm:py-32 relative grain">
+<section id="work" class="bg-paper py-14 sm:py-24 md:py-32 relative grain">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
       <div data-reveal>
@@ -422,7 +429,7 @@ tailwind.config = {
 </section>
 
 <!-- ============ SOCIAL PROOF (real trust signals) ============ -->
-<section class="bg-cedar text-white py-20 sm:py-24 relative overflow-hidden">
+<section class="bg-cedar text-white py-12 sm:py-20 md:py-24 relative overflow-hidden">
   <div class="max-w-5xl mx-auto px-5 sm:px-8 text-center">
     <div class="flex justify-center gap-1 text-amber text-2xl mb-5" data-reveal aria-label="5 out of 5 stars">★★★★★</div>
     <p class="font-display text-[clamp(1.6rem,3.6vw,2.6rem)] leading-[1.15] font-500 max-w-3xl mx-auto tracking-[-0.01em]" data-reveal>
@@ -438,7 +445,7 @@ tailwind.config = {
 </section>
 
 <!-- ============ VISIT / CONTACT ============ -->
-<section id="visit" class="bg-bone py-24 sm:py-32">
+<section id="visit" class="bg-bone py-14 sm:py-24 md:py-32">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 items-stretch">
     <div data-reveal>
       <span class="text-[12px] tracking-[0.2em] uppercase text-cedar font-600">Get in touch</span>
@@ -489,7 +496,7 @@ tailwind.config = {
 </section>
 
 <!-- ============ CTA ============ -->
-<section class="relative bg-slate2 text-bone py-20 sm:py-28 overflow-hidden grain">
+<section class="relative bg-slate2 text-bone py-12 sm:py-20 md:py-28 overflow-hidden grain">
   <div class="absolute inset-0 lap-fallback opacity-60"></div>
   <div class="absolute inset-0 bg-gradient-to-b from-slate2/80 to-slate2"></div>
   <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center relative z-10">
@@ -597,7 +604,7 @@ tailwind.config = {
   /* ---- Lenis driven by ONE GSAP ticker ---- */
   var lenis;
   if (window.Lenis && !reduce){
-    lenis = new Lenis({ duration:1.1, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}, smoothWheel:true, smoothTouch:false });
+    lenis = new Lenis({ duration:0.65, easing:function(t){return 1-Math.pow(1-t,3);}, smoothWheel:true, smoothTouch:false, wheelMultiplier:1.15, syncTouch:false });
     if (window.gsap){ gsap.ticker.add(function(t){ lenis.raf(t*1000); }); gsap.ticker.lagSmoothing(0); }
     if (window.ScrollTrigger){ lenis.on('scroll', ScrollTrigger.update); ScrollTrigger.config({ ignoreMobileResize:true }); }
   }
