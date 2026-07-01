@@ -38,6 +38,8 @@ tailwind.config = {
         ink:      '#16181C',
         graphite: '#17191D',
         steel:    '#55636E',
+        steellt:  '#9FADB7',
+        redlt:    '#F87171',
         slate:    '#3A434C',
         brand:    '#BA0404',
         brandhi:  '#E11414',
@@ -150,7 +152,7 @@ tailwind.config = {
         <span class="grid place-items-center h-9 w-9 rounded-md bg-brand text-white font-display font-800 text-xl leading-none">W</span>
         <span class="leading-none">
           <span class="block disp font-800 text-white text-[19px] tracking-tight">WALLY'S</span>
-          <span class="block mono text-[9px] tracking-[.24em] text-steel">COLLISION CENTER</span>
+          <span class="block mono text-[9px] tracking-[.24em] text-steellt">COLLISION CENTER</span>
         </span>
       </a>
       <nav class="hidden lg:flex items-center gap-7 text-[13px] font-medium text-white/80">
@@ -225,19 +227,19 @@ tailwind.config = {
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-4 divide-y-0 lg:divide-x lg:divide-white/10">
       <div class="lg:px-6" data-reveal>
         <div class="disp font-800 text-[3.4rem] leading-none text-white"><span data-count="20" data-suffix="+">0</span></div>
-        <div class="mono text-[11px] tracking-[.16em] text-steel mt-1">YEARS ON MIDDLEGROUND RD</div>
+        <div class="mono text-[11px] tracking-[.16em] text-steellt mt-1">YEARS ON MIDDLEGROUND RD</div>
       </div>
       <div class="lg:px-6" data-reveal>
         <div class="disp font-800 text-[3.4rem] leading-none text-white">ANY</div>
-        <div class="mono text-[11px] tracking-[.16em] text-steel mt-1">MAKE &amp; MODEL, ANY YEAR</div>
+        <div class="mono text-[11px] tracking-[.16em] text-steellt mt-1">MAKE &amp; MODEL, ANY YEAR</div>
       </div>
       <div class="lg:px-6" data-reveal>
         <div class="disp font-800 text-[3.4rem] leading-none text-white"><span data-count="10" data-suffix="%">0</span></div>
-        <div class="mono text-[11px] tracking-[.16em] text-steel mt-1">MILITARY PARTS DISCOUNT*</div>
+        <div class="mono text-[11px] tracking-[.16em] text-steellt mt-1">MILITARY PARTS DISCOUNT*</div>
       </div>
       <div class="lg:px-6" data-reveal>
         <div class="disp font-800 text-[3.4rem] leading-none text-brandhi">FREE</div>
-        <div class="mono text-[11px] tracking-[.16em] text-steel mt-1">WRITTEN ESTIMATES</div>
+        <div class="mono text-[11px] tracking-[.16em] text-steellt mt-1">WRITTEN ESTIMATES</div>
       </div>
     </div>
     <p class="mono text-[10px] tracking-[.1em] text-white/35 mt-7">* 10% off parts on self-pay work for active &amp; veteran military members. Ask us for details.</p>
@@ -395,7 +397,7 @@ tailwind.config = {
 <section id="work" class="relative bg-graphite text-white grain overflow-hidden">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
     <div class="max-w-2xl mb-14" data-reveal>
-      <div class="mono text-[11px] tracking-[.24em] text-brandhi mb-4">03 — REAL REPAIRS, REAL CUSTOMERS</div>
+      <div class="mono text-[11px] tracking-[.24em] text-redlt mb-4">03 — REAL REPAIRS, REAL CUSTOMERS</div>
       <h2 class="disp font-800 text-[11vw] sm:text-6xl lg:text-7xl text-white">FROM WRECKED<br />TO <span class="grad-text">RIGHT.</span></h2>
       <p class="mt-5 text-white/70 text-[16px] leading-relaxed max-w-xl">
         Straight from our own shop floor — no stock photos. Insurance total-loss disputes, classics worth saving, and everyday drivers, all returned road-ready.
@@ -432,19 +434,23 @@ tailwind.config = {
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
       <div class="relative rounded-xl overflow-hidden border border-white/10 aspect-square group" data-reveal>
         <img src="assets/bentley.jpg" alt="Black Bentley Flying Spur serviced at Wally's Collision Center" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        <span class="absolute bottom-3 left-3 disp font-700 text-white text-lg drop-shadow">Bentley</span>
+        <span class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 to-transparent"></span>
+        <span class="absolute bottom-3 left-3 disp font-700 text-white text-lg">Bentley</span>
       </div>
       <div class="relative rounded-xl overflow-hidden border border-white/10 aspect-square group" data-reveal>
         <img src="assets/work-05.jpg" alt="Restored Harley-Davidson bagger motorcycle" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        <span class="absolute bottom-3 left-3 disp font-700 text-white text-lg drop-shadow">Harley-Davidson</span>
+        <span class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 to-transparent"></span>
+        <span class="absolute bottom-3 left-3 disp font-700 text-white text-lg">Harley-Davidson</span>
       </div>
       <div class="relative rounded-xl overflow-hidden border border-white/10 aspect-square group" data-reveal>
         <img src="assets/work-67.jpg" alt="Silver Honda CR-V finished and detailed" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        <span class="absolute bottom-3 left-3 disp font-700 text-white text-lg drop-shadow">Daily Drivers</span>
+        <span class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 to-transparent"></span>
+        <span class="absolute bottom-3 left-3 disp font-700 text-white text-lg">Daily Drivers</span>
       </div>
       <div class="relative rounded-xl overflow-hidden border border-white/10 aspect-square group" data-reveal>
         <img src="assets/work-06.jpg" alt="Vehicle in for repair at the Wally's Collision Center bay" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        <span class="absolute bottom-3 left-3 disp font-700 text-white text-lg drop-shadow">In Our Bay</span>
+        <span class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 to-transparent"></span>
+        <span class="absolute bottom-3 left-3 disp font-700 text-white text-lg">In Our Bay</span>
       </div>
     </div>
     <p class="mono text-[11px] tracking-[.08em] text-white/45 mt-6" data-reveal>▸ FROM A DAILY DRIVER TO A BENTLEY — ANY MAKE, ANY MODEL, ANY YEAR.</p>
@@ -596,13 +602,13 @@ tailwind.config = {
           <span class="grid place-items-center h-10 w-10 rounded-md bg-brand text-white font-display font-800 text-2xl leading-none">W</span>
           <span class="leading-none">
             <span class="block disp font-800 text-white text-2xl tracking-tight">WALLY'S</span>
-            <span class="block mono text-[9px] tracking-[.24em] text-steel">COLLISION CENTER, LLC</span>
+            <span class="block mono text-[9px] tracking-[.24em] text-steellt">COLLISION CENTER, LLC</span>
           </span>
         </div>
         <p class="text-white/60 text-[14px] leading-relaxed max-w-xs">Veteran owned and operated auto body &amp; collision repair in Savannah, GA. Doing it right since 2004.</p>
       </div>
       <div>
-        <div class="mono text-[11px] tracking-[.18em] text-steel mb-4">SERVICES</div>
+        <div class="mono text-[11px] tracking-[.18em] text-steellt mb-4">SERVICES</div>
         <ul class="space-y-2 text-white/70 text-[14px]">
           <li>Collision &amp; frame repair</li>
           <li>Aluminum &amp; structural welding</li>
@@ -611,7 +617,7 @@ tailwind.config = {
         </ul>
       </div>
       <div>
-        <div class="mono text-[11px] tracking-[.18em] text-steel mb-4">VISIT</div>
+        <div class="mono text-[11px] tracking-[.18em] text-steellt mb-4">VISIT</div>
         <ul class="space-y-2 text-white/70 text-[14px]">
           <li><a href="https://www.google.com/maps/dir/?api=1&destination=12032+Middleground+Road+Savannah+GA+31419" target="_blank" rel="noopener" class="ul-grow">12032 Middleground Rd, Savannah, GA 31419</a></li>
           <li><a href="tel:+19129209899" class="ul-grow">(912) 920-9899</a></li>
