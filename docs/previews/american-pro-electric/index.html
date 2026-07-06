@@ -31,7 +31,7 @@ tailwind.config = {
       navy:    '#0F1826',
       slateink:'#12181F',
       current: '#38BDF8',
-      currdeep:'#0E76B8',
+      currdeep:'#0A5A86',
       voltage: '#F5A524',
       voltdeep:'#B9760F',
       steel:   '#8FA0B3',
@@ -146,9 +146,9 @@ tailwind.config = {
 
   /* ---- service explorer ---- */
   .svc-row{ cursor:pointer; transition:color .3s, border-color .3s; }
-  .svc-row .svc-num{ transition:color .3s, transform .35s cubic-bezier(.2,.8,.2,1); }
-  .svc-row.active .svc-title{ color:#0E76B8; }
-  .svc-row.active .svc-num{ color:#F5A524; transform:translateX(4px); }
+  #svcList .svc-num{ font-size:1.5rem !important; line-height:1.75rem; transition:color .3s, transform .35s cubic-bezier(.2,.8,.2,1); }
+  .svc-row.active .svc-title{ color:#0A5A86; }
+  .svc-row.active .svc-num{ color:#B9760F; transform:translateX(4px); }
   .svc-row .svc-desc{ max-height:0; opacity:0; overflow:hidden; transition:max-height .5s ease, opacity .4s ease, margin .4s ease; }
   .svc-row.active .svc-desc{ max-height:120px; opacity:1; margin-top:.6rem; }
   .svc-stage img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.06); transition:opacity .7s ease, transform 1.1s ease; }
