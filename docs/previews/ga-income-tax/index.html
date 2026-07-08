@@ -140,6 +140,13 @@ tailwind.config = {
 
   .outline-word { -webkit-text-stroke:1px rgba(30,70,53,.32); color:transparent; }
 
+  /* Compact horizontal service cards on mobile/tablet to keep the page within the paint ceiling */
+  @media (max-width:1023px){
+    .svc-card{ display:grid; grid-template-columns:auto 1fr; column-gap:1rem; align-items:center; }
+    .svc-card .svc-icon{ grid-row:1 / span 2; align-self:start; margin-bottom:0 !important; }
+    .svc-card h3{ grid-column:2; }
+    .svc-card p{ grid-column:2; margin-top:.3rem; }
+  }
   @media (prefers-reduced-motion: reduce) {
     .grad-text, .pulse-dot, .marquee-track, .ambient-blob { animation:none !important; }
     [data-reveal] { opacity:1 !important; transform:none !important; }
@@ -225,7 +232,7 @@ tailwind.config = {
 
       <!-- Right: WebGL showpiece panel -->
       <div class="relative z-10" data-reveal>
-        <div class="relative aspect-[16/11] sm:aspect-[5/5] rounded-[26px] overflow-hidden shadow-2xl ring-1 ring-forest/10">
+        <div class="relative aspect-[16/10] sm:aspect-[5/5] rounded-[26px] overflow-hidden shadow-2xl ring-1 ring-forest/10">
           <div class="poster-fallback"></div>
           <canvas id="mesh-canvas"></canvas>
           <!-- vignette for depth on light canvas -->
@@ -270,7 +277,7 @@ tailwind.config = {
 </div>
 
 <!-- ===================== STATEMENT ===================== -->
-<section class="relative py-12 lg:py-28">
+<section class="relative py-9 lg:py-28">
   <div class="mx-auto max-w-4xl px-5 sm:px-8 text-center">
     <span class="text-[.72rem] uppercase tracking-[.24em] text-bronze font-700" data-reveal>Who we are</span>
     <p class="mt-6 font-display text-[1.7rem] sm:text-[2.15rem] leading-[1.28] text-ink font-500" data-reveal>
@@ -293,7 +300,7 @@ tailwind.config = {
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       <!-- 1 -->
-      <div class="card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
+      <div class="card svc-card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
         <div class="svc-icon w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center text-forest mb-5">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
         </div>
@@ -301,7 +308,7 @@ tailwind.config = {
         <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Personal and business returns filed accurately and on time — with every credit and deduction you're owed found and claimed.</p>
       </div>
       <!-- 2 -->
-      <div class="card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
+      <div class="card svc-card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
         <div class="svc-icon w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center text-forest mb-5">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
         </div>
@@ -309,7 +316,7 @@ tailwind.config = {
         <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Clean, current books month after month, so you always know where your business stands — and tax season is never a scramble.</p>
       </div>
       <!-- 3 -->
-      <div class="card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
+      <div class="card svc-card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
         <div class="svc-icon w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center text-forest mb-5">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
         </div>
@@ -317,7 +324,7 @@ tailwind.config = {
         <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Pay your team on time and keep the filings right — payroll handled so you can run your business instead of chasing paperwork.</p>
       </div>
       <!-- 4 -->
-      <div class="card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
+      <div class="card svc-card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
         <div class="svc-icon w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center text-forest mb-5">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z"/></svg>
         </div>
@@ -325,7 +332,7 @@ tailwind.config = {
         <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Starting out? We'll register your company the right way from day one, so your new venture is on solid footing.</p>
       </div>
       <!-- 5 -->
-      <div class="card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
+      <div class="card svc-card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
         <div class="svc-icon w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center text-forest mb-5">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"/></svg>
         </div>
@@ -333,7 +340,7 @@ tailwind.config = {
         <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Texas sales tax prepared and filed on schedule — no missed deadlines, no penalties, nothing left to remember.</p>
       </div>
       <!-- 6 -->
-      <div class="card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
+      <div class="card svc-card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
         <div class="svc-icon w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center text-forest mb-5">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
@@ -349,7 +356,7 @@ tailwind.config = {
 </section>
 
 <!-- ===================== PROCESS (signature) ===================== -->
-<section id="process" class="relative py-12 lg:py-28 mt-2">
+<section id="process" class="relative py-9 lg:py-28 mt-2">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="max-w-2xl mb-10 lg:mb-14" data-reveal>
       <span class="text-[.72rem] uppercase tracking-[.24em] text-bronze font-700">How Graciela works</span>
@@ -382,7 +389,7 @@ tailwind.config = {
 </section>
 
 <!-- ===================== STATS BAND (brand moment) ===================== -->
-<section class="relative overflow-hidden bg-forest text-cream py-11 lg:py-20">
+<section class="relative overflow-hidden bg-forest text-cream py-8 lg:py-20">
   <div class="ambient-blob" style="width:420px;height:420px;background:radial-gradient(circle,#D8A24A,transparent 62%);top:-120px;right:-100px;opacity:.28;animation:drift2 26s ease-in-out infinite;"></div>
   <div class="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
     <h2 class="font-display text-[2rem] sm:text-[2.6rem] font-600 leading-tight tracking-[-.01em] mb-12 max-w-2xl" data-reveal>
@@ -410,7 +417,7 @@ tailwind.config = {
 </section>
 
 <!-- ===================== REVIEWS ===================== -->
-<section id="reviews" class="relative py-12 lg:py-28">
+<section id="reviews" class="relative py-9 lg:py-28">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="flex flex-wrap items-end justify-between gap-6 mb-12" data-reveal>
       <div class="max-w-2xl">
@@ -449,7 +456,7 @@ tailwind.config = {
         <p class="text-[.98rem] text-ink/80 leading-relaxed font-display italic">"Great service and bilingual!"</p>
         <div class="mt-5 flex items-center gap-2 text-[.82rem] font-600 text-forest">— Facundo Guevara <span class="text-ink/70 font-500">· Google review</span></div>
       </div>
-      <div class="card rounded-2xl bg-forest text-cream ring-1 ring-forest/20 p-6 lg:p-7 shadow-sm flex flex-col justify-between" data-reveal>
+      <div class="card rounded-2xl bg-forest text-cream ring-1 ring-forest/20 p-6 lg:p-7 shadow-sm flex-col justify-between hidden sm:flex" data-reveal>
         <div>
           <div class="text-amber text-[1rem] mb-3">★★★★★</div>
           <p class="text-[1.05rem] leading-relaxed font-display">Twenty years of five-star returns, one neighbor at a time.</p>
@@ -461,7 +468,7 @@ tailwind.config = {
 </section>
 
 <!-- ===================== VISIT ===================== -->
-<section id="visit" class="relative py-12 lg:py-28 bg-bone/50">
+<section id="visit" class="relative py-9 lg:py-28 bg-bone/50">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
       <div data-reveal>
@@ -534,7 +541,7 @@ tailwind.config = {
 </section>
 
 <!-- ===================== CLOSING CTA ===================== -->
-<section class="relative overflow-hidden py-12 lg:py-28 grain">
+<section class="relative overflow-hidden py-9 lg:py-28 grain">
   <div class="ambient-blob" style="width:500px;height:500px;background:radial-gradient(circle,#7C9A85,transparent 62%);bottom:-180px;left:-140px;opacity:.35;animation:drift1 28s ease-in-out infinite;"></div>
   <div class="mx-auto max-w-4xl px-5 sm:px-8 text-center relative z-10">
     <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-forest text-cream font-display font-600 text-xl shadow-lg mb-7" data-reveal>GA</span>
