@@ -268,7 +268,7 @@ tailwind.config = {
 </section>
 
 <!-- STATEMENT -->
-<section class="py-24 sm:py-32 bg-cream">
+<section class="py-16 sm:py-28 bg-cream">
   <div class="max-w-5xl mx-auto px-5 sm:px-8">
     <p class="eyebrow mb-8" data-reveal>The Manor promise</p>
     <h2 class="font-display font-light text-ink leading-[1.08] tracking-tight text-[clamp(1.8rem,4.4vw,3.4rem)]" data-reveal>
@@ -353,7 +353,7 @@ tailwind.config = {
 </section>
 
 <!-- THE CRAFT (real owner photos) -->
-<section id="craft" class="py-24 sm:py-32 bg-cream grain relative overflow-hidden">
+<section id="craft" class="py-16 sm:py-28 bg-cream grain relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="max-w-2xl mb-14">
       <p class="eyebrow mb-5" data-reveal>The craft that sets us apart</p>
@@ -424,7 +424,7 @@ tailwind.config = {
 </section>
 
 <!-- REVIEWS (real, verbatim) -->
-<section id="reviews" class="py-24 sm:py-32 bg-paper">
+<section id="reviews" class="py-16 sm:py-28 bg-paper">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex flex-wrap items-end justify-between gap-6 mb-14">
       <div>
@@ -511,14 +511,14 @@ tailwind.config = {
           <span class="font-display text-ink text-xl">125 E. Mission Road</span>
           <span class="text-muted text-sm">Fallbrook, CA 92028</span>
         </div>
-        <iframe title="Manor Dry Cleaners location map" src="https://www.google.com/maps?q=125+E+Mission+Road+Fallbrook+CA+92028&output=embed" width="100%" height="460" style="border:0; display:block; position:relative;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="Manor Dry Cleaners location map" src="https://www.google.com/maps?q=125+E+Mission+Road+Fallbrook+CA+92028&output=embed" class="w-full h-[300px] sm:h-[460px]" style="border:0; display:block; position:relative;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CLOSING CTA -->
-<section class="py-24 sm:py-32 bg-paper grain relative overflow-hidden">
+<section class="py-16 sm:py-28 bg-paper grain relative overflow-hidden">
   <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
     <p class="eyebrow mb-6" data-reveal>Bring us your finest</p>
     <h2 class="font-display font-light text-ink text-[clamp(2.3rem,6vw,4.6rem)] leading-[1.0] tracking-tight" data-reveal>
@@ -715,8 +715,9 @@ function forceReveal(){
   document.querySelectorAll('[data-count]').forEach(el=>runCount(el));
 }
 
-/* ---------- screenshot / crawler safety net (fires whether or not user scrolls) ---------- */
-setTimeout(forceReveal, 3500);
+/* ---------- screenshot / crawler safety net (fires fast, below any capture window) ---------- */
+setTimeout(forceReveal, 1200);
+window.addEventListener('load', ()=> setTimeout(forceReveal, 900));
 
 /* ---------- Three.js flowing-silk hero (light canvas) ---------- */
 (function(){
