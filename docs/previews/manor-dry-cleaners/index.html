@@ -48,6 +48,8 @@
   :root{ --nav:76px; }
   html{ scroll-behavior:auto; scroll-padding-top:90px; }
   body{ background:#F6F1E8; color:#221F1B; font-family:'Inter',sans-serif; overflow-x:hidden; }
+  @media (max-width:767px){ body{ padding-bottom:58px; } } /* clear the mobile sticky bar */
+  .mapgrid{ background-image:linear-gradient(rgba(216,175,106,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(216,175,106,.14) 1px,transparent 1px); background-size:34px 34px; }
   ::selection{ background:#B4863F; color:#F6F1E8; }
 
   .font-display{ font-family:'Fraunces',serif; }
@@ -234,7 +236,7 @@
 </div>
 
 <!-- ============ TWO CRAFTS, ONE COUNTER ============ -->
-<section id="crafts" class="relative py-24 sm:py-28">
+<section id="crafts" class="relative py-16 sm:py-28">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="max-w-2xl mb-16">
       <div data-reveal class="text-[12.5px] tracking-[.24em] uppercase text-teal font-600 mb-4">What we do</div>
@@ -319,7 +321,7 @@
 <!-- ============ LETTERMAN / EMBROIDERY SPOTLIGHT ============ -->
 <section id="letterman" class="relative bg-ink text-paper overflow-hidden">
   <div class="ambient" style="width:520px;height:520px;background:radial-gradient(circle,#B4863F,transparent 62%);top:-160px;right:-140px;opacity:.28"></div>
-  <div class="mx-auto max-w-7xl px-5 sm:px-8 py-24 sm:py-28 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 py-16 sm:py-28 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
     <div class="order-2 lg:order-1" data-reveal>
       <div class="text-[12.5px] tracking-[.24em] uppercase text-brassL font-600 mb-4">For the whole team</div>
       <h2 class="font-display font-500 leading-[1.03] text-[clamp(2.1rem,4.6vw,3.4rem)]">
@@ -359,7 +361,7 @@
 </section>
 
 <!-- ============ CARE PROMISE ============ -->
-<section class="relative py-24 sm:py-28">
+<section class="relative py-16 sm:py-28">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="text-center max-w-2xl mx-auto mb-14">
       <div data-reveal class="text-[12.5px] tracking-[.24em] uppercase text-teal font-600 mb-4">Why Fallbrook trusts us</div>
@@ -392,7 +394,7 @@
 </section>
 
 <!-- ============ VOICES (real Yelp reviews) ============ -->
-<section id="voices" class="relative py-24 sm:py-28 bg-card border-y border-ink/8">
+<section id="voices" class="relative py-16 sm:py-28 bg-card border-y border-ink/8">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="flex flex-wrap items-end justify-between gap-6 mb-14">
       <div>
@@ -451,7 +453,7 @@
 </section>
 
 <!-- ============ VISIT ============ -->
-<section id="visit" class="relative py-24 sm:py-28">
+<section id="visit" class="relative py-16 sm:py-28">
   <div class="mx-auto max-w-7xl px-5 sm:px-8 grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
     <div data-reveal>
       <div class="text-[12.5px] tracking-[.24em] uppercase text-teal font-600 mb-4">Visit the shop</div>
@@ -488,16 +490,33 @@
       </div>
     </div>
 
-    <div data-reveal class="rounded-2xl overflow-hidden border border-ink/10 min-h-[420px] shadow-xl">
-      <iframe title="Map to Manor Dry Cleaners, 125 E. Mission Road, Fallbrook CA" src="https://www.google.com/maps?q=125+E+Mission+Road+Fallbrook+CA+92028&output=embed" width="100%" height="100%" style="border:0;min-height:420px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    <a data-reveal href="https://maps.google.com/?q=125+E+Mission+Road+Fallbrook+CA+92028" target="_blank" rel="noopener" class="group mapgrid relative rounded-2xl overflow-hidden border border-brassL/25 min-h-[420px] shadow-xl bg-ink text-paper flex flex-col justify-between p-8 sm:p-10">
+      <div class="ambient" style="width:340px;height:340px;background:radial-gradient(circle,#B4863F,transparent 62%);top:-120px;right:-100px;opacity:.3"></div>
+      <div class="relative z-10 flex items-center gap-2 text-[12px] tracking-[.22em] uppercase text-brassL font-600">
+        <span class="h-1.5 w-1.5 rounded-full bg-brassL chip-dot"></span> Find us in Fallbrook
+      </div>
+      <div class="relative z-10">
+        <div class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brass text-ink mb-6 transition-transform duration-500 group-hover:-translate-y-1">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="font-display text-[clamp(1.7rem,3vw,2.3rem)] leading-tight text-paper">125 E. Mission Road</div>
+        <div class="text-[16px] text-paper/70 mt-1">Fallbrook, California 92028</div>
+        <div class="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-[13.5px] text-paper/55">
+          <span>Free parking</span><span>·</span><span>Friendly counter</span><span>·</span><span>Drop-offs all day</span>
+        </div>
+      </div>
+      <div class="relative z-10 inline-flex items-center gap-2 text-brassL font-600 text-[15px]">
+        Open in Google Maps
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </a>
   </div>
 </section>
 
 <!-- ============ CLOSING CTA ============ -->
 <section class="relative overflow-hidden bg-brass">
   <div class="grain absolute inset-0"></div>
-  <div class="mx-auto max-w-5xl px-5 sm:px-8 py-24 sm:py-28 text-center relative z-10">
+  <div class="mx-auto max-w-5xl px-5 sm:px-8 py-16 sm:py-28 text-center relative z-10">
     <h2 data-reveal class="font-display font-500 text-ink leading-[1.02] text-[clamp(2.2rem,5.2vw,4rem)]">Bring us your<br />toughest garment.</h2>
     <p data-reveal class="mt-6 text-[17px] leading-relaxed text-ink/80 max-w-xl mx-auto">Wedding dress, letterman jacket, or a shirt for Monday — we'll take good care of it, and have it ready when we say.</p>
     <div data-reveal class="mt-9 flex flex-wrap justify-center gap-3.5">
@@ -693,13 +712,17 @@ if (window.gsap && window.ScrollTrigger){
   }).catch(()=>{});
 })();
 
-/* ---------- 6s crawler / screenshot safety net ---------- */
-setTimeout(()=>{
+/* refresh triggers once fonts/images settle so far-down sections compute correctly */
+window.addEventListener('load', ()=>{ if(window.ScrollTrigger){ ScrollTrigger.refresh(); setTimeout(()=>ScrollTrigger.refresh(), 400); } });
+
+/* ---------- crawler / screenshot safety net (early, so nothing renders blank) ---------- */
+function revealAll(){
   document.querySelectorAll('[data-reveal]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; el.classList.add('in'); });
   document.querySelectorAll('[data-clip]').forEach(el=>el.classList.add('in'));
   document.querySelectorAll('.stitch').forEach(el=>el.classList.add('drawn'));
   document.querySelectorAll('.count').forEach(el=>{ if(el.textContent==='0') el.textContent=el.dataset.to; });
-}, 6000);
+}
+setTimeout(revealAll, 2600);
 </script>
 </body>
 </html>
