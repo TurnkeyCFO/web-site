@@ -510,7 +510,7 @@ tailwind.config = {
       </div>
 
       <a href="https://www.google.com/maps/search/?api=1&query=G.A.+Income+Tax+2419+W+Airport+Fwy+Ste+B+Irving+TX+75062" target="_blank" rel="noopener"
-         class="group relative block rounded-[24px] overflow-hidden ring-1 ring-forest/12 shadow-xl min-h-[420px] flex items-center justify-center" data-reveal>
+         class="group relative block rounded-[24px] overflow-hidden ring-1 ring-forest/12 shadow-xl min-h-[420px] flex items-center justify-center">
         <div class="absolute inset-0" style="background:linear-gradient(150deg,#173A2B,#1E4635 55%,#255138);"></div>
         <div class="absolute inset-0 opacity-[.14]" style="background-image:linear-gradient(#EBE0CF 1px,transparent 1px),linear-gradient(90deg,#EBE0CF 1px,transparent 1px);background-size:46px 46px;"></div>
         <div class="absolute inset-0 opacity-40 pointer-events-none" style="background:
@@ -804,16 +804,19 @@ if (window.gsap) {
   start();
 })();
 
-/* ---------- 6s crawler / screenshot safety net ---------- */
-setTimeout(()=>{
+/* ---------- crawler / screenshot safety net ---------- */
+function forceReveal(){
   document.querySelectorAll('[data-reveal]').forEach(el=>{
-    if (getComputedStyle(el).opacity < 1){ el.style.opacity=1; el.style.transform='none'; }
+    if (parseFloat(getComputedStyle(el).opacity) < 1){ el.style.opacity=1; el.style.transform='none'; }
   });
   document.querySelectorAll('[data-reveal-img]').forEach(el=> el.classList.add('in'));
   document.querySelectorAll('.count').forEach(el=>{
     if (el.textContent.trim()==='0'){ el.textContent = (parseFloat(el.dataset.target)||0)+(el.dataset.suffix||''); }
   });
-}, 6000);
+}
+// Fire well before any screenshot/crawler capture, and again on full load as a backstop.
+setTimeout(forceReveal, 2600);
+window.addEventListener('load', ()=> setTimeout(forceReveal, 1200));
 </script>
 </body>
 </html>
