@@ -628,28 +628,28 @@ tailwind.config = {
     gsap.to(heroLines, { yPercent:0, duration:1.1, ease:'power4.out', stagger:0.12, delay:0.15 });
   }
 
-  // standard reveals
-  gsap.utils.toArray('[data-reveal]').forEach(el=>{
-    ScrollTrigger.create({ trigger:el, start:'top 92%', once:true,
-      onEnter:()=> el.classList.add('in') });
-  });
-  gsap.utils.toArray('[data-reveal-image]').forEach(el=>{
-    const img = el.querySelector('.clip-img') || el;
-    ScrollTrigger.create({ trigger:el, start:'top 85%', once:true, onEnter:()=> img.classList.add('in') });
-  });
-
-  // count-up
-  gsap.utils.toArray('[data-count]').forEach(el=>{
+  // Robust reveals via IntersectionObserver (independent of Lenis/ScrollTrigger —
+  // fires reliably in headless/screenshot renders on mobile AND desktop).
+  const runCount = (el)=>{
     const target = parseFloat(el.dataset.count);
     const dec = parseInt(el.dataset.decimals||'0',10);
     const suf = el.dataset.suffix||'';
-    ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:()=>{
-      const o={v:0};
-      gsap.to(o,{v:target,duration:1.6,ease:'power2.out',onUpdate:()=>{
-        el.textContent = (dec? o.v.toFixed(dec) : Math.round(o.v).toString()) + suf;
-      }});
+    const o={v:0};
+    gsap.to(o,{v:target,duration:1.6,ease:'power2.out',onUpdate:()=>{
+      el.textContent = (dec? o.v.toFixed(dec) : Math.round(o.v).toString()) + suf;
     }});
-  });
+  };
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el = e.target;
+      if (el.hasAttribute('data-reveal')) el.classList.add('in');
+      if (el.hasAttribute('data-reveal-image')){ const img=el.querySelector('.clip-img')||el; img.classList.add('in'); }
+      if (el.hasAttribute('data-count')) runCount(el);
+      io.unobserve(el);
+    });
+  }, { rootMargin:'0px 0px -8% 0px', threshold:0.01 });
+  document.querySelectorAll('[data-reveal],[data-reveal-image],[data-count]').forEach(el=> io.observe(el));
 
   ScrollTrigger.refresh();
 })();
@@ -724,7 +724,7 @@ tailwind.config = {
   document.addEventListener('visibilitychange', ()=>{ document.hidden ? stop() : (canvas.getBoundingClientRect().bottom>0 && start()); });
 })();
 
-/* ---------- 6s crawler / screenshot safety net ---------- */
+/* ---------- crawler / screenshot safety net ---------- */
 setTimeout(function(){
   document.querySelectorAll('[data-reveal]:not(.in)').forEach(e=>e.classList.add('in'));
   document.querySelectorAll('[data-reveal-image] .clip-img:not(.in)').forEach(e=>e.classList.add('in'));
@@ -736,7 +736,7 @@ setTimeout(function(){
       el.textContent = (dec? t.toFixed(dec): Math.round(t).toString())+suf;
     }
   });
-}, 6000);
+}, 2600);
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
