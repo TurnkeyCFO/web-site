@@ -31,7 +31,7 @@
 tailwind.config = {
   theme: { extend: {
     colors: {
-      bone:'#F5EFE6', sand:'#EADFCE', slate:'#5E6B6A', brass:'#B0762F', brassLt:'#CB9A4E',
+      bone:'#F5EFE6', sand:'#EADFCE', slate:'#495553', brass:'#B0762F', brassDk:'#7A4E18', brassLt:'#CB9A4E',
       ink:'#26221E', espresso:'#1C1815', mist:'#FBF8F2'
     },
     fontFamily: { display:['Fraunces','serif'], sans:['Inter','system-ui','sans-serif'] }
@@ -57,11 +57,11 @@ tailwind.config = {
 
   /* buttons */
   .btn{ position:relative; overflow:hidden; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s, filter .4s; }
-  .btn-primary{ background:#B0762F; color:#FBF8F2; box-shadow:0 12px 30px -12px rgba(176,118,47,.7); }
+  .btn-primary{ background:#8A5A20; color:#FBF8F2; box-shadow:0 12px 30px -12px rgba(138,90,32,.6); }
   .btn-primary::after{ content:''; position:absolute; top:0; left:0; width:60%; height:100%;
     background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
     transform:translateX(-160%) skewX(-18deg); transition:transform .9s cubic-bezier(.16,1,.3,1); }
-  .btn-primary:hover{ transform:translateY(-3px); filter:brightness(1.05); box-shadow:0 20px 42px -14px rgba(176,118,47,.75); }
+  .btn-primary:hover{ transform:translateY(-3px); filter:brightness(1.08); box-shadow:0 20px 42px -14px rgba(138,90,32,.7); }
   .btn-primary:hover::after{ transform:translateX(180%) skewX(-18deg); }
   .btn-ghost{ border:1.5px solid rgba(38,34,30,.28); color:#26221E; }
   .btn-ghost:hover{ transform:translateY(-3px); border-color:#B0762F; color:#8A5A20; }
@@ -96,8 +96,11 @@ tailwind.config = {
   .marquee:hover .marquee-track{ animation-play-state:paused; }
   @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-  /* reveals */
-  [data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  /* reveals — IntersectionObserver driven (robust for programmatic scroll + screenshots) */
+  [data-reveal]{ opacity:0; transform:translateY(30px);
+    transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+  [data-reveal].reveal-in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ [data-reveal]{ opacity:1; transform:none; transition:none; } }
 
   /* hero showpiece canvas */
   #stone-canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; opacity:.9; }
@@ -108,13 +111,13 @@ tailwind.config = {
   .ba{ position:relative; overflow:hidden; user-select:none; touch-action:pan-y; border-radius:1rem; }
   .ba img{ display:block; width:100%; height:100%; object-fit:cover; pointer-events:none; }
   .ba .after-wrap{ position:absolute; inset:0; width:50%; overflow:hidden; }
-  .ba .after-wrap img{ width:100vw; max-width:none; height:100%; }
+  .ba .after-wrap img{ max-width:none; height:100%; }  /* JS sets width = slider width so the after image stays aligned */
   .ba .handle{ position:absolute; top:0; bottom:0; left:50%; width:2px; background:#FBF8F2; transform:translateX(-1px);
     box-shadow:0 0 0 1px rgba(28,24,21,.25); cursor:ew-resize; }
   .ba .knob{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:52px; height:52px; border-radius:50%;
     background:#B0762F; color:#FBF8F2; display:flex; align-items:center; justify-content:center; cursor:ew-resize;
     box-shadow:0 10px 24px -8px rgba(28,24,21,.6); }
-  .ba .tag{ position:absolute; bottom:14px; padding:.3rem .7rem; border-radius:999px; font-size:.7rem; letter-spacing:.12em;
+  .ba .tag{ position:absolute; bottom:14px; padding:.32rem .75rem; border-radius:999px; font-size:.74rem; letter-spacing:.12em;
     text-transform:uppercase; font-weight:600; backdrop-filter:blur(4px); }
 
   .lift-img{ overflow:hidden; border-radius:.85rem; }
@@ -189,17 +192,17 @@ tailwind.config = {
       <div class="mt-10 flex flex-wrap items-center gap-x-9 gap-y-5">
         <div>
           <div class="font-display text-[2rem] font-semibold text-ink leading-none"><span class="count" data-to="30" data-suffix="+">30</span></div>
-          <div class="text-[12px] uppercase tracking-[.16em] text-slate/90 mt-1.5">Years of craft</div>
+          <div class="text-[12px] uppercase tracking-[.16em] text-slate mt-1.5">Years of craft</div>
         </div>
         <div class="w-px h-9 bg-ink/12 hidden sm:block"></div>
         <div>
           <div class="font-display text-[2rem] font-semibold text-ink leading-none flex items-baseline gap-1"><span class="count" data-to="4.8" data-dec="1">4.8</span><span class="text-brass text-[1.1rem]">&#9733;</span></div>
-          <div class="text-[12px] uppercase tracking-[.16em] text-slate/90 mt-1.5">200+ verified reviews</div>
+          <div class="text-[12px] uppercase tracking-[.16em] text-slate mt-1.5">200+ verified reviews</div>
         </div>
         <div class="w-px h-9 bg-ink/12 hidden sm:block"></div>
         <div>
           <div class="font-display text-[2rem] font-semibold text-ink leading-none">3<span class="text-brass">×</span></div>
-          <div class="text-[12px] uppercase tracking-[.16em] text-slate/90 mt-1.5">Generations, one family</div>
+          <div class="text-[12px] uppercase tracking-[.16em] text-slate mt-1.5">Generations, one family</div>
         </div>
       </div>
     </div>
@@ -216,7 +219,7 @@ tailwind.config = {
       <!-- small "before" inset to hint at transformation -->
       <div class="hidden sm:block absolute -bottom-6 -left-6 w-36 rounded-xl overflow-hidden shadow-2xl ring-2 ring-bone rotate-[-4deg]">
         <img src="assets/p5.jpg" alt="Stained, mildewed grout in a shower corner before restoration" class="w-full h-28 object-cover" />
-        <span class="absolute top-1.5 left-1.5 text-[9px] font-bold uppercase tracking-[.14em] bg-espresso/80 text-bone rounded px-1.5 py-0.5">Before</span>
+        <span class="absolute top-1.5 left-1.5 text-[10px] font-bold uppercase tracking-[.12em] bg-espresso text-bone rounded px-1.5 py-0.5">Before</span>
       </div>
     </div>
   </div>
@@ -256,7 +259,7 @@ tailwind.config = {
 <section class="relative py-20 md:py-28 bg-bone">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
     <div data-reveal>
-      <div class="text-[12px] uppercase tracking-[.22em] text-brass font-semibold mb-4">The family behind the work</div>
+      <div class="text-[12px] uppercase tracking-[.22em] text-brassDk font-semibold mb-4">The family behind the work</div>
       <h2 class="font-display font-semibold text-ink leading-[1.04] tracking-tightish text-[clamp(2rem,4.4vw,3.1rem)]">
         A craft passed down,<br /><span class="grad-text italic">three generations deep.</span>
       </h2>
@@ -275,7 +278,7 @@ tailwind.config = {
         <div class="flex items-center gap-2"><span class="text-brass">&#10003;</span> Restore before you replace</div>
       </div>
     </div>
-    <div data-reveal class="lift-img clip-img shadow-[0_34px_70px_-34px_rgba(28,24,21,.5)]" data-reveal-image>
+    <div data-reveal class="lift-img shadow-[0_34px_70px_-34px_rgba(28,24,21,.5)]">
       <img src="assets/p4.jpg" alt="The Smart Grout & Stone Restoration crew working on tile, grout and stone in North Texas homes" class="w-full h-[520px] object-cover" />
     </div>
   </div>
@@ -285,7 +288,7 @@ tailwind.config = {
 <section id="services" class="relative py-20 md:py-28 bg-mist">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="max-w-2xl" data-reveal>
-      <div class="text-[12px] uppercase tracking-[.22em] text-brass font-semibold mb-4">What we restore</div>
+      <div class="text-[12px] uppercase tracking-[.22em] text-brassDk font-semibold mb-4">What we restore</div>
       <h2 class="font-display font-semibold text-ink leading-[1.04] tracking-tightish text-[clamp(2rem,4.4vw,3.1rem)]">
         One trade. <span class="grad-text italic">Every hard surface.</span>
       </h2>
@@ -346,7 +349,7 @@ tailwind.config = {
     </div>
 
     <p class="mt-9 text-[14.5px] text-ink/60" data-reveal>
-      Not sure which you need? <a href="tel:+12145798966" class="text-brass font-semibold ul-grow">Call (214) 579-8966</a> — we&rsquo;ll tell you honestly.
+      Not sure which you need? <a href="tel:+12145798966" class="text-brassDk font-semibold ul-grow">Call (214) 579-8966</a> — we&rsquo;ll tell you honestly.
     </p>
   </div>
 </section>
@@ -374,7 +377,7 @@ tailwind.config = {
         <img src="assets/floor-after.jpg" alt="The same saltillo tile floor cleaned, sealed and glossy after restoration by Smart Grout" />
       </div>
       <span class="tag left-3.5 bg-espresso/70 text-bone/90">Before</span>
-      <span class="tag right-3.5 bg-brass/85 text-bone" id="ba1-aftertag">After</span>
+      <span class="tag right-3.5 bg-brassDk text-bone" id="ba1-aftertag">After</span>
       <div class="handle" id="ba1-handle">
         <div class="knob">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
@@ -390,7 +393,7 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex flex-wrap items-end justify-between gap-6 mb-12" data-reveal>
       <div class="max-w-xl">
-        <div class="text-[12px] uppercase tracking-[.22em] text-brass font-semibold mb-4">Real transformations</div>
+        <div class="text-[12px] uppercase tracking-[.22em] text-brassDk font-semibold mb-4">Real transformations</div>
         <h2 class="font-display font-semibold text-ink leading-[1.04] tracking-tightish text-[clamp(2rem,4.4vw,3.1rem)]">
           Our work, <span class="grad-text italic">before &amp; after.</span>
         </h2>
@@ -429,7 +432,7 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex flex-wrap items-end justify-between gap-6 mb-12" data-reveal>
       <div class="max-w-xl">
-        <div class="text-[12px] uppercase tracking-[.22em] text-brass font-semibold mb-4">In their words</div>
+        <div class="text-[12px] uppercase tracking-[.22em] text-brassDk font-semibold mb-4">In their words</div>
         <h2 class="font-display font-semibold text-ink leading-[1.04] tracking-tightish text-[clamp(2rem,4.4vw,3.1rem)]">
           Neighbors who&rsquo;d <span class="grad-text italic">call us again.</span>
         </h2>
@@ -485,7 +488,7 @@ tailwind.config = {
 <section id="visit" class="relative py-20 md:py-28 bg-bone">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
     <div data-reveal>
-      <div class="text-[12px] uppercase tracking-[.22em] text-brass font-semibold mb-4">Where we work</div>
+      <div class="text-[12px] uppercase tracking-[.22em] text-brassDk font-semibold mb-4">Where we work</div>
       <h2 class="font-display font-semibold text-ink leading-[1.04] tracking-tightish text-[clamp(2rem,4.4vw,3.1rem)]">
         Based in Frisco.<br /><span class="grad-text italic">Serving North Texas.</span>
       </h2>
@@ -500,7 +503,7 @@ tailwind.config = {
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div>
-            <div class="text-[13px] uppercase tracking-[.14em] text-slate/90 font-semibold">Service area</div>
+            <div class="text-[13px] uppercase tracking-[.14em] text-slate font-semibold">Service area</div>
             <div class="text-[15.5px] text-ink/85 mt-0.5">Frisco, TX &amp; the greater DFW / North Texas metro</div>
           </div>
         </div>
@@ -509,7 +512,7 @@ tailwind.config = {
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
           </div>
           <div>
-            <div class="text-[13px] uppercase tracking-[.14em] text-slate/90 font-semibold">Hours</div>
+            <div class="text-[13px] uppercase tracking-[.14em] text-slate font-semibold">Hours</div>
             <div class="text-[15.5px] text-ink/85 mt-0.5">Mon&ndash;Sat by appointment &middot; call to schedule</div>
           </div>
         </div>
@@ -518,7 +521,7 @@ tailwind.config = {
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
           <div>
-            <div class="text-[13px] uppercase tracking-[.14em] text-slate/90 font-semibold">Phone</div>
+            <div class="text-[13px] uppercase tracking-[.14em] text-slate font-semibold">Phone</div>
             <a href="tel:+12145798966" class="text-[15.5px] text-ink/85 mt-0.5 block hover:text-brass transition">(214) 579-8966</a>
           </div>
         </div>
@@ -530,10 +533,15 @@ tailwind.config = {
       </div>
     </div>
 
-    <div data-reveal class="rounded-2xl overflow-hidden shadow-[0_30px_64px_-30px_rgba(28,24,21,.5)] ring-1 ring-black/5 min-h-[380px]">
+    <div data-reveal class="relative rounded-2xl overflow-hidden shadow-[0_30px_64px_-30px_rgba(28,24,21,.5)] ring-1 ring-black/5 min-h-[380px] bg-sand">
+      <!-- static fallback so a slow/blocked map is never a stark white box -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-ink/55 gap-2 pointer-events-none">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="text-[13px] font-semibold tracking-wide">Frisco, TX &middot; serving DFW</span>
+      </div>
       <iframe title="Smart Grout & Stone Restoration service area — Frisco, Texas"
         src="https://www.google.com/maps?q=Frisco,+Texas&output=embed"
-        width="100%" height="100%" style="border:0; min-height:380px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        width="100%" height="100%" style="border:0; min-height:380px; position:relative;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
@@ -669,41 +677,37 @@ function navState(){
 }
 navState(); window.addEventListener('scroll', navState, {passive:true});
 
-/* ---- Reveals ---- */
-if (window.gsap && !reduce) {
-  gsap.utils.toArray('[data-reveal]').forEach(el=>{
-    gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:.7,ease:'power3.out',
-      scrollTrigger:{trigger:el,start:'top 92%',once:true},
-      onComplete:()=> el.style.willChange='auto'});
-  });
-  gsap.utils.toArray('[data-reveal-image]').forEach(el=>{
-    ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>el.classList.add('in')});
-  });
+/* ---- Reveals: IntersectionObserver (fires on initial layout AND programmatic scroll — bulletproof for screenshots) ---- */
+function fillCount(el){
+  if (el.dataset.done) return; el.dataset.done='1';
+  const to=parseFloat(el.dataset.to), dec=parseInt(el.dataset.dec||'0'), suf=el.dataset.suffix||'';
+  if (window.gsap && !reduce){
+    const o={v:0};
+    gsap.to(o,{v:to,duration:1.5,ease:'power2.out',onUpdate:()=> el.textContent=(dec?o.v.toFixed(dec):Math.round(o.v))+suf});
+  } else { el.textContent=(dec?to.toFixed(dec):Math.round(to))+suf; }
+}
+if ('IntersectionObserver' in window && !reduce){
+  const ro=new IntersectionObserver((entries,obs)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('reveal-in'); obs.unobserve(en.target); } });
+  },{ threshold:0.06, rootMargin:'0px 0px -6% 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(el=>ro.observe(el));
+  const co=new IntersectionObserver((entries,obs)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ fillCount(en.target); obs.unobserve(en.target); } });
+  },{ threshold:0.2 });
+  document.querySelectorAll('.count').forEach(el=>co.observe(el));
 } else {
-  document.querySelectorAll('[data-reveal]').forEach(el=>{el.style.opacity=1;el.style.transform='none';});
-  document.querySelectorAll('[data-reveal-image]').forEach(el=>el.classList.add('in'));
+  document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('reveal-in'));
+  document.querySelectorAll('.count').forEach(fillCount);
 }
-
-/* ---- Count-up ---- */
-function runCounts(){
-  document.querySelectorAll('.count').forEach(el=>{
-    if (el.dataset.done) return; el.dataset.done='1';
-    const to=parseFloat(el.dataset.to), dec=parseInt(el.dataset.dec||'0'), suf=el.dataset.suffix||'';
-    if (window.gsap && !reduce){
-      const o={v:0};
-      gsap.to(o,{v:to,duration:1.6,ease:'power2.out',
-        scrollTrigger:{trigger:el,start:'top 92%',once:true},
-        onUpdate:()=> el.textContent=(dec?o.v.toFixed(dec):Math.round(o.v))+suf});
-    } else { el.textContent=(dec?to.toFixed(dec):Math.round(to))+suf; }
-  });
-}
-runCounts();
 
 /* ---- Before/After slider ---- */
 (function(){
   const wrap=document.getElementById('ba1'), after=document.getElementById('ba1-after'),
         handle=document.getElementById('ba1-handle'), aftertag=document.getElementById('ba1-aftertag');
   if(!wrap) return;
+  const afterImg=after.querySelector('img');
+  function sizeAfter(){ afterImg.style.width=wrap.clientWidth+'px'; }
+  sizeAfter(); window.addEventListener('resize',sizeAfter);
   let dragging=false;
   function setPos(clientX){
     const r=wrap.getBoundingClientRect();
@@ -782,15 +786,18 @@ runCounts();
   }).catch(()=>{});
 })();
 
-/* ---- 6s screenshot / crawler safety net ---- */
-setTimeout(()=>{
-  document.querySelectorAll('[data-reveal]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; });
-  document.querySelectorAll('[data-reveal-image]').forEach(el=>el.classList.add('in'));
+/* ---- screenshot / crawler safety net (early + final) ---- */
+function forceReveal(){
+  document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('reveal-in'));
   document.querySelectorAll('.count').forEach(el=>{
     const to=parseFloat(el.dataset.to), dec=parseInt(el.dataset.dec||'0'), suf=el.dataset.suffix||'';
-    if (el.textContent.trim()==='' || el.textContent.trim()==='0') el.textContent=(dec?to.toFixed(dec):Math.round(to))+suf;
+    const t=el.textContent.trim();
+    if (t==='' || t==='0' || t===el.dataset.to) el.textContent=(dec?to.toFixed(dec):Math.round(to))+suf;
   });
-}, 6000);
+}
+setTimeout(forceReveal, 2600);
+setTimeout(forceReveal, 6000);
+window.addEventListener('load', ()=> setTimeout(forceReveal, 800));
 </script>
 </body>
 </html>
