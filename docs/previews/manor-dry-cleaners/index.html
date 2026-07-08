@@ -78,8 +78,10 @@ tailwind.config = {
   .reveal-line { overflow:hidden; display:block; }
   .reveal-word { display:inline-block; will-change:transform; }
 
-  [data-reveal] { opacity:0; transform:translateY(30px); will-change:opacity,transform; }
-  [data-reveal-img] .ri-inner { clip-path:inset(0 0 100% 0); will-change:clip-path; }
+  [data-reveal] { opacity:0; transform:translateY(30px); will-change:opacity,transform; transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal].is-in { opacity:1; transform:none; }
+  [data-reveal-img] .ri-inner { clip-path:inset(0 0 100% 0); will-change:clip-path; transition:clip-path 1.1s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal-img] .ri-inner.is-in { clip-path:inset(0 0 0% 0); }
 
   /* Hero silk canvas */
   #silk { position:absolute; inset:0; width:100%; height:100%; display:block; }
@@ -503,8 +505,13 @@ tailwind.config = {
     </div>
 
     <div data-reveal>
-      <div class="rounded-[1.3rem] overflow-hidden border border-line shadow-[0_30px_60px_-34px_rgba(34,26,22,.45)]">
-        <iframe title="Manor Dry Cleaners location map" src="https://www.google.com/maps?q=125+E+Mission+Road+Fallbrook+CA+92028&output=embed" width="100%" height="480" style="border:0; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="relative rounded-[1.3rem] overflow-hidden border border-line shadow-[0_30px_60px_-34px_rgba(34,26,22,.45)]" style="background:linear-gradient(180deg,#F1E7D8,#E7D9C4);">
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none">
+          <span class="w-12 h-12 rounded-full bg-wine/12 text-wine flex items-center justify-center mb-3"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span class="font-display text-ink text-xl">125 E. Mission Road</span>
+          <span class="text-muted text-sm">Fallbrook, CA 92028</span>
+        </div>
+        <iframe title="Manor Dry Cleaners location map" src="https://www.google.com/maps?q=125+E+Mission+Road+Fallbrook+CA+92028&output=embed" width="100%" height="460" style="border:0; display:block; position:relative;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
@@ -668,46 +675,48 @@ let lenis;
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 })();
 
-/* ---------- Reveals (built after preloader) ---------- */
-function startReveals(){
-  if(!window.gsap){ forceReveal(); return; }
-  gsap.registerPlugin(ScrollTrigger);
-
-  const words=document.querySelectorAll('#heroHead .reveal-word');
-  gsap.set(words,{y:(i,el)=>el.offsetHeight*1.2, opacity:0});
-  gsap.to(words,{y:0,opacity:1,duration:.9,ease:'power3.out',stagger:.08,delay:.05});
-
-  document.querySelectorAll('[data-reveal]').forEach(el=>{
-    gsap.to(el,{opacity:1,y:0,duration:.7,ease:'power3.out',
-      scrollTrigger:{trigger:el,start:'top 92%',once:true},
-      onComplete:()=>el.style.willChange='auto'});
-  });
-  document.querySelectorAll('[data-reveal-img] .ri-inner').forEach(el=>{
-    gsap.to(el,{clipPath:'inset(0 0 0% 0)',duration:1.2,ease:'power3.inOut',
-      scrollTrigger:{trigger:el,start:'top 88%',once:true}});
-  });
-
-  document.querySelectorAll('[data-count]').forEach(el=>{
-    const target=parseFloat(el.dataset.count), dec=parseInt(el.dataset.dec||'0');
-    ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:()=>{
-      const o={v:0};
-      gsap.to(o,{v:target,duration:1.5,ease:'power2.out',onUpdate:()=>{
-        el.textContent = dec? o.v.toFixed(dec) : Math.round(o.v).toLocaleString();
-      }});
+/* ---------- Reveals (IntersectionObserver — robust for any scroll method) ---------- */
+function runCount(el){
+  const target=parseFloat(el.dataset.count), dec=parseInt(el.dataset.dec||'0');
+  if(el.dataset.done) return; el.dataset.done='1';
+  if(window.gsap){
+    const o={v:0};
+    gsap.to(o,{v:target,duration:1.5,ease:'power2.out',onUpdate:()=>{
+      el.textContent = dec? o.v.toFixed(dec) : Math.round(o.v).toLocaleString();
     }});
-  });
+  } else { el.textContent = dec? target.toFixed(dec) : Math.round(target).toLocaleString(); }
+}
+function startReveals(){
+  // hero word reveal (above the fold, fire immediately)
+  const words=document.querySelectorAll('#heroHead .reveal-word');
+  if(window.gsap){
+    gsap.set(words,{y:(i,el)=>el.offsetHeight*1.2, opacity:0});
+    gsap.to(words,{y:0,opacity:1,duration:.9,ease:'power3.out',stagger:.08,delay:.05});
+  } else { words.forEach(w=>{w.style.opacity=1;w.style.transform='none';}); }
 
-  requestAnimationFrame(()=>ScrollTrigger.refresh());
+  const items=[...document.querySelectorAll('[data-reveal]'), ...document.querySelectorAll('[data-reveal-img] .ri-inner'), ...document.querySelectorAll('[data-count]')];
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver((ents,obs)=>{
+      ents.forEach(e=>{
+        if(!e.isIntersecting) return;
+        const el=e.target;
+        el.classList.add('is-in');
+        if(el.hasAttribute('data-count')) runCount(el);
+        obs.unobserve(el);
+      });
+    },{rootMargin:'0px 0px -8% 0px', threshold:0.05});
+    items.forEach(el=>io.observe(el));
+  } else { forceReveal(); }
 }
 function forceReveal(){
-  document.querySelectorAll('[data-reveal]').forEach(el=>{el.style.opacity=1;el.style.transform='none';});
+  document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('is-in'));
+  document.querySelectorAll('[data-reveal-img] .ri-inner').forEach(el=>el.classList.add('is-in'));
   document.querySelectorAll('#heroHead .reveal-word').forEach(el=>{el.style.opacity=1;el.style.transform='none';});
-  document.querySelectorAll('[data-reveal-img] .ri-inner').forEach(el=>el.style.clipPath='inset(0 0 0% 0)');
-  document.querySelectorAll('[data-count]').forEach(el=>{const t=parseFloat(el.dataset.count),d=parseInt(el.dataset.dec||'0');el.textContent=d?t.toFixed(d):Math.round(t).toLocaleString();});
+  document.querySelectorAll('[data-count]').forEach(el=>runCount(el));
 }
 
-/* ---------- 6s screenshot / crawler safety net ---------- */
-setTimeout(forceReveal, 6000);
+/* ---------- screenshot / crawler safety net (fires whether or not user scrolls) ---------- */
+setTimeout(forceReveal, 3500);
 
 /* ---------- Three.js flowing-silk hero (light canvas) ---------- */
 (function(){
