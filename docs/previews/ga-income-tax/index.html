@@ -1,829 +1,818 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
 <!--
-  G.A. Income Tax — Irving, TX  ·  Turnkey Web bespoke prospect build
-  Art direction: warm Light Luxury editorial (cream base, deep-evergreen + warm-gold).
-  Palette derived for a 20-yr bilingual family tax/bookkeeping shop — trust + warmth, NOT cold corporate navy.
-  Display: Fraunces (editorial serif) / Body: Plus Jakarta Sans.
-  Showpiece: Three.js displaced gradient-mesh "flowing ledger" on the light canvas (green→gold), static poster fallback.
-  Real data only — phone/address/hours/reviews verified via Google Business Profile, TaxBuzz, Yelp, Alignable.
+  G.A Income Tax — Irving, TX  (prospect preview, draft for approval)
+  Art direction: light-luxury editorial. Warm cream base (#F7F3EC), deep navy (#142A47),
+  scarce brushed-gold accent (#B0873F), near-black ink. Fraunces display serif + Plus Jakarta Sans.
+  Showpiece: Three.js drifting gold/navy "mote" field on the light canvas (documents/particles metaphor),
+  DPR-capped, offscreen-paused, static on mobile. Signature: editorial split hero, big serif, gold hairline system.
+  Real data (Google Business Profile + Yelp, verified 2026-07):
+    Address 2419 W Airport Fwy, Ste B, Irving, TX 75062 · Phone (972) 887-3015
+    Hours M-F 10-6, Sat 10-3, Sun closed · 5.0 / 86 Google reviews · Owner Graciela Abaca · 20+ yrs · bilingual
+  No logo exists online -> custom typographic "G.A" wordmark designed here. No fabricated data. NO emojis.
 -->
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>G.A. Income Tax — Income Tax, Bookkeeping & Payroll in Irving, TX | 20+ Years</title>
-<meta name="description" content="G.A. Income Tax in Irving, TX. Bilingual income tax preparation, bookkeeping, payroll, business registration and sales tax filing. 20+ years of experience, 5.0 stars across 86 Google reviews. Call (972) 887-3015.">
-<link rel="canonical" href="https://turnkeyweb.org/previews/ga-income-tax/">
-<meta property="og:type" content="business.business">
-<meta property="og:title" content="G.A. Income Tax — Irving, TX · Income Tax, Bookkeeping & Payroll">
-<meta property="og:description" content="Bilingual tax and bookkeeping done right for 20+ years. Rated 5.0 across 86 Google reviews. Irving, TX.">
-<meta property="og:locale" content="en_US">
-<meta name="theme-color" content="#FBF6F0">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>G.A Income Tax — Trusted Tax Preparation &amp; Bookkeeping in Irving, TX</title>
+<meta name="description" content="Family-run tax and accounting office in Irving, TX. Individual and business tax preparation, bookkeeping, and payroll — 20+ years of experience, rated 5.0 across 86 Google reviews. Se habla español. Call (972) 887-3015." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/ga-income-tax/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="G.A Income Tax — Trusted Tax Preparation in Irving, TX" />
+<meta property="og:description" content="20+ years preparing individual and business taxes for Irving families and small businesses. Rated 5.0 across 86 Google reviews. Se habla español." />
+<meta property="og:url" content="https://turnkeyweb.org/previews/ga-income-tax/" />
+<meta name="theme-color" content="#F7F3EC" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-
 <script>
 tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        cream:  '#FBF6F0',
-        bone:   '#F3ECE1',
-        sand:   '#EBE0CF',
-        ink:    '#1A211C',
-        forest: '#1E4635',
-        pine:   '#173A2B',
-        sage:   '#7C9A85',
-        gold:   '#C08A3E',
-        bronze: '#8A5A1C',
-        amber:  '#D8A24A',
-      },
-      fontFamily: {
-        display: ['Fraunces', 'serif'],
-        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-      },
+  theme: { extend: {
+    colors: {
+      cream:'#F7F3EC', paper:'#EFE7DA', linen:'#FBF8F2',
+      navy:'#142A47', navy2:'#0F2038', gold:'#B0873F', gold2:'#C89A4C',
+      ink:'#1A1D24', sage:'#6E7F6A', mute:'#5B6270'
     },
-  },
+    fontFamily:{ display:['Fraunces','serif'], sans:['"Plus Jakarta Sans"','system-ui','sans-serif'] }
+  }}
 };
 </script>
-
 <style>
-  :root { --nav-h: 74px; }
-  html { scroll-behavior:auto; scroll-padding-top: var(--nav-h); -webkit-text-size-adjust:100%; }
-  body { background:#FBF6F0; color:#1A211C; font-family:'Plus Jakarta Sans',system-ui,sans-serif; overflow-x:hidden; }
-  ::selection { background:#1E4635; color:#F3ECE1; }
+:root{ --nav-h:74px; }
+*{ -webkit-tap-highlight-color: transparent; }
+html{ scroll-behavior:auto; scroll-padding-top: calc(var(--nav-h) + 10px); }
+body{ background:#F7F3EC; color:#1A1D24; font-family:'Plus Jakarta Sans',system-ui,sans-serif; overflow-x:hidden; }
+::selection{ background:#142A47; color:#F7F3EC; }
 
-  .font-display { font-family:'Fraunces',serif; }
+.font-display{ font-family:'Fraunces',serif; }
+.tighter{ letter-spacing:-.03em; }
+.tightest{ letter-spacing:-.045em; }
 
-  /* Gradient shimmer (brand-tinted, min-lightness floored for AA) */
-  .grad-text {
-    background: linear-gradient(100deg, #1E4635 0%, #C08A3E 42%, #1E4635 84%);
-    background-size: 220% 100%;
-    -webkit-background-clip:text; background-clip:text;
-    -webkit-text-fill-color:transparent; color:transparent;
-    animation: shimmer 9s linear infinite;
-  }
-  @keyframes shimmer { to { background-position: -220% 0; } }
+/* animated brand-tinted shimmer for key headers */
+.grad-text{
+  background:linear-gradient(100deg,#142A47 0%,#142A47 30%,#B0873F 50%,#142A47 70%,#142A47 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  animation:shimmer 8s linear infinite;
+}
+@keyframes shimmer{ from{background-position:180% 0} to{background-position:-40% 0} }
 
-  /* WebGL canvas — contained to the hero visual panel, light canvas */
-  #mesh-canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
-  .poster-fallback {
-    position:absolute; inset:0;
-    background:
-      radial-gradient(120% 90% at 78% 18%, rgba(216,162,74,.42), transparent 55%),
-      radial-gradient(120% 110% at 22% 92%, rgba(30,70,53,.55), transparent 58%),
-      linear-gradient(150deg, #F3ECE1, #EBE0CF);
-  }
+/* WebGL canvas sits behind the hero content on the light canvas */
+#hero-canvas{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+.hero-scrim{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    radial-gradient(70% 55% at 78% 30%, rgba(176,135,63,.10), transparent 60%),
+    radial-gradient(60% 60% at 12% 78%, rgba(20,42,71,.08), transparent 62%),
+    linear-gradient(180deg, rgba(247,243,236,.35) 0%, rgba(247,243,236,0) 22%, rgba(247,243,236,.55) 100%);
+}
+.grain::after{
+  content:''; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+  background-image:radial-gradient(#1A1D24 .6px, transparent .6px); background-size:3px 3px;
+}
 
-  .grain::after {
-    content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
-    background-image:radial-gradient(#1A211C 0.5px, transparent 0.5px); background-size:3px 3px;
-  }
+/* masked word reveal */
+.mask-line{ overflow:hidden; display:block; }
+.mask-word{ display:inline-block; will-change:transform; }
 
-  .ambient-blob { position:absolute; border-radius:50%; filter:blur(90px); opacity:.4; pointer-events:none; will-change:transform; }
+[data-reveal]{ opacity:0; transform:translateY(30px); will-change:opacity,transform; }
+[data-reveal].in{ opacity:1; transform:none; }
 
-  /* Cards */
-  .card { position:relative; transition:transform .55s cubic-bezier(.16,1,.3,1), box-shadow .55s cubic-bezier(.16,1,.3,1); }
-  .card::before {
-    content:""; position:absolute; left:0; top:0; height:2px; width:0%;
-    background:linear-gradient(90deg,#1E4635,#C08A3E); transition:width .65s cubic-bezier(.16,1,.3,1);
-  }
-  .card:hover { transform:translateY(-6px); box-shadow:0 26px 60px -34px rgba(23,58,43,.55); }
-  .card:hover::before { width:100%; }
-  .card:hover .svc-icon { transform:rotate(-6deg) scale(1.06); }
-  .svc-icon { transition:transform .55s cubic-bezier(.16,1,.3,1); }
+.clip-img{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.2,.7,.2,1); }
+.clip-img.in{ clip-path:inset(0 0 0% 0); }
 
-  /* Buttons */
-  .btn-primary { position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s, filter .4s; }
-  .btn-primary::after {
-    content:""; position:absolute; top:0; left:-120%; width:60%; height:100%;
-    background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-18deg);
-    transition:left .9s cubic-bezier(.16,1,.3,1);
-  }
-  .btn-primary:hover { transform:translateY(-3px); filter:brightness(1.05); box-shadow:0 20px 40px -18px rgba(23,58,43,.6); }
-  .btn-primary:hover::after { left:130%; }
+/* buttons */
+.btn{ position:relative; overflow:hidden; transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s, filter .4s; }
+.btn:hover{ transform:translateY(-3px); }
+.btn-navy{ background:#142A47; color:#FBF8F2; box-shadow:0 14px 34px -14px rgba(20,42,71,.6); }
+.btn-navy:hover{ filter:brightness(1.08); box-shadow:0 22px 44px -14px rgba(20,42,71,.7); }
+.btn-navy::after{
+  content:''; position:absolute; top:0; left:-120%; width:60%; height:100%;
+  background:linear-gradient(100deg,transparent,rgba(200,154,76,.55),transparent); transform:skewX(-18deg);
+  transition:left .9s cubic-bezier(.2,.7,.2,1);
+}
+.btn-navy:hover::after{ left:130%; }
+.btn-ghost{ border:1.5px solid rgba(20,42,71,.28); color:#142A47; background:rgba(251,248,242,.5); }
+.btn-ghost:hover{ border-color:#142A47; background:#fff; }
 
-  .underline-grow { position:relative; }
-  .underline-grow::after {
-    content:""; position:absolute; left:0; bottom:-3px; height:1.5px; width:0%;
-    background:linear-gradient(90deg,#1E4635,#C08A3E); transition:width .5s cubic-bezier(.16,1,.3,1);
-  }
-  .underline-grow:hover::after { width:100%; }
+/* service + review cards */
+.card{ position:relative; background:#FBF8F2; border:1px solid rgba(20,42,71,.10);
+  border-radius:20px; transition:transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s, border-color .55s; overflow:hidden; }
+.card::before{ content:''; position:absolute; top:0; left:0; height:3px; width:0%;
+  background:linear-gradient(90deg,#142A47,#B0873F); transition:width .65s cubic-bezier(.2,.7,.2,1); }
+.card:hover{ transform:translateY(-7px); box-shadow:0 30px 60px -30px rgba(20,42,71,.35); border-color:rgba(176,135,63,.4); }
+.card:hover::before{ width:100%; }
+.svc-ic{ transition:transform .55s cubic-bezier(.2,.7,.2,1); }
+.card:hover .svc-ic{ transform:translateY(-2px) rotate(-4deg) scale(1.05); }
 
-  /* Marquee */
-  .marquee { overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
-  .marquee-track { display:flex; gap:3rem; width:max-content; animation:scrollX 40s linear infinite; }
-  .marquee:hover .marquee-track { animation-play-state:paused; }
-  @keyframes scrollX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+/* marquee */
+.marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+.marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 34s linear infinite; }
+.marquee:hover .marquee-track{ animation-play-state:paused; }
+@keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-  /* pulse dot */
-  .pulse-dot { animation:pulse 2.2s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.8)} }
+.pulse-dot{ animation:pulse 2.2s ease-in-out infinite; }
+@keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.82)} }
 
-  @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,-30px) scale(1.1)} }
-  @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-30px,26px) scale(1.08)} }
+.underline-grow{ position:relative; }
+.underline-grow::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+  background:linear-gradient(90deg,#142A47,#B0873F); transition:width .5s cubic-bezier(.2,.7,.2,1); }
+.underline-grow:hover::after{ width:100%; }
 
-  /* Reveal base (GPU only) */
-  [data-reveal] { opacity:0; transform:translateY(34px); will-change:opacity,transform; }
-  [data-reveal-img] { clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.16,1,.3,1); }
-  [data-reveal-img].in { clip-path:inset(0 0 0% 0); }
+.hair{ height:1px; background:linear-gradient(90deg,transparent,rgba(176,135,63,.5),transparent); }
 
-  .giant-num { font-family:'Fraunces',serif; -webkit-text-stroke:1.5px rgba(30,70,53,.34); color:transparent; line-height:.8; }
+/* logo mark */
+.logo-mark{ display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px;
+  border-radius:11px; background:#142A47; color:#C89A4C; font-family:'Fraunces',serif; font-weight:600;
+  font-size:19px; letter-spacing:-.02em; box-shadow:0 6px 16px -8px rgba(20,42,71,.6); flex:none; }
+.logo-mark--lg{ width:60px; height:60px; border-radius:15px; font-size:27px; }
 
-  .outline-word { -webkit-text-stroke:1px rgba(30,70,53,.32); color:transparent; }
+/* map */
+.map-frame{ border-radius:20px; overflow:hidden; border:1px solid rgba(20,42,71,.14); box-shadow:0 30px 60px -34px rgba(20,42,71,.4); background:#EFE7DA; }
+.map-frame iframe{ display:block; width:100%; height:100%; border:0; filter:grayscale(.18) contrast(1.02); }
 
-  /* Compact horizontal service cards on mobile/tablet to keep the page within the paint ceiling */
-  @media (max-width:1023px){
-    .svc-card{ display:grid; grid-template-columns:auto 1fr; column-gap:1rem; align-items:center; }
-    .svc-card .svc-icon{ grid-row:1 / span 2; align-self:start; margin-bottom:0 !important; }
-    .svc-card h3{ grid-column:2; }
-    .svc-card p{ grid-column:2; margin-top:.3rem; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .grad-text, .pulse-dot, .marquee-track, .ambient-blob { animation:none !important; }
-    [data-reveal] { opacity:1 !important; transform:none !important; }
-  }
+/* mobile sticky bar */
+.sticky-bar{ position:fixed; left:0; right:0; bottom:0; z-index:60; display:none;
+  background:rgba(20,42,71,.97); backdrop-filter:blur(8px); border-top:1px solid rgba(200,154,76,.35);
+  padding:9px 12px calc(9px + env(safe-area-inset-bottom)); }
+@media (max-width:767px){ .sticky-bar{ display:grid; grid-template-columns:1fr 1fr; gap:9px; } body{ padding-bottom:70px; } }
+
+@media (prefers-reduced-motion: reduce){
+  .grad-text{ animation:none; } .marquee-track{ animation:none; } .pulse-dot{ animation:none; }
+}
 </style>
 </head>
-
 <body class="antialiased">
 
-<!-- ===================== NAV ===================== -->
-<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <div class="flex items-center justify-between h-[var(--nav-h)]">
-      <a href="#top" class="flex items-center gap-3 group">
-        <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-forest text-cream font-display font-600 text-lg tracking-tight shadow-md">GA</span>
-        <span class="leading-tight">
-          <span class="block font-display text-[1.15rem] font-600 text-ink tracking-tight">G.A. Income Tax</span>
-          <span class="block text-[.62rem] uppercase tracking-[.22em] text-forest/70 font-600">Irving, Texas · Est. 20+ yrs</span>
-        </span>
-      </a>
-      <nav class="hidden lg:flex items-center gap-8 text-[.9rem] font-500 text-ink/80">
-        <a href="#services" class="underline-grow hover:text-forest">Services</a>
-        <a href="#process" class="underline-grow hover:text-forest">How it works</a>
-        <a href="#reviews" class="underline-grow hover:text-forest">Reviews</a>
-        <a href="#visit" class="underline-grow hover:text-forest">Visit</a>
-      </nav>
-      <a href="tel:+19728873015" class="btn-primary inline-flex items-center gap-2 rounded-full bg-forest text-cream px-5 py-2.5 text-[.86rem] font-600 shadow-lg">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-        <span class="hidden sm:inline">(972) 887-3015</span><span class="sm:hidden">Call</span>
-      </a>
-    </div>
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" style="height:var(--nav-h)">
+  <div class="max-w-7xl mx-auto h-full px-5 sm:px-8 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="logo-mark group-hover:scale-105 transition-transform">GA</span>
+      <span class="leading-none">
+        <span class="block font-display text-[18px] sm:text-[20px] font-semibold text-navy tighter">G.A Income Tax</span>
+        <span class="block text-[10px] tracking-[.22em] uppercase text-gold font-semibold mt-1">Irving, Texas</span>
+      </span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-[14.5px] font-medium text-ink/80">
+      <a href="#services" class="underline-grow hover:text-navy transition-colors">Services</a>
+      <a href="#about" class="underline-grow hover:text-navy transition-colors">Why Us</a>
+      <a href="#reviews" class="underline-grow hover:text-navy transition-colors">Reviews</a>
+      <a href="#visit" class="underline-grow hover:text-navy transition-colors">Visit</a>
+    </nav>
+    <a href="tel:+19728873015" class="btn btn-navy hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[14px] font-semibold">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (972) 887-3015
+    </a>
   </div>
 </header>
 
-<!-- ===================== HERO ===================== -->
-<section id="top" class="relative grain overflow-hidden pt-[calc(var(--nav-h)+1.6rem)] pb-10 lg:pt-[calc(var(--nav-h)+3.5rem)] lg:pb-24">
-  <div class="ambient-blob blob-a" style="width:460px;height:460px;background:radial-gradient(circle,#D8A24A,transparent 62%);top:-140px;left:-120px;animation:drift1 24s ease-in-out infinite;"></div>
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-10 lg:gap-14 items-center">
+<!-- ============ HERO ============ -->
+<section id="top" class="relative grain min-h-[100svh] flex items-center pt-[var(--nav-h)] overflow-hidden">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-scrim"></div>
 
-      <!-- Left: editorial headline -->
-      <div class="relative z-10">
-        <div class="inline-flex items-center gap-2 rounded-full border border-forest/25 bg-cream/70 px-4 py-1.5 text-[.72rem] font-600 uppercase tracking-[.16em] text-forest mb-6" data-reveal>
-          <span class="w-2 h-2 rounded-full bg-gold pulse-dot"></span>
-          5.0 ★ · 86 Google reviews · Bilingüe
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 py-14 sm:py-20">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+      <!-- left: editorial type -->
+      <div class="lg:col-span-7">
+        <div class="inline-flex items-center gap-2.5 rounded-full bg-linen/80 border border-navy/12 pl-2.5 pr-4 py-1.5 mb-7" data-reveal>
+          <span class="inline-flex items-center gap-1 rounded-full bg-navy text-gold2 text-[11px] font-bold px-2 py-0.5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#C89A4C" stroke="none"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+            5.0
+          </span>
+          <span class="text-[12.5px] font-medium text-ink/75">86 five-star Google reviews · Irving, TX</span>
         </div>
-        <h1 class="font-display font-600 text-ink leading-[.98] tracking-[-.02em] text-[2.7rem] sm:text-[4.2rem] lg:text-[4.6rem]" data-reveal>
-          Twenty years of<br><span class="grad-text">taxes done right.</span>
+
+        <h1 class="font-display font-semibold text-navy leading-[.94] tightest text-[clamp(2.7rem,7.6vw,5.6rem)]">
+          <span class="mask-line"><span class="mask-word">Your taxes,</span></span>
+          <span class="mask-line"><span class="mask-word grad-text">done right</span></span>
+          <span class="mask-line"><span class="mask-word">for 20 years.</span></span>
         </h1>
-        <p class="mt-6 max-w-xl text-[1.06rem] leading-relaxed text-ink/75" data-reveal>
-          Graciela Abaca and her team have prepared income taxes, kept the books, and run payroll for Irving families and businesses for more than two decades — in English and Spanish, without the jargon.
-        </p>
-        <p class="mt-2 max-w-xl text-[.98rem] italic text-forest/80 font-display" data-reveal>
-          Su preparadora de impuestos de confianza, con más de 20 años de experiencia.
+
+        <p class="mt-7 max-w-xl text-[17px] sm:text-[18.5px] leading-relaxed text-ink/78" data-reveal>
+          A family-run tax and accounting office serving Irving families and small businesses since before most preparers opened their doors. Real people, careful work, and one owner who knows your name.
         </p>
 
-        <div class="mt-8 flex flex-wrap items-center gap-3.5" data-reveal>
-          <a href="tel:+19728873015" class="btn-primary inline-flex items-center gap-2.5 rounded-full bg-forest text-cream px-7 py-3.5 text-[.95rem] font-600 shadow-xl">
-            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-            Call (972) 887-3015
+        <div class="mt-9 flex flex-wrap items-center gap-3.5" data-reveal>
+          <a href="tel:+19728873015" class="btn btn-navy inline-flex items-center gap-2.5 rounded-full px-7 py-4 text-[15.5px] font-semibold">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call the office
           </a>
-          <a href="#services" class="inline-flex items-center gap-2 rounded-full border border-forest/30 bg-transparent px-6 py-3.5 text-[.95rem] font-600 text-forest hover:bg-forest/5 transition">
-            See what we do
+          <a href="#visit" class="btn btn-ghost inline-flex items-center gap-2 rounded-full px-7 py-4 text-[15.5px] font-semibold">
+            Book an appointment
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
 
-        <!-- inline hero stats -->
-        <div class="mt-7 grid grid-cols-3 gap-4 max-w-lg" data-reveal>
-          <div>
-            <div class="font-display text-[2.1rem] font-600 text-forest leading-none"><span class="count" data-target="20" data-suffix="+">0</span></div>
-            <div class="mt-1 text-[.72rem] uppercase tracking-[.14em] text-ink/70 font-600">Years serving Irving</div>
-          </div>
-          <div>
-            <div class="font-display text-[2.1rem] font-600 text-forest leading-none"><span class="count" data-target="86" data-suffix="">0</span></div>
-            <div class="mt-1 text-[.72rem] uppercase tracking-[.14em] text-ink/70 font-600">5-star Google reviews</div>
-          </div>
-          <div>
-            <div class="font-display text-[2.1rem] font-600 text-forest leading-none">2</div>
-            <div class="mt-1 text-[.72rem] uppercase tracking-[.14em] text-ink/70 font-600">Languages spoken</div>
-          </div>
+        <div class="mt-8 flex items-center gap-2 text-[13.5px] font-medium text-navy/80" data-reveal>
+          <span class="w-2 h-2 rounded-full bg-sage pulse-dot"></span>
+          Se habla español — atención personal en su idioma
         </div>
       </div>
 
-      <!-- Right: WebGL showpiece panel -->
-      <div class="relative z-10" data-reveal>
-        <div class="relative aspect-[16/10] sm:aspect-[5/5] rounded-[26px] overflow-hidden shadow-2xl ring-1 ring-forest/10">
-          <div class="poster-fallback"></div>
-          <canvas id="mesh-canvas"></canvas>
-          <!-- vignette for depth on light canvas -->
-          <div class="absolute inset-0 pointer-events-none" style="box-shadow:inset 0 0 120px 20px rgba(23,58,43,.22);"></div>
-          <!-- floating trust chip -->
-          <div class="absolute left-5 bottom-5 right-5 flex items-center justify-between gap-3 rounded-2xl bg-cream px-5 py-4 ring-1 ring-forest/15 shadow-xl">
+      <!-- right: stat / trust panel -->
+      <div class="lg:col-span-5" data-reveal>
+        <div class="relative rounded-[24px] bg-navy text-linen p-7 sm:p-9 shadow-[0_40px_80px_-40px_rgba(20,42,71,.7)] overflow-hidden">
+          <div class="absolute -top-16 -right-16 w-52 h-52 rounded-full" style="background:radial-gradient(circle,rgba(200,154,76,.35),transparent 65%)"></div>
+          <p class="relative text-[12px] tracking-[.24em] uppercase text-gold2 font-semibold">A practice built on trust</p>
+          <div class="relative mt-6 grid grid-cols-2 gap-y-8 gap-x-4">
             <div>
-              <div class="flex items-center gap-1 text-bronze text-[1.05rem] leading-none">★★★★★</div>
-              <div class="mt-1 text-[.78rem] font-600 text-ink/80">Rated 5.0 · 86 Google reviews</div>
+              <div class="font-display text-[2.9rem] leading-none font-semibold"><span data-count="20" data-suffix="+">0</span></div>
+              <p class="mt-1.5 text-[13px] text-linen/70 leading-snug">Years preparing<br>Irving returns</p>
             </div>
-            <div class="text-right leading-tight">
-              <div class="font-display text-[1.05rem] font-600 text-forest">Graciela Abaca</div>
-              <div class="text-[.68rem] uppercase tracking-[.14em] text-forest/90 font-600">Owner &amp; preparer</div>
+            <div>
+              <div class="font-display text-[2.9rem] leading-none font-semibold text-gold2"><span data-count="5" data-decimals="1" data-suffix=".0">0</span></div>
+              <p class="mt-1.5 text-[13px] text-linen/70 leading-snug">Average Google<br>star rating</p>
             </div>
+            <div>
+              <div class="font-display text-[2.9rem] leading-none font-semibold"><span data-count="86" data-suffix="">0</span></div>
+              <p class="mt-1.5 text-[13px] text-linen/70 leading-snug">Verified<br>client reviews</p>
+            </div>
+            <div>
+              <div class="font-display text-[2.9rem] leading-none font-semibold text-gold2">2</div>
+              <p class="mt-1.5 text-[13px] text-linen/70 leading-snug">Languages<br>English &amp; Spanish</p>
+            </div>
+          </div>
+          <div class="relative mt-8 pt-6 border-t border-linen/15 flex items-center gap-3">
+            <span class="logo-mark" style="background:#0F2038">GA</span>
+            <p class="text-[13px] text-linen/75 leading-snug">Owner-operated by <span class="text-linen font-semibold">Graciela Abaca</span><br>2419 W Airport Fwy, Ste B · Irving</p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
+  <a href="#trust" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-1 text-navy/50 hover:text-navy transition-colors">
+    <span class="text-[10px] tracking-[.25em] uppercase">Scroll</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </a>
+</section>
+
+<!-- ============ TRUST MARQUEE ============ -->
+<section id="trust" class="relative bg-navy text-linen py-5 overflow-hidden">
+  <div class="marquee">
+    <div class="marquee-track text-[15px] font-medium uppercase tracking-[.14em]">
+      <!-- group -->
+      <span class="flex items-center gap-3">Individual Tax Returns <span class="w-1.5 h-1.5 rounded-full bg-gold2"></span></span>
+      <span class="flex items-center gap-3 font-display italic text-gold2 normal-case tracking-normal text-[17px]">Business &amp; Self-Employed</span>
+      <span class="flex items-center gap-3">Bookkeeping <span class="w-1.5 h-1.5 rounded-full bg-gold2"></span></span>
+      <span class="flex items-center gap-3">Payroll Services <span class="w-1.5 h-1.5 rounded-full bg-gold2"></span></span>
+      <span class="flex items-center gap-3 font-display italic text-gold2 normal-case tracking-normal text-[17px]">Se habla español</span>
+      <span class="flex items-center gap-3">Prior-Year Returns <span class="w-1.5 h-1.5 rounded-full bg-gold2"></span></span>
+      <span class="flex items-center gap-3">Audit Support <span class="w-1.5 h-1.5 rounded-full bg-gold2"></span></span>
+      <!-- duplicate for seamless loop -->
+      <span class="flex items-center gap-3">Individual Tax Returns <span class="w-1.5 h-1.5 rounded-full bg-gold2"></span></span>
+      <span class="flex items-center gap-3 font-display italic text-gold2 normal-case tracking-normal text-[17px]">Business &amp; Self-Employed</span>
+      <span class="flex items-center gap-3">Bookkeeping <span class="w-1.5 h-1.5 rounded-full bg-gold2"></span></span>
+      <span class="flex items-center gap-3">Payroll Services <span class="w-1.5 h-1.5 rounded-full bg-gold2"></span></span>
+      <span class="flex items-center gap-3 font-display italic text-gold2 normal-case tracking-normal text-[17px]">Se habla español</span>
+      <span class="flex items-center gap-3">Prior-Year Returns <span class="w-1.5 h-1.5 rounded-full bg-gold2"></span></span>
+      <span class="flex items-center gap-3">Audit Support <span class="w-1.5 h-1.5 rounded-full bg-gold2"></span></span>
     </div>
   </div>
 </section>
 
-<!-- ===================== MARQUEE ===================== -->
-<div class="marquee border-y border-forest/12 bg-bone py-4">
-  <div class="marquee-track text-[.95rem] font-600 uppercase tracking-[.14em] text-forest/80">
-    <span class="flex items-center gap-3">Income Tax Preparation <span class="text-gold">✦</span></span>
-    <span class="flex items-center gap-3 font-display italic text-forest">Bookkeeping <span class="text-gold">✦</span></span>
-    <span class="flex items-center gap-3">Payroll Services <span class="text-gold">✦</span></span>
-    <span class="flex items-center gap-3 font-display italic text-forest">Business Registration <span class="text-gold">✦</span></span>
-    <span class="flex items-center gap-3">Sales Tax Filing <span class="text-gold">✦</span></span>
-    <span class="flex items-center gap-3 font-display italic text-forest">Prior-Year Returns <span class="text-gold">✦</span></span>
-    <span class="flex items-center gap-3">Se Habla Español <span class="text-gold">✦</span></span>
-    <!-- duplicate for seamless loop -->
-    <span class="flex items-center gap-3">Income Tax Preparation <span class="text-gold">✦</span></span>
-    <span class="flex items-center gap-3 font-display italic text-forest">Bookkeeping <span class="text-gold">✦</span></span>
-    <span class="flex items-center gap-3">Payroll Services <span class="text-gold">✦</span></span>
-    <span class="flex items-center gap-3 font-display italic text-forest">Business Registration <span class="text-gold">✦</span></span>
-    <span class="flex items-center gap-3">Sales Tax Filing <span class="text-gold">✦</span></span>
-    <span class="flex items-center gap-3 font-display italic text-forest">Prior-Year Returns <span class="text-gold">✦</span></span>
-    <span class="flex items-center gap-3">Se Habla Español <span class="text-gold">✦</span></span>
-  </div>
-</div>
-
-<!-- ===================== STATEMENT ===================== -->
-<section class="relative py-9 lg:py-28">
-  <div class="mx-auto max-w-4xl px-5 sm:px-8 text-center">
-    <span class="text-[.72rem] uppercase tracking-[.24em] text-bronze font-700" data-reveal>Who we are</span>
-    <p class="mt-5 font-display text-[1.42rem] sm:text-[2.15rem] leading-[1.3] text-ink font-500" data-reveal>
-      A neighborhood tax office where the same person who greets you is the one preparing your return. No call-center hold music, no seasonal strangers — just <span class="text-forest font-600">two decades of doing it right</span> for the people of Irving.
-    </p>
-    <div class="mt-6 mx-auto max-w-[200px] h-px bg-gradient-to-r from-transparent via-forest/35 to-transparent" data-reveal></div>
-  </div>
-</section>
-
-<!-- ===================== SERVICES ===================== -->
-<section id="services" class="relative py-6 lg:py-10">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <div class="max-w-2xl mb-12" data-reveal>
-      <span class="text-[.72rem] uppercase tracking-[.24em] text-bronze font-700">What we do</span>
-      <h2 class="mt-3 font-display text-[2.4rem] sm:text-[3rem] font-600 text-ink leading-[1.02] tracking-[-.02em]">
-        Everything your <span class="grad-text">numbers</span> need, in one office.
+<!-- ============ SERVICES ============ -->
+<section id="services" class="relative py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl">
+      <p class="text-[12px] tracking-[.26em] uppercase text-gold font-semibold mb-4" data-reveal>What we handle</p>
+      <h2 class="font-display font-semibold text-navy leading-[1.02] tightest text-[clamp(2rem,5vw,3.5rem)]" data-reveal>
+        Everything your <span class="grad-text">return needs</span>, under one roof.
       </h2>
-      <p class="mt-4 text-[1.02rem] text-ink/70">Personal and business — current year or years behind. If it touches taxes or your books, Graciela handles it.</p>
+      <p class="mt-5 text-[17px] leading-relaxed text-ink/72 max-w-xl" data-reveal>
+        Whether it is a simple W-2 refund or the books behind a growing small business, the work is done carefully, explained plainly, and filed on time.
+      </p>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       <!-- 1 -->
-      <div class="card svc-card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
-        <div class="svc-icon w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center text-forest mb-5">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      <div class="card p-7" data-reveal>
+        <div class="svc-ic w-12 h-12 rounded-xl bg-navy/6 flex items-center justify-center text-navy mb-6">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg>
         </div>
-        <h3 class="font-display text-[1.35rem] font-600 text-ink">Income Tax Preparation</h3>
-        <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Personal and business returns filed accurately and on time — with every credit and deduction you're owed found and claimed.</p>
+        <h3 class="font-display text-[22px] font-semibold text-navy">Individual Tax Prep</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-ink/70">Personal federal returns for W-2 earners, families, and 1099 contractors — filed accurately with every credit you are owed.</p>
       </div>
       <!-- 2 -->
-      <div class="card svc-card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
-        <div class="svc-icon w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center text-forest mb-5">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+      <div class="card p-7" data-reveal>
+        <div class="svc-ic w-12 h-12 rounded-xl bg-navy/6 flex items-center justify-center text-navy mb-6">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg>
         </div>
-        <h3 class="font-display text-[1.35rem] font-600 text-ink">Bookkeeping</h3>
-        <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Clean, current books month after month, so you always know where your business stands — and tax season is never a scramble.</p>
+        <h3 class="font-display text-[22px] font-semibold text-navy">Business Returns</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-ink/70">Sole proprietors, LLCs, and small corporations — Schedule C and business filings handled by someone who understands local businesses.</p>
       </div>
       <!-- 3 -->
-      <div class="card svc-card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
-        <div class="svc-icon w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center text-forest mb-5">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+      <div class="card p-7" data-reveal>
+        <div class="svc-ic w-12 h-12 rounded-xl bg-navy/6 flex items-center justify-center text-navy mb-6">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
         </div>
-        <h3 class="font-display text-[1.35rem] font-600 text-ink">Payroll Services</h3>
-        <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Pay your team on time and keep the filings right — payroll handled so you can run your business instead of chasing paperwork.</p>
+        <h3 class="font-display text-[22px] font-semibold text-navy">Bookkeeping</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-ink/70">Clean, current books month to month, so nothing is a scramble at tax time and you always know where your business stands.</p>
       </div>
       <!-- 4 -->
-      <div class="card svc-card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
-        <div class="svc-icon w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center text-forest mb-5">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z"/></svg>
+      <div class="card p-7" data-reveal>
+        <div class="svc-ic w-12 h-12 rounded-xl bg-navy/6 flex items-center justify-center text-navy mb-6">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3 class="font-display text-[1.35rem] font-600 text-ink">Business Registration</h3>
-        <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Starting out? We'll register your company the right way from day one, so your new venture is on solid footing.</p>
+        <h3 class="font-display text-[22px] font-semibold text-navy">Payroll Services</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-ink/70">Run payroll for your team with the withholdings, filings, and records kept correct and on schedule.</p>
       </div>
       <!-- 5 -->
-      <div class="card svc-card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
-        <div class="svc-icon w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center text-forest mb-5">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"/></svg>
+      <div class="card p-7" data-reveal>
+        <div class="svc-ic w-12 h-12 rounded-xl bg-navy/6 flex items-center justify-center text-navy mb-6">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
         </div>
-        <h3 class="font-display text-[1.35rem] font-600 text-ink">Sales Tax Filing</h3>
-        <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Texas sales tax prepared and filed on schedule — no missed deadlines, no penalties, nothing left to remember.</p>
+        <h3 class="font-display text-[22px] font-semibold text-navy">Prior-Year Returns</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-ink/70">Behind on a year or two? We catch up past-year filings and get you back in good standing without judgment.</p>
       </div>
       <!-- 6 -->
-      <div class="card svc-card rounded-2xl bg-bone/60 ring-1 ring-forest/10 p-6 lg:p-7" data-reveal>
-        <div class="svc-icon w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center text-forest mb-5">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <div class="card p-7" data-reveal>
+        <div class="svc-ic w-12 h-12 rounded-xl bg-navy/6 flex items-center justify-center text-navy mb-6">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <h3 class="font-display text-[1.35rem] font-600 text-ink">Prior-Year &amp; Notices</h3>
-        <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Behind a few years or holding an IRS letter? Bring it in. We catch you up and help resolve notices calmly.</p>
+        <h3 class="font-display text-[22px] font-semibold text-navy">Audit Support</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-ink/70">If a letter arrives, you are not alone. We help you respond, resolve the issue, and stand behind the work we filed.</p>
       </div>
     </div>
 
-    <p class="mt-9 text-[.95rem] text-ink/70" data-reveal>
-      Not sure which you need? <a href="tel:+19728873015" class="text-forest font-600 underline-grow">Call (972) 887-3015</a> and we'll point you the right way — en inglés o en español.
-    </p>
+    <div class="hair max-w-[220px] mx-auto mt-16"></div>
   </div>
 </section>
 
-<!-- ===================== PROCESS (signature) ===================== -->
-<section id="process" class="relative py-9 lg:py-28 mt-2">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <div class="max-w-2xl mb-10 lg:mb-14" data-reveal>
-      <span class="text-[.72rem] uppercase tracking-[.24em] text-bronze font-700">How Graciela works</span>
-      <h2 class="mt-3 font-display text-[2.4rem] sm:text-[3rem] font-600 text-ink leading-[1.02] tracking-[-.02em]">Simple, unhurried, and always explained.</h2>
-    </div>
-
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-7 lg:gap-6">
-      <div class="relative" data-reveal>
-        <div class="giant-num text-[3.4rem] lg:text-[5rem]">01</div>
-        <h3 class="mt-2 font-display text-[1.4rem] font-600 text-ink">Sit down together</h3>
-        <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Bring what you have. We go through it together — no rush, no judgment, questions welcome in either language.</p>
-      </div>
-      <div class="relative" data-reveal>
-        <div class="giant-num text-[3.4rem] lg:text-[5rem]">02</div>
-        <h3 class="mt-2 font-display text-[1.4rem] font-600 text-ink">We prepare it right</h3>
-        <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Twenty-plus years of experience goes into every return — accurate, complete, and checked before it's filed.</p>
-      </div>
-      <div class="relative" data-reveal>
-        <div class="giant-num text-[3.4rem] lg:text-[5rem]">03</div>
-        <h3 class="mt-2 font-display text-[1.4rem] font-600 text-ink">You review &amp; understand</h3>
-        <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">We walk you through the result in plain words, so you know exactly what was filed and why — before you sign.</p>
-      </div>
-      <div class="relative" data-reveal>
-        <div class="giant-num text-[3.4rem] lg:text-[5rem]">04</div>
-        <h3 class="mt-2 font-display text-[1.4rem] font-600 text-ink">Filed &amp; still here</h3>
-        <p class="mt-2 text-[.94rem] text-ink/70 leading-relaxed">Your return is filed — and if a question or a letter comes later, you call the same person who did it.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== STATS BAND (brand moment) ===================== -->
-<section class="relative overflow-hidden bg-forest text-cream py-8 lg:py-20">
-  <div class="ambient-blob" style="width:420px;height:420px;background:radial-gradient(circle,#D8A24A,transparent 62%);top:-120px;right:-100px;opacity:.28;animation:drift2 26s ease-in-out infinite;"></div>
-  <div class="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
-    <h2 class="font-display text-[2rem] sm:text-[2.6rem] font-600 leading-tight tracking-[-.01em] mb-12 max-w-2xl" data-reveal>
-      Numbers our neighbors <span class="grad-text" style="background:linear-gradient(100deg,#D8A24A,#F3ECE1 50%,#D8A24A);-webkit-background-clip:text;background-clip:text;">already trust.</span>
-    </h2>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-      <div data-reveal>
-        <div class="font-display text-[3rem] sm:text-[3.6rem] font-600 leading-none text-amber"><span class="count" data-target="20" data-suffix="+">0</span></div>
-        <div class="mt-2 text-[.8rem] uppercase tracking-[.16em] text-cream/70 font-600">Years in business</div>
-      </div>
-      <div data-reveal>
-        <div class="font-display text-[3rem] sm:text-[3.6rem] font-600 leading-none text-amber">5.0</div>
-        <div class="mt-2 text-[.8rem] uppercase tracking-[.16em] text-cream/70 font-600">Average Google rating</div>
-      </div>
-      <div data-reveal>
-        <div class="font-display text-[3rem] sm:text-[3.6rem] font-600 leading-none text-amber"><span class="count" data-target="86" data-suffix="">0</span></div>
-        <div class="mt-2 text-[.8rem] uppercase tracking-[.16em] text-cream/70 font-600">5-star reviews</div>
-      </div>
-      <div data-reveal>
-        <div class="font-display text-[3rem] sm:text-[3.6rem] font-600 leading-none text-amber">2</div>
-        <div class="mt-2 text-[.8rem] uppercase tracking-[.16em] text-cream/70 font-600">Languages · EN &amp; ES</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== REVIEWS ===================== -->
-<section id="reviews" class="relative py-9 lg:py-28">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <div class="flex flex-wrap items-end justify-between gap-6 mb-12" data-reveal>
-      <div class="max-w-2xl">
-        <span class="text-[.72rem] uppercase tracking-[.24em] text-bronze font-700">In their words</span>
-        <h2 class="mt-3 font-display text-[2.4rem] sm:text-[3rem] font-600 text-ink leading-[1.02] tracking-[-.02em]">Real reviews from real clients.</h2>
-      </div>
-      <div class="flex items-center gap-3 rounded-2xl bg-bone/70 ring-1 ring-forest/10 px-5 py-3">
-        <div class="text-bronze text-[1.15rem] leading-none">★★★★★</div>
-        <div class="text-[.86rem] font-600 text-ink/75">5.0 · 86 Google reviews</div>
-      </div>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="card rounded-2xl bg-cream ring-1 ring-forest/10 p-6 lg:p-7 shadow-sm" data-reveal>
-        <div class="text-bronze text-[1rem] mb-3">★★★★★</div>
-        <p class="text-[.98rem] text-ink/80 leading-relaxed font-display italic">"I can't say enough wonderful things about my amazing tax lady! She is not only incredibly knowledgeable and professional, but also one of the sweetest and most patient people you could ever work with. Taxes can be stressful, but she makes it simple."</p>
-        <div class="mt-5 flex items-center gap-2 text-[.82rem] font-600 text-forest">— Angelica G. <span class="text-ink/70 font-500">· Google review</span></div>
-      </div>
-      <div class="card rounded-2xl bg-cream ring-1 ring-forest/10 p-6 lg:p-7 shadow-sm" data-reveal>
-        <div class="text-bronze text-[1rem] mb-3">★★★★★</div>
-        <p class="text-[.98rem] text-ink/80 leading-relaxed font-display italic">"Great price. This is my second year working with Graciela, and man do I wish I had found her sooner when it comes to taxes! She is very professional and very punctual with responses, helping make everything very simple along the way."</p>
-        <div class="mt-5 flex items-center gap-2 text-[.82rem] font-600 text-forest">— Chris Carter <span class="text-ink/70 font-500">· Google review</span></div>
-      </div>
-      <div class="card rounded-2xl bg-cream ring-1 ring-forest/10 p-6 lg:p-7 shadow-sm" data-reveal>
-        <div class="text-bronze text-[1rem] mb-3">★★★★★</div>
-        <p class="text-[.98rem] text-ink/80 leading-relaxed font-display italic">"Very quick and responsive, Graciela and her team are always on top of everything. Her services are amazing — easy for tax prepping &amp; filing, and best of all, inexpensive! I was introduced to GA Income Tax through my father."</p>
-        <div class="mt-5 flex items-center gap-2 text-[.82rem] font-600 text-forest">— Luis Alvarez <span class="text-ink/70 font-500">· Google review</span></div>
-      </div>
-      <div class="card rounded-2xl bg-cream ring-1 ring-forest/10 p-6 lg:p-7 shadow-sm hidden sm:block" data-reveal>
-        <div class="text-bronze text-[1rem] mb-3">★★★★★</div>
-        <p class="text-[.98rem] text-ink/80 leading-relaxed font-display italic">"I have the best experience in this place — they are very professional."</p>
-        <div class="mt-5 flex items-center gap-2 text-[.82rem] font-600 text-forest">— Alisson De Paz <span class="text-ink/70 font-500">· Google review</span></div>
-      </div>
-      <div class="card rounded-2xl bg-cream ring-1 ring-forest/10 p-6 lg:p-7 shadow-sm hidden sm:block" data-reveal>
-        <div class="text-bronze text-[1rem] mb-3">★★★★★</div>
-        <p class="text-[.98rem] text-ink/80 leading-relaxed font-display italic">"Great service and bilingual!"</p>
-        <div class="mt-5 flex items-center gap-2 text-[.82rem] font-600 text-forest">— Facundo Guevara <span class="text-ink/70 font-500">· Google review</span></div>
-      </div>
-      <div class="card rounded-2xl bg-forest text-cream ring-1 ring-forest/20 p-6 lg:p-7 shadow-sm flex-col justify-between hidden sm:flex" data-reveal>
-        <div>
-          <div class="text-amber text-[1rem] mb-3">★★★★★</div>
-          <p class="text-[1.05rem] leading-relaxed font-display">Twenty years of five-star returns, one neighbor at a time.</p>
+<!-- ============ ABOUT / WHY US ============ -->
+<section id="about" class="relative py-24 sm:py-32 bg-paper overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <!-- editorial visual -->
+    <div class="lg:col-span-5 order-2 lg:order-1" data-reveal>
+      <div class="relative">
+        <div class="clip-img rounded-[24px] overflow-hidden shadow-[0_40px_80px_-40px_rgba(20,42,71,.5)]" data-reveal-image>
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1100&q=80"
+               alt="Organized tax and accounting paperwork on a desk with a calculator" class="w-full h-[440px] object-cover" loading="lazy" />
         </div>
-        <a href="tel:+19728873015" class="mt-6 inline-flex items-center gap-2 text-[.86rem] font-600 text-amber underline-grow">Add your name to the list →</a>
+        <div class="absolute -bottom-6 -right-4 sm:-right-6 bg-navy text-linen rounded-2xl px-6 py-5 shadow-xl max-w-[220px]">
+          <div class="font-display text-[2.4rem] leading-none font-semibold text-gold2">20+</div>
+          <p class="mt-1 text-[12.5px] text-linen/75 leading-snug">years the same hands have prepared Irving returns</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ===================== VISIT ===================== -->
-<section id="visit" class="relative py-9 lg:py-28 bg-bone/50">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
-      <div data-reveal>
-        <span class="text-[.72rem] uppercase tracking-[.24em] text-bronze font-700">Come see us</span>
-        <h2 class="mt-3 font-display text-[2.4rem] sm:text-[3rem] font-600 text-ink leading-[1.02] tracking-[-.02em]">Right on West Airport Freeway.</h2>
-        <p class="mt-4 text-[1.02rem] text-ink/70 max-w-lg">Easy to find in the Metroplex Plaza, Suite B — walk-ins welcome during the season, and appointments any time.</p>
+    <!-- copy -->
+    <div class="lg:col-span-7 order-1 lg:order-2">
+      <p class="text-[12px] tracking-[.26em] uppercase text-gold font-semibold mb-4" data-reveal>Why Irving trusts G.A</p>
+      <h2 class="font-display font-semibold text-navy leading-[1.03] tightest text-[clamp(2rem,4.6vw,3.3rem)]" data-reveal>
+        Not a franchise desk.<br>A neighbor who knows taxes.
+      </h2>
+      <p class="mt-6 text-[17px] leading-relaxed text-ink/74 max-w-xl" data-reveal>
+        Graciela Abaca has built G.A Income Tax on a simple idea: people deserve a preparer who actually sits with them, answers in plain language, and treats their money like it matters. Two decades later, that is still exactly how it works.
+      </p>
 
-        <div class="mt-8 space-y-5">
-          <div class="flex items-start gap-4">
-            <div class="w-11 h-11 shrink-0 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-            </div>
-            <div>
-              <div class="text-[.72rem] uppercase tracking-[.16em] text-ink/70 font-700">Address</div>
-              <a href="https://www.google.com/maps/search/?api=1&query=G.A.+Income+Tax+2419+W+Airport+Fwy+Ste+B+Irving+TX+75062" target="_blank" rel="noopener" class="text-[1.02rem] font-600 text-ink hover:text-forest transition">2419 W Airport Fwy, Ste B<br>Irving, TX 75062</a>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-11 h-11 shrink-0 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-            </div>
-            <div>
-              <div class="text-[.72rem] uppercase tracking-[.16em] text-ink/70 font-700">Phone</div>
-              <a href="tel:+19728873015" class="text-[1.02rem] font-600 text-ink hover:text-forest transition">(972) 887-3015</a>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-11 h-11 shrink-0 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <div>
-              <div class="text-[.72rem] uppercase tracking-[.16em] text-ink/70 font-700">Hours</div>
-              <div class="text-[.98rem] text-ink/80 leading-relaxed">
-                <div class="flex justify-between gap-8 max-w-xs"><span>Monday – Friday</span><span class="font-600 text-ink">10:00 AM – 6:00 PM</span></div>
-                <div class="flex justify-between gap-8 max-w-xs"><span>Saturday</span><span class="font-600 text-ink">10:00 AM – 3:00 PM</span></div>
-                <div class="flex justify-between gap-8 max-w-xs"><span>Sunday</span><span class="font-600 text-ink/55">Closed</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <a href="tel:+19728873015" class="btn-primary mt-9 inline-flex items-center gap-2.5 rounded-full bg-forest text-cream px-7 py-3.5 text-[.95rem] font-600 shadow-xl">
-          <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-          Call to book your appointment
-        </a>
-      </div>
-
-      <a href="https://www.google.com/maps/search/?api=1&query=G.A.+Income+Tax+2419+W+Airport+Fwy+Ste+B+Irving+TX+75062" target="_blank" rel="noopener"
-         class="group relative block rounded-[24px] overflow-hidden ring-1 ring-forest/12 shadow-xl min-h-[300px] lg:min-h-[420px] flex items-center justify-center">
-        <div class="absolute inset-0" style="background:linear-gradient(150deg,#173A2B,#1E4635 55%,#255138);"></div>
-        <div class="absolute inset-0 opacity-[.14]" style="background-image:linear-gradient(#EBE0CF 1px,transparent 1px),linear-gradient(90deg,#EBE0CF 1px,transparent 1px);background-size:46px 46px;"></div>
-        <div class="absolute inset-0 opacity-40 pointer-events-none" style="background:
-            linear-gradient(114deg,transparent 45.6%,#D8A24A 46%,#D8A24A 47.4%,transparent 47.8%),
-            linear-gradient(28deg,transparent 61.6%,#7C9A85 62%,#7C9A85 63%,transparent 63.4%),
-            linear-gradient(158deg,transparent 72.6%,#EBE0CF 73%,#EBE0CF 73.8%,transparent 74.2%);"></div>
-        <div class="relative z-10 text-center px-8">
-          <div class="mx-auto w-15 h-15 rounded-full bg-amber flex items-center justify-center shadow-xl ring-4 ring-cream/25 mb-5 group-hover:scale-110 transition" style="width:60px;height:60px;">
-            <svg class="w-7 h-7 text-pine" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
-          </div>
-          <div class="font-display text-[1.5rem] font-600 text-cream">G.A. Income Tax</div>
-          <div class="mt-1.5 text-[.96rem] text-cream/85">2419 W Airport Fwy, Ste B<br>Irving, TX 75062</div>
-          <span class="mt-6 inline-flex items-center gap-2 rounded-full bg-cream text-pine px-6 py-3 text-[.88rem] font-600 shadow-lg group-hover:brightness-105 transition">
-            Open in Google Maps
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      <div class="mt-9 grid sm:grid-cols-2 gap-x-8 gap-y-6">
+        <div class="flex gap-4" data-reveal>
+          <span class="flex-none w-9 h-9 rounded-lg bg-navy text-gold2 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
           </span>
+          <div>
+            <h4 class="font-semibold text-navy text-[15.5px]">One preparer, start to finish</h4>
+            <p class="mt-1 text-[13.5px] text-ink/68 leading-relaxed">You work with the owner — not a rotating seasonal hire.</p>
+          </div>
         </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CLOSING CTA ===================== -->
-<section class="relative overflow-hidden py-9 lg:py-28 grain">
-  <div class="ambient-blob" style="width:500px;height:500px;background:radial-gradient(circle,#7C9A85,transparent 62%);bottom:-180px;left:-140px;opacity:.35;animation:drift1 28s ease-in-out infinite;"></div>
-  <div class="mx-auto max-w-4xl px-5 sm:px-8 text-center relative z-10">
-    <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-forest text-cream font-display font-600 text-xl shadow-lg mb-7" data-reveal>GA</span>
-    <h2 class="font-display text-[2.15rem] sm:text-[3.4rem] font-600 text-ink leading-[1.04] tracking-[-.02em]" data-reveal>
-      Let's get your taxes <span class="grad-text">done right</span> this year.
-    </h2>
-    <p class="mt-5 text-[1.08rem] text-ink/75 max-w-xl mx-auto" data-reveal>
-      Twenty years of Irving neighbors trust Graciela with their returns, their books, and their business. You can too — in English or Spanish.
-    </p>
-    <div class="mt-9 flex flex-wrap items-center justify-center gap-3.5" data-reveal>
-      <a href="tel:+19728873015" class="btn-primary inline-flex items-center gap-2.5 rounded-full bg-forest text-cream px-8 py-4 text-[1rem] font-600 shadow-xl">
-        Call (972) 887-3015
-      </a>
-      <a href="https://www.google.com/maps/search/?api=1&query=G.A.+Income+Tax+2419+W+Airport+Fwy+Ste+B+Irving+TX+75062" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-forest/30 px-7 py-4 text-[1rem] font-600 text-forest hover:bg-forest/5 transition">
-        Get directions
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== FOOTER ===================== -->
-<footer class="bg-pine text-cream/85 pt-12 lg:pt-16 pb-24 lg:pb-16">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10">
-      <div>
-        <div class="flex items-center gap-3">
-          <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-cream text-pine font-display font-600 text-lg">GA</span>
-          <span class="font-display text-[1.2rem] font-600 text-cream">G.A. Income Tax</span>
+        <div class="flex gap-4" data-reveal>
+          <span class="flex-none w-9 h-9 rounded-lg bg-navy text-gold2 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </span>
+          <div>
+            <h4 class="font-semibold text-navy text-[15.5px]">Bilingual, always</h4>
+            <p class="mt-1 text-[13.5px] text-ink/68 leading-relaxed">English or Spanish — every question answered in your language.</p>
+          </div>
         </div>
-        <p class="mt-4 text-[.95rem] leading-relaxed text-cream/70 max-w-sm">Bilingual income tax, bookkeeping, and payroll for Irving families and businesses — more than 20 years, one trusted preparer.</p>
-        <p class="mt-3 text-[.9rem] italic font-display text-amber/90">Más de 20 años de experiencia. Se habla español.</p>
+        <div class="flex gap-4" data-reveal>
+          <span class="flex-none w-9 h-9 rounded-lg bg-navy text-gold2 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </span>
+          <div>
+            <h4 class="font-semibold text-navy text-[15.5px]">A spotless reputation</h4>
+            <p class="mt-1 text-[13.5px] text-ink/68 leading-relaxed">5.0 stars across 86 Google reviews, earned one client at a time.</p>
+          </div>
+        </div>
+        <div class="flex gap-4" data-reveal>
+          <span class="flex-none w-9 h-9 rounded-lg bg-navy text-gold2 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </span>
+          <div>
+            <h4 class="font-semibold text-navy text-[15.5px]">Individuals and businesses</h4>
+            <p class="mt-1 text-[13.5px] text-ink/68 leading-relaxed">From a first W-2 to a small company's full books.</p>
+          </div>
+        </div>
       </div>
+
+      <a href="tel:+19728873015" class="btn btn-navy inline-flex items-center gap-2.5 rounded-full px-7 py-4 text-[15px] font-semibold mt-10" data-reveal>
+        Talk to Graciela — (972) 887-3015
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" class="relative py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
       <div>
-        <div class="text-[.72rem] uppercase tracking-[.18em] text-cream/50 font-700 mb-4">Services</div>
-        <ul class="space-y-2 text-[.92rem] text-cream/75">
-          <li><a href="#services" class="underline-grow hover:text-cream">Income Tax Preparation</a></li>
-          <li><a href="#services" class="underline-grow hover:text-cream">Bookkeeping</a></li>
-          <li><a href="#services" class="underline-grow hover:text-cream">Payroll Services</a></li>
-          <li><a href="#services" class="underline-grow hover:text-cream">Business Registration</a></li>
-          <li><a href="#services" class="underline-grow hover:text-cream">Sales Tax Filing</a></li>
+        <p class="text-[12px] tracking-[.26em] uppercase text-gold font-semibold mb-4" data-reveal>In their words</p>
+        <h2 class="font-display font-semibold text-navy leading-[1.02] tightest text-[clamp(2rem,5vw,3.5rem)]" data-reveal>
+          A <span class="grad-text">perfect 5.0</span>, review by review.
+        </h2>
+      </div>
+      <div class="flex items-center gap-3" data-reveal>
+        <div class="flex text-gold2">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+        </div>
+        <span class="text-[14px] font-medium text-ink/70">86 Google reviews</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <!-- review 1 -->
+      <figure class="card p-7 flex flex-col" data-reveal>
+        <div class="flex text-gold2 mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="font-display text-[19px] leading-snug text-navy flex-1">“I have the best experience in this place. They are very professional.”</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-navy text-gold2 flex items-center justify-center font-semibold text-[14px]">A</span>
+          <span class="text-[13.5px]"><span class="block font-semibold text-navy">Alisson De Paz</span><span class="block text-ink/55">Google review</span></span>
+        </figcaption>
+      </figure>
+      <!-- review 2 -->
+      <figure class="card p-7 flex flex-col md:mt-8" data-reveal>
+        <div class="flex text-gold2 mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="font-display text-[19px] leading-snug text-navy flex-1">“Her attention to detail and dedication are unmatched.”</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-navy text-gold2 flex items-center justify-center font-semibold text-[14px]">A</span>
+          <span class="text-[13.5px]"><span class="block font-semibold text-navy">Angelica G.</span><span class="block text-ink/55">Google review</span></span>
+        </figcaption>
+      </figure>
+      <!-- review 3 -->
+      <figure class="card p-7 flex flex-col" data-reveal>
+        <div class="flex text-gold2 mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="font-display text-[19px] leading-snug text-navy flex-1">“Great service — and bilingual!”</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-navy text-gold2 flex items-center justify-center font-semibold text-[14px]">F</span>
+          <span class="text-[13.5px]"><span class="block font-semibold text-navy">Facundo Guevara</span><span class="block text-ink/55">Google review</span></span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT (MAP + HOURS) ============ -->
+<section id="visit" class="relative py-24 sm:py-32 bg-navy text-linen overflow-hidden">
+  <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(200,154,76,.14),transparent 65%)"></div>
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-14">
+      <p class="text-[12px] tracking-[.26em] uppercase text-gold2 font-semibold mb-4" data-reveal>Come by the office</p>
+      <h2 class="font-display font-semibold leading-[1.02] tightest text-[clamp(2rem,5vw,3.5rem)]" data-reveal>
+        Right on West Airport Freeway.
+      </h2>
+      <p class="mt-5 text-[16.5px] leading-relaxed text-linen/72" data-reveal>Walk-ins welcome during the season, or call ahead and we will set aside time just for you.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+      <!-- map -->
+      <div class="map-frame min-h-[380px] lg:min-h-[460px]" data-reveal>
+        <iframe
+          title="G.A Income Tax location on Google Maps — 2419 W Airport Fwy Ste B, Irving, TX 75062"
+          src="https://www.google.com/maps?q=2419%20W%20Airport%20Fwy%20Ste%20B%2C%20Irving%2C%20TX%2075062&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+
+      <!-- details -->
+      <div class="grid sm:grid-cols-2 gap-5">
+        <!-- address -->
+        <div class="rounded-[20px] bg-navy2 border border-linen/12 p-7" data-reveal>
+          <div class="w-11 h-11 rounded-xl bg-gold/15 text-gold2 flex items-center justify-center mb-5">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="font-display text-[20px] font-semibold">Our address</h3>
+          <p class="mt-2 text-[14.5px] text-linen/72 leading-relaxed">2419 W Airport Fwy, Ste B<br>Irving, TX 75062</p>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=2419%20W%20Airport%20Fwy%20Ste%20B%2C%20Irving%2C%20TX%2075062" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-4 text-[13.5px] font-semibold text-gold2 underline-grow">
+            Get directions
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+        <!-- phone -->
+        <div class="rounded-[20px] bg-navy2 border border-linen/12 p-7" data-reveal>
+          <div class="w-11 h-11 rounded-xl bg-gold/15 text-gold2 flex items-center justify-center mb-5">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3 class="font-display text-[20px] font-semibold">Call us</h3>
+          <a href="tel:+19728873015" class="mt-2 block text-[18px] font-semibold text-linen hover:text-gold2 transition-colors">(972) 887-3015</a>
+          <p class="mt-1 text-[13.5px] text-linen/60">Se habla español</p>
+        </div>
+        <!-- hours -->
+        <div class="rounded-[20px] bg-navy2 border border-linen/12 p-7 sm:col-span-2" data-reveal>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-11 h-11 rounded-xl bg-gold/15 text-gold2 flex items-center justify-center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <h3 class="font-display text-[20px] font-semibold">Office hours</h3>
+            <span class="ml-auto inline-flex items-center gap-1.5 text-[12px] font-semibold text-sage bg-sage/10 rounded-full px-3 py-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-sage pulse-dot"></span> Open by appointment
+            </span>
+          </div>
+          <dl class="grid sm:grid-cols-3 gap-x-6 gap-y-2.5 text-[14.5px]">
+            <div class="flex justify-between sm:block border-b sm:border-0 border-linen/10 pb-2 sm:pb-0">
+              <dt class="text-linen/55">Monday – Friday</dt><dd class="font-semibold">10:00a – 6:00p</dd>
+            </div>
+            <div class="flex justify-between sm:block border-b sm:border-0 border-linen/10 pb-2 sm:pb-0">
+              <dt class="text-linen/55">Saturday</dt><dd class="font-semibold">10:00a – 3:00p</dd>
+            </div>
+            <div class="flex justify-between sm:block">
+              <dt class="text-linen/55">Sunday</dt><dd class="font-semibold text-linen/50">Closed</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section class="relative py-24 sm:py-32 overflow-hidden">
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute top-0 right-0 w-[520px] h-[520px] rounded-full" style="background:radial-gradient(circle,rgba(176,135,63,.14),transparent 62%)"></div>
+    <div class="absolute bottom-0 left-0 w-[440px] h-[440px] rounded-full" style="background:radial-gradient(circle,rgba(20,42,71,.10),transparent 62%)"></div>
+  </div>
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <span class="logo-mark logo-mark--lg mx-auto mb-8" data-reveal>GA</span>
+    <h2 class="font-display font-semibold text-navy leading-[1.02] tightest text-[clamp(2.2rem,6vw,4.2rem)]" data-reveal>
+      Let's get your <span class="grad-text">taxes handled</span>.
+    </h2>
+    <p class="mt-6 max-w-xl mx-auto text-[17.5px] leading-relaxed text-ink/72" data-reveal>
+      Twenty years, eighty-six perfect reviews, and one office in Irving that treats your return like it is the only one that matters. Call today and put it in trusted hands.
+    </p>
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-4" data-reveal>
+      <a href="tel:+19728873015" class="btn btn-navy inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-[16px] font-semibold">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (972) 887-3015
+      </a>
+      <a href="#visit" class="btn btn-ghost inline-flex items-center gap-2 rounded-full px-8 py-4 text-[16px] font-semibold">
+        See hours &amp; location
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-navy2 text-linen/80 pt-16 pb-10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-linen/12">
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="logo-mark" style="background:#142A47">GA</span>
+          <span class="font-display text-[21px] font-semibold text-linen">G.A Income Tax</span>
+        </div>
+        <p class="text-[14.5px] leading-relaxed text-linen/60 max-w-sm">Family-run tax preparation, bookkeeping, and payroll in Irving, Texas. Serving individuals and small businesses for over twenty years — in English and Spanish.</p>
+      </div>
+      <div class="md:col-span-3">
+        <h4 class="text-[12px] tracking-[.2em] uppercase text-gold2 font-semibold mb-4">Services</h4>
+        <ul class="space-y-2 text-[14.5px] text-linen/65">
+          <li>Individual Tax Preparation</li>
+          <li>Business &amp; Self-Employed Returns</li>
+          <li>Bookkeeping</li>
+          <li>Payroll Services</li>
+          <li>Prior-Year Returns &amp; Audit Support</li>
         </ul>
       </div>
-      <div>
-        <div class="text-[.72rem] uppercase tracking-[.18em] text-cream/50 font-700 mb-4">Visit</div>
-        <address class="not-italic text-[.92rem] text-cream/75 leading-relaxed">
-          2419 W Airport Fwy, Ste B<br>Irving, TX 75062<br>
-          <a href="tel:+19728873015" class="text-cream font-600 hover:text-amber transition">(972) 887-3015</a>
-        </address>
-        <div class="mt-4 text-[.85rem] text-cream/60 leading-relaxed">
-          Mon–Fri 10a–6p · Sat 10a–3p<br>Sun closed
-        </div>
+      <div class="md:col-span-4">
+        <h4 class="text-[12px] tracking-[.2em] uppercase text-gold2 font-semibold mb-4">Visit &amp; Contact</h4>
+        <ul class="space-y-3 text-[14.5px] text-linen/65">
+          <li class="flex gap-3"><svg class="flex-none mt-0.5" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C89A4C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>2419 W Airport Fwy, Ste B, Irving, TX 75062</li>
+          <li class="flex gap-3"><svg class="flex-none mt-0.5" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C89A4C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+19728873015" class="hover:text-gold2 transition-colors">(972) 887-3015</a></li>
+          <li class="flex gap-3"><svg class="flex-none mt-0.5" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C89A4C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Mon–Fri 10–6 · Sat 10–3 · Sun closed</li>
+        </ul>
       </div>
     </div>
-    <div class="mt-12 pt-6 border-t border-cream/12 flex flex-col sm:flex-row items-center justify-between gap-3 text-[.8rem] text-cream/55">
-      <div>© <span id="yr">2026</span> G.A. Income Tax &amp; Bookkeeping Services, Inc. All rights reserved.</div>
-      <div>Website by <a href="https://turnkeyweb.org" class="text-cream/75 hover:text-amber underline-grow">Turnkey Web</a></div>
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12.5px] text-linen/45">
+      <p>© 2026 G.A Income Tax · Irving, Texas · Se habla español</p>
+      <p class="flex items-center gap-2">Preview crafted by <span class="text-linen/70 font-medium">Turnkey Web</span></p>
     </div>
   </div>
 </footer>
 
-<!-- ===================== MOBILE STICKY BAR ===================== -->
-<div class="lg:hidden fixed bottom-0 inset-x-0 z-50 flex gap-2 p-3 bg-cream/95 backdrop-blur border-t border-forest/12" style="padding-bottom:calc(0.75rem + env(safe-area-inset-bottom));">
-  <a href="tel:+19728873015" class="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-forest text-cream py-3 text-[.9rem] font-600">
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="sticky-bar">
+  <a href="tel:+19728873015" class="flex items-center justify-center gap-2 rounded-full bg-gold text-navy2 font-semibold text-[14px] py-3">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     Call
   </a>
-  <a href="https://www.google.com/maps/search/?api=1&query=G.A.+Income+Tax+2419+W+Airport+Fwy+Ste+B+Irving+TX+75062" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-forest/35 text-forest py-3 text-[.9rem] font-600">
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=2419%20W%20Airport%20Fwy%20Ste%20B%2C%20Irving%2C%20TX%2075062" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 rounded-full border border-linen/40 text-linen font-semibold text-[14px] py-3">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
     Directions
   </a>
 </div>
 
-<!-- ===================== JSON-LD ===================== -->
+<!-- ============ JSON-LD ============ -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"AccountingService",
-  "name":"G.A. Income Tax & Bookkeeping Services, Inc",
-  "image":"https://turnkeyweb.org/previews/ga-income-tax/",
+  "name":"G.A Income Tax",
+  "description":"Family-run tax preparation, bookkeeping, and payroll services in Irving, TX. Individual and business returns, prior-year filings, and audit support. Bilingual English/Spanish.",
   "url":"https://turnkeyweb.org/previews/ga-income-tax/",
   "telephone":"+1-972-887-3015",
+  "founder":{"@type":"Person","name":"Graciela Abaca"},
+  "address":{"@type":"PostalAddress","streetAddress":"2419 W Airport Fwy, Ste B","addressLocality":"Irving","addressRegion":"TX","postalCode":"75062","addressCountry":"US"},
+  "areaServed":{"@type":"City","name":"Irving, Texas"},
   "priceRange":"$$",
   "knowsLanguage":["en","es"],
-  "address":{"@type":"PostalAddress","streetAddress":"2419 W Airport Fwy, Ste B","addressLocality":"Irving","addressRegion":"TX","postalCode":"75062","addressCountry":"US"},
-  "geo":{"@type":"GeoCoordinates","latitude":32.8465,"longitude":-96.9772},
-  "areaServed":"Irving, TX",
-  "founder":{"@type":"Person","name":"Graciela Abaca"},
   "openingHoursSpecification":[
     {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"18:00"},
     {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"15:00"}
   ],
-  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"86"},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"86","bestRating":"5"},
   "makesOffer":[
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Income Tax Preparation"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Individual Tax Preparation"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Business Tax Returns"}},
     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Bookkeeping"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Payroll Services"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Business Registration"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Sales Tax Filing"}}
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Payroll Services"}}
   ]
 }
 </script>
 
-<!-- ===================== SCRIPTS ===================== -->
-<script>
-document.getElementById('yr').textContent = new Date().getFullYear();
-const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const DESKTOP = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 
-/* ---------- Lenis smooth scroll (single GSAP ticker) ---------- */
-let lenis;
-if (!REDUCED) {
-  lenis = new Lenis({
-    duration: 1.1,
-    easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,
-    smoothTouch: false,
-  });
-  if (window.gsap) {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.ticker.add((time)=> lenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(0);
-    lenis.on('scroll', ScrollTrigger.update);
-    ScrollTrigger.config({ ignoreMobileResize: true });
-  }
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click', e=>{
-      const id = a.getAttribute('href');
-      if (id.length > 1) {
-        const t = document.querySelector(id);
-        if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -70 }); }
-      }
-    });
-  });
-} else if (window.gsap) {
-  gsap.registerPlugin(ScrollTrigger);
-}
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
-/* ---------- Nav shrink on scroll ---------- */
-const nav = document.getElementById('nav');
-function navState(){
-  if (window.scrollY > 20) nav.classList.add('bg-cream/90','backdrop-blur','shadow-sm');
-  else nav.classList.remove('bg-cream/90','backdrop-blur','shadow-sm');
-}
-navState(); window.addEventListener('scroll', navState, {passive:true});
-
-/* ---------- Reveals ---------- */
-if (window.gsap) {
-  gsap.utils.toArray('[data-reveal]').forEach(el=>{
-    gsap.fromTo(el, {opacity:0, y:34}, {
-      opacity:1, y:0, duration:.7, ease:'power3.out',
-      scrollTrigger:{ trigger:el, start:'top 92%', once:true },
-      onComplete:()=> el.style.willChange='auto'
-    });
-  });
-  gsap.utils.toArray('[data-reveal-img]').forEach(el=>{
-    ScrollTrigger.create({ trigger:el, start:'top 85%', once:true, onEnter:()=> el.classList.add('in') });
-  });
-  /* count-up */
-  gsap.utils.toArray('.count').forEach(el=>{
-    const target = parseFloat(el.dataset.target)||0;
-    const suffix = el.dataset.suffix||'';
-    ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:()=>{
-      gsap.to({v:0},{v:target, duration:1.5, ease:'power2.out', onUpdate:function(){ el.textContent = Math.round(this.targets()[0].v)+suffix; }});
-    }});
-  });
-}
-
-/* ---------- Three.js displaced gradient-mesh showpiece (light canvas) ---------- */
-(function(){
-  const canvas = document.getElementById('mesh-canvas');
-  if (!canvas || !window.THREE || REDUCED) return;
-  let renderer, scene, camera, mesh, raf=null, visible=true, running=true;
-  const isMobile = window.matchMedia('(max-width:880px)').matches;
+/* ---------- WebGL showpiece: drifting gold/navy motes on the light canvas ---------- */
+(function heroField(){
+  const canvas = document.getElementById('hero-canvas');
+  if(!canvas || reduce) return;
+  let renderer, scene, camera, points, raf=null, running=false;
+  const COUNT = isMobile ? 90 : 220;
 
   try {
-    renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile?1.5:2));
-  } catch(e){ return; } // WebGL unavailable → poster fallback stays
+    renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+  } catch(e){ return; } // no WebGL -> static cream hero, fully legible
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile?1.5:2));
 
   scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-  camera.position.set(0, 0, 5.2);
+  camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+  camera.position.z = 26;
 
-  const seg = isMobile ? 60 : 120;
-  const geo = new THREE.PlaneGeometry(9, 9, seg, seg);
+  const geo = new THREE.BufferGeometry();
+  const pos = new Float32Array(COUNT*3);
+  const spd = new Float32Array(COUNT);
+  const col = new Float32Array(COUNT*3);
+  const navy = new THREE.Color('#142A47'), gold = new THREE.Color('#B0873F');
+  for(let i=0;i<COUNT;i++){
+    pos[i*3]   = (Math.random()-0.5)*60;
+    pos[i*3+1] = (Math.random()-0.5)*42;
+    pos[i*3+2] = (Math.random()-0.5)*24;
+    spd[i] = 0.15 + Math.random()*0.5;
+    const c = Math.random() < 0.34 ? gold : navy;
+    col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
+  }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  geo.setAttribute('color', new THREE.BufferAttribute(col,3));
 
-  const uniforms = {
-    uTime:{value:0},
-    uColorA:{value:new THREE.Color('#1E4635')}, // forest
-    uColorB:{value:new THREE.Color('#C08A3E')}, // gold
-    uColorC:{value:new THREE.Color('#EBE0CF')}, // sand highlight
-  };
-  const mat = new THREE.ShaderMaterial({
-    uniforms,
-    transparent:true,
-    vertexShader:`
-      uniform float uTime;
-      varying float vH;
-      varying vec2 vUv;
-      void main(){
-        vUv = uv;
-        vec3 p = position;
-        float w =
-            sin(p.x*0.9 + uTime*0.45)*0.5
-          + sin(p.y*1.2 - uTime*0.35)*0.4
-          + sin((p.x+p.y)*0.7 + uTime*0.28)*0.35;
-        p.z += w;
-        vH = w;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(p,1.0);
-      }`,
-    fragmentShader:`
-      precision mediump float;
-      uniform vec3 uColorA; uniform vec3 uColorB; uniform vec3 uColorC;
-      varying float vH; varying vec2 vUv;
-      void main(){
-        float t = smoothstep(-1.0, 1.2, vH);
-        vec3 col = mix(uColorA, uColorB, t);
-        col = mix(col, uColorC, smoothstep(0.6, 1.3, vH)*0.6);
-        // soft radial fade so edges melt into the cream panel
-        float d = distance(vUv, vec2(0.5));
-        float alpha = smoothstep(0.72, 0.28, d);
-        gl_FragColor = vec4(col, alpha*0.92);
-      }`,
+  // soft round sprite
+  const cv = document.createElement('canvas'); cv.width=cv.height=64;
+  const ctx = cv.getContext('2d');
+  const g = ctx.createRadialGradient(32,32,0,32,32,32);
+  g.addColorStop(0,'rgba(255,255,255,1)'); g.addColorStop(.35,'rgba(255,255,255,.85)'); g.addColorStop(1,'rgba(255,255,255,0)');
+  ctx.fillStyle=g; ctx.beginPath(); ctx.arc(32,32,32,0,Math.PI*2); ctx.fill();
+  const tex = new THREE.CanvasTexture(cv);
+
+  const mat = new THREE.PointsMaterial({
+    size: isMobile?0.7:0.9, map:tex, vertexColors:true, transparent:true,
+    opacity:0.62, depthWrite:false, blending:THREE.NormalBlending, sizeAttenuation:true
   });
-
-  mesh = new THREE.Mesh(geo, mat);
-  mesh.rotation.x = -0.9;
-  mesh.rotation.z = 0.35;
-  scene.add(mesh);
+  points = new THREE.Points(geo, mat);
+  scene.add(points);
 
   function resize(){
-    const r = canvas.getBoundingClientRect();
-    if (r.width===0||r.height===0) return;
-    renderer.setSize(r.width, r.height, false);
-    camera.aspect = r.width / r.height;
-    camera.updateProjectionMatrix();
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    if(!w||!h) return;
+    renderer.setSize(w,h,false);
+    camera.aspect = w/h; camera.updateProjectionMatrix();
   }
-  resize();
-  window.addEventListener('resize', resize, {passive:true});
+  resize(); window.addEventListener('resize', resize);
 
-  const clock = new THREE.Clock();
-  function loop(){
-    if (!running || !visible){ raf=null; return; }
-    uniforms.uTime.value = clock.getElapsedTime();
-    mesh.rotation.z += 0.0006;
+  let t=0;
+  function frame(){
+    if(!running) return;
+    t += 0.006;
+    const p = geo.attributes.position.array;
+    for(let i=0;i<COUNT;i++){
+      p[i*3+1] += spd[i]*0.02;                 // slow rise, like paper motes
+      p[i*3]   += Math.sin(t + i)*0.004;       // gentle sway
+      if(p[i*3+1] > 21){ p[i*3+1] = -21; }
+    }
+    geo.attributes.position.needsUpdate = true;
+    points.rotation.y = Math.sin(t*0.4)*0.06;
     renderer.render(scene, camera);
-    raf = requestAnimationFrame(loop);
+    raf = requestAnimationFrame(frame);
   }
-  function start(){ if (raf===null && running && visible){ clock.getDelta(); raf=requestAnimationFrame(loop); } }
+  function start(){ if(running) return; running=true; frame(); }
+  function stop(){ running=false; if(raf) cancelAnimationFrame(raf); raf=null; }
 
-  // pause when tab hidden
-  document.addEventListener('visibilitychange', ()=>{ running = !document.hidden; if(running) start(); });
-  // pause when scrolled offscreen
-  if ('IntersectionObserver' in window){
-    new IntersectionObserver((ents)=>{ visible = ents[0].isIntersecting; if(visible) start(); }, {threshold:0.01})
-      .observe(canvas);
-  }
-  // desktop mouse parallax (subtle)
-  if (DESKTOP){
-    canvas.parentElement.addEventListener('pointermove', (e)=>{
-      const b = canvas.getBoundingClientRect();
-      const nx = ((e.clientX-b.left)/b.width - .5);
-      const ny = ((e.clientY-b.top)/b.height - .5);
-      gsap.to(mesh.rotation, { x:-0.9 + ny*0.18, z:0.35 - nx*0.18, duration:.9, ease:'power2.out', overwrite:true });
-    });
-  }
+  // pause when tab hidden or hero offscreen (perf)
+  document.addEventListener('visibilitychange', ()=> document.hidden ? stop() : start());
+  const io = new IntersectionObserver((es)=>{ es.forEach(e=> e.isIntersecting ? start() : stop()); }, {threshold:0.02});
+  io.observe(canvas);
   start();
 })();
 
-/* ---------- crawler / screenshot safety net ---------- */
-function forceReveal(){
-  document.querySelectorAll('[data-reveal]').forEach(el=>{
-    if (parseFloat(getComputedStyle(el).opacity) < 1){ el.style.opacity=1; el.style.transform='none'; }
+/* ---------- Lenis smooth scroll driven by the single GSAP ticker ---------- */
+gsap.registerPlugin(ScrollTrigger);
+const lenis = new Lenis({
+  duration:1.1,
+  easing:(t)=> Math.min(1, 1.001 - Math.pow(2,-10*t)),
+  smoothWheel:true, smoothTouch:false
+});
+gsap.ticker.add((time)=> lenis.raf(time*1000));
+gsap.ticker.lagSmoothing(0);
+lenis.on('scroll', ScrollTrigger.update);
+ScrollTrigger.config({ ignoreMobileResize:true });
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id = a.getAttribute('href');
+    if(id.length>1){ const el=document.querySelector(id); if(el){ e.preventDefault(); lenis.scrollTo(el,{offset:-70}); } }
   });
-  document.querySelectorAll('[data-reveal-img]').forEach(el=> el.classList.add('in'));
-  document.querySelectorAll('.count').forEach(el=>{
-    if (el.textContent.trim()==='0'){ el.textContent = (parseFloat(el.dataset.target)||0)+(el.dataset.suffix||''); }
+});
+
+/* ---------- Nav condense on scroll ---------- */
+const nav = document.getElementById('nav');
+ScrollTrigger.create({ start:'top -60', end:99999,
+  onUpdate:(s)=>{ nav.style.background = s.progress>0 ? 'rgba(247,243,236,.88)':'transparent';
+    nav.style.backdropFilter = s.progress>0 ? 'blur(12px)':'none';
+    nav.style.boxShadow = s.progress>0 ? '0 1px 0 rgba(20,42,71,.08)':'none'; }
+});
+if(window.scrollY>60){ nav.style.background='rgba(247,243,236,.88)'; nav.style.backdropFilter='blur(12px)'; }
+
+/* ---------- Masked hero word reveal ---------- */
+window.addEventListener('load', ()=>{
+  const words = gsap.utils.toArray('.mask-word');
+  gsap.set(words, { y:(i,el)=> el.offsetHeight*1.15 });
+  gsap.to(words, { y:0, duration:1.0, ease:'power3.out', stagger:0.09, delay:0.15 });
+  ScrollTrigger.refresh();
+});
+
+/* ---------- Standard reveals (GPU-only, once) ---------- */
+gsap.utils.toArray('[data-reveal]').forEach(el=>{
+  ScrollTrigger.create({ trigger:el, start:'top 92%', once:true,
+    onEnter:()=> el.classList.add('in') });
+});
+gsap.utils.toArray('[data-reveal-image]').forEach(el=>{
+  el.classList.add('clip-img');
+  ScrollTrigger.create({ trigger:el, start:'top 85%', once:true,
+    onEnter:()=> el.classList.add('in') });
+});
+
+/* ---------- Count-up stats ---------- */
+gsap.utils.toArray('[data-count]').forEach(el=>{
+  const target = parseFloat(el.dataset.count);
+  const dec = parseInt(el.dataset.decimals||'0');
+  const suffix = el.dataset.suffix||'';
+  ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:()=>{
+    const o={v:0};
+    gsap.to(o,{v:target,duration:1.6,ease:'power2.out',
+      onUpdate:()=> el.textContent = o.v.toFixed(dec)+suffix });
+  }});
+});
+
+/* ---------- 6s screenshot / crawler safety net ---------- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=> el.classList.add('in'));
+  document.querySelectorAll('[data-reveal-image]').forEach(el=> el.classList.add('in'));
+  gsap.set('.mask-word',{y:0,clearProps:'transform'});
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    if(el.textContent.trim()==='0' || el.textContent.trim()===''){
+      const dec=parseInt(el.dataset.decimals||'0');
+      el.textContent = parseFloat(el.dataset.count).toFixed(dec)+(el.dataset.suffix||'');
+    }
   });
-}
-// Fire well before any screenshot/crawler capture, and again on full load as a backstop.
-setTimeout(forceReveal, 2600);
-window.addEventListener('load', ()=> setTimeout(forceReveal, 1200));
+}, 6000);
 </script>
 </body>
 </html>
