@@ -549,8 +549,12 @@ tailwind.config = {
           </div>
         </div>
       </div>
-      <div class="mt-5 rounded-[1.3rem] overflow-hidden border border-line shadow-[0_20px_44px_-32px_rgba(34,26,22,.4)]">
-        <iframe title="Manor Dry Cleaners location map" src="https://www.google.com/maps?q=125+E+Mission+Road+Fallbrook+CA+92028&output=embed" class="w-full h-[190px] sm:h-[220px]" style="border:0; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="mt-5 relative rounded-[1.3rem] overflow-hidden border border-line shadow-[0_20px_44px_-32px_rgba(34,26,22,.4)]" style="background:linear-gradient(180deg,#F1E7D8,#E7D9C4);">
+        <div class="absolute inset-0 flex items-center justify-center gap-2 text-muted text-sm pointer-events-none px-4 text-center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A1E2B" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>125 E. Mission Road, Fallbrook, CA 92028</span>
+        </div>
+        <iframe title="Manor Dry Cleaners location map" src="https://www.google.com/maps?q=125+E+Mission+Road+Fallbrook+CA+92028&output=embed" class="relative w-full h-[190px] sm:h-[220px]" style="border:0; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
