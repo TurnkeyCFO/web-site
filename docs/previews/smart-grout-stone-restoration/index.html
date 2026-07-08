@@ -686,9 +686,11 @@ function fillCount(el){
     gsap.to(o,{v:to,duration:1.5,ease:'power2.out',onUpdate:()=> el.textContent=(dec?o.v.toFixed(dec):Math.round(o.v))+suf});
   } else { el.textContent=(dec?to.toFixed(dec):Math.round(to))+suf; }
 }
+function settle(el){ el.style.transition='none'; el.style.willChange='auto'; el.style.opacity='1'; el.style.transform='none'; }
 if ('IntersectionObserver' in window && !reduce){
   const ro=new IntersectionObserver((entries,obs)=>{
-    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('reveal-in'); obs.unobserve(en.target); } });
+    entries.forEach(en=>{ if(en.isIntersecting){ const t=en.target; t.classList.add('reveal-in');
+      obs.unobserve(t); setTimeout(()=>settle(t), 760); } });
   },{ threshold:0.06, rootMargin:'0px 0px -6% 0px' });
   document.querySelectorAll('[data-reveal]').forEach(el=>ro.observe(el));
   const co=new IntersectionObserver((entries,obs)=>{
@@ -786,18 +788,21 @@ if ('IntersectionObserver' in window && !reduce){
   }).catch(()=>{});
 })();
 
-/* ---- screenshot / crawler safety net (early + final) ---- */
+/* ---- screenshot / crawler safety net (early + final) — force final STATIC state (no lingering transition) ---- */
 function forceReveal(){
-  document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('reveal-in'));
+  document.querySelectorAll('[data-reveal]').forEach(el=>{
+    el.classList.add('reveal-in');
+    el.style.transition='none'; el.style.willChange='auto'; el.style.opacity='1'; el.style.transform='none';
+  });
   document.querySelectorAll('.count').forEach(el=>{
     const to=parseFloat(el.dataset.to), dec=parseInt(el.dataset.dec||'0'), suf=el.dataset.suffix||'';
     const t=el.textContent.trim();
     if (t==='' || t==='0' || t===el.dataset.to) el.textContent=(dec?to.toFixed(dec):Math.round(to))+suf;
   });
 }
-setTimeout(forceReveal, 2600);
-setTimeout(forceReveal, 6000);
-window.addEventListener('load', ()=> setTimeout(forceReveal, 800));
+setTimeout(forceReveal, 1100);
+setTimeout(forceReveal, 3000);
+window.addEventListener('load', ()=> setTimeout(forceReveal, 500));
 </script>
 </body>
 </html>
