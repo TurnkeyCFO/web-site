@@ -55,11 +55,20 @@ tailwind.config = {
 
   .font-display { font-family:'Fraunces',serif; }
 
-  /* Preloader */
+  /* Preloader — garment-care intro, first visit only */
   #preloader { position:fixed; inset:0; z-index:120; background:#F8F2E9; display:flex; align-items:center; justify-content:center; }
-  #preloader .pl-num { font-family:'Fraunces',serif; font-size:clamp(3rem,9vw,6rem); font-weight:400; color:#221A16; letter-spacing:-.02em; }
-  #preloader .pl-cap { position:absolute; bottom:12%; left:50%; transform:translateX(-50%); font-size:.72rem; letter-spacing:.34em; text-transform:uppercase; color:#6B5E53; }
+  #preloader .pl-stage { display:flex; flex-direction:column; align-items:center; gap:1rem; }
+  #preloader .pl-hanger { color:#7A1E2B; opacity:0; transform:translateY(10px); animation:plHang .8s cubic-bezier(.2,.7,.2,1) forwards; }
+  #preloader .pl-word { font-family:'Fraunces',serif; font-size:clamp(1.7rem,5vw,2.6rem); font-weight:400; letter-spacing:-.01em; color:#221A16; opacity:0; animation:plFade .8s ease .14s forwards; }
+  #preloader .pl-thread { position:relative; width:170px; height:2px; background:rgba(34,26,22,.12); border-radius:2px; overflow:hidden; }
+  #preloader .pl-thread i { position:absolute; inset:0; transform:translateX(-101%); background:linear-gradient(90deg,#7A1E2B,#9A6B33); animation:plThread 1.1s cubic-bezier(.5,.05,.2,1) .24s forwards; }
+  #preloader .pl-cap { font-size:.64rem; letter-spacing:.32em; text-transform:uppercase; color:#6B5E53; opacity:0; animation:plFade .8s ease .34s forwards; }
+  @keyframes plHang { to{opacity:1; transform:none} }
+  @keyframes plFade { to{opacity:1} }
+  @keyframes plThread { to{transform:translateX(0)} }
   .pl-curtain { position:fixed; inset:0; z-index:119; background:#7A1E2B; transform:scaleY(0); transform-origin:bottom; }
+  html.pl-done #preloader, html.pl-done .pl-curtain { display:none !important; }
+  @media (prefers-reduced-motion:reduce){ #preloader .pl-hanger,#preloader .pl-word,#preloader .pl-thread i,#preloader .pl-cap{ animation:none; opacity:1; transform:none } #preloader .pl-thread i{ transform:translateX(0) } }
 
   /* Gradient shimmer on key text (deep tones so it always clears AA large-text contrast on cream) */
   .grad-text {
@@ -139,11 +148,17 @@ tailwind.config = {
     .grad-text{ animation:none } .marquee-track{ animation:none } .chip-dot{ animation:none }
   }
 </style>
+<script>try{if(sessionStorage.getItem('manorSeen'))document.documentElement.classList.add('pl-done')}catch(e){}</script>
 </head>
 <body>
 
 <!-- Preloader -->
-<div id="preloader"><span class="pl-num" id="plNum">0</span><span class="pl-cap">Manor Dry Cleaners · Fallbrook</span></div>
+<div id="preloader"><div class="pl-stage">
+  <svg class="pl-hanger" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.6a1.7 1.7 0 1 1 1.28 1.65c-.52.13-.78.5-.78 1v.85"/><path d="m12 8.1-8.7 5.9c-1 .68-.52 2.25.7 2.25h16c1.22 0 1.7-1.57.7-2.25L12 8.1Z"/></svg>
+  <div class="pl-word">Manor Dry Cleaners</div>
+  <div class="pl-thread"><i></i></div>
+  <div class="pl-cap">Fallbrook · California</div>
+</div></div>
 <div class="pl-curtain" id="plCurtain"></div>
 <div class="scroll-prog" id="scrollProg"></div>
 
@@ -221,7 +236,7 @@ tailwind.config = {
 </section>
 
 <!-- DECADE+ EXPERTISE FEATURE (big-number card) -->
-<section class="py-12 sm:py-24 bg-cream">
+<section class="py-14 sm:py-20 bg-cream">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
     <div class="lg:col-span-6">
       <p class="eyebrow mb-5" data-reveal>A decade of restoration expertise</p>
@@ -257,8 +272,57 @@ tailwind.config = {
   </div>
 </section>
 
+<!-- RESTORED-PIECE GALLERY (calm editorial) -->
+<section class="py-14 sm:py-20 bg-paper border-y border-line">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+    <div>
+      <p class="eyebrow mb-5" data-reveal>A piece brought back</p>
+      <h2 class="font-display font-light text-ink text-[clamp(2rem,4.4vw,3.3rem)] leading-[1.04] tracking-tight" data-reveal>
+        The garment you thought was <span class="italic grad-text">gone for good.</span>
+      </h2>
+      <p class="mt-6 text-muted leading-relaxed max-w-xl" data-reveal>
+        A gown pulled from long storage, a jacket touched by smoke, linens caught in a flood — with the
+        right process, the piece you were ready to give up on comes back clean, fresh, and yours again.
+      </p>
+      <a href="tel:17607281307" class="btn btn-wine mt-9 px-7 py-3.5 rounded-full text-[.98rem]" data-reveal>Ask what can be saved</a>
+    </div>
+    <div class="grid grid-cols-5 gap-4" data-reveal-img>
+      <div class="ri-inner craft-img col-span-3 relative rounded-[1.4rem] overflow-hidden shadow-[0_36px_70px_-34px_rgba(34,26,22,.42)]">
+        <img src="../assets/gown.jpg" alt="A delicate gown carefully restored and cared for at Manor Dry Cleaners" class="w-full h-[300px] lg:h-[420px] object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent"></div>
+      </div>
+      <div class="col-span-2 grid grid-rows-2 gap-4">
+        <div class="craft-img relative rounded-[1.2rem] overflow-hidden shadow-[0_24px_50px_-30px_rgba(34,26,22,.4)]">
+          <img src="../assets/shirt-closeup.jpg" alt="Close detail of clean, restored fabric at Manor Dry Cleaners" class="w-full h-full object-cover min-h-[140px]">
+        </div>
+        <div class="craft-img relative rounded-[1.2rem] overflow-hidden shadow-[0_24px_50px_-30px_rgba(34,26,22,.4)]">
+          <img src="../assets/embroidery-thread.jpg" alt="A close-up of fine thread and textile texture at Manor Dry Cleaners" class="w-full h-full object-cover min-h-[140px]">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL-BLEED IMAGE BAND (garment rack) -->
+<section class="relative overflow-hidden">
+  <img src="../assets/hero-rack.jpg" alt="A full garment rack of cleaned and restored pieces at Manor Dry Cleaners" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-ink/30"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-16 sm:py-28">
+    <div class="max-w-2xl" data-reveal>
+      <p class="text-[.72rem] tracking-[.3em] uppercase text-brassLt font-semibold mb-5">Ten years of second chances</p>
+      <h2 class="font-display font-light text-cream text-[clamp(2rem,4.8vw,3.6rem)] leading-[1.04] tracking-tight">
+        Rack after rack, <span class="italic text-brassLt">brought back to life.</span>
+      </h2>
+      <p class="mt-6 text-cream/85 leading-relaxed max-w-xl">
+        The work most cleaners turn away is exactly what Fallbrook has trusted Manor with for over a
+        decade — garments and household goods that looked like a total loss, returned like new.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- WHAT WE RESTORE (3-up) -->
-<section id="restore" class="py-12 sm:py-24 bg-paper border-y border-line">
+<section id="restore" class="py-14 sm:py-20 bg-paper border-y border-line">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="max-w-2xl mb-10 sm:mb-14">
       <p class="eyebrow mb-5" data-reveal>What we restore</p>
@@ -293,7 +357,7 @@ tailwind.config = {
 
 <!-- PROCESS / REASSURANCE BAND (wine) with supporting textile visual -->
 <section class="relative bg-wine text-cream overflow-hidden">
-  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-24 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14 sm:py-20 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
     <div class="lg:col-span-7">
       <p class="text-[.72rem] tracking-[.3em] uppercase text-cream/70 font-semibold mb-5" data-reveal>Special practices, specific solutions</p>
       <h2 class="font-display font-light text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-tight" data-reveal>
@@ -327,7 +391,7 @@ tailwind.config = {
 </section>
 
 <!-- CLOSING CTA -->
-<section class="py-12 sm:py-24 bg-paper grain relative overflow-hidden">
+<section class="py-14 sm:py-20 bg-paper grain relative overflow-hidden">
   <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
     <p class="eyebrow mb-6" data-reveal>When damage strikes</p>
     <h2 class="font-display font-light text-ink text-[clamp(2.3rem,6vw,4.6rem)] leading-[1.0] tracking-tight" data-reveal>
@@ -432,30 +496,30 @@ tailwind.config = {
   window.addEventListener('resize', pin); // guarded: ignores capture-expanded (>=1400px) viewports
 })();
 
-/* ---------- Preloader ---------- */
+/* ---------- Preloader (garment-care intro, first visit only) ---------- */
 (function(){
-  const num = document.getElementById('plNum');
-  const pre = document.getElementById('preloader');
-  const curtain = document.getElementById('plCurtain');
-  let v = 0, done = false;
-  const finish = ()=>{
-    if(done) return; done = true;
+  const pre=document.getElementById('preloader'), curtain=document.getElementById('plCurtain');
+  let done=false;
+  const seen=()=>{ try{return !!sessionStorage.getItem('manorSeen')}catch(e){return false} };
+  const mark=()=>{ try{sessionStorage.setItem('manorSeen','1')}catch(e){} };
+  if(seen()){
+    document.documentElement.classList.add('pl-done');
+    if(pre) pre.style.display='none'; if(curtain) curtain.style.display='none';
+    if(document.readyState!=='loading') startReveals(); else document.addEventListener('DOMContentLoaded',startReveals);
+    return;
+  }
+  const finish=()=>{
+    if(done) return; done=true; mark();
     if(window.gsap){
-      const tl = gsap.timeline();
+      const tl=gsap.timeline();
       tl.to(curtain,{scaleY:1,duration:.5,ease:'power3.inOut'})
         .set(pre,{display:'none'})
         .to(curtain,{scaleY:0,transformOrigin:'top',duration:.6,ease:'power3.inOut'},'+=.05')
         .add(()=>{ startReveals(); },'-=.3');
     } else { pre.style.display='none'; startReveals(); }
   };
-  const tick = ()=>{
-    v += Math.max(1, (100-v)*0.12);
-    if(v>=100){ v=100; num.textContent='100'; setTimeout(finish,180); return; }
-    num.textContent = Math.floor(v);
-    setTimeout(tick, 55);
-  };
-  tick();
-  setTimeout(finish, 4000); // hard safety
+  setTimeout(finish, 1500);
+  setTimeout(finish, 4000);
 })();
 
 /* ---------- Lenis + GSAP (single ticker) ---------- */
