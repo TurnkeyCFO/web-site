@@ -163,6 +163,7 @@ tailwind.config = {
     <nav class="hidden lg:flex items-center gap-8 text-[.9rem] text-ink/80">
       <a href="#services" class="u-grow">Services</a>
       <a href="#craft" class="u-grow">The Craft</a>
+      <a href="#restoration" class="u-grow">Restoration</a>
       <a href="#reviews" class="u-grow">Reviews</a>
       <a href="#visit" class="u-grow">Visit</a>
     </nav>
@@ -387,13 +388,55 @@ tailwind.config = {
 
     <div class="hidden sm:grid grid-cols-3 gap-5 mt-6">
       <div class="craft-img rounded-[1.1rem] overflow-hidden shadow-[0_24px_50px_-30px_rgba(34,26,22,.4)]" data-reveal>
-        <img src="assets/tailor-sewing.jpg" alt="Tailoring and alterations at Manor Dry Cleaners" class="w-full h-[220px] object-cover">
+        <img src="assets/real-alterations.jpg" alt="Manor Dry Cleaners' in-house alterations and embroidery workroom in Fallbrook — wall of thread, sewing stations, finished garments" class="w-full h-[220px] object-cover">
       </div>
       <div class="craft-img rounded-[1.1rem] overflow-hidden shadow-[0_24px_50px_-30px_rgba(34,26,22,.4)]" data-reveal>
         <img src="assets/pressing-iron.jpg" alt="Professional pressing and finishing at Manor Dry Cleaners" class="w-full h-[220px] object-cover">
       </div>
       <div class="craft-img rounded-[1.1rem] overflow-hidden shadow-[0_24px_50px_-30px_rgba(34,26,22,.4)]" data-reveal>
         <img src="assets/folded-shirts.jpg" alt="Freshly laundered and folded shirts at Manor Dry Cleaners" class="w-full h-[220px] object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTORATION (real differentiator — smoke / mildew / water damage) -->
+<section id="restoration" class="py-12 sm:py-24 bg-paper border-t border-line">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+    <div class="lg:col-span-6">
+      <p class="eyebrow mb-5" data-reveal>When damage strikes</p>
+      <h2 class="font-display font-light text-ink text-[clamp(2rem,4.6vw,3.5rem)] leading-[1.04] tracking-tight" data-reveal>
+        Smoke, mildew &amp; water damage —<br><span class="italic grad-text">brought back to life.</span>
+      </h2>
+      <p class="mt-6 text-muted leading-relaxed max-w-xl" data-reveal>
+        For over a decade, Manor has specialized in the removal of smoke, mildew, and water damage from
+        clothing and household goods. Special practices and specific cleaning solutions — the kind most
+        cleaners simply don&rsquo;t do — bring your garments back from what looked like a total loss.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-x-8 gap-y-4" data-reveal>
+        <div class="flex items-center gap-2.5 text-ink"><span class="chip-dot"></span><span class="font-medium">Clothing &amp; delicates</span></div>
+        <div class="flex items-center gap-2.5 text-ink"><span class="chip-dot"></span><span class="font-medium">Bedding &amp; comforters</span></div>
+        <div class="flex items-center gap-2.5 text-ink"><span class="chip-dot"></span><span class="font-medium">Draperies &amp; rugs</span></div>
+      </div>
+      <a href="tel:17607281307" class="btn btn-wine mt-9 px-7 py-3.5 rounded-full text-[.98rem]" data-reveal>Talk to us about your items</a>
+    </div>
+
+    <div class="lg:col-span-6" data-reveal>
+      <div class="relative rounded-[1.4rem] border border-line bg-cream p-8 sm:p-10 shadow-[0_30px_60px_-34px_rgba(34,26,22,.4)] overflow-hidden">
+        <div class="absolute -top-10 -right-8 font-display text-[10rem] leading-none text-wine/[.06] select-none pointer-events-none">10+</div>
+        <div class="relative">
+          <div class="font-display text-[2.7rem] sm:text-[3.4rem] text-ink leading-none">A decade<span class="text-wine">+</span></div>
+          <div class="text-[.72rem] tracking-[.2em] uppercase text-muted mt-2">Specializing in restoration cleaning</div>
+          <div class="my-7 h-px bg-line"></div>
+          <p class="text-ink/85 leading-relaxed">
+            After a fire, a flood, or long storage, the difference between saving a piece and losing it is
+            experience. It&rsquo;s the work your trusted local cleaner has quietly done for Fallbrook, year after year.
+          </p>
+          <div class="mt-6 flex items-center gap-3 text-sm text-muted">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A1E2B" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Insurance &amp; keepsake pieces welcome — bring us the ones that matter most.
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -505,13 +548,18 @@ tailwind.config = {
     </div>
 
     <div data-reveal>
-      <div class="relative rounded-[1.3rem] overflow-hidden border border-line shadow-[0_30px_60px_-34px_rgba(34,26,22,.45)]" style="background:linear-gradient(180deg,#F1E7D8,#E7D9C4);">
-        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none">
-          <span class="w-12 h-12 rounded-full bg-wine/12 text-wine flex items-center justify-center mb-3"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <span class="font-display text-ink text-xl">125 E. Mission Road</span>
-          <span class="text-muted text-sm">Fallbrook, CA 92028</span>
+      <div class="relative rounded-[1.3rem] overflow-hidden border border-line shadow-[0_30px_60px_-34px_rgba(34,26,22,.45)] craft-img">
+        <img src="assets/real-storefront.jpg" alt="The Manor Dry Cleaners storefront — a vintage corner building with hand-painted signage in Fallbrook, CA" class="w-full h-[280px] sm:h-[360px] object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent"></div>
+        <div class="absolute left-5 bottom-5 right-5 flex items-end justify-between gap-3">
+          <div class="backdrop-blur-sm bg-cream/90 rounded-xl px-4 py-2.5">
+            <div class="text-[.62rem] tracking-[.2em] uppercase text-wine font-semibold">A Fallbrook landmark</div>
+            <div class="font-display text-ink text-base leading-tight">You know the corner.</div>
+          </div>
         </div>
-        <iframe title="Manor Dry Cleaners location map" src="https://www.google.com/maps?q=125+E+Mission+Road+Fallbrook+CA+92028&output=embed" class="w-full h-[250px] sm:h-[460px]" style="border:0; display:block; position:relative;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="mt-5 rounded-[1.3rem] overflow-hidden border border-line shadow-[0_20px_44px_-32px_rgba(34,26,22,.4)]">
+        <iframe title="Manor Dry Cleaners location map" src="https://www.google.com/maps?q=125+E+Mission+Road+Fallbrook+CA+92028&output=embed" class="w-full h-[190px] sm:h-[220px]" style="border:0; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
@@ -550,6 +598,7 @@ tailwind.config = {
         <ul class="space-y-2.5 text-cream/65 text-sm">
           <li><a href="#services" class="u-grow hover:text-cream">Services</a></li>
           <li><a href="#craft" class="u-grow hover:text-cream">The Craft</a></li>
+          <li><a href="#restoration" class="u-grow hover:text-cream">Restoration</a></li>
           <li><a href="#reviews" class="u-grow hover:text-cream">Reviews</a></li>
           <li><a href="#visit" class="u-grow hover:text-cream">Visit</a></li>
         </ul>
@@ -602,7 +651,8 @@ tailwind.config = {
     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Letterman Jacket Embroidery"}},
     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Household Item Cleaning"}},
     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Laundry & Fluff-n-Fold"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pickup & Delivery"}}
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pickup & Delivery"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Smoke, Mildew & Water Damage Restoration"}}
   ]
 }
 </script>
