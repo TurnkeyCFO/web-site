@@ -497,11 +497,20 @@ tailwind.config = {
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
-    <div class="rounded-[22px] overflow-hidden frame border border-ink/8" data-reveal>
+    <div class="relative rounded-[22px] overflow-hidden frame border border-ink/8" data-reveal style="min-height:520px;">
+      <!-- branded coverage-card fallback (shows while the map tiles load; the opaque map covers it once ready) -->
+      <div class="absolute inset-0 z-0 flex flex-col items-center justify-center text-center px-6"
+           style="background:linear-gradient(160deg,#EEF2EC 0%, #E7EBE4 45%, #EDE4D7 100%);">
+        <span class="w-14 h-14 rounded-2xl bg-slate/10 text-slate flex items-center justify-center mb-4">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5S5 9 5 14a7 7 0 0 0 14 0c0-5-7-11.5-7-11.5z"/><circle cx="12" cy="13.5" r="2.4"/></svg>
+        </span>
+        <p class="font-display font-600 text-[24px] text-ink">Wichita, Kansas</p>
+        <p class="text-[14px] text-inksoft mt-1">Service area · Wichita metro &amp; surrounding towns</p>
+      </div>
       <iframe
         title="Olmos Drywall service area — Wichita, KS"
         src="https://www.google.com/maps?q=Wichita%2C%20KS&z=11&output=embed"
-        width="100%" height="520" style="border:0; display:block; width:100%; height:520px;" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        width="100%" height="520" style="position:relative; z-index:1; border:0; display:block; width:100%; height:520px;" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
