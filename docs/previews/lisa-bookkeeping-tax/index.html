@@ -29,8 +29,8 @@ tailwind.config = {
   theme: { extend: {
     colors: {
       cream:'#F8F2E7', paper:'#FCF8F0', bone:'#EFE6D5',
-      navy:'#172038', ink:'#141B2E', gold:'#B98D52', goldlt:'#D8B074',
-      slate:'#4A5568', sage:'#6E7F73'
+      navy:'#172038', ink:'#141B2E', gold:'#7C5F33', goldbright:'#B98D52', goldlt:'#D8B074',
+      slate:'#4A5568', sage:'#5F6F64'
     },
     fontFamily: { display:['Fraunces','serif'], sans:['"Plus Jakarta Sans"','sans-serif'] }
   }}
@@ -432,12 +432,19 @@ tailwind.config = {
       <a href="tel:+12102651766" class="btn btn-primary inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[.95rem] font-semibold mt-9">Book your appointment</a>
     </div>
 
-    <div class="rounded-2xl overflow-hidden border border-navy/12 shadow-[0_30px_60px_-40px_rgba(23,32,56,.5)] min-h-[420px]" data-reveal>
+    <div class="relative rounded-2xl overflow-hidden border border-navy/12 shadow-[0_30px_60px_-40px_rgba(23,32,56,.5)] min-h-[420px]" style="background:#e6ebe5" data-reveal>
+      <!-- styled map fallback (behind the live embed; visible only if the tile is slow to load) -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-navy pointer-events-none"
+           style="background-image:linear-gradient(rgba(23,32,56,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(23,32,56,.05) 1px,transparent 1px);background-size:44px 44px">
+        <span class="text-gold"><svg width="34" height="34" viewBox="0 0 24 24" fill="#7C5F33" stroke="#F8F2E7" stroke-width="1.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3.2" fill="#F8F2E7"/></svg></span>
+        <span class="font-display text-navy text-lg">5656 S Pan Am Expressway</span>
+        <span class="text-slate text-sm">San Antonio, TX 78211 · corner of Fitch St</span>
+      </div>
       <iframe
         title="Map to Lisa Bookkeeping & Tax Services LLC, 5656 S Pan Am Expressway, San Antonio TX"
         src="https://www.google.com/maps?q=5656%20S%20Pan%20Am%20Expressway%20Suite%20A-1%20San%20Antonio%20TX%2078211&output=embed"
-        width="100%" height="100%" style="border:0; min-height:420px; display:block;"
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        class="absolute inset-0" width="100%" height="100%" style="border:0; min-height:420px; display:block;"
+        loading="eager" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     </div>
   </div>
 </section>
