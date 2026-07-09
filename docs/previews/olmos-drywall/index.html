@@ -498,14 +498,48 @@ tailwind.config = {
       </a>
     </div>
     <div class="relative rounded-[22px] overflow-hidden frame border border-ink/8" data-reveal style="min-height:520px;">
-      <!-- branded coverage-card fallback (shows while the map tiles load; the opaque map covers it once ready) -->
-      <div class="absolute inset-0 z-0 flex flex-col items-center justify-center text-center px-6"
-           style="background:linear-gradient(160deg,#EEF2EC 0%, #E7EBE4 45%, #EDE4D7 100%);">
-        <span class="w-14 h-14 rounded-2xl bg-slate/10 text-slate flex items-center justify-center mb-4">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5S5 9 5 14a7 7 0 0 0 14 0c0-5-7-11.5-7-11.5z"/><circle cx="12" cy="13.5" r="2.4"/></svg>
+      <!-- stylized service-area map (shows while the live Google map tiles load; the opaque map covers it once ready) -->
+      <div class="absolute inset-0 z-0" aria-hidden="true">
+        <svg viewBox="0 0 600 520" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+          <defs>
+            <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#EAF0E7"/><stop offset="0.5" stop-color="#E4EAE0"/><stop offset="1" stop-color="#EDE4D7"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="520" fill="url(#mapbg)"/>
+          <!-- parks / water blobs -->
+          <path d="M60 120 q60 -30 120 10 q30 40 -20 70 q-70 20 -110 -20 z" fill="#D6E3D2" opacity="0.7"/>
+          <path d="M420 330 q50 -20 90 20 q10 40 -40 55 q-60 5 -70 -40 z" fill="#D6E3D2" opacity="0.7"/>
+          <path d="M300 60 q40 10 30 50 q-20 30 -55 15 q-20 -35 25 -65 z" fill="#CFE0EA" opacity="0.6"/>
+          <!-- road grid -->
+          <g stroke="#C9CFC4" stroke-width="2" opacity="0.8">
+            <line x1="0" y1="150" x2="600" y2="120"/><line x1="0" y1="270" x2="600" y2="250"/>
+            <line x1="0" y1="390" x2="600" y2="410"/><line x1="150" y1="0" x2="130" y2="520"/>
+            <line x1="330" y1="0" x2="345" y2="520"/><line x1="470" y1="0" x2="490" y2="520"/>
+          </g>
+          <!-- highways -->
+          <g stroke="#D9A15C" stroke-width="4" opacity="0.65" fill="none">
+            <path d="M60 470 Q290 360 560 260"/><path d="M120 40 Q300 250 300 500"/>
+          </g>
+          <!-- town dots + labels -->
+          <g font-family="Plus Jakarta Sans, sans-serif" font-size="13" fill="#5C534A">
+            <circle cx="120" cy="300" r="4" fill="#26333B"/><text x="132" y="304">Goddard</text>
+            <circle cx="150" cy="420" r="4" fill="#26333B"/><text x="162" y="424">Haysville</text>
+            <circle cx="470" cy="200" r="4" fill="#26333B"/><text x="482" y="204">Andover</text>
+            <circle cx="500" cy="360" r="4" fill="#26333B"/><text x="418" y="392">Derby</text>
+            <circle cx="230" cy="160" r="4" fill="#26333B"/><text x="242" y="164">Maize</text>
+          </g>
+          <!-- Wichita pin -->
+          <g transform="translate(300,250)">
+            <circle cx="0" cy="0" r="30" fill="#C2703B" opacity="0.15"/>
+            <path d="M0 -26 C-15 -26 -24 -14 -24 -2 C-24 14 0 30 0 30 C0 30 24 14 24 -2 C24 -14 15 -26 0 -26 Z" fill="#A2551F"/>
+            <circle cx="0" cy="-2" r="8" fill="#FBF8F2"/>
+            <text x="0" y="52" text-anchor="middle" font-family="Fraunces, serif" font-size="22" font-weight="600" fill="#1A1714">Wichita, KS</text>
+          </g>
+        </svg>
+        <span class="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/85 backdrop-blur border border-ink/10 px-3.5 py-1.5 text-[11.5px] font-600 tracking-[.1em] uppercase text-slate">
+          Service area
         </span>
-        <p class="font-display font-600 text-[24px] text-ink">Wichita, Kansas</p>
-        <p class="text-[14px] text-inksoft mt-1">Service area · Wichita metro &amp; surrounding towns</p>
       </div>
       <iframe
         title="Olmos Drywall service area — Wichita, KS"
