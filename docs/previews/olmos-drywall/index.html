@@ -74,16 +74,23 @@ tailwind.config = {
   @keyframes shimmer{ from{ background-position:0% 50%; } to{ background-position:230% 50%; } }
 
   /* hero */
-  .hero-base{ position:absolute; inset:0; z-index:0;
+  .hero-photo{ position:absolute; inset:0; z-index:0; background:#EDE4D7 url('assets/hero-room.jpg') center 42%/cover no-repeat;
+    transform:scale(1.04); animation:heroZoom 26s ease-in-out infinite alternate; will-change:transform; }
+  @keyframes heroZoom{ from{ transform:scale(1.04); } to{ transform:scale(1.11); } }
+  .hero-base{ position:absolute; inset:0; z-index:1; pointer-events:none;
     background:
-      radial-gradient(120% 95% at 16% 8%, rgba(194,112,59,.20), transparent 52%),
-      radial-gradient(95% 85% at 88% 88%, rgba(38,51,59,.16), transparent 58%),
-      linear-gradient(180deg,#FBF8F2 0%, #F1E8DB 100%); }
-  #webgl{ position:absolute; inset:0; width:100%; height:100%; z-index:1; }
+      radial-gradient(120% 95% at 16% 8%, rgba(194,112,59,.16), transparent 52%),
+      radial-gradient(95% 85% at 90% 90%, rgba(38,51,59,.14), transparent 58%); }
+  #webgl{ position:absolute; inset:0; width:100%; height:100%; z-index:1; opacity:.26; mix-blend-mode:soft-light; pointer-events:none; }
+  /* left-weighted cream scrim keeps the dark headline fully legible over the photo (legibility gate) */
   .hero-scrim{ position:absolute; inset:0; z-index:2; pointer-events:none;
-    background:linear-gradient(100deg, rgba(246,241,234,.90) 0%, rgba(246,241,234,.55) 44%, rgba(246,241,234,.14) 76%, rgba(246,241,234,0) 100%); }
+    background:
+      linear-gradient(100deg, rgba(246,241,234,.96) 0%, rgba(246,241,234,.90) 30%, rgba(246,241,234,.66) 52%, rgba(246,241,234,.28) 74%, rgba(246,241,234,.06) 100%),
+      linear-gradient(180deg, rgba(246,241,234,.55) 0%, rgba(246,241,234,0) 22%, rgba(246,241,234,0) 60%, rgba(246,241,234,.28) 100%); }
   .hero-vig{ position:absolute; inset:0; z-index:2; pointer-events:none;
-    box-shadow: inset 0 -120px 120px -60px rgba(26,23,20,.14), inset 0 60px 90px -70px rgba(246,241,234,.9); }
+    box-shadow: inset 0 -130px 130px -60px rgba(26,23,20,.20), inset 0 70px 100px -70px rgba(246,241,234,.9); }
+  @media (max-width:767px){ .hero-photo{ background-position:center 40%; } }
+  @media (prefers-reduced-motion: reduce){ .hero-photo{ animation:none; transform:none; } }
 
   /* masked line reveal */
   .hline{ display:block; overflow:hidden; }
@@ -137,16 +144,20 @@ tailwind.config = {
   [data-reveal]{ opacity:0; transform:translateY(30px); will-change:opacity,transform; }
   .revealed{ opacity:1 !important; transform:none !important; }
 
-  /* before/after slider */
-  .ba{ position:relative; overflow:hidden; user-select:none; touch-action:pan-y; border-radius:20px; }
-  .ba img{ display:block; width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
-  .ba .after-wrap{ position:absolute; inset:0; overflow:hidden; width:50%; }
-  .ba .after-wrap img{ width:auto; }
-  .ba-handle{ position:absolute; top:0; bottom:0; left:50%; width:3px; background:#FBF8F2; transform:translateX(-50%); z-index:5; box-shadow:0 0 0 1px rgba(26,23,20,.15); }
+  /* before/after slider — clip-path reveal, pointer + touch (touch-action:pan-y = vertical scroll still works) */
+  .ba{ position:relative; overflow:hidden; user-select:none; touch-action:pan-y; border-radius:20px; background:#26333B; cursor:ew-resize; --p:52%; }
+  .ba img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; user-select:none; -webkit-user-drag:none; pointer-events:none; }
+  .ba .ba-top{ clip-path:inset(0 calc(100% - var(--p)) 0 0); -webkit-clip-path:inset(0 calc(100% - var(--p)) 0 0); }
+  .ba-handle{ position:absolute; top:0; bottom:0; left:var(--p); width:2px; background:#FBF8F2; transform:translateX(-50%); z-index:5;
+    box-shadow:0 0 0 1px rgba(26,23,20,.18), 0 0 24px rgba(0,0,0,.28); pointer-events:none; }
   .ba-knob{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:54px; height:54px; border-radius:50%;
-    background:#FBF8F2; z-index:6; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px -6px rgba(26,23,20,.55); cursor:ew-resize; }
+    background:#FBF8F2; z-index:6; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px -6px rgba(26,23,20,.55); }
+  .ba:active .ba-knob{ transform:translate(-50%,-50%) scale(.94); }
   .ba-tag{ position:absolute; bottom:16px; z-index:6; font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:700;
-    padding:6px 12px; border-radius:999px; backdrop-filter:blur(4px); }
+    padding:6px 12px; border-radius:999px; backdrop-filter:blur(4px); pointer-events:none; transition:opacity .25s ease; }
+  .ba-hint{ position:absolute; top:14px; left:50%; transform:translateX(-50%); z-index:6; pointer-events:none;
+    font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; font-weight:700; color:#FBF8F2;
+    background:rgba(26,23,20,.42); backdrop-filter:blur(4px); padding:6px 13px; border-radius:999px; transition:opacity .5s ease; }
 
   img{ max-width:100%; }
   .frame{ box-shadow:0 44px 90px -44px rgba(26,23,20,.6); }
@@ -201,6 +212,7 @@ tailwind.config = {
 
 <!-- HERO -->
 <header id="top" class="hero relative min-h-[100svh] flex flex-col justify-center overflow-hidden grain">
+  <div class="hero-photo"></div>
   <div class="hero-base"></div>
   <canvas id="webgl"></canvas>
   <div class="hero-scrim"></div>
@@ -296,13 +308,12 @@ tailwind.config = {
       </p>
     </div>
 
-    <div class="ba frame h-[380px] md:h-[580px]" id="ba" data-reveal>
-      <img src="assets/fresh-plaster.jpg" alt="A room mid-repair before finishing" />
-      <span class="ba-tag left-4 bg-ink/70 text-plaster">Before</span>
-      <div class="after-wrap" id="baAfter">
-        <img src="assets/finished-room.jpg" alt="The same space after a seamless drywall finish" />
-      </div>
-      <span class="ba-tag right-4 bg-plaster/85 text-slate" id="baAfterTag">After</span>
+    <div class="ba frame h-[360px] sm:h-[440px] md:h-[560px]" id="ba" data-reveal role="slider" aria-label="Before and after drywall finish" aria-valuemin="0" aria-valuemax="100" aria-valuenow="52" tabindex="0">
+      <img class="ba-base" src="assets/finished-space.jpg" alt="A bright, finished living space after seamless drywall repair and finishing" />
+      <img class="ba-top" id="baBefore" src="assets/smooth-walls.jpg" alt="A room with raw, patched, unfinished drywall before finishing" />
+      <span class="ba-tag left-4 bg-ink/72 text-plaster">Before</span>
+      <span class="ba-tag right-4 bg-plaster/88 text-slate" id="baAfterTag">After</span>
+      <span class="ba-hint" id="baHint">Drag</span>
       <div class="ba-handle" id="baHandle">
         <div class="ba-knob">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#26333B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg>
@@ -772,30 +783,40 @@ tailwind.config = {
     setTimeout(reveal, 7000); // failsafe if the load event is slow
   })();
 
-  /* ---------- before/after slider ---------- */
+  /* ---------- before/after slider (clip-path reveal · Pointer Events) ---------- */
   (function(){
     const ba=document.getElementById('ba'); if(!ba) return;
-    const after=document.getElementById('baAfter'), handle=document.getElementById('baHandle');
     const afterTag=document.getElementById('baAfterTag');
-    function setPos(px){
-      const r=ba.getBoundingClientRect();
-      let p=(px-r.left)/r.width; p=Math.max(0.04,Math.min(0.96,p));
-      after.style.width=(p*100)+'%'; handle.style.left=(p*100)+'%';
-      afterTag.style.opacity = p<0.30 ? '0' : '1';
+    const hint=document.getElementById('baHint');
+    let hinted=false;
+    function apply(p){
+      p=Math.max(0.03,Math.min(0.97,p));
+      ba.style.setProperty('--p',(p*100)+'%');
+      ba.setAttribute('aria-valuenow', Math.round(p*100));
+      if(afterTag) afterTag.style.opacity = p>0.84 ? '0' : '1';
+      if(!hinted && hint){ hinted=true; hint.style.opacity='0'; }
     }
+    function fromClientX(cx){ const r=ba.getBoundingClientRect(); apply((cx-r.left)/r.width); }
     let dragging=false;
-    const start=()=>dragging=true; const end=()=>dragging=false;
-    ba.addEventListener('mousedown',e=>{start();setPos(e.clientX);});
-    window.addEventListener('mousemove',e=>{ if(dragging) setPos(e.clientX); });
-    window.addEventListener('mouseup',end);
-    ba.addEventListener('touchstart',e=>{start();setPos(e.touches[0].clientX);},{passive:true});
-    ba.addEventListener('touchmove',e=>{ if(dragging) setPos(e.touches[0].clientX); },{passive:true});
-    window.addEventListener('touchend',end);
-    if(window.ScrollTrigger && !reduce){
-      ScrollTrigger.create({trigger:ba,start:'top 70%',once:true,onEnter:()=>{
-        const r=ba.getBoundingClientRect();
-        gsap.fromTo({p:0.5},{p:0.5},{p:0.32,duration:.9,delay:.2,yoyo:true,repeat:1,ease:'sine.inOut',
-          onUpdate:function(){ setPos(r.left+r.width*this.targets()[0].p); }});
+    ba.addEventListener('pointerdown', e=>{ dragging=true; try{ba.setPointerCapture(e.pointerId);}catch(_){} fromClientX(e.clientX); });
+    ba.addEventListener('pointermove', e=>{ if(dragging){ fromClientX(e.clientX); } });
+    const stop=e=>{ dragging=false; try{ba.releasePointerCapture(e.pointerId);}catch(_){} };
+    ba.addEventListener('pointerup', stop);
+    ba.addEventListener('pointercancel', stop);
+    ba.addEventListener('lostpointercapture', ()=> dragging=false);
+    // keyboard access
+    ba.addEventListener('keydown', e=>{
+      const cur=parseFloat(ba.style.getPropertyValue('--p'))/100 || 0.52;
+      if(e.key==='ArrowLeft'){ apply(cur-0.04); e.preventDefault(); }
+      else if(e.key==='ArrowRight'){ apply(cur+0.04); e.preventDefault(); }
+    });
+    apply(0.52);
+    // gentle intro sweep so the interaction is discoverable
+    if(window.gsap && window.ScrollTrigger && !reduce){
+      ScrollTrigger.create({trigger:ba,start:'top 72%',once:true,onEnter:()=>{
+        const o={p:0.52};
+        gsap.to(o,{p:0.30,duration:1.0,delay:.25,yoyo:true,repeat:1,ease:'sine.inOut',
+          onUpdate:()=>apply(o.p), onComplete:()=>apply(0.52)});
       }});
     }
   })();
