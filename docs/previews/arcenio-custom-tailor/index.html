@@ -68,10 +68,11 @@ tailwind.config = {
   .grain::after{ content:""; position:absolute; inset:0; pointer-events:none; z-index:2; opacity:.05; mix-blend-mode:multiply;
     background-image:radial-gradient(#2A241E 0.5px, transparent 0.5px); background-size:3px 3px; }
 
-  /* Reveals — GPU only */
-  [data-reveal]{ opacity:0; transform:translateY(30px); will-change:opacity,transform; }
+  /* Reveals — GPU only (no persistent will-change: it promotes every element to its
+     own compositor layer, which Chromium full-page screenshots render blank off-screen) */
+  [data-reveal]{ opacity:0; transform:translateY(30px); }
   [data-reveal].in{ opacity:1; transform:none; }
-  [data-clip]{ clip-path:inset(0 0 100% 0); will-change:clip-path; }
+  [data-clip]{ clip-path:inset(0 0 100% 0); }
   [data-clip].in{ clip-path:inset(0 0 0% 0); transition:clip-path 1.3s cubic-bezier(.19,1,.22,1); }
 
   /* Marquee */
