@@ -510,19 +510,23 @@ tailwind.config = {
 
       <!-- map -->
       <div class="lg:col-span-7" data-reveal>
-        <div class="relative h-full min-h-[380px] rounded-[3px] overflow-hidden border border-ink/10 shadow-[0_30px_60px_-40px_rgba(27,23,20,.5)] bg-bone">
-          <!-- branded placeholder behind the map (visible only until tiles paint) -->
-          <div class="absolute inset-0 z-0 flex flex-col items-center justify-center text-center px-6 bg-bone">
-            <svg class="w-8 h-8 text-oxblood mb-3" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-            <div class="font-display text-lg text-ink font-600">Arcenio Custom Tailor</div>
-            <div class="text-[13px] text-muted mt-1">249-56 Jericho Turnpike, Floral Park, NY 11001</div>
-          </div>
+        <!-- Desktop: live interactive Google Maps embed -->
+        <div class="hidden md:block relative h-full min-h-[380px] rounded-[3px] overflow-hidden border border-ink/10 shadow-[0_30px_60px_-40px_rgba(27,23,20,.5)] bg-bone">
           <iframe
             title="Map to Arcenio Custom Tailor, 249-56 Jericho Turnpike, Floral Park, NY 11001"
             src="https://www.google.com/maps?q=249-56%20Jericho%20Turnpike%2C%20Floral%20Park%2C%20NY%2011001&output=embed"
-            width="100%" height="100%" style="border:0; min-height:380px; display:block; position:relative; z-index:10;"
+            width="100%" height="100%" style="border:0; min-height:380px; display:block;"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
+        <!-- Mobile: real static map (from the live listing) that taps through to Google Maps -->
+        <a href="https://www.google.com/maps?q=249-56+Jericho+Turnpike,+Floral+Park,+NY+11001" target="_blank" rel="noopener"
+           class="md:hidden relative block rounded-[3px] overflow-hidden border border-ink/10 shadow-[0_24px_48px_-32px_rgba(27,23,20,.5)]">
+          <img src="assets/map-static.jpg" alt="Map showing Arcenio Custom Tailor at 249-56 Jericho Turnpike, Floral Park, NY 11001" class="w-full h-[300px] object-cover" width="1868" height="762">
+          <span class="absolute bottom-3 left-3 inline-flex items-center gap-2 bg-porcelain/95 text-ink text-[12.5px] font-600 rounded-full px-4 py-2 shadow">
+            <svg class="w-4 h-4 text-oxblood" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+            Open in Google Maps
+          </span>
+        </a>
       </div>
     </div>
   </div>
