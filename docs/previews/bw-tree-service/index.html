@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<!--
+  B&W Tree Service, Inc. — Livingston County, Michigan (Pinckney / Gregory, M-36 corridor)
+  Turnkey Web bespoke prospect build. LIGHT-FIRST luxury art direction.
+  Palette: outdoor-light — bone #F4ECE3 / sage #7FA88C / olive #3F5A43 / amber #B98D52 / ink #20281F
+  Verified data only: phone (734) 498-2374; family owned & operated since 1989; licensed & insured;
+  Bill (William) & Wanda; serves Livingston County; residential + commercial; free estimates; senior discounts.
+  No logo found online -> custom B&W wordmark. Street address ambiguous across listings -> service-area map (Gregory, MI).
+  Showpiece: Three.js drifting sunlit-pollen particle field on cream. Type: Fraunces + Plus Jakarta Sans.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>B&W Tree Service | Family-Owned Tree Removal & Trimming in Livingston County, MI</title>
+<meta name="description" content="B&W Tree Service, Inc. — family owned and operated in Livingston County, Michigan since 1989. Tree removal, trimming, and pruning for homes and businesses. Licensed and insured. Free estimates and senior discounts. Call (734) 498-2374." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/bw-tree-service/" />
+<meta property="og:title" content="B&W Tree Service | Livingston County, MI Tree Care Since 1989" />
+<meta property="og:description" content="Family owned tree removal, trimming, and pruning across Livingston County, Michigan. Licensed and insured. Free estimates." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://turnkeyweb.org/previews/bw-tree-service/" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bone: '#F4ECE3', cream: '#FBF6F1', sage: '#7FA88C',
+          olive: '#3F5A43', forest: '#233527', amber: '#B98D52',
+          ink: '#20281F', mute: '#6B7367'
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          sans: ['"Plus Jakarta Sans"', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-padding-top: 84px; }
+  body { background:#F4ECE3; color:#20281F; font-family:'Plus Jakarta Sans',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .font-display { font-family:'Fraunces',serif; }
+
+  /* Gradient shimmer on key headers */
+  .grad-text {
+    background: linear-gradient(100deg, #3F5A43 0%, #B98D52 42%, #7FA88C 68%, #3F5A43 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: shimmer 9s linear infinite;
+  }
+  @keyframes shimmer { from{background-position:0% 0} to{background-position:220% 0} }
+
+  /* Hero WebGL canvas sits over cream, behind type */
+  #leaf-canvas { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1; }
+  .hero-grain::after {
+    content:''; position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .ambient-blob { position:absolute; border-radius:50%; filter:blur(90px); opacity:.4; pointer-events:none; will-change:transform; z-index:0; }
+
+  /* Reveal */
+  [data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  [data-reveal].in{ opacity:1; transform:none; }
+  [data-reveal-image]{ clip-path:inset(0 0 100% 0); will-change:clip-path; }
+  [data-reveal-image].in{ clip-path:inset(0 0 0% 0); transition:clip-path 1.3s cubic-bezier(.16,.84,.36,1); }
+
+  /* Buttons */
+  .btn-primary{ position:relative; overflow:hidden; background:#3F5A43; color:#F4ECE3; transition:transform .5s cubic-bezier(.16,.84,.36,1), filter .4s; }
+  .btn-primary::after{ content:''; position:absolute; top:0; left:-120%; width:60%; height:100%; background:linear-gradient(100deg,transparent,rgba(244,236,227,.35),transparent); transform:skewX(-18deg); transition:left .9s cubic-bezier(.16,.84,.36,1); }
+  .btn-primary:hover{ transform:translateY(-3px); filter:brightness(1.08); }
+  .btn-primary:hover::after{ left:130%; }
+  .btn-ghost{ transition:transform .45s cubic-bezier(.16,.84,.36,1), background .4s, color .4s; }
+  .btn-ghost:hover{ transform:translateY(-3px); background:#20281F; color:#F4ECE3; }
+
+  .underline-grow{ position:relative; }
+  .underline-grow::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:linear-gradient(90deg,#3F5A43,#B98D52); transition:width .5s cubic-bezier(.16,.84,.36,1); }
+  .underline-grow:hover::after{ width:100%; }
+
+  .chip-dot{ animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.7)} }
+
+  /* Marquee */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .marquee-track{ display:flex; gap:3.5rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* Service rows */
+  .svc-row{ transition:background .5s, padding .5s; }
+  .svc-row:hover{ background:rgba(63,90,67,.05); }
+  .svc-num{ font-variant-numeric:tabular-nums; }
+  .svc-row:hover .svc-arrow{ transform:translateX(6px); opacity:1; }
+  .svc-arrow{ transition:transform .5s cubic-bezier(.16,.84,.36,1), opacity .4s; opacity:.4; }
+
+  .card{ transition:transform .55s cubic-bezier(.16,.84,.36,1), box-shadow .55s; }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 26px 60px -30px rgba(35,53,39,.5); }
+
+  .wordmark{ font-family:'Fraunces',serif; font-weight:600; letter-spacing:-.02em; }
+
+  @media (max-width:768px){
+    .marquee-track{ animation-duration:22s; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .grad-text,.chip-dot,.marquee-track{ animation:none !important; }
+    [data-reveal]{ opacity:1 !important; transform:none !important; }
+    [data-reveal-image]{ clip-path:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-[72px]">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-forest text-bone wordmark text-lg leading-none shadow-sm group-hover:scale-105 transition-transform">B&amp;W</span>
+        <span class="leading-tight">
+          <span class="block font-display text-[17px] font-semibold text-ink">B&amp;W Tree Service</span>
+          <span class="block text-[10.5px] tracking-[.22em] uppercase text-mute">Est. 1989 · Livingston County</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-[14px] font-medium text-ink/80">
+        <a href="#services" class="underline-grow hover:text-ink">Services</a>
+        <a href="#heritage" class="underline-grow hover:text-ink">Since 1989</a>
+        <a href="#work" class="underline-grow hover:text-ink">Our Work</a>
+        <a href="#visit" class="underline-grow hover:text-ink">Service Area</a>
+      </nav>
+      <a href="tel:+17344982374" class="btn-primary hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13.5px] font-semibold">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (734) 498-2374
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-[100svh] flex items-center pt-28 pb-20 sm:pt-24 hero-grain overflow-hidden">
+  <div class="ambient-blob blob-1" style="width:560px;height:560px;background:radial-gradient(circle,#7FA88C,transparent 62%);top:-160px;left:-140px;"></div>
+  <div class="ambient-blob blob-2" style="width:480px;height:480px;background:radial-gradient(circle,#B98D52,transparent 64%);bottom:-180px;right:-120px;opacity:.3;"></div>
+  <canvas id="leaf-canvas"></canvas>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full grid lg:grid-cols-12 gap-10 lg:gap-6 items-center">
+    <div class="lg:col-span-7">
+      <div class="inline-flex items-center gap-2.5 rounded-full border border-olive/25 bg-cream/70 backdrop-blur px-4 py-1.5 mb-7">
+        <span class="w-2 h-2 rounded-full bg-olive chip-dot"></span>
+        <span class="text-[12px] font-semibold tracking-[.14em] uppercase text-olive">Family owned &amp; operated · Livingston County, MI</span>
+      </div>
+
+      <h1 class="font-display text-[13vw] leading-[.92] sm:text-[8.5vw] lg:text-[6.4rem] font-semibold tracking-[-.02em] text-ink">
+        Rooted here<br />since <span class="grad-text">1989.</span>
+      </h1>
+
+      <p class="mt-7 max-w-xl text-[17px] sm:text-[18px] leading-relaxed text-ink/75">
+        Two generations of one Michigan family, caring for the trees that shade your home. Careful removals, clean trimming, and honest quotes across Pinckney, Gregory, Hell, Chelsea, and all of Livingston County.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <a href="tel:+17344982374" class="btn-primary inline-flex items-center gap-2.5 rounded-full px-7 py-4 text-[15px] font-semibold">
+          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call for a free estimate
+        </a>
+        <a href="#services" class="btn-ghost inline-flex items-center gap-2 rounded-full border border-ink/25 px-7 py-4 text-[15px] font-semibold text-ink">
+          What we do
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-11 grid grid-cols-3 gap-6 max-w-lg border-t border-ink/10 pt-7">
+        <div>
+          <div class="font-display text-4xl font-semibold text-olive"><span data-count="35" data-suffix="+">0</span></div>
+          <div class="text-[12.5px] text-mute mt-1 leading-tight">Years serving<br />the community</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl font-semibold text-olive">Fully</div>
+          <div class="text-[12.5px] text-mute mt-1 leading-tight">Licensed<br />&amp; insured</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl font-semibold text-olive">Free</div>
+          <div class="text-[12.5px] text-mute mt-1 leading-tight">On-site<br />estimates</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editorial hero image -->
+    <div class="lg:col-span-5">
+      <div class="relative">
+        <div data-reveal-image class="rounded-[26px] overflow-hidden shadow-[0_40px_90px_-40px_rgba(35,53,39,.6)] aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1100&q=80" alt="Sunlit hardwood forest canopy in Michigan" class="w-full h-full object-cover" loading="eager" />
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-cream rounded-2xl shadow-xl border border-ink/5 px-5 py-4 hidden sm:block">
+          <div class="flex items-center gap-1 text-amber mb-1">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          </div>
+          <div class="text-[12.5px] font-semibold text-ink">"They beat my best price quote."</div>
+          <div class="text-[11px] text-mute">Daniel J. · verified review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-mute">
+    <span class="text-[10.5px] tracking-[.24em] uppercase">Scroll</span>
+    <span class="w-px h-8 bg-gradient-to-b from-olive/60 to-transparent"></span>
+  </div>
+</section>
+
+<!-- TRUST MARQUEE -->
+<div class="bg-forest py-5 relative z-10">
+  <div class="marquee">
+    <div class="marquee-track text-bone/90 font-display text-2xl sm:text-3xl items-center">
+      <span>Tree Removal</span><span class="text-amber">◆</span>
+      <span class="italic text-sage">Trimming &amp; Pruning</span><span class="text-amber">◆</span>
+      <span>Licensed &amp; Insured</span><span class="text-amber">◆</span>
+      <span class="italic text-sage">Senior Discounts</span><span class="text-amber">◆</span>
+      <span>Free Estimates</span><span class="text-amber">◆</span>
+      <span class="italic text-sage">Residential &amp; Commercial</span><span class="text-amber">◆</span>
+      <!-- duplicate -->
+      <span>Tree Removal</span><span class="text-amber">◆</span>
+      <span class="italic text-sage">Trimming &amp; Pruning</span><span class="text-amber">◆</span>
+      <span>Licensed &amp; Insured</span><span class="text-amber">◆</span>
+      <span class="italic text-sage">Senior Discounts</span><span class="text-amber">◆</span>
+      <span>Free Estimates</span><span class="text-amber">◆</span>
+      <span class="italic text-sage">Residential &amp; Commercial</span><span class="text-amber">◆</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="relative bg-bone py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-8 items-end mb-14" data-reveal>
+      <div class="lg:col-span-8">
+        <span class="text-[12px] font-semibold tracking-[.2em] uppercase text-amber">What we do</span>
+        <h2 class="font-display text-[10vw] sm:text-6xl lg:text-[4.6rem] leading-[.98] font-semibold tracking-[-.02em] text-ink mt-3">
+          Big trees, <span class="grad-text">handled right.</span>
+        </h2>
+      </div>
+      <div class="lg:col-span-4">
+        <p class="text-[16px] leading-relaxed text-ink/70">Every job is planned before a single cut is made — assessed, quoted honestly, and finished with a clean yard. That's how we've worked for over three decades.</p>
+      </div>
+    </div>
+
+    <div class="border-t border-ink/12">
+      <!-- Row 1 -->
+      <a href="tel:+17344982374" class="svc-row group grid sm:grid-cols-12 gap-4 sm:gap-6 items-center py-8 px-3 sm:px-6 border-b border-ink/12" data-reveal>
+        <div class="sm:col-span-1 svc-num font-display text-2xl text-amber">01</div>
+        <div class="sm:col-span-4">
+          <h3 class="font-display text-2xl sm:text-3xl font-semibold text-ink">Tree Removal</h3>
+        </div>
+        <div class="sm:col-span-6 text-[15.5px] text-ink/65 leading-relaxed">Hazardous, leaning, storm-damaged, or crowding your home — taken down safely, piece by piece, with lightweight equipment that protects your lawn.</div>
+        <div class="sm:col-span-1 flex sm:justify-end">
+          <svg class="svc-arrow w-6 h-6 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+      <!-- Row 2 -->
+      <a href="tel:+17344982374" class="svc-row group grid sm:grid-cols-12 gap-4 sm:gap-6 items-center py-8 px-3 sm:px-6 border-b border-ink/12" data-reveal>
+        <div class="sm:col-span-1 svc-num font-display text-2xl text-amber">02</div>
+        <div class="sm:col-span-4">
+          <h3 class="font-display text-2xl sm:text-3xl font-semibold text-ink">Trimming &amp; Pruning</h3>
+        </div>
+        <div class="sm:col-span-6 text-[15.5px] text-ink/65 leading-relaxed">Thoughtful cuts that keep your trees healthy, shapely, and clear of roofs and power lines — so they last for the next generation, too.</div>
+        <div class="sm:col-span-1 flex sm:justify-end">
+          <svg class="svc-arrow w-6 h-6 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+      <!-- Row 3 -->
+      <a href="tel:+17344982374" class="svc-row group grid sm:grid-cols-12 gap-4 sm:gap-6 items-center py-8 px-3 sm:px-6 border-b border-ink/12" data-reveal>
+        <div class="sm:col-span-1 svc-num font-display text-2xl text-amber">03</div>
+        <div class="sm:col-span-4">
+          <h3 class="font-display text-2xl sm:text-3xl font-semibold text-ink">Residential Tree Care</h3>
+        </div>
+        <div class="sm:col-span-6 text-[15.5px] text-ink/65 leading-relaxed">Neighbors have trusted us with the trees around their homes for over 35 years. We treat your property like it's our own.</div>
+        <div class="sm:col-span-1 flex sm:justify-end">
+          <svg class="svc-arrow w-6 h-6 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+      <!-- Row 4 -->
+      <a href="tel:+17344982374" class="svc-row group grid sm:grid-cols-12 gap-4 sm:gap-6 items-center py-8 px-3 sm:px-6 border-b border-ink/12" data-reveal>
+        <div class="sm:col-span-1 svc-num font-display text-2xl text-amber">04</div>
+        <div class="sm:col-span-4">
+          <h3 class="font-display text-2xl sm:text-3xl font-semibold text-ink">Commercial &amp; Property</h3>
+        </div>
+        <div class="sm:col-span-6 text-[15.5px] text-ink/65 leading-relaxed">Businesses, farms, and larger parcels across Livingston County — dependable crews, insured work, and quotes that hold.</div>
+        <div class="sm:col-span-1 flex sm:justify-end">
+          <svg class="svc-arrow w-6 h-6 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HERITAGE / STORY -->
+<section id="heritage" class="relative bg-cream py-24 sm:py-32 overflow-hidden">
+  <div class="ambient-blob" style="width:520px;height:520px;background:radial-gradient(circle,#7FA88C,transparent 65%);top:10%;right:-160px;opacity:.28;"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10 grid lg:grid-cols-2 gap-14 lg:gap-16 items-center">
+    <div data-reveal>
+      <span class="text-[12px] font-semibold tracking-[.2em] uppercase text-amber">The B &amp; W in the name</span>
+      <h2 class="font-display text-[11vw] sm:text-6xl lg:text-[4.4rem] leading-[.98] font-semibold tracking-[-.02em] text-ink mt-3">
+        A family business,<br />in the truest sense.
+      </h2>
+      <p class="mt-7 text-[17px] leading-relaxed text-ink/75">
+        B&amp;W is <strong class="text-ink font-semibold">Bill and Wanda</strong> — a husband-and-wife team who started serving Livingston County back in 1989. More than three decades later, the same values still run the crew: show up, do it safely, leave the yard clean, and charge a fair price.
+      </p>
+      <p class="mt-5 text-[17px] leading-relaxed text-ink/75">
+        We're not the biggest outfit around, and we like it that way. When you call B&amp;W, you get people who actually live and work in these towns — Pinckney, Gregory, Hell, Chelsea, and Dexter — and who plan on being here for the next thirty years, too.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <span class="inline-flex items-center gap-2 rounded-full bg-forest/8 border border-forest/15 px-4 py-2 text-[13.5px] font-medium text-forest">
+          <span class="w-1.5 h-1.5 rounded-full bg-olive"></span> Licensed &amp; insured
+        </span>
+        <span class="inline-flex items-center gap-2 rounded-full bg-forest/8 border border-forest/15 px-4 py-2 text-[13.5px] font-medium text-forest">
+          <span class="w-1.5 h-1.5 rounded-full bg-olive"></span> Senior discounts
+        </span>
+        <span class="inline-flex items-center gap-2 rounded-full bg-forest/8 border border-forest/15 px-4 py-2 text-[13.5px] font-medium text-forest">
+          <span class="w-1.5 h-1.5 rounded-full bg-olive"></span> Satisfaction guaranteed
+        </span>
+      </div>
+    </div>
+
+    <div class="relative" data-reveal>
+      <div class="grid grid-cols-5 grid-rows-6 gap-4 h-[520px]">
+        <div data-reveal-image class="col-span-3 row-span-4 rounded-3xl overflow-hidden shadow-xl">
+          <img src="https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?auto=format&fit=crop&w=900&q=80" alt="Tall mature trees in a Michigan woodland" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <div class="col-span-2 row-span-6 rounded-3xl overflow-hidden shadow-xl bg-forest flex flex-col justify-end p-6 text-bone relative">
+          <div class="absolute inset-0 opacity-30" style="background:radial-gradient(circle at 30% 20%,#7FA88C,transparent 60%)"></div>
+          <div class="relative z-10">
+            <div class="font-display text-6xl font-semibold leading-none grad-text" style="background:linear-gradient(100deg,#F4ECE3,#B98D52,#7FA88C,#F4ECE3);-webkit-background-clip:text;background-clip:text;">1989</div>
+            <div class="text-[13px] text-bone/80 mt-3 leading-snug">The year Bill &amp; Wanda took on their first tree in Livingston County.</div>
+          </div>
+        </div>
+        <div data-reveal-image class="col-span-3 row-span-2 rounded-3xl overflow-hidden shadow-xl">
+          <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=900&q=80" alt="Sunlight filtering through green leaves" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="bg-forest text-bone py-24 sm:py-28 relative overflow-hidden">
+  <div class="ambient-blob" style="width:600px;height:600px;background:radial-gradient(circle,#7FA88C,transparent 60%);top:-200px;left:-160px;opacity:.22;"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+    <div class="max-w-2xl mb-14" data-reveal>
+      <span class="text-[12px] font-semibold tracking-[.2em] uppercase text-amber">How a job goes</span>
+      <h2 class="font-display text-5xl sm:text-6xl leading-[1] font-semibold tracking-[-.02em] mt-3">Planned before<br />it's cut.</h2>
+      <p class="mt-6 text-bone/75 text-[16.5px] leading-relaxed">"Every step was planned and executed safely." That's not our slogan — it's how a real customer described the job. Here's what to expect.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card rounded-2xl bg-bone/5 border border-bone/10 p-7" data-reveal>
+        <div class="font-display text-4xl text-sage font-semibold">01</div>
+        <h3 class="font-display text-xl font-semibold mt-4">Free estimate</h3>
+        <p class="text-bone/70 text-[14.5px] mt-2 leading-relaxed">We come out, look at the tree, and give you an honest price on the spot. No pressure, no fast talk.</p>
+      </div>
+      <div class="card rounded-2xl bg-bone/5 border border-bone/10 p-7" data-reveal>
+        <div class="font-display text-4xl text-sage font-semibold">02</div>
+        <h3 class="font-display text-xl font-semibold mt-4">A real plan</h3>
+        <p class="text-bone/70 text-[14.5px] mt-2 leading-relaxed">We map the drop, the rigging, and the cleanup before anything comes down — so there are no surprises.</p>
+      </div>
+      <div class="card rounded-2xl bg-bone/5 border border-bone/10 p-7" data-reveal>
+        <div class="font-display text-4xl text-sage font-semibold">03</div>
+        <h3 class="font-display text-xl font-semibold mt-4">Careful work</h3>
+        <p class="text-bone/70 text-[14.5px] mt-2 leading-relaxed">Lightweight equipment and an experienced crew protect your lawn, your fence, and your peace of mind.</p>
+      </div>
+      <div class="card rounded-2xl bg-bone/5 border border-bone/10 p-7" data-reveal>
+        <div class="font-display text-4xl text-sage font-semibold">04</div>
+        <h3 class="font-display text-xl font-semibold mt-4">Clean finish</h3>
+        <p class="text-bone/70 text-[14.5px] mt-2 leading-relaxed">We haul it off and leave the yard tidy. You should barely know we were there — except the tree's gone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK / GALLERY + TESTIMONIAL -->
+<section id="work" class="bg-bone py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+      <span class="text-[12px] font-semibold tracking-[.2em] uppercase text-amber">In the field</span>
+      <h2 class="font-display text-5xl sm:text-6xl leading-[1] font-semibold tracking-[-.02em] text-ink mt-3">The Michigan woods<br />we work in.</h2>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+      <div data-reveal-image class="card rounded-2xl overflow-hidden aspect-[3/4]">
+        <img src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=700&q=80" alt="Tree-lined country road in autumn" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div data-reveal-image class="card rounded-2xl overflow-hidden aspect-[3/4] lg:mt-8">
+        <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=700&q=80" alt="Sunlight through the tree canopy" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div data-reveal-image class="card rounded-2xl overflow-hidden aspect-[3/4]">
+        <img src="https://images.unsplash.com/photo-1444492417251-9c84a5fa18e0?auto=format&fit=crop&w=700&q=80" alt="Large mature oak tree in a green field" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div data-reveal-image class="card rounded-2xl overflow-hidden aspect-[3/4] lg:mt-8">
+        <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=700&q=80" alt="Forest of tall trees reaching toward the sky" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- Testimonial hero quote -->
+    <div class="max-w-4xl mx-auto text-center" data-reveal>
+      <div class="flex justify-center gap-1 text-amber mb-6">
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+      </div>
+      <blockquote class="font-display text-2xl sm:text-[2.1rem] leading-[1.3] font-medium text-ink italic">
+        "I had a large tree leaning toward my house. They carefully removed it with no problem — every step was planned and executed safely. They beat my best price quote. I love it when things go as planned."
+      </blockquote>
+      <div class="mt-6 text-[14px] font-semibold text-olive">Daniel J.</div>
+      <div class="text-[12.5px] text-mute">Verified customer review</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT / SERVICE AREA + MAP -->
+<section id="visit" class="bg-cream py-24 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 items-stretch">
+    <div data-reveal>
+      <span class="text-[12px] font-semibold tracking-[.2em] uppercase text-amber">Where we work</span>
+      <h2 class="font-display text-5xl sm:text-6xl leading-[1] font-semibold tracking-[-.02em] text-ink mt-3">Serving all of<br />Livingston County.</h2>
+      <p class="mt-6 text-[16.5px] leading-relaxed text-ink/70 max-w-lg">Based along the M-36 corridor and covering the communities we've called home since 1989.</p>
+
+      <div class="mt-8 flex flex-wrap gap-2.5">
+        <span class="rounded-full bg-forest/8 border border-forest/15 px-4 py-2 text-[13.5px] font-medium text-forest">Pinckney</span>
+        <span class="rounded-full bg-forest/8 border border-forest/15 px-4 py-2 text-[13.5px] font-medium text-forest">Gregory</span>
+        <span class="rounded-full bg-forest/8 border border-forest/15 px-4 py-2 text-[13.5px] font-medium text-forest">Hell</span>
+        <span class="rounded-full bg-forest/8 border border-forest/15 px-4 py-2 text-[13.5px] font-medium text-forest">Hamburg</span>
+        <span class="rounded-full bg-forest/8 border border-forest/15 px-4 py-2 text-[13.5px] font-medium text-forest">Chelsea</span>
+        <span class="rounded-full bg-forest/8 border border-forest/15 px-4 py-2 text-[13.5px] font-medium text-forest">Dexter</span>
+      </div>
+
+      <div class="mt-9 space-y-4">
+        <a href="tel:+17344982374" class="flex items-center gap-4 group">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-forest text-bone shrink-0 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>
+            <span class="block text-[11px] tracking-[.16em] uppercase text-mute">Call for a free estimate</span>
+            <span class="block font-display text-xl font-semibold text-ink">(734) 498-2374</span>
+          </span>
+        </a>
+        <div class="flex items-center gap-4">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-forest/10 text-forest shrink-0">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </span>
+          <span>
+            <span class="block text-[11px] tracking-[.16em] uppercase text-mute">Hours</span>
+            <span class="block font-display text-xl font-semibold text-ink">Call anytime — day or night</span>
+          </span>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-forest/10 text-forest shrink-0">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+          </span>
+          <span>
+            <span class="block text-[11px] tracking-[.16em] uppercase text-mute">Email</span>
+            <span class="block font-display text-xl font-semibold text-ink">bwtreeservice48@gmail.com</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal class="rounded-3xl overflow-hidden shadow-xl border border-ink/8 min-h-[420px]">
+      <iframe
+        title="B&W Tree Service — Livingston County, Michigan service area"
+        src="https://www.google.com/maps?q=Gregory%2C%20MI%2048137&output=embed"
+        width="100%" height="100%" style="border:0; min-height:420px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="relative bg-forest text-bone py-24 sm:py-32 overflow-hidden">
+  <div class="ambient-blob" style="width:640px;height:640px;background:radial-gradient(circle,#7FA88C,transparent 60%);top:-220px;right:-160px;opacity:.25;"></div>
+  <div class="ambient-blob" style="width:520px;height:520px;background:radial-gradient(circle,#B98D52,transparent 62%);bottom:-200px;left:-140px;opacity:.2;"></div>
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center relative z-10">
+    <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-bone/10 border border-bone/15 mb-8 wordmark text-xl text-bone">B&amp;W</span>
+    <h2 class="font-display text-[11vw] sm:text-6xl lg:text-[4.8rem] leading-[.98] font-semibold tracking-[-.02em]">
+      Got a tree that<br />needs <span class="grad-text" style="background:linear-gradient(100deg,#F4ECE3,#B98D52,#7FA88C,#F4ECE3);-webkit-background-clip:text;background-clip:text;">handling?</span>
+    </h2>
+    <p class="mt-7 text-[17.5px] text-bone/75 max-w-xl mx-auto leading-relaxed">Call Bill &amp; Wanda for a free, honest estimate. Same family, same phone number, same care since 1989.</p>
+    <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <a href="tel:+17344982374" class="btn-primary inline-flex items-center gap-2.5 rounded-full bg-bone text-forest px-8 py-4 text-[15.5px] font-semibold hover:brightness-100">
+        <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (734) 498-2374
+      </a>
+      <a href="#services" class="btn-ghost inline-flex items-center gap-2 rounded-full border border-bone/30 px-8 py-4 text-[15.5px] font-semibold text-bone">See our services</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-bone/70 py-14">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-3 gap-8 items-start">
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-forest text-bone wordmark text-lg leading-none">B&amp;W</span>
+          <span class="font-display text-lg font-semibold text-bone">B&amp;W Tree Service</span>
+        </div>
+        <p class="text-[13.5px] leading-relaxed text-bone/55 max-w-xs">Family owned &amp; operated tree removal, trimming, and pruning across Livingston County, Michigan since 1989. Licensed &amp; insured.</p>
+      </div>
+      <div>
+        <div class="text-[11px] tracking-[.18em] uppercase text-bone/45 mb-4">Services</div>
+        <ul class="space-y-2 text-[14px]">
+          <li><a href="#services" class="underline-grow hover:text-bone">Tree Removal</a></li>
+          <li><a href="#services" class="underline-grow hover:text-bone">Trimming &amp; Pruning</a></li>
+          <li><a href="#services" class="underline-grow hover:text-bone">Residential Tree Care</a></li>
+          <li><a href="#services" class="underline-grow hover:text-bone">Commercial &amp; Property</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[11px] tracking-[.18em] uppercase text-bone/45 mb-4">Get in touch</div>
+        <a href="tel:+17344982374" class="font-display text-2xl font-semibold text-bone block mb-2 hover:text-sage transition-colors">(734) 498-2374</a>
+        <p class="text-[13.5px] text-bone/55">Serving Pinckney · Gregory · Hell · Hamburg · Chelsea · Dexter</p>
+        <p class="text-[13.5px] text-bone/55 mt-1">Free estimates · Senior discounts</p>
+      </div>
+    </div>
+    <div class="border-t border-bone/10 mt-10 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-[12px] text-bone/40">
+      <span>© <span id="yr"></span> B&amp;W Tree Service, Inc. · Livingston County, Michigan</span>
+      <span>Fully licensed &amp; insured · Satisfaction guaranteed</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="fixed bottom-0 inset-x-0 z-50 sm:hidden bg-cream/95 backdrop-blur border-t border-ink/10 px-3 py-2.5 flex gap-2.5">
+  <a href="tel:+17344982374" class="flex-1 btn-primary inline-flex items-center justify-center gap-2 rounded-xl py-3 text-[14px] font-semibold">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call now
+  </a>
+  <a href="#visit" class="flex-1 btn-ghost inline-flex items-center justify-center gap-2 rounded-xl border border-ink/25 py-3 text-[14px] font-semibold text-ink">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Service area
+  </a>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---------- Three.js drifting-pollen showpiece (light canvas) ---------- */
+  (function initLeaves(){
+    const canvas = document.getElementById('leaf-canvas');
+    if (!canvas || !window.THREE) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    const isMobile = window.innerWidth < 768;
+
+    let renderer, scene, camera, points, raf = null, running = true;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+    } catch(e){ return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+
+    function size(){
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      renderer.setSize(w, h, false);
+      if (camera){ camera.aspect = w/h; camera.updateProjectionMatrix(); }
+    }
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(60, canvas.clientWidth/canvas.clientHeight, 0.1, 100);
+    camera.position.z = 22;
+
+    const COUNT = isMobile ? 60 : 150;
+    const geo = new THREE.BufferGeometry();
+    const pos = new Float32Array(COUNT*3);
+    const speed = new Float32Array(COUNT);
+    const sway = new Float32Array(COUNT);
+    for (let i=0;i<COUNT;i++){
+      pos[i*3]   = (Math.random()-.5)*46;
+      pos[i*3+1] = (Math.random()-.5)*34;
+      pos[i*3+2] = (Math.random()-.5)*14;
+      speed[i]   = 0.006 + Math.random()*0.014;
+      sway[i]    = Math.random()*Math.PI*2;
+    }
+    geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+
+    // soft round sprite
+    const c = document.createElement('canvas'); c.width=c.height=64;
+    const ctx = c.getContext('2d');
+    const g = ctx.createRadialGradient(32,32,0,32,32,32);
+    g.addColorStop(0,'rgba(185,141,82,0.9)');   // amber core
+    g.addColorStop(0.4,'rgba(127,168,140,0.55)'); // sage
+    g.addColorStop(1,'rgba(127,168,140,0)');
+    ctx.fillStyle=g; ctx.beginPath(); ctx.arc(32,32,32,0,Math.PI*2); ctx.fill();
+    const sprite = new THREE.CanvasTexture(c);
+
+    const mat = new THREE.PointsMaterial({
+      size: isMobile ? 1.1 : 0.9, map: sprite, transparent:true,
+      depthWrite:false, opacity:0.85, blending:THREE.NormalBlending
+    });
+    points = new THREE.Points(geo, mat);
+    scene.add(points);
+    size();
+
+    function animate(){
+      if (!running) return;
+      const p = geo.attributes.position.array;
+      const t = performance.now()*0.001;
+      for (let i=0;i<COUNT;i++){
+        p[i*3+1] -= speed[i]*3;                       // drift down
+        p[i*3]   += Math.sin(t*0.5 + sway[i])*0.01;   // gentle sway
+        if (p[i*3+1] < -18){ p[i*3+1] = 18; p[i*3] = (Math.random()-.5)*46; }
+      }
+      geo.attributes.position.needsUpdate = true;
+      points.rotation.z += 0.0004;
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('resize', size);
+    document.addEventListener('visibilitychange', ()=>{
+      if (document.hidden){ running=false; if(raf) cancelAnimationFrame(raf); }
+      else if (!running){ running=true; animate(); }
+    });
+    // pause when hero scrolls offscreen
+    const hero = document.getElementById('top');
+    if ('IntersectionObserver' in window && hero){
+      new IntersectionObserver((ents)=>{
+        ents.forEach(e=>{
+          if (e.isIntersecting && !running){ running=true; animate(); }
+          else if (!e.isIntersecting && running){ running=false; if(raf) cancelAnimationFrame(raf); }
+        });
+      }, {threshold:0.02}).observe(hero);
+    }
+  })();
+
+  /* ---------- Motion ---------- */
+  window.addEventListener('load', () => {
+    // Lenis smooth scroll driven by GSAP ticker (single rAF loop)
+    let lenis;
+    if (window.Lenis){
+      lenis = new Lenis({ duration:1.1, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+    }
+    if (window.gsap && window.ScrollTrigger){
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.config({ ignoreMobileResize:true });
+      if (lenis){
+        gsap.ticker.add((time)=> lenis.raf(time*1000));
+        gsap.ticker.lagSmoothing(0);
+        lenis.on('scroll', ScrollTrigger.update);
+      }
+
+      // anchored scroll
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', e=>{
+          const id = a.getAttribute('href');
+          if (id.length>1){
+            const t = document.querySelector(id);
+            if (t){ e.preventDefault(); lenis ? lenis.scrollTo(t,{offset:-72}) : t.scrollIntoView({behavior:'smooth'}); }
+          }
+        });
+      });
+
+      // reveals (GPU only, once)
+      gsap.utils.toArray('[data-reveal]').forEach(el=>{
+        ScrollTrigger.create({ trigger:el, start:'top 92%', once:true,
+          onEnter:()=> el.classList.add('in') });
+      });
+      gsap.utils.toArray('[data-reveal-image]').forEach(el=>{
+        ScrollTrigger.create({ trigger:el, start:'top 88%', once:true,
+          onEnter:()=> el.classList.add('in') });
+      });
+
+      // count-up
+      gsap.utils.toArray('[data-count]').forEach(el=>{
+        const target = parseFloat(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:()=>{
+          gsap.to({v:0},{v:target,duration:1.6,ease:'power2.out',
+            onUpdate:function(){ el.textContent = Math.round(this.targets()[0].v)+suffix; }});
+        }});
+      });
+
+      // nav bg on scroll
+      const nav = document.getElementById('nav');
+      ScrollTrigger.create({ start:'top -60', onUpdate:(self)=>{
+        if (self.scroll() > 60){ nav.classList.add('bg-cream/90','backdrop-blur','shadow-sm'); }
+        else { nav.classList.remove('bg-cream/90','backdrop-blur','shadow-sm'); }
+      }});
+      ScrollTrigger.refresh();
+    }
+
+    // 6s screenshot / crawler safety net
+    setTimeout(()=>{
+      document.querySelectorAll('[data-reveal]:not(.in)').forEach(el=>el.classList.add('in'));
+      document.querySelectorAll('[data-reveal-image]:not(.in)').forEach(el=>el.classList.add('in'));
+      document.querySelectorAll('[data-count]').forEach(el=>{
+        if (el.textContent.trim()==='0'||el.textContent.trim()===''){ el.textContent = el.dataset.count + (el.dataset.suffix||''); }
+      });
+    }, 6000);
+  });
+</script>
+</body>
+</html>
