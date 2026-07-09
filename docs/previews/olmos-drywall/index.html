@@ -32,7 +32,7 @@ tailwind.config = {
   theme: { extend: {
     colors: {
       plaster: '#F5F0EA', bone: '#EBE3D8', sand: '#DED2C2',
-      steel: '#2C4A63', steeldeep: '#1E3547', clay: '#C67B3A', claydeep: '#A85F26',
+      steel: '#2C4A63', steeldeep: '#1E3547', clay: '#C67B3A', claydeep: '#A85F26', claydark: '#8A4A1B', amberlt: '#ECB877',
       ink: '#1B1917', muted: '#6C6259'
     },
     fontFamily: { display: ['Fraunces','serif'], sans: ['"Plus Jakarta Sans"','sans-serif'] }
@@ -67,7 +67,7 @@ tailwind.config = {
   /* buttons */
   .btn{ position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, filter .4s; }
   .btn:hover{ transform:translateY(-3px); filter:brightness(1.04); }
-  .btn-primary{ background:#C67B3A; color:#fff; box-shadow:0 12px 30px -12px rgba(168,95,38,.7); }
+  .btn-primary{ background:#A85F26; color:#fff; box-shadow:0 12px 30px -12px rgba(138,74,27,.7); }
   .btn-primary:hover{ box-shadow:0 18px 40px -12px rgba(168,95,38,.8); }
   .btn-primary::after{ content:""; position:absolute; top:0; left:-130%; width:60%; height:100%;
     background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent); transform:skewX(-18deg); transition:left .9s cubic-bezier(.2,.7,.2,1); }
@@ -246,7 +246,7 @@ tailwind.config = {
 <section id="work" class="py-20 md:py-28 bg-plaster relative">
   <div class="max-w-6xl mx-auto px-5 md:px-8">
     <div class="max-w-2xl mb-12" data-reveal>
-      <p class="text-[12px] font-700 tracking-[.2em] uppercase text-clay mb-4">Water damage. Then gone.</p>
+      <p class="text-[12px] font-700 tracking-[.2em] uppercase text-claydark mb-4">Water damage. Then gone.</p>
       <h2 class="font-display font-600 text-ink text-[8vw] sm:text-[44px] leading-[1.02] tracking-tight">
         Drag to see the <span class="grad-text">difference</span> disappear.
       </h2>
@@ -279,7 +279,7 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-5 md:px-8">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14" data-reveal>
       <div class="max-w-xl">
-        <p class="text-[12px] font-700 tracking-[.2em] uppercase text-clay mb-4">What Miguel fixes</p>
+        <p class="text-[12px] font-700 tracking-[.2em] uppercase text-claydark mb-4">What Miguel fixes</p>
         <h2 class="font-display font-600 text-ink text-[8vw] sm:text-[46px] leading-[1.02] tracking-tight">Every kind of drywall trouble — handled.</h2>
       </div>
       <a href="#estimate" class="btn btn-ghost inline-flex self-start items-center gap-2 rounded-full px-6 py-3 text-[14.5px] font-600 whitespace-nowrap">Get yours quoted</a>
@@ -343,7 +343,7 @@ tailwind.config = {
       </div>
     </div>
     <div class="order-1 lg:order-2">
-      <p class="text-[12px] font-700 tracking-[.2em] uppercase text-clay mb-4" data-reveal>Matched so well you can't tell</p>
+      <p class="text-[12px] font-700 tracking-[.2em] uppercase text-claydark mb-4" data-reveal>Matched so well you can't tell</p>
       <h2 class="font-display font-600 text-ink text-[8vw] sm:text-[46px] leading-[1.02] tracking-tight mb-8" data-reveal>Three steps to a wall that hides the past.</h2>
       <ol class="space-y-6">
         <li class="flex gap-5" data-reveal>
@@ -361,7 +361,7 @@ tailwind.config = {
           </div>
         </li>
         <li class="flex gap-5" data-reveal>
-          <span class="font-display font-700 text-[26px] text-clay/60 leading-none pt-0.5">03</span>
+          <span class="font-display font-700 text-[26px] text-claydark leading-none pt-0.5">03</span>
           <div>
             <h3 class="font-display font-600 text-[20px] text-ink">Texture-match &amp; finish</h3>
             <p class="text-ink/65 text-[15px] leading-relaxed mt-1">Retexture to match the wall exactly and leave it primed and ready — so all you see is the wall, not the fix.</p>
@@ -378,8 +378,8 @@ tailwind.config = {
   <div class="max-w-6xl mx-auto px-5 md:px-8 relative z-10">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14" data-reveal>
       <div>
-        <p class="text-[12px] font-700 tracking-[.2em] uppercase text-clay mb-4">In their words</p>
-        <h2 class="font-display font-600 text-[8vw] sm:text-[46px] leading-[1.02] tracking-tight text-plaster">Rated <span class="text-clay">5.0</span> on Google.</h2>
+        <p class="text-[12px] font-700 tracking-[.2em] uppercase text-amberlt mb-4">In their words</p>
+        <h2 class="font-display font-600 text-[8vw] sm:text-[46px] leading-[1.02] tracking-tight text-plaster">Rated <span class="text-amberlt">5.0</span> on Google.</h2>
       </div>
       <div class="flex items-center gap-3 bg-plaster/10 rounded-2xl px-5 py-4 border border-plaster/15">
         <div>
@@ -439,7 +439,7 @@ tailwind.config = {
 <section id="area" class="py-20 md:py-28 bg-plaster relative">
   <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-12 items-center">
     <div data-reveal>
-      <p class="text-[12px] font-700 tracking-[.2em] uppercase text-clay mb-4">Where Olmos works</p>
+      <p class="text-[12px] font-700 tracking-[.2em] uppercase text-claydark mb-4">Where Olmos works</p>
       <h2 class="font-display font-600 text-ink text-[8vw] sm:text-[46px] leading-[1.02] tracking-tight mb-6">Serving Greater Houston &amp; Galveston County.</h2>
       <p class="text-ink/70 text-[17px] leading-relaxed mb-8 max-w-lg">
         Based in the Dickinson area and working across the south-Houston and Galveston-County communities — homes, rentals, and remodels alike. Tell us where the damage is and we'll come take a look.
@@ -546,7 +546,7 @@ tailwind.config = {
 
 <!-- MOBILE STICKY BAR -->
 <div class="mobile-bar fixed bottom-0 inset-x-0 z-50 md:hidden bg-plaster border-t border-ink/10 flex">
-  <a href="#estimate" class="flex-1 flex items-center justify-center gap-2 py-3.5 bg-clay text-white font-600 text-[15px]">
+  <a href="#estimate" class="flex-1 flex items-center justify-center gap-2 py-3.5 bg-claydeep text-white font-600 text-[15px]">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 18z"/></svg>
     Free estimate
   </a>
