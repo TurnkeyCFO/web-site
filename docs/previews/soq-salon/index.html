@@ -138,9 +138,9 @@ tailwind.config = {
 
 <!-- HERO -->
 <section id="top" class="relative grain overflow-hidden">
-  <div class="grid lg:grid-cols-[1.05fr_0.95fr] min-h-[100svh]">
+  <div class="grid lg:grid-cols-[1.05fr_0.95fr] lg:min-h-[100svh]">
     <!-- left editorial -->
-    <div class="relative flex items-center bg-cream pt-[calc(var(--nav-h)+34px)] pb-14 lg:pb-0 px-6 sm:px-10 lg:px-14 order-2 lg:order-1">
+    <div class="relative flex items-center bg-cream pt-[calc(var(--nav-h)+26px)] pb-12 lg:pb-0 px-6 sm:px-10 lg:px-14 order-2 lg:order-1">
       <canvas id="strand-canvas" aria-hidden="true"></canvas>
       <!-- soft cream scrim so type stays AA over the strand field -->
       <div class="absolute inset-0 z-[1] pointer-events-none" style="background:linear-gradient(90deg,rgba(251,246,241,.72),rgba(251,246,241,.42))"></div>
@@ -183,7 +183,7 @@ tailwind.config = {
       </div>
     </div>
     <!-- right photo -->
-    <div class="relative order-1 lg:order-2 min-h-[46svh] lg:min-h-0">
+    <div class="relative order-1 lg:order-2 min-h-[38svh] lg:min-h-0">
       <img src="assets/hero.jpg" alt="Stylist curling a client's hair at SoQ Salon" class="hero-photo absolute inset-0 w-full h-full object-cover" fetchpriority="high" />
       <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(42,29,34,.06),rgba(42,29,34,.22))"></div>
       <div class="absolute inset-0 hidden lg:block" style="background:linear-gradient(90deg,rgba(251,246,241,.9),transparent 22%)"></div>
@@ -230,11 +230,11 @@ tailwind.config = {
 </section>
 
 <!-- CRAFT / STORY -->
-<section id="craft" class="relative bg-cream py-24 sm:py-32 overflow-hidden">
+<section id="craft" class="relative bg-cream py-10 sm:py-22 overflow-hidden">
   <div class="max-w-7xl mx-auto px-6 sm:px-10 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
     <div class="relative">
       <div class="clip-img overflow-hidden rounded-[1.75rem] shadow-[0_40px_90px_-40px_rgba(63,31,42,.5)]" data-reveal-image>
-        <img src="assets/craft.jpg" alt="Eric Prince caring for a client's hair at the wash station" class="w-full h-[30rem] sm:h-[34rem] object-cover" loading="lazy" />
+        <img src="assets/craft.jpg" alt="Eric Prince caring for a client's hair at the wash station" class="w-full h-80 sm:h-[28rem] object-cover" loading="lazy" />
       </div>
       <div class="absolute -bottom-7 -right-3 sm:right-6 bg-plum text-cream rounded-2xl px-6 py-5 shadow-xl max-w-[13rem]">
         <div class="font-display text-4xl leading-none">2003</div>
@@ -261,7 +261,7 @@ tailwind.config = {
 </section>
 
 <!-- SERVICES — hover to preview -->
-<section id="services" class="relative bg-bone py-24 sm:py-32">
+<section id="services" class="relative bg-bone py-10 sm:py-22">
   <div class="max-w-7xl mx-auto px-6 sm:px-10">
     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
       <div>
@@ -275,52 +275,52 @@ tailwind.config = {
       <!-- list -->
       <ol id="svc-list" class="divide-y divide-ink/10 border-y border-ink/10">
         <li>
-          <button class="svc-row active w-full flex items-baseline gap-5 py-6 text-left" data-img="assets/hero.jpg" data-desc="Shape, texture, and a cut that grows out right — for women, men, and kids.">
+          <button class="svc-row active w-full flex items-baseline gap-5 py-5 text-left" data-img="assets/hero.jpg" data-desc="Shape, texture, and a cut that grows out right — for women, men, and kids.">
             <span class="svc-idx font-display text-mauve text-lg w-9 shrink-0">01</span>
             <span class="flex-1"><span class="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] leading-tight">Precision Cuts</span></span>
             <span class="hidden sm:block text-[12px] tracking-wide text-ink/45 uppercase">Women · Men · Kids</span>
           </button>
-          <img src="assets/hero.jpg" alt="Precision cut styling" class="lg:hidden w-full h-56 object-cover rounded-xl mb-6" loading="lazy" />
+          <img src="assets/hero.jpg" alt="Precision cut styling" class="hidden" loading="lazy" />
         </li>
         <li>
-          <button class="svc-row w-full flex items-baseline gap-5 py-6 text-left" data-img="assets/color.jpg" data-desc="Full color, dimensional highlights, and grey coverage that reads natural.">
+          <button class="svc-row w-full flex items-baseline gap-5 py-5 text-left" data-img="assets/color.jpg" data-desc="Full color, dimensional highlights, and grey coverage that reads natural.">
             <span class="svc-idx font-display text-mauve text-lg w-9 shrink-0">02</span>
             <span class="flex-1"><span class="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] leading-tight">Color &amp; Highlights</span></span>
             <span class="hidden sm:block text-[12px] tracking-wide text-ink/45 uppercase">All-over · Foils</span>
           </button>
-          <img src="assets/color.jpg" alt="Hair color result" class="lg:hidden w-full h-56 object-cover rounded-xl mb-6" loading="lazy" />
+          <img src="assets/color.jpg" alt="Hair color result" class="hidden" loading="lazy" />
         </li>
         <li>
-          <button class="svc-row w-full flex items-baseline gap-5 py-6 text-left" data-img="assets/creative.jpg" data-desc="Hand-painted, lived-in color that softens the grow-out line. Balayage & ombré.">
+          <button class="svc-row w-full flex items-baseline gap-5 py-5 text-left" data-img="assets/creative.jpg" data-desc="Hand-painted, lived-in color that softens the grow-out line. Balayage & ombré.">
             <span class="svc-idx font-display text-mauve text-lg w-9 shrink-0">03</span>
             <span class="flex-1"><span class="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] leading-tight">Balayage &amp; Ombré</span></span>
             <span class="hidden sm:block text-[12px] tracking-wide text-ink/45 uppercase">Hand-painted</span>
           </button>
-          <img src="assets/creative.jpg" alt="Balayage and creative color" class="lg:hidden w-full h-56 object-cover rounded-xl mb-6" loading="lazy" />
+          <img src="assets/creative.jpg" alt="Balayage and creative color" class="hidden" loading="lazy" />
         </li>
         <li>
-          <button class="svc-row w-full flex items-baseline gap-5 py-6 text-left" data-img="assets/work-3.jpg" data-desc="Going lighter, or fixing color gone wrong — the specialty people drive in for.">
+          <button class="svc-row w-full flex items-baseline gap-5 py-5 text-left" data-img="assets/work-3.jpg" data-desc="Going lighter, or fixing color gone wrong — the specialty people drive in for.">
             <span class="svc-idx font-display text-mauve text-lg w-9 shrink-0">04</span>
             <span class="flex-1"><span class="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] leading-tight">Blonde &amp; Color Correction</span></span>
             <span class="hidden sm:block text-[12px] tracking-wide text-ink/45 uppercase">Specialty</span>
           </button>
-          <img src="assets/work-3.jpg" alt="Blonde and color correction work" class="lg:hidden w-full h-56 object-cover rounded-xl mb-6" loading="lazy" />
+          <img src="assets/work-3.jpg" alt="Blonde and color correction work" class="hidden" loading="lazy" />
         </li>
         <li>
-          <button class="svc-row w-full flex items-baseline gap-5 py-6 text-left" data-img="assets/craft.jpg" data-desc="Keratin & Brazilian smoothing plus finished blowouts and event styling.">
+          <button class="svc-row w-full flex items-baseline gap-5 py-5 text-left" data-img="assets/craft.jpg" data-desc="Keratin & Brazilian smoothing plus finished blowouts and event styling.">
             <span class="svc-idx font-display text-mauve text-lg w-9 shrink-0">05</span>
             <span class="flex-1"><span class="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] leading-tight">Smoothing &amp; Styling</span></span>
             <span class="hidden sm:block text-[12px] tracking-wide text-ink/45 uppercase">Keratin · Blowout</span>
           </button>
-          <img src="assets/craft.jpg" alt="Smoothing and styling" class="lg:hidden w-full h-56 object-cover rounded-xl mb-6" loading="lazy" />
+          <img src="assets/craft.jpg" alt="Smoothing and styling" class="hidden" loading="lazy" />
         </li>
         <li>
-          <button class="svc-row w-full flex items-baseline gap-5 py-6 text-left" data-img="assets/salon-a.jpg" data-desc="Individual, semi-permanent silk lash extensions for a fuller, natural look.">
+          <button class="svc-row w-full flex items-baseline gap-5 py-5 text-left" data-img="assets/salon-a.jpg" data-desc="Individual, semi-permanent silk lash extensions for a fuller, natural look.">
             <span class="svc-idx font-display text-mauve text-lg w-9 shrink-0">06</span>
             <span class="flex-1"><span class="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] leading-tight">Eyelash Extensions</span></span>
             <span class="hidden sm:block text-[12px] tracking-wide text-ink/45 uppercase">Silk · Individual</span>
           </button>
-          <img src="assets/salon-a.jpg" alt="Salon interior" class="lg:hidden w-full h-56 object-cover rounded-xl mb-6" loading="lazy" />
+          <img src="assets/salon-a.jpg" alt="Salon interior" class="hidden" loading="lazy" />
         </li>
       </ol>
       <!-- sticky preview (desktop) -->
@@ -339,7 +339,7 @@ tailwind.config = {
 </section>
 
 <!-- REAL WORK -->
-<section id="work" class="relative bg-cream py-24 sm:py-32 overflow-hidden">
+<section id="work" class="relative bg-cream py-10 sm:py-22 overflow-hidden">
   <div class="max-w-7xl mx-auto px-6 sm:px-10">
     <div class="text-center max-w-2xl mx-auto mb-14">
       <span data-reveal class="text-[12px] tracking-[0.34em] font-semibold text-mauve uppercase">In The Chair</span>
@@ -348,15 +348,15 @@ tailwind.config = {
     </div>
     <div class="grid sm:grid-cols-3 gap-5 sm:gap-6">
       <figure data-reveal class="card-work group relative overflow-hidden rounded-2xl shadow-[0_28px_60px_-34px_rgba(63,31,42,.5)]">
-        <img src="assets/work-1.jpg" alt="Client with a fresh bob cut and color at SoQ Salon" class="w-full h-[24rem] object-cover" loading="lazy" />
+        <img src="assets/work-1.jpg" alt="Client with a fresh bob cut and color at SoQ Salon" class="w-full h-72 object-cover" loading="lazy" />
         <figcaption class="absolute bottom-0 inset-x-0 p-5 text-cream text-[13px] font-semibold" style="background:linear-gradient(transparent,rgba(42,29,34,.7))">Precision bob &amp; color</figcaption>
       </figure>
       <figure data-reveal class="card-work group relative overflow-hidden rounded-2xl shadow-[0_28px_60px_-34px_rgba(63,31,42,.5)]">
-        <img src="assets/work-2.jpg" alt="Back view of a stacked bob cut finished at SoQ Salon" class="w-full h-[24rem] object-cover" loading="lazy" />
+        <img src="assets/work-2.jpg" alt="Back view of a stacked bob cut finished at SoQ Salon" class="w-full h-72 object-cover" loading="lazy" />
         <figcaption class="absolute bottom-0 inset-x-0 p-5 text-cream text-[13px] font-semibold" style="background:linear-gradient(transparent,rgba(42,29,34,.7))">Stacked, clean finish</figcaption>
       </figure>
       <figure data-reveal class="card-work group relative overflow-hidden rounded-2xl shadow-[0_28px_60px_-34px_rgba(63,31,42,.5)]">
-        <img src="assets/work-3.jpg" alt="Client with a platinum pixie cut and color at SoQ Salon" class="w-full h-[24rem] object-cover" loading="lazy" />
+        <img src="assets/work-3.jpg" alt="Client with a platinum pixie cut and color at SoQ Salon" class="w-full h-72 object-cover" loading="lazy" />
         <figcaption class="absolute bottom-0 inset-x-0 p-5 text-cream text-[13px] font-semibold" style="background:linear-gradient(transparent,rgba(42,29,34,.7))">Platinum pixie</figcaption>
       </figure>
     </div>
@@ -365,7 +365,7 @@ tailwind.config = {
 </section>
 
 <!-- REVIEWS -->
-<section id="reviews" class="relative bg-plum text-cream py-24 sm:py-32 overflow-hidden">
+<section id="reviews" class="relative bg-plum text-cream py-10 sm:py-22 overflow-hidden">
   <div class="max-w-7xl mx-auto px-6 sm:px-10">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
       <div>
@@ -382,27 +382,27 @@ tailwind.config = {
       </div>
     </div>
     <div class="grid md:grid-cols-3 gap-5 sm:gap-6">
-      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-7 backdrop-blur">
+      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-6 backdrop-blur">
         <p class="text-[15.5px] leading-relaxed text-cream/90">"I had a really bad haircut from another salon and my hair was in horrible shape. Eric was amazing. He fixed the cut beautifully and explained why I should not have had the Brazilian Blowout. Personable and talented."</p>
         <footer class="mt-5 text-[13px] font-semibold text-blush">Catherine B. <span class="text-cream/45 font-normal">· Yelp review</span></footer>
       </blockquote>
-      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-7 backdrop-blur md:mt-8">
+      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-6 backdrop-blur md:mt-8">
         <p class="text-[15.5px] leading-relaxed text-cream/90">"Eric is very friendly and has good prices. My hair looks great every time. Been coming here for probably 15 years or more."</p>
         <footer class="mt-5 text-[13px] font-semibold text-blush">Chris Lawrence <span class="text-cream/45 font-normal">· Google review</span></footer>
       </blockquote>
-      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-7 backdrop-blur">
+      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-6 backdrop-blur">
         <p class="text-[15.5px] leading-relaxed text-cream/90">"Eric is the best! If you're looking for a stylist who knows their stuff, and will do his best to give you what you want, Eric is your guy. I love my color and style!"</p>
         <footer class="mt-5 text-[13px] font-semibold text-blush">Teresa H. <span class="text-cream/45 font-normal">· Yelp review</span></footer>
       </blockquote>
-      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-7 backdrop-blur md:mt-2">
+      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-6 backdrop-blur md:mt-2">
         <p class="text-[15.5px] leading-relaxed text-cream/90">"I really enjoyed my visit. Eric is an amazing hair genius. Very much loved my appointment and very much enjoying my new hair color."</p>
         <footer class="mt-5 text-[13px] font-semibold text-blush">Kelly Auippa <span class="text-cream/45 font-normal">· Google review</span></footer>
       </blockquote>
-      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-7 backdrop-blur">
+      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-6 backdrop-blur">
         <p class="text-[15.5px] leading-relaxed text-cream/90">"Eric does an amazing job every time I go to see him. He's my secret gem of a hairdresser. I would recommend him to anyone needing either a cut or a new 'do."</p>
         <footer class="mt-5 text-[13px] font-semibold text-blush">Pugsy M. <span class="text-cream/45 font-normal">· Yelp review</span></footer>
       </blockquote>
-      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-7 backdrop-blur md:mt-8">
+      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-6 backdrop-blur md:mt-8">
         <p class="text-[15.5px] leading-relaxed text-cream/90">"Always a pleasure to visit with Eric when we go. Cuts my son and daughter's hair."</p>
         <footer class="mt-5 text-[13px] font-semibold text-blush">Doug McMillian <span class="text-cream/45 font-normal">· Google review</span></footer>
       </blockquote>
@@ -411,7 +411,7 @@ tailwind.config = {
 </section>
 
 <!-- VISIT -->
-<section id="visit" class="relative bg-cream py-24 sm:py-32">
+<section id="visit" class="relative bg-cream py-10 sm:py-22">
   <div class="max-w-7xl mx-auto px-6 sm:px-10 grid lg:grid-cols-2 gap-12 items-stretch">
     <div>
       <span data-reveal class="text-[12px] tracking-[0.34em] font-semibold text-mauve uppercase">Visit</span>
@@ -450,17 +450,17 @@ tailwind.config = {
       </a>
     </div>
 
-    <div data-reveal class="relative rounded-[1.75rem] overflow-hidden shadow-[0_40px_90px_-40px_rgba(63,31,42,.5)] min-h-[26rem] border border-ink/10">
+    <div data-reveal class="relative rounded-[1.75rem] overflow-hidden shadow-[0_40px_90px_-40px_rgba(63,31,42,.5)] min-h-[20rem] lg:min-h-[24rem] border border-ink/10">
       <iframe
         title="Map to SoQ Salon, 4027 FM 2920 Rd Ste D, Spring, TX 77388"
         src="https://www.google.com/maps?q=4027%20FM%202920%20Rd%20Ste%20D%20Spring%20TX%2077388&output=embed"
-        class="absolute inset-0 w-full h-full" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        class="absolute inset-0 w-full h-full" style="border:0" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     </div>
   </div>
 </section>
 
 <!-- CLOSING CTA -->
-<section class="relative bg-bone py-24 sm:py-28 overflow-hidden">
+<section class="relative bg-bone py-14 sm:py-20 overflow-hidden">
   <div class="max-w-4xl mx-auto px-6 text-center">
     <span data-reveal class="inline-flex items-center gap-2 rounded-full border border-mauve/25 px-4 py-1.5 text-[11px] font-semibold tracking-wide text-mauve mb-8">
       <span class="chip-dot inline-block h-1.5 w-1.5 rounded-full bg-gold"></span> Now booking in Spring, TX
