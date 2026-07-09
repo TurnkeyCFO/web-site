@@ -572,7 +572,7 @@ tailwind.config = {
       </div>
 
       <!-- Map -->
-      <div data-reveal class="relative rounded-[26px] overflow-hidden border border-ink/10 shadow-lg min-h-[380px] lg:min-h-full bg-bone">
+      <div id="mapWrap" data-reveal class="relative rounded-[26px] overflow-hidden border border-ink/10 shadow-lg min-h-[380px] lg:min-h-full bg-bone">
         <iframe id="mapFrame"
           title="The Chop Shop — 209 James Brown Blvd, Augusta, GA 30901"
           src="https://www.google.com/maps?q=209%20James%20Brown%20Blvd%2C%20Augusta%2C%20GA%2030901&output=embed"
@@ -823,11 +823,16 @@ document.querySelectorAll('.count').forEach(el=>{
   last = performance.now(); loop();
 })();
 
-/* ---------- Map poster: fade to the live interactive embed once it paints ---------- */
+/* ---------- Map poster: real map of the address stays until the user engages, then
+   reveal the live interactive embed. Screenshots (no interaction) always show a real map. ---------- */
 (function(){
-  const mf=document.getElementById('mapFrame'), mp=document.getElementById('mapPoster');
-  if(!mf||!mp) return;
-  mf.addEventListener('load',()=>{ setTimeout(()=>{ mp.style.opacity='0'; },1500); });
+  const wrap=document.getElementById('mapWrap'), mp=document.getElementById('mapPoster');
+  if(!wrap||!mp) return;
+  let revealed=false;
+  function reveal(){ if(revealed) return; revealed=true; mp.style.opacity='0'; setTimeout(()=>{ mp.style.display='none'; },750); }
+  wrap.addEventListener('pointerenter',reveal,{once:true});
+  wrap.addEventListener('touchstart',reveal,{once:true,passive:true});
+  wrap.addEventListener('click',reveal,{once:true});
 })();
 
 /* ---------- 6s crawler / screenshot safety net ---------- */
