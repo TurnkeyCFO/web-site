@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Arcenio Custom Tailor — Floral Park, NY  |  Turnkey Web preview (DRAFT)
+  Art direction: light-luxury bespoke tailoring. Cream/porcelain base, near-black ink text,
+  scarce brass "gold-thread" accent + oxblood high-contrast moment. Couture display serif
+  (Bodoni Moda) + Figtree body — deliberately divergent from recent Fraunces builds.
+  Showpiece: Three.js drifting gold-thread filament field on a light canvas (normal blending).
+  Signature: an SVG "stitched seam" that draws down the Craft section on scroll.
+  Real data: rating 4.2 / 14 Google reviews; verbatim Google review text (anonymized attribution).
+  Hours conflict across sources -> presented honestly ("call to confirm"), never fabricated.
+  Owner surname unverified publicly -> craftsman referenced as "Arcenio" only.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arcenio Custom Tailor — Bespoke Tailoring & Alterations in Floral Park, NY</title>
+<meta name="description" content="Bespoke tailoring, custom suits, and expert alterations for men and women in Floral Park, NY. Hand-finished work, reasonable rates, English & Spanish. Call Arcenio at (516) 326-2950.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/arcenio-custom-tailor/">
+<meta property="og:type" content="business.business">
+<meta property="og:title" content="Arcenio Custom Tailor — Bespoke Tailoring in Floral Park, NY">
+<meta property="og:description" content="Custom suits, alterations, and formalwear tailored by hand. 4.2★ on Google. Floral Park, NY. Call (516) 326-2950.">
+<meta property="og:url" content="https://turnkeyweb.org/previews/arcenio-custom-tailor/">
+<meta name="theme-color" content="#F7F1E7">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,500;1,6..96,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      porcelain:'#F7F1E7', bone:'#EFE5D5', sand:'#E4D6BF',
+      ink:'#1B1714', charcoal:'#2A241E', muted:'#6A5F52',
+      brass:'#B0894F', brassLt:'#C9A567', oxblood:'#6E2B2B'
+    },
+    fontFamily: { display:['"Bodoni Moda"','serif'], body:['Figtree','sans-serif'] }
+  }}
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<style>
+  :root{ --nav-h:70px; }
+  *{ -webkit-tap-highlight-color:transparent; }
+  html{ scroll-behavior:auto; scroll-padding-top:82px; }
+  body{ background:#F7F1E7; color:#1B1714; font-family:'Figtree',sans-serif; overflow-x:hidden; }
+  ::selection{ background:#B0894F; color:#F7F1E7; }
+  .font-display{ font-family:'Bodoni Moda',serif; }
+  .tracking-tightest{ letter-spacing:-.03em; }
+
+  /* Gold-thread shimmer — dark->brass->oxblood, stays legible on cream (min-lightness floor) */
+  .grad-text{
+    background:linear-gradient(100deg,#1B1714 0%,#8A6533 26%,#B0894F 42%,#6E2B2B 60%,#3a2418 80%,#1B1714 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite;
+  }
+  @keyframes shimmer{ 0%{background-position:0% 50%} 100%{background-position:220% 50%} }
+
+  /* Hero thread canvas */
+  #thread-canvas{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity:.9; }
+  .hero-vignette{ position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(120% 90% at 78% 30%, transparent 40%, rgba(43,36,30,.06) 100%); }
+  .grain::after{ content:""; position:absolute; inset:0; pointer-events:none; z-index:2; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(#2A241E 0.5px, transparent 0.5px); background-size:3px 3px; }
+
+  /* Reveals — GPU only */
+  [data-reveal]{ opacity:0; transform:translateY(30px); will-change:opacity,transform; }
+  [data-reveal].in{ opacity:1; transform:none; }
+  [data-clip]{ clip-path:inset(0 0 100% 0); will-change:clip-path; }
+  [data-clip].in{ clip-path:inset(0 0 0% 0); transition:clip-path 1.3s cubic-bezier(.19,1,.22,1); }
+
+  /* Marquee */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); }
+  .marquee-track{ display:flex; gap:2.6rem; width:max-content; animation:scrollX 34s linear infinite; align-items:center; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* Buttons */
+  .btn{ position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.19,1,.22,1), box-shadow .4s, filter .3s; }
+  .btn-primary{ background:#1B1714; color:#F7F1E7; }
+  .btn-primary::after{ content:""; position:absolute; top:0; left:-130%; width:60%; height:100%; transform:skewX(-18deg);
+    background:linear-gradient(90deg,transparent,rgba(201,165,103,.55),transparent); transition:left .9s cubic-bezier(.19,1,.22,1); }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 16px 34px -14px rgba(27,23,20,.55); }
+  .btn-primary:hover::after{ left:130%; }
+  .btn-outline{ border:1px solid rgba(27,23,20,.28); color:#1B1714; }
+  .btn-outline:hover{ border-color:#B0894F; color:#6E2B2B; transform:translateY(-3px); }
+
+  /* Cards */
+  .svc{ position:relative; background:rgba(255,255,255,.5); border:1px solid rgba(27,23,20,.09);
+    transition:transform .5s cubic-bezier(.19,1,.22,1), box-shadow .5s, border-color .5s; }
+  .svc::before{ content:""; position:absolute; top:0; left:0; height:2px; width:0; background:linear-gradient(90deg,#B0894F,#6E2B2B);
+    transition:width .6s cubic-bezier(.19,1,.22,1); }
+  .svc:hover{ transform:translateY(-6px); box-shadow:0 24px 48px -26px rgba(27,23,20,.4); border-color:rgba(176,137,79,.4); }
+  .svc:hover::before{ width:100%; }
+
+  .chip-dot{ animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.82)} }
+
+  .ul-grow{ position:relative; }
+  .ul-grow::after{ content:""; position:absolute; left:0; bottom:-2px; height:1px; width:0;
+    background:linear-gradient(90deg,#B0894F,#6E2B2B); transition:width .5s cubic-bezier(.19,1,.22,1); }
+  .ul-grow:hover::after{ width:100%; }
+
+  .num-outline{ font-family:'Bodoni Moda',serif; -webkit-text-stroke:1px rgba(110,43,43,.4); color:transparent; line-height:.8; }
+
+  /* stitched seam */
+  .seam-dash{ stroke-dasharray:6 9; stroke-dashoffset:0; }
+
+  .sticky-bar{ transition:transform .4s cubic-bezier(.19,1,.22,1); }
+  @media (min-width:768px){ .sticky-bar{ display:none; } }
+
+  @media (prefers-reduced-motion:reduce){
+    .grad-text,.marquee-track,.chip-dot{ animation:none !important; }
+    [data-reveal]{ opacity:1 !important; transform:none !important; }
+    #thread-canvas{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-[70px] flex items-center justify-between">
+    <a href="#top" class="flex items-baseline gap-2 group">
+      <span class="font-display text-xl sm:text-2xl font-700 tracking-tightest text-ink">Arcenio</span>
+      <span class="hidden sm:inline text-[10px] tracking-[.34em] font-600 text-brass uppercase mt-0.5">Custom Tailor</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-[13px] font-500 text-ink/80">
+      <a href="#craft" class="ul-grow hover:text-ink">The Craft</a>
+      <a href="#services" class="ul-grow hover:text-ink">Services</a>
+      <a href="#story" class="ul-grow hover:text-ink">The Tailor</a>
+      <a href="#voices" class="ul-grow hover:text-ink">Reviews</a>
+      <a href="#visit" class="ul-grow hover:text-ink">Visit</a>
+    </nav>
+    <a href="tel:+15163262950" class="btn btn-primary rounded-full px-4 sm:px-5 py-2.5 text-[12.5px] font-600 tracking-wide flex items-center gap-2">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+      <span class="hidden sm:inline">(516) 326-2950</span><span class="sm:hidden">Call</span>
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-[100svh] flex items-center grain overflow-hidden">
+  <canvas id="thread-canvas"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 pt-[104px] pb-16 grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+    <!-- copy -->
+    <div class="lg:col-span-7">
+      <div class="flex items-center gap-3 mb-7" data-reveal>
+        <span class="w-8 h-px bg-brass"></span>
+        <span class="text-[11px] tracking-[.32em] uppercase font-600 text-muted">Floral Park, New York · Est. bespoke</span>
+      </div>
+      <h1 class="font-display tracking-tightest text-ink text-[13vw] sm:text-[9.5vw] lg:text-[6.6rem] leading-[.92] font-700" data-hero-head>
+        Tailored by hand,
+        <span class="italic font-600 grad-text">stitched to fit</span>
+        you alone.
+      </h1>
+      <p class="mt-7 max-w-xl text-[15px] sm:text-lg leading-relaxed text-ink/75 font-400" data-reveal>
+        Bespoke suits, precise alterations, and formalwear finished the way the big shops forgot how to.
+        Decades at the bench, reasonable rates, and every seam done right the first time — for men and women alike.
+      </p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-3.5" data-reveal>
+        <a href="tel:+15163262950" class="btn btn-primary rounded-full px-7 py-4 text-[14px] font-600 tracking-wide inline-flex items-center justify-center gap-2.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          Call to book a fitting
+        </a>
+        <a href="#services" class="btn btn-outline rounded-full px-7 py-4 text-[14px] font-600 tracking-wide inline-flex items-center justify-center gap-2.5">
+          See the work
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0 6.75-6.75M4.5 12l6.75 6.75"/></svg>
+        </a>
+      </div>
+      <!-- stat row -->
+      <div class="mt-11 flex flex-wrap items-center gap-x-9 gap-y-5" data-reveal>
+        <div>
+          <div class="flex items-center gap-1.5 text-brass">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg>
+            <span class="font-display text-2xl font-700 text-ink"><span data-count="4.2" data-dec="1">4.2</span></span>
+          </div>
+          <div class="text-[11px] tracking-[.18em] uppercase text-muted mt-1">On Google · <span data-count="14">14</span> reviews</div>
+        </div>
+        <div class="w-px h-10 bg-ink/12"></div>
+        <div>
+          <div class="font-display text-2xl font-700 text-ink"><span data-count="2">2</span>-day</div>
+          <div class="text-[11px] tracking-[.18em] uppercase text-muted mt-1">Common turnaround</div>
+        </div>
+        <div class="w-px h-10 bg-ink/12"></div>
+        <div>
+          <div class="font-display text-2xl font-700 text-ink">EN · ES</div>
+          <div class="text-[11px] tracking-[.18em] uppercase text-muted mt-1">English &amp; Spanish</div>
+        </div>
+      </div>
+    </div>
+    <!-- framed photo -->
+    <div class="lg:col-span-5 relative" data-reveal>
+      <div class="relative">
+        <div class="absolute -inset-3 border border-brass/35 rounded-[2px] pointer-events-none hidden sm:block"></div>
+        <div class="relative overflow-hidden rounded-[2px] shadow-[0_40px_80px_-40px_rgba(27,23,20,.55)]" data-clip>
+          <img src="assets/fitting.jpg" alt="Arcenio fitting a custom shirt for a client at the tailoring bench" class="w-full h-[380px] sm:h-[520px] object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/25 via-transparent to-transparent"></div>
+        </div>
+        <div class="absolute -bottom-5 -left-4 sm:-left-6 bg-porcelain border border-ink/10 rounded-[2px] px-5 py-3.5 shadow-[0_20px_40px_-24px_rgba(27,23,20,.5)]">
+          <div class="text-[10px] tracking-[.24em] uppercase text-brass font-600">Made to measure</div>
+          <div class="font-display text-lg text-ink font-600 leading-tight">Men &amp; women, every garment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="#craft" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-muted flex flex-col items-center gap-2" aria-label="Scroll">
+    <span class="text-[10px] tracking-[.3em] uppercase">Scroll</span>
+    <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+  </a>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee border-y border-ink/10 bg-bone/70 py-4">
+  <div class="marquee-track text-[13px] tracking-[.22em] uppercase font-600 text-ink/70">
+    <span class="flex items-center gap-2.6" style="gap:2.6rem">
+      <span>Bespoke Suits</span><span class="text-brass">✦</span>
+      <span class="italic grad-text font-display normal-case tracking-normal text-base">Alterations done right</span><span class="text-brass">✦</span>
+      <span>Formalwear &amp; Gowns</span><span class="text-brass">✦</span>
+      <span>Custom Sewing</span><span class="text-brass">✦</span>
+      <span>Shapewear Fitting</span><span class="text-brass">✦</span>
+      <span>Men &amp; Women</span><span class="text-brass">✦</span>
+    </span>
+    <span class="flex items-center gap-2.6" style="gap:2.6rem" aria-hidden="true">
+      <span>Bespoke Suits</span><span class="text-brass">✦</span>
+      <span class="italic grad-text font-display normal-case tracking-normal text-base">Alterations done right</span><span class="text-brass">✦</span>
+      <span>Formalwear &amp; Gowns</span><span class="text-brass">✦</span>
+      <span>Custom Sewing</span><span class="text-brass">✦</span>
+      <span>Shapewear Fitting</span><span class="text-brass">✦</span>
+      <span>Men &amp; Women</span><span class="text-brass">✦</span>
+    </span>
+  </div>
+</div>
+
+<!-- THE CRAFT — signature stitched-seam draw -->
+<section id="craft" class="relative py-24 sm:py-32 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-16">
+      <div class="flex items-center gap-3 mb-5" data-reveal>
+        <span class="w-8 h-px bg-brass"></span>
+        <span class="text-[11px] tracking-[.32em] uppercase font-600 text-muted">The Craft</span>
+      </div>
+      <h2 class="font-display tracking-tightest text-ink text-[9vw] sm:text-5xl lg:text-6xl leading-[.98] font-700" data-reveal>
+        Four steps between a rack and <span class="italic grad-text">a garment that fits.</span>
+      </h2>
+      <p class="mt-6 text-ink/70 text-[15px] sm:text-lg leading-relaxed" data-reveal>
+        Nothing here is guessed. Every piece follows the same disciplined line — the one seam that separates a real tailor from a hem-and-hope.
+      </p>
+    </div>
+
+    <!-- seam + steps -->
+    <div class="relative">
+      <!-- the drawing seam (desktop vertical spine) -->
+      <svg class="hidden lg:block absolute left-[7%] top-0 h-full w-6 -translate-x-1/2" viewBox="0 0 8 1000" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        <path id="seam-path" class="seam-dash" d="M4 0 L4 1000" stroke="#B0894F" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+
+      <div class="grid gap-5 lg:pl-[12%]">
+        <!-- step -->
+        <div class="svc rounded-[3px] p-7 sm:p-9 grid sm:grid-cols-12 gap-5 items-center" data-reveal>
+          <div class="sm:col-span-2 num-outline text-6xl sm:text-7xl">01</div>
+          <div class="sm:col-span-7">
+            <h3 class="font-display text-2xl sm:text-3xl font-600 text-ink">Measure</h3>
+            <p class="mt-2 text-ink/70 text-[14.5px] leading-relaxed">A proper set of measurements taken in person — shoulders, sleeve, seat, rise. The number the tape gives, not the one the size chart guesses.</p>
+          </div>
+          <div class="sm:col-span-3 flex sm:justify-end">
+            <svg class="w-11 h-11 text-brass" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l1.5 1.5M6 6l1.5 1.5M9 3l12 12-6 6L3 9l6-6zM12 12l1.5 1.5M15 15l1.5 1.5"/></svg>
+          </div>
+        </div>
+        <div class="svc rounded-[3px] p-7 sm:p-9 grid sm:grid-cols-12 gap-5 items-center" data-reveal>
+          <div class="sm:col-span-2 num-outline text-6xl sm:text-7xl">02</div>
+          <div class="sm:col-span-7">
+            <h3 class="font-display text-2xl sm:text-3xl font-600 text-ink">Cut &amp; mark</h3>
+            <p class="mt-2 text-ink/70 text-[14.5px] leading-relaxed">Chalk, pins, and patience. The cloth is opened and marked to your lines — the point of no return, done with a steady hand and years of feel for the fabric.</p>
+          </div>
+          <div class="sm:col-span-3 flex sm:justify-end">
+            <svg class="w-11 h-11 text-brass" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.848 8.25l1.536.887M7.848 8.25a3 3 0 11-5.196-3 3 3 0 015.196 3zm1.536.887a2.165 2.165 0 011.083 1.839c.005.351.054.695.14 1.024M9.384 9.137l10.148 5.858M7.848 15.75l1.536-.887m-1.536.887a3 3 0 11-5.196 3 3 3 0 015.196-3zm1.536-.887a2.165 2.165 0 001.083-1.838c.005-.352.054-.695.14-1.025m0 0L19.5 5.25"/></svg>
+          </div>
+        </div>
+        <div class="svc rounded-[3px] p-7 sm:p-9 grid sm:grid-cols-12 gap-5 items-center" data-reveal>
+          <div class="sm:col-span-2 num-outline text-6xl sm:text-7xl">03</div>
+          <div class="sm:col-span-7">
+            <h3 class="font-display text-2xl sm:text-3xl font-600 text-ink">Fit</h3>
+            <p class="mt-2 text-ink/70 text-[14.5px] leading-relaxed">You come back, you put it on, and it gets honest feedback. Nipped here, let out there — the fitting is where "close enough" becomes exactly right.</p>
+          </div>
+          <div class="sm:col-span-3 flex sm:justify-end">
+            <svg class="w-11 h-11 text-brass" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+          </div>
+        </div>
+        <div class="svc rounded-[3px] p-7 sm:p-9 grid sm:grid-cols-12 gap-5 items-center" data-reveal>
+          <div class="sm:col-span-2 num-outline text-6xl sm:text-7xl">04</div>
+          <div class="sm:col-span-7">
+            <h3 class="font-display text-2xl sm:text-3xl font-600 text-ink">Finish</h3>
+            <p class="mt-2 text-ink/70 text-[14.5px] leading-relaxed">Pressed, hand-finished, and pressed again. Often ready in about two days — because a garment you can't wear yet isn't finished, it's waiting.</p>
+          </div>
+          <div class="sm:col-span-3 flex sm:justify-end">
+            <svg class="w-11 h-11 text-brass" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="relative py-24 sm:py-32 bg-bone/60 border-y border-ink/10 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <!-- left rail -->
+      <div class="lg:col-span-5 lg:sticky lg:top-28">
+        <div class="flex items-center gap-3 mb-5" data-reveal>
+          <span class="w-8 h-px bg-brass"></span>
+          <span class="text-[11px] tracking-[.32em] uppercase font-600 text-muted">What Arcenio does</span>
+        </div>
+        <h2 class="font-display tracking-tightest text-ink text-[9vw] sm:text-5xl lg:text-6xl leading-[.98] font-700" data-reveal>
+          One bench. <span class="italic grad-text">Every alteration</span> a cleaner won't touch.
+        </h2>
+        <p class="mt-6 text-ink/70 text-[15px] leading-relaxed" data-reveal>
+          From a first suit to a gown that has to be perfect by Saturday — the work most shops call impossible is the work that keeps people coming back to Arcenio.
+        </p>
+        <div class="mt-8 overflow-hidden rounded-[3px] shadow-[0_30px_60px_-40px_rgba(27,23,20,.55)]" data-clip data-reveal>
+          <img src="assets/fabric.jpg" alt="Suit fabric swatches in navy, grey and tan laid out for a bespoke selection" class="w-full h-56 object-cover">
+        </div>
+      </div>
+
+      <!-- service list -->
+      <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+        <div class="svc rounded-[3px] p-6" data-reveal>
+          <div class="w-11 h-11 rounded-full bg-ink/5 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-oxblood" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 3v6a6 6 0 006 6v0a6 6 0 006-6V3M6 3h12M9 21h6M12 15v6"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-600 text-ink">Bespoke suits &amp; jackets</h3>
+          <p class="mt-2 text-ink/70 text-[14px] leading-relaxed">Custom-tailored suiting cut to your frame — the fit off-the-rack can only pretend to give you.</p>
+        </div>
+        <div class="svc rounded-[3px] p-6" data-reveal>
+          <div class="w-11 h-11 rounded-full bg-ink/5 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-oxblood" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-600 text-ink">Alterations, men &amp; women</h3>
+          <p class="mt-2 text-ink/70 text-[14px] leading-relaxed">Hems, take-ins, sleeves, waistbands, resizing — the everyday tailoring done precisely and quickly.</p>
+        </div>
+        <div class="svc rounded-[3px] p-6" data-reveal>
+          <div class="w-11 h-11 rounded-full bg-ink/5 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-oxblood" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-600 text-ink">Formalwear &amp; gowns</h3>
+          <p class="mt-2 text-ink/70 text-[14px] leading-relaxed">Ball-gown hemming, bridal and evening-wear tailoring — the alterations a big occasion can't afford to get wrong.</p>
+        </div>
+        <div class="svc rounded-[3px] p-6" data-reveal>
+          <div class="w-11 h-11 rounded-full bg-ink/5 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-oxblood" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-600 text-ink">Custom sewing &amp; made-to-measure</h3>
+          <p class="mt-2 text-ink/70 text-[14px] leading-relaxed">New garments and custom-made pieces sewn from scratch when there's nothing on a rack that will do.</p>
+        </div>
+        <div class="svc rounded-[3px] p-6" data-reveal>
+          <div class="w-11 h-11 rounded-full bg-ink/5 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-oxblood" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5M12 3.75c2.485 2.457 3.75 5.394 3.75 8.25s-1.265 5.793-3.75 8.25c-2.485-2.457-3.75-5.394-3.75-8.25S9.515 6.207 12 3.75z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-600 text-ink">Shapewear &amp; faja fitting</h3>
+          <p class="mt-2 text-ink/70 text-[14px] leading-relaxed">Faja and shapewear taken in and adjusted to the silhouette you actually want — a specialty most tailors skip.</p>
+        </div>
+        <div class="svc rounded-[3px] p-6" data-reveal>
+          <div class="w-11 h-11 rounded-full bg-ink/5 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-oxblood" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-600 text-ink">Fast, reliable turnaround</h3>
+          <p class="mt-2 text-ink/70 text-[14px] leading-relaxed">Plenty of work is ready in about two days. Call ahead and Arcenio will tell you straight what's possible by when.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story" class="relative py-24 sm:py-32 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class="lg:col-span-5 order-2 lg:order-1" data-reveal>
+      <div class="relative">
+        <div class="absolute -inset-3 border border-brass/30 rounded-[2px] pointer-events-none hidden sm:block"></div>
+        <div class="relative overflow-hidden rounded-[2px] shadow-[0_40px_80px_-44px_rgba(27,23,20,.55)]" data-clip>
+          <img src="assets/tailor.jpg" alt="An experienced tailor at his sewing machine, hand-guiding dark suiting cloth" class="w-full h-[440px] sm:h-[560px] object-cover">
+        </div>
+      </div>
+    </div>
+    <div class="lg:col-span-7 order-1 lg:order-2">
+      <div class="flex items-center gap-3 mb-5" data-reveal>
+        <span class="w-8 h-px bg-brass"></span>
+        <span class="text-[11px] tracking-[.32em] uppercase font-600 text-muted">The Tailor</span>
+      </div>
+      <h2 class="font-display tracking-tightest text-ink text-[8.5vw] sm:text-5xl lg:text-[3.9rem] leading-[1.02] font-700" data-reveal>
+        A small shop on Jericho Turnpike, run by a tailor who still does it <span class="italic grad-text">by hand.</span>
+      </h2>
+      <div class="mt-7 space-y-5 text-ink/75 text-[15px] sm:text-[16.5px] leading-relaxed max-w-xl" data-reveal>
+        <p>Arcenio has spent years at the machine, and it shows in the work. Regulars describe the same thing: honest opinions, reasonable prices, and alterations a dry cleaner would call impossible handled like they're routine.</p>
+        <p>He works with men and women, in English and Spanish, on everything from a first custom suit to a ball gown that has to hang perfectly. No pretense, no runaround — just a real tailor who gets it right.</p>
+      </div>
+      <blockquote class="mt-8 pl-5 border-l-2 border-brass max-w-xl" data-reveal>
+        <p class="font-display italic text-xl sm:text-2xl text-ink leading-snug">"Alterations that at a cleaners would be considered mission impossible, Arcenio would consider it done."</p>
+        <cite class="not-italic text-[12px] tracking-[.16em] uppercase text-muted mt-3 block">— Verified Google review</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section id="voices" class="relative py-24 sm:py-32 bg-charcoal text-porcelain overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+      <div>
+        <div class="flex items-center gap-3 mb-5" data-reveal>
+          <span class="w-8 h-px bg-brassLt"></span>
+          <span class="text-[11px] tracking-[.32em] uppercase font-600 text-brassLt">In their words</span>
+        </div>
+        <h2 class="font-display tracking-tightest text-[9vw] sm:text-5xl lg:text-6xl leading-[.98] font-700" data-reveal>
+          The neighborhood's <span class="italic grad-text">go-to tailor.</span>
+        </h2>
+      </div>
+      <div class="flex items-center gap-3 shrink-0" data-reveal>
+        <div class="flex text-brassLt">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg>
+          <svg class="w-5 h-5 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg>
+        </div>
+        <div class="text-sm"><span class="font-display text-lg font-700">4.2</span> · 14 Google reviews</div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="rounded-[3px] border border-porcelain/12 bg-porcelain/[0.04] p-7" data-reveal>
+        <div class="flex text-brassLt mb-4">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg>
+        </div>
+        <p class="text-porcelain/85 text-[15px] leading-relaxed">"Arcenio is a great guy, easy to talk to and gives you opinions. His years of experience make it easy for me to get my suits custom tailored to me. I recommend him to anyone and everyone!"</p>
+        <div class="mt-5 text-[12px] tracking-[.16em] uppercase text-brassLt/80">Verified Google review</div>
+      </div>
+      <div class="rounded-[3px] border border-porcelain/12 bg-porcelain/[0.04] p-7" data-reveal>
+        <div class="flex text-brassLt mb-4">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg>
+        </div>
+        <p class="text-porcelain/85 text-[15px] leading-relaxed">"He is good at his craft. You can't go wrong. Not expensive but reliable. English/Spanish speaking. My go-to for ball gown hemming or just pants."</p>
+        <div class="mt-5 text-[12px] tracking-[.16em] uppercase text-brassLt/80">Verified Google review</div>
+      </div>
+      <div class="rounded-[3px] border border-porcelain/12 bg-porcelain/[0.04] p-7" data-reveal>
+        <div class="flex text-brassLt mb-4">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.287 3.958c.3.922-.755 1.688-1.54 1.118l-3.367-2.447a1 1 0 00-1.175 0l-3.367 2.447c-.784.57-1.838-.196-1.539-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.075 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"/></svg>
+        </div>
+        <p class="text-porcelain/85 text-[15px] leading-relaxed">"Arcenio is excellent and his charges are very reasonable. The best tailor, with reasonable rates. Will only go to him in the future!"</p>
+        <div class="mt-5 text-[12px] tracking-[.16em] uppercase text-brassLt/80">Verified Google review</div>
+      </div>
+    </div>
+    <p class="mt-8 text-[12.5px] text-porcelain/45 max-w-2xl">Review excerpts quoted verbatim from public Google reviews of Arcenio Custom Tailor. Reviewer names are anonymized here to respect their privacy.</p>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="relative py-24 sm:py-32 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 items-stretch">
+      <!-- details -->
+      <div class="lg:col-span-5 flex flex-col">
+        <div class="flex items-center gap-3 mb-5" data-reveal>
+          <span class="w-8 h-px bg-brass"></span>
+          <span class="text-[11px] tracking-[.32em] uppercase font-600 text-muted">Visit the shop</span>
+        </div>
+        <h2 class="font-display tracking-tightest text-ink text-[9vw] sm:text-5xl lg:text-6xl leading-[.98] font-700 mb-8" data-reveal>
+          On Jericho Turnpike, <span class="italic grad-text">in Floral Park.</span>
+        </h2>
+
+        <div class="space-y-4" data-reveal>
+          <a href="https://www.google.com/maps?q=249-56+Jericho+Turnpike,+Floral+Park,+NY+11001" target="_blank" rel="noopener" class="svc rounded-[3px] p-5 flex items-start gap-4 group">
+            <span class="w-10 h-10 rounded-full bg-ink/5 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-oxblood" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+            </span>
+            <span>
+              <span class="block text-[11px] tracking-[.2em] uppercase text-muted">Address</span>
+              <span class="block text-ink font-600 text-[15px] mt-0.5 ul-grow">249-56 Jericho Turnpike, Floral Park, NY 11001</span>
+            </span>
+          </a>
+          <a href="tel:+15163262950" class="svc rounded-[3px] p-5 flex items-start gap-4">
+            <span class="w-10 h-10 rounded-full bg-ink/5 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-oxblood" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            </span>
+            <span>
+              <span class="block text-[11px] tracking-[.2em] uppercase text-muted">Call the shop</span>
+              <span class="block text-ink font-600 text-[15px] mt-0.5 ul-grow">(516) 326-2950</span>
+            </span>
+          </a>
+          <div class="svc rounded-[3px] p-5 flex items-start gap-4">
+            <span class="w-10 h-10 rounded-full bg-ink/5 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-oxblood" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </span>
+            <span>
+              <span class="block text-[11px] tracking-[.2em] uppercase text-muted">Hours</span>
+              <span class="block text-ink font-600 text-[15px] mt-0.5">Open Monday–Saturday</span>
+              <span class="block text-muted text-[13.5px] mt-1">Hours can vary by day — please call ahead to confirm today's hours before you head over.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- map -->
+      <div class="lg:col-span-7" data-reveal>
+        <div class="relative h-full min-h-[380px] rounded-[3px] overflow-hidden border border-ink/10 shadow-[0_30px_60px_-40px_rgba(27,23,20,.5)]">
+          <iframe
+            title="Map to Arcenio Custom Tailor, 249-56 Jericho Turnpike, Floral Park, NY 11001"
+            src="https://www.google.com/maps?q=249-56%20Jericho%20Turnpike%2C%20Floral%20Park%2C%20NY%2011001&output=embed"
+            width="100%" height="100%" style="border:0; min-height:380px; display:block;"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative py-24 sm:py-28 bg-oxblood text-porcelain overflow-hidden">
+  <div class="absolute inset-0 opacity-[.08] pointer-events-none" style="background-image:radial-gradient(#F7F1E7 0.6px, transparent 0.6px); background-size:4px 4px;"></div>
+  <div class="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <div class="flex items-baseline justify-center gap-2 mb-7" data-reveal>
+      <span class="font-display text-2xl font-700 tracking-tightest">Arcenio</span>
+      <span class="text-[10px] tracking-[.34em] font-600 text-brassLt uppercase">Custom Tailor</span>
+    </div>
+    <h2 class="font-display tracking-tightest text-[9vw] sm:text-5xl lg:text-[3.6rem] leading-[1.02] font-700" data-reveal>
+      Bring in the piece. Walk out with <span class="italic text-brassLt">a fit that's yours.</span>
+    </h2>
+    <p class="mt-6 text-porcelain/80 text-[15px] sm:text-lg max-w-xl mx-auto leading-relaxed" data-reveal>
+      Suits, gowns, or the pants no one else could get right — call Arcenio and book a fitting on Jericho Turnpike.
+    </p>
+    <div class="mt-9 flex flex-col sm:flex-row gap-3.5 justify-center" data-reveal>
+      <a href="tel:+15163262950" class="btn rounded-full px-8 py-4 text-[14px] font-600 tracking-wide bg-porcelain text-oxblood inline-flex items-center justify-center gap-2.5 hover:-translate-y-0.5 transition-transform">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+        (516) 326-2950
+      </a>
+      <a href="https://www.google.com/maps?q=249-56+Jericho+Turnpike,+Floral+Park,+NY+11001" target="_blank" rel="noopener" class="btn rounded-full px-8 py-4 text-[14px] font-600 tracking-wide border border-porcelain/40 text-porcelain inline-flex items-center justify-center gap-2.5 hover:border-porcelain hover:-translate-y-0.5 transition-all">
+        Get directions
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-charcoal text-porcelain/70 pt-16 pb-28 md:pb-14">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-12 gap-10 pb-12 border-b border-porcelain/12">
+      <div class="sm:col-span-5">
+        <div class="flex items-baseline gap-2 mb-4">
+          <span class="font-display text-2xl font-700 tracking-tightest text-porcelain">Arcenio</span>
+          <span class="text-[10px] tracking-[.34em] font-600 text-brassLt uppercase">Custom Tailor</span>
+        </div>
+        <p class="text-[14px] leading-relaxed max-w-sm">Bespoke tailoring, alterations, and custom sewing for men and women — hand-finished in Floral Park, New York. English &amp; Spanish spoken.</p>
+      </div>
+      <div class="sm:col-span-3">
+        <div class="text-[11px] tracking-[.24em] uppercase text-brassLt/80 mb-4">Services</div>
+        <ul class="space-y-2 text-[14px]">
+          <li>Bespoke suits &amp; jackets</li>
+          <li>Alterations, men &amp; women</li>
+          <li>Formalwear &amp; gowns</li>
+          <li>Custom sewing</li>
+          <li>Shapewear &amp; faja fitting</li>
+        </ul>
+      </div>
+      <div class="sm:col-span-4">
+        <div class="text-[11px] tracking-[.24em] uppercase text-brassLt/80 mb-4">Visit</div>
+        <ul class="space-y-2 text-[14px]">
+          <li><a href="https://www.google.com/maps?q=249-56+Jericho+Turnpike,+Floral+Park,+NY+11001" target="_blank" rel="noopener" class="ul-grow hover:text-porcelain">249-56 Jericho Turnpike, Floral Park, NY 11001</a></li>
+          <li><a href="tel:+15163262950" class="ul-grow hover:text-porcelain">(516) 326-2950</a></li>
+          <li>Open Monday–Saturday · call to confirm hours</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-porcelain/45">
+      <div>© <span id="yr">2026</span> Arcenio Custom Tailor · Floral Park, NY</div>
+      <div>Site by <a href="https://turnkeyweb.org" class="text-brassLt/80 hover:text-brassLt ul-grow">Turnkey Web</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="sticky-bar fixed bottom-0 inset-x-0 z-50 md:hidden bg-porcelain/95 backdrop-blur border-t border-ink/12 px-3 py-2.5 flex gap-2.5" style="padding-bottom:calc(0.625rem + env(safe-area-inset-bottom));">
+  <a href="tel:+15163262950" class="flex-1 btn btn-primary rounded-full py-3 text-[13.5px] font-600 tracking-wide inline-flex items-center justify-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=249-56+Jericho+Turnpike,+Floral+Park,+NY+11001" target="_blank" rel="noopener" class="flex-1 btn btn-outline rounded-full py-3 text-[13.5px] font-600 tracking-wide inline-flex items-center justify-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":["LocalBusiness","ClothingStore"],
+  "name":"Arcenio Custom Tailor",
+  "description":"Bespoke tailoring, custom suits, alterations and custom sewing for men and women in Floral Park, NY. English and Spanish spoken.",
+  "url":"https://turnkeyweb.org/previews/arcenio-custom-tailor/",
+  "telephone":"+1-516-326-2950",
+  "address":{"@type":"PostalAddress","streetAddress":"249-56 Jericho Turnpike","addressLocality":"Floral Park","addressRegion":"NY","postalCode":"11001","addressCountry":"US"},
+  "areaServed":["Floral Park","Nassau County","Long Island","Queens"],
+  "knowsLanguage":["en","es"],
+  "priceRange":"$$",
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.2","reviewCount":"14"},
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Bespoke suits & jackets"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Alterations for men & women"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Formalwear & gown alterations"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Custom sewing & made-to-measure"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Shapewear & faja fitting"}}
+  ]
+}
+</script>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---------- Lenis + GSAP single ticker ---------- */
+  var lenis;
+  if (window.Lenis && !reduce){
+    lenis = new Lenis({ duration:1.1, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}, smoothWheel:true, smoothTouch:false });
+    if (window.gsap){
+      gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+      gsap.ticker.lagSmoothing(0);
+      if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+    } else {
+      (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })();
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var id = a.getAttribute('href'); if(id.length<2) return;
+        var el = document.querySelector(id); if(!el) return;
+        e.preventDefault(); lenis.scrollTo(el, { offset:-70 });
+      });
+    });
+  }
+  if (window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize:true });
+  }
+
+  /* ---------- Nav scrolled state ---------- */
+  var nav = document.getElementById('nav');
+  function navState(){ if(window.scrollY>24){ nav.style.background='rgba(247,241,231,.9)'; nav.style.backdropFilter='blur(10px)'; nav.style.boxShadow='0 1px 0 rgba(27,23,20,.08)'; } else { nav.style.background='transparent'; nav.style.backdropFilter='none'; nav.style.boxShadow='none'; } }
+  navState(); window.addEventListener('scroll', navState, {passive:true});
+
+  /* ---------- Hero headline word reveal ---------- */
+  var head = document.querySelector('[data-hero-head]');
+  if (head && window.gsap && !reduce){
+    // wrap words to avoid mid-word breaks; keep existing <span> accents
+    var html = head.innerHTML;
+    head.style.opacity = 1;
+  }
+
+  /* ---------- Reveals ---------- */
+  function doReveal(){
+    if (window.gsap && window.ScrollTrigger && !reduce){
+      gsap.utils.toArray('[data-reveal]').forEach(function(el){
+        gsap.fromTo(el, {opacity:0,y:30}, {opacity:1,y:0,duration:.7,ease:'power3.out',
+          scrollTrigger:{trigger:el, start:'top 92%', once:true},
+          onComplete:function(){ el.style.willChange='auto'; }});
+      });
+      gsap.utils.toArray('[data-clip]').forEach(function(el){
+        ScrollTrigger.create({trigger:el, start:'top 85%', once:true, onEnter:function(){ el.classList.add('in'); }});
+      });
+      ScrollTrigger.refresh();
+    } else {
+      document.querySelectorAll('[data-reveal],[data-clip]').forEach(function(el){ el.classList.add('in'); el.style.opacity=1; el.style.transform='none'; });
+    }
+  }
+  doReveal();
+
+  /* ---------- Count-up ---------- */
+  function countUp(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var dec = parseInt(el.getAttribute('data-dec')||'0',10);
+    if (isNaN(target)) return;
+    if (reduce || !window.gsap){ el.textContent = dec? target.toFixed(dec): Math.round(target); return; }
+    var obj={v:0};
+    gsap.to(obj,{v:target,duration:1.5,ease:'power2.out',onUpdate:function(){ el.textContent = dec? obj.v.toFixed(dec): Math.round(obj.v); }});
+  }
+  if (window.ScrollTrigger && !reduce){
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:function(){ countUp(el); }});
+    });
+  } else {
+    document.querySelectorAll('[data-count]').forEach(countUp);
+  }
+
+  /* ---------- Signature: stitched seam draw ---------- */
+  var seam = document.getElementById('seam-path');
+  if (seam && window.gsap && window.ScrollTrigger && !reduce){
+    var len = seam.getTotalLength();
+    seam.style.strokeDasharray = len;
+    seam.style.strokeDashoffset = len;
+    gsap.to(seam, { strokeDashoffset:0, ease:'none',
+      scrollTrigger:{ trigger:'#craft', start:'top 60%', end:'bottom 80%', scrub:0.6 } });
+  }
+
+  /* ---------- WebGL gold-thread field (Three.js) ---------- */
+  (function threadField(){
+    var canvas = document.getElementById('thread-canvas');
+    if (!canvas || !window.THREE || reduce) return;
+    var isMobile = window.matchMedia('(max-width:768px)').matches;
+    var lowPower = (navigator.hardwareConcurrency||8) <= 4;
+    if (isMobile && lowPower){ canvas.style.display='none'; return; }
+
+    var renderer, scene, camera, lines=[], running=true, visible=true, raf=0;
+    try {
+      renderer = new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:true});
+    } catch(e){ canvas.style.display='none'; return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile?1.5:2));
+
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+    camera.position.z = 18;
+
+    var COUNT = isMobile ? 14 : 26;
+    var W = 40, H = 24, SEG = 90;
+    var palette = [0xB0894F, 0xC9A567, 0x8A6533, 0x6E2B2B];
+
+    for (var i=0;i<COUNT;i++){
+      var geo = new THREE.BufferGeometry();
+      var pos = new Float32Array(SEG*3);
+      geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+      var mat = new THREE.LineBasicMaterial({ color: palette[i%palette.length], transparent:true, opacity: 0.16 + Math.random()*0.22 });
+      var line = new THREE.Line(geo, mat);
+      line.userData = {
+        baseY: (Math.random()-0.5)*H,
+        amp: 1.4 + Math.random()*2.6,
+        freq: 0.35 + Math.random()*0.5,
+        phase: Math.random()*Math.PI*2,
+        speed: 0.12 + Math.random()*0.22,
+        z: (Math.random()-0.5)*8
+      };
+      lines.push(line); scene.add(line);
+    }
+
+    function resize(){
+      var r = canvas.getBoundingClientRect();
+      var w = r.width||window.innerWidth, h = r.height||window.innerHeight;
+      renderer.setSize(w,h,false);
+      camera.aspect = w/h; camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    var t0 = performance.now();
+    function frame(now){
+      if (!running){ return; }
+      raf = requestAnimationFrame(frame);
+      if (!visible) return;
+      var t = (now - t0)/1000;
+      for (var i=0;i<lines.length;i++){
+        var L = lines[i], u = L.userData, arr = L.geometry.attributes.position.array;
+        for (var s=0;s<SEG;s++){
+          var px = -W/2 + (W)*(s/(SEG-1));
+          var y = u.baseY + Math.sin(px*u.freq + t*u.speed + u.phase)*u.amp
+                          + Math.sin(px*0.15 + t*u.speed*0.6)*0.6;
+          arr[s*3]   = px;
+          arr[s*3+1] = y;
+          arr[s*3+2] = u.z + Math.cos(px*0.2 + t*0.2 + u.phase)*0.8;
+        }
+        L.geometry.attributes.position.needsUpdate = true;
+      }
+      scene.rotation.z = Math.sin(t*0.03)*0.04;
+      renderer.render(scene,camera);
+    }
+    raf = requestAnimationFrame(frame);
+
+    document.addEventListener('visibilitychange', function(){
+      visible = !document.hidden;
+    });
+    // pause when hero scrolled offscreen
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(ents){
+        ents.forEach(function(en){ visible = en.isIntersecting; });
+      }, {threshold:0.01});
+      io.observe(document.getElementById('top'));
+    }
+  })();
+
+  /* ---------- 6s safety net (crawlers / screenshots) ---------- */
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ if(getComputedStyle(el).opacity!=='1'){ el.style.opacity=1; el.style.transform='none'; } });
+    document.querySelectorAll('[data-clip]').forEach(function(el){ el.classList.add('in'); });
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      if(el.textContent==='0'||el.textContent===''){ var t=parseFloat(el.getAttribute('data-count')); var d=parseInt(el.getAttribute('data-dec')||'0',10); el.textContent = d? t.toFixed(d): Math.round(t); }
+    });
+    var seam=document.getElementById('seam-path'); if(seam){ seam.style.strokeDashoffset=0; }
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  }, 6000);
+})();
+</script>
+</body>
+</html>
