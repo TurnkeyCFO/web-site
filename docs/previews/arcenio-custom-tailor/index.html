@@ -511,12 +511,13 @@ tailwind.config = {
 
       <!-- map -->
       <div class="lg:col-span-7" data-reveal>
-        <!-- Desktop: live interactive Google Maps embed -->
+        <!-- Desktop: live interactive Google Maps embed over a real static map (instant paint / capture-safe) -->
         <div class="hidden md:block relative h-full min-h-[380px] rounded-[3px] overflow-hidden border border-ink/10 shadow-[0_30px_60px_-40px_rgba(27,23,20,.5)] bg-bone">
+          <img src="assets/map-static.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover z-0">
           <iframe
             title="Map to Arcenio Custom Tailor, 249-56 Jericho Turnpike, Floral Park, NY 11001"
             src="https://www.google.com/maps?q=249-56%20Jericho%20Turnpike%2C%20Floral%20Park%2C%20NY%2011001&output=embed"
-            width="100%" height="100%" style="border:0; min-height:380px; display:block;"
+            width="100%" height="100%" style="border:0; min-height:380px; display:block; position:relative; z-index:10;"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <!-- Mobile: real static map (from the live listing) that taps through to Google Maps -->
