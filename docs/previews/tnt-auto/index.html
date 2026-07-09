@@ -126,7 +126,7 @@ tailwind.config = { theme: { extend: {
       <span class="tech font-700 text-bone bg-iron rounded-lg px-2.5 py-1.5 text-[15px] tracking-[.14em] leading-none shadow-[0_10px_22px_-10px_rgba(176,54,43,.8)]">TNT</span>
       <span class="leading-none">
         <span class="disp font-600 text-ink text-[19px] tracking-tight block">Auto</span>
-        <span class="tech tt text-[8.5px] text-steel">Body · Mechanical</span>
+        <span class="tech tt text-[8.5px] text-ink/60">Body · Mechanical</span>
       </span>
     </a>
     <nav class="hidden lg:flex items-center gap-9 tech text-[13.5px] font-500 text-ink/80">
@@ -225,7 +225,6 @@ tailwind.config = { theme: { extend: {
 <!-- MARQUEE -->
 <div class="marq bg-ink py-4 border-y border-ink">
   <div class="marq-track tech tt text-[13px] text-bone/85">
-    <span class="flex items-center gap-2.6"></span>
     <span class="flex items-center gap-10 pr-10">
       <span>Collision Repair</span><span class="text-iron">◆</span><span>Frame Straightening</span><span class="text-iron">◆</span><span>Transmission</span><span class="text-iron">◆</span><span class="italic disp normal-case tracking-normal text-brass text-[16px]">Fair quotes, always</span><span class="text-iron">◆</span><span>Paint &amp; Body</span><span class="text-iron">◆</span><span>Brakes &amp; Alignment</span><span class="text-iron">◆</span><span>State Inspection</span><span class="text-iron">◆</span><span>24-Hour Towing</span><span class="text-iron">◆</span>
     </span>
@@ -549,11 +548,14 @@ tailwind.config = { theme: { extend: {
       </div>
 
       <!-- map -->
-      <div class="rounded-2xl overflow-hidden frame min-h-[360px] lg:min-h-full border border-shell" data-reveal>
+      <div class="relative rounded-2xl overflow-hidden frame min-h-[360px] lg:min-h-full border border-shell" data-reveal>
+        <div class="absolute inset-0 flex items-center justify-center" style="background:radial-gradient(120% 120% at 50% 40%, #EDE3D3, #E4D8C4)">
+          <svg class="w-10 h-10 text-iron/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+        </div>
         <iframe
           title="TNT Auto location map — 3064 Seymour Hwy, Wichita Falls, TX 76301"
           src="https://www.google.com/maps?q=3064%20Seymour%20Hwy%2C%20Wichita%20Falls%2C%20TX%2076301&output=embed"
-          width="100%" height="100%" style="border:0; min-height:360px; display:block; filter:saturate(.95)"
+          width="100%" height="100%" style="border:0; min-height:360px; display:block; position:relative; z-index:1; filter:saturate(.95)"
           loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
@@ -795,13 +797,13 @@ if(!isTouch && !reduce){
   document.addEventListener('visibilitychange',()=>{ running=!document.hidden && document.getElementById('top').getBoundingClientRect().bottom>0; if(running && !raf) raf=requestAnimationFrame(render); });
 })();
 
-/* ---------- 6s screenshot / crawler safety net ---------- */
+/* ---------- screenshot / crawler safety net (fast, so capture bots always see content) ---------- */
 setTimeout(()=>{
   document.querySelectorAll('[data-reveal]').forEach(el=>{ if(getComputedStyle(el).opacity<0.9){ el.style.opacity=1; el.style.transform='none'; } });
   document.querySelectorAll('[data-clip]').forEach(el=>{ el.style.clipPath='inset(0 0 0% 0)'; });
   document.querySelectorAll('#headline span').forEach(el=>{ el.style.transform='none'; el.style.opacity=1; });
   document.querySelectorAll('[data-count]').forEach(el=>{ if(el.textContent.trim()==='0'||el.textContent.trim()===''){ const d=parseInt(el.dataset.decimals||'0'); el.textContent=parseFloat(el.dataset.count).toFixed(d)+(el.dataset.suffix||''); } });
-}, 6000);
+}, 2200);
 </script>
 </body>
 </html>
