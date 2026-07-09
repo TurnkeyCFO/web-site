@@ -88,6 +88,23 @@ tailwind.config = { theme: { extend: {
   .spec-cell{ position:relative; }
   .spec-cell + .spec-cell::before{ content:''; position:absolute; left:0; top:18%; bottom:18%; width:1px; background:rgba(26,23,20,.12); }
 
+  /* branded static map facade */
+  .map-canvas{
+    background:
+      linear-gradient(90deg, transparent 0 47%, rgba(110,122,130,.20) 47% 48.4%, transparent 48.4%),
+      linear-gradient(90deg, transparent 0 22%, rgba(110,122,130,.12) 22% 22.8%, transparent 22.8%),
+      linear-gradient(90deg, transparent 0 74%, rgba(110,122,130,.12) 74% 74.8%, transparent 74.8%),
+      linear-gradient(0deg, transparent 0 58%, rgba(110,122,130,.20) 58% 59.6%, transparent 59.6%),
+      linear-gradient(0deg, transparent 0 31%, rgba(110,122,130,.12) 31% 31.8%, transparent 31.8%),
+      linear-gradient(0deg, transparent 0 82%, rgba(110,122,130,.12) 82% 82.8%, transparent 82.8%),
+      radial-gradient(38% 30% at 74% 26%, rgba(127,168,140,.34), transparent 70%),
+      radial-gradient(30% 26% at 20% 78%, rgba(127,168,140,.24), transparent 72%),
+      linear-gradient(180deg, #F1E9DB, #E8DCC8);
+  }
+  .map-route{ background:
+      linear-gradient(122deg, transparent 0 43.5%, rgba(176,54,43,.85) 43.5% 45.8%, transparent 45.8%);
+    filter:drop-shadow(0 1px 0 rgba(255,255,255,.5)); }
+
   /* framed image (used in other sections) */
   .frame{ box-shadow:0 40px 80px -34px rgba(26,23,20,.45), 0 8px 22px -12px rgba(26,23,20,.25); }
   .tag-brass{ box-shadow:0 14px 30px -12px rgba(185,141,82,.6); }
@@ -172,7 +189,7 @@ tailwind.config = { theme: { extend: {
 </header>
 
 <!-- HERO — full-bleed cinematic -->
-<section id="top" class="relative min-h-[100svh] flex flex-col overflow-hidden">
+<section id="top" class="relative min-h-[92svh] flex flex-col overflow-hidden">
   <!-- layered background: photo → webgl sweep → cream scrim → grain -->
   <div class="hero-photo"><img id="heroImg" src="assets/bay.jpg" alt="Bright, clean TNT Auto service bay in Wichita Falls with a vehicle on the lift" class="hero-photo-img" loading="eager"></div>
   <canvas id="sweep"></canvas>
@@ -268,7 +285,7 @@ tailwind.config = { theme: { extend: {
 </div>
 
 <!-- PROMISE / WHY -->
-<section id="promise" class="relative py-24 sm:py-32 bg-cream overflow-hidden">
+<section id="promise" class="relative py-12 sm:py-28 bg-cream overflow-hidden">
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
     <div class="max-w-4xl">
       <span class="tech tt text-[11px] text-iron" data-reveal>Why people keep coming back</span>
@@ -278,7 +295,7 @@ tailwind.config = { theme: { extend: {
       </h2>
     </div>
 
-    <div class="mt-16 grid md:grid-cols-3 gap-px bg-shell rounded-2xl overflow-hidden border border-shell">
+    <div class="mt-10 sm:mt-16 grid md:grid-cols-3 gap-px bg-shell rounded-2xl overflow-hidden border border-shell">
       <div class="bg-bone p-8" data-reveal>
         <div class="outline-num disp font-700 text-[46px] leading-none mb-4">01</div>
         <h3 class="disp font-600 text-[22px] text-ink mb-2">A fair quote, fast</h3>
@@ -297,7 +314,7 @@ tailwind.config = { theme: { extend: {
     </div>
 
     <!-- stat band -->
-    <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4" data-reveal>
+    <div class="mt-14 hidden sm:grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4" data-reveal>
       <div>
         <div class="disp font-600 text-iron text-[clamp(2.2rem,5vw,3.2rem)] leading-none"><span data-count="4.5" data-decimals="1">0</span></div>
         <div class="tech tt text-[10.5px] text-ink/60 mt-2">Google rating</div>
@@ -319,7 +336,7 @@ tailwind.config = { theme: { extend: {
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="relative py-24 sm:py-32 bg-bone overflow-hidden">
+<section id="services" class="relative py-12 sm:py-28 bg-bone overflow-hidden">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="grid lg:grid-cols-[1fr_.82fr] gap-14 items-start">
       <!-- list -->
@@ -333,7 +350,7 @@ tailwind.config = { theme: { extend: {
 
         <div class="border-t border-ink/12">
           <!-- row -->
-          <div class="srow group flex items-start gap-5 py-7 px-3 border-b border-ink/12" data-reveal>
+          <div class="srow group flex items-start gap-5 py-5 sm:py-7 px-3 border-b border-ink/12" data-reveal>
             <span class="svg-ic shrink-0 w-11 h-11 rounded-xl bg-iron/10 text-iron flex items-center justify-center">
               <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M8 6l2-2h4l2 2m-9 0h10l1.5 4H5.5L7 6zM5 10v6a1 1 0 001 1h1a1 1 0 001-1v-1h8v1a1 1 0 001 1h1a1 1 0 001-1v-6"/><circle cx="8" cy="14" r="1"/><circle cx="16" cy="14" r="1"/></svg>
             </span>
@@ -346,7 +363,7 @@ tailwind.config = { theme: { extend: {
             </div>
           </div>
 
-          <div class="srow group flex items-start gap-5 py-7 px-3 border-b border-ink/12" data-reveal>
+          <div class="srow group flex items-start gap-5 py-5 sm:py-7 px-3 border-b border-ink/12" data-reveal>
             <span class="svg-ic shrink-0 w-11 h-11 rounded-xl bg-iron/10 text-iron flex items-center justify-center">
               <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-5 4 10 2-5h6"/></svg>
             </span>
@@ -359,7 +376,7 @@ tailwind.config = { theme: { extend: {
             </div>
           </div>
 
-          <div class="srow group flex items-start gap-5 py-7 px-3 border-b border-ink/12" data-reveal>
+          <div class="srow group flex items-start gap-5 py-5 sm:py-7 px-3 border-b border-ink/12" data-reveal>
             <span class="svg-ic shrink-0 w-11 h-11 rounded-xl bg-iron/10 text-iron flex items-center justify-center">
               <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v3m0 12v3m9-9h-3M6 12H3m14.5-6.5l-2.1 2.1M8.6 15.4l-2.1 2.1m12 .0l-2.1-2.1M8.6 8.6L6.5 6.5"/></svg>
             </span>
@@ -372,7 +389,7 @@ tailwind.config = { theme: { extend: {
             </div>
           </div>
 
-          <div class="srow group flex items-start gap-5 py-7 px-3 border-b border-ink/12" data-reveal>
+          <div class="srow group flex items-start gap-5 py-5 sm:py-7 px-3 border-b border-ink/12" data-reveal>
             <span class="svg-ic shrink-0 w-11 h-11 rounded-xl bg-iron/10 text-iron flex items-center justify-center">
               <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
             </span>
@@ -385,7 +402,7 @@ tailwind.config = { theme: { extend: {
             </div>
           </div>
 
-          <div class="srow group flex items-start gap-5 py-7 px-3 border-b border-ink/12" data-reveal>
+          <div class="srow group flex items-start gap-5 py-5 sm:py-7 px-3 border-b border-ink/12" data-reveal>
             <span class="svg-ic shrink-0 w-11 h-11 rounded-xl bg-iron/10 text-iron flex items-center justify-center">
               <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-6"/></svg>
             </span>
@@ -403,7 +420,7 @@ tailwind.config = { theme: { extend: {
       </div>
 
       <!-- image column -->
-      <div class="space-y-5 lg:sticky lg:top-28">
+      <div class="space-y-5 lg:sticky lg:top-28 hidden lg:block">
         <div class="rounded-2xl overflow-hidden frame" data-reveal data-clip>
           <img src="assets/repair.jpg" alt="Technician working under the hood at TNT Auto" class="w-full h-[42vh] object-cover">
         </div>
@@ -421,7 +438,7 @@ tailwind.config = { theme: { extend: {
 </section>
 
 <!-- PROCESS -->
-<section id="process" class="relative py-24 sm:py-28 bg-cream overflow-hidden">
+<section id="process" class="relative py-12 sm:py-24 bg-cream overflow-hidden">
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
     <div class="max-w-2xl mb-14" data-reveal>
       <span class="tech tt text-[11px] text-iron">How it works</span>
@@ -457,7 +474,7 @@ tailwind.config = { theme: { extend: {
 </section>
 
 <!-- REVIEWS -->
-<section id="reviews" class="relative py-24 sm:py-32 bg-bone overflow-hidden">
+<section id="reviews" class="relative py-12 sm:py-28 bg-bone overflow-hidden">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
       <div data-reveal>
@@ -478,7 +495,7 @@ tailwind.config = { theme: { extend: {
 
     <div class="grid lg:grid-cols-3 gap-6">
       <!-- featured -->
-      <article class="rev lg:row-span-2 bg-graphite text-bone rounded-2xl p-9 flex flex-col justify-between" data-reveal>
+      <article class="rev lg:row-span-2 bg-graphite text-bone rounded-2xl p-7 sm:p-9 flex flex-col justify-between" data-reveal>
         <div>
           <div class="flex text-brass mb-5">
             <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg>
@@ -513,7 +530,7 @@ tailwind.config = { theme: { extend: {
         </div>
       </article>
 
-      <article class="rev bg-cream border border-shell rounded-2xl p-7" data-reveal>
+      <article class="rev bg-cream border border-shell rounded-2xl p-7 hidden md:block" data-reveal>
         <div class="flex text-iron mb-4">
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg>
         </div>
@@ -524,7 +541,7 @@ tailwind.config = { theme: { extend: {
         </div>
       </article>
 
-      <article class="rev bg-cream border border-shell rounded-2xl p-7" data-reveal>
+      <article class="rev bg-cream border border-shell rounded-2xl p-7 hidden md:block" data-reveal>
         <div class="flex text-iron mb-4">
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.98l-5.2 2.73.99-5.79-4.21-4.1 5.82-.85z"/></svg>
         </div>
@@ -540,7 +557,7 @@ tailwind.config = { theme: { extend: {
 </section>
 
 <!-- VISIT -->
-<section id="visit" class="relative py-24 sm:py-32 bg-cream overflow-hidden">
+<section id="visit" class="relative py-12 sm:py-28 bg-cream overflow-hidden">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="grid lg:grid-cols-2 gap-10 items-stretch">
       <!-- info -->
@@ -581,14 +598,12 @@ tailwind.config = { theme: { extend: {
       </div>
 
       <!-- map -->
-      <div class="relative rounded-2xl overflow-hidden frame h-[380px] lg:h-full lg:min-h-[520px] border border-shell" data-reveal>
-        <div class="absolute inset-0 flex items-center justify-center" style="background:radial-gradient(120% 120% at 50% 40%, #EDE3D3, #E4D8C4)">
-          <svg class="w-10 h-10 text-iron/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-        </div>
+      <div class="relative rounded-2xl overflow-hidden frame h-[260px] lg:h-full lg:min-h-[520px] border border-shell" data-reveal>
+        <div class="absolute inset-0 map-canvas"></div>
         <iframe
           title="TNT Auto location map — 3064 Seymour Hwy, Wichita Falls, TX 76301"
           src="https://www.google.com/maps?q=3064%20Seymour%20Hwy%2C%20Wichita%20Falls%2C%20TX%2076301&output=embed"
-          width="100%" height="100%" style="border:0; position:absolute; inset:0; width:100%; height:100%; display:block; z-index:1; filter:saturate(.95)"
+          style="border:0; position:absolute; inset:0; width:100%; height:100%; display:block; z-index:1; filter:saturate(.95)"
           loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <div class="absolute left-4 bottom-4 z-[2] flex items-center gap-2 bg-bone/95 backdrop-blur rounded-full pl-3 pr-4 py-2 shadow-lg pointer-events-none">
           <svg class="w-4 h-4 text-iron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
@@ -600,7 +615,7 @@ tailwind.config = { theme: { extend: {
 </section>
 
 <!-- CTA -->
-<section class="relative py-20 sm:py-28 bg-graphite text-bone overflow-hidden">
+<section class="relative py-14 sm:py-24 bg-graphite text-bone overflow-hidden">
   <div class="absolute inset-0 opacity-[.5]" style="background:radial-gradient(60% 90% at 80% 20%, rgba(176,54,43,.34), transparent 60%), radial-gradient(50% 80% at 10% 90%, rgba(185,141,82,.18), transparent 60%)"></div>
   <div class="relative mx-auto max-w-5xl px-5 sm:px-8 text-center">
     <div class="inline-flex items-center gap-2.5 mb-7" data-reveal>
