@@ -34,7 +34,7 @@
         colors: {
           bone: '#F4ECE3', cream: '#FBF6F1', sage: '#7FA88C',
           olive: '#3F5A43', forest: '#233527', amber: '#B98D52',
-          ink: '#20281F', mute: '#6B7367'
+          ink: '#20281F', mute: '#4C5344'
         },
         fontFamily: {
           display: ['Fraunces', 'serif'],
@@ -474,11 +474,18 @@
       </div>
     </div>
 
-    <div data-reveal class="rounded-3xl overflow-hidden shadow-xl border border-ink/8 min-h-[420px]">
+    <div data-reveal class="relative rounded-3xl overflow-hidden shadow-xl border border-ink/8 h-[440px]" style="background:#eaf0e7;">
+      <!-- designed fallback layer (never a blank box) -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-8 z-0" style="background:radial-gradient(circle at 50% 38%, #dbe6d8, #eaf0e7 70%);">
+        <svg class="w-12 h-12 text-olive mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="font-display text-2xl font-semibold text-forest">Livingston County, Michigan</div>
+        <div class="text-[13.5px] text-ink/60 mt-1">Along the M-36 corridor · Pinckney &amp; Gregory</div>
+      </div>
       <iframe
         title="B&W Tree Service — Livingston County, Michigan service area"
         src="https://www.google.com/maps?q=Gregory%2C%20MI%2048137&output=embed"
-        width="100%" height="100%" style="border:0; min-height:420px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        onload="this.style.opacity=1"
+        width="100%" height="440" style="border:0; position:relative; z-index:1; opacity:0; transition:opacity .6s ease;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
