@@ -2,679 +2,334 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Odyssey — A Journey From Idea to Launch</title>
-<meta name="description" content="Odyssey is a studio that carries one idea all the way to a launched thing. Begin the journey.">
-<meta name="theme-color" content="#08080c">
+<title>Odyssey — from a single idea to a living thing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#08080c;--bg2:#0c0c14;--ink:#f2f0f7;--mut:rgba(242,240,247,.56);--mut2:rgba(242,240,247,.32);
-    --acc:#6366F1;--acc-l:#a5b4fc;--teal:#2dd4bf;--line:rgba(242,240,247,.1);
-    --disp:'Space Grotesk',system-ui,sans-serif;--body:'Plus Jakarta Sans',system-ui,sans-serif;
-    --e1:cubic-bezier(.16,1,.3,1);--e2:cubic-bezier(.7,0,.2,1);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%;background:var(--bg)}
-  body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  body.lock{overflow:hidden;height:100vh}
-  h1,h2,h3{font-family:var(--disp);font-weight:600;line-height:1.02;letter-spacing:-.03em}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
-  .acc{color:var(--acc-l)}
+:root{
+  --bg:#05060a; --ink:#F3F1EC; --dim:#9ba0b0; --faint:#5a5f70;
+  --indigo:#6C7BFF; --teal:#37E0C8; --line:rgba(255,255,255,.09);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--bg);color:var(--ink);font-family:"Space Grotesk",sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
+@media(hover:none){body{cursor:auto}}
+a{color:inherit;text-decoration:none}
+canvas{display:block}
 
-  /* ---- fixed 3D canvas behind everything ---- */
-  #scene{position:fixed;inset:0;z-index:0;width:100%;height:100%;display:block}
-  #veil{position:fixed;inset:0;z-index:1;pointer-events:none;
-    background:radial-gradient(120% 90% at 50% 40%,transparent 40%,rgba(8,8,12,.55) 100%)}
-  .content{position:relative;z-index:2}
+#scene{position:fixed;inset:0;z-index:0}
+.vignette{position:fixed;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 42%,transparent 40%,rgba(0,0,0,.35) 78%,rgba(0,0,0,.72) 100%)}
+.grain{position:fixed;inset:-50%;z-index:3;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 6s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-2%)}60%{transform:translate(-2%,4%)}80%{transform:translate(4%,2%)}100%{transform:translate(0,0)}}
+@media(max-width:820px){.grain{display:none}}
 
-  /* ---- preloader ---- */
-  #pre{position:fixed;inset:0;z-index:5000;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:26px}
-  #pre .lbl{font-family:var(--body);font-weight:500;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--mut)}
-  #pre .cnt{font-family:var(--disp);font-weight:700;font-size:clamp(64px,14vw,180px);line-height:.82;letter-spacing:-.05em;color:var(--ink)}
-  #pre .bar{width:min(340px,60vw);height:1px;background:var(--line);position:relative;overflow:hidden}
-  #pre .bar i{position:absolute;inset:0;background:linear-gradient(90deg,var(--acc),var(--acc-l));transform:scaleX(0);transform-origin:left}
-  #pre.done{transform:translateY(-100%);transition:transform 1.1s var(--e1)}
+.topbar{position:fixed;top:0;left:0;width:100%;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:26px 40px;background:linear-gradient(to bottom,rgba(5,6,10,.65),transparent)}
+.brand{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:.14em;font-size:14px}
+.brand .orb{width:9px;height:9px;border-radius:50%;background:var(--teal);box-shadow:0 0 14px var(--teal)}
+.topbar .begin{font-size:13px;letter-spacing:.06em;color:var(--dim);border:1px solid var(--line);
+  padding:9px 20px;border-radius:100px;transition:.35s}
+.topbar .begin:hover{color:var(--ink);border-color:rgba(255,255,255,.3)}
+.progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:21;
+  background:linear-gradient(90deg,var(--indigo),var(--teal));box-shadow:0 0 12px var(--teal)}
+.chapter{position:fixed;top:26px;left:50%;transform:translateX(-50%);z-index:20;font-size:11px;letter-spacing:.34em;
+  color:var(--faint);text-transform:uppercase;opacity:0;transition:opacity .5s}
+@media(max-width:820px){.topbar{padding:20px 22px}.chapter{display:none}}
 
-  /* ---- progress ---- */
-  .prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--acc),var(--teal));z-index:400}
+.beats{position:fixed;inset:0;z-index:6;display:flex;align-items:center;pointer-events:none}
+.beats .inner{width:100%;max-width:1240px;margin:0 auto;padding:0 40px}
+.beat{position:absolute;max-width:730px;opacity:0;will-change:transform,opacity,filter}
+.beat .kicker{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--teal);margin-bottom:20px;
+  display:flex;align-items:center;gap:14px}
+.beat .kicker::before{content:"";width:34px;height:1px;background:var(--teal);opacity:.6}
+.beat h2{font-family:"Instrument Serif",serif;font-weight:400;line-height:1.02;letter-spacing:-.01em;
+  font-size:clamp(38px,6vw,84px)}
+.beat h2 .it{font-style:italic;color:var(--indigo)}
+.beat p{margin-top:26px;max-width:44ch;font-size:clamp(15px,1.35vw,19px);line-height:1.62;color:var(--dim)}
+@media(max-width:820px){.beats .inner{padding:0 24px}.beat{max-width:90%}.beat p{font-size:16px}}
 
-  /* ---- cursor ---- */
-  .cur{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid rgba(242,240,247,.5);border-radius:50%;pointer-events:none;z-index:3000;transform:translate(-50%,-50%);transition:width .3s var(--e1),height .3s var(--e1),background .3s,border-color .3s;will-change:transform}
-  .cur.grow{width:76px;height:76px;background:rgba(99,102,241,.16);border-color:transparent}
-  .cur-d{position:fixed;top:0;left:0;width:5px;height:5px;background:var(--acc-l);border-radius:50%;pointer-events:none;z-index:3001;transform:translate(-50%,-50%)}
-  @media(hover:none),(pointer:coarse){.cur,.cur-d{display:none}}
+.track{position:relative;z-index:1}
+.track .seg{height:100vh}
 
-  /* ---- nav ---- */
-  header{position:fixed;inset:0 0 auto;z-index:150}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:80px}
-  .nav .brand{font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:-.02em;display:flex;align-items:center;gap:11px}
-  .nav .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--acc);box-shadow:0 0 14px var(--acc)}
-  .nav .rt{display:flex;align-items:center;gap:30px}
-  .nav a.link{font-weight:500;font-size:13.5px;color:var(--mut);position:relative}
-  .nav a.link:hover{color:var(--ink)}
-  .nav .mini{font-weight:600;font-size:13.5px;border:1px solid var(--line);padding:9px 20px;border-radius:100px;color:var(--ink)}
-  .nav .mini:hover{border-color:var(--acc-l);background:rgba(99,102,241,.1)}
-  @media(max-width:680px){.nav .rt .link{display:none}}
+.cue{position:fixed;left:50%;bottom:34px;transform:translateX(-50%);z-index:8;display:flex;flex-direction:column;
+  align-items:center;gap:10px;color:var(--faint);font-size:11px;letter-spacing:.28em;text-transform:uppercase;transition:opacity .6s}
+.cue .rail{width:1px;height:44px;background:linear-gradient(var(--faint),transparent);position:relative;overflow:hidden}
+.cue .rail::after{content:"";position:absolute;top:-40%;left:0;width:100%;height:40%;background:var(--teal);
+  animation:drop 1.9s cubic-bezier(.7,0,.3,1) infinite}
+@keyframes drop{0%{top:-40%}60%,100%{top:120%}}
 
-  /* ---- journey beats ---- */
-  .beat{min-height:100svh;display:flex;align-items:center;position:relative}
-  .beat .wrap{width:100%}
-  .beat .over{font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--acc-l);margin-bottom:26px;display:flex;align-items:center;gap:14px}
-  .beat .over i{width:34px;height:1px;background:var(--acc-l);display:inline-block}
-  .beat h1{font-size:clamp(44px,8.5vw,128px);letter-spacing:-.045em;max-width:14ch;font-weight:700}
-  .beat h2{font-size:clamp(38px,6.6vw,98px);letter-spacing:-.04em;max-width:15ch;font-weight:600}
-  .beat p.sub{font-size:clamp(16px,1.7vw,22px);color:var(--mut);max-width:44ch;margin-top:30px;font-weight:400;line-height:1.55}
-  .beat p.sub b{color:var(--ink);font-weight:600}
-  .beat.right .wrap{text-align:right;display:flex;flex-direction:column;align-items:flex-end}
-  .beat.right .over{flex-direction:row-reverse}
-  .beat.center .wrap{text-align:center;display:flex;flex-direction:column;align-items:center}
-  .beat.center .over{justify-content:center}
+.arrival{position:relative;z-index:6;min-height:100vh;display:flex;align-items:center;
+  background:linear-gradient(to bottom,transparent,rgba(5,6,10,.7) 30%,var(--bg) 70%)}
+.arrival .wrap{max-width:1240px;margin:0 auto;padding:120px 40px;width:100%}
+.arrival .kicker{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--teal);margin-bottom:26px}
+.arrival h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(46px,8vw,120px);line-height:.98;letter-spacing:-.01em}
+.arrival h2 .it{font-style:italic;color:var(--indigo)}
+.arrival p{margin-top:28px;max-width:52ch;font-size:clamp(16px,1.5vw,20px);line-height:1.6;color:var(--dim)}
+.form{margin-top:48px;display:flex;gap:14px;flex-wrap:wrap;max-width:640px;pointer-events:auto}
+.form input{flex:1 1 200px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--ink);
+  padding:17px 20px;border-radius:100px;font-family:inherit;font-size:15px;outline:none;transition:.3s}
+.form input:focus{border-color:var(--indigo);background:rgba(108,123,255,.07)}
+.form button{background:var(--ink);color:#08080c;border:none;padding:17px 34px;border-radius:100px;
+  font-family:inherit;font-weight:600;font-size:15px;cursor:none;transition:.3s;display:inline-flex;gap:10px;align-items:center}
+.form button:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(55,224,200,.24)}
+.thanks{margin-top:20px;color:var(--teal);font-size:15px;opacity:0}
+@media(max-width:820px){.arrival .wrap{padding:90px 24px}}
 
-  /* the animated fade wrapper each beat controls via JS */
-  .fx{opacity:0;filter:blur(14px);transform:translateY(40px);will-change:opacity,filter,transform}
+footer{position:relative;z-index:6;background:var(--bg);border-top:1px solid var(--line);padding:70px 40px 46px}
+footer .wrap{max-width:1240px;margin:0 auto}
+.foot-word{font-family:"Instrument Serif",serif;font-weight:400;letter-spacing:-.02em;line-height:.86;
+  font-size:clamp(64px,18vw,260px);background:linear-gradient(100deg,var(--ink) 30%,var(--indigo),var(--teal));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;margin-top:36px;color:var(--faint);font-size:13px;letter-spacing:.03em}
+@media(max-width:820px){footer{padding:50px 24px 36px}}
 
-  .hero-scroll{position:absolute;left:32px;bottom:34px;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:12px;z-index:3}
-  .hero-scroll i{width:44px;height:1px;background:var(--mut);position:relative;overflow:hidden}
-  .hero-scroll i::after{content:"";position:absolute;inset:0;background:var(--acc-l);transform:translateX(-100%);animation:sc 2.2s var(--e2) infinite}
-  @keyframes sc{50%{transform:translateX(0)}100%{transform:translateX(100%)}}
+.cursor{position:fixed;top:0;left:0;width:32px;height:32px;border:1px solid rgba(255,255,255,.5);border-radius:50%;
+  z-index:40;pointer-events:none;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s,border-color .3s;mix-blend-mode:difference}
+.cursor.big{width:64px;height:64px;background:rgba(255,255,255,.1);border-color:transparent}
+@media(hover:none){.cursor{display:none}}
 
-  .btn{position:relative;display:inline-flex;align-items:center;gap:13px;font-family:var(--body);font-weight:600;font-size:16px;color:var(--bg);background:var(--ink);padding:18px 34px;border-radius:100px;overflow:hidden;will-change:transform;cursor:pointer;border:none}
-  .btn .ar{transition:transform .4s var(--e1)}.btn:hover .ar{transform:translateX(6px)}
-  .btn.glow{background:var(--acc);color:#fff;box-shadow:0 8px 40px rgba(99,102,241,.4)}
-  .btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
-  .btn.alt:hover{border-color:var(--acc-l)}
-  .beat-cta{margin-top:44px;display:flex;gap:16px;flex-wrap:wrap}
-  .beat.right .beat-cta,.beat.center .beat-cta{justify-content:flex-end}
-  .beat.center .beat-cta{justify-content:center}
-
-  /* small meta row for a couple beats */
-  .metrow{display:flex;gap:52px;margin-top:52px;flex-wrap:wrap}
-  .beat.right .metrow{justify-content:flex-end}
-  .metrow .m .k{font-family:var(--disp);font-weight:700;font-size:clamp(30px,3.6vw,52px);letter-spacing:-.03em;color:var(--ink)}
-  .metrow .m .v{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-top:8px}
-
-  /* ---- arrival ---- */
-  .arrival{position:relative;padding:clamp(90px,15vh,180px) 0 90px;background:linear-gradient(to bottom,transparent,rgba(8,8,12,.7) 30%,#06060a)}
-  .arrival .wrap{text-align:center;display:flex;flex-direction:column;align-items:center}
-  .arrival .over{color:var(--teal)}
-  .arrival h2{font-size:clamp(40px,7vw,104px);letter-spacing:-.045em;max-width:16ch;font-weight:700}
-  .arrival p{font-size:clamp(16px,1.6vw,21px);color:var(--mut);max-width:46ch;margin-top:28px}
-
-  form{margin-top:56px;width:100%;max-width:560px;text-align:left}
-  .field{margin-bottom:18px}
-  .field label{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
-  .field input,.field textarea{width:100%;background:rgba(242,240,247,.04);border:1px solid var(--line);border-radius:14px;padding:16px 18px;color:var(--ink);font-family:var(--body);font-size:15.5px;transition:border-color .3s,background .3s}
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--acc-l);background:rgba(99,102,241,.06)}
-  .field textarea{resize:vertical;min-height:96px}
-  form .btn{width:100%;justify-content:center;margin-top:8px}
-  .formnote{font-size:13px;color:var(--mut2);margin-top:18px;text-align:center}
-  .thanks{display:none;margin-top:24px;padding:18px;border:1px solid rgba(45,212,191,.4);border-radius:14px;color:var(--teal);text-align:center;font-weight:500}
-  .thanks.on{display:block}
-
-  /* ---- footer ---- */
-  footer{position:relative;background:#06060a;padding:clamp(70px,10vh,120px) 0 44px;border-top:1px solid var(--line)}
-  .foot-big{font-family:var(--disp);font-weight:700;font-size:clamp(64px,18vw,260px);line-height:.82;letter-spacing:-.05em;color:var(--ink);opacity:.96}
-  .foot-big .g{background:linear-gradient(100deg,var(--acc-l),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .foot-rows{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-top:60px;padding-top:40px;border-top:1px solid var(--line)}
-  .foot-rows .col h4{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut2);margin-bottom:18px;font-family:var(--body);font-weight:600}
-  .foot-rows .col a{display:block;color:var(--mut);font-size:14.5px;margin-bottom:11px}
-  .foot-rows .col a:hover{color:var(--ink)}
-  .foot-base{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:56px;font-size:13px;color:var(--mut2)}
-
-  @media(prefers-reduced-motion:reduce){
-    .fx{opacity:1;filter:none;transform:none}
-    .hero-scroll i::after{animation:none}
-  }
-  @media(max-width:680px){
-    .metrow{gap:34px}
-    .hero-scroll{left:24px}
-  }
+.pre{position:fixed;inset:0;z-index:60;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:22px}
+.pre .count{font-family:"Instrument Serif",serif;font-size:clamp(60px,12vw,160px);line-height:1;color:var(--ink)}
+.pre .lbl{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--faint)}
+.pre.done{pointer-events:none}
+@media(prefers-reduced-motion:reduce){.grain,.cue .rail::after{animation:none}}
 </style>
 </head>
-<body class="lock">
+<body>
 
-<!-- PRELOADER -->
-<div id="pre">
-  <div class="lbl">Odyssey</div>
-  <div class="cnt" id="preCnt">0</div>
-  <div class="bar"><i id="preBar"></i></div>
+<div class="pre" id="pre">
+  <div class="count" id="count">0</div>
+  <div class="lbl">Charting the course</div>
 </div>
 
-<div class="prog" id="prog"></div>
-<div class="cur" id="cur"></div>
-<div class="cur-d" id="curD"></div>
-
-<!-- FIXED 3D SCENE -->
+<div class="progress" id="prog"></div>
 <canvas id="scene"></canvas>
-<div id="veil"></div>
+<div class="vignette"></div>
+<div class="grain"></div>
 
-<header>
-  <div class="wrap nav">
-    <div class="brand"><span class="dot"></span>ODYSSEY</div>
-    <div class="rt">
-      <a class="link" href="#idea">The Journey</a>
-      <a class="link" href="#craft">Craft</a>
-      <a class="mini" href="#start">Begin</a>
-    </div>
-  </div>
+<header class="topbar">
+  <div class="brand"><span class="orb"></span>ODYSSEY</div>
+  <a href="#start" class="begin" data-hover>Begin the journey</a>
 </header>
+<div class="chapter" id="chapter"></div>
 
-<main class="content" id="content">
+<div class="beats"><div class="inner">
+  <article class="beat" data-beat data-kicker="Chapter I — The Spark">
+    <div class="kicker">Chapter I — The Spark</div>
+    <h2>Every launched thing<br>begins as a <span class="it">single idea.</span></h2>
+    <p>A quiet spark in the dark. Most never leave the notebook. This is the story of the ones that do.</p>
+  </article>
+  <article class="beat" data-beat data-kicker="Chapter II — The Pull">
+    <div class="kicker">Chapter II — The Pull</div>
+    <h2>We carry it the<br><span class="it">whole distance.</span></h2>
+    <p>From the first sketch to the day it goes live, one team holds the thread so nothing gets lost in the handoff.</p>
+  </article>
+  <article class="beat" data-beat data-kicker="Chapter III — The Craft">
+    <div class="kicker">Chapter III — The Craft</div>
+    <h2>Then it starts to<br>move on its <span class="it">own.</span></h2>
+    <p>Motion, weight, restraint. The details compound until the work stops looking made and starts feeling inevitable.</p>
+  </article>
+  <article class="beat" data-beat data-kicker="Chapter IV — The Arrival">
+    <div class="kicker">Chapter IV — The Arrival</div>
+    <h2>And the idea<br>becomes <span class="it">real.</span></h2>
+    <p>Live. In hands. Doing the thing it was imagined to do. The spark, all the way through.</p>
+  </article>
+</div></div>
 
-  <!-- BEAT 1 — Hero / Departure -->
-  <section class="beat" id="idea" data-beat="0">
-    <div class="wrap">
-      <div class="fx">
-        <div class="over"><i></i>Odyssey Studio</div>
-        <h1>Every launched thing begins as a single idea.</h1>
-        <p class="sub">We take that idea and carry it the whole distance. <b>From the first spark to the day it goes live.</b></p>
-        <div class="beat-cta">
-          <a class="btn glow" href="#start" data-cur>Begin the journey <span class="ar">&#8594;</span></a>
-          <a class="btn alt" href="#craft" data-cur>See the craft</a>
-        </div>
-      </div>
-    </div>
-    <div class="hero-scroll"><i></i>Scroll to travel</div>
-  </section>
+<div class="cue" id="cue"><span>Scroll to travel</span><span class="rail"></span></div>
 
-  <!-- BEAT 2 — Descent / The idea -->
-  <section class="beat right" data-beat="1">
-    <div class="wrap">
-      <div class="fx">
-        <div class="over"><i></i>Beat One &mdash; The Spark</div>
-        <h2>It starts in the dark, quiet and unformed.</h2>
-        <p class="sub">Before the pitch decks and the roadmaps, there is only a hunch worth chasing. We sit with it until it takes shape.</p>
-      </div>
-    </div>
-  </section>
+<div class="track" id="track">
+  <div class="seg"></div><div class="seg"></div><div class="seg"></div>
+  <div class="seg"></div><div class="seg"></div><div class="seg"></div>
+</div>
 
-  <!-- BEAT 3 — Through the field / Shaping -->
-  <section class="beat" data-beat="2">
-    <div class="wrap">
-      <div class="fx">
-        <div class="over"><i></i>Beat Two &mdash; The Shaping</div>
-        <h2>We move through the noise and pull out the signal.</h2>
-        <p class="sub">Direction becomes design. Design becomes something you can touch. Every pass sharpens the thing until it feels inevitable.</p>
-        <div class="metrow">
-          <div class="m"><div class="k">40+</div><div class="v">Ideas carried</div></div>
-          <div class="m"><div class="k">6wk</div><div class="v">Idea to live</div></div>
-          <div class="m"><div class="k">1</div><div class="v">Team, end to end</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="arrival" id="start">
+  <div class="wrap">
+    <div class="kicker" data-reveal>Chapter V — Begin yours</div>
+    <h2 data-reveal>Start with a <span class="it">single idea.</span></h2>
+    <p data-reveal>Tell us the spark. We will carry it the whole distance, and hand you back something that feels inevitable.</p>
+    <form class="form" id="form" data-reveal onsubmit="return false">
+      <input type="text" placeholder="Your name" aria-label="Your name" required>
+      <input type="email" placeholder="Email" aria-label="Email" required>
+      <button type="submit" data-hover>Send the spark <span>→</span></button>
+    </form>
+    <div class="thanks" id="thanks">Received. We will be in touch shortly.</div>
+  </div>
+</section>
 
-  <!-- BEAT 4 — Acceleration / Craft -->
-  <section class="beat right" id="craft" data-beat="3">
-    <div class="wrap">
-      <div class="fx">
-        <div class="over"><i></i>Beat Three &mdash; The Craft</div>
-        <h2>Then it starts to move on its own.</h2>
-        <p class="sub">The details compound. Motion, weight, restraint. This is where a project stops looking made and starts feeling built.</p>
-      </div>
-    </div>
-  </section>
+<footer>
+  <div class="wrap">
+    <div class="foot-word">ODYSSEY</div>
+    <div class="foot-row"><span>© 2026 Odyssey Studio</span><span>Built for the long way around</span><span>A Turnkey Web demo</span></div>
+  </div>
+</footer>
 
-  <!-- BEAT 5 — Approach / Launch in sight -->
-  <section class="beat center" data-beat="4">
-    <div class="wrap">
-      <div class="fx">
-        <div class="over"><i></i>Beat Four &mdash; The Approach</div>
-        <h2>And on the horizon, the launch.</h2>
-        <p class="sub">Everything you carried comes into focus. What began as a hunch is about to become a thing people use.</p>
-      </div>
-    </div>
-  </section>
+<div class="cursor" id="cursor"></div>
 
-  <!-- ARRIVAL -->
-  <section class="arrival" id="start" data-beat="5">
-    <div class="wrap">
-      <div class="fx">
-        <div class="over"><i></i>Arrival</div>
-        <h2>Ready to begin the journey?</h2>
-        <p>Tell us the idea. We will tell you what it takes to launch it. No decks, no runaround.</p>
-        <form id="jform" onsubmit="return false;">
-          <div class="field">
-            <label for="fn">Your name</label>
-            <input id="fn" name="name" type="text" placeholder="Alex Rivera" autocomplete="name" required>
-          </div>
-          <div class="field">
-            <label for="fe">Email</label>
-            <input id="fe" name="email" type="email" placeholder="you@studio.com" autocomplete="email" required>
-          </div>
-          <div class="field">
-            <label for="fi">The idea, in a line</label>
-            <textarea id="fi" name="idea" placeholder="A calmer way to plan a wedding." required></textarea>
-          </div>
-          <button class="btn glow" type="submit" id="submitBtn" data-cur>Begin the journey <span class="ar">&#8594;</span></button>
-          <div class="formnote">We reply within one working day. Your idea stays yours.</div>
-          <div class="thanks" id="thanks">Thank you. Your journey has begun &mdash; we will be in touch shortly.</div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap">
-      <div class="foot-big">ODY<span class="g">SSEY</span></div>
-      <div class="foot-rows">
-        <div class="col">
-          <h4>Studio</h4>
-          <a href="#idea">The Journey</a>
-          <a href="#craft">Craft</a>
-          <a href="#start">Begin</a>
-        </div>
-        <div class="col">
-          <h4>Reach</h4>
-          <a href="#start">hello@odyssey.studio</a>
-          <a href="#start">New project</a>
-          <a href="#start">Press</a>
-        </div>
-        <div class="col">
-          <h4>Elsewhere</h4>
-          <a href="#idea">Instagram</a>
-          <a href="#idea">Dribbble</a>
-          <a href="#idea">LinkedIn</a>
-        </div>
-        <div class="col" style="max-width:280px">
-          <h4>The Idea</h4>
-          <p style="color:var(--mut);font-size:14.5px;line-height:1.6">A studio that carries one idea the whole distance. From the dark to the launch.</p>
-        </div>
-      </div>
-      <div class="foot-base">
-        <span>&copy; 2026 Odyssey Studio. A journey, not a template.</span>
-        <span>Built for the long way around.</span>
-      </div>
-    </div>
-  </footer>
-
-</main>
-
-<!-- ================= STACK ================= -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-
 <script>
-(function(){
-  "use strict";
-  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var isMobile = window.matchMedia('(max-width:880px)').matches;
-  var hasFine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const isMobile = matchMedia("(max-width:820px)").matches;
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
-  gsap.registerPlugin(ScrollTrigger, SplitText);
+let renderer, scene, camera, rings=[], stars, floaters=[], core, running=true;
+const cIndigo = new THREE.Color("#6C7BFF"), cTeal = new THREE.Color("#37E0C8");
 
-  /* ============================================================
-     1. THREE.JS SCENE — a corridor of rings + starfield the
-        camera flies THROUGH as you scroll.
-     ============================================================ */
-  var canvas = document.getElementById('scene');
-  var renderer, scene, camera, ringMesh, stars, dust, geoGroup;
-  var sceneOK = false;
-  var W = window.innerWidth, H = window.innerHeight;
+function initThree(){
+  const cv = document.getElementById("scene");
+  renderer = new THREE.WebGLRenderer({canvas:cv, antialias:!isMobile, alpha:false});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setSize(innerWidth, innerHeight);
+  scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x05060a, isMobile?0.055:0.036);
+  camera = new THREE.PerspectiveCamera(66, innerWidth/innerHeight, 0.1, 400);
+  camera.position.set(0,0,6);
 
-  // journey depth: camera travels from z=0 down to z=-DEPTH
-  var DEPTH = 260;
-  var scrollProg = 0;        // 0 -> 1 across the page (driven by ScrollTrigger)
-  var camProg = 0;           // eased follower for buttery feel
-  var pointer = {x:0, y:0, tx:0, ty:0};
-
-  function initThree(){
-    try{
-      renderer = new THREE.WebGLRenderer({canvas:canvas, antialias:!isMobile, alpha:true, powerPreference:'high-performance'});
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(W, H);
-      renderer.setClearColor(0x000000, 0);
-
-      scene = new THREE.Scene();
-      scene.fog = new THREE.FogExp2(0x08080c, 0.0055);
-
-      camera = new THREE.PerspectiveCamera(62, W/H, 0.1, 600);
-      camera.position.set(0, 0, 6);
-
-      var acc = new THREE.Color(0x6366F1);
-      var teal = new THREE.Color(0x2dd4bf);
-
-      // ---- Corridor of instanced rings (the tunnel we fly through) ----
-      var RING_COUNT = isMobile ? 34 : 64;
-      var ringGeo = new THREE.TorusGeometry(4.2, 0.045, 8, isMobile ? 40 : 80);
-      var ringMat = new THREE.MeshBasicMaterial({transparent:true, opacity:0.5});
-      ringMesh = new THREE.InstancedMesh(ringGeo, ringMat, RING_COUNT);
-      ringMesh.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(RING_COUNT*3), 3);
-      var dummy = new THREE.Object3D();
-      window.__ringData = [];
-      for(var i=0;i<RING_COUNT;i++){
-        var z = -(i/RING_COUNT)*DEPTH - 4;
-        var rot = i*0.28;
-        var offx = Math.sin(i*0.5)*1.6;
-        var offy = Math.cos(i*0.42)*1.2;
-        var scl = 1 + Math.sin(i*0.3)*0.18;
-        window.__ringData.push({z:z, rot:rot, offx:offx, offy:offy, scl:scl, i:i});
-        dummy.position.set(offx, offy, z);
-        dummy.rotation.z = rot;
-        dummy.scale.set(scl,scl,scl);
-        dummy.updateMatrix();
-        ringMesh.setMatrixAt(i, dummy.matrix);
-        var c = acc.clone().lerp(teal, (i/RING_COUNT));
-        ringMesh.setColorAt(i, c);
-      }
-      ringMesh.instanceColor.needsUpdate = true;
-      scene.add(ringMesh);
-
-      // ---- Starfield (points spread through the corridor volume) ----
-      var STAR_COUNT = isMobile ? 900 : 2400;
-      var sg = new THREE.BufferGeometry();
-      var sp = new Float32Array(STAR_COUNT*3);
-      var sc = new Float32Array(STAR_COUNT*3);
-      for(var s=0;s<STAR_COUNT;s++){
-        var ang = Math.random()*Math.PI*2;
-        var rad = 3 + Math.random()*16;
-        sp[s*3]   = Math.cos(ang)*rad;
-        sp[s*3+1] = Math.sin(ang)*rad;
-        sp[s*3+2] = -Math.random()*(DEPTH+40) + 8;
-        var mix = Math.random();
-        var col = acc.clone().lerp(teal, mix*0.7);
-        // brighten some
-        var b = 0.5 + Math.random()*0.5;
-        sc[s*3]=col.r*b; sc[s*3+1]=col.g*b; sc[s*3+2]=col.b*b;
-      }
-      sg.setAttribute('position', new THREE.BufferAttribute(sp,3));
-      sg.setAttribute('color', new THREE.BufferAttribute(sc,3));
-      var smat = new THREE.PointsMaterial({size:isMobile?0.09:0.075, vertexColors:true, transparent:true, opacity:0.9, depthWrite:false, blending:THREE.AdditiveBlending, sizeAttenuation:true});
-      stars = new THREE.Points(sg, smat);
-      scene.add(stars);
-
-      // ---- Floating low-poly geometry scattered along the path ----
-      geoGroup = new THREE.Group();
-      var shapes = isMobile ? 10 : 20;
-      var geoms = [
-        new THREE.IcosahedronGeometry(0.9,0),
-        new THREE.OctahedronGeometry(0.85,0),
-        new THREE.TetrahedronGeometry(1.0,0)
-      ];
-      window.__floaters = [];
-      for(var g=0; g<shapes; g++){
-        var geo = geoms[g%geoms.length];
-        var mat = new THREE.MeshBasicMaterial({color: (g%2?teal:acc), wireframe:true, transparent:true, opacity:0.42});
-        var m = new THREE.Mesh(geo, mat);
-        var a2 = Math.random()*Math.PI*2;
-        var r2 = 2.5 + Math.random()*3.5;
-        m.position.set(Math.cos(a2)*r2, Math.sin(a2)*r2, -(g/shapes)*DEPTH - 6);
-        m.rotation.set(Math.random()*3, Math.random()*3, 0);
-        var sc2 = 0.5 + Math.random()*0.9;
-        m.scale.set(sc2,sc2,sc2);
-        window.__floaters.push({m:m, sp:0.2+Math.random()*0.5, ax:Math.random(), ay:Math.random()});
-        geoGroup.add(m);
-      }
-      scene.add(geoGroup);
-
-      // ---- central glow core (a soft point of light we approach) ----
-      var coreGeo = new THREE.SphereGeometry(1.1, 24, 24);
-      var coreMat = new THREE.MeshBasicMaterial({color:0xa5b4fc, transparent:true, opacity:0.0});
-      var core = new THREE.Mesh(coreGeo, coreMat);
-      core.position.set(0,0,-DEPTH-6);
-      scene.add(core);
-      window.__core = core;
-
-      sceneOK = true;
-      window.__camera = camera;
-      resize();
-    }catch(err){
-      console.warn('WebGL init failed, static fallback', err);
-      sceneOK = false;
-      canvas.style.display='none';
-      document.getElementById('veil').style.background =
-        'radial-gradient(120% 90% at 50% 30%,rgba(99,102,241,.28),transparent 55%),#08080c';
-    }
+  const ringCount = isMobile?34:64, spacing=7;
+  for(let i=0;i<ringCount;i++){
+    const r = 5.2 + Math.sin(i*0.4)*0.5;
+    const geo = new THREE.TorusGeometry(r, 0.02, 8, 90);
+    const col = cIndigo.clone().lerp(cTeal, i/ringCount);
+    const mat = new THREE.MeshBasicMaterial({color:col, transparent:true, opacity:0.5});
+    const m = new THREE.Mesh(geo, mat);
+    m.position.z = -i*spacing; m.rotation.z = i*0.18;
+    scene.add(m); rings.push(m);
   }
-
-  function resize(){
-    W = window.innerWidth; H = window.innerHeight;
-    if(!sceneOK) return;
-    camera.aspect = W/H; camera.updateProjectionMatrix();
-    renderer.setSize(W, H);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  const N = isMobile?900:2600, pos=new Float32Array(N*3);
+  for(let i=0;i<N;i++){pos[i*3]=(Math.random()-0.5)*60;pos[i*3+1]=(Math.random()-0.5)*60;pos[i*3+2]=-Math.random()*440;}
+  const sg=new THREE.BufferGeometry(); sg.setAttribute("position",new THREE.BufferAttribute(pos,3));
+  stars=new THREE.Points(sg, new THREE.PointsMaterial({color:0x8f97b5,size:0.06,transparent:true,opacity:.8}));
+  scene.add(stars);
+  const fc = isMobile?7:16;
+  for(let i=0;i<fc;i++){
+    const g=new THREE.IcosahedronGeometry(0.4+Math.random()*0.7,0);
+    const col=cIndigo.clone().lerp(cTeal,Math.random());
+    const m=new THREE.Mesh(g, new THREE.MeshBasicMaterial({color:col,wireframe:true,transparent:true,opacity:.4}));
+    m.position.set((Math.random()-0.5)*9,(Math.random()-0.5)*9,-Math.random()*380);
+    m.userData.spin=(Math.random()-0.5)*0.01;
+    scene.add(m); floaters.push(m);
   }
+  const cg=document.createElement("canvas"); cg.width=cg.height=256;
+  const cx=cg.getContext("2d"); const grd=cx.createRadialGradient(128,128,0,128,128,128);
+  grd.addColorStop(0,"rgba(160,180,255,1)"); grd.addColorStop(.28,"rgba(90,110,255,.7)");
+  grd.addColorStop(.6,"rgba(55,224,200,.22)"); grd.addColorStop(1,"rgba(0,0,0,0)");
+  cx.fillStyle=grd; cx.fillRect(0,0,256,256);
+  const tex=new THREE.CanvasTexture(cg);
+  core=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthWrite:false,opacity:.9,blending:THREE.AdditiveBlending}));
+  core.position.set(0,0,-430); core.scale.set(30,30,1); scene.add(core);
 
-  // ---- the camera journey: map scroll 0..1 to a flight down -Z ----
-  function updateCamera(){
-    if(!sceneOK) return;
-    // ease follower toward scroll progress
-    camProg += (scrollProg - camProg) * 0.08;
-    var p = camProg;
+  addEventListener("resize", ()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+}
 
-    // fly forward through the corridor
-    var z = 6 - p * (DEPTH - 4);
-    camera.position.z = z;
-
-    // gentle serpentine sway along the path + subtle pointer parallax
-    pointer.x += (pointer.tx - pointer.x)*0.05;
-    pointer.y += (pointer.ty - pointer.y)*0.05;
-    var swayX = Math.sin(p*Math.PI*2.2)*1.9;
-    var swayY = Math.cos(p*Math.PI*1.7)*1.2;
-    camera.position.x = swayX + pointer.x*0.8;
-    camera.position.y = swayY + pointer.y*0.6;
-
-    // look slightly ahead down the tunnel for a dolly feel
-    var lookZ = z - 14;
-    var lookX = Math.sin((p+0.05)*Math.PI*2.2)*1.9;
-    var lookY = Math.cos((p+0.05)*Math.PI*1.7)*1.2;
-    camera.lookAt(lookX, lookY, lookZ);
-    camera.rotation.z = Math.sin(p*Math.PI*3)*0.06;
-
-    // core reveal as we approach the end
-    if(window.__core){
-      var near = Math.max(0,(p-0.72)/0.28);
-      window.__core.material.opacity = near*0.85;
-      var cs = 1 + near*6;
-      window.__core.scale.set(cs,cs,cs);
-    }
+let scrollP = 0;
+function render(){
+  if(running){
+    const depth = scrollP * 430;
+    camera.position.z = 6 - depth;
+    camera.position.x = Math.sin(scrollP*Math.PI*3)*1.4;
+    camera.position.y = Math.cos(scrollP*Math.PI*2.2)*0.9;
+    camera.lookAt(camera.position.x*0.4, camera.position.y*0.4, camera.position.z-20);
+    floaters.forEach(f=>{f.rotation.x+=f.userData.spin;f.rotation.y+=f.userData.spin*0.7;});
+    stars.rotation.z += 0.0004;
+    core.material.opacity = 0.5 + scrollP*0.5;
+    renderer.render(scene,camera);
   }
+  requestAnimationFrame(render);
+}
 
-  var t0 = performance.now();
-  function renderScene(){
-    if(!sceneOK) return;
-    var t = (performance.now()-t0)*0.001;
-    updateCamera();
-    // subtle life in the scene
-    if(stars) stars.rotation.z = t*0.01;
-    if(window.__floaters){
-      for(var i=0;i<window.__floaters.length;i++){
-        var f = window.__floaters[i];
-        f.m.rotation.x += 0.003*f.sp;
-        f.m.rotation.y += 0.004*f.sp;
-      }
-    }
-    if(ringMesh) ringMesh.rotation.z = Math.sin(t*0.05)*0.05;
-    renderer.render(scene, camera);
-  }
+let lenis;
+function initScroll(){
+  lenis=new Lenis({lerp:0.09,smoothWheel:true});
+  window.__lenis=lenis;
+  lenis.on("scroll",ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+}
 
-  /* ============================================================
-     2. LENIS + UNIFIED RAF LOOP (one clock)
-     ============================================================ */
-  var lenis;
-  function initScroll(){
-    lenis = new Lenis({ lerp:0.09, smoothWheel:true, wheelMultiplier:0.95 });
-    window.__lenis = lenis;
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(function(time){
-      lenis.raf(time*1000);
-      renderScene();               // Three.js renders on the SAME tick
-    });
-    gsap.ticker.lagSmoothing(0);
-  }
+const beats=[...document.querySelectorAll("[data-beat]")];
+const chapterEl=document.getElementById("chapter");
+function smooth(t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);}
 
-  // reduced-motion / no-lenis fallback still renders the scene on rAF
-  function initReducedLoop(){
-    function loop(){ renderScene(); requestAnimationFrame(loop); }
-    requestAnimationFrame(loop);
-  }
-
-  /* ============================================================
-     3. SCROLL-DRIVEN JOURNEY BINDING + BEAT REVEALS
-     ============================================================ */
-  function buildJourney(){
-    // MASTER progress: whole page scroll 0 -> 1 drives the camera flight
-    ScrollTrigger.create({
-      trigger: document.body,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 1,
-      onUpdate: function(self){ scrollProg = self.progress; },
-      onRefresh: function(self){ scrollProg = self.progress; }
-    });
-
-    // progress bar
-    ScrollTrigger.create({
-      trigger: document.body, start:'top top', end:'bottom bottom', scrub:true,
-      onUpdate:function(self){ document.getElementById('prog').style.width = (self.progress*100)+'%'; }
-    });
-
-    // Each beat: fade + blur in as it enters, out as it leaves — pinned over the moving 3D
-    var beats = document.querySelectorAll('.beat, .arrival');
-    beats.forEach(function(beat){
-      var fx = beat.querySelector('.fx');
-      if(!fx) return;
-      if(reduce){ gsap.set(fx,{opacity:1, filter:'none', y:0}); return; }
-
-      gsap.timeline({
-        scrollTrigger:{ trigger:beat, start:'top 78%', end:'top 20%', scrub:1 }
-      }).fromTo(fx,
-        {opacity:0, filter:'blur(14px)', y:44},
-        {opacity:1, filter:'blur(0px)', y:0, ease:'power2.out'}
-      );
-
-      // fade back out as the beat leaves the top (not the last one)
-      if(!beat.classList.contains('arrival')){
-        gsap.timeline({
-          scrollTrigger:{ trigger:beat, start:'bottom 60%', end:'bottom 8%', scrub:1 }
-        }).to(fx, {opacity:0, filter:'blur(12px)', y:-40, ease:'power2.in'});
-      }
-    });
-
-    // headline split reveal on beat 1 (once)
-    if(!reduce && document.fonts){
-      try{
-        var h1 = document.querySelector('.beat#idea h1');
-        if(h1){
-          var split = new SplitText(h1, {type:'lines,words'});
-          gsap.from(split.words, {yPercent:110, opacity:0, duration:1.0, stagger:0.03, ease:'power3.out', delay:0.1});
-        }
-      }catch(e){}
-    }
-
-    ScrollTrigger.refresh();
-  }
-
-  /* ============================================================
-     4. PRELOADER
-     ============================================================ */
-  function runPreloader(done){
-    var cnt = document.getElementById('preCnt');
-    var bar = document.getElementById('preBar');
-    var pre = document.getElementById('pre');
-    var val = {n:0};
-    var finished = false;
-    function finish(){
-      if(finished) return; finished = true;
-      gsap.to(pre, {delay:0.15, duration:1.0, onStart:function(){ pre.classList.add('done'); }});
-      document.body.classList.remove('lock');
-      if(lenis) lenis.scrollTo(0, {immediate:true});
-      // build reveals AFTER unlock so positions are correct
-      requestAnimationFrame(function(){
-        buildJourney();
-        requestAnimationFrame(function(){ ScrollTrigger.refresh(); done && done(); });
-      });
-    }
-    gsap.to(bar, {scaleX:1, duration:3.4, ease:'power1.inOut'});
-    gsap.to(val, {n:100, duration:3.4, ease:'power1.inOut',
-      onUpdate:function(){ cnt.textContent = Math.round(val.n); },
-      onComplete:finish
-    });
-    // hard 4s safety force-finish
-    setTimeout(finish, 4000);
-  }
-
-  /* ============================================================
-     5. CURSOR + MAGNETIC + FORM
-     ============================================================ */
-  function initCursor(){
-    if(!hasFine) return;
-    var cur = document.getElementById('cur'), curD = document.getElementById('curD');
-    var mx=0,my=0,cx=0,cy=0;
-    window.addEventListener('mousemove', function(e){
-      mx=e.clientX; my=e.clientY;
-      curD.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';
-      pointer.tx = (e.clientX/W - 0.5)*2;
-      pointer.ty = -(e.clientY/H - 0.5)*2;
-    });
-    gsap.ticker.add(function(){
-      cx += (mx-cx)*0.18; cy += (my-cy)*0.18;
-      cur.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';
-    });
-    document.querySelectorAll('a,button,[data-cur],input,textarea').forEach(function(el){
-      el.addEventListener('mouseenter', function(){ cur.classList.add('grow'); });
-      el.addEventListener('mouseleave', function(){ cur.classList.remove('grow'); });
-    });
-  }
-
-  function initForm(){
-    var form = document.getElementById('jform');
-    var thanks = document.getElementById('thanks');
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var n = document.getElementById('fn').value.trim();
-      var em = document.getElementById('fe').value.trim();
-      var id = document.getElementById('fi').value.trim();
-      if(!n || !em || !id){ return; }
-      thanks.classList.add('on');
-      form.querySelector('#submitBtn').style.display='none';
-      form.querySelector('.formnote').style.display='none';
-    });
-  }
-
-  /* ============================================================
-     6. VISIBILITY / RESIZE GUARDS
-     ============================================================ */
-  document.addEventListener('visibilitychange', function(){
-    if(document.hidden){ gsap.ticker.sleep && gsap.ticker.sleep(); }
+function updateBeats(progress){
+  document.getElementById("prog").style.width=(progress*100)+"%";
+  // beat 0 peaks at the very top (hero), last beat peaks at ~0.80, then the core arrival takes over
+  const span=0.80, n=beats.length, hw=0.16;
+  beats.forEach((b,i)=>{
+    const c = n>1 ? (i/(n-1))*span : 0;
+    const local = 1 - Math.min(1, Math.abs(progress - c)/hw);
+    const s=smooth(local);
+    b.style.opacity=s;
+    b.style.transform=`translateY(${(1-s)*40}px)`;
+    b.style.filter=`blur(${(1-s)*7}px)`;
   });
-  var rzT;
-  window.addEventListener('resize', function(){
-    clearTimeout(rzT);
-    rzT = setTimeout(function(){ resize(); ScrollTrigger.refresh(); }, 180);
+  document.getElementById("cue").style.opacity = progress>0.03?0:1;
+}
+function buildJourney(){
+  const track=document.getElementById("track");
+  ScrollTrigger.create({
+    trigger:track, start:"top top", end:"bottom bottom", scrub:true,
+    onUpdate:self=>{scrollP=self.progress;updateBeats(self.progress);}
   });
+  updateBeats(0);   // onUpdate doesn't fire at progress 0 — apply the hero state now
+}
 
-  /* ============================================================
-     BOOT
-     ============================================================ */
-  initThree();
-  initCursor();
-  initForm();
+function initReveals(){
+  gsap.utils.toArray("[data-reveal]").forEach(el=>{
+    gsap.from(el,{y:46,autoAlpha:0,duration:1,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 88%"}});
+  });
+}
 
-  if(reduce){
-    // static composed frame + normal scroll, no lenis
-    document.body.classList.remove('lock');
-    document.getElementById('pre').style.display='none';
-    initReducedLoop();
-    // still let scroll nudge the camera a little for a static-but-alive frame
-    window.addEventListener('scroll', function(){
-      var max = document.body.scrollHeight - window.innerHeight;
-      scrollProg = max>0 ? window.scrollY/max : 0;
-    });
-    buildJourney();
-  } else {
-    initScroll();
-    runPreloader();
-  }
+function initCursor(){
+  if(matchMedia("(hover:none)").matches) return;
+  const cur=document.getElementById("cursor");
+  let x=innerWidth/2,y=innerHeight/2,cx=x,cy=y;
+  addEventListener("mousemove",e=>{x=e.clientX;y=e.clientY});
+  (function loop(){cx+=(x-cx)*0.2;cy+=(y-cy)*0.2;cur.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;requestAnimationFrame(loop)})();
+  document.querySelectorAll("[data-hover],a,button,input").forEach(el=>{
+    el.addEventListener("mouseenter",()=>cur.classList.add("big"));
+    el.addEventListener("mouseleave",()=>cur.classList.remove("big"));
+  });
+}
+
+function boot(){
+  initThree(); render(); initScroll(); buildJourney(); initReveals(); initCursor();
+  try{
+    const h=beats[0].querySelector("h2");
+    const sp=new SplitText(h,{type:"lines,words"});
+    gsap.set(sp.words,{yPercent:110});
+    gsap.to(sp.words,{yPercent:0,duration:1.1,ease:"power4.out",stagger:0.05,delay:0.15});
+  }catch(e){}
+  document.getElementById("form").addEventListener("submit",()=>{
+    gsap.to("#thanks",{opacity:1,duration:.4}); gsap.to("#form",{opacity:.5,duration:.4});
+  });
+  ScrollTrigger.refresh();
+}
+
+(function preload(){
+  const el=document.getElementById("count"), pre=document.getElementById("pre");
+  let v={n:0};
+  const finish=()=>{
+    if(pre.dataset.booted) return; pre.dataset.booted=1;
+    boot();
+    gsap.to(pre,{autoAlpha:0,duration:.8,ease:"power2.inOut",onComplete:()=>{pre.classList.add("done");pre.style.display="none";ScrollTrigger.refresh();}});
+  };
+  if(RM){el.textContent="100";finish();return;}
+  gsap.to(v,{n:100,duration:2,ease:"power2.inOut",onUpdate:()=>el.textContent=Math.round(v.n),onComplete:finish});
+  setTimeout(finish,4200);
 })();
+
+document.addEventListener("visibilitychange",()=>{running=!document.hidden;});
 </script>
 </body>
 </html>
