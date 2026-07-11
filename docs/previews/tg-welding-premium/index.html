@@ -636,14 +636,14 @@ if(reduced){
   introv.addEventListener('ended', launch);
   /* brand lockup fades in over the slow-mo spark shower */
   introv.addEventListener('timeupdate', function(){
-    if(introv.currentTime >= 5.2) pre.classList.add('brandon');
+    if(introv.currentTime >= 6.0) pre.classList.add('brandon');
   });
   /* if the film can't start quickly, don't hold the page hostage */
   var startedPlaying = false;
   introv.addEventListener('playing', function(){ startedPlaying = true; });
   setTimeout(function(){ if(!startedPlaying) launch(); }, 3000);
   introv.addEventListener('error', launch);
-  setTimeout(launch, 16000); /* absolute failsafe */
+  setTimeout(launch, 13000); /* absolute failsafe */
 }
 
 function buildMotion(){

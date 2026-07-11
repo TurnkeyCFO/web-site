@@ -193,6 +193,42 @@ h2.big em.sf{color:var(--violet)}
 .tcard .who .n{font-weight:800;font-size:14px;color:var(--ink);margin-top:auto}
 .tcard .who .r{font-size:12.5px;color:var(--tx2)}
 
+/* draggable work showcase */
+.workdrag{background:var(--void2);overflow:hidden}
+.workdrag h2.big{color:#fff}
+.workdrag .sub{color:#cbbde8}
+.workdrag .eyebrow{color:var(--violet2)}.workdrag .eyebrow::before{background:var(--violet2)}
+.dw-wrap{position:relative;overflow:hidden;cursor:grab;padding:14px 0 26px}
+.dw-wrap.dragging{cursor:grabbing}
+.dw-strip{display:flex;gap:clamp(18px,2.2vw,30px);padding:0 clamp(20px,5vw,64px);width:max-content;will-change:transform}
+.dw-card{flex:none;width:clamp(300px,34vw,480px);border-radius:16px;overflow:hidden;background:var(--void3);border:1px solid rgba(157,92,255,.18);transition:transform .35s,border-color .35s,box-shadow .35s;display:block}
+.dw-card:hover{transform:translateY(-6px);border-color:rgba(157,92,255,.55);box-shadow:0 30px 80px rgba(124,58,237,.25)}
+.dw-card .wbar{display:flex;align-items:center;gap:7px;background:#241539;padding:11px 14px}
+.dw-card .wbar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.22)}
+.dw-card .wbar i:first-child{background:var(--violet2)}
+.dw-card .wbar .url{margin-left:8px;font-size:11px;color:#b1a0d6;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dw-card .shot{position:relative;overflow:hidden;aspect-ratio:1280/850}
+.dw-card .shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s cubic-bezier(.22,.61,.36,1);pointer-events:none}
+.dw-card:hover .shot img{transform:scale(1.05)}
+.dw-card .wmeta{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px}
+.dw-card .wmeta h3{font-size:16.5px;font-weight:800;color:#fff;letter-spacing:-.01em}
+.dw-card .wmeta p{font-size:12.5px;color:#b1a0d6;margin-top:2px}
+.dw-card .go{flex:none;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(157,92,255,.5);color:var(--violet2);display:flex;align-items:center;justify-content:center;font-size:15px;transition:background .25s,color .25s;transform:rotate(-45deg)}
+.dw-card:hover .go{background:var(--violet);border-color:var(--violet);color:#fff}
+.dw-hint{text-align:center;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#8a7aac;padding:10px 0 0}
+
+/* Osmo scramble text cursor */
+.cursor{z-index:1350;pointer-events:none;padding-top:1.6em;padding-left:.6em;padding-right:1em;position:fixed;top:0;left:0}
+.cursor-scramble{gap:.5em;opacity:0;color:#fff;background-color:var(--violet);border-radius:.3em;justify-content:center;align-items:center;height:2.1em;padding-left:.8em;padding-right:.8em;display:flex;position:relative;box-shadow:0 10px 30px rgba(124,58,237,.4)}
+.cursor-scramble__text{letter-spacing:-.01em;white-space:nowrap;font-size:.85em;font-weight:600}
+.cursor-scramble__chevron{color:#fff;width:.38em}
+@media (hover:hover) and (pointer:fine){
+  [data-cursor] .cursor-scramble{transition:transform .4s cubic-bezier(.625,.05,0,1),opacity .2s ease .1s;transform:translateX(0%) scale(1) rotate(.001deg)}
+  [data-cursor="active"] .cursor-scramble{transition:transform .4s cubic-bezier(.625,.05,0,1),opacity .2s ease 0s;opacity:1;transform:translateX(0%) scale(1) rotate(.001deg)}
+  [data-cursor="active-edge"] .cursor-scramble{transition:transform .4s cubic-bezier(.625,.05,0,1),opacity .2s ease 0s;opacity:1;transform:translateX(-100%) scale(1) rotate(.001deg)}
+}
+@media (hover:none) and (pointer:coarse){.cursor{display:none}}
+
 /* FAQ */
 .faq{background:var(--cream)}
 .fwrap{margin-top:52px;max-width:880px}
@@ -257,6 +293,12 @@ footer ul a:hover{color:var(--violet2)}
 
 <div id="prog"></div>
 <div id="cur"></div>
+<div data-cursor="" class="cursor" aria-hidden="true">
+  <div class="cursor-scramble">
+    <span data-cursor-text-target class="cursor-scramble__text">Visit site</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 22 39" fill="none" class="cursor-scramble__chevron"><path d="M1.875 36.875L19.375 19.375L1.875 1.875" stroke="currentColor" stroke-width="5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+  </div>
+</div>
 
 <div id="pre" aria-hidden="true">
   <img class="plogo" src="assets/tkweb-logo-white-header.png" alt="Turnkey Web logo">
@@ -335,38 +377,70 @@ footer ul a:hover{color:var(--violet2)}
 </section>
 
 <!-- WORK -->
-<section class="work" id="work">
-  <div class="inner">
+<section class="workdrag" id="work">
+  <div class="inner" style="padding-bottom:26px">
     <div class="eyebrow"><span class="num">002</span> Recent work</div>
     <h2 class="big">Real sites. Real businesses. <em class="sf">Built by us.</em></h2>
-    <div class="wgrid">
-      <a class="wcard rv" href="https://turnkeyweb.org/portfolio/" target="_blank" rel="noopener">
-        <div class="wbar"><i></i><i></i><i></i><span class="url">jollyball</span></div>
-        <div class="wbody"><h3>JollyBall</h3><p>Live sports show</p><span class="wtag">Entertainment</span></div>
+    <p class="sub">Drag through the shelf. Every card opens the actual live site, not a screenshot.</p>
+  </div>
+  <div class="dw-wrap" id="dwwrap">
+    <div class="dw-strip" id="dwstrip">
+      <a class="dw-card" href="https://turnkeyweb.org/previews/odyssey/" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="Take the journey">
+        <div class="wbar"><i></i><i></i><i></i><span class="url">turnkeyweb.org/previews/odyssey</span></div>
+        <div class="shot"><img src="assets/work/odyssey.jpg" alt="Odyssey website" loading="lazy"></div>
+        <div class="wmeta"><div><h3>Odyssey</h3><p>Cinematic 3D scroll journey</p></div><span class="go">&rarr;</span></div>
       </a>
-      <a class="wcard rv" href="https://turnkeyweb.org/portfolio/" target="_blank" rel="noopener">
+      <a class="dw-card" href="https://docs-slushies.com" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="Visit site">
         <div class="wbar"><i></i><i></i><i></i><span class="url">docs-slushies.com</span></div>
-        <div class="wbody"><h3>Doc's Slushies</h3><p>Frozen drink rental</p><span class="wtag">Events</span></div>
+        <div class="shot"><img src="assets/work/docs-slushies.jpg" alt="Doc's Slushies website" loading="lazy"></div>
+        <div class="wmeta"><div><h3>Doc's Slushies</h3><p>Frozen drink rental - real client</p></div><span class="go">&rarr;</span></div>
       </a>
-      <a class="wcard rv" href="https://turnkeyweb.org/portfolio/" target="_blank" rel="noopener">
-        <div class="wbar"><i></i><i></i><i></i><span class="url">prestige-landscaping</span></div>
-        <div class="wbody"><h3>Prestige Landscaping</h3><p>Commercial landscaping</p><span class="wtag">Services</span></div>
+      <a class="dw-card" href="https://turnkeyweb.org/previews/aurora-studio/" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="See the light">
+        <div class="wbar"><i></i><i></i><i></i><span class="url">turnkeyweb.org/previews/aurora-studio</span></div>
+        <div class="shot"><img src="assets/work/aurora-studio.jpg" alt="Aurora Studio website" loading="lazy"></div>
+        <div class="wmeta"><div><h3>Aurora Studio</h3><p>Light-luxury studio site</p></div><span class="go">&rarr;</span></div>
       </a>
-      <a class="wcard rv" href="https://turnkeyweb.org/portfolio/" target="_blank" rel="noopener">
-        <div class="wbar"><i></i><i></i><i></i><span class="url">j-n-body-shop</span></div>
-        <div class="wbody"><h3>J&amp;N Body Shop</h3><p>Collision &amp; paint</p><span class="wtag">Automotive</span></div>
+      <a class="dw-card" href="https://turnkeyweb.org/portfolio/sites/05-lumina-medspa/" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="Visit site">
+        <div class="wbar"><i></i><i></i><i></i><span class="url">lumina-medspa</span></div>
+        <div class="shot"><img src="assets/work/lumina-medspa.jpg" alt="Lumina Med Spa website" loading="lazy"></div>
+        <div class="wmeta"><div><h3>Lumina Med Spa</h3><p>Med spa - bookings-first</p></div><span class="go">&rarr;</span></div>
       </a>
-      <a class="wcard rv" href="https://turnkeyweb.org/portfolio/" target="_blank" rel="noopener">
-        <div class="wbar"><i></i><i></i><i></i><span class="url">ink-n-flesh</span></div>
-        <div class="wbody"><h3>Ink N Flesh</h3><p>Tattoo studio</p><span class="wtag">Studio</span></div>
+      <a class="dw-card" href="https://turnkeyweb.org/previews/lumen/" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="Visit site">
+        <div class="wbar"><i></i><i></i><i></i><span class="url">turnkeyweb.org/previews/lumen</span></div>
+        <div class="shot"><img src="assets/work/lumen.jpg" alt="Lumen website" loading="lazy"></div>
+        <div class="wmeta"><div><h3>Lumen</h3><p>Kling cinematic hero build</p></div><span class="go">&rarr;</span></div>
       </a>
-      <a class="wcard rv" href="https://turnkeyweb.org/portfolio/" target="_blank" rel="noopener">
-        <div class="wbar"><i></i><i></i><i></i><span class="url">kinnor-coffee</span></div>
-        <div class="wbody"><h3>Kinnor Coffee</h3><p>Coffee &amp; cocktails</p><span class="wtag">Hospitality</span></div>
+      <a class="dw-card" href="https://turnkeyweb.org/portfolio/sites/01-meridian-law/" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="Visit site">
+        <div class="wbar"><i></i><i></i><i></i><span class="url">meridian-law</span></div>
+        <div class="shot"><img src="assets/work/meridian-law.jpg" alt="Meridian Law website" loading="lazy"></div>
+        <div class="wmeta"><div><h3>Meridian Law</h3><p>Law firm - authority design</p></div><span class="go">&rarr;</span></div>
+      </a>
+      <a class="dw-card" href="https://turnkeyweb.org/portfolio/sites/04-ironclad-construction/" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="Visit site">
+        <div class="wbar"><i></i><i></i><i></i><span class="url">ironclad-construction</span></div>
+        <div class="shot"><img src="assets/work/ironclad.jpg" alt="Ironclad Construction website" loading="lazy"></div>
+        <div class="wmeta"><div><h3>Ironclad Construction</h3><p>Construction - lead machine</p></div><span class="go">&rarr;</span></div>
+      </a>
+      <a class="dw-card" href="https://turnkeyweb.org/portfolio/sites/03-verdant-restaurant/" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="Visit site">
+        <div class="wbar"><i></i><i></i><i></i><span class="url">verdant-restaurant</span></div>
+        <div class="shot"><img src="assets/work/verdant.jpg" alt="Verdant website" loading="lazy"></div>
+        <div class="wmeta"><div><h3>Verdant</h3><p>Restaurant - appetite by design</p></div><span class="go">&rarr;</span></div>
+      </a>
+      <a class="dw-card" href="https://turnkeyweb.org/portfolio/sites/13-alcott-hotel/" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="Visit site">
+        <div class="wbar"><i></i><i></i><i></i><span class="url">alcott-hotel</span></div>
+        <div class="shot"><img src="assets/work/alcott-hotel.jpg" alt="The Alcott Hotel website" loading="lazy"></div>
+        <div class="wmeta"><div><h3>The Alcott Hotel</h3><p>Boutique hotel - direct bookings</p></div><span class="go">&rarr;</span></div>
+      </a>
+      <a class="dw-card" href="https://turnkeyweb.org/previews/kinetic-lab/" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="Play with it">
+        <div class="wbar"><i></i><i></i><i></i><span class="url">turnkeyweb.org/previews/kinetic-lab</span></div>
+        <div class="shot"><img src="assets/work/kinetic-lab.jpg" alt="Kinetic Lab website" loading="lazy"></div>
+        <div class="wmeta"><div><h3>Kinetic Lab</h3><p>Motion showcase - GSAP suite</p></div><span class="go">&rarr;</span></div>
       </a>
     </div>
-    <div class="hctas" style="margin-top:44px">
-      <a class="btn dkgh mag" href="https://turnkeyweb.org/portfolio/" target="_blank" rel="noopener">View the full portfolio <span class="ar">→</span></a>
+  </div>
+  <div class="dw-hint">&larr; Drag to explore &middot; click to open &rarr;</div>
+  <div class="inner" style="padding-top:34px;padding-bottom:clamp(60px,7vw,90px)">
+    <div class="hctas">
+      <a class="btn em mag" href="https://turnkeyweb.org/portfolio/" target="_blank" rel="noopener">View the full portfolio <span class="ar">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -532,8 +606,9 @@ footer ul a:hover{color:var(--violet2)}
   <a class="b" href="#work">See Our Work</a>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrambleTextPlugin.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 (function(){
@@ -681,6 +756,89 @@ function countUps(instant){
       onUpdate: function(){ el.textContent = Math.round(o.v); } });
   });
 }
+
+/* draggable work showcase with momentum */
+(function(){
+  var wrap = document.getElementById('dwwrap');
+  var strip = document.getElementById('dwstrip');
+  if(!wrap || !strip) return;
+  var x = 0, startX = 0, lastX = 0, vx = 0, dragging = false, raf = null, moved = 0;
+  function maxScroll(){ return Math.max(0, strip.scrollWidth - wrap.clientWidth + 40); }
+  function setX(nx){
+    x = Math.max(-maxScroll(), Math.min(0, nx));
+    strip.style.transform = 'translateX(' + x + 'px)';
+  }
+  function onDown(e){
+    dragging = true; moved = 0; wrap.classList.add('dragging');
+    startX = (e.touches ? e.touches[0].clientX : e.clientX) - x;
+    lastX = e.touches ? e.touches[0].clientX : e.clientX;
+    vx = 0;
+    if(raf) cancelAnimationFrame(raf);
+  }
+  function onMove(e){
+    if(!dragging) return;
+    var cx = e.touches ? e.touches[0].clientX : e.clientX;
+    vx = cx - lastX; lastX = cx; moved += Math.abs(vx);
+    setX(cx - startX);
+    if(e.cancelable && e.touches) e.preventDefault();
+  }
+  function onUp(){
+    if(!dragging) return;
+    dragging = false; wrap.classList.remove('dragging');
+    var decay = function(){
+      vx *= 0.94;
+      if(Math.abs(vx) > 0.3){ setX(x + vx); raf = requestAnimationFrame(decay); }
+    };
+    raf = requestAnimationFrame(decay);
+  }
+  wrap.addEventListener('mousedown', onDown);
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onUp);
+  wrap.addEventListener('touchstart', onDown, { passive: true });
+  wrap.addEventListener('touchmove', onMove, { passive: false });
+  wrap.addEventListener('touchend', onUp);
+  wrap.addEventListener('click', function(e){ if(moved > 8){ e.preventDefault(); e.stopPropagation(); } }, true);
+  var interacted = false;
+  wrap.addEventListener('mousedown', function(){ interacted = true; });
+  wrap.addEventListener('touchstart', function(){ interacted = true; });
+  gsap.ticker.add(function(){ if(!dragging && !interacted) setX(x - 0.35); });
+})();
+
+/* Osmo: scramble text cursor */
+(function(){
+  var cursor = document.querySelector('[data-cursor]');
+  var cursorTextTarget = document.querySelector('[data-cursor-text-target]');
+  if(!cursor || !cursorTextTarget || !fine || reduced || !window.ScrambleTextPlugin) return;
+  gsap.registerPlugin(ScrambleTextPlugin);
+  var mouseX = 0, mouseY = 0, hasMouseMoved = false, activeHoverItem = null;
+  var chars = 'TKWXY#&@0$';
+  var xTo = gsap.quickTo(cursor, 'x', { duration: 0.4, ease: 'power3.out' });
+  var yTo = gsap.quickTo(cursor, 'y', { duration: 0.4, ease: 'power3.out' });
+  function updateCursor(){
+    var under = document.elementFromPoint(mouseX, mouseY);
+    var hoverItem = under ? under.closest('[data-cursor-hover]') : null;
+    var rect = cursor.getBoundingClientRect();
+    var isEdge = rect.right >= window.innerWidth;
+    cursor.setAttribute('data-cursor', hoverItem ? (isEdge ? 'active-edge' : 'active') : '');
+    if(hoverItem !== activeHoverItem){
+      var text = hoverItem ? (hoverItem.getAttribute('data-cursor-text') || '') : '';
+      if(text){
+        gsap.to(cursorTextTarget, { duration: 0.6, overwrite: 'auto',
+          scrambleText: { text: text, chars: chars, speed: 1.2 } });
+      }
+      activeHoverItem = hoverItem;
+    }
+  }
+  window.addEventListener('mousemove', function(e){
+    mouseX = e.clientX; mouseY = e.clientY; hasMouseMoved = true;
+    xTo(mouseX); yTo(mouseY);
+    requestAnimationFrame(updateCursor);
+  });
+  window.addEventListener('scroll', function(){
+    if(!hasMouseMoved) return;
+    requestAnimationFrame(updateCursor);
+  }, { passive: true });
+})();
 
 gsap.to('#prog', { scaleX: 1, ease: 'none',
   scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.3 } });
