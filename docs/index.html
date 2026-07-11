@@ -205,6 +205,28 @@ h2.big em.sf{color:var(--violet)}
 .srow p{margin-top:10px;font-size:15.5px;color:var(--tx2);max-width:64ch}
 .stag{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);background:rgba(124,58,237,.1);padding:8px 15px;border-radius:999px;white-space:nowrap}
 
+/* Osmo stacking process cards */
+.cards-stack{padding-top:4dvh;padding-bottom:10dvh}
+.cards-stack__list{display:flex;flex-flow:column;align-items:center;justify-content:center;width:100%;gap:5em}
+.cards-stack__item{flex:none;width:100%;max-width:30em;position:sticky;top:7em}
+.proc-card{aspect-ratio:2/1.9;background:var(--paper);border:1px solid var(--line);border-radius:26px;display:flex;flex-flow:column;width:100%;padding:2.6em;box-shadow:0 30px 80px rgba(27,16,48,.16);position:relative;overflow:hidden}
+.proc-card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:var(--violet)}
+.proc-card .pnum{font-size:3.6rem;font-weight:800;letter-spacing:-.04em;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(124,58,237,.5);font-variant-numeric:tabular-nums}
+.proc-card h3{margin-top:auto;font-size:1.6rem;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.proc-card p{margin-top:10px;font-size:.98rem;color:var(--tx2);line-height:1.6}
+.proc-card .ptag{position:absolute;top:26px;right:26px;font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);background:rgba(124,58,237,.1);padding:7px 13px;border-radius:999px}
+.proc-card.is--final{background:var(--void);border-color:transparent}
+.proc-card.is--final h3{color:#fff}
+.proc-card.is--final p{color:#cbbde8}
+.proc-card.is--final .pnum{-webkit-text-stroke:1.5px rgba(157,92,255,.7)}
+@media(max-width:640px){.proc-card{font-size:.85em}.cards-stack__item{top:5em;max-width:24em}}
+
+/* Osmo number odometer */
+.odo{display:inline-flex;overflow:hidden;line-height:1.06}
+.odo .od{position:relative;display:inline-block;height:1.06em;overflow:hidden}
+.odo .od .rail{display:flex;flex-direction:column;will-change:transform}
+.odo .od .rail span{display:block;height:1.06em}
+
 /* included */
 .inc{background:var(--cream)}
 .incgrid{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,28px)}
@@ -505,42 +527,58 @@ footer ul a:hover{color:var(--violet2)}
 
 <!-- PROCESS -->
 <section class="proc" id="process">
-  <div class="inner">
+  <div class="inner" style="padding-bottom:0">
     <div class="eyebrow"><span class="num">003</span> How it works</div>
     <h2 class="big">A clear process. No guessing. <em class="sf">No chasing.</em></h2>
-    <div class="srow rv">
-      <div class="snum">01</div>
-      <div>
-        <h3>Tell us about you.</h3>
-        <p>One short form, about thirty seconds. No call, no meeting, no pressure — just a few details about your business.</p>
-      </div>
-      <div class="stag">30 seconds</div>
-    </div>
-    <div class="srow rv">
-      <div class="snum">02</div>
-      <div>
-        <h3>We design it free.</h3>
-        <p>A real, custom, mobile-ready draft built for your business — delivered in days, not weeks. Zero cost to see it.</p>
-      </div>
-      <div class="stag">$0</div>
-    </div>
-    <div class="srow rv">
-      <div class="snum">03</div>
-      <div>
-        <h3>Unlimited revisions.</h3>
-        <p>Love the direction but want changes? We refine it — copy, sections, design — until it's exactly right. You never touch code.</p>
-      </div>
-      <div class="stag">Until you love it</div>
-    </div>
-    <div class="srow rv">
-      <div class="snum">04</div>
-      <div>
-        <h3>Go live for $147 a month.</h3>
-        <p>We publish, host, and maintain it. Unlimited edits, support, and updates included. Cancel anytime. No build fee, ever.</p>
-      </div>
-      <div class="stag">Everything handled</div>
-    </div>
+    <p class="sub">Four steps. The first three cost you nothing.</p>
   </div>
+  <section data-stacking-cards-init
+    data-stacking-cards-desktop="true" data-stacking-cards-tablet="true" data-stacking-cards-mobile="true"
+    data-stacking-cards-desktop-x="-13em, 13em, -7em, 0em"
+    data-stacking-cards-desktop-y="1.5em, 3em, 4.5em, 0em"
+    data-stacking-cards-desktop-rotate="-5, 4, -2, 0"
+    data-stacking-cards-tablet-x="-5em, 5em, -3em, 0em"
+    data-stacking-cards-tablet-y="1em, 2em, 3em, 0em"
+    data-stacking-cards-tablet-rotate="-3, 3, -2, 0"
+    data-stacking-cards-mobile-x="-1em, 1em, -.6em, 0em"
+    data-stacking-cards-mobile-y=".7em, 1.4em, 2.1em, 0em"
+    data-stacking-cards-mobile-rotate="-2, 2, -1, 0"
+    class="cards-stack">
+    <div class="cards-stack__list">
+      <div data-stacking-card class="cards-stack__item">
+        <div data-stacking-card-target class="proc-card" data-cursor-hover data-cursor-text="30 seconds">
+          <div class="pnum">01</div>
+          <span class="ptag">30 seconds</span>
+          <h3>Tell us about you.</h3>
+          <p>One short form, about thirty seconds. No call, no meeting, no pressure. Just a few details about your business.</p>
+        </div>
+      </div>
+      <div data-stacking-card class="cards-stack__item">
+        <div data-stacking-card-target class="proc-card" data-cursor-hover data-cursor-text="Free draft">
+          <div class="pnum">02</div>
+          <span class="ptag">$0</span>
+          <h3>We design it free.</h3>
+          <p>A real, custom, mobile-ready draft built for your business. Delivered in days, not weeks. Zero cost to see it.</p>
+        </div>
+      </div>
+      <div data-stacking-card class="cards-stack__item">
+        <div data-stacking-card-target class="proc-card" data-cursor-hover data-cursor-text="Until you love it">
+          <div class="pnum">03</div>
+          <span class="ptag">Unlimited</span>
+          <h3>Unlimited revisions.</h3>
+          <p>Love the direction but want changes? We refine copy, sections, and design until it is exactly right. You never touch code.</p>
+        </div>
+      </div>
+      <div data-stacking-card class="cards-stack__item">
+        <div data-stacking-card-target class="proc-card is--final" data-cursor-hover data-cursor-text="Go live">
+          <div class="pnum">04</div>
+          <span class="ptag" style="background:rgba(157,92,255,.2);color:var(--violet2)">Everything handled</span>
+          <h3>Go live for $147 a month.</h3>
+          <p>We publish, host, and maintain it. Unlimited edits, support, and updates included. Cancel anytime. No build fee, ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>
 
 <!-- INCLUDED -->
@@ -563,9 +601,9 @@ footer ul a:hover{color:var(--violet2)}
 <section class="stats">
   <div class="inner">
     <div class="stgrid">
-      <div class="st rv"><div class="n">$<span class="cnt" data-n="0">0</span></div><div class="l">To see your first draft. No card, no catch.</div></div>
-      <div class="st rv"><div class="n">$<span class="cnt" data-n="147">0</span><span class="sfx">/mo</span></div><div class="l">Everything included to stay live</div></div>
-      <div class="st rv"><div class="n"><span class="cnt" data-n="5">0</span><span class="sfx">days</span></div><div class="l">Not weeks. You see your draft fast.</div></div>
+      <div class="st rv"><div class="n">$<span class="odo" data-odo="0">0</span></div><div class="l">To see your first draft. No card, no catch.</div></div>
+      <div class="st rv"><div class="n">$<span class="odo" data-odo="147">147</span><span class="sfx">/mo</span></div><div class="l">Everything included to stay live</div></div>
+      <div class="st rv"><div class="n"><span class="odo" data-odo="5">5</span><span class="sfx">days</span></div><div class="l">Not weeks. You see your draft fast.</div></div>
     </div>
   </div>
 </section>
@@ -634,7 +672,7 @@ footer ul a:hover{color:var(--violet2)}
   <div class="fgrid">
     <div class="fbrand">
       <img src="/assets/tkweb-logo-white-header.png" alt="Turnkey Web">
-      <p>Custom websites for local businesses. Designed free, maintained forever, built to convert. Based in Austin, Texas. Serving nationwide.</p>
+      <p>Custom websites for local businesses. Designed free, maintained forever, built to convert. Based in Austin, Texas, with team members across the globe. Serving internationally.</p>
     </div>
     <div>
       <h4>Explore</h4>
@@ -764,6 +802,7 @@ function buildMotion(){
   if(reduced){
     document.querySelectorAll('.rv').forEach(function(el){ el.style.opacity = 1; el.style.transform = 'none'; });
     countUps(true);
+    initOdometers(true);
     return;
   }
   gsap.set(h1words, { y: function(i, el){ return el.offsetHeight * 1.2; } });
@@ -800,8 +839,93 @@ function buildMotion(){
   gsap.fromTo('.fghost', { yPercent: 40 }, { yPercent: 0, ease: 'none',
     scrollTrigger: { trigger: 'footer', start: 'top bottom', end: 'bottom bottom', scrub: true } });
 
+  initStackingStickyCardsBounce();
+  initOdometers(false);
   countUps(false);
   ScrollTrigger.refresh();
+}
+
+/* Osmo: stacking sticky cards (bounce) */
+function initStackingStickyCardsBounce(){
+  var cardsSections = document.querySelectorAll('[data-stacking-cards-init]');
+  var currentTier = (function(){
+    var w = window.innerWidth;
+    if(w <= 479) return 'mobile-portrait';
+    if(w <= 767) return 'mobile-landscape';
+    if(w <= 991) return 'tablet';
+    return 'desktop';
+  })();
+  cardsSections.forEach(function(section){
+    section.querySelectorAll('[data-stacking-card-target]').forEach(function(el){
+      gsap.killTweensOf(el); gsap.set(el, { clearProps: 'transform,zIndex' });
+    });
+  });
+  cardsSections.forEach(function(section){
+    var tier = currentTier;
+    var isEnabled = (tier === 'desktop' && section.dataset.stackingCardsDesktop === 'true') ||
+      (tier === 'tablet' && section.dataset.stackingCardsTablet === 'true') ||
+      ((tier === 'mobile-portrait' || tier === 'mobile-landscape') && section.dataset.stackingCardsMobile === 'true');
+    if(!isEnabled) return;
+    var cards = Array.prototype.slice.call(section.querySelectorAll('[data-stacking-card]'));
+    if(!cards.length) return;
+    var stickyTop = parseFloat(getComputedStyle(cards[0]).top) || 0;
+    function vals(attr, fallback){
+      var raw = section.getAttribute(attr);
+      if(!raw) return fallback;
+      var v = raw.split(',').map(function(x){ return x.trim(); }).filter(Boolean);
+      return v.length ? v : fallback;
+    }
+    var pfx = tier === 'desktop' ? 'desktop' : (tier === 'tablet' ? 'tablet' : 'mobile');
+    var rot = vals('data-stacking-cards-' + pfx + '-rotate', ['0','4','-4']).map(parseFloat);
+    var xs = vals('data-stacking-cards-' + pfx + '-x', ['0em','0em','0em']);
+    var ys = vals('data-stacking-cards-' + pfx + '-y', ['0em','0em','0em']);
+    cards.forEach(function(card, index){
+      var targetEl = card.querySelector('[data-stacking-card-target]');
+      if(!targetEl) return;
+      gsap.set(targetEl, { rotate: 0, x: 0, y: 0, scale: 1, zIndex: cards.length - index });
+      gsap.to(targetEl, { rotate: rot[index % rot.length], x: xs[index % xs.length], y: ys[index % ys.length],
+        ease: 'power1.in', overwrite: 'auto',
+        scrollTrigger: { id: 'stacking-rotate-' + index, trigger: card, start: 'top 75%', end: 'top-=' + stickyTop + ' top', scrub: true } });
+      ScrollTrigger.create({ id: 'stacking-bounce-' + index, trigger: card, start: 'top-=' + stickyTop + ' top',
+        onEnter: function(){
+          var w = targetEl.offsetWidth, h = targetEl.offsetHeight;
+          var fs = parseFloat(getComputedStyle(targetEl).fontSize);
+          var stretch = 1.5 * fs;
+          gsap.timeline()
+            .to(targetEl, { scaleX: (w + stretch) / w, scaleY: (h - stretch * 0.33) / h, duration: 0.1, ease: 'power1.out' })
+            .to(targetEl, { scaleX: 1, scaleY: 1, duration: 1, ease: 'elastic.out(1, 0.3)' });
+        } });
+    });
+  });
+}
+
+/* Osmo: number odometer (rolling digits) */
+function initOdometers(instant){
+  document.querySelectorAll('.odo').forEach(function(el){
+    var target = String(el.getAttribute('data-odo'));
+    el.innerHTML = '';
+    var rails = [];
+    for(var i = 0; i < target.length; i++){
+      var od = document.createElement('span'); od.className = 'od';
+      var rail = document.createElement('span'); rail.className = 'rail';
+      for(var d = 0; d <= 9; d++){
+        var sp = document.createElement('span'); sp.textContent = d;
+        rail.appendChild(sp);
+      }
+      od.appendChild(rail); el.appendChild(od);
+      rails.push({ rail: rail, digit: parseInt(target[i], 10) });
+    }
+    function roll(){
+      rails.forEach(function(r, i){
+        gsap.fromTo(r.rail, { yPercent: 0 }, { yPercent: -10 * r.digit, duration: 1.4 + i * 0.15, ease: 'power4.inOut' });
+      });
+    }
+    if(instant){
+      rails.forEach(function(r){ gsap.set(r.rail, { yPercent: -10 * r.digit }); });
+      return;
+    }
+    ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: roll });
+  });
 }
 
 function countUps(instant){
