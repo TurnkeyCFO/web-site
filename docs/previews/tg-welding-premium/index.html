@@ -29,14 +29,19 @@ a{color:inherit;text-decoration:none}
 ::selection{background:var(--ember);color:var(--coal)}
 .dfont{font-family:var(--disp);text-transform:uppercase;letter-spacing:.02em}
 
-/* preloader */
-#pre{position:fixed;inset:0;z-index:9999;background:var(--coal3);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;transition:transform 1s cubic-bezier(.77,0,.18,1)}
-#pre.done{transform:translateY(-101%)}
-#pre .plogo{height:64px;width:auto}
-#pre .pline{width:180px;height:1.5px;background:rgba(246,166,35,.2);position:relative;overflow:hidden}
-#pre .pline i{position:absolute;inset:0;background:var(--ember);transform:scaleX(0);transform-origin:0 50%}
-#pre .pnum{font-weight:700;font-size:13px;letter-spacing:.3em;color:var(--ember);font-variant-numeric:tabular-nums;font-family:var(--disp)}
+/* cinematic intro film */
+#pre{position:fixed;inset:0;z-index:9999;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity .9s ease}
+#pre.done{opacity:0;pointer-events:none}
+#pre video{width:100%;height:100%;object-fit:cover;display:block}
+#pre .i-scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 80%,rgba(0,0,0,.5),rgba(0,0,0,.12) 50%,transparent 78%)}
+#pre .i-brand{position:absolute;left:0;right:0;bottom:11%;text-align:center;pointer-events:none;opacity:0;transform:translateY(18px);transition:opacity 1s ease,transform 1s ease}
+#pre.brandon .i-brand{opacity:1;transform:none}
+#pre .i-brand img{height:72px;width:auto;margin:0 auto;filter:drop-shadow(0 6px 30px rgba(0,0,0,.7))}
+#pre .i-brand .i-tag{margin-top:14px;font-family:var(--disp);font-size:clamp(15px,2vw,21px);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#f5ead8;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+#skip{position:absolute;bottom:20px;right:24px;font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);background:rgba(0,0,0,.35);border:1px solid rgba(246,166,35,.35);border-radius:6px;padding:9px 16px;cursor:pointer;z-index:2}
+#skip:hover{background:rgba(246,166,35,.15)}
 body.locked{overflow:hidden}
+@media(prefers-reduced-motion:reduce){#pre{display:none}}
 
 /* chrome */
 #prog{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--heat),var(--ember));z-index:1200}
@@ -242,9 +247,15 @@ footer ul a:hover{color:var(--ember)}
 <div id="prog"></div>
 
 <div id="pre" aria-hidden="true">
-  <img class="plogo" src="assets/tg-logo-white.png" alt="TG Welding logo">
-  <div class="pline"><i id="plfill"></i></div>
-  <div class="pnum"><span id="pn">0</span>%</div>
+  <video id="introv" muted playsinline autoplay preload="auto" poster="assets/intro-poster.jpg">
+    <source src="assets/intro-film.mp4" type="video/mp4">
+  </video>
+  <div class="i-scrim"></div>
+  <div class="i-brand">
+    <img src="assets/tg-logo-white.png" alt="TG Welding">
+    <div class="i-tag">Steel that holds the line</div>
+  </div>
+  <button id="skip" type="button">Skip</button>
 </div>
 
 <header id="hd">
@@ -607,20 +618,33 @@ function splitLines(el){
   return out;
 }
 
-var pre = document.getElementById('pre'), pn = document.getElementById('pn'), plfill = document.getElementById('plfill');
+var pre = document.getElementById('pre');
+var introv = document.getElementById('introv');
 var started = false;
 function launch(){
   if(started) return; started = true;
   pre.classList.add('done');
   document.body.classList.remove('locked');
+  try{ introv.pause(); }catch(e){}
   buildMotion();
+  setTimeout(function(){ if(pre.parentNode) pre.parentNode.removeChild(pre); }, 1200);
 }
-var cnt = { v: 0 };
-gsap.to(cnt, { v: 100, duration: 1.4, ease: 'power2.inOut',
-  onUpdate: function(){ pn.textContent = Math.round(cnt.v); if(plfill) plfill.style.transform = 'scaleX(' + (cnt.v/100) + ')'; },
-  onComplete: function(){ setTimeout(launch, 150); }
-});
-setTimeout(launch, 4000);
+if(reduced){
+  launch();
+} else {
+  document.getElementById('skip').addEventListener('click', launch);
+  introv.addEventListener('ended', launch);
+  /* brand lockup fades in over the slow-mo spark shower */
+  introv.addEventListener('timeupdate', function(){
+    if(introv.currentTime >= 6.2) pre.classList.add('brandon');
+  });
+  /* if the film can't start quickly, don't hold the page hostage */
+  var startedPlaying = false;
+  introv.addEventListener('playing', function(){ startedPlaying = true; });
+  setTimeout(function(){ if(!startedPlaying) launch(); }, 3000);
+  introv.addEventListener('error', launch);
+  setTimeout(launch, 13000); /* absolute failsafe */
+}
 
 function buildMotion(){
   if(reduced){
