@@ -108,6 +108,30 @@ h1.disp em.sf{color:var(--violet2);font-size:1.02em}
 .scue .bar{width:1.5px;height:46px;background:linear-gradient(180deg,var(--violet2),transparent);animation:cue 1.9s ease-in-out infinite}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
+/* depth hero */
+#hero.depth{padding:0;display:block;min-height:100svh}
+#hero.depth .hero-media{inset:-4% -2%}
+.hero-giant{position:absolute;left:0;right:0;top:14vh;z-index:1;display:flex;justify-content:center;pointer-events:none;padding:0 3vw}
+h1.giant-t{font-weight:800;letter-spacing:-.03em;line-height:.92;color:rgba(255,255,255,.95);white-space:nowrap;font-size:180px;margin:0}
+h1.giant-t .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.14em;margin-bottom:-.14em}
+h1.giant-t .w>span{display:inline-block;will-change:transform}
+.hero-fg{position:absolute;inset:-4% -2%;z-index:2;pointer-events:none}
+.hero-fg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero-sides{position:absolute;top:42vh;left:0;right:0;display:flex;justify-content:space-between;gap:20px;padding:0 6vw;z-index:3;pointer-events:none}
+.hero-sides div{color:#fff;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:clamp(11px,1.15vw,15px);text-shadow:0 2px 24px rgba(80,50,140,.55)}
+.hero-bottom{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;padding:110px 20px 74px;background:linear-gradient(180deg,transparent,rgba(26,13,46,.38) 45%,rgba(26,13,46,.62))}
+.hero-bottom .hsub2{font-size:clamp(15.5px,1.5vw,19px);color:#fff;max-width:52ch;font-weight:500;text-shadow:0 2px 18px rgba(26,13,46,.6)}
+.hero-bottom .hsub2 strong{color:#fff}
+.hero-bottom .hctas{margin-top:26px;justify-content:center}
+.hero-bottom .hnote{margin-top:14px;color:#e6dcf7;text-shadow:0 1px 12px rgba(26,13,46,.6)}
+#hero.depth .scue{bottom:16px;color:#e6dcf7}
+#hero.depth .scue .bar{background:linear-gradient(180deg,#fff,transparent)}
+@media(max-width:880px){
+  .hero-sides{top:34vh;flex-direction:column;align-items:center;gap:6px;text-align:center}
+  .hero-giant{top:12vh}
+  .hero-bottom{padding-bottom:64px}
+}
+
 /* marquee */
 .mq{background:var(--void3);color:#cdbcf0;overflow:hidden;padding:20px 0;border-top:1px solid rgba(157,92,255,.18);border-bottom:1px solid rgba(157,92,255,.18)}
 .mq .track{display:flex;white-space:nowrap;will-change:transform;width:max-content}
@@ -334,29 +358,27 @@ footer ul a:hover{color:var(--violet2)}
 </div>
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" class="depth">
   <div class="hero-media" id="hmedia">
     <video autoplay muted loop playsinline poster="assets/hero.jpg" id="hvid">
       <source src="assets/hero.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="scrim"></div>
-  <div class="scrim2"></div>
-  <div class="hwrap">
-    <div class="kick rv">Free website design · No call · No commitment</div>
-    <h1 class="disp" id="h1">The website your business <em class="sf">deserves.</em></h1>
-    <p class="hsub rv">We design your first draft at <strong>zero cost</strong>. Love it? Keep it live for <strong>$147/month</strong>, everything handled. No build fee. No sales call.</p>
+  <div class="hero-giant" id="hgiant" aria-hidden="false">
+    <h1 class="giant-t" id="h1">Turnkey Web</h1>
+  </div>
+  <div class="hero-fg" id="hfg" aria-hidden="true"><img src="assets/hero-fg.png" alt=""></div>
+  <div class="hero-sides">
+    <div class="rv">Websites above the noise</div>
+    <div class="rv">Designed free &middot; Yours for $147/mo</div>
+  </div>
+  <div class="hero-bottom">
+    <p class="hsub2 rv">We design your first draft at <strong>zero cost</strong>. Love it? Keep it live for <strong>$147/month</strong>, everything handled. No build fee. No sales call.</p>
     <div class="hctas rv">
       <a class="btn em mag" href="https://turnkeyweb.org/intakeform/" target="_blank" rel="noopener">Get My Free Site <span class="ar">→</span></a>
       <a class="btn gh mag" href="#work">See Our Work</a>
     </div>
     <p class="hnote rv">One short form. Your draft in days, not weeks.</p>
-    <div class="hstats rv">
-      <div class="hstat"><div class="n">$0</div><div class="l">To see your draft</div></div>
-      <div class="hstat"><div class="n">Days</div><div class="l">Not weeks</div></div>
-      <div class="hstat"><div class="n">$147<b>/mo</b></div><div class="l">Everything included</div></div>
-      <div class="hstat"><div class="n">∞</div><div class="l">Revisions until you love it</div></div>
-    </div>
   </div>
   <div class="scue"><span>Scroll</span><span class="bar"></span></div>
 </section>
@@ -589,7 +611,7 @@ footer ul a:hover{color:var(--violet2)}
     <div>
       <h4>Contact</h4>
       <ul>
-        <li><a href="mailto:hello@turnkeyweb.org">hello@turnkeyweb.org</a></li>
+        <li><a href="mailto:ricky@turnkeyweb.org">ricky@turnkeyweb.org</a></li>
         <li>Austin, Texas</li>
       </ul>
     </div>
@@ -711,7 +733,50 @@ function buildMotion(){
   gsap.set(h1words, { y: function(i, el){ return el.offsetHeight * 1.2; } });
   gsap.to(h1words, { y: 0, duration: 1.05, ease: 'power3.out', stagger: 0.07, delay: 0.35 });
   gsap.to('#hero .rv', { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.12, delay: 0.75 });
-  gsap.to('#hmedia', { yPercent: 16, scale: 1.06, ease: 'none',
+  /* giant text: fit to width */
+  (function fitGiant(){
+    var h = document.getElementById('h1');
+    var pad = window.innerWidth * 0.06;
+    function fit(){
+      h.style.fontSize = '180px';
+      for(var i = 0; i < 6; i++){
+        var w = h.getBoundingClientRect().width;
+        var avail = window.innerWidth - pad * 2;
+        if(w <= 0) break;
+        var ratio = avail / w;
+        if(Math.abs(ratio - 1) < 0.004) break;
+        h.style.fontSize = (parseFloat(getComputedStyle(h).fontSize) * ratio) + 'px';
+      }
+    }
+    fit();
+    window.addEventListener('resize', function(){ requestAnimationFrame(fit); });
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  })();
+
+  /* depth: mouse parallax across the three layers */
+  if(fine){
+    var mvx = gsap.quickTo('#hmedia', 'x', { duration: 0.9, ease: 'power3.out' });
+    var mvy = gsap.quickTo('#hmedia', 'y', { duration: 0.9, ease: 'power3.out' });
+    var gtx = gsap.quickTo('#hgiant', 'x', { duration: 0.7, ease: 'power3.out' });
+    var gty = gsap.quickTo('#hgiant', 'y', { duration: 0.7, ease: 'power3.out' });
+    var fgx = gsap.quickTo('#hfg', 'x', { duration: 0.5, ease: 'power3.out' });
+    var fgy = gsap.quickTo('#hfg', 'y', { duration: 0.5, ease: 'power3.out' });
+    document.getElementById('hero').addEventListener('mousemove', function(e){
+      var nx = (e.clientX / window.innerWidth) - 0.5;
+      var ny = (e.clientY / window.innerHeight) - 0.5;
+      mvx(nx * -10); mvy(ny * -6);
+      gtx(nx * -26); gty(ny * -14);
+      fgx(nx * 18); fgy(ny * 10);
+    });
+  }
+
+  /* depth: scroll parallax at three rates */
+  gsap.to('#hgiant', { yPercent: -60, ease: 'none',
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('#hfg', { yPercent: 7, ease: 'none',
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+  gsap.to('#hmedia video', { yPercent: 10, scale: 1.04, ease: 'none',
     scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
 
   var lines = splitLines(document.getElementById('ansp'));
