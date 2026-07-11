@@ -180,6 +180,42 @@ h2.big em{font-style:normal;color:var(--ember2)}
 .tcard .who{font-size:13px;color:var(--tx2);margin-top:auto}
 @media(max-width:960px){.tgrid{grid-template-columns:1fr}}
 
+/* Osmo stacking review cards */
+.cards-stack{padding-top:3dvh;padding-bottom:9dvh}
+.cards-stack__list{display:flex;flex-flow:column;align-items:center;justify-content:center;width:100%;gap:5em}
+.cards-stack__item{flex:none;width:100%;max-width:30em;position:sticky;top:8em}
+.rev-card{aspect-ratio:2/1.5;background:var(--paper);border:1px solid var(--linelt);border-radius:18px;display:flex;flex-flow:column;width:100%;padding:2.4em;box-shadow:0 30px 80px rgba(9,13,18,.28);position:relative;overflow:hidden}
+.rev-card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:#1668B8}
+.rev-card .stars{color:#1668B8;font-size:15px;letter-spacing:3px}
+.rev-card blockquote{margin-top:auto;font-size:1.12rem;font-weight:600;color:var(--ink);line-height:1.5}
+.rev-card .who{font-size:.85rem;color:var(--tx2);margin-top:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+@media(max-width:640px){.rev-card{font-size:.85em}.cards-stack__item{top:5.5em;max-width:24em}}
+
+/* Osmo number odometer */
+.odo{display:inline-flex;overflow:hidden;line-height:1.06;vertical-align:bottom}
+.odo .od{position:relative;display:inline-block;height:1.06em;overflow:hidden}
+.odo .od .rail{display:flex;flex-direction:column;will-change:transform}
+.odo .od .rail span{display:block;height:1.06em}
+.odo .odc{display:inline-block}
+
+/* Osmo fit-text-to-width statement */
+[data-fit-width]{display:inline-block;white-space:nowrap;margin:0}
+.fitband{background:var(--coal3);padding:clamp(40px,5vw,80px) clamp(20px,4vw,56px) 0;overflow:hidden}
+.fitband .fitline{font-family:var(--disp);font-weight:700;line-height:.95;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px rgba(59,155,255,.35);letter-spacing:.01em;font-size:120px}
+.fitband .fitline b{color:var(--ember);-webkit-text-stroke:0;font-weight:700}
+
+/* Osmo scramble text cursor */
+.cursor{z-index:1350;pointer-events:none;padding-top:1.6em;padding-left:.6em;padding-right:1em;position:fixed;top:0;left:0}
+.cursor-scramble{gap:.5em;opacity:0;color:#fff;background-color:#1668B8;border-radius:.3em;justify-content:center;align-items:center;height:2.1em;padding-left:.8em;padding-right:.8em;display:flex;position:relative;box-shadow:0 10px 30px rgba(22,104,184,.45);font-family:var(--disp);text-transform:uppercase;letter-spacing:.08em}
+.cursor-scramble__text{white-space:nowrap;font-size:.8em;font-weight:600}
+.cursor-scramble__chevron{color:#3B9BFF;width:.38em}
+@media (hover:hover) and (pointer:fine){
+  [data-cursor] .cursor-scramble{transition:transform .4s cubic-bezier(.625,.05,0,1),opacity .2s ease .1s;transform:translateX(0%) scale(1) rotate(.001deg)}
+  [data-cursor="active"] .cursor-scramble{transition:transform .4s cubic-bezier(.625,.05,0,1),opacity .2s ease 0s;opacity:1;transform:translateX(0%) scale(1) rotate(.001deg)}
+  [data-cursor="active-edge"] .cursor-scramble{transition:transform .4s cubic-bezier(.625,.05,0,1),opacity .2s ease 0s;opacity:1;transform:translateX(-100%) scale(1) rotate(.001deg)}
+}
+@media (hover:none) and (pointer:coarse){.cursor{display:none}}
+
 /* service area */
 .area{background:var(--paper);color:var(--tx)}
 .chips{margin-top:40px;display:flex;flex-wrap:wrap;gap:10px}
@@ -233,6 +269,12 @@ footer ul a:hover{color:var(--ember)}
 <body class="locked">
 
 <div id="prog"></div>
+<div data-cursor="" class="cursor" aria-hidden="true">
+  <div class="cursor-scramble">
+    <span data-cursor-text-target class="cursor-scramble__text">TG Welding</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 22 39" fill="none" class="cursor-scramble__chevron"><path d="M1.875 36.875L19.375 19.375L1.875 1.875" stroke="currentColor" stroke-width="5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+  </div>
+</div>
 
 
 
@@ -283,8 +325,8 @@ footer ul a:hover{color:var(--ember)}
       <a class="btn gh mag" href="#work">See What We Build</a>
     </div>
     <div class="hstats rv">
-      <div class="hstat"><div class="n">5.0<b>★</b></div><div class="l">Rated workmanship</div></div>
-      <div class="hstat"><div class="n">100<b>%</b></div><div class="l">On time, on budget</div></div>
+      <div class="hstat"><div class="n"><span class="odo" data-odo="5.0">5.0</span><b>★</b></div><div class="l">Rated workmanship</div></div>
+      <div class="hstat"><div class="n"><span class="odo" data-odo="100">100</span><b>%</b></div><div class="l">On time, on budget</div></div>
       <div class="hstat"><div class="n">Days</div><div class="l">Not weeks or months</div></div>
     </div>
   </div>
@@ -362,7 +404,7 @@ footer ul a:hover{color:var(--ember)}
     <h2 class="big">Real jobs. Real <em>steel.</em></h2>
     <p class="sub">Pulled straight from the shop floor and the job site — follow the build at @tg.welding.</p>
   </div>
-  <div class="drag-wrap" id="dragwrap">
+  <div class="drag-wrap" id="dragwrap" data-cursor-hover data-cursor-text="Drag">
     <div class="drag-strip" id="dragstrip">
       <div class="dcard"><img src="assets/ig-ranch-entrance.jpg" alt="Ranch entrance build"><div class="dlabel">Ranch Entrance</div></div>
       <div class="dcard"><img src="assets/ig-boat-dock.jpg" alt="Boat dock build"><div class="dlabel">Boat Dock &amp; Lift</div></div>
@@ -433,12 +475,43 @@ footer ul a:hover{color:var(--ember)}
   <div class="inner">
     <div class="eyebrow">Word gets around</div>
     <h2 class="big">A 5.0 reputation, earned <em>job by job.</em></h2>
-    <div class="tgrid">
-      <div class="tcard rv"><div class="stars">★★★★★</div><blockquote>"Quality work, finished on time and on budget. Exactly what they said they would do."</blockquote><div class="who">Verified HomeAdvisor reviewer</div></div>
-      <div class="tcard rv"><div class="stars">★★★★★</div><blockquote>"Real craftsmanship. The fence and gate came out better than I pictured, and it is built to last."</blockquote><div class="who">Verified Liberty Hill customer</div></div>
-      <div class="tcard rv"><div class="stars">★★★★★</div><blockquote>"They take on the tricky jobs other shops pass on and get them right. Glad they are right here in town."</blockquote><div class="who">Verified local rancher</div></div>
-    </div>
   </div>
+  <section data-stacking-cards-init
+    data-stacking-cards-desktop="true" data-stacking-cards-tablet="true" data-stacking-cards-mobile="true"
+    data-stacking-cards-desktop-x="-12em, 12em, 0em"
+    data-stacking-cards-desktop-y="1.5em, 3em, 0em"
+    data-stacking-cards-desktop-rotate="-5, 4, 0"
+    data-stacking-cards-tablet-x="-4em, 4em, 0em"
+    data-stacking-cards-tablet-y="1em, 2em, 0em"
+    data-stacking-cards-tablet-rotate="-3, 3, 0"
+    data-stacking-cards-mobile-x="-1em, 1em, 0em"
+    data-stacking-cards-mobile-y=".7em, 1.4em, 0em"
+    data-stacking-cards-mobile-rotate="-2, 2, 0"
+    class="cards-stack">
+    <div class="cards-stack__list">
+      <div data-stacking-card class="cards-stack__item">
+        <div data-stacking-card-target class="rev-card" data-cursor-hover data-cursor-text="5.0 rated">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Quality work, finished on time and on budget. Exactly what they said they would do."</blockquote>
+          <div class="who">Verified HomeAdvisor reviewer</div>
+        </div>
+      </div>
+      <div data-stacking-card class="cards-stack__item">
+        <div data-stacking-card-target class="rev-card" data-cursor-hover data-cursor-text="Built to last">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Real craftsmanship. The fence and gate came out better than I pictured, and it is built to last."</blockquote>
+          <div class="who">Verified Liberty Hill customer</div>
+        </div>
+      </div>
+      <div data-stacking-card class="cards-stack__item">
+        <div data-stacking-card-target class="rev-card" data-cursor-hover data-cursor-text="Right in town">
+          <div class="stars">★★★★★</div>
+          <blockquote>"They take on the tricky jobs other shops pass on and get them right. Glad they are right here in town."</blockquote>
+          <div class="who">Verified local rancher</div>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>
 
 <!-- SERVICE AREA -->
@@ -476,6 +549,10 @@ footer ul a:hover{color:var(--ember)}
     </div>
   </div>
 </section>
+
+<div class="fitband" aria-hidden="true">
+  <h2 class="fitline" data-fit-width>TG <b>WELDING</b> · LIBERTY HILL · TEXAS</h2>
+</div>
 
 <footer>
   <div class="fgrid">
@@ -518,6 +595,7 @@ footer ul a:hover{color:var(--ember)}
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrambleTextPlugin.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 (function(){
@@ -608,6 +686,8 @@ else { window.addEventListener('load', launch); setTimeout(launch, 2500); }
 function buildMotion(){
   if(reduced){
     document.querySelectorAll('.rv').forEach(function(el){ el.style.opacity = 1; el.style.transform = 'none'; });
+    initOdometers(true);
+    initTextFitToWidth();
     return;
   }
   gsap.set(h1words, { y: function(i, el){ return el.offsetHeight * 1.2; } });
@@ -645,6 +725,9 @@ function buildMotion(){
     scrollTrigger: { trigger: 'footer', start: 'top bottom', end: 'bottom bottom', scrub: true } });
 
   initDragGallery();
+  initStackingStickyCardsBounce();
+  initOdometers(false);
+  initTextFitToWidth();
   ScrollTrigger.refresh();
 }
 
@@ -696,6 +779,150 @@ function initDragGallery(){
     if(!dragging && !interacted) setX(x - 0.3);
   });
 }
+
+/* Osmo: stacking sticky cards (bounce) */
+function initStackingStickyCardsBounce(){
+  var cardsSections = document.querySelectorAll('[data-stacking-cards-init]');
+  var w0 = window.innerWidth;
+  var tier = w0 <= 479 ? 'mobile-portrait' : (w0 <= 767 ? 'mobile-landscape' : (w0 <= 991 ? 'tablet' : 'desktop'));
+  cardsSections.forEach(function(section){
+    section.querySelectorAll('[data-stacking-card-target]').forEach(function(el){
+      gsap.killTweensOf(el); gsap.set(el, { clearProps: 'transform,zIndex' });
+    });
+  });
+  cardsSections.forEach(function(section){
+    var isEnabled = (tier === 'desktop' && section.dataset.stackingCardsDesktop === 'true') ||
+      (tier === 'tablet' && section.dataset.stackingCardsTablet === 'true') ||
+      ((tier === 'mobile-portrait' || tier === 'mobile-landscape') && section.dataset.stackingCardsMobile === 'true');
+    if(!isEnabled) return;
+    var cards = Array.prototype.slice.call(section.querySelectorAll('[data-stacking-card]'));
+    if(!cards.length) return;
+    var stickyTop = parseFloat(getComputedStyle(cards[0]).top) || 0;
+    function vals(attr, fallback){
+      var raw = section.getAttribute(attr);
+      if(!raw) return fallback;
+      var v = raw.split(',').map(function(x){ return x.trim(); }).filter(Boolean);
+      return v.length ? v : fallback;
+    }
+    var pfx = tier === 'desktop' ? 'desktop' : (tier === 'tablet' ? 'tablet' : 'mobile');
+    var rot = vals('data-stacking-cards-' + pfx + '-rotate', ['0','4','-4']).map(parseFloat);
+    var xs = vals('data-stacking-cards-' + pfx + '-x', ['0em','0em','0em']);
+    var ys = vals('data-stacking-cards-' + pfx + '-y', ['0em','0em','0em']);
+    cards.forEach(function(card, index){
+      var targetEl = card.querySelector('[data-stacking-card-target]');
+      if(!targetEl) return;
+      gsap.set(targetEl, { rotate: 0, x: 0, y: 0, scale: 1, zIndex: cards.length - index });
+      gsap.to(targetEl, { rotate: rot[index % rot.length], x: xs[index % xs.length], y: ys[index % ys.length],
+        ease: 'power1.in', overwrite: 'auto',
+        scrollTrigger: { id: 'stacking-rotate-' + index, trigger: card, start: 'top 75%', end: 'top-=' + stickyTop + ' top', scrub: true } });
+      ScrollTrigger.create({ id: 'stacking-bounce-' + index, trigger: card, start: 'top-=' + stickyTop + ' top',
+        onEnter: function(){
+          var w = targetEl.offsetWidth, h = targetEl.offsetHeight;
+          var fs = parseFloat(getComputedStyle(targetEl).fontSize);
+          var stretch = 1.5 * fs;
+          gsap.timeline()
+            .to(targetEl, { scaleX: (w + stretch) / w, scaleY: (h - stretch * 0.33) / h, duration: 0.1, ease: 'power1.out' })
+            .to(targetEl, { scaleX: 1, scaleY: 1, duration: 1, ease: 'elastic.out(1, 0.3)' });
+        } });
+    });
+  });
+}
+
+/* Osmo: number odometer (rolling digits, supports . chars) */
+function initOdometers(instant){
+  document.querySelectorAll('.odo').forEach(function(el){
+    var target = String(el.getAttribute('data-odo'));
+    el.innerHTML = '';
+    var rails = [];
+    for(var i = 0; i < target.length; i++){
+      var ch = target[i];
+      if(!/[0-9]/.test(ch)){
+        var stat = document.createElement('span'); stat.className = 'odc'; stat.textContent = ch;
+        el.appendChild(stat); continue;
+      }
+      var od = document.createElement('span'); od.className = 'od';
+      var rail = document.createElement('span'); rail.className = 'rail';
+      for(var d = 0; d <= 9; d++){
+        var sp = document.createElement('span'); sp.textContent = d;
+        rail.appendChild(sp);
+      }
+      od.appendChild(rail); el.appendChild(od);
+      rails.push({ rail: rail, digit: parseInt(ch, 10) });
+    }
+    function roll(){
+      rails.forEach(function(r, i){
+        gsap.fromTo(r.rail, { yPercent: 0 }, { yPercent: -10 * r.digit, duration: 1.4 + i * 0.15, ease: 'power4.inOut', delay: 0.9 });
+      });
+    }
+    if(instant || reduced){
+      rails.forEach(function(r){ gsap.set(r.rail, { yPercent: -10 * r.digit }); });
+      return;
+    }
+    roll();
+  });
+}
+
+/* Osmo: fit text to width */
+function initTextFitToWidth(){
+  var elements = Array.prototype.slice.call(document.querySelectorAll('[data-fit-width]'));
+  if(!elements.length) return;
+  function fit(el){
+    var parent = el.parentElement;
+    if(!parent) return;
+    var cs = getComputedStyle(parent);
+    var available = parent.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    if(available <= 0) return;
+    var size = parseFloat(getComputedStyle(el).fontSize) || 16;
+    for(var i = 0; i < 5; i++){
+      var width = el.getBoundingClientRect().width;
+      if(width <= 0) break;
+      var ratio = available / width;
+      if(Math.abs(ratio - 1) < 0.002) break;
+      size *= ratio;
+      el.style.fontSize = size + 'px';
+    }
+  }
+  function refit(){ elements.forEach(fit); }
+  window.addEventListener('resize', function(){ requestAnimationFrame(refit); });
+  refit();
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(refit);
+}
+
+/* Osmo: scramble text cursor */
+(function(){
+  var cursor = document.querySelector('[data-cursor]');
+  var cursorTextTarget = document.querySelector('[data-cursor-text-target]');
+  if(!cursor || !cursorTextTarget || !fine || reduced || !window.ScrambleTextPlugin) return;
+  gsap.registerPlugin(ScrambleTextPlugin);
+  var mouseX = 0, mouseY = 0, hasMouseMoved = false, activeHoverItem = null;
+  var chars = 'TGXW#&@0$';
+  var xTo = gsap.quickTo(cursor, 'x', { duration: 0.4, ease: 'power3.out' });
+  var yTo = gsap.quickTo(cursor, 'y', { duration: 0.4, ease: 'power3.out' });
+  function updateCursor(){
+    var under = document.elementFromPoint(mouseX, mouseY);
+    var hoverItem = under ? under.closest('[data-cursor-hover]') : null;
+    var rect = cursor.getBoundingClientRect();
+    var isEdge = rect.right >= window.innerWidth;
+    cursor.setAttribute('data-cursor', hoverItem ? (isEdge ? 'active-edge' : 'active') : '');
+    if(hoverItem !== activeHoverItem){
+      var text = hoverItem ? (hoverItem.getAttribute('data-cursor-text') || '') : '';
+      if(text){
+        gsap.to(cursorTextTarget, { duration: 0.6, overwrite: 'auto',
+          scrambleText: { text: text, chars: chars, speed: 1.2 } });
+      }
+      activeHoverItem = hoverItem;
+    }
+  }
+  window.addEventListener('mousemove', function(e){
+    mouseX = e.clientX; mouseY = e.clientY; hasMouseMoved = true;
+    xTo(mouseX); yTo(mouseY);
+    requestAnimationFrame(updateCursor);
+  });
+  window.addEventListener('scroll', function(){
+    if(!hasMouseMoved) return;
+    requestAnimationFrame(updateCursor);
+  }, { passive: true });
+})();
 
 gsap.to('#prog', { scaleX: 1, ease: 'none',
   scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.3 } });
