@@ -112,8 +112,7 @@ h1.disp em.sf{color:var(--violet2);font-size:1.02em}
 #hero.depth{padding:0;display:block;min-height:100svh}
 #hero.depth .hero-media{inset:-4% -2%}
 .hero-giant{position:absolute;left:0;right:0;top:27vh;z-index:1;display:flex;justify-content:center;pointer-events:none;padding:0 3vw}
-h1.giant-t{font-weight:800;letter-spacing:-.03em;line-height:.92;color:transparent;white-space:nowrap;font-size:180px;margin:0}
-h1.giant-t .w>span{background:linear-gradient(180deg,#ffffff 8%,rgba(235,229,252,.96) 46%,rgba(196,181,240,.88) 78%,rgba(168,150,226,.8) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.14em;margin-bottom:-.14em;text-shadow:none}
+h1.giant-t{font-weight:800;letter-spacing:-.03em;line-height:.92;white-space:nowrap;font-size:180px;margin:0;background:linear-gradient(180deg,#ffffff 8%,rgba(235,229,252,.96) 46%,rgba(196,181,240,.88) 78%,rgba(168,150,226,.8) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.1em}
 h1.giant-t .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.14em;margin-bottom:-.14em}
 h1.giant-t .w>span{display:inline-block;will-change:transform}
 .hero-fg{position:absolute;inset:-4% -2%;z-index:2;pointer-events:none}
@@ -652,27 +651,7 @@ if(!reduced){
 }
 
 var h1 = document.getElementById('h1');
-(function(){
-  var nodes = Array.prototype.slice.call(h1.childNodes);
-  h1.innerHTML = '';
-  nodes.forEach(function(node){
-    if(node.nodeType === 3){
-      node.textContent.split(/\s+/).forEach(function(word){
-        if(!word) return;
-        var w = document.createElement('span'); w.className = 'w';
-        var i2 = document.createElement('span'); i2.textContent = word;
-        w.appendChild(i2); h1.appendChild(w);
-        h1.appendChild(document.createTextNode(' '));
-      });
-    } else if(node.nodeType === 1){
-      var w = document.createElement('span'); w.className = 'w';
-      var i2 = document.createElement('span'); i2.appendChild(node.cloneNode(true));
-      w.appendChild(i2); h1.appendChild(w);
-      h1.appendChild(document.createTextNode(' '));
-    }
-  });
-})();
-var h1words = h1.querySelectorAll('.w > span');
+
 
 function splitLines(el){
   var nodes = Array.prototype.slice.call(el.childNodes);
@@ -734,8 +713,6 @@ function buildMotion(){
     countUps(true);
     return;
   }
-  gsap.set(h1words, { y: function(i, el){ return el.offsetHeight * 1.2; } });
-  gsap.to(h1words, { y: 0, duration: 1.05, ease: 'power3.out', stagger: 0.07, delay: 0.35 });
   gsap.to('#hero .rv', { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.12, delay: 0.75 });
   /* giant text: fit to width */
   (function fitGiant(){
@@ -757,31 +734,6 @@ function buildMotion(){
     if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   })();
 
-  /* depth: mouse parallax across the three layers */
-  if(fine){
-    var mvx = gsap.quickTo('#hmedia', 'x', { duration: 0.9, ease: 'power3.out' });
-    var mvy = gsap.quickTo('#hmedia', 'y', { duration: 0.9, ease: 'power3.out' });
-    var gtx = gsap.quickTo('#hgiant', 'x', { duration: 0.7, ease: 'power3.out' });
-    var gty = gsap.quickTo('#hgiant', 'y', { duration: 0.7, ease: 'power3.out' });
-    var fgx = gsap.quickTo('#hfg', 'x', { duration: 0.5, ease: 'power3.out' });
-    var fgy = gsap.quickTo('#hfg', 'y', { duration: 0.5, ease: 'power3.out' });
-    document.getElementById('hero').addEventListener('mousemove', function(e){
-      var nx = (e.clientX / window.innerWidth) - 0.5;
-      var ny = (e.clientY / window.innerHeight) - 0.5;
-      mvx(nx * -10); mvy(ny * -6);
-      gtx(nx * -26); gty(ny * -14);
-      fgx(nx * 18); fgy(ny * 10);
-    });
-  }
-
-  /* depth: scroll parallax at three rates */
-  gsap.to('#hgiant', { yPercent: -60, ease: 'none',
-    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.to('#hfg', { yPercent: 7, ease: 'none',
-    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
-
-  gsap.to('#hmedia video', { yPercent: 10, scale: 1.04, ease: 'none',
-    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
 
   var lines = splitLines(document.getElementById('ansp'));
   gsap.set(lines, { y: function(i, el){ return el.offsetHeight * 1.15; } });
