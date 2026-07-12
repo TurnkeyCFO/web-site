@@ -325,6 +325,11 @@ h2.big em.sf{color:var(--violet)}
 .dw-card:hover .go{background:var(--violet);border-color:var(--violet);color:#fff}
 .dw-hint{text-align:center;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#8a7aac;padding:10px 0 0}
 
+/* Osmo draw-path cursor trail */
+.cursor-wrap{position:fixed;inset:0;z-index:1290;pointer-events:none;width:100%;height:100%}
+.cursor-canvas{top:0;left:0;width:100%;height:100%;z-index:0;position:absolute}
+@media (max-width:991px),(prefers-reduced-motion:reduce){.cursor-wrap{display:none}}
+
 /* Osmo scramble text cursor */
 .cursor{z-index:1350;pointer-events:none;padding-top:1.6em;padding-left:.6em;padding-right:1em;position:fixed;top:0;left:0}
 .cursor-scramble{gap:.5em;opacity:0;color:#fff;background-color:var(--violet);border-radius:.3em;justify-content:center;align-items:center;height:2.1em;padding-left:.8em;padding-right:.8em;display:flex;position:relative;box-shadow:0 10px 30px rgba(124,58,237,.4)}
@@ -400,6 +405,7 @@ footer ul a:hover{color:var(--violet2)}
 <body class="locked">
 
 <div id="prog"></div>
+<div class="cursor-wrap" aria-hidden="true"><canvas data-cursor-canvas class="cursor-canvas"></canvas></div>
 <div id="cur"></div>
 <div data-cursor="" class="cursor" aria-hidden="true">
   <div class="cursor-scramble">
@@ -1093,6 +1099,81 @@ function countUps(instant){
     new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting) kick(); }); }).observe(v);
   }
   setInterval(kick, 4000);
+})();
+
+/* Osmo: draw-path cursor trail */
+(function initTrailCursor(){
+  if(window.matchMedia('(pointer: coarse)').matches || reduced || window.innerWidth <= 991) return;
+  var canvas = document.querySelector('[data-cursor-canvas]');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var trailDuration = 900, trailColor = '#9D5CFF';
+  var strokeMinWidth = 1.5, strokeMaxWidth = 12, strokeSmoothing = 0.1;
+  var velocitySlow = 0.08, velocityFast = 2.8;
+  var glowBlur = 10, glowIntensity = 0.3;
+  var points = [], hasMouse = false, runningWidth = strokeMinWidth;
+  var mx = 0, my = 0, cx2 = 0, cy2 = 0;
+  function hexToRgb(hex){ var m = hex.replace('#','').match(/.{2}/g); return m.map(function(c){ return parseInt(c,16); }); }
+  var color = hexToRgb(trailColor);
+  function resize(){
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', function(e){ hasMouse = true; mx = e.clientX; my = e.clientY; });
+  gsap.ticker.add(function(){
+    if(!hasMouse) return;
+    cx2 += (mx - cx2) * 0.35; cy2 += (my - cy2) * 0.35;
+    if(points.length > 0){
+      var last = points[points.length - 1];
+      var dx = cx2 - last.x, dy = cy2 - last.y;
+      if(dx*dx + dy*dy < 0.1) return;
+    }
+    points.push({ x: cx2, y: cy2, time: performance.now() });
+  });
+  function clamp(v, lo, hi){ return v < lo ? lo : v > hi ? hi : v; }
+  function remap(v, inMin, inMax, outMin, outMax){
+    var t = clamp((v - inMin) / (inMax - inMin), 0, 1);
+    return outMin + t * (outMax - outMin);
+  }
+  function render(){
+    var now = performance.now();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    points = points.filter(function(p){ return now - p.time < trailDuration; });
+    if(points.length >= 3){
+      var r = color[0], g = color[1], b = color[2];
+      ctx.lineCap = 'butt';
+      ctx.shadowColor = 'rgba(' + r + ',' + g + ',' + b + ',' + glowIntensity + ')';
+      ctx.shadowBlur = glowBlur;
+      for(var i = 1; i < points.length - 1; i++){
+        var prev = points[i-1], curr = points[i], next = points[i+1];
+        var mx1 = (prev.x + curr.x) * 0.5, my1 = (prev.y + curr.y) * 0.5;
+        var mx2 = (curr.x + next.x) * 0.5, my2 = (curr.y + next.y) * 0.5;
+        var dx = curr.x - prev.x, dy = curr.y - prev.y;
+        var dt = curr.time - prev.time || 1;
+        var velocity = Math.sqrt(dx*dx + dy*dy) / dt;
+        var targetWidth = remap(velocity, velocitySlow, velocityFast, strokeMaxWidth, strokeMinWidth);
+        runningWidth += (targetWidth - runningWidth) * strokeSmoothing;
+        var age = now - curr.time;
+        var life = 1 - age / trailDuration;
+        var alpha = life * life * 0.55;
+        if(alpha <= 0.005) continue;
+        ctx.beginPath();
+        ctx.moveTo(mx1, my1);
+        ctx.quadraticCurveTo(curr.x, curr.y, mx2, my2);
+        ctx.lineWidth = runningWidth;
+        ctx.strokeStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+        ctx.stroke();
+      }
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+    }
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
 })();
 
 gsap.to('#prog', { scaleX: 1, ease: 'none',
