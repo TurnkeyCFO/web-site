@@ -364,7 +364,7 @@ footer ul a:hover{color:var(--violet2)}
 <section id="hero" class="depth">
   <div class="hero-media" id="hmedia">
     <video autoplay muted loop playsinline poster="assets/hero-d.jpg" id="hvid">
-      <source src="assets/hero-loop.mp4" type="video/mp4">
+      <source src="assets/hero-loop2.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero-giant" id="hgiant" aria-hidden="false">
@@ -859,6 +859,19 @@ function countUps(instant){
     if(!hasMouseMoved) return;
     requestAnimationFrame(updateCursor);
   }, { passive: true });
+})();
+
+/* keep the hero loop playing (iOS low-power / cache edge cases) */
+(function(){
+  var v = document.getElementById('hvid');
+  if(!v) return;
+  function kick(){ if(v.paused){ v.play().catch(function(){}); } }
+  document.addEventListener('touchstart', kick, { once: true, passive: true });
+  document.addEventListener('click', kick, { once: true });
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting) kick(); }); }).observe(v);
+  }
+  setInterval(kick, 4000);
 })();
 
 gsap.to('#prog', { scaleX: 1, ease: 'none',
