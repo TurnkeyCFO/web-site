@@ -128,9 +128,12 @@ h1.giant-t .w>span{display:inline-block;will-change:transform}
 #hero.depth .scue{bottom:16px;color:#e6dcf7}
 #hero.depth .scue .bar{background:linear-gradient(180deg,#fff,transparent)}
 @media(max-width:880px){
-  .hero-sides{top:34vh;flex-direction:column;align-items:center;gap:6px;text-align:center}
-  .hero-giant{top:12vh}
-  .hero-bottom{padding-bottom:64px}
+  .hero-giant{top:13vh}
+  .hero-sides{top:24vh;flex-direction:column;align-items:center;gap:5px;text-align:center}
+  .hero-sides div{font-size:11.5px;letter-spacing:.12em}
+  .hero-bottom{padding:90px 18px 96px;background:linear-gradient(180deg,transparent,rgba(26,13,46,.5) 40%,rgba(26,13,46,.78))}
+  .hero-bottom .hsub2{font-size:15px}
+  #hero.depth .scue{display:none}
 }
 
 /* marquee */
@@ -361,14 +364,14 @@ footer ul a:hover{color:var(--violet2)}
 <!-- HERO -->
 <section id="hero" class="depth">
   <div class="hero-media" id="hmedia">
-    <video autoplay muted loop playsinline poster="assets/hero.jpg" id="hvid">
-      <source src="assets/hero.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline poster="assets/hero-d.jpg" id="hvid">
+      <source src="assets/hero-d.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero-giant" id="hgiant" aria-hidden="false">
     <h1 class="giant-t" id="h1">Need a website?</h1>
   </div>
-  <div class="hero-fg" id="hfg" aria-hidden="true"><img src="assets/hero-fg.png" alt=""></div>
+  <div class="hero-fg" id="hfg" aria-hidden="true"><img src="assets/hero-d-fg.png" alt=""></div>
   <div class="hero-sides">
     <div class="rv">Building it alone gets old.</div>
     <div class="rv">We design it free.</div>
