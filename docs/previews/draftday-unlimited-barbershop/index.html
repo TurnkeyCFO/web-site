@@ -22,6 +22,7 @@
 <meta property="og:url" content="https://turnkeyweb.org/previews/draftday-unlimited-barbershop/">
 <meta property="og:image" content="https://turnkeyweb.org/previews/draftday-unlimited-barbershop/assets/hero.jpg">
 <meta name="theme-color" content="#F7F2EA">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23191512'/%3E%3Ctext x='50' y='68' font-family='Oswald,sans-serif' font-size='52' font-weight='700' fill='%23B08D57' text-anchor='middle'%3EDD%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -180,6 +181,18 @@ tailwind.config = {
 
   #particles { position:absolute; inset:0; z-index:0; pointer-events:none; }
 
+  /* nav adaptive colors — light over the dark hero at top, dark once scrolled onto paper */
+  #navbar .nav-word  { color: #F7F2EA; transition: color .45s; }
+  #navbar .nav-sub   { color: #B08D57; transition: color .45s; }
+  #navbar .nav-link  { color: rgba(247,242,234,.82); transition: color .3s; }
+  #navbar .nav-phone { color: #F7F2EA; transition: color .3s; }
+  #navbar .nav-badge { background: #B4372A; color:#F7F2EA; transition: background .45s, color .45s; }
+  #navbar.scrolled .nav-word  { color: #191512; }
+  #navbar.scrolled .nav-sub   { color: #B4372A; }
+  #navbar.scrolled .nav-link  { color: #4A423B; }
+  #navbar.scrolled .nav-phone { color: #191512; }
+  #navbar.scrolled .nav-badge { background:#191512; color:#B08D57; }
+
   /* mobile sticky bar */
   #mbar { transform: translateY(120%); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
   #mbar.show { transform: translateY(0); }
@@ -200,20 +213,20 @@ tailwind.config = {
   <div class="mx-auto max-w-7xl px-5 md:px-8">
     <div id="navbar" class="mt-3 flex items-center justify-between rounded-2xl px-4 md:px-5 py-2.5 transition-all duration-500">
       <a href="#top" class="flex items-center gap-3 group">
-        <span class="grid place-items-center w-9 h-9 rounded-lg bg-ink text-brass font-display font-700 text-lg leading-none group-hover:bg-red transition-colors duration-500" style="letter-spacing:.02em;">DD</span>
+        <span class="nav-badge grid place-items-center w-9 h-9 rounded-lg font-display font-700 text-lg leading-none" style="letter-spacing:.02em;">DD</span>
         <span class="leading-none">
-          <span class="block font-display font-600 text-ink text-[15px] tracking-[.14em]">DRAFTDAY</span>
-          <span class="block font-display font-500 text-red text-[9.5px] tracking-[.34em] mt-[3px]">UNLIMITED · BARBERSHOP</span>
+          <span class="nav-word block font-display font-600 text-[15px] tracking-[.14em]">DRAFTDAY</span>
+          <span class="nav-sub block font-display font-500 text-[9.5px] tracking-[.34em] mt-[3px]">UNLIMITED · BARBERSHOP</span>
         </span>
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-[13.5px] font-500 text-inksoft">
-        <a href="#roster" class="hover:text-red transition-colors">The Roster</a>
-        <a href="#craft" class="hover:text-red transition-colors">The Craft</a>
-        <a href="#voices" class="hover:text-red transition-colors">Voices</a>
-        <a href="#visit" class="hover:text-red transition-colors">Visit</a>
+      <nav class="hidden md:flex items-center gap-8 text-[13.5px] font-500">
+        <a href="#roster" class="nav-link hover:!text-red transition-colors">The Roster</a>
+        <a href="#craft" class="nav-link hover:!text-red transition-colors">The Craft</a>
+        <a href="#voices" class="nav-link hover:!text-red transition-colors">Voices</a>
+        <a href="#visit" class="nav-link hover:!text-red transition-colors">Visit</a>
       </nav>
       <div class="flex items-center gap-2.5">
-        <a href="tel:+14783194266" class="hidden sm:inline-flex items-center gap-2 text-[13px] font-600 text-ink hover:text-red transition-colors">
+        <a href="tel:+14783194266" class="nav-phone hidden sm:inline-flex items-center gap-2 text-[13px] font-600 hover:!text-red transition-colors">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           478-319-4266
         </a>
@@ -391,10 +404,10 @@ tailwind.config = {
 
 <!-- CINEMATIC BAND -->
 <section class="relative h-[52vh] md:h-[60vh] overflow-hidden flex items-center justify-center">
-  <img src="assets/band.jpg" alt="Barber tools under warm light at Draftday Unlimited" class="absolute inset-0 w-full h-full object-cover" data-parallax="0.12">
+  <img src="assets/band.jpg" alt="Vintage barber chair under warm light at Draftday Unlimited" class="absolute inset-0 w-full h-full object-cover" data-parallax="0.12">
   <div class="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/60 to-ink/70"></div>
   <div class="relative z-[2] text-center px-6 max-w-3xl" data-reveal>
-    <span class="text-[12px] u-track font-700 text-brass">TWO CHAIRS · ONE STANDARD</span>
+    <span class="text-[12px] u-track font-700 text-brass">ONE STANDARD · EVERY CUT</span>
     <p class="mt-4 font-display font-500 text-bone text-[8vw] sm:text-[5vw] md:text-[3rem] leading-[1.1]">
       "The details are the difference.<br><span class="grad-text">We don't skip a single one."</span>
     </p>
@@ -683,8 +696,8 @@ tailwind.config = {
   const progress = document.getElementById('progress');
   function onScroll() {
     const y = window.scrollY;
-    if (y > 30) navbar.classList.add('bg-paper/92','backdrop-blur','shadow-[0_10px_30px_-18px_rgba(25,21,18,.5)]','border','border-ink/5');
-    else navbar.classList.remove('bg-paper/92','backdrop-blur','shadow-[0_10px_30px_-18px_rgba(25,21,18,.5)]','border','border-ink/5');
+    if (y > 30) navbar.classList.add('scrolled','bg-paper/92','backdrop-blur','shadow-[0_10px_30px_-18px_rgba(25,21,18,.5)]','border','border-ink/5');
+    else navbar.classList.remove('scrolled','bg-paper/92','backdrop-blur','shadow-[0_10px_30px_-18px_rgba(25,21,18,.5)]','border','border-ink/5');
     if (y > 620) mbar.classList.add('show'); else mbar.classList.remove('show');
     const h = document.documentElement.scrollHeight - window.innerHeight;
     progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
