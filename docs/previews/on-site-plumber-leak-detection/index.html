@@ -52,14 +52,15 @@ tailwind.config = {
   }
   @keyframes shimmer{ to{ background-position:220% 0; } }
 
-  /* hero canvas water layer */
-  #waterCanvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
-  .hero-scrim{ position:absolute; inset:0; pointer-events:none;
+  /* Cinematic Kling hero video + WebGL water veil */
+  .hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; will-change:transform; }
+  #waterCanvas{ position:absolute; inset:0; width:100%; height:100%; display:block; z-index:1; opacity:.5; mix-blend-mode:screen; pointer-events:none; }
+  .hero-scrim{ position:absolute; inset:0; pointer-events:none; z-index:2;
     background:
-      radial-gradient(120% 80% at 18% 30%, rgba(247,243,236,.92) 0%, rgba(247,243,236,.55) 42%, rgba(247,243,236,0) 68%),
+      radial-gradient(120% 82% at 18% 32%, rgba(247,243,236,.92) 0%, rgba(247,243,236,.55) 44%, rgba(247,243,236,0) 70%),
       linear-gradient(180deg, rgba(247,243,236,.35) 0%, rgba(247,243,236,0) 30%, rgba(247,243,236,.15) 70%, rgba(247,243,236,.85) 100%);
   }
-  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+  .grain::after{ content:''; position:absolute; inset:0; z-index:3; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
     background-image:radial-gradient(#0F2440 0.5px, transparent 0.6px); background-size:3px 3px; }
 
   .btn-primary{ position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, filter .4s; }
@@ -141,10 +142,13 @@ tailwind.config = {
 </header>
 
 <!-- HERO -->
-<section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden grain">
+<section id="top" class="relative min-h-[100svh] flex items-center sm:items-end overflow-hidden grain">
+  <video class="hero-bg" autoplay muted loop playsinline poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
   <canvas id="waterCanvas"></canvas>
   <div class="hero-scrim"></div>
-  <div class="relative z-10 w-full mx-auto max-w-7xl px-4 sm:px-6 pb-14 sm:pb-20" style="padding-top:calc(var(--nav-h) + 46px)">
+  <div class="relative z-10 w-full mx-auto max-w-7xl px-4 sm:px-6 pb-14 sm:pb-20" style="padding-top:calc(var(--nav-h) + 68px)">
     <div class="max-w-3xl">
       <div class="inline-flex items-center gap-2 rounded-full bg-white/70 backdrop-blur border border-ink/10 px-3.5 py-1.5 text-[12px] font-semibold text-navy mb-6" data-reveal>
         <span class="h-2 w-2 rounded-full bg-teal chip-dot"></span>
@@ -375,8 +379,16 @@ tailwind.config = {
 <!-- SERVICE AREA + MAP + HOURS -->
 <section id="area" class="relative py-6 sm:py-10 px-4 sm:px-6">
   <div class="mx-auto max-w-7xl grid lg:grid-cols-2 gap-8 items-stretch">
-    <div class="rounded-3xl overflow-hidden border border-ink/10 min-h-[420px] bg-white" data-reveal>
-      <iframe title="On Site Plumber & Leak Detection service area map" src="https://www.google.com/maps?q=3056%20South%20State%20Rd%207%2C%20Unit%2063%2C%20Miramar%2C%20FL%2033023&output=embed" width="100%" height="100%" style="border:0; min-height:420px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="relative rounded-3xl overflow-hidden border border-ink/10 min-h-[420px] bg-gradient-to-br from-blue/12 via-bone to-teal/12" data-reveal>
+      <!-- designed backdrop (visible only if the live map is slow to paint) -->
+      <div class="absolute inset-0 pointer-events-none">
+        <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><defs><pattern id="mg" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#1E6FB8" stroke-width="0.7"/></pattern></defs><rect width="400" height="300" fill="url(#mg)"/><path d="M0 210 Q120 170 210 220 T400 190" fill="none" stroke="#12A5B0" stroke-width="2.4" opacity=".5"/></svg>
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+          <svg class="mx-auto droplet" width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 2c4 0 7 3 7 7 0 5-7 13-7 13S5 14 5 9c0-4 3-7 7-7Z" fill="#1E6FB8"/><circle cx="12" cy="9" r="2.6" fill="#F7F3EC"/></svg>
+          <p class="mt-2 text-[13px] font-bold text-navy">Miramar, FL 33023</p>
+        </div>
+      </div>
+      <iframe title="On Site Plumber & Leak Detection service area map" src="https://www.google.com/maps?q=3056%20South%20State%20Rd%207%2C%20Unit%2063%2C%20Miramar%2C%20FL%2033023&output=embed" width="100%" height="100%" style="border:0; min-height:420px;" loading="eager" referrerpolicy="no-referrer-when-downgrade" class="relative z-10"></iframe>
     </div>
     <div class="rounded-3xl bg-ink text-cream p-9 sm:p-11 flex flex-col justify-between" data-reveal>
       <div>
@@ -476,7 +488,7 @@ tailwind.config = {
         </div>
       </div>
     </div>
-    <div class="pt-6 flex flex-col sm:flex-row justify-between gap-3 text-[12.5px] text-cream/45">
+    <div class="pt-6 flex flex-col sm:flex-row justify-between gap-3 text-[12.5px] text-cream/65">
       <p>&copy; 2026 On Site Plumber &amp; Leak Detection. All rights reserved.</p>
       <p>Website by <a href="https://turnkeyweb.org" class="text-cream/70 underline-grow">Turnkey Web</a></p>
     </div>
@@ -607,6 +619,8 @@ tailwind.config = {
   if(window.gsap && window.ScrollTrigger){
     gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.config({ ignoreMobileResize:true });
+    var heroBg=document.querySelector('.hero-bg');
+    if(heroBg){ gsap.to(heroBg,{yPercent:16,scale:1.08,ease:'none',scrollTrigger:{trigger:'#top',start:'top top',end:'bottom top',scrub:true}}); }
     gsap.utils.toArray('[data-reveal]').forEach(el=>{
       gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:.68,ease:'power3.out',
         scrollTrigger:{trigger:el,start:'top 92%',once:true},

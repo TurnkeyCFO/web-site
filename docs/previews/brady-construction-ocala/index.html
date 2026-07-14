@@ -58,14 +58,15 @@ tailwind.config = {
 
   .eyebrow{ letter-spacing:.34em; text-transform:uppercase; font-weight:700; font-size:.70rem; }
 
-  /* WebGL hero canvas */
-  #topo{ position:absolute; inset:0; width:100%; height:100%; display:block; z-index:0; }
-  .hero-scrim{ position:absolute; inset:0; z-index:1; pointer-events:none;
+  /* Cinematic Kling hero video + WebGL contour veil */
+  .hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; will-change:transform; }
+  #topo{ position:absolute; inset:0; width:100%; height:100%; display:block; z-index:1; opacity:.42; mix-blend-mode:screen; pointer-events:none; }
+  .hero-scrim{ position:absolute; inset:0; z-index:2; pointer-events:none;
     background:
-      linear-gradient(105deg, rgba(246,241,232,.96) 0%, rgba(246,241,232,.80) 34%, rgba(246,241,232,.30) 60%, rgba(246,241,232,.12) 100%),
+      linear-gradient(105deg, rgba(246,241,232,.94) 0%, rgba(246,241,232,.78) 34%, rgba(246,241,232,.30) 60%, rgba(246,241,232,.12) 100%),
       linear-gradient(0deg, rgba(246,241,232,.9) 0%, rgba(246,241,232,0) 26%);
   }
-  .grain::after{ content:""; position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+  .grain::after{ content:""; position:absolute; inset:0; z-index:3; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
     background-image:radial-gradient(#1A1815 .6px, transparent .6px); background-size:4px 4px; }
 
   /* contour divider */
@@ -171,6 +172,9 @@ tailwind.config = {
 
 <!-- HERO -->
 <section id="top" class="relative grain" style="min-height:auto">
+  <video class="hero-bg" autoplay muted loop playsinline poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
   <canvas id="topo"></canvas>
   <div class="hero-scrim"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 flex flex-col justify-center" style="min-height:auto; padding-top:calc(var(--nav) + 58px); padding-bottom:40px">
@@ -653,6 +657,8 @@ const isMobile = window.matchMedia('(max-width: 880px)').matches;
     gsap.ticker.lagSmoothing(0);
     lenis.on('scroll', ScrollTrigger.update);
     ScrollTrigger.config({ ignoreMobileResize:true });
+    var heroBg=document.querySelector('.hero-bg');
+    if(heroBg){ gsap.to(heroBg,{yPercent:15,scale:1.08,ease:'none',scrollTrigger:{trigger:'#top',start:'top top',end:'bottom top',scrub:true}}); }
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
         const id=a.getAttribute('href'); if(id.length<2) return;
