@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<!--
+  Draftday Unlimited Barbershop — Macon, GA
+  Owner / master barber: Jay Neeley
+  Art direction: warm masculine "classic barbershop" — LIGHT body (warm bone/cream) with a
+  cinematic dark AI-video hero. Signature: "Draft Day" sports-draft concept carried by
+  condensed athletic display type (Oswald wordmark) over editorial serif (Fraunces).
+  Palette: bone #F4ECE3 / cream #FBF6F1 · oxblood #7B2D26 · brass #B8863F · charcoal ink #1A1512
+  Hero: self-hosted Kling cinematic video (assets/hero.mp4) + scrim + Three.js dust-veil + GSAP parallax
+  Brand cues: warm/heritage/masculine, real Macon shop data. Draft for approval.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Draftday Unlimited Barbershop | Master Barber Jay Neeley — Macon, GA</title>
+<meta name="description" content="Draftday Unlimited Barbershop in Macon, GA. Master barber Jay Neeley — precision fades, beard sculpting, hot-towel head shaves, and kids' cuts. Book your chair on Fresha or call (478) 319-4266.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/draftday-unlimited-barbershop/">
+<meta property="og:title" content="Draftday Unlimited Barbershop — Macon, GA">
+<meta property="og:description" content="Master barber Jay Neeley. Precision fades, beard work, hot-towel shaves. Book your chair.">
+<meta property="og:type" content="business.business">
+<meta property="og:url" content="https://turnkeyweb.org/previews/draftday-unlimited-barbershop/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/draftday-unlimited-barbershop/assets/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Oswald:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      bone: '#F4ECE3', cream: '#FBF6F1', paper: '#FDFAF6',
+      oxblood: '#7B2D26', oxdeep: '#5A1D18', brass: '#B8863F', brasslt: '#D6AC6A',
+      ink: '#1A1512', ink2: '#3A322C', steel: '#6B6560', night: '#120D0B'
+    },
+    fontFamily: {
+      display: ['Fraunces', 'serif'],
+      cond: ['Oswald', 'sans-serif'],
+      body: ['"Plus Jakarta Sans"', 'sans-serif']
+    }
+  } }
+}
+</script>
+<style>
+  html { scroll-padding-top: 84px; }
+  body { background:#F4ECE3; color:#1A1512; font-family:'Plus Jakarta Sans',sans-serif; overflow-x:hidden; }
+  ::selection { background:#7B2D26; color:#F4ECE3; }
+
+  /* descender safety baked in globally for display type */
+  .font-display, .font-cond { line-height:1.1; }
+  h1,h2,h3 { padding-bottom:0.04em; }
+
+  /* gradient shimmer — brass→oxblood, min-lightness floor kept high enough for AA on dark hero */
+  .grad-text {
+    background: linear-gradient(100deg, #D6AC6A 0%, #E9C98D 25%, #C98A5A 50%, #E9C98D 75%, #D6AC6A 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    line-height:1.15; padding-bottom:0.1em;
+    animation: shimmer 9s linear infinite;
+  }
+  .grad-oxblood {
+    background: linear-gradient(100deg, #7B2D26 0%, #A8433A 40%, #B8863F 60%, #7B2D26 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    line-height:1.15; padding-bottom:0.1em;
+    animation: shimmer 10s linear infinite;
+  }
+  @keyframes shimmer { to { background-position:220% 0; } }
+
+  /* hero video */
+  .hero-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; will-change:transform; z-index:0; }
+  .hero-scrim {
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      linear-gradient(90deg, rgba(12,8,6,0.94) 0%, rgba(12,8,6,0.80) 34%, rgba(12,8,6,0.34) 62%, rgba(12,8,6,0.30) 100%),
+      linear-gradient(0deg, rgba(12,8,6,0.80) 0%, rgba(12,8,6,0.10) 40%, rgba(12,8,6,0.30) 100%);
+  }
+  #hero-veil { position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.55; }
+
+  .eyebrow { font-family:'Oswald',sans-serif; letter-spacing:.34em; text-transform:uppercase; font-weight:500; }
+
+  /* buttons */
+  .btn { position:relative; overflow:hidden; font-family:'Oswald',sans-serif; letter-spacing:.12em; text-transform:uppercase; font-weight:600; transition:transform .5s cubic-bezier(.16,1,.3,1), filter .4s, box-shadow .4s; }
+  .btn:hover { transform:translateY(-3px); }
+  .btn-primary { background:#7B2D26; color:#F4ECE3; box-shadow:0 10px 30px -12px rgba(123,45,38,.7); }
+  .btn-primary:hover { filter:brightness(1.07); box-shadow:0 18px 40px -14px rgba(123,45,38,.85); }
+  .btn-primary::after { content:''; position:absolute; top:0; left:-130%; width:60%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent); transform:skewX(-18deg); transition:left .9s cubic-bezier(.16,1,.3,1); }
+  .btn-primary:hover::after { left:130%; }
+  .btn-ghost { border:1.5px solid rgba(244,236,227,.5); color:#F4ECE3; }
+  .btn-ghost:hover { border-color:#D6AC6A; color:#D6AC6A; }
+  .btn-dark { border:1.5px solid rgba(26,21,18,.28); color:#1A1512; }
+  .btn-dark:hover { border-color:#7B2D26; color:#7B2D26; }
+
+  /* marquee */
+  .marquee { overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marquee-track { display:flex; gap:3rem; width:max-content; animation:scrollX 40s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state:paused; }
+  @keyframes scrollX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* service rows */
+  .svc-row { transition:background .5s, padding .5s; }
+  .svc-row:hover { background:rgba(123,45,38,.05); }
+  .svc-row .svc-num { transition:color .5s, transform .5s cubic-bezier(.16,1,.3,1); }
+  .svc-row:hover .svc-num { color:#7B2D26; transform:translateX(6px); }
+  .svc-row .svc-arrow { opacity:0; transform:translateX(-10px); transition:opacity .5s, transform .5s cubic-bezier(.16,1,.3,1); }
+  .svc-row:hover .svc-arrow { opacity:1; transform:translateX(0); }
+
+  /* review cards */
+  .rev-card { transition:transform .55s cubic-bezier(.16,1,.3,1), box-shadow .55s, border-color .55s; }
+  .rev-card:hover { transform:translateY(-6px); box-shadow:0 26px 50px -26px rgba(26,21,18,.35); border-color:rgba(184,134,63,.5); }
+
+  .chip-dot { animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.82)} }
+
+  [data-reveal] { opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  .grain::after { content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(#000 0.5px, transparent 0.5px); background-size:3px 3px; }
+
+  .draft-num { font-family:'Oswald',sans-serif; font-weight:700; }
+
+  /* sticky mobile bar */
+  .mbar { box-shadow:0 -6px 24px -12px rgba(26,21,18,.4); }
+
+  @media (max-width:880px){
+    .hero-scrim { background:
+      linear-gradient(0deg, rgba(12,8,6,0.92) 0%, rgba(12,8,6,0.55) 45%, rgba(12,8,6,0.78) 100%); }
+  }
+  @media (prefers-reduced-motion: reduce){ .grad-text,.grad-oxblood,.marquee-track,.chip-dot{ animation:none; } }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5 group">
+      <span class="inline-flex items-center justify-center w-9 h-9 rounded-[7px] bg-oxblood text-cream font-cond font-700 text-lg leading-none" style="font-weight:700;">D</span>
+      <span class="font-cond font-600 tracking-[.12em] text-[15px] uppercase" id="nav-word" style="font-weight:600; color:#F4ECE3;">Draftday <span class="text-brasslt">Unlimited</span></span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 font-cond text-[13px] tracking-[.18em] uppercase" id="nav-links" style="color:#F4ECE3;">
+      <a href="#services" class="hover:text-brasslt transition-colors">Services</a>
+      <a href="#barber" class="hover:text-brasslt transition-colors">The Barber</a>
+      <a href="#reviews" class="hover:text-brasslt transition-colors">Reviews</a>
+      <a href="#visit" class="hover:text-brasslt transition-colors">Visit</a>
+    </nav>
+    <div class="flex items-center gap-2.5">
+      <a href="tel:+14783194266" class="hidden sm:inline-flex items-center gap-2 font-cond text-[13px] tracking-[.12em] uppercase px-3 py-2 rounded-md transition-colors" id="nav-call" style="color:#F4ECE3;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (478) 319-4266
+      </a>
+      <a href="https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82" target="_blank" rel="noopener" class="btn btn-primary text-[12px] px-4 py-2.5 rounded-md">Book on Fresha</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero relative min-h-[100svh] flex items-end overflow-hidden bg-night">
+  <video class="hero-bg" autoplay muted loop playsinline poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+  <canvas id="hero-veil"></canvas>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pb-16 sm:pb-20 pt-32">
+    <div class="max-w-3xl">
+      <div class="flex items-center gap-3 mb-6" data-hero="1">
+        <span class="w-2 h-2 rounded-full bg-brasslt chip-dot"></span>
+        <span class="eyebrow text-[12px] text-brasslt">Macon, Georgia · Est. Barbershop</span>
+      </div>
+      <h1 class="font-display font-500 text-[clamp(2.7rem,8.2vw,6.2rem)] leading-[1.02] tracking-[-0.01em]" style="color:#F4ECE3; padding-bottom:.06em;" data-hero="2">
+        The chair where<br>the <span class="grad-text">clean look</span><br>comes standard.
+      </h1>
+      <p class="mt-6 text-[clamp(1.02rem,2vw,1.22rem)] leading-relaxed max-w-xl" style="color:rgba(244,236,227,.82)" data-hero="3">
+        Master barber <span class="text-brasslt font-500">Jay Neeley</span> has been dialing in fades, beards, and confidence for the men of Macon for years. Sit down, get sharp, walk out ready.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3.5" data-hero="4">
+        <a href="https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82" target="_blank" rel="noopener" class="btn btn-primary text-[13px] px-7 py-4 rounded-md">Book Your Chair</a>
+        <a href="tel:+14783194266" class="btn btn-ghost text-[13px] px-7 py-4 rounded-md inline-flex items-center gap-2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call the Shop
+        </a>
+      </div>
+
+      <div class="mt-11 flex flex-wrap items-center gap-x-9 gap-y-5" data-hero="5">
+        <div class="flex items-baseline gap-2">
+          <span class="draft-num text-[2.1rem] leading-none text-brasslt" data-count="4.4" data-dec="1">4.4</span>
+          <div class="flex flex-col leading-tight">
+            <span class="flex text-brasslt">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <span class="font-cond tracking-[.16em] text-[10px] uppercase" style="color:rgba(244,236,227,.6)">Google · 21 reviews</span>
+          </div>
+        </div>
+        <div class="w-px h-9 bg-cream/20 hidden sm:block"></div>
+        <div class="flex flex-col leading-tight">
+          <span class="draft-num text-[2.1rem] leading-none text-cream" data-count="6" data-suffix="+">6+</span>
+          <span class="font-cond tracking-[.16em] text-[10px] uppercase" style="color:rgba(244,236,227,.6)">Years in the chair</span>
+        </div>
+        <div class="w-px h-9 bg-cream/20 hidden sm:block"></div>
+        <div class="flex flex-col leading-tight">
+          <span class="draft-num text-[2.1rem] leading-none text-cream">All</span>
+          <span class="font-cond tracking-[.16em] text-[10px] uppercase" style="color:rgba(244,236,227,.6)">Ages & fades</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 right-6 z-10 hidden sm:flex flex-col items-center gap-2" data-hero="6">
+    <span class="font-cond tracking-[.3em] text-[10px] uppercase" style="color:rgba(244,236,227,.5)">Scroll</span>
+    <span class="w-px h-10 bg-gradient-to-b from-brasslt/70 to-transparent"></span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="bg-ink py-4 relative overflow-hidden">
+  <div class="marquee">
+    <div class="marquee-track font-cond uppercase tracking-[.2em] text-[15px]" style="color:#F4ECE3;">
+      <span class="flex items-center gap-3"><span class="text-brasslt">Skin Fades</span> <span class="text-oxblood">✦</span> Beard Sculpting <span class="text-oxblood">✦</span> Hot-Towel Shaves <span class="text-oxblood">✦</span> Line-Ups <span class="text-oxblood">✦</span> Kids' Cuts <span class="text-oxblood">✦</span> Tapers <span class="text-oxblood">✦</span> Styling <span class="text-oxblood">✦</span></span>
+      <span class="flex items-center gap-3" aria-hidden="true"><span class="text-brasslt">Skin Fades</span> <span class="text-oxblood">✦</span> Beard Sculpting <span class="text-oxblood">✦</span> Hot-Towel Shaves <span class="text-oxblood">✦</span> Line-Ups <span class="text-oxblood">✦</span> Kids' Cuts <span class="text-oxblood">✦</span> Tapers <span class="text-oxblood">✦</span> Styling <span class="text-oxblood">✦</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- STATEMENT -->
+<section class="relative bg-bone grain py-24 sm:py-32">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <p class="eyebrow text-[12px] text-oxblood mb-7" data-reveal>Why the regulars keep coming back</p>
+    <h2 class="font-display font-500 text-[clamp(1.9rem,5vw,3.6rem)] leading-[1.14] tracking-[-0.01em] text-ink" data-reveal>
+      A good cut is more than a number on the guard. It is the <span class="grad-oxblood">15 minutes</span> that reset how you carry the rest of your week.
+    </h2>
+    <p class="mt-8 text-[1.08rem] leading-relaxed text-ink2 max-w-2xl" data-reveal>
+      Draftday Unlimited was built on one idea: every man who sits in the chair walks out looking like the sharpest version of himself. No rushed clippers, no guesswork on the beard line, no "close enough." Just a clean, deliberate cut, every single visit.
+    </p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="relative bg-cream py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+      <div>
+        <p class="eyebrow text-[12px] text-oxblood mb-5" data-reveal>The Menu</p>
+        <h2 class="font-display font-500 text-[clamp(2.1rem,5.5vw,4rem)] leading-[1.08] tracking-[-0.01em] text-ink" data-reveal>
+          Everything the<br>chair delivers.
+        </h2>
+      </div>
+      <p class="text-ink2 max-w-sm text-[1.02rem] leading-relaxed" data-reveal>
+        Booked through Fresha, walk-ins welcome when a chair is open. Pricing is confirmed at the shop, so you always know exactly what you are paying for.
+      </p>
+    </div>
+
+    <div class="border-t border-ink/12" data-reveal>
+      <!-- 01 -->
+      <a href="https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82" target="_blank" rel="noopener" class="svc-row group grid grid-cols-[auto_1fr_auto] items-center gap-5 sm:gap-8 py-7 px-2 sm:px-5 border-b border-ink/12">
+        <span class="svc-num draft-num text-[1.5rem] sm:text-[1.9rem] text-steel leading-none w-11">01</span>
+        <div>
+          <h3 class="font-display font-500 text-[1.4rem] sm:text-[1.8rem] text-ink leading-[1.15]" style="padding-bottom:.05em;">Men's Haircut &amp; Fade</h3>
+          <p class="text-ink2 text-[.98rem] mt-1 max-w-lg">Skin fades, tapers, scissor work, and classic cuts, blended clean and finished sharp.</p>
+        </div>
+        <svg class="svc-arrow text-oxblood justify-self-end" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <!-- 02 -->
+      <a href="https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82" target="_blank" rel="noopener" class="svc-row group grid grid-cols-[auto_1fr_auto] items-center gap-5 sm:gap-8 py-7 px-2 sm:px-5 border-b border-ink/12">
+        <span class="svc-num draft-num text-[1.5rem] sm:text-[1.9rem] text-steel leading-none w-11">02</span>
+        <div>
+          <h3 class="font-display font-500 text-[1.4rem] sm:text-[1.8rem] text-ink leading-[1.15]" style="padding-bottom:.05em;">Beard Trim &amp; Sculpt</h3>
+          <p class="text-ink2 text-[.98rem] mt-1 max-w-lg">Shaped, lined, and detailed so the beard frames the cut instead of fighting it.</p>
+        </div>
+        <svg class="svc-arrow text-oxblood justify-self-end" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <!-- 03 -->
+      <a href="https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82" target="_blank" rel="noopener" class="svc-row group grid grid-cols-[auto_1fr_auto] items-center gap-5 sm:gap-8 py-7 px-2 sm:px-5 border-b border-ink/12">
+        <span class="svc-num draft-num text-[1.5rem] sm:text-[1.9rem] text-steel leading-none w-11">03</span>
+        <div>
+          <h3 class="font-display font-500 text-[1.4rem] sm:text-[1.8rem] text-ink leading-[1.15]" style="padding-bottom:.05em;">Hot-Towel Head Shave</h3>
+          <p class="text-ink2 text-[.98rem] mt-1 max-w-lg">A smooth, close head shave finished with a warm towel. Clean, comfortable, done right.</p>
+        </div>
+        <svg class="svc-arrow text-oxblood justify-self-end" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <!-- 04 -->
+      <a href="https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82" target="_blank" rel="noopener" class="svc-row group grid grid-cols-[auto_1fr_auto] items-center gap-5 sm:gap-8 py-7 px-2 sm:px-5 border-b border-ink/12">
+        <span class="svc-num draft-num text-[1.5rem] sm:text-[1.9rem] text-steel leading-none w-11">04</span>
+        <div>
+          <h3 class="font-display font-500 text-[1.4rem] sm:text-[1.8rem] text-ink leading-[1.15]" style="padding-bottom:.05em;">Hair &amp; Styling</h3>
+          <p class="text-ink2 text-[.98rem] mt-1 max-w-lg">Finished and styled to fit your day, from a low-key clean look to something with a little more edge.</p>
+        </div>
+        <svg class="svc-arrow text-oxblood justify-self-end" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <!-- 05 -->
+      <a href="https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82" target="_blank" rel="noopener" class="svc-row group grid grid-cols-[auto_1fr_auto] items-center gap-5 sm:gap-8 py-7 px-2 sm:px-5">
+        <span class="svc-num draft-num text-[1.5rem] sm:text-[1.9rem] text-steel leading-none w-11">05</span>
+        <div>
+          <h3 class="font-display font-500 text-[1.4rem] sm:text-[1.8rem] text-ink leading-[1.15]" style="padding-bottom:.05em;">Kids' Cuts</h3>
+          <p class="text-ink2 text-[.98rem] mt-1 max-w-lg">Patient, friendly cuts for the young ones. Bring the whole crew, dad and son both walk out fresh.</p>
+        </div>
+        <svg class="svc-arrow text-oxblood justify-self-end" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- THE BARBER — signature "draft card" moment -->
+<section id="barber" class="relative bg-ink text-cream py-24 sm:py-32 overflow-hidden">
+  <div class="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(184,134,63,.18),transparent 62%); filter:blur(40px);"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[1.15fr_.85fr] gap-14 lg:gap-20 items-center">
+    <div>
+      <p class="eyebrow text-[12px] text-brasslt mb-6" data-reveal>The Barber</p>
+      <h2 class="font-display font-500 text-[clamp(2.2rem,5.6vw,4.2rem)] leading-[1.06] tracking-[-0.01em]" style="padding-bottom:.05em;" data-reveal>
+        Jay Neeley has one job:<br>send you out <span class="grad-text">looking right.</span>
+      </h2>
+      <p class="mt-7 text-[1.08rem] leading-relaxed max-w-xl" style="color:rgba(244,236,227,.8)" data-reveal>
+        Regulars have followed Jay for six years and counting, some bringing their sons in for a first cut and never leaving. That kind of loyalty is not an accident. It is what happens when a barber treats every fade like it has his name on it, because at Draftday Unlimited, it does.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3.5" data-reveal>
+        <a href="https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82" target="_blank" rel="noopener" class="btn btn-primary text-[13px] px-7 py-4 rounded-md">Book with Jay</a>
+        <a href="https://www.instagram.com/draftday_jayunlimited/" target="_blank" rel="noopener" class="btn btn-ghost text-[13px] px-7 py-4 rounded-md inline-flex items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+          See the work
+        </a>
+      </div>
+    </div>
+
+    <!-- draft-card signature -->
+    <div class="relative" data-reveal>
+      <div class="relative rounded-2xl border border-brass/40 bg-gradient-to-b from-oxdeep/60 to-ink p-8 sm:p-9 overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-oxblood via-brass to-oxblood"></div>
+        <div class="flex items-center justify-between mb-7">
+          <span class="font-cond tracking-[.28em] text-[11px] uppercase text-brasslt">Draftday · Roster</span>
+          <span class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-oxblood font-cond text-cream text-sm" style="font-weight:700;">D</span>
+        </div>
+        <p class="draft-num text-[3.4rem] leading-none text-cream" style="padding-bottom:.04em;">01</p>
+        <h3 class="font-display font-500 text-[2rem] leading-[1.1] mt-2" style="padding-bottom:.04em;">Jay Neeley</h3>
+        <p class="font-cond tracking-[.22em] text-[12px] uppercase text-brasslt mt-1">Owner · Master Barber</p>
+        <div class="mt-7 space-y-3.5 font-body text-[.95rem]">
+          <div class="flex items-center justify-between border-b border-cream/12 pb-3">
+            <span style="color:rgba(244,236,227,.62)">Specialty</span><span class="text-cream">Fades &amp; beard work</span>
+          </div>
+          <div class="flex items-center justify-between border-b border-cream/12 pb-3">
+            <span style="color:rgba(244,236,227,.62)">Years cutting</span><span class="text-cream">6+ and counting</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span style="color:rgba(244,236,227,.62)">Home shop</span><span class="text-cream">Macon, GA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="relative bg-bone grain py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+      <div>
+        <p class="eyebrow text-[12px] text-oxblood mb-5" data-reveal>What Macon says</p>
+        <h2 class="font-display font-500 text-[clamp(2.1rem,5.5vw,4rem)] leading-[1.08] tracking-[-0.01em] text-ink" data-reveal>
+          Reviewed, rated,<br>and recommended.
+        </h2>
+      </div>
+      <div class="flex items-center gap-4" data-reveal>
+        <span class="draft-num text-[3rem] leading-none text-oxblood">4.4</span>
+        <div class="flex flex-col">
+          <span class="flex text-brass">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </span>
+          <span class="font-cond tracking-[.14em] text-[11px] uppercase text-steel mt-1">21 Google reviews</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6" data-reveal>
+      <!-- review 1 -->
+      <figure class="rev-card bg-paper border border-ink/10 rounded-xl p-7 flex flex-col">
+        <div class="flex text-brass mb-4">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="text-ink text-[1.02rem] leading-relaxed flex-1">"Jay Neeley is and shall continuously be our master barber extraordinaire! 6yrs and going. Great service, great customer service, awesome professionalism."</blockquote>
+        <figcaption class="mt-5 pt-4 border-t border-ink/10 flex items-center gap-3">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-oxblood text-cream font-cond text-sm" style="font-weight:600;">D</span>
+          <span class="flex flex-col leading-tight"><span class="font-600 text-ink text-[.95rem]">Darrin Naylor</span><span class="text-steel text-[.8rem]">Google review</span></span>
+        </figcaption>
+      </figure>
+      <!-- review 2 -->
+      <figure class="rev-card bg-paper border border-ink/10 rounded-xl p-7 flex flex-col">
+        <div class="flex text-brass mb-4">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="opacity:.28"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="text-ink text-[1.02rem] leading-relaxed flex-1">"Got my son's hair cut here for the first time. Atmosphere was excellent... for the most part I recommend the location."</blockquote>
+        <figcaption class="mt-5 pt-4 border-t border-ink/10 flex items-center gap-3">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-brass text-ink font-cond text-sm" style="font-weight:600;">T</span>
+          <span class="flex flex-col leading-tight"><span class="font-600 text-ink text-[.95rem]">Travis Jackson</span><span class="text-steel text-[.8rem]">Google review</span></span>
+        </figcaption>
+      </figure>
+      <!-- review 3 -->
+      <figure class="rev-card bg-paper border border-ink/10 rounded-xl p-7 flex flex-col">
+        <div class="flex text-brass mb-4">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="opacity:.28"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="text-ink text-[1.02rem] leading-relaxed flex-1">"I had a good experience, great service and good people."</blockquote>
+        <figcaption class="mt-5 pt-4 border-t border-ink/10 flex items-center gap-3">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-oxblood text-cream font-cond text-sm" style="font-weight:600;">M</span>
+          <span class="flex flex-col leading-tight"><span class="font-600 text-ink text-[.95rem]">Mon Bonn</span><span class="text-steel text-[.8rem]">Google review</span></span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="relative bg-cream py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+    <div>
+      <p class="eyebrow text-[12px] text-oxblood mb-5" data-reveal>Find the shop</p>
+      <h2 class="font-display font-500 text-[clamp(2.1rem,5.5vw,3.8rem)] leading-[1.08] tracking-[-0.01em] text-ink" data-reveal style="padding-bottom:.04em;">
+        Pull up to<br>Mercer University Dr.
+      </h2>
+
+      <div class="mt-9 space-y-6" data-reveal>
+        <div class="flex items-start gap-4">
+          <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-oxblood/10 text-oxblood shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div>
+            <p class="font-cond tracking-[.16em] text-[11px] uppercase text-steel">Address</p>
+            <p class="text-ink text-[1.08rem] mt-1 leading-snug">3706 Mercer University Dr, Suite 45<br>Macon, GA 31204</p>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=3706+Mercer+University+Dr+Suite+45+Macon+GA+31204" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 mt-2 text-oxblood font-cond tracking-[.1em] text-[12px] uppercase hover:text-brass transition-colors">Get directions
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-oxblood/10 text-oxblood shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div>
+            <p class="font-cond tracking-[.16em] text-[11px] uppercase text-steel">Call the shop</p>
+            <a href="tel:+14783194266" class="text-ink text-[1.08rem] mt-1 block hover:text-oxblood transition-colors">(478) 319-4266</a>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-oxblood/10 text-oxblood shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <div class="w-full">
+            <p class="font-cond tracking-[.16em] text-[11px] uppercase text-steel">Hours</p>
+            <div class="mt-2 grid grid-cols-[auto_1fr] gap-x-8 gap-y-1.5 text-[.98rem] max-w-xs">
+              <span class="text-ink2">Mon</span><span class="text-steel text-right">Closed</span>
+              <span class="text-ink2">Tue – Sat</span><span class="text-ink text-right">9:00 AM – 7:00 PM</span>
+              <span class="text-ink2">Sun</span><span class="text-ink text-right">12:00 PM – 6:00 PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82" target="_blank" rel="noopener" class="btn btn-primary text-[13px] px-7 py-4 rounded-md inline-flex mt-9" data-reveal>Book Your Chair on Fresha</a>
+    </div>
+
+    <div class="rounded-2xl overflow-hidden border border-ink/12 min-h-[380px] shadow-[0_30px_60px_-30px_rgba(26,21,18,.4)]" data-reveal>
+      <iframe
+        title="Draftday Unlimited Barbershop location map"
+        src="https://www.google.com/maps?q=3706+Mercer+University+Dr+Suite+45+Macon+GA+31204&output=embed"
+        width="100%" height="100%" style="border:0; min-height:380px; display:block;"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="relative bg-oxblood text-cream py-24 sm:py-28 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none opacity-[.12]" style="background-image:radial-gradient(#F4ECE3 0.6px, transparent 0.6px); background-size:5px 5px;"></div>
+  <div class="absolute -bottom-32 -left-20 w-[440px] h-[440px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(184,134,63,.28),transparent 62%); filter:blur(40px);"></div>
+  <div class="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <p class="eyebrow text-[12px] text-brasslt mb-6" data-reveal>Your next cut is one tap away</p>
+    <h2 class="font-display font-500 text-[clamp(2.3rem,6.2vw,4.6rem)] leading-[1.05] tracking-[-0.01em]" style="padding-bottom:.05em;" data-reveal>
+      Sit down at Draftday.<br>Walk out <span class="grad-text">sharp.</span>
+    </h2>
+    <p class="mt-6 text-[1.08rem] leading-relaxed max-w-xl mx-auto" style="color:rgba(244,236,227,.85)" data-reveal>
+      Book online in seconds or call the shop. Jay is holding a chair for you in Macon.
+    </p>
+    <div class="mt-9 flex flex-wrap justify-center gap-3.5" data-reveal>
+      <a href="https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82" target="_blank" rel="noopener" class="btn text-[13px] px-8 py-4 rounded-md bg-cream text-oxblood hover:bg-brasslt hover:text-ink" style="box-shadow:0 14px 34px -14px rgba(0,0,0,.5);">Book on Fresha</a>
+      <a href="tel:+14783194266" class="btn btn-ghost text-[13px] px-8 py-4 rounded-md inline-flex items-center gap-2">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (478) 319-4266
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-night text-cream pt-16 pb-28 sm:pb-12">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10 pb-12 border-b border-cream/10">
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-[7px] bg-oxblood text-cream font-cond text-lg leading-none" style="font-weight:700;">D</span>
+          <span class="font-cond tracking-[.12em] text-[15px] uppercase" style="font-weight:600;">Draftday <span class="text-brasslt">Unlimited</span></span>
+        </div>
+        <p class="text-[.98rem] leading-relaxed max-w-sm" style="color:rgba(244,236,227,.62)">
+          A Macon barbershop built on precision, presentation, and regulars who never leave. Master barber Jay Neeley in the chair.
+        </p>
+      </div>
+      <div>
+        <p class="font-cond tracking-[.2em] text-[11px] uppercase text-brasslt mb-4">Visit</p>
+        <p class="text-[.95rem] leading-relaxed" style="color:rgba(244,236,227,.72)">3706 Mercer University Dr, Ste 45<br>Macon, GA 31204</p>
+        <a href="tel:+14783194266" class="text-[.95rem] mt-3 inline-block hover:text-brasslt transition-colors" style="color:rgba(244,236,227,.72)">(478) 319-4266</a>
+      </div>
+      <div>
+        <p class="font-cond tracking-[.2em] text-[11px] uppercase text-brasslt mb-4">Book &amp; Follow</p>
+        <div class="flex flex-col gap-2.5 text-[.95rem]" style="color:rgba(244,236,227,.72)">
+          <a href="https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82" target="_blank" rel="noopener" class="hover:text-brasslt transition-colors">Book on Fresha</a>
+          <a href="https://www.instagram.com/draftday_jayunlimited/" target="_blank" rel="noopener" class="hover:text-brasslt transition-colors inline-flex items-center gap-2">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+            @draftday_jayunlimited
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-7 text-[.82rem]" style="color:rgba(244,236,227,.45)">
+      <p>© <span id="yr"></span> Draftday Unlimited Barbershop · Macon, GA</p>
+      <p class="font-cond tracking-[.14em] uppercase text-[11px]">Draft for approval · Site by Turnkey Web</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mbar fixed bottom-0 inset-x-0 z-50 sm:hidden grid grid-cols-2 bg-ink">
+  <a href="tel:+14783194266" class="flex items-center justify-center gap-2 py-4 text-cream font-cond tracking-[.12em] text-[13px] uppercase border-r border-cream/15">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-4 bg-oxblood text-cream font-cond tracking-[.12em] text-[13px] uppercase">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+    Book
+  </a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HairSalon",
+  "name":"Draftday Unlimited Barbershop",
+  "description":"Barbershop in Macon, GA. Master barber Jay Neeley — precision fades, beard sculpting, hot-towel head shaves, styling, and kids' cuts.",
+  "url":"https://turnkeyweb.org/previews/draftday-unlimited-barbershop/",
+  "telephone":"+1-478-319-4266",
+  "image":"https://turnkeyweb.org/previews/draftday-unlimited-barbershop/assets/hero.jpg",
+  "address":{"@type":"PostalAddress","streetAddress":"3706 Mercer University Dr, Suite 45","addressLocality":"Macon","addressRegion":"GA","postalCode":"31204","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":32.8214639,"longitude":-83.6986164},
+  "founder":{"@type":"Person","name":"Jay Neeley"},
+  "priceRange":"$$",
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.4","reviewCount":"21"},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"12:00","closes":"18:00"}
+  ],
+  "sameAs":["https://www.instagram.com/draftday_jayunlimited/","https://www.fresha.com/lvp/draftday-unlimited-barbershop-mercer-university-drive-macon-vv6k82"]
+}
+</script>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- NAV: transparent over hero → solid on scroll ---------- */
+const nav = document.getElementById('nav');
+const navWord = document.getElementById('nav-word');
+const navCall = document.getElementById('nav-call');
+const navLinks = document.getElementById('nav-links');
+function navState(){
+  if (window.scrollY > 60){
+    nav.style.background = 'rgba(253,250,246,.92)';
+    nav.style.backdropFilter = 'blur(10px)';
+    nav.style.boxShadow = '0 1px 0 rgba(26,21,18,.08)';
+    navWord.style.color = '#1A1512';
+    navCall.style.color = '#1A1512';
+    navLinks.style.color = '#3A322C';
+  } else {
+    nav.style.background = 'transparent';
+    nav.style.backdropFilter = 'none';
+    nav.style.boxShadow = 'none';
+    navWord.style.color = '#F4ECE3';
+    navCall.style.color = '#F4ECE3';
+    navLinks.style.color = '#F4ECE3';
+  }
+}
+navState(); window.addEventListener('scroll', navState, {passive:true});
+
+/* ---------- LENIS + GSAP (single ticker) ---------- */
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let lenis;
+if (!reduce && window.Lenis){
+  lenis = new Lenis({ duration:1.1, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+  gsap.ticker.add((time)=> lenis.raf(time*1000));
+  gsap.ticker.lagSmoothing(0);
+  if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href'); if (id.length<2) return;
+      const t = document.querySelector(id); if(!t) return;
+      e.preventDefault(); lenis.scrollTo(t, {offset:-70});
+    });
+  });
+}
+if (window.ScrollTrigger){ gsap.registerPlugin(ScrollTrigger); ScrollTrigger.config({ ignoreMobileResize:true }); }
+
+/* ---------- HERO intro ---------- */
+if (!reduce){
+  gsap.set('[data-hero]', {opacity:0, y:30});
+  gsap.to('[data-hero]', {opacity:1, y:0, duration:1, ease:'power3.out', stagger:.12, delay:.25});
+} else {
+  gsap.set('[data-hero]', {opacity:1, y:0});
+}
+
+/* ---------- hero video parallax ---------- */
+if (window.ScrollTrigger && window.matchMedia('(min-width:768px)').matches){
+  gsap.to('.hero-bg', { yPercent:16, scale:1.08, ease:'none',
+    scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
+}
+
+/* ---------- reveals ---------- */
+if (window.ScrollTrigger){
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.to(el, {opacity:1, y:0, duration:.7, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+      onComplete:()=> el.style.willChange='auto' });
+  });
+}
+
+/* ---------- count-up ---------- */
+function countUp(el){
+  const target = parseFloat(el.dataset.count);
+  const dec = parseInt(el.dataset.dec||'0');
+  const suffix = el.dataset.suffix||'';
+  gsap.to({v:0}, {v:target, duration:1.5, ease:'power2.out',
+    onUpdate:function(){ el.textContent = this.targets()[0].v.toFixed(dec)+suffix; },
+    onComplete:()=>{ el.textContent = target.toFixed(dec)+suffix; }});
+}
+if (window.ScrollTrigger){
+  gsap.utils.toArray('[data-count]').forEach(el=>{
+    ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:()=>countUp(el) });
+  });
+}
+
+/* ---------- Three.js dust veil over the video ---------- */
+(function(){
+  const canvas = document.getElementById('hero-veil');
+  if (!canvas || !window.THREE) return;
+  const isMobile = window.matchMedia('(max-width:880px)').matches;
+  if (reduce) return;
+  let renderer, scene, camera, points, raf=null, running=true;
+  const COUNT = isMobile ? 90 : 220;
+  try {
+    renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile?1.5:2));
+  } catch(e){ return; }
+  scene = new THREE.Scene();
+  const hero = document.querySelector('.hero');
+  function size(){ const w=hero.clientWidth, h=hero.clientHeight; renderer.setSize(w,h,false);
+    camera = new THREE.PerspectiveCamera(60, w/h, 0.1, 100); camera.position.z = 6; }
+  size();
+  const geo = new THREE.BufferGeometry();
+  const pos = new Float32Array(COUNT*3);
+  for (let i=0;i<COUNT;i++){ pos[i*3]=(Math.random()-0.5)*14; pos[i*3+1]=(Math.random()-0.5)*9; pos[i*3+2]=(Math.random()-0.5)*6; }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  const mat = new THREE.PointsMaterial({ color:0xE9C98D, size:isMobile?0.05:0.045, transparent:true, opacity:0.6, depthWrite:false });
+  points = new THREE.Points(geo, mat);
+  scene.add(points);
+  const clock = new THREE.Clock();
+  function render(){
+    if(!running) return;
+    const t = clock.getElapsedTime();
+    points.rotation.y = t*0.03;
+    const arr = geo.attributes.position.array;
+    for (let i=0;i<COUNT;i++){ arr[i*3+1] += 0.004; if (arr[i*3+1]>4.5) arr[i*3+1]=-4.5; }
+    geo.attributes.position.needsUpdate = true;
+    renderer.render(scene, camera);
+    raf = requestAnimationFrame(render);
+  }
+  render();
+  window.addEventListener('resize', ()=>{ size(); }, {passive:true});
+  document.addEventListener('visibilitychange', ()=>{ running=!document.hidden; if(running && !raf===false){ running=true; render(); } });
+  // pause when hero scrolled offscreen
+  const io = new IntersectionObserver((ents)=>{ ents.forEach(en=>{ running = en.isIntersecting; if(running) render(); }); }, {threshold:0.01});
+  io.observe(hero);
+})();
+
+/* ---------- 6s screenshot / crawler safety net ---------- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; });
+  document.querySelectorAll('[data-hero]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; });
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    if (el.textContent.trim()==='0' || el.textContent.trim()==='') {
+      const dec=parseInt(el.dataset.dec||'0'); el.textContent=parseFloat(el.dataset.count).toFixed(dec)+(el.dataset.suffix||'');
+    }
+  });
+}, 6000);
+</script>
+</body>
+</html>
