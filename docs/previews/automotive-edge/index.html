@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<!--
+  Automotive Edge — Brandon, FL  (DRAFT prospect build, Turnkey Web)
+  Art direction: "THE EDGE" — industrial precision. Cinematic charcoal hero -> bone body.
+  Type: Oswald (condensed display) + Inter (body). Palette: charcoal #15171A / steel #7A8B95 /
+  ironRed #C0362B / bone #F4ECE3. Signature: red diagonal "edge" line that draws on scroll +
+  two-division (Collision / Mechanical) split + numbered Edge Process.
+  Real data only — name, phone (HubSpot), address, owner (FL Sunbiz), est. 2020 (LLC filing).
+  No reviews exist online yet -> NO fabricated review quotes; honest trust signals only.
+  Hours not published -> "by appointment / call to confirm" (not fabricated).
+-->
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automotive Edge | Collision & Auto Repair in Brandon, FL</title>
+<meta name="description" content="Automotive Edge in Brandon, FL — collision body repair and full mechanical service under one roof. Owner-operated since 2020. Free written estimates, insurance welcome. Call (813) 506-2812.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/automotive-edge/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Automotive Edge | Collision & Auto Repair in Brandon, FL">
+<meta property="og:description" content="Collision body repair and full mechanical service under one roof in Brandon, FL. Owner-operated since 2020. Free estimates, insurance welcome.">
+<meta property="og:url" content="https://turnkeyweb.org/previews/automotive-edge/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/automotive-edge/assets/hero.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        charcoal: '#15171A',
+        coal: '#0E0F11',
+        steel: '#7A8B95',
+        iron: '#C0362B',
+        ironDark: '#8E2620',
+        bone: '#F4ECE3',
+        boneDeep: '#E7DCCD',
+        ink: '#1A1A1A',
+      },
+      fontFamily: {
+        head: ['Oswald', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+      },
+    },
+  },
+};
+</script>
+<style>
+  html { scroll-behavior: auto; }
+  body { font-family: 'Inter', sans-serif; background: #F4ECE3; color: #1A1A1A; overflow-x: hidden; }
+  .font-head { font-family: 'Oswald', sans-serif; }
+  .uc { text-transform: uppercase; letter-spacing: .04em; }
+
+  /* ---- The red EDGE line: a diagonal accent that draws across on scroll ---- */
+  .edge-rule { height: 3px; background: linear-gradient(90deg, #C0362B, #8E2620); transform-origin: left center; }
+  .edge-clip { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  .skew-card { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+
+  /* diagonal slash motif used in hero + dividers */
+  .slash { position: relative; }
+  .slash::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+    background: linear-gradient(180deg, #C0362B, #8E2620); transform: skewX(-12deg);
+  }
+
+  /* hero photo treatment */
+  .hero-photo { background-size: cover; background-position: center 38%; }
+  .hero-scrim {
+    background:
+      linear-gradient(90deg, rgba(14,15,17,.94) 0%, rgba(14,15,17,.78) 42%, rgba(14,15,17,.32) 100%),
+      linear-gradient(0deg, rgba(14,15,17,.85) 0%, rgba(14,15,17,0) 45%);
+  }
+
+  /* count-up + chips */
+  .chip { backdrop-filter: blur(6px); }
+  .pulse-dot { animation: pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:.45; transform:scale(.7);} }
+
+  /* card system */
+  .svc { position: relative; transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s; overflow: hidden; }
+  .svc::after { content:''; position:absolute; left:0; bottom:0; height:3px; width:0; background:linear-gradient(90deg,#C0362B,#8E2620); transition: width .55s cubic-bezier(.16,1,.3,1); }
+  .svc:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -24px rgba(21,23,26,.5); }
+  .svc:hover::after { width: 100%; }
+
+  /* process steps */
+  .step-num { font-variant-numeric: tabular-nums; }
+
+  /* primary button shimmer sweep */
+  .btn-primary { position: relative; overflow: hidden; transition: transform .35s, filter .35s; }
+  .btn-primary::after {
+    content:''; position:absolute; top:0; left:-130%; width:60%; height:100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,.32), transparent);
+    transform: skewX(-20deg); transition: left .9s cubic-bezier(.16,1,.3,1);
+  }
+  .btn-primary:hover::after { left: 130%; }
+  .btn-primary:hover { transform: translateY(-3px); filter: brightness(1.06); }
+
+  /* underline grow */
+  .ul-grow { position: relative; }
+  .ul-grow::after { content:''; position:absolute; left:0; bottom:-3px; height:2px; width:0; background:#C0362B; transition: width .45s cubic-bezier(.16,1,.3,1); }
+  .ul-grow:hover::after { width: 100%; }
+
+  /* marquee */
+  .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); }
+  .marquee-track { display: flex; gap: 3rem; width: max-content; animation: scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes scrollX { from { transform: translateX(0);} to { transform: translateX(-50%);} }
+
+  /* reveal */
+  [data-reveal] { opacity: 0; transform: translateY(34px); }
+  [data-reveal-img] { clip-path: inset(0 0 100% 0); transition: clip-path 1.3s cubic-bezier(.16,1,.3,1); }
+  [data-reveal-img].in { clip-path: inset(0 0 0% 0); }
+
+  /* grain */
+  .grain::after {
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:.06; mix-blend-mode: multiply;
+    background-image: radial-gradient(#000 1px, transparent 1px); background-size: 3px 3px;
+  }
+
+  .vstripe { background-image: repeating-linear-gradient(135deg, rgba(192,54,43,.10) 0 2px, transparent 2px 22px); }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ===================== NAV ===================== -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div id="navbar" class="flex items-center justify-between py-4 transition-all duration-300">
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="font-head font-700 text-iron text-2xl leading-none">AE</span>
+        <span class="leading-tight">
+          <span class="font-head uc font-600 text-base sm:text-lg block text-bone nav-name">Automotive Edge</span>
+          <span class="uc text-[10px] tracking-[.22em] text-steel nav-sub">Brandon, Florida</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 font-body text-sm font-500 text-bone nav-links">
+        <a href="#divisions" class="ul-grow uc tracking-wide">What We Do</a>
+        <a href="#services" class="ul-grow uc tracking-wide">Services</a>
+        <a href="#process" class="ul-grow uc tracking-wide">The Process</a>
+        <a href="#shop" class="ul-grow uc tracking-wide">The Shop</a>
+        <a href="#visit" class="ul-grow uc tracking-wide">Visit</a>
+      </nav>
+      <a href="tel:+18135062812" class="btn-primary inline-flex items-center gap-2 bg-iron text-white font-head uc tracking-wide text-sm font-500 px-5 py-2.5 rounded-sm">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (813) 506-2812
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden grain">
+  <div class="hero-photo absolute inset-0" style="background-image:url('assets/hero.jpg');"></div>
+  <div class="hero-scrim absolute inset-0"></div>
+  <!-- diagonal red edge sliver -->
+  <div class="absolute top-0 bottom-0 left-[6%] w-[2px] bg-gradient-to-b from-iron via-ironDark to-transparent opacity-60 hidden md:block" style="transform:skewX(-10deg);"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24 pt-32">
+    <div class="max-w-3xl">
+      <div class="flex items-center gap-3 mb-6" data-hero="1">
+        <span class="edge-rule w-10 inline-block"></span>
+        <span class="uc text-[11px] tracking-[.26em] text-iron font-600 font-head">Collision &amp; Mechanical · Est. 2020</span>
+      </div>
+      <h1 data-hero="2" class="font-head font-700 uppercase text-white leading-[0.92] text-[3.3rem] sm:text-[5rem] lg:text-[6.4rem] tracking-tight">
+        Damage in.<br><span class="text-iron">Edge out.</span>
+      </h1>
+      <p data-hero="3" class="mt-7 text-bone/85 text-lg sm:text-xl max-w-xl leading-relaxed font-400">
+        Brandon's owner-operated shop where collision body work and full mechanical repair live under one roof. We diagnose it straight, quote it in writing, and hand back a car that drives like the dent never happened.
+      </p>
+
+      <div data-hero="4" class="mt-9 flex flex-col sm:flex-row gap-4 sm:items-center">
+        <a href="tel:+18135062812" class="btn-primary inline-flex items-center justify-center gap-2 bg-iron text-white font-head uc tracking-wide font-500 px-7 py-4 rounded-sm text-base">
+          Call for a free estimate
+        </a>
+        <a href="#divisions" class="inline-flex items-center justify-center gap-2 border border-bone/30 text-bone font-head uc tracking-wide font-500 px-7 py-4 rounded-sm text-base hover:bg-bone/10 transition">
+          See what we fix
+        </a>
+      </div>
+
+      <!-- inline stats -->
+      <div data-hero="5" class="mt-12 grid grid-cols-3 gap-6 max-w-lg border-t border-bone/15 pt-7">
+        <div>
+          <div class="font-head font-700 text-3xl sm:text-4xl text-white"><span class="count" data-target="6">0</span><span class="text-iron">+</span></div>
+          <div class="uc text-[10px] tracking-[.16em] text-steel mt-1">Years in Brandon</div>
+        </div>
+        <div>
+          <div class="font-head font-700 text-3xl sm:text-4xl text-white"><span class="count" data-target="2">0</span></div>
+          <div class="uc text-[10px] tracking-[.16em] text-steel mt-1">Shops in one</div>
+        </div>
+        <div>
+          <div class="font-head font-700 text-3xl sm:text-4xl text-white">100<span class="text-iron">%</span></div>
+          <div class="uc text-[10px] tracking-[.16em] text-steel mt-1">Written estimates</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#marquee" class="absolute bottom-6 right-6 z-10 hidden sm:flex items-center gap-2 text-bone/60 text-xs uc tracking-[.2em]">
+    Scroll <span class="inline-block w-px h-8 bg-gradient-to-b from-iron to-transparent"></span>
+  </a>
+</section>
+
+<!-- ===================== MARQUEE ===================== -->
+<section id="marquee" class="bg-coal text-bone py-5 border-y border-white/5">
+  <div class="marquee">
+    <div class="marquee-track font-head uc tracking-[.18em] text-sm">
+      <span>Collision Repair</span><span class="text-iron">◆</span>
+      <span>Auto Body &amp; Paint</span><span class="text-iron">◆</span>
+      <span>Dent &amp; Scratch</span><span class="text-iron">◆</span>
+      <span>Brakes &amp; Suspension</span><span class="text-iron">◆</span>
+      <span>Engine Diagnostics</span><span class="text-iron">◆</span>
+      <span>Insurance Welcome</span><span class="text-iron">◆</span>
+      <span>Collision Repair</span><span class="text-iron">◆</span>
+      <span>Auto Body &amp; Paint</span><span class="text-iron">◆</span>
+      <span>Dent &amp; Scratch</span><span class="text-iron">◆</span>
+      <span>Brakes &amp; Suspension</span><span class="text-iron">◆</span>
+      <span>Engine Diagnostics</span><span class="text-iron">◆</span>
+      <span>Insurance Welcome</span><span class="text-iron">◆</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DIVISIONS (signature split) ===================== -->
+<section id="divisions" class="relative py-24 sm:py-32 bg-bone overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-14" data-reveal>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="edge-rule w-8 inline-block"></span>
+        <span class="uc text-[11px] tracking-[.24em] text-iron font-600 font-head">One Roof, Two Trades</span>
+      </div>
+      <h2 class="font-head font-700 uppercase leading-[0.95] text-4xl sm:text-5xl text-ink">
+        Most shops pick a lane.<br>We run both.
+      </h2>
+      <p class="mt-5 text-ink/70 text-lg leading-relaxed">
+        After a wreck you usually bounce between a body shop and a mechanic. At Automotive Edge the panel work and the parts under the hood get handled in the same building — so nothing falls through the cracks between them.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Collision -->
+      <div class="svc skew-card bg-charcoal text-bone rounded-sm p-8 sm:p-10 relative grain" data-reveal>
+        <div class="absolute top-0 right-0 vstripe w-32 h-32 opacity-60"></div>
+        <span class="font-head font-700 text-iron text-5xl block">01</span>
+        <h3 class="font-head uc font-600 text-2xl mt-4 tracking-wide">Collision &amp; Body</h3>
+        <p class="text-bone/70 mt-3 leading-relaxed">From a parking-lot crease to a real impact — we straighten, refinish, and color-match so the repair disappears. Insurance claims handled start to finish.</p>
+        <ul class="mt-6 space-y-2 text-sm text-bone/80">
+          <li class="flex items-center gap-2"><span class="text-iron">→</span> Collision &amp; structural repair</li>
+          <li class="flex items-center gap-2"><span class="text-iron">→</span> Auto paint &amp; refinishing</li>
+          <li class="flex items-center gap-2"><span class="text-iron">→</span> Dent, ding &amp; scratch removal</li>
+          <li class="flex items-center gap-2"><span class="text-iron">→</span> Bumper &amp; panel replacement</li>
+        </ul>
+      </div>
+      <!-- Mechanical -->
+      <div class="svc skew-card bg-white text-ink rounded-sm p-8 sm:p-10 relative border border-boneDeep" data-reveal>
+        <div class="absolute top-0 right-0 vstripe w-32 h-32 opacity-100"></div>
+        <span class="font-head font-700 text-iron text-5xl block">02</span>
+        <h3 class="font-head uc font-600 text-2xl mt-4 tracking-wide">Mechanical Repair</h3>
+        <p class="text-ink/70 mt-3 leading-relaxed">The everyday stuff that keeps the car on the road. Honest diagnostics, the repair you actually need, and no upsell theater.</p>
+        <ul class="mt-6 space-y-2 text-sm text-ink/80">
+          <li class="flex items-center gap-2"><span class="text-iron">→</span> Brakes, suspension &amp; steering</li>
+          <li class="flex items-center gap-2"><span class="text-iron">→</span> Oil changes &amp; maintenance</li>
+          <li class="flex items-center gap-2"><span class="text-iron">→</span> Engine &amp; check-engine diagnostics</li>
+          <li class="flex items-center gap-2"><span class="text-iron">→</span> A/C service &amp; tires</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES GRID ===================== -->
+<section id="services" class="py-24 sm:py-32 bg-coal text-bone relative grain overflow-hidden">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-iron/50 to-transparent"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14" data-reveal>
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="edge-rule w-8 inline-block"></span>
+          <span class="uc text-[11px] tracking-[.24em] text-iron font-600 font-head">The Full List</span>
+        </div>
+        <h2 class="font-head font-700 uppercase leading-[0.95] text-4xl sm:text-5xl">Everything your car needs</h2>
+      </div>
+      <p class="text-bone/60 max-w-sm">Don't see it listed? Call — if it rolls, steers, or stops, there's a good chance we work on it.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- each card -->
+      <div class="svc bg-charcoal rounded-sm p-7 border border-white/5" data-reveal>
+        <h3 class="font-head uc font-600 text-lg tracking-wide">Collision Repair</h3>
+        <p class="text-bone/65 text-sm mt-2 leading-relaxed">Impact damage assessed and rebuilt to factory lines, then refinished to match.</p>
+      </div>
+      <div class="svc bg-charcoal rounded-sm p-7 border border-white/5" data-reveal>
+        <h3 class="font-head uc font-600 text-lg tracking-wide">Paint &amp; Refinishing</h3>
+        <p class="text-bone/65 text-sm mt-2 leading-relaxed">Color-matched paint and clear-coat that blends into the original finish.</p>
+      </div>
+      <div class="svc bg-charcoal rounded-sm p-7 border border-white/5" data-reveal>
+        <h3 class="font-head uc font-600 text-lg tracking-wide">Dent &amp; Scratch</h3>
+        <p class="text-bone/65 text-sm mt-2 leading-relaxed">Small damage handled fast so it never becomes rust or a bigger bill.</p>
+      </div>
+      <div class="svc bg-charcoal rounded-sm p-7 border border-white/5" data-reveal>
+        <h3 class="font-head uc font-600 text-lg tracking-wide">Brakes &amp; Suspension</h3>
+        <p class="text-bone/65 text-sm mt-2 leading-relaxed">Pads, rotors, struts, and steering work that brings back a tight, quiet ride.</p>
+      </div>
+      <div class="svc bg-charcoal rounded-sm p-7 border border-white/5" data-reveal>
+        <h3 class="font-head uc font-600 text-lg tracking-wide">Engine Diagnostics</h3>
+        <p class="text-bone/65 text-sm mt-2 leading-relaxed">Check-engine lights read and traced to the real cause, not a guess.</p>
+      </div>
+      <div class="svc bg-charcoal rounded-sm p-7 border border-white/5" data-reveal>
+        <h3 class="font-head uc font-600 text-lg tracking-wide">Maintenance &amp; A/C</h3>
+        <p class="text-bone/65 text-sm mt-2 leading-relaxed">Oil, fluids, tires, and Florida-summer A/C service to keep you rolling.</p>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col sm:flex-row items-center gap-4" data-reveal>
+      <a href="tel:+18135062812" class="btn-primary inline-flex items-center gap-2 bg-iron text-white font-head uc tracking-wide font-500 px-7 py-4 rounded-sm">Get a written estimate — (813) 506-2812</a>
+      <span class="text-bone/55 text-sm">Free estimates · Insurance claims welcome</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE EDGE PROCESS (signature numbered section) ===================== -->
+<section id="process" class="py-24 sm:py-32 bg-bone relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-16" data-reveal>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="edge-rule w-8 inline-block"></span>
+        <span class="uc text-[11px] tracking-[.24em] text-iron font-600 font-head">How It Works</span>
+      </div>
+      <h2 class="font-head font-700 uppercase leading-[0.95] text-4xl sm:text-5xl text-ink">The Edge process</h2>
+      <p class="mt-5 text-ink/70 text-lg leading-relaxed">Four steps, no surprises. You know the plan and the price before a wrench turns.</p>
+    </div>
+
+    <div class="relative">
+      <!-- the drawing edge line behind the steps -->
+      <div class="hidden lg:block absolute left-0 right-0 top-[46px] h-[3px] bg-boneDeep"></div>
+      <div id="processLine" class="hidden lg:block absolute left-0 top-[46px] h-[3px] bg-gradient-to-r from-iron to-ironDark" style="width:0;"></div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 relative">
+        <div data-reveal>
+          <div class="relative z-10 w-12 h-12 rounded-sm bg-charcoal text-iron font-head font-700 text-xl flex items-center justify-center step-num">01</div>
+          <h3 class="font-head uc font-600 text-lg mt-5 tracking-wide text-ink">Inspect &amp; estimate</h3>
+          <p class="text-ink/65 text-sm mt-2 leading-relaxed">We look the car over, find every issue, and put a clear written number in your hands — free.</p>
+        </div>
+        <div data-reveal>
+          <div class="relative z-10 w-12 h-12 rounded-sm bg-charcoal text-iron font-head font-700 text-xl flex items-center justify-center step-num">02</div>
+          <h3 class="font-head uc font-600 text-lg mt-5 tracking-wide text-ink">Plan &amp; approve</h3>
+          <p class="text-ink/65 text-sm mt-2 leading-relaxed">We walk you through what's needed and what can wait. Nothing happens until you say go.</p>
+        </div>
+        <div data-reveal>
+          <div class="relative z-10 w-12 h-12 rounded-sm bg-charcoal text-iron font-head font-700 text-xl flex items-center justify-center step-num">03</div>
+          <h3 class="font-head uc font-600 text-lg mt-5 tracking-wide text-ink">Repair &amp; refinish</h3>
+          <p class="text-ink/65 text-sm mt-2 leading-relaxed">Body and mechanical work done in-house, with paint matched and parts checked twice.</p>
+        </div>
+        <div data-reveal>
+          <div class="relative z-10 w-12 h-12 rounded-sm bg-iron text-white font-head font-700 text-xl flex items-center justify-center step-num">04</div>
+          <h3 class="font-head uc font-600 text-lg mt-5 tracking-wide text-ink">Check &amp; deliver</h3>
+          <p class="text-ink/65 text-sm mt-2 leading-relaxed">A final quality pass, then you drive off in a car that looks and runs like it should.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE SHOP / OWNER STORY ===================== -->
+<section id="shop" class="py-24 sm:py-32 bg-charcoal text-bone relative grain overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="relative" data-reveal>
+      <div class="overflow-hidden rounded-sm">
+        <img src="assets/body.jpg" alt="Vehicle in the bay at Automotive Edge in Brandon, FL" class="w-full h-[440px] object-cover" data-reveal-img>
+      </div>
+      <div class="absolute -bottom-6 -right-2 sm:-right-6 bg-iron text-white px-6 py-5 rounded-sm shadow-xl">
+        <div class="font-head font-700 text-3xl leading-none">Est. 2020</div>
+        <div class="uc text-[10px] tracking-[.18em] mt-1 text-white/80">Owner-operated</div>
+      </div>
+    </div>
+
+    <div data-reveal>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="edge-rule w-8 inline-block"></span>
+        <span class="uc text-[11px] tracking-[.24em] text-iron font-600 font-head">The Shop</span>
+      </div>
+      <h2 class="font-head font-700 uppercase leading-[0.97] text-4xl sm:text-5xl">A neighborhood shop that does it right</h2>
+      <p class="mt-6 text-bone/75 text-lg leading-relaxed">
+        Automotive Edge is owner-operated by Nicholas Barnes right here on Central Drive in Brandon. No call-center, no chain-store runaround — just a shop where the person quoting the job is the same one standing behind the work.
+      </p>
+      <p class="mt-4 text-bone/70 leading-relaxed">
+        Bringing collision and mechanical repair under one roof means your car gets fixed completely — straightened, refinished, and running right — without being shuffled between shops. That's the edge.
+      </p>
+
+      <div class="mt-9 grid grid-cols-3 gap-5 border-t border-white/10 pt-7">
+        <div>
+          <div class="font-head font-700 text-2xl text-iron">Local</div>
+          <div class="uc text-[10px] tracking-[.14em] text-steel mt-1">Brandon-based</div>
+        </div>
+        <div>
+          <div class="font-head font-700 text-2xl text-iron">Honest</div>
+          <div class="uc text-[10px] tracking-[.14em] text-steel mt-1">Written quotes</div>
+        </div>
+        <div>
+          <div class="font-head font-700 text-2xl text-iron">Complete</div>
+          <div class="uc text-[10px] tracking-[.14em] text-steel mt-1">Body + mechanical</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST STRIP ===================== -->
+<section class="bg-coal text-bone py-14 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="flex items-start gap-3" data-reveal>
+      <span class="text-iron text-2xl font-head font-700">✓</span>
+      <div><div class="font-head uc font-600 tracking-wide">Free estimates</div><p class="text-bone/60 text-sm mt-1">Know the cost before you commit.</p></div>
+    </div>
+    <div class="flex items-start gap-3" data-reveal>
+      <span class="text-iron text-2xl font-head font-700">✓</span>
+      <div><div class="font-head uc font-600 tracking-wide">Insurance welcome</div><p class="text-bone/60 text-sm mt-1">We help you work the claim.</p></div>
+    </div>
+    <div class="flex items-start gap-3" data-reveal>
+      <span class="text-iron text-2xl font-head font-700">✓</span>
+      <div><div class="font-head uc font-600 tracking-wide">One roof</div><p class="text-bone/60 text-sm mt-1">Body and mechanical together.</p></div>
+    </div>
+    <div class="flex items-start gap-3" data-reveal>
+      <span class="text-iron text-2xl font-head font-700">✓</span>
+      <div><div class="font-head uc font-600 tracking-wide">Owner-operated</div><p class="text-bone/60 text-sm mt-1">The owner stands behind every job.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISIT / MAP ===================== -->
+<section id="visit" class="py-24 sm:py-32 bg-bone">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+      <div data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="edge-rule w-8 inline-block"></span>
+          <span class="uc text-[11px] tracking-[.24em] text-iron font-600 font-head">Find Us</span>
+        </div>
+        <h2 class="font-head font-700 uppercase leading-[0.95] text-4xl sm:text-5xl text-ink">Stop by the shop</h2>
+        <p class="mt-5 text-ink/70 text-lg leading-relaxed">Right off Central Drive in Brandon. Call ahead and we'll have the bay ready for you.</p>
+
+        <div class="mt-8 space-y-5">
+          <div class="slash pl-6">
+            <div class="uc text-[11px] tracking-[.16em] text-iron font-head font-600">Address</div>
+            <a href="https://www.google.com/maps?q=109+Central+Dr,+Brandon,+FL+33510" target="_blank" rel="noopener" class="ul-grow text-ink text-lg font-500">109 Central Dr, Brandon, FL 33510</a>
+          </div>
+          <div class="slash pl-6">
+            <div class="uc text-[11px] tracking-[.16em] text-iron font-head font-600">Phone</div>
+            <a href="tel:+18135062812" class="ul-grow text-ink text-lg font-500">(813) 506-2812</a>
+          </div>
+          <div class="slash pl-6">
+            <div class="uc text-[11px] tracking-[.16em] text-iron font-head font-600">Hours</div>
+            <div class="text-ink text-lg font-500 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-iron pulse-dot inline-block"></span> By appointment — call to confirm today's hours</div>
+          </div>
+        </div>
+
+        <a href="tel:+18135062812" class="btn-primary mt-9 inline-flex items-center gap-2 bg-charcoal text-bone font-head uc tracking-wide font-500 px-7 py-4 rounded-sm">Call the shop</a>
+      </div>
+
+      <div class="rounded-sm overflow-hidden border border-boneDeep min-h-[380px] shadow-lg" data-reveal>
+        <iframe
+          title="Automotive Edge location — 109 Central Dr, Brandon, FL 33510"
+          src="https://www.google.com/maps?q=109+Central+Dr,+Brandon,+FL+33510&output=embed"
+          width="100%" height="100%" style="border:0; min-height:380px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLOSING CTA ===================== -->
+<section class="relative py-24 sm:py-32 bg-coal text-bone overflow-hidden grain">
+  <div class="absolute inset-0 hero-photo opacity-20" style="background-image:url('assets/detail.jpg');"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-coal via-coal/80 to-coal/60"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <span class="font-head font-700 text-iron text-3xl block mb-3">AE</span>
+    <h2 class="font-head font-700 uppercase leading-[0.95] text-4xl sm:text-6xl" data-reveal>Get your car back to right.</h2>
+    <p class="mt-6 text-bone/75 text-lg max-w-xl mx-auto" data-reveal>Collision or mechanical, big or small — bring it to Automotive Edge and get a straight answer and a free written estimate.</p>
+    <div class="mt-9 flex flex-col sm:flex-row gap-4 justify-center" data-reveal>
+      <a href="tel:+18135062812" class="btn-primary inline-flex items-center justify-center gap-2 bg-iron text-white font-head uc tracking-wide font-500 px-8 py-4 rounded-sm text-lg">(813) 506-2812</a>
+      <a href="https://www.google.com/maps?q=109+Central+Dr,+Brandon,+FL+33510" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-bone/30 text-bone font-head uc tracking-wide font-500 px-8 py-4 rounded-sm text-lg hover:bg-bone/10 transition">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-charcoal text-bone pt-16 pb-28 sm:pb-12 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid sm:grid-cols-3 gap-10">
+    <div>
+      <div class="flex items-center gap-3">
+        <span class="font-head font-700 text-iron text-2xl">AE</span>
+        <span class="font-head uc font-600 text-lg">Automotive Edge</span>
+      </div>
+      <p class="text-bone/60 text-sm mt-4 leading-relaxed">Collision body repair and full mechanical service under one roof in Brandon, Florida. Owner-operated since 2020.</p>
+    </div>
+    <div>
+      <div class="uc text-[11px] tracking-[.18em] text-iron font-head font-600 mb-4">Visit</div>
+      <a href="https://www.google.com/maps?q=109+Central+Dr,+Brandon,+FL+33510" target="_blank" rel="noopener" class="ul-grow text-bone/80 text-sm block">109 Central Dr<br>Brandon, FL 33510</a>
+      <a href="tel:+18135062812" class="ul-grow text-bone/80 text-sm block mt-3">(813) 506-2812</a>
+      <p class="text-bone/55 text-sm mt-3">By appointment — call to confirm</p>
+    </div>
+    <div>
+      <div class="uc text-[11px] tracking-[.18em] text-iron font-head font-600 mb-4">Services</div>
+      <ul class="text-bone/80 text-sm space-y-2">
+        <li>Collision &amp; Body Repair</li>
+        <li>Paint &amp; Refinishing</li>
+        <li>Brakes &amp; Suspension</li>
+        <li>Engine Diagnostics &amp; Maintenance</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-bone/45 text-xs">
+    <span>© <span id="yr">2026</span> Automotive Edge. All rights reserved.</span>
+    <span class="uc tracking-[.16em]">Brandon, Florida · Collision &amp; Mechanical</span>
+  </div>
+</footer>
+
+<!-- ===================== MOBILE STICKY BAR ===================== -->
+<div class="fixed bottom-0 inset-x-0 z-50 sm:hidden grid grid-cols-2 border-t border-white/10">
+  <a href="tel:+18135062812" class="bg-iron text-white font-head uc tracking-wide text-sm font-500 py-4 flex items-center justify-center gap-2">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=109+Central+Dr,+Brandon,+FL+33510" target="_blank" rel="noopener" class="bg-charcoal text-bone font-head uc tracking-wide text-sm font-500 py-4 flex items-center justify-center gap-2">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoBodyShop",
+  "name": "Automotive Edge",
+  "image": "https://turnkeyweb.org/previews/automotive-edge/assets/hero.jpg",
+  "url": "https://turnkeyweb.org/previews/automotive-edge/",
+  "telephone": "+1-813-506-2812",
+  "foundingDate": "2020",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "109 Central Dr",
+    "addressLocality": "Brandon",
+    "addressRegion": "FL",
+    "postalCode": "33510",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 27.9376, "longitude": -82.2859 },
+  "areaServed": "Brandon, FL",
+  "makesOffer": [
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Collision & Body Repair"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Auto Paint & Refinishing"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dent & Scratch Removal"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Brakes & Suspension"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Engine Diagnostics"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Maintenance & A/C Service"}}
+  ]
+}
+</script>
+
+<!-- libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---- Lenis smooth scroll ---- */
+  let lenis;
+  try {
+    lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  } catch(e){}
+
+  /* anchor scroll */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const el = document.querySelector(id);
+        if (el) { e.preventDefault();
+          if (lenis) lenis.scrollTo(el, { offset: -70 });
+          else el.scrollIntoView({behavior:'smooth'});
+        }
+      }
+    });
+  });
+
+  /* nav state on scroll */
+  const nav = document.getElementById('navbar');
+  const header = document.getElementById('nav');
+  function navState(){
+    if (window.scrollY > 40) {
+      header.classList.add('bg-coal/95','backdrop-blur','shadow-lg');
+      nav.classList.add('py-3'); nav.classList.remove('py-4');
+    } else {
+      header.classList.remove('bg-coal/95','backdrop-blur','shadow-lg');
+      nav.classList.add('py-4'); nav.classList.remove('py-3');
+    }
+  }
+  navState(); window.addEventListener('scroll', navState);
+
+  /* hero intro */
+  if (window.gsap) {
+    gsap.set('[data-hero]', {opacity:0, y:30});
+    gsap.to('[data-hero]', {opacity:1, y:0, duration:1, ease:'power3.out', stagger:.12, delay:.15});
+  }
+
+  /* reveals */
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('[data-reveal]').forEach(el=>{
+      gsap.fromTo(el, {opacity:0, y:36}, {
+        opacity:1, y:0, duration:1, ease:'power3.out',
+        scrollTrigger:{ trigger:el, start:'top 88%' }
+      });
+    });
+    document.querySelectorAll('[data-reveal-img]').forEach(el=>{
+      ScrollTrigger.create({ trigger:el, start:'top 85%', onEnter:()=> el.classList.add('in') });
+    });
+
+    /* count-up */
+    document.querySelectorAll('.count').forEach(el=>{
+      const target = parseFloat(el.dataset.target);
+      ScrollTrigger.create({ trigger:el, start:'top 92%', once:true, onEnter:()=>{
+        gsap.to({v:0}, {v:target, duration:1.6, ease:'power2.out',
+          onUpdate(){ el.textContent = Math.round(this.targets()[0].v); }});
+      }});
+    });
+
+    /* signature: the process edge-line draws across as you scroll the section */
+    const pLine = document.getElementById('processLine');
+    if (pLine) {
+      ScrollTrigger.create({
+        trigger:'#process', start:'top 60%', end:'bottom 70%', scrub:.6,
+        onUpdate(self){ pLine.style.width = (self.progress*100).toFixed(1) + '%'; }
+      });
+    }
+  }
+
+  /* ---- 6s crawler / screenshot safety net ---- */
+  setTimeout(()=>{
+    document.querySelectorAll('[data-reveal]').forEach(el=>{
+      el.style.opacity = 1; el.style.transform = 'none';
+    });
+    document.querySelectorAll('[data-reveal-img]').forEach(el=> el.classList.add('in'));
+    document.querySelectorAll('[data-hero]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; });
+    document.querySelectorAll('.count').forEach(el=>{ if(el.textContent.trim()==='0') el.textContent = el.dataset.target; });
+    const pLine = document.getElementById('processLine'); if (pLine && !pLine.style.width.startsWith('1')) pLine.style.width='100%';
+  }, 6000);
+</script>
+</body>
+</html>

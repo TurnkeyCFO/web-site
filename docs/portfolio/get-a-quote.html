@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Microsoft Clarity (heatmaps + session replay) -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xat9lhrllb");
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get an Instant Quote — TurnkeyWEB</title>
+<meta name="description" content="Get an instant quote for your website project from Turnkey Web. Answer a few quick questions and see your personalized options.">
+<meta property="og:title" content="Get an Instant Quote — TurnkeyWEB">
+<meta property="og:description" content="Get an instant quote for your website project from Turnkey Web. Answer a few quick questions and see your personalized options.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://turnkeyweb.org/portfolio/get-a-quote.html">
+<meta property="og:image" content="https://turnkeyweb.org/assets/tkweb-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#00263A; --navy-mid:#003A56; --navy-card:#0A2333;
+  --green:#00C85A; --green-b:#05DD69; --green-dim:rgba(0,200,90,.1);
+  --ice:#DAE1E9; --white:#fff; --muted:#7A909F;
+  --border:rgba(218,225,233,.13); --border-hover:rgba(0,200,90,.35);
+  --red:#EF4444; --amber:#F59E0B;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--navy);color:var(--ice);min-height:100vh;overflow-x:hidden}
+
+/* NAV */
+nav{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(0,38,58,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-logo{font-size:19px;font-weight:800;color:var(--white);text-decoration:none;letter-spacing:-.025em}
+.nav-logo span{color:var(--green)}
+.nav-back{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-back:hover{color:var(--green)}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:1fr 380px;min-height:calc(100vh - 64px);align-items:start}
+
+/* LEFT — WIZARD */
+.wizard{padding:64px 64px 80px;position:relative}
+.wizard-progress{display:flex;align-items:center;gap:0;margin-bottom:52px}
+.wp-step{display:flex;align-items:center;gap:0}
+.wp-dot{width:32px;height:32px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--muted);transition:all .35s;position:relative;z-index:2;background:var(--navy);cursor:pointer}
+.wp-dot.active{border-color:var(--green);color:var(--green);box-shadow:0 0 0 4px rgba(0,200,90,.12)}
+.wp-dot.done{border-color:var(--green);background:var(--green);color:var(--navy)}
+.wp-line{width:40px;height:2px;background:var(--border);transition:background .35s;flex-shrink:0}
+.wp-line.done{background:var(--green)}
+.wp-label{position:absolute;top:38px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap;transition:color .35s}
+.wp-dot.active .wp-label,.wp-dot.done .wp-label{color:var(--green)}
+
+/* STEP PANELS */
+.step-panel{display:none;animation:stepIn .4s ease both}
+.step-panel.active{display:block}
+@keyframes stepIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+.step-eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--green);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.step-eyebrow::before{content:'';width:16px;height:2px;background:var(--green);flex-shrink:0}
+.step-h{font-size:clamp(26px,3.5vw,38px);font-weight:800;color:var(--white);letter-spacing:-.03em;line-height:1.1;margin-bottom:8px}
+.step-sub{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:36px;max-width:500px}
+
+/* OPTION CARDS */
+.options{display:grid;gap:12px}
+.options.cols-2{grid-template-columns:1fr 1fr}
+.options.cols-3{grid-template-columns:1fr 1fr 1fr}
+.opt{background:var(--navy-card);border:1.5px solid var(--border);border-radius:14px;padding:20px 22px;cursor:pointer;transition:all .22s;position:relative;user-select:none}
+.opt:hover{border-color:rgba(0,200,90,.25);background:rgba(0,200,90,.03)}
+.opt.selected{border-color:var(--green);background:rgba(0,200,90,.06)}
+.opt.selected::after{content:'✓';position:absolute;top:14px;right:16px;width:22px;height:22px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--navy)}
+.opt-icon{font-size:22px;margin-bottom:10px;display:block;line-height:1}
+.opt-label{font-size:15px;font-weight:700;color:var(--white);margin-bottom:3px}
+.opt-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.opt-price{font-size:12px;font-weight:700;color:var(--green);margin-top:8px;letter-spacing:.02em}
+
+/* CHECKBOXES */
+.checks{display:grid;gap:8px}
+.checks.cols-2{grid-template-columns:1fr 1fr}
+.chk{background:var(--navy-card);border:1.5px solid var(--border);border-radius:10px;padding:14px 18px;cursor:pointer;transition:all .22s;display:flex;align-items:center;gap:12px;user-select:none}
+.chk:hover{border-color:rgba(0,200,90,.25)}
+.chk.checked{border-color:var(--green);background:rgba(0,200,90,.05)}
+.chk-box{width:20px;height:20px;border-radius:5px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.chk.checked .chk-box{background:var(--green);border-color:var(--green)}
+.chk-checkmark{display:none;color:var(--navy);font-size:11px;font-weight:800}
+.chk.checked .chk-checkmark{display:block}
+.chk-label{font-size:13px;font-weight:600;color:var(--ice)}
+.chk-extra{font-size:11px;color:var(--green);margin-left:auto;font-weight:600;white-space:nowrap}
+
+/* TEXT INPUTS */
+.field{margin-bottom:18px}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;background:var(--navy-card);border:1.5px solid var(--border);color:var(--white);padding:14px 18px;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;outline:none;transition:border-color .2s;resize:none}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--green)}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted)}
+.field select option{background:var(--navy-mid)}
+.fields-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* RANGE SLIDER */
+.range-wrap{margin-bottom:24px}
+.range-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px}
+.range-val{font-size:28px;font-weight:800;color:var(--white);letter-spacing:-.03em;margin-bottom:12px}
+.range-val span{color:var(--green)}
+input[type=range]{width:100%;-webkit-appearance:none;height:4px;border-radius:2px;background:var(--border);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(0,200,90,.15);cursor:pointer;transition:box-shadow .2s}
+input[type=range]::-webkit-slider-thumb:hover{box-shadow:0 0 0 6px rgba(0,200,90,.2)}
+.range-ticks{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:6px;letter-spacing:.06em}
+
+/* TIMELINE SELECTOR */
+.timeline-opts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.topt{background:var(--navy-card);border:1.5px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center;cursor:pointer;transition:all .22s;user-select:none}
+.topt:hover{border-color:rgba(0,200,90,.3)}
+.topt.selected{border-color:var(--green);background:rgba(0,200,90,.06)}
+.topt-time{font-size:16px;font-weight:800;color:var(--white);margin-bottom:3px}
+.topt-label{font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.topt-rush{font-size:10px;color:var(--amber);font-weight:700;margin-top:4px}
+
+/* NAV BUTTONS */
+.step-nav{display:flex;gap:12px;margin-top:36px;align-items:center}
+.btn-next{background:var(--green);color:var(--navy);font-size:15px;font-weight:700;padding:14px 36px;border-radius:9px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .22s;display:flex;align-items:center;gap:8px}
+.btn-next:hover{background:var(--green-b);transform:translateY(-1px);box-shadow:0 12px 32px rgba(0,200,90,.3)}
+.btn-next:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-back{background:transparent;color:var(--muted);font-size:14px;font-weight:600;padding:14px 20px;border-radius:9px;border:1.5px solid var(--border);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .22s}
+.btn-back:hover{color:var(--ice);border-color:rgba(218,225,233,.3)}
+.step-counter{font-size:12px;color:var(--muted);margin-left:auto;letter-spacing:.04em}
+
+/* RIGHT — ESTIMATE PANEL */
+.estimate-panel{background:var(--navy-card);border-left:1px solid var(--border);padding:64px 40px;position:sticky;top:64px;min-height:calc(100vh - 64px);display:flex;flex-direction:column}
+.est-label{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--green);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.est-label::before{content:'';width:16px;height:2px;background:var(--green)}
+.est-price{font-size:clamp(40px,4vw,60px);font-weight:900;color:var(--white);letter-spacing:-.05em;line-height:1;margin-bottom:4px;transition:all .4s}
+.est-range{font-size:13px;color:var(--muted);margin-bottom:28px}
+.est-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:32px;overflow:hidden}
+.est-bar-fill{height:100%;background:linear-gradient(90deg,var(--green),#06B6D4);border-radius:2px;width:0;transition:width .6s ease}
+
+.est-breakdown{display:flex;flex-direction:column;gap:0;flex:1}
+.est-line{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);transition:all .3s}
+.est-line:last-child{border-bottom:none}
+.est-line-label{font-size:13px;color:var(--muted)}
+.est-line-val{font-size:13px;font-weight:700;color:var(--ice);text-align:right}
+.est-line-val.green{color:var(--green)}
+.est-line-val.pending{color:var(--muted);font-weight:400;font-style:italic}
+.est-line.highlight .est-line-label{color:var(--white);font-weight:600}
+.est-line.highlight .est-line-val{font-size:15px;color:var(--green)}
+
+.est-timeline-badge{background:rgba(0,200,90,.08);border:1px solid rgba(0,200,90,.2);border-radius:8px;padding:12px 14px;margin-top:20px;display:flex;align-items:center;gap:10px}
+.est-timeline-icon{font-size:18px}
+.est-timeline-text{font-size:13px;color:var(--ice);font-weight:500;line-height:1.4}
+.est-timeline-text span{color:var(--green);font-weight:700}
+
+.est-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+
+/* SUBMIT STEP */
+.submit-box{background:linear-gradient(135deg,rgba(0,200,90,.08),rgba(0,200,90,.03));border:1.5px solid rgba(0,200,90,.25);border-radius:16px;padding:32px;margin-top:24px}
+.submit-total{font-size:48px;font-weight:900;color:var(--white);letter-spacing:-.05em;line-height:1;margin-bottom:4px}
+.submit-total span{color:var(--green)}
+.submit-range-label{font-size:13px;color:var(--muted);margin-bottom:24px}
+.btn-submit{width:100%;background:var(--green);color:var(--navy);font-size:16px;font-weight:800;padding:18px;border-radius:10px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .25s;letter-spacing:.01em;margin-top:4px}
+.btn-submit:hover{background:var(--green-b);box-shadow:0 14px 40px rgba(0,200,90,.35);transform:translateY(-1px)}
+
+/* SUCCESS */
+.success{display:none;text-align:center;padding:40px 0}
+.success.show{display:block;animation:stepIn .5s ease both}
+.success-icon{font-size:56px;margin-bottom:20px}
+.success-h{font-size:32px;font-weight:800;color:var(--white);letter-spacing:-.03em;margin-bottom:10px}
+.success-sub{font-size:15px;color:var(--muted);line-height:1.7;max-width:440px;margin:0 auto 28px}
+.success-detail{background:var(--navy-card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;text-align:left;margin-bottom:20px}
+.success-detail-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+.success-detail-row:last-child{border-bottom:none}
+.success-detail-row span:first-child{color:var(--muted)}
+.success-detail-row span:last-child{color:var(--white);font-weight:600}
+
+/* MOBILE */
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .estimate-panel{display:none}
+  .wizard{padding:40px 24px 60px}
+  .options.cols-3{grid-template-columns:1fr 1fr}
+  .timeline-opts{grid-template-columns:1fr 1fr}
+  .fields-row{grid-template-columns:1fr}
+  nav{padding:0 20px}
+}
+@media(max-width:500px){
+  .options.cols-2,.options.cols-3{grid-template-columns:1fr}
+  .checks.cols-2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Turnkey<span>WEB</span></a>
+  <a class="nav-back" href="index.html">← Back to Portfolio</a>
+</nav>
+
+<div class="layout">
+
+  <!-- LEFT: WIZARD -->
+  <div class="wizard">
+
+    <!-- Progress Bar -->
+    <div class="wizard-progress">
+      <div class="wp-step">
+        <div class="wp-dot active" id="dot1" onclick="jumpTo(1)"><span>1</span><div class="wp-label">Type</div></div>
+      </div>
+      <div class="wp-line" id="line1"></div>
+      <div class="wp-step">
+        <div class="wp-dot" id="dot2" onclick="jumpTo(2)"><span>2</span><div class="wp-label">Pages</div></div>
+      </div>
+      <div class="wp-line" id="line2"></div>
+      <div class="wp-step">
+        <div class="wp-dot" id="dot3" onclick="jumpTo(3)"><span>3</span><div class="wp-label">Features</div></div>
+      </div>
+      <div class="wp-line" id="line3"></div>
+      <div class="wp-step">
+        <div class="wp-dot" id="dot4" onclick="jumpTo(4)"><span>4</span><div class="wp-label">Design</div></div>
+      </div>
+      <div class="wp-line" id="line4"></div>
+      <div class="wp-step">
+        <div class="wp-dot" id="dot5" onclick="jumpTo(5)"><span>5</span><div class="wp-label">Timeline</div></div>
+      </div>
+      <div class="wp-line" id="line5"></div>
+      <div class="wp-step">
+        <div class="wp-dot" id="dot6" onclick="jumpTo(6)"><span>6</span><div class="wp-label">Details</div></div>
+      </div>
+      <div class="wp-line" id="line6"></div>
+      <div class="wp-step">
+        <div class="wp-dot" id="dot7" onclick="jumpTo(7)"><span>7</span><div class="wp-label">Quote</div></div>
+      </div>
+    </div>
+
+    <!-- STEP 1: Project Type -->
+    <div class="step-panel active" id="step1">
+      <div class="step-eyebrow">Step 1 of 7</div>
+      <h2 class="step-h">What kind of site<br>do you need?</h2>
+      <p class="step-sub">Choose the option that best describes your project. This sets the foundation for your estimate.</p>
+      <div class="options cols-2" id="typeOpts">
+        <div class="opt" data-val="landing" data-base="497" onclick="selectOpt(this,'typeOpts',false)">
+          <span class="opt-icon">🎯</span>
+          <div class="opt-label">Landing Page</div>
+          <div class="opt-desc">Single page focused on one conversion goal — lead capture, product sale, webinar signup, or service offer.</div>
+        </div>
+        <div class="opt" data-val="business" data-base="1497" onclick="selectOpt(this,'typeOpts',false)">
+          <span class="opt-icon">🏢</span>
+          <div class="opt-label">Business Website</div>
+          <div class="opt-desc">Multi-page site covering your services, team, testimonials, contact, and everything your business needs.</div>
+        </div>
+        <div class="opt" data-val="ecommerce" data-base="2497" onclick="selectOpt(this,'typeOpts',false)">
+          <span class="opt-icon">🛒</span>
+          <div class="opt-label">Ecommerce / DTC</div>
+          <div class="opt-desc">Product pages, cart flow, variant selection, and conversion-optimized checkout experience.</div>
+        </div>
+        <div class="opt" data-val="portfolio" data-base="997" onclick="selectOpt(this,'typeOpts',false)">
+          <span class="opt-icon">🎨</span>
+          <div class="opt-label">Portfolio / Creative</div>
+          <div class="opt-desc">Work showcase, gallery layouts, case studies, and contact — built to impress at a glance.</div>
+        </div>
+        <div class="opt" data-val="saas" data-base="2997" onclick="selectOpt(this,'typeOpts',false)">
+          <span class="opt-icon">💻</span>
+          <div class="opt-label">SaaS / Product</div>
+          <div class="opt-desc">Marketing site for a software product — features, pricing, social proof, and trial/demo CTA.</div>
+        </div>
+        <div class="opt" data-val="redesign" data-base="1497" onclick="selectOpt(this,'typeOpts',false)">
+          <span class="opt-icon">🔄</span>
+          <div class="opt-label">Redesign / Rebuild</div>
+          <div class="opt-desc">Your current site isn't cutting it. Full redesign of existing pages with improved design and performance.</div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-next" id="next1" onclick="goTo(2)" disabled>Next: Page Count →</button>
+        <span class="step-counter">1 of 7</span>
+      </div>
+    </div>
+
+    <!-- STEP 2: Page Count -->
+    <div class="step-panel" id="step2">
+      <div class="step-eyebrow">Step 2 of 7</div>
+      <h2 class="step-h">How many pages<br>do you need?</h2>
+      <p class="step-sub">Count individual pages — Home, About, Services, Contact, Blog, etc. Not sections within a page.</p>
+      <div class="range-wrap">
+        <div class="range-val" id="pageCountDisplay">1 <span>page</span></div>
+        <input type="range" id="pageRange" min="1" max="20" value="1" step="1" oninput="updatePageCount(this.value)">
+        <div class="range-ticks">
+          <span>1</span><span>5</span><span>10</span><span>15</span><span>20+</span>
+        </div>
+      </div>
+      <div class="options cols-2" style="margin-top:8px" id="pagesHelpOpts">
+        <div class="opt" data-val="1" onclick="setPageCount(1);selectOpt(this,'pagesHelpOpts',false)">
+          <div class="opt-label">Just one page</div>
+          <div class="opt-desc">Landing page, squeeze page, or single-purpose site</div>
+        </div>
+        <div class="opt" data-val="3" onclick="setPageCount(3);selectOpt(this,'pagesHelpOpts',false)">
+          <div class="opt-label">Small site (2–4)</div>
+          <div class="opt-desc">Home + a couple of key pages</div>
+        </div>
+        <div class="opt" data-val="6" onclick="setPageCount(6);selectOpt(this,'pagesHelpOpts',false)">
+          <div class="opt-label">Medium site (5–8)</div>
+          <div class="opt-desc">Full business site with all the main sections</div>
+        </div>
+        <div class="opt" data-val="12" onclick="setPageCount(12);selectOpt(this,'pagesHelpOpts',false)">
+          <div class="opt-label">Large site (9+)</div>
+          <div class="opt-desc">Extensive content, multiple service areas, or a large portfolio</div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goTo(1)">← Back</button>
+        <button class="btn-next" onclick="goTo(3)">Next: Features →</button>
+        <span class="step-counter">2 of 7</span>
+      </div>
+    </div>
+
+    <!-- STEP 3: Features & Integrations -->
+    <div class="step-panel" id="step3">
+      <div class="step-eyebrow">Step 3 of 7</div>
+      <h2 class="step-h">What features do<br>you need?</h2>
+      <p class="step-sub">Select everything that applies. Each feature is factored into your estimate.</p>
+      <div class="checks cols-2" id="featureChecks">
+        <div class="chk" data-val="contact_form" data-add="0" onclick="toggleChk(this)">
+          <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+          <span class="chk-label">Contact Form</span>
+        </div>
+        <div class="chk" data-val="calendly" data-add="0" onclick="toggleChk(this)">
+          <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+          <span class="chk-label">Calendly / Booking Embed</span>
+        </div>
+        <div class="chk" data-val="animations" data-add="200" onclick="toggleChk(this)">
+          <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+          <span class="chk-label">Scroll Animations</span>
+        </div>
+        <div class="chk" data-val="countdown" data-add="150" onclick="toggleChk(this)">
+          <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+          <span class="chk-label">Countdown Timer / Urgency</span>
+        </div>
+        <div class="chk" data-val="blog" data-add="400" onclick="toggleChk(this)">
+          <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+          <span class="chk-label">Blog / Article Section</span>
+        </div>
+        <div class="chk" data-val="gallery" data-add="250" onclick="toggleChk(this)">
+          <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+          <span class="chk-label">Photo Gallery / Portfolio Grid</span>
+        </div>
+        <div class="chk" data-val="video" data-add="200" onclick="toggleChk(this)">
+          <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+          <span class="chk-label">Video Background / Embed</span>
+        </div>
+        <div class="chk" data-val="map" data-add="100" onclick="toggleChk(this)">
+          <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+          <span class="chk-label">Map / Location Embed</span>
+        </div>
+        <div class="chk" data-val="payment" data-add="500" onclick="toggleChk(this)">
+          <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+          <span class="chk-label">Payment Integration (Stripe)</span>
+        </div>
+        <div class="chk" data-val="members" data-add="800" onclick="toggleChk(this)">
+          <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+          <span class="chk-label">Members / Login Area</span>
+        </div>
+        <div class="chk" data-val="chat" data-add="100" onclick="toggleChk(this)">
+          <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+          <span class="chk-label">Live Chat Integration</span>
+        </div>
+        <div class="chk" data-val="popup" data-add="200" onclick="toggleChk(this)">
+          <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+          <span class="chk-label">Exit Intent / Popup</span>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goTo(2)">← Back</button>
+        <button class="btn-next" onclick="goTo(4)">Next: Design →</button>
+        <span class="step-counter">3 of 7</span>
+      </div>
+    </div>
+
+    <!-- STEP 4: Design Direction -->
+    <div class="step-panel" id="step4">
+      <div class="step-eyebrow">Step 4 of 7</div>
+      <h2 class="step-h">How should your<br>site feel?</h2>
+      <p class="step-sub">This helps me understand the visual direction before we talk. Pick the closest match.</p>
+      <div class="options cols-2" id="designOpts">
+        <div class="opt" data-val="minimal" onclick="selectOpt(this,'designOpts',false)">
+          <span class="opt-icon">◻</span>
+          <div class="opt-label">Clean & Minimal</div>
+          <div class="opt-desc">White space, refined typography, subtle interactions. Think Apple or Linear.</div>
+        </div>
+        <div class="opt" data-val="bold" onclick="selectOpt(this,'designOpts',false)">
+          <span class="opt-icon">◼</span>
+          <div class="opt-label">Bold & High-Impact</div>
+          <div class="opt-desc">Strong colors, big type, commanding presence. Think Stripe or Vercel.</div>
+        </div>
+        <div class="opt" data-val="editorial" onclick="selectOpt(this,'designOpts',false)">
+          <span class="opt-icon">◈</span>
+          <div class="opt-label">Editorial / Magazine</div>
+          <div class="opt-desc">Sophisticated layout, serif type, journalistic structure. Timeless and professional.</div>
+        </div>
+        <div class="opt" data-val="warm" onclick="selectOpt(this,'designOpts',false)">
+          <span class="opt-icon">◍</span>
+          <div class="opt-label">Warm & Approachable</div>
+          <div class="opt-desc">Friendly colors, rounded shapes, inviting tone. Great for service businesses and healthcare.</div>
+        </div>
+        <div class="opt" data-val="luxury" onclick="selectOpt(this,'designOpts',false)">
+          <span class="opt-icon">◆</span>
+          <div class="opt-label">Luxury / Premium</div>
+          <div class="opt-desc">Dark backgrounds, gold accents, refined details. For high-end brands that want to command premium pricing.</div>
+        </div>
+        <div class="opt" data-val="energetic" onclick="selectOpt(this,'designOpts',false)">
+          <span class="opt-icon">◉</span>
+          <div class="opt-label">Energetic / Dynamic</div>
+          <div class="opt-desc">Motion, color, attitude. Great for fitness, tech, and brands that need to stand out and move fast.</div>
+        </div>
+      </div>
+      <div class="field" style="margin-top:24px">
+        <label>Any reference sites you love? (optional)</label>
+        <input type="text" id="references" placeholder="e.g. stripe.com, linear.app, notion.so">
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goTo(3)">← Back</button>
+        <button class="btn-next" id="next4" onclick="goTo(5)" disabled>Next: Timeline →</button>
+        <span class="step-counter">4 of 7</span>
+      </div>
+    </div>
+
+    <!-- STEP 5: Timeline -->
+    <div class="step-panel" id="step5">
+      <div class="step-eyebrow">Step 5 of 7</div>
+      <h2 class="step-h">When do you need<br>this live?</h2>
+      <p class="step-sub">Rush timelines can be accommodated — they affect scheduling priority and may add a fee.</p>
+      <div class="timeline-opts" id="timelineOpts">
+        <div class="topt" data-val="rush" data-add="300" onclick="selectTimeline(this)">
+          <div class="topt-time">24hr</div>
+          <div class="topt-label">Rush</div>
+          <div class="topt-rush">Priority scheduling</div>
+        </div>
+        <div class="topt" data-val="standard" data-add="0" onclick="selectTimeline(this)">
+          <div class="topt-time">48hr</div>
+          <div class="topt-label">Standard</div>
+          <div class="topt-rush" style="color:var(--green)">Recommended</div>
+        </div>
+        <div class="topt" data-val="relaxed" data-add="0" onclick="selectTimeline(this)">
+          <div class="topt-time">1 week</div>
+          <div class="topt-label">Relaxed</div>
+          <div class="topt-rush" style="color:var(--muted)">Maximum flexibility</div>
+        </div>
+        <div class="topt" data-val="flexible" data-add="-100" onclick="selectTimeline(this)">
+          <div class="topt-time">Flexible</div>
+          <div class="topt-label">No rush</div>
+          <div class="topt-rush" style="color:var(--green)">Best value</div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px">
+        <div class="field">
+          <label>Do you have a specific launch date?</label>
+          <input type="date" id="launchDate">
+        </div>
+        <div class="field">
+          <label>What's driving the deadline? (optional)</label>
+          <input type="text" id="deadlineReason" placeholder="e.g. product launch, event, ad campaign start date">
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="goTo(4)">← Back</button>
+        <button class="btn-next" id="next5" onclick="goTo(6)" disabled>Next: Your Details →</button>
+        <span class="step-counter">5 of 7</span>
+      </div>
+    </div>
+
+    <!-- STEP 6: Contact Details -->
+    <div class="step-panel" id="step6">
+      <div class="step-eyebrow">Step 6 of 7</div>
+      <h2 class="step-h">Tell me about<br>your project.</h2>
+      <p class="step-sub">A little context helps me give you an accurate quote and respond with the right questions.</p>
+      <div class="fields-row">
+        <div class="field">
+          <label>Your Name *</label>
+          <input type="text" id="clientName" placeholder="Jane Smith" oninput="validateStep6()">
+        </div>
+        <div class="field">
+          <label>Business Name</label>
+          <input type="text" id="businessName" placeholder="Acme LLC">
+        </div>
+      </div>
+      <div class="fields-row">
+        <div class="field">
+          <label>Email Address *</label>
+          <input type="email" id="clientEmail" placeholder="jane@company.com" oninput="validateStep6()">
+        </div>
+        <div class="field">
+          <label>Phone (optional)</label>
+          <input type="tel" id="clientPhone" placeholder="(512) 555-0100">
+        </div>
+      </div>
+      <div class="field">
+        <label>Industry / Niche</label>
+        <select id="clientIndustry">
+          <option value="">Select your industry...</option>
+          <option>Law / Legal</option>
+          <option>Real Estate</option>
+          <option>Healthcare / Medical</option>
+          <option>Fitness / Wellness</option>
+          <option>Restaurant / Food & Bev</option>
+          <option>Finance / Accounting</option>
+          <option>Construction / Trades</option>
+          <option>Creative Agency</option>
+          <option>SaaS / Technology</option>
+          <option>Ecommerce / Retail</option>
+          <option>Hospitality / Events</option>
+          <option>Coaching / Consulting</option>
+          <option>Nonprofit / Church</option>
+          <option>Photography / Media</option>
+          <option>Automotive</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Describe your project *</label>
+        <textarea id="projectDesc" rows="4" placeholder="What does your business do? Who are your customers? What's the main goal of this site — leads, sales, credibility, bookings?" oninput="validateStep6()"></textarea>
+      </div>
+      <div class="field">
+        <label>Do you have existing brand assets?</label>
+        <div class="checks" id="brandChecks" style="margin-top:6px">
+          <div class="chk" data-val="logo" onclick="toggleChk(this)">
+            <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+            <span class="chk-label">Logo / brand mark</span>
+          </div>
+          <div class="chk" data-val="colors" onclick="toggleChk(this)">
+            <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+            <span class="chk-label">Brand colors</span>
+          </div>
+          <div class="chk" data-val="copywriting" onclick="toggleChk(this)">
+            <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+            <span class="chk-label">Written content / copywriting ready</span>
+          </div>
+          <div class="chk" data-val="photos" onclick="toggleChk(this)">
+            <div class="chk-box"><span class="chk-checkmark">✓</span></div>
+            <span class="chk-label">Professional photos / images</span>
+          </div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goTo(5)">← Back</button>
+        <button class="btn-next" id="next6" onclick="goTo(7)" disabled>See My Estimate →</button>
+        <span class="step-counter">6 of 7</span>
+      </div>
+    </div>
+
+    <!-- STEP 7: Final Estimate + Submit -->
+    <div class="step-panel" id="step7">
+      <div class="step-eyebrow">Step 7 of 7 — Your Estimate</div>
+      <h2 class="step-h">Here's your<br>instant quote.</h2>
+      <p class="step-sub">Based on your answers, here's what your project will cost. This is a real estimate — not a range designed to upsell you later.</p>
+
+      <div class="submit-box">
+        <div class="submit-total" id="finalTotal">$<span id="finalNum">0</span></div>
+        <div class="submit-range-label" id="finalRangeLabel">Project estimate</div>
+        <div id="finalBreakdown" style="margin:20px 0;display:flex;flex-direction:column;gap:10px"></div>
+        <button class="btn-submit" onclick="submitQuote()">Send This Quote Request to Ricky →</button>
+        <div style="font-size:11px;color:var(--muted);text-align:center;margin-top:10px">I'll reply with a confirmed quote within a few hours. No commitment required.</div>
+      </div>
+
+      <div class="success" id="successMsg">
+        <div class="success-icon">✅</div>
+        <div class="success-h">Quote sent. I'll be in touch soon.</div>
+        <div class="success-sub">Check your email — I typically respond within 2–4 hours with a confirmed scope and next steps.</div>
+        <div class="success-detail" id="successSummary"></div>
+        <a href="index.html" style="display:inline-block;background:var(--green);color:var(--navy);font-size:14px;font-weight:700;padding:13px 28px;border-radius:8px;text-decoration:none;transition:all .2s">← Back to Portfolio</a>
+      </div>
+
+      <div class="step-nav" id="step7nav">
+        <button class="btn-back" onclick="goTo(6)">← Revise Answers</button>
+      </div>
+    </div>
+
+  </div><!-- end wizard -->
+
+  <!-- RIGHT: ESTIMATE PANEL -->
+  <div class="estimate-panel">
+    <div class="est-label">Live Estimate</div>
+    <div class="est-price" id="estPrice" style="font-size:32px;color:var(--muted);font-weight:600;letter-spacing:-.02em">Your estimate</div>
+    <div class="est-range" id="estRange" style="font-size:13px">Answer a few questions below →</div>
+    <div class="est-bar"><div class="est-bar-fill" id="estBarFill"></div></div>
+
+    <!-- What's included list -->
+    <div style="margin-bottom:20px">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">What's selected</div>
+      <div id="est-included" style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:13px;color:var(--muted);font-style:italic">Choose a project type to begin building your estimate.</div>
+      </div>
+    </div>
+
+    <!-- Always-included items -->
+    <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Always included</div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div style="font-size:12px;color:rgba(218,225,233,.55);display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-size:10px;font-weight:800">✓</span>Hand-coded HTML/CSS — no templates</div>
+        <div style="font-size:12px;color:rgba(218,225,233,.55);display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-size:10px;font-weight:800">✓</span>Mobile-first responsive design</div>
+        <div style="font-size:12px;color:rgba(218,225,233,.55);display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-size:10px;font-weight:800">✓</span>2+ revision rounds</div>
+        <div style="font-size:12px;color:rgba(218,225,233,.55);display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-size:10px;font-weight:800">✓</span>GitHub Pages / Netlify deployment</div>
+        <div style="font-size:12px;color:rgba(218,225,233,.55);display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-size:10px;font-weight:800">✓</span>SSL + DNS configuration</div>
+        <div style="font-size:12px;color:rgba(218,225,233,.55);display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-size:10px;font-weight:800">✓</span>30 days post-launch support</div>
+        <div style="font-size:12px;color:rgba(218,225,233,.55);display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-size:10px;font-weight:800">✓</span>Full source code ownership</div>
+      </div>
+    </div>
+
+    <div class="est-timeline-badge" id="estBadge" style="display:none">
+      <div class="est-timeline-icon">⚡</div>
+      <div class="est-timeline-text">Delivery in <span id="estDelivery">48 hours</span> of approved brief</div>
+    </div>
+
+    <div class="est-note">All estimates include: custom hand-coded HTML/CSS, mobile-first responsive design, 2+ revision rounds, GitHub Pages deployment, SSL setup, and 30 days of post-launch support.</div>
+  </div>
+
+</div>
+
+<script>
+// ─── STATE ───
+const state = {
+  step: 1,
+  type: null, typeBase: 0,
+  pages: 1, pageAdd: 0,
+  features: {}, featureTotal: 0,
+  design: null,
+  timeline: null, timelineAdd: 0,
+  name:'', email:'', business:'', phone:'', industry:'', desc:'',
+};
+
+const TYPE_LABELS = {landing:'Landing Page',business:'Business Website',ecommerce:'Ecommerce/DTC',portfolio:'Portfolio/Creative',saas:'SaaS/Product',redesign:'Redesign/Rebuild'};
+const TIMELINE_LABELS = {rush:'24hr Rush (+$300)',standard:'48hr Standard',relaxed:'1 Week',flexible:'Flexible (-$100)'};
+const DELIVERY = {rush:'24 hours',standard:'48 hours',relaxed:'1 week',flexible:'2–3 weeks'};
+
+// ─── NAVIGATION ───
+function goTo(n) {
+  if (n < 1 || n > 7) return;
+  document.getElementById('step' + state.step).classList.remove('active');
+  state.step = n;
+  document.getElementById('step' + n).classList.add('active');
+  updateProgress();
+  updateEstimate();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+function jumpTo(n) {
+  if (n >= state.step) return; // can only go back
+  goTo(n);
+}
+
+// ─── PROGRESS ───
+function updateProgress() {
+  for (let i = 1; i <= 7; i++) {
+    const dot = document.getElementById('dot' + i);
+    dot.classList.remove('active', 'done');
+    if (i < state.step) dot.classList.add('done');
+    else if (i === state.step) dot.classList.add('active');
+    if (i < 7) {
+      const line = document.getElementById('line' + i);
+      line.classList.toggle('done', i < state.step);
+    }
+  }
+}
+
+// ─── OPTION SELECTORS ───
+function selectOpt(el, groupId, multi) {
+  const group = document.getElementById(groupId);
+  if (!multi) group.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+  el.classList.toggle('selected');
+
+  if (groupId === 'typeOpts') {
+    state.type = el.dataset.val;
+    state.typeBase = parseInt(el.dataset.base);
+    document.getElementById('next1').disabled = false;
+  }
+  if (groupId === 'designOpts') {
+    state.design = el.dataset.val;
+    document.getElementById('next4').disabled = false;
+  }
+  updateEstimate();
+}
+
+function toggleChk(el) {
+  el.classList.toggle('checked');
+  const key = el.dataset.val;
+  const add = parseInt(el.dataset.add || 0);
+  if (el.classList.contains('checked')) {
+    state.features[key] = add;
+  } else {
+    delete state.features[key];
+  }
+  state.featureTotal = Object.values(state.features).reduce((a,b)=>a+b,0);
+  updateEstimate();
+}
+
+// ─── PAGE COUNT ───
+function updatePageCount(val) {
+  val = parseInt(val);
+  state.pages = val;
+  const display = document.getElementById('pageCountDisplay');
+  display.innerHTML = val + ' <span>' + (val === 1 ? 'page' : 'pages') + '</span>';
+  // Page add: first 3 free, then $150/page after
+  state.pageAdd = Math.max(0, (val - 3)) * 150;
+  updateEstimate();
+}
+function setPageCount(val) {
+  document.getElementById('pageRange').value = val;
+  updatePageCount(val);
+}
+
+// ─── TIMELINE ───
+function selectTimeline(el) {
+  document.querySelectorAll('.topt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  state.timeline = el.dataset.val;
+  state.timelineAdd = parseInt(el.dataset.add);
+  document.getElementById('next5').disabled = false;
+  const badge = document.getElementById('estBadge');
+  badge.style.display = 'flex';
+  document.getElementById('estDelivery').textContent = DELIVERY[state.timeline] || '48 hours';
+  updateEstimate();
+}
+
+// ─── STEP 6 VALIDATION ───
+function validateStep6() {
+  const name = document.getElementById('clientName').value.trim();
+  const email = document.getElementById('clientEmail').value.trim();
+  const desc = document.getElementById('projectDesc').value.trim();
+  const valid = name.length > 1 && email.includes('@') && desc.length > 10;
+  document.getElementById('next6').disabled = !valid;
+  if (valid) {
+    state.name = name;
+    state.email = email;
+    state.desc = desc;
+  }
+}
+
+// ─── ESTIMATE CALCULATOR ───
+function calcTotal() {
+  return state.typeBase + state.pageAdd + state.featureTotal + state.timelineAdd;
+}
+function fmt(n) {
+  return '$' + n.toLocaleString();
+}
+function updateEstimate() {
+  const total = calcTotal();
+  const priceEl = document.getElementById('estPrice');
+  const rangeEl = document.getElementById('estRange');
+  const fillEl = document.getElementById('estBarFill');
+  const includedEl = document.getElementById('est-included');
+
+  if (!state.type) {
+    priceEl.style.fontSize = '32px';
+    priceEl.style.color = 'var(--muted)';
+    priceEl.style.fontWeight = '600';
+    priceEl.style.letterSpacing = '-.02em';
+    priceEl.textContent = 'Your estimate';
+    rangeEl.textContent = 'Answer a few questions below →';
+    fillEl.style.width = '0';
+    includedEl.innerHTML = '<div style="font-size:13px;color:var(--muted);font-style:italic">Choose a project type to begin building your estimate.</div>';
+    return;
+  }
+
+  // Show big green total
+  priceEl.style.fontSize = '';
+  priceEl.style.color = 'var(--white)';
+  priceEl.style.fontWeight = '900';
+  priceEl.style.letterSpacing = '-.05em';
+  priceEl.textContent = fmt(total);
+  rangeEl.textContent = 'Flat-rate — no hidden fees, no hourly billing';
+
+  // Progress bar
+  const steps = [state.type, state.pages > 1, state.design, state.timeline].filter(Boolean).length;
+  fillEl.style.width = Math.max(15, steps / 4 * 100) + '%';
+
+  // Build included services list (no prices)
+  const items = [];
+  if (state.type) items.push(TYPE_LABELS[state.type]);
+  if (state.pages > 0) items.push(state.pages + (state.pages===1?' page':' pages'));
+  const featNames = {
+    contact_form:'Contact form', calendly:'Calendly booking embed',
+    animations:'Scroll animations', countdown:'Countdown / urgency elements',
+    blog:'Blog section', gallery:'Photo gallery / grid',
+    video:'Video background / embed', map:'Map / location embed',
+    payment:'Stripe payment integration', members:'Members / login area',
+    chat:'Live chat integration', popup:'Exit intent popup'
+  };
+  Object.keys(state.features).forEach(k => { if(featNames[k]) items.push(featNames[k]); });
+  if (state.design) {
+    const designNames = {minimal:'Clean & minimal aesthetic',bold:'Bold high-impact design',editorial:'Editorial / magazine style',warm:'Warm & approachable',luxury:'Luxury / premium look',energetic:'Energetic / dynamic style'};
+    if(designNames[state.design]) items.push(designNames[state.design]);
+  }
+  if (state.timeline) {
+    const tNames = {rush:'24hr rush delivery',standard:'48hr standard delivery',relaxed:'1-week delivery',flexible:'Flexible timeline'};
+    if(tNames[state.timeline]) items.push(tNames[state.timeline]);
+  }
+
+  if (items.length > 0) {
+    includedEl.innerHTML = items.map(item =>
+      `<div style="font-size:13px;color:var(--ice);display:flex;align-items:flex-start;gap:8px;line-height:1.4">
+        <span style="color:var(--green);font-size:10px;font-weight:800;margin-top:2px;flex-shrink:0">✓</span>${item}
+      </div>`
+    ).join('');
+  } else {
+    includedEl.innerHTML = '<div style="font-size:13px;color:var(--muted);font-style:italic">Keep answering to see your scope.</div>';
+  }
+
+  // Update final step if on it
+  if (state.step === 7) populateFinalStep();
+}
+// setEL removed — no per-item prices shown
+
+// ─── FINAL STEP ───
+function populateFinalStep() {
+  const total = calcTotal();
+  document.getElementById('finalNum').textContent = total.toLocaleString();
+
+  // Build a clean "what's included" list — no per-item prices
+  const featNames = {
+    contact_form:'Contact form', calendly:'Calendly booking embed',
+    animations:'Scroll animations', countdown:'Countdown / urgency elements',
+    blog:'Blog section', gallery:'Photo gallery / grid',
+    video:'Video background / embed', map:'Map / location embed',
+    payment:'Stripe payment integration', members:'Members / login area',
+    chat:'Live chat integration', popup:'Exit intent popup'
+  };
+  const designNames = {minimal:'Clean & minimal aesthetic',bold:'Bold high-impact design',editorial:'Editorial / magazine style',warm:'Warm & approachable',luxury:'Luxury / premium look',energetic:'Energetic / dynamic style'};
+  const tNames = {rush:'24-hour rush delivery',standard:'48-hour standard delivery',relaxed:'1-week delivery',flexible:'Flexible timeline (best value)'};
+
+  const items = [
+    TYPE_LABELS[state.type] || 'Custom website',
+    state.pages + (state.pages===1?' page':' pages'),
+    ...Object.keys(state.features).map(k => featNames[k]).filter(Boolean),
+    designNames[state.design] || '',
+    tNames[state.timeline] || '',
+  ].filter(Boolean);
+
+  const bd = document.getElementById('finalBreakdown');
+  bd.innerHTML = items.map(item =>
+    `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(218,225,233,.08);font-size:13px">
+      <span style="color:var(--green);font-size:10px;font-weight:800;flex-shrink:0">✓</span>
+      <span style="color:var(--ice)">${item}</span>
+    </div>`
+  ).join('');
+}
+
+// ─── SUBMIT ───
+function submitQuote() {
+  const total = calcTotal();
+  const features = Object.keys(state.features).join(', ') || 'None';
+  const subject = encodeURIComponent(`Quote Request — ${TYPE_LABELS[state.type]} — ${fmt(total)}`);
+  const body = encodeURIComponent(
+`Hi Ricky,
+
+I just completed the quote form on your portfolio site and I'd love to discuss my project.
+
+=== PROJECT DETAILS ===
+Name: ${document.getElementById('clientName').value}
+Business: ${document.getElementById('businessName').value || 'N/A'}
+Phone: ${document.getElementById('clientPhone').value || 'N/A'}
+Industry: ${document.getElementById('clientIndustry').value || 'N/A'}
+
+Project Type: ${TYPE_LABELS[state.type]}
+Pages: ${state.pages}
+Design Direction: ${state.design || 'Not specified'}
+Timeline: ${TIMELINE_LABELS[state.timeline] || 'Not specified'}
+Features Requested: ${features}
+
+About the project:
+${document.getElementById('projectDesc').value}
+
+Reference sites: ${document.getElementById('references').value || 'None provided'}
+Launch date: ${document.getElementById('launchDate').value || 'Flexible'}
+Deadline reason: ${document.getElementById('deadlineReason').value || 'N/A'}
+
+=== ESTIMATE BREAKDOWN ===
+Base: ${fmt(state.typeBase)}
+Pages: ${state.pageAdd > 0 ? '+'+fmt(state.pageAdd) : 'Included'}
+Features: ${state.featureTotal > 0 ? '+'+fmt(state.featureTotal) : '$0'}
+Timeline: ${state.timelineAdd !== 0 ? (state.timelineAdd>0?'+':'')+fmt(state.timelineAdd) : 'No adjustment'}
+TOTAL ESTIMATE: ${fmt(total)}
+
+Looking forward to hearing from you!
+${document.getElementById('clientName').value}`
+  );
+
+  window.location.href = `mailto:Ricky@TurnkeyWEB.org?subject=${subject}&body=${body}`;
+
+  // Show success
+  document.querySelector('.submit-box').style.display = 'none';
+  document.getElementById('step7nav').style.display = 'none';
+  const success = document.getElementById('successMsg');
+  success.classList.add('show');
+
+  document.getElementById('successSummary').innerHTML = `
+    <div class="success-detail-row"><span>Project type</span><span>${TYPE_LABELS[state.type]}</span></div>
+    <div class="success-detail-row"><span>Pages</span><span>${state.pages}</span></div>
+    <div class="success-detail-row"><span>Timeline</span><span>${TIMELINE_LABELS[state.timeline] || '—'}</span></div>
+    <div class="success-detail-row"><span>Your estimate</span><span style="color:var(--green)">${fmt(total)}</span></div>
+  `;
+}
+
+// Init
+updateProgress();
+updateEstimate();
+</script>
+
+</body>
+</html>

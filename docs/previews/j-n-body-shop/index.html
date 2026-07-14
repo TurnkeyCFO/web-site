@@ -1,0 +1,538 @@
+<!doctype html>
+<!--
+  J & N Body Shop - Turnkey Web prospect build (DRAFT v1)
+  Real facts (HubSpot + Yelp/BBB/Manta research):
+    - 5817 US Hwy 277, Abilene, TX 79601 - (325) 675-0313
+    - Auto body / collision shop. Established 1985 (~41 yrs). Partnership, ~15 employees. Owner Josh.
+    - Cars AND trucks: collision repair, body & paint, dent, frame, TRUCK body repair + painting & lettering.
+    - Hours: Mon-Fri 8:00 AM - 5:00 PM. Limited public reviews -> NO fabricated reviews.
+  ART DIRECTION (distinct from selena-auto-towing red/blue + fort-worth-transmission black/yellow):
+    - Light "collision & custom" body shop. Pearl base + deep MIDNIGHT NAVY + candy/safety ORANGE accent + steel.
+    - Type: Archivo Black (heavy grotesque display) + Sora (body). Not Anton/Saira/Oswald.
+    - SIGNATURE: a draggable BEFORE/AFTER slider ("what comes in -> what drives out") - unique to this build.
+  Photos (Pexels, http 200 + subject-verified, each used once):
+    - hero paint booth tech 8470881
+    - before (collision damage) 24960483
+    - after (glossy restored)  37809581
+-->
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>J &amp; N Body Shop | Collision Repair, Body &amp; Paint - Abilene, TX (Since 1985)</title>
+<meta name="description" content="Abilene's collision and auto body shop since 1985. Collision repair, body & paint, dent removal, frame straightening, and truck body repair & lettering - cars and trucks. Insurance claims welcome. Free estimates. Call (325) 675-0313." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/j-n-body-shop/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="J & N Body Shop - Collision &amp; Auto Body, Abilene TX Since 1985" />
+<meta property="og:description" content="Wrecked? We'll make it right. Collision repair, body & paint, frame, dent & truck lettering in Abilene since 1985. Insurance welcome. Free estimates. (325) 675-0313." />
+<meta name="theme-color" content="#0F1C30" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      pearl:'#F6F5F2', cloud:'#ECEAE4', card:'#FFFFFF',
+      navy:'#0F1C30', navy2:'#16273F', steel:'#5B6675', mist:'#AEB6BD',
+      orange:'#F25C1F', orangeDeep:'#D2470E', amberlt:'#FBE6D6',
+      ink:'#11161D', line:'#E2DED5'
+    },
+    fontFamily:{ display:['"Archivo Black"','sans-serif'], body:['Sora','sans-serif'] }
+  }}
+}
+</script>
+<style>
+  html{scroll-behavior:smooth}
+  body{background:#F6F5F2;color:#11161D;font-family:'Sora',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .display{font-family:'Archivo Black',sans-serif;line-height:.95;letter-spacing:-.01em}
+  .eyebrow{font-family:'Archivo Black',sans-serif;letter-spacing:.18em;text-transform:uppercase}
+  ::selection{background:#F25C1F;color:#fff}
+
+  /* PRELOADER: stylized 3D scan opener on infinite black -> reveal site */
+  .preload{position:fixed;inset:0;z-index:9999;background:#000;overflow:hidden;perspective:1400px;
+    transition:opacity .95s cubic-bezier(.7,0,.3,1), filter .95s ease;
+    animation:preloadSafety 0s linear 6.5s forwards}
+  .preload.done{opacity:0;pointer-events:none;filter:blur(8px)}
+  .preload.done .pl-video{transform:scale(1.14)}
+  .preload.done .pl-stage{transform:translateY(-14px) scale(1.05);opacity:0}
+  .pl-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;
+    transform:scale(1.02);transition:transform .95s cubic-bezier(.7,0,.3,1)}
+  @media (max-width:640px){ .pl-video{object-fit:contain} }
+  .pl-scrim{position:absolute;inset:0;background:
+    radial-gradient(120% 90% at 50% 44%, transparent 36%, rgba(0,0,0,.55) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,0) 24%, rgba(0,0,0,0) 52%, rgba(0,0,0,.84) 100%)}
+  .pl-stage{position:absolute;left:0;right:0;bottom:10%;text-align:center;padding:0 22px;
+    transform-style:preserve-3d;transition:transform .95s cubic-bezier(.7,0,.3,1),opacity .8s ease}
+  .pl-eyebrow{font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:.24em;
+    font-size:11.5px;color:#F25C1F;opacity:0;animation:plUp .9s cubic-bezier(.2,.7,.2,1) .25s forwards}
+  .pl-head{position:relative;font-family:'Archivo Black',sans-serif;line-height:.94;color:#fff;margin-top:14px;
+    text-shadow:0 6px 30px rgba(0,0,0,.7)}
+  /* continuous light sweep across the headline while the site loads */
+  .pl-head::after{content:"";position:absolute;inset:-4% -12%;pointer-events:none;mix-blend-mode:overlay;
+    background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.5) 50%,transparent 62%);
+    transform:translateX(-115%);animation:plShine 3.2s ease-in-out 1.6s infinite}
+  .pl-head .pl-l{display:block;opacity:0;transform:translateY(26px) rotateX(38deg);transform-origin:50% 100%;
+    animation:plReveal .9s cubic-bezier(.2,.7,.2,1) forwards;font-size:clamp(28px,6.2vw,64px)}
+  .pl-head .pl-l:nth-child(1){animation-delay:.22s}
+  .pl-head .pl-l:nth-child(2){animation-delay:.36s}
+  .pl-head .pl-l:nth-child(3){color:#F25C1F;
+    animation:plReveal .9s cubic-bezier(.2,.7,.2,1) .50s forwards, plGlow 2.2s ease-in-out 1.5s infinite}
+  .pl-sub{font-family:'Sora',sans-serif;font-size:13.5px;color:#C8CFD5;margin-top:16px;opacity:0;
+    animation:plUp .9s ease .98s forwards}
+  .pl-progress{position:absolute;left:0;bottom:0;width:100%;height:3px;background:rgba(255,255,255,.08)}
+  .pl-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#F25C1F,#fff);transition:width .2s linear}
+  .pl-skip{position:absolute;right:16px;bottom:14px;z-index:3;font-family:'Archivo Black',sans-serif;
+    letter-spacing:.1em;text-transform:uppercase;font-size:11px;color:#cfd5db;background:rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:7px 14px;cursor:pointer;backdrop-filter:blur(4px)}
+  .pl-skip:hover{color:#F25C1F;border-color:#F25C1F}
+  @keyframes plReveal{to{opacity:1;transform:translateY(0) rotateX(0)}}
+  @keyframes plUp{to{opacity:1}}
+  @keyframes plShine{0%{transform:translateX(-115%)}55%,100%{transform:translateX(115%)}}
+  @keyframes plGlow{0%,100%{text-shadow:0 6px 30px rgba(0,0,0,.7),0 0 0 rgba(242,92,31,0)}
+    50%{text-shadow:0 6px 30px rgba(0,0,0,.7),0 0 26px rgba(242,92,31,.7)}}
+  @keyframes preloadSafety{to{opacity:0;visibility:hidden;pointer-events:none}}
+  @media (prefers-reduced-motion: reduce){ .pl-head .pl-l,.pl-eyebrow,.pl-sub{animation-duration:.01s;opacity:1;transform:none} }
+
+  /* signature diagonal slash accent (collision/repair energy) */
+  .slash{background:#F25C1F;clip-path:polygon(0 0,100% 0,100% 100%,8% 100%)}
+
+  .hero-photo{background:
+    linear-gradient(90deg,rgba(15,28,48,.85) 0%,rgba(15,28,48,.35) 45%,rgba(15,28,48,.05) 100%),
+    url('https://images.pexels.com/photos/8470881/pexels-photo-8470881.jpeg?auto=compress&cs=tinysrgb&w=1400') center/cover no-repeat;}
+
+  .btn-orange{position:relative;overflow:hidden;background:#F25C1F;color:#fff;
+    transition:transform .25s ease,box-shadow .25s ease,filter .25s}
+  .btn-orange:hover{transform:translateY(-3px);filter:brightness(1.04);box-shadow:0 18px 40px -14px rgba(242,92,31,.55)}
+  .btn-orange::after{content:"";position:absolute;inset:0;transform:translateX(-130%);
+    background:linear-gradient(110deg,transparent,rgba(255,255,255,.4) 50%,transparent);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .btn-orange:hover::after{transform:translateX(130%)}
+  .btn-navy{transition:transform .25s,background .25s,box-shadow .25s}
+  .btn-navy:hover{transform:translateY(-3px);background:#16273F}
+  .btn-ghost{transition:background .25s,transform .25s,border-color .25s}
+  .btn-ghost:hover{transform:translateY(-3px);background:rgba(255,255,255,.08)}
+
+  .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .marquee-track{display:flex;gap:2.6rem;width:max-content;animation:scrollX 32s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  .svc{position:relative;background:#fff;border:1px solid #E2DED5;border-radius:14px;overflow:hidden;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .5s,box-shadow .5s}
+  .svc::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,#0F1C30,#F25C1F);transition:width .6s cubic-bezier(.2,.7,.2,1)}
+  .svc:hover{transform:translateY(-6px);border-color:#d7d1c4;box-shadow:0 26px 50px -30px rgba(15,28,48,.4)}
+  .svc:hover::before{width:100%}
+  .svc:hover .svc-ic{transform:rotate(-8deg) scale(1.08);color:#F25C1F}
+  .svc-ic{transition:transform .5s,color .5s}
+
+  /* SIGNATURE: before/after drag slider (clip-path wipe keeps the two halves
+     of the SAME car pixel-aligned). */
+  .ba{position:relative;width:100%;aspect-ratio:4/3;border-radius:18px;overflow:hidden;user-select:none;
+    box-shadow:0 40px 80px -36px rgba(15,28,48,.55);border:1px solid #E2DED5;cursor:ew-resize;touch-action:pan-y}
+  @media (min-width:768px){ .ba{aspect-ratio:16/10} }
+  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;display:block}
+  .ba-before{position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path}
+  .ba-tag{position:absolute;top:14px;z-index:4;font-family:'Archivo Black',sans-serif;letter-spacing:.12em;
+    font-size:12px;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+  .ba-tag.b{left:14px;background:rgba(15,28,48,.85);color:#fff}
+  .ba-tag.a{right:14px;background:#F25C1F;color:#fff}
+  .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;z-index:5;transform:translateX(-50%);
+    box-shadow:0 0 0 1px rgba(15,28,48,.15)}
+  .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;
+    background:#fff;display:flex;align-items:center;justify-content:center;color:#0F1C30;
+    box-shadow:0 8px 22px -6px rgba(15,28,48,.5);font-family:'Archivo Black',sans-serif}
+
+  [data-reveal]{opacity:0;transform:translateY(32px)}
+  a.ug{position:relative}
+  a.ug::after{content:"";position:absolute;left:0;bottom:-3px;height:2px;width:0;background:linear-gradient(90deg,#F25C1F,#0F1C30);transition:width .45s}
+  a.ug:hover::after{width:100%}
+  .open-dot{width:8px;height:8px;border-radius:50%;background:#34B36B;box-shadow:0 0 0 0 rgba(52,179,107,.5);animation:pulse2 2.4s infinite}
+  @keyframes pulse2{0%{box-shadow:0 0 0 0 rgba(52,179,107,.5)}70%{box-shadow:0 0 0 10px rgba(52,179,107,0)}100%{box-shadow:0 0 0 0 rgba(52,179,107,0)}}
+</style>
+</head>
+<body class="font-body">
+
+<!-- ===== PRELOADER: 3D scan opener entering the site ===== -->
+<div id="preload" class="preload" role="dialog" aria-label="Intro">
+  <video id="preloadVid" class="pl-video" autoplay muted playsinline preload="auto" poster="assets/preloader-poster.jpg?v=2">
+    <source src="assets/preloader.mp4?v=3" type="video/mp4" />
+  </video>
+  <div class="pl-scrim"></div>
+  <div class="pl-stage">
+    <div class="pl-eyebrow">J &amp; N Body Shop &middot; Abilene, TX &middot; Since 1985</div>
+    <h1 class="pl-head">
+      <span class="pl-l">MEASURED.</span>
+      <span class="pl-l">STRAIGHTENED.</span>
+      <span class="pl-l">REFINISHED.</span>
+    </h1>
+    <div class="pl-sub">Collision &amp; auto body, brought back to factory spec.</div>
+  </div>
+  <div class="pl-progress"><i id="plBar"></i></div>
+  <button id="plSkip" class="pl-skip">Skip intro &rsaquo;</button>
+</div>
+
+<!-- ===== top utility strip ===== -->
+<div class="bg-navy text-mist text-[12.5px]">
+  <div class="max-w-7xl mx-auto px-5 py-2 flex items-center justify-between gap-3">
+    <span class="hidden sm:flex items-center gap-2"><span class="open-dot"></span> Collision &amp; auto body in Abilene since 1985</span>
+    <span class="flex items-center gap-2"><span class="eyebrow text-orange text-[11px]">Insurance claims welcome</span><span class="text-steel hidden md:inline">&middot; Free estimates</span></span>
+    <a href="tel:+13256750313" class="ug font-semibold text-white">(325) 675-0313</a>
+  </div>
+</div>
+
+<!-- ===== nav ===== -->
+<header id="nav" class="sticky top-0 z-50 bg-pearl/95 backdrop-blur border-b border-line">
+  <div class="max-w-7xl mx-auto px-5 h-[68px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <span class="inline-flex items-center justify-center bg-navy text-white display text-[16px] w-11 h-10 leading-none" style="clip-path:polygon(0 0,100% 0,100% 100%,14% 100%)">J&amp;N</span>
+      <span class="leading-tight">
+        <span class="block display text-navy text-[20px]">J &amp; N BODY SHOP</span>
+        <span class="block eyebrow text-orange text-[10px]">Collision &amp; Paint &middot; Since 1985</span>
+      </span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-[14px] text-steel">
+      <a href="#work" class="ug hover:text-navy">Before &amp; after</a>
+      <a href="#services" class="ug hover:text-navy">Services</a>
+      <a href="#story" class="ug hover:text-navy">Since 1985</a>
+      <a href="#visit" class="ug hover:text-navy">Visit</a>
+    </nav>
+    <a href="tel:+13256750313" class="btn-orange rounded-full px-5 py-2.5 text-[14px] font-semibold flex items-center gap-2">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call now
+    </a>
+  </div>
+</header>
+
+<!-- ===== hero: split editorial (light), paint-booth photo ===== -->
+<section id="top" class="relative bg-pearl overflow-hidden">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_.95fr] lg:min-h-[86vh]">
+    <div class="relative z-10 px-5 sm:px-8 py-16 lg:py-0 flex flex-col justify-center">
+      <span class="eyebrow text-orange text-[12.5px] mb-5 flex items-center gap-3"><span class="w-8 h-[3px] bg-orange inline-block"></span>Abilene, TX &middot; Cars &amp; Trucks</span>
+      <h1 class="display text-navy text-[14vw] sm:text-[9vw] lg:text-[5.6rem]" data-split>
+        WRECKED?<br>WE'LL MAKE<br>IT <span class="text-orange">RIGHT.</span>
+      </h1>
+      <p class="mt-6 max-w-xl text-[16px] sm:text-[17px] text-steel leading-relaxed">
+        Collision repair, body &amp; paint, dent and frame work - for cars and trucks, done right the
+        first time. Abilene's body shop since <span class="text-navy font-semibold">1985</span>.
+        Insurance claims welcome, and the estimate's free.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="tel:+13256750313" class="btn-orange rounded-full px-7 py-3.5 text-[16px] font-semibold text-center flex items-center justify-center gap-2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (325) 675-0313
+        </a>
+        <a href="#work" class="btn-navy bg-navy text-white rounded-full px-7 py-3.5 text-[16px] font-semibold text-center">See before &amp; after</a>
+      </div>
+      <div class="mt-10 grid grid-cols-3 gap-4 max-w-lg">
+        <div><div class="display text-navy text-3xl">1985</div><div class="text-[12px] text-steel mt-1">Serving Abilene since</div></div>
+        <div><div class="display text-orange text-3xl">FREE</div><div class="text-[12px] text-steel mt-1">Written estimates</div></div>
+        <div><div class="display text-navy text-3xl">CARS<br><span class="text-[18px]">&amp; TRUCKS</span></div><div class="text-[12px] text-steel mt-1">Body, paint &amp; lettering</div></div>
+      </div>
+    </div>
+    <div class="relative hero-photo min-h-[44vh] lg:min-h-full">
+      <div class="absolute bottom-5 right-5 bg-navy/75 backdrop-blur text-white rounded-lg px-4 py-2.5 text-[12px] flex items-center gap-2">
+        <span class="open-dot"></span> Factory-match paint &amp; refinish
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== marquee ===== -->
+<div class="bg-navy text-white py-3.5">
+  <div class="marquee">
+    <div class="marquee-track eyebrow text-[14px]">
+      <span>Collision repair</span><span class="text-orange">/</span><span>Body &amp; paint</span><span class="text-orange">/</span><span>Dent removal</span><span class="text-orange">/</span><span>Frame straightening</span><span class="text-orange">/</span><span>Truck body &amp; lettering</span><span class="text-orange">/</span><span>Insurance claims</span><span class="text-orange">/</span><span>Free estimates</span><span class="text-orange">/</span><span>Cars &amp; trucks</span><span class="text-orange">/</span>
+      <span>Collision repair</span><span class="text-orange">/</span><span>Body &amp; paint</span><span class="text-orange">/</span><span>Dent removal</span><span class="text-orange">/</span><span>Frame straightening</span><span class="text-orange">/</span><span>Truck body &amp; lettering</span><span class="text-orange">/</span><span>Insurance claims</span><span class="text-orange">/</span><span>Free estimates</span><span class="text-orange">/</span><span>Cars &amp; trucks</span><span class="text-orange">/</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SIGNATURE: before / after drag slider ===== -->
+<section id="work" class="bg-pearl py-20 sm:py-24">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="max-w-2xl mb-10" data-reveal>
+      <span class="eyebrow text-orange text-[12.5px]">The work</span>
+      <h2 class="display text-navy text-5xl sm:text-6xl mt-3">What comes in &rarr; what drives out</h2>
+      <p class="mt-4 text-[16px] text-steel">Drag the handle. Collision damage in, a factory-match finish out - that's the whole job.</p>
+    </div>
+    <div class="ba" id="ba" data-reveal>
+      <img class="ba-base" src="assets/after.jpg" alt="Red Dodge Charger fully repaired and refinished at J & N Body Shop" />
+      <span class="ba-tag a">After</span>
+      <div class="ba-before" id="baBefore">
+        <img src="assets/before.jpg" alt="The same red Dodge Charger with front-end collision damage before repair" />
+      </div>
+      <span class="ba-tag b">Before</span>
+      <div class="ba-handle" id="baHandle"><div class="ba-knob">&harr;</div></div>
+    </div>
+    <p class="mt-4 text-[13.5px] text-steel" data-reveal>Real repair: a front-end collision brought back to factory finish, right here in the shop.</p>
+  </div>
+</section>
+
+<!-- ===== services ===== -->
+<section id="services" class="bg-cloud py-20 sm:py-24">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="max-w-2xl" data-reveal>
+      <span class="eyebrow text-orange text-[12.5px]">What we do</span>
+      <h2 class="display text-navy text-5xl sm:text-6xl mt-3">Body work, start to finish</h2>
+      <p class="mt-4 text-[16px] text-steel">One shop for the whole repair - cars and trucks, since 1985.</p>
+    </div>
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="svc p-6" data-reveal>
+        <div class="svc-ic text-navy mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 13l2-5h14l2 5v5h-3M3 13v5h3M3 13h18"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></div>
+        <h3 class="display text-xl text-navy">Collision repair</h3>
+        <p class="mt-2 text-[14.5px] text-steel leading-relaxed">From a fender-bender to major damage - put back to pre-accident condition, safely.</p>
+      </div>
+      <div class="svc p-6" data-reveal>
+        <div class="svc-ic text-navy mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21s4-2 8-2 8 2 8 2M7 16l9-9 3 3-9 9z"/><path d="M14 6l3 3"/></svg></div>
+        <h3 class="display text-xl text-navy">Auto body &amp; paint</h3>
+        <p class="mt-2 text-[14.5px] text-steel leading-relaxed">Computer-matched paint and refinishing so the repair disappears into the original finish.</p>
+      </div>
+      <div class="svc p-6" data-reveal>
+        <div class="svc-ic text-navy mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M9 12a3 3 0 0 1 6 0"/></svg></div>
+        <h3 class="display text-xl text-navy">Dent &amp; scratch</h3>
+        <p class="mt-2 text-[14.5px] text-steel leading-relaxed">Dings, dents and deep scratches smoothed and blended back to factory-smooth.</p>
+      </div>
+      <div class="svc p-6" data-reveal>
+        <div class="svc-ic text-navy mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h18M6 12V7h12v5M8 12v5M16 12v5"/></svg></div>
+        <h3 class="display text-xl text-navy">Frame &amp; structural</h3>
+        <p class="mt-2 text-[14.5px] text-steel leading-relaxed">Bent frame or unibody? Measured and pulled back to spec so it drives straight and true.</p>
+      </div>
+      <div class="svc p-6" data-reveal>
+        <div class="svc-ic text-navy mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 16V9h11v7M13 11h4l3 3v2h-3M2 16h2M9 16h2"/><circle cx="6" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg></div>
+        <h3 class="display text-xl text-navy">Truck body &amp; lettering</h3>
+        <p class="mt-2 text-[14.5px] text-steel leading-relaxed">Work trucks and fleets - body repair, painting, and truck lettering. A J&amp;N specialty.</p>
+      </div>
+      <div class="svc p-6" data-reveal>
+        <div class="svc-ic text-navy mb-4"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3 class="display text-xl text-navy">Insurance claims</h3>
+        <p class="mt-2 text-[14.5px] text-steel leading-relaxed">We'll work directly with your insurance and walk you through the claim, start to finish.</p>
+      </div>
+    </div>
+    <p class="mt-9 text-[15px] text-steel" data-reveal>Got hit? <a href="tel:+13256750313" class="ug text-orange font-semibold">Call (325) 675-0313</a> for a free estimate - we'll tell you exactly what it needs.</p>
+  </div>
+</section>
+
+<!-- ===== story / since 1985 ===== -->
+<section id="story" class="relative bg-navy text-white py-20 sm:py-24 overflow-hidden">
+  <div class="absolute top-0 right-0 w-[520px] h-[520px] opacity-20" style="background:radial-gradient(circle,#F25C1F,transparent 60%)"></div>
+  <div class="relative max-w-5xl mx-auto px-5 text-center" data-reveal>
+    <span class="eyebrow text-orange text-[12.5px]">Since 1985</span>
+    <h2 class="display text-5xl sm:text-6xl mt-3 leading-[.95]">Four decades of<br>getting it right.</h2>
+    <p class="mt-6 text-[17px] text-mist leading-relaxed max-w-2xl mx-auto">
+      J &amp; N Body Shop has been straightening, painting and restoring Abilene's cars and trucks
+      since 1985 - a full crew of body and paint pros who treat every repair like it's their own
+      vehicle. Honest estimates, quality work, and a finish that holds up.
+    </p>
+    <div class="mt-10 grid grid-cols-3 gap-5 max-w-2xl mx-auto">
+      <div><div class="display text-orange text-4xl sm:text-5xl">40+</div><div class="text-[12.5px] text-mist mt-1">years in Abilene</div></div>
+      <div><div class="display text-white text-4xl sm:text-5xl">15</div><div class="text-[12.5px] text-mist mt-1">on the crew</div></div>
+      <div><div class="display text-white text-4xl sm:text-5xl">2</div><div class="text-[12.5px] text-mist mt-1">cars &amp; trucks</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== visit ===== -->
+<section id="visit" class="bg-pearl py-20 sm:py-24">
+  <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-10 items-stretch">
+    <div data-reveal>
+      <span class="eyebrow text-orange text-[12.5px]">Visit the shop</span>
+      <h2 class="display text-navy text-5xl sm:text-6xl mt-3">Bring it by for a look</h2>
+      <p class="mt-4 text-[16px] text-steel max-w-md">On US-277 in Abilene. Swing by for a free estimate, or call and we'll tell you what to do next.</p>
+      <div class="mt-8 space-y-5">
+        <div class="flex items-start gap-4">
+          <span class="text-orange mt-1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><div class="display text-lg text-navy">Address</div><div class="text-[15px] text-steel">5817 US Hwy 277<br>Abilene, TX 79601</div></div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-orange mt-1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div><div class="display text-lg text-navy">Phone</div><a href="tel:+13256750313" class="ug text-[15px] text-orange font-semibold">(325) 675-0313</a></div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-orange mt-1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><div class="display text-lg text-navy">Hours</div><div class="text-[15px] text-steel">Monday &ndash; Friday &middot; 8:00 AM &ndash; 5:00 PM<br>Weekends by appointment</div></div>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="tel:+13256750313" class="btn-orange rounded-full px-7 py-3.5 text-[15px] font-semibold text-center">Call (325) 675-0313</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=5817+US-277+Abilene+TX+79601" target="_blank" rel="noopener" class="btn-navy bg-navy text-white rounded-full px-7 py-3.5 text-[15px] font-semibold text-center">Get directions</a>
+      </div>
+    </div>
+    <div class="rounded-2xl overflow-hidden border border-line min-h-[380px]" data-reveal>
+      <iframe title="J & N Body Shop map" width="100%" height="100%" style="border:0;min-height:380px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=5817+US+Hwy+277,+Abilene,+TX+79601&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===== closing CTA ===== -->
+<section class="relative bg-orange text-white py-20 overflow-hidden">
+  <div class="absolute inset-0 opacity-[.14]" style="background:radial-gradient(circle at 82% 26%,#fff,transparent 50%),radial-gradient(circle at 12% 88%,#0F1C30,transparent 55%)"></div>
+  <div class="relative max-w-4xl mx-auto px-5 text-center" data-reveal>
+    <h2 class="display text-5xl sm:text-7xl leading-[.92]">Got in a wreck?</h2>
+    <p class="mt-5 text-[17px] text-white/90 max-w-xl mx-auto">Don't stress the claim. Call J &amp; N - we'll handle the insurance, give you a free estimate, and make it look like it never happened.</p>
+    <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="tel:+13256750313" class="bg-white text-navy font-semibold rounded-full px-8 py-4 text-[16px] flex items-center justify-center gap-2 hover:-translate-y-0.5 transition" style="transition:transform .25s">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (325) 675-0313
+      </a>
+      <a href="#visit" class="btn-ghost border border-white/40 text-white rounded-full px-8 py-4 text-[16px]">Find the shop</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== footer ===== -->
+<footer class="bg-navy text-mist pt-12 pb-28 lg:pb-12">
+  <div class="max-w-7xl mx-auto px-5 grid sm:grid-cols-3 gap-8">
+    <div>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="inline-flex items-center justify-center bg-orange text-white display text-[15px] w-10 h-9 leading-none" style="clip-path:polygon(0 0,100% 0,100% 100%,14% 100%)">J&amp;N</span>
+        <span class="display text-white text-lg">J &amp; N BODY SHOP</span>
+      </div>
+      <p class="text-[13.5px] leading-relaxed text-steel">Abilene's collision and auto body shop since 1985. Cars and trucks - collision repair, body &amp; paint, frame, dent and truck lettering.</p>
+    </div>
+    <div class="text-[14px]">
+      <div class="eyebrow text-orange text-[11px] mb-3">Services</div>
+      <ul class="space-y-1.5 text-steel">
+        <li>Collision repair</li><li>Body &amp; paint</li><li>Frame &amp; structural</li><li>Dent &amp; scratch</li><li>Truck body &amp; lettering</li>
+      </ul>
+    </div>
+    <div class="text-[14px]">
+      <div class="eyebrow text-orange text-[11px] mb-3">Visit</div>
+      <p class="text-steel">5817 US Hwy 277<br>Abilene, TX 79601</p>
+      <a href="tel:+13256750313" class="ug text-white font-semibold inline-block mt-2">(325) 675-0313</a>
+      <p class="text-steel text-[12.5px] mt-1">Mon&ndash;Fri 8&ndash;5</p>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 mt-9 pt-6 border-t border-white/10 text-[12px] text-steel flex flex-col sm:flex-row justify-between gap-2">
+    <span>&copy; <span id="yr"></span> J &amp; N Body Shop. All rights reserved.</span>
+    <span>Abilene, TX &middot; Collision &amp; auto body since 1985</span>
+  </div>
+</footer>
+
+<!-- ===== mobile sticky call/directions bar ===== -->
+<div class="fixed bottom-0 inset-x-0 z-50 lg:hidden bg-navy/95 backdrop-blur border-t border-white/10 grid grid-cols-2">
+  <a href="tel:+13256750313" class="flex items-center justify-center gap-2 py-3.5 text-white font-semibold text-[15px]">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=5817+US-277+Abilene+TX+79601" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3.5 bg-orange text-white font-semibold text-[15px]">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- ===== JSON-LD ===== -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AutoBodyShop",
+  "name":"J & N Body Shop",
+  "description":"Collision repair and auto body shop in Abilene, TX since 1985. Collision repair, body & paint, dent removal, frame straightening, and truck body repair & lettering for cars and trucks. Insurance claims welcome. Free estimates.",
+  "foundingDate":"1985",
+  "telephone":"+1-325-675-0313",
+  "url":"https://turnkeyweb.org/previews/j-n-body-shop/",
+  "address":{"@type":"PostalAddress","streetAddress":"5817 US Hwy 277","addressLocality":"Abilene","addressRegion":"TX","postalCode":"79601","addressCountry":"US"},
+  "areaServed":"Abilene, TX",
+  "openingHours":"Mo-Fr 08:00-17:00",
+  "knowsAbout":["collision repair","auto body repair","auto painting","dent repair","frame straightening","truck body repair","truck lettering","insurance claims"]
+}
+</script>
+
+<!-- ===== libs ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+// ---- PRELOADER ---- 3D scan opener on infinite black -> reveal site.
+// Ends on video 'ended' OR Skip OR 9s hard cap OR error. Never traps the page.
+(function(){
+  const pre=document.getElementById('preload');
+  const vid=document.getElementById('preloadVid');
+  const bar=document.getElementById('plBar');
+  const skip=document.getElementById('plSkip');
+  if(!pre){return;}
+  document.documentElement.style.overflow='hidden';
+  let done=false;
+  function finish(){
+    if(done) return; done=true;
+    pre.classList.add('done');
+    document.documentElement.style.overflow='';
+    setTimeout(()=>{ if(pre&&pre.parentNode) pre.parentNode.removeChild(pre); }, 1000);
+  }
+  if(skip){ skip.addEventListener('click', finish); }
+  if(vid){
+    // The clip is trimmed to end on the finished car. Play it to a fixed ~4s
+    // intro (rate = dur/4, capped) so it's snappy without rushing the open.
+    vid.addEventListener('loadedmetadata', ()=>{ const d=vid.duration||0; if(d>1){ vid.playbackRate=Math.min(1.9,Math.max(1,d/4.0)); } });
+    vid.addEventListener('timeupdate', ()=>{ if(bar&&vid.duration){ bar.style.width=Math.min(100,(vid.currentTime/vid.duration)*100)+'%'; } });
+    vid.addEventListener('ended', ()=> setTimeout(finish, 180));
+    vid.addEventListener('error', ()=> setTimeout(finish, 300));
+    const p=vid.play && vid.play(); if(p&&p.catch){ p.catch(()=>{}); }
+  }
+  setTimeout(finish, 6000);
+  window.addEventListener('load', ()=>{ if(vid && vid.readyState<2) setTimeout(()=>{ if(!done) finish(); }, 3000); });
+})();
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.querySelectorAll('[data-split]').forEach(el => { el.innerHTML = '<span>' + el.innerHTML + '</span>'; });
+
+let lenis;
+try {
+  lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+} catch(e){}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id=a.getAttribute('href'); if(id.length<2) return;
+    const t=document.querySelector(id); if(!t) return;
+    e.preventDefault();
+    const y=t.getBoundingClientRect().top + window.pageYOffset - 70;
+    if (lenis) lenis.scrollTo(y); else window.scrollTo({top:y, behavior:'smooth'});
+  });
+});
+
+// ---- SIGNATURE: before/after drag slider ----
+(function(){
+  const ba=document.getElementById('ba'); if(!ba) return;
+  const before=document.getElementById('baBefore');
+  const handle=document.getElementById('baHandle');
+  function setPct(p){ p=Math.max(2,Math.min(98,p)); before.style.clipPath='inset(0 '+(100-p)+'% 0 0)'; handle.style.left=p+'%'; }
+  function fromEvent(e){
+    const r=ba.getBoundingClientRect();
+    const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
+    setPct((x/r.width)*100);
+  }
+  let drag=false;
+  const down=e=>{drag=true; fromEvent(e);};
+  const move=e=>{ if(drag){ fromEvent(e); if(e.cancelable && e.touches) e.preventDefault(); } };
+  const up=()=>{drag=false;};
+  ba.addEventListener('mousedown',down); window.addEventListener('mousemove',move); window.addEventListener('mouseup',up);
+  ba.addEventListener('touchstart',down,{passive:true}); window.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',up);
+  // subtle auto-hint once it scrolls into view
+  let hinted=false;
+  function hint(){ if(hinted) return; hinted=true;
+    let t=0; const id=setInterval(()=>{ t+=1; setPct(50+Math.sin(t/3)*16); if(t>9){clearInterval(id); setPct(50);} },45);
+  }
+  if(window.ScrollTrigger){ ScrollTrigger.create({trigger:ba,start:'top 70%',once:true,onEnter:hint}); }
+  else { setTimeout(hint,1200); }
+})();
+
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+  if (lenis) lenis.on('scroll', ScrollTrigger.update);
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.fromTo(el, {opacity:0, y:34}, {opacity:1, y:0, duration:1.0, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 90%'}});
+  });
+}
+
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{
+    if (getComputedStyle(el).opacity === '0'){ el.style.opacity=1; el.style.transform='none'; }
+  });
+}, 6000);
+</script>
+</body>
+</html>

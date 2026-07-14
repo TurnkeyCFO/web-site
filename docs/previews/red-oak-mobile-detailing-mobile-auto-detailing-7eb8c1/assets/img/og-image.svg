@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Red Oak Mobile Detailing">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#211F1B"/>
+      <stop offset="1" stop-color="#0F0E0C"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.2" r="0.6">
+      <stop offset="0" stop-color="#B23A2B" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#B23A2B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g transform="translate(96 150)">
+    <rect x="40" y="0" width="9" height="20" rx="4.5" fill="#D86A52"/>
+    <path d="M3 60 H91 C91 60 86 150 47 150 C8 150 3 60 3 60 Z" fill="#B23A2B"/>
+    <path d="M22 71 C17 96 23 124 38 136" stroke="#FAF5EC" stroke-opacity="0.5" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path d="M-9 62 C-9 33 15 14 47 14 C79 14 103 33 103 62 C103 68 98 71 91 71 H3 C-4 71 -9 68 -9 62 Z" fill="#8E2A1E"/>
+  </g>
+  <text x="232" y="232" font-family="Verdana,Geneva,sans-serif" font-size="34" letter-spacing="9" fill="#D86A52" font-weight="bold">RED OAK MOBILE DETAILING</text>
+  <text x="96" y="350" font-family="Georgia,'Times New Roman',serif" font-size="78" fill="#FAF5EC" font-weight="bold">Showroom shine —</text>
+  <text x="96" y="436" font-family="Georgia,'Times New Roman',serif" font-size="78" fill="#FAF5EC" font-weight="bold">in your own driveway.</text>
+  <text x="96" y="506" font-family="Verdana,Geneva,sans-serif" font-size="29" fill="#B8B2A4">Mobile auto detailing across Austin, Round Rock, Cedar Park &amp; Pflugerville.</text>
+  <text x="96" y="556" font-family="Verdana,Geneva,sans-serif" font-size="26" fill="#D86A52" font-weight="bold">Book online — (512) 448-2910</text>
+</svg>

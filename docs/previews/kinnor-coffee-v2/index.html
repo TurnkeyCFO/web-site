@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<!--
+  Kinnor Coffee — New Braunfels, TX | DRAFT preview (v2 — RETRO / VINTAGE rev)
+  Brand pulled from the owners' real Instagram: bold cream + cobalt-navy + burnt-orange,
+  blue/cream checkerboard frames, 8-point starbursts, orange/navy stripe banners,
+  groovy 3D drop-shadow display lettering, vintage script. Tagline "Find Rest For Your Soul."
+  Kinnor = Hebrew for "lyre". Photos + menu + prices are the owners' own; logo recolored.
+-->
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kinnor Coffee — Specialty Coffee &amp; Craft Cocktails | New Braunfels, TX</title>
+<meta name="description" content="Find rest for your soul. Kinnor is a family-owned specialty coffee shop and craft cocktail lounge in a 1937 house in downtown New Braunfels — house-made syrups, real dishes, records spinning. 540 S Castell Ave." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/kinnor-coffee-v2/" />
+<meta property="og:title" content="Kinnor Coffee — Find Rest For Your Soul" />
+<meta property="og:description" content="Specialty coffee by day, craft cocktails by night, in a 1937 house in the heart of New Braunfels." />
+<meta property="og:type" content="business.business" />
+<meta property="og:url" content="https://turnkeyweb.org/previews/kinnor-coffee-v2/" />
+<meta property="og:image" content="https://turnkeyweb.org/previews/kinnor-coffee-v2/assets/real-latte.jpg" />
+<meta name="theme-color" content="#EFE6CF" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        cream:'#EFE6CF', creamlt:'#F6EFDA', creamdk:'#E5D9BC', white2:'#FBF7EC',
+        navy:'#27437E', navydeep:'#1C3155', navysoft:'#3A5A98',
+        rust:'#D9531E', rustlt:'#E86A2C', rustdeep:'#B8410F',
+        ink:'#1C3155', mute:'#5E6E8A', line:'#D8CBAA'
+      },
+      fontFamily:{ script:['Parisienne','cursive'], serif:['Fraunces','serif'], sans:['"Plus Jakarta Sans"','sans-serif'] }
+    }}
+  }
+</script>
+<style>
+  html{scroll-behavior:smooth;}
+  body{background:#EFE6CF;color:#1C3155;font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;}
+  .font-script{font-family:'Parisienne',cursive;}
+  .font-serif{font-family:'Fraunces',serif;}
+  ::selection{background:#D9531E;color:#F6EFDA;}
+
+  /* ---- RETRO 3D extruded display lettering (the "We Are Hiring!" poster look) ---- */
+  .retro3d{
+    font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.01em;line-height:.92;
+    color:#D9531E;
+    text-shadow:
+      1px 1px 0 #1C3155, 2px 2px 0 #1C3155, 3px 3px 0 #1C3155,
+      4px 4px 0 #1C3155, 5px 5px 0 #1C3155, 6px 6px 0 #1C3155,
+      7px 7px 0 #1C3155, 8px 8px 14px rgba(28,49,85,.35);
+  }
+  .retro3d.cream{color:#F6EFDA;}
+  @media (max-width:640px){ .retro3d{ text-shadow:1px 1px 0 #1C3155,2px 2px 0 #1C3155,3px 3px 0 #1C3155,4px 4px 0 #1C3155,5px 5px 10px rgba(28,49,85,.35); } }
+
+  /* outlined retro word */
+  .retro-outline{ -webkit-text-stroke:2px #1C3155; color:transparent; font-family:'Fraunces',serif; font-weight:900; }
+
+  /* ---- checkerboard (blue + cream) ---- */
+  .checker{
+    background-image:
+      linear-gradient(45deg,#27437E 25%,transparent 25%,transparent 75%,#27437E 75%),
+      linear-gradient(45deg,#27437E 25%,transparent 25%,transparent 75%,#27437E 75%);
+    background-size:28px 28px; background-position:0 0,14px 14px; background-color:#EFE6CF;
+  }
+  .checker-band{ height:30px; }
+  @media (max-width:640px){ .checker{ background-size:20px 20px; background-position:0 0,10px 10px; } .checker-band{height:22px;} }
+
+  /* ---- orange/navy stripe banner ---- */
+  .stripeband{
+    background-image:repeating-linear-gradient(90deg,#D9531E 0 36px,#27437E 36px 72px);
+  }
+  .stripe-thin{ background-image:repeating-linear-gradient(90deg,#D9531E 0 20px,#27437E 20px 40px); height:10px; }
+
+  /* ---- 8-point starburst accent ---- */
+  .star8{ display:inline-block; width:1em;height:1em; background:currentColor;
+    clip-path:polygon(50% 0,61% 30%,90% 13%,73% 41%,100% 50%,73% 59%,90% 87%,61% 70%,50% 100%,39% 70%,10% 87%,27% 59%,0 50%,27% 41%,10% 13%,39% 30%);
+  }
+
+  /* lyre-string motif — thin vertical bars from their menu design */
+  .strings{display:inline-flex;gap:5px;align-items:center;height:1em;}
+  .strings i{display:block;width:2px;height:100%;background:currentColor;opacity:.6;border-radius:2px;}
+  .strings i:nth-child(2){height:70%;opacity:.9;} .strings i:nth-child(3){height:85%;}
+
+  .ambient{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;pointer-events:none;}
+
+  /* retro thick-bordered panel (Block Party card) */
+  .retro-panel{ border:3px solid #1C3155; border-radius:22px; box-shadow:5px 5px 0 #27437E; background:#F6EFDA; }
+  .retro-panel.rust{ box-shadow:5px 5px 0 #D9531E; }
+
+  .btn{position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.3,1),filter .35s,box-shadow .35s;}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 #1C3155;}
+  .btn::after{content:'';position:absolute;top:0;left:-130%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-18deg);transition:left .85s cubic-bezier(.2,.7,.3,1);}
+  .btn:hover::after{left:130%;}
+
+  .card{transition:transform .5s cubic-bezier(.2,.7,.3,1),box-shadow .5s;}
+  .card:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 #27437E;}
+  .card.rust:hover{box-shadow:8px 8px 0 #D9531E;}
+
+  .ulink{position:relative;}
+  .ulink::after{content:'';position:absolute;left:0;bottom:-3px;height:2px;width:0;background:#D9531E;transition:width .5s cubic-bezier(.2,.7,.3,1);}
+  .ulink:hover::after{width:100%;}
+
+  .pulse-dot{animation:pulse 2.2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+
+  .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+  .marquee-track{display:flex;gap:2.5rem;width:max-content;animation:scrollX 38s linear infinite;}
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .spin{animation:spin 9s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  [data-reveal]{opacity:0;transform:translateY(32px);}
+  .reveal-img{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s cubic-bezier(.16,1,.3,1);}
+  .reveal-img.in{clip-path:inset(0 0 0% 0);}
+
+  .grain::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(28,49,85,.05) 1px,transparent 1px);background-size:3px 3px;opacity:.6;}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ===================== INTRO PRELOADER (retro) ===================== -->
+<div id="kinnor-preloader" role="presentation">
+  <div class="kp-stripe"></div>
+  <div class="kp-stage">
+    <span class="kp-star" aria-hidden="true"></span>
+    <video class="kp-video" autoplay muted playsinline preload="auto" poster="assets/intro-poster.jpg" aria-hidden="true">
+      <source src="assets/intro.webm" type="video/webm" />
+      <source src="assets/intro.mp4" type="video/mp4" />
+    </video>
+    <p class="kp-script">Find rest for your soul</p>
+  </div>
+  <div class="kp-bar"><i></i></div>
+  <div class="kp-curtain"></div>
+  <button type="button" class="kp-skip">Skip intro ›</button>
+</div>
+<style>
+  #kinnor-preloader{position:fixed;inset:0;z-index:9999;background:#EFE6CF;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;
+    transition:transform 1s cubic-bezier(.76,0,.24,1),opacity .6s ease;}
+  #kinnor-preloader.kp-out{transform:translateY(-100%);}
+  #kinnor-preloader .kp-stripe{position:absolute;top:0;left:0;right:0;height:10px;background-image:repeating-linear-gradient(90deg,#D9531E 0 20px,#27437E 20px 40px);}
+  #kinnor-preloader .kp-stage{position:relative;width:min(86vw,820px);}
+  #kinnor-preloader .kp-video{display:block;width:100%;height:auto;border-radius:18px;border:3px solid #1C3155;box-shadow:7px 7px 0 #27437E;background:#EFE6CF;}
+  #kinnor-preloader .kp-star{position:absolute;top:-26px;right:-14px;width:44px;height:44px;background:#D9531E;
+    clip-path:polygon(50% 0,61% 30%,90% 13%,73% 41%,100% 50%,73% 59%,90% 87%,61% 70%,50% 100%,39% 70%,10% 87%,27% 59%,0 50%,27% 41%,10% 13%,39% 30%);
+    animation:kp-spin 9s linear infinite;opacity:.92;}
+  @keyframes kp-spin{to{transform:rotate(360deg);}}
+  #kinnor-preloader .kp-script{font-family:'Parisienne',cursive;color:#D9531E;font-size:2rem;text-align:center;margin:1.1rem 0 0;opacity:0;transform:translateY(8px) rotate(-1.5deg);
+    animation:kp-fade .9s ease forwards;animation-delay:4.6s;text-shadow:1px 1px 0 #1C3155;}
+  @keyframes kp-fade{to{opacity:1;transform:translateY(0) rotate(-1.5deg);}}
+  #kinnor-preloader .kp-bar{position:absolute;left:0;right:0;bottom:0;height:8px;background:rgba(28,49,85,.12);}
+  #kinnor-preloader .kp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#D9531E,#27437E);animation:kp-load 6.8s linear forwards;}
+  @keyframes kp-load{to{width:100%;}}
+  #kinnor-preloader .kp-curtain{position:absolute;bottom:8px;left:0;right:0;height:22px;background-image:linear-gradient(45deg,#27437E 25%,transparent 25%,transparent 75%,#27437E 75%),linear-gradient(45deg,#27437E 25%,transparent 25%,transparent 75%,#27437E 75%);background-size:22px 22px;background-position:0 0,11px 11px;background-color:#EFE6CF;}
+  #kinnor-preloader .kp-skip{position:absolute;bottom:22px;right:22px;background:transparent;border:2px solid #1C3155;color:#1C3155;font:600 12px 'Plus Jakarta Sans',sans-serif;letter-spacing:.06em;padding:7px 16px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s;}
+  #kinnor-preloader .kp-skip:hover{background:#D9531E;color:#F6EFDA;border-color:#D9531E;}
+  @media (max-width:640px){#kinnor-preloader .kp-script{font-size:1.5rem;} #kinnor-preloader .kp-star{width:32px;height:32px;top:-18px;}}
+  @media (prefers-reduced-motion:reduce){#kinnor-preloader .kp-star{animation:none;}}
+</style>
+<script>
+  (function(){
+    var pl=document.getElementById('kinnor-preloader');if(!pl)return;
+    var KEY='kinnor_intro_v2', reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, seen=false;
+    try{seen=sessionStorage.getItem(KEY);}catch(e){}
+    var html=document.documentElement;
+    if(seen||reduce){ if(pl.parentNode)pl.parentNode.removeChild(pl); return; }
+    html.style.overflow='hidden';
+    var vid=pl.querySelector('.kp-video'), fin=false;
+    function done(){ if(fin)return; fin=true; try{sessionStorage.setItem(KEY,'1');}catch(e){}
+      pl.classList.add('kp-out'); html.style.overflow='';
+      setTimeout(function(){ if(pl&&pl.parentNode)pl.parentNode.removeChild(pl); },1050); }
+    if(vid){ var p=vid.play(); if(p&&p.catch)p.catch(function(){}); vid.addEventListener('ended',done); }
+    setTimeout(done,7300); // hard cap just past 4s
+    pl.querySelector('.kp-skip').addEventListener('click',done);
+  })();
+</script>
+
+<!-- ===================== NAV ===================== -->
+<header id="top" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" data-nav>
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex items-center justify-between h-[70px]">
+      <a href="#top" class="flex items-center"><img src="assets/logo-navy.png" alt="Kinnor Coffee" class="h-10 w-auto" /></a>
+      <nav class="hidden lg:flex items-center gap-9 text-[13px] font-semibold tracking-wide text-navy/80">
+        <a href="#story" class="ulink hover:text-rust transition-colors">Our Story</a>
+        <a href="#coffee" class="ulink hover:text-rust transition-colors">Coffee</a>
+        <a href="#bar" class="ulink hover:text-rust transition-colors">Cocktails</a>
+        <a href="#house" class="ulink hover:text-rust transition-colors">The House</a>
+        <a href="#visit" class="ulink hover:text-rust transition-colors">Visit</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="tel:+18306325146" class="hidden sm:inline-flex items-center text-[13px] font-medium text-navy/75 hover:text-rust transition-colors">(830) 632-5146</a>
+        <a href="#visit" class="btn inline-flex items-center bg-rust text-creamlt text-[13px] font-bold px-5 py-2.5 rounded-full border-2 border-navy">Plan a Visit</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- top stripe accent -->
+<div class="stripe-thin fixed top-0 inset-x-0 z-[60]"></div>
+
+<!-- ===================== HERO (split editorial, retro) ===================== -->
+<section class="relative bg-cream grain overflow-hidden">
+  <div class="ambient" style="width:520px;height:520px;background:radial-gradient(circle,#E86A2C,transparent 65%);top:-120px;left:-120px;"></div>
+  <!-- floating starbursts -->
+  <span class="star8 text-navy spin absolute hidden sm:block" style="top:120px;right:8%;font-size:46px;opacity:.9;"></span>
+  <span class="star8 text-rust absolute hidden lg:block" style="bottom:90px;left:48%;font-size:30px;opacity:.8;"></span>
+  <div class="mx-auto max-w-7xl grid lg:grid-cols-2 items-center min-h-[100svh] gap-10 px-5 sm:px-8 pt-28 lg:pt-20 pb-16">
+    <!-- left copy -->
+    <div class="relative z-10 max-w-xl">
+      <p class="flex items-center gap-3 text-[12px] font-bold tracking-[0.28em] uppercase text-navy mb-6">
+        <span class="star8 text-rust" style="font-size:16px;"></span>
+        New Braunfels · since 2020
+      </p>
+      <p class="font-script text-rust text-5xl sm:text-6xl mb-1 -rotate-2">Find rest</p>
+      <h1 class="retro3d text-[18vw] sm:text-7xl lg:text-[5.4rem] mt-2">FOR YOUR<br/>SOUL.</h1>
+      <p class="mt-8 text-ink/75 text-lg leading-relaxed max-w-md font-medium">
+        A specialty coffee shop by day and a craft cocktail lounge by night — set in a 1937 house in the heart of downtown. House-made syrups, real dishes, records spinning. People passionate for community and craft.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="#coffee" class="btn inline-flex items-center gap-2 bg-navy text-creamlt font-bold px-7 py-4 rounded-full border-2 border-navy">See the menu</a>
+        <a href="tel:+18306325146" class="inline-flex items-center gap-2 border-2 border-navy text-navy font-bold px-7 py-4 rounded-full hover:bg-navy hover:text-creamlt transition-colors">Call (830) 632-5146</a>
+      </div>
+      <div class="mt-12 grid grid-cols-3 gap-5 max-w-md border-t-2 border-dashed border-navy/30 pt-6">
+        <div><div class="font-serif font-black text-3xl text-rust" data-count data-target="1937" data-plain="1">1937</div><div class="text-[10.5px] font-semibold tracking-[0.14em] uppercase text-navy/70 mt-1">The house</div></div>
+        <div><div class="font-serif font-black text-3xl text-rust" data-count data-target="100" data-suffix="%">0%</div><div class="text-[10.5px] font-semibold tracking-[0.14em] uppercase text-navy/70 mt-1">House-made syrups</div></div>
+        <div><div class="font-serif font-black text-3xl text-rust" data-count data-target="0" data-zero="No">0</div><div class="text-[10.5px] font-semibold tracking-[0.14em] uppercase text-navy/70 mt-1">Drive-throughs</div></div>
+      </div>
+    </div>
+    <!-- right photo (their real latte) in a checker frame -->
+    <div class="relative">
+      <div class="checker p-2.5 rounded-[1.7rem] shadow-[6px_6px_0_#27437E]">
+        <div class="reveal-img rounded-[1.3rem] overflow-hidden border-[3px] border-navy" data-reveal-image>
+          <img src="assets/real-latte.jpg" alt="Latte at Kinnor Coffee, served in a real mug" class="w-full h-[56vh] lg:h-[74vh] object-cover" />
+        </div>
+      </div>
+      <div class="retro-panel rust absolute -bottom-6 -left-3 sm:left-6 px-6 py-4 -rotate-3">
+        <p class="font-script text-navy text-2xl leading-none">Kinnor</p>
+        <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-rust mt-1">Hebrew for &ldquo;lyre&rdquo;</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- checker divider -->
+<div class="checker checker-band"></div>
+
+<!-- value marquee (stripe banner) -->
+<div class="marquee bg-navy py-4 border-y-[3px] border-navydeep">
+  <div class="marquee-track items-center text-creamlt text-sm font-bold uppercase tracking-wider">
+    <span>Specialty coffee</span><span class="star8 text-rust" style="font-size:14px;"></span><span>House-made syrups</span><span class="star8 text-rust" style="font-size:14px;"></span><span>Craft cocktails</span><span class="star8 text-rust" style="font-size:14px;"></span><span>Served in real dishes</span><span class="star8 text-rust" style="font-size:14px;"></span><span>Records spinning</span><span class="star8 text-rust" style="font-size:14px;"></span><span class="font-script text-rust text-xl normal-case tracking-normal">Find rest for your soul</span><span class="star8 text-rust" style="font-size:14px;"></span>
+    <span>Specialty coffee</span><span class="star8 text-rust" style="font-size:14px;"></span><span>House-made syrups</span><span class="star8 text-rust" style="font-size:14px;"></span><span>Craft cocktails</span><span class="star8 text-rust" style="font-size:14px;"></span><span>Served in real dishes</span><span class="star8 text-rust" style="font-size:14px;"></span><span>Records spinning</span><span class="star8 text-rust" style="font-size:14px;"></span><span class="font-script text-rust text-xl normal-case tracking-normal">Find rest for your soul</span><span class="star8 text-rust" style="font-size:14px;"></span>
+  </div>
+</div>
+
+<!-- ===================== STORY ===================== -->
+<section id="story" class="relative bg-cream py-20 sm:py-28 grain">
+  <div class="mx-auto max-w-3xl px-5 sm:px-8 text-center relative z-10">
+    <span class="star8 text-rust mb-5 inline-block" style="font-size:34px;"></span>
+    <p class="text-[12px] font-bold tracking-[0.3em] uppercase text-navy mb-6">Our Story</p>
+    <h2 class="font-serif font-semibold text-3xl sm:text-[2.6rem] leading-[1.25] text-ink">
+      Named for the <span class="font-script text-rust text-4xl sm:text-5xl">lyre</span> — a place to take a breath, exhale, and stay a while.
+    </h2>
+    <p class="mt-7 text-ink/75 leading-relaxed text-lg font-medium">
+      Aaron &amp; Ashley Brown turned a 1937 New Braunfels house into a gathering space built for slowing down. Not your home, not your work — that third place, where you&rsquo;re looked in the eye and welcomed to linger. Coffee by morning, cocktails by evening, the same care all day.
+    </p>
+    <p class="mt-6 font-script text-rust text-3xl -rotate-1">Find rest for your soul.</p>
+  </div>
+</section>
+
+<!-- ===================== DUALITY ===================== -->
+<section class="relative bg-navy text-creamlt py-20 sm:py-28 grain overflow-hidden">
+  <span class="star8 text-rust spin absolute hidden sm:block" style="top:60px;right:6%;font-size:40px;opacity:.85;"></span>
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
+    <div class="max-w-2xl mb-14" data-reveal>
+      <p class="text-[12px] font-bold tracking-[0.3em] uppercase text-rustlt mb-4">One House, Two Moods</p>
+      <h2 class="font-serif font-bold text-4xl sm:text-5xl leading-tight">A morning café that becomes an evening lounge.</h2>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-7">
+      <article class="card retro-panel overflow-hidden" data-reveal>
+        <div class="aspect-[16/10] overflow-hidden border-b-[3px] border-navy"><img src="assets/real-interior.jpg" alt="Inside Kinnor — blue bar and espresso machine" class="w-full h-full object-cover" /></div>
+        <div class="p-7 sm:p-9 text-ink">
+          <p class="text-[11px] font-bold tracking-[0.2em] uppercase text-rust mb-3">☀ By Day · from 7am</p>
+          <h3 class="font-serif font-bold text-2xl mb-3">Coffee, dialed in.</h3>
+          <p class="text-ink/75 leading-relaxed text-[15px] font-medium">Lattes and pour-overs done right — every syrup made in-house, from vanilla and lavender to butterscotch and mocha. No paper-cup default. Your drink, brought to your table in a real mug.</p>
+        </div>
+      </article>
+      <article class="card rust retro-panel rust overflow-hidden" data-reveal>
+        <div class="aspect-[16/10] overflow-hidden border-b-[3px] border-navy"><img src="assets/real-cocktail.jpg" alt="A Kinnor signature cocktail" class="w-full h-full object-cover" /></div>
+        <div class="p-7 sm:p-9 text-ink">
+          <p class="text-[11px] font-bold tracking-[0.2em] uppercase text-navy mb-3">☾ By Night · &rsquo;til 8pm</p>
+          <h3 class="font-serif font-bold text-2xl mb-3">Cocktails, with intention.</h3>
+          <p class="text-ink/75 leading-relaxed text-[15px] font-medium">An espresso martini worth the trip, plus Kinnor originals like the Velvet Underground and Easy Lover, and local taps from 5 Stones. Same craft, after dark.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- checker divider -->
+<div class="checker checker-band"></div>
+
+<!-- ===================== COFFEE MENU (real) ===================== -->
+<section id="coffee" class="relative bg-cream py-20 sm:py-28 grain">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 relative z-10">
+    <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+      <span class="star8 text-rust mb-4 inline-block" style="font-size:28px;"></span>
+      <p class="text-[12px] font-bold tracking-[0.3em] uppercase text-navy mb-3">The Coffee Bar</p>
+      <h2 class="font-serif font-bold text-4xl sm:text-5xl text-ink leading-tight">From the first pour of the day.</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-12">
+      <div data-reveal>
+        <h3 class="font-script text-rust text-3xl mb-5 flex items-center gap-3">Espresso<span class="strings text-navy h-5"><i></i><i></i><i></i></span></h3>
+        <ul class="divide-y divide-line">
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium">Latte</span><span class="text-navy font-bold">5.50</span></li>
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium">Cappuccino</span><span class="text-navy font-bold">4.50</span></li>
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium">Cortado</span><span class="text-navy font-bold">4.00</span></li>
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium">Americano</span><span class="text-navy font-bold">3.00</span></li>
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium">Double Shot</span><span class="text-navy font-bold">4.00</span></li>
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium"><span class="italic">&ldquo;Cowboy Like Me&rdquo;</span><span class="block text-xs text-mute">cold brew, double shot, oat milk, simple syrup</span></span><span class="text-navy font-bold">5.50</span></li>
+        </ul>
+        <h3 class="font-script text-rust text-3xl mt-9 mb-5">Filter &amp; Non-Coffee</h3>
+        <ul class="divide-y divide-line">
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium">Pour Over</span><span class="text-mute text-sm italic">ask your server</span></li>
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium">Drip Coffee</span><span class="text-navy font-bold">3.50 / 4</span></li>
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium">Cold Brew</span><span class="text-navy font-bold">5 / 6</span></li>
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium">Chai Latte</span><span class="text-navy font-bold">5.50</span></li>
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium">Lavender Steamer</span><span class="text-navy font-bold">4.00</span></li>
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium">Pineapple Hibiscus Tea</span><span class="text-navy font-bold">4.00</span></li>
+          <li class="py-3 flex justify-between gap-4"><span class="text-ink font-medium">Hot Chocolate</span><span class="text-navy font-bold">4.00</span></li>
+        </ul>
+      </div>
+      <div data-reveal>
+        <div class="retro-panel p-7 sm:p-9">
+          <h3 class="font-script text-rust text-3xl mb-2">House-Made Syrups</h3>
+          <p class="text-sm text-mute mb-6 font-medium">Made on-site from all-natural ingredients — the reason regulars call it the best vanilla latte they&rsquo;ve had. Add to any drink.</p>
+          <ul class="divide-y divide-line/70">
+            <li class="py-2.5 flex justify-between gap-4"><span class="text-ink font-medium">Maple</span><span class="text-navy font-bold">+0.50</span></li>
+            <li class="py-2.5 flex justify-between gap-4"><span class="text-ink font-medium">Vanilla</span><span class="text-navy font-bold">+0.50</span></li>
+            <li class="py-2.5 flex justify-between gap-4"><span class="text-ink font-medium">Vanilla Lavender</span><span class="text-navy font-bold">+0.50</span></li>
+            <li class="py-2.5 flex justify-between gap-4"><span class="text-ink font-medium">Strawberry</span><span class="text-navy font-bold">+1.00</span></li>
+            <li class="py-2.5 flex justify-between gap-4"><span class="text-ink font-medium">Butterscotch</span><span class="text-navy font-bold">+1.50</span></li>
+            <li class="py-2.5 flex justify-between gap-4"><span class="text-ink font-medium">Mocha</span><span class="text-navy font-bold">+1.50</span></li>
+            <li class="py-2.5 flex justify-between gap-4"><span class="text-ink font-medium">White Chocolate</span><span class="text-navy font-bold">+1.50</span></li>
+          </ul>
+          <p class="mt-6 text-xs text-mute font-medium">Fresh pastries &amp; cinnamon rolls daily. Oat milk available.</p>
+        </div>
+      </div>
+    </div>
+    <p class="text-center text-mute text-xs mt-10 font-medium">Menu &amp; pricing shown for preview; subject to change in-shop.</p>
+  </div>
+</section>
+
+<!-- stripe banner divider -->
+<div class="stripeband h-4 border-y-[3px] border-navydeep"></div>
+
+<!-- ===================== BAR MENU (real) ===================== -->
+<section id="bar" class="relative bg-navydeep text-creamlt py-20 sm:py-28 grain overflow-hidden">
+  <div class="ambient" style="width:540px;height:540px;background:radial-gradient(circle,#D9531E,transparent 62%);bottom:-160px;right:-140px;opacity:.35;"></div>
+  <span class="star8 text-rust spin absolute hidden lg:block" style="top:80px;left:7%;font-size:44px;opacity:.85;"></span>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 relative z-10">
+    <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+      <p class="text-[12px] font-bold tracking-[0.3em] uppercase text-rustlt mb-3">After Dark</p>
+      <h2 class="retro3d cream text-5xl sm:text-6xl">THE BAR<br/>AT KINNOR.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-x-10 gap-y-10">
+      <div data-reveal>
+        <h3 class="font-script text-rustlt text-3xl mb-5">Classics</h3>
+        <ul class="space-y-3.5 text-[15px]">
+          <li class="flex justify-between gap-3"><span class="font-medium">Espresso Martini</span><span class="text-rustlt font-bold">12</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">Old Fashioned</span><span class="text-rustlt font-bold">10</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">Borderless Old Fashioned</span><span class="text-rustlt font-bold">10</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">Aviation</span><span class="text-rustlt font-bold">10</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">Daiquiri</span><span class="text-rustlt font-bold">9</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">Carajillo</span><span class="text-rustlt font-bold">9</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">Mimosa</span><span class="text-rustlt font-bold">10</span></li>
+        </ul>
+      </div>
+      <div data-reveal>
+        <h3 class="font-script text-rustlt text-3xl mb-5">Kinnor Originals</h3>
+        <ul class="space-y-4 text-[15px]">
+          <li class="flex justify-between gap-3"><span class="font-medium">Velvet Underground<span class="block text-xs text-creamlt/60">gin, tonic, house lavender, lime</span></span><span class="text-rustlt font-bold">11</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">Cecilia<span class="block text-xs text-creamlt/60">tequila, club soda, lemon &amp; honey</span></span><span class="text-rustlt font-bold">11</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">The Confessio<span class="block text-xs text-creamlt/60">whiskey, elderflower, house vanilla</span></span><span class="text-rustlt font-bold">11</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">Ramble Tamble<span class="block text-xs text-creamlt/60">cold brew, bourbon, house maple</span></span><span class="text-rustlt font-bold">10</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">Easy Lover<span class="block text-xs text-creamlt/60">butterfly-pea wine, lime, honey</span></span><span class="text-rustlt font-bold">9</span></li>
+        </ul>
+      </div>
+      <div data-reveal>
+        <h3 class="font-script text-rustlt text-3xl mb-5">On Tap</h3>
+        <ul class="space-y-3.5 text-[15px]">
+          <li class="flex justify-between gap-3"><span class="font-medium">Aloha Piña<span class="block text-xs text-creamlt/60">golden ale, pineapple &amp; jalapeño</span></span><span class="text-rustlt font-bold">8.5</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">5 Stones Amber</span><span class="text-rustlt font-bold">5 / 6</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">5 Stones IPA</span><span class="text-rustlt font-bold">5 / 6</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">5 Stones Gold</span><span class="text-rustlt font-bold">5 / 6</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">Shepherd Juice<span class="block text-xs text-creamlt/60">dry-hopped pale ale</span></span><span class="text-rustlt font-bold">7</span></li>
+          <li class="flex justify-between gap-3"><span class="font-medium">Jonathan</span><span class="text-rustlt font-bold">7</span></li>
+        </ul>
+        <p class="mt-6 text-xs text-creamlt/50 font-medium">The full coffee menu is available after dark, too.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- checker divider -->
+<div class="checker checker-band"></div>
+
+<!-- ===================== THE HOUSE ===================== -->
+<section id="house" class="relative bg-cream py-20 sm:py-28 grain">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="lg:col-span-5" data-reveal>
+        <p class="text-[12px] font-bold tracking-[0.3em] uppercase text-navy mb-4">The House on Castell</p>
+        <h2 class="font-serif font-bold text-4xl sm:text-5xl text-ink leading-tight mb-5">A 1937 house, made to make you stay.</h2>
+        <p class="text-ink/75 leading-relaxed mb-4 font-medium">White clapboard and blue trim outside; blue cabinetry, warm oak, hanging plants and a wall of records inside. Big comfortable seating, soft light, quiet corners — the kind of room you settle into and lose track of time.</p>
+        <p class="text-ink/75 leading-relaxed font-medium">Drinks come to your table in real dishes, brought by hand. Everything here is designed to help you slow down.</p>
+        <a href="#visit" class="btn inline-flex items-center gap-2 bg-rust text-creamlt font-bold px-7 py-4 rounded-full border-2 border-navy mt-8">Come find us</a>
+      </div>
+      <div class="lg:col-span-7 grid grid-cols-2 gap-4">
+        <div class="overflow-hidden rounded-2xl col-span-2 h-72 sm:h-96 border-[3px] border-navy" data-reveal><img src="assets/real-house.jpg" alt="The 1937 house Kinnor Coffee calls home, sign out front" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" /></div>
+        <div class="overflow-hidden rounded-2xl h-56 sm:h-64 border-[3px] border-navy" data-reveal><img src="assets/real-exterior.jpg" alt="Kinnor's patio under the oak trees" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" /></div>
+        <div class="overflow-hidden rounded-2xl h-56 sm:h-64 border-[3px] border-navy" data-reveal><img src="assets/real-icedcup.jpg" alt="A branded Kinnor iced coffee" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VOICES ===================== -->
+<section class="relative bg-navy text-creamlt py-20 sm:py-28 grain overflow-hidden">
+  <span class="star8 text-rust spin absolute hidden sm:block" style="bottom:60px;left:8%;font-size:38px;opacity:.8;"></span>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 relative z-10">
+    <div class="text-center mb-14" data-reveal>
+      <p class="text-[12px] font-bold tracking-[0.3em] uppercase text-rustlt mb-3">What People Say</p>
+      <h2 class="font-serif font-bold text-4xl sm:text-5xl">Loved by New Braunfels.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <figure class="card retro-panel p-7 text-ink" data-reveal>
+        <div class="text-rust text-lg mb-3">★★★★★</div>
+        <blockquote class="text-ink/85 leading-relaxed font-serif text-lg font-medium">&ldquo;Probably the best vanilla latte I&rsquo;ve ever had — and they make their own syrups on-site, all natural.&rdquo;</blockquote>
+        <figcaption class="mt-5 text-mute text-sm font-semibold">Verified Yelp reviewer</figcaption>
+      </figure>
+      <figure class="card rust retro-panel rust p-7 text-ink" data-reveal>
+        <div class="text-rust text-lg mb-3">★★★★★</div>
+        <blockquote class="text-ink/85 leading-relaxed font-serif text-lg font-medium">&ldquo;Great coffee by day and the cocktails are insanely good too. The espresso martinis are stellar.&rdquo;</blockquote>
+        <figcaption class="mt-5 text-mute text-sm font-semibold">Verified Google reviewer</figcaption>
+      </figure>
+      <figure class="card retro-panel p-7 text-ink" data-reveal>
+        <div class="text-rust text-lg mb-3">★★★★★</div>
+        <blockquote class="text-ink/85 leading-relaxed font-serif text-lg font-medium">&ldquo;The most charming little house — attention to detail in every drink, and the warmest welcome in town.&rdquo;</blockquote>
+        <figcaption class="mt-5 text-mute text-sm font-semibold">Verified Yelp reviewer</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- checker divider -->
+<div class="checker checker-band"></div>
+
+<!-- ===================== VISIT ===================== -->
+<section id="visit" class="relative bg-cream py-20 sm:py-28 grain">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+      <div data-reveal>
+        <p class="text-[12px] font-bold tracking-[0.3em] uppercase text-navy mb-4">Find Us</p>
+        <h2 class="font-serif font-bold text-4xl sm:text-5xl text-ink leading-tight mb-8">In the heart of New Braunfels.</h2>
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <span class="text-rust mt-1">📍</span>
+            <div><div class="text-ink font-bold">540 S Castell Ave</div><div class="text-mute text-sm font-medium">New Braunfels, TX 78130</div>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=540+S+Castell+Ave+New+Braunfels+TX+78130" target="_blank" rel="noopener" class="text-navy font-semibold text-sm ulink inline-block mt-1">Get directions →</a></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-rust mt-1">📞</span>
+            <div><a href="tel:+18306325146" class="text-ink font-bold hover:text-rust transition-colors">(830) 632-5146</a><div class="text-mute text-sm font-medium">Call ahead anytime</div></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-rust mt-1">🕑</span>
+            <div class="w-full max-w-sm">
+              <div class="text-ink font-bold mb-2 flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-rust pulse-dot"></span> Hours</div>
+              <ul class="text-sm text-ink/80 space-y-1.5 font-medium">
+                <li class="flex justify-between"><span>Monday</span><span>7:00a – 8:00p</span></li>
+                <li class="flex justify-between text-mute"><span>Tuesday</span><span>Closed</span></li>
+                <li class="flex justify-between"><span>Wednesday – Saturday</span><span>7:00a – 8:00p</span></li>
+                <li class="flex justify-between"><span>Sunday</span><span>8:00a – 3:00p</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <a href="tel:+18306325146" class="btn inline-flex items-center gap-2 bg-navy text-creamlt font-bold px-7 py-4 rounded-full border-2 border-navy mt-9">Call Kinnor</a>
+      </div>
+      <div class="checker p-2.5 rounded-[1.4rem] shadow-[6px_6px_0_#27437E]" data-reveal>
+        <div class="rounded-[1.1rem] overflow-hidden border-[3px] border-navy min-h-[420px] h-full">
+          <iframe title="Kinnor Coffee map" src="https://www.google.com/maps?q=540+S+Castell+Ave,+New+Braunfels,+TX+78130&output=embed" width="100%" height="100%" style="border:0;min-height:420px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- stripe banner divider -->
+<div class="stripeband h-4 border-y-[3px] border-navydeep"></div>
+
+<!-- ===================== CLOSING CTA ===================== -->
+<section class="relative bg-navydeep text-creamlt py-24 sm:py-32 grain overflow-hidden text-center">
+  <div class="ambient" style="width:620px;height:620px;background:radial-gradient(circle,#D9531E,transparent 62%);top:50%;left:50%;transform:translate(-50%,-50%);opacity:.35;"></div>
+  <span class="star8 text-rust spin absolute hidden sm:block" style="top:70px;left:12%;font-size:40px;opacity:.8;"></span>
+  <span class="star8 text-rust spin absolute hidden sm:block" style="bottom:80px;right:12%;font-size:32px;opacity:.8;"></span>
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8" data-reveal>
+    <img src="assets/logo-white.png" alt="Kinnor Coffee" class="h-16 w-auto mx-auto mb-7" />
+    <p class="font-script text-rustlt text-4xl sm:text-5xl mb-2 -rotate-2">Find rest</p>
+    <h2 class="retro3d cream text-5xl sm:text-7xl mb-7">FOR YOUR SOUL.</h2>
+    <p class="text-creamlt/80 text-lg mb-9 max-w-xl mx-auto font-medium">Whether it&rsquo;s a 7am pour-over or a nightcap with friends — there&rsquo;s a seat for you on Castell Ave.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="https://www.google.com/maps/dir/?api=1&destination=540+S+Castell+Ave+New+Braunfels+TX+78130" target="_blank" rel="noopener" class="btn inline-flex items-center gap-2 bg-rust text-creamlt font-bold px-8 py-4 rounded-full border-2 border-creamlt/30">Get Directions</a>
+      <a href="tel:+18306325146" class="inline-flex items-center gap-2 border-2 border-creamlt/40 text-creamlt font-bold px-8 py-4 rounded-full hover:bg-creamlt hover:text-navydeep transition-colors">(830) 632-5146</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-cream border-t-[3px] border-navy py-14">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid sm:grid-cols-3 gap-10 items-start">
+      <div>
+        <img src="assets/logo-navy.png" alt="Kinnor Coffee" class="h-10 w-auto mb-4" />
+        <p class="text-mute text-sm leading-relaxed max-w-xs font-medium">People passionate for community and craft. Specialty coffee &amp; craft cocktails in a 1937 house in downtown New Braunfels.</p>
+      </div>
+      <div>
+        <div class="text-ink font-bold mb-3 text-sm tracking-wide">Visit</div>
+        <p class="text-mute text-sm leading-relaxed font-medium">540 S Castell Ave<br/>New Braunfels, TX 78130<br/><a href="tel:+18306325146" class="hover:text-rust transition-colors">(830) 632-5146</a></p>
+      </div>
+      <div>
+        <div class="text-ink font-bold mb-3 text-sm tracking-wide">Hours</div>
+        <p class="text-mute text-sm leading-relaxed font-medium">Mon &amp; Wed–Sat 7a–8p<br/>Sun 8a–3p<br/>Tuesday closed</p>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t-2 border-dashed border-navy/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-mute text-xs font-medium">
+      <span>© 2026 Kinnor Coffee · New Braunfels, Texas</span>
+      <span class="font-script text-rust text-lg">Find rest for your soul</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== MOBILE STICKY BAR ===================== -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-creamlt/95 backdrop-blur border-t-[3px] border-navy flex">
+  <a href="tel:+18306325146" class="flex-1 py-3.5 text-center text-navy text-sm font-bold border-r-2 border-navy/20">📞 Call</a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=540+S+Castell+Ave+New+Braunfels+TX+78130" target="_blank" rel="noopener" class="flex-1 py-3.5 text-center text-rust text-sm font-bold">📍 Directions</a>
+</div>
+
+<!-- ===================== JSON-LD ===================== -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"Kinnor Coffee",
+  "description":"Family-owned specialty coffee shop and craft cocktail lounge in a 1937 house in downtown New Braunfels, Texas. House-made syrups and craft cocktails. Find rest for your soul.",
+  "url":"https://turnkeyweb.org/previews/kinnor-coffee/","telephone":"+1-830-632-5146",
+  "servesCuisine":["Coffee","Cocktails"],"priceRange":"$$",
+  "image":"https://turnkeyweb.org/previews/kinnor-coffee/assets/real-latte.jpg",
+  "slogan":"Find rest for your soul.",
+  "address":{"@type":"PostalAddress","streetAddress":"540 S Castell Ave","addressLocality":"New Braunfels","addressRegion":"TX","postalCode":"78130","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":29.6988,"longitude":-98.1247},
+  "founder":["Aaron Brown","Ashley Brown"],
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"20:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"08:00","closes":"15:00"}
+  ]
+}
+</script>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+  let lenis;
+  try{
+    lenis=new Lenis({duration:1.15,easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t))});
+    function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);
+    if(window.ScrollTrigger)lenis.on('scroll',ScrollTrigger.update);
+  }catch(e){}
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id.length<2)return;
+      const t=document.querySelector(id);if(!t)return;e.preventDefault();
+      if(lenis)lenis.scrollTo(t,{offset:-70});else t.scrollIntoView({behavior:'smooth'});});
+  });
+
+  const nav=document.querySelector('[data-nav]');
+  const onScroll=()=>{ if(window.scrollY>40){nav.classList.add('bg-cream/90','backdrop-blur','shadow-sm','border-b-2','border-navy/15');}else{nav.classList.remove('bg-cream/90','backdrop-blur','shadow-sm','border-b-2','border-navy/15');} };
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  if(window.gsap&&window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('[data-reveal]').forEach(el=>{
+      gsap.fromTo(el,{opacity:0,y:32},{opacity:1,y:0,duration:1.05,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}});
+    });
+    document.querySelectorAll('[data-reveal-image]').forEach(el=>{
+      ScrollTrigger.create({trigger:el,start:'top 85%',onEnter:()=>el.classList.add('in')});
+    });
+    document.querySelectorAll('[data-count]').forEach(el=>{
+      const target=parseFloat(el.dataset.target),suffix=el.dataset.suffix||'',zero=el.dataset.zero,plain=el.dataset.plain;
+      ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>{
+        if(target===0){el.textContent=zero||'0';return;}
+        gsap.to({v:0},{v:target,duration:1.5,ease:'power2.out',onUpdate:function(){
+          const v=Math.round(this.targets()[0].v);
+          el.textContent=plain?String(v):v+suffix;}});
+      }});
+    });
+  }
+
+  // crawler / screenshot safety net
+  setTimeout(()=>{
+    document.querySelectorAll('[data-reveal]').forEach(el=>{if(getComputedStyle(el).opacity==='0'){el.style.opacity=1;el.style.transform='none';}});
+    document.querySelectorAll('[data-reveal-image]').forEach(el=>el.classList.add('in'));
+    document.querySelectorAll('[data-count]').forEach(el=>{
+      const t=parseFloat(el.dataset.target),s=el.dataset.suffix||'',z=el.dataset.zero,p=el.dataset.plain;
+      const want=t===0?(z||'0'):(p?String(t):t+s);
+      if(el.textContent.trim()!==want) el.textContent=want;
+    });
+  },6000);
+</script>
+</body>
+</html>

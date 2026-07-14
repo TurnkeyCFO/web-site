@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Sinton Golf Course — prospect preview (DRAFT for approval)
+  Built by turnkey-web-site-builder x premium-animation.
+  Client brand (golf course) — NOT a Turnkey-branded asset. Original country-club art direction.
+  Palette: deep pine #0F2A1D + fairway emerald #2F7D4F + golden-hour gold #C9A24B + warm cream #F6F0E3
+  Type: Fraunces (editorial serif display) + Plus Jakarta Sans (body)
+  Hero: Higgsfield-generated cinematic aerial (golden hour) — video loop w/ image poster fallback.
+  Real Sinton photos throughout the gallery (GolfPass / GolfNow sourced).
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Sinton Golf Course — 18 Holes in Welder Park · Sinton, Texas · Est. 1968</title>
+<meta name="description" content="Sinton Golf Course is an 18-hole, par-72 public course set in Rob & Bessie Welder Park just north of Sinton, Texas. Walk up, no tee time needed. Open daily (closed Tuesdays). Call the pro shop at (361) 364-9013." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/sinton-golf-course/" />
+<meta name="robots" content="noindex" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Sinton Golf Course — 18 Holes in Welder Park · Sinton, Texas" />
+<meta property="og:description" content="An 18-hole, par-72 muni under the live oaks of Welder Park. Walk up and play — no tee time needed. Est. 1968." />
+<meta property="og:image" content="https://turnkeyweb.org/previews/sinton-golf-course/assets/hero-aerial.jpg" />
+<meta name="theme-color" content="#0F2A1D" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GolfCourse",
+  "name": "Sinton Golf Course",
+  "alternateName": "Sinton Municipal Golf Course",
+  "description": "18-hole par-72 public golf course established in 1968, set within Rob & Bessie Welder Park north of Sinton, Texas.",
+  "url": "https://turnkeyweb.org/previews/sinton-golf-course/",
+  "image": "https://turnkeyweb.org/previews/sinton-golf-course/assets/hero-aerial.jpg",
+  "telephone": "+1-361-364-9013",
+  "email": "sintongolfshop@outlook.com",
+  "foundingDate": "1968",
+  "isAccessibleForFree": false,
+  "publicAccess": true,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "13698 Rob and Bessie Park Circle",
+    "addressLocality": "Sinton",
+    "addressRegion": "TX",
+    "postalCode": "78387",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 28.0719, "longitude": -97.5296 },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "3.9", "reviewCount": "81" },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "05:00", "closes": "21:00" }
+  ]
+}
+</script>
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --ink:#14201A;
+    --pine:#0F2A1D;
+    --pine-2:#123524;
+    --fairway:#2F7D4F;
+    --fairway-deep:#1E5C39;
+    --sage:#7FA88C;
+    --gold:#C9A24B;
+    --gold-lite:#E7CD86;
+    --cream:#F6F0E3;
+    --bone:#FBF7EE;
+    --paper:#FDFBF5;
+    --line:rgba(20,32,26,.12);
+    --shadow:0 24px 60px -28px rgba(15,42,29,.45);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Plus Jakarta Sans",system-ui,sans-serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);background:var(--bone);color:var(--ink);
+    line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  }
+  body.lock{overflow:hidden;height:100vh}
+  img,video{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--gold);color:var(--pine)}
+
+  .wrap{width:min(1240px,92vw);margin:0 auto}
+  .serif{font-family:var(--serif)}
+  .eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:var(--fairway-deep)}
+  .eyebrow.on-dark{color:var(--gold-lite)}
+
+  /* shimmer gold text */
+  .grad-text{
+    background:linear-gradient(100deg,var(--gold) 0%,var(--gold-lite) 30%,#fff6dd 45%,var(--gold-lite) 60%,var(--gold) 100%);
+    background-size:220% auto;-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    animation:shimmer 6s linear infinite;
+  }
+  @keyframes shimmer{to{background-position:-220% center}}
+
+  /* scroll progress */
+  .progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;
+    background:linear-gradient(90deg,var(--fairway),var(--gold));z-index:120}
+
+  /* preloader */
+  #pre{position:fixed;inset:0;z-index:200;background:var(--pine);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.2rem}
+  #pre .mark{font-family:var(--serif);font-size:clamp(1.6rem,5vw,2.4rem);color:var(--cream);letter-spacing:.02em;text-align:center;opacity:.96}
+  #pre .mark b{color:var(--gold);font-weight:600}
+  #pre .bar{width:min(240px,60vw);height:2px;background:rgba(255,255,255,.16);overflow:hidden;border-radius:2px}
+  #pre .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--fairway),var(--gold))}
+  #pre .num{font-size:.75rem;letter-spacing:.28em;color:var(--sage)}
+  #pre.done{opacity:0;pointer-events:none;transition:opacity .7s ease .1s}
+
+  /* nav */
+  header.nav{position:fixed;top:0;left:0;width:100%;z-index:100;transition:background .4s ease,box-shadow .4s ease,padding .4s ease;padding:1.1rem 0}
+  header.nav .row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .brand{display:flex;align-items:center;gap:.7rem;color:var(--cream);transition:color .4s ease}
+  .brand .badge{width:44px;height:44px;border-radius:50%;flex:0 0 44px;display:grid;place-items:center;
+    background:radial-gradient(circle at 35% 30%,var(--fairway),var(--pine));border:1.5px solid var(--gold);position:relative}
+  .brand .badge svg{width:24px;height:24px}
+  .brand .bt{line-height:1.05}
+  .brand .bt strong{font-family:var(--serif);font-weight:600;font-size:1.06rem;letter-spacing:.01em;display:block}
+  .brand .bt span{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;opacity:.78}
+  header.nav.scrolled .brand{color:var(--pine)}
+  .nav-links{display:flex;align-items:center;gap:2rem}
+  .nav-links a.lk{color:var(--cream);font-size:.86rem;font-weight:500;letter-spacing:.01em;opacity:.9;transition:color .4s,opacity .2s;position:relative}
+  .nav-links a.lk::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1.5px;background:var(--gold);transition:width .3s ease}
+  .nav-links a.lk:hover{opacity:1}
+  .nav-links a.lk:hover::after{width:100%}
+  header.nav.scrolled .nav-links a.lk{color:var(--pine)}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.9rem;letter-spacing:.01em;
+    padding:.72rem 1.35rem;border-radius:100px;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;white-space:nowrap}
+  .btn-gold{background:var(--gold);color:var(--pine);box-shadow:0 10px 30px -12px rgba(201,162,75,.7)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 36px -12px rgba(201,162,75,.85)}
+  .btn-ghost{border:1.5px solid rgba(246,240,227,.4);color:var(--cream)}
+  header.nav.scrolled .btn-ghost{border-color:var(--line);color:var(--pine)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .btn-solid{background:var(--pine);color:var(--cream)}
+  .btn-solid:hover{transform:translateY(-2px);background:var(--fairway-deep)}
+  .nav-mobcall{display:none}
+
+  /* HERO */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--pine)}
+  .hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero .poster{background:#0c2417 center/cover no-repeat}
+  .hero-scrim{position:absolute;inset:0;z-index:2;
+    background:linear-gradient(180deg,rgba(9,26,17,.55) 0%,rgba(9,26,17,.12) 32%,rgba(9,26,17,.18) 55%,rgba(9,26,17,.82) 100%)}
+  .hero-motes{position:absolute;inset:0;z-index:3;pointer-events:none}
+  .hero-inner{position:relative;z-index:4;width:100%;padding-bottom:clamp(3rem,7vh,6rem);padding-top:8rem}
+  .hero .kick{display:inline-flex;align-items:center;gap:.6rem;color:var(--gold-lite);font-size:.74rem;letter-spacing:.3em;
+    text-transform:uppercase;font-weight:600;margin-bottom:1.4rem}
+  .hero .kick .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+  h1.hero-h{font-family:var(--serif);font-weight:500;color:var(--cream);letter-spacing:-.015em;
+    font-size:clamp(2.9rem,8.4vw,6.6rem);line-height:.98}
+  h1.hero-h .ln{display:block;overflow:hidden}
+  h1.hero-h .w{display:inline-block;will-change:transform}
+  .hero-sub{margin-top:1.6rem;max-width:38ch;color:rgba(246,240,227,.9);font-size:clamp(1rem,1.5vw,1.18rem);font-weight:400}
+  .hero-cta{margin-top:2.2rem;display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
+  .hero-facts{margin-top:2.6rem;display:flex;flex-wrap:wrap;gap:2.2rem;color:var(--cream)}
+  .hero-facts .f{opacity:.94}
+  .hero-facts .f b{font-family:var(--serif);font-weight:600;font-size:1.5rem;display:block;line-height:1}
+  .hero-facts .f span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+  .scroll-cue{position:absolute;right:2.2rem;bottom:1.6rem;z-index:5;color:rgba(246,240,227,.72);
+    font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+  .scroll-cue i{display:block;width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:cue 2s ease-in-out infinite}
+  @keyframes cue{0%,100%{transform:scaleY(.4);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+
+  /* marquee */
+  .marquee{background:var(--pine);color:var(--cream);padding:1.15rem 0;overflow:hidden;white-space:nowrap;border-top:1px solid rgba(246,240,227,.08);border-bottom:1px solid rgba(246,240,227,.08)}
+  .marquee .track{display:inline-flex;gap:2.6rem;align-items:center;will-change:transform}
+  .marquee span{font-family:var(--serif);font-size:1.15rem;letter-spacing:.02em;opacity:.92;display:inline-flex;align-items:center;gap:2.6rem}
+  .marquee .star{color:var(--gold)}
+
+  /* section shell */
+  section{position:relative}
+  .band{padding:clamp(4.5rem,10vh,8rem) 0}
+  .band.paper{background:var(--paper)}
+  .band.cream{background:var(--cream)}
+  .reveal{opacity:0;transform:translateY(26px)}
+  .sec-head{max-width:60ch}
+  .sec-head h2{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-height:1.02;
+    font-size:clamp(2.1rem,5vw,3.7rem);margin:.9rem 0 0}
+  .sec-head p{margin-top:1.1rem;color:#3c4a41;font-size:1.06rem;max-width:52ch}
+
+  /* story split */
+  .story{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+  .story .copy p{color:#3a473e;margin-top:1.1rem;font-size:1.06rem}
+  .story .copy .lede{font-family:var(--serif);font-size:clamp(1.3rem,2.3vw,1.7rem);line-height:1.35;color:var(--pine);font-weight:400}
+  .story .fig{position:relative;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5}
+  .story .fig img{width:100%;height:100%;object-fit:cover}
+  .story .fig .cap{position:absolute;left:0;bottom:0;width:100%;padding:1.4rem;color:var(--cream);
+    background:linear-gradient(transparent,rgba(9,26,17,.85));font-size:.82rem;letter-spacing:.02em}
+  .story .fig .est{position:absolute;top:1rem;left:1rem;background:var(--gold);color:var(--pine);font-weight:700;
+    font-size:.7rem;letter-spacing:.16em;padding:.4rem .7rem;border-radius:100px}
+
+  /* course stats — editorial numbers */
+  .course{position:relative;background:var(--pine);color:var(--cream);overflow:hidden}
+  .course .glcanvas{position:absolute;inset:0;z-index:0;opacity:.9}
+  .course .wrap{position:relative;z-index:2}
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3rem}
+  .stat{border-top:1px solid rgba(246,240,227,.18);padding-top:1.2rem}
+  .stat b{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,5vw,3.9rem);line-height:.95;display:block;color:var(--cream)}
+  .stat b em{font-style:normal;color:var(--gold)}
+  .stat span{display:block;margin-top:.5rem;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage)}
+  .course .lede2{max-width:54ch;color:rgba(246,240,227,.86);font-size:1.08rem;margin-top:1.2rem}
+  .signature{margin-top:3.4rem;display:flex;flex-wrap:wrap;gap:1.4rem;align-items:center;
+    border:1px solid rgba(246,240,227,.16);border-radius:16px;padding:1.6rem 1.8rem;background:rgba(246,240,227,.04)}
+  .signature .no{font-family:var(--serif);font-size:3rem;color:var(--gold);line-height:1;font-weight:600}
+  .signature .tx b{display:block;font-family:var(--serif);font-size:1.25rem;color:var(--cream)}
+  .signature .tx span{color:var(--sage);font-size:.94rem}
+
+  /* gallery */
+  .gal{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:180px;gap:14px;margin-top:3rem}
+  .gal figure{position:relative;overflow:hidden;border-radius:14px;box-shadow:var(--shadow)}
+  .gal figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+  .gal figure:hover img{transform:scale(1.06)}
+  .gal figure figcaption{position:absolute;left:0;bottom:0;width:100%;padding:1rem;color:var(--cream);font-size:.78rem;
+    letter-spacing:.02em;background:linear-gradient(transparent,rgba(9,26,17,.8));opacity:0;transform:translateY(8px);transition:.4s}
+  .gal figure:hover figcaption{opacity:1;transform:none}
+  .g-a{grid-column:span 4;grid-row:span 2}
+  .g-b{grid-column:span 2;grid-row:span 2}
+  .g-c{grid-column:span 2}
+  .g-d{grid-column:span 2}
+  .g-e{grid-column:span 2}
+
+  /* amenities */
+  .amen{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:1.8rem 1.6rem;transition:transform .4s ease,box-shadow .4s ease}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .card .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--cream);color:var(--fairway-deep);margin-bottom:1.1rem}
+  .card .ic svg{width:24px;height:24px}
+  .card h3{font-family:var(--serif);font-weight:600;font-size:1.28rem;color:var(--pine)}
+  .card p{margin-top:.5rem;color:#42504700;color:#41504a;font-size:.98rem}
+
+  /* reviews */
+  .rev-top{display:flex;flex-wrap:wrap;gap:1.4rem;align-items:flex-end;justify-content:space-between}
+  .rating-badge{display:flex;align-items:center;gap:1rem}
+  .rating-badge .big{font-family:var(--serif);font-size:3.4rem;color:var(--gold);line-height:1;font-weight:600}
+  .rating-badge .stars{color:var(--gold);letter-spacing:.1em;font-size:1.1rem}
+  .rating-badge .sub{font-size:.82rem;color:#516057;letter-spacing:.02em}
+  .revs{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.6rem}
+  .rev{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:1.7rem 1.6rem;display:flex;flex-direction:column;gap:1rem}
+  .rev .q{color:var(--pine);font-size:1rem;line-height:1.55}
+  .rev .who{display:flex;align-items:center;gap:.8rem;margin-top:auto}
+  .rev .av{width:40px;height:40px;border-radius:50%;background:var(--fairway);color:var(--cream);display:grid;place-items:center;font-weight:700;font-family:var(--serif)}
+  .rev .who b{display:block;font-size:.92rem;color:var(--ink)}
+  .rev .who span{font-size:.74rem;color:#6a786f;letter-spacing:.02em}
+  .rev .st{color:var(--gold);font-size:.9rem;letter-spacing:.08em}
+
+  /* plan / hours / map */
+  .plan{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,4vw,3.4rem);align-items:stretch}
+  .hours{background:var(--pine);color:var(--cream);border-radius:18px;padding:clamp(1.8rem,3vw,2.6rem);box-shadow:var(--shadow)}
+  .hours h3{font-family:var(--serif);font-weight:500;font-size:1.7rem}
+  .hours .row2{display:flex;justify-content:space-between;padding:.72rem 0;border-bottom:1px solid rgba(246,240,227,.14);font-size:.98rem}
+  .hours .row2 span:first-child{color:var(--sage)}
+  .hours .row2.closed span:last-child{color:var(--gold-lite);font-weight:600}
+  .hours .note{margin-top:1.3rem;font-size:.86rem;color:rgba(246,240,227,.72);line-height:1.5}
+  .hours .callrow{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.7rem}
+  .mapcol{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);min-height:360px;position:relative;border:1px solid var(--line)}
+  .mapcol iframe{width:100%;height:100%;min-height:360px;border:0;filter:saturate(1.05)}
+  .addr{position:absolute;left:0;bottom:0;background:var(--paper);padding:1.1rem 1.3rem;max-width:80%;border-top-right-radius:16px}
+  .addr b{font-family:var(--serif);color:var(--pine)}
+  .addr p{font-size:.9rem;color:#4a584f;margin-top:.2rem}
+
+  /* CTA */
+  .cta{position:relative;background:var(--pine);color:var(--cream);overflow:hidden;text-align:center}
+  .cta .haze{position:absolute;inset:0;z-index:0}
+  .cta .wrap{position:relative;z-index:2;padding:clamp(4.5rem,10vh,7.5rem) 0}
+  .cta h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.3rem,6vw,4.4rem);line-height:1.02;letter-spacing:-.01em}
+  .cta p{max-width:46ch;margin:1.2rem auto 0;color:rgba(246,240,227,.86);font-size:1.1rem}
+  .cta .btns{margin-top:2.2rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+
+  /* footer */
+  footer{background:#0a1f15;color:rgba(246,240,227,.82);padding:3.4rem 0 6rem}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;align-items:start}
+  .foot .brand{color:var(--cream)}
+  .foot p{font-size:.9rem;margin-top:1rem;max-width:34ch;color:rgba(246,240,227,.66)}
+  .foot h4{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-lite);margin-bottom:1rem}
+  .foot a.fl{display:block;font-size:.94rem;padding:.28rem 0;color:rgba(246,240,227,.82);transition:color .2s}
+  .foot a.fl:hover{color:var(--gold)}
+  .foot .fine{grid-column:1/-1;margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid rgba(246,240,227,.12);
+    display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font-size:.78rem;color:rgba(246,240,227,.5)}
+
+  /* mobile sticky call bar */
+  .sticky-bar{position:fixed;left:0;bottom:0;width:100%;z-index:90;display:none;
+    grid-template-columns:1fr 1fr;background:var(--pine);border-top:1px solid rgba(246,240,227,.14)}
+  .sticky-bar a{padding:1rem;text-align:center;color:var(--cream);font-weight:600;font-size:.92rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+  .sticky-bar a:first-child{background:var(--gold);color:var(--pine)}
+
+  /* cursor */
+  .cursor{position:fixed;top:0;left:0;width:34px;height:34px;border:1.5px solid var(--gold);border-radius:50%;
+    pointer-events:none;z-index:150;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s,border-color .25s;mix-blend-mode:normal}
+  .cursor.big{width:64px;height:64px;background:rgba(201,162,75,.16);border-color:transparent}
+
+  @media(max-width:960px){
+    .story{grid-template-columns:1fr;gap:2.2rem}
+    .story .fig{aspect-ratio:16/11;order:-1}
+    .stat-grid{grid-template-columns:repeat(2,1fr);gap:1.6rem}
+    .amen{grid-template-columns:1fr 1fr}
+    .revs{grid-template-columns:1fr}
+    .plan{grid-template-columns:1fr}
+    .foot{grid-template-columns:1fr 1fr}
+    .gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:150px}
+    .g-a{grid-column:span 4}.g-b{grid-column:span 2}.g-c{grid-column:span 2}.g-d{grid-column:span 2}.g-e{grid-column:span 2}
+  }
+  @media(max-width:680px){
+    .nav-links{display:none}
+    .nav-mobcall{display:inline-flex}
+    header.nav{padding:.8rem 0}
+    .hero-inner{padding-top:6.5rem}
+    .hero-facts{gap:1.5rem}
+    .amen{grid-template-columns:1fr}
+    .foot{grid-template-columns:1fr}
+    .sticky-bar{display:grid}
+    footer{padding-bottom:5.2rem}
+    .cursor{display:none}
+    .scroll-cue{display:none}
+    .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:135px}
+    .g-a{grid-column:span 2;grid-row:span 2}.g-b{grid-column:span 2}.g-c{grid-column:span 1}.g-d{grid-column:span 1}.g-e{grid-column:span 2}
+    .signature{padding:1.3rem}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body class="lock">
+
+<div class="progress" id="progress"></div>
+
+<div id="pre">
+  <div class="mark">Sinton <b>Golf Course</b></div>
+  <div class="bar"><i id="preBar"></i></div>
+  <div class="num" id="preNum">00</div>
+</div>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap row">
+    <a href="#top" class="brand" aria-label="Sinton Golf Course home">
+      <span class="badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v14" stroke="#E7CD86" stroke-width="1.6" stroke-linecap="round"/><path d="M12 3l6 2.4-6 2.4V3z" fill="#E7CD86"/><ellipse cx="12" cy="19.5" rx="6.5" ry="2.2" fill="#7FA88C" opacity=".55"/><circle cx="12" cy="18" r="1.7" fill="#F6F0E3"/></svg>
+      </span>
+      <span class="bt"><strong>Sinton Golf Course</strong><span>Welder Park · Est. 1968</span></span>
+    </a>
+    <nav class="nav-links">
+      <a class="lk" href="#course">The Course</a>
+      <a class="lk" href="#gallery">Gallery</a>
+      <a class="lk" href="#amenities">Amenities</a>
+      <a class="lk" href="#plan">Plan a Round</a>
+      <a class="btn btn-gold" href="tel:+13613649013">Call Pro Shop</a>
+    </nav>
+    <a class="btn btn-gold nav-mobcall" href="tel:+13613649013" aria-label="Call the pro shop">Call</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="metadata" poster="assets/hero-aerial.jpg">
+    <source src="assets/hero-loop.mp4" type="video/mp4" />
+  </video>
+  <div class="poster" id="heroPoster" style="background-image:url('assets/hero-aerial.jpg')"></div>
+  <div class="hero-scrim"></div>
+  <canvas class="hero-motes" id="motes"></canvas>
+  <div class="hero-inner">
+    <div class="wrap">
+      <span class="kick"><span class="dot"></span> Sinton, Texas · San Patricio County</span>
+      <h1 class="hero-h" id="heroH">
+        <span class="ln"><span class="w">Wide</span> <span class="w">fairways.</span></span>
+        <span class="ln"><span class="w grad-text">Long</span> <span class="w grad-text">shadows.</span></span>
+        <span class="ln"><span class="w">Real</span> <span class="w">Texas</span> <span class="w">golf.</span></span>
+      </h1>
+      <p class="hero-sub">Eighteen holes under the live oaks of Welder Park. Walk up, pay, drop your ball in the spindle — and play. No tee time needed since 1968.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="tel:+13613649013">Reserve a Tee Time · (361) 364-9013</a>
+        <a class="btn btn-ghost" href="#course">Explore the Course</a>
+      </div>
+      <div class="hero-facts">
+        <div class="f"><b>18</b><span>Holes · Par 72</span></div>
+        <div class="f"><b>6,572</b><span>Yards from the tips</span></div>
+        <div class="f"><b>300+</b><span>Acres · Welder Park</span></div>
+        <div class="f"><b>1968</b><span>Est. · Public muni</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll<i></i></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="track" id="mtrack">
+    <span>18 Holes <span class="star">✦</span> Par 72 <span class="star">✦</span> Est. 1968 <span class="star">✦</span> Welder Park <span class="star">✦</span> No Tee Time Needed <span class="star">✦</span> Public &amp; Walkable <span class="star">✦</span> Live Oaks &amp; Coastal Wind <span class="star">✦</span></span>
+    <span>18 Holes <span class="star">✦</span> Par 72 <span class="star">✦</span> Est. 1968 <span class="star">✦</span> Welder Park <span class="star">✦</span> No Tee Time Needed <span class="star">✦</span> Public &amp; Walkable <span class="star">✦</span> Live Oaks &amp; Coastal Wind <span class="star">✦</span></span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="band paper" id="story">
+  <div class="wrap story">
+    <div class="copy reveal">
+      <span class="eyebrow">Our Story</span>
+      <h2 class="serif" style="font-size:clamp(2rem,4.4vw,3.2rem);font-weight:500;line-height:1.03;margin-top:.7rem;color:var(--pine)">A hometown course, worth the drive.</h2>
+      <p class="lede" style="margin-top:1.2rem">Since 1968, Sinton Golf Course has been the kind of place where you show up, drop your ball in the spindle, and play when it drops to the bottom.</p>
+      <p>Set inside Rob &amp; Bessie Welder Park just north of town on Highway 181, the course rolls across open coastal-plain fairways stitched with mature live oaks and mesquite. There are no bunkers to hide behind out here — the wind off the gulf is the defense, and it keeps even scratch players honest.</p>
+      <p>Under a new board of directors, the course is in the middle of a real renovation: fresh turf, new carts, and renewed greens. It's a friendly, unhurried muni that plays like a private track and welcomes everyone from first-timers to lifelong members.</p>
+      <div class="hero-cta" style="margin-top:1.8rem">
+        <a class="btn btn-solid" href="#plan">Plan Your Round</a>
+      </div>
+    </div>
+    <div class="fig reveal">
+      <span class="est">Est. 1968</span>
+      <img src="assets/real-course-view.jpg" alt="Morning light and mist through the live oaks at Sinton Golf Course" loading="lazy" />
+      <div class="cap">Golden-hour mist through the oaks — a Sinton morning.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE STATS -->
+<section class="band course" id="course">
+  <canvas class="glcanvas" id="gl"></canvas>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow on-dark">The Course</span>
+      <h2 style="color:var(--cream)">Eighteen honest holes,<br><span class="grad-text">shaped by the wind.</span></h2>
+      <p class="lede2">Par 72 across three tee sets. Small, true greens. Wide, forgiving fairways lined with oaks. Every par 5 from the middle tees plays under 500 yards — but let that coastal breeze come up, and the whole course changes character.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat reveal"><b data-count="18">0</b><span>Holes · Parkland</span></div>
+      <div class="stat reveal"><b data-count="72">0</b><span>Par</span></div>
+      <div class="stat reveal"><b><em data-count="6572">0</em></b><span>Yards · Blue tees</span></div>
+      <div class="stat reveal"><b data-count="71" data-dec="1">0</b><span>Course rating · 116 slope</span></div>
+    </div>
+    <div class="signature reveal">
+      <div class="no">18</div>
+      <div class="tx">
+        <b>The Signature — Hole 18</b>
+        <span>A 455-yard par 4 and the No. 1 handicap. A closing hole that asks for your two best swings of the day.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="band cream" id="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">On the Grounds</span>
+      <h2>The course, in its own light.</h2>
+      <p>Real photos from around the property — fairways, greens, water, and the oaks that make Sinton feel like home.</p>
+    </div>
+    <div class="gal">
+      <figure class="g-a reveal"><img src="assets/hero-aerial.jpg" alt="Aerial view of Sinton Golf Course fairways and pond at golden hour" loading="lazy" /><figcaption>Sunset over the back nine and the water hole.</figcaption></figure>
+      <figure class="g-b reveal"><img src="assets/real-water-hole.jpg" alt="Green with flag and pond in play at Sinton Golf Course" loading="lazy" /><figcaption>Water guarding an approach — bring an extra ball.</figcaption></figure>
+      <figure class="g-c reveal"><img src="assets/real-open-fairway.jpg" alt="Sun breaking through the oaks over a Sinton fairway" loading="lazy" /><figcaption>First light through the mesquite.</figcaption></figure>
+      <figure class="g-d reveal"><img src="assets/real-sunny-hole.jpg" alt="Manicured green framed by trees at Sinton Golf Course" loading="lazy" /><figcaption>A tucked green framed by the tree line.</figcaption></figure>
+      <figure class="g-e reveal"><img src="assets/real-open-fairway.jpg" alt="Wide open Sinton fairway with long morning shadows" loading="lazy" style="object-position:center 40%" /><figcaption>Wide, walkable, and honest all the way out.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="band paper" id="amenities">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">At the Turn</span>
+      <h2>Everything you need for the round.</h2>
+      <p>A friendly pro shop, room to warm up, and a walk-up welcome. Come as you are — Sinton keeps it simple.</p>
+    </div>
+    <div class="amen">
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9l8-5 8 5v10a1 1 0 01-1 1H5a1 1 0 01-1-1V9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 20v-6h6v6" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <h3>Pro Shop</h3>
+        <p>Check in, pick up a sleeve of balls, grab a snack and a cold drink. The staff will get you out and playing — no fuss.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 4l5 2-5 2V4z" fill="currentColor"/><path d="M4 21c2-3 5-4 8-4s6 1 8 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Driving Range</h3>
+        <p>Loosen up before the first tee on the practice range, then dial in your touch on the chipping and putting green.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="10" width="14" height="6" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="7" cy="18" r="2" stroke="currentColor" stroke-width="1.6"/><circle cx="15" cy="18" r="2" stroke="currentColor" stroke-width="1.6"/><path d="M17 12h3l1 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>New Carts</h3>
+        <p>Ride the property in the fresh fleet of carts, or walk it — Sinton is one of the most walkable courses on the coastal bend.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 1114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="11" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <h3>Welder Park</h3>
+        <p>The course sits inside 300+ acres of Rob &amp; Bessie Welder Park — fishing, camping, and picnic grounds right next door.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Walk-Up Play</h3>
+        <p>No booking, no waiting on a website. Drop your ball in the spindle and you're in the rotation — the way it's always been.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M6 21V5a2 2 0 012-2h6l4 4v14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8h4M9 12h6M9 16h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Memberships</h3>
+        <p>Family and single memberships available, with quarterly payment options. Ask the pro shop about joining the club.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="band cream" id="reviews">
+  <div class="wrap">
+    <div class="rev-top reveal">
+      <div class="sec-head" style="margin:0">
+        <span class="eyebrow">From the Regulars</span>
+        <h2>Loved by the players who know it.</h2>
+      </div>
+      <div class="rating-badge">
+        <div class="big">3.9</div>
+        <div>
+          <div class="stars">★★★★☆</div>
+          <div class="sub">81 Google reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="revs">
+      <div class="rev reveal">
+        <div class="st">★★★★★</div>
+        <p class="q">"Love this golf course. Very affordable, no tee time needed. Just show up, pay, put your ball in the spindle and when it drops to the bottom it's your turn. Greens are always in great condition. Don't be fooled by the layout — it can be a challenge when the wind picks up. Always a good time."</p>
+        <div class="who"><span class="av">P</span><div><b>Pat</b><span>Google review</span></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="st">★★★★★</div>
+        <p class="q">"Last week I was there for a HS tournament. The work they're doing is showing and it was a far better course. Thanks Sinton Muni / City of Sinton for hosting the tournament."</p>
+        <div class="who"><span class="av">C</span><div><b>Craig</b><span>Google review</span></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="st">★★★★☆</div>
+        <p class="q">"They are working on the course, looking to be in better shape than before. I'm glad to see they are working to make it better — and the new golf carts are a plus."</p>
+        <div class="who"><span class="av">T</span><div><b>Tony</b><span>Google review</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN / HOURS / MAP -->
+<section class="band paper" id="plan">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:2.6rem">
+      <span class="eyebrow">Plan Your Round</span>
+      <h2>Find us in Welder Park.</h2>
+      <p>Two and a half miles north of Sinton on Highway 181. Open early, open late — just not on Tuesdays.</p>
+    </div>
+    <div class="plan">
+      <div class="hours reveal">
+        <h3 class="serif">Hours &amp; Rates</h3>
+        <div style="margin-top:1.2rem">
+          <div class="row2"><span>Monday</span><span>5:00 AM – 9:00 PM</span></div>
+          <div class="row2 closed"><span>Tuesday</span><span>Closed</span></div>
+          <div class="row2"><span>Wednesday</span><span>5:00 AM – 9:00 PM</span></div>
+          <div class="row2"><span>Thursday</span><span>5:00 AM – 9:00 PM</span></div>
+          <div class="row2"><span>Friday</span><span>5:00 AM – 9:00 PM</span></div>
+          <div class="row2"><span>Saturday</span><span>5:00 AM – 9:00 PM</span></div>
+          <div class="row2"><span>Sunday</span><span>5:00 AM – 9:00 PM</span></div>
+        </div>
+        <p class="note">Green fees, cart rental, and membership rates change seasonally — call the pro shop for today's pricing and any tournament closures. Walk-up play only; no online tee times.</p>
+        <div class="callrow">
+          <a class="btn btn-gold" href="tel:+13613649013">Call (361) 364-9013</a>
+          <a class="btn btn-ghost" href="mailto:sintongolfshop@outlook.com">Email the Shop</a>
+        </div>
+      </div>
+      <div class="mapcol reveal">
+        <iframe title="Map to Sinton Golf Course" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Sinton%20Municipal%20Golf%20Course%2C%20Sinton%2C%20TX%2078387&output=embed"></iframe>
+        <div class="addr">
+          <b>Sinton Golf Course</b>
+          <p>13698 Rob &amp; Bessie Park Circle<br>Sinton, TX 78387</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <canvas class="haze" id="haze"></canvas>
+  <div class="wrap">
+    <span class="eyebrow on-dark reveal" style="display:block">Come Play Sinton</span>
+    <h2 class="reveal">Your next round<br>is <span class="grad-text">already waiting.</span></h2>
+    <p class="reveal">Grab the clubs, point the truck north on 181, and come see why folks keep driving out to Welder Park. We'll be here — spindle's ready.</p>
+    <div class="btns reveal">
+      <a class="btn btn-gold" href="tel:+13613649013">Call the Pro Shop</a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps?q=Sinton+Municipal+Golf+Course,+Sinton,+TX+78387" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a href="#top" class="brand" style="color:var(--cream)">
+        <span class="badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v14" stroke="#E7CD86" stroke-width="1.6" stroke-linecap="round"/><path d="M12 3l6 2.4-6 2.4V3z" fill="#E7CD86"/><ellipse cx="12" cy="19.5" rx="6.5" ry="2.2" fill="#7FA88C" opacity=".55"/><circle cx="12" cy="18" r="1.7" fill="#F6F0E3"/></svg>
+        </span>
+        <span class="bt"><strong>Sinton Golf Course</strong><span>Welder Park · Est. 1968</span></span>
+      </a>
+      <p>An 18-hole public course under the live oaks of Rob &amp; Bessie Welder Park. Sinton, Texas.</p>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <a class="fl" href="https://www.google.com/maps?q=Sinton+Municipal+Golf+Course,+Sinton,+TX+78387" target="_blank" rel="noopener">13698 Rob &amp; Bessie Park Circle</a>
+      <a class="fl" href="https://www.google.com/maps?q=Sinton+Municipal+Golf+Course,+Sinton,+TX+78387" target="_blank" rel="noopener">Sinton, TX 78387</a>
+      <a class="fl" href="#plan">Hours &amp; Rates</a>
+    </div>
+    <div>
+      <h4>Reach Us</h4>
+      <a class="fl" href="tel:+13613649013">(361) 364-9013</a>
+      <a class="fl" href="mailto:sintongolfshop@outlook.com">sintongolfshop@outlook.com</a>
+      <a class="fl" href="https://www.facebook.com/SintonGolfShop/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <div class="fine">
+      <span>© <span id="yr"></span> Sinton Golf Course · Sinton Municipal Golf Association</span>
+      <span>18 holes · Par 72 · Public · No tee time needed</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="sticky-bar">
+  <a href="tel:+13613649013">📞 Call Pro Shop</a>
+  <a href="https://www.google.com/maps?q=Sinton+Municipal+Golf+Course,+Sinton,+TX+78387" target="_blank" rel="noopener">📍 Directions</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var DESK = window.matchMedia && window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+  var MOB = window.innerWidth < 880;
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  /* ---------- PRELOADER ---------- */
+  var pre=document.getElementById("pre"), preBar=document.getElementById("preBar"), preNum=document.getElementById("preNum");
+  var started=false;
+  function boot(){
+    if(started) return; started=true;
+    document.body.classList.remove("lock");
+    pre.classList.add("done");
+    setTimeout(function(){ if(pre&&pre.parentNode) pre.parentNode.removeChild(pre); },800);
+    initMotion();
+  }
+  var p=0;
+  var pv=setInterval(function(){
+    p += Math.random()*16+6; if(p>100)p=100;
+    preBar.style.width=p+"%"; preNum.textContent=("0"+Math.floor(p)).slice(-2);
+    if(p>=100){ clearInterval(pv); setTimeout(boot,260); }
+  },110);
+  setTimeout(boot,3600); // hard safety
+  window.addEventListener("load",function(){ setTimeout(function(){ if(p<100){p=100;preBar.style.width="100%";preNum.textContent="100";} },200); });
+
+  /* ---------- LENIS + GSAP ticker ---------- */
+  var lenis=null;
+  function initMotion(){
+    if(window.gsap) gsap.registerPlugin(ScrollTrigger);
+    if(window.Lenis && !RM){
+      lenis=new Lenis({duration:1.1,smoothWheel:true,smoothTouch:false,touchMultiplier:1.6});
+      if(window.gsap){
+        lenis.on("scroll",ScrollTrigger.update);
+        gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+        gsap.ticker.lagSmoothing(0);
+      } else {
+        function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+      }
+    }
+    // anchored scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener("click",function(e){
+        var id=a.getAttribute("href"); if(id.length<2) return;
+        var el=document.querySelector(id); if(!el) return; e.preventDefault();
+        if(lenis) lenis.scrollTo(el,{offset:-70,duration:1.2});
+        else el.scrollIntoView({behavior:"smooth"});
+      });
+    });
+    buildReveals();
+    if(window.ScrollTrigger) ScrollTrigger.refresh();
+  }
+
+  /* ---------- REVEALS ---------- */
+  function buildReveals(){
+    if(!window.gsap){ document.querySelectorAll(".reveal").forEach(function(el){el.style.opacity=1;el.style.transform="none";}); }
+    else if(!RM){
+      // hero words
+      var words=document.querySelectorAll("#heroH .w");
+      gsap.set(words,{yPercent:120});
+      gsap.to(words,{yPercent:0,duration:1.1,ease:"power4.out",stagger:.08,delay:.15});
+      // generic reveals
+      gsap.utils.toArray(".reveal").forEach(function(el){
+        gsap.to(el,{opacity:1,y:0,duration:.9,ease:"power3.out",
+          scrollTrigger:{trigger:el,start:"top 86%",once:true}});
+      });
+      // count-ups
+      gsap.utils.toArray("[data-count]").forEach(function(el){
+        var end=parseFloat(el.getAttribute("data-count")), dec=el.getAttribute("data-dec")?1:0;
+        var o={v:0};
+        ScrollTrigger.create({trigger:el,start:"top 90%",once:true,onEnter:function(){
+          gsap.to(o,{v:end,duration:1.6,ease:"power2.out",onUpdate:function(){
+            el.textContent = dec ? o.v.toFixed(1) : Math.floor(o.v).toLocaleString("en-US");
+          }});
+        }});
+      });
+    } else {
+      document.querySelectorAll(".reveal").forEach(function(el){el.style.opacity=1;el.style.transform="none";});
+      document.querySelectorAll("[data-count]").forEach(function(el){
+        var d=el.getAttribute("data-dec"); var n=parseFloat(el.getAttribute("data-count"));
+        el.textContent = d ? n.toFixed(1) : n.toLocaleString("en-US");
+      });
+    }
+  }
+
+  /* ---------- 6s SAFETY NET (crawler / screenshot) ---------- */
+  setTimeout(function(){
+    document.querySelectorAll(".reveal").forEach(function(el){ el.style.opacity=1; el.style.transform="none"; });
+    document.querySelectorAll("#heroH .w").forEach(function(el){ el.style.transform="none"; });
+    document.querySelectorAll("[data-count]").forEach(function(el){
+      if(el.textContent==="0"){ var d=el.getAttribute("data-dec"); var n=parseFloat(el.getAttribute("data-count")); el.textContent=d?n.toFixed(1):n.toLocaleString("en-US"); }
+    });
+  },6000);
+
+  /* ---------- NAV scroll state + progress ---------- */
+  var nav=document.getElementById("nav"), prog=document.getElementById("progress");
+  function onScroll(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    if(y>60) nav.classList.add("scrolled"); else nav.classList.remove("scrolled");
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.transform="scaleX("+(h>0?y/h:0)+")";
+  }
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+
+  /* nav becomes solid over light sections */
+  var navBgOn=false;
+  function navBg(){
+    var t=document.getElementById("story").getBoundingClientRect().top;
+    var on=t<70;
+    if(on&&!navBgOn){nav.style.background="rgba(253,251,245,.92)";nav.style.boxShadow="0 6px 30px -18px rgba(15,42,29,.5)";nav.style.backdropFilter="blur(10px)";navBgOn=true;}
+    else if(!on&&navBgOn){nav.style.background="";nav.style.boxShadow="";nav.style.backdropFilter="";navBgOn=false;}
+  }
+  window.addEventListener("scroll",navBg,{passive:true}); navBg();
+
+  /* ---------- MARQUEE drift ---------- */
+  (function(){
+    var tr=document.getElementById("mtrack"); if(!tr||RM) return;
+    var x=0;
+    function step(){ x-=0.55; var w=tr.scrollWidth/2; if(-x>=w)x=0; tr.style.transform="translateX("+x+"px)"; requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  })();
+
+  /* ---------- HERO video fallback ---------- */
+  (function(){
+    var v=document.getElementById("heroVid"), poster=document.getElementById("heroPoster");
+    if(!v) return;
+    function showPoster(){ v.style.display="none"; poster.style.display="block"; }
+    function hidePoster(){ poster.style.display="none"; }
+    v.addEventListener("playing",hidePoster);
+    v.addEventListener("loadeddata",function(){ if(v.readyState>=2) hidePoster(); });
+    v.addEventListener("error",showPoster);
+    // if no source resolves within 2.5s, keep poster (already visible under video)
+    var pr=v.play&&v.play(); if(pr&&pr.catch) pr.catch(function(){});
+    setTimeout(function(){ if(v.readyState<2) showPoster(); },2600);
+  })();
+
+  /* ---------- HERO MOTES (light 2D canvas) ---------- */
+  (function(){
+    if(RM) return;
+    var c=document.getElementById("motes"); if(!c) return;
+    var ctx=c.getContext("2d"), dpr=Math.min(window.devicePixelRatio||1,1.5), W,H,motes=[],raf,vis=true;
+    var COUNT = MOB?14:34;
+    function size(){ W=c.width=c.offsetWidth*dpr; H=c.height=c.offsetHeight*dpr; }
+    function mk(){ return {x:Math.random()*W,y:Math.random()*H,r:(Math.random()*1.8+0.5)*dpr,
+      vx:(Math.random()-.5)*0.18*dpr,vy:(-Math.random()*0.28-0.05)*dpr,a:Math.random()*0.5+0.1,tw:Math.random()*0.02+0.005,ph:Math.random()*6}; }
+    function init(){ size(); motes=[]; for(var i=0;i<COUNT;i++)motes.push(mk()); }
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<motes.length;i++){ var m=motes[i]; m.x+=m.vx; m.y+=m.vy; m.ph+=m.tw;
+        if(m.y<-10){m.y=H+10;m.x=Math.random()*W;} if(m.x<-10)m.x=W+10; if(m.x>W+10)m.x=-10;
+        var al=m.a*(0.6+0.4*Math.sin(m.ph));
+        ctx.beginPath(); ctx.arc(m.x,m.y,m.r,0,6.283);
+        ctx.fillStyle="rgba(231,205,134,"+al.toFixed(3)+")"; ctx.shadowBlur=6*dpr; ctx.shadowColor="rgba(231,205,134,.5)"; ctx.fill();
+      }
+      ctx.shadowBlur=0;
+      if(vis) raf=requestAnimationFrame(draw);
+    }
+    init(); draw();
+    window.addEventListener("resize",init);
+    var io=new IntersectionObserver(function(e){ vis=e[0].isIntersecting; if(vis){ if(!raf)draw(); } else { cancelAnimationFrame(raf); raf=null; } });
+    io.observe(document.querySelector(".hero"));
+  })();
+
+  /* ---------- WEBGL GOLDEN-HAZE SHOWPIECE (Three.js) ---------- */
+  function haze(canvasId, host){
+    if(RM || !window.THREE) return;
+    var canvas=document.getElementById(canvasId); if(!canvas) return;
+    var renderer,scene,cam,mat,mesh,rafH=null,running=false,clock;
+    try{
+      renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:false});
+    }catch(e){ return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, MOB?1:1.5));
+    scene=new THREE.Scene(); cam=new THREE.OrthographicCamera(-1,1,1,-1,0,1); clock=new THREE.Clock();
+    var uni={ u_time:{value:0}, u_res:{value:new THREE.Vector2(1,1)} };
+    mat=new THREE.ShaderMaterial({
+      uniforms:uni, transparent:true,
+      vertexShader:"varying vec2 v;void main(){v=uv;gl_Position=vec4(position,1.0);}",
+      fragmentShader:[
+        "precision highp float;varying vec2 v;uniform float u_time;uniform vec2 u_res;",
+        "float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}",
+        "float noise(vec2 p){vec2 i=floor(p),f=fract(p);float a=hash(i),b=hash(i+vec2(1,0)),c=hash(i+vec2(0,1)),d=hash(i+vec2(1,1));vec2 u=f*f*(3.0-2.0*f);return mix(a,b,u.x)+(c-a)*u.y*(1.0-u.x)+(d-b)*u.x*u.y;}",
+        "float fbm(vec2 p){float s=0.0,a=0.5;for(int i=0;i<5;i++){s+=a*noise(p);p*=2.02;a*=0.5;}return s;}",
+        "void main(){vec2 uv=v;float asp=u_res.x/max(u_res.y,1.0);vec2 p=vec2(uv.x*asp,uv.y);",
+        "float t=u_time*0.03;",
+        "float f=fbm(p*2.6+vec2(t,t*0.4));f+=0.5*fbm(p*5.0-vec2(t*0.6,t));",
+        "vec3 pine=vec3(0.055,0.16,0.11);vec3 fair=vec3(0.11,0.36,0.22);vec3 gold=vec3(0.79,0.63,0.29);",
+        "vec3 col=mix(pine,fair,smoothstep(0.2,0.9,f));",
+        "float glow=smoothstep(0.55,1.05,f+uv.y*0.35);col=mix(col,gold,glow*0.55);",
+        "float sun=smoothstep(0.85,0.0,length(uv-vec2(0.12,0.9)));col+=gold*sun*0.35;",
+        "col*= 0.82+0.18*fbm(p*8.0+t);",
+        "gl_FragColor=vec4(col,0.92);}"
+      ].join("\n")
+    });
+    mesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),mat); scene.add(mesh);
+    function resize(){ var w=host.clientWidth,h=host.clientHeight; renderer.setSize(w,h,false); uni.u_res.value.set(w,h); }
+    resize(); window.addEventListener("resize",resize);
+    function loop(){ if(!running)return; uni.u_time.value=clock.getElapsedTime(); renderer.render(scene,cam); rafH=requestAnimationFrame(loop); }
+    function start(){ if(running)return; running=true; clock.start(); loop(); }
+    function stop(){ running=false; if(rafH)cancelAnimationFrame(rafH); rafH=null; }
+    var io=new IntersectionObserver(function(e){ e[0].isIntersecting?start():stop(); },{threshold:.02});
+    io.observe(host);
+  }
+  // init webgl after boot so canvases have size
+  setTimeout(function(){
+    haze("gl", document.getElementById("course"));
+    haze("haze", document.querySelector(".cta"));
+  }, 400);
+
+  /* ---------- CURSOR + MAGNETIC (desktop) ---------- */
+  if(DESK && !RM){
+    var cur=document.getElementById("cursor"), cx=0,cy=0,tx=0,ty=0;
+    document.addEventListener("mousemove",function(e){ tx=e.clientX; ty=e.clientY; });
+    (function cl(){ cx+=(tx-cx)*.2; cy+=(ty-cy)*.2; cur.style.transform="translate("+cx+"px,"+cy+"px) translate(-50%,-50%)"; requestAnimationFrame(cl); })();
+    document.querySelectorAll("a,button,.card,.gal figure").forEach(function(el){
+      el.addEventListener("mouseenter",function(){cur.classList.add("big");});
+      el.addEventListener("mouseleave",function(){cur.classList.remove("big");});
+    });
+    document.querySelectorAll(".btn").forEach(function(b){
+      b.addEventListener("mousemove",function(e){ var r=b.getBoundingClientRect(); var mx=e.clientX-r.left-r.width/2, my=e.clientY-r.top-r.height/2;
+        b.style.transform="translate("+mx*0.22+"px,"+my*0.3+"px)"; });
+      b.addEventListener("mouseleave",function(){ b.style.transform=""; });
+    });
+  }
+})();
+</script>
+</body>
+</html>

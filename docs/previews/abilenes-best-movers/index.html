@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<!--
+  Abilene's Best Movers — draft preview by Turnkey Web
+  Art direction: bold West-Texas logistics. Split-editorial hero (NOT floating cards),
+  Archivo + Inter, navy #16263F + Texas amber #E8A23D on warm bone.
+  Signature moment: a scroll-drawn "door-to-door route" line in the process section.
+  REAL DATA: name + phone (325) 305-3502 [HubSpot/CRM canonical] + Abilene, TX + movers.
+  No fabricated address/hours/reviews — links to the real Yelp page for reviews.
+-->
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Abilene's Best Movers — Local & Long-Distance Movers in Abilene, TX</title>
+<meta name="description" content="Abilene's Best Movers is a locally owned moving company serving Abilene and the Big Country. Careful, on-time crews for home, apartment, and office moves — packing, loading, and heavy items. Call (325) 305-3502 for a free quote." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/abilenes-best-movers/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Abilene's Best Movers — Movers in Abilene, TX" />
+<meta property="og:description" content="Locally owned movers serving Abilene & the Big Country. Careful, on-time crews. Call (325) 305-3502 for a free quote." />
+<meta property="og:url" content="https://turnkeyweb.org/previews/abilenes-best-movers/" />
+<meta name="theme-color" content="#16263F" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MovingCompany",
+  "name": "Abilene's Best Movers",
+  "telephone": "+1-325-305-3502",
+  "url": "https://turnkeyweb.org/previews/abilenes-best-movers/",
+  "image": "https://turnkeyweb.org/previews/abilenes-best-movers/assets/hero.jpg",
+  "priceRange": "$$",
+  "address": { "@type": "PostalAddress", "addressLocality": "Abilene", "addressRegion": "TX", "addressCountry": "US" },
+  "areaServed": [
+    { "@type": "City", "name": "Abilene" },
+    { "@type": "City", "name": "Tye" },
+    { "@type": "City", "name": "Merkel" },
+    { "@type": "City", "name": "Clyde" },
+    { "@type": "City", "name": "Tuscola" },
+    { "@type": "City", "name": "Buffalo Gap" },
+    { "@type": "AdministrativeArea", "name": "Big Country, West Texas" }
+  ],
+  "knowsAbout": ["Local moving","Apartment moves","Packing services","Loading and unloading","Heavy and specialty item moving","Office and commercial moving"],
+  "sameAs": ["https://www.yelp.com/biz/abilenes-best-movers-abilene"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      bone:"#F4EFE6", paper:"#FBF8F1", ink:"#11151C",
+      navy:"#16263F", navy2:"#1F3A5F", amber:"#E8A23D", amberD:"#CE8520",
+      clay:"#C75D3A", steel:"#5E6B78", line:"#E3DACB"
+    },
+    fontFamily: { display:["Archivo","sans-serif"], body:["Inter","sans-serif"] }
+  }}
+}
+</script>
+
+<style>
+  html,body{background:#F4EFE6;color:#11151C;font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}
+  .display{font-family:Archivo,sans-serif}
+  ::selection{background:#E8A23D;color:#11151C}
+
+  /* gradient/amber shimmer on accent words */
+  .grad{background:linear-gradient(95deg,#E8A23D,#CE8520,#E8A23D);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 8s linear infinite}
+  @keyframes shimmer{to{background-position:220% center}}
+
+  /* ambient blobs */
+  .blob{position:absolute;border-radius:50%;filter:blur(85px);opacity:.35;pointer-events:none;will-change:transform}
+  .blob-a{width:520px;height:520px;background:radial-gradient(circle,#E8A23D,transparent 62%);animation:drift1 24s ease-in-out infinite}
+  .blob-b{width:560px;height:560px;background:radial-gradient(circle,#1F3A5F,transparent 62%);animation:drift2 28s ease-in-out infinite}
+  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-32px) scale(1.08)}}
+  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-36px,30px) scale(1.07)}}
+
+  /* grain */
+  .grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+    background-image:radial-gradient(#000 1px,transparent 1px);background-size:3px 3px}
+
+  /* buttons */
+  .btn{position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,filter .4s}
+  .btn:hover{transform:translateY(-3px);filter:brightness(1.04)}
+  .btn::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-18deg);transition:left .9s cubic-bezier(.2,.7,.2,1)}
+  .btn:hover::after{left:130%}
+
+  /* nav underline grow */
+  .ul{position:relative}
+  .ul::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:linear-gradient(90deg,#E8A23D,#CE8520);transition:width .45s cubic-bezier(.2,.7,.2,1)}
+  .ul:hover::after{width:100%}
+
+  /* service cards */
+  .card{position:relative;overflow:hidden;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s,border-color .5s}
+  .card::before{content:"";position:absolute;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,#E8A23D,#C75D3A);transition:width .6s cubic-bezier(.2,.7,.2,1)}
+  .card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -28px rgba(17,21,28,.45);border-color:#E8A23D}
+  .card:hover::before{width:100%}
+  .card:hover .ico{transform:rotate(-7deg) scale(1.07);background:#16263F;color:#E8A23D}
+  .ico{transition:transform .5s cubic-bezier(.2,.7,.2,1),background .5s,color .5s}
+
+  /* marquee */
+  .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+  .mtrack{display:flex;gap:2.6rem;width:max-content;animation:scrollX 34s linear infinite}
+  .marquee:hover .mtrack{animation-play-state:paused}
+  @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* clip reveal img */
+  .clip{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s cubic-bezier(.16,1,.3,1)}
+  .clip.in{clip-path:inset(0 0 0 0)}
+
+  /* route dots pulse */
+  .pulse{animation:pulse 2.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.86)}}
+
+  [data-reveal]{opacity:0;transform:translateY(34px)}
+  .route-path{stroke-dasharray:1;stroke-dashoffset:1}
+  .hero-img{filter:saturate(1.04) contrast(1.03)}
+
+  /* preloader */
+  body.loading{overflow:hidden}
+  .pl-grain{background-image:radial-gradient(#fff 1px,transparent 1px);background-size:3px 3px;mix-blend-mode:overlay;pointer-events:none}
+  #preload .pl-mark{animation:plPop .7s cubic-bezier(.2,.8,.2,1) both, plFloat 2.6s ease-in-out 0.7s infinite}
+  @keyframes plPop{0%{opacity:0;transform:translateY(10px) scale(.86)}100%{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes plFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  #preload.done{transform:translateY(-100%);transition:transform .9s cubic-bezier(.76,0,.24,1)}
+</style>
+</head>
+
+<body class="overflow-x-hidden">
+
+<!-- PRELOADER -->
+<div id="preload" class="fixed inset-0 z-[100] bg-navy text-bone grid place-items-center overflow-hidden">
+  <div class="pl-grain absolute inset-0 opacity-[.06]"></div>
+  <div class="relative text-center px-6">
+    <span class="pl-mark inline-block display font-900 text-navy bg-amber rounded-2xl px-5 py-3 leading-none text-3xl tracking-tight shadow-[0_18px_40px_-12px_rgba(232,162,61,.6)]">ABM</span>
+    <div class="pl-word mt-5 display font-800 text-bone text-lg tracking-tight">Abilene's Best Movers</div>
+    <div class="pl-sub mt-1 text-[11px] text-amber font-700 tracking-[.22em] uppercase">Loading your move</div>
+    <div class="mt-6 mx-auto h-[3px] w-44 rounded-full bg-bone/15 overflow-hidden">
+      <div id="plBar" class="h-full w-0 rounded-full bg-gradient-to-r from-amber to-amberD"></div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div id="navbar" class="mt-3 flex items-center justify-between rounded-2xl border border-white/10 bg-navy/85 backdrop-blur-md px-4 sm:px-5 py-3 transition-all duration-300">
+      <a href="#top" class="flex items-center gap-3">
+        <span class="display font-900 text-navy bg-amber rounded-lg px-2.5 py-1.5 leading-none text-lg tracking-tight">ABM</span>
+        <span class="leading-tight">
+          <span class="block display font-800 text-bone text-[15px] tracking-tight">Abilene's Best Movers</span>
+          <span class="block text-[11px] text-amber font-600 tracking-wide uppercase">Abilene &amp; the Big Country</span>
+        </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-[13px] font-600 text-bone/80">
+        <a href="#services" class="ul hover:text-bone">Services</a>
+        <a href="#how" class="ul hover:text-bone">How it works</a>
+        <a href="#why" class="ul hover:text-bone">Why us</a>
+        <a href="#area" class="ul hover:text-bone">Service area</a>
+      </nav>
+      <div class="flex items-center gap-2.5">
+        <a href="#quote" class="hidden sm:inline-flex btn rounded-xl border border-amber/60 text-amber font-700 text-[13px] px-4 py-2.5 hover:bg-amber/10">Free quote</a>
+        <a href="tel:+13253053502" class="btn inline-flex items-center gap-2 rounded-xl bg-amber text-navy font-800 text-[13px] px-4 py-2.5">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="hidden xs:inline">(325) 305-3502</span><span class="xs:hidden">Call</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO (split editorial) -->
+<section id="top" class="relative grain bg-navy text-bone overflow-hidden">
+  <div class="blob blob-a -top-40 -left-32"></div>
+  <div class="grid lg:grid-cols-2 min-h-[100svh] lg:min-h-screen">
+    <!-- left copy panel -->
+    <div class="relative z-10 flex flex-col justify-center px-6 sm:px-12 lg:px-16 pt-32 pb-14 lg:py-32">
+      <span class="inline-flex items-center gap-2 self-start rounded-full border border-amber/40 bg-amber/10 text-amber text-[11.5px] font-700 tracking-[.14em] uppercase px-3.5 py-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber pulse"></span> Locally owned · Abilene, TX
+      </span>
+      <h1 data-split class="display font-900 leading-[.95] tracking-[-.02em] text-[clamp(2.7rem,7vw,5.3rem)] mt-6">
+        Big Country moves,<br><span class="grad">handled right.</span>
+      </h1>
+      <p class="mt-6 max-w-md text-bone/72 text-[17px] leading-relaxed">
+        Friendly, on-time crews that pack, load, and move your home or office across Abilene and the Big Country — and treat your belongings like our own.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-3.5">
+        <a href="tel:+13253053502" class="btn inline-flex items-center gap-2.5 rounded-xl bg-amber text-navy font-800 text-[15px] px-6 py-3.5">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (325) 305-3502
+        </a>
+        <a href="#quote" class="btn inline-flex items-center gap-2 rounded-xl border border-bone/25 text-bone font-700 text-[15px] px-6 py-3.5 hover:bg-bone/5">
+          Get a free quote
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-[13px] text-bone/65 font-500">
+        <span class="inline-flex items-center gap-2"><span class="text-amber">✓</span> Free, no-obligation quotes</span>
+        <span class="inline-flex items-center gap-2"><span class="text-amber">✓</span> Careful, on-time crews</span>
+        <span class="inline-flex items-center gap-2"><span class="text-amber">✓</span> Homes · apartments · offices</span>
+      </div>
+    </div>
+    <!-- right media — cinematic moving reel -->
+    <div class="relative min-h-[52vh] lg:min-h-full">
+      <video class="hero-img absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="auto" poster="assets/hero.jpg" aria-label="Abilene's Best Movers crew taping a box, loading the truck, and finishing a move at golden hour">
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-r from-navy via-navy/30 to-transparent lg:from-navy lg:via-navy/10"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent"></div>
+      <div class="absolute bottom-5 right-5 inline-flex items-center gap-2 rounded-xl bg-navy/70 backdrop-blur border border-white/10 px-4 py-2.5 text-[12px] text-bone/85 font-600">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber pulse"></span> Packed, loaded &amp; on the road
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="bg-ink text-bone py-4 border-y border-white/5">
+  <div class="marquee">
+    <div class="mtrack display font-700 text-[15px] tracking-wide uppercase items-center">
+      <span>Local Moves</span><span class="text-amber">◆</span>
+      <span class="text-amber italic">Packing &amp; Prep</span><span class="text-amber">◆</span>
+      <span>Apartment Moves</span><span class="text-amber">◆</span>
+      <span class="text-amber italic">Heavy &amp; Specialty Items</span><span class="text-amber">◆</span>
+      <span>Office Relocation</span><span class="text-amber">◆</span>
+      <span class="text-amber italic">Load &amp; Unload</span><span class="text-amber">◆</span>
+      <span>Junk &amp; Haul-Away</span><span class="text-amber">◆</span>
+      <!-- duplicate for seamless loop -->
+      <span>Local Moves</span><span class="text-amber">◆</span>
+      <span class="text-amber italic">Packing &amp; Prep</span><span class="text-amber">◆</span>
+      <span>Apartment Moves</span><span class="text-amber">◆</span>
+      <span class="text-amber italic">Heavy &amp; Specialty Items</span><span class="text-amber">◆</span>
+      <span>Office Relocation</span><span class="text-amber">◆</span>
+      <span class="text-amber italic">Load &amp; Unload</span><span class="text-amber">◆</span>
+      <span>Junk &amp; Haul-Away</span><span class="text-amber">◆</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="relative bg-bone py-24 sm:py-28">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <span class="text-clay font-800 text-[12px] tracking-[.18em] uppercase">What we move</span>
+      <h2 class="display font-800 text-ink text-[clamp(2rem,4.5vw,3.2rem)] leading-[1.02] tracking-[-.02em] mt-3">
+        Every kind of move, <span class="text-navy">done with care.</span>
+      </h2>
+      <p class="text-steel text-[16.5px] leading-relaxed mt-4">
+        From a one-bedroom apartment across town to a full office relocation, our crews bring the muscle, the pads, and the plan. Tell us what you're moving and we'll handle the rest.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+      <!-- card -->
+      <div class="card rounded-2xl bg-paper border border-line p-7" data-reveal>
+        <div class="ico inline-flex w-12 h-12 items-center justify-center rounded-xl bg-navy/8 text-navy">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5V21H3z"/><path d="M9 21v-6h6v6"/></svg>
+        </div>
+        <h3 class="display font-700 text-ink text-xl mt-5">Local &amp; Residential</h3>
+        <p class="text-steel text-[14.5px] leading-relaxed mt-2.5">House-to-house moves across Abilene and the Big Country, with furniture wrapped and floors protected.</p>
+      </div>
+      <div class="card rounded-2xl bg-paper border border-line p-7" data-reveal>
+        <div class="ico inline-flex w-12 h-12 items-center justify-center rounded-xl bg-navy/8 text-navy">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 3v18M15 7h1M15 11h1"/></svg>
+        </div>
+        <h3 class="display font-700 text-ink text-xl mt-5">Apartment &amp; Dorm</h3>
+        <p class="text-steel text-[14.5px] leading-relaxed mt-2.5">Stairs, elevators, tight hallways — no problem. Fast, careful moves for apartments and student housing.</p>
+      </div>
+      <div class="card rounded-2xl bg-paper border border-line p-7" data-reveal>
+        <div class="ico inline-flex w-12 h-12 items-center justify-center rounded-xl bg-navy/8 text-navy">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13v8H3z"/><path d="M16 10h3l2 3v2h-5z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+        </div>
+        <h3 class="display font-700 text-ink text-xl mt-5">Load &amp; Unload</h3>
+        <p class="text-steel text-[14.5px] leading-relaxed mt-2.5">Renting your own truck or container? Book the muscle only — we'll load it tight or unload it fast.</p>
+      </div>
+      <div class="card rounded-2xl bg-paper border border-line p-7" data-reveal>
+        <div class="ico inline-flex w-12 h-12 items-center justify-center rounded-xl bg-navy/8 text-navy">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg>
+        </div>
+        <h3 class="display font-700 text-ink text-xl mt-5">Packing &amp; Prep</h3>
+        <p class="text-steel text-[14.5px] leading-relaxed mt-2.5">Boxes, padding, and careful packing for the fragile stuff — so everything arrives the way it left.</p>
+      </div>
+      <div class="card rounded-2xl bg-paper border border-line p-7" data-reveal>
+        <div class="ico inline-flex w-12 h-12 items-center justify-center rounded-xl bg-navy/8 text-navy">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M5 7h14v13H5z"/><path d="M9 12h6M9 16h6"/></svg>
+        </div>
+        <h3 class="display font-700 text-ink text-xl mt-5">Heavy &amp; Specialty</h3>
+        <p class="text-steel text-[14.5px] leading-relaxed mt-2.5">Appliances, safes, and awkward, heavy pieces moved with the right gear and a steady hand.</p>
+      </div>
+      <div class="card rounded-2xl bg-paper border border-line p-7" data-reveal>
+        <div class="ico inline-flex w-12 h-12 items-center justify-center rounded-xl bg-navy/8 text-navy">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V8l8-4 8 4v12z"/><path d="M9 20v-6h6v6M9 9h2M13 9h2"/></svg>
+        </div>
+        <h3 class="display font-700 text-ink text-xl mt-5">Office &amp; Commercial</h3>
+        <p class="text-steel text-[14.5px] leading-relaxed mt-2.5">Move the business with minimal downtime — desks, files, and equipment relocated after hours when you need it.</p>
+      </div>
+    </div>
+
+    <p class="mt-9 text-steel text-[15px]" data-reveal>
+      Need something off this list — junk haul-away, in-home furniture rearranging, a single heavy item?
+      <a href="tel:+13253053502" class="text-navy font-700 ul">Just ask — call (325) 305-3502.</a>
+    </p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS — signature scroll-drawn route -->
+<section id="how" class="relative grain bg-navy text-bone py-24 sm:py-28 overflow-hidden">
+  <div class="blob blob-b top-10 -right-40"></div>
+  <div class="mx-auto max-w-6xl px-6 sm:px-8 relative z-10">
+    <div class="text-center max-w-2xl mx-auto" data-reveal>
+      <span class="text-amber font-800 text-[12px] tracking-[.18em] uppercase">From your door to your door</span>
+      <h2 class="display font-800 text-[clamp(2rem,4.5vw,3.2rem)] leading-[1.04] tracking-[-.02em] mt-3">
+        How your move <span class="grad">goes.</span>
+      </h2>
+      <p class="text-bone/65 text-[16.5px] leading-relaxed mt-4">Four simple steps. One call gets it moving.</p>
+    </div>
+
+    <!-- route -->
+    <div class="relative mt-16">
+      <!-- SVG path drawn on scroll (desktop) -->
+      <svg id="routeSvg" class="hidden md:block absolute left-0 right-0 top-0 w-full h-[68px] overflow-visible" viewBox="0 0 1000 80" preserveAspectRatio="none" fill="none">
+        <path d="M40 40 C 220 20, 300 60, 500 40 S 780 20, 960 40" stroke="#1F3A5F" stroke-width="3" stroke-linecap="round"/>
+        <path id="routeDraw" class="route-path" d="M40 40 C 220 20, 300 60, 500 40 S 780 20, 960 40" stroke="#E8A23D" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 9"/>
+      </svg>
+
+      <div class="grid md:grid-cols-4 gap-9 md:gap-5 relative">
+        <!-- step -->
+        <div class="text-center md:px-2" data-reveal>
+          <div class="mx-auto w-[68px] h-[68px] rounded-full bg-amber text-navy display font-900 text-2xl grid place-items-center ring-8 ring-navy relative z-10">01</div>
+          <h3 class="display font-700 text-lg mt-5">Free quote</h3>
+          <p class="text-bone/62 text-[14px] leading-relaxed mt-2">Call or text and tell us what you're moving. We give you a clear, honest price — no surprises.</p>
+        </div>
+        <div class="text-center md:px-2" data-reveal>
+          <div class="mx-auto w-[68px] h-[68px] rounded-full bg-bone text-navy display font-900 text-2xl grid place-items-center ring-8 ring-navy relative z-10">02</div>
+          <h3 class="display font-700 text-lg mt-5">We show up on time</h3>
+          <p class="text-bone/62 text-[14px] leading-relaxed mt-2">A friendly crew arrives ready to work — pads, dollies, and shrink wrap in hand.</p>
+        </div>
+        <div class="text-center md:px-2" data-reveal>
+          <div class="mx-auto w-[68px] h-[68px] rounded-full bg-bone text-navy display font-900 text-2xl grid place-items-center ring-8 ring-navy relative z-10">03</div>
+          <h3 class="display font-700 text-lg mt-5">Careful load &amp; haul</h3>
+          <p class="text-bone/62 text-[14px] leading-relaxed mt-2">Everything wrapped, loaded tight, and driven safely to the new place.</p>
+        </div>
+        <div class="text-center md:px-2" data-reveal>
+          <div class="mx-auto w-[68px] h-[68px] rounded-full bg-amber text-navy display font-900 text-2xl grid place-items-center ring-8 ring-navy relative z-10">04</div>
+          <h3 class="display font-700 text-lg mt-5">Settled in</h3>
+          <p class="text-bone/62 text-[14px] leading-relaxed mt-2">We place it where you want it. You start living — not lifting.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="relative bg-bone py-24 sm:py-28">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="relative" data-reveal>
+      <div class="overflow-hidden rounded-3xl">
+        <img src="assets/story.jpg" data-clip alt="A happy customer relaxing among neatly packed and labeled moving boxes after a move" class="clip w-full h-[420px] sm:h-[520px] object-cover" />
+      </div>
+      <div class="absolute -bottom-6 -right-3 sm:right-6 rounded-2xl bg-navy text-bone px-6 py-5 shadow-xl max-w-[230px]">
+        <div class="display font-900 text-amber text-[15px] tracking-wide uppercase">Big Country proud</div>
+        <p class="text-bone/75 text-[13px] mt-1.5 leading-snug">Your neighbors, moving your neighbors.</p>
+      </div>
+    </div>
+
+    <div data-reveal>
+      <span class="text-clay font-800 text-[12px] tracking-[.18em] uppercase">Why Abilene calls us</span>
+      <h2 class="display font-800 text-ink text-[clamp(2rem,4.2vw,3rem)] leading-[1.04] tracking-[-.02em] mt-3">
+        Moving is stressful.<br>We make it the easy part.
+      </h2>
+      <p class="text-steel text-[16.5px] leading-relaxed mt-5">
+        We're a locally owned Abilene crew that built our name on showing up on time, working hard, and treating your things the way we'd want ours treated. No runaround, no hidden fees — just a move that goes smoothly.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-4 mt-8">
+        <div class="flex gap-3.5">
+          <span class="shrink-0 w-9 h-9 rounded-lg bg-amber/15 text-amberD grid place-items-center">✓</span>
+          <div><div class="display font-700 text-ink text-[15px]">Locally owned</div><p class="text-steel text-[13.5px] leading-snug mt-0.5">Right here in Abilene — not a national call center.</p></div>
+        </div>
+        <div class="flex gap-3.5">
+          <span class="shrink-0 w-9 h-9 rounded-lg bg-amber/15 text-amberD grid place-items-center">✓</span>
+          <div><div class="display font-700 text-ink text-[15px]">On-time crews</div><p class="text-steel text-[13.5px] leading-snug mt-0.5">We respect your schedule and your day.</p></div>
+        </div>
+        <div class="flex gap-3.5">
+          <span class="shrink-0 w-9 h-9 rounded-lg bg-amber/15 text-amberD grid place-items-center">✓</span>
+          <div><div class="display font-700 text-ink text-[15px]">Careful handling</div><p class="text-steel text-[13.5px] leading-snug mt-0.5">Pads, wrap, and a steady hand on every load.</p></div>
+        </div>
+        <div class="flex gap-3.5">
+          <span class="shrink-0 w-9 h-9 rounded-lg bg-amber/15 text-amberD grid place-items-center">✓</span>
+          <div><div class="display font-700 text-ink text-[15px]">Honest quotes</div><p class="text-steel text-[13.5px] leading-snug mt-0.5">A clear price up front. No surprises at the end.</p></div>
+        </div>
+      </div>
+
+      <a href="https://www.yelp.com/biz/abilenes-best-movers-abilene" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-8 text-navy font-700 text-[15px] ul">
+        Read our reviews on Yelp
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="bg-paper py-20 sm:py-24 border-y border-line">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
+      <h2 class="display font-800 text-ink text-[clamp(1.8rem,4vw,2.6rem)] tracking-[-.02em]">Moving day, handled.</h2>
+      <p class="text-steel text-[15px] max-w-sm">Packed, labeled, loaded, and delivered — the boring-but-important details we sweat so you don't.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-9">
+      <div class="overflow-hidden rounded-2xl group" data-reveal>
+        <img src="assets/g1.jpg" alt="A family labeling moving boxes together in their kitchen on moving day in Abilene" class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-105" />
+      </div>
+      <div class="overflow-hidden rounded-2xl group" data-reveal>
+        <img src="assets/g2.jpg" alt="An Abilene's Best Movers crew loading boxes and a wrapped sofa into the moving truck at sunset" class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-105" />
+      </div>
+      <div class="overflow-hidden rounded-2xl group sm:col-span-2 lg:col-span-1" data-reveal>
+        <img src="assets/g3.jpg" alt="A couple smiling together surrounded by packed moving boxes in their new home" class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-105" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section id="area" class="bg-bone py-24 sm:py-28">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8 grid lg:grid-cols-2 gap-12 items-center">
+    <div data-reveal>
+      <span class="text-clay font-800 text-[12px] tracking-[.18em] uppercase">Where we move</span>
+      <h2 class="display font-800 text-ink text-[clamp(2rem,4.2vw,3rem)] leading-[1.04] tracking-[-.02em] mt-3">
+        Serving Abilene &amp; <span class="text-navy">the Big Country.</span>
+      </h2>
+      <p class="text-steel text-[16.5px] leading-relaxed mt-4">
+        Based in Abilene, Texas and moving families and businesses throughout the surrounding Big Country. Moving a little farther out? Give us a call — we cover a wide stretch of West Texas.
+      </p>
+      <div class="flex flex-wrap gap-2.5 mt-7">
+        <span class="rounded-full bg-paper border border-line px-3.5 py-1.5 text-[13px] font-600 text-ink">Abilene</span>
+        <span class="rounded-full bg-paper border border-line px-3.5 py-1.5 text-[13px] font-600 text-ink">Tye</span>
+        <span class="rounded-full bg-paper border border-line px-3.5 py-1.5 text-[13px] font-600 text-ink">Merkel</span>
+        <span class="rounded-full bg-paper border border-line px-3.5 py-1.5 text-[13px] font-600 text-ink">Clyde</span>
+        <span class="rounded-full bg-paper border border-line px-3.5 py-1.5 text-[13px] font-600 text-ink">Baird</span>
+        <span class="rounded-full bg-paper border border-line px-3.5 py-1.5 text-[13px] font-600 text-ink">Tuscola</span>
+        <span class="rounded-full bg-paper border border-line px-3.5 py-1.5 text-[13px] font-600 text-ink">Buffalo Gap</span>
+        <span class="rounded-full bg-paper border border-line px-3.5 py-1.5 text-[13px] font-600 text-ink">Hawley</span>
+        <span class="rounded-full bg-paper border border-line px-3.5 py-1.5 text-[13px] font-600 text-ink">Anson</span>
+        <span class="rounded-full bg-paper border border-line px-3.5 py-1.5 text-[13px] font-600 text-ink">Sweetwater</span>
+      </div>
+      <div class="mt-8 flex items-center gap-2.5 text-ink font-700">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16263F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:+13253053502" class="ul">(325) 305-3502</a>
+        <span class="text-line">|</span>
+        <span class="text-steel font-500 text-[14px]">By appointment — call to schedule</span>
+      </div>
+    </div>
+    <div class="rounded-3xl overflow-hidden border border-line shadow-sm" data-reveal>
+      <iframe title="Map of Abilene, Texas service area" src="https://www.google.com/maps?q=Abilene,+TX&output=embed" width="100%" height="430" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="quote" class="relative grain bg-navy text-bone overflow-hidden">
+  <div class="blob blob-a -bottom-40 left-1/2 -translate-x-1/2"></div>
+  <div class="mx-auto max-w-4xl px-6 sm:px-8 py-24 sm:py-28 text-center relative z-10" data-reveal>
+    <span class="inline-flex items-center gap-2 rounded-full border border-amber/40 bg-amber/10 text-amber text-[11.5px] font-700 tracking-[.14em] uppercase px-3.5 py-1.5">
+      <span class="w-1.5 h-1.5 rounded-full bg-amber pulse"></span> Free, no-obligation quote
+    </span>
+    <h2 class="display font-900 text-[clamp(2.2rem,5.5vw,4rem)] leading-[1.0] tracking-[-.02em] mt-6">
+      Ready to make <span class="grad">moving day easy?</span>
+    </h2>
+    <p class="text-bone/70 text-[17px] leading-relaxed mt-5 max-w-xl mx-auto">
+      Call or text Abilene's Best Movers for a fast, friendly quote. Tell us where you're headed and when — we'll take it from there.
+    </p>
+    <div class="mt-9 flex flex-wrap justify-center gap-4">
+      <a href="tel:+13253053502" class="btn inline-flex items-center gap-2.5 rounded-xl bg-amber text-navy font-800 text-[17px] px-8 py-4">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (325) 305-3502
+      </a>
+      <a href="https://www.yelp.com/biz/abilenes-best-movers-abilene" target="_blank" rel="noopener" class="btn inline-flex items-center gap-2 rounded-xl border border-bone/25 text-bone font-700 text-[17px] px-8 py-4 hover:bg-bone/5">
+        See us on Yelp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-bone/70 pt-16 pb-28 sm:pb-16">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8">
+    <div class="grid sm:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="display font-900 text-navy bg-amber rounded-lg px-2.5 py-1.5 leading-none text-lg tracking-tight">ABM</span>
+          <span class="display font-800 text-bone text-[15px]">Abilene's Best Movers</span>
+        </div>
+        <p class="text-[14px] leading-relaxed mt-4 max-w-xs">Locally owned moving company serving Abilene and the Big Country. Homes, apartments, and offices — packed, loaded, and moved with care.</p>
+      </div>
+      <div>
+        <div class="display font-700 text-bone text-[13px] tracking-[.14em] uppercase">Contact</div>
+        <ul class="mt-4 space-y-2.5 text-[14.5px]">
+          <li><a href="tel:+13253053502" class="hover:text-amber font-600 text-bone">(325) 305-3502</a></li>
+          <li>Abilene, Texas</li>
+          <li>By appointment — call to schedule</li>
+          <li><a href="https://www.yelp.com/biz/abilenes-best-movers-abilene" target="_blank" rel="noopener" class="hover:text-amber">Reviews on Yelp →</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="display font-700 text-bone text-[13px] tracking-[.14em] uppercase">Services</div>
+        <ul class="mt-4 space-y-2.5 text-[14.5px]">
+          <li>Local &amp; residential moves</li>
+          <li>Apartment &amp; dorm moves</li>
+          <li>Packing &amp; loading</li>
+          <li>Heavy &amp; specialty items</li>
+          <li>Office &amp; commercial moves</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12.5px] text-bone/45">
+      <p>© <span id="yr"></span> Abilene's Best Movers · Abilene, TX</p>
+      <p>Draft preview crafted by Turnkey Web</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="sm:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-2 gap-px bg-line border-t border-line">
+  <a href="tel:+13253053502" class="flex items-center justify-center gap-2 bg-amber text-navy font-800 py-3.5 text-[15px]">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call now
+  </a>
+  <a href="https://www.google.com/maps?q=Abilene,+TX" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-navy text-bone font-700 py-3.5 text-[15px]">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Service area
+  </a>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  gsap.registerPlugin(ScrollTrigger);
+
+  // preloader — fill the bar, then curtain-wipe up
+  (function(){
+    const pre=document.getElementById('preload'), bar=document.getElementById('plBar');
+    if(!pre){return;}
+    document.body.classList.add('loading');
+    let p=0;
+    const tick=setInterval(()=>{ p=Math.min(96,p+Math.random()*22); if(bar) bar.style.width=p+'%'; },140);
+    const finish=()=>{
+      clearInterval(tick); if(bar) bar.style.width='100%';
+      setTimeout(()=>{ pre.classList.add('done'); document.body.classList.remove('loading');
+        setTimeout(()=>pre.remove(), 950); }, 320);
+    };
+    let done=false; const go=()=>{ if(done) return; done=true; finish(); };
+    window.addEventListener('load', ()=>setTimeout(go, 600));
+    setTimeout(go, 3200); // hard cap so it never hangs
+  })();
+
+  // split headline (preserve inner HTML / em accents)
+  document.querySelectorAll('[data-split]').forEach(el => { el.innerHTML = '<span style="display:inline-block">'+el.innerHTML+'</span>'; });
+
+  // Lenis smooth scroll
+  let lenis;
+  try {
+    lenis = new Lenis({ duration:1.15, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)) });
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+    lenis.on('scroll', ScrollTrigger.update);
+  } catch(e){}
+
+  // anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href'); if(id.length<2) return;
+      const t=document.querySelector(id); if(!t) return;
+      e.preventDefault();
+      if(lenis){ lenis.scrollTo(t,{offset:-78}); } else { t.scrollIntoView({behavior:'smooth'}); }
+    });
+  });
+
+  // nav shrink
+  const navbar=document.getElementById('navbar');
+  ScrollTrigger.create({ start:'top -60', end:99999,
+    onUpdate:self=>{ navbar.classList.toggle('shadow-2xl', self.scroll()>60); navbar.classList.toggle('bg-navy', self.scroll()>60); }
+  });
+
+  // reveals
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:1.0,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 90%'}});
+  });
+
+  // clip image reveal
+  gsap.utils.toArray('[data-clip]').forEach(el=>{
+    ScrollTrigger.create({trigger:el,start:'top 85%',onEnter:()=>el.classList.add('in')});
+  });
+
+  // signature: draw the route line on scroll through #how
+  (function(){
+    const p=document.getElementById('routeDraw');
+    if(!p) return;
+    const len=p.getTotalLength();
+    p.style.strokeDasharray=len; p.style.strokeDashoffset=len;
+    ScrollTrigger.create({
+      trigger:'#how', start:'top 70%', end:'bottom 75%', scrub:0.6,
+      onUpdate:self=>{ p.style.strokeDashoffset = len*(1-self.progress); }
+    });
+  })();
+
+  // 6s crawler / screenshot safety net
+  setTimeout(()=>{
+    document.querySelectorAll('[data-reveal]').forEach(el=>{
+      if(getComputedStyle(el).opacity==='0'){ el.style.opacity=1; el.style.transform='none'; }
+    });
+    document.querySelectorAll('[data-clip]').forEach(el=>el.classList.add('in'));
+    const p=document.getElementById('routeDraw'); if(p) p.style.strokeDashoffset=0;
+  },6000);
+</script>
+</body>
+</html>

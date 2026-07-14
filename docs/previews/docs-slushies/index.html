@@ -1,0 +1,467 @@
+<!doctype html>
+<!--
+  Doc's Slushies — CONCEPT 3: maroon-bg video preload reveal -> video KEEPS looping in the hero bg, then variety sections.
+  Newest video (maroon ice-explosion) as the reveal, Doc's overlay, seamless dissolve into a
+  fixed maroon infinite-3D background. Aggie Maroon #500000, video-matched base #3E0F13,
+  official A&M fonts. Single immersive page. Preview / local-review concept.
+-->
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Doc's Slushies — Aggieland's Frozen-Drink Machine Rental</title>
+<meta name="description" content="Doc's Slushies — frozen-drink machine rentals for College Station tailgates, weddings, and parties. Machine + mix delivered; you supply any alcohol. Aggieland, est. 2025."/>
+<meta name="theme-color" content="#3E0F13"/>
+<link rel="icon" href="assets/logo.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;0,800;1,500&family=Oswald:wght@300;400;500;600&family=Open+Sans:wght@400;500;600&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#3E0F13;--bg2:#240609;--maroon:#500000;--lit:#7a0b0b;--cream:#F6F1E9;--rose:#E7C9C9;--line:rgba(231,201,201,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:'Open Sans',system-ui,sans-serif;color:var(--cream);background:var(--bg);line-height:1.6;overflow-x:hidden}
+body.locked{overflow:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--cream);color:var(--maroon)}
+.ff-disp{font-family:'Work Sans',sans-serif}.ff-cond{font-family:'Oswald',sans-serif}.ff-serif{font-family:'Crimson Text',Georgia,serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+/* ============ MAROON INFINITE 3D BACKGROUND (fixed) ============ */
+.bg3d{position:fixed;inset:0;z-index:0;overflow:hidden;
+  background:radial-gradient(125% 90% at 50% 30%, #6a1622 0%, var(--bg) 46%, var(--bg2) 100%)}
+.bg3d .plane{position:absolute;left:-60%;right:-60%;height:150vh;
+  background-image:linear-gradient(to right,rgba(231,201,201,.12) 1px,transparent 1px),
+                   linear-gradient(to top,rgba(231,201,201,.12) 1px,transparent 1px);
+  background-size:70px 70px}
+.bg3d .floor{bottom:-30vh;transform:perspective(440px) rotateX(66deg);transform-origin:bottom center;
+  animation:flow 6s linear infinite;-webkit-mask-image:linear-gradient(to top,#000 4%,transparent 64%);mask-image:linear-gradient(to top,#000 4%,transparent 64%)}
+.bg3d .ceil{top:-30vh;transform:perspective(440px) rotateX(-66deg);transform-origin:top center;
+  animation:flow 6s linear infinite;opacity:.6;-webkit-mask-image:linear-gradient(to bottom,#000 4%,transparent 64%);mask-image:linear-gradient(to bottom,#000 4%,transparent 64%)}
+@keyframes flow{to{background-position-y:70px}}
+.bg3d .core{position:absolute;left:50%;top:34%;width:50vw;height:50vw;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle, rgba(255,210,210,.18), transparent 60%);filter:blur(20px)}
+.bg3d .orb{position:absolute;border-radius:50%;filter:blur(70px);mix-blend-mode:screen;opacity:.45}
+.bg3d .o1{width:42vw;height:42vw;left:-8vw;top:48%;background:radial-gradient(circle,rgba(160,20,30,.6),transparent 70%);animation:drift1 16s ease-in-out infinite alternate}
+.bg3d .o2{width:34vw;height:34vw;right:-6vw;top:10%;background:radial-gradient(circle,rgba(122,11,11,.55),transparent 70%);animation:drift2 19s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate(6vw,-6vh) scale(1.1)}}
+@keyframes drift2{to{transform:translate(-5vw,5vh) scale(1.08)}}
+.bg3d .vig{position:absolute;inset:0;background:radial-gradient(120% 100% at 50% 40%,transparent 40%,rgba(20,4,6,.6) 82%,#160305 100%)}
+.bg3d .grain{position:absolute;inset:-50%;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");animation:gr .5s steps(2) infinite}
+@keyframes gr{to{transform:translate(-5%,3%)}}
+
+/* ============ PRELOAD REVEAL ============ */
+.reveal{position:fixed;inset:0;z-index:90;background:var(--bg);display:flex;align-items:center;justify-content:center;
+  transition:opacity 1.2s ease,visibility 1.2s,transform 1.4s cubic-bezier(.7,0,.2,1)}
+.reveal.gone{opacity:0;visibility:hidden;transform:scale(1.08)}
+.reveal video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
+.reveal .rv-vig{position:absolute;inset:0;background:radial-gradient(120% 100% at 50% 50%,transparent 38%,rgba(20,4,6,.55) 85%)}
+.reveal .ov{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px}
+.reveal .ov img{width:138px;height:138px;border-radius:999px;background:var(--cream);padding:14px;object-fit:contain;
+  opacity:0;transform:scale(.8);animation:rin 1.1s cubic-bezier(.16,1,.3,1) .25s forwards;box-shadow:0 30px 80px -20px rgba(0,0,0,.7)}
+@keyframes rin{to{opacity:1;transform:scale(1)}}
+.reveal .ov .wm{overflow:hidden}
+.reveal .ov .wm b{display:block;font-family:'Work Sans',sans-serif;font-weight:800;letter-spacing:.02em;color:var(--cream);
+  font-size:clamp(1.6rem,5vw,2.6rem);transform:translateY(110%);animation:wmin 1s cubic-bezier(.16,1,.3,1) .7s forwards;text-shadow:0 6px 30px rgba(0,0,0,.6)}
+@keyframes wmin{to{transform:none}}
+.reveal .ov small{font-family:'Oswald',sans-serif;letter-spacing:.34em;text-transform:uppercase;font-size:11px;color:var(--rose);
+  opacity:0;animation:fin 1s ease 1.1s forwards}
+@keyframes fin{to{opacity:1}}
+.reveal .ldr{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(231,201,201,.1)}
+.reveal .ldr i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--lit),var(--rose));box-shadow:0 0 12px rgba(122,11,11,.7)}
+
+/* ============ NAV ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:40;transition:all .4s;opacity:0;transform:translateY(-12px)}
+body.entered .nav{opacity:1;transform:none;transition-delay:.2s}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:14px auto 0;max-width:1180px;
+  background:rgba(40,9,12,.5);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:999px;padding:9px 12px 9px 14px}
+.nav.scrolled .nav-inner{background:rgba(30,6,9,.78)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{height:40px;width:40px;border-radius:999px;background:var(--cream);padding:4px;object-fit:contain}
+.brand b{font-family:'Work Sans';font-weight:800;font-size:14.5px;color:var(--cream);line-height:1}
+.brand small{display:block;font-family:'Oswald';font-size:9px;letter-spacing:.2em;color:var(--rose);margin-top:3px}
+.nav-links{display:flex;gap:24px}
+.nav-links a{font-family:'Oswald';text-transform:uppercase;letter-spacing:.05em;font-size:13px;color:rgba(246,241,233,.82);position:relative;padding:2px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-3px;height:2px;width:0;background:var(--rose);transition:width .4s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{font-family:'Oswald';text-transform:uppercase;letter-spacing:.06em;font-weight:600;font-size:12.5px;background:var(--cream);color:var(--maroon);padding:11px 19px;border-radius:999px;transition:transform .35s,box-shadow .35s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(0,0,0,.6)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{width:24px;height:2px;background:var(--cream)}
+
+/* ============ CONTENT LAYER ============ */
+.page{position:relative;z-index:2;opacity:0;transition:opacity 1s ease}
+body.entered .page{opacity:1}
+section{padding:clamp(64px,9vw,120px) 0;position:relative}
+.kick{font-family:'Oswald';letter-spacing:.26em;text-transform:uppercase;font-size:11.5px;color:var(--rose)}
+.h-sec{font-family:'Work Sans';font-weight:800;letter-spacing:-.02em;line-height:1.02;font-size:clamp(2rem,4.8vw,3.2rem);
+  background:linear-gradient(100deg,#E6E8ED 0%,#C4C8D2 30%,#FFFFFF 50%,#C4C8D2 70%,#E6E8ED 100%);background-size:220% auto;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimh 8s linear infinite}
+@keyframes shimh{to{background-position:220% center}}
+.h-hero{background:linear-gradient(100deg,#E6E8ED 0%,#C4C8D2 30%,#FFFFFF 50%,#C4C8D2 70%,#E6E8ED 100%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimh 9s linear infinite}
+.h-hero .accent{-webkit-text-fill-color:initial;color:var(--rose);background:none;font-weight:500;font-style:italic}
+.lead{font-size:clamp(15px,2vw,18px);color:rgba(246,241,233,.8)}
+.grid{display:grid;gap:18px}
+@media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g5{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1040px){.g5{grid-template-columns:repeat(5,1fr)}}
+[data-rev]{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+[data-rev].in{opacity:1;transform:none}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:80px;position:relative;overflow:hidden}
+.hbv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hbv-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(36,6,9,.9) 0%,rgba(58,9,15,.62) 42%,rgba(58,9,15,.32) 75%,rgba(58,9,15,.2) 100%),linear-gradient(0deg,rgba(36,6,9,.85) 0%,rgba(58,9,15,.2) 38%,transparent 60%)}
+.hero .wrap{position:relative;z-index:2}
+.h-hero{font-family:'Work Sans';font-weight:800;line-height:.95;letter-spacing:-.02em;font-size:clamp(2.8rem,9vw,6.2rem);text-shadow:0 10px 60px rgba(0,0,0,.5)}
+.h-hero .accent{color:var(--rose);font-weight:500;font-style:italic}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Oswald';letter-spacing:.3em;text-transform:uppercase;font-size:11.5px;color:var(--rose)}
+.eyebrow .d{width:7px;height:7px;border-radius:999px;background:var(--lit);box-shadow:0 0 14px 2px rgba(122,11,11,.7);animation:pp 2.4s infinite}
+@keyframes pp{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* glass card */
+.card{position:relative;background:rgba(246,241,233,.05);border:1px solid var(--line);border-radius:20px;padding:26px;backdrop-filter:blur(6px);transition:transform .4s,box-shadow .4s,border-color .4s;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;height:4px;width:0;background:linear-gradient(90deg,var(--lit),var(--rose));transition:width .5s}
+.card:hover{transform:translateY(-7px);border-color:rgba(231,201,201,.4);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.card:hover::before{width:100%}
+.card .ico{width:44px;height:44px;color:var(--rose)}
+.card h3{font-family:'Work Sans';font-weight:800;margin:14px 0 8px;font-size:1.2rem;color:var(--cream)}
+.card p{font-size:14px;color:rgba(246,241,233,.72)}
+.card.feat{background:var(--cream);border-color:var(--cream)}
+.card.feat h3,.card.feat p,.card.feat .tag{color:var(--maroon)}
+.tag{font-family:'Oswald';letter-spacing:.12em;text-transform:uppercase;font-size:12px;color:var(--rose)}
+.tick{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(246,241,233,.85)}
+.tick svg{flex:0 0 auto;width:17px;height:17px;margin-top:3px;color:var(--rose)}
+.feat .tick{color:rgba(36,6,9,.85)}.feat .tick svg{color:var(--maroon)}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Oswald';text-transform:uppercase;letter-spacing:.06em;font-weight:600;font-size:13.5px;padding:14px 26px;border-radius:999px;cursor:pointer;border:1px solid transparent;transition:transform .35s,box-shadow .35s}
+.btn-cream{background:var(--cream);color:var(--maroon)}.btn-cream:hover{transform:translateY(-3px);box-shadow:0 18px 40px -16px rgba(0,0,0,.6)}
+.btn-out{background:rgba(246,241,233,.04);border-color:var(--line);color:var(--cream)}.btn-out:hover{background:rgba(246,241,233,.12);transform:translateY(-3px)}
+
+.photo{overflow:hidden;border-radius:18px;border:1px solid var(--line)}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.photo:hover img{transform:scale(1.05)}
+.gal{columns:2;column-gap:14px}@media(min-width:900px){.gal{columns:3}}
+.gal a{display:block;margin:0 0 14px;border-radius:16px;overflow:hidden;border:1px solid var(--line);break-inside:avoid;cursor:zoom-in}
+.gal img{width:100%;transition:transform .6s}.gal a:hover img{transform:scale(1.05)}
+.lb{position:fixed;inset:0;z-index:95;background:rgba(15,2,4,.94);display:none;align-items:center;justify-content:center;padding:24px}
+.lb.open{display:flex}.lb img{max-width:92vw;max-height:88vh;border-radius:10px}.lb .x{position:absolute;top:18px;right:22px;font-size:34px;color:#fff;background:none;border:0;cursor:pointer}
+
+.field{display:block;margin-bottom:15px}
+.field span{display:block;font-family:'Oswald';letter-spacing:.04em;text-transform:uppercase;font-size:11px;color:var(--rose);margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;font-family:'Open Sans';font-size:15px;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:rgba(246,241,233,.06);color:var(--cream);outline:none}
+.field input::placeholder,.field textarea::placeholder{color:rgba(246,241,233,.4)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--rose)}
+.field select option{color:#240609}
+
+/* FAQ accordion */
+.faq-item{border:1px solid rgba(80,0,0,.12);border-radius:14px;background:#fff;margin-bottom:10px;overflow:hidden}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;border:0;background:none;padding:18px 20px;font-family:'Work Sans';font-weight:800;font-size:1.02rem;color:#500000;line-height:1.3}
+.faq-q .pm{flex:0 0 auto;width:20px;height:20px;position:relative;transition:transform .3s}
+.faq-q .pm::before,.faq-q .pm::after{content:"";position:absolute;background:#7a0b0b;border-radius:2px}
+.faq-q .pm::before{left:50%;top:2px;width:2px;height:16px;transform:translateX(-50%)}
+.faq-q .pm::after{top:50%;left:2px;height:2px;width:16px;transform:translateY(-50%)}
+.faq-item.open .faq-q .pm{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a .inner{padding:0 20px 18px;font-size:14.5px;color:rgba(36,26,23,.78);line-height:1.6}
+.faq-a ul{margin:0;padding-left:18px}.faq-a li{margin:5px 0}
+footer{position:relative;z-index:2;border-top:1px solid var(--line);background:rgba(20,4,6,.5)}
+footer .wrap{padding:46px 22px 30px}
+.fcol h4{font-family:'Oswald';letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--rose);margin-bottom:12px}
+.fcol li{list-style:none;margin-bottom:9px;font-size:14px;color:rgba(246,241,233,.72)}.fcol a:hover{color:#fff}
+
+.mbar{position:fixed;bottom:0;left:0;right:0;z-index:45;display:none;gap:10px;padding:10px 12px;background:rgba(30,6,9,.92);backdrop-filter:blur(8px);border-top:1px solid var(--line)}
+.mbar a{flex:1;text-align:center;font-family:'Oswald';text-transform:uppercase;letter-spacing:.05em;font-weight:600;font-size:13px;padding:13px;border-radius:999px}
+.mbar .a1{background:var(--cream);color:var(--maroon)}.mbar .a2{border:1px solid var(--line);color:var(--cream)}
+
+@media(max-width:860px){.nav-links,.nav-cta{display:none}.burger{display:flex}.mbar{display:flex}body{padding-bottom:64px}.gal{columns:2}}
+.chip{display:inline-flex;align-items:center;gap:8px;font-family:'Oswald';text-transform:uppercase;letter-spacing:.12em;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:7px 14px;color:var(--rose)}
+
+/* ===== LIGHT SECTIONS — variety after the maroon hero ===== */
+.sec-cream{background:#F6F1E9;color:#241A17;position:relative;z-index:2}
+.sec-bone{background:#FCF8F2;color:#241A17;position:relative;z-index:2}
+.sec-cream .kick,.sec-bone .kick{color:#7a0b0b}
+.sec-cream .lead,.sec-bone .lead{color:rgba(36,26,23,.75)}
+.sec-cream .h-sec,.sec-bone .h-sec{background:linear-gradient(100deg,#500000 0%,#7a0b0b 22%,#B9BEC9 50%,#7a0b0b 78%,#500000 100%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimh 8s linear infinite}
+.sec-cream .card,.sec-bone .card{background:#fff;border-color:rgba(80,0,0,.12);backdrop-filter:none}
+.sec-cream .card h3,.sec-bone .card h3{color:#500000}
+.sec-cream .card p,.sec-bone .card p{color:rgba(36,26,23,.72)}
+.sec-cream .card .ico,.sec-bone .card .ico{color:#500000}
+.sec-cream .card.feat,.sec-bone .card.feat{background:#500000;border-color:#500000}
+.sec-cream .card.feat h3,.sec-cream .card.feat p,.sec-bone .card.feat h3,.sec-bone .card.feat p{color:#F6F1E9}
+.sec-cream .tag,.sec-bone .tag{color:#7a0b0b}
+.sec-cream .card.feat .tag,.sec-bone .card.feat .tag{color:#E7C9C9}
+.sec-cream .tick,.sec-bone .tick{color:rgba(36,26,23,.85)}
+.sec-cream .tick svg,.sec-bone .tick svg{color:#500000}
+.sec-cream .card.feat .tick,.sec-bone .card.feat .tick{color:rgba(246,241,233,.92)}
+.sec-cream .card.feat .tick svg,.sec-bone .card.feat .tick svg{color:#E7C9C9}
+.sec-cream .chip,.sec-bone .chip{border-color:rgba(80,0,0,.22);color:#7a0b0b}
+.sec-cream .btn-out,.sec-bone .btn-out{background:rgba(80,0,0,.05);border-color:rgba(80,0,0,.25);color:#500000}
+.sec-cream .btn-out:hover,.sec-bone .btn-out:hover{background:#500000;color:#F6F1E9}
+.sec-cream .photo,.sec-bone .photo{border-color:rgba(80,0,0,.12)}
+.sec-cream .field span,.sec-bone .field span{color:#7a0b0b}
+.sec-cream .field input,.sec-cream .field select,.sec-cream .field textarea,.sec-bone .field input,.sec-bone .field select,.sec-bone .field textarea{background:#fff;border-color:rgba(80,0,0,.15);color:#241A17}
+.sec-cream .field input::placeholder,.sec-bone .field input::placeholder,.sec-cream .field textarea::placeholder,.sec-bone .field textarea::placeholder{color:rgba(36,26,23,.4)}
+.sec-cream .fn,.sec-bone .fn{color:#7a0b0b!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}[data-rev]{opacity:1;transform:none}}
+</style>
+</head>
+<body class="locked">
+
+<!-- maroon infinite 3D background -->
+<div class="bg3d" aria-hidden="true">
+  <div class="plane ceil"></div><div class="plane floor"></div>
+  <div class="core"></div><div class="orb o1"></div><div class="orb o2"></div>
+  <div class="vig"></div><div class="grain"></div>
+</div>
+
+<!-- preload reveal -->
+<div class="reveal" id="reveal">
+  <video id="rv" autoplay muted loop playsinline preload="auto" poster="assets/reveal-poster.jpg">
+    <source src="assets/reveal.webm" type="video/webm"/><source src="assets/reveal.mp4" type="video/mp4"/></video>
+  <div class="rv-vig"></div>
+  <div class="ov">
+    <img src="assets/logo.png" alt="Doc's Slushies"/>
+    <span class="wm"><b>Doc's Slushies</b></span>
+    <small>College Station, Texas &middot; Est. 2025</small>
+  </div>
+  <div class="ldr"><i id="ldr"></i></div>
+</div>
+
+<!-- nav -->
+<header class="nav"><div class="nav-inner">
+  <a class="brand" href="#top"><img src="assets/logo.png" alt="Doc's Slushies"/><span><b>Doc's Slushies</b><small>COLLEGE STATION &middot; EST. 2025</small></span></a>
+  <nav class="nav-links">
+    <a href="#how">How it works</a><a href="#packages">Packages</a><a href="#flavors">Flavors</a><a href="#pictures">Pictures</a><a href="#faq">FAQ</a>
+  </nav>
+  <a class="nav-cta" href="#contact">Check a Date</a>
+  <button class="burger" aria-label="Menu" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span></span><span></span><span></span></button>
+</div></header>
+
+<main class="page" id="top">
+
+  <!-- HERO -->
+  <section class="hero"><video class="hbv" autoplay muted loop playsinline preload="auto" poster="assets/reveal-poster.jpg"><source src="assets/reveal.webm" type="video/webm"/><source src="assets/reveal.mp4" type="video/mp4"/></video><div class="hbv-scrim"></div><div class="wrap">
+    <span class="eyebrow" data-rev><span class="d"></span> Aggieland's frozen-drink machine rental</span>
+    <h1 class="h-hero" data-rev style="margin-top:18px;max-width:15ch">Frozen. Ice-cold.<br><span class="accent">Maroon to the core.</span></h1>
+    <p class="lead" data-rev style="margin-top:20px;max-width:52ch">At Doc's Slushies, we're all about customer service. All of our packages come with delivery, set up, and take down &mdash; so all you have to worry about is throwing a heater of a party!</p>
+    <div data-rev style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn btn-cream" href="#contact">Reserve your date</a>
+      <a class="btn btn-out" href="#packages">View packages</a>
+      <a class="btn btn-out" href="#flavors">Flavors</a></div>
+  </div></section>
+
+  <!-- HOW -->
+  <section id="how" class="sec-cream"><div class="wrap">
+    <div class="grid g2" style="gap:40px;align-items:end;margin-bottom:36px">
+      <div data-rev><p class="kick">How it works</p><h2 class="h-sec" style="margin-top:12px">We rent the machines.<br>You run the party.</h2></div>
+      <p class="lead" data-rev>Doc's drops off the frozen-drink machines and the slush mix, gets everything pouring, and comes back for cleanup. Want spiked slushies? You supply the spirits and add them yourself &mdash; the machine and mix are on us.</p>
+    </div>
+    <div class="grid g5">
+      <div class="card" data-rev><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 14h22v18H4zM26 20h9l5 6v6h-14z"/><circle cx="14" cy="36" r="3.5"/><circle cx="34" cy="36" r="3.5"/></svg><h3>Delivered &amp; set up</h3><p>We bring the machine to your spot in Bryan or College Station and walk you through how to use it. Live a bit further out? No sweat, we can probably make it happen for a reasonable travel fee.</p></div>
+      <div class="card" data-rev><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6h12l-1 6h3a3 3 0 0 1 3 3v3H13v-3a3 3 0 0 1 3-3h3zM13 18h22v22a2 2 0 0 1-2 2H15a2 2 0 0 1-2-2zM19 26h10v8H19z"/></svg><h3>Slush mix included</h3><p>Non-alcoholic flavors on rotation &mdash; lemonade, cherry limeade, and more. All ages welcome.</p></div>
+      <div class="card" data-rev><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 4h8v6c0 3 4 5 4 10v24a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2V20c0-5 4-7 4-10z"/><path d="M16 28h16"/></svg><h3>You supply the spirits</h3><p>Want it spiked? Bring your own alcohol and add it yourself. Doc's does not supply or serve alcohol. Always remember to drink (&amp; host) responsibly!</p></div>
+      <div class="card" data-rev><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="8" y="14" width="22" height="14" rx="2"/><rect x="30" y="18" width="10" height="10" rx="2"/><circle cx="15" cy="30" r="3.2"/><circle cx="33" cy="30" r="3.2"/><path d="M8 22h22"/></svg><span style="display:inline-block;font-family:'Oswald';letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;font-weight:600;color:#F6F1E9;background:#7a0b0b;padding:3px 10px;border-radius:999px;margin:14px 0 0">Add-on</span><h3 style="margin-top:8px">Machines built to party</h3><p>Need more capacity? Add a second machine &mdash; each has two bowls and pours about 110 8-ounce drinks before a reload.</p></div>
+      <div class="card" data-rev><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M30 6L18 26M14 40l-4-2 6-12 10 6-6 12-4-2zM26 24l8-14"/></svg><h3>We handle cleanup</h3><p>Pickup and cleanup are on us. Pour out any leftovers you want and we'll take it from there.</p></div>
+    </div>
+  </div></section>
+
+  <!-- PACKAGES -->
+  <section id="packages" class="sec-bone"><div class="wrap">
+    <p class="kick" data-rev>Party packages</p>
+    <h2 class="h-sec" data-rev style="margin:12px 0 8px">Pick a starting point.</h2>
+    <p class="lead" data-rev style="max-width:54ch;margin-bottom:34px">Every event is quoted to its headcount, hours, and flavor count. These are the most-booked rental shapes to start from.</p>
+    <div class="grid g3">
+      <div class="card" data-rev style="display:flex;flex-direction:column"><span class="tag">Single Machine</span><h3 style="font-size:1.5rem">The Backyard</h3><div style="font-family:'Work Sans';font-weight:800;font-size:2rem;color:#500000;margin:4px 0 4px">$250</div><p>Birthdays, showers, and small gatherings.</p>
+        <ul style="margin:16px 0 0;display:grid;gap:10px;padding:0">
+          <li class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg><span>One machine, two mixes &amp; cups</span></li>
+          <li class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg><span>Delivery, setup &amp; pickup</span></li>
+          <li class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg><span>BYOB &mdash; add your own spirits</span></li></ul>
+        <a class="btn btn-out" href="#contact" style="margin-top:22px;justify-content:center">Reserve the Backyard</a></div>
+      <div class="card feat" data-rev style="display:flex;flex-direction:column"><span class="tag">Game Day</span><h3 style="font-size:1.5rem">The Tailgate</h3><div style="font-family:'Work Sans';font-weight:800;font-size:2rem;color:#F6F1E9;margin:4px 0 4px">$350</div><p>Game-day lots and bigger crowds.</p>
+        <ul style="margin:16px 0 0;display:grid;gap:10px;padding:0">
+          <li class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg><span>One machine, two mixes &amp; cups</span></li>
+          <li class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg><span>5000w generator included (deposit required)</span></li>
+          <li class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg><span>Delivery, setup &amp; pickup</span></li>
+          <li class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg><span>BYOB &mdash; add your own spirits</span></li></ul>
+        <a class="btn btn-cream" href="#contact" style="margin-top:22px;justify-content:center;background:var(--maroon);color:var(--cream);border:1.5px solid var(--cream)">Book game day</a></div>
+      <div class="card" data-rev style="display:flex;flex-direction:column"><span class="tag">Multi / Custom</span><h3 style="font-size:1.5rem">The Doc's Special</h3><div style="font-family:'Work Sans';font-weight:800;font-size:1.5rem;color:#500000;margin:6px 0 4px">Contact for a quote</div><p>Weddings, receptions and corporate.</p>
+        <ul style="margin:16px 0 0;display:grid;gap:10px;padding:0">
+          <li class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg><span>Machines sized to headcount</span></li>
+          <li class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg><span>Custom flavors to your colors</span></li>
+          <li class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg><span>Indoor or outdoor venues</span></li></ul>
+        <a class="btn btn-out" href="#contact" style="margin-top:22px;justify-content:center">Get a quote</a></div>
+    </div>
+
+    <!-- ADD-ONS -->
+    <div class="card" data-rev style="margin-top:28px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+      <div style="max-width:62ch">
+        <span class="tag">Add-ons</span>
+        <h3 style="font-size:1.35rem;margin-top:6px">Make it extra</h3>
+        <p style="margin-top:6px">Need salt rimmers, straws, or those fun little umbrellas for your drinks? We have lots of affordable add-on options. Let us know you're interested and we can send you a price sheet.</p>
+      </div>
+      <a class="btn btn-out" href="#contact" style="flex:0 0 auto">Ask about add-ons</a>
+    </div>
+  </div></section>
+
+  <!-- FEATURE photo -->
+  <section><div class="wrap"><div class="grid g2" style="gap:44px;align-items:center">
+    <div class="photo" data-rev><img src="assets/launch/tailgate.jpg" alt="Friends tailgating by a truck with the Doc's Slushies cart and cups in hand"/></div>
+    <div data-rev><p class="kick">Tailgating in Aggieland</p><h2 class="h-sec" style="margin-top:12px">Maroon out. Pour up.</h2>
+      <p class="lead" style="margin-top:16px;max-width:50ch">Want to be the envy of every other tailgate on Saturday? Nothing is more refreshing for your fellow Aggies on a hot Texas day than a frozen drink to sip on. Football season is a busy time of year for us, so book early if you want to lock in the frozen oasis!</p>
+      <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap"><span class="chip">Self-powered</span><span class="chip">High volume</span><span class="chip">All ages</span><span class="chip">BYO spirits</span></div>
+    </div>
+  </div></div></section>
+
+  <!-- FLAVORS -->
+  <section id="flavors" class="sec-cream"><div class="wrap">
+    <p class="kick" data-rev>The flavors</p><h2 class="h-sec" data-rev style="margin:12px 0 8px">Crowd favorites, on rotation.</h2>
+    <p class="lead" data-rev style="max-width:54ch;margin-bottom:32px">A taste of what we pour &mdash; all non-alcoholic, all dialed in to your event. Add your own spirits, or keep it family-friendly.</p>
+    <div class="grid g3">
+      <div class="card" data-rev><h3>Summertime Lemonade</h3><p>Bright, classic, always a hit.</p></div>
+      <div class="card" data-rev><h3>Margarita</h3><p>Tangy and ice-cold &mdash; add your own spirits.</p></div>
+      <div class="card" data-rev><h3>Pi&ntilde;a Colada</h3><p>Creamy and tropical.</p></div>
+      <div class="card" data-rev><h3>Blue Raspberry</h3><p>The all-ages favorite.</p></div>
+      <div class="card" data-rev><h3>Watermelon</h3><p>Summer in a cup.</p></div>
+      <a class="card feat" data-rev href="assets/flavor-guide.png" target="_blank" rel="noopener" style="display:flex;flex-direction:column;justify-content:center"><h3>&hellip;and many more!</h3><p>Tap to open our full downloadable flavor guide.</p></a>
+    </div>
+    <div data-rev style="margin-top:26px;text-align:center">
+      <a class="btn btn-cream" href="assets/flavor-guide.png" target="_blank" rel="noopener" style="background:var(--maroon);color:var(--cream)">View the full flavor guide</a>
+    </div>
+  </div></section>
+
+  <!-- PICTURES -->
+  <section id="pictures" class="sec-bone"><div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:14px;margin-bottom:26px">
+      <div data-rev><p class="kick">Pictures</p><h2 class="h-sec" style="margin-top:12px">Straight from the cart.</h2></div>
+      <a data-rev class="chip" href="https://www.instagram.com/docs.slushies/" target="_blank" rel="noopener">Follow @docs.slushies</a></div>
+    <div class="gal" data-rev>
+      <a href="assets/launch/g2.jpg"><img src="assets/launch/g2.jpg" alt="Two frozen lemonade slushies with lime, outdoors"/></a>
+      <a href="assets/launch/g4.jpg"><img src="assets/launch/g4.jpg" alt="A Doc's Slushies branded cup held up"/></a>
+      <a href="assets/launch/g1.jpg"><img src="assets/launch/g1.jpg" alt="The Doc's Slushies dual-tank machine pouring a maroon slush"/></a>
+      <a href="assets/launch/g6.jpg"><img src="assets/launch/g6.jpg" alt="Friends toasting with Doc's Slushies cups"/></a>
+      <a href="assets/launch/g3.jpg"><img src="assets/launch/g3.jpg" alt="Doc's lemonade slushies on a branded tray"/></a>
+      <a href="assets/launch/g7.jpg"><img src="assets/launch/g7.jpg" alt="A young Aggie in a Whoop shirt holding a Doc's Slushies cup"/></a>
+      <a href="assets/launch/g5.jpg"><img src="assets/launch/g5.jpg" alt="Pouring a fresh slushie straight from the machine"/></a>
+      <a href="assets/launch/g8.jpg"><img src="assets/launch/g8.jpg" alt="A frozen Doc's slushie on a table with game-day snacks"/></a>
+    </div>
+  </div></section>
+
+  <!-- FAQ -->
+  <section id="faq" class="sec-cream"><div class="wrap" style="max-width:820px">
+    <p class="kick" data-rev>FAQ</p><h2 class="h-sec" data-rev style="margin:12px 0 26px">Good questions, straight answers.</h2>
+    <div class="faq" data-rev>
+      <div class="faq-item"><button class="faq-q">Where do you deliver?<span class="pm"></span></button><div class="faq-a"><div class="inner"><ul><li>We currently serve Bryan, College Station, and the immediate surrounding areas.</li><li>A travel/trip fee may apply for events more than 20 miles outside our College Station home office.</li></ul></div></div></div>
+
+      <div class="faq-item"><button class="faq-q">What forms of payment do you accept?<span class="pm"></span></button><div class="faq-a"><div class="inner"><ul><li>All major credit cards, cash, Venmo, and Zelle.</li><li>All sales are subject to state and county sales tax (8.25%).</li></ul></div></div></div>
+
+      <div class="faq-item"><button class="faq-q">Do you require a deposit?<span class="pm"></span></button><div class="faq-a"><div class="inner"><ul><li>A non-refundable <b>$100 deposit</b> books and holds your event on our calendar.</li><li>Renting a 5000w generator from us requires an additional <b>$500 refundable deposit</b>, returned after we inspect the generator following your event.</li></ul></div></div></div>
+
+      <div class="faq-item"><button class="faq-q">How many flavors can I choose?<span class="pm"></span></button><div class="faq-a"><div class="inner"><ul><li>Each machine has two ~15-liter (about 4-gallon) bowls.</li><li>We recommend one flavor per bowl &mdash; so two flavors per machine.</li><li>Our mixes are organic and made with cane sugar for a premium experience.</li></ul></div></div></div>
+
+      <div class="faq-item"><button class="faq-q">Does Doc's provide the alcohol for the mixes?<span class="pm"></span></button><div class="faq-a"><div class="inner"><ul><li>No. Your rental includes the slushie machine, the non-alcoholic mix, and any agreed-upon extras.</li><li>Every flavor comes with a mixing guide &mdash; sent before your event &mdash; showing exactly how much alcohol to add if you'd like spiked slushies. Always drink and host responsibly.</li></ul></div></div></div>
+
+      <div class="faq-item"><button class="faq-q">How many drinks does a machine make?<span class="pm"></span></button><div class="faq-a"><div class="inner"><ul><li>About <b>110 eight-ounce drinks</b> per machine before a reload.</li><li>Each machine has two bowls holding up to 3.5 gallons.</li></ul></div></div></div>
+
+      <div class="faq-item"><button class="faq-q">What does setup look like?<span class="pm"></span></button><div class="faq-a"><div class="inner"><ul><li>We'll need access to your space at least 2 hours before start time so the machines reach proper temperature.</li><li>Our team delivers everything &mdash; machine, black rolling cart, cart skirt, mixes, bottled water, and any extras &mdash; to your address.</li><li>Once it's set up, we walk you (or an appointee) through how to run it.</li><li>You'll get a troubleshooting guide, and you're always welcome to call us during your event.</li></ul></div></div></div>
+
+      <div class="faq-item"><button class="faq-q">How long does it take to slush up?<span class="pm"></span></button><div class="faq-a"><div class="inner"><ul><li>In an air-conditioned space (68&ndash;76&deg;): about 60&ndash;90 minutes.</li><li>Outdoors or above 85&deg;: about 2&ndash;3 hours.</li><li>Non-alcoholic mixes slush faster than spiked ones.</li></ul></div></div></div>
+
+      <div class="faq-item"><button class="faq-q">Once it's running, do I need to do anything?<span class="pm"></span></button><div class="faq-a"><div class="inner"><ul><li>Minor temperature tweaks may be needed for the perfect consistency (non-alcoholic mixes slush around -2 to -5&deg;C; spiked around -7 to -10&deg;C &mdash; the higher the alcohol, the lower the temp).</li><li>Refill once you reach the "minimum level" line on the bowl. It takes about 30 minutes to get back to optimal slush after a refill.</li></ul></div></div></div>
+
+      <div class="faq-item"><button class="faq-q">What happens when my event is done?<span class="pm"></span></button><div class="faq-a"><div class="inner"><ul><li>Just turn off the machine when the party's over.</li><li>We pick up all our supplies at the agreed time &mdash; any leftover slush is yours to keep.</li><li>A quick water rinse is appreciated, but please don't take the machine apart. We deep-clean every machine after each event.</li></ul></div></div></div>
+
+      <div class="faq-item"><button class="faq-q">What are the electricity requirements?<span class="pm"></span></button><div class="faq-a"><div class="inner"><ul><li>Our machines run on a standard 110-volt circuit and should be on their own dedicated outlet.</li><li>Avoid sharing the outlet with other appliances (microwaves, refrigerators, etc.) to prevent power interruptions or damage.</li></ul></div></div></div>
+
+      <div class="faq-item"><button class="faq-q">For tailgating, what generator do you recommend?<span class="pm"></span></button><div class="faq-a"><div class="inner"><ul><li>We recommend a 4000&ndash;5000 watt generator.</li><li>Initial cooling briefly surges to 2000&ndash;3000w, which trips underpowered generators &mdash; so leave headroom.</li><li>Once it's holding temperature, the machine only draws about 500&ndash;1000w, leaving plenty for swamp coolers, TVs, and more.</li></ul></div></div></div>
+    </div>
+  </div></section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="sec-cream"><div class="wrap"><div class="grid g2" style="gap:44px;align-items:start">
+    <div data-rev>
+      <p class="kick">Check a date</p><h2 class="h-sec" style="margin:12px 0 16px">Tell us about your party.</h2>
+      <p class="lead" style="max-width:46ch">Send the date, headcount, and a little about the event. We'll check availability and send a custom quote. Fill out the form below, shoot us an email, or slide into our DMs on Instagram.</p>
+      <div style="margin-top:22px;display:flex;flex-direction:column;gap:12px">
+        <a class="card" href="mailto:Docs.Slushies@gmail.com" style="display:flex;align-items:center;gap:14px;padding:18px"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 12h36v24H6zM6 14l18 13L42 14"/></svg><span><small style="display:block;font-family:Oswald;letter-spacing:.16em;font-size:11px;color:#7a0b0b">EMAIL</small><b style="font-family:Work Sans;font-weight:800">Docs.Slushies@gmail.com</b></span></a>
+        <a class="card" href="tel:+18184681295" style="display:flex;align-items:center;gap:14px;padding:18px"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 6l6 2 2 8-4 3c2 5 6 9 11 11l3-4 8 2 2 6c0 2-2 4-5 4C24 46 4 26 4 11c0-3 2-5 4-5z"/></svg><span><small style="display:block;font-family:Oswald;letter-spacing:.16em;font-size:11px;color:#7a0b0b">CALL OR TEXT</small><b style="font-family:Work Sans;font-weight:800">(818) 468-1295</b></span></a>
+        <a class="card" href="https://www.instagram.com/docs.slushies/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;padding:18px"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 12h24l-3 30H15zM10 12h28M20 6c0 3 8 3 8 0"/></svg><span><small style="display:block;font-family:Oswald;letter-spacing:.16em;font-size:11px;color:#7a0b0b">INSTAGRAM</small><b style="font-family:Work Sans;font-weight:800">@docs.slushies</b></span></a>
+        <div class="card" style="display:flex;align-items:center;gap:14px;padding:18px"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M24 44s14-12 14-24A14 14 0 1 0 10 20c0 12 14 24 14 24z"/><circle cx="24" cy="20" r="5"/></svg><span><small style="display:block;font-family:Oswald;letter-spacing:.16em;font-size:11px;color:#7a0b0b">SERVICE AREA</small><b style="font-family:Work Sans;font-weight:800">College Station &amp; the Brazos Valley</b></span></div>
+      </div>
+    </div>
+    <form class="card" data-rev style="padding:30px" onsubmit="event.preventDefault(); this.querySelector('.fn').style.display='block';">
+      <h3 style="font-size:1.5rem">Request a quote</h3>
+      <p style="font-size:13.5px;color:rgba(36,26,23,.6);margin:4px 0 18px">No obligation &mdash; we'll get back fast.</p>
+      <div class="grid g2" style="gap:12px">
+        <label class="field"><span>Your name</span><input required placeholder="First &amp; last"/></label>
+        <label class="field"><span>Phone or email</span><input required placeholder="Best way to reach you"/></label>
+        <label class="field"><span>Event date</span><input placeholder="MM / DD / YYYY"/></label>
+        <label class="field"><span>Event type</span><select><option>Houseparty / Backyard</option><option>Tailgate / Game Day</option><option>Event Venue / Wedding</option><option>Corporate / Office Party</option><option>Other</option></select></label>
+      </div>
+      <label class="field"><span>Headcount &amp; details</span><textarea rows="3" placeholder="How many guests, flavor ideas, location..."></textarea></label>
+      <button class="btn btn-cream" type="submit" style="width:100%;justify-content:center;background:var(--maroon);color:var(--cream)">Send my request</button>
+      <p class="fn" style="display:none;margin-top:12px;text-align:center;font-size:13.5px;color:var(--rose)">Thanks! For the fastest reply, also DM us @docs.slushies.</p>
+    </form>
+  </div></div></section>
+
+  <!-- WORK FOR DOC'S -->
+  <section id="work" class="sec-bone"><div class="wrap" style="max-width:820px;text-align:center">
+    <p class="kick" data-rev>Work for Doc's!</p>
+    <h2 class="h-sec" data-rev style="margin:12px 0 14px">We're hiring extra hands.</h2>
+    <p class="lead" data-rev style="max-width:54ch;margin:0 auto 24px">We're growing and looking for extra hands! A customer service mindset is a must. Interested? Shoot us an email with your resume.</p>
+    <div data-rev style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a class="btn btn-cream" href="mailto:Docs.Slushies@gmail.com?subject=I%27d%20like%20to%20work%20for%20Doc%27s" style="background:var(--maroon);color:var(--cream)">Send your resume</a>
+      <a class="btn btn-out" href="https://www.instagram.com/docs.slushies/" target="_blank" rel="noopener">DM @docs.slushies</a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer><div class="wrap">
+  <div class="grid g4" style="gap:32px">
+    <div style="grid-column:span 2"><div class="brand" style="gap:12px"><img src="assets/logo.png" alt="Doc's Slushies" style="height:52px;width:52px"/><span><b style="font-size:17px">Doc's Slushies</b><small>COLLEGE STATION, TEXAS &middot; EST. 2025</small></span></div>
+      <p style="margin-top:16px;max-width:40ch;color:rgba(246,241,233,.6);font-size:14px">Aggieland's frozen-drink machine rental. We deliver the machines and the slush mix, set everything up, and pack it out clean. You bring the crew &mdash; and any spirits you'd like to add.</p></div>
+    <div class="fcol"><h4>Explore</h4><ul><li><a href="#how">How it works</a></li><li><a href="#packages">Packages</a></li><li><a href="#flavors">Flavors</a></li><li><a href="#pictures">Pictures</a></li><li><a href="#faq">FAQ</a></li><li><a href="#work">Work for Doc's</a></li></ul></div>
+    <div class="fcol"><h4>Get in touch</h4><ul><li><a href="https://www.instagram.com/docs.slushies/" target="_blank" rel="noopener">@docs.slushies</a></li><li><a href="#contact">Request a quote</a></li><li>College Station &amp; the Brazos Valley</li></ul></div>
+  </div>
+  <div style="margin-top:40px;border-top:1px solid var(--line);padding-top:22px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:12.5px;color:rgba(246,241,233,.45)">
+    <span>&copy; <span id="yr"></span> Doc's Slushies. All rights reserved.</span><span>Howdy &amp; thanks for stopping by.</span></div>
+</div></footer>
+
+<div class="mbar"><a class="a1" href="#contact">Check a Date</a><a class="a2" href="https://www.instagram.com/docs.slushies/" target="_blank" rel="noopener">Message Us</a></div>
+<div class="lb"><button class="x" aria-label="Close">&times;</button><img src="" alt="Doc's Slushies"/></div>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+var nav=document.querySelector('.nav'); addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>24);});
+// reveal -> site transition
+var reveal=document.getElementById('reveal'), rv=document.getElementById('rv'), ldr=document.getElementById('ldr');
+var p=0,done=false,t=setInterval(function(){ if(p<92){p+=Math.max(1,Math.round((94-p)/9)); ldr.style.width=p+'%';} },70);
+function enter(){ if(done)return; done=true; clearInterval(t); ldr.style.width='100%';
+  document.body.classList.add('entered');
+  setTimeout(function(){ reveal.classList.add('gone'); document.body.classList.remove('locked'); },300); }
+var ready=false; function vr(){ if(ready)return; ready=true; setTimeout(enter,2600); } // dwell so the reveal animation reads
+if(rv.readyState>=3) vr(); rv.addEventListener('canplay',vr,{once:true}); rv.addEventListener('loadeddata',vr,{once:true});
+setTimeout(vr,2600); setTimeout(function(){ if(!done) enter(); },5600);
+// reveal on scroll
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -7% 0px'});
+document.querySelectorAll('[data-rev]').forEach(function(el){io.observe(el);});
+setTimeout(function(){document.querySelectorAll('[data-rev]').forEach(function(el){el.classList.add('in');});},6500);
+// lightbox
+var lb=document.querySelector('.lb'),lbi=lb.querySelector('img');
+document.querySelectorAll('.gal a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();lbi.src=a.getAttribute('href');lb.classList.add('open');});});
+lb.querySelector('.x').addEventListener('click',function(){lb.classList.remove('open');});
+lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open');});
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(function(it){
+  var q=it.querySelector('.faq-q'), a=it.querySelector('.faq-a');
+  q.addEventListener('click',function(){
+    var open=it.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight=null;});
+    if(!open){it.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# --- Pricing & quote surfaces hidden 2026-05-18 (temporary, reversible) ---
+# Turnkey Web pricing is hidden for this round — the only client action is
+# booking a call. To republish pricing: delete this file, then restore the
+# "Pricing" nav links + sitemap entries from git tag
+# pricing-live-snapshot-2026-05-18 (or branch archive/pricing-live-2026-05-18).
+/pricing.html                                                   /  302
+/pricing                                                        /  302
+/guides/how-much-does-a-small-business-website-cost             /  302
+/guides/how-much-does-a-small-business-website-cost/            /  302
+/guides/how-much-does-a-small-business-website-cost/index.html  /  302
+/portfolio                                                      /  302
+/portfolio/                                                     /  302
+/portfolio/index.html                                           /  302
+/portfolio/get-a-quote.html                                     /  302
+/portfolio/services.html                                        /  302
+/portfolio/process.html                                         /  302

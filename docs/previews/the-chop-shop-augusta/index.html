@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  The Chop Shop — Augusta, GA  ·  Turnkey Web bespoke prospect build (DRAFT)
+  Owner: Daniel Simpkins, Master Barber (since 2004, Southern Barber College)
+  209 James Brown Blvd, Augusta, GA 30901  ·  (706) 627-2400  ·  IG @chopshopaugusta
+  Art direction: LIGHT-LUXURY barber — warm cream base (#F6F1E9), near-black ink text,
+  barber-RED accent (#C8342B, drawn from the shop's real red chairs) + brass detail.
+  Showpiece: live Three.js rotating barber pole on the light canvas. Real GBP/Booksy photos,
+  real Booksy reviews (verbatim), real prices. Zero emojis — inline SVG icons only.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Chop Shop — Barber Shop in Downtown Augusta, GA | Daniel Simpkins</title>
+<meta name="description" content="The Chop Shop on James Brown Blvd in downtown Augusta, GA. Master Barber Daniel Simpkins — precision fades, line-ups, beard sculpting, and straight-razor shaves since 2004. Book your chair.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/the-chop-shop-augusta/">
+<meta property="og:type" content="business.business">
+<meta property="og:title" content="The Chop Shop — Downtown Augusta's Barber Since 2004">
+<meta property="og:description" content="Precision fades, line-ups, beard sculpting, and straight-razor shaves on James Brown Blvd. Master Barber Daniel Simpkins.">
+<meta property="og:url" content="https://turnkeyweb.org/previews/the-chop-shop-augusta/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/the-chop-shop-augusta/assets/booksy-3.jpg">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      cream:'#F6F1E9', bone:'#EFE7DA', ink:'#171310', charcoal:'#26211D',
+      red:'#C8342B', reddark:'#9E241C', brass:'#B8894E', muted:'#6C6258'
+    },
+    fontFamily: { display:['"Bricolage Grotesque"','serif'], body:['"Plus Jakarta Sans"','sans-serif'] }
+  }}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HairSalon",
+  "name":"The Chop Shop",
+  "description":"Barber shop in downtown Augusta, GA. Precision fades, line-ups, beard sculpting and straight-razor shaves by Master Barber Daniel Simpkins since 2004.",
+  "image":"https://turnkeyweb.org/previews/the-chop-shop-augusta/assets/booksy-3.jpg",
+  "url":"https://turnkeyweb.org/previews/the-chop-shop-augusta/",
+  "telephone":"+1-706-627-2400",
+  "priceRange":"$$",
+  "address":{"@type":"PostalAddress","streetAddress":"209 James Brown Blvd","addressLocality":"Augusta","addressRegion":"GA","postalCode":"30901","addressCountry":"US"},
+  "founder":{"@type":"Person","name":"Daniel Simpkins"},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"17:00"}
+  ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"215"},
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Haircut"},"price":"35","priceCurrency":"USD"},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Kids Cut"},"price":"25","priceCurrency":"USD"},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Line-Up"},"price":"20","priceCurrency":"USD"},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Beard Trim"},"price":"20","priceCurrency":"USD"},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Straight Razor Shave"},"price":"25","priceCurrency":"USD"}
+  ]
+}
+</script>
+<style>
+  :root{ --nav-h:68px; }
+  *{ -webkit-tap-highlight-color:transparent; }
+  html{ scroll-behavior:auto; scroll-padding-top:84px; }
+  body{ background:#F6F1E9; color:#171310; font-family:'Plus Jakarta Sans',sans-serif; overflow-x:hidden; }
+  ::selection{ background:#C8342B; color:#F6F1E9; }
+  .font-display{ font-family:'Bricolage Grotesque',serif; }
+  .tighter{ letter-spacing:-.03em; }
+  .tightest{ letter-spacing:-.045em; }
+
+  /* Grain overlay — keeps the light hero from feeling flat */
+  .grain::after{
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(#171310 0.5px, transparent 0.6px); background-size:3px 3px;
+  }
+
+  /* Gradient shimmer — brand-tinted, min-lightness floor for AA */
+  .grad-text{
+    background:linear-gradient(100deg,#C8342B 0%,#9E241C 22%,#171310 46%,#C8342B 66%,#9E241C 88%,#171310 100%);
+    background-size:200% 100%; -webkit-background-clip:text; background-clip:text; color:transparent;
+    -webkit-text-fill-color:transparent; animation:shimmer 9s linear infinite;
+  }
+  @keyframes shimmer{ from{background-position:0% 0} to{background-position:-200% 0} }
+  .grad-cream{
+    background:linear-gradient(100deg,#F6F1E9 0%,#F0C9B4 30%,#F6F1E9 52%,#EAB79C 74%,#F6F1E9 100%);
+    background-size:200% 100%; -webkit-background-clip:text; background-clip:text; color:transparent;
+    -webkit-text-fill-color:transparent; animation:shimmer 9s linear infinite;
+  }
+
+  /* Ambient tint blobs (subtle on light) */
+  .blob{ position:absolute; border-radius:50%; filter:blur(90px); pointer-events:none; will-change:transform; }
+  .blob-a{ width:520px;height:520px; background:radial-gradient(circle,rgba(200,52,43,.20),transparent 62%); top:-160px; right:-140px; animation:drift1 24s ease-in-out infinite; }
+  .blob-b{ width:460px;height:460px; background:radial-gradient(circle,rgba(184,137,78,.18),transparent 64%); bottom:-160px; left:-120px; animation:drift2 28s ease-in-out infinite; }
+  @keyframes drift1{ 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(34px,-26px) scale(1.08)} }
+  @keyframes drift2{ 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-30px,24px) scale(1.06)} }
+
+  /* Buttons */
+  .btn{ position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:.6rem; font-weight:700; transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .3s,box-shadow .4s; }
+  .btn-red{ background:#C8342B; color:#F6F1E9; }
+  .btn-red:hover{ transform:translateY(-3px); filter:brightness(1.05); box-shadow:0 16px 34px -14px rgba(200,52,43,.65); }
+  .btn-red::after{ content:''; position:absolute; top:0; left:-130%; width:60%; height:100%; transform:skewX(-18deg);
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent); transition:left .9s cubic-bezier(.2,.7,.2,1); }
+  .btn-red:hover::after{ left:130%; }
+  .btn-ink{ background:transparent; color:#171310; border:1.5px solid rgba(23,19,16,.28); }
+  .btn-ink:hover{ transform:translateY(-3px); border-color:#171310; box-shadow:0 14px 30px -18px rgba(23,19,16,.5); }
+
+  /* Cards */
+  .card{ position:relative; transition:transform .55s cubic-bezier(.2,.7,.2,1),box-shadow .55s; }
+  .card:hover{ transform:translateY(-6px); }
+
+  /* Underline-grow links */
+  .ul{ position:relative; }
+  .ul::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:linear-gradient(90deg,#C8342B,#B8894E); transition:width .5s cubic-bezier(.2,.7,.2,1); }
+  .ul:hover::after{ width:100%; }
+
+  /* Marquee */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* Pulse dot */
+  .pulse{ animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.82)} }
+
+  /* Reveals — GPU only */
+  [data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  [data-reveal].in{ opacity:1; transform:none; }
+  [data-clip]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.2,.7,.2,1); }
+  [data-clip].in{ clip-path:inset(0 0 0% 0); }
+
+  /* Price menu leader dots */
+  .menu-row{ display:flex; align-items:baseline; gap:.9rem; }
+  .menu-lead{ flex:1; border-bottom:1.5px dotted rgba(23,19,16,.28); transform:translateY(-4px); }
+
+  /* Barber pole hero canvas */
+  #poleCanvas{ display:block; width:100%; height:100%; }
+  .pole-shadow{ position:absolute; left:50%; bottom:8%; width:52%; height:34px; transform:translateX(-50%);
+    background:radial-gradient(ellipse at center, rgba(23,19,16,.30), transparent 70%); filter:blur(6px); }
+  .pole-poster{ display:none; }
+
+  .gallery-item img{ transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .7s; }
+  .gallery-item:hover img{ transform:scale(1.06); }
+
+  @media (max-width:880px){
+    .no-mobile-blend{ mix-blend-mode:normal !important; backdrop-filter:none !important; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .grad-text,.grad-cream,.marquee-track,.blob,.pulse{ animation:none !important; }
+    [data-reveal]{ opacity:1 !important; transform:none !important; }
+    [data-clip]{ clip-path:none !important; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="sticky top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div id="navbar" class="flex items-center justify-between h-[68px] rounded-b-2xl transition-all duration-500">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="inline-flex items-center justify-center h-9 w-9 rounded-md bg-ink text-cream">
+          <!-- scissors -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+        </span>
+        <span class="font-display font-extrabold text-[17px] tighter leading-none text-ink">THE CHOP SHOP</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-[14px] font-medium text-charcoal">
+        <a href="#work" class="ul">The Work</a>
+        <a href="#menu" class="ul">Menu</a>
+        <a href="#story" class="ul">The Barber</a>
+        <a href="#visit" class="ul">Visit</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="tel:+17066272400" class="hidden sm:inline-flex btn btn-ink rounded-full px-4 py-2 text-[13.5px]">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (706) 627-2400
+        </a>
+        <a href="tel:+17066272400" class="btn btn-red rounded-full px-4 py-2 text-[13.5px]">Book a Chair</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative grain overflow-hidden pt-8 md:pt-16 pb-10 md:pb-24">
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 relative">
+    <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-8 lg:gap-6 items-center">
+
+      <!-- Left: editorial type -->
+      <div class="relative z-10">
+        <div class="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-cream/70 px-3.5 py-1.5 text-[12.5px] font-semibold text-charcoal">
+          <span class="h-2 w-2 rounded-full bg-red pulse"></span>
+          Downtown Augusta · 209 James Brown Blvd
+        </div>
+
+        <h1 data-reveal class="font-display font-extrabold text-ink tightest leading-[.92] mt-5 text-[54px] sm:text-[76px] lg:text-[86px]">
+          <span class="grad-text">Sharp.</span> Clean.<br>Every single time.
+        </h1>
+
+        <p data-reveal class="mt-6 max-w-xl text-[17px] sm:text-[18px] leading-relaxed text-charcoal">
+          The Chop Shop is Master Barber <strong class="text-ink">Daniel Simpkins&rsquo;</strong> chair on James Brown Blvd — precision fades, crisp line-ups, sculpted beards, and hot-towel straight-razor shaves. Twenty years in, downtown Augusta still comes here to leave looking their best.
+        </p>
+
+        <div data-reveal class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="tel:+17066272400" class="btn btn-red rounded-full px-7 py-3.5 text-[15px]">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-[18px] w-[18px]"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call to book
+          </a>
+          <a href="#work" class="btn btn-ink rounded-full px-7 py-3.5 text-[15px]">See the work</a>
+        </div>
+
+        <!-- Hero stat strip -->
+        <div data-reveal class="mt-11 grid grid-cols-3 gap-4 max-w-lg">
+          <div>
+            <div class="font-display font-extrabold text-ink text-[34px] tighter"><span class="count" data-to="20" data-suffix="+">0</span></div>
+            <div class="text-[12.5px] text-muted mt-0.5 leading-tight">Years behind<br>the chair</div>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-ink text-[34px] tighter"><span class="count" data-to="215" data-suffix="+">0</span></div>
+            <div class="text-[12.5px] text-muted mt-0.5 leading-tight">Five-star<br>bookings</div>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-ink text-[34px] tighter"><span class="count" data-to="4.9" data-suffix="★" data-dec="1">0</span></div>
+            <div class="text-[12.5px] text-muted mt-0.5 leading-tight">Average<br>rating</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: WebGL barber-pole showpiece -->
+      <div class="relative h-[380px] sm:h-[460px] lg:h-[560px]">
+        <div id="poleWrap" class="absolute inset-0">
+          <canvas id="poleCanvas"></canvas>
+          <div class="pole-shadow"></div>
+        </div>
+        <img class="pole-poster absolute inset-0 h-full w-full object-cover rounded-[26px]" src="assets/booksy-3.jpg" alt="Fresh curly fade at The Chop Shop">
+        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap text-[12px] font-semibold tracking-wide text-charcoal">EST. 2004 · SOUTHERN BARBER COLLEGE TRAINED</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- scroll cue -->
+  <div class="mt-10 flex justify-center">
+    <div class="flex flex-col items-center gap-2 text-muted text-[11px] tracking-[.2em] font-semibold">
+      SCROLL
+      <span class="h-8 w-px bg-gradient-to-b from-ink/40 to-transparent"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="bg-ink text-cream py-4 marquee no-mobile-blend">
+  <div class="marquee-track font-display font-semibold text-[19px] sm:text-[22px] tighter uppercase">
+    <span class="flex items-center gap-8">
+      <span>Precision Fades</span><span class="text-red text-xs">◆</span>
+      <span>Crisp Line-Ups</span><span class="text-red text-xs">◆</span>
+      <span class="italic grad-cream">Straight-Razor Shaves</span><span class="text-red text-xs">◆</span>
+      <span>Beard Sculpting</span><span class="text-red text-xs">◆</span>
+      <span>Hot Towels</span><span class="text-red text-xs">◆</span>
+      <span>Kids Cuts</span><span class="text-red text-xs">◆</span>
+      <span>All Hair Textures</span><span class="text-red text-xs">◆</span>
+    </span>
+    <span class="flex items-center gap-8" aria-hidden="true">
+      <span>Precision Fades</span><span class="text-red text-xs">◆</span>
+      <span>Crisp Line-Ups</span><span class="text-red text-xs">◆</span>
+      <span class="italic grad-cream">Straight-Razor Shaves</span><span class="text-red text-xs">◆</span>
+      <span>Beard Sculpting</span><span class="text-red text-xs">◆</span>
+      <span>Hot Towels</span><span class="text-red text-xs">◆</span>
+      <span>Kids Cuts</span><span class="text-red text-xs">◆</span>
+      <span>All Hair Textures</span><span class="text-red text-xs">◆</span>
+    </span>
+  </div>
+</div>
+
+<!-- ============ WORK / GALLERY ============ -->
+<section id="work" class="py-12 md:py-28 relative">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-11">
+      <div>
+        <div class="text-[13px] font-bold tracking-[.2em] text-reddark uppercase">The Work</div>
+        <h2 data-reveal class="font-display font-extrabold text-ink tightest leading-[.95] text-[40px] sm:text-[54px] mt-2">
+          Real chairs.<br><span class="grad-text">Real cuts.</span>
+        </h2>
+      </div>
+      <p data-reveal class="max-w-sm text-[15.5px] text-charcoal leading-relaxed">
+        Every head that leaves this shop leaves clean. Fades, tapers, textured crops, designs, and beard work — straight from the chair on James Brown Blvd.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 md:gap-4">
+      <div data-reveal class="gallery-item card overflow-hidden rounded-2xl row-span-2 md:row-span-2 aspect-[3/4] bg-bone shadow-sm">
+        <img src="assets/booksy-5.jpg" alt="Low fade with sculpted full beard" class="h-full w-full object-cover" loading="lazy">
+      </div>
+      <div data-reveal class="gallery-item card overflow-hidden rounded-2xl aspect-square bg-bone shadow-sm">
+        <img src="assets/booksy-4.jpg" alt="Clean skin fade with hard part on a young client" class="h-full w-full object-cover" loading="lazy">
+      </div>
+      <div data-reveal class="gallery-item card overflow-hidden rounded-2xl aspect-square bg-bone shadow-sm">
+        <img src="assets/booksy-2.jpg" alt="Textured modern mullet with tapered sides" class="h-full w-full object-cover" loading="lazy">
+      </div>
+      <div data-reveal class="gallery-item card overflow-hidden rounded-2xl aspect-[3/4] row-span-2 bg-bone shadow-sm">
+        <img src="assets/booksy-3.jpg" alt="Curly top with a clean burst fade" class="h-full w-full object-cover" loading="lazy">
+      </div>
+      <div data-reveal class="gallery-item card overflow-hidden rounded-2xl aspect-square bg-bone shadow-sm">
+        <img src="assets/booksy-6.jpg" alt="Slick-back taper with clean neckline" class="h-full w-full object-cover" loading="lazy">
+      </div>
+      <div data-reveal class="gallery-item card overflow-hidden rounded-2xl aspect-square bg-bone shadow-sm">
+        <img src="assets/booksy-1.jpg" alt="Bold red color with a freehand design — all textures welcome" class="h-full w-full object-cover" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE MENU (price list) ============ -->
+<section id="menu" class="py-12 md:py-28 bg-ink text-cream relative overflow-hidden grain">
+  <div class="blob blob-a" style="opacity:.5"></div>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 relative">
+    <div class="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16 items-start">
+
+      <div class="lg:sticky lg:top-28">
+        <div class="text-[13px] font-bold tracking-[.2em] text-brass uppercase">The Menu</div>
+        <h2 data-reveal class="font-display font-extrabold tightest leading-[.95] text-[42px] sm:text-[56px] mt-2 text-cream">
+          Straightforward<br>pricing.<br><span class="grad-cream">Every seat.</span>
+        </h2>
+        <p data-reveal class="mt-6 text-cream/75 text-[15.5px] leading-relaxed max-w-md">
+          No surprises at the register. Walk-ins welcome when a chair is open — booking ahead keeps your spot. Straight-razor finishes and hot towels come standard on the shave.
+        </p>
+        <a href="tel:+17066272400" class="mt-8 inline-flex btn btn-red rounded-full px-7 py-3.5 text-[15px]">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-[18px] w-[18px]"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Book by phone
+        </a>
+      </div>
+
+      <div class="space-y-1">
+        <!-- Haircut -->
+        <div data-reveal class="py-5 border-b border-cream/12">
+          <div class="menu-row">
+            <div class="font-display font-bold text-[24px] sm:text-[27px] tighter text-cream">Haircut</div>
+            <div class="menu-lead"></div>
+            <div class="font-display font-bold text-[24px] sm:text-[27px] text-red">$35</div>
+          </div>
+          <div class="mt-1.5 text-cream/60 text-[14px]">Consultation, cut, and clean finish · ~55 min</div>
+        </div>
+        <!-- Kids -->
+        <div data-reveal class="py-5 border-b border-cream/12">
+          <div class="menu-row">
+            <div class="font-display font-bold text-[24px] sm:text-[27px] tighter text-cream">Kids Cut</div>
+            <div class="menu-lead"></div>
+            <div class="font-display font-bold text-[24px] sm:text-[27px] text-red">$25</div>
+          </div>
+          <div class="mt-1.5 text-cream/60 text-[14px]">Patient hands for the young ones · 12 &amp; under · ~30 min</div>
+        </div>
+        <!-- Line-up -->
+        <div data-reveal class="py-5 border-b border-cream/12">
+          <div class="menu-row">
+            <div class="font-display font-bold text-[24px] sm:text-[27px] tighter text-cream">Line-Up</div>
+            <div class="menu-lead"></div>
+            <div class="font-display font-bold text-[24px] sm:text-[27px] text-red">$20</div>
+          </div>
+          <div class="mt-1.5 text-cream/60 text-[14px]">Razor-sharp edge-up to reset your line · ~30 min</div>
+        </div>
+        <!-- Beard -->
+        <div data-reveal class="py-5 border-b border-cream/12">
+          <div class="menu-row">
+            <div class="font-display font-bold text-[24px] sm:text-[27px] tighter text-cream">Beard Trim</div>
+            <div class="menu-lead"></div>
+            <div class="font-display font-bold text-[24px] sm:text-[27px] text-red">$20</div>
+          </div>
+          <div class="mt-1.5 text-cream/60 text-[14px]">Shaped, lined, and detailed · ~30 min</div>
+        </div>
+        <!-- Shave -->
+        <div data-reveal class="py-5 border-b border-cream/12">
+          <div class="menu-row">
+            <div class="font-display font-bold text-[24px] sm:text-[27px] tighter text-cream">Straight-Razor Shave</div>
+            <div class="menu-lead"></div>
+            <div class="font-display font-bold text-[24px] sm:text-[27px] text-red">$25</div>
+          </div>
+          <div class="mt-1.5 text-cream/60 text-[14px]">Hot towel, close razor finish, the old-school way · ~20 min</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY / THE BARBER ============ -->
+<section id="story" class="py-12 md:py-28 relative">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div data-clip class="relative overflow-hidden rounded-[28px] aspect-[4/3] lg:aspect-[4/5] bg-bone shadow-lg order-2 lg:order-1">
+        <img src="assets/booksy-5.jpg" alt="Master Barber Daniel Simpkins' work — a low fade with full beard detail" class="h-full w-full object-cover">
+        <div class="absolute bottom-5 left-5 right-5 no-mobile-blend">
+          <div class="rounded-2xl bg-cream/90 backdrop-blur px-5 py-4 border border-ink/10">
+            <div class="text-[12px] font-bold tracking-[.15em] text-reddark uppercase">Master Barber</div>
+            <div class="font-display font-extrabold text-ink text-[22px] tighter leading-none mt-1">Daniel Simpkins</div>
+            <div class="text-[13px] text-muted mt-1">Cutting downtown Augusta since 2004</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-1 lg:order-2">
+        <div class="text-[13px] font-bold tracking-[.2em] text-reddark uppercase">The Barber</div>
+        <h2 data-reveal class="font-display font-extrabold text-ink tightest leading-[.95] text-[40px] sm:text-[54px] mt-2">
+          Trained old-school.<br>Cutting like it&rsquo;s an art.
+        </h2>
+        <p data-reveal class="mt-6 text-[16.5px] leading-relaxed text-charcoal">
+          Daniel earned his Master Barber license in 2004 out of Southern Barber College and has spent the last two decades in the same downtown chair, quietly building a reputation as one of the best in the city. He cuts every texture, sees the shape before the clippers move, and never rushes a line.
+        </p>
+        <p data-reveal class="mt-4 text-[16.5px] leading-relaxed text-charcoal">
+          Regulars keep coming back for a simple reason: you leave looking your best, every time. First-timers usually become regulars.
+        </p>
+
+        <div data-reveal class="mt-6 grid grid-cols-3 gap-2.5 md:gap-4">
+          <div class="rounded-2xl border border-ink/10 bg-cream p-4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C8342B" stroke-width="1.7" class="h-6 w-6 mb-2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+            <div class="font-display font-bold text-ink text-[16px]">Master licensed</div>
+            <div class="text-[13px] text-muted mt-0.5">Southern Barber College, 2004</div>
+          </div>
+          <div class="rounded-2xl border border-ink/10 bg-cream p-4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C8342B" stroke-width="1.7" class="h-6 w-6 mb-2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <div class="font-display font-bold text-ink text-[16px]">20+ years in</div>
+            <div class="text-[13px] text-muted mt-0.5">Same downtown chair</div>
+          </div>
+          <div class="rounded-2xl border border-ink/10 bg-cream p-4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C8342B" stroke-width="1.7" class="h-6 w-6 mb-2"><path d="M20 6L9 17l-5-5"/></svg>
+            <div class="font-display font-bold text-ink text-[16px]">All textures</div>
+            <div class="text-[13px] text-muted mt-0.5">Curly, coily, straight</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="py-12 md:py-28 bg-bone relative grain">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 relative">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <div class="text-[13px] font-bold tracking-[.2em] text-reddark uppercase">What people say</div>
+      <h2 data-reveal class="font-display font-extrabold text-ink tightest leading-[.95] text-[40px] sm:text-[54px] mt-2">
+        Booked <span class="grad-text">215+ times</span>,<br>five stars.
+      </h2>
+      <div data-reveal class="mt-4 inline-flex items-center gap-2 text-charcoal text-[15px]">
+        <span class="flex text-red">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+        </span>
+        4.9 on Google · 5.0 on Booksy &amp; Yelp
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3.5 md:gap-5">
+      <!-- each review is a real Booksy verbatim quote + real reviewer display name -->
+      <div data-reveal class="card rounded-2xl bg-cream border border-ink/10 p-6 shadow-sm">
+        <div class="flex text-red mb-3">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+        </div>
+        <p class="text-[16px] leading-relaxed text-ink">&ldquo;I always leave feeling good because I always leave looking good. Great place, great people.&rdquo;</p>
+        <div class="mt-4 text-[13.5px] font-semibold text-charcoal">Drew <span class="text-muted font-normal">· Booksy review</span></div>
+      </div>
+
+      <div data-reveal class="card rounded-2xl bg-cream border border-ink/10 p-6 shadow-sm">
+        <div class="flex text-red mb-3">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+        </div>
+        <p class="text-[16px] leading-relaxed text-ink">&ldquo;Love, love and love my cut! Best in the business.&rdquo;</p>
+        <div class="mt-4 text-[13.5px] font-semibold text-charcoal">Amy <span class="text-muted font-normal">· Booksy review</span></div>
+      </div>
+
+      <div data-reveal class="card rounded-2xl bg-cream border border-ink/10 p-6 shadow-sm">
+        <div class="flex text-red mb-3">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+        </div>
+        <p class="text-[16px] leading-relaxed text-ink">&ldquo;Gave me exactly what I asked for and the barber was chill.&rdquo;</p>
+        <div class="mt-4 text-[13.5px] font-semibold text-charcoal">Emanuel <span class="text-muted font-normal">· Booksy review</span></div>
+      </div>
+
+      <div data-reveal class="card rounded-2xl bg-cream border border-ink/10 p-6 shadow-sm">
+        <div class="flex text-red mb-3">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+        </div>
+        <p class="text-[16px] leading-relaxed text-ink">&ldquo;Very professional. Great atmosphere!&rdquo;</p>
+        <div class="mt-4 text-[13.5px] font-semibold text-charcoal">Gary <span class="text-muted font-normal">· Booksy review</span></div>
+      </div>
+
+      <div data-reveal class="card rounded-2xl bg-cream border border-ink/10 p-6 shadow-sm">
+        <div class="flex text-red mb-3">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+        </div>
+        <p class="text-[16px] leading-relaxed text-ink">&ldquo;Excellent barber! Exactly what a barbershop should be.&rdquo;</p>
+        <div class="mt-4 text-[13.5px] font-semibold text-charcoal">Justin <span class="text-muted font-normal">· Booksy review</span></div>
+      </div>
+
+      <div data-reveal class="card rounded-2xl bg-red text-cream p-6 shadow-sm flex flex-col justify-between">
+        <p class="text-[17px] leading-relaxed font-medium">&ldquo;Great, like always.&rdquo;</p>
+        <div>
+          <div class="flex mb-3 mt-4">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          </div>
+          <div class="text-[13.5px] font-semibold">Ty <span class="text-cream/70 font-normal">· Booksy review</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section id="visit" class="py-12 md:py-28 relative">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+      <!-- Info -->
+      <div>
+        <div class="text-[13px] font-bold tracking-[.2em] text-reddark uppercase">Visit</div>
+        <h2 data-reveal class="font-display font-extrabold text-ink tightest leading-[.95] text-[40px] sm:text-[54px] mt-2">
+          Find the chair.
+        </h2>
+        <p data-reveal class="mt-4 text-[16px] text-charcoal leading-relaxed max-w-md">
+          Right downtown on James Brown Blvd. Call ahead to lock your time — walk-ins welcome when a seat&rsquo;s open.
+        </p>
+
+        <div class="mt-8 space-y-4">
+          <a href="https://www.google.com/maps?q=209+James+Brown+Blvd,+Augusta,+GA+30901" target="_blank" rel="noopener" class="flex items-start gap-4 group">
+            <span class="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ink text-cream">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div>
+              <div class="font-display font-bold text-ink text-[17px]">209 James Brown Blvd</div>
+              <div class="text-[14.5px] text-muted">Augusta, GA 30901 <span class="text-reddark font-semibold ul">· Get directions</span></div>
+            </div>
+          </a>
+
+          <a href="tel:+17066272400" class="flex items-start gap-4 group">
+            <span class="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ink text-cream">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <div>
+              <div class="font-display font-bold text-ink text-[17px]">(706) 627-2400</div>
+              <div class="text-[14.5px] text-muted">Call or text to book</div>
+            </div>
+          </a>
+
+          <div class="flex items-start gap-4">
+            <span class="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ink text-cream">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <div class="w-full">
+              <div class="font-display font-bold text-ink text-[17px] flex items-center gap-2">
+                Hours <span class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-reddark"><span class="h-1.5 w-1.5 rounded-full bg-red pulse"></span>By appointment</span>
+              </div>
+              <div class="mt-2 text-[14.5px] text-charcoal grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 max-w-xs">
+                <span class="text-muted">Mon &ndash; Sat</span><span class="font-semibold text-ink">9:00 AM &ndash; 5:00 PM</span>
+                <span class="text-muted">Sunday</span><span class="font-semibold text-ink">Closed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex items-center gap-3">
+          <a href="https://www.instagram.com/chopshopaugusta/" target="_blank" rel="noopener" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-ink/15 text-ink hover:bg-ink hover:text-cream transition-colors">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <span class="text-[14px] text-muted">Follow the fresh cuts <span class="font-semibold text-ink">@chopshopaugusta</span></span>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div id="mapWrap" data-reveal class="relative rounded-[26px] overflow-hidden border border-ink/10 shadow-lg min-h-[380px] lg:min-h-full bg-bone">
+        <iframe id="mapFrame"
+          title="The Chop Shop — 209 James Brown Blvd, Augusta, GA 30901"
+          src="https://www.google.com/maps?q=209%20James%20Brown%20Blvd%2C%20Augusta%2C%20GA%2030901&output=embed"
+          width="100%" height="100%" style="border:0; min-height:380px; display:block;" loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <!-- Real map poster (of 209 James Brown Blvd) shown until the live embed paints — keeps the box from ever reading blank -->
+        <img id="mapPoster" src="assets/map-poster.jpg" alt="Map to The Chop Shop at 209 James Brown Blvd, Augusta, GA 30901"
+          class="absolute inset-0 h-full w-full object-cover transition-opacity duration-700 pointer-events-none" style="z-index:5;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section class="relative overflow-hidden bg-red text-cream grain">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 py-12 md:py-28 text-center relative">
+    <div class="inline-flex items-center gap-2 rounded-full border border-cream/25 px-3.5 py-1.5 text-[12.5px] font-semibold">
+      <span class="h-2 w-2 rounded-full bg-cream pulse"></span> Downtown Augusta · 209 James Brown Blvd
+    </div>
+    <h2 data-reveal class="font-display font-extrabold tightest leading-[.95] text-[46px] sm:text-[68px] mt-5 text-cream">
+      Walk in sharp.<br><span class="grad-cream">Leave sharper.</span>
+    </h2>
+    <p data-reveal class="mt-5 text-cream/85 text-[17px] max-w-xl mx-auto">
+      Book a chair with Daniel and see why downtown keeps coming back. One call is all it takes.
+    </p>
+    <div data-reveal class="mt-9 flex flex-wrap justify-center gap-3">
+      <a href="tel:+17066272400" class="btn rounded-full px-8 py-4 text-[16px] bg-cream text-ink hover:-translate-y-0.5 transition-transform font-bold">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-[18px] w-[18px]"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (706) 627-2400
+      </a>
+      <a href="#work" class="btn rounded-full px-8 py-4 text-[16px] border border-cream/45 text-cream hover:bg-cream/10 transition-colors font-semibold">See the work</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-cream/70 pt-14 md:pt-16 pb-24 md:pb-14">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="inline-flex items-center justify-center h-9 w-9 rounded-md bg-red text-cream">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+          </span>
+          <span class="font-display font-extrabold text-[18px] tighter text-cream">THE CHOP SHOP</span>
+        </div>
+        <p class="mt-4 text-[14.5px] leading-relaxed max-w-sm">
+          Downtown Augusta&rsquo;s barber since 2004. Master Barber Daniel Simpkins — precision cuts, line-ups, beards, and straight-razor shaves on James Brown Blvd.
+        </p>
+      </div>
+      <div>
+        <div class="font-display font-bold text-cream text-[15px] mb-3">Visit</div>
+        <div class="text-[14.5px] space-y-1.5">
+          <div>209 James Brown Blvd</div>
+          <div>Augusta, GA 30901</div>
+          <a href="tel:+17066272400" class="block text-cream ul mt-2">(706) 627-2400</a>
+          <a href="https://www.instagram.com/chopshopaugusta/" target="_blank" rel="noopener" class="block ul">@chopshopaugusta</a>
+        </div>
+      </div>
+      <div>
+        <div class="font-display font-bold text-cream text-[15px] mb-3">Hours</div>
+        <div class="text-[14.5px] grid grid-cols-[auto_1fr] gap-x-4 gap-y-1">
+          <span>Mon&ndash;Sat</span><span class="text-cream">9 AM &ndash; 5 PM</span>
+          <span>Sunday</span><span class="text-cream">Closed</span>
+        </div>
+        <a href="tel:+17066272400" class="mt-5 inline-flex btn btn-red rounded-full px-5 py-2.5 text-[14px]">Book a chair</a>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-cream/12 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12.5px] text-cream/45">
+      <div>© <span id="yr">2026</span> The Chop Shop · Augusta, GA</div>
+      <div>Site by <a href="https://turnkeyweb.org" target="_blank" rel="noopener" class="ul text-cream/70">Turnkey Web</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-cream border-t border-ink/10 shadow-[0_-8px_24px_-16px_rgba(23,19,16,.5)] px-3 py-2.5 flex gap-2.5" style="padding-bottom:calc(.625rem + env(safe-area-inset-bottom));">
+  <a href="tel:+17066272400" class="flex-1 btn btn-red rounded-full justify-center py-3 text-[15px] font-bold">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="h-[17px] w-[17px]"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call to book
+  </a>
+  <a href="https://www.google.com/maps?q=209+James+Brown+Blvd,+Augusta,+GA+30901" target="_blank" rel="noopener" class="flex-1 btn btn-ink rounded-full justify-center py-3 text-[15px] font-semibold">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-[17px] w-[17px]"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const reduceMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+const isMobile = window.matchMedia('(max-width:880px)').matches;
+
+/* ---------- Nav shrink on scroll ---------- */
+const navbar = document.getElementById('navbar');
+function navState(){
+  if(window.scrollY > 20){
+    navbar.classList.add('bg-cream/95','shadow-[0_10px_30px_-18px_rgba(23,19,16,.5)]','px-4');
+  }else{
+    navbar.classList.remove('bg-cream/95','shadow-[0_10px_30px_-18px_rgba(23,19,16,.5)]','px-4');
+  }
+}
+navState(); window.addEventListener('scroll',navState,{passive:true});
+
+/* ---------- Lenis smooth scroll (single rAF via GSAP ticker) ---------- */
+let lenis;
+if(window.Lenis && !reduceMotion){
+  lenis = new Lenis({ duration:1.1, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+  if(window.gsap){
+    gsap.ticker.add((time)=> lenis.raf(time*1000));
+    gsap.ticker.lagSmoothing(0);
+    if(window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  }else{
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+  }
+}
+if(window.ScrollTrigger) ScrollTrigger.config({ ignoreMobileResize:true });
+// anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href'); if(id.length<2) return;
+    const t=document.querySelector(id); if(!t) return;
+    e.preventDefault();
+    if(lenis){ lenis.scrollTo(t,{offset:-72}); }
+    else{ t.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+
+/* ---------- Reveals ---------- */
+if(window.gsap && window.ScrollTrigger){
+  gsap.registerPlugin(ScrollTrigger);
+  document.querySelectorAll('[data-reveal]').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:.66,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 92%',once:true},
+      onComplete:()=>el.style.willChange='auto'});
+    el.classList.add('in');
+  });
+  document.querySelectorAll('[data-clip]').forEach(el=>{
+    ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>el.classList.add('in')});
+  });
+}else{
+  document.querySelectorAll('[data-reveal],[data-clip]').forEach(el=>el.classList.add('in'));
+}
+
+/* ---------- Count-up ---------- */
+function runCount(el){
+  const to=parseFloat(el.dataset.to), dec=parseInt(el.dataset.dec||'0'), suf=el.dataset.suffix||'';
+  if(reduceMotion || !window.gsap){ el.textContent=(dec?to.toFixed(dec):Math.round(to))+suf; return; }
+  const o={v:0};
+  gsap.to(o,{v:to,duration:1.6,ease:'power2.out',onUpdate:()=>{ el.textContent=(dec?o.v.toFixed(dec):Math.round(o.v))+suf; }});
+}
+document.querySelectorAll('.count').forEach(el=>{
+  if(window.ScrollTrigger){ ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:()=>runCount(el)}); }
+  else runCount(el);
+});
+
+/* ---------- Three.js barber-pole showpiece ---------- */
+(function(){
+  const canvas = document.getElementById('poleCanvas');
+  const wrap = document.getElementById('poleWrap');
+  const poster = document.querySelector('.pole-poster');
+  const lowPower = (navigator.hardwareConcurrency && navigator.hardwareConcurrency<=4);
+  function showPoster(){ if(wrap) wrap.style.display='none'; if(poster) poster.style.display='block'; }
+
+  if(!window.THREE || reduceMotion || (isMobile && lowPower)){ showPoster(); return; }
+
+  let renderer;
+  try{
+    renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+  }catch(e){ showPoster(); return; }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+  camera.position.set(0, 0, 9);
+
+  function size(){
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+    renderer.setSize(w,h,false);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile?1.5:2));
+    camera.aspect = w/h; camera.updateProjectionMatrix();
+  }
+
+  // helical stripe texture (barber pole)
+  const tc = document.createElement('canvas'); tc.width=64; tc.height=256;
+  const tx = tc.getContext('2d');
+  const bands = [ '#C8342B','#F4ECE3','#26211D','#F4ECE3' ]; // red, cream, charcoal, cream
+  const bh = tc.height/8;
+  for(let i=0;i<8;i++){ tx.fillStyle=bands[i%bands.length]; tx.fillRect(0,i*bh,tc.width,bh+1); }
+  const tex = new THREE.CanvasTexture(tc);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.repeat.set(1,3);
+  tex.rotation = Math.PI/5;        // diagonal -> helix on the cylinder
+  tex.center.set(.5,.5);
+  tex.anisotropy = 4;
+
+  const group = new THREE.Group();
+
+  // pole body
+  const poleMat = new THREE.MeshStandardMaterial({ map:tex, roughness:.42, metalness:.08 });
+  const pole = new THREE.Mesh(new THREE.CylinderGeometry(1.02,1.02,5.4,64,1,true), poleMat);
+  group.add(pole);
+
+  // subtle glossy sheen sleeve (adds "glass tube" depth)
+  const sheenMat = new THREE.MeshStandardMaterial({ color:0xffffff, transparent:true, opacity:.06, roughness:.05, metalness:.9, side:THREE.BackSide });
+  const sheen = new THREE.Mesh(new THREE.CylinderGeometry(1.09,1.09,5.42,64,1,true), sheenMat);
+  group.add(sheen);
+
+  // brass caps
+  const brass = new THREE.MeshStandardMaterial({ color:0xB8894E, roughness:.28, metalness:.95 });
+  const capGeo = new THREE.CylinderGeometry(1.18,1.18,.5,48);
+  const capTop = new THREE.Mesh(capGeo, brass); capTop.position.y = 2.95; group.add(capTop);
+  const capBot = new THREE.Mesh(capGeo, brass); capBot.position.y = -2.95; group.add(capBot);
+  const knobGeo = new THREE.SphereGeometry(.5,32,32);
+  const knobTop = new THREE.Mesh(knobGeo, brass); knobTop.position.y=3.35; group.add(knobTop);
+  const knobBot = new THREE.Mesh(knobGeo, brass); knobBot.position.y=-3.35; group.add(knobBot);
+
+  group.rotation.z = 0.12;
+  group.rotation.x = 0.04;
+  scene.add(group);
+
+  // lights (warm studio on a light set)
+  scene.add(new THREE.AmbientLight(0xffffff, .72));
+  const key = new THREE.DirectionalLight(0xffffff, 1.05); key.position.set(4,6,7); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xC8342B, .5); rim.position.set(-5,-2,3); scene.add(rim);
+  const fill = new THREE.PointLight(0xB8894E, .5, 40); fill.position.set(-3,4,5); scene.add(fill);
+
+  size(); window.addEventListener('resize', size);
+
+  let running = true, visible = true;
+  document.addEventListener('visibilitychange',()=>{ running = !document.hidden; if(running) loop(); });
+  if('IntersectionObserver' in window){
+    new IntersectionObserver((ents)=>{ visible = ents[0].isIntersecting; if(visible&&running) loop(); },{threshold:.01}).observe(wrap);
+  }
+
+  let last = performance.now(), req=null;
+  function loop(){
+    if(req) cancelAnimationFrame(req);
+    if(!running || !visible) return;
+    req = requestAnimationFrame(loop);
+    const now = performance.now(); const dt = Math.min((now-last)/1000,.05); last = now;
+    tex.offset.y -= dt*0.14;           // stripes travel up -> barber-pole spin illusion
+    group.rotation.y += dt*0.35;       // gentle 3D turn
+    renderer.render(scene,camera);
+  }
+  last = performance.now(); loop();
+})();
+
+/* ---------- Map poster: real map of the address stays until the user engages, then
+   reveal the live interactive embed. Screenshots (no interaction) always show a real map. ---------- */
+(function(){
+  const wrap=document.getElementById('mapWrap'), mp=document.getElementById('mapPoster');
+  if(!wrap||!mp) return;
+  let revealed=false;
+  function reveal(){ if(revealed) return; revealed=true; mp.style.opacity='0'; setTimeout(()=>{ mp.style.display='none'; },750); }
+  wrap.addEventListener('pointerenter',reveal,{once:true});
+  wrap.addEventListener('touchstart',reveal,{once:true,passive:true});
+  wrap.addEventListener('click',reveal,{once:true});
+})();
+
+/* ---------- 6s crawler / screenshot safety net ---------- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{ el.style.opacity='1'; el.style.transform='none'; el.classList.add('in'); });
+  document.querySelectorAll('[data-clip]').forEach(el=>el.classList.add('in'));
+  document.querySelectorAll('.count').forEach(el=>{
+    if(el.textContent==='0'){ const to=parseFloat(el.dataset.to),dec=parseInt(el.dataset.dec||'0'),suf=el.dataset.suffix||''; el.textContent=(dec?to.toFixed(dec):Math.round(to))+suf; }
+  });
+  if(window.ScrollTrigger) ScrollTrigger.refresh();
+},6000);
+</script>
+</body>
+</html>

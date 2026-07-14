@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Microsoft Clarity (heatmaps + session replay) -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xat9lhrllb");
+</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pawsome Veterinary — Austin's Friendliest Animal Hospital</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--teal:#00B4CC;--teal-deep:#008FA3;--teal-pale:#E5F8FB;--white:#FFFFFF;--snow:#F8FEFF;--ink:#0D2B30;--muted:#4A7C84;--orange:#FF7043;--rule:rgba(13,43,48,.1)}
+body{font-family:'Poppins',sans-serif;background:var(--snow);color:var(--ink);overflow-x:hidden}
+/* NAV — teal */
+nav{background:var(--teal);padding:0 64px;height:68px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-logo{font-size:20px;font-weight:700;color:var(--white);display:flex;align-items:center;gap:8px}
+.nav-logo .paw{font-size:22px}
+.nav-links{display:flex;gap:0}
+.nav-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;padding:0 18px;height:68px;display:flex;align-items:center;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-appt{background:var(--white);color:var(--teal);font-size:12px;font-weight:700;padding:0 24px;height:68px;display:flex;align-items:center;text-decoration:none;transition:opacity .2s}
+.nav-appt:hover{opacity:.9}
+/* SPLIT HERO: teal left / photo right */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:88vh}
+.hero-left{background:var(--teal);padding:60px 56px;display:flex;flex-direction:column;justify-content:center;overflow:visible}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+h1{font-size:clamp(32px,3.5vw,56px);font-weight:700;line-height:1.12;color:var(--white)}
+h1 em{font-style:normal;font-weight:300}
+.hero-body{font-size:14px;font-weight:300;line-height:1.75;color:rgba(255,255,255,.72);max-width:380px;margin-top:14px;margin-bottom:24px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.btn-white{background:var(--white);color:var(--teal);padding:13px 28px;font-size:12px;font-weight:700;text-decoration:none;border-radius:6px;transition:opacity .2s}
+.btn-white:hover{opacity:.9}
+.btn-outline-white{border:2px solid rgba(255,255,255,.4);color:var(--white);padding:13px 28px;font-size:12px;font-weight:700;text-decoration:none;border-radius:6px;transition:border-color .2s}
+.btn-outline-white:hover{border-color:rgba(255,255,255,.8)}
+.hero-trust{display:flex;gap:20px;flex-wrap:wrap}
+.ht-item{font-size:12px;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:6px}
+.hero-right{position:relative;overflow:hidden}
+.hero-right img{width:100%;height:100%;object-fit:cover}
+.hero-float{position:absolute;bottom:32px;left:16px;background:var(--white);padding:14px 18px;border-radius:10px;box-shadow:0 8px 28px rgba(0,180,204,.2);min-width:150px}
+.hf-num{font-size:28px;font-weight:700;color:var(--teal);line-height:1}
+.hf-label{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+/* SERVICES — WHITE SECTION with teal accents */
+.services{background:var(--white);padding:80px 64px;border-top:4px solid var(--teal-pale)}
+.section-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+.section-h{font-size:clamp(28px,3vw,42px);font-weight:700;color:var(--ink);line-height:1.15;margin-bottom:40px}
+.section-h em{color:var(--teal);font-style:normal}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--snow);border-radius:12px;padding:28px;border:2px solid transparent;transition:border-color .2s,box-shadow .2s}
+.svc-card:hover{border-color:var(--teal);box-shadow:0 8px 32px rgba(0,180,204,.1)}
+.svc-icon{width:52px;height:52px;background:var(--teal-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+.svc-name{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.svc-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.65}
+/* VETS — TEAL SECTION, photo + info rows */
+.vets{background:var(--teal-pale);padding:80px 64px}
+.vets-list{display:flex;flex-direction:column;gap:2px;margin-top:40px}
+.vet-row{background:var(--white);display:grid;grid-template-columns:100px 1fr auto;gap:28px;align-items:center;padding:24px 32px;border-radius:8px;transition:box-shadow .2s}
+.vet-row:hover{box-shadow:0 6px 28px rgba(0,180,204,.12)}
+.vet-img{width:100px;height:100px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--teal-pale)}
+.vet-name{font-size:19px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.vet-title{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+.vet-bio{font-size:13px;font-weight:300;color:var(--muted);line-height:1.6;max-width:560px}
+.vet-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.vtag{font-size:10px;font-weight:600;letter-spacing:.06em;background:var(--teal-pale);color:var(--teal);padding:3px 10px;border-radius:20px}
+.vet-status{font-size:12px;font-weight:700;color:var(--teal);white-space:nowrap;display:flex;align-items:center;gap:5px}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--teal)}
+/* BOOKING — white section */
+.booking{background:var(--white);padding:80px 64px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;border-top:4px solid var(--teal-pale)}
+.book-text h2{font-size:clamp(32px,4vw,48px);font-weight:700;color:var(--ink);line-height:1.1;margin-bottom:16px}
+.book-text h2 em{color:var(--teal);font-style:normal}
+.book-text p{font-size:14px;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:20px}
+.book-text ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.book-text li{font-size:13px;color:var(--ink);display:flex;align-items:center;gap:8px}
+.book-text li::before{content:'✓';color:var(--teal);font-weight:700}
+.form-label{display:block;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.form-input{width:100%;border:2px solid rgba(13,43,48,.08);border-radius:6px;padding:11px 14px;font-family:'Poppins',sans-serif;font-size:13px;color:var(--ink);background:var(--snow);outline:none;margin-bottom:14px;transition:border-color .2s}
+.form-input:focus{border-color:var(--teal)}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.book-btn{width:100%;background:var(--teal);color:var(--white);border:none;padding:14px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;border-radius:6px;cursor:pointer;transition:background .2s;margin-top:4px}
+.book-btn:hover{background:var(--teal-deep)}
+footer{background:var(--teal);padding:24px 64px;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.6);flex-wrap:wrap;gap:10px;align-items:center}
+.footer-logo{font-size:16px;font-weight:700;color:var(--white)}
+@media(max-width:768px){
+  nav{padding:0 20px}.nav-links{display:none}
+  .hero{grid-template-columns:1fr}.hero-right{min-height:300px}
+  .hero-left{padding:100px 24px 48px}
+  .services,.vets,.booking{padding:60px 24px}
+  .svc-grid{grid-template-columns:1fr}
+  .vet-row{grid-template-columns:72px 1fr;gap:16px}.vet-status{display:none}
+  .booking{grid-template-columns:1fr;gap:40px}.form-row-2{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center;padding:20px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><span class="paw">🐾</span>Pawsome Vet</div>
+  <div class="nav-links"><a href="#services">Services</a><a href="#vets">Our Vets</a><a href="#book">Appointments</a></div>
+  <a href="#book" class="nav-appt">Book Appointment</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">🐾 Austin, TX · Est. 2012</div>
+    <h1>Your pet deserves<br>the <em>very best</em> care.</h1>
+    <p class="hero-body">Fear-free certified. AAHA accredited. Austin's most-loved veterinary practice for dogs, cats, and exotic animals — where every pet is treated like family.</p>
+    <div class="hero-btns">
+      <a href="#book" class="btn-white">Book Appointment</a>
+      <a href="#services" class="btn-outline-white">Our Services</a>
+    </div>
+    <div class="hero-trust">
+      <div class="ht-item">⭐ 4.98 Rating</div>
+      <div class="ht-item">✓ Fear Free Certified</div>
+      <div class="ht-item">✓ AAHA Accredited</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1600&q=90" alt="Happy dog">
+    <div class="hero-float"><div class="hf-num">4,800+</div><div class="hf-label">Pets Cared For</div></div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-eyebrow">What We Offer</div>
+  <div class="section-h">Comprehensive care for<br><em>every pet we meet.</em></div>
+  <div class="svc-grid">
+    <div class="svc-card"><div class="svc-icon">🏥</div><div class="svc-name">Wellness Exams</div><div class="svc-desc">Annual and semi-annual wellness checks, vaccinations, heartworm prevention, and parasite control for optimal long-term health.</div></div>
+    <div class="svc-card"><div class="svc-icon">🦷</div><div class="svc-name">Dental Care</div><div class="svc-desc">Professional dental cleanings, digital dental X-rays, and oral surgery. Dental health is whole-body health.</div></div>
+    <div class="svc-card"><div class="svc-icon">🔬</div><div class="svc-name">Diagnostics</div><div class="svc-desc">In-house lab, digital X-ray, ultrasound, and endoscopy for fast, accurate answers when your pet isn't feeling well.</div></div>
+    <div class="svc-card"><div class="svc-icon">⚕️</div><div class="svc-name">Surgery</div><div class="svc-desc">Spay & neuter, soft tissue surgery, and orthopedic procedures. Board-certified surgeons available for complex cases.</div></div>
+    <div class="svc-card"><div class="svc-icon">🐠</div><div class="svc-name">Exotic Animals</div><div class="svc-desc">Specialized care for rabbits, guinea pigs, birds, reptiles, and small mammals. One of Austin's few exotic animal practices.</div></div>
+    <div class="svc-card"><div class="svc-icon">🚨</div><div class="svc-name">Urgent Care</div><div class="svc-desc">Same-day sick visits for established clients. Online triage available 24/7 to help you decide next steps.</div></div>
+  </div>
+</section>
+
+<section class="vets" id="vets">
+  <div class="section-eyebrow">Our Veterinarians</div>
+  <div class="section-h">People who love<br><em>your pet</em> as much as you do.</div>
+  <div class="vets-list">
+    <div class="vet-row"><img src="https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?w=200&q=80" alt="Dr. Park" class="vet-img"><div><div class="vet-name">Dr. Lisa Park, DVM</div><div class="vet-title">Medical Director · Small Animal</div><div class="vet-bio">Texas A&M CVM '09. 15 years in Austin. Fear Free certified. Specializes in internal medicine and managing chronic conditions in senior pets.</div><div class="vet-tags"><span class="vtag">Fear Free Certified</span><span class="vtag">Internal Medicine</span><span class="vtag">Senior Pets</span></div></div><div class="vet-status"><div class="status-dot"></div>Accepting Patients</div></div>
+    <div class="vet-row"><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&q=80" alt="Dr. Webb" class="vet-img"><div><div class="vet-name">Dr. Marcus Webb, DVM</div><div class="vet-title">Surgeon · Orthopedics</div><div class="vet-bio">Board-certified small animal surgeon. Fellowship-trained in orthopedics with 800+ successful TPLO procedures. Canine and feline specialist.</div><div class="vet-tags"><span class="vtag">DACVS</span><span class="vtag">Orthopedics</span><span class="vtag">Board Certified</span></div></div><div class="vet-status"><div class="status-dot"></div>Accepting Patients</div></div>
+    <div class="vet-row"><img src="https://images.unsplash.com/photo-1614836762080-8cc3c710fe16?w=200&q=80" alt="Dr. Nguyen" class="vet-img"><div><div class="vet-name">Dr. Amy Nguyen, DVM</div><div class="vet-title">Exotic Animal Specialist</div><div class="vet-bio">LSU School of Vet Med '14. Exotic animal medicine residency. One of only 12 board-certified exotic animal vets in Texas.</div><div class="vet-tags"><span class="vtag">DACZM</span><span class="vtag">Exotic Animals</span><span class="vtag">Avian</span></div></div><div class="vet-status"><div class="status-dot"></div>Accepting Patients</div></div>
+  </div>
+</section>
+
+<section class="booking" id="book">
+  <div class="book-text">
+    <h2>Book your pet's<br><em>appointment today.</em></h2>
+    <p>Online booking available 24/7. New patients always welcome. We'll send you a confirmation and reminder via text.</p>
+    <ul>
+      <li>Same-day sick visits for established clients</li>
+      <li>Evening and Saturday appointments available</li>
+      <li>All major pet insurance accepted</li>
+      <li>CareCredit financing available</li>
+    </ul>
+    <div style="margin-top:24px;display:flex;flex-direction:column;gap:7px">
+      <div style="font-size:13px;color:var(--muted)">📍 2800 S Lamar Blvd, Austin TX 78704</div>
+      <div style="font-size:13px;color:var(--muted)">📞 (512) 555-0177</div>
+      <div style="font-size:13px;color:var(--muted)">🕐 Mon–Fri 7:30am–6pm · Sat 8am–2pm</div>
+    </div>
+  </div>
+  <form onsubmit="return false">
+    <div class="form-row-2"><div><label class="form-label">Your Name</label><input class="form-input" type="text" placeholder="Jane Smith"></div><div><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(512) 555-0100"></div></div>
+    <label class="form-label">Email</label><input class="form-input" type="email" placeholder="jane@email.com">
+    <div class="form-row-2"><div><label class="form-label">Pet's Name</label><input class="form-input" type="text" placeholder="Buddy"></div><div><label class="form-label">Species</label><select class="form-input"><option>Dog</option><option>Cat</option><option>Rabbit</option><option>Bird</option><option>Exotic / Other</option></select></div></div>
+    <label class="form-label">Reason for Visit</label>
+    <select class="form-input"><option>Annual Wellness Exam</option><option>Sick Visit</option><option>Dental Cleaning</option><option>Surgery Consultation</option><option>Vaccines Only</option><option>New Patient Exam</option></select>
+    <button class="book-btn">Request Appointment 🐾</button>
+  </form>
+</section>
+<footer><div class="footer-logo">🐾 Pawsome Vet</div><span>2800 S Lamar Blvd · Austin TX 78704 · (512) 555-0177</span><span>© 2025 Pawsome Veterinary PLLC</span></footer>
+</body></html>

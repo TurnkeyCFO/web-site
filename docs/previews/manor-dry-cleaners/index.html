@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Manor Dry Cleaners — Fallbrook, CA  |  Turnkey Web premium prospect build (DRAFT)
+  Art direction: "Fallbrook garment atelier" — light-luxury cream/bone canvas, warm ink text,
+  scarce bordeaux (#7A1E2B, couture thread) + deep brass (#9A6B33, embroidery) accents.
+  Type: Fraunces (editorial display) + Plus Jakarta Sans (body). Diverges from every recent build.
+  Showpiece: Three.js flowing-silk shader hero on the LIGHT canvas (brand metaphor: garments in motion).
+  Real data only — phone/address/hours/services/reviews verified from manordrycleaners.com + Yelp.
+  Real owner photo: assets/real-embroidery.jpg. Strict per-page image set — no image reused across pages.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manor Dry Cleaners — Expert Garment Care in Fallbrook, CA</title>
+<meta name="description" content="Manor Dry Cleaners in Fallbrook, CA: expert dry cleaning, tailoring & alterations, custom embroidery, letterman jackets, household items, and Wednesday delivery. Trusted by 14,000 neighbors. Call (760) 728-1307.">
+<link rel="canonical" href="https://www.manordrycleaners.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Manor Dry Cleaners — Expert Garment Care in Fallbrook, CA">
+<meta property="og:description" content="Dry cleaning, tailoring, and custom embroidery handled with precision and care in the heart of Fallbrook.">
+<meta property="og:url" content="https://www.manordrycleaners.com/">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream:  '#F8F2E9',
+        bone:   '#F1E7D8',
+        paper:  '#FCF8F1',
+        ink:    '#221A16',
+        muted:  '#6B5E53',
+        line:   'rgba(34,26,22,0.12)',
+        wine:   '#7A1E2B',
+        wineDk: '#5E141F',
+        brass:  '#9A6B33',
+        brassLt:'#B4894E',
+      },
+      fontFamily: {
+        display: ['Fraunces', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+      },
+    }
+  }
+}
+</script>
+
+<style>
+  html { scroll-behavior: auto; scroll-padding-top: 84px; }
+  body { background:#F8F2E9; color:#221A16; font-family:'Plus Jakarta Sans',system-ui,sans-serif; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+  ::selection { background:#7A1E2B; color:#F8F2E9; }
+
+  .font-display { font-family:'Fraunces',serif; }
+
+  /* Preloader — garment-care intro, first visit only */
+  #preloader { position:fixed; inset:0; z-index:120; background:#F8F2E9; display:flex; align-items:center; justify-content:center; }
+  #preloader .pl-stage { display:flex; flex-direction:column; align-items:center; gap:1rem; }
+  #preloader .pl-hanger { color:#7A1E2B; opacity:0; transform:translateY(10px); animation:plHang .8s cubic-bezier(.2,.7,.2,1) forwards; }
+  #preloader .pl-word { font-family:'Fraunces',serif; font-size:clamp(1.7rem,5vw,2.6rem); font-weight:400; letter-spacing:-.01em; color:#221A16; opacity:0; animation:plFade .8s ease .14s forwards; }
+  #preloader .pl-thread { position:relative; width:170px; height:2px; background:rgba(34,26,22,.12); border-radius:2px; overflow:hidden; }
+  #preloader .pl-thread i { position:absolute; inset:0; transform:translateX(-101%); background:linear-gradient(90deg,#7A1E2B,#9A6B33); animation:plThread 1.1s cubic-bezier(.5,.05,.2,1) .24s forwards; }
+  #preloader .pl-cap { font-size:.64rem; letter-spacing:.32em; text-transform:uppercase; color:#6B5E53; opacity:0; animation:plFade .8s ease .34s forwards; }
+  @keyframes plHang { to{opacity:1; transform:none} }
+  @keyframes plFade { to{opacity:1} }
+  @keyframes plThread { to{transform:translateX(0)} }
+  .pl-curtain { position:fixed; inset:0; z-index:119; background:#7A1E2B; transform:scaleY(0); transform-origin:bottom; }
+  html.pl-done #preloader, html.pl-done .pl-curtain { display:none !important; }
+  @media (prefers-reduced-motion:reduce){ #preloader .pl-hanger,#preloader .pl-word,#preloader .pl-thread i,#preloader .pl-cap{ animation:none; opacity:1; transform:none } #preloader .pl-thread i{ transform:translateX(0) } }
+
+  /* Gradient shimmer on key text (deep tones so it always clears AA large-text contrast on cream) */
+  .grad-text {
+    background:linear-gradient(100deg,#7A1E2B 0%,#9A6B33 42%,#7A1E2B 84%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite;
+  }
+  @keyframes shimmer { 0%{background-position:0% 50%} 100%{background-position:220% 50%} }
+
+  /* Word-reveal mask */
+  .reveal-line { overflow:hidden; display:block; }
+  .reveal-word { display:inline-block; will-change:transform; }
+
+  [data-reveal] { opacity:0; transform:translateY(30px); will-change:opacity,transform; transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal].is-in { opacity:1; transform:none; }
+  [data-reveal-img] .ri-inner { clip-path:inset(0 0 100% 0); will-change:clip-path; transition:clip-path 1.1s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal-img] .ri-inner.is-in { clip-path:inset(0 0 0% 0); }
+
+  /* Hero silk canvas */
+  #silk { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .hero-veil { position:absolute; inset:0; background:
+      radial-gradient(120% 90% at 78% 20%, rgba(248,242,233,0) 42%, rgba(248,242,233,.82) 100%),
+      linear-gradient(180deg, rgba(248,242,233,.4) 0%, rgba(248,242,233,0) 26%, rgba(248,242,233,.55) 100%);
+    pointer-events:none; }
+  .grain::after { content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(#221A16 .8px, transparent .8px); background-size:4px 4px; }
+
+  /* Buttons */
+  .btn { position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:.5rem; font-weight:600; letter-spacing:.01em; transition:transform .4s cubic-bezier(.2,.7,.2,1), filter .4s, box-shadow .4s; }
+  .btn-wine { background:#7A1E2B; color:#F8F2E9; box-shadow:0 10px 30px -12px rgba(122,30,43,.6); }
+  .btn-wine:hover { transform:translateY(-3px); filter:brightness(1.06); box-shadow:0 18px 40px -14px rgba(122,30,43,.7); }
+  .btn-wine::after { content:''; position:absolute; top:0; left:-120%; width:60%; height:100%; transform:skewX(-18deg);
+    background:linear-gradient(90deg,transparent,rgba(248,242,233,.35),transparent); transition:left .9s cubic-bezier(.2,.7,.2,1); }
+  .btn-wine:hover::after { left:130%; }
+  .btn-ghost { border:1px solid rgba(34,26,22,.28); color:#221A16; }
+  .btn-ghost:hover { border-color:#7A1E2B; color:#7A1E2B; transform:translateY(-2px); }
+
+  .u-grow { position:relative; }
+  .u-grow::after { content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:linear-gradient(90deg,#7A1E2B,#9A6B33); transition:width .5s cubic-bezier(.2,.7,.2,1); }
+  .u-grow:hover::after { width:100%; }
+
+  .eyebrow { font-size:.72rem; letter-spacing:.3em; text-transform:uppercase; color:#7A1E2B; font-weight:600; }
+
+  /* Marquee */
+  .marquee { overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .marquee-track { display:flex; gap:3rem; width:max-content; animation:scrollX 42s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state:paused; }
+  @keyframes scrollX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* Service rows */
+  .svc-row { transition:background .5s, padding .5s; }
+  .svc-row .svc-idx { transition:color .5s, transform .5s; }
+  .svc-row:hover { background:rgba(122,30,43,.045); }
+  .svc-row:hover .svc-idx { color:#7A1E2B; transform:translateX(4px); }
+  .svc-row:hover .svc-arrow { transform:translate(4px,-4px); opacity:1; }
+  .svc-arrow { opacity:0; transition:transform .5s, opacity .5s; }
+
+  .craft-img { overflow:hidden; }
+  .craft-img img { transition:transform 1.1s cubic-bezier(.2,.7,.2,1); }
+  .craft-img:hover img { transform:scale(1.06); }
+
+  .chip-dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:#7A1E2B; animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.4; transform:scale(.7)} }
+
+  .scroll-prog { position:fixed; top:0; left:0; height:2px; width:0; z-index:100; background:linear-gradient(90deg,#7A1E2B,#9A6B33); }
+
+  #mnav { transition:background .5s, box-shadow .5s, border-color .5s; }
+
+  @media (max-width:880px){
+    .hero-veil { background:
+      radial-gradient(120% 80% at 80% 12%, rgba(248,242,233,0) 40%, rgba(248,242,233,.9) 100%),
+      linear-gradient(180deg, rgba(248,242,233,.3) 0%, rgba(248,242,233,0) 30%, rgba(248,242,233,.7) 100%); }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .grad-text{ animation:none } .marquee-track{ animation:none } .chip-dot{ animation:none }
+  }
+</style>
+<script>try{if(sessionStorage.getItem('manorSeen'))document.documentElement.classList.add('pl-done')}catch(e){}</script>
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader"><div class="pl-stage">
+  <svg class="pl-hanger" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.6a1.7 1.7 0 1 1 1.28 1.65c-.52.13-.78.5-.78 1v.85"/><path d="m12 8.1-8.7 5.9c-1 .68-.52 2.25.7 2.25h16c1.22 0 1.7-1.57.7-2.25L12 8.1Z"/></svg>
+  <div class="pl-word">Manor Dry Cleaners</div>
+  <div class="pl-thread"><i></i></div>
+  <div class="pl-cap">Fallbrook · California</div>
+</div></div>
+<div class="pl-curtain" id="plCurtain"></div>
+<div class="scroll-prog" id="scrollProg"></div>
+
+<!-- NAV -->
+<header id="mnav" class="fixed top-0 inset-x-0 z-[90] border-b border-transparent">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="w-9 h-9 rounded-full bg-wine text-cream flex items-center justify-center font-display text-lg leading-none">M</span>
+      <span class="leading-tight">
+        <span class="block font-display text-[1.15rem] tracking-tight text-ink">Manor Dry Cleaners</span>
+        <span class="block text-[.6rem] tracking-[.28em] uppercase text-muted">Fallbrook · California</span>
+      </span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-[.9rem] text-ink/80">
+      <a href="laundry-and-dry-cleaning-services/" class="u-grow">Dry Cleaning &amp; Laundry</a>
+      <a href="tailoring-and-embroidery/" class="u-grow">Tailoring &amp; Embroidery</a>
+      <a href="smoke-mildew-and-water-damage/" class="u-grow">Restoration</a>
+      <a href="#reviews" class="u-grow">Reviews</a>
+      <a href="#visit" class="u-grow">Visit</a>
+    </nav>
+    <a href="tel:17607281307" class="btn btn-wine text-sm px-5 py-2.5 rounded-full">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="hidden sm:inline">(760) 728-1307</span><span class="sm:hidden">Call</span>
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-[100svh] grain overflow-hidden flex items-center" style="min-height:640px;">
+  <canvas id="silk"></canvas>
+  <div class="hero-veil"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pt-32 pb-24 lg:py-32">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+      <!-- Type -->
+      <div class="lg:col-span-7">
+        <div class="flex items-center gap-3 mb-7" data-reveal>
+          <span class="chip-dot"></span>
+          <span class="eyebrow">A Fallbrook institution · 14,000 neighbors trust us</span>
+        </div>
+        <h1 class="font-display font-light text-ink leading-[.98] tracking-tight text-[clamp(2.7rem,7.2vw,5.7rem)]" id="heroHead">
+          <span class="reveal-line"><span class="reveal-word">Expert</span> <span class="reveal-word">care</span> <span class="reveal-word">for</span></span>
+          <span class="reveal-line"><span class="reveal-word">every</span> <span class="reveal-word grad-text italic">garment.</span></span>
+        </h1>
+        <p class="mt-7 text-[1.06rem] sm:text-[1.16rem] text-muted max-w-xl leading-relaxed" data-reveal>
+          From wedding gowns to letterman jackets — dry cleaning, tailoring, and custom
+          embroidery, handled with the precision and honesty Fallbrook has counted on for years.
+        </p>
+        <div class="mt-9 flex flex-wrap items-center gap-4" data-reveal>
+          <a href="tel:17607281307" class="btn btn-wine px-7 py-3.5 rounded-full text-[.98rem]">Call (760) 728-1307</a>
+          <a href="#services" class="btn btn-ghost px-7 py-3.5 rounded-full text-[.98rem]">Explore our services</a>
+        </div>
+
+        <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 max-w-2xl" data-reveal>
+          <div>
+            <div class="font-display text-[2.1rem] text-ink leading-none"><span class="tabular-nums" data-count="4.7" data-dec="1">4.7</span><span class="text-wine text-xl align-top">★</span></div>
+            <div class="text-[.72rem] tracking-[.14em] uppercase text-muted mt-1.5">Google rating</div>
+          </div>
+          <div>
+            <div class="font-display text-[2.1rem] text-ink leading-none"><span class="tabular-nums" data-count="90">0</span>+</div>
+            <div class="text-[.72rem] tracking-[.14em] uppercase text-muted mt-1.5">5-star reviews</div>
+          </div>
+          <div>
+            <div class="font-display text-[2.1rem] text-ink leading-none"><span class="tabular-nums" data-count="14000">0</span></div>
+            <div class="text-[.72rem] tracking-[.14em] uppercase text-muted mt-1.5">Trusted locally</div>
+          </div>
+          <div>
+            <div class="font-display text-[2.1rem] text-ink leading-none">Wed</div>
+            <div class="text-[.72rem] tracking-[.14em] uppercase text-muted mt-1.5">Pickup &amp; delivery</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image card -->
+      <div class="lg:col-span-5" data-reveal-img>
+        <div class="ri-inner relative rounded-[1.4rem] overflow-hidden shadow-[0_40px_80px_-30px_rgba(34,26,22,.4)]">
+          <img src="assets/suit-man.jpg" alt="A sharply pressed gray suit with a red tie, finished at Manor Dry Cleaners in Fallbrook" class="w-full h-[330px] lg:h-[560px] object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent"></div>
+          <div class="absolute left-5 bottom-5 right-5 flex items-end justify-between">
+            <div class="backdrop-blur-sm bg-cream/85 rounded-xl px-4 py-3">
+              <div class="text-[.68rem] tracking-[.18em] uppercase text-wine font-semibold">Ask for Paul</div>
+              <div class="font-display text-ink text-lg leading-tight">Better than you left it.</div>
+            </div>
+            <div class="backdrop-blur-sm bg-wine/95 text-cream rounded-xl px-3.5 py-3 text-center">
+              <div class="font-display text-2xl leading-none">4.7★</div>
+              <div class="text-[.6rem] tracking-[.14em] uppercase mt-1 text-cream/85">Google</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#services" class="hidden lg:flex absolute bottom-7 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2 text-muted text-[.68rem] tracking-[.24em] uppercase" aria-label="Scroll">
+    <span>Scroll</span>
+    <span class="w-px h-9 bg-gradient-to-b from-wine/60 to-transparent"></span>
+  </a>
+</section>
+
+<!-- MARQUEE -->
+<section class="py-4 sm:py-6 border-y border-line bg-paper">
+  <div class="marquee">
+    <div class="marquee-track font-display text-[1.5rem] sm:text-[1.9rem] text-ink/80 italic">
+      <span>Dry Cleaning</span><span class="text-brass not-italic">✦</span>
+      <span>Tailoring &amp; Alterations</span><span class="text-brass not-italic">✦</span>
+      <span class="grad-text">Custom Embroidery</span><span class="text-brass not-italic">✦</span>
+      <span>Letterman Jackets</span><span class="text-brass not-italic">✦</span>
+      <span>Household Items</span><span class="text-brass not-italic">✦</span>
+      <span>Fluff-n-Fold</span><span class="text-brass not-italic">✦</span>
+      <span>Wednesday Delivery</span><span class="text-brass not-italic">✦</span>
+      <span>Dry Cleaning</span><span class="text-brass not-italic">✦</span>
+      <span>Tailoring &amp; Alterations</span><span class="text-brass not-italic">✦</span>
+      <span class="grad-text">Custom Embroidery</span><span class="text-brass not-italic">✦</span>
+      <span>Letterman Jackets</span><span class="text-brass not-italic">✦</span>
+      <span>Household Items</span><span class="text-brass not-italic">✦</span>
+      <span>Fluff-n-Fold</span><span class="text-brass not-italic">✦</span>
+      <span>Wednesday Delivery</span><span class="text-brass not-italic">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="py-14 sm:py-20 bg-cream">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <p class="eyebrow mb-8" data-reveal>The Manor promise</p>
+    <h2 class="font-display font-light text-ink leading-[1.08] tracking-tight text-[clamp(1.8rem,4.4vw,3.4rem)]" data-reveal>
+      For Fallbrook, <span class="italic grad-text">&ldquo;take it to Manor&rdquo;</span> has always meant one thing —
+      it comes back cleaner, pressed, and cared for like it&rsquo;s our own.
+    </h2>
+    <div class="mt-10 flex flex-wrap gap-x-10 gap-y-4 text-muted text-[.95rem]" data-reveal>
+      <span class="flex items-center gap-2"><span class="chip-dot"></span> Family-run, locally rooted</span>
+      <span class="flex items-center gap-2"><span class="chip-dot"></span> Delicates &amp; wedding gowns</span>
+      <span class="flex items-center gap-2"><span class="chip-dot"></span> Honest, by-name service</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES (editorial index) -->
+<section id="services" class="py-14 sm:py-20 bg-paper border-y border-line">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-4">
+      <div class="lg:sticky lg:top-28">
+        <p class="eyebrow mb-5" data-reveal>What we do</p>
+        <h2 class="font-display font-light text-ink text-[clamp(2rem,4vw,3.1rem)] leading-[1.02] tracking-tight" data-reveal>
+          Expert care,<br><span class="italic grad-text">end to end.</span>
+        </h2>
+        <p class="mt-6 text-muted leading-relaxed max-w-sm" data-reveal>
+          Nine ways we look after what you wear and love — from everyday shirts to the pieces
+          you&rsquo;ll keep forever.
+        </p>
+        <a href="tel:17607281307" class="btn btn-wine mt-8 px-6 py-3 rounded-full text-sm" data-reveal>Ask us about your item</a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-8" data-reveal>
+      <div class="divide-y divide-line border-y border-line">
+        <a href="laundry-and-dry-cleaning-services/" class="svc-row grid grid-cols-[auto_1fr_auto] gap-5 items-start px-3 sm:px-5 py-[9px] sm:py-6 block">
+          <span class="svc-idx font-display text-muted text-lg pt-1">01</span>
+          <div><h3 class="font-display text-[1.35rem] text-ink">Dry Cleaning</h3><p class="text-muted text-[.95rem] mt-1 leading-relaxed">Gentle cleaning for suits, dresses, wedding gowns, and delicate fabrics.</p></div>
+          <svg class="svc-arrow mt-2 text-wine" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        <a href="tailoring-and-embroidery/" class="svc-row grid grid-cols-[auto_1fr_auto] gap-5 items-start px-3 sm:px-5 py-[9px] sm:py-6 block">
+          <span class="svc-idx font-display text-muted text-lg pt-1">02</span>
+          <div><h3 class="font-display text-[1.35rem] text-ink">Tailoring &amp; Alterations</h3><p class="text-muted text-[.95rem] mt-1 leading-relaxed">Mending, hemming, and taking in or letting out wedding dresses and suits.</p></div>
+          <svg class="svc-arrow mt-2 text-wine" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        <a href="tailoring-and-embroidery/" class="svc-row grid grid-cols-[auto_1fr_auto] gap-5 items-start px-3 sm:px-5 py-[9px] sm:py-6 block">
+          <span class="svc-idx font-display text-muted text-lg pt-1">03</span>
+          <div><h3 class="font-display text-[1.35rem] text-ink">Custom Embroidery</h3><p class="text-muted text-[.95rem] mt-1 leading-relaxed">A company logo, a grandchild&rsquo;s name on a blanket, or full embroidery on letterman jackets.</p></div>
+          <svg class="svc-arrow mt-2 text-wine" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        <a href="tailoring-and-embroidery/" class="svc-row grid grid-cols-[auto_1fr_auto] gap-5 items-start px-3 sm:px-5 py-[9px] sm:py-6 block">
+          <span class="svc-idx font-display text-muted text-lg pt-1">04</span>
+          <div><h3 class="font-display text-[1.35rem] text-ink">Letterman Jackets</h3><p class="text-muted text-[.95rem] mt-1 leading-relaxed">Full-service custom embroidery on letterman jackets, available for select schools.</p></div>
+          <svg class="svc-arrow mt-2 text-wine" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        <a href="laundry-and-dry-cleaning-services/" class="svc-row grid grid-cols-[auto_1fr_auto] gap-5 items-start px-3 sm:px-5 py-[9px] sm:py-6 block">
+          <span class="svc-idx font-display text-muted text-lg pt-1">05</span>
+          <div><h3 class="font-display text-[1.35rem] text-ink">Household Items</h3><p class="text-muted text-[.95rem] mt-1 leading-relaxed">Tablecloths, comforters, draperies, small area rugs, bedding, pillows, and some electric blankets.</p></div>
+          <svg class="svc-arrow mt-2 text-wine" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        <a href="laundry-and-dry-cleaning-services/" class="svc-row grid grid-cols-[auto_1fr_auto] gap-5 items-start px-3 sm:px-5 py-[9px] sm:py-6 block">
+          <span class="svc-idx font-display text-muted text-lg pt-1">06</span>
+          <div><h3 class="font-display text-[1.35rem] text-ink">Laundry &amp; Fluff-n-Fold</h3><p class="text-muted text-[.95rem] mt-1 leading-relaxed">Dress shirts, jeans, and fluff-n-fold laundered, pressed, and folded.</p></div>
+          <svg class="svc-arrow mt-2 text-wine" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        <a href="laundry-and-dry-cleaning-services/" class="svc-row grid grid-cols-[auto_1fr_auto] gap-5 items-start px-3 sm:px-5 py-[9px] sm:py-6 block">
+          <span class="svc-idx font-display text-muted text-lg pt-1">07</span>
+          <div><h3 class="font-display text-[1.35rem] text-ink">Wednesday Delivery</h3><p class="text-muted text-[.95rem] mt-1 leading-relaxed">Weekly and bi-weekly pickup and drop-off on Wednesdays for monthly-charge customers.</p></div>
+          <svg class="svc-arrow mt-2 text-wine" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        <a href="laundry-and-dry-cleaning-services/" class="svc-row grid grid-cols-[auto_1fr_auto] gap-5 items-start px-3 sm:px-5 py-[9px] sm:py-6 block">
+          <span class="svc-idx font-display text-muted text-lg pt-1">08</span>
+          <div><h3 class="font-display text-[1.35rem] text-ink">Box for Travel</h3><p class="text-muted text-[.95rem] mt-1 leading-relaxed">Fold-and-box dress shirts and more for stress-free packing and shipping.</p></div>
+          <svg class="svc-arrow mt-2 text-wine" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        <a href="smoke-mildew-and-water-damage/" class="svc-row grid grid-cols-[auto_1fr_auto] gap-5 items-start px-3 sm:px-5 py-[9px] sm:py-6 block">
+          <span class="svc-idx font-display text-muted text-lg pt-1">09</span>
+          <div><h3 class="font-display text-[1.35rem] text-ink">Smoke, Mildew &amp; Water Damage</h3><p class="text-muted text-[.95rem] mt-1 leading-relaxed">Restoration cleaning for garments touched by smoke, mildew, or water.</p></div>
+          <svg class="svc-arrow mt-2 text-wine" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL-BLEED IMAGE BAND (warm boutique rack) -->
+<section class="relative overflow-hidden">
+  <img src="assets/garment-rack2.jpg" alt="A warmly lit rack of freshly cleaned garments at Manor Dry Cleaners in Fallbrook" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-ink/25"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-16 sm:py-28">
+    <div class="max-w-2xl" data-reveal>
+      <p class="text-[.72rem] tracking-[.3em] uppercase text-brassLt font-semibold mb-5">Every piece, ready when you are</p>
+      <h2 class="font-display font-light text-cream text-[clamp(2rem,4.8vw,3.6rem)] leading-[1.04] tracking-tight">
+        A rack full of garments, <span class="italic text-brassLt">each cleaned like our own.</span>
+      </h2>
+      <div class="mt-8 flex flex-wrap gap-x-9 gap-y-3 text-cream/85 text-[.98rem]">
+        <span class="flex items-center gap-2.5"><span class="font-display text-2xl text-cream leading-none">4.7★</span> Google rating</span>
+        <span class="flex items-center gap-2.5"><span class="font-display text-2xl text-cream leading-none">90+</span> five-star reviews</span>
+        <span class="flex items-center gap-2.5"><span class="font-display text-2xl text-cream leading-none">14,000</span> neighbors served</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CRAFT (real owner photo) + shop-life mosaic -->
+<section id="craft" class="py-14 sm:py-20 bg-cream grain relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div class="craft-img relative rounded-[1.3rem] overflow-hidden shadow-[0_30px_60px_-30px_rgba(34,26,22,.45)] order-1 lg:order-none" data-reveal>
+        <img src="assets/real-embroidery.jpg" alt="Real custom embroidery on a letterman jacket by Manor Dry Cleaners in Fallbrook, CA" class="w-full h-[280px] sm:h-[480px] object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent"></div>
+        <div class="absolute left-6 bottom-6 right-6">
+          <div class="text-[.68rem] tracking-[.2em] uppercase text-brassLt font-semibold mb-1">Custom Embroidery</div>
+          <div class="font-display text-cream text-2xl leading-tight">Logos, names &amp; keepsakes, stitched to last.</div>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow mb-5" data-reveal>The craft that sets us apart</p>
+        <h2 class="font-display font-light text-ink text-[clamp(2rem,4.6vw,3.5rem)] leading-[1.03] tracking-tight" data-reveal>
+          Anyone can clean a shirt.<br><span class="italic grad-text">We finish the details.</span>
+        </h2>
+        <p class="mt-6 text-muted leading-relaxed max-w-xl" data-reveal>
+          Custom embroidery and letterman-jacket work are where Manor earns its name — real, in-house
+          craftsmanship neighbors bring their most personal pieces to. Ask for Paul; he and the team have
+          looked after Fallbrook&rsquo;s finest for years.
+        </p>
+        <a href="tailoring-and-embroidery/" class="btn btn-wine mt-8 px-7 py-3.5 rounded-full text-[.98rem]" data-reveal>Explore tailoring &amp; embroidery</a>
+      </div>
+    </div>
+
+    <!-- SHOP LIFE MOSAIC -->
+    <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5">
+      <div class="craft-img rounded-[1.1rem] overflow-hidden shadow-[0_24px_50px_-30px_rgba(34,26,22,.4)]" data-reveal>
+        <img src="assets/color-shirts.jpg" alt="A colorful rack of freshly pressed dress shirts at Manor Dry Cleaners" class="w-full h-[180px] sm:h-[240px] object-cover">
+      </div>
+      <div class="craft-img rounded-[1.1rem] overflow-hidden shadow-[0_24px_50px_-30px_rgba(34,26,22,.4)]" data-reveal>
+        <img src="assets/pressing-iron.jpg" alt="Professional pressing and finishing at Manor Dry Cleaners" class="w-full h-[180px] sm:h-[240px] object-cover">
+      </div>
+      <div class="craft-img rounded-[1.1rem] overflow-hidden shadow-[0_24px_50px_-30px_rgba(34,26,22,.4)] col-span-2 sm:col-span-1" data-reveal>
+        <img src="assets/rack-clothes.jpg" alt="A bright rack of everyday clothing cleaned and ready at Manor Dry Cleaners" class="w-full h-[180px] sm:h-[240px] object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTORATION (real differentiator — smoke / mildew / water damage) -->
+<section id="restoration" class="py-14 sm:py-20 bg-paper border-t border-line">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+    <div class="lg:col-span-6">
+      <p class="eyebrow mb-5" data-reveal>When damage strikes</p>
+      <h2 class="font-display font-light text-ink text-[clamp(2rem,4.6vw,3.5rem)] leading-[1.04] tracking-tight" data-reveal>
+        Smoke, mildew &amp; water damage —<br><span class="italic grad-text">brought back to life.</span>
+      </h2>
+      <p class="mt-6 text-muted leading-relaxed max-w-xl" data-reveal>
+        For over a decade, Manor has specialized in the removal of smoke, mildew, and water damage from
+        clothing and household goods. Special practices and specific cleaning solutions — the kind most
+        cleaners simply don&rsquo;t do — bring your garments back from what looked like a total loss.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-x-8 gap-y-4" data-reveal>
+        <div class="flex items-center gap-2.5 text-ink"><span class="chip-dot"></span><span class="font-medium">Clothing &amp; delicates</span></div>
+        <div class="flex items-center gap-2.5 text-ink"><span class="chip-dot"></span><span class="font-medium">Bedding &amp; comforters</span></div>
+        <div class="flex items-center gap-2.5 text-ink"><span class="chip-dot"></span><span class="font-medium">Draperies &amp; rugs</span></div>
+      </div>
+      <a href="tel:17607281307" class="btn btn-wine mt-9 px-7 py-3.5 rounded-full text-[.98rem]" data-reveal>Talk to us about your items</a>
+    </div>
+
+    <div class="lg:col-span-6" data-reveal>
+      <div class="relative rounded-[1.4rem] border border-line bg-cream p-8 sm:p-10 shadow-[0_30px_60px_-34px_rgba(34,26,22,.4)] overflow-hidden">
+        <div class="absolute -top-10 -right-8 font-display text-[10rem] leading-none text-wine/[.06] select-none pointer-events-none">10+</div>
+        <div class="relative">
+          <div class="font-display text-[2.7rem] sm:text-[3.4rem] text-ink leading-none">A decade<span class="text-wine">+</span></div>
+          <div class="text-[.72rem] tracking-[.2em] uppercase text-muted mt-2">Specializing in restoration cleaning</div>
+          <div class="my-7 h-px bg-line"></div>
+          <p class="text-ink/85 leading-relaxed">
+            After a fire, a flood, or long storage, the difference between saving a piece and losing it is
+            experience. It&rsquo;s the work your trusted local cleaner has quietly done for Fallbrook, year after year.
+          </p>
+          <div class="mt-6 flex items-center gap-3 text-sm text-muted">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A1E2B" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Insurance &amp; keepsake pieces welcome — bring us the ones that matter most.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY / WHITE-GLOVE BAND (high-contrast wine) -->
+<section class="relative bg-wine text-cream overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14 sm:py-20 grid lg:grid-cols-12 gap-10 items-center">
+    <div class="lg:col-span-7">
+      <p class="text-[.72rem] tracking-[.3em] uppercase text-cream/70 font-semibold mb-5" data-reveal>We&rsquo;ll come to you</p>
+      <h2 class="font-display font-light text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-tight" data-reveal>
+        Wednesday pickup &amp; delivery, right to your door.
+      </h2>
+      <p class="mt-6 text-cream/80 leading-relaxed max-w-xl" data-reveal>
+        Weekly and bi-weekly pickup and drop-off for our monthly-charge customers — plus fold-and-box
+        service for travel. Set it once and never think about the dry cleaning again.
+      </p>
+    </div>
+    <div class="lg:col-span-5 lg:justify-self-end" data-reveal>
+      <div class="bg-cream/10 border border-cream/20 rounded-2xl p-7 backdrop-blur-sm">
+        <div class="font-display text-cream text-2xl mb-1">Start your delivery route</div>
+        <p class="text-cream/75 text-sm mb-6">Tell us your schedule — we handle the rest.</p>
+        <a href="tel:17607281307" class="btn bg-cream text-wine px-6 py-3.5 rounded-full w-full justify-center font-semibold hover:brightness-95 hover:-translate-y-0.5">Call (760) 728-1307</a>
+        <div class="mt-4 text-center text-cream/70 text-sm">or visit us on E. Mission Road</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS (real, verbatim) -->
+<section id="reviews" class="py-14 sm:py-20 bg-paper">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-10 sm:mb-14">
+      <div>
+        <p class="eyebrow mb-5" data-reveal>Neighbors say it best</p>
+        <h2 class="font-display font-light text-ink text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.03] tracking-tight" data-reveal>
+          A <span class="italic grad-text">bedrock</span> of the community.
+        </h2>
+      </div>
+      <div class="flex items-center gap-6" data-reveal>
+        <div class="text-center">
+          <div class="font-display text-4xl text-ink leading-none">4.7<span class="text-wine text-2xl">★</span></div>
+          <div class="text-[.68rem] tracking-[.16em] uppercase text-muted mt-1.5">Google &amp; Yelp</div>
+        </div>
+        <div class="w-px h-12 bg-line"></div>
+        <div class="text-center">
+          <div class="font-display text-4xl text-ink leading-none">90+</div>
+          <div class="text-[.68rem] tracking-[.16em] uppercase text-muted mt-1.5">Reviews</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <figure class="bg-cream border border-line rounded-2xl p-5 sm:p-6 flex flex-col" data-reveal>
+        <div class="text-wine text-lg mb-4">★★★★★</div>
+        <blockquote class="text-ink/90 leading-relaxed flex-1">&ldquo;Paul and the team at Manor Cleaners are great! Friendly, professional service at competitive prices. I&rsquo;ve trusted Manor Cleaners with all my laundry and dry cleaning needs for eight years and they&rsquo;ve always exceeded my expectations. Highly recommended!&rdquo;</blockquote>
+        <figcaption class="mt-6 text-sm text-muted">— J.C., <span class="text-ink">Google review</span></figcaption>
+      </figure>
+      <figure class="bg-cream border border-line rounded-2xl p-5 sm:p-6 flex flex-col" data-reveal>
+        <div class="text-wine text-lg mb-4">★★★★★</div>
+        <blockquote class="text-ink/90 leading-relaxed flex-1">&ldquo;Just hung my freshly cleaned curtains… I&rsquo;m impressed by the care you took due to the age of the fabric. Your attention to detail is impressive. Thank you, I will be seeing you again.&rdquo;</blockquote>
+        <figcaption class="mt-6 text-sm text-muted">— Helene J., <span class="text-ink">Google review</span></figcaption>
+      </figure>
+      <figure class="bg-cream border border-line rounded-2xl p-5 sm:p-6 flex flex-col" data-reveal>
+        <div class="text-wine text-lg mb-4">★★★★★</div>
+        <blockquote class="text-ink/90 leading-relaxed flex-1">&ldquo;The night before my wedding I opened my dress to find several stains on it. I called first thing in the morning and the gentleman told me to come straight away. He was able to get the stains out…&rdquo;</blockquote>
+        <figcaption class="mt-6 text-sm text-muted">— Jacqueline R., <span class="text-ink">Google review</span></figcaption>
+      </figure>
+    </div>
+    <p class="mt-8 text-center text-muted text-sm" data-reveal>Rated 4.7★ across Google &amp; Yelp — 90+ reviews and 14,000 Fallbrook neighbors served. Stop in and ask for Paul.</p>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="py-14 sm:py-20 bg-cream border-t border-line">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 items-start">
+    <div data-reveal>
+      <p class="eyebrow mb-5">Visit Manor Dry Cleaners</p>
+      <h2 class="font-display font-light text-ink text-[clamp(2rem,4.2vw,3.2rem)] leading-[1.04] tracking-tight">
+        In the heart of<br><span class="italic grad-text">Fallbrook.</span>
+      </h2>
+
+      <div class="mt-9 space-y-6">
+        <div class="flex items-start gap-4">
+          <span class="w-10 h-10 rounded-full bg-wine/10 text-wine flex items-center justify-center shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><div class="font-semibold text-ink">125 E. Mission Road</div><div class="text-muted">Fallbrook, CA 92028</div></div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="w-10 h-10 rounded-full bg-wine/10 text-wine flex items-center justify-center shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div><div class="font-semibold text-ink">(760) 728-1307</div><a href="tel:17607281307" class="text-wine u-grow text-sm">Tap to call</a></div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="w-10 h-10 rounded-full bg-wine/10 text-wine flex items-center justify-center shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div class="w-full">
+            <div class="font-semibold text-ink mb-2">Hours</div>
+            <dl class="text-sm text-muted space-y-1.5 max-w-xs">
+              <div class="flex justify-between"><dt>Monday – Friday</dt><dd class="text-ink">6:30a – 5:00p</dd></div>
+              <div class="flex justify-between"><dt>Saturday</dt><dd class="text-ink">8:00a – 2:00p</dd></div>
+              <div class="flex justify-between"><dt>Sunday</dt><dd class="text-ink">Closed</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href="tel:17607281307" class="btn btn-wine px-6 py-3.5 rounded-full text-sm">Call the shop</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=125+E+Mission+Road+Fallbrook+CA+92028" target="_blank" rel="noopener" class="btn btn-ghost px-6 py-3.5 rounded-full text-sm">Get directions</a>
+      </div>
+    </div>
+
+    <div data-reveal>
+      <div class="relative rounded-[1.3rem] overflow-hidden border border-line shadow-[0_30px_60px_-34px_rgba(34,26,22,.45)] craft-img">
+        <img src="assets/real-storefront.jpg" alt="The Manor Dry Cleaners storefront — a vintage corner building with hand-painted signage in Fallbrook, CA" class="w-full h-[280px] sm:h-[360px] object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent"></div>
+        <div class="absolute left-5 bottom-5 right-5 flex items-end justify-between gap-3">
+          <div class="backdrop-blur-sm bg-cream/90 rounded-xl px-4 py-2.5">
+            <div class="text-[.62rem] tracking-[.2em] uppercase text-wine font-semibold">A Fallbrook landmark</div>
+            <div class="font-display text-ink text-base leading-tight">You know the corner.</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 relative rounded-[1.3rem] overflow-hidden border border-line shadow-[0_20px_44px_-32px_rgba(34,26,22,.4)]" style="background:linear-gradient(180deg,#F1E7D8,#E7D9C4);">
+        <div class="absolute inset-0 flex items-center justify-center gap-2 text-muted text-sm pointer-events-none px-4 text-center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A1E2B" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>125 E. Mission Road, Fallbrook, CA 92028</span>
+        </div>
+        <iframe title="Manor Dry Cleaners location map" src="https://www.google.com/maps?q=125+E+Mission+Road+Fallbrook+CA+92028&output=embed" class="relative w-full h-[190px] sm:h-[220px]" style="border:0; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="py-14 sm:py-20 bg-paper grain relative overflow-hidden">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <p class="eyebrow mb-6" data-reveal>Bring us your finest</p>
+    <h2 class="font-display font-light text-ink text-[clamp(2.3rem,6vw,4.6rem)] leading-[1.0] tracking-tight" data-reveal>
+      Let&rsquo;s make it <span class="italic grad-text">look new again.</span>
+    </h2>
+    <p class="mt-7 text-muted text-lg max-w-xl mx-auto leading-relaxed" data-reveal>
+      Drop by the shop on E. Mission Road, or start a Wednesday pickup route today.
+    </p>
+    <div class="mt-10 flex flex-wrap justify-center gap-4" data-reveal>
+      <a href="tel:17607281307" class="btn btn-wine px-8 py-4 rounded-full">Call (760) 728-1307</a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=125+E+Mission+Road+Fallbrook+CA+92028" target="_blank" rel="noopener" class="btn btn-ghost px-8 py-4 rounded-full">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-cream/80 pt-12 pb-28 lg:pb-16">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid md:grid-cols-4 gap-10">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-10 h-10 rounded-full bg-wine text-cream flex items-center justify-center font-display text-xl">M</span>
+          <span class="font-display text-cream text-xl">Manor Dry Cleaners</span>
+        </div>
+        <p class="text-cream/60 max-w-sm leading-relaxed">Expert care for every garment — dry cleaning, tailoring, and custom embroidery in the heart of Fallbrook, California.</p>
+      </div>
+      <div>
+        <div class="text-cream font-semibold mb-4 text-sm tracking-wide">Explore</div>
+        <ul class="space-y-2.5 text-cream/65 text-sm">
+          <li><a href="laundry-and-dry-cleaning-services/" class="u-grow hover:text-cream">Dry Cleaning &amp; Laundry</a></li>
+          <li><a href="tailoring-and-embroidery/" class="u-grow hover:text-cream">Tailoring &amp; Embroidery</a></li>
+          <li><a href="smoke-mildew-and-water-damage/" class="u-grow hover:text-cream">Restoration</a></li>
+          <li><a href="#reviews" class="u-grow hover:text-cream">Reviews</a></li>
+          <li><a href="#visit" class="u-grow hover:text-cream">Visit</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-cream font-semibold mb-4 text-sm tracking-wide">Contact</div>
+        <ul class="space-y-2.5 text-cream/65 text-sm">
+          <li>125 E. Mission Road</li>
+          <li>Fallbrook, CA 92028</li>
+          <li><a href="tel:17607281307" class="u-grow hover:text-cream">(760) 728-1307</a></li>
+          <li><a href="mailto:info@manordrycleaners.com" class="u-grow hover:text-cream">info@manordrycleaners.com</a></li>
+          <li class="pt-2 text-cream/50">Mon–Fri 6:30a–5p · Sat 8a–2p</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-14 pt-6 border-t border-cream/12 flex flex-col sm:flex-row justify-between gap-3 text-cream/45 text-xs">
+      <span>© 2026 Manor Dry Cleaners. All rights reserved.</span>
+      <span>Site by Turnkey Web · draft preview</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-[95] bg-ink border-t border-cream/12 px-4 py-3 flex gap-3">
+  <a href="tel:17607281307" class="btn btn-wine flex-1 justify-center py-3 rounded-full text-sm">Call now</a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=125+E+Mission+Road+Fallbrook+CA+92028" target="_blank" rel="noopener" class="btn flex-1 justify-center py-3 rounded-full text-sm border border-cream/30 text-cream">Directions</a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"DryCleaningOrLaundry",
+  "name":"Manor Dry Cleaners",
+  "image":"https://www.manordrycleaners.com/",
+  "telephone":"+17607281307",
+  "email":"info@manordrycleaners.com",
+  "url":"https://www.manordrycleaners.com/",
+  "address":{"@type":"PostalAddress","streetAddress":"125 E. Mission Road","addressLocality":"Fallbrook","addressRegion":"CA","postalCode":"92028","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":33.38445,"longitude":-117.250722},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"06:30","closes":"17:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"14:00"}
+  ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.7","reviewCount":"43"},
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Dry Cleaning"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tailoring & Alterations"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Custom Embroidery"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Letterman Jacket Embroidery"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Household Item Cleaning"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Laundry & Fluff-n-Fold"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pickup & Delivery"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Smoke, Mildew & Water Damage Restoration"}}
+  ]
+}
+</script>
+
+<!-- LIBS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+
+<script>
+/* ---------- Pin hero height in px (prevents 100svh ballooning during full-page capture) ---------- */
+(function(){
+  const hero=document.getElementById('top');
+  function pin(){ if(hero && window.innerHeight>0 && window.innerHeight<1400){ hero.style.minHeight=Math.min(window.innerHeight,500)+'px'; } }
+  pin();
+  window.addEventListener('load', pin);
+  window.addEventListener('orientationchange', ()=>setTimeout(pin,150));
+  window.addEventListener('resize', pin); // guarded: ignores capture-expanded (>=1400px) viewports
+})();
+
+/* ---------- Preloader (garment-care intro, first visit only) ---------- */
+(function(){
+  const pre=document.getElementById('preloader'), curtain=document.getElementById('plCurtain');
+  let done=false;
+  const seen=()=>{ try{return !!sessionStorage.getItem('manorSeen')}catch(e){return false} };
+  const mark=()=>{ try{sessionStorage.setItem('manorSeen','1')}catch(e){} };
+  if(seen()){
+    document.documentElement.classList.add('pl-done');
+    if(pre) pre.style.display='none'; if(curtain) curtain.style.display='none';
+    if(document.readyState!=='loading') startReveals(); else document.addEventListener('DOMContentLoaded',startReveals);
+    return;
+  }
+  const finish=()=>{
+    if(done) return; done=true; mark();
+    if(window.gsap){
+      const tl=gsap.timeline();
+      tl.to(curtain,{scaleY:1,duration:.5,ease:'power3.inOut'})
+        .set(pre,{display:'none'})
+        .to(curtain,{scaleY:0,transformOrigin:'top',duration:.6,ease:'power3.inOut'},'+=.05')
+        .add(()=>{ startReveals(); },'-=.3');
+    } else { pre.style.display='none'; startReveals(); }
+  };
+  setTimeout(finish, 1500);
+  setTimeout(finish, 4000);
+})();
+
+/* ---------- Lenis + GSAP (single ticker) ---------- */
+let lenis;
+(function(){
+  if(!window.Lenis) return;
+  lenis = new Lenis({ duration:1.1, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+  if(window.gsap){
+    gsap.ticker.add((time)=> lenis.raf(time*1000));
+    gsap.ticker.lagSmoothing(0);
+    if(window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  } else {
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+  }
+  if(window.ScrollTrigger) ScrollTrigger.config({ ignoreMobileResize:true });
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href'); if(id.length<2) return;
+      const t=document.querySelector(id); if(!t) return;
+      e.preventDefault(); lenis.scrollTo(t,{offset:-70});
+    });
+  });
+})();
+
+/* ---------- Nav + scroll progress ---------- */
+(function(){
+  const nav=document.getElementById('mnav'), prog=document.getElementById('scrollProg');
+  const onScroll=()=>{
+    const y=window.scrollY;
+    if(y>40){ nav.style.background='rgba(248,242,233,.9)'; nav.style.backdropFilter='blur(10px)'; nav.style.boxShadow='0 1px 0 rgba(34,26,22,.08)'; }
+    else { nav.style.background='transparent'; nav.style.backdropFilter='none'; nav.style.boxShadow='none'; }
+    const h=document.documentElement; const p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight);
+    prog.style.width=(p*100)+'%';
+  };
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+})();
+
+/* ---------- Reveals (IntersectionObserver — robust for any scroll method) ---------- */
+function runCount(el){
+  const target=parseFloat(el.dataset.count), dec=parseInt(el.dataset.dec||'0');
+  if(el.dataset.done) return; el.dataset.done='1';
+  if(window.gsap){
+    const o={v:0};
+    gsap.to(o,{v:target,duration:1.5,ease:'power2.out',onUpdate:()=>{
+      el.textContent = dec? o.v.toFixed(dec) : Math.round(o.v).toLocaleString();
+    }});
+  } else { el.textContent = dec? target.toFixed(dec) : Math.round(target).toLocaleString(); }
+}
+function startReveals(){
+  // hero word reveal (above the fold, fire immediately)
+  const words=document.querySelectorAll('#heroHead .reveal-word');
+  if(window.gsap){
+    gsap.set(words,{y:(i,el)=>el.offsetHeight*1.2, opacity:0});
+    gsap.to(words,{y:0,opacity:1,duration:.9,ease:'power3.out',stagger:.08,delay:.05});
+  } else { words.forEach(w=>{w.style.opacity=1;w.style.transform='none';}); }
+
+  const items=[...document.querySelectorAll('[data-reveal]'), ...document.querySelectorAll('[data-reveal-img] .ri-inner'), ...document.querySelectorAll('[data-count]')];
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver((ents,obs)=>{
+      ents.forEach(e=>{
+        if(!e.isIntersecting) return;
+        const el=e.target;
+        el.classList.add('is-in');
+        if(el.hasAttribute('data-count')) runCount(el);
+        obs.unobserve(el);
+      });
+    },{rootMargin:'0px 0px -8% 0px', threshold:0.05});
+    items.forEach(el=>io.observe(el));
+  } else { forceReveal(); }
+}
+function forceReveal(){
+  document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('is-in'));
+  document.querySelectorAll('[data-reveal-img] .ri-inner').forEach(el=>el.classList.add('is-in'));
+  document.querySelectorAll('#heroHead .reveal-word').forEach(el=>{el.style.opacity=1;el.style.transform='none';});
+  document.querySelectorAll('[data-count]').forEach(el=>runCount(el));
+}
+
+/* ---------- screenshot / crawler safety net (fires fast, below any capture window) ---------- */
+setTimeout(forceReveal, 1200);
+window.addEventListener('load', ()=> setTimeout(forceReveal, 900));
+
+/* ---------- Three.js flowing-silk hero (light canvas) ---------- */
+(function(){
+  const canvas=document.getElementById('silk');
+  if(!canvas || !window.THREE) return;
+  const smallOrReduced = window.matchMedia('(max-width:880px)').matches
+    || window.matchMedia('(prefers-reduced-motion:reduce)').matches
+    || (navigator.hardwareConcurrency && navigator.hardwareConcurrency<=4);
+
+  if(smallOrReduced){
+    canvas.style.background='radial-gradient(120% 90% at 75% 18%, rgba(180,137,78,.16), rgba(248,242,233,0) 55%), radial-gradient(90% 80% at 20% 90%, rgba(122,30,43,.12), rgba(248,242,233,0) 60%), linear-gradient(180deg,#FBF6F1,#F1E7D8)';
+    return;
+  }
+
+  let renderer, scene, camera, mesh, raf=null, running=true;
+  try{
+    renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  }catch(e){
+    canvas.style.background='linear-gradient(180deg,#FBF6F1,#F1E7D8)'; return;
+  }
+  scene=new THREE.Scene();
+  camera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+
+  const uniforms={
+    uTime:{value:0},
+    uRes:{value:new THREE.Vector2(1,1)},
+    uWine:{value:new THREE.Color('#7A1E2B')},
+    uBrass:{value:new THREE.Color('#B4894E')},
+    uCream:{value:new THREE.Color('#F8F2E9')},
+  };
+
+  const frag=`
+    precision highp float;
+    uniform float uTime; uniform vec2 uRes;
+    uniform vec3 uWine, uBrass, uCream;
+    float hash(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
+    float noise(vec2 p){
+      vec2 i=floor(p), f=fract(p);
+      float a=hash(i), b=hash(i+vec2(1.,0.)), c=hash(i+vec2(0.,1.)), d=hash(i+vec2(1.,1.));
+      vec2 u=f*f*(3.-2.*f);
+      return mix(a,b,u.x)+(c-a)*u.y*(1.-u.x)+(d-b)*u.x*u.y;
+    }
+    float fbm(vec2 p){ float v=0.,a=.5; for(int i=0;i<5;i++){ v+=a*noise(p); p*=2.02; a*=.5;} return v; }
+    void main(){
+      vec2 uv=gl_FragCoord.xy/uRes.xy;
+      vec2 p=uv; p.x*=uRes.x/uRes.y;
+      float t=uTime*0.06;
+      vec2 q=vec2(fbm(p*1.6+vec2(t,0.)), fbm(p*1.6+vec2(5.2,-t)));
+      float folds=fbm(p*2.4 + q*1.8 + vec2(0., t*1.4));
+      folds += 0.25*sin((p.x*3.0 + folds*4.0) + t*3.0);
+      float sheen=smoothstep(0.35,0.85,folds);
+      vec3 col=uCream;
+      col=mix(col, uBrass, sheen*0.16);
+      col=mix(col, uWine, smoothstep(0.6,0.98,folds)*0.10);
+      float vig=smoothstep(1.15,0.25,length(uv-vec2(0.62,0.4)));
+      col=mix(col, col*0.94, 1.0-vig);
+      gl_FragColor=vec4(col,1.0);
+    }`;
+  const vert=`void main(){ gl_Position=vec4(position,1.0); }`;
+  const geo=new THREE.PlaneGeometry(2,2);
+  const mat=new THREE.ShaderMaterial({uniforms,vertexShader:vert,fragmentShader:frag});
+  mesh=new THREE.Mesh(geo,mat); scene.add(mesh);
+
+  function resize(){
+    const w=canvas.clientWidth, h=canvas.clientHeight;
+    renderer.setSize(w,h,false);
+    const pr=Math.min(window.devicePixelRatio,2);
+    uniforms.uRes.value.set(w*pr, h*pr);
+  }
+  window.addEventListener('resize',resize); resize();
+
+  const clock=new THREE.Clock();
+  function render(){
+    if(!running){ raf=null; return; }
+    uniforms.uTime.value=clock.getElapsedTime();
+    renderer.render(scene,camera);
+    raf=requestAnimationFrame(render);
+  }
+  render();
+
+  document.addEventListener('visibilitychange',()=>{
+    running=!document.hidden;
+    if(running && !raf) render();
+  });
+  const hero=document.getElementById('top');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver((ents)=>{
+      running=ents[0].isIntersecting && !document.hidden;
+      if(running && !raf) render();
+    },{threshold:0.02}).observe(hero);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Rockport Bakery — prospect preview (Turnkey Web, $30k bespoke)
+  Art direction "Coastal Sugar": full-bleed real-storefront hero + Three.js drifting
+  powdered-sugar particle showpiece over a teal scrim. Palette pulled verbatim from the
+  real building — aqua #2FB6BE + pink wordmark #F4A8B8 + caramel + cream. Type: Fraunces + Inter.
+  All data REAL (Google Business Profile): phone (361) 729-5044, 3114 Business Hwy 35 N,
+  Rockport TX 78382, Wed–Sat 6a–2p / Sun 6a–12p, 4.0★ / 238 Google reviews. Real reviews verbatim.
+  Photos are the business's own GBP / listing photos (storefront, display case, products).
+-->
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rockport Bakery | Donuts, Kolaches &amp; Custom Cakes — Rockport, TX</title>
+<meta name="description" content="Rockport Bakery on the Texas coast — fresh donuts, apple fritters, kolaches, breakfast tacos, and custom wedding &amp; birthday cakes. Open Wednesday–Sunday at 3114 Business Hwy 35 N, Rockport, TX. Call (361) 729-5044." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/rockport-bakery/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Rockport Bakery — Donuts, Kolaches &amp; Custom Cakes on the Texas Coast" />
+<meta property="og:description" content="Baked fresh in Rockport, TX. Apple fritters as big as your head, kolaches, breakfast tacos, and custom cakes. Open Wed–Sun." />
+<meta property="og:image" content="https://turnkeyweb.org/previews/rockport-bakery/assets/hero-storefront.jpg" />
+<meta name="theme-color" content="#2FB6BE" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      aqua:'#2FB6BE', aquadeep:'#0E6E73', teal:'#0B4F53', seafoam:'#BFE7E4',
+      pink:'#F4A8B8', pinklt:'#FAD0D9', rose:'#B14A63', berry:'#7E2B43',
+      caramel:'#C98A3C', gold:'#E0A857',
+      cream:'#FBF4E9', sand:'#F3E7D2', ink:'#241F1E'
+    },
+    fontFamily: { display:['Fraunces','serif'], body:['Inter','sans-serif'] }
+  }}
+}
+</script>
+<style>
+  html{ scroll-behavior:auto; scroll-padding-top:84px; }
+  body{ background:#FBF4E9; color:#241F1E; font-family:'Inter',sans-serif; overflow-x:hidden; }
+  .font-display{ font-family:'Fraunces',serif; }
+  ::selection{ background:#F4A8B8; color:#241F1E; }
+
+  /* gradient shimmer (Motion #3) — min-lightness floor keeps it legible */
+  .grad-text{
+    background:linear-gradient(100deg,#FBF4E9,#F4A8B8,#FFE7C2,#BFE7E4,#FBF4E9);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    -webkit-text-fill-color:transparent; animation:shimmer 9s linear infinite;
+  }
+  .grad-text-dark{
+    background:linear-gradient(100deg,#0E6E73,#B14A63,#C98A3C,#0E6E73);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    -webkit-text-fill-color:transparent; animation:shimmer 11s linear infinite;
+  }
+  @keyframes shimmer{ from{background-position:0% 50%} to{background-position:220% 50%} }
+
+  /* nav */
+  .nav-blur{ backdrop-filter:saturate(140%) blur(10px); background:rgba(251,244,233,.82); }
+  .underline-grow{ position:relative; }
+  .underline-grow::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+    background:linear-gradient(90deg,#0E6E73,#B14A63); transition:width .45s cubic-bezier(.2,.7,.2,1); }
+  .underline-grow:hover::after{ width:100%; }
+
+  /* painted wordmark badge (echoes the real aqua-wall pink-letter sign) */
+  .wordmark{ font-family:'Fraunces',serif; font-weight:700; letter-spacing:.04em; line-height:.82; }
+
+  /* hero */
+  .hero-photo{ background-image:url('assets/hero-storefront.jpg'); background-size:cover; background-position:center 38%; }
+  .hero-scrim{ background:
+      linear-gradient(180deg, rgba(11,79,83,.34) 0%, rgba(11,79,83,.22) 34%, rgba(11,79,83,.82) 100%),
+      linear-gradient(95deg, rgba(11,79,83,.80) 0%, rgba(11,79,83,.40) 48%, rgba(11,79,83,.08) 80%); }
+
+  .btn{ display:inline-flex; align-items:center; gap:.5rem; font-weight:600; border-radius:999px;
+    transition:transform .3s cubic-bezier(.2,.7,.2,1), filter .3s, box-shadow .3s; position:relative; overflow:hidden; }
+  .btn-primary{ background:#B14A63; color:#FBF4E9; box-shadow:0 12px 30px -12px rgba(177,74,99,.7); }
+  .btn-primary:hover{ transform:translateY(-3px); filter:brightness(1.06); }
+  .btn-primary::after{ content:''; position:absolute; inset:0; transform:translateX(-130%);
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,.45),transparent); transition:transform .9s; }
+  .btn-primary:hover::after{ transform:translateX(130%); }
+  .btn-ghost{ background:rgba(11,79,83,.45); color:#FBF4E9; border:1.5px solid rgba(251,244,233,.55); backdrop-filter:blur(4px); }
+  .btn-ghost:hover{ background:rgba(11,79,83,.62); transform:translateY(-3px); }
+  .btn-teal{ background:#0E6E73; color:#FBF4E9; box-shadow:0 12px 30px -12px rgba(14,110,115,.7); }
+  .btn-teal:hover{ transform:translateY(-3px); filter:brightness(1.07); }
+
+  .chip{ display:inline-flex; align-items:center; gap:.5rem; padding:.4rem .9rem; border-radius:999px;
+    font-size:.8rem; font-weight:600; letter-spacing:.02em; }
+  .chip-dot{ width:7px; height:7px; border-radius:50%; background:#E0A857; animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:.45; transform:scale(.85)} 50%{opacity:1; transform:scale(1.15)} }
+
+  /* marquee */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); }
+  .marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* cards */
+  .card{ position:relative; transition:transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s; }
+  .card:hover{ transform:translateY(-6px); }
+  .card-photo{ overflow:hidden; }
+  .card-photo img{ transition:transform .9s cubic-bezier(.2,.7,.2,1); }
+  .card-photo:hover img{ transform:scale(1.06); }
+
+  /* clip reveal */
+  [data-reveal-image]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal-image].in{ clip-path:inset(0 0 0% 0); }
+
+  /* ambient blobs */
+  .blob{ position:absolute; border-radius:50%; filter:blur(80px); opacity:.5; pointer-events:none; will-change:transform; }
+
+  [data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+
+  .scallop{ height:34px; width:100%; display:block; }
+  .stars{ display:inline-flex; gap:2px; }
+  .stars svg{ width:19px; height:19px; }
+
+  @media (max-width:767px){
+    .hero-photo{ background-position:center 30%; }
+  }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ===================== BRAND INTRO (cinematic preloader, plays once) ===================== -->
+<style>
+  #tk-intro{position:fixed;inset:0;z-index:99999;background:#0C2E30;display:flex;align-items:center;justify-content:center;opacity:1;transition:opacity .6s ease}
+  #tk-intro.tk-done{opacity:0}
+  #tk-intro video{width:100%;height:100%;object-fit:contain}
+  #tk-intro .tk-od{position:absolute;inset:0;pointer-events:none;background:radial-gradient(125% 95% at 50% 84%,rgba(0,0,0,.68),rgba(0,0,0,.22) 50%,rgba(0,0,0,0) 78%)}
+  #tk-intro .tk-ot{position:absolute;left:0;right:0;bottom:10%;padding:0 6vw;text-align:center;color:#fff;pointer-events:none}
+  #tk-intro .tk-ok{font:600 clamp(10px,1.3vw,13px)/1 system-ui,sans-serif;letter-spacing:.34em;text-transform:uppercase;color:#2FB6BE;opacity:0;animation:tk-up .7s .25s forwards}
+  #tk-intro .tk-on{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(30px,6.6vw,78px);line-height:.96;margin:.16em 0 .05em;text-shadow:0 6px 34px rgba(0,0,0,.6);opacity:0;animation:tk-up .8s .45s forwards}
+  #tk-intro .tk-orule{height:2px;width:0;background:#2FB6BE;margin:.42em auto .55em;border-radius:2px;animation:tk-rule .7s .95s forwards}
+  #tk-intro .tk-otag{font:500 clamp(12px,1.7vw,18px)/1.35 'Fraunces',serif;color:rgba(255,255,255,.92);text-shadow:0 2px 18px rgba(0,0,0,.55);opacity:0;animation:tk-up .8s 1.1s forwards}
+  @keyframes tk-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  @keyframes tk-rule{from{width:0}to{width:90px}}
+  #tk-skip{position:absolute;bottom:18px;right:22px;font:600 12px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#2FB6BE;background:transparent;border:0;cursor:pointer;opacity:.7}
+  @media (prefers-reduced-motion:reduce){#tk-intro{display:none}}
+</style>
+<div id="tk-intro">
+  <video id="tk-introv" autoplay muted playsinline preload="auto" poster="assets/intro-poster.jpg">
+    <source src="assets/intro.webm" type="video/webm" />
+    <source src="assets/intro.mp4" type="video/mp4" />
+  </video>
+  <div class="tk-od"></div>
+  <div class="tk-ot">
+    <div class="tk-ok">Rockport, Texas</div>
+    <div class="tk-on">Rockport Bakery</div>
+    <div class="tk-orule"></div>
+    <div class="tk-otag">Fresh-baked on the coast.</div>
+  </div>
+  <button id="tk-skip" aria-label="Skip intro">Skip</button>
+</div>
+<script>
+(function(){var el=document.getElementById('tk-intro');if(!el)return;var v=document.getElementById('tk-introv');var done=false;
+function end(){if(done)return;done=true;el.classList.add('tk-done');setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},700);}
+v.addEventListener('ended',end);v.addEventListener('error',end);var p=v.play();if(p&&p.catch)p.catch(end);
+var sk=document.getElementById('tk-skip');if(sk)sk.addEventListener('click',end);
+setTimeout(end,6000);})();
+</script>
+
+<!-- ===================== NAV ===================== -->
+<header class="fixed top-0 inset-x-0 z-50 nav-blur border-b border-aquadeep/10">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 h-[68px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="inline-flex flex-col items-center justify-center rounded-lg bg-teal px-2.5 py-1 shadow-sm ring-1 ring-aqua/40">
+        <span class="wordmark text-pinklt text-[12px] md:text-[13px]">ROCKPORT</span>
+        <span class="wordmark text-cream text-[15px] md:text-[17px] -mt-0.5">BAKERY</span>
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-teal">
+      <a href="#case" class="underline-grow">The Case</a>
+      <a href="#cakes" class="underline-grow">Custom Cakes</a>
+      <a href="#story" class="underline-grow">Our Corner</a>
+      <a href="#visit" class="underline-grow">Visit</a>
+    </nav>
+    <a href="tel:+13617295044" class="btn btn-primary text-sm px-4 md:px-5 py-2.5">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="hidden sm:inline">(361) 729-5044</span><span class="sm:hidden">Call</span>
+    </a>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden hero-photo">
+  <div class="absolute inset-0 hero-scrim"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-8 pb-16 md:pb-24 pt-32">
+    <div class="max-w-3xl">
+      <span class="chip text-cream border border-cream/30 mb-6" style="background:rgba(11,79,83,.55)">
+        <span class="chip-dot"></span> Rockport &amp; Fulton, on the Texas coast
+      </span>
+      <h1 class="font-display text-cream font-semibold leading-[.96] text-[2.7rem] sm:text-6xl md:text-[5.4rem]" data-split>
+        Donuts, kolaches &amp;<br class="hidden sm:block"> custom cakes —
+        <span class="grad-text italic">baked fresh by the bay.</span>
+      </h1>
+      <p class="mt-6 text-cream text-lg md:text-xl max-w-xl leading-relaxed" style="text-shadow:0 1px 12px rgba(11,79,83,.55)">
+        A little aqua bakery on Business 35 where the apple fritters are as big as your head,
+        the kolaches come out warm, and the cakes are made for your big day. Open Wednesday through Sunday.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="tel:+13617295044" class="btn btn-primary px-6 py-3.5 text-[15px]">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call the shop
+        </a>
+        <a href="#case" class="btn btn-ghost px-6 py-3.5 text-[15px]">See what's in the case</a>
+      </div>
+
+      <!-- stats -->
+      <div class="mt-10 flex flex-wrap gap-x-9 gap-y-4">
+        <div>
+          <div class="font-display text-cream text-3xl md:text-4xl font-semibold flex items-baseline gap-1">
+            <span class="counter" data-target="4" data-dec="1">0</span><span class="text-gold text-xl">★</span>
+          </div>
+          <div class="text-cream/70 text-xs uppercase tracking-[.18em] mt-1">Google rating</div>
+        </div>
+        <div class="border-l border-cream/25 pl-9">
+          <div class="font-display text-cream text-3xl md:text-4xl font-semibold">
+            <span class="counter" data-target="238">0</span>
+          </div>
+          <div class="text-cream/70 text-xs uppercase tracking-[.18em] mt-1">Reviews &amp; counting</div>
+        </div>
+        <div class="border-l border-cream/25 pl-9">
+          <div class="font-display text-cream text-3xl md:text-4xl font-semibold">6<span class="text-seafoam text-xl align-top">AM</span></div>
+          <div class="text-cream/70 text-xs uppercase tracking-[.18em] mt-1">Fresh, Wed–Sun</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MARQUEE ===================== -->
+<div class="bg-teal py-4 marquee">
+  <div class="marquee-track text-cream font-display text-xl md:text-2xl">
+    <span class="flex gap-12 items-center pr-12">
+      <span>Apple Fritters</span><span class="text-gold">✦</span>
+      <span class="italic grad-text">Custom Cakes</span><span class="text-gold">✦</span>
+      <span>Kolaches</span><span class="text-gold">✦</span>
+      <span>Cinnamon Rolls</span><span class="text-gold">✦</span>
+      <span class="italic grad-text">Breakfast Tacos</span><span class="text-gold">✦</span>
+      <span>Cannoli</span><span class="text-gold">✦</span>
+      <span>Maple Bars</span><span class="text-gold">✦</span>
+      <span>Donut Holes</span><span class="text-gold">✦</span>
+    </span>
+    <span class="flex gap-12 items-center pr-12" aria-hidden="true">
+      <span>Apple Fritters</span><span class="text-gold">✦</span>
+      <span class="italic grad-text">Custom Cakes</span><span class="text-gold">✦</span>
+      <span>Kolaches</span><span class="text-gold">✦</span>
+      <span>Cinnamon Rolls</span><span class="text-gold">✦</span>
+      <span class="italic grad-text">Breakfast Tacos</span><span class="text-gold">✦</span>
+      <span>Cannoli</span><span class="text-gold">✦</span>
+      <span>Maple Bars</span><span class="text-gold">✦</span>
+      <span>Donut Holes</span><span class="text-gold">✦</span>
+    </span>
+  </div>
+</div>
+
+<!-- ===================== THE CASE ===================== -->
+<section id="case" class="relative bg-cream py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="max-w-2xl mb-12 md:mb-16" data-reveal>
+      <span class="text-berry font-semibold tracking-[.2em] uppercase text-xs">Fresh out of the case</span>
+      <h2 class="font-display text-4xl md:text-6xl font-semibold text-teal mt-3 leading-[1.02]">
+        Everything's <span class="grad-text-dark italic">made that morning.</span>
+      </h2>
+      <p class="text-ink/70 text-lg mt-5">
+        Glazed and cake donuts, fritters, twists, kolaches, breakfast tacos, and a case full of
+        sweet and savory — pulled out warm before the doors open at six.
+      </p>
+    </div>
+
+    <!-- feature + grid -->
+    <div class="grid lg:grid-cols-12 gap-6">
+      <!-- feature: apple fritter -->
+      <article class="card lg:col-span-7 rounded-3xl overflow-hidden bg-white shadow-[0_24px_60px_-30px_rgba(11,79,83,.35)] flex flex-col sm:flex-row" data-reveal>
+        <div class="card-photo sm:w-1/2 h-64 sm:h-auto">
+          <img src="assets/apple-fritter.jpg" alt="Rockport Bakery apple fritters, glazed and fresh" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <div class="sm:w-1/2 p-7 md:p-9 flex flex-col justify-center">
+          <span class="chip bg-caramel/20 self-start mb-3" style="color:#6E4715">The signature</span>
+          <h3 class="font-display text-3xl md:text-4xl font-semibold text-teal leading-tight">The Apple Fritter</h3>
+          <p class="text-ink/70 mt-3 leading-relaxed">
+            Golden, craggy, and glazed all the way through — big enough to share three ways
+            (most folks don't). Regulars drive in from out of town just for these.
+          </p>
+        </div>
+      </article>
+
+      <!-- donuts -->
+      <article class="card lg:col-span-5 rounded-3xl overflow-hidden bg-white shadow-[0_24px_60px_-30px_rgba(11,79,83,.35)]" data-reveal>
+        <div class="card-photo h-56"><img src="assets/donuts.jpg" alt="Tray of glazed, chocolate, and sprinkle donuts" class="w-full h-full object-cover" loading="lazy" /></div>
+        <div class="p-7">
+          <h3 class="font-display text-2xl font-semibold text-teal">Donuts, every which way</h3>
+          <p class="text-ink/70 mt-2 text-[15px]">Glazed, cake, chocolate, Bavarian cream, lemon-filled, blueberry, twists, maple bars, and donut holes by the dozen.</p>
+        </div>
+      </article>
+
+      <!-- kolaches / savory -->
+      <article class="card lg:col-span-4 rounded-3xl bg-aquadeep text-cream p-7 md:p-8 flex flex-col justify-between min-h-[230px]" data-reveal>
+        <div>
+          <div class="text-4xl mb-3">🌭</div>
+          <h3 class="font-display text-2xl font-semibold">Kolaches &amp; pigs-in-a-blanket</h3>
+          <p class="text-cream/75 mt-2 text-[15px]">Sausage &amp; cheese, jalapeño &amp; cheese, plain — plus pigs in a blanket and savory rolls.</p>
+        </div>
+        <span class="text-seafoam text-sm font-semibold mt-4">Warm by 6 AM</span>
+      </article>
+
+      <!-- breakfast tacos -->
+      <article class="card lg:col-span-4 rounded-3xl overflow-hidden bg-white shadow-[0_24px_60px_-30px_rgba(11,79,83,.35)]" data-reveal>
+        <div class="card-photo h-40"><img src="assets/croissants.jpg" alt="Ham and cheese croissants from Rockport Bakery" class="w-full h-full object-cover" loading="lazy" /></div>
+        <div class="p-7">
+          <h3 class="font-display text-2xl font-semibold text-teal">Breakfast tacos &amp; croissants</h3>
+          <p class="text-ink/70 mt-2 text-[15px]">Bacon, sausage, potato &amp; egg tacos, plus ham- and sausage-and-cheese croissants.</p>
+        </div>
+      </article>
+
+      <!-- sweets -->
+      <article class="card lg:col-span-4 rounded-3xl bg-pink/30 border border-pink/50 p-7 md:p-8 flex flex-col justify-between min-h-[230px]" data-reveal>
+        <div>
+          <div class="text-4xl mb-3">🍩</div>
+          <h3 class="font-display text-2xl font-semibold text-berry">A sweet tooth's corner</h3>
+          <p class="text-ink/70 mt-2 text-[15px]">Cinnamon rolls, long johns, bear claws, cannoli, danishes, turnovers, cookies, scones, and pie by the slice.</p>
+        </div>
+        <span class="text-berry text-sm font-semibold mt-4">Cash &amp; card welcome</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CUSTOM CAKES ===================== -->
+<section id="cakes" class="relative bg-teal text-cream overflow-hidden">
+  <div class="blob" style="width:480px;height:480px;background:radial-gradient(circle,#F4A8B8,transparent 62%);top:-140px;left:-120px;"></div>
+  <div class="blob" style="width:420px;height:420px;background:radial-gradient(circle,#2FB6BE,transparent 62%);bottom:-160px;right:-110px;"></div>
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8 py-20 md:py-28 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div data-reveal>
+      <span class="text-pinklt font-semibold tracking-[.2em] uppercase text-xs">For the big day</span>
+      <h2 class="font-display text-4xl md:text-6xl font-semibold mt-3 leading-[1.02]">
+        Custom <span class="grad-text italic">wedding &amp; birthday</span> cakes.
+      </h2>
+      <p class="text-cream/80 text-lg mt-5 leading-relaxed max-w-lg">
+        Tiered, filled, and decorated to order — from a coastal wedding cake to a kid's
+        birthday showstopper. Tell us the date and the flavor; we'll handle the rest.
+        Order ahead by phone so we can plan the bake.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="tel:+13617295044" class="btn btn-primary px-6 py-3.5 text-[15px]">Call to order a cake</a>
+        <a href="#visit" class="btn btn-ghost px-6 py-3.5 text-[15px]">Find the shop</a>
+      </div>
+      <ul class="mt-8 grid grid-cols-2 gap-3 max-w-md text-cream/85 text-[15px]">
+        <li class="flex items-center gap-2"><span class="text-gold">✦</span> Weddings &amp; showers</li>
+        <li class="flex items-center gap-2"><span class="text-gold">✦</span> Birthdays &amp; parties</li>
+        <li class="flex items-center gap-2"><span class="text-gold">✦</span> German chocolate</li>
+        <li class="flex items-center gap-2"><span class="text-gold">✦</span> Pies by the order</li>
+      </ul>
+    </div>
+    <div class="relative" data-reveal>
+      <div class="rounded-[2rem] overflow-hidden shadow-2xl border-4 border-cream/15" data-reveal-image>
+        <img src="assets/custom-cake.jpg" alt="Tiered custom celebration cake with fresh berries" class="w-full h-[460px] md:h-[560px] object-cover" loading="lazy" />
+      </div>
+      <div class="absolute -bottom-5 -left-4 sm:-left-6 bg-cream text-teal rounded-2xl px-5 py-4 shadow-xl max-w-[230px]">
+        <div class="font-display text-xl font-semibold leading-tight">Made-to-order</div>
+        <div class="text-ink/60 text-sm mt-0.5">Just give the shop a few days' notice</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OUR CORNER (story) ===================== -->
+<section id="story" class="relative bg-cream py-20 md:py-28 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="order-2 lg:order-1 grid grid-cols-2 gap-4">
+      <div class="rounded-2xl overflow-hidden shadow-lg col-span-2" data-reveal-image>
+        <img src="assets/interior-case.jpg" alt="The Rockport Bakery display case full of donuts and kolaches" class="w-full h-64 md:h-80 object-cover" loading="lazy" />
+      </div>
+      <div class="rounded-2xl overflow-hidden shadow-lg" data-reveal>
+        <img src="assets/case-cookies.jpg" alt="Decorated cookies, long johns, and turnovers in the case" class="w-full h-44 md:h-52 object-cover" loading="lazy" />
+      </div>
+      <div class="rounded-2xl bg-aqua/15 border border-aqua/30 p-5 flex flex-col justify-center" data-reveal>
+        <div class="font-display text-3xl text-teal font-semibold">Wi-Fi: <span class="text-rose">Donuts2000</span></div>
+        <p class="text-ink/60 text-sm mt-1">Pull up a mismatched chair and stay a while.</p>
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2" data-reveal>
+      <span class="text-berry font-semibold tracking-[.2em] uppercase text-xs">Our corner of the coast</span>
+      <h2 class="font-display text-4xl md:text-6xl font-semibold text-teal mt-3 leading-[1.02]">
+        Aqua walls, pink letters, <span class="grad-text-dark italic">and a fish tank in the back.</span>
+      </h2>
+      <p class="text-ink/75 text-lg mt-5 leading-relaxed">
+        You'll know us by the bright aqua building on Business 35 with our name painted in pink.
+        Inside it's pure Rockport — seashell tablecloths, floral displays, a fish tank, and a
+        couple of parakeets keeping an eye on the donut case.
+      </p>
+      <p class="text-ink/75 text-lg mt-4 leading-relaxed">
+        It's cluttered in the best way, it smells like heaven when the door swings open, and
+        the folks behind the counter will tell you what's fresh and what the favorites are.
+      </p>
+      <blockquote class="mt-7 border-l-4 border-pink pl-5 font-display text-xl md:text-2xl italic text-teal">
+        "Super cute and smelled like heaven when I opened the door."
+        <span class="block not-italic font-body text-sm text-ink/55 mt-2">— Timothy W., Google review</span>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REVIEWS ===================== -->
+<section class="relative bg-sand py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12" data-reveal>
+      <div>
+        <span class="text-berry font-semibold tracking-[.2em] uppercase text-xs">From the neighbors</span>
+        <h2 class="font-display text-4xl md:text-6xl font-semibold text-teal mt-3 leading-[1.02]">Loved on the bay.</h2>
+      </div>
+      <div class="flex items-center gap-3 bg-white rounded-2xl px-5 py-3 shadow-sm self-start">
+        <div class="font-display text-4xl font-semibold text-teal">4.0</div>
+        <div>
+          <div class="stars leading-none">
+            <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#E2D2B2"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          </div>
+          <div class="text-ink/60 text-sm mt-0.5">238 Google reviews</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <figure class="card bg-white rounded-3xl p-7 shadow-[0_24px_60px_-34px_rgba(11,79,83,.4)]" data-reveal>
+        <div class="stars mb-3">
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="text-ink/80 leading-relaxed">"Absolutely amazing. The apple fritters are absolutely amazing — they're big enough for three people. Very nice people working here, very friendly and the food was absolutely fantastic."</blockquote>
+        <figcaption class="mt-5 font-semibold text-teal">Dylan M. <span class="font-normal text-ink/50 text-sm">· Google review</span></figcaption>
+      </figure>
+
+      <figure class="card bg-white rounded-3xl p-7 shadow-[0_24px_60px_-34px_rgba(11,79,83,.4)]" data-reveal>
+        <div class="stars mb-3">
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#E2D2B2"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="text-ink/80 leading-relaxed">"Quirky bakery with a coastal-meets-vintage vibe. They offer a wide range of treats from donuts and cookies to cannolis. We were greeted right away, and the donuts were fresh and tasty. Worth a stop in Rockport — especially for the donuts."</blockquote>
+        <figcaption class="mt-5 font-semibold text-teal">Alyssa M. <span class="font-normal text-ink/50 text-sm">· Google review</span></figcaption>
+      </figure>
+
+      <figure class="card bg-white rounded-3xl p-7 shadow-[0_24px_60px_-34px_rgba(11,79,83,.4)]" data-reveal>
+        <div class="stars mb-3">
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#D89A2E"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#E2D2B2"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="text-ink/80 leading-relaxed">"I was greeted right away with friendly service and told what the favorites were. I got their pigs in a blanket and cinnamon roll — all delicious."</blockquote>
+        <figcaption class="mt-5 font-semibold text-teal">Elizabeth W. <span class="font-normal text-ink/50 text-sm">· Google review</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISIT ===================== -->
+<section id="visit" class="relative bg-cream py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+    <div data-reveal>
+      <span class="text-berry font-semibold tracking-[.2em] uppercase text-xs">Come see us</span>
+      <h2 class="font-display text-4xl md:text-6xl font-semibold text-teal mt-3 leading-[1.02]">
+        On the corner of <span class="grad-text-dark italic">35 &amp; Broadway.</span>
+      </h2>
+
+      <div class="mt-8 space-y-5">
+        <div class="flex items-start gap-4">
+          <span class="mt-1 text-aquadeep"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div>
+            <div class="font-semibold text-ink">Address</div>
+            <a href="https://www.google.com/maps?q=Rockport+Bakery+3114+Business+Hwy+35+N+Rockport+TX+78382" target="_blank" rel="noopener" class="text-ink/70 hover:text-rose transition">3114 Business Hwy 35 N, Rockport, TX 78382</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="mt-1 text-aquadeep"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div>
+            <div class="font-semibold text-ink">Phone</div>
+            <a href="tel:+13617295044" class="text-ink/70 hover:text-rose transition">(361) 729-5044</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="mt-1 text-aquadeep"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <div class="w-full">
+            <div class="font-semibold text-ink">Hours</div>
+            <table class="text-ink/70 text-[15px] mt-1 w-full max-w-xs">
+              <tr><td class="py-0.5">Wed – Sat</td><td class="text-right font-medium text-teal">6:00 AM – 2:00 PM</td></tr>
+              <tr><td class="py-0.5">Sunday</td><td class="text-right font-medium text-teal">6:00 AM – 12:00 PM</td></tr>
+              <tr><td class="py-0.5 text-ink/45">Mon – Tue</td><td class="text-right text-ink/45">Closed</td></tr>
+            </table>
+            <span class="chip bg-aqua/15 text-aquadeep mt-3"><span class="chip-dot" style="background:#2FB6BE"></span> Get there early — favorites sell out</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://www.google.com/maps?q=Rockport+Bakery+3114+Business+Hwy+35+N+Rockport+TX+78382" target="_blank" rel="noopener" class="btn btn-teal px-6 py-3.5 text-[15px] mt-9">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        Get directions
+      </a>
+    </div>
+
+    <div class="rounded-3xl overflow-hidden shadow-xl min-h-[360px] lg:min-h-full border border-aquadeep/10" data-reveal>
+      <iframe
+        title="Map to Rockport Bakery"
+        src="https://www.google.com/maps?q=Rockport+Bakery+3114+Business+Hwy+35+N+Rockport+TX+78382&output=embed"
+        width="100%" height="100%" style="border:0; min-height:360px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLOSING CTA ===================== -->
+<section class="relative bg-aquadeep text-cream overflow-hidden">
+  <div class="blob" style="width:520px;height:520px;background:radial-gradient(circle,#F4A8B8,transparent 62%);top:-180px;right:-120px;"></div>
+  <div class="blob" style="width:420px;height:420px;background:radial-gradient(circle,#E0A857,transparent 62%);bottom:-160px;left:-110px;"></div>
+  <div class="relative max-w-4xl mx-auto px-5 md:px-8 py-20 md:py-28 text-center" data-reveal>
+    <h2 class="font-display text-4xl md:text-7xl font-semibold leading-[1.02]">
+      Come hungry. <span class="grad-text italic">Leave happy.</span>
+    </h2>
+    <p class="text-cream/85 text-lg md:text-xl mt-5 max-w-xl mx-auto">
+      Donuts in the morning, a cake for the weekend, and a friendly face behind the counter.
+      We'll keep the case full — you bring the sweet tooth.
+    </p>
+    <div class="mt-9 flex flex-wrap justify-center gap-3">
+      <a href="tel:+13617295044" class="btn btn-primary px-7 py-4 text-base">Call (361) 729-5044</a>
+      <a href="https://www.facebook.com/p/Rockport-Bakery-100063584559598/" target="_blank" rel="noopener" class="btn btn-ghost px-7 py-4 text-base">Find us on Facebook</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-teal text-cream/80 pt-16 pb-28 md:pb-12">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid md:grid-cols-3 gap-10">
+    <div>
+      <span class="inline-flex flex-col items-center justify-center rounded-lg bg-teal px-3 py-1.5 shadow-sm ring-1 ring-aqua/40">
+        <span class="wordmark text-pinklt text-[13px]">ROCKPORT</span>
+        <span class="wordmark text-cream text-[17px] -mt-0.5">BAKERY</span>
+      </span>
+      <p class="mt-4 text-cream/70 text-[15px] max-w-xs">A little aqua bakery on the Texas coast — donuts, kolaches, and custom cakes, fresh Wednesday through Sunday.</p>
+    </div>
+    <div>
+      <div class="font-semibold text-cream mb-3">Visit</div>
+      <a href="https://www.google.com/maps?q=Rockport+Bakery+3114+Business+Hwy+35+N+Rockport+TX+78382" target="_blank" rel="noopener" class="block hover:text-pink transition">3114 Business Hwy 35 N<br>Rockport, TX 78382</a>
+      <a href="tel:+13617295044" class="block mt-3 hover:text-pink transition">(361) 729-5044</a>
+    </div>
+    <div>
+      <div class="font-semibold text-cream mb-3">Hours</div>
+      <div class="text-[15px] space-y-1">
+        <div class="flex justify-between max-w-[220px]"><span>Wed – Sat</span><span>6 AM – 2 PM</span></div>
+        <div class="flex justify-between max-w-[220px]"><span>Sunday</span><span>6 AM – 12 PM</span></div>
+        <div class="flex justify-between max-w-[220px] text-cream/45"><span>Mon – Tue</span><span>Closed</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 md:px-8 mt-12 pt-6 border-t border-cream/15 flex flex-col sm:flex-row justify-between gap-2 text-sm text-cream/55">
+    <span>© <span id="yr"></span> Rockport Bakery · Rockport, Texas</span>
+    <span>Preview crafted by Turnkey Web</span>
+  </div>
+</footer>
+
+<!-- ===================== MOBILE STICKY BAR ===================== -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-cream/95 backdrop-blur border-t border-aquadeep/15 px-3 py-2.5 flex gap-2.5">
+  <a href="tel:+13617295044" class="btn btn-primary flex-1 justify-center py-3 text-sm">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=Rockport+Bakery+3114+Business+Hwy+35+N+Rockport+TX+78382" target="_blank" rel="noopener" class="btn btn-teal flex-1 justify-center py-3 text-sm">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- ===================== JSON-LD ===================== -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Bakery",
+  "name":"Rockport Bakery",
+  "image":"https://turnkeyweb.org/previews/rockport-bakery/assets/hero-storefront.jpg",
+  "@id":"https://turnkeyweb.org/previews/rockport-bakery/",
+  "url":"https://turnkeyweb.org/previews/rockport-bakery/",
+  "telephone":"+1-361-729-5044",
+  "priceRange":"$",
+  "servesCuisine":["Donuts","Kolaches","Cakes","Breakfast"],
+  "address":{"@type":"PostalAddress","streetAddress":"3114 Business Hwy 35 N","addressLocality":"Rockport","addressRegion":"TX","postalCode":"78382","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":28.0451,"longitude":-97.0662},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Wednesday","Thursday","Friday","Saturday"],"opens":"06:00","closes":"14:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"06:00","closes":"12:00"}
+  ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.0","reviewCount":"238"},
+  "sameAs":["https://www.facebook.com/p/Rockport-Bakery-100063584559598/"]
+}
+</script>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* split headline (preserve inner markup) */
+document.querySelectorAll('[data-split]').forEach(el=>{ el.innerHTML = '<span>'+el.innerHTML+'</span>'; });
+
+/* ---------- Lenis (single GSAP-ticker loop) ---------- */
+let lenis;
+if (window.Lenis){
+  lenis = new Lenis({ duration:1.1, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+  if (window.gsap){
+    gsap.ticker.add(t=>lenis.raf(t*1000));
+    gsap.ticker.lagSmoothing(0);
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  } else { function raf(t){ lenis.raf(t); requestAnimationFrame(raf);} requestAnimationFrame(raf); }
+}
+if (window.ScrollTrigger) ScrollTrigger.config({ ignoreMobileResize:true });
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id=a.getAttribute('href'); if(id.length<2) return;
+    const t=document.querySelector(id); if(!t) return; e.preventDefault();
+    if(lenis) lenis.scrollTo(t,{offset:-70}); else t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* ---------- reveals (GPU only, once) ---------- */
+if (window.gsap && window.ScrollTrigger){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:.7,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 92%',once:true},
+      onComplete:()=>el.style.willChange='auto'});
+  });
+  ScrollTrigger.batch('[data-reveal-image]',{ start:'top 85%', once:true,
+    onEnter:b=>b.forEach(el=>el.classList.add('in')) });
+
+  /* count-up */
+  gsap.utils.toArray('.counter').forEach(el=>{
+    const target=parseFloat(el.dataset.target), dec=parseInt(el.dataset.dec||'0');
+    ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>{
+      gsap.to({v:0},{v:target,duration:1.6,ease:'power2.out',
+        onUpdate(){ el.textContent = dec? this.targets()[0].v.toFixed(dec) : Math.round(this.targets()[0].v).toLocaleString(); }});
+    }});
+  });
+}
+
+/* ---------- 6s screenshot / crawler safety net ---------- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; });
+  document.querySelectorAll('[data-reveal-image]').forEach(el=>el.classList.add('in'));
+  document.querySelectorAll('.counter').forEach(el=>{
+    if(el.textContent.trim()==='0'){ const d=parseInt(el.dataset.dec||'0'); const v=parseFloat(el.dataset.target);
+      el.textContent = d? v.toFixed(d) : v.toLocaleString(); }
+  });
+},6000);
+</script>
+</body>
+</html>

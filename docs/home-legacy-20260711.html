@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Microsoft Clarity (heatmaps + session replay) -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xat9lhrllb");
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Website for Your Business | Turnkey Web</title>
+<meta name="description" content="We design your business website for free. Love it? Keep it live for just $147/month with hosting, edits, and support all included. No build fee, no sales call.">
+<meta name="theme-color" content="#0a0a0c">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://turnkeyweb.org/">
+<meta property="og:url" content="https://turnkeyweb.org/">
+<meta property="og:title" content="A Professional Website for Your Business — Built Free | Turnkey Web">
+<meta property="og:description" content="See a free first draft of your business website. Keep it for $147/month, everything included. No build fee. No sales call.">
+<meta property="og:image" content="https://turnkeyweb.org/assets/tkweb-logo.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://turnkeyweb.org/#organization",
+      "name": "Turnkey Web",
+      "url": "https://turnkeyweb.org/",
+      "logo": "https://turnkeyweb.org/assets/tkweb-logo.png",
+      "description": "Turnkey Web designs and builds modern websites for small and local service businesses.",
+      "founder": { "@type": "Person", "name": "Ricky West" },
+      "areaServed": "US",
+      "address": { "@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX", "addressCountry": "US" },
+      "parentOrganization": { "@type": "Organization", "name": "Turnkey Services" },
+      "sameAs": ["https://turnkeycfo.com/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://turnkeyweb.org/#website",
+      "url": "https://turnkeyweb.org/",
+      "name": "Turnkey Web",
+      "publisher": { "@id": "https://turnkeyweb.org/#organization" }
+    }
+  ]
+}
+</script>
+<link rel="icon" href="/assets/tkweb-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* metric-matched fallback so the Jakarta web-font swap causes ~0 layout shift (CLS) */
+  @font-face{font-family:'JK Fallback';src:local('Arial');ascent-override:96.54%;descent-override:24.52%;line-gap-override:0%;size-adjust:101.97%}
+  :root{
+    --bg:#0a0a0c;--bg2:#101015;--ink:#ECE7F2;--mut:rgba(236,231,242,.52);--mut2:rgba(236,231,242,.32);
+    --acc:#8b5cf6;--acc-l:#c4b5fd;--line:rgba(236,231,242,.1);
+    --disp:'Plus Jakarta Sans','JK Fallback',system-ui,sans-serif;--body:'Plus Jakarta Sans','JK Fallback',system-ui,sans-serif;
+    --e1:cubic-bezier(.16,1,.3,1);--e2:cubic-bezier(.7,0,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;background:var(--bg)}
+  body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body.lock{overflow:hidden;height:100vh}
+  h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.0;letter-spacing:-.025em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 30px}
+  .acc{color:var(--acc-l)}
+
+  /* word-mask reveal — generous bottom room so descenders (g, y, p) never clip */
+  .rwords{padding-bottom:.06em}
+  .rwords .m{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.28em;margin-bottom:-.28em;line-height:1.04}
+  .rwords .w{display:inline-block;padding-bottom:.04em}
+  .rline{overflow:hidden}.rline>*{display:block;transform:translateY(110%)}
+  .rv{opacity:0;transform:translateY(30px)}
+  @media(prefers-reduced-motion:reduce){.rwords .w,.rline>*{transform:none}.rv{opacity:1;transform:none}}
+
+  /* gradient shimmer for key accent words/headers */
+  .shine{background:linear-gradient(100deg,#c4b5fd 0%,#7c5cff 22%,#5b8cff 45%,#c4b5fd 68%,#8b5cf6 100%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 6.5s linear infinite;padding-right:.04em}
+  @keyframes shine{to{background-position:220% center}}
+  @media(prefers-reduced-motion:reduce){.shine{animation:none}}
+
+  /* preloader */
+  #pre{position:fixed;inset:0;z-index:5000;background:var(--bg);display:flex;align-items:flex-end;justify-content:space-between;padding:40px 30px}
+  #pre .pl{font-family:var(--disp);font-size:11.5vw;line-height:.82;font-weight:800;letter-spacing:-.04em;max-width:5.5ch}
+  #pre .pr{font-family:var(--disp);font-size:13vw;line-height:.8;font-weight:800;color:var(--acc-l)}
+  #pre.done{transform:translateY(-100%);transition:transform 1s var(--e1)}
+
+  /* cursor */
+  .cur{position:fixed;top:0;left:0;width:40px;height:40px;border:1px solid rgba(236,231,242,.6);border-radius:50%;pointer-events:none;z-index:3000;transform:translate(-50%,-50%);transition:width .3s var(--e1),height .3s var(--e1),background .3s,border-color .3s;will-change:transform}
+  .cur.grow{width:84px;height:84px;background:rgba(196,181,253,.14);border-color:transparent}
+  .cur-d{position:fixed;top:0;left:0;width:5px;height:5px;background:var(--acc-l);border-radius:50%;pointer-events:none;z-index:3001;transform:translate(-50%,-50%)}
+  @media(hover:none),(pointer:coarse){.cur,.cur-d{display:none}}
+
+  /* progress */
+  .prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--acc),var(--acc-l));z-index:200}
+
+  /* nav */
+  header{position:fixed;inset:0 0 auto;z-index:150;mix-blend-mode:difference}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .nav .logo{height:26px;filter:brightness(0) invert(1)}
+  .nav .nav-r{display:flex;align-items:center;gap:30px}
+  .nav a.link{font-weight:600;font-size:14px;position:relative}
+  .nav a.link::after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:1px;background:#fff;transform:scaleX(0);transform-origin:right;transition:transform .4s var(--e1)}
+  .nav a.link:hover::after{transform:scaleX(1);transform-origin:left}
+  @media(max-width:680px){.nav .nav-r .link.alt-nav{display:none}}
+
+  /* HERO */
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:7vh;overflow:hidden;background:radial-gradient(120% 95% at 80% 16%,rgba(124,92,255,.30),transparent 56%),radial-gradient(90% 80% at 98% 34%,rgba(40,90,255,.20),transparent 52%),var(--bg)}
+  #gl{position:absolute;inset:0;z-index:0;width:100%;height:100%;display:block}
+  .hero-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(10,10,12,.92),rgba(10,10,12,.25) 55%,rgba(10,10,12,.5));pointer-events:none}
+  .hero .wrap{position:relative;z-index:2;width:100%}
+  .over{font-family:var(--body);font-weight:600;font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);margin-bottom:30px}
+  h1.disp{font-size:clamp(46px,8.8vw,142px);letter-spacing:-.03em;line-height:1.0;max-width:15ch;font-weight:800}
+  .hero .sub{font-size:clamp(16px,1.5vw,21px);color:var(--mut);max-width:42ch;margin:34px 0 0;font-weight:400}
+  .hero .sub b{color:var(--ink);font-weight:600}
+  .hero-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-top:42px}
+  .btn{position:relative;display:inline-flex;align-items:center;gap:14px;font-weight:600;font-size:16px;color:var(--bg);background:var(--ink);padding:19px 36px;border-radius:100px;overflow:hidden;will-change:transform;border:0;cursor:pointer}
+  .btn .ar{transition:transform .4s var(--e1)}.btn:hover .ar{transform:translateX(6px)}
+  .btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .hero-scroll{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:12px}
+  .hero-scroll i{width:46px;height:1px;background:var(--mut);position:relative;overflow:hidden}
+  .hero-scroll i::after{content:"";position:absolute;inset:0;background:var(--acc-l);transform:translateX(-100%);animation:sc 2s var(--e2) infinite}
+  @keyframes sc{50%{transform:translateX(0)}100%{transform:translateX(100%)}}
+  .hero-cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+
+  /* marquee */
+  .marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden;white-space:nowrap}
+  .marq .t{display:inline-block;font-family:var(--disp);font-weight:600;font-size:clamp(26px,3.4vw,46px);letter-spacing:-.02em;will-change:transform}
+  .marq .t span{padding:0 30px;color:var(--mut)}
+  .marq .t b{color:var(--ink);font-weight:600}
+  .marq .t em{color:var(--acc-l);font-style:normal}
+
+  section{position:relative}
+  /* content flow (galaxy stays in the hero only) */
+  #flow{position:relative;z-index:2;background:var(--bg)}
+  /* STATEMENT */
+  .state{padding:clamp(78px,10vh,128px) 0}
+  .state h2{font-size:clamp(34px,5.6vw,86px);letter-spacing:-.04em;max-width:16ch;line-height:1.02}
+  .state .small{font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc-l);margin-bottom:30px}
+  .state p{color:var(--mut);font-size:19px;max-width:50ch;margin-top:34px}
+
+  /* PROCESS — big numbers, asymmetric, no card grid */
+  .proc{padding:46px 0 92px}
+  .prow{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,1fr);gap:40px;align-items:start;padding:48px 0;border-top:1px solid var(--line)}
+  .prow:last-child{border-bottom:1px solid var(--line)}
+  .prow .pn{display:inline-block;font-family:var(--disp);font-size:clamp(60px,10vw,150px);font-weight:800;line-height:.8;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1px rgba(236,231,242,.34);transition:-webkit-text-stroke-color .5s var(--e1),filter .5s var(--e1)}
+  .prow h3{font-size:clamp(26px,3.4vw,44px);letter-spacing:-.03em;margin-bottom:14px}
+  .prow p{color:var(--mut);font-size:17.5px;max-width:46ch}
+  .prow:hover .pn{-webkit-text-stroke-color:var(--acc-l);animation:pnGlow 1.6s ease-in-out infinite}
+  @keyframes pnGlow{0%,100%{filter:drop-shadow(0 0 7px rgba(139,92,246,.45))}50%{filter:drop-shadow(0 0 27px rgba(139,92,246,.95)) drop-shadow(0 0 9px rgba(196,181,253,.6))}}
+  @media(prefers-reduced-motion:reduce){.prow:hover .pn{animation:none;filter:drop-shadow(0 0 16px rgba(139,92,246,.7))}}
+
+  /* FEATURES — asymmetric grid */
+  .feat-band{background:var(--bg2);padding:clamp(78px,10vh,128px) 0;border-top:1px solid var(--line)}
+  .fgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:60px}
+  .f{border:1px solid var(--line);border-radius:20px;padding:34px;background:rgba(255,255,255,.012);transition:border-color .4s,background .4s,transform .5s var(--e1)}
+  .f:hover{border-color:rgba(196,181,253,.4);background:rgba(196,181,253,.04);transform:translateY(-4px)}
+  .f h3{font-size:21px;margin-bottom:10px;font-weight:700}
+  .f p{color:var(--mut);font-size:15px}
+  .f .k{font-family:var(--disp);font-size:13px;font-weight:700;color:var(--acc-l);letter-spacing:.08em}
+  .f1{grid-column:1/7}.f2{grid-column:7/13}.f3{grid-column:1/5}.f4{grid-column:5/9}.f5{grid-column:9/13}.f6{grid-column:1/13;display:flex;justify-content:space-between;align-items:center;gap:24px}
+  .f6 .big{font-family:var(--disp);font-size:clamp(28px,4vw,56px);font-weight:800;letter-spacing:-.03em}
+
+  /* STATS */
+  .stats{padding:clamp(70px,9vh,110px) 0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+  .st{border-top:1px solid var(--line);padding-top:26px}
+  .st .n{font-family:var(--disp);font-size:clamp(54px,8vw,120px);font-weight:800;letter-spacing:-.04em;line-height:.9}
+  .st .n em{font-style:normal;color:var(--acc-l)}
+  .st .l{color:var(--mut);margin-top:14px;font-size:15px;max-width:22ch}
+
+  /* TESTIMONIALS */
+  .tmrow{padding:clamp(78px,10vh,128px) 0;border-top:1px solid var(--line)}
+  .tm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+  .tm{border:1px solid var(--line);border-radius:20px;padding:30px;background:rgba(255,255,255,.014);transition:border-color .4s,background .4s,transform .5s var(--e1);display:flex;flex-direction:column}
+  .tm:hover{border-color:rgba(196,181,253,.4);background:rgba(196,181,253,.04);transform:translateY(-4px)}
+  .tm .stars{color:var(--acc-l);font-size:15px;letter-spacing:3px;margin-bottom:16px}
+  .tm p{color:var(--ink);font-size:15.5px;line-height:1.62;flex:1}
+  .tm .who{display:flex;align-items:center;gap:13px;margin-top:22px}
+  .tm .av{width:46px;height:46px;border-radius:50%;overflow:hidden;flex:0 0 auto;background:#1a1a22}
+  .tm .av img{width:100%;height:100%;object-fit:cover;display:block}
+  .tm .nm{font-weight:700;font-size:14.5px}
+  .tm .rl{color:var(--mut);font-size:12.5px}
+
+  /* GUARANTEE */
+  .guar{padding:clamp(80px,10vh,128px) 0;text-align:center;position:relative;overflow:hidden}
+  .guar::before{content:"";position:absolute;left:50%;top:50%;width:80vw;height:80vw;max-width:900px;max-height:900px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(139,92,246,.22),transparent 62%);pointer-events:none}
+  .guar h2{font-size:clamp(44px,9vw,150px);letter-spacing:-.045em;line-height:.9;position:relative}
+  .guar .em{color:var(--acc-l)}
+  .guar p{color:var(--mut);max-width:40ch;margin:30px auto 0;font-size:18px;position:relative}
+
+  /* FAQ */
+  .faq{padding:clamp(78px,10vh,128px) 0;border-top:1px solid var(--line)}
+  .faq-list{max-width:880px;margin:54px auto 0;display:flex;flex-direction:column;gap:12px}
+  .qa{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.014);overflow:hidden;transition:border-color .3s,background .3s}
+  .qa[open]{border-color:rgba(196,181,253,.4);background:rgba(196,181,253,.04)}
+  .qa>summary{list-style:none;cursor:pointer;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;font-weight:700;font-size:16.5px;letter-spacing:-.01em}
+  .qa>summary::-webkit-details-marker{display:none}
+  .qa>summary::after{content:"+";font-size:24px;font-weight:300;color:var(--acc-l);line-height:1;flex:0 0 auto;transition:transform .3s var(--e1)}
+  .qa[open]>summary::after{content:"−"}
+  .qa .a{padding:0 26px 24px;color:var(--mut);font-size:15.5px;line-height:1.66}
+  .qa .a p{margin-bottom:10px}.qa .a p:last-child{margin:0}
+  .qa .a strong{color:var(--ink);font-weight:600}
+
+  /* FORM */
+  .form-s{padding:clamp(78px,10vh,128px) 0;border-top:1px solid var(--line)}
+  .fg{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+  .fg h2{font-size:clamp(40px,6vw,92px);letter-spacing:-.04em;line-height:.92}
+  .fg .fl{position:sticky;top:120px}
+  .fg .fl p{color:var(--mut);font-size:18px;max-width:34ch;margin-top:24px}
+  .fg ul{list-style:none;margin-top:30px;display:grid;gap:14px}
+  .fg li{display:flex;gap:12px;align-items:center;font-size:15.5px;color:var(--ink)}
+  .fg li svg{width:20px;height:20px;color:var(--acc-l);flex:0 0 auto}
+  .card{border:1px solid var(--line);border-radius:24px;padding:36px;background:rgba(255,255,255,.015)}
+  .card h3{font-size:20px;font-weight:700}.card .cs{color:var(--mut);font-size:14px;margin:6px 0 22px}
+  .r2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{margin-bottom:14px}.field label{display:block;font-weight:600;font-size:12.5px;color:var(--mut);margin-bottom:7px}
+  .field input,.field textarea{width:100%;font-family:inherit;font-size:15.5px;color:var(--ink);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:14px 16px;transition:border-color .2s,background .2s}
+  .field input::placeholder,.field textarea::placeholder{color:var(--mut2)}
+  .field input:focus,.field textarea:focus{outline:0;border-color:var(--acc);background:rgba(139,92,246,.06)}
+  .more{border:1px dashed var(--line);border-radius:12px;margin:2px 0 8px}
+  .more>summary{list-style:none;cursor:pointer;padding:13px 15px;font-weight:600;font-size:13.5px;color:var(--acc-l)}
+  .more>summary::-webkit-details-marker{display:none}.more-in{padding:15px}
+  .hp{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
+  .err{display:none;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.4);color:#fecaca;border-radius:12px;padding:12px 15px;font-size:14px;margin-bottom:14px}
+  .card .btn{width:100%;justify-content:center;background:var(--acc);color:#fff;margin-top:6px}
+  .ff{text-align:center;font-size:12px;color:var(--mut);margin-top:13px}
+  .ok{display:none;text-align:center;padding:30px 8px}
+  .ok .ring{width:74px;height:74px;border-radius:50%;border:1px solid var(--acc);display:grid;place-items:center;margin:0 auto 16px}
+  .ok h3{font-size:24px;margin-bottom:8px}.ok p{color:var(--mut);max-width:32ch;margin:0 auto}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:80px 0 40px;overflow:hidden}
+  .foot-big{font-family:var(--disp);font-weight:800;font-size:clamp(60px,15vw,240px);line-height:.82;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px var(--line);white-space:nowrap}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:40px;color:var(--mut);font-size:13.5px;flex-wrap:wrap}
+
+  /* showcase / real work */
+  .work{padding:clamp(90px,12vh,160px) 0;overflow:hidden}
+  .work .wrap{margin-bottom:48px}
+  .work-track{display:flex;gap:24px;padding:6px 30px 30px;overflow-x:auto;scroll-snap-type:x proximity;cursor:grab;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .work-track::-webkit-scrollbar{display:none}
+  .work-track.drag{cursor:grabbing}
+  .wcard{flex:0 0 min(560px,84vw);scroll-snap-align:center;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bg2);transition:border-color .4s,transform .5s var(--e1)}
+  .wcard:hover{border-color:rgba(196,181,253,.45)}
+  .wbar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .wdot{width:9px;height:9px;border-radius:50%;background:rgba(236,231,242,.18)}
+  .wurl{margin-left:10px;font-size:12px;color:var(--mut)}
+  .wimg{aspect-ratio:16/10;overflow:hidden;background:#000}
+  .wimg img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .9s var(--e1)}
+  .wcard:hover .wimg img{transform:scale(1.06)}
+  .wmeta{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;font-weight:600;font-size:16px}
+  .wtag{font-size:12.5px;color:var(--acc-l)}
+  /* contextual cursor label */
+  .cur .lbl{font-family:var(--body);font-weight:600;font-size:12px;color:#fff;white-space:nowrap;opacity:0;transform:scale(.5);transition:opacity .2s,transform .25s var(--e1)}
+  .cur.label{display:grid;place-items:center;width:auto;height:auto;padding:11px 18px;border-radius:100px;background:var(--acc);border-color:transparent;mix-blend-mode:normal}
+  .cur.label .lbl{opacity:1;transform:scale(1)}
+
+  @media(max-width:920px){
+    .hero-foot{flex-direction:column;align-items:flex-start;gap:26px}
+    .state{padding:70px 0}
+    .work{padding:56px 0 30px}
+    .proc{padding:24px 0 64px}
+    .prow{grid-template-columns:1fr;gap:14px;padding:34px 0}
+    .feat-band{padding:72px 0}
+    .fgrid{grid-template-columns:1fr;gap:14px}
+    .f1,.f2,.f3,.f4,.f5,.f6{grid-column:auto}.f6{flex-direction:column;align-items:flex-start}
+    .stats{grid-template-columns:1fr;gap:28px;padding:58px 0}
+    .tmrow{padding:64px 0}.tm-grid{grid-template-columns:1fr;gap:14px;margin-top:40px}
+    .faq{padding:64px 0}.faq-list{margin-top:40px}
+    .guar{padding:74px 0}
+    .form-s{padding:70px 0}
+    .fg{grid-template-columns:1fr;gap:34px}.fg .fl{position:static}
+  }
+  @media(max-width:540px){.r2{grid-template-columns:1fr}.qa>summary{padding:18px 20px;font-size:15px}.qa .a{padding:0 20px 20px}}
+  /* mobile hero declutter — keep content clear of the fixed nav, no overlap/overflow */
+  @media(max-width:680px){
+    .nav{height:62px}
+    .nav .logo{height:22px}
+    .nav .nav-r{gap:0}
+    .nav a.link{font-size:13px}
+    .hero{min-height:100svh;justify-content:flex-end;padding:84px 0 7vh}
+    .hero .wrap{padding:0 22px}
+    .over{margin-bottom:13px;font-size:10px;letter-spacing:.14em;line-height:1.5}
+    h1.disp{font-size:clamp(32px,9vw,48px);max-width:none;line-height:1.05}
+    .hero .sub{margin-top:15px;font-size:14.5px;line-height:1.5;max-width:92vw}
+    .hero-foot{margin-top:22px;gap:16px}
+    .hero-cta-row{flex-direction:column;align-items:stretch;width:100%;gap:11px}
+    .hero-cta-row .btn{justify-content:center;width:100%;padding:16px 24px;font-size:15px}
+    .hero-scroll{display:none}
+  }
+</style>
+</head>
+<body class="lock">
+
+<div id="pre"><div class="pl">Free Build</div><div class="pr" id="preNum">0%</div></div>
+<div class="cur" id="cur"><span class="lbl" id="curLbl"></span></div><div class="cur-d" id="curD"></div>
+<div class="prog" id="prog"></div>
+
+<header>
+  <div class="wrap nav">
+    <a href="https://turnkeyweb.org" aria-label="Turnkey Web"><img class="logo" src="/assets/tkweb-logo-white-header.png" alt="Turnkey Web" onerror="this.onerror=null;this.src='/assets/tkweb-logo.png'"></a>
+    <div class="nav-r">
+      <a href="#work" class="link alt-nav magnetic" data-cursor>Our work</a>
+      <a href="#faq" class="link alt-nav magnetic" data-cursor>FAQ</a>
+      <a href="#request" class="link magnetic" data-cursor>Request free site</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <canvas id="gl"></canvas>
+  <div class="hero-veil"></div>
+  <div class="wrap">
+    <p class="over rv">Free website design · No call · No commitment</p>
+    <h1 class="disp rwords">The website your business <span class="acc shine">deserves.</span></h1>
+    <p class="sub rv">We design your first draft at <b>zero cost</b>. Love it? Keep it live for <b>$147/month</b>, everything handled. No build fee. No sales call.</p>
+    <div class="hero-foot">
+      <div class="hero-cta-row">
+        <a href="#request" class="btn magnetic" data-cursor>Get my free site <span class="ar">&rarr;</span></a>
+        <a href="#work" class="btn alt magnetic" data-cursor>See our work</a>
+      </div>
+      <div class="hero-scroll">Scroll to explore <i></i></div>
+    </div>
+  </div>
+</section>
+
+<main id="flow">
+
+<!-- MARQUEE -->
+<div class="marq" aria-hidden="true"><div class="t" id="marq"><span><b>Plumbers</b> <em>/</em> Roofers <em>/</em> <b>HVAC</b> <em>/</em> Electricians <em>/</em> <b>Landscapers</b> <em>/</em> Salons <em>/</em> <b>Auto shops</b> <em>/</em> Contractors <em>/</em> <b>Cafes</b> <em>/</em> Gyms <em>/</em> </span></div></div>
+
+<!-- STATEMENT -->
+<section class="state">
+  <div class="wrap">
+    <p class="small rv">Why it matters</p>
+    <h2 class="rwords">Your website is the first handshake. Make it feel like <span class="acc shine">ten grand.</span></h2>
+    <p class="rv">If customers find you on Google, a sharp site is the difference between a call and a scroll-past. We build it for you. You only pay if you love it.</p>
+  </div>
+</section>
+
+<!-- SHOWCASE -->
+<section class="work" id="work">
+  <div class="wrap">
+    <p class="small state rv" style="padding:0;color:var(--acc-l)">Recent work</p>
+    <h2 class="rwords" style="margin-top:18px;font-size:clamp(30px,5vw,68px);max-width:18ch">Real sites. Real businesses. Built by us.</h2>
+  </div>
+  <div class="work-track" id="workTrack" data-cursor-label="Drag">
+    <a class="wcard" href="https://jollyball.pages.dev" target="_blank" rel="noopener" data-cursor-label="View live">
+      <div class="wbar"><span class="wdot"></span><span class="wdot"></span><span class="wdot"></span><span class="wurl">jollyball</span></div>
+      <div class="wimg"><img src="shots/jollyball.jpg" alt="JollyBall website" loading="lazy"></div>
+      <div class="wmeta"><span>JollyBall</span><span class="wtag">Live sports show</span></div>
+    </a>
+    <a class="wcard" href="https://docs-slushies.com" target="_blank" rel="noopener" data-cursor-label="View live">
+      <div class="wbar"><span class="wdot"></span><span class="wdot"></span><span class="wdot"></span><span class="wurl">docs-slushies.com</span></div>
+      <div class="wimg"><img src="shots/slushies.jpg" alt="Doc's Slushies website" loading="lazy"></div>
+      <div class="wmeta"><span>Doc's Slushies</span><span class="wtag">Frozen drink rental</span></div>
+    </a>
+    <a class="wcard" href="https://ricky11west.github.io/prestige-commercial-landscaping/" target="_blank" rel="noopener" data-cursor-label="View live">
+      <div class="wbar"><span class="wdot"></span><span class="wdot"></span><span class="wdot"></span><span class="wurl">prestige-landscaping</span></div>
+      <div class="wimg"><img src="shots/prestige.png" alt="Prestige Commercial Landscaping website" loading="lazy"></div>
+      <div class="wmeta"><span>Prestige Landscaping</span><span class="wtag">Commercial landscaping</span></div>
+    </a>
+    <a class="wcard" href="https://turnkeyweb.org/previews/j-n-body-shop/" target="_blank" rel="noopener" data-cursor-label="View live">
+      <div class="wbar"><span class="wdot"></span><span class="wdot"></span><span class="wdot"></span><span class="wurl">j-n-body-shop</span></div>
+      <div class="wimg"><img src="shots/jnbody.jpg" alt="J&amp;N Body Shop website" loading="lazy"></div>
+      <div class="wmeta"><span>J&amp;N Body Shop</span><span class="wtag">Collision &amp; paint</span></div>
+    </a>
+    <a class="wcard" href="https://turnkeyweb.org/previews/ink-n-flesh/" target="_blank" rel="noopener" data-cursor-label="View live">
+      <div class="wbar"><span class="wdot"></span><span class="wdot"></span><span class="wdot"></span><span class="wurl">ink-n-flesh</span></div>
+      <div class="wimg"><img src="shots/inknflesh.jpg" alt="Ink N Flesh website" loading="lazy"></div>
+      <div class="wmeta"><span>Ink N Flesh</span><span class="wtag">Tattoo studio</span></div>
+    </a>
+    <a class="wcard" href="https://turnkeyweb.org/previews/kinnor-coffee-v3/" target="_blank" rel="noopener" data-cursor-label="View live">
+      <div class="wbar"><span class="wdot"></span><span class="wdot"></span><span class="wdot"></span><span class="wurl">kinnor-coffee</span></div>
+      <div class="wimg"><img src="shots/kinnor.jpg" alt="Kinnor Coffee website" loading="lazy"></div>
+      <div class="wmeta"><span>Kinnor Coffee</span><span class="wtag">Coffee &amp; cocktails</span></div>
+    </a>
+  </div>
+  <div class="wrap" style="margin-top:44px;display:flex;justify-content:center">
+    <a class="btn alt magnetic" href="/work.html" data-cursor>View the full portfolio <span class="ar">&rarr;</span></a>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="proc">
+  <div class="wrap">
+    <p class="small state rv" style="padding:0;color:var(--acc-l)">How it works</p>
+    <h2 class="rwords" style="margin-top:18px;font-size:clamp(30px,5vw,68px);max-width:18ch">A clear process. No guessing. No chasing.</h2>
+    <div class="prow"><div class="pn rv">01</div><div><h3 class="rwords">Tell us about you.</h3><p class="rv">One short form, about thirty seconds. No call, no meeting, no pressure — just a few details about your business.</p></div></div>
+    <div class="prow"><div class="pn rv">02</div><div><h3 class="rwords">We design it free.</h3><p class="rv">A real, custom, mobile-ready draft built for your business — delivered in days, not weeks. Zero cost to see it.</p></div></div>
+    <div class="prow"><div class="pn rv">03</div><div><h3 class="rwords">Unlimited revisions.</h3><p class="rv">Love the direction but want changes? We refine it — copy, sections, design — until it's exactly right. You never touch code.</p></div></div>
+    <div class="prow"><div class="pn rv">04</div><div><h3 class="rwords">Go live for $147 a month.</h3><p class="rv">We publish, host, and maintain it. Unlimited edits, support, and updates included. Cancel anytime. No build fee, ever.</p></div></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="feat-band">
+  <div class="wrap">
+    <p class="state small rv" style="margin:0">Everything included</p>
+    <h2 class="state rwords" style="padding:0;font-size:clamp(32px,5vw,72px);max-width:20ch;margin-top:18px">One flat price. Every detail handled.</h2>
+    <div class="fgrid">
+      <div class="f f1 rv"><div class="k">01</div><h3>Lightning-fast hosting &amp; SSL</h3><p>Secure, monitored, fully managed. Your site is always up and always quick.</p></div>
+      <div class="f f2 rv"><div class="k">02</div><h3>Unlimited edits, no fees</h3><p>Send a change anytime. Text, photos, new pages. We handle it, you never touch code.</p></div>
+      <div class="f f3 rv"><div class="k">03</div><h3>Mobile-perfect</h3><p>Sharp on every device.</p></div>
+      <div class="f f4 rv"><div class="k">04</div><h3>Domain help</h3><p>Connect or get a new one, end to end.</p></div>
+      <div class="f f5 rv"><div class="k">05</div><h3>SEO foundation</h3><p>Titles, schema, sitemap, GBP.</p></div>
+      <div class="f f6 rv"><div><div class="k">06</div><h3 style="margin:6px 0 0">Built to convert</h3></div><div class="big">Visitors&nbsp;&rarr;&nbsp;<span class="acc">customers</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="wrap stats">
+  <div class="st rv"><div class="n">$0</div><div class="l">To see your first draft. No card, no catch.</div></div>
+  <div class="st rv"><div class="n">$<em data-count="147">0</em><span style="font-size:.34em;color:var(--mut)">/mo</span></div><div class="l">Everything included to stay live.</div></div>
+  <div class="st rv"><div class="n"><em data-count="3">0</em> days</div><div class="l">Not weeks. You see your draft fast.</div></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="tmrow">
+  <div class="wrap">
+    <p class="small state rv" style="padding:0;color:var(--acc-l)">What clients say</p>
+    <h2 class="rwords" style="margin-top:18px;font-size:clamp(30px,5vw,68px);max-width:16ch">Real businesses. Real results.</h2>
+    <div class="tm-grid">
+      <div class="tm rv">
+        <div class="stars">★★★★★</div>
+        <p>Okay, I was NERVOUS about spending money on a website. But we went from basically invisible online to THREE new client calls in the first week — and people kept assuming we'd been around for years. Worth every penny!</p>
+        <div class="who"><div class="av"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&h=120&fit=crop&crop=faces&auto=format&q=80" alt="Sarah K." loading="lazy"></div><div><div class="nm">Sarah K.</div><div class="rl">Owner · Local Plumbing Company</div></div></div>
+      </div>
+      <div class="tm rv">
+        <div class="stars">★★★★★</div>
+        <p>Ricky had our firm's site live in FIVE DAYS. Five! We're already on page one of Google for our main practice area and the phone is actually ringing now. I keep telling other attorneys about this.</p>
+        <div class="who"><div class="av"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=120&h=120&fit=crop&crop=faces&auto=format&q=80" alt="Michael T." loading="lazy"></div><div><div class="nm">Michael T.</div><div class="rl">Managing Partner · Law Firm</div></div></div>
+      </div>
+      <div class="tm rv">
+        <div class="stars">★★★★★</div>
+        <p>My old site honestly made me look like a HOBBYIST. I needed serious, and that's exactly what I got. We booked two new advisory clients the first month and I'm 100% sure the website is why. Cannot recommend it enough!</p>
+        <div class="who"><div class="av"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=faces&auto=format&q=80" alt="David L." loading="lazy"></div><div><div class="nm">David L.</div><div class="rl">Financial Advisor · Austin, TX</div></div></div>
+      </div>
+      <div class="tm rv">
+        <div class="stars">★★★★★</div>
+        <p>Our old site was genuinely EMBARRASSING. The new one? People trust us before they even walk in the door. Consultation requests have MORE THAN DOUBLED since we launched — I almost cried when I first saw it!</p>
+        <div class="who"><div class="av"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&h=120&fit=crop&crop=faces&auto=format&q=80" alt="Jessica M." loading="lazy"></div><div><div class="nm">Jessica M.</div><div class="rl">Owner · Lumina Med Spa</div></div></div>
+      </div>
+      <div class="tm rv">
+        <div class="stars">★★★★★</div>
+        <p>No runaround, no months of waiting around. Clear process, FAST, exactly what we asked for. Our booking rate jumped and I can point right at the website as the reason. These guys GET IT!</p>
+        <div class="who"><div class="av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=faces&auto=format&q=80" alt="Carlos R." loading="lazy"></div><div><div class="nm">Carlos R.</div><div class="rl">Owner · Ironclad Construction</div></div></div>
+      </div>
+      <div class="tm rv">
+        <div class="stars">★★★★★</div>
+        <p>I'm genuinely PROUD to send people to my site now — never thought I'd say that! Night and day from what we had before, and start to launch was under two weeks. Best decision I made all year, hands down.</p>
+        <div class="who"><div class="av"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&crop=faces&auto=format&q=80" alt="Amanda W." loading="lazy"></div><div><div class="nm">Amanda W.</div><div class="rl">Realtor · Crestwood Realty</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guar">
+  <div class="wrap">
+    <p class="small state rv" style="padding:0;color:var(--acc-l)">Our promise</p>
+    <h2 class="rwords" style="margin-top:24px">Love it, or it's <span class="em shine">free.</span></h2>
+    <p class="rv">Unlimited revisions until you love it, or you don't pay a dime. No build fee, no contracts, cancel anytime.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <p class="small state rv" style="padding:0;color:var(--acc-l)">Frequently asked</p>
+    <h2 class="rwords" style="margin-top:18px;font-size:clamp(30px,5vw,68px);max-width:14ch">Questions before you start.</h2>
+    <div class="faq-list">
+      <details class="qa rv"><summary>Wait — it's really free? What's the catch?</summary><div class="a"><p>No catch. We design your first complete draft at <strong>zero cost</strong> so you can see real work for your actual business before deciding anything. There's no card required and no obligation.</p><p>If you love it, you keep it live for a flat <strong>$147/month</strong> — hosting, unlimited edits, and support all included. If you don't, you walk away owing nothing.</p></div></details>
+      <details class="qa rv"><summary>How is this different from Wix, Squarespace, or building it myself?</summary><div class="a"><p>DIY platforms hand you a blank canvas and a steep learning curve. Most owners end up with a site that <em>looks like a template</em> — and converts like one. We build a custom site designed around how <strong>your</strong> customers actually decide to call you, then maintain it for you. You stay focused on the business; we handle the website.</p></div></details>
+      <details class="qa rv"><summary>What's included in the $147/month?</summary><div class="a"><p>Everything to keep the site live and working: fast managed hosting and SSL, <strong>unlimited edits</strong> (text, photos, new pages — no per-change fees), domain setup help, an on-page SEO foundation (titles, meta, schema, sitemap, Google Business Profile alignment), and ongoing support and updates.</p></div></details>
+      <details class="qa rv"><summary>What if I don't love the first draft?</summary><div class="a"><p>That's what unlimited revisions are for. We refine — swap sections, change copy, rework the design — until you genuinely love it. And since you only pay once you decide to go live, there's zero risk in seeing it first.</p></div></details>
+      <details class="qa rv"><summary>Do I own the website?</summary><div class="a"><p>Yes. While you're on the monthly plan the site is fully yours — your content, your domain, your brand. We don't hold anything hostage, and there are no long-term contracts. Cancel anytime.</p></div></details>
+      <details class="qa rv"><summary>Is there really no build fee or contract?</summary><div class="a"><p>Correct. No upfront build fee, no setup fee, no annual contract. You see the draft free and, if you keep it, it's a simple month-to-month $147 plan you can cancel whenever you want.</p></div></details>
+      <details class="qa rv"><summary>I'm not in Austin — can you still work with me?</summary><div class="a"><p>Yes. We're based in Austin, TX but build sites for businesses anywhere in the U.S. The whole process is remote — a short form, async reviews, and your draft delivered by email. Most clients never need a call.</p></div></details>
+      <details class="qa rv"><summary>Will my site rank on Google?</summary><div class="a"><p>Every site ships with strong on-page SEO foundations — proper titles, meta tags, schema markup, fast load times, mobile-first layout, and a clean sitemap. That makes you eligible to rank. Sustained ranking for competitive terms takes ongoing content work, which we offer as a separate service when you're ready.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-s" id="request">
+  <div class="wrap fg">
+    <div class="fl">
+      <p class="small state rv" style="padding:0;color:var(--acc-l)">Start here</p>
+      <h2 class="rwords" style="margin-top:20px">Let's build your free draft.</h2>
+      <p class="rv">A few quick details and you're done. We design it and send it your way. No call, no commitment.</p>
+      <ul>
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> A real, custom draft for your business</li>
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Zero cost to see it, pay only if you love it</li>
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> No phone call or meeting required</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <form id="freeForm" novalidate>
+        <div id="formErr" class="err"></div>
+        <h3>Tell us about your business</h3>
+        <p class="cs">Four quick details, about thirty seconds.</p>
+        <div class="r2">
+          <div class="field"><label>Your name *</label><input name="full_name" required autocomplete="name" placeholder="Jane Smith"></div>
+          <div class="field"><label>Business name *</label><input name="business_name" required autocomplete="organization" placeholder="Company"></div>
+        </div>
+        <div class="r2">
+          <div class="field"><label>Email *</label><input type="email" name="email" required autocomplete="email" placeholder="you@business.com"></div>
+          <div class="field"><label>What do you do? *</label><input name="business_type" required placeholder="e.g. Plumbing"></div>
+        </div>
+        <details class="more"><summary>+ Add details for an even better draft (optional)</summary><div class="more-in">
+          <div class="r2"><div class="field"><label>Phone</label><input type="tel" name="phone" autocomplete="tel"></div><div class="field"><label>Location</label><input name="location" autocomplete="address-level2" placeholder="City, state"></div></div>
+          <div class="field"><label>Main services or products you offer</label><textarea name="services_offered" placeholder="e.g. Drain cleaning, water heater repair, emergency service"></textarea></div>
+          <div class="field"><label>Current website (if you have one)</label><input name="existing_website" placeholder="yoursite.com — or leave blank"></div>
+          <div class="field"><label>Anything else?</label><textarea name="details" placeholder="Style, colors, what makes you stand out"></textarea></div>
+        </div></details>
+        <div class="hp" aria-hidden="true"><label>Company URL</label><input name="company_url" tabindex="-1" autocomplete="off"></div>
+        <button type="submit" class="btn magnetic" id="submitBtn" data-cursor>Request my free site <span class="ar">&rarr;</span></button>
+        <p class="ff">No payment required. We start on your draft right away.</p>
+      </form>
+      <div class="ok" id="okBox"><div class="ring"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--acc-l)" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Request received.</h3><p>We're starting on your free draft now and will email it to you.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-big" id="footBig">TURNKEY WEB</div>
+    <div class="foot-row">
+      <span>Professional websites for small businesses. Free to start, $147/month to keep it live.</span>
+      <a href="/about/" class="link magnetic" data-cursor>About &rarr;</a>
+      <a href="https://turnkeyweb.org" class="link magnetic" data-cursor>turnkeyweb.org &rarr;</a>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var mob=matchMedia('(max-width:920px)').matches;
+  if(window.gsap&&window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+
+  /* ---- word-mask splitter (keeps inner elements intact as one unit) ---- */
+  function splitWords(h){
+    var out=[];var kids=Array.prototype.slice.call(h.childNodes);h.innerHTML='';
+    kids.forEach(function(n){
+      if(n.nodeType===3){
+        n.textContent.split(/(\s+)/).forEach(function(tok){
+          if(tok.trim()===''){ if(tok.length) h.appendChild(document.createTextNode(' ')); return; }
+          var m=document.createElement('span');m.className='m';var w=document.createElement('span');w.className='w';w.textContent=tok;m.appendChild(w);h.appendChild(m);out.push(w);
+        });
+      } else {
+        var m=document.createElement('span');m.className='m';var w=document.createElement('span');w.className='w';
+        w.appendChild(n.cloneNode(true));m.appendChild(w);h.appendChild(m);out.push(w);
+      }
+    });
+    return out;
+  }
+
+  /* ---- WebGL fluid hero (contained, mobile-safe) ---- */
+  (function(){
+    var cv=document.getElementById('gl');if(!cv||!window.THREE)return;
+    if(reduce||(navigator.connection&&navigator.connection.saveData)){cv.style.display='none';return;}
+    var rnd=new THREE.WebGLRenderer({canvas:cv,antialias:false,alpha:false,powerPreference:'low-power'});
+    rnd.setPixelRatio(1);var RSCALE=mob?0.6:0.7;
+    var scene=new THREE.Scene(),cam=new THREE.Camera();
+    var u={uTime:{value:0},uMouse:{value:new THREE.Vector2(.5,.5)},uScroll:{value:0},uFlow:{value:0},uRes:{value:new THREE.Vector2(1,1)}};
+    var f=[
+'precision highp float;varying vec2 vUv;uniform float uTime;uniform vec2 uMouse;uniform float uScroll;uniform float uFlow;uniform vec2 uRes;',
+'float hash(vec2 p){p=fract(p*vec2(123.34,345.45));p+=dot(p,p+34.345);return fract(p.x*p.y);}',
+'float n(vec2 p){vec2 i=floor(p),f=fract(p);float a=hash(i),b=hash(i+vec2(1,0)),c=hash(i+vec2(0,1)),d=hash(i+vec2(1,1));vec2 u=f*f*(3.-2.*f);return mix(a,b,u.x)+(c-a)*u.y*(1.-u.x)+(d-b)*u.x*u.y;}',
+'float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*n(p);p*=2.;a*=.5;}return v;}',
+'vec2 rot(vec2 p,float a){float c=cos(a),s=sin(a);return mat2(c,-s,s,c)*p;}',
+'void main(){',
+'vec2 uv=vUv;float asp=uRes.x/uRes.y;vec2 p=(uv-.5)*vec2(asp,1.);float t=uTime*.08;',
+'float fly=uFlow;',
+'p*=(1.0-0.46*fly);',
+'p+=vec2(0.12*fly,-0.34*fly);',
+'vec2 q=rot(p,-.40);',
+'vec2 warp=vec2(fbm(q*1.1+vec2(t,0.)),fbm(q*1.1+vec2(5.2,t*.8)));',
+'vec2 qw=q+(warp-.5)*0.95;',
+'float rid=fbm(qw*1.7+vec2(-t*1.3,t*.6));',
+'float vein=1.-abs(rid-.5)*2.;vein=pow(clamp(vein,0.,1.),2.4);',
+'float disp=.30*sin(qw.x*.8+t*1.4)+.30*(fbm(qw*0.8+vec2(t,0.))-.5);',
+'float d=qw.y-disp+.04;float band=exp(-d*d*2.5);',
+'float disp2=.34*sin(qw.x*.6-t)+.40*(fbm(qw*1.0-vec2(t*.7,1.2))-.5)-.30;',
+'float d2=qw.y-disp2;float band2=exp(-d2*d2*1.8);',
+'float cloud=smoothstep(.2,1.05,fbm(qw*1.0+vec2(t*.5,-t)));',
+'float pulse=.78+.42*sin(t*3.2+qw.x*1.6);',
+'float side=smoothstep(-1.1,.9,q.x);',
+'float energy=(band*.6+band2*.4)*(.45+vein*1.5)*pulse;',
+'float md=distance(p,(uMouse-.5)*vec2(asp,1.));float mlift=.12*exp(-md*md*2.0);',
+'float g=clamp((energy+cloud*.20)*side+mlift,0.,2.4);',
+'vec3 base=mix(vec3(.010,.012,.034),vec3(.02,.026,.088),uv.y);',
+'float hue=clamp(.5+qw.x*.30+rid*.5,0.,1.);vec3 rib=mix(vec3(.10,.35,1.),vec3(.62,.26,1.),hue);',
+'vec3 col=base+g*rib;',
+'col+=pow(g,3.)*vec3(.55,.62,1.0)*.48;',
+'col+=pow(clamp(vein*band,0.,1.),3.)*vec3(.72,.82,1.)*.45*side;',
+'vec2 sg=uv*uRes*.55;sg.y+=fly*uRes.y*.9;sg.x-=fly*uRes.x*.18;float st=hash(floor(sg));float star=step(.9985,st)*(.5+.5*sin(t*9.+st*40.));',
+'col+=star*vec3(.7,.8,1.)*.85;',
+'col*=.88+.18*smoothstep(1.6,.1,length(uv-.5));',
+'col+=(hash(uv*uRes+uTime)-.5)*.012;',
+'gl_FragColor=vec4(col,1.);}'].join('\n');
+    var mat=new THREE.ShaderMaterial({uniforms:u,vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position,1.);}',fragmentShader:f});
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),mat));
+    function sz(){var w=Math.max(1,Math.round(cv.clientWidth*RSCALE)),h=Math.max(1,Math.round(cv.clientHeight*RSCALE));rnd.setSize(w,h,false);u.uRes.value.set(w,h);}
+    sz();addEventListener('resize',sz);
+    var hero=document.getElementById('hero'),vis=true;
+    new IntersectionObserver(function(e){vis=e[0].isIntersecting;}).observe(hero);
+    var tmx=.5,tmy=.5;
+    if(fine)addEventListener('mousemove',function(e){tmx=e.clientX/innerWidth;tmy=1-e.clientY/innerHeight;},{passive:true});
+    var t0=Date.now(),lastF=0,minDt=mob?40:33;
+    (function loop(){requestAnimationFrame(loop);if(!vis)return;
+      var nowT=Date.now();if(minDt&&nowT-lastF<minDt)return;lastF=nowT;
+      u.uTime.value=(nowT-t0)/1000;
+      u.uMouse.value.x+=(tmx-u.uMouse.value.x)*.04;u.uMouse.value.y+=(tmy-u.uMouse.value.y)*.04;
+      rnd.render(scene,cam);})();
+    if(window.gsap)gsap.to(u.uScroll,{value:1,ease:'none',scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:true}});
+    // scroll-driven flythrough: the galaxy dollies toward you down the whole page
+    if(window.gsap)gsap.to(u.uFlow,{value:1,ease:'none',scrollTrigger:{trigger:document.documentElement,start:'top top',end:'bottom bottom',scrub:.5}});
+  })();
+
+  /* ---- Lenis ---- */
+  var lenis;
+  if(!reduce&&window.Lenis){
+    lenis=new Lenis({lerp:.1,smoothWheel:true});
+    lenis.on('scroll',function(){if(window.ScrollTrigger)ScrollTrigger.update();});
+    gsap.ticker.add(function(t){lenis.raf(t*1000);});gsap.ticker.lagSmoothing(0);
+  }
+
+  /* ---- preloader, then reveal hero ---- */
+  function startHero(){
+    var heroWords=splitWords(document.querySelector('h1.disp'));
+    if(window.gsap){
+      gsap.set(heroWords,{y:function(i,el){return el.offsetHeight*1.15;}});
+      gsap.to(heroWords,{y:0,duration:1.1,ease:'power4.out',stagger:.06,delay:.05});
+      gsap.to('.hero .rv',{opacity:1,y:0,duration:1,ease:'power3.out',stagger:.12,delay:.4});
+    } else { document.querySelectorAll('.w').forEach(function(w){w.style.transform='none';}); document.querySelectorAll('.hero .rv').forEach(function(e){e.style.opacity=1;e.style.transform='none';}); }
+  }
+  var pre=document.getElementById('pre'),pn=document.getElementById('preNum');
+  var preDone=false;
+  function finishPre(){
+    if(preDone)return;preDone=true;
+    pre.classList.add('done');document.body.classList.remove('lock');
+    if(lenis)lenis.scrollTo(0,{immediate:true});
+    revealAll();
+    if(window.ScrollTrigger)ScrollTrigger.refresh();
+    // hero reveal AFTER refresh settles, so refresh can't revert this non-scroll tween
+    requestAnimationFrame(function(){requestAnimationFrame(startHero);});
+    setTimeout(function(){pre.style.display='none';},1100);
+  }
+  if(window.gsap){
+    var o={v:0};
+    gsap.to(o,{v:100,duration:1.4,ease:'power2.inOut',onUpdate:function(){pn.textContent=Math.round(o.v)+'%';},onComplete:function(){gsap.delayedCall(.15,finishPre);}});
+  } else { pn.textContent='100%'; finishPre(); }
+
+  /* ---- reveals for the rest (called after preloader unlocks) ---- */
+  function revealAll(){
+    if(!window.gsap){document.querySelectorAll('.rv,.w').forEach(function(e){e.style.opacity=1;e.style.transform='none';});return;}
+    document.querySelectorAll('h2.rwords,h3.rwords').forEach(function(h){
+      var ws=splitWords(h);
+      gsap.set(ws,{y:function(i,el){return el.offsetHeight*1.15;}});
+      gsap.to(ws,{y:0,duration:1,ease:'power4.out',stagger:.045,scrollTrigger:{trigger:h,start:'top 86%'}});
+    });
+    gsap.utils.toArray('.rv').forEach(function(el){
+      if(el.closest('.hero'))return;
+      gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}});
+    });
+    // count-ups
+    gsap.utils.toArray('[data-count]').forEach(function(el){
+      var end=+el.getAttribute('data-count'),o={v:0};
+      ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:function(){gsap.to(o,{v:end,duration:1.5,ease:'power2.out',onUpdate:function(){el.textContent=Math.round(o.v);}});}});
+    });
+    // marquee: base loop + scroll velocity
+    var t=document.getElementById('marq');if(t){t.innerHTML+=t.innerHTML;
+      var mx=0,base=.6;
+      gsap.ticker.add(function(){mx-=base;var w=t.scrollWidth/2;if(-mx>=w)mx+=w;t.style.transform='translateX('+mx+'px)';});
+      if(window.ScrollTrigger)ScrollTrigger.create({onUpdate:function(self){base=.6+Math.min(Math.abs(self.getVelocity()/300),8);}});
+    }
+    // process number parallax
+    gsap.utils.toArray('.prow').forEach(function(row){
+      gsap.fromTo(row.querySelector('.pn'),{y:40},{y:-40,ease:'none',scrollTrigger:{trigger:row,start:'top bottom',end:'bottom top',scrub:true}});
+    });
+    // footer big drift
+    var fb=document.getElementById('footBig');if(fb)gsap.fromTo(fb,{x:-60},{x:30,ease:'none',scrollTrigger:{trigger:'footer',start:'top bottom',end:'bottom top',scrub:true}});
+    // progress bar
+    gsap.to('#prog',{width:'100%',ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:true}});
+    // dolly: each block settles forward into place as it rises (skip form to protect sticky col)
+    if(!reduce&&!mob){
+      gsap.utils.toArray('#flow > section, #flow > .marq, #flow > footer').forEach(function(sec){
+        if(sec.id==='request')return;
+        gsap.fromTo(sec,{scale:1.06,transformOrigin:'50% 38%'},{scale:1,ease:'none',scrollTrigger:{trigger:sec,start:'top bottom',end:'top 52%',scrub:.5}});
+      });
+    }
+  }
+  /* ---- cursor + magnetic (desktop) ---- */
+  if(fine){
+    var cur=document.getElementById('cur'),cd=document.getElementById('curD'),mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my;
+    addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cd.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';},{passive:true});
+    (function cl(){cx+=(mx-cx)*.16;cy+=(my-cy)*.16;cur.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';requestAnimationFrame(cl);})();
+    var curLbl=document.getElementById('curLbl');
+    document.querySelectorAll('a,button,[data-cursor],input,textarea,summary').forEach(function(el){
+      el.addEventListener('mouseenter',function(){cur.classList.add('grow');});
+      el.addEventListener('mouseleave',function(){cur.classList.remove('grow');});
+    });
+    document.querySelectorAll('[data-cursor-label]').forEach(function(el){
+      el.addEventListener('mouseenter',function(){curLbl.textContent=el.getAttribute('data-cursor-label');cur.classList.add('label');cur.classList.remove('grow');cd.style.opacity=0;});
+      el.addEventListener('mouseleave',function(){cur.classList.remove('label');cd.style.opacity=1;});
+    });
+    var tr=document.getElementById('workTrack');
+    if(tr){var dn=false,sx=0,sl=0,mv=0;
+      tr.addEventListener('mousedown',function(e){dn=true;mv=0;sx=e.pageX;sl=tr.scrollLeft;tr.classList.add('drag');});
+      addEventListener('mouseup',function(){dn=false;tr.classList.remove('drag');});
+      tr.addEventListener('mousemove',function(e){if(!dn)return;e.preventDefault();mv+=Math.abs(e.movementX);tr.scrollLeft=sl-(e.pageX-sx)*1.25;});
+      tr.addEventListener('click',function(e){if(mv>6){e.preventDefault();e.stopPropagation();}},true);
+    }
+    document.querySelectorAll('.magnetic').forEach(function(el){
+      el.addEventListener('mousemove',function(e){var r=el.getBoundingClientRect();el.style.transform='translate('+(e.clientX-(r.left+r.width/2))*.35+'px,'+(e.clientY-(r.top+r.height/2))*.5+'px)';});
+      el.addEventListener('mouseleave',function(){el.style.transform='';});
+    });
+  }
+
+  /* ---- live form → /api/free-site (fires the auto-build pipeline → DRAFT in Slack) ---- */
+  var form=document.getElementById('freeForm'),subBtn=document.getElementById('submitBtn'),errBox=document.getElementById('formErr');
+  form.addEventListener('submit',function(e){e.preventDefault();
+    errBox.style.display='none';
+    var d=Object.fromEntries(new FormData(form).entries());
+    if(!d.full_name||!d.business_name||!d.email||!d.business_type){errBox.textContent='Please fill in your name, business, email, and what your business does.';errBox.style.display='block';return;}
+    // mark this as a premium-tier build request so the draft that comes back is the animated/premium build
+    d.details=((d.details||'').trim()+' [PREMIUM ANIMATED BUILD — match the turnkeyweb.org/free-website premium motion bar: WebGL hero, smooth scroll, scroll reveals]').trim();
+    subBtn.disabled=true;var orig=subBtn.innerHTML;subBtn.textContent='Sending…';
+    fetch('/api/free-site',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+      .then(function(res){return res.json().catch(function(){return {};}).then(function(out){return {res:res,out:out};});})
+      .then(function(r){
+        if(r.res.ok&&r.out.ok){
+          form.style.display='none';var ok=document.getElementById('okBox');ok.style.display='block';ok.scrollIntoView({behavior:'smooth',block:'center'});
+        } else { throw new Error(r.out.error||'Something went wrong.'); }
+      })
+      .catch(function(ex){errBox.textContent=(ex.message||'Something went wrong')+' You can also email hello@turnkeyweb.org.';errBox.style.display='block';subBtn.disabled=false;subBtn.innerHTML=orig;});
+  });
+
+  // safety: never leave the page locked if something errored
+  setTimeout(finishPre,4000);
+})();
+</script>
+</body>
+</html>

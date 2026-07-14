@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Panjo's Pizza & Pasta — Rockport, TX  (Turnkey Web prospect preview, DRAFT)
+  Art direction: "Pizza is still an art." Cinematic dark-slate hero (cooked-on-the-slate metaphor)
+  with a live ember/spark canvas showpiece behind the real "Works" pizza. Bespoke section flow:
+  hero → kinetic marquee → slate craft → the menu → from the counter gallery → the room (atmosphere)
+  → reviews → visit → CTA. Type: Fraunces (display) + Inter (body). Brand red #C0341D from the
+  real storefront signage; golden-crust amber + warm cream + basil. All photos REAL (business site,
+  Tripadvisor, Google listing). Reviews REAL (Tripadvisor, verbatim). aggregateRating from Google panel.
+-->
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Panjo's Pizza &amp; Pasta — Thin-Crust, Slate-Cooked Pizza in Rockport, TX</title>
+<meta name="description" content="Rockport's beloved pizzeria since the locals can remember. Thin, crispy, slate-cooked pizza, homemade al dente spaghetti, burgers, kabobs and cold beer at 2744 Hwy 35 N. Call (361) 729-1411." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/panjos-pizza-pasta/" />
+<meta property="og:type" content="restaurant" />
+<meta property="og:title" content="Panjo's Pizza & Pasta — Rockport's Thin-Crust Institution" />
+<meta property="og:description" content="Thin, crispy, slate-cooked pizza, homemade spaghetti, burgers, kabobs & cold beer in Rockport, TX." />
+<meta property="og:url" content="https://turnkeyweb.org/previews/panjos-pizza-pasta/" />
+<meta property="og:image" content="https://turnkeyweb.org/previews/panjos-pizza-pasta/assets/ta-works.jpg" />
+<link rel="icon" href="assets/logo-share.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink:    "#1A1411",   // near-black warm
+        slate:  "#211B17",   // the slate
+        char:   "#2C241F",
+        cream:  "#F7EFE1",
+        bone:   "#EFE3CE",
+        red:    "#C0341D",   // Panjo's signage red
+        ember:  "#E2581F",
+        crust:  "#E0A23C",   // golden crust
+        basil:  "#5C6B3C",
+        maroon: "#7A2417",
+      },
+      fontFamily: {
+        display: ['Fraunces', 'serif'],
+        body: ['Inter', 'sans-serif'],
+      },
+    },
+  },
+};
+</script>
+<style>
+  html { scroll-behavior: auto; scroll-padding-top: 84px; }
+  body { background:#1A1411; color:#F7EFE1; font-family:'Inter',sans-serif; overflow-x:hidden; }
+  ::selection { background:#C0341D; color:#F7EFE1; }
+  h1,h2,h3,.font-display { font-family:'Fraunces',serif; }
+
+  /* gradient shimmer for key headers */
+  .grad-text {
+    background: linear-gradient(100deg,#E0A23C 0%,#F2C66B 22%,#E2581F 48%,#F2C66B 74%,#E0A23C 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: shimmer 9s linear infinite;
+  }
+  @keyframes shimmer { from{background-position:0% 0} to{background-position:220% 0} }
+
+  .grad-cream {
+    background: linear-gradient(100deg,#F7EFE1 0%,#EFE3CE 40%,#E0A23C 60%,#F7EFE1 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: shimmer 11s linear infinite;
+  }
+
+  /* hero ember canvas */
+  #ember { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1; }
+
+  .ambient { position:absolute; border-radius:50%; filter:blur(90px); opacity:.5; pointer-events:none; will-change:transform; z-index:0; }
+
+  /* reveals */
+  [data-reveal]{ opacity:0; transform:translateY(34px); }
+  [data-reveal].in{ opacity:1; transform:none; transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  [data-revimg]{ clip-path: inset(0 0 100% 0); }
+  [data-revimg].in{ clip-path: inset(0 0 0% 0); transition: clip-path 1.3s cubic-bezier(.7,0,.2,1); }
+
+  /* marquee */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .mtrack{ display:flex; gap:3rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .mtrack{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* card */
+  .card{ position:relative; transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s ease; }
+  .card:hover{ transform:translateY(-6px); }
+  .card-top::before{ content:""; position:absolute; top:0; left:0; height:3px; width:0%; background:linear-gradient(90deg,#C0341D,#E0A23C); transition:width .6s cubic-bezier(.2,.7,.2,1); }
+  .card-top:hover::before{ width:100%; }
+
+  .btn-primary{ position:relative; overflow:hidden; }
+  .btn-primary::after{ content:""; position:absolute; top:0; left:-120%; width:60%; height:100%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent); transition:left .9s cubic-bezier(.2,.7,.2,1); }
+  .btn-primary:hover::after{ left:120%; }
+  .btn-primary:hover{ transform:translateY(-2px); filter:brightness(1.05); }
+
+  .pulse-dot{ animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.45; transform:scale(.82)} }
+
+  .ulink{ position:relative; }
+  .ulink::after{ content:""; position:absolute; left:0; bottom:-3px; height:1.5px; width:0%; background:linear-gradient(90deg,#C0341D,#E0A23C); transition:width .45s ease; }
+  .ulink:hover::after{ width:100%; }
+
+  .grain::after{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(#000 1px, transparent 1px); background-size:3px 3px; }
+
+  .slate-tex{ background-color:#211B17;
+    background-image:
+      radial-gradient( circle at 18% 30%, rgba(224,162,60,.06), transparent 40%),
+      radial-gradient(circle at 82% 70%, rgba(192,52,29,.08), transparent 45%),
+      linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,0) 30%);
+  }
+  .img-cover{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* mobile sticky bar offset */
+  @media (max-width: 768px){ body{ padding-bottom:64px; } }
+</style>
+</head>
+
+<body class="bg-ink text-cream antialiased">
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="mt-3 flex items-center justify-between rounded-2xl border border-cream/10 bg-ink/70 backdrop-blur-md px-4 sm:px-5 py-2.5 shadow-lg shadow-black/30">
+      <a href="#top" class="flex items-center gap-2.5">
+        <span class="inline-flex items-center justify-center h-9 w-9 rounded-full bg-crust text-ink font-display font-black text-lg leading-none shadow">P</span>
+        <span class="leading-none">
+          <span class="block font-display text-xl sm:text-2xl font-700 text-red" style="font-style:italic;letter-spacing:-.01em;">Panjo's</span>
+          <span class="block text-[9px] sm:text-[10px] tracking-[.32em] text-bone/70 uppercase">Pizza &amp; Pasta · Rockport</span>
+        </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-bone/85">
+        <a href="#slate" class="ulink">The Craft</a>
+        <a href="#menu" class="ulink">Menu</a>
+        <a href="#room" class="ulink">The Room</a>
+        <a href="#reviews" class="ulink">Reviews</a>
+        <a href="#visit" class="ulink">Visit</a>
+      </nav>
+      <a href="tel:+13617291411" class="btn-primary inline-flex items-center gap-2 rounded-full bg-red px-4 sm:px-5 py-2 text-sm font-semibold text-cream shadow-md shadow-red/30 transition">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+        <span class="hidden sm:inline">(361) 729-1411</span><span class="sm:hidden">Call</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative min-h-[100svh] flex items-center slate-tex grain overflow-hidden pt-28 pb-20">
+  <div class="ambient" style="width:560px;height:560px;background:radial-gradient(circle,#E2581F,transparent 60%);top:-160px;right:-120px;"></div>
+  <div class="ambient" style="width:480px;height:480px;background:radial-gradient(circle,#C0341D,transparent 62%);bottom:-180px;left:-140px;opacity:.4;"></div>
+  <canvas id="ember"></canvas>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 grid lg:grid-cols-12 gap-10 items-center w-full">
+    <!-- copy -->
+    <div class="lg:col-span-7">
+      <div class="inline-flex items-center gap-2 rounded-full border border-crust/30 bg-crust/10 px-3.5 py-1.5 text-[11px] sm:text-xs tracking-[.22em] uppercase text-crust mb-6">
+        <span class="h-1.5 w-1.5 rounded-full bg-crust pulse-dot"></span> Rockport, Texas · since the locals can remember
+      </div>
+      <h1 class="font-display font-900 leading-[.92] tracking-[-.02em] text-[clamp(3rem,9vw,7rem)]">
+        <span class="block text-cream">Pizza is still</span>
+        <span class="block grad-text" style="font-style:italic;">an art.</span>
+      </h1>
+      <p class="mt-6 max-w-xl text-bone/85 text-lg sm:text-xl leading-relaxed">
+        Thin. Crispy. Cooked right on the slate. Hand-shredded cheese, sauce worth talking about, and homemade spaghetti cooked al dente — the reason this room fills up every single day.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3.5">
+        <a href="#menu" class="btn-primary inline-flex items-center gap-2 rounded-full bg-crust px-7 py-3.5 text-ink font-semibold shadow-lg shadow-crust/30 transition">
+          View the Menu
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+        <a href="tel:+13617291411" class="inline-flex items-center gap-2 rounded-full border border-cream/25 bg-cream/5 px-7 py-3.5 font-semibold text-cream hover:bg-cream/10 transition">
+          Call to Order
+        </a>
+      </div>
+
+      <!-- stats -->
+      <div class="mt-12 grid grid-cols-3 gap-4 max-w-lg">
+        <div>
+          <div class="font-display text-3xl sm:text-4xl font-700 text-crust"><span class="countup" data-target="4.4" data-dec="1">0</span><span class="text-crust">★</span></div>
+          <div class="text-[11px] sm:text-xs tracking-wide text-bone/60 mt-1">Google rating</div>
+        </div>
+        <div>
+          <div class="font-display text-3xl sm:text-4xl font-700 text-crust"><span class="countup" data-target="1427" data-suffix="+">0</span></div>
+          <div class="text-[11px] sm:text-xs tracking-wide text-bone/60 mt-1">Local reviews</div>
+        </div>
+        <div>
+          <div class="font-display text-3xl sm:text-4xl font-700 text-crust"><span class="countup" data-target="100" data-suffix="%">0</span></div>
+          <div class="text-[11px] sm:text-xs tracking-wide text-bone/60 mt-1">Made by hand</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- hero image (the Works) -->
+    <div class="lg:col-span-5 relative">
+      <div class="relative rounded-[26px] overflow-hidden border border-cream/15 shadow-2xl shadow-black/60 aspect-[4/5]">
+        <img src="assets/ta-works.jpg" alt="The Works — Panjo's thin-crust pizza loaded with pepperoni, sausage, mushrooms and black olives" class="img-cover" loading="eager" />
+        <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(26,20,17,0) 45%,rgba(26,20,17,.55) 100%);"></div>
+        <div class="absolute left-4 bottom-4 right-4 flex items-center justify-between">
+          <span class="rounded-full bg-ink/70 backdrop-blur px-3.5 py-1.5 text-xs font-semibold text-cream border border-cream/15">“The Works” — a local legend</span>
+        </div>
+      </div>
+      <div class="absolute -bottom-5 -left-5 hidden sm:flex items-center gap-2 rounded-2xl bg-red px-4 py-3 shadow-xl shadow-red/30 border border-cream/10">
+        <svg class="h-5 w-5 text-crust" fill="currentColor" viewBox="0 0 24 24"><path d="M11.48 3.5a.6.6 0 0 1 1.04 0l2.36 4.78 5.28.77a.6.6 0 0 1 .33 1.02l-3.82 3.72.9 5.26a.6.6 0 0 1-.87.63L12 17.77l-4.72 2.48a.6.6 0 0 1-.87-.63l.9-5.26-3.82-3.72a.6.6 0 0 1 .33-1.02l5.28-.77 2.36-4.78Z"/></svg>
+        <span class="text-cream text-sm font-semibold leading-tight">Thin &amp; crispy<br/><span class="text-cream/75 font-normal text-xs">cooked on the slate</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-1 text-bone/40">
+    <span class="text-[10px] tracking-[.3em] uppercase">Scroll</span>
+    <svg class="h-4 w-4 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="bg-red py-4 border-y border-ink/20">
+  <div class="marquee">
+    <div class="mtrack text-cream font-display text-2xl sm:text-3xl font-600" style="font-style:italic;">
+      <span>The Works</span><span class="text-crust not-italic">●</span>
+      <span>South of the Border</span><span class="text-crust not-italic">●</span>
+      <span>The Loafer Submarine</span><span class="text-crust not-italic">●</span>
+      <span>Chicken Alfredo</span><span class="text-crust not-italic">●</span>
+      <span>Ka-Bobarama!</span><span class="text-crust not-italic">●</span>
+      <span>Homemade Spaghetti</span><span class="text-crust not-italic">●</span>
+      <span>Cold Beer</span><span class="text-crust not-italic">●</span>
+      <!-- duplicate for seamless loop -->
+      <span>The Works</span><span class="text-crust not-italic">●</span>
+      <span>South of the Border</span><span class="text-crust not-italic">●</span>
+      <span>The Loafer Submarine</span><span class="text-crust not-italic">●</span>
+      <span>Chicken Alfredo</span><span class="text-crust not-italic">●</span>
+      <span>Ka-Bobarama!</span><span class="text-crust not-italic">●</span>
+      <span>Homemade Spaghetti</span><span class="text-crust not-italic">●</span>
+      <span>Cold Beer</span><span class="text-crust not-italic">●</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ THE CRAFT (slate) ============ -->
+<section id="slate" class="relative slate-tex grain py-24 sm:py-32 overflow-hidden">
+  <div class="mx-auto max-w-7xl px-5 sm:px-6 grid lg:grid-cols-2 gap-14 items-center">
+    <div data-reveal>
+      <span class="text-xs tracking-[.3em] uppercase text-crust">Cooked right on the slate</span>
+      <h2 class="mt-4 font-display font-700 leading-[1.02] tracking-[-.02em] text-[clamp(2.2rem,5vw,3.7rem)]">
+        Pizza the way it's<br/><span class="grad-text" style="font-style:italic;">supposed to be made.</span>
+      </h2>
+      <p class="mt-6 text-bone/80 text-lg leading-relaxed">
+        No shortcuts, no frozen dough, no machine doing the work. The crust goes thin and bakes up crispy on the slate. The cheese is shredded by hand. The sauce is the kind people drive back to Rockport for.
+      </p>
+      <p class="mt-4 text-bone/80 text-lg leading-relaxed">
+        And the spaghetti? Homemade and al dente, the way one regular who's eaten pizza in 39 states still calls his favorite.
+      </p>
+
+      <div class="mt-9 grid sm:grid-cols-3 gap-4">
+        <div class="card card-top rounded-2xl border border-cream/10 bg-cream/[.04] p-5">
+          <div class="font-display text-2xl text-crust font-700">Thin</div>
+          <p class="mt-1.5 text-sm text-bone/70 leading-relaxed">Crispy crust, baked on the slate.</p>
+        </div>
+        <div class="card card-top rounded-2xl border border-cream/10 bg-cream/[.04] p-5">
+          <div class="font-display text-2xl text-crust font-700">By hand</div>
+          <p class="mt-1.5 text-sm text-bone/70 leading-relaxed">Hand-shredded cheese, fresh toppings.</p>
+        </div>
+        <div class="card card-top rounded-2xl border border-cream/10 bg-cream/[.04] p-5">
+          <div class="font-display text-2xl text-crust font-700">Homemade</div>
+          <p class="mt-1.5 text-sm text-bone/70 leading-relaxed">Al dente spaghetti &amp; house ranch.</p>
+        </div>
+      </div>
+
+      <div class="mt-9 inline-flex items-center gap-3 rounded-2xl border border-crust/25 bg-crust/10 px-5 py-3.5">
+        <span class="font-display text-3xl font-700 text-crust">45</span>
+        <span class="text-bone/80 text-sm leading-tight">minutes when it's busy.<br/><span class="text-cream font-semibold">Worth every one.</span></span>
+      </div>
+    </div>
+
+    <div class="relative" data-reveal>
+      <div class="rounded-[24px] overflow-hidden border border-cream/15 shadow-2xl shadow-black/50 aspect-[4/3]" data-revimg>
+        <img src="assets/ta-2.jpg" alt="Panjo's thin, crispy pizza on a metal pan — pepperoni, sausage, ham and mushrooms" class="img-cover" loading="lazy" />
+      </div>
+      <div class="absolute -bottom-6 -right-4 w-40 sm:w-52 rounded-[18px] overflow-hidden border-4 border-slate shadow-xl shadow-black/50 aspect-square">
+        <img src="assets/site-2.jpg" alt="Fresh dinner salad with tomato, onion and blue cheese on a wood table" class="img-cover" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE MENU ============ -->
+<section id="menu" class="relative bg-cream text-ink py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto" data-reveal>
+      <span class="text-xs tracking-[.3em] uppercase text-red">The Menu</span>
+      <h2 class="mt-4 font-display font-700 leading-[1.04] tracking-[-.02em] text-[clamp(2.2rem,5vw,3.7rem)] text-ink">
+        More than just <span class="grad-text" style="font-style:italic;">a great pie.</span>
+      </h2>
+      <p class="mt-5 text-ink/65 text-lg leading-relaxed">
+        Slate-cooked pizza is the headline — but the kabobs, burgers, plates, pasta and cold beer are why locals keep coming back all week.
+      </p>
+    </div>
+
+    <!-- featured items -->
+    <div class="mt-14 grid md:grid-cols-3 gap-6">
+      <!-- card 1 -->
+      <article class="card card-top rounded-3xl overflow-hidden bg-white border border-ink/8 shadow-sm" data-reveal>
+        <div class="aspect-[4/3] overflow-hidden"><img src="assets/ta-works.jpg" alt="The Works pizza at Panjo's" class="img-cover" loading="lazy" /></div>
+        <div class="p-6">
+          <div class="flex items-center justify-between">
+            <h3 class="font-display text-2xl font-700 text-ink">“The Works”</h3>
+            <span class="text-red font-bold">★</span>
+          </div>
+          <p class="mt-2 text-ink/65 text-sm leading-relaxed">Pepperoni, sausage, ham, mushrooms, onions, bell pepper &amp; black olives on that signature thin crust.</p>
+        </div>
+      </article>
+      <!-- card 2 -->
+      <article class="card card-top rounded-3xl overflow-hidden bg-white border border-ink/8 shadow-sm" data-reveal>
+        <div class="aspect-[4/3] overflow-hidden"><img src="assets/ta-2.jpg" alt="South of the Border pizza-style thin crust pie at Panjo's" class="img-cover" loading="lazy" /></div>
+        <div class="p-6">
+          <h3 class="font-display text-2xl font-700 text-ink">South of the Border</h3>
+          <p class="mt-2 text-ink/65 text-sm leading-relaxed">A Tex-Mex twist on the slate-cooked pizza — one of the house specialties Rockport asks for by name.</p>
+        </div>
+      </article>
+      <!-- card 3 -->
+      <article class="card card-top rounded-3xl overflow-hidden bg-white border border-ink/8 shadow-sm" data-reveal>
+        <div class="aspect-[4/3] overflow-hidden"><img src="assets/site-2.jpg" alt="Fresh salad at Panjo's Pizza & Pasta" class="img-cover" loading="lazy" /></div>
+        <div class="p-6">
+          <div class="flex items-center justify-between">
+            <h3 class="font-display text-2xl font-700 text-ink">Chicken Alfredo</h3>
+            <span class="text-red font-bold">$13.25</span>
+          </div>
+          <p class="mt-2 text-ink/65 text-sm leading-relaxed">Creamy alfredo with a dinner salad on the side — a midweek favorite straight off the board.</p>
+        </div>
+      </article>
+    </div>
+
+    <!-- menu sections list -->
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-px rounded-3xl overflow-hidden border border-ink/10 bg-ink/10">
+      <!-- pizza -->
+      <div class="bg-cream p-7" data-reveal>
+        <h4 class="font-display text-xl font-700 text-red">Slate-Cooked Pizza</h4>
+        <p class="text-xs tracking-wide text-ink/45 mt-0.5 mb-4">Cooked right on the slate · thin &amp; crispy</p>
+        <ul class="space-y-2.5 text-ink/75 text-[15px]">
+          <li>The Works</li><li>All Meats</li><li>Pepperoni</li><li>South of the Border</li><li>Cheese Bread</li><li>Calzone</li>
+        </ul>
+      </div>
+      <!-- pasta -->
+      <div class="bg-cream p-7" data-reveal>
+        <h4 class="font-display text-xl font-700 text-red">Pasta</h4>
+        <p class="text-xs tracking-wide text-ink/45 mt-0.5 mb-4">Homemade · al dente</p>
+        <ul class="space-y-2.5 text-ink/75 text-[15px]">
+          <li>Homemade Spaghetti</li><li>Chicken Alfredo <span class="text-ink/45">· $13.25</span></li><li>House marinara &amp; meat sauce</li><li>Add house ranch</li>
+        </ul>
+      </div>
+      <!-- sandwiches -->
+      <div class="bg-cream p-7" data-reveal>
+        <h4 class="font-display text-xl font-700 text-red">Sandwiches</h4>
+        <p class="text-xs tracking-wide text-ink/45 mt-0.5 mb-4">Hot off the line</p>
+        <ul class="space-y-2.5 text-ink/75 text-[15px]">
+          <li>The Loafer Submarine</li><li>Texas Teriyaki Sandwich</li><li>Meatball Sub <span class="text-ink/45">· lunch only</span></li>
+        </ul>
+      </div>
+      <!-- salads -->
+      <div class="bg-cream p-7" data-reveal>
+        <h4 class="font-display text-xl font-700 text-red">Salads</h4>
+        <p class="text-xs tracking-wide text-ink/45 mt-0.5 mb-4">Fresh &amp; crisp</p>
+        <ul class="space-y-2.5 text-ink/75 text-[15px]">
+          <li>Kelley Cali Salad</li><li>Dinner Salad</li><li>House ranch &amp; blue cheese</li>
+        </ul>
+      </div>
+      <!-- plates + kabobs -->
+      <div class="bg-cream p-7" data-reveal>
+        <h4 class="font-display text-xl font-700 text-red">Plates &amp; Ka-Bobarama!</h4>
+        <p class="text-xs tracking-wide text-ink/45 mt-0.5 mb-4">Grilled to order</p>
+        <ul class="space-y-2.5 text-ink/75 text-[15px]">
+          <li>Burgers</li><li>Dinner Plates</li><li>Kabobs — the Ka-Bobarama lineup</li>
+        </ul>
+      </div>
+      <!-- drinks -->
+      <div class="bg-cream p-7" data-reveal>
+        <h4 class="font-display text-xl font-700 text-red">Drinks &amp; Beer</h4>
+        <p class="text-xs tracking-wide text-ink/45 mt-0.5 mb-4">Free tea refills</p>
+        <ul class="space-y-2.5 text-ink/75 text-[15px]">
+          <li>Cold Beer</li><li>Mug of Wine</li><li>Soft Drinks</li><li>Iced Tea — self serve</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="mt-8 text-center text-ink/55 text-sm">Order at the counter, grab a table, and we'll bring it out hot. Call ahead for takeout: <a href="tel:+13617291411" class="text-red font-semibold ulink">(361) 729-1411</a></p>
+  </div>
+</section>
+
+<!-- ============ FROM THE COUNTER (gallery) ============ -->
+<section class="relative bg-ink py-20 sm:py-28 overflow-hidden">
+  <div class="mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-10" data-reveal>
+      <h2 class="font-display font-700 leading-[1.02] tracking-[-.02em] text-[clamp(2rem,4.5vw,3.2rem)]">
+        Straight from <span class="grad-text" style="font-style:italic;">the counter.</span>
+      </h2>
+      <p class="text-bone/60 max-w-sm">Real food, real room, real Rockport. No filters needed.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+      <div class="card rounded-2xl overflow-hidden border border-cream/10 aspect-[3/4] col-span-2 md:col-span-1 md:row-span-2" data-reveal>
+        <img src="assets/ta-1.jpg" alt="Panjo's dining room — red walls, wood tables, regulars enjoying pizza" class="img-cover hover:scale-105 transition duration-700" loading="lazy" />
+      </div>
+      <div class="card rounded-2xl overflow-hidden border border-cream/10 aspect-square" data-reveal>
+        <img src="assets/ta-works.jpg" alt="The Works pizza fresh from the oven" class="img-cover hover:scale-105 transition duration-700" loading="lazy" />
+      </div>
+      <div class="card rounded-2xl overflow-hidden border border-cream/10 aspect-square" data-reveal>
+        <img src="assets/ta-2.jpg" alt="Thin crust pizza on a metal pan" class="img-cover hover:scale-105 transition duration-700" loading="lazy" />
+      </div>
+      <div class="card rounded-2xl overflow-hidden border border-cream/10 aspect-square" data-reveal>
+        <img src="assets/site-2.jpg" alt="Fresh dinner salad" class="img-cover hover:scale-105 transition duration-700" loading="lazy" />
+      </div>
+      <div class="card rounded-2xl overflow-hidden border border-cream/10 aspect-square" data-reveal>
+        <img src="assets/gbp-1.jpg" alt="Panjo's Pizza & Pasta storefront on Hwy 35 N in Rockport" class="img-cover hover:scale-105 transition duration-700" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE ROOM (atmosphere) ============ -->
+<section id="room" class="relative">
+  <div class="grid lg:grid-cols-2">
+    <div class="relative min-h-[60vw] lg:min-h-[640px]" data-revimg>
+      <img src="assets/site-4.jpg" alt="Inside Panjo's — red walls covered in handmade wooden signs, red chairs and a full house" class="absolute inset-0 img-cover" loading="lazy" />
+      <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(26,20,17,0) 60%,rgba(26,20,17,.35) 100%);"></div>
+    </div>
+    <div class="slate-tex grain flex items-center py-20 px-6 sm:px-12 lg:px-16">
+      <div data-reveal>
+        <span class="text-xs tracking-[.3em] uppercase text-crust">The Room</span>
+        <h2 class="mt-4 font-display font-700 leading-[1.04] tracking-[-.02em] text-[clamp(2rem,4.5vw,3.4rem)]">
+          Walls full of signs.<br/><span class="grad-text" style="font-style:italic;">Tables full of people.</span>
+        </h2>
+        <p class="mt-6 text-bone/80 text-lg leading-relaxed">
+          Red walls covered in handmade wooden plaques. Long tables, red chairs, a TV in the corner, and a line at the counter that says everything you need to know.
+        </p>
+        <p class="mt-4 text-bone/80 text-lg leading-relaxed">
+          It's no-frills and proud of it. You order up front, grab a seat, and let the kitchen do its thing. Family-friendly, always buzzing, and the kind of place visitors ask their Airbnb host about.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <span class="rounded-full border border-cream/15 bg-cream/5 px-4 py-2 text-sm text-bone/85">Family friendly</span>
+          <span class="rounded-full border border-cream/15 bg-cream/5 px-4 py-2 text-sm text-bone/85">Dine-in &amp; takeout</span>
+          <span class="rounded-full border border-cream/15 bg-cream/5 px-4 py-2 text-sm text-bone/85">Cold beer on tap</span>
+          <span class="rounded-full border border-cream/15 bg-cream/5 px-4 py-2 text-sm text-bone/85">Free tea refills</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" class="relative bg-cream text-ink py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto" data-reveal>
+      <span class="text-xs tracking-[.3em] uppercase text-red">What people say</span>
+      <h2 class="mt-4 font-display font-700 leading-[1.04] tracking-[-.02em] text-[clamp(2.2rem,5vw,3.6rem)] text-ink">
+        Rated <span class="grad-text">4.4★</span> across 1,400+ reviews.
+      </h2>
+      <p class="mt-5 text-ink/60 text-lg">Real words from real diners on Tripadvisor &amp; Google.</p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- r1 -->
+      <figure class="card card-top rounded-3xl bg-white border border-ink/8 p-7 shadow-sm" data-reveal>
+        <div class="text-red text-lg">★★★★★</div>
+        <blockquote class="mt-4 text-ink/80 leading-relaxed">“BEST pizza we've ever had! Great pizza, cold beer, and friendly atmosphere — also family friendly. A must visit if you're in the area!”</blockquote>
+        <figcaption class="mt-5 text-sm font-semibold text-ink">— mjcarmem <span class="font-normal text-ink/45">· Tripadvisor</span></figcaption>
+      </figure>
+      <!-- r2 -->
+      <figure class="card card-top rounded-3xl bg-white border border-ink/8 p-7 shadow-sm" data-reveal>
+        <div class="text-red text-lg">★★★★★</div>
+        <blockquote class="mt-4 text-ink/80 leading-relaxed">“The crust is thin and crisp, and the entire pie is perfectly balanced with the toppings you select. The pizza is worth the wait.”</blockquote>
+        <figcaption class="mt-5 text-sm font-semibold text-ink">— Lilidalla <span class="font-normal text-ink/45">· Tripadvisor</span></figcaption>
+      </figure>
+      <!-- r3 -->
+      <figure class="card card-top rounded-3xl bg-white border border-ink/8 p-7 shadow-sm" data-reveal>
+        <div class="text-red text-lg">★★★★★</div>
+        <blockquote class="mt-4 text-ink/80 leading-relaxed">“The pizza was delicious. Thin crispy crust, flavorful sauce, plenty of toppings. Would stop again if traveling thru Rockport.”</blockquote>
+        <figcaption class="mt-5 text-sm font-semibold text-ink">— Patrick G <span class="font-normal text-ink/45">· Tripadvisor</span></figcaption>
+      </figure>
+      <!-- r4 -->
+      <figure class="card card-top rounded-3xl bg-white border border-ink/8 p-7 shadow-sm" data-reveal>
+        <div class="text-red text-lg">★★★★★</div>
+        <blockquote class="mt-4 text-ink/80 leading-relaxed">“We travel and have had pizza in most of the 39 states we've visited. This is one of our favorite pizzas.”</blockquote>
+        <figcaption class="mt-5 text-sm font-semibold text-ink">— speern <span class="font-normal text-ink/45">· Tripadvisor</span></figcaption>
+      </figure>
+      <!-- r5 -->
+      <figure class="card card-top rounded-3xl bg-white border border-ink/8 p-7 shadow-sm" data-reveal>
+        <div class="text-red text-lg">★★★★★</div>
+        <blockquote class="mt-4 text-ink/80 leading-relaxed">“Great lunch spot for cold beer and a thin crust pepperoni pie!”</blockquote>
+        <figcaption class="mt-5 text-sm font-semibold text-ink">— Deb D <span class="font-normal text-ink/45">· Tripadvisor</span></figcaption>
+      </figure>
+      <!-- aggregate card -->
+      <div class="rounded-3xl bg-red text-cream p-8 flex flex-col justify-center shadow-lg shadow-red/20" data-reveal>
+        <div class="font-display text-6xl font-900 leading-none">4.4<span class="text-crust">★</span></div>
+        <div class="mt-3 text-cream/90 font-medium">1,427 Google reviews</div>
+        <p class="mt-4 text-cream/80 text-sm leading-relaxed">A Rockport institution that fills its tables every single day. Come see why.</p>
+        <a href="tel:+13617291411" class="btn-primary mt-6 inline-flex w-max items-center gap-2 rounded-full bg-cream px-5 py-2.5 text-ink font-semibold transition">Call to order</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section id="visit" class="relative slate-tex grain py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-6 grid lg:grid-cols-2 gap-12 items-stretch">
+    <div data-reveal>
+      <span class="text-xs tracking-[.3em] uppercase text-crust">Visit us</span>
+      <h2 class="mt-4 font-display font-700 leading-[1.04] tracking-[-.02em] text-[clamp(2.2rem,5vw,3.6rem)]">
+        Come hungry.<br/><span class="grad-text" style="font-style:italic;">Bring friends.</span>
+      </h2>
+
+      <div class="mt-9 space-y-5">
+        <div class="flex items-start gap-4">
+          <span class="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-crust/15 text-crust">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+          </span>
+          <div>
+            <div class="text-sm tracking-wide text-bone/55 uppercase">Find us</div>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Panjo%27s+Pizza+%26+Pasta+2744+Hwy+35+N+Rockport+TX+78382" target="_blank" rel="noopener" class="text-cream text-lg font-medium ulink">2744 Hwy 35 N, Rockport, TX 78382</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-crust/15 text-crust">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+          </span>
+          <div>
+            <div class="text-sm tracking-wide text-bone/55 uppercase">Call ahead</div>
+            <a href="tel:+13617291411" class="text-cream text-lg font-medium ulink">(361) 729-1411</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-crust/15 text-crust">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          </span>
+          <div class="w-full">
+            <div class="text-sm tracking-wide text-bone/55 uppercase">Hours</div>
+            <ul class="mt-1 text-cream/90 space-y-1 text-[15px] max-w-xs">
+              <li class="flex justify-between"><span>Mon – Thu</span><span class="text-bone/70">11:00a – 9:00p</span></li>
+              <li class="flex justify-between"><span>Fri – Sat</span><span class="text-bone/70">11:00a – 9:30p</span></li>
+              <li class="flex justify-between"><span class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-red"></span>Sunday</span><span class="text-bone/70">Closed</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Panjo%27s+Pizza+%26+Pasta+2744+Hwy+35+N+Rockport+TX+78382" target="_blank" rel="noopener" class="btn-primary mt-9 inline-flex items-center gap-2 rounded-full bg-crust px-7 py-3.5 text-ink font-semibold shadow-lg shadow-crust/30 transition">
+        Get Directions
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </div>
+
+    <div class="rounded-[24px] overflow-hidden border border-cream/15 shadow-2xl shadow-black/50 min-h-[360px]" data-reveal>
+      <iframe
+        title="Map to Panjo's Pizza & Pasta, Rockport TX"
+        src="https://www.google.com/maps?q=Panjo's+Pizza+%26+Pasta,+2744+Hwy+35+N,+Rockport,+TX+78382&output=embed"
+        width="100%" height="100%" style="border:0; min-height:360px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="relative bg-red text-cream py-20 sm:py-24 overflow-hidden">
+  <div class="ambient" style="width:520px;height:520px;background:radial-gradient(circle,#E0A23C,transparent 60%);top:-200px;left:50%;transform:translateX(-50%);opacity:.25;"></div>
+  <div class="relative z-10 mx-auto max-w-4xl px-5 sm:px-6 text-center" data-reveal>
+    <span class="inline-flex items-center justify-center h-14 w-14 rounded-full bg-crust text-ink font-display font-black text-2xl shadow-lg mb-6">P</span>
+    <h2 class="font-display font-900 leading-[1.02] tracking-[-.02em] text-[clamp(2.4rem,6vw,4.4rem)]">
+      A slice of happiness<br/><span class="grad-cream" style="font-style:italic;">is waiting.</span>
+    </h2>
+    <p class="mt-6 text-cream/85 text-lg max-w-xl mx-auto">Call ahead, swing by, or bring the whole family. We'll have the slate hot.</p>
+    <div class="mt-9 flex flex-wrap justify-center gap-3.5">
+      <a href="tel:+13617291411" class="btn-primary inline-flex items-center gap-2 rounded-full bg-cream px-8 py-4 text-ink font-bold shadow-xl transition">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+        (361) 729-1411
+      </a>
+      <a href="#menu" class="inline-flex items-center gap-2 rounded-full border border-cream/40 px-8 py-4 font-bold text-cream hover:bg-cream/10 transition">See the Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-bone/70 py-14 border-t border-cream/10">
+  <div class="mx-auto max-w-7xl px-5 sm:px-6 grid sm:grid-cols-3 gap-10">
+    <div>
+      <div class="flex items-center gap-2.5">
+        <span class="inline-flex items-center justify-center h-9 w-9 rounded-full bg-crust text-ink font-display font-black text-lg">P</span>
+        <span class="font-display text-2xl font-700 text-red" style="font-style:italic;">Panjo's</span>
+      </div>
+      <p class="mt-4 text-sm leading-relaxed max-w-xs">Thin, crispy, slate-cooked pizza, homemade pasta, burgers, kabobs &amp; cold beer in Rockport, Texas.</p>
+    </div>
+    <div>
+      <div class="text-cream font-semibold mb-3">Visit</div>
+      <p class="text-sm leading-relaxed">2744 Hwy 35 N<br/>Rockport, TX 78382</p>
+      <p class="text-sm mt-3"><a href="tel:+13617291411" class="ulink text-bone/80">(361) 729-1411</a></p>
+    </div>
+    <div>
+      <div class="text-cream font-semibold mb-3">Hours</div>
+      <ul class="text-sm space-y-1">
+        <li>Mon – Thu · 11a – 9p</li>
+        <li>Fri – Sat · 11a – 9:30p</li>
+        <li>Sunday · Closed</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mx-auto max-w-7xl px-5 sm:px-6 mt-10 pt-6 border-t border-cream/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-bone/45">
+    <span>© <span id="yr">2026</span> Panjo's Pizza &amp; Pasta · Rockport, TX</span>
+    <span>Website preview by <span class="text-bone/70">Turnkey Web</span></span>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-2 border-t border-cream/10 bg-ink/95 backdrop-blur">
+  <a href="tel:+13617291411" class="flex items-center justify-center gap-2 py-4 text-cream font-semibold border-r border-cream/10">
+    <svg class="h-5 w-5 text-crust" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=Panjo%27s+Pizza+%26+Pasta+2744+Hwy+35+N+Rockport+TX+78382" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-4 text-cream font-semibold">
+    <svg class="h-5 w-5 text-crust" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- ============ JSON-LD ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Panjo's Pizza & Pasta",
+  "image": "https://turnkeyweb.org/previews/panjos-pizza-pasta/assets/ta-works.jpg",
+  "url": "https://turnkeyweb.org/previews/panjos-pizza-pasta/",
+  "telephone": "+1-361-729-1411",
+  "servesCuisine": ["Pizza", "Italian", "American"],
+  "priceRange": "$$",
+  "menu": "https://turnkeyweb.org/previews/panjos-pizza-pasta/#menu",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2744 Hwy 35 N",
+    "addressLocality": "Rockport",
+    "addressRegion": "TX",
+    "postalCode": "78382",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 28.0723, "longitude": -97.0617 },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.4", "reviewCount": "1427" },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "11:00", "closes": "21:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "11:00", "closes": "21:30" }
+  ]
+}
+</script>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- Lenis smooth scroll (single GSAP ticker) ---------- */
+(function(){
+  if (!window.Lenis) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  const lenis = new Lenis({
+    duration: 1.1,
+    easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    smoothTouch: false,
+  });
+  if (window.gsap) {
+    gsap.ticker.add((time)=> lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  } else {
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+  }
+  if (window.ScrollTrigger) ScrollTrigger.config({ ignoreMobileResize: true });
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const t = document.querySelector(id);
+        if (t){ e.preventDefault(); lenis.scrollTo(t, { offset: -72 }); }
+      }
+    });
+  });
+})();
+
+/* ---------- nav shrink ---------- */
+(function(){
+  const nav = document.getElementById('nav');
+  const onScroll = ()=> nav.classList.toggle('shadow-2xl', window.scrollY > 30);
+  window.addEventListener('scroll', onScroll, { passive:true });
+})();
+
+/* ---------- reveals ---------- */
+(function(){
+  const els = document.querySelectorAll('[data-reveal],[data-revimg]');
+  if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('in')); return; }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  els.forEach(e=>io.observe(e));
+})();
+
+/* ---------- count-up ---------- */
+(function(){
+  const nums = document.querySelectorAll('.countup');
+  const run = (el)=>{
+    const target = parseFloat(el.dataset.target);
+    const dec = parseInt(el.dataset.dec||'0',10);
+    const suffix = el.dataset.suffix||'';
+    const obj = { v:0 };
+    if (window.gsap) {
+      gsap.to(obj, { v:target, duration:1.6, ease:'power2.out',
+        onUpdate:()=>{ el.textContent = obj.v.toFixed(dec) + suffix; },
+        onComplete:()=>{ el.textContent = target.toFixed(dec) + suffix; } });
+    } else { el.textContent = target.toFixed(dec) + suffix; }
+  };
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ run(en.target); io.unobserve(en.target); } });
+  }, { threshold: 0.6 });
+  nums.forEach(n=>io.observe(n));
+})();
+
+/* ---------- EMBER / SPARK CANVAS (showpiece) ---------- */
+(function(){
+  const canvas = document.getElementById('ember');
+  if (!canvas) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hero = document.getElementById('top');
+  const ctx = canvas.getContext('2d');
+  let W=0,H=0,dpr=1, sparks=[], raf=null, visible=true, running=false;
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const COUNT = reduce ? 0 : (isMobile ? 34 : 80);
+
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio||1, isMobile ? 1.5 : 2);
+    W = hero.clientWidth; H = hero.clientHeight;
+    canvas.width = W*dpr; canvas.height = H*dpr;
+    canvas.style.width = W+'px'; canvas.style.height = H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function mk(){
+    return {
+      x: Math.random()*W,
+      y: H + Math.random()*H*0.4,
+      r: 0.6 + Math.random()*2.2,
+      vy: 0.25 + Math.random()*0.9,
+      vx: (Math.random()-0.5)*0.4,
+      a: 0.15 + Math.random()*0.55,
+      hue: Math.random()<0.5 ? 28 : 14, // amber / ember
+      life: 0, max: 240 + Math.random()*260
+    };
+  }
+  function init(){ sparks = []; for(let i=0;i<COUNT;i++){ const s=mk(); s.y=Math.random()*H; sparks.push(s); } }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for (const s of sparks){
+      s.life++; s.y -= s.vy; s.x += s.vx + Math.sin(s.life*0.02)*0.3;
+      const fade = s.life > s.max-60 ? Math.max(0,(s.max-s.life)/60) : 1;
+      const alpha = s.a * fade;
+      const grd = ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.r*3);
+      grd.addColorStop(0, `hsla(${s.hue},90%,62%,${alpha})`);
+      grd.addColorStop(1, `hsla(${s.hue},90%,55%,0)`);
+      ctx.fillStyle = grd;
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r*3,0,Math.PI*2); ctx.fill();
+      if (s.y < -20 || s.life > s.max){ Object.assign(s, mk()); }
+    }
+    raf = requestAnimationFrame(draw);
+  }
+  function start(){ if(running||COUNT===0) return; running=true; draw(); }
+  function stop(){ running=false; if(raf) cancelAnimationFrame(raf); raf=null; }
+
+  resize(); init();
+  if (COUNT>0) start();
+  window.addEventListener('resize', ()=>{ resize(); init(); }, { passive:true });
+  document.addEventListener('visibilitychange', ()=>{ if(document.hidden) stop(); else if(visible) start(); });
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((e)=>{ visible = e[0].isIntersecting; if(visible) start(); else stop(); }, { threshold: 0.02 });
+    io.observe(hero);
+  }
+})();
+
+/* ---------- screenshot / crawler safety net ---------- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(e=>e.classList.add('in'));
+  document.querySelectorAll('[data-revimg]').forEach(e=>e.classList.add('in'));
+  document.querySelectorAll('.countup').forEach(el=>{
+    if (el.textContent.trim()==='0' || el.textContent.trim()===''){
+      const dec=parseInt(el.dataset.dec||'0',10);
+      el.textContent = parseFloat(el.dataset.target).toFixed(dec) + (el.dataset.suffix||'');
+    }
+  });
+}, 6000);
+</script>
+</body>
+</html>

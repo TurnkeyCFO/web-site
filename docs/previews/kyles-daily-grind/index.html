@@ -1,0 +1,760 @@
+<!doctype html>
+<!--
+  Kyle's Daily Grind — bespoke prospect build (DRAFT)
+  Art direction: warm craft-coffee editorial. Cream/bone base, espresso-dark
+  contrast bands, caramel→terracotta shimmer. Signature showpiece: live canvas
+  steam particle hero + GSAP pinned horizontal menu rail. Fonts: Fraunces (display)
+  + DM Sans (body). Real data: owner "Millie & crew", 607a W Center St Kyle TX,
+  (512) 268-9901, drive-thru + rewards, 4.6★ ~252 Google reviews, #2 of 78 cafes.
+  Order-ahead wired to kylesdailygrind.com/s/order + DoorDash/Uber Eats/Favor.
+-->
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Kyle's Daily Grind — Craft Coffee &amp; Fresh-Baked in Kyle, TX</title>
+<meta name="description" content="Kyle's Daily Grind is a cozy local coffee shop in Kyle, TX. Drive-thru, hand-crafted lattes, matcha, chai, fresh-baked kolaches & pastries. Order ahead and skip the line. 4.6★ · #2 of 78 cafes in Kyle." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/kyles-daily-grind/" />
+<meta property="og:type" content="business.business" />
+<meta property="og:title" content="Kyle's Daily Grind — Craft Coffee & Fresh-Baked in Kyle, TX" />
+<meta property="og:description" content="Cozy coffee shop in Kyle, TX. Drive-thru, hand-crafted drinks, fresh-baked pastries. Order ahead and skip the line." />
+<meta property="og:url" content="https://turnkeyweb.org/previews/kyles-daily-grind/" />
+<meta property="og:image" content="https://turnkeyweb.org/previews/kyles-daily-grind/assets/photos/hero-sunflower.jpg" />
+<meta name="theme-color" content="#2A1A12" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      bone:   '#F7EFE3',
+      cream:  '#FBF6EC',
+      sand:   '#EADBC6',
+      espresso:'#241309',
+      cocoa:  '#3E2515',
+      coffee: '#5A3015',
+      caramel:'#C98A3C',
+      terra:  '#C4603A',
+      sage:   '#8AA08C',
+      ink:    '#231510',
+    },
+    fontFamily: {
+      display: ['Fraunces','serif'],
+      sans: ['"DM Sans"','system-ui','sans-serif'],
+    },
+  }},
+}
+</script>
+<style>
+  :root{ --bone:#F7EFE3; --cream:#FBF6EC; --sand:#EADBC6; --espresso:#241309; --cocoa:#3E2515; --caramel:#C98A3C; --terra:#C4603A; --sage:#8AA08C; --ink:#231510; }
+  *{ -webkit-tap-highlight-color: transparent; }
+  html{ scroll-behavior:auto; }
+  body{ background:var(--bone); color:var(--ink); font-family:'DM Sans',system-ui,sans-serif; overflow-x:hidden; }
+  ::selection{ background:var(--caramel); color:#fff; }
+  h1,h2,h3,.disp{ font-family:'Fraunces',serif; }
+  .grad-text{
+    background:linear-gradient(100deg,#E7A24B 0%,#C4603A 38%,#E0B060 64%,#C4603A 100%);
+    background-size:220% auto; -webkit-background-clip:text; background-clip:text;
+    color:transparent; -webkit-text-fill-color:transparent;
+    animation:shimmer 6s linear infinite;
+    padding-bottom:.16em; margin-bottom:-.16em;
+  }
+  @keyframes shimmer{ to{ background-position:220% center; } }
+  .reveal{ opacity:0; transform:translate3d(0,28px,0); }
+  .is-in{ opacity:1 !important; transform:none !important; }
+  .reveal,.is-in{ transition:opacity .9s cubic-bezier(.22,.61,.36,1), transform .9s cubic-bezier(.22,.61,.36,1); }
+  .noise:before{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:60; opacity:.035; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .cursor-dot{ position:fixed; top:0; left:0; width:9px; height:9px; border-radius:50%; background:var(--terra); pointer-events:none; z-index:90; transform:translate(-50%,-50%); transition:width .25s,height .25s,background .25s; mix-blend-mode:multiply; }
+  .cursor-ring{ position:fixed; top:0; left:0; width:38px; height:38px; border:1.5px solid rgba(196,96,58,.55); border-radius:50%; pointer-events:none; z-index:90; transform:translate(-50%,-50%); transition:width .3s,height .3s,border-color .3s; }
+  @media (pointer:coarse){ .cursor-dot,.cursor-ring{ display:none; } }
+  .marquee{ display:flex; gap:0; white-space:nowrap; will-change:transform; }
+  .menu-rail{ will-change:transform; }
+  .tilt{ transform-style:preserve-3d; will-change:transform; }
+  .btn-mag{ will-change:transform; }
+  .hero-photo{ background-size:cover; background-position:center; }
+  a.lift{ transition:transform .35s cubic-bezier(.22,.61,.36,1), box-shadow .35s; }
+  a.lift:hover{ transform:translateY(-4px); }
+  .underline-anim{ background:linear-gradient(var(--terra),var(--terra)) left bottom / 0% 2px no-repeat; transition:background-size .4s; }
+  .underline-anim:hover{ background-size:100% 2px; }
+  .ratio{ position:relative; overflow:hidden; }
+  .ratio img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  @media (prefers-reduced-motion:reduce){ .grad-text{ animation:none; } .marquee{ animation:none !important; } }
+</style>
+</head>
+<body class="noise">
+
+<!-- ===================== BRAND INTRO (cinematic preloader, plays once) ===================== -->
+<style>
+  #tk-intro{position:fixed;inset:0;z-index:99999;background:#241309;display:flex;align-items:center;justify-content:center;opacity:1;transition:opacity .6s ease}
+  #tk-intro.tk-done{opacity:0}
+  #tk-intro video{width:100%;height:100%;object-fit:contain}
+  #tk-intro .tk-od{position:absolute;inset:0;pointer-events:none;background:radial-gradient(125% 95% at 50% 84%,rgba(0,0,0,.68),rgba(0,0,0,.22) 50%,rgba(0,0,0,0) 78%)}
+  #tk-intro .tk-ot{position:absolute;left:0;right:0;bottom:10%;padding:0 6vw;text-align:center;color:#fff;pointer-events:none}
+  #tk-intro .tk-ok{font:600 clamp(10px,1.3vw,13px)/1 system-ui,sans-serif;letter-spacing:.34em;text-transform:uppercase;color:#E7A24B;opacity:0;animation:tk-up .7s .25s forwards}
+  #tk-intro .tk-on{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(30px,6.6vw,78px);line-height:.96;margin:.16em 0 .05em;text-shadow:0 6px 34px rgba(0,0,0,.6);opacity:0;animation:tk-up .8s .45s forwards}
+  #tk-intro .tk-orule{height:2px;width:0;background:#E7A24B;margin:.42em auto .55em;border-radius:2px;animation:tk-rule .7s .95s forwards}
+  #tk-intro .tk-otag{font:500 clamp(12px,1.7vw,18px)/1.35 'Fraunces',serif;color:rgba(255,255,255,.92);text-shadow:0 2px 18px rgba(0,0,0,.55);opacity:0;animation:tk-up .8s 1.1s forwards}
+  @keyframes tk-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  @keyframes tk-rule{from{width:0}to{width:90px}}
+  #tk-skip{position:absolute;bottom:18px;right:22px;font:600 12px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#E8C9A0;background:transparent;border:0;cursor:pointer;opacity:.7}
+  @media (prefers-reduced-motion:reduce){#tk-intro{display:none}}
+</style>
+<div id="tk-intro">
+  <video id="tk-introv" autoplay muted playsinline preload="auto" poster="assets/intro-poster.jpg">
+    <source src="assets/intro.webm" type="video/webm" />
+    <source src="assets/intro.mp4" type="video/mp4" />
+  </video>
+  <div class="tk-od"></div>
+  <div class="tk-ot">
+    <div class="tk-ok">Kyle, Texas</div>
+    <div class="tk-on">Kyle&#39;s Daily Grind</div>
+    <div class="tk-orule"></div>
+    <div class="tk-otag">Craft coffee, done right.</div>
+  </div>
+  <button id="tk-skip" aria-label="Skip intro">Skip</button>
+</div>
+<script>
+(function(){var el=document.getElementById('tk-intro');if(!el)return;var v=document.getElementById('tk-introv');var done=false;
+function end(){if(done)return;done=true;el.classList.add('tk-done');setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},700);}
+v.addEventListener('ended',end);v.addEventListener('error',end);var p=v.play();if(p&&p.catch)p.catch(end);
+var sk=document.getElementById('tk-skip');if(sk)sk.addEventListener('click',end);
+setTimeout(end,6000);})();
+</script>
+
+<!-- cursor -->
+<div class="cursor-dot" id="cdot"></div>
+<div class="cursor-ring" id="cring"></div>
+
+<!-- ===================== NAV ===================== -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div id="navbar" class="flex items-center justify-between gap-4 mt-3 sm:mt-4 rounded-2xl px-4 sm:px-6 py-3 transition-all duration-500">
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="grid place-items-center w-10 h-10 rounded-full bg-espresso text-cream font-display font-700 text-lg shadow-lg" style="box-shadow:0 8px 24px -8px rgba(36,19,9,.6)">K</span>
+        <span class="leading-tight">
+          <span class="block font-display font-700 text-[17px] tracking-tight text-espresso" id="navname">Kyle's Daily Grind</span>
+          <span class="block text-[11px] uppercase tracking-[.22em] text-cocoa/70" id="navsub">Kyle, Texas · Coffee &amp; Bakery</span>
+        </span>
+      </a>
+      <nav id="navlinks" class="hidden lg:flex items-center gap-8 text-[14px] font-500 text-cocoa">
+        <a href="#story" class="underline-anim">Our Story</a>
+        <a href="#menu" class="underline-anim">Menu</a>
+        <a href="#order" class="underline-anim">Order Ahead</a>
+        <a href="#reviews" class="underline-anim">Reviews</a>
+        <a href="#visit" class="underline-anim">Visit</a>
+      </nav>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="tel:+15122689901" id="navphone" class="hidden sm:inline-flex items-center gap-2 text-[14px] font-600 text-espresso px-3 py-2 rounded-full hover:bg-sand/60 transition">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          (512) 268-9901
+        </a>
+        <a href="https://www.kylesdailygrind.com/s/order" target="_blank" rel="noopener" class="btn-mag inline-flex items-center gap-2 text-[14px] font-700 text-cream bg-terra px-4 sm:px-5 py-2.5 rounded-full shadow-lg hover:bg-[#a94e2e] transition" style="box-shadow:0 10px 26px -8px rgba(196,96,58,.7)">
+          Order Ahead
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden">
+  <div class="hero-photo absolute inset-0" style="background-image:url('assets/photos/hero-sunflower.jpg')"></div>
+  <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(36,19,9,.62) 0%,rgba(36,19,9,.48) 32%,rgba(36,19,9,.82) 76%,rgba(36,19,9,.95) 100%)"></div>
+  <canvas id="steam" class="absolute inset-0 w-full h-full pointer-events-none" style="mix-blend-mode:screen;opacity:.7"></canvas>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pb-16 sm:pb-20 pt-32">
+    <div class="reveal flex items-center gap-3 mb-6">
+      <span class="inline-flex items-center gap-1.5 text-[12px] font-600 uppercase tracking-[.18em] text-cream/90 bg-white/10 backdrop-blur px-3 py-1.5 rounded-full border border-white/15">
+        <span class="text-caramel">★ 4.6</span> · 250+ Google reviews
+      </span>
+      <span class="hidden sm:inline-flex items-center text-[12px] font-600 uppercase tracking-[.18em] text-cream/90 bg-white/10 backdrop-blur px-3 py-1.5 rounded-full border border-white/15">
+        #2 of 78 cafes in Kyle
+      </span>
+    </div>
+    <h1 class="font-display font-700 text-cream leading-[.92] tracking-tight text-[15vw] sm:text-[10vw] lg:text-[8.2rem]">
+      <span class="block reveal">Your daily</span>
+      <span class="block reveal grad-text">grind, done right.</span>
+    </h1>
+    <p class="reveal mt-7 max-w-xl text-cream/85 text-[17px] sm:text-[19px] leading-relaxed">
+      A cozy little coffee shop on West Center Street where Millie &amp; the crew pour
+      hand-crafted drinks and pull fresh-baked goods out of the oven all day. Pull up to the
+      drive-thru or grab a seat — and yes, you can order ahead.
+    </p>
+    <div class="reveal mt-9 flex flex-wrap items-center gap-3.5">
+      <a href="https://www.kylesdailygrind.com/s/order" target="_blank" rel="noopener" class="btn-mag inline-flex items-center gap-2.5 text-[15px] font-700 text-espresso bg-cream px-7 py-4 rounded-full shadow-2xl hover:bg-white transition">
+        Order Ahead &amp; Skip the Line
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#menu" class="inline-flex items-center gap-2.5 text-[15px] font-600 text-cream border border-cream/40 px-7 py-4 rounded-full hover:bg-cream/10 transition">
+        See the Menu
+      </a>
+    </div>
+  </div>
+
+  <!-- scroll cue -->
+  <div class="absolute bottom-5 right-6 z-10 hidden sm:flex items-center gap-2 text-cream/60 text-[11px] uppercase tracking-[.25em]">
+    Scroll
+    <span class="block w-px h-8 bg-cream/40 overflow-hidden relative"><span class="absolute inset-0 bg-caramel animate-[scrolldot_2s_ease-in-out_infinite]"></span></span>
+  </div>
+  <style>@keyframes scrolldot{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}</style>
+</section>
+
+<!-- ===================== MARQUEE ===================== -->
+<div class="bg-espresso text-cream py-4 overflow-hidden border-y border-white/5">
+  <div class="marquee" id="mq">
+    <!-- duplicated in JS -->
+    <div class="mq-set flex items-center gap-0 shrink-0">
+      <span class="px-7 text-[15px] tracking-wide font-500">Drive-thru open early</span><span class="text-caramel">✦</span>
+      <span class="px-7 text-[15px] tracking-wide font-500">Fresh-baked every morning</span><span class="text-caramel">✦</span>
+      <span class="px-7 text-[15px] tracking-wide font-500">Matcha · Chai · Cold Brew</span><span class="text-caramel">✦</span>
+      <span class="px-7 text-[15px] tracking-wide font-500">Rewards on every cup</span><span class="text-caramel">✦</span>
+      <span class="px-7 text-[15px] tracking-wide font-500">Cozy seating &amp; free Wi-Fi</span><span class="text-caramel">✦</span>
+      <span class="px-7 text-[15px] tracking-wide font-500">Locally loved in Kyle, TX</span><span class="text-caramel">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== STORY ===================== -->
+<section id="story" class="relative bg-bone py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class="lg:col-span-6 order-2 lg:order-1">
+      <span class="reveal inline-block text-[12px] font-700 uppercase tracking-[.25em] text-terra mb-5">Our Story</span>
+      <h2 class="reveal font-display font-600 text-espresso text-[2.4rem] sm:text-[3.2rem] leading-[1.02] tracking-tight">
+        Genuine connections,<br><span class="grad-text">one cup at a time.</span>
+      </h2>
+      <p class="reveal mt-7 text-[17px] leading-relaxed text-cocoa/90 max-w-xl">
+        Kyle's Daily Grind started with a simple idea: make the kind of coffee shop you actually
+        want to linger in. Millie and her crew know the regulars by name, remember the usual,
+        and treat every drink like it matters — because it does.
+      </p>
+      <p class="reveal mt-5 text-[17px] leading-relaxed text-cocoa/90 max-w-xl">
+        Inside it's warm and easy — a few chairs, good light, the smell of something baking. Outside,
+        a drive-thru for the mornings you're already running late. Either way, you're getting a drink
+        made by hand and a hello that means it.
+      </p>
+      <div class="reveal mt-9 grid grid-cols-3 gap-6 max-w-md">
+        <div><div class="font-display font-700 text-[2.3rem] text-terra leading-none">4.6★</div><div class="text-[13px] text-cocoa/70 mt-1">Google rating</div></div>
+        <div><div class="font-display font-700 text-[2.3rem] text-terra leading-none">#2</div><div class="text-[13px] text-cocoa/70 mt-1">of 78 cafes in Kyle</div></div>
+        <div><div class="font-display font-700 text-[2.3rem] text-terra leading-none">6am</div><div class="text-[13px] text-cocoa/70 mt-1">doors open daily</div></div>
+      </div>
+    </div>
+    <div class="lg:col-span-6 order-1 lg:order-2">
+      <div class="reveal relative">
+        <div class="tilt ratio rounded-[1.6rem] shadow-2xl aspect-[4/5]" style="box-shadow:0 40px 80px -30px rgba(36,19,9,.5)">
+          <img src="assets/photos/community.jpg" alt="Regulars and friends gathered together inside Kyle's Daily Grind" loading="lazy" />
+        </div>
+        <div class="absolute -bottom-6 -left-4 sm:-left-8 bg-cream rounded-2xl shadow-xl px-5 py-4 border border-sand/60 max-w-[230px]">
+          <div class="flex items-center gap-1 text-caramel text-sm">★★★★★</div>
+          <p class="text-[13.5px] text-cocoa mt-1.5 leading-snug">"My favorite coffee shop — the interior feels warm and cozy."</p>
+          <p class="text-[11.5px] text-cocoa/60 mt-1.5 font-600">— Gabbie Leyba, Google review</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MENU (pinned horizontal rail) ===================== -->
+<section id="menu" class="relative bg-espresso text-cream overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 pt-24 sm:pt-28">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
+      <div>
+        <span class="reveal inline-block text-[12px] font-700 uppercase tracking-[.25em] text-caramel mb-4">The Menu</span>
+        <h2 class="reveal font-display font-600 text-[2.4rem] sm:text-[3.4rem] leading-[1] tracking-tight">
+          Hand-crafted &amp; <span class="grad-text">fresh-baked.</span>
+        </h2>
+      </div>
+      <p class="reveal text-cream/70 max-w-sm text-[15.5px] leading-relaxed">
+        From a $2 house drip to a snickerdoodle latte that tastes like the cookie — plus an
+        extensive specialty board and a bakery case that changes by the day.
+      </p>
+    </div>
+  </div>
+
+  <!-- horizontal pinned rail -->
+  <div id="menuPin" class="relative mt-12 sm:mt-16">
+    <div class="overflow-hidden">
+      <div id="menuRail" class="menu-rail flex gap-5 sm:gap-6 px-5 sm:px-8 pb-24">
+        <!-- card -->
+        <article class="menu-card shrink-0 w-[78vw] sm:w-[360px] rounded-3xl overflow-hidden bg-cocoa/60 border border-white/8 lift">
+          <div class="ratio aspect-[5/4]"><img src="assets/photos/refreshers.jpg" alt="Colorful summer refreshers lined up at Kyle's Daily Grind" loading="lazy"/></div>
+          <div class="p-6">
+            <div class="flex items-center justify-between gap-3"><h3 class="font-display font-600 text-[1.45rem]">Summer Refreshers</h3></div>
+            <p class="text-cream/65 text-[14.5px] mt-2 leading-relaxed">Refreshers, frozen lemonades &amp; mangonadas — the cold, colorful way to beat a Texas afternoon.</p>
+          </div>
+        </article>
+        <article class="menu-card shrink-0 w-[78vw] sm:w-[360px] rounded-3xl overflow-hidden bg-cocoa/60 border border-white/8 lift">
+          <div class="ratio aspect-[5/4]"><img src="assets/photos/frappe.jpg" alt="Chocolate frappuccino topped with whipped cream and drizzle" loading="lazy"/></div>
+          <div class="p-6">
+            <h3 class="font-display font-600 text-[1.45rem]">Frappuccinos</h3>
+            <p class="text-cream/65 text-[14.5px] mt-2 leading-relaxed">Blended cold and topped tall with whip and drizzle. Our Drink-of-the-Week favorite all summer long.</p>
+          </div>
+        </article>
+        <article class="menu-card shrink-0 w-[78vw] sm:w-[360px] rounded-3xl overflow-hidden bg-cocoa/60 border border-white/8 lift">
+          <div class="ratio aspect-[5/4]"><img src="assets/photos/drinks-iced.jpg" alt="Iced latte and hot coffee in Daily Grind cups" loading="lazy"/></div>
+          <div class="p-6">
+            <div class="flex items-center justify-between gap-3"><h3 class="font-display font-600 text-[1.45rem]">Iced Coffee &amp; Horchata</h3><span class="text-caramel font-700 text-[15px]">$2+</span></div>
+            <p class="text-cream/65 text-[14.5px] mt-2 leading-relaxed">Hand-pulled espresso over ice or our cinnamon-sweet iced horchata. Add a flavor and make it yours.</p>
+          </div>
+        </article>
+        <article class="menu-card shrink-0 w-[78vw] sm:w-[360px] rounded-3xl overflow-hidden bg-cocoa/60 border border-white/8 lift">
+          <div class="ratio aspect-[5/4]"><img src="assets/photos/pastry-case.jpg" alt="Fresh-baked pastry case at Kyle's Daily Grind" loading="lazy"/></div>
+          <div class="p-6">
+            <h3 class="font-display font-600 text-[1.45rem]">Fresh-Baked Case</h3>
+            <p class="text-cream/65 text-[14.5px] mt-2 leading-relaxed">Cookies, brownies, muffins, scones &amp; croissants — baked fresh and changing by the day.</p>
+          </div>
+        </article>
+        <article class="menu-card shrink-0 w-[78vw] sm:w-[360px] rounded-3xl overflow-hidden bg-cocoa/60 border border-white/8 lift">
+          <div class="ratio aspect-[5/4]"><img src="assets/photos/storefront.jpg" alt="Kyle's Daily Grind storefront and drive-thru" loading="lazy"/></div>
+          <div class="p-6">
+            <h3 class="font-display font-600 text-[1.45rem]">Pull Up to the Drive-Thru</h3>
+            <p class="text-cream/65 text-[14.5px] mt-2 leading-relaxed">Running late? Swing through on West Center Street and we'll have your usual ready to go.</p>
+          </div>
+        </article>
+        <!-- closing CTA card -->
+        <article class="menu-card shrink-0 w-[78vw] sm:w-[360px] rounded-3xl overflow-hidden bg-terra flex flex-col justify-center items-start p-8 lift">
+          <h3 class="font-display font-700 text-[1.8rem] leading-tight text-cream">See the full board &amp; order ahead</h3>
+          <p class="text-cream/85 text-[14.5px] mt-3 leading-relaxed">Coffee bar from $2 · Black Eye $3 · plus mangonadas, mochas &amp; seasonal specials.</p>
+          <a href="https://www.kylesdailygrind.com/s/order" target="_blank" rel="noopener" class="btn-mag mt-6 inline-flex items-center gap-2 text-[15px] font-700 text-terra bg-cream px-6 py-3.5 rounded-full">
+            Order Online <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 pb-2 -mt-10 hidden lg:flex items-center gap-3 text-cream/40 text-[11px] uppercase tracking-[.25em]">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Drag or keep scrolling
+  </div>
+</section>
+
+<!-- ===================== ORDER AHEAD ===================== -->
+<section id="order" class="relative bg-cream py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto">
+      <span class="reveal inline-block text-[12px] font-700 uppercase tracking-[.25em] text-terra mb-5">Order Ahead</span>
+      <h2 class="reveal font-display font-600 text-espresso text-[2.5rem] sm:text-[3.4rem] leading-[1.02] tracking-tight">
+        Skip the line.<br><span class="grad-text">Your order's ready when you are.</span>
+      </h2>
+      <p class="reveal mt-6 text-[17px] text-cocoa/85 leading-relaxed">
+        Order from your phone and pick it up at the counter, roll through the drive-thru, or have it
+        delivered. However you take your coffee, it's waiting on you.
+      </p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-5 sm:gap-6">
+      <!-- pickup -->
+      <a href="https://www.kylesdailygrind.com/s/order" target="_blank" rel="noopener" class="reveal lift group rounded-3xl bg-espresso text-cream p-8 flex flex-col min-h-[260px] shadow-xl" style="box-shadow:0 30px 60px -28px rgba(36,19,9,.55)">
+        <div class="w-12 h-12 rounded-2xl bg-terra grid place-items-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <h3 class="font-display font-600 text-[1.55rem]">Order &amp; Pick Up</h3>
+        <p class="text-cream/70 text-[14.5px] mt-2 leading-relaxed flex-1">Place your order online and grab it at the counter — no waiting in line.</p>
+        <span class="mt-5 inline-flex items-center gap-2 font-700 text-caramel text-[15px]">Start an order <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="group-hover:translate-x-1 transition"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <!-- drive thru -->
+      <div class="reveal lift rounded-3xl bg-sand/70 border border-sand p-8 flex flex-col min-h-[260px]">
+        <div class="w-12 h-12 rounded-2xl bg-espresso text-cream grid place-items-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 17h14M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm18 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM3 17V7a1 1 0 0 1 1-1h11l4 4v7"/></svg>
+        </div>
+        <h3 class="font-display font-600 text-[1.55rem] text-espresso">Drive-Thru</h3>
+        <p class="text-cocoa/80 text-[14.5px] mt-2 leading-relaxed flex-1">Running late? Pull up to the window on West Center and we'll have it hot and ready.</p>
+        <span class="mt-5 inline-flex items-center gap-2 font-700 text-terra text-[15px]">Open from 6am daily</span>
+      </div>
+      <!-- delivery -->
+      <div class="reveal lift rounded-3xl bg-sand/70 border border-sand p-8 flex flex-col min-h-[260px]">
+        <div class="w-12 h-12 rounded-2xl bg-espresso text-cream grid place-items-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13 5.4 5M7 13l-2.3 2.3M17 13l2 2M9 20a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm9 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>
+        </div>
+        <h3 class="font-display font-600 text-[1.55rem] text-espresso">Get It Delivered</h3>
+        <p class="text-cocoa/80 text-[14.5px] mt-2 leading-relaxed flex-1">Bring the grind to you.</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <a href="https://www.doordash.com/store/kyles-daily-grind-kyle-24486839/" target="_blank" rel="noopener" class="text-[13px] font-600 text-espresso bg-cream border border-sand px-3 py-1.5 rounded-full hover:bg-white transition">DoorDash</a>
+          <a href="https://www.ubereats.com/store/kyles-daily-grind/WKBttuHAXTyvz2JirZii7g" target="_blank" rel="noopener" class="text-[13px] font-600 text-espresso bg-cream border border-sand px-3 py-1.5 rounded-full hover:bg-white transition">Uber Eats</a>
+          <a href="https://www.favordelivery.com/order-delivery/kyles-daily-grind-50355/607a-west-center-street-kyle-tx-78640-91247/" target="_blank" rel="noopener" class="text-[13px] font-600 text-espresso bg-cream border border-sand px-3 py-1.5 rounded-full hover:bg-white transition">Favor</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal mt-10 flex items-center justify-center gap-3 text-cocoa/70 text-[14px]">
+      <span class="inline-flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-sage"></span> Earn rewards points on every order — they add up fast.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REVIEWS ===================== -->
+<section id="reviews" class="relative bg-bone py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+      <div>
+        <span class="reveal inline-block text-[12px] font-700 uppercase tracking-[.25em] text-terra mb-4">Loved in Kyle</span>
+        <h2 class="reveal font-display font-600 text-espresso text-[2.4rem] sm:text-[3.2rem] leading-[1.02] tracking-tight">
+          What the regulars say
+        </h2>
+      </div>
+      <div class="reveal flex items-center gap-4">
+        <div class="text-right">
+          <div class="font-display font-700 text-[2.6rem] text-terra leading-none">4.6<span class="text-[1.4rem] text-caramel">★</span></div>
+          <div class="text-[13px] text-cocoa/70 mt-1">250+ Google reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5 sm:gap-6">
+      <figure class="reveal rounded-3xl bg-cream border border-sand/70 p-7 shadow-sm">
+        <div class="text-caramel text-[15px] mb-3">★★★★★</div>
+        <blockquote class="text-[16px] leading-relaxed text-cocoa">"Friendly little coffee place with some chairs inside and a drive through. They have an extensive menu that even includes mangonadas."</blockquote>
+        <figcaption class="mt-5 text-[13px] font-600 text-espresso">Josh <span class="text-cocoa/55 font-400">· Google review</span></figcaption>
+      </figure>
+      <figure class="reveal rounded-3xl bg-espresso text-cream p-7 shadow-lg md:-translate-y-3" style="box-shadow:0 30px 60px -30px rgba(36,19,9,.6)">
+        <div class="text-caramel text-[15px] mb-3">★★★★★</div>
+        <blockquote class="text-[16px] leading-relaxed text-cream/95">"This is my favorite coffee shop! The service is always great, and the interior feels warm and cozy."</blockquote>
+        <figcaption class="mt-5 text-[13px] font-600 text-caramel">Gabbie Leyba <span class="text-cream/50 font-400">· Google review</span></figcaption>
+      </figure>
+      <figure class="reveal rounded-3xl bg-cream border border-sand/70 p-7 shadow-sm">
+        <div class="text-caramel text-[15px] mb-3">★★★★★</div>
+        <blockquote class="text-[16px] leading-relaxed text-cocoa">"I was a fan of their matcha latte."</blockquote>
+        <figcaption class="mt-5 text-[13px] font-600 text-espresso">Yanett Cambray <span class="text-cocoa/55 font-400">· Google review</span></figcaption>
+      </figure>
+    </div>
+    <p class="reveal text-center text-[13px] text-cocoa/55 mt-8">Reviews shown verbatim from Google. Ranked #2 of 78 cafes in Kyle.</p>
+  </div>
+</section>
+
+<!-- ===================== VISIT ===================== -->
+<section id="visit" class="relative bg-espresso text-cream py-24 sm:py-32 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+    <div>
+      <span class="reveal inline-block text-[12px] font-700 uppercase tracking-[.25em] text-caramel mb-5">Come See Us</span>
+      <h2 class="reveal font-display font-600 text-[2.5rem] sm:text-[3.3rem] leading-[1.02] tracking-tight">
+        Find us on <span class="grad-text">West Center.</span>
+      </h2>
+      <div class="reveal mt-8 space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-white/8 grid place-items-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="text-[12px] uppercase tracking-[.18em] text-cream/55">Address</div>
+            <a href="https://maps.google.com/?q=Kyle's+Daily+Grind,607+W+Center+St,Kyle,TX+78640" target="_blank" rel="noopener" class="text-[17px] font-600 underline-anim">607a W Center St, Unit A · Kyle, TX 78640</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-white/8 grid place-items-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
+          <div>
+            <div class="text-[12px] uppercase tracking-[.18em] text-cream/55">Phone</div>
+            <a href="tel:+15122689901" class="text-[17px] font-600 underline-anim">(512) 268-9901</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-white/8 grid place-items-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div class="flex-1">
+            <div class="text-[12px] uppercase tracking-[.18em] text-cream/55 mb-1.5">Hours</div>
+            <div class="grid grid-cols-[1fr_auto] gap-x-6 gap-y-1 text-[15px] max-w-xs">
+              <span class="text-cream/80">Monday – Saturday</span><span class="font-600">6:00am – 8:00pm</span>
+              <span class="text-cream/80">Sunday</span><span class="font-600">8:00am – 3:00pm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal mt-8 flex flex-wrap gap-2.5">
+        <span class="text-[13px] font-500 text-cream/85 bg-white/8 px-3.5 py-1.5 rounded-full">Drive-thru</span>
+        <span class="text-[13px] font-500 text-cream/85 bg-white/8 px-3.5 py-1.5 rounded-full">Indoor &amp; outdoor seating</span>
+        <span class="text-[13px] font-500 text-cream/85 bg-white/8 px-3.5 py-1.5 rounded-full">Free parking</span>
+        <span class="text-[13px] font-500 text-cream/85 bg-white/8 px-3.5 py-1.5 rounded-full">Free Wi-Fi</span>
+        <span class="text-[13px] font-500 text-cream/85 bg-white/8 px-3.5 py-1.5 rounded-full">Wheelchair accessible</span>
+        <span class="text-[13px] font-500 text-cream/85 bg-white/8 px-3.5 py-1.5 rounded-full">Rewards program</span>
+      </div>
+      <a href="https://www.kylesdailygrind.com/s/order" target="_blank" rel="noopener" class="btn-mag reveal mt-9 inline-flex items-center gap-2.5 text-[15px] font-700 text-espresso bg-cream px-7 py-4 rounded-full hover:bg-white transition">
+        Order Ahead <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="reveal rounded-[1.6rem] overflow-hidden border border-white/10 min-h-[420px] shadow-2xl">
+      <iframe
+        title="Kyle's Daily Grind location map"
+        src="https://www.google.com/maps?q=607%20W%20Center%20St,%20Kyle,%20TX%2078640&output=embed"
+        width="100%" height="100%" style="border:0;min-height:420px;filter:saturate(.9)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLOSING CTA ===================== -->
+<section class="relative bg-terra text-cream py-24 sm:py-28 overflow-hidden">
+  <div class="absolute inset-0 opacity-20" style="background:radial-gradient(circle at 20% 20%,#E0B060,transparent 45%),radial-gradient(circle at 80% 70%,#2A1A12,transparent 50%)"></div>
+  <div class="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <h2 class="reveal font-display font-700 text-[2.6rem] sm:text-[4rem] leading-[1] tracking-tight">
+      The usual's <span class="grad-text" style="background:linear-gradient(100deg,#FBF6EC,#F7EFE3,#EADBC6,#FBF6EC);-webkit-background-clip:text;background-clip:text">waiting.</span>
+    </h2>
+    <p class="reveal mt-6 text-cream/90 text-[18px] max-w-xl mx-auto leading-relaxed">
+      Order ahead, swing through the drive-thru, or pull up a chair. Either way, we'll have it made.
+    </p>
+    <div class="reveal mt-9 flex flex-wrap items-center justify-center gap-3.5">
+      <a href="https://www.kylesdailygrind.com/s/order" target="_blank" rel="noopener" class="btn-mag inline-flex items-center gap-2.5 text-[15px] font-700 text-terra bg-cream px-7 py-4 rounded-full shadow-2xl hover:bg-white transition">
+        Order Ahead <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="tel:+15122689901" class="inline-flex items-center gap-2.5 text-[15px] font-600 text-cream border border-cream/45 px-7 py-4 rounded-full hover:bg-cream/10 transition">
+        Call (512) 268-9901
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-espresso text-cream/70 pt-16 pb-28 sm:pb-16">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3">
+          <span class="grid place-items-center w-11 h-11 rounded-full bg-cream text-espresso font-display font-700 text-lg">K</span>
+          <span class="font-display font-700 text-[19px] text-cream">Kyle's Daily Grind</span>
+        </div>
+        <p class="mt-5 max-w-sm text-[15px] leading-relaxed">A cozy neighborhood coffee shop in Kyle, Texas. Hand-crafted drinks, fresh-baked goods, and a hello that means it — every single day.</p>
+        <div class="mt-5 flex items-center gap-3">
+          <a href="https://www.facebook.com/kyle.dailygrind/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white/8 grid place-items-center hover:bg-white/15 transition" aria-label="Facebook">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-2.9h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5v1.8H16l-.4 2.9h-2.2v7A10 10 0 0 0 22 12Z"/></svg>
+          </a>
+          <a href="https://www.kylesdailygrind.com/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white/8 grid place-items-center hover:bg-white/15 transition" aria-label="Website">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="text-[12px] uppercase tracking-[.2em] text-cream/45 mb-4">Visit</div>
+        <p class="text-[15px] leading-relaxed">607a W Center St, Unit A<br>Kyle, TX 78640</p>
+        <a href="tel:+15122689901" class="block mt-3 text-[15px] underline-anim">(512) 268-9901</a>
+      </div>
+      <div>
+        <div class="text-[12px] uppercase tracking-[.2em] text-cream/45 mb-4">Hours</div>
+        <p class="text-[15px] leading-relaxed">Mon – Sat · 6am – 8pm<br>Sunday · 8am – 3pm</p>
+        <a href="https://www.kylesdailygrind.com/s/order" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-4 text-[14px] font-700 text-caramel">Order Ahead <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <div class="mt-14 pt-6 border-t border-white/8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-[12.5px] text-cream/45">
+      <span>© 2026 Kyle's Daily Grind · Kyle, Texas</span>
+      <span>Site by <a href="https://turnkeyweb.org" class="underline-anim text-cream/70">Turnkey Web</a> — draft preview</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== MOBILE STICKY BAR ===================== -->
+<div class="fixed bottom-0 inset-x-0 z-50 sm:hidden bg-espresso/95 backdrop-blur border-t border-white/10 px-3 py-2.5 flex gap-2.5" style="padding-bottom:calc(.625rem + env(safe-area-inset-bottom))">
+  <a href="tel:+15122689901" class="flex-1 inline-flex items-center justify-center gap-2 text-[14px] font-600 text-cream border border-cream/30 rounded-full py-3">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> Call
+  </a>
+  <a href="https://www.kylesdailygrind.com/s/order" target="_blank" rel="noopener" class="flex-[1.4] inline-flex items-center justify-center gap-2 text-[14px] font-700 text-espresso bg-cream rounded-full py-3">
+    Order Ahead <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.matchMedia('(max-width: 820px)').matches;
+  const coarse = window.matchMedia('(pointer: coarse)').matches;
+
+  /* ---------- SAFETY NET: force-reveal everything after 6s no matter what ---------- */
+  const failsafe = setTimeout(()=>{ document.querySelectorAll('.reveal').forEach(el=>el.classList.add('is-in')); }, 6000);
+
+  if (reduce){
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('is-in'));
+    clearTimeout(failsafe);
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize:true });
+
+  /* ---------- LENIS smooth scroll driven by the single GSAP ticker ---------- */
+  let lenis;
+  if (!reduce){
+    lenis = new Lenis({ duration:1.1, smoothWheel:true, smoothTouch:false, touchMultiplier:1.6 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((t)=> lenis.raf(t*1000));
+    gsap.ticker.lagSmoothing(0);
+    // anchored scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if (id.length>1){ e.preventDefault(); const t=document.querySelector(id); if(t) lenis.scrollTo(t,{offset:-80}); }
+      });
+    });
+  }
+
+  /* ---------- reveals (GPU, once) ---------- */
+  gsap.utils.toArray('.reveal').forEach((el,i)=>{
+    ScrollTrigger.create({
+      trigger: el, start:'top 86%', once:true,
+      onEnter:()=> el.classList.add('is-in')
+    });
+  });
+
+  /* ---------- NAV state ---------- */
+  const navbar = document.getElementById('navbar');
+  const navname = document.getElementById('navname'); const navsub = document.getElementById('navsub');
+  const navlinks = document.getElementById('navlinks'); const navphone = document.getElementById('navphone');
+  ScrollTrigger.create({
+    start:'top -60',
+    onUpdate:(self)=>{
+      const scrolled = self.scroll() > 60;
+      navbar.style.background = scrolled ? 'rgba(251,246,236,.92)' : 'transparent';
+      navbar.style.backdropFilter = scrolled ? 'blur(14px)' : 'none';
+      navbar.style.boxShadow = scrolled ? '0 10px 30px -18px rgba(36,19,9,.4)' : 'none';
+    }
+  });
+  // at very top (hero is dark) make logo text light
+  function tintNav(){
+    const top = (window.scrollY||0) < 60;
+    navname.style.color = top ? '#FBF6EC' : '#241309';
+    navsub.style.color  = top ? 'rgba(251,246,236,.7)' : 'rgba(62,37,21,.7)';
+    if (navlinks) navlinks.style.color = top ? 'rgba(251,246,236,.92)' : '#5A3A23';
+    if (navphone) navphone.style.color = top ? '#FBF6EC' : '#241309';
+  }
+  tintNav(); window.addEventListener('scroll', tintNav, {passive:true});
+
+  /* ---------- MARQUEE (duplicate + animate) ---------- */
+  const mq = document.getElementById('mq');
+  if (mq){
+    const set = mq.querySelector('.mq-set');
+    for(let i=0;i<3;i++){ mq.appendChild(set.cloneNode(true)); }
+    if(!reduce){
+      gsap.to(mq, { xPercent:-25, repeat:-1, duration:22, ease:'none' });
+    }
+  }
+
+  /* ---------- PINNED HORIZONTAL MENU RAIL ---------- */
+  const rail = document.getElementById('menuRail');
+  const pin = document.getElementById('menuPin');
+  if (rail && pin && !reduce && !isMobile){
+    const getScroll = ()=> rail.scrollWidth - window.innerWidth + 64;
+    gsap.to(rail, {
+      x: ()=> -getScroll(),
+      ease:'none',
+      scrollTrigger:{
+        trigger: pin,
+        start:'top top',
+        end: ()=> '+=' + getScroll(),
+        pin:true, scrub:0.6, invalidateOnRefresh:true,
+        anticipatePin:1
+      }
+    });
+  } else if (rail && isMobile){
+    // mobile: native horizontal swipe
+    rail.style.overflowX = 'auto';
+    rail.parentElement.style.overflow = 'visible';
+    rail.style.scrollSnapType = 'x mandatory';
+    rail.querySelectorAll('.menu-card').forEach(c=>c.style.scrollSnapAlign='center');
+  }
+
+  /* ---------- magnetic buttons (desktop only) ---------- */
+  if (!coarse){
+    document.querySelectorAll('.btn-mag').forEach(btn=>{
+      btn.addEventListener('mousemove', e=>{
+        const r = btn.getBoundingClientRect();
+        const mx = e.clientX - r.left - r.width/2;
+        const my = e.clientY - r.top - r.height/2;
+        gsap.to(btn,{ x:mx*0.28, y:my*0.32, duration:.5, ease:'power3.out' });
+      });
+      btn.addEventListener('mouseleave', ()=> gsap.to(btn,{ x:0,y:0,duration:.6,ease:'elastic.out(1,.4)' }));
+    });
+    /* ---------- 3D tilt on story image ---------- */
+    document.querySelectorAll('.tilt').forEach(el=>{
+      const wrap = el.parentElement;
+      wrap.addEventListener('mousemove', e=>{
+        const r = wrap.getBoundingClientRect();
+        const px = (e.clientX-r.left)/r.width - .5;
+        const py = (e.clientY-r.top)/r.height - .5;
+        gsap.to(el,{ rotateY:px*8, rotateX:-py*8, duration:.5, ease:'power2.out', transformPerspective:900 });
+      });
+      wrap.addEventListener('mouseleave', ()=> gsap.to(el,{ rotateX:0,rotateY:0,duration:.7,ease:'power2.out' }));
+    });
+    /* ---------- custom cursor ---------- */
+    const dot = document.getElementById('cdot'); const ring = document.getElementById('cring');
+    let rx=0,ry=0,dx=0,dy=0;
+    window.addEventListener('mousemove', e=>{ dx=e.clientX; dy=e.clientY; gsap.set(dot,{x:dx,y:dy}); });
+    gsap.ticker.add(()=>{ rx+=(dx-rx)*.18; ry+=(dy-ry)*.18; gsap.set(ring,{x:rx,y:ry}); });
+    document.querySelectorAll('a,button,.lift,.btn-mag').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{ ring.style.width='58px';ring.style.height='58px';ring.style.borderColor='rgba(196,96,58,.9)'; });
+      el.addEventListener('mouseleave',()=>{ ring.style.width='38px';ring.style.height='38px';ring.style.borderColor='rgba(196,96,58,.55)'; });
+    });
+  }
+
+  /* ---------- HERO STEAM PARTICLE CANVAS (signature showpiece) ---------- */
+  (function steam(){
+    const cv = document.getElementById('steam');
+    if(!cv || reduce) return;
+    const ctx = cv.getContext('2d');
+    let w,h,dpr,particles=[],raf=null,visible=true;
+    const COUNT = isMobile ? 26 : 54;
+    function size(){
+      dpr = Math.min(window.devicePixelRatio||1, isMobile?1.5:2);
+      w = cv.clientWidth; h = cv.clientHeight;
+      cv.width = w*dpr; cv.height = h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    function mk(){
+      return { x: Math.random()*w, y: h + Math.random()*h*0.5,
+               r: 18+Math.random()*46, vy: -(0.25+Math.random()*0.6),
+               vx: (Math.random()-0.5)*0.3, life:0, max: 260+Math.random()*340,
+               a: 0 };
+    }
+    for(let i=0;i<COUNT;i++){ const p=mk(); p.y=Math.random()*h; p.life=Math.random()*p.max; particles.push(p); }
+    function tick(){
+      ctx.clearRect(0,0,w,h);
+      for(const p of particles){
+        p.life++; p.y+=p.vy; p.x+=p.vx; p.vx += (Math.random()-0.5)*0.02;
+        const t = p.life/p.max;
+        p.a = Math.sin(Math.min(t,1)*Math.PI) * 0.10;
+        if(p.life>=p.max || p.y < -p.r){ Object.assign(p, mk()); }
+        const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
+        g.addColorStop(0,`rgba(231,200,150,${p.a})`);
+        g.addColorStop(1,'rgba(231,200,150,0)');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+      }
+      raf = requestAnimationFrame(tick);
+    }
+    function start(){ if(!raf && visible) tick(); }
+    function stop(){ if(raf){ cancelAnimationFrame(raf); raf=null; } }
+    size(); start();
+    window.addEventListener('resize', ()=>{ size(); }, {passive:true});
+    // pause when hero offscreen
+    const heroEl = document.getElementById('top');
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(es=>{ es.forEach(e=>{ visible=e.isIntersecting; visible?start():stop(); }); },{threshold:0.02}).observe(heroEl);
+    }
+    document.addEventListener('visibilitychange', ()=>{ document.hidden?stop():start(); });
+  })();
+
+  // refresh after fonts/images settle
+  window.addEventListener('load', ()=> setTimeout(()=>ScrollTrigger.refresh(), 200));
+})();
+</script>
+
+<!-- ===================== JSON-LD ===================== -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"CafeOrCoffeeShop",
+  "name":"Kyle's Daily Grind",
+  "image":"https://turnkeyweb.org/previews/kyles-daily-grind/assets/photos/hero-sunflower.jpg",
+  "url":"https://www.kylesdailygrind.com/",
+  "telephone":"+1-512-268-9901",
+  "priceRange":"$",
+  "servesCuisine":["Coffee","Bakery","Cafe"],
+  "address":{"@type":"PostalAddress","streetAddress":"607a W Center St, Unit A","addressLocality":"Kyle","addressRegion":"TX","postalCode":"78640","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":29.9892,"longitude":-97.8772},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"06:00","closes":"20:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"08:00","closes":"15:00"}
+  ],
+  "hasMenu":"https://www.kylesdailygrind.com/s/order",
+  "acceptsReservations":"False",
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.6","reviewCount":"250"},
+  "sameAs":["https://www.facebook.com/kyle.dailygrind/","https://www.kylesdailygrind.com/"]
+}
+</script>
+</body>
+</html>

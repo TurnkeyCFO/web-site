@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--
+  SoQ Salon (Eric Prince Salon) — Spring, TX — DRAFT prospect preview build for Turnkey Web.
+  Real data: 4027 FM 2920 Rd, Ste D, Spring, TX 77388 · (281) 877-2951 · Tue–Sat 11–7 · 5.0★ · est. 2003.
+  Brand: no published palette → bespoke light-luxury salon palette (cream/bone + mauve/rose/gold).
+  Art direction: split-editorial hero · Three.js drifting hair-strand field (showpiece) · hover-to-preview services · real client work · real Google reviews.
+-->
+<title>SoQ Salon — Precision Cuts, Color & Balayage in Spring, TX</title>
+<meta name="description" content="SoQ Salon in Spring, TX — master stylist Eric Prince, 25+ years of precision cutting, color, balayage, and blonde work. By appointment. Call (281) 877-2951." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/soq-salon/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SoQ Salon — Precision Cuts, Color & Balayage in Spring, TX" />
+<meta property="og:description" content="Two decades of expert cutting and color in Spring, TX. By appointment with master stylist Eric Prince." />
+<meta property="og:image" content="https://turnkeyweb.org/previews/soq-salon/assets/hero.jpg" />
+<meta name="theme-color" content="#FBF6F1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      cream:'#FBF6F1', bone:'#F4ECE3', blush:'#E9C9C0', rose:'#C68A85',
+      mauve:'#8C5A65', plum:'#3F1F2A', gold:'#B98D52', ink:'#2A1D22'
+    },
+    fontFamily: { display:['Fraunces','serif'], sans:['"Plus Jakarta Sans"','sans-serif'] }
+  }}
+}
+</script>
+<style>
+  :root{ --nav-h:74px; }
+  html{ scroll-behavior:auto; scroll-padding-top:var(--nav-h); }
+  body{ background:#FBF6F1; color:#2A1D22; font-family:'Plus Jakarta Sans',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  ::selection{ background:#8C5A65; color:#FBF6F1; }
+  .font-display{ font-family:'Fraunces',serif; }
+
+  /* Gradient shimmer (brand-tinted, min-lightness floor keeps it AA on cream) */
+  .grad-text{
+    background:linear-gradient(100deg,#8C5A65,#C68A85,#B98D52,#8C5A65);
+    background-size:250% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite;
+  }
+  @keyframes shimmer{ from{background-position:0% 50%} to{background-position:250% 50%} }
+
+  /* Reveals — GPU only */
+  [data-reveal]{ opacity:0; transform:translateY(30px); will-change:opacity,transform; }
+  [data-reveal].in{ opacity:1; transform:none; }
+  .clip-img{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.16,1,.3,1); }
+  .clip-img.in{ clip-path:inset(0 0 0% 0); }
+
+  /* Marquee */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .marquee-track{ display:flex; gap:2.75rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* Buttons */
+  .btn-primary{ position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s, filter .4s; }
+  .btn-primary::after{ content:''; position:absolute; inset:0; transform:translateX(-130%) skewX(-18deg); background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent); transition:transform .9s cubic-bezier(.16,1,.3,1); }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 18px 40px -14px rgba(63,31,42,.5); filter:brightness(1.04); }
+  .btn-primary:hover::after{ transform:translateX(130%) skewX(-18deg); }
+
+  .btn-ghost{ transition:background-color .35s, color .35s, border-color .35s, transform .35s; }
+  .btn-ghost:hover{ transform:translateY(-2px); }
+
+  .u-grow{ position:relative; }
+  .u-grow::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:linear-gradient(90deg,#8C5A65,#B98D52); transition:width .45s cubic-bezier(.16,1,.3,1); }
+  .u-grow:hover::after{ width:100%; }
+
+  .chip-dot{ animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.82)} }
+
+  /* Hover-preview service rows */
+  .svc-row{ transition:color .35s, padding-left .45s cubic-bezier(.16,1,.3,1); }
+  .svc-row .svc-idx{ transition:color .35s; }
+  @media(hover:hover) and (pointer:fine){
+    .svc-row:hover{ color:#8C5A65; padding-left:14px; }
+    .svc-row:hover .svc-idx{ color:#B98D52; }
+  }
+  .svc-row.active{ color:#8C5A65; }
+
+  #strand-canvas{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+
+  .hero-photo{ clip-path:inset(0 0 0 0); }
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.045; mix-blend-mode:multiply;
+    background-image:radial-gradient(#2A1D22 1px, transparent 1px); background-size:3px 3px; }
+
+  .card-work img{ transition:transform 1.1s cubic-bezier(.16,1,.3,1), filter .6s; }
+  .card-work:hover img{ transform:scale(1.05); filter:saturate(1.06); }
+
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track,.grad-text,.chip-dot{ animation:none !important; }
+    [data-reveal]{ opacity:1 !important; transform:none !important; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-[var(--nav-h)] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5 group">
+      <span class="inline-flex items-center justify-center h-9 w-9 rounded-full bg-plum text-cream font-display italic text-lg leading-none">S</span>
+      <span class="leading-none">
+        <span class="block font-display text-xl tracking-tight text-ink">SoQ<span class="text-mauve">.</span></span>
+        <span class="block text-[9px] tracking-[0.42em] text-mauve/80 font-semibold mt-0.5">S A L O N</span>
+      </span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-[13px] font-medium text-ink/75">
+      <a href="#craft" class="u-grow">The Craft</a>
+      <a href="#services" class="u-grow">Services</a>
+      <a href="#work" class="u-grow">Our Work</a>
+      <a href="#reviews" class="u-grow">Reviews</a>
+      <a href="#visit" class="u-grow">Visit</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="tel:+12818772951" class="hidden sm:inline-flex items-center gap-2 text-[13px] font-semibold text-ink/80 hover:text-mauve transition-colors">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (281) 877-2951
+      </a>
+      <a href="tel:+12818772951" class="btn-primary inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-2.5 text-[13px] font-semibold">
+        Book an Appointment
+      </a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative grain overflow-hidden">
+  <div class="grid lg:grid-cols-[1.05fr_0.95fr] lg:min-h-[100svh]">
+    <!-- left editorial -->
+    <div class="relative flex items-center bg-cream pt-[calc(var(--nav-h)+26px)] pb-12 lg:pb-0 px-6 sm:px-10 lg:px-14 order-2 lg:order-1">
+      <canvas id="strand-canvas" aria-hidden="true"></canvas>
+      <!-- soft cream scrim so type stays AA over the strand field -->
+      <div class="absolute inset-0 z-[1] pointer-events-none" style="background:linear-gradient(90deg,rgba(251,246,241,.72),rgba(251,246,241,.42))"></div>
+      <div class="relative z-[2] max-w-xl">
+        <div class="inline-flex items-center gap-2 rounded-full border border-mauve/25 bg-cream/70 backdrop-blur px-3.5 py-1.5 text-[11px] font-semibold tracking-wide text-mauve mb-7">
+          <span class="chip-dot inline-block h-1.5 w-1.5 rounded-full bg-gold"></span>
+          Spring, TX · By appointment · Est. 2003
+        </div>
+        <h1 data-hero-head class="font-display text-[clamp(2.9rem,7vw,5.4rem)] leading-[0.98] tracking-[-0.02em] text-ink font-light">
+          <span class="hero-line block overflow-hidden"><span class="inline-block">Hair, done</span></span>
+          <span class="hero-line block overflow-hidden"><span class="inline-block italic grad-text pr-2">the right way.</span></span>
+        </h1>
+        <p data-reveal class="mt-7 text-[17px] leading-relaxed text-ink/72 max-w-md">
+          Twenty-plus years of precision cutting and color, one chair at a time. Master stylist <span class="font-semibold text-ink">Eric Prince</span> reads your hair, listens to what you want, and sends you home looking like the best version of you.
+        </p>
+        <div data-reveal class="mt-9 flex flex-wrap items-center gap-3.5">
+          <a href="tel:+12818772951" class="btn-primary inline-flex items-center gap-2.5 rounded-full bg-plum text-cream px-7 py-4 text-sm font-semibold">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call (281) 877-2951
+          </a>
+          <a href="#services" class="btn-ghost inline-flex items-center gap-2 rounded-full border border-ink/20 text-ink px-6 py-4 text-sm font-semibold hover:bg-ink hover:text-cream hover:border-ink">
+            See the services
+          </a>
+        </div>
+        <!-- stats -->
+        <div data-reveal class="mt-11 grid grid-cols-3 gap-6 max-w-md border-t border-ink/10 pt-7">
+          <div>
+            <div class="font-display text-3xl text-ink"><span data-count="25" data-suffix="+">0</span></div>
+            <div class="text-[11px] tracking-wide text-ink/55 mt-1 font-medium uppercase">Years behind<br>the chair</div>
+          </div>
+          <div>
+            <div class="font-display text-3xl text-ink flex items-center gap-1"><span data-count="4.9" data-decimals="1">0</span><svg class="w-4 h-4 text-gold" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z"/></svg></div>
+            <div class="text-[11px] tracking-wide text-ink/55 mt-1 font-medium uppercase">Google · 24<br>reviews</div>
+          </div>
+          <div>
+            <div class="font-display text-3xl text-ink"><span data-count="2003">0</span></div>
+            <div class="text-[11px] tracking-wide text-ink/55 mt-1 font-medium uppercase">Serving Spring<br>since</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- right photo -->
+    <div class="relative order-1 lg:order-2 min-h-[38svh] lg:min-h-0">
+      <img src="assets/hero.jpg" alt="Stylist curling a client's hair at SoQ Salon" class="hero-photo absolute inset-0 w-full h-full object-cover" fetchpriority="high" />
+      <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(42,29,34,.06),rgba(42,29,34,.22))"></div>
+      <div class="absolute inset-0 hidden lg:block" style="background:linear-gradient(90deg,rgba(251,246,241,.9),transparent 22%)"></div>
+      <!-- floating rating card -->
+      <div class="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 bg-cream/95 backdrop-blur rounded-2xl px-5 py-4 shadow-[0_20px_50px_-20px_rgba(63,31,42,.5)] max-w-[15rem]">
+        <div class="flex items-center gap-1 text-gold mb-1.5">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z"/></svg>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z"/></svg>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z"/></svg>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z"/></svg>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z"/></svg>
+        </div>
+        <p class="text-[13px] leading-snug text-ink/80 font-medium">"My hair looks great every time. Been coming here probably 15 years or more."</p>
+        <p class="text-[11px] text-mauve font-semibold mt-1.5">— Chris Lawrence, Google review</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<section class="bg-plum text-cream py-4 border-y border-cream/10">
+  <div class="marquee">
+    <div class="marquee-track text-[15px] tracking-wide items-center">
+      <!-- set duplicated inline for seamless loop -->
+      <span class="flex items-center gap-2.75"><span class="font-display italic text-2xl">Precision Cuts</span></span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl text-blush">Balayage</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl">Color &amp; Highlights</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl text-blush">Blonde Specialist</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl">Color Correction</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl text-blush">Keratin Blowouts</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl">Lash Extensions</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl text-blush">Ombré</span><span class="text-gold">✦</span>
+      <!-- dup -->
+      <span class="font-display italic text-2xl">Precision Cuts</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl text-blush">Balayage</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl">Color &amp; Highlights</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl text-blush">Blonde Specialist</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl">Color Correction</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl text-blush">Keratin Blowouts</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl">Lash Extensions</span><span class="text-gold">✦</span>
+      <span class="font-display italic text-2xl text-blush">Ombré</span><span class="text-gold">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- CRAFT / STORY -->
+<section id="craft" class="relative bg-cream py-10 sm:py-22 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+    <div class="relative">
+      <div class="clip-img overflow-hidden rounded-[1.75rem] shadow-[0_40px_90px_-40px_rgba(63,31,42,.5)]" data-reveal-image>
+        <img src="assets/craft.jpg" alt="Eric Prince caring for a client's hair at the wash station" class="w-full h-80 sm:h-[28rem] object-cover" loading="lazy" />
+      </div>
+      <div class="absolute -bottom-7 -right-3 sm:right-6 bg-plum text-cream rounded-2xl px-6 py-5 shadow-xl max-w-[13rem]">
+        <div class="font-display text-4xl leading-none">2003</div>
+        <div class="text-[12px] text-cream/75 mt-1.5 leading-snug">The year Eric first opened the chairs here in Spring.</div>
+      </div>
+    </div>
+    <div>
+      <span data-reveal class="text-[12px] tracking-[0.34em] font-semibold text-mauve uppercase">The Craft</span>
+      <h2 data-reveal class="font-display font-light text-[clamp(2.1rem,4.4vw,3.3rem)] leading-[1.04] tracking-tight text-ink mt-5">
+        Two decades of<br><span class="italic grad-text">reading hair right.</span>
+      </h2>
+      <div data-reveal class="mt-7 space-y-5 text-[16.5px] leading-relaxed text-ink/72">
+        <p>SoQ Salon isn't a chain and it never will be. It's one veteran stylist who has spent 25-plus years learning exactly how color lifts, how a cut falls, and how to fix the mess someone else left behind.</p>
+        <p>People drive across Houston for it. Clients have been in this chair for fifteen years, and their kids sit in it now too. That's the whole story: get it right, be honest, and treat every head of hair like it matters.</p>
+      </div>
+      <ul data-reveal class="mt-9 grid sm:grid-cols-2 gap-x-8 gap-y-4">
+        <li class="flex items-start gap-3 text-[15px] text-ink/80"><span class="mt-1 text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Honest advice before a single snip</li>
+        <li class="flex items-start gap-3 text-[15px] text-ink/80"><span class="mt-1 text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Color correction &amp; blonde specialist</li>
+        <li class="flex items-start gap-3 text-[15px] text-ink/80"><span class="mt-1 text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> One-on-one, unhurried appointments</li>
+        <li class="flex items-start gap-3 text-[15px] text-ink/80"><span class="mt-1 text-gold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Styling you can actually recreate at home</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — hover to preview -->
+<section id="services" class="relative bg-bone py-10 sm:py-22">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+      <div>
+        <span data-reveal class="text-[12px] tracking-[0.34em] font-semibold text-mauve uppercase">What We Do</span>
+        <h2 data-reveal class="font-display font-light text-[clamp(2.1rem,4.4vw,3.4rem)] leading-[1.03] tracking-tight text-ink mt-4">The menu, kept simple.</h2>
+      </div>
+      <p data-reveal class="text-[15px] text-ink/65 max-w-sm">Every service is by appointment so you get real, undivided time in the chair. Call or text to book — pricing is quoted after a quick consult.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-[1fr_0.82fr] gap-10 lg:gap-16 items-start">
+      <!-- list -->
+      <ol id="svc-list" class="divide-y divide-ink/10 border-y border-ink/10">
+        <li>
+          <button class="svc-row active w-full flex items-baseline gap-5 py-5 text-left" data-img="assets/hero.jpg" data-desc="Shape, texture, and a cut that grows out right — for women, men, and kids.">
+            <span class="svc-idx font-display text-mauve text-lg w-9 shrink-0">01</span>
+            <span class="flex-1"><span class="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] leading-tight">Precision Cuts</span></span>
+            <span class="hidden sm:block text-[12px] tracking-wide text-ink/45 uppercase">Women · Men · Kids</span>
+          </button>
+          <img src="assets/hero.jpg" alt="Precision cut styling" class="hidden" loading="lazy" />
+        </li>
+        <li>
+          <button class="svc-row w-full flex items-baseline gap-5 py-5 text-left" data-img="assets/color.jpg" data-desc="Full color, dimensional highlights, and grey coverage that reads natural.">
+            <span class="svc-idx font-display text-mauve text-lg w-9 shrink-0">02</span>
+            <span class="flex-1"><span class="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] leading-tight">Color &amp; Highlights</span></span>
+            <span class="hidden sm:block text-[12px] tracking-wide text-ink/45 uppercase">All-over · Foils</span>
+          </button>
+          <img src="assets/color.jpg" alt="Hair color result" class="hidden" loading="lazy" />
+        </li>
+        <li>
+          <button class="svc-row w-full flex items-baseline gap-5 py-5 text-left" data-img="assets/creative.jpg" data-desc="Hand-painted, lived-in color that softens the grow-out line. Balayage & ombré.">
+            <span class="svc-idx font-display text-mauve text-lg w-9 shrink-0">03</span>
+            <span class="flex-1"><span class="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] leading-tight">Balayage &amp; Ombré</span></span>
+            <span class="hidden sm:block text-[12px] tracking-wide text-ink/45 uppercase">Hand-painted</span>
+          </button>
+          <img src="assets/creative.jpg" alt="Balayage and creative color" class="hidden" loading="lazy" />
+        </li>
+        <li>
+          <button class="svc-row w-full flex items-baseline gap-5 py-5 text-left" data-img="assets/work-3.jpg" data-desc="Going lighter, or fixing color gone wrong — the specialty people drive in for.">
+            <span class="svc-idx font-display text-mauve text-lg w-9 shrink-0">04</span>
+            <span class="flex-1"><span class="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] leading-tight">Blonde &amp; Color Correction</span></span>
+            <span class="hidden sm:block text-[12px] tracking-wide text-ink/45 uppercase">Specialty</span>
+          </button>
+          <img src="assets/work-3.jpg" alt="Blonde and color correction work" class="hidden" loading="lazy" />
+        </li>
+        <li>
+          <button class="svc-row w-full flex items-baseline gap-5 py-5 text-left" data-img="assets/craft.jpg" data-desc="Keratin & Brazilian smoothing plus finished blowouts and event styling.">
+            <span class="svc-idx font-display text-mauve text-lg w-9 shrink-0">05</span>
+            <span class="flex-1"><span class="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] leading-tight">Smoothing &amp; Styling</span></span>
+            <span class="hidden sm:block text-[12px] tracking-wide text-ink/45 uppercase">Keratin · Blowout</span>
+          </button>
+          <img src="assets/craft.jpg" alt="Smoothing and styling" class="hidden" loading="lazy" />
+        </li>
+        <li>
+          <button class="svc-row w-full flex items-baseline gap-5 py-5 text-left" data-img="assets/salon-a.jpg" data-desc="Individual, semi-permanent silk lash extensions for a fuller, natural look.">
+            <span class="svc-idx font-display text-mauve text-lg w-9 shrink-0">06</span>
+            <span class="flex-1"><span class="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] leading-tight">Eyelash Extensions</span></span>
+            <span class="hidden sm:block text-[12px] tracking-wide text-ink/45 uppercase">Silk · Individual</span>
+          </button>
+          <img src="assets/salon-a.jpg" alt="Salon interior" class="hidden" loading="lazy" />
+        </li>
+      </ol>
+      <!-- sticky preview (desktop) -->
+      <div class="hidden lg:block sticky top-28">
+        <div class="relative rounded-[1.75rem] overflow-hidden shadow-[0_40px_90px_-40px_rgba(63,31,42,.55)]">
+          <img id="svc-preview" src="assets/hero.jpg" alt="Service preview" class="w-full h-[30rem] object-cover transition-opacity duration-300" />
+          <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 45%,rgba(42,29,34,.78))"></div>
+          <div class="absolute bottom-0 inset-x-0 p-7">
+            <p id="svc-desc" class="text-cream text-[15.5px] leading-relaxed font-medium">Shape, texture, and a cut that grows out right — for women, men, and kids.</p>
+            <a href="tel:+12818772951" class="mt-4 inline-flex items-center gap-2 text-blush text-[13px] font-semibold u-grow">Book this service →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REAL WORK -->
+<section id="work" class="relative bg-cream py-10 sm:py-22 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span data-reveal class="text-[12px] tracking-[0.34em] font-semibold text-mauve uppercase">In The Chair</span>
+      <h2 data-reveal class="font-display font-light text-[clamp(2.1rem,4.4vw,3.3rem)] leading-[1.04] tracking-tight text-ink mt-4">Real clients, real results.</h2>
+      <p data-reveal class="mt-5 text-[15.5px] text-ink/65">A few from Eric's chair here in Spring — the kind of cut and color people come back for, year after year.</p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-5 sm:gap-6">
+      <figure data-reveal class="card-work group relative overflow-hidden rounded-2xl shadow-[0_28px_60px_-34px_rgba(63,31,42,.5)]">
+        <img src="assets/work-1.jpg" alt="Client with a fresh bob cut and color at SoQ Salon" class="w-full h-72 object-cover" loading="lazy" />
+        <figcaption class="absolute bottom-0 inset-x-0 p-5 text-cream text-[13px] font-semibold" style="background:linear-gradient(rgba(42,29,34,0) 0%,rgba(42,29,34,.6) 42%,rgba(42,29,34,.96) 100%);text-shadow:0 1px 4px rgba(0,0,0,.6)">Precision bob &amp; color</figcaption>
+      </figure>
+      <figure data-reveal class="card-work group relative overflow-hidden rounded-2xl shadow-[0_28px_60px_-34px_rgba(63,31,42,.5)]">
+        <img src="assets/work-2.jpg" alt="Back view of a stacked bob cut finished at SoQ Salon" class="w-full h-72 object-cover" loading="lazy" />
+        <figcaption class="absolute bottom-0 inset-x-0 p-5 text-cream text-[13px] font-semibold" style="background:linear-gradient(rgba(42,29,34,0) 0%,rgba(42,29,34,.6) 42%,rgba(42,29,34,.96) 100%);text-shadow:0 1px 4px rgba(0,0,0,.6)">Stacked, clean finish</figcaption>
+      </figure>
+      <figure data-reveal class="card-work group relative overflow-hidden rounded-2xl shadow-[0_28px_60px_-34px_rgba(63,31,42,.5)]">
+        <img src="assets/work-3.jpg" alt="Client with a platinum pixie cut and color at SoQ Salon" class="w-full h-72 object-cover" loading="lazy" />
+        <figcaption class="absolute bottom-0 inset-x-0 p-5 text-cream text-[13px] font-semibold" style="background:linear-gradient(rgba(42,29,34,0) 0%,rgba(42,29,34,.6) 42%,rgba(42,29,34,.96) 100%);text-shadow:0 1px 4px rgba(0,0,0,.6)">Platinum pixie</figcaption>
+      </figure>
+    </div>
+    <p data-reveal class="text-center text-[13px] text-ink/45 mt-6">Follow more work on Instagram <a href="https://www.instagram.com/ericprince_salon/" target="_blank" rel="noopener" class="text-mauve font-semibold u-grow">@ericprince_salon</a></p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="relative bg-plum text-cream py-10 sm:py-22 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+      <div>
+        <span data-reveal class="text-[12px] tracking-[0.34em] font-semibold text-blush uppercase">Reviews</span>
+        <h2 data-reveal class="font-display font-light text-[clamp(2.1rem,4.4vw,3.3rem)] leading-[1.04] tracking-tight mt-4">A steady <span class="italic text-gold">4.9</span> for a reason.</h2>
+      </div>
+      <div data-reveal class="flex items-center gap-2 text-gold">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z"/></svg>
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z"/></svg>
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z"/></svg>
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z"/></svg>
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01z"/></svg>
+        <span class="ml-1 text-cream/80 text-sm font-medium">4.9 · 24 Google reviews</span>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5 sm:gap-6">
+      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-6 backdrop-blur">
+        <p class="text-[15.5px] leading-relaxed text-cream/90">"I had a really bad haircut from another salon and my hair was in horrible shape. Eric was amazing. He fixed the cut beautifully and explained why I should not have had the Brazilian Blowout. Personable and talented."</p>
+        <footer class="mt-5 text-[13px] font-semibold text-blush">Catherine B. <span class="text-cream/45 font-normal">· Yelp review</span></footer>
+      </blockquote>
+      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-6 backdrop-blur md:mt-8">
+        <p class="text-[15.5px] leading-relaxed text-cream/90">"Eric is very friendly and has good prices. My hair looks great every time. Been coming here for probably 15 years or more."</p>
+        <footer class="mt-5 text-[13px] font-semibold text-blush">Chris Lawrence <span class="text-cream/45 font-normal">· Google review</span></footer>
+      </blockquote>
+      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-6 backdrop-blur">
+        <p class="text-[15.5px] leading-relaxed text-cream/90">"Eric is the best! If you're looking for a stylist who knows their stuff, and will do his best to give you what you want, Eric is your guy. I love my color and style!"</p>
+        <footer class="mt-5 text-[13px] font-semibold text-blush">Teresa H. <span class="text-cream/45 font-normal">· Yelp review</span></footer>
+      </blockquote>
+      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-6 backdrop-blur md:mt-2">
+        <p class="text-[15.5px] leading-relaxed text-cream/90">"I really enjoyed my visit. Eric is an amazing hair genius. Very much loved my appointment and very much enjoying my new hair color."</p>
+        <footer class="mt-5 text-[13px] font-semibold text-blush">Kelly Auippa <span class="text-cream/45 font-normal">· Google review</span></footer>
+      </blockquote>
+      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-6 backdrop-blur">
+        <p class="text-[15.5px] leading-relaxed text-cream/90">"Eric does an amazing job every time I go to see him. He's my secret gem of a hairdresser. I would recommend him to anyone needing either a cut or a new 'do."</p>
+        <footer class="mt-5 text-[13px] font-semibold text-blush">Pugsy M. <span class="text-cream/45 font-normal">· Yelp review</span></footer>
+      </blockquote>
+      <blockquote data-reveal class="rounded-2xl bg-cream/[.06] border border-cream/10 p-6 backdrop-blur md:mt-8">
+        <p class="text-[15.5px] leading-relaxed text-cream/90">"Always a pleasure to visit with Eric when we go. Cuts my son and daughter's hair."</p>
+        <footer class="mt-5 text-[13px] font-semibold text-blush">Doug McMillian <span class="text-cream/45 font-normal">· Google review</span></footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="relative bg-cream py-10 sm:py-22">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 grid lg:grid-cols-2 gap-12 items-stretch">
+    <div>
+      <span data-reveal class="text-[12px] tracking-[0.34em] font-semibold text-mauve uppercase">Visit</span>
+      <h2 data-reveal class="font-display font-light text-[clamp(2.1rem,4.4vw,3.3rem)] leading-[1.04] tracking-tight text-ink mt-4">Find us in Spring.</h2>
+      <p data-reveal class="mt-5 text-[15.5px] text-ink/65 max-w-md">Tucked in Suite D on FM 2920. Appointments are recommended — call or text and we'll find your time.</p>
+
+      <div data-reveal class="mt-9 space-y-6">
+        <div class="flex items-start gap-4">
+          <span class="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-bone text-mauve"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div>
+            <div class="text-[11px] tracking-wide text-ink/45 uppercase font-semibold">Address</div>
+            <a href="https://www.google.com/maps?q=4027+FM+2920+Rd+Ste+D+Spring+TX+77388" target="_blank" rel="noopener" class="text-[16px] text-ink font-medium u-grow">4027 FM 2920 Rd, Ste D<br>Spring, TX 77388</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-bone text-mauve"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div>
+            <div class="text-[11px] tracking-wide text-ink/45 uppercase font-semibold">Call or Text</div>
+            <a href="tel:+12818772951" class="text-[16px] text-ink font-medium u-grow">(281) 877-2951</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-bone text-mauve"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div class="flex-1">
+            <div class="text-[11px] tracking-wide text-ink/45 uppercase font-semibold">Hours</div>
+            <dl class="mt-1.5 grid grid-cols-2 gap-x-8 gap-y-1 max-w-xs text-[14.5px]">
+              <dt class="text-ink/60">Tue – Sat</dt><dd class="text-ink font-medium text-right">11:00a – 7:00p</dd>
+              <dt class="text-ink/60">Sun – Mon</dt><dd class="text-ink/50 text-right">Closed</dd>
+            </dl>
+            <p class="text-[12px] text-mauve mt-2 font-medium">By appointment · walk-ins as availability allows</p>
+          </div>
+        </div>
+      </div>
+      <a data-reveal href="tel:+12818772951" class="btn-primary inline-flex items-center gap-2.5 rounded-full bg-plum text-cream px-7 py-4 text-sm font-semibold mt-9">
+        Book your appointment
+      </a>
+    </div>
+
+    <a data-reveal href="https://www.google.com/maps?q=4027+FM+2920+Rd+Ste+D+Spring+TX+77388" target="_blank" rel="noopener"
+       class="group relative block rounded-[1.75rem] overflow-hidden shadow-[0_40px_90px_-40px_rgba(63,31,42,.5)] min-h-[20rem] lg:min-h-[24rem] border border-ink/10">
+      <img src="assets/map.jpg" alt="Map showing SoQ Salon on FM 2920 in Spring, TX" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]" loading="lazy" />
+      <span class="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-cream/95 backdrop-blur px-5 py-3.5">
+        <span class="text-[13px] font-semibold text-ink">4027 FM 2920 Rd, Ste D · Spring, TX</span>
+        <span class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-mauve whitespace-nowrap">Open in Maps
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="relative bg-bone py-14 sm:py-20 overflow-hidden">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <span data-reveal class="inline-flex items-center gap-2 rounded-full border border-mauve/25 px-4 py-1.5 text-[11px] font-semibold tracking-wide text-mauve mb-8">
+      <span class="chip-dot inline-block h-1.5 w-1.5 rounded-full bg-gold"></span> Now booking in Spring, TX
+    </span>
+    <h2 data-reveal class="font-display font-light text-[clamp(2.4rem,5.5vw,4.2rem)] leading-[1.02] tracking-tight text-ink">
+      Your best hair is<br><span class="italic grad-text">one appointment away.</span>
+    </h2>
+    <p data-reveal class="mt-6 text-[17px] text-ink/68 max-w-xl mx-auto">Call or text Eric, tell him what you're after, and let two decades of experience take it from there.</p>
+    <div data-reveal class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a href="tel:+12818772951" class="btn-primary inline-flex items-center gap-2.5 rounded-full bg-plum text-cream px-8 py-4 text-sm font-semibold">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (281) 877-2951
+      </a>
+      <a href="https://www.google.com/maps?q=4027+FM+2920+Rd+Ste+D+Spring+TX+77388" target="_blank" rel="noopener" class="btn-ghost inline-flex items-center gap-2 rounded-full border border-ink/20 text-ink px-7 py-4 text-sm font-semibold hover:bg-ink hover:text-cream hover:border-ink">
+        Get directions
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-cream/80 pt-16 pb-28 lg:pb-16">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10 pb-12 border-b border-cream/10">
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-flex items-center justify-center h-9 w-9 rounded-full bg-cream text-plum font-display italic text-lg leading-none">S</span>
+          <span class="leading-none">
+            <span class="block font-display text-xl tracking-tight text-cream">SoQ<span class="text-rose">.</span></span>
+            <span class="block text-[9px] tracking-[0.42em] text-cream/55 font-semibold mt-0.5">S A L O N</span>
+          </span>
+        </div>
+        <p class="text-[14.5px] leading-relaxed text-cream/60 max-w-sm">Precision cuts, color, and balayage by master stylist Eric Prince. Serving Spring &amp; greater Houston since 2003.</p>
+      </div>
+      <div>
+        <div class="text-[11px] tracking-wide text-cream/40 uppercase font-semibold mb-4">Visit</div>
+        <a href="https://www.google.com/maps?q=4027+FM+2920+Rd+Ste+D+Spring+TX+77388" target="_blank" rel="noopener" class="block text-[14.5px] text-cream/75 hover:text-cream transition-colors leading-relaxed">4027 FM 2920 Rd, Ste D<br>Spring, TX 77388</a>
+        <a href="tel:+12818772951" class="block text-[14.5px] text-cream/75 hover:text-cream transition-colors mt-3">(281) 877-2951</a>
+        <a href="https://www.instagram.com/ericprince_salon/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[14.5px] text-cream/75 hover:text-cream transition-colors mt-3">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @ericprince_salon
+        </a>
+      </div>
+      <div>
+        <div class="text-[11px] tracking-wide text-cream/40 uppercase font-semibold mb-4">Hours</div>
+        <dl class="grid grid-cols-2 gap-y-1.5 text-[14.5px] max-w-[13rem]">
+          <dt class="text-cream/55">Tue – Sat</dt><dd class="text-cream/85 text-right">11a – 7p</dd>
+          <dt class="text-cream/55">Sun – Mon</dt><dd class="text-cream/45 text-right">Closed</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-cream/45">
+      <p>© <span id="yr">2026</span> SoQ Salon · Spring, TX. All rights reserved.</p>
+      <p>Website preview crafted by <a href="https://turnkeyweb.org" target="_blank" rel="noopener" class="text-cream/70 hover:text-cream u-grow">Turnkey Web</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-cream/95 backdrop-blur border-t border-ink/10 px-4 py-3 flex items-center gap-3" style="padding-bottom:calc(0.75rem + env(safe-area-inset-bottom))">
+  <a href="tel:+12818772951" class="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-plum text-cream px-4 py-3 text-[14px] font-semibold">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=4027+FM+2920+Rd+Ste+D+Spring+TX+77388" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-ink/25 text-ink px-4 py-3 text-[14px] font-semibold">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HairSalon",
+  "name":"SoQ Salon",
+  "image":"https://turnkeyweb.org/previews/soq-salon/assets/hero.jpg",
+  "description":"Precision cuts, color, balayage, blonde work and color correction by master stylist Eric Prince in Spring, TX. By appointment.",
+  "url":"https://turnkeyweb.org/previews/soq-salon/",
+  "telephone":"+1-281-877-2951",
+  "priceRange":"$$",
+  "founder":"Eric Prince",
+  "foundingDate":"2003",
+  "address":{"@type":"PostalAddress","streetAddress":"4027 FM 2920 Rd, Ste D","addressLocality":"Spring","addressRegion":"TX","postalCode":"77388","addressCountry":"US"},
+  "sameAs":["https://www.instagram.com/ericprince_salon/","https://www.facebook.com/soqsalon/"],
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"11:00","closes":"19:00"}
+  ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"24","bestRating":"5"},
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Precision Cuts"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Color & Highlights"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Balayage & Ombré"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Blonde & Color Correction"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Keratin Smoothing & Styling"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Eyelash Extensions"}}
+  ]
+}
+</script>
+
+<script>
+/* ---------- Lenis smooth scroll, driven by the single GSAP ticker ---------- */
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let lenis = null;
+  if (window.Lenis && !reduce){
+    lenis = new Lenis({ duration:1.1, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+    if (window.gsap){
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.ticker.add((time)=> lenis.raf(time*1000));
+      gsap.ticker.lagSmoothing(0);
+      lenis.on('scroll', ScrollTrigger.update);
+    } else {
+      function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+    }
+    if (window.ScrollTrigger) ScrollTrigger.config({ ignoreMobileResize:true });
+  }
+  // anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href'); if(id.length<2) return;
+      const t = document.querySelector(id); if(!t) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(t, { offset:-74 });
+      else t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+})();
+
+/* ---------- Nav bg on scroll ---------- */
+(function(){
+  const nav = document.getElementById('nav');
+  const set = ()=>{ if (window.scrollY>24){ nav.classList.add('bg-cream/85','backdrop-blur','shadow-[0_10px_30px_-20px_rgba(63,31,42,.4)]'); } else { nav.classList.remove('bg-cream/85','backdrop-blur','shadow-[0_10px_30px_-20px_rgba(63,31,42,.4)]'); } };
+  set(); window.addEventListener('scroll', set, {passive:true});
+})();
+
+/* ---------- Services hover preview ---------- */
+(function(){
+  const preview = document.getElementById('svc-preview');
+  const desc = document.getElementById('svc-desc');
+  const rows = document.querySelectorAll('#svc-list .svc-row');
+  if(!preview) return;
+  rows.forEach(r=>{
+    const act = ()=>{
+      rows.forEach(x=>x.classList.remove('active')); r.classList.add('active');
+      const img = r.dataset.img, d = r.dataset.desc;
+      if (img && preview.getAttribute('src')!==img){ preview.style.opacity=0; setTimeout(()=>{ preview.src=img; preview.style.opacity=1; },160); }
+      if (d) desc.textContent = d;
+    };
+    r.addEventListener('mouseenter', act);
+    r.addEventListener('focus', act);
+    r.addEventListener('click', (e)=>{ /* allow tel on desktop preview only; row itself just previews */ });
+  });
+})();
+
+/* ---------- GSAP reveals + count-up + hero ---------- */
+(function(){
+  if(!window.gsap){ return; }
+  gsap.registerPlugin(ScrollTrigger);
+
+  // hero headline mask reveal
+  const heroLines = document.querySelectorAll('[data-hero-head] .hero-line > span');
+  if (heroLines.length){
+    gsap.set(heroLines, { yPercent:115 });
+    gsap.to(heroLines, { yPercent:0, duration:1.1, ease:'power4.out', stagger:0.12, delay:0.15 });
+  }
+
+  // Robust reveals via IntersectionObserver (independent of Lenis/ScrollTrigger —
+  // fires reliably in headless/screenshot renders on mobile AND desktop).
+  const runCount = (el)=>{
+    const target = parseFloat(el.dataset.count);
+    const dec = parseInt(el.dataset.decimals||'0',10);
+    const suf = el.dataset.suffix||'';
+    const o={v:0};
+    gsap.to(o,{v:target,duration:1.6,ease:'power2.out',onUpdate:()=>{
+      el.textContent = (dec? o.v.toFixed(dec) : Math.round(o.v).toString()) + suf;
+    }});
+  };
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el = e.target;
+      if (el.hasAttribute('data-reveal')) el.classList.add('in');
+      if (el.hasAttribute('data-reveal-image')){ const img=el.querySelector('.clip-img')||el; img.classList.add('in'); }
+      if (el.hasAttribute('data-count')) runCount(el);
+      io.unobserve(el);
+    });
+  }, { rootMargin:'0px 0px -8% 0px', threshold:0.01 });
+  document.querySelectorAll('[data-reveal],[data-reveal-image],[data-count]').forEach(el=> io.observe(el));
+
+  ScrollTrigger.refresh();
+})();
+
+/* ---------- Three.js drifting hair-strand field (showpiece, with static fallback) ---------- */
+(function(){
+  const canvas = document.getElementById('strand-canvas');
+  if(!canvas || !window.THREE) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.matchMedia('(max-width: 860px)').matches;
+  if (reduce){ return; } // static cream panel is a complete, legible fallback
+
+  let renderer, scene, camera, group, raf=null, running=false;
+  const strandCount = isMobile ? 10 : 20;
+  const seg = isMobile ? 40 : 70;
+
+  try{
+    renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+  }catch(e){ return; }
+  const dpr = Math.min(window.devicePixelRatio||1, isMobile?1.5:2);
+  renderer.setPixelRatio(dpr);
+
+  function size(){
+    const w = canvas.clientWidth||canvas.offsetWidth, h = canvas.clientHeight||canvas.offsetHeight;
+    renderer.setSize(w,h,false);
+    camera.aspect = w/h; camera.updateProjectionMatrix();
+  }
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+  camera.position.z = 18;
+  group = new THREE.Group(); scene.add(group);
+
+  const cols = [0x8C5A65, 0xC68A85, 0xB98D52, 0xE9C9C0];
+  const strands = [];
+  const W = 26, H = 20;
+  for(let i=0;i<strandCount;i++){
+    const pts = [];
+    for(let s=0;s<seg;s++){ pts.push(new THREE.Vector3(0,0,0)); }
+    const geo = new THREE.BufferGeometry().setFromPoints(pts);
+    const mat = new THREE.LineBasicMaterial({ color: cols[i%cols.length], transparent:true, opacity: 0.16 + Math.random()*0.14 });
+    const line = new THREE.Line(geo, mat);
+    group.add(line);
+    strands.push({ line, geo, yBase:(Math.random()-0.5)*H, amp:1.2+Math.random()*2.4, freq:0.5+Math.random()*0.9, phase:Math.random()*Math.PI*2, speed:0.12+Math.random()*0.18 });
+  }
+
+  function update(t){
+    for(const st of strands){
+      const arr = st.geo.attributes.position.array;
+      for(let s=0;s<seg;s++){
+        const px = -W/2 + (s/(seg-1))*W;
+        const y = st.yBase + Math.sin(px*st.freq + t*st.speed + st.phase)*st.amp
+                + Math.sin(px*0.4 + t*st.speed*0.6)*0.5;
+        arr[s*3]=px; arr[s*3+1]=y; arr[s*3+2]=Math.cos(px*0.3+t*0.2)*0.6;
+      }
+      st.geo.attributes.position.needsUpdate = true;
+    }
+    group.rotation.z = Math.sin(t*0.05)*0.04;
+  }
+
+  let clock = 0;
+  function loop(){ clock += 0.016; update(clock); renderer.render(scene,camera); raf = requestAnimationFrame(loop); }
+  function start(){ if(!running){ running=true; loop(); } }
+  function stop(){ running=false; if(raf) cancelAnimationFrame(raf); raf=null; }
+
+  size(); window.addEventListener('resize', size);
+  // render one static frame immediately so a screenshot/first-paint is never empty
+  update(0.6); renderer.render(scene,camera);
+
+  // pause when offscreen
+  const io = new IntersectionObserver((es)=>{ es.forEach(e=> e.isIntersecting ? start() : stop()); }, {threshold:0.02});
+  io.observe(canvas.parentElement);
+  document.addEventListener('visibilitychange', ()=>{ document.hidden ? stop() : (canvas.getBoundingClientRect().bottom>0 && start()); });
+})();
+
+/* ---------- crawler / screenshot safety net ---------- */
+setTimeout(function(){
+  document.querySelectorAll('[data-reveal]:not(.in)').forEach(e=>e.classList.add('in'));
+  document.querySelectorAll('[data-reveal-image] .clip-img:not(.in)').forEach(e=>e.classList.add('in'));
+  document.querySelectorAll('[data-hero-head] .hero-line > span').forEach(e=>{ e.style.transform='none'; });
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    if (el.textContent.trim()==='0'){
+      const dec=parseInt(el.dataset.decimals||'0',10), suf=el.dataset.suffix||'';
+      const t=parseFloat(el.dataset.count);
+      el.textContent = (dec? t.toFixed(dec): Math.round(t).toString())+suf;
+    }
+  });
+}, 2600);
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

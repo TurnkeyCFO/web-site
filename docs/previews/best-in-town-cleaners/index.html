@@ -74,7 +74,7 @@ tailwind.config = {
                linear-gradient(180deg, rgba(251,246,241,.35) 0%, rgba(251,246,241,.10) 30%, rgba(251,246,241,.55) 100%); }
 
   .btn{ position:relative; overflow:hidden; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s, filter .4s; }
-  .btn-primary{ background:#0A5F57; color:#FBF6F1; box-shadow:0 10px 30px -12px rgba(10,95,87,.55); }
+  .btn-primary{ background:#0E8C7F; color:#FBF6F1; box-shadow:0 10px 30px -12px rgba(10,95,87,.55); }
   .btn-primary::after{ content:""; position:absolute; top:0; left:-130%; width:60%; height:100%;
     background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-18deg);
     transition:left .9s cubic-bezier(.16,1,.3,1); }
@@ -102,7 +102,7 @@ tailwind.config = {
   .underline-grow:hover::after{ width:100%; }
 
   /* marquee */
-  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
   .marquee-track{ display:flex; gap:3.25rem; width:max-content; animation:scrollX 34s linear infinite; }
   .marquee:hover .marquee-track{ animation-play-state:paused; }
   @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
@@ -117,12 +117,9 @@ tailwind.config = {
 
   .mapshell{ box-shadow:0 30px 60px -30px rgba(10,95,87,.35); }
 
-  /* mobile sticky bar — visible on mobile by default */
-  .sticky-bar{ transform:translateY(0); transition:transform .5s cubic-bezier(.16,1,.3,1); box-shadow:0 -8px 24px -12px rgba(10,95,87,.4); }
-  .map-fallback{ background:
-      linear-gradient(135deg,#EAF1EE,#F4ECE3),
-      repeating-linear-gradient(0deg, rgba(14,140,127,.06) 0 1px, transparent 1px 34px),
-      repeating-linear-gradient(90deg, rgba(14,140,127,.06) 0 1px, transparent 1px 34px); }
+  /* mobile sticky bar */
+  .sticky-bar{ transform:translateY(120%); transition:transform .5s cubic-bezier(.16,1,.3,1); }
+  .sticky-bar.show{ transform:translateY(0); }
 
   @media (max-width:880px){
     .hero-blend{ mix-blend-mode:normal !important; }
@@ -142,7 +139,7 @@ tailwind.config = {
         </span>
         <span class="leading-tight">
           <span class="block font-display text-[15px] sm:text-base font-600 text-ink">Best In Town Cleaners</span>
-          <span class="block text-[10.5px] tracking-[.18em] uppercase text-deepteal font-600">Monument Rd · Jacksonville</span>
+          <span class="block text-[10.5px] tracking-[.18em] uppercase text-teal font-600">Monument Rd · Jacksonville</span>
         </span>
       </a>
       <nav class="hidden lg:flex items-center gap-7 text-[14px] font-500 text-ink/75">
@@ -220,9 +217,8 @@ tailwind.config = {
 </section>
 
 <!-- MARQUEE -->
-<div class="bg-deepteal py-4 border-y border-white/10">
- <div class="marquee">
-  <div class="marquee-track text-cream text-[15px] font-500 tracking-wide items-center">
+<div class="marquee bg-deepteal py-4 border-y border-white/10">
+  <div class="marquee-track text-cream/90 text-[15px] font-500 tracking-wide items-center">
     <span>Dry Cleaning</span><span class="text-gold">◆</span>
     <span class="italic">Wash &amp; Fold</span><span class="text-gold">◆</span>
     <span>Alterations &amp; Tailoring</span><span class="text-gold">◆</span>
@@ -236,7 +232,6 @@ tailwind.config = {
     <span>Leather &amp; Suede</span><span class="text-gold">◆</span>
     <span class="italic">Same-Day Service</span><span class="text-gold">◆</span>
   </div>
- </div>
 </div>
 
 <!-- SERVICES -->
@@ -244,7 +239,7 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
       <div class="max-w-2xl">
-        <span class="text-[12px] tracking-[.2em] uppercase font-600 text-deepteal" data-reveal>What we do</span>
+        <span class="text-[12px] tracking-[.2em] uppercase font-600 text-teal" data-reveal>What we do</span>
         <h2 class="font-display text-4xl sm:text-5xl font-500 text-ink mt-3 leading-[1.08]" data-reveal>
           Everything your closet needs, <span class="grad-text italic">done right.</span>
         </h2>
@@ -315,7 +310,7 @@ tailwind.config = {
 <section id="care" class="relative py-24 sm:py-28 bg-bone/70">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="max-w-2xl mb-16">
-      <span class="text-[12px] tracking-[.2em] uppercase font-600 text-deepteal" data-reveal>How it works</span>
+      <span class="text-[12px] tracking-[.2em] uppercase font-600 text-teal" data-reveal>How it works</span>
       <h2 class="font-display text-4xl sm:text-5xl font-500 text-ink mt-3 leading-[1.08]" data-reveal>
         Simple to drop off. <span class="grad-text italic">A pleasure</span> to pick up.
       </h2>
@@ -346,7 +341,7 @@ tailwind.config = {
   <div class="ambient" style="width:520px;height:520px;background:radial-gradient(circle,#5B8DB8,transparent 62%);top:10%;right:-180px;opacity:.32;"></div>
   <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-12 items-center relative z-10">
     <div class="lg:col-span-6">
-      <span class="text-[12px] tracking-[.2em] uppercase font-600 text-deepteal" data-reveal>The details matter</span>
+      <span class="text-[12px] tracking-[.2em] uppercase font-600 text-teal" data-reveal>The details matter</span>
       <h2 class="font-display text-4xl sm:text-[3.2rem] font-500 text-ink mt-3 leading-[1.1] mb-6" data-reveal>
         For the pieces you <span class="grad-text italic">can't replace.</span>
       </h2>
@@ -385,7 +380,7 @@ tailwind.config = {
 <!-- SOCIAL PROOF -->
 <section class="relative py-20 sm:py-24 bg-deepteal text-cream overflow-hidden">
   <div class="max-w-6xl mx-auto px-5 sm:px-8 text-center relative z-10">
-    <span class="text-[12px] tracking-[.2em] uppercase font-600 text-[#EAD09E]" data-reveal>The neighborhood knows</span>
+    <span class="text-[12px] tracking-[.2em] uppercase font-600 text-gold" data-reveal>The neighborhood knows</span>
     <h2 class="font-display text-3xl sm:text-4xl font-500 mt-3 mb-4 leading-[1.12]" data-reveal>
       Called "Best In Town" for a reason.
     </h2>
@@ -409,7 +404,7 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="grid lg:grid-cols-12 gap-10 items-stretch">
       <div class="lg:col-span-5">
-        <span class="text-[12px] tracking-[.2em] uppercase font-600 text-deepteal" data-reveal>Come see us</span>
+        <span class="text-[12px] tracking-[.2em] uppercase font-600 text-teal" data-reveal>Come see us</span>
         <h2 class="font-display text-4xl sm:text-5xl font-500 text-ink mt-3 leading-[1.08] mb-8" data-reveal>
           Right on <span class="grad-text italic">Monument Rd.</span>
         </h2>
@@ -434,7 +429,7 @@ tailwind.config = {
           <div class="flex items-start gap-4">
             <span class="w-11 h-11 rounded-xl bg-mist text-deepteal flex items-center justify-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
             <div class="flex-1">
-              <div class="text-[12px] uppercase tracking-[.14em] font-600 text-ink/45 mb-1.5 flex items-center gap-2">Hours <span class="inline-flex items-center gap-1.5 text-deepteal font-600 normal-case tracking-normal text-[12px]"><span class="w-1.5 h-1.5 rounded-full bg-teal open-dot"></span>Open 7am–7pm weekdays</span></div>
+              <div class="text-[12px] uppercase tracking-[.14em] font-600 text-ink/45 mb-1.5 flex items-center gap-2">Hours <span class="inline-flex items-center gap-1.5 text-teal font-600 normal-case tracking-normal text-[12px]"><span class="w-1.5 h-1.5 rounded-full bg-teal open-dot"></span>Open 7am–7pm weekdays</span></div>
               <table class="text-[14.5px] text-ink/72">
                 <tr><td class="pr-8 py-0.5 font-500">Mon – Fri</td><td class="py-0.5">7:00 AM – 7:00 PM</td></tr>
                 <tr><td class="pr-8 py-0.5 font-500">Saturday</td><td class="py-0.5">9:00 AM – 4:00 PM</td></tr>
@@ -451,19 +446,11 @@ tailwind.config = {
       </div>
 
       <div class="lg:col-span-7">
-        <div class="mapshell relative rounded-2xl overflow-hidden border border-ink/10 h-[420px] lg:h-full min-h-[420px]" data-reveal>
-          <!-- designed fallback panel (shows if the embed is slow/blocked) -->
-          <div class="map-fallback absolute inset-0 z-0 flex flex-col items-center justify-center text-center px-6">
-            <span class="w-14 h-14 rounded-2xl bg-deepteal text-cream flex items-center justify-center mb-4 shadow-lg"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <div class="font-display text-xl font-500 text-ink">Best In Town Cleaners</div>
-            <div class="text-ink/65 text-[14.5px] mt-1">2771 Monument Rd, Suite 7 · Jacksonville, FL 32225</div>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=2771+Monument+Rd+Jacksonville+FL+32225" target="_blank" rel="noopener" class="btn btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-[14px] font-600 mt-4">Open in Google Maps</a>
-          </div>
+        <div class="mapshell rounded-2xl overflow-hidden border border-ink/10 h-[420px] lg:h-full min-h-[420px]" data-reveal>
           <iframe
             title="Best In Town Cleaners location — 2771 Monument Rd, Jacksonville FL"
-            class="relative z-10 w-full h-full"
-            src="https://maps.google.com/maps?q=2771%20Monument%20Rd,%20Jacksonville,%20FL%2032225&t=&z=15&ie=UTF8&iwloc=&output=embed"
-            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            src="https://www.google.com/maps?q=2771+Monument+Rd,+Jacksonville,+FL+32225&z=15&output=embed"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
@@ -510,7 +497,7 @@ tailwind.config = {
       <div>
         <div class="text-[12px] uppercase tracking-[.16em] font-600 text-cream/40 mb-3">Visit</div>
         <p class="text-[14.5px] leading-relaxed text-cream/70">2771 Monument Rd, Suite 7<br>Jacksonville, FL 32225</p>
-        <a href="tel:+19045641911" class="text-[#4FC4B4] font-600 text-[15px] mt-2 inline-block underline-grow">(904) 564-1911</a>
+        <a href="tel:+19045641911" class="text-teal font-600 text-[15px] mt-2 inline-block underline-grow">(904) 564-1911</a>
       </div>
       <div>
         <div class="text-[12px] uppercase tracking-[.16em] font-600 text-cream/40 mb-3">Hours</div>
@@ -578,7 +565,7 @@ document.addEventListener('DOMContentLoaded', function () {
     camera.position.z = 18;
 
     var mobile = window.innerWidth < 880;
-    var COUNT = reduce ? 240 : (mobile ? 320 : 620);
+    var COUNT = reduce ? 260 : (mobile ? 360 : 900);
     var geo = new THREE.BufferGeometry();
     var pos = new Float32Array(COUNT*3);
     var spd = new Float32Array(COUNT);

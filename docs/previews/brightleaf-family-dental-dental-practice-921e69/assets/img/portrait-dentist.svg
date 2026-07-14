@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" role="img" aria-label="Illustrative portrait representing the lead dentist at Brightleaf Family Dental">
+  <defs>
+    <linearGradient id="pdBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EAF7F1"/><stop offset="1" stop-color="#DCEFE7"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="700" fill="url(#pdBg)"/>
+  <!-- soft arch backdrop -->
+  <path d="M150 700 V300 a150 150 0 0 1 300 0 V700 Z" fill="#D1F0E6"/>
+  <circle cx="118" cy="150" r="46" fill="#FFFFFF" opacity="0.5"/>
+  <circle cx="486" cy="208" r="60" fill="#FFFFFF" opacity="0.4"/>
+  <!-- abstract clinician figure (no facial features) -->
+  <!-- coat / shoulders -->
+  <path d="M300 470 c-118 0-186 70-186 158 V700 H486 V628 c0-88-68-158-186-158 Z" fill="#FBFAF6"/>
+  <path d="M300 470 c-30 0-58 5-82 14 l82 96 82-96 c-24-9-52-14-82-14 Z" fill="#FFFFFF"/>
+  <!-- coat lapel + collar -->
+  <path d="M300 470 l-46 12 46 84 46-84 Z" fill="#0F766E"/>
+  <!-- neck -->
+  <rect x="276" y="408" width="48" height="80" rx="22" fill="#E6CDB4"/>
+  <!-- head (featureless) -->
+  <circle cx="300" cy="330" r="104" fill="#EAD3BC"/>
+  <path d="M300 226 a104 104 0 0 0-92 152 c20-10 44-110 92-110 s72 100 92 110 a104 104 0 0 0-92-152 Z" fill="#3C3026"/>
+  <!-- dental mirror badge -->
+  <circle cx="372" cy="556" r="26" fill="#0F766E"/>
+  <circle cx="372" cy="548" r="11" fill="#D1F0E6"/>
+  <rect x="369" y="556" width="6" height="22" rx="3" fill="#D1F0E6"/>
+  <!-- amber accent -->
+  <circle cx="228" cy="556" r="14" fill="#F0AB40"/>
+</svg>

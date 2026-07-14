@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<!--
+  Do All Drywall — Lincoln, NE  |  Turnkey Web draft preview  (V2 REDESIGN)
+  Art direction: quiet-luxury / "raking light on a smooth finish." Warm bone + drywall-white base,
+  charcoal ink, steel grey, single deep slate-blue accent (#2C5C7A) carrying CTAs, dots, headers.
+  Type: Space Grotesk (display) + Newsreader italic (craft accents) + Inter (body).
+  Premium showpiece: full-bleed HERO VIDEO — the real Higgsfield-rendered drywall-finish loop
+  (a glowing light edge healing a taped seam into a smooth wall), web-optimized to ~1.2MB,
+  autoplay/muted/loop/playsinline with a poster frame fallback (reduced-motion + screenshots),
+  paused when hidden/offscreen. A warm "finish line" hairline draws in under the headline to echo
+  the on-screen light edge; layered scrim keeps the white type AA-legible over the bright mid-band.
+  Signature moment: a horizontal "How a wall gets finished" 4-step process rail with a scroll-driven
+  progress meter (replaces V1's drag seam-wipe).
+  All facts verbatim from V1: BBB A+ since 2023, BuildZoom 90, licensed NE, est. 2019, Classic
+  Drywall since 1986, owners Cody Lacefield & Justin Miller. Phone (531) 500-5515.
+  Reviews are the 2 REAL BBB reviews (Anita M., Melissa S.) — attributed as BBB.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Do All Drywall — Smooth Drywall Hang, Finish &amp; Repair in Lincoln, NE</title>
+<meta name="description" content="Do All Drywall is a licensed, BBB A+ accredited drywall contractor in Lincoln, NE. New construction, remodels, repairs, ceilings &amp; texture, and fire &amp; water damage — finished smooth by owner-operators Cody Lacefield and Justin Miller. Free estimates." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/do-all-drywall-v2/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Do All Drywall — Lincoln, NE" />
+<meta property="og:description" content="Licensed, BBB A+ drywall contractor in Lincoln. Hang, finish, repair, and damage restoration — finished smooth. Free estimates." />
+<meta property="og:url" content="https://turnkeyweb.org/previews/do-all-drywall-v2/" />
+<meta property="og:image" content="https://images.pexels.com/photos/6474471/pexels-photo-6474471.jpeg?auto=compress&cs=tinysrgb&w=1200" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        bone:    '#F3EEE6',
+        paper:   '#FBF9F5',
+        chalk:   '#FFFFFF',
+        ink:     '#15181C',
+        slate2:  '#454D57',
+        steel:   '#5E6B78',
+        steelLt: '#525C66',
+        blue:    '#2C5C7A',
+        blueDk:  '#1E4258',
+        blueLt:  '#4F86A6',
+      },
+      fontFamily: {
+        display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+        serif:   ['Newsreader', 'Georgia', 'serif'],
+        sans:    ['Inter', 'system-ui', 'sans-serif'],
+      },
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-padding-top:78px; }
+  html, body { background:#F3EEE6; color:#15181C; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
+  ::selection { background:#2C5C7A; color:#FBF9F5; }
+  .font-display { font-family:'Space Grotesk',sans-serif; }
+  .font-serif-i { font-family:'Newsreader',Georgia,serif; font-style:italic; }
+  .tight  { letter-spacing:-0.02em; }
+  .tighter{ letter-spacing:-0.035em; }
+  .eyebrow{ letter-spacing:0.26em; text-transform:uppercase; font-size:0.72rem; font-weight:600; }
+
+  /* gradient shimmer — REQUIRED. min-lightness floor kept high so it never dips below AA on dark scrim. */
+  .grad-text {
+    background:linear-gradient(100deg,#7FB3D1 0%,#BFE0F0 28%,#4F86A6 52%,#BFE0F0 76%,#7FB3D1 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 8s linear infinite;
+  }
+  /* dark-on-light variant for the section header over bone — floors at a darker blue for AA */
+  .grad-text-dk {
+    background:linear-gradient(100deg,#1E4258 0%,#2C5C7A 30%,#163645 55%,#2C5C7A 80%,#1E4258 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite;
+  }
+  @keyframes shimmer { from{background-position:0% 50%} to{background-position:220% 50%} }
+
+  /* nav */
+  .nav-scrolled { background:rgba(243,238,230,0.86); backdrop-filter:blur(14px); border-bottom:1px solid rgba(21,24,28,0.08); }
+
+  /* brand lockup — house mark + wordmark; legible over the dark hero (light) and the light scrolled nav (ink) */
+  .brand-word{ color:#F3EEE6; text-shadow:0 1px 10px rgba(0,0,0,.55); transition:color .4s, text-shadow .4s; }
+  .brand-mark{ stroke:#9CC4DB; filter:drop-shadow(0 1px 6px rgba(0,0,0,.5)); transition:stroke .4s, filter .4s; }
+  .nav-scrolled .brand-word{ color:#15181C; text-shadow:none; }
+  .nav-scrolled .brand-mark{ stroke:#2C5C7A; filter:none; }
+
+  /* preloader — one-time intro video, then reveal */
+  #preloader{ position:fixed; inset:0; z-index:9999; background:#0C1014; display:flex; align-items:center; justify-content:center; opacity:1; transition:opacity .7s ease; }
+  #preloader.is-hidden{ opacity:0; pointer-events:none; }
+  #pre-video{ width:100%; height:100%; object-fit:cover; }
+  #preloader::after{ content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(180deg, rgba(12,16,20,.30) 0%, rgba(12,16,20,.20) 45%, rgba(12,16,20,.70) 100%); }
+  .pre-word{ position:absolute; z-index:2; bottom:13%; left:50%; transform:translateX(-50%); white-space:nowrap;
+    color:#F3EEE6; font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:.01em;
+    font-size:clamp(1.4rem,4.4vw,2.6rem); text-shadow:0 2px 20px rgba(0,0,0,.65); opacity:0; animation:preWord .8s ease .35s forwards; }
+  .pre-word .pw-accent{ font-family:'Newsreader',serif; font-style:italic; font-weight:500; }
+  @keyframes preWord{ to{ opacity:1; } }
+  #pre-skip{ position:absolute; z-index:3; bottom:8%; right:6%; color:#F3EEE6; background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.28); border-radius:999px; padding:.5rem 1.15rem; font-size:.78rem;
+    letter-spacing:.05em; text-transform:uppercase; cursor:pointer; backdrop-filter:blur(6px); transition:background .3s; }
+  #pre-skip:hover{ background:rgba(255,255,255,.20); }
+  html.pre-lock, body.pre-lock{ overflow:hidden !important; }
+  @media (prefers-reduced-motion: reduce){ #preloader{ display:none; } }
+
+  /* hero */
+  .hero-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  /* layered scrim — vertical (top/bottom) + left wash so the white type stays AA-legible
+     over the bright mid-band of the finish-loop video */
+  .hero-scrim  { position:absolute; inset:0; background:
+    linear-gradient(180deg, rgba(12,16,20,0.74) 0%, rgba(12,16,20,0.50) 42%, rgba(12,16,20,0.86) 100%),
+    linear-gradient(90deg,  rgba(12,16,20,0.64) 0%, rgba(12,16,20,0.22) 58%, rgba(12,16,20,0.00) 100%); }
+
+  /* signature "finish line" — a warm light hairline that draws across on load, echoing the
+     glowing edge in the hero video (the seam being finished) */
+  .hero-finish { display:flex; align-items:center; gap:0.95rem; margin-top:1.7rem; }
+  .finish-line { position:relative; display:block; height:2px; width:clamp(58px,16vw,170px);
+    background:linear-gradient(90deg, rgba(224,168,82,0), rgba(224,168,82,0.95));
+    transform-origin:left; transform:scaleX(0);
+    animation:drawFinish 1.15s cubic-bezier(.2,.7,.2,1) .55s forwards;
+    box-shadow:0 0 16px rgba(224,168,82,.45); }
+  .finish-line::after { content:""; position:absolute; right:-3px; top:50%; transform:translateY(-50%);
+    width:7px; height:7px; border-radius:50%; background:#F2C982; box-shadow:0 0 12px 3px rgba(242,201,130,.8); }
+  @keyframes drawFinish { to { transform:scaleX(1); } }
+  .hero-kicker { font-family:'Newsreader',serif; font-style:italic; color:#F5EEE1;
+    font-size:clamp(1.05rem,2.1vw,1.38rem); letter-spacing:.2px; text-shadow:0 1px 12px rgba(0,0,0,.55); }
+  @media (prefers-reduced-motion: reduce){ .finish-line{ animation:none; transform:scaleX(1); } }
+  .grain::after{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:overlay;
+    background-image:radial-gradient(rgba(255,255,255,.9) 0.5px, transparent 0.6px); background-size:3px 3px; }
+
+  .rule { height:2px; width:50px; background:#4F86A6; }
+  .rule-dk { height:2px; width:50px; background:#2C5C7A; }
+  .chip { border:1px solid rgba(21,24,28,0.14); border-radius:999px; }
+
+  /* buttons */
+  .btn { position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.2,.7,.2,1), filter .4s, background .3s, color .3s, box-shadow .4s; }
+  .btn:hover { transform:translateY(-3px); }
+  .btn-blue { background:#2C5C7A; color:#FBF9F5; }
+  .btn-blue:hover { filter:brightness(1.08); box-shadow:0 16px 38px -16px rgba(44,92,122,.75); }
+  .btn-blue::after { content:""; position:absolute; top:0; left:-130%; width:55%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,.42), transparent); transform:skewX(-18deg); transition:left .9s cubic-bezier(.2,.7,.2,1); }
+  .btn-blue:hover::after { left:130%; }
+  .btn-ink { background:#15181C; color:#FBF9F5; }
+  .btn-ink:hover { filter:brightness(1.25); }
+  .btn-ghost { border:1px solid rgba(251,249,245,0.55); color:#FBF9F5; }
+  .btn-ghost:hover { background:rgba(251,249,245,0.12); }
+
+  /* services — split list rows (not a card grid like V1) */
+  .srow { position:relative; transition:background .4s, padding .5s cubic-bezier(.2,.7,.2,1); }
+  .srow::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:#2C5C7A; transform:scaleY(0); transform-origin:top; transition:transform .5s cubic-bezier(.2,.7,.2,1); }
+  .srow:hover { background:#FFFFFF; padding-left:1.5rem; }
+  .srow:hover::before { transform:scaleY(1); }
+  .srow:hover .srow-thumb { opacity:1; transform:translateX(0) scale(1); }
+  .srow-thumb { opacity:0; transform:translateX(20px) scale(.96); transition:opacity .5s, transform .5s cubic-bezier(.2,.7,.2,1); }
+  .srow:hover .s-arrow { transform:translateX(6px); color:#2C5C7A; }
+  .s-arrow { transition:transform .45s cubic-bezier(.2,.7,.2,1), color .4s; }
+
+  /* process step cards */
+  .pstep { position:relative; background:#FFFFFF; border:1px solid rgba(21,24,28,0.09); transition:transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s; }
+  .pstep:hover { transform:translateY(-6px); box-shadow:0 30px 60px -34px rgba(21,24,28,.4); }
+  .pstep .pnum { font-variant-numeric:tabular-nums; }
+  .progress-rail { height:2px; background:rgba(255,255,255,0.16); position:relative; overflow:hidden; }
+  .progress-fill { position:absolute; left:0; top:0; bottom:0; width:0%; background:linear-gradient(90deg,#4F86A6,#BFE0F0); }
+
+  /* reveal image clip */
+  [data-reveal-image]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.16,.8,.24,1); }
+  [data-reveal-image].in{ clip-path:inset(0 0 0% 0); }
+
+  /* marquee */
+  .marquee { overflow:hidden; -webkit-mask-image:linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); mask-image:linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); }
+  .marquee-track { display:flex; gap:0; width:max-content; animation:scrollX 36s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state:paused; }
+  @keyframes scrollX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .mq-item { display:inline-flex; align-items:center; padding:0 2.2rem; }
+  .mq-dot { width:6px;height:6px;border-radius:999px;background:#4F86A6;margin:0 0.4rem; }
+
+  /* underline grow */
+  .ul-grow { position:relative; }
+  .ul-grow::after { content:""; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:#2C5C7A; transition:width .45s cubic-bezier(.2,.7,.2,1); }
+  .ul-grow:hover::after { width:100%; }
+
+  /* pulse dot */
+  .pulse { animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
+
+  [data-reveal]{ opacity:0; transform:translateY(28px); will-change:opacity, transform; }
+  [data-reveal].is-in{ will-change:auto; }
+
+  .edge-num { font-family:'Space Grotesk',sans-serif; line-height:.85; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .grad-text, .grad-text-dk, .marquee-track, .pulse { animation:none !important; }
+  }
+</style>
+</head>
+
+<body class="overflow-x-hidden">
+
+<!-- ============ PRELOADER — one-time intro video, then reveal the site ============ -->
+<div id="preloader">
+  <video id="pre-video" muted playsinline preload="auto" poster="assets/hero-poster.jpg" aria-hidden="true">
+    <source src="assets/hero-loop.mp4" type="video/mp4">
+  </video>
+  <div class="pre-word">Do All Drywall <span class="pw-accent">— finished smooth.</span></div>
+  <button id="pre-skip" type="button" aria-label="Skip intro">Skip</button>
+</div>
+<script>
+  (function(){
+    var pre = document.getElementById('preloader');
+    if (!pre) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var seen = false; try { seen = sessionStorage.getItem('dad_intro_seen') === '1'; } catch(e){}
+    function hide(){
+      pre.classList.add('is-hidden');
+      document.documentElement.classList.remove('pre-lock');
+      document.body.classList.remove('pre-lock');
+      try { sessionStorage.setItem('dad_intro_seen','1'); } catch(e){}
+      setTimeout(function(){ if (pre && pre.parentNode) pre.parentNode.removeChild(pre); }, 800);
+    }
+    // skip the intro on reduced-motion or if already seen this session
+    if (reduce || seen){ hide(); return; }
+    document.documentElement.classList.add('pre-lock');
+    document.body.classList.add('pre-lock');
+    var v = document.getElementById('pre-video');
+    var done = false;
+    function finish(){ if (done) return; done = true; hide(); }
+    if (v){
+      v.addEventListener('ended', finish);
+      var p = v.play();
+      if (p && p.catch) p.catch(function(){ /* autoplay blocked (mobile) — the cap timeout reveals the site */ });
+    }
+    var skip = document.getElementById('pre-skip');
+    if (skip) skip.addEventListener('click', finish);
+    // hard cap so the intro never blocks too long (also covers autoplay-blocked mobile)
+    setTimeout(finish, 4200);
+  })();
+</script>
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-[70px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5 group">
+      <svg class="brand-mark" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
+      <span class="brand-word font-display font-700 tight text-[1.06rem] leading-none">Do All Drywall</span>
+    </a>
+    <div class="hidden lg:flex items-center gap-8 text-[0.92rem] text-slate2 font-medium">
+      <a href="#services" class="ul-grow hover:text-ink transition">Services</a>
+      <a href="#process" class="ul-grow hover:text-ink transition">How It's Done</a>
+      <a href="#story" class="ul-grow hover:text-ink transition">Our Story</a>
+      <a href="#reviews" class="ul-grow hover:text-ink transition">Reviews</a>
+      <a href="#visit" class="ul-grow hover:text-ink transition">Contact</a>
+    </div>
+    <div class="flex items-center gap-2.5">
+      <a href="tel:+15315005515" class="hidden sm:inline-flex items-center gap-2 text-[0.92rem] font-semibold text-ink ul-grow">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue pulse"></span>(531) 500-5515
+      </a>
+      <a href="#visit" class="btn btn-blue rounded-full px-4 py-2 text-[0.84rem] font-semibold">Free estimate</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO (Three.js light-sweep finish + poster fallback) ============ -->
+<section id="top" class="relative min-h-[100svh] flex items-center overflow-hidden grain">
+  <!-- hero background: the V1 finishing photo (real drywall finisher, raking light) — Ricky's pick -->
+  <img class="hero-photo" src="https://images.pexels.com/photos/6474308/pexels-photo-6474308.jpeg?auto=compress&cs=tinysrgb&w=1900"
+       alt="Drywall finisher applying joint compound to a fresh seam in Lincoln, NE" />
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pt-28 pb-20">
+    <div class="flex items-center gap-3 mb-7" data-reveal>
+      <span class="rule"></span>
+      <span class="eyebrow text-blueLt">Lincoln, Nebraska · Drywall Contractor</span>
+    </div>
+
+    <h1 class="font-display font-700 text-paper tighter text-[3rem] leading-[0.97] sm:text-[5rem] md:text-[6.2rem] max-w-5xl" data-reveal>
+      Walls that look
+      <span class="block">like they were never <span class="grad-text font-serif-i font-medium">touched.</span></span>
+    </h1>
+
+    <div class="hero-finish" data-reveal>
+      <span class="finish-line"></span>
+      <span class="hero-kicker">From taped seam to flawless finish.</span>
+    </div>
+
+    <p class="mt-8 max-w-xl text-paper/90 text-[1.07rem] leading-relaxed" data-reveal>
+      A licensed, BBB A+ drywall crew in Lincoln — hanging, taping, and finishing new builds, remodels, ceilings, and repairs until the surface reads perfectly smooth. Run hands-on by the two owners who do the work.
+    </p>
+
+    <div class="mt-9 flex flex-wrap items-center gap-3" data-reveal>
+      <a href="#visit" class="btn btn-blue rounded-full px-7 py-3.5 text-[0.97rem] font-semibold">Get a free estimate</a>
+      <a href="tel:+15315005515" class="btn btn-ghost rounded-full px-7 py-3.5 text-[0.97rem] font-semibold">Call (531) 500-5515</a>
+    </div>
+
+    <!-- trust chips inline -->
+    <div class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-paper/85 text-[0.86rem] font-medium" data-reveal>
+      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blueLt"></span>Licensed NE contractor</span>
+      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blueLt"></span>BBB A+ · 5.0 rating</span>
+      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blueLt"></span>Owner-operated</span>
+      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blueLt"></span>Free estimates</span>
+    </div>
+  </div>
+
+  <!-- scroll hint -->
+  <div class="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 text-paper/55 hidden sm:flex flex-col items-center gap-2" data-reveal>
+    <span class="text-[0.68rem] tracking-[0.25em] uppercase">Scroll</span>
+    <span class="w-px h-8 bg-paper/35"></span>
+  </div>
+</section>
+
+<!-- ============ STATS BAND ============ -->
+<div class="bg-ink">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-12 grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+    <div data-reveal>
+      <div class="edge-num text-paper text-[2.6rem] sm:text-[3.1rem]"><span class="count" data-target="2019" data-raw="1">2019</span></div>
+      <div class="text-paper/55 text-[0.82rem] mt-1.5 leading-snug">Serving Lincoln since</div>
+    </div>
+    <div data-reveal>
+      <div class="edge-num grad-text text-[2.6rem] sm:text-[3.1rem]">A+</div>
+      <div class="text-paper/55 text-[0.82rem] mt-1.5 leading-snug">BBB accredited since 2023</div>
+    </div>
+    <div data-reveal>
+      <div class="edge-num text-paper text-[2.6rem] sm:text-[3.1rem]"><span class="count" data-target="90">0</span></div>
+      <div class="text-paper/55 text-[0.82rem] mt-1.5 leading-snug">BuildZoom contractor score</div>
+    </div>
+    <div data-reveal>
+      <div class="edge-num text-paper text-[2.6rem] sm:text-[3.1rem]"><span class="count" data-target="1986" data-raw="1">1986</span></div>
+      <div class="text-paper/55 text-[0.82rem] mt-1.5 leading-snug">Carrying forward Classic Drywall</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MARQUEE ============ -->
+<div class="bg-bone py-4 border-b border-ink/8">
+  <div class="marquee">
+    <div class="marquee-track text-slate2 font-display font-500 tight text-base">
+      <span class="mq-item">New Construction</span><span class="mq-dot"></span>
+      <span class="mq-item font-serif-i font-normal text-blue text-lg">Hang &amp; Finish</span><span class="mq-dot"></span>
+      <span class="mq-item">Remodels</span><span class="mq-dot"></span>
+      <span class="mq-item">Drywall Repair</span><span class="mq-dot"></span>
+      <span class="mq-item font-serif-i font-normal text-blue text-lg">Ceilings &amp; Texture</span><span class="mq-dot"></span>
+      <span class="mq-item">Fire &amp; Water Damage</span><span class="mq-dot"></span>
+      <span class="mq-item">Commercial</span><span class="mq-dot"></span>
+      <span class="mq-item">New Construction</span><span class="mq-dot"></span>
+      <span class="mq-item font-serif-i font-normal text-blue text-lg">Hang &amp; Finish</span><span class="mq-dot"></span>
+      <span class="mq-item">Remodels</span><span class="mq-dot"></span>
+      <span class="mq-item">Drywall Repair</span><span class="mq-dot"></span>
+      <span class="mq-item font-serif-i font-normal text-blue text-lg">Ceilings &amp; Texture</span><span class="mq-dot"></span>
+      <span class="mq-item">Fire &amp; Water Damage</span><span class="mq-dot"></span>
+      <span class="mq-item">Commercial</span><span class="mq-dot"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SERVICES (split editorial: sticky heading + interactive list rows) ============ -->
+<section id="services" class="py-24 sm:py-32 bg-bone">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-10 lg:gap-16">
+    <!-- left: sticky heading -->
+    <div class="lg:col-span-4">
+      <div class="lg:sticky lg:top-28">
+        <div class="flex items-center gap-3 mb-5" data-reveal><span class="rule-dk"></span><span class="eyebrow text-steel">What we do</span></div>
+        <h2 class="font-display font-700 tighter text-ink text-[2.5rem] sm:text-[3.4rem] leading-[1.0] mb-6" data-reveal>
+          Every wall,<br>start to <span class="grad-text-dk font-serif-i font-medium">flawless.</span>
+        </h2>
+        <p class="text-slate2 text-[1.04rem] leading-relaxed mb-7" data-reveal>
+          From rough framing to a surface that's ready for paint, we handle the whole job — and we're just as quick on a single ceiling repair as a new build. Residential and commercial.
+        </p>
+        <a href="#visit" class="inline-flex items-center gap-2 text-blue font-semibold ul-grow text-[0.97rem]" data-reveal>
+          Start your project
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- right: the six real services as interactive rows -->
+    <div class="lg:col-span-8 divide-y divide-ink/10 border-y border-ink/10">
+      <!-- 01 -->
+      <a href="#visit" class="srow flex items-center gap-6 py-7 group" data-reveal>
+        <span class="font-display font-600 text-steelLt text-base w-8 shrink-0">01</span>
+        <div class="flex-1">
+          <h3 class="font-display font-600 tight text-ink text-[1.45rem] sm:text-[1.7rem] leading-tight">New Construction Drywall</h3>
+          <p class="text-slate2 text-[0.96rem] leading-relaxed mt-1.5 max-w-lg">Hang and finish for new homes and additions — square corners, tight seams, ready for the painter.</p>
+        </div>
+        <div class="srow-thumb hidden md:block w-28 h-20 rounded-xl overflow-hidden shrink-0">
+          <img class="w-full h-full object-cover" src="https://images.pexels.com/photos/8961251/pexels-photo-8961251.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Freshly hung drywall board on a new build interior">
+        </div>
+        <svg class="s-arrow text-steelLt shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <!-- 02 -->
+      <a href="#visit" class="srow flex items-center gap-6 py-7 group" data-reveal>
+        <span class="font-display font-600 text-steelLt text-base w-8 shrink-0">02</span>
+        <div class="flex-1">
+          <h3 class="font-display font-600 tight text-ink text-[1.45rem] sm:text-[1.7rem] leading-tight">Remodel Hang &amp; Finish</h3>
+          <p class="text-slate2 text-[0.96rem] leading-relaxed mt-1.5 max-w-lg">Basements, kitchens, and whole-room makeovers blended seamlessly into your existing walls.</p>
+        </div>
+        <div class="srow-thumb hidden md:block w-28 h-20 rounded-xl overflow-hidden shrink-0">
+          <img class="w-full h-full object-cover" src="https://images.pexels.com/photos/5089178/pexels-photo-5089178.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Installer finishing drywall during a remodel">
+        </div>
+        <svg class="s-arrow text-steelLt shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <!-- 03 -->
+      <a href="#visit" class="srow flex items-center gap-6 py-7 group" data-reveal>
+        <span class="font-display font-600 text-steelLt text-base w-8 shrink-0">03</span>
+        <div class="flex-1">
+          <h3 class="font-display font-600 tight text-ink text-[1.45rem] sm:text-[1.7rem] leading-tight">Drywall Repair</h3>
+          <p class="text-slate2 text-[0.96rem] leading-relaxed mt-1.5 max-w-lg">Holes, cracks, water stains, and bad patches made to disappear — texture matched so you can't tell.</p>
+        </div>
+        <div class="srow-thumb hidden md:block w-28 h-20 rounded-xl overflow-hidden shrink-0">
+          <img class="w-full h-full object-cover" src="https://images.pexels.com/photos/6474207/pexels-photo-6474207.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Gloved hand applying joint compound to patch a wall">
+        </div>
+        <svg class="s-arrow text-steelLt shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <!-- 04 -->
+      <a href="#visit" class="srow flex items-center gap-6 py-7 group" data-reveal>
+        <span class="font-display font-600 text-steelLt text-base w-8 shrink-0">04</span>
+        <div class="flex-1">
+          <h3 class="font-display font-600 tight text-ink text-[1.45rem] sm:text-[1.7rem] leading-tight">Ceilings &amp; Texture</h3>
+          <p class="text-slate2 text-[0.96rem] leading-relaxed mt-1.5 max-w-lg">New ceilings, popcorn removal, knockdown and orange-peel texture — hand-matched to the rest of the room.</p>
+        </div>
+        <div class="srow-thumb hidden md:block w-28 h-20 rounded-xl overflow-hidden shrink-0">
+          <img class="w-full h-full object-cover" src="https://images.pexels.com/photos/6474343/pexels-photo-6474343.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Worker finishing a ceiling during renovation">
+        </div>
+        <svg class="s-arrow text-steelLt shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <!-- 05 -->
+      <a href="#visit" class="srow flex items-center gap-6 py-7 group" data-reveal>
+        <span class="font-display font-600 text-steelLt text-base w-8 shrink-0">05</span>
+        <div class="flex-1">
+          <h3 class="font-display font-600 tight text-ink text-[1.45rem] sm:text-[1.7rem] leading-tight">Fire &amp; Water Damage Restoration</h3>
+          <p class="text-slate2 text-[0.96rem] leading-relaxed mt-1.5 max-w-lg">Tear-out and rebuild after fire, smoke, or water — getting your home back to whole and dry.</p>
+        </div>
+        <div class="srow-thumb hidden md:block w-28 h-20 rounded-xl overflow-hidden shrink-0">
+          <img class="w-full h-full object-cover" src="https://images.pexels.com/photos/5493667/pexels-photo-5493667.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Finisher smoothing a repaired wall with a trowel">
+        </div>
+        <svg class="s-arrow text-steelLt shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <!-- 06 -->
+      <a href="#visit" class="srow flex items-center gap-6 py-7 group" data-reveal>
+        <span class="font-display font-600 text-steelLt text-base w-8 shrink-0">06</span>
+        <div class="flex-1">
+          <h3 class="font-display font-600 tight text-ink text-[1.45rem] sm:text-[1.7rem] leading-tight">Commercial Drywall</h3>
+          <p class="text-slate2 text-[0.96rem] leading-relaxed mt-1.5 max-w-lg">Offices, retail, and tenant build-outs done on schedule and ready for the next trade.</p>
+        </div>
+        <div class="srow-thumb hidden md:block w-28 h-20 rounded-xl overflow-hidden shrink-0">
+          <img class="w-full h-full object-cover" src="https://images.pexels.com/photos/8146330/pexels-photo-8146330.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bright finished commercial interior with smooth drywall">
+        </div>
+        <svg class="s-arrow text-steelLt shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE: HOW A WALL GETS FINISHED (process rail w/ progress meter) ============ -->
+<section id="process" class="relative bg-ink py-24 sm:py-32 overflow-hidden grain">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 items-end mb-12">
+      <div class="lg:col-span-7" data-reveal>
+        <div class="flex items-center gap-3 mb-5"><span class="rule"></span><span class="eyebrow text-blueLt">How it's done</span></div>
+        <h2 class="font-display font-700 tighter text-paper text-[2.5rem] sm:text-[3.8rem] leading-[0.98]">
+          Four passes to a<br><span class="grad-text font-serif-i font-medium">finish you live with.</span>
+        </h2>
+      </div>
+      <div class="lg:col-span-5 text-paper/70 text-[1.04rem] leading-relaxed" data-reveal>
+        Anyone can hang board. The finish is what you see every day — so we work it in four deliberate passes, and we don't call it done until the light proves it's smooth.
+      </div>
+    </div>
+
+    <!-- scroll-driven progress meter -->
+    <div class="progress-rail rounded-full mb-10" data-reveal><div id="proc-fill" class="progress-fill rounded-full"></div></div>
+
+    <div id="proc-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <article class="pstep rounded-2xl p-7" data-reveal data-step>
+        <div class="pnum grad-text font-display font-700 text-[2.2rem] leading-none mb-4">01</div>
+        <h3 class="font-display font-600 tight text-ink text-xl mb-2">Hang</h3>
+        <p class="text-slate2 text-[0.94rem] leading-relaxed">Board cut tight and screwed off square — flat planes and clean corners set up everything that follows.</p>
+      </article>
+      <article class="pstep rounded-2xl p-7" data-reveal data-step>
+        <div class="pnum grad-text font-display font-700 text-[2.2rem] leading-none mb-4">02</div>
+        <h3 class="font-display font-600 tight text-ink text-xl mb-2">Tape &amp; Mud</h3>
+        <p class="text-slate2 text-[0.94rem] leading-relaxed">Seams taped and bedded, fasteners filled — the first coats that turn separate sheets into one surface.</p>
+      </article>
+      <article class="pstep rounded-2xl p-7" data-reveal data-step>
+        <div class="pnum grad-text font-display font-700 text-[2.2rem] leading-none mb-4">03</div>
+        <h3 class="font-display font-600 tight text-ink text-xl mb-2">Sand &amp; Texture</h3>
+        <p class="text-slate2 text-[0.94rem] leading-relaxed">Sanded smooth, then textured to match the room — knockdown, orange-peel, or dead-flat for paint.</p>
+      </article>
+      <article class="pstep rounded-2xl p-7" data-reveal data-step>
+        <div class="pnum grad-text font-display font-700 text-[2.2rem] leading-none mb-4">04</div>
+        <h3 class="font-display font-600 tight text-ink text-xl mb-2">Light Check</h3>
+        <p class="text-slate2 text-[0.94rem] leading-relaxed">We rake a light across the wall to catch anything the eye misses — so what you get is genuinely flat.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUR STORY / THE CREW ============ -->
+<section id="story" class="py-24 sm:py-32 bg-paper">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div data-reveal>
+      <div class="rounded-3xl overflow-hidden" data-reveal-image>
+        <img class="w-full h-full object-cover" src="https://images.pexels.com/photos/6474309/pexels-photo-6474309.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Do All Drywall finisher smoothing a wall with raking light across it in Lincoln, NE" style="aspect-ratio:4/5">
+      </div>
+    </div>
+    <div>
+      <div class="flex items-center gap-3 mb-5" data-reveal><span class="rule-dk"></span><span class="eyebrow text-steel">Our story</span></div>
+      <h2 class="font-display font-700 tighter text-ink text-[2.3rem] sm:text-[3.2rem] leading-[1.0] mb-6" data-reveal>
+        Two owners,<br><span class="grad-text-dk font-serif-i font-medium">on the wall with you.</span>
+      </h2>
+      <p class="text-slate2 text-[1.05rem] leading-relaxed mb-5" data-reveal>
+        Do All Drywall is run by <strong class="text-ink font-semibold">Cody Lacefield</strong> and <strong class="text-ink font-semibold">Justin Miller</strong> — two owner-operators who quote the job, run the crew, and stand behind the finish. When you call, you reach the people doing the work, not a call center.
+      </p>
+      <p class="text-slate2 text-[1.05rem] leading-relaxed mb-8" data-reveal>
+        We've built our name in Lincoln since 2019, carrying forward the craft of <span class="font-serif-i text-ink">Classic Drywall</span> — a name homeowners here have trusted since 1986. Same care, a bigger crew, and a finish that holds up.
+      </p>
+
+      <div class="grid grid-cols-3 gap-4" data-reveal>
+        <div class="chip rounded-xl px-4 py-3.5 bg-chalk">
+          <div class="font-display font-600 text-ink text-lg tight">Licensed</div>
+          <div class="text-steel text-[0.78rem] mt-0.5">Active NE contractor</div>
+        </div>
+        <div class="chip rounded-xl px-4 py-3.5 bg-chalk">
+          <div class="font-display font-600 text-ink text-lg tight">BBB A+</div>
+          <div class="text-steel text-[0.78rem] mt-0.5">Accredited since 2023</div>
+        </div>
+        <div class="chip rounded-xl px-4 py-3.5 bg-chalk">
+          <div class="font-display font-600 text-ink text-lg tight">Free</div>
+          <div class="text-steel text-[0.78rem] mt-0.5">On-site estimates</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS (real BBB reviews) ============ -->
+<section id="reviews" class="bg-bone border-y border-ink/8 py-24 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center gap-3 mb-4 justify-center" data-reveal>
+      <span class="rule-dk"></span><span class="eyebrow text-steel">What Lincoln says</span><span class="rule-dk"></span>
+    </div>
+    <p class="text-center text-steel text-[0.92rem] mb-12" data-reveal>5.0 rating · BBB A+ accredited</p>
+
+    <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      <figure class="rounded-2xl bg-chalk border border-ink/8 p-8 sm:p-9" data-reveal>
+        <div class="text-blue text-xl mb-5 tracking-wide">★★★★★</div>
+        <blockquote class="font-serif-i text-ink text-[1.28rem] leading-snug mb-6">
+          “Quick response from start to finish. Had ceiling installed in basement looks great. Quality work and really great guys. Would recommend them — seamless installation. Pricing is fair and well worth it.”
+        </blockquote>
+        <figcaption class="text-steel text-[0.85rem] font-medium">— Anita M., BBB review</figcaption>
+      </figure>
+      <figure class="rounded-2xl bg-chalk border border-ink/8 p-8 sm:p-9" data-reveal>
+        <div class="text-blue text-xl mb-5 tracking-wide">★★★★★</div>
+        <blockquote class="font-serif-i text-ink text-[1.28rem] leading-snug mb-6">
+          “Cody and crew were amazing from start to finish. They performed the work less than a week after giving the estimate and it looks terrific. Always on time and courteously called or texted when on their way. Very reasonably priced. I would not hesitate to use them again!”
+        </blockquote>
+        <figcaption class="text-steel text-[0.85rem] font-medium">— Melissa S., BBB review</figcaption>
+      </figure>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 mt-12 text-steel text-[0.9rem] font-medium" data-reveal>
+      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue"></span>BBB Accredited · A+</span>
+      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue"></span>Licensed NE contractor</span>
+      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue"></span>Owner-operated since 2019</span>
+      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue"></span>Residential &amp; commercial</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT / CONTACT ============ -->
+<section id="visit" class="py-24 sm:py-32 bg-paper">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+    <div data-reveal>
+      <div class="flex items-center gap-3 mb-5"><span class="rule-dk"></span><span class="eyebrow text-steel">Get started</span></div>
+      <h2 class="font-display font-700 tighter text-ink text-[2.3rem] sm:text-[3.2rem] leading-[1.0] mb-6">
+        Lincoln &amp; the<br><span class="grad-text-dk font-serif-i font-medium">surrounding area.</span>
+      </h2>
+      <p class="text-slate2 text-[1.05rem] leading-relaxed mb-8">
+        Tell us about the wall, the room, or the whole build. We'll come take a look and get you an honest, free estimate.
+      </p>
+
+      <div class="space-y-5 mb-8">
+        <a href="tel:+15315005515" class="flex items-center gap-4 group">
+          <span class="grid place-items-center w-11 h-11 rounded-full bg-ink text-paper shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>
+            <span class="block text-steel text-[0.78rem] uppercase tracking-wider">Call or text</span>
+            <span class="block font-display font-600 text-ink text-xl tight group-hover:text-blue transition">(531) 500-5515</span>
+          </span>
+        </a>
+        <div class="flex items-center gap-4">
+          <span class="grid place-items-center w-11 h-11 rounded-full bg-ink text-paper shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span>
+            <span class="block text-steel text-[0.78rem] uppercase tracking-wider">Based in</span>
+            <span class="block font-display font-600 text-ink text-xl tight">4900 W Mathis, Lincoln, NE 68524</span>
+          </span>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="grid place-items-center w-11 h-11 rounded-full bg-ink text-paper shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </span>
+          <span>
+            <span class="block text-steel text-[0.78rem] uppercase tracking-wider">Hours</span>
+            <span class="block font-display font-600 text-ink text-xl tight">Mon–Fri · by appointment</span>
+          </span>
+        </div>
+      </div>
+
+      <a href="tel:+15315005515" class="btn btn-blue rounded-full px-7 py-3.5 text-[0.97rem] font-semibold inline-flex">Book your free estimate</a>
+    </div>
+
+    <div class="rounded-3xl overflow-hidden border border-ink/10 min-h-[380px]" data-reveal>
+      <iframe
+        title="Do All Drywall service area — Lincoln, NE"
+        src="https://www.google.com/maps?q=4900+W+Mathis,+Lincoln,+NE+68524&output=embed"
+        width="100%" height="100%" style="border:0; min-height:380px; filter:grayscale(0.16) contrast(1.04);" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="relative overflow-hidden bg-ink grain">
+  <div class="absolute inset-0 opacity-90" style="background:radial-gradient(120% 90% at 50% -10%, rgba(44,92,122,0.55), transparent 60%)"></div>
+  <div class="relative max-w-5xl mx-auto px-5 sm:px-8 py-20 sm:py-28 text-center">
+    <span class="inline-flex items-center gap-2 bg-paper text-ink rounded-lg px-3.5 py-2 mb-8" data-reveal>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2C5C7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
+      <span class="font-display font-700 tight text-sm">DO ALL DRYWALL</span>
+    </span>
+    <h2 class="font-display font-700 tighter text-paper text-[2.4rem] sm:text-[4rem] leading-[0.98] mb-6" data-reveal>
+      Let's get your walls<br><span class="grad-text font-serif-i font-medium">finished right.</span>
+    </h2>
+    <p class="text-paper/80 text-[1.08rem] max-w-xl mx-auto mb-9" data-reveal>
+      One call gets you a real person, a real estimate, and a wall you'll be glad you didn't try to patch yourself.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-3" data-reveal>
+      <a href="tel:+15315005515" class="btn btn-blue rounded-full px-8 py-4 text-[1rem] font-semibold">Call (531) 500-5515</a>
+      <a href="#visit" class="btn btn-ghost rounded-full px-8 py-4 text-[1rem] font-semibold">Request an estimate</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-paper/70 pt-16 pb-28 sm:pb-16 border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+      <div class="lg:col-span-2">
+        <span class="inline-flex items-center gap-2 bg-paper text-ink rounded-[8px] px-3 py-2 mb-5">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2C5C7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
+          <span class="font-display font-700 tight text-sm">DO ALL DRYWALL</span>
+        </span>
+        <p class="text-paper/60 text-[0.96rem] leading-relaxed max-w-sm">
+          Licensed, BBB A+ drywall contractor serving Lincoln, NE and the surrounding area — hang, finish, repair, and damage restoration, residential and commercial.
+        </p>
+      </div>
+      <div>
+        <div class="eyebrow text-blueLt mb-4">Services</div>
+        <ul class="space-y-2 text-[0.95rem] text-paper/70">
+          <li>New Construction</li><li>Remodel Hang &amp; Finish</li><li>Drywall Repair</li><li>Ceilings &amp; Texture</li><li>Fire &amp; Water Damage</li><li>Commercial</li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow text-blueLt mb-4">Contact</div>
+        <ul class="space-y-2 text-[0.95rem] text-paper/70">
+          <li><a href="tel:+15315005515" class="hover:text-blueLt transition">(531) 500-5515</a></li>
+          <li>4900 W Mathis<br>Lincoln, NE 68524</li>
+          <li>Mon–Fri · by appointment</li>
+          <li class="pt-1 text-paper/60 text-[0.85rem]">Owners: Cody Lacefield &amp; Justin Miller</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-7 text-[0.82rem] text-paper/60">
+      <span>© <span id="yr">2026</span> Do All Drywall · Lincoln, Nebraska. All rights reserved.</span>
+      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blueLt pulse"></span>BBB Accredited A+ · Licensed NE contractor</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="fixed bottom-0 inset-x-0 z-50 sm:hidden bg-ink/95 backdrop-blur border-t border-white/10 px-3 py-2.5 flex gap-2.5">
+  <a href="tel:+15315005515" class="flex-1 btn btn-blue rounded-full py-3 text-center text-[0.92rem] font-semibold">Call now</a>
+  <a href="#visit" class="flex-1 btn rounded-full py-3 text-center text-[0.92rem] font-semibold border border-paper/35 text-paper">Free estimate</a>
+</div>
+
+
+<!-- ============ MOTION SCRIPTS ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  if (window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });   // mobile URL-bar resize won't refresh mid-scroll
+  }
+
+  /* ---------- Lenis smooth scroll — ONE rAF loop, driven by the GSAP ticker ---------- */
+  let lenis;
+  try {
+    lenis = new Lenis({
+      duration: 1.15,
+      smoothTouch: false,                                 // phones keep native momentum
+      easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t))
+    });
+    if (window.gsap){
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time)=> lenis.raf(time * 1000));   // single rAF source
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      // fallback if GSAP failed to load
+      function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+    }
+  } catch(e){}
+
+  /* anchored scroll */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if (id.length < 2) return;
+      const t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      const y = t.getBoundingClientRect().top + window.pageYOffset - 78;
+      if (lenis) lenis.scrollTo(y, { duration: 1.1 }); else window.scrollTo({top:y, behavior:'smooth'});
+    });
+  });
+
+  /* nav state */
+  const nav = document.getElementById('nav');
+  const onScroll = ()=>{ if (window.scrollY > 40) nav.classList.add('nav-scrolled'); else nav.classList.remove('nav-scrolled'); };
+  window.addEventListener('scroll', onScroll); onScroll();
+
+  /* ---------- GSAP reveals (GPU-only, once, short — no mid-viewport animation) ---------- */
+  if (window.gsap && window.ScrollTrigger) {
+
+    gsap.utils.toArray('[data-reveal]').forEach(el=>{
+      gsap.fromTo(el, {opacity:0, y:28}, {
+        opacity:1, y:0, duration:0.7, ease:'power3.out',
+        scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+        onComplete:()=> el.classList.add('is-in')   // drops will-change once landed
+      });
+    });
+
+    /* clip-path image reveals */
+    document.querySelectorAll('[data-reveal-image]').forEach(el=>{
+      ScrollTrigger.create({ trigger:el, start:'top 88%', once:true, onEnter:()=> el.classList.add('in') });
+    });
+
+    /* count-up stats */
+    document.querySelectorAll('.count').forEach(el=>{
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      ScrollTrigger.create({
+        trigger: el, start:'top 92%', once:true,
+        onEnter: ()=>{
+          const o = {v:0};
+          gsap.to(o, { v:target, duration:1.6, ease:'power2.out',
+            onUpdate:()=>{ el.textContent = Math.round(o.v) + suffix; } });
+        }
+      });
+    });
+
+    /* signature: process progress meter — scrubbed, so DESKTOP ONLY (scrub fights touch scroll) */
+    ScrollTrigger.matchMedia({
+      "(min-width: 768px)": function(){
+        const fill = document.getElementById('proc-fill');
+        const grid = document.getElementById('proc-grid');
+        if (fill && grid) {
+          ScrollTrigger.create({
+            trigger: grid, start:'top 80%', end:'bottom 60%', scrub:0.5,
+            onUpdate: self => { fill.style.width = (self.progress * 100).toFixed(1) + '%'; }
+          });
+        }
+      }
+    });
+    /* on mobile the meter simply shows full (no scrub) so the rail isn't an empty line */
+    if (window.matchMedia('(max-width: 767px)').matches){
+      const fill = document.getElementById('proc-fill'); if (fill) fill.style.width = '100%';
+    }
+  }
+
+  /* ---------- 6s crawler / screenshot safety net ---------- */
+  setTimeout(()=>{
+    document.querySelectorAll('[data-reveal]').forEach(el=>{
+      if (parseFloat(getComputedStyle(el).opacity) < 0.95){ el.style.opacity = 1; el.style.transform = 'none'; }
+      el.classList.add('is-in');
+    });
+    document.querySelectorAll('[data-reveal-image]').forEach(el=> el.classList.add('in'));
+    document.querySelectorAll('.count').forEach(el=>{
+      if (el.textContent.trim() === '0'){ el.textContent = el.dataset.target + (el.dataset.suffix||''); }
+    });
+    const fill = document.getElementById('proc-fill'); if (fill && !fill.style.width) fill.style.width = '100%';
+  }, 6000);
+</script>
+
+<!-- ============ JSON-LD ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["GeneralContractor","HomeAndConstructionBusiness"],
+  "name": "Do All Drywall",
+  "description": "Licensed, BBB A+ accredited drywall contractor in Lincoln, NE. New construction, remodels, drywall repair, ceilings and texture, fire and water damage restoration. Residential and commercial.",
+  "url": "https://turnkeyweb.org/previews/do-all-drywall-v2/",
+  "telephone": "+1-531-500-5515",
+  "founder": ["Cody Lacefield","Justin Miller"],
+  "foundingDate": "2019",
+  "image": "https://images.pexels.com/photos/6474471/pexels-photo-6474471.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4900 W Mathis",
+    "addressLocality": "Lincoln",
+    "addressRegion": "NE",
+    "postalCode": "68524",
+    "addressCountry": "US"
+  },
+  "areaServed": { "@type": "City", "name": "Lincoln, Nebraska" },
+  "openingHours": "Mo-Fr",
+  "priceRange": "$$",
+  "knowsAbout": ["Drywall installation","Drywall finishing","Drywall repair","Ceiling texture","Fire and water damage restoration","Commercial drywall"],
+  "makesOffer": [
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"New Construction Drywall"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Remodel Hang and Finish"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Drywall Repair"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Ceilings and Texture"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Fire and Water Damage Restoration"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Commercial Drywall"}}
+  ]
+}
+</script>
+</body>
+</html>

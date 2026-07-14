@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Microsoft Clarity (heatmaps + session replay) -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xat9lhrllb");
+</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClearLedger — Austin's #1 Rated Bookkeeping Service</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#00263A;--green:#00C85A;--ice:#DAE1E9;--cream:#F5F8FA;--white:#fff;--muted:#5A7080;--border:rgba(0,38,58,.12);--shadow:rgba(0,38,58,.08)}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden}
+/* STICKY CTA NAV */
+.sticky-nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px var(--shadow)}
+.sticky-logo{font-size:17px;font-weight:700;color:var(--navy)}
+.sticky-logo span{color:var(--green)}
+.sticky-phone{font-size:15px;font-weight:600;color:var(--navy);text-decoration:none}
+.sticky-cta{background:var(--green);color:var(--white);font-size:13px;font-weight:700;padding:9px 22px;border-radius:6px;text-decoration:none;transition:opacity .2s}
+.sticky-cta:hover{opacity:.85}
+/* HERO */
+.hero{background:var(--navy);color:var(--white);padding:64px 40px 80px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:-60px;left:0;right:0;height:120px;background:var(--cream);clip-path:ellipse(55% 60px at 50% 100%)}
+.hero-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(0,200,90,.15);border:1px solid rgba(0,200,90,.25);color:var(--green);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;border-radius:4px;margin-bottom:20px}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,50px);font-weight:400;line-height:1.12;margin-bottom:16px}
+h1 em{font-style:italic;color:var(--green)}
+.hero-sub{font-size:15px;font-weight:300;color:rgba(218,225,233,.75);line-height:1.7;margin-bottom:28px}
+.hero-trust{display:flex;flex-wrap:wrap;gap:16px}
+.ht{font-size:13px;color:rgba(218,225,233,.6);display:flex;align-items:center;gap:6px}
+.ht::before{content:'✓';color:var(--green);font-weight:700}
+/* LEAD FORM CARD */
+.form-card{background:var(--white);border-radius:16px;padding:32px 28px;box-shadow:0 20px 60px rgba(0,38,58,.25);position:relative;z-index:2}
+.fc-title{font-size:19px;font-weight:700;color:var(--navy);margin-bottom:4px;text-align:center}
+.fc-sub{font-size:13px;color:var(--muted);text-align:center;margin-bottom:20px}
+.fc-field label{display:block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.fc-field input,.fc-field select{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--navy);background:var(--cream);outline:none;margin-bottom:12px;transition:border-color .2s}
+.fc-field input:focus,.fc-field select:focus{border-color:var(--green);background:var(--white)}
+.fc-field select option{background:var(--white)}
+.fc-btn{width:100%;background:var(--green);color:var(--white);border:none;padding:15px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:opacity .2s;margin-top:4px}
+.fc-btn:hover{opacity:.9}
+.fc-guarantee{font-size:11px;color:var(--muted);text-align:center;margin-top:10px}
+/* STATS BAND */
+.stats{background:var(--white);padding:48px 40px;border-bottom:1px solid var(--border)}
+.stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stat-n{font-family:'DM Serif Display',serif;font-size:38px;font-weight:400;color:var(--navy);line-height:1}
+.stat-n span{color:var(--green)}
+.stat-l{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4}
+/* HOW IT WORKS */
+.how{padding:72px 40px;max-width:900px;margin:0 auto}
+.section-eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:10px;text-align:center}
+.section-h{font-family:'DM Serif Display',serif;font-size:clamp(26px,4vw,40px);text-align:center;margin-bottom:48px;line-height:1.2}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.step{text-align:center}
+.step-num{width:52px;height:52px;background:var(--navy);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;margin:0 auto 16px}
+.step-name{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.6}
+/* TESTIMONIALS */
+.testis{background:var(--navy);padding:64px 40px;color:var(--white)}
+.testis-inner{max-width:900px;margin:0 auto}
+.testis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+.testi{background:rgba(255,255,255,.05);border:1px solid rgba(218,225,233,.1);border-radius:12px;padding:22px}
+.testi-stars{color:#F59E0B;margin-bottom:8px}
+.testi-q{font-size:14px;line-height:1.6;color:rgba(218,225,233,.8);margin-bottom:12px}
+.testi-name{font-size:12px;font-weight:600;color:rgba(218,225,233,.45)}
+/* BOTTOM CTA */
+.bottom{background:var(--white);padding:64px 40px;text-align:center;border-top:1px solid var(--border)}
+.bottom h2{font-family:'DM Serif Display',serif;font-size:clamp(24px,4vw,40px);margin-bottom:12px}
+.bottom h2 em{font-style:italic;color:var(--green)}
+.bottom p{font-size:15px;color:var(--muted);margin-bottom:28px}
+.bottom-form{display:flex;gap:8px;max-width:440px;margin:0 auto;flex-wrap:wrap}
+.bottom-input{flex:1;min-width:180px;border:1.5px solid var(--border);padding:13px 16px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--navy);outline:none;transition:border-color .2s}
+.bottom-input:focus{border-color:var(--green)}
+.bottom-btn{background:var(--green);color:var(--white);border:none;padding:13px 22px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap}
+footer{background:var(--navy);padding:20px 40px;display:flex;justify-content:space-between;font-size:11px;color:rgba(218,225,233,.3);flex-wrap:wrap;gap:8px}
+@media(max-width:768px){
+  .sticky-nav{padding:0 16px}.sticky-phone{display:none}
+  .hero{padding:48px 20px 60px}.hero-inner{grid-template-columns:1fr}
+  .form-card{margin-top:32px}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr}
+  .testis-grid{grid-template-columns:1fr}
+  .how,.testis,.bottom{padding-left:20px;padding-right:20px}
+  footer{padding:16px 20px;flex-direction:column}
+}
+</style>
+</head>
+<body>
+<nav class="sticky-nav">
+  <div class="sticky-logo">Clear<span>Ledger</span></div>
+  <a href="tel:5128880100" class="sticky-phone">(512) 888-0100</a>
+  <a href="#quote" class="sticky-cta">Get Free Quote</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">★ Austin's #1 Rated Bookkeeping Service — 4.97 · 1,200+ Reviews</div>
+      <h1>Finally — books that are<br><em>actually clean</em>,<br>delivered every month.</h1>
+      <p class="hero-sub">We handle your bookkeeping, payroll, and financial reporting so you can focus on running your business — not drowning in receipts and spreadsheets.</p>
+      <div class="hero-trust">
+        <div class="ht">Catch up in as little as 1 week</div>
+        <div class="ht">Dedicated bookkeeper assigned to you</div>
+        <div class="ht">100% satisfaction guarantee</div>
+        <div class="ht">Tax-ready financials every month</div>
+      </div>
+    </div>
+    <!-- LEAD FORM -->
+    <div class="form-card" id="quote">
+      <div class="fc-title">Get Your Free Cleanup Quote</div>
+      <div class="fc-sub">Takes 60 seconds. No obligation.</div>
+      <div class="fc-field"><label>Business Name</label><input type="text" placeholder="Acme LLC"></div>
+      <div class="fc-field"><label>Your Name</label><input type="text" placeholder="Jane Smith"></div>
+      <div class="fc-field"><label>Email Address</label><input type="email" placeholder="jane@acmellc.com"></div>
+      <div class="fc-field"><label>Monthly Revenue</label><select><option>Under $25K/mo</option><option>$25K – $75K/mo</option><option>$75K – $250K/mo</option><option>$250K+/mo</option></select></div>
+      <div class="fc-field"><label>How Behind Are Your Books?</label><select><option>Current — need ongoing bookkeeper</option><option>1–3 months behind</option><option>4–12 months behind</option><option>1–2 years behind</option><option>More than 2 years / never done</option></select></div>
+      <button class="fc-btn" onclick="this.textContent='✓ Quote Request Received!';this.style.background='#059669'">Get My Free Quote →</button>
+      <div class="fc-guarantee">🔒 Your info is private. We never spam.</div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div><div class="stat-n">500<span>+</span></div><div class="stat-l">Businesses served across Austin</div></div>
+    <div><div class="stat-n">4.97<span>★</span></div><div class="stat-l">Average Google Rating</div></div>
+    <div><div class="stat-n">7<span>day</span></div><div class="stat-l">Average cleanup turnaround</div></div>
+    <div><div class="stat-n">98<span>%</span></div><div class="stat-l">Client retention rate</div></div>
+  </div>
+</div>
+
+<section class="how">
+  <div class="section-eyebrow">Simple Process</div>
+  <h2 class="section-h">From messy books to clean financials<br>in three simple steps</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-name">Free Consultation</div><div class="step-desc">We review your current books, understand your business, and give you a flat-rate quote with no surprises.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-name">We Do the Work</div><div class="step-desc">Your dedicated bookkeeper gets your books caught up and sets up a clean, organized system going forward.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-name">Monthly Clarity</div><div class="step-desc">Every month you receive clean P&Ls, cash flow statements, and a 10-minute CFO debrief — tax-ready, always.</div></div>
+  </div>
+</section>
+
+<div class="testis">
+  <div class="testis-inner">
+    <div class="section-eyebrow" style="color:var(--green)">Client Results</div>
+    <h2 class="section-h" style="color:var(--white);text-align:center;font-family:'DM Serif Display',serif">What Austin business owners say</h2>
+    <div class="testis-grid">
+      <div class="testi"><div class="testi-stars">★★★★★</div><div class="testi-q">"I was 18 months behind on my books and dreading tax season. ClearLedger had me fully caught up in 8 days. Worth every penny."</div><div class="testi-name">Marcus T. · Restaurant Owner · Austin, TX</div></div>
+      <div class="testi"><div class="testi-stars">★★★★★</div><div class="testi-q">"Finally understand my own financials. My bookkeeper explains everything clearly and I get clean reports every single month."</div><div class="testi-name">Jennifer L. · Agency Founder · Austin, TX</div></div>
+      <div class="testi"><div class="testi-stars">★★★★★</div><div class="testi-q">"Saved me $14K in tax penalties by finding errors my previous bookkeeper missed. These people actually care."</div><div class="testi-name">David K. · Real Estate Investor · Austin, TX</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom">
+  <h2>Ready to stop stressing about<br><em>your books?</em></h2>
+  <p>Get a free quote in 60 seconds. Most clients are onboarded within 48 hours.</p>
+  <div class="bottom-form">
+    <input class="bottom-input" type="email" placeholder="Your email address">
+    <button class="bottom-btn" onclick="this.textContent='Sent ✓'">Get Free Quote →</button>
+  </div>
+</div>
+<footer><span>© 2025 ClearLedger Bookkeeping · Austin, Texas</span><span>(512) 888-0100 · hello@clearledger.com</span></footer>
+</body></html>

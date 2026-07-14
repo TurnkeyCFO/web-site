@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wally's Collision Center — Veteran-Owned Auto Body & Collision Repair · Savannah, GA</title>
+<meta name="description" content="Veteran owned and operated since 2004. Wally's Collision Center in Savannah, GA does frame straightening, aluminum & structural repair, color-matched paint, mechanical service, and glass — on any make or model. Free estimates and a written warranty." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/wallys-collision-center/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Wally's Collision Center — Auto Body & Collision Repair, Savannah GA" />
+<meta property="og:description" content="Veteran owned since 2004. Frame, aluminum, structural, paint, mechanical & glass — any make or model. Free estimates. Written warranty." />
+<meta property="og:url" content="https://turnkeyweb.org/previews/wallys-collision-center/" />
+<meta property="og:image" content="https://turnkeyweb.org/previews/wallys-collision-center/assets/mercedes-after.jpg" />
+<meta name="theme-color" content="#BA0404" />
+
+<!--
+  Wally's Collision Center, LLC — draft preview for approval (Turnkey Web)
+  Art direction: light-first "precision restoration" industrial-editorial.
+  Type: Big Shoulders Display (engineered signage) + Inter (body) + Space Mono (measurement/HUD readouts).
+  Palette pulled from the client's real brand red (#BA0404, theme-color on wallyscollision.com).
+  Signature moment: animated "frame-alignment measurement HUD" canvas over a real in-bay repair photo.
+  All photos are the business's OWN gallery images (Mercedes before/after, Honda CR-V before/after, Bentley, restored Harley, storefront).
+  Reviews are REAL, verbatim, attributed by their true platform (Google / Carwise verified). No fabricated names.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        paper:    '#F5F2EC',
+        panel:    '#FBF9F4',
+        ink:      '#16181C',
+        graphite: '#17191D',
+        steel:    '#55636E',
+        steellt:  '#9FADB7',
+        redlt:    '#F87171',
+        slate:    '#3A434C',
+        brand:    '#BA0404',
+        brandhi:  '#E11414',
+        hair:     '#DED8CC',
+        hairdk:   '#2A2E34',
+      },
+      fontFamily: {
+        display: ['"Big Shoulders Display"', 'sans-serif'],
+        body:    ['Inter', 'sans-serif'],
+        mono:    ['"Space Mono"', 'monospace'],
+      },
+    }
+  }
+}
+</script>
+
+<style>
+  html { scroll-behavior: auto; scroll-padding-top: 84px; }
+  body { background:#F5F2EC; color:#16181C; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  ::selection { background:#BA0404; color:#fff; }
+
+  .disp { font-family:'Big Shoulders Display',sans-serif; letter-spacing:-0.01em; line-height:0.92; }
+  .mono { font-family:'Space Mono',monospace; }
+
+  /* shimmer on key headers */
+  .grad-text{
+    background:linear-gradient(100deg,#BA0404 0%,#E11414 22%,#7A1010 44%,#E11414 66%,#BA0404 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 8s linear infinite;
+  }
+  .grad-steel{
+    background:linear-gradient(100deg,#55636E 0%,#8A99A4 30%,#3A434C 55%,#8A99A4 78%,#55636E 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite;
+  }
+  @keyframes shimmer{ from{background-position:0% 50%} to{background-position:220% 50%} }
+
+  /* reveals */
+  [data-reveal]{ opacity:0; transform:translateY(30px); will-change:opacity,transform; }
+  [data-reveal].in{ opacity:1; transform:none; }
+
+  /* marquee */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .marquee-track{ display:flex; gap:2.6rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* hero */
+  .hero-photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 42%; }
+  .hero-video{ background:#0A0B0D; }
+
+  /* real photographic sign badge (authentic low-res crop / upscale) */
+  .sign-badge{ position:relative; border-radius:14px; overflow:hidden; box-shadow:0 24px 50px -28px rgba(20,24,28,.6), 0 0 0 1px rgba(255,255,255,.06) inset; }
+  .sign-badge img{ display:block; width:100%; height:100%; object-fit:cover; }
+  .sign-badge::after{ content:''; position:absolute; inset:0; pointer-events:none; box-shadow:0 0 0 1px rgba(0,0,0,.08) inset; }
+
+  /* people / trust cards */
+  .person{ transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s, border-color .5s; }
+  .person:hover{ transform:translateY(-5px); box-shadow:0 26px 50px -30px rgba(20,24,28,.55); border-color:rgba(186,4,4,.35); }
+  .mono-avatar{ font-family:'Big Shoulders Display',sans-serif; }
+  .ase-badge{ box-shadow:0 14px 30px -16px rgba(186,4,4,.5), 0 0 0 1px rgba(186,4,4,.14) inset; }
+  #hud{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+  .hero-scrim{ position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, rgba(10,11,13,.92) 0%, rgba(10,11,13,.72) 38%, rgba(10,11,13,.34) 70%, rgba(10,11,13,.55) 100%),
+      linear-gradient(0deg, rgba(10,11,13,.86) 0%, rgba(10,11,13,.10) 42%, rgba(10,11,13,.32) 100%);
+  }
+
+  /* pillar / card hover */
+  .pillar{ position:relative; transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s; }
+  .pillar::before{ content:''; position:absolute; left:0; top:0; height:3px; width:0; background:linear-gradient(90deg,#BA0404,#E11414); transition:width .55s cubic-bezier(.22,1,.36,1); }
+  .pillar:hover{ transform:translateY(-6px); box-shadow:0 22px 44px -26px rgba(20,24,28,.5); }
+  .pillar:hover::before{ width:100%; }
+
+  /* service row */
+  .svc{ transition:background .35s, padding .35s; }
+  .svc:hover{ background:#fff; }
+  .svc:hover .svc-idx{ color:#BA0404; }
+  .svc:hover .svc-arrow{ transform:translateX(6px); opacity:1; }
+  .svc-arrow{ transition:transform .35s, opacity .35s; opacity:.35; }
+
+  .btn-red{ position:relative; overflow:hidden; background:#BA0404; color:#fff; transition:transform .3s, filter .3s; }
+  .btn-red::after{ content:''; position:absolute; top:0; left:-120%; width:60%; height:100%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-18deg); transition:left .8s cubic-bezier(.22,1,.36,1); }
+  .btn-red:hover{ transform:translateY(-2px); filter:brightness(1.06); }
+  .btn-red:hover::after{ left:130%; }
+
+  .btn-ghost{ transition:background .3s,color .3s,border-color .3s,transform .3s; }
+  .btn-ghost:hover{ transform:translateY(-2px); }
+
+  .ul-grow{ position:relative; }
+  .ul-grow::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:#BA0404; transition:width .4s cubic-bezier(.22,1,.36,1); }
+  .ul-grow:hover::after{ width:100%; }
+
+  .badge-seal{ box-shadow:0 0 0 1px rgba(255,255,255,.14), 0 14px 30px -12px rgba(186,4,4,.6); }
+
+  .ba-tag{ font-family:'Space Mono',monospace; letter-spacing:.14em; }
+
+  .pulse-dot{ animation:pdot 2.2s ease-in-out infinite; }
+  @keyframes pdot{ 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.45; transform:scale(.82)} }
+
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(#000 1px, transparent 1.4px); background-size:4px 4px; }
+
+  @media (max-width:767px){
+    .marquee-track{ animation-duration:24s; }
+    .hero-photo{ object-position:52% 40%; }
+  }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="mt-3 flex items-center justify-between rounded-xl border border-white/10 bg-graphite/90 backdrop-blur-md px-3 sm:px-5 py-2.5 shadow-[0_10px_30px_-18px_rgba(0,0,0,.7)]">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="grid place-items-center h-9 w-9 rounded-md bg-brand text-white font-display font-800 text-xl leading-none">W</span>
+        <span class="leading-none">
+          <span class="block disp font-800 text-white text-[19px] tracking-tight">WALLY'S</span>
+          <span class="block mono text-[9px] tracking-[.24em] text-steellt">COLLISION CENTER</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-7 text-[13px] font-medium text-white/80">
+        <a href="#standard" class="ul-grow hover:text-white">The Standard</a>
+        <a href="#services" class="ul-grow hover:text-white">Services</a>
+        <a href="#work" class="ul-grow hover:text-white">Our Work</a>
+        <a href="#team" class="ul-grow hover:text-white">Team</a>
+        <a href="#reviews" class="ul-grow hover:text-white">Reviews</a>
+        <a href="#visit" class="ul-grow hover:text-white">Visit</a>
+      </nav>
+      <a href="tel:+19129209899" class="btn-red inline-flex items-center gap-2 rounded-lg px-3.5 sm:px-4 py-2 text-[13px] font-semibold">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="hidden sm:inline">(912) 920-9899</span>
+        <span class="sm:hidden">Call</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden bg-graphite">
+  <!-- Hero background: cinematic loop built from the shop's own photos. Poster + <noscript> keep the page intact if the video files haven't landed yet. -->
+  <video class="hero-photo hero-video" autoplay muted loop playsinline preload="auto"
+         poster="assets/mercedes-before.jpg" aria-hidden="true">
+    <source src="assets/hero-loop.webm" type="video/webm" />
+    <source src="assets/hero-loop.mp4" type="video/mp4" />
+  </video>
+  <noscript><img src="assets/mercedes-before.jpg" alt="A classic Mercedes in for collision repair inside Wally's Collision Center bay" class="hero-photo" /></noscript>
+  <div class="hero-scrim"></div>
+  <canvas id="hud"></canvas>
+
+  <div class="relative z-10 w-full">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 pb-16 sm:pb-20 pt-36">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 mb-6">
+          <span class="h-1.5 w-1.5 rounded-full bg-brandhi pulse-dot"></span>
+          <span class="mono text-[10.5px] tracking-[.22em] text-white/80">VETERAN OWNED &amp; OPERATED · SINCE 2004</span>
+        </div>
+
+        <h1 class="disp font-800 text-white text-[15vw] sm:text-[10.5vw] lg:text-[7.6rem] leading-[0.86]">
+          BACK TO<br class="hidden sm:block" />
+          <span class="grad-text">FACTORY-STRAIGHT.</span>
+        </h1>
+
+        <p class="mt-6 max-w-xl text-white/85 text-[16px] sm:text-[17px] leading-relaxed">
+          Frame straightening, aluminum &amp; structural repair, and color-matched paint on any make or model — from a daily driver to a Bentley. Savannah's veteran-owned collision shop, doing it right since 2004.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3.5">
+          <a href="#visit" class="btn-ghost inline-flex items-center gap-2 rounded-lg border border-white/25 bg-white/5 px-5 py-3 text-[14px] font-semibold text-white hover:bg-white hover:text-ink">
+            Get a free estimate
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="tel:+19129209899" class="btn-red inline-flex items-center gap-2 rounded-lg px-5 py-3 text-[14px] font-semibold">
+            Call (912) 920-9899
+          </a>
+        </div>
+
+        <!-- hero measurement readout -->
+        <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 mono text-[11px] tracking-[.12em] text-white/55">
+          <span><span class="text-brandhi">▸</span> FRAME ALIGN <span class="text-white/85" data-hud="align">0.00mm</span></span>
+          <span><span class="text-brandhi">▸</span> PANEL GAP <span class="text-white/85" data-hud="gap">OK</span></span>
+          <span><span class="text-brandhi">▸</span> PAINT MATCH <span class="text-white/85" data-hud="paint">100%</span></span>
+          <span><span class="text-brandhi">▸</span> WARRANTY <span class="text-white/85">WRITTEN</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-1.5 text-white/45">
+    <span class="mono text-[9px] tracking-[.3em]">SCROLL</span>
+    <span class="block h-8 w-px bg-gradient-to-b from-white/50 to-transparent"></span>
+  </div>
+</section>
+
+<!-- ============ TRUST / STATS BAND ============ -->
+<section class="relative bg-graphite text-white grain">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 py-10 sm:py-12">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-4 divide-y-0 lg:divide-x lg:divide-white/10">
+      <div class="lg:px-6" data-reveal>
+        <div class="disp font-800 text-[3.4rem] leading-none text-white"><span data-count="20" data-suffix="+">0</span></div>
+        <div class="mono text-[11px] tracking-[.16em] text-steellt mt-1">YEARS SERVING SAVANNAH, GA</div>
+      </div>
+      <div class="lg:px-6" data-reveal>
+        <div class="disp font-800 text-[3.4rem] leading-none text-white">ANY</div>
+        <div class="mono text-[11px] tracking-[.16em] text-steellt mt-1">MAKE &amp; MODEL, ANY YEAR</div>
+      </div>
+      <div class="lg:px-6" data-reveal>
+        <div class="disp font-800 text-[3.4rem] leading-none text-white"><span data-count="10" data-suffix="%">0</span></div>
+        <div class="mono text-[11px] tracking-[.16em] text-steellt mt-1">MILITARY PARTS DISCOUNT*</div>
+      </div>
+      <div class="lg:px-6" data-reveal>
+        <div class="disp font-800 text-[3.4rem] leading-none text-brandhi">FREE</div>
+        <div class="mono text-[11px] tracking-[.16em] text-steellt mt-1">WRITTEN ESTIMATES</div>
+      </div>
+    </div>
+    <p class="mono text-[10px] tracking-[.1em] text-white/35 mt-7">* 10% off parts on self-pay work for active &amp; veteran military members. Ask us for details.</p>
+  </div>
+</section>
+
+<!-- ============ THE WALLY'S STANDARD ============ -->
+<section id="standard" class="relative bg-paper">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
+    <div class="max-w-2xl mb-14" data-reveal>
+      <div class="mono text-[11px] tracking-[.24em] text-brand mb-4">01 — HOW WE WORK</div>
+      <h2 class="disp font-800 text-ink text-[10vw] sm:text-6xl lg:text-7xl">THE <span class="grad-text">WALLY'S</span> STANDARD</h2>
+      <p class="mt-5 text-slate text-[16px] leading-relaxed max-w-xl">
+        Every situation is different — a fender bender, a total-loss dispute, a classic worth saving. We're thorough about communication so the repair fits your needs, your insurance, and your budget without cutting corners on safety.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- pillar -->
+      <div class="pillar rounded-xl border border-hair bg-panel p-6 pt-8" data-reveal>
+        <div class="mono text-[11px] text-brand tracking-[.14em]">/01</div>
+        <h3 class="disp font-700 text-[1.7rem] text-ink mt-3 leading-tight">EXPERIENCED ESTIMATORS</h3>
+        <p class="text-slate text-[14.5px] leading-relaxed mt-3">We take the time to understand your situation — insurance complications included — and find the option that's right for you.</p>
+      </div>
+      <div class="pillar rounded-xl border border-hair bg-panel p-6 pt-8" data-reveal>
+        <div class="mono text-[11px] text-brand tracking-[.14em]">/02</div>
+        <h3 class="disp font-700 text-[1.7rem] text-ink mt-3 leading-tight">CERTIFIED TECHNICIANS</h3>
+        <p class="text-slate text-[14.5px] leading-relaxed mt-3">Frame, aluminum &amp; structural repair on any make or model — plus an A.S.E. certified mechanical tech on the team.</p>
+      </div>
+      <div class="pillar rounded-xl border border-hair bg-panel p-6 pt-8" data-reveal>
+        <div class="mono text-[11px] text-brand tracking-[.14em]">/03</div>
+        <h3 class="disp font-700 text-[1.7rem] text-ink mt-3 leading-tight">COMPETITIVE PRICING</h3>
+        <p class="text-slate text-[14.5px] leading-relaxed mt-3">Free estimates, repair options to fit every budget, and a 10% military discount on parts — never at the expense of safety or quality.</p>
+      </div>
+      <div class="pillar rounded-xl border border-hair bg-panel p-6 pt-8" data-reveal>
+        <div class="mono text-[11px] text-brand tracking-[.14em]">/04</div>
+        <h3 class="disp font-700 text-[1.7rem] text-ink mt-3 leading-tight">OUR QUALITY PROMISE</h3>
+        <p class="text-slate text-[14.5px] leading-relaxed mt-3">Only high-quality parts and materials — backed by a written warranty on the work we do. Ask us for the details on your repair.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<section class="bg-brand text-white py-4 border-y border-black/10">
+  <div class="marquee">
+    <div class="marquee-track disp font-700 text-[1.5rem] tracking-wide items-center">
+      <span>FRAME STRAIGHTENING</span><span class="opacity-50">✦</span>
+      <span class="italic">ALUMINUM REPAIR</span><span class="opacity-50">✦</span>
+      <span>COLOR-MATCHED PAINT</span><span class="opacity-50">✦</span>
+      <span class="italic">STRUCTURAL WELDING</span><span class="opacity-50">✦</span>
+      <span>PAINTLESS DENT REPAIR</span><span class="opacity-50">✦</span>
+      <span class="italic">AUTO GLASS</span><span class="opacity-50">✦</span>
+      <span>MECHANICAL REPAIR</span><span class="opacity-50">✦</span>
+      <!-- duplicate -->
+      <span>FRAME STRAIGHTENING</span><span class="opacity-50">✦</span>
+      <span class="italic">ALUMINUM REPAIR</span><span class="opacity-50">✦</span>
+      <span>COLOR-MATCHED PAINT</span><span class="opacity-50">✦</span>
+      <span class="italic">STRUCTURAL WELDING</span><span class="opacity-50">✦</span>
+      <span>PAINTLESS DENT REPAIR</span><span class="opacity-50">✦</span>
+      <span class="italic">AUTO GLASS</span><span class="opacity-50">✦</span>
+      <span>MECHANICAL REPAIR</span><span class="opacity-50">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="relative bg-paper">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+      <div class="lg:col-span-4" data-reveal>
+        <div class="mono text-[11px] tracking-[.24em] text-brand mb-4">02 — WHAT WE FIX</div>
+        <h2 class="disp font-800 text-ink text-[11vw] sm:text-6xl lg:text-[4.6rem] leading-[0.9]">FULL-SERVICE<br />BODY SHOP</h2>
+        <p class="mt-5 text-slate text-[15.5px] leading-relaxed">
+          Collision is where we started, but Wally's keeps your vehicle road-ready end to end — body, paint, glass, and the mechanical work underneath.
+        </p>
+        <a href="tel:+19129209899" class="mt-7 inline-flex items-center gap-2 text-brand font-semibold ul-grow text-[15px]">
+          Talk to an estimator
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="border-t border-hair">
+          <!-- rows -->
+          <div class="svc group flex items-start gap-5 border-b border-hair px-2 sm:px-4 py-6" data-reveal>
+            <div class="svc-idx mono text-[13px] text-steel pt-1 w-10 shrink-0">01</div>
+            <div class="flex-1">
+              <h3 class="disp font-700 text-[1.85rem] text-ink leading-none">Accident &amp; Collision Repair</h3>
+              <p class="text-slate text-[14.5px] mt-2 leading-relaxed max-w-xl">Frame straightening, welding, aluminum repair, suspension repair, and quality color-matched paint work.</p>
+            </div>
+            <svg class="svc-arrow h-5 w-5 text-brand mt-1.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </div>
+
+          <div class="svc group flex items-start gap-5 border-b border-hair px-2 sm:px-4 py-6" data-reveal>
+            <div class="svc-idx mono text-[13px] text-steel pt-1 w-10 shrink-0">02</div>
+            <div class="flex-1">
+              <h3 class="disp font-700 text-[1.85rem] text-ink leading-none">Paintless Dent Repair</h3>
+              <p class="text-slate text-[14.5px] mt-2 leading-relaxed max-w-xl">Dings and dents smoothed out without repainting — keeping your factory finish intact.</p>
+            </div>
+            <svg class="svc-arrow h-5 w-5 text-brand mt-1.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </div>
+
+          <div class="svc group flex items-start gap-5 border-b border-hair px-2 sm:px-4 py-6" data-reveal>
+            <div class="svc-idx mono text-[13px] text-steel pt-1 w-10 shrink-0">03</div>
+            <div class="flex-1">
+              <h3 class="disp font-700 text-[1.85rem] text-ink leading-none">Auto Glass Replacement</h3>
+              <p class="text-slate text-[14.5px] mt-2 leading-relaxed max-w-xl">Windshield and window replacement done right, so the cabin seals up like it left the factory.</p>
+            </div>
+            <svg class="svc-arrow h-5 w-5 text-brand mt-1.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </div>
+
+          <div class="svc group flex items-start gap-5 border-b border-hair px-2 sm:px-4 py-6" data-reveal>
+            <div class="svc-idx mono text-[13px] text-steel pt-1 w-10 shrink-0">04</div>
+            <div class="flex-1">
+              <h3 class="disp font-700 text-[1.85rem] text-ink leading-none">Mechanical &amp; Diagnostics</h3>
+              <p class="text-slate text-[14.5px] mt-2 leading-relaxed max-w-xl">A.S.E. certified diagnostic testing and mechanical repair — brakes, A/C, batteries, and more.</p>
+            </div>
+            <svg class="svc-arrow h-5 w-5 text-brand mt-1.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </div>
+
+          <div class="svc group flex items-start gap-5 border-b border-hair px-2 sm:px-4 py-6" data-reveal>
+            <div class="svc-idx mono text-[13px] text-steel pt-1 w-10 shrink-0">05</div>
+            <div class="flex-1">
+              <h3 class="disp font-700 text-[1.85rem] text-ink leading-none">Brakes, A/C &amp; Batteries</h3>
+              <p class="text-slate text-[14.5px] mt-2 leading-relaxed max-w-xl">Auto A/C repair, brake inspection &amp; replacement, and battery test/replacement to keep you moving.</p>
+            </div>
+            <svg class="svc-arrow h-5 w-5 text-brand mt-1.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </div>
+
+          <div class="svc group flex items-start gap-5 border-b border-hair px-2 sm:px-4 py-6" data-reveal>
+            <div class="svc-idx mono text-[13px] text-steel pt-1 w-10 shrink-0">06</div>
+            <div class="flex-1">
+              <h3 class="disp font-700 text-[1.85rem] text-ink leading-none">Wheel &amp; Tire Replacement</h3>
+              <p class="text-slate text-[14.5px] mt-2 leading-relaxed max-w-xl">New wheels and tires fitted and balanced — the finishing touch on a proper repair.</p>
+            </div>
+            <svg class="svc-arrow h-5 w-5 text-brand mt-1.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </div>
+
+          <div class="svc group flex items-start gap-5 border-b border-hair px-2 sm:px-4 py-6" data-reveal>
+            <div class="svc-idx mono text-[13px] text-steel pt-1 w-10 shrink-0">07</div>
+            <div class="flex-1">
+              <h3 class="disp font-700 text-[1.85rem] text-ink leading-none">Routine Maintenance</h3>
+              <p class="text-slate text-[14.5px] mt-2 leading-relaxed max-w-xl">Oil changes and belt, air filter &amp; hose inspect/replace — the upkeep that prevents the big bills.</p>
+            </div>
+            <svg class="svc-arrow h-5 w-5 text-brand mt-1.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUR WORK (real before/after) ============ -->
+<section id="work" class="relative bg-graphite text-white grain overflow-hidden">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
+    <div class="max-w-2xl mb-14" data-reveal>
+      <div class="mono text-[11px] tracking-[.24em] text-redlt mb-4">03 — REAL REPAIRS, REAL CUSTOMERS</div>
+      <h2 class="disp font-800 text-[11vw] sm:text-6xl lg:text-7xl text-white">FROM WRECKED<br />TO <span class="grad-text">RIGHT.</span></h2>
+      <p class="mt-5 text-white/70 text-[16px] leading-relaxed max-w-xl">
+        Straight from our own shop floor — no stock photos. Insurance total-loss disputes, classics worth saving, and everyday drivers, all returned road-ready.
+      </p>
+    </div>
+
+    <!-- before/after pair 1 -->
+    <div class="grid md:grid-cols-2 gap-4 mb-4" data-reveal>
+      <figure class="relative rounded-xl overflow-hidden border border-white/10 aspect-[4/3]">
+        <img src="assets/work-10.jpg" alt="Honda CR-V with crushed rear quarter panel before repair" class="absolute inset-0 w-full h-full object-cover" />
+        <figcaption class="absolute top-3 left-3 ba-tag text-[10px] bg-black/70 text-white/90 px-2.5 py-1 rounded">BEFORE</figcaption>
+      </figure>
+      <figure class="relative rounded-xl overflow-hidden border border-brand/40 aspect-[4/3]">
+        <img src="assets/work-01.jpg" alt="Honda CR-V after collision repair and refinishing at Wally's" class="absolute inset-0 w-full h-full object-cover" />
+        <figcaption class="absolute top-3 left-3 ba-tag text-[10px] bg-brand text-white px-2.5 py-1 rounded">AFTER</figcaption>
+      </figure>
+    </div>
+    <p class="mono text-[11px] tracking-[.08em] text-white/45 mb-12" data-reveal>▸ HONDA CR-V — REAR-QUARTER COLLISION · PANEL, PAINT &amp; BLEND</p>
+
+    <!-- before/after pair 2 -->
+    <div class="grid md:grid-cols-2 gap-4 mb-4" data-reveal>
+      <figure class="relative rounded-xl overflow-hidden border border-white/10 aspect-[4/3]">
+        <img src="assets/mercedes-before.jpg" alt="Classic Mercedes with hood damage before repair, in the Wally's bay" class="absolute inset-0 w-full h-full object-cover object-[50%_35%]" />
+        <figcaption class="absolute top-3 left-3 ba-tag text-[10px] bg-black/70 text-white/90 px-2.5 py-1 rounded">BEFORE</figcaption>
+      </figure>
+      <figure class="relative rounded-xl overflow-hidden border border-brand/40 aspect-[4/3]">
+        <img src="assets/mercedes-after.jpg" alt="The same classic Mercedes restored to a deep glossy finish" class="absolute inset-0 w-full h-full object-cover object-[50%_35%]" />
+        <figcaption class="absolute top-3 left-3 ba-tag text-[10px] bg-brand text-white px-2.5 py-1 rounded">AFTER</figcaption>
+      </figure>
+    </div>
+    <p class="mono text-[11px] tracking-[.08em] text-white/45 mb-14" data-reveal>▸ CLASSIC MERCEDES 560SL — HOOD REFINISH &amp; COLOR-MATCH RESTORATION</p>
+
+    <!-- range strip -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="relative rounded-xl overflow-hidden border border-white/10 aspect-square group" data-reveal>
+        <img src="assets/bentley.jpg" alt="Black Bentley Flying Spur serviced at Wally's Collision Center" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <span class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 to-transparent"></span>
+        <span class="absolute bottom-3 left-3 disp font-700 text-white text-lg">Bentley</span>
+      </div>
+      <div class="relative rounded-xl overflow-hidden border border-white/10 aspect-square group" data-reveal>
+        <img src="assets/work-05.jpg" alt="Restored Harley-Davidson bagger motorcycle" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <span class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 to-transparent"></span>
+        <span class="absolute bottom-3 left-3 disp font-700 text-white text-lg">Harley-Davidson</span>
+      </div>
+      <div class="relative rounded-xl overflow-hidden border border-white/10 aspect-square group" data-reveal>
+        <img src="assets/work-67.jpg" alt="Silver Honda CR-V finished and detailed" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <span class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 to-transparent"></span>
+        <span class="absolute bottom-3 left-3 disp font-700 text-white text-lg">Daily Drivers</span>
+      </div>
+      <div class="relative rounded-xl overflow-hidden border border-white/10 aspect-square group" data-reveal>
+        <img src="assets/work-06.jpg" alt="Vehicle in for repair at the Wally's Collision Center bay" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <span class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 to-transparent"></span>
+        <span class="absolute bottom-3 left-3 disp font-700 text-white text-lg">In Our Bay</span>
+      </div>
+    </div>
+    <p class="mono text-[11px] tracking-[.08em] text-white/45 mt-6" data-reveal>▸ FROM A DAILY DRIVER TO A BENTLEY — ANY MAKE, ANY MODEL, ANY YEAR.</p>
+  </div>
+</section>
+
+<!-- ============ THE PEOPLE (Wally & Michelle — named, real) ============ -->
+<section id="team" class="relative bg-paper border-t border-hair">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+
+      <!-- left: intro + real sign + ASE -->
+      <div class="lg:col-span-5" data-reveal>
+        <div class="mono text-[11px] tracking-[.24em] text-brand mb-4">04 — WHO YOU'LL WORK WITH</div>
+        <h2 class="disp font-800 text-ink text-[11vw] sm:text-6xl lg:text-[4.4rem] leading-[0.9]">THE PEOPLE<br />BEHIND THE <span class="grad-text">WORK.</span></h2>
+        <p class="mt-5 text-slate text-[15.5px] leading-relaxed max-w-md">
+          Most collision shops hand you off to a call center. Here you talk to Wally and Michelle directly — the same two names customers keep thanking by name in their reviews.
+        </p>
+
+        <!-- real photographic sign badge -->
+        <div class="sign-badge mt-8 aspect-[285/153] max-w-sm">
+          <img src="assets/logo-upscaled.jpg" alt="Wally's Collision Center oval sign — 912-920-9899" loading="lazy" />
+        </div>
+        <p class="mono text-[10.5px] tracking-[.12em] text-slate/80 mt-3">▸ THE REAL SIGN OUT FRONT — SAVANNAH, GA</p>
+
+        <!-- ASE trust badge -->
+        <div class="ase-badge mt-8 inline-flex items-center gap-3 rounded-xl border border-hair bg-panel px-4 py-3">
+          <span class="grid place-items-center h-11 w-11 rounded-lg bg-brand text-white shrink-0">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.2 6.8.9-5 4.7 1.3 6.8L12 17.8 5.9 20.6 7.2 13.8l-5-4.7 6.8-.9z"/></svg>
+          </span>
+          <div>
+            <div class="disp font-800 text-ink text-[1.25rem] leading-none">A.S.E. CERTIFIED</div>
+            <div class="mono text-[10.5px] tracking-[.12em] text-slate mt-1">MECHANICAL TECHNICIAN ON STAFF</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right: named people cards -->
+      <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+        <figure class="person rounded-xl border border-hair bg-panel p-6 pt-7 flex flex-col" data-reveal>
+          <div class="flex items-center gap-3.5">
+            <span class="mono-avatar grid place-items-center h-14 w-14 rounded-lg bg-graphite text-white font-800 text-3xl leading-none">W</span>
+            <div>
+              <div class="disp font-800 text-ink text-[1.6rem] leading-none">WALLY</div>
+              <div class="mono text-[10.5px] tracking-[.14em] text-brand mt-1.5">OWNER · VETERAN</div>
+            </div>
+          </div>
+          <p class="text-slate text-[14.5px] leading-relaxed mt-5 flex-1">Wally personally stays involved in the repairs that come through the shop — and he'll tell you straight what your car needs and what it doesn't.</p>
+          <blockquote class="mt-5 pt-4 border-t border-hair text-ink text-[14px] italic leading-relaxed">"Wally is honest and tells it like it is, which we appreciated."</blockquote>
+          <figcaption class="mono text-[10.5px] tracking-[.12em] text-slate mt-2">— SACHA P. · TOYOTA OWNER</figcaption>
+        </figure>
+
+        <figure class="person rounded-xl border border-hair bg-panel p-6 pt-7 flex flex-col" data-reveal>
+          <div class="flex items-center gap-3.5">
+            <span class="mono-avatar grid place-items-center h-14 w-14 rounded-lg bg-brand text-white font-800 text-3xl leading-none">M</span>
+            <div>
+              <div class="disp font-800 text-ink text-[1.6rem] leading-none">MICHELLE</div>
+              <div class="mono text-[10.5px] tracking-[.14em] text-brand mt-1.5">OFFICE MANAGER</div>
+            </div>
+          </div>
+          <p class="text-slate text-[14.5px] leading-relaxed mt-5 flex-1">Michelle keeps your estimate, your insurance paperwork, and your questions moving — the reason so many reviews mention how easy the whole process felt.</p>
+          <blockquote class="mt-5 pt-4 border-t border-hair text-ink text-[14px] italic leading-relaxed">"Michelle is the best — so friendly, helpful and patient!"</blockquote>
+          <figcaption class="mono text-[10.5px] tracking-[.12em] text-slate mt-2">— SACHA P. · TOYOTA OWNER</figcaption>
+        </figure>
+
+        <div class="person sm:col-span-2 rounded-xl border border-hair bg-graphite text-white p-6 sm:p-7 flex flex-wrap items-center justify-between gap-5 grain" data-reveal>
+          <div class="max-w-md">
+            <div class="disp font-800 text-[1.9rem] leading-tight">TWO NAMES. ONE SHOP. NO CALL CENTER.</div>
+            <p class="text-white/70 text-[14px] leading-relaxed mt-2">Free written estimate, honest options, and a real person who answers the phone.</p>
+          </div>
+          <a href="tel:+19129209899" class="btn-red inline-flex items-center gap-2 rounded-lg px-5 py-3 text-[14px] font-semibold shrink-0">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Wally's
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" class="relative bg-paper">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-14" data-reveal>
+      <div class="max-w-2xl">
+        <div class="mono text-[11px] tracking-[.24em] text-brand mb-4">05 — WHAT CUSTOMERS SAY</div>
+        <h2 class="disp font-800 text-ink text-[11vw] sm:text-6xl lg:text-7xl">TRUSTED WITH<br />THE <span class="grad-text">KEYS.</span></h2>
+      </div>
+      <div class="flex items-center gap-6">
+        <div>
+          <div class="flex items-center gap-1 text-brand">
+            <span class="disp font-800 text-4xl text-ink">4.8</span>
+            <svg class="h-5 w-5 fill-brand" viewBox="0 0 24 24"><path d="M12 2l2.9 6.2 6.8.9-5 4.7 1.3 6.8L12 17.8 5.9 20.6 7.2 13.8l-5-4.7 6.8-.9z"/></svg>
+          </div>
+          <div class="mono text-[10.5px] tracking-[.1em] text-slate mt-1">209 VERIFIED REVIEWS · 98% RECOMMEND</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- review cards (all verbatim + real, attributed by true source) -->
+      <figure class="pillar rounded-xl border border-hair bg-panel p-6 pt-7 flex flex-col" data-reveal>
+        <div class="flex gap-0.5 text-brand mb-3">★★★★★</div>
+        <blockquote class="text-ink text-[14.5px] leading-relaxed flex-1">"Especially impressed that the owner was directly involved and ensured that the repair was high quality. Worked easily with the insurance company. Finished product excellent! Office (Michelle) very responsive."</blockquote>
+        <figcaption class="mt-5 pt-4 border-t border-hair text-[13px]"><span class="font-semibold text-ink">Charles</span> <span class="text-slate">· Volvo owner · Carwise verified</span></figcaption>
+      </figure>
+
+      <figure class="pillar rounded-xl border border-hair bg-panel p-6 pt-7 flex flex-col" data-reveal>
+        <div class="flex gap-0.5 text-brand mb-3">★★★★★</div>
+        <blockquote class="text-ink text-[14.5px] leading-relaxed flex-1">"I had a great experience with Wally's. They were honest, knowledgeable, and took the time to explain everything clearly. The work was done efficiently and at a fair price, with no surprises."</blockquote>
+        <figcaption class="mt-5 pt-4 border-t border-hair text-[13px]"><span class="font-semibold text-ink">Cassady</span> <span class="text-slate">· Subaru owner · Carwise verified</span></figcaption>
+      </figure>
+
+      <figure class="pillar rounded-xl border border-hair bg-panel p-6 pt-7 flex flex-col" data-reveal>
+        <div class="flex gap-0.5 text-brand mb-3">★★★★★</div>
+        <blockquote class="text-ink text-[14.5px] leading-relaxed flex-1">"Very satisfied! The amount of time it took and how the car now looks is fantastic!!! Michelle is the best — so friendly, helpful and patient. Wally is honest and tells it like it is, which we appreciated!"</blockquote>
+        <figcaption class="mt-5 pt-4 border-t border-hair text-[13px]"><span class="font-semibold text-ink">Sacha Peter</span> <span class="text-slate">· Toyota owner · Carwise verified</span></figcaption>
+      </figure>
+
+      <figure class="pillar rounded-xl border border-hair bg-panel p-6 pt-7 flex flex-col" data-reveal>
+        <div class="flex gap-0.5 text-brand mb-3">★★★★★</div>
+        <blockquote class="text-ink text-[14.5px] leading-relaxed flex-1">"Excellent, professional and prompt service. Wally is the best in the business. I am going there with my wife's car next in a few days!!"</blockquote>
+        <figcaption class="mt-5 pt-4 border-t border-hair text-[13px]"><span class="font-semibold text-ink">Subu</span> <span class="text-slate">· Honda owner · Carwise verified</span></figcaption>
+      </figure>
+
+      <figure class="pillar rounded-xl border border-hair bg-panel p-6 pt-7 flex flex-col" data-reveal>
+        <div class="flex gap-0.5 text-brand mb-3">★★★★★</div>
+        <blockquote class="text-ink text-[14.5px] leading-relaxed flex-1">"Noticeably cheaper than other shops in the area, the paint quality on the hood and roof is excellent, and they offer a unique warranty. Great value and solid work — I'd send a friend here."</blockquote>
+        <figcaption class="mt-5 pt-4 border-t border-hair text-[13px]"><span class="font-semibold text-ink">Hector</span> <span class="text-slate">· Dodge owner · Carwise verified</span></figcaption>
+      </figure>
+
+      <figure class="pillar rounded-xl border border-hair bg-panel p-6 pt-7 flex flex-col" data-reveal>
+        <div class="flex gap-0.5 text-brand mb-3">★★★★★</div>
+        <blockquote class="text-ink text-[14.5px] leading-relaxed flex-1">"Nice people and the quality of work is great."</blockquote>
+        <figcaption class="mt-5 pt-4 border-t border-hair text-[13px]"><span class="font-semibold text-ink">Spencer F.</span> <span class="text-slate">· Google review</span></figcaption>
+      </figure>
+
+      <!-- photo-backed review (real customer's repaired Outback) -->
+      <figure class="pillar rounded-xl border border-hair bg-panel overflow-hidden flex flex-col" data-reveal>
+        <div class="relative aspect-[16/10] overflow-hidden">
+          <img src="assets/yelp-outback.jpg" alt="A customer's 2017 Subaru Outback restored to like-new condition at Wally's" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+          <figcaption class="absolute top-3 left-3 ba-tag text-[10px] bg-brand text-white px-2.5 py-1 rounded">CUSTOMER PHOTO</figcaption>
+        </div>
+        <div class="p-6 pt-5 flex flex-col flex-1">
+          <div class="flex gap-0.5 text-brand mb-3">★★★★★</div>
+          <blockquote class="text-ink text-[14.5px] leading-relaxed flex-1">"So happy with my 2017 Outback getting back to new condition as a result of Wally's!"</blockquote>
+          <figcaption class="mt-5 pt-4 border-t border-hair text-[13px]"><span class="font-semibold text-ink">Subaru owner</span> <span class="text-slate">· Yelp review</span></figcaption>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section id="visit" class="relative bg-paper border-t border-hair">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+      <div data-reveal>
+        <div class="mono text-[11px] tracking-[.24em] text-brand mb-4">06 — FIND US</div>
+        <h2 class="disp font-800 text-ink text-[11vw] sm:text-6xl lg:text-7xl">STOP IN FOR A<br /><span class="grad-text">FREE ESTIMATE.</span></h2>
+        <p class="mt-5 text-slate text-[16px] leading-relaxed max-w-lg">
+          On Abercorn Street in Savannah — look for the oval sign and the red roof. Bring the vehicle by during estimate hours — no appointment needed for a look, though we recommend one if your claim has any complications.
+        </p>
+
+        <div class="mt-8 sign-badge aspect-[16/9]">
+          <img src="assets/building-real.jpg" alt="Wally's Collision Center building in Savannah GA — oval sign on the wall, red metal roof" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+
+        <div class="mt-8 grid sm:grid-cols-2 gap-6">
+          <!-- ADDRESS FLAG: site currently shows 12032 Middleground Rd but Yelp/FB + our own scraped office-window photo show 10407 Abercorn St — confirm correct current address with the client before this goes live -->
+          <div>
+            <div class="mono text-[11px] tracking-[.16em] text-brand mb-2">ADDRESS</div>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=10407+Abercorn+St+Savannah+GA+31419" target="_blank" rel="noopener" class="ul-grow text-ink font-medium text-[15px] leading-snug">
+              10407 Abercorn St<br />Savannah, GA 31419
+            </a>
+          </div>
+          <div>
+            <div class="mono text-[11px] tracking-[.16em] text-brand mb-2">PHONE</div>
+            <a href="tel:+19129209899" class="ul-grow text-ink font-medium text-[15px]">(912) 920-9899</a>
+          </div>
+          <div>
+            <div class="mono text-[11px] tracking-[.16em] text-brand mb-2">SHOP HOURS</div>
+            <p class="text-ink text-[15px] leading-snug">Mon – Fri · 8:00 AM – 5:30 PM<br /><span class="text-slate text-[13.5px]">Saturday &amp; Sunday · Closed</span></p>
+          </div>
+          <div>
+            <div class="mono text-[11px] tracking-[.16em] text-brand mb-2">FREE ESTIMATES</div>
+            <p class="text-ink text-[15px] leading-snug">Mon – Fri<br /><span class="text-slate text-[13.5px]">8:30–11 AM &amp; 1:00–4:30 PM</span></p>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="tel:+19129209899" class="btn-red inline-flex items-center gap-2 rounded-lg px-5 py-3 text-[14px] font-semibold">Call the shop</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=10407+Abercorn+St+Savannah+GA+31419" target="_blank" rel="noopener" class="btn-ghost inline-flex items-center gap-2 rounded-lg border border-ink/20 px-5 py-3 text-[14px] font-semibold text-ink hover:bg-ink hover:text-white">Get directions</a>
+        </div>
+      </div>
+
+      <div data-reveal>
+        <div class="rounded-xl overflow-hidden border border-hair shadow-[0_24px_50px_-32px_rgba(20,24,28,.5)]">
+          <iframe
+            title="Map to Wally's Collision Center, Savannah GA"
+            src="https://www.google.com/maps?q=10407+Abercorn+St,+Savannah,+GA+31419&output=embed"
+            width="100%" height="560" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="relative bg-brand text-white overflow-hidden">
+  <div class="absolute inset-0 opacity-[.14]" style="background-image:radial-gradient(#fff 1px,transparent 1.4px); background-size:22px 22px;"></div>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-24 text-center">
+    <div class="inline-flex items-center gap-2 rounded-full border border-white/25 px-3.5 py-1.5 mb-6 badge-seal" data-reveal>
+      <span class="h-1.5 w-1.5 rounded-full bg-white pulse-dot"></span>
+      <span class="mono text-[10.5px] tracking-[.2em]">VETERAN OWNED · SINCE 2004</span>
+    </div>
+    <h2 class="disp font-800 text-[12vw] sm:text-7xl lg:text-[6rem] leading-[0.9]" data-reveal>GOT DAMAGE?<br />LET'S TAKE A LOOK.</h2>
+    <p class="mt-6 text-white/85 text-[16.5px] max-w-xl mx-auto" data-reveal>
+      Free written estimates, honest options for any budget, and a warranty in writing. Any make, any model — we'll get it back to factory-straight.
+    </p>
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-3.5" data-reveal>
+      <a href="tel:+19129209899" class="inline-flex items-center gap-2 rounded-lg bg-white text-brand px-6 py-3.5 text-[15px] font-bold btn-ghost hover:bg-ink hover:text-white">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (912) 920-9899
+      </a>
+      <a href="#visit" class="inline-flex items-center gap-2 rounded-lg border border-white/40 px-6 py-3.5 text-[15px] font-semibold btn-ghost hover:bg-white/10">Directions &amp; hours</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-graphite text-white grain">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 py-14">
+    <div class="grid md:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="grid place-items-center h-10 w-10 rounded-md bg-brand text-white font-display font-800 text-2xl leading-none">W</span>
+          <span class="leading-none">
+            <span class="block disp font-800 text-white text-2xl tracking-tight">WALLY'S</span>
+            <span class="block mono text-[9px] tracking-[.24em] text-steellt">COLLISION CENTER, LLC</span>
+          </span>
+        </div>
+        <p class="text-white/60 text-[14px] leading-relaxed max-w-xs">Veteran owned and operated auto body &amp; collision repair in Savannah, GA. Doing it right since 2004.</p>
+      </div>
+      <div>
+        <div class="mono text-[11px] tracking-[.18em] text-steellt mb-4">SERVICES</div>
+        <ul class="space-y-2 text-white/70 text-[14px]">
+          <li>Collision &amp; frame repair</li>
+          <li>Aluminum &amp; structural welding</li>
+          <li>Color-matched paint &amp; PDR</li>
+          <li>Glass, mechanical &amp; maintenance</li>
+        </ul>
+      </div>
+      <div>
+        <div class="mono text-[11px] tracking-[.18em] text-steellt mb-4">VISIT</div>
+        <ul class="space-y-2 text-white/70 text-[14px]">
+          <li><a href="https://www.google.com/maps/dir/?api=1&destination=10407+Abercorn+St+Savannah+GA+31419" target="_blank" rel="noopener" class="ul-grow">10407 Abercorn St, Savannah, GA 31419</a></li>
+          <li><a href="tel:+19129209899" class="ul-grow">(912) 920-9899</a></li>
+          <li>Mon–Fri · 8:00 AM – 5:30 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-white/45">
+      <p>© 2026 Wally's Collision Center, LLC · All rights reserved.</p>
+      <p class="mono tracking-[.12em]">DRAFT PREVIEW BY <span class="text-white/70">TURNKEY WEB</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-2 border-t border-black/10">
+  <a href="tel:+19129209899" class="flex items-center justify-center gap-2 bg-brand text-white py-3.5 text-[14px] font-semibold">
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=10407+Abercorn+St+Savannah+GA+31419" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-graphite text-white py-3.5 text-[14px] font-semibold">
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AutoBodyShop",
+  "name":"Wally's Collision Center, LLC",
+  "image":"https://turnkeyweb.org/previews/wallys-collision-center/assets/mercedes-after.jpg",
+  "url":"https://turnkeyweb.org/previews/wallys-collision-center/",
+  "telephone":"+1-912-920-9899",
+  "priceRange":"$$",
+  "foundingDate":"2004",
+  "slogan":"Back to factory-straight. Veteran owned since 2004.",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"10407 Abercorn St",
+    "addressLocality":"Savannah",
+    "addressRegion":"GA",
+    "postalCode":"31419",
+    "addressCountry":"US"
+  },
+  "geo":{"@type":"GeoCoordinates","latitude":31.9885,"longitude":-81.1830},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:30"}
+  ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"209"},
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Collision & frame repair"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Aluminum & structural welding"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Color-matched auto painting"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Paintless dent repair"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Auto glass replacement"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Mechanical repair & diagnostics"}}
+  ]
+}
+</script>
+
+<!-- libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+  /* ---- nav condense ---- */
+  var nav = document.getElementById('nav');
+  function onScrollNav(){ if(window.scrollY>20){ nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); } }
+  onScrollNav(); window.addEventListener('scroll', onScrollNav, {passive:true});
+
+  /* ---- Lenis (single rAF via GSAP ticker) ---- */
+  var lenis = null;
+  if(window.Lenis && !reduce){
+    lenis = new Lenis({ duration:1.1, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}, smoothWheel:true, smoothTouch:false });
+    if(window.gsap){
+      gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+      gsap.ticker.lagSmoothing(0);
+      if(window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+    } else {
+      function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+    }
+  }
+  if(window.ScrollTrigger) ScrollTrigger.config({ ignoreMobileResize:true });
+
+  /* anchor scroll */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id=a.getAttribute('href'); if(id.length<2) return;
+      var t=document.querySelector(id); if(!t) return;
+      e.preventDefault();
+      if(lenis){ lenis.scrollTo(t,{offset:-72}); } else { t.scrollIntoView({behavior:'smooth'}); }
+    });
+  });
+
+  /* ---- reveals ---- */
+  if(window.gsap && window.ScrollTrigger){
+    gsap.utils.toArray('[data-reveal]').forEach(function(el){
+      gsap.to(el,{ opacity:1, y:0, duration:.66, ease:'power3.out',
+        scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+        onComplete:function(){ el.classList.add('in'); el.style.willChange='auto'; } });
+    });
+
+    /* count-up */
+    gsap.utils.toArray('[data-count]').forEach(function(el){
+      var target=parseFloat(el.getAttribute('data-count'))||0;
+      var suffix=el.getAttribute('data-suffix')||'';
+      ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:function(){
+        var o={v:0}; gsap.to(o,{v:target, duration:1.5, ease:'power2.out', onUpdate:function(){ el.textContent=Math.round(o.v)+suffix; }});
+      }});
+    });
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('in'); el.style.opacity=1; el.style.transform='none'; });
+  }
+
+  /* ---- Hero measurement HUD canvas ---- */
+  (function(){
+    var canvas=document.getElementById('hud'); if(!canvas) return;
+    var ctx=canvas.getContext('2d');
+    var hero=canvas.parentElement;
+    var dpr=Math.min(window.devicePixelRatio||1, isMobile?1.5:2);
+    var W=0,H=0, running=true, t=0;
+    var points=[];
+    function size(){
+      var r=hero.getBoundingClientRect(); W=r.width; H=r.height;
+      canvas.width=W*dpr; canvas.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+      points=[
+        {x:W*0.30,y:H*0.52},{x:W*0.52,y:H*0.44},{x:W*0.68,y:H*0.60},{x:W*0.82,y:H*0.40}
+      ];
+    }
+    size(); window.addEventListener('resize', size);
+
+    function draw(){
+      if(!running){ return; }
+      ctx.clearRect(0,0,W,H);
+      /* faint blueprint grid on right half only (keeps left text clean) */
+      ctx.save();
+      ctx.globalAlpha=0.10; ctx.strokeStyle='#8AA0AE'; ctx.lineWidth=1;
+      var gs=64, startX=W*0.5;
+      for(var x=startX; x<W; x+=gs){ ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+      for(var y=0; y<H; y+=gs){ ctx.beginPath(); ctx.moveTo(startX,y); ctx.lineTo(W,y); ctx.stroke(); }
+      ctx.restore();
+
+      /* crosshair reticles, gently pulsing (no scan line) */
+      points.forEach(function(p,i){
+        var pulse = 0.5+0.5*Math.sin(t*2.4 + i);
+        var a = 0.32 + pulse*0.18;
+        ctx.strokeStyle = 'rgba(180,200,210,'+a+')';
+        ctx.lineWidth = 1;
+        var rr = 11;
+        ctx.beginPath(); ctx.arc(p.x,p.y,rr,0,Math.PI*2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(p.x-rr-6,p.y); ctx.lineTo(p.x-rr+3,p.y);
+        ctx.moveTo(p.x+rr-3,p.y); ctx.lineTo(p.x+rr+6,p.y);
+        ctx.moveTo(p.x,p.y-rr-6); ctx.lineTo(p.x,p.y-rr+3);
+        ctx.moveTo(p.x,p.y+rr-3); ctx.lineTo(p.x,p.y+rr+6); ctx.stroke();
+      });
+      t+=0.016;
+      raf=requestAnimationFrame(draw);
+    }
+    var raf;
+    function start(){ if(!running){ running=true; raf=requestAnimationFrame(draw); } }
+    function stop(){ running=false; if(raf) cancelAnimationFrame(raf); }
+
+    if(reduce){
+      /* static single frame */
+      size(); running=true; draw(); stop();
+    } else {
+      running=true; raf=requestAnimationFrame(draw);
+      document.addEventListener('visibilitychange', function(){ if(document.hidden){ stop(); } else { start(); } });
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ start(); } else { stop(); } }); },{threshold:0.02}).observe(hero);
+      }
+    }
+
+    /* animate the hero readouts once */
+    var alignEl=document.querySelector('[data-hud="align"]');
+    if(alignEl && window.gsap){
+      var o={v:1.42}; gsap.to(o,{v:0.00,duration:2.2,ease:'power2.out',delay:.4,onUpdate:function(){ alignEl.textContent=o.v.toFixed(2)+'mm'; }});
+    }
+  })();
+
+  /* ---- 6s safety net ---- */
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      if(getComputedStyle(el).opacity!=='1'){ el.classList.add('in'); el.style.opacity=1; el.style.transform='none'; }
+    });
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      if(el.textContent.trim()==='0'){ el.textContent=el.getAttribute('data-count')+(el.getAttribute('data-suffix')||''); }
+    });
+  },6000);
+})();
+</script>
+
+<style>
+  #nav.scrolled > div > div{ background:rgba(23,25,29,.97); }
+</style>
+</body>
+</html>

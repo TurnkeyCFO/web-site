@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<!--
+  Ink N Flesh Tattoo Studios — Atlanta, GA  (Turnkey Web draft preview)
+  Art direction: dark editorial ink-studio. Typographic STENCIL hero (outline→fill).
+  Signature section = "The Collective" artist roster (chair-rental model made visible).
+  Type: Anton (display) + Caveat (handwriting nod to script tattoos) + Inter (body).
+  Palette pulled from tattoo culture: ink-black / bone / vermilion / aged gold.
+  All facts (phone, address, hours, 5.0/56, artist names) are researched — no fabrication.
+  Artist cards use monogram badges (no fabricated faces / photos).
+-->
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ink N Flesh Tattoo Studios | Custom Tattoos &amp; Piercings — Atlanta, GA</title>
+<meta name="description" content="Ink N Flesh is a 5-star tattoo &amp; piercing studio in Atlanta, GA. Custom tattoos, black &amp; grey, fine-line, piercings, and tattoo removal from a collective of resident and guest artists. Open late, 7 days. Call (678) 656-6761." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/ink-n-flesh/" />
+<meta property="og:type" content="business.business" />
+<meta property="og:title" content="Ink N Flesh Tattoo Studios — Atlanta, GA" />
+<meta property="og:description" content="A collective of resident and guest tattoo artists in Atlanta. Custom work, piercings, tattoo removal. Open late, 7 days." />
+<meta property="og:url" content="https://turnkeyweb.org/previews/ink-n-flesh/" />
+<meta property="og:image" content="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=1200&q=70&auto=format&fit=crop" />
+<meta name="theme-color" content="#0A0A0C" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:    '#0A0A0C',
+          char:   '#141417',
+          panel:  '#1C1C20',
+          line:   '#2A2A30',
+          bone:   '#EFE9DE',
+          ash:    '#8A8A92',
+          verm:   '#D23B2E',
+          vermhi: '#E8513F',
+          gold:   '#C8A24C',
+        },
+        fontFamily: {
+          display: ['Anton', 'sans-serif'],
+          script:  ['Caveat', 'cursive'],
+          sans:    ['Inter', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#0A0A0C; color:#EFE9DE; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  ::selection { background:#D23B2E; color:#fff; }
+
+  .display { font-family:'Anton',sans-serif; letter-spacing:.01em; line-height:.92; text-transform:uppercase; }
+  .script  { font-family:'Caveat',cursive; }
+  .tracky  { letter-spacing:.34em; }
+
+  /* grain + radial atmosphere */
+  .grain::after {
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.06; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .ambient { position:absolute; border-radius:50%; filter:blur(90px); pointer-events:none; will-change:transform; }
+  .amb-verm { background:radial-gradient(circle,rgba(210,59,46,.40),transparent 62%); }
+  .amb-gold { background:radial-gradient(circle,rgba(200,162,76,.22),transparent 64%); }
+  @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(46px,-34px) scale(1.1);} }
+  @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-40px,30px) scale(1.12);} }
+
+  /* SIGNATURE: stencil hero — letters draw as outline, then fill */
+  .stencil span {
+    color:transparent;
+    -webkit-text-stroke:2px rgba(239,233,222,.85);
+    transition: color 1.1s cubic-bezier(.2,.7,.2,1), -webkit-text-stroke-color 1.1s ease;
+  }
+  .stencil.filled span { color:#EFE9DE; -webkit-text-stroke-color:transparent; }
+  .stencil.filled .accent { color:#D23B2E; }
+
+  /* shimmer accent */
+  .grad-verm {
+    background:linear-gradient(100deg,#D23B2E,#E8513F,#C8A24C,#D23B2E);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:shimmer 9s linear infinite;
+  }
+  @keyframes shimmer { from{background-position:0 0;} to{background-position:220% 0;} }
+
+  /* kinetic marquee */
+  .marquee { overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marquee-track { display:flex; gap:3rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state:paused; }
+  @keyframes scrollX { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* reveals */
+  [data-reveal]{opacity:0; transform:translateY(34px); transition:opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1);}
+  [data-reveal].in{opacity:1; transform:none;}
+  [data-reveal-image]{clip-path:inset(0 0 100% 0); transition:clip-path 1.35s cubic-bezier(.2,.7,.2,1);}
+  [data-reveal-image].in{clip-path:inset(0 0 0% 0);}
+
+  /* buttons */
+  .btn-verm{position:relative; overflow:hidden; background:#D23B2E; color:#fff; transition:transform .4s ease, filter .4s ease;}
+  .btn-verm:hover{transform:translateY(-3px); filter:brightness(1.07);}
+  .btn-verm::after{content:""; position:absolute; inset:0; transform:translateX(-120%); transition:transform .85s cubic-bezier(.2,.7,.2,1);
+    background:linear-gradient(110deg,transparent,rgba(255,255,255,.32),transparent);}
+  .btn-verm:hover::after{transform:translateX(120%);}
+  .btn-ghost{border:1px solid rgba(239,233,222,.35); transition:border-color .4s ease, background .4s ease, transform .4s ease;}
+  .btn-ghost:hover{border-color:#C8A24C; background:rgba(200,162,76,.08); transform:translateY(-3px);}
+
+  /* artist card — signature needle-line draw on hover */
+  .artist{position:relative; overflow:hidden; transition:transform .5s cubic-bezier(.2,.7,.2,1), border-color .5s ease;}
+  .artist:hover{transform:translateY(-7px); border-color:rgba(210,59,46,.6);}
+  .artist::before{content:""; position:absolute; left:0; top:0; height:2px; width:0; background:linear-gradient(90deg,#D23B2E,#C8A24C);
+    transition:width .7s cubic-bezier(.2,.7,.2,1);}
+  .artist:hover::before{width:100%;}
+  .mono{font-family:'Anton',sans-serif; letter-spacing:.02em;}
+
+  .card-svc{transition:transform .5s ease, background .5s ease;}
+  .card-svc:hover{transform:translateX(6px); background:rgba(200,162,76,.05);}
+
+  .dot-pulse{animation:pulse 2.2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1; transform:scale(1);}50%{opacity:.45; transform:scale(.82);}}
+
+  .underline-grow{position:relative;}
+  .underline-grow::after{content:""; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:linear-gradient(90deg,#D23B2E,#C8A24C); transition:width .45s ease;}
+  .underline-grow:hover::after{width:100%;}
+
+  .hairline{height:1px; background:linear-gradient(90deg,transparent,rgba(200,162,76,.4),transparent);}
+
+  /* ===== INTRO PRELOADER (first 4s of the studio reel, then lift into the site) ===== */
+  #preloader{position:fixed; inset:0; z-index:120; background:#0A0A0C; display:flex; align-items:center; justify-content:center; overflow:hidden;
+    transition:opacity 1.05s cubic-bezier(.4,0,.2,1), transform 1.2s cubic-bezier(.2,.7,.2,1), filter 1.05s ease;}
+  #preloader.done{opacity:0; transform:scale(1.07); filter:blur(10px); pointer-events:none;}
+  #preloader video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.92;}
+  #preloader .pl-grad{position:absolute; inset:0;
+    background:linear-gradient(180deg,rgba(10,10,12,.55) 0%,rgba(10,10,12,.30) 42%,rgba(10,10,12,.92) 100%);}
+  #preloader .pl-vig{position:absolute; inset:0; box-shadow:inset 0 0 260px 70px rgba(0,0,0,.92); pointer-events:none;}
+  #pl-content{position:relative; z-index:4; text-align:center; padding:0 1.5rem; transform:translateY(-2%);}
+  #pl-bar{height:2px; width:min(300px,62vw); margin:1.5rem auto 0; background:rgba(239,233,222,.16); overflow:hidden; border-radius:3px;}
+  #pl-bar i{display:block; height:100%; width:0; background:linear-gradient(90deg,#D23B2E,#C8A24C); transition:width .25s linear;}
+  #pl-skip{opacity:0; animation:plFade 1s ease 1.2s forwards;}
+  @keyframes plFade{to{opacity:1;}}
+  html.pl-lock, body.pl-lock{overflow:hidden !important; height:100%;}
+  @media (prefers-reduced-motion: reduce){ #preloader{display:none !important;} }
+</style>
+</head>
+
+<body class="bg-ink text-bone">
+
+<!-- ================= INTRO PRELOADER ================= -->
+<div id="preloader" class="grain" role="dialog" aria-label="Ink N Flesh intro">
+  <video id="pl-video" muted playsinline autoplay preload="auto" poster="assets/intro-poster.jpg">
+    <source src="assets/intro.mp4" type="video/mp4" />
+  </video>
+  <div class="pl-grad"></div>
+  <div class="ambient amb-verm w-[460px] h-[460px]" style="top:-140px; right:-90px; animation:drift1 24s ease-in-out infinite;"></div>
+  <div class="ambient amb-gold w-[360px] h-[360px]" style="bottom:-120px; left:-90px; animation:drift2 28s ease-in-out infinite;"></div>
+  <div class="pl-vig"></div>
+  <div id="pl-content">
+    <div class="tracky text-[11px] sm:text-[12px] text-gold uppercase mb-5">Atlanta &middot; GA</div>
+    <div id="pl-word" class="stencil display text-[16vw] sm:text-[11vw] lg:text-[8.5rem] leading-[.88]">
+      <span>INK</span> <span class="accent">N</span> <span>FLESH</span>
+    </div>
+    <div class="script text-2xl sm:text-3xl text-bone/85 mt-1">custom tattoos &amp; piercings</div>
+    <div id="pl-bar"><i></i></div>
+    <button id="pl-skip" class="mt-6 text-[11px] tracking-[.3em] uppercase text-ash hover:text-bone transition">Tap to enter</button>
+  </div>
+</div>
+<script>
+(function(){
+  var pl = document.getElementById('preloader');
+  if(!pl) return;
+  var html = document.documentElement, body = document.body;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ pl.parentNode && pl.parentNode.removeChild(pl); return; }
+  html.classList.add('pl-lock'); body.classList.add('pl-lock');
+
+  var done = false;
+  function dismiss(){
+    if(done) return; done = true;
+    pl.classList.add('done');
+    html.classList.remove('pl-lock'); body.classList.remove('pl-lock');
+    try { document.querySelector('#top .stencil').classList.add('filled'); } catch(e){}
+    setTimeout(function(){ if(pl.parentNode) pl.parentNode.removeChild(pl); }, 1200);
+  }
+
+  // fill the preloader wordmark just after the reel starts
+  setTimeout(function(){ var w=document.getElementById('pl-word'); if(w) w.classList.add('filled'); }, 650);
+
+  var v = document.getElementById('pl-video');
+  var bar = document.querySelector('#pl-bar i');
+  var CAP = 4.0; // first 4 seconds only
+
+  // progress bar fills smoothly over CAP, driven by rAF (works even if autoplay is blocked)
+  var start = performance.now();
+  (function tick(now){
+    if(done) return;
+    var pct = Math.min(100, ((now - start) / (CAP * 1000)) * 100);
+    if(bar) bar.style.width = pct + '%';
+    if(pct < 100) requestAnimationFrame(tick);
+  })(start);
+
+  if(v){
+    var p = v.play(); if(p && p.catch) p.catch(function(){});
+    // hold the last frame if the clip runs a hair short, so the full 4s window always shows
+    v.addEventListener('ended', function(){ try{ v.pause(); v.currentTime = Math.max(0, (v.duration||CAP) - 0.05); }catch(e){} });
+  }
+  // deterministic reveal at the full 4s mark (also covers autoplay-blocked / load-fail)
+  setTimeout(dismiss, CAP * 1000 + 200);
+  document.getElementById('pl-skip').addEventListener('click', function(e){ e.stopPropagation(); dismiss(); });
+  pl.addEventListener('click', dismiss);
+})();
+</script>
+
+<!-- ================= NAV ================= -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-[68px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5 group">
+      <span class="inline-flex items-center justify-center w-9 h-9 rounded-[7px] bg-verm text-white display text-xl leading-none pt-[3px]">I</span>
+      <span class="display text-bone text-lg sm:text-xl leading-none pt-[2px]">INK&nbsp;N&nbsp;FLESH</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-9 text-[13px] tracking-wide text-ash">
+      <a href="#craft"   class="underline-grow hover:text-bone transition">The Work</a>
+      <a href="#collective" class="underline-grow hover:text-bone transition">Artists</a>
+      <a href="#voices"  class="underline-grow hover:text-bone transition">Reviews</a>
+      <a href="#visit"   class="underline-grow hover:text-bone transition">Visit</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="tel:+16786566761" class="hidden sm:inline text-[13px] text-bone/90 hover:text-gold transition tracking-wide">(678)&nbsp;656-6761</a>
+      <a href="#visit" class="btn-verm rounded-full px-5 py-2.5 text-[12px] font-semibold tracking-wide">Book a Session</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="top" class="relative min-h-[100svh] grain overflow-hidden flex items-center">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=1900&q=72&auto=format&fit=crop"
+         alt="Tattoo artist working on a client's arm at Ink N Flesh" class="w-full h-full object-cover opacity-30" />
+    <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(10,10,12,.78) 0%,rgba(10,10,12,.62) 40%,rgba(10,10,12,.94) 100%);"></div>
+  </div>
+  <div class="ambient amb-verm w-[560px] h-[560px] -top-40 -right-32" style="animation:drift1 24s ease-in-out infinite;"></div>
+  <div class="ambient amb-gold w-[440px] h-[440px] bottom-0 -left-28" style="animation:drift2 28s ease-in-out infinite;"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full pt-24 pb-16">
+    <div class="flex items-center gap-3 mb-6" data-reveal>
+      <span class="w-1.5 h-1.5 rounded-full bg-verm dot-pulse"></span>
+      <span class="tracky text-[11px] sm:text-[12px] text-gold uppercase">Atlanta · GA · Since 2013</span>
+    </div>
+
+    <h1 class="stencil display text-bone leading-[.86]">
+      <div class="text-[19vw] sm:text-[15vw] lg:text-[12.5rem]"><span>INK</span></div>
+      <div class="text-[19vw] sm:text-[15vw] lg:text-[12.5rem] flex items-baseline gap-[3.5vw]">
+        <span class="accent">N</span><span>FLESH</span>
+      </div>
+    </h1>
+
+    <p class="mt-7 max-w-xl text-bone/80 text-[16px] sm:text-[18px] leading-relaxed" data-reveal>
+      A collective of resident &amp; guest artists turning skin into a story —
+      custom tattoos, fine-line, black &amp; grey, piercings and removal.
+      Walk in with an idea; walk out with art that lasts.
+    </p>
+
+    <div class="mt-9 flex flex-wrap items-center gap-3.5" data-reveal>
+      <a href="tel:+16786566761" class="btn-verm rounded-full px-7 py-4 text-[14px] font-semibold tracking-wide flex items-center gap-2">
+        Call to book — (678) 656-6761
+      </a>
+      <a href="#collective" class="btn-ghost rounded-full px-7 py-4 text-[14px] font-semibold tracking-wide text-bone">Meet the artists</a>
+    </div>
+
+    <div class="mt-12 flex flex-wrap items-end gap-x-12 gap-y-6 border-t border-line pt-7 max-w-2xl" data-reveal>
+      <div>
+        <div class="display text-4xl sm:text-5xl text-bone"><span class="count" data-target="5">0</span><span class="text-gold">.0</span></div>
+        <div class="tracky text-[10px] text-ash uppercase mt-1">Star rating</div>
+      </div>
+      <div>
+        <div class="display text-4xl sm:text-5xl text-bone"><span class="count" data-target="56">0</span><span class="text-verm">+</span></div>
+        <div class="tracky text-[10px] text-ash uppercase mt-1">5-star reviews</div>
+      </div>
+      <div>
+        <div class="display text-4xl sm:text-5xl text-bone"><span class="count" data-target="12">0</span><span class="text-gold">+</span></div>
+        <div class="tracky text-[10px] text-ash uppercase mt-1">Years inking ATL</div>
+      </div>
+      <div>
+        <div class="display text-4xl sm:text-5xl text-bone">7</div>
+        <div class="tracky text-[10px] text-ash uppercase mt-1">Days a week</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-ash/70 text-[11px] tracky uppercase flex flex-col items-center gap-2">
+    <span>Scroll</span><span class="w-px h-8 bg-gradient-to-b from-gold/60 to-transparent"></span>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee bg-verm py-4 border-y border-black/20">
+  <div class="marquee-track items-center text-ink display text-2xl sm:text-3xl">
+    <span>Custom Tattoos</span><span class="text-bone/70">✦</span>
+    <span>Black &amp; Grey</span><span class="text-bone/70">✦</span>
+    <span>Fine-Line</span><span class="text-bone/70">✦</span>
+    <span>Piercings</span><span class="text-bone/70">✦</span>
+    <span>Tattoo Removal</span><span class="text-bone/70">✦</span>
+    <span>Guest Artists</span><span class="text-bone/70">✦</span>
+    <span>Walk-Ins Welcome</span><span class="text-bone/70">✦</span>
+    <span>Custom Tattoos</span><span class="text-bone/70">✦</span>
+    <span>Black &amp; Grey</span><span class="text-bone/70">✦</span>
+    <span>Fine-Line</span><span class="text-bone/70">✦</span>
+    <span>Piercings</span><span class="text-bone/70">✦</span>
+    <span>Tattoo Removal</span><span class="text-bone/70">✦</span>
+    <span>Guest Artists</span><span class="text-bone/70">✦</span>
+    <span>Walk-Ins Welcome</span><span class="text-bone/70">✦</span>
+  </div>
+</div>
+
+<!-- ================= THE CRAFT (services) ================= -->
+<section id="craft" class="relative bg-char py-24 sm:py-32 overflow-hidden">
+  <div class="ambient amb-verm w-[420px] h-[420px] top-20 -left-40 opacity-60" style="animation:drift2 30s ease-in-out infinite;"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[1fr_0.85fr] gap-14 items-center">
+    <div>
+      <div class="flex items-center gap-3 mb-5" data-reveal>
+        <span class="tracky text-[12px] text-gold uppercase">What we do</span>
+        <span class="h-px w-12 bg-gold/40"></span>
+      </div>
+      <h2 class="display text-5xl sm:text-6xl text-bone mb-3" data-reveal>The Craft</h2>
+      <p class="text-ash max-w-md mb-10" data-reveal>No flash-only chains here. Every piece starts as a conversation and ends as a one-off. Bring a reference, a memory, or a blank slate.</p>
+
+      <div class="divide-y divide-line border-y border-line" data-reveal>
+        <div class="card-svc flex items-start gap-5 py-6 px-3">
+          <span class="display text-verm text-2xl w-10 shrink-0">01</span>
+          <div><h3 class="display text-bone text-xl tracking-wide">Custom Tattoos</h3>
+          <p class="text-ash text-[15px] mt-1.5">Original designs drawn for you — script, lettering, portraits, and full custom concepts of any size.</p></div>
+        </div>
+        <div class="card-svc flex items-start gap-5 py-6 px-3">
+          <span class="display text-verm text-2xl w-10 shrink-0">02</span>
+          <div><h3 class="display text-bone text-xl tracking-wide">Black &amp; Grey · Fine-Line</h3>
+          <p class="text-ash text-[15px] mt-1.5">Smooth shading and delicate single-needle work — the detail people drive across Atlanta for.</p></div>
+        </div>
+        <div class="card-svc flex items-start gap-5 py-6 px-3">
+          <span class="display text-verm text-2xl w-10 shrink-0">03</span>
+          <div><h3 class="display text-bone text-xl tracking-wide">Body &amp; Ear Piercing</h3>
+          <p class="text-ash text-[15px] mt-1.5">Ears, nose, and body piercings done clean, with jewelry and aftercare guidance.</p></div>
+        </div>
+        <div class="card-svc flex items-start gap-5 py-6 px-3">
+          <span class="display text-verm text-2xl w-10 shrink-0">04</span>
+          <div><h3 class="display text-bone text-xl tracking-wide">Tattoo Removal</h3>
+          <p class="text-ash text-[15px] mt-1.5">Rethinking an old piece? Removal services to fade or clear the canvas for what's next.</p></div>
+        </div>
+        <div class="card-svc flex items-start gap-5 py-6 px-3">
+          <span class="display text-verm text-2xl w-10 shrink-0">05</span>
+          <div><h3 class="display text-bone text-xl tracking-wide">Guest &amp; Resident Artists</h3>
+          <p class="text-ash text-[15px] mt-1.5">A rotating bench of styles under one roof — so the right artist for your idea is already here.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative" data-reveal>
+      <div class="overflow-hidden rounded-2xl border border-line" data-reveal-image>
+        <img src="https://images.unsplash.com/photo-1526893299283-37e82b1e4da5?w=1100&q=72&auto=format&fit=crop"
+             alt="Tattoo machine and equipment laid out at the studio" class="w-full h-[560px] object-cover" />
+      </div>
+      <div class="absolute -bottom-6 -left-6 bg-ink border border-line rounded-xl px-6 py-5 max-w-[220px]">
+        <p class="script text-gold text-2xl leading-tight">"clean, nice, affordable, and timely"</p>
+        <p class="text-ash text-[11px] mt-2 tracky uppercase">— Damo, verified review</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE COLLECTIVE (signature) ================= -->
+<section id="collective" class="relative bg-ink py-24 sm:py-32 grain overflow-hidden">
+  <div class="ambient amb-gold w-[500px] h-[500px] -top-24 right-0 opacity-70" style="animation:drift1 26s ease-in-out infinite;"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <div class="flex items-center justify-center gap-3 mb-5" data-reveal>
+        <span class="h-px w-10 bg-gold/40"></span>
+        <span class="tracky text-[12px] text-gold uppercase">Under one roof</span>
+        <span class="h-px w-10 bg-gold/40"></span>
+      </div>
+      <h2 class="display text-5xl sm:text-7xl text-bone" data-reveal>The Collective</h2>
+      <p class="text-ash mt-5 text-[16px]" data-reveal>Ink N Flesh isn't one artist's shop — it's a home base for independent talent. Resident and guest artists each bring their own hand, so you book the style, not just the studio.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="artist bg-panel border border-line rounded-2xl p-8" data-reveal>
+        <div class="flex items-center justify-between mb-6">
+          <span class="mono text-6xl text-verm">M</span>
+          <span class="tracky text-[10px] text-ash uppercase border border-line rounded-full px-3 py-1">Resident</span>
+        </div>
+        <h3 class="display text-bone text-2xl tracking-wide">Malo</h3>
+        <p class="text-ash text-[14px] mt-2">The name clients keep coming back for — known for clean linework, lettering, and sentimental script that means something.</p>
+        <p class="script text-gold text-xl mt-4">"a wonderful artist with true talent"</p>
+      </div>
+      <div class="artist bg-panel border border-line rounded-2xl p-8" data-reveal>
+        <div class="flex items-center justify-between mb-6">
+          <span class="mono text-6xl text-verm">D</span>
+          <span class="tracky text-[10px] text-ash uppercase border border-line rounded-full px-3 py-1">Resident</span>
+        </div>
+        <h3 class="display text-bone text-2xl tracking-wide">Deuce</h3>
+        <p class="text-ash text-[14px] mt-2">Detail-driven and easy in the chair — the kind of artist who makes a first-timer feel like a regular.</p>
+        <p class="script text-gold text-xl mt-4">"attention to detail you feel at ease with"</p>
+      </div>
+      <div class="artist bg-panel border border-line rounded-2xl p-8" data-reveal>
+        <div class="flex items-center justify-between mb-6">
+          <span class="mono text-6xl text-verm">R</span>
+          <span class="tracky text-[10px] text-ash uppercase border border-line rounded-full px-3 py-1">Resident</span>
+        </div>
+        <h3 class="display text-bone text-2xl tracking-wide">Rico</h3>
+        <p class="text-ash text-[14px] mt-2">Bold color and black &amp; grey alike — versatile work for clients who know exactly what they want.</p>
+        <p class="script text-gold text-xl mt-4">"quality work, every time"</p>
+      </div>
+    </div>
+
+    <div class="mt-8 relative overflow-hidden rounded-2xl border border-verm/40 bg-gradient-to-r from-verm/15 to-transparent p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center gap-6 justify-between" data-reveal>
+      <div>
+        <h3 class="display text-bone text-3xl sm:text-4xl">Artists — claim a chair</h3>
+        <p class="text-bone/80 mt-2 max-w-xl">Established tattooers and piercers can rent space and build their book inside a studio that already brings the clients. Bring your portfolio — let's talk.</p>
+      </div>
+      <a href="tel:+16786566761" class="btn-verm rounded-full px-7 py-4 text-[14px] font-semibold tracking-wide whitespace-nowrap">Inquire — (678) 656-6761</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VOICES ================= -->
+<section id="voices" class="relative bg-char py-24 sm:py-32 overflow-hidden">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8 text-center">
+    <div class="flex items-center justify-center gap-2 mb-8" data-reveal>
+      <span class="text-gold text-2xl">★★★★★</span>
+      <span class="text-ash text-[13px] tracky uppercase ml-2">5.0 · 56 reviews</span>
+    </div>
+    <blockquote class="display text-3xl sm:text-5xl leading-[1.05] text-bone max-w-4xl mx-auto" data-reveal>
+      "Got my mom's name in <span class="grad-verm">her own handwriting</span> — really sentimental to me, and he did a wonderful job."
+    </blockquote>
+    <p class="text-ash mt-6 tracky uppercase text-[12px]" data-reveal>— Verified Google reviewer</p>
+
+    <div class="hairline max-w-xs mx-auto my-14"></div>
+
+    <div class="grid sm:grid-cols-3 gap-5 text-left">
+      <div class="bg-panel border border-line rounded-xl p-6" data-reveal>
+        <div class="text-gold mb-3">★★★★★</div>
+        <p class="text-bone/85 text-[15px] leading-relaxed">"Malo got me right — clean, nice, affordable, and TIMELY."</p>
+        <p class="text-ash text-[11px] mt-4 tracky uppercase">— Damo</p>
+      </div>
+      <div class="bg-panel border border-line rounded-xl p-6" data-reveal>
+        <div class="text-gold mb-3">★★★★★</div>
+        <p class="text-bone/85 text-[15px] leading-relaxed">"Randomly decided to get a tattoo today and had an amazing experience. Will be back soon!"</p>
+        <p class="text-ash text-[11px] mt-4 tracky uppercase">— Verified reviewer</p>
+      </div>
+      <div class="bg-panel border border-line rounded-xl p-6" data-reveal>
+        <div class="text-gold mb-3">★★★★★</div>
+        <p class="text-bone/85 text-[15px] leading-relaxed">"A wonderful artist with true talent. I'll be coming back for more work."</p>
+        <p class="text-ash text-[11px] mt-4 tracky uppercase">— Verified reviewer</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section id="visit" class="relative bg-ink py-24 sm:py-32 grain overflow-hidden">
+  <div class="ambient amb-verm w-[420px] h-[420px] bottom-0 right-0 opacity-50" style="animation:drift1 27s ease-in-out infinite;"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 items-stretch">
+    <div data-reveal>
+      <div class="flex items-center gap-3 mb-5">
+        <span class="tracky text-[12px] text-gold uppercase">Find the studio</span>
+        <span class="h-px w-12 bg-gold/40"></span>
+      </div>
+      <h2 class="display text-5xl sm:text-6xl text-bone mb-8">Pull Up</h2>
+
+      <div class="space-y-6">
+        <div class="flex items-start gap-4">
+          <span class="text-verm mt-1">◉</span>
+          <div>
+            <p class="tracky text-[11px] text-ash uppercase mb-1">Location</p>
+            <p class="text-bone text-[17px]">4400 Chamblee Dunwoody Rd, Ste A<br/>Atlanta, GA 30341</p>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Ink+N+Flesh+Tattoo+Studios+4400+Chamblee+Dunwoody+Rd+Atlanta+GA+30341" target="_blank" rel="noopener" class="text-gold text-[13px] underline-grow inline-block mt-1.5">Get directions →</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-verm mt-1">✆</span>
+          <div>
+            <p class="tracky text-[11px] text-ash uppercase mb-1">Book / Call</p>
+            <a href="tel:+16786566761" class="text-bone text-[17px] hover:text-gold transition">(678) 656-6761</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-verm mt-1 dot-pulse">●</span>
+          <div class="w-full">
+            <p class="tracky text-[11px] text-ash uppercase mb-2">Hours — open late, 7 days</p>
+            <ul class="text-[15px] text-bone/85 space-y-1.5 max-w-sm">
+              <li class="flex justify-between border-b border-line/60 pb-1.5"><span>Mon – Thu</span><span class="text-ash">11:00 AM – 11:30 PM</span></li>
+              <li class="flex justify-between border-b border-line/60 pb-1.5"><span>Friday</span><span class="text-ash">11:30 AM – 11:30 PM</span></li>
+              <li class="flex justify-between border-b border-line/60 pb-1.5"><span>Saturday</span><span class="text-gold">Open 24 hours</span></li>
+              <li class="flex justify-between"><span>Sunday</span><span class="text-ash">12:00 – 9:00 PM · by appt</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rounded-2xl overflow-hidden border border-line min-h-[420px]" data-reveal>
+      <iframe
+        title="Ink N Flesh Tattoo Studios location map"
+        src="https://www.google.com/maps?q=4400+Chamblee+Dunwoody+Rd,+Atlanta,+GA+30341&output=embed"
+        width="100%" height="100%" style="border:0; min-height:420px; filter:grayscale(.3) contrast(1.05);"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING CTA ================= -->
+<section class="relative grain overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1597852075234-fd721ac361d3?w=1700&q=70&auto=format&fit=crop"
+         alt="Finished tattoo work" class="w-full h-full object-cover opacity-25" />
+    <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(10,10,12,.92),rgba(10,10,12,.82));"></div>
+  </div>
+  <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 py-28 sm:py-36 text-center">
+    <p class="script text-gold text-3xl mb-3" data-reveal>your story, in ink</p>
+    <h2 class="display text-5xl sm:text-7xl text-bone leading-[.95]" data-reveal>Ready When<br/>You Are.</h2>
+    <p class="text-bone/80 mt-6 max-w-lg mx-auto" data-reveal>Booking a session or just feeling out an idea — reach out. Consultations are free and walk-ins are always welcome.</p>
+    <div class="mt-9 flex flex-wrap justify-center gap-3.5" data-reveal>
+      <a href="tel:+16786566761" class="btn-verm rounded-full px-8 py-4 text-[14px] font-semibold tracking-wide">Call (678) 656-6761</a>
+      <a href="https://www.google.com/maps?q=4400+Chamblee+Dunwoody+Rd,+Atlanta,+GA+30341" target="_blank" rel="noopener" class="btn-ghost rounded-full px-8 py-4 text-[14px] font-semibold tracking-wide text-bone">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-ink border-t border-line">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14 grid sm:grid-cols-3 gap-10">
+    <div>
+      <div class="flex items-center gap-2.5 mb-4">
+        <span class="inline-flex items-center justify-center w-9 h-9 rounded-[7px] bg-verm text-white display text-xl leading-none pt-[3px]">I</span>
+        <span class="display text-bone text-lg leading-none pt-[2px]">INK&nbsp;N&nbsp;FLESH</span>
+      </div>
+      <p class="text-ash text-[14px] max-w-xs">A collective of resident &amp; guest tattoo artists in Atlanta, GA — custom work, piercings &amp; removal since 2013.</p>
+    </div>
+    <div>
+      <p class="tracky text-[11px] text-gold uppercase mb-4">Visit</p>
+      <p class="text-bone/85 text-[14px] leading-relaxed">4400 Chamblee Dunwoody Rd, Ste A<br/>Atlanta, GA 30341</p>
+      <a href="tel:+16786566761" class="text-bone/85 text-[14px] hover:text-gold transition block mt-2">(678) 656-6761</a>
+      <a href="https://www.instagram.com/ink_n_flesh_tattoos_atl/" target="_blank" rel="noopener" class="text-bone/85 text-[14px] hover:text-gold transition block mt-2">@ink_n_flesh_tattoos_atl</a>
+    </div>
+    <div>
+      <p class="tracky text-[11px] text-gold uppercase mb-4">Hours</p>
+      <ul class="text-ash text-[14px] space-y-1.5">
+        <li>Mon – Thu · 11:00 AM – 11:30 PM</li>
+        <li>Fri · 11:30 AM – 11:30 PM</li>
+        <li>Sat · Open 24 hours</li>
+        <li>Sun · 12:00 – 9:00 PM (appt)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-line">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-ash">
+      <span>© <span id="yr"></span> Ink N Flesh Tattoo Studios · Atlanta, GA</span>
+      <span class="tracky uppercase">Custom Tattoos · Piercings · Removal</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MOBILE STICKY BAR ================= -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-ink/95 backdrop-blur border-t border-line grid grid-cols-2">
+  <a href="tel:+16786566761" class="flex items-center justify-center gap-2 py-3.5 text-[14px] font-semibold text-white bg-verm">Call</a>
+  <a href="https://www.google.com/maps?q=4400+Chamblee+Dunwoody+Rd,+Atlanta,+GA+30341" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3.5 text-[14px] font-semibold text-bone">Directions</a>
+</div>
+
+<!-- ================= JSON-LD ================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TattooParlor",
+  "name": "Ink N Flesh Tattoo Studios",
+  "url": "https://turnkeyweb.org/previews/ink-n-flesh/",
+  "image": "https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=1200&q=70&auto=format&fit=crop",
+  "telephone": "+1-678-656-6761",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4400 Chamblee Dunwoody Rd, Ste A",
+    "addressLocality": "Atlanta",
+    "addressRegion": "GA",
+    "postalCode": "30341",
+    "addressCountry": "US"
+  },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "56" },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "11:00", "closes": "23:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "11:30", "closes": "23:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "00:00", "closes": "23:59" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "21:00" }
+  ],
+  "sameAs": ["https://www.instagram.com/ink_n_flesh_tattoos_atl/"]
+}
+</script>
+
+<!-- ================= MOTION ================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Lenis smooth scroll
+  let lenis;
+  try {
+    lenis = new Lenis({ duration: 1.15, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  } catch(e){}
+
+  // anchored scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if (id.length < 2) return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      const y = el.getBoundingClientRect().top + window.scrollY - 64;
+      if (lenis) lenis.scrollTo(y, { duration: 1.1 }); else window.scrollTo({top:y, behavior:'smooth'});
+    });
+  });
+
+  // nav bg on scroll
+  const nav = document.getElementById('nav');
+  const onScroll = ()=>{ const s = window.scrollY > 40; nav.classList.toggle('bg-ink/90', s); nav.classList.toggle('backdrop-blur', s); nav.classList.toggle('border-b', s); nav.classList.toggle('border-line', s); };
+  onScroll(); window.addEventListener('scroll', onScroll);
+
+  // stencil hero fill (signature)
+  window.addEventListener('load', ()=> setTimeout(()=> document.querySelector('.stencil')?.classList.add('filled'), 300));
+
+  // reveals
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  }, { threshold:0.12 });
+  document.querySelectorAll('[data-reveal],[data-reveal-image]').forEach(el=> io.observe(el));
+
+  // count-up stats
+  function runCount(el){
+    const target = parseFloat(el.dataset.target);
+    const dec = parseInt(el.dataset.dec || '0');
+    const obj = { v: 0 };
+    if (window.gsap){
+      gsap.to(obj, { v: target, duration: 1.7, ease:'power2.out',
+        onUpdate: ()=> el.textContent = obj.v.toFixed(dec) });
+    } else { el.textContent = target.toFixed(dec); }
+  }
+  const cio = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ runCount(en.target); cio.unobserve(en.target);} });
+  }, { threshold:0.5 });
+  document.querySelectorAll('.count').forEach(el=> cio.observe(el));
+
+  // ===== 6s screenshot / crawler safety net =====
+  setTimeout(()=>{
+    document.querySelector('.stencil')?.classList.add('filled');
+    document.querySelectorAll('[data-reveal],[data-reveal-image]').forEach(el=> el.classList.add('in'));
+    document.querySelectorAll('.count').forEach(el=>{
+      const t = parseFloat(el.dataset.target); const d = parseInt(el.dataset.dec||'0');
+      if (parseFloat(el.textContent) === 0 || el.textContent === '0') el.textContent = t.toFixed(d);
+    });
+  }, 6000);
+</script>
+</body>
+</html>

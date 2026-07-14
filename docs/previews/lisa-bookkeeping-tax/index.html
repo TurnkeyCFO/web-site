@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Lisa Bookkeeping &amp; Tax Services LLC — San Antonio Tax Prep &amp; Bookkeeping</title>
+<meta name="description" content="Enrolled Agent Lisa Moreno has handled San Antonio tax and bookkeeping since 2004. Honest tax prep, planning, bookkeeping, and notary at 5656 S Pan Am Expressway. Call (210) 265-1766." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/lisa-bookkeeping-tax/" />
+<meta property="og:type" content="business.business" />
+<meta property="og:title" content="Lisa Bookkeeping &amp; Tax Services LLC — San Antonio" />
+<meta property="og:description" content="An Enrolled Agent who has quietly handled San Antonio's taxes and books since 2004. Real people, no surprises." />
+<meta property="og:locale" content="en_US" />
+<!--
+  Turnkey Web preview build — Lisa Bookkeeping & Tax Services LLC
+  Palette: professional light-luxury — cream #F8F2E7 base, deep navy #172038 ink,
+           gold #B98D52 accent, slate #4A5568 secondary. Light-first (hard rule).
+  Type: Fraunces (editorial display) + Plus Jakarta Sans (body).
+  Showpiece: Three.js gold-mote drift on cream canvas (contained hero, DPR-capped,
+             offscreen-paused, mobile-downgraded, static-poster fallback).
+  All data researched & real: EA Lisa (Elizabeth) Moreno, since 2004,
+  5656 S Pan Am Expressway Ste A-1 San Antonio TX 78211, (210) 265-1766.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      cream:'#F8F2E7', paper:'#FCF8F0', bone:'#EFE6D5',
+      navy:'#172038', ink:'#141B2E', gold:'#7C5F33', goldbright:'#B98D52', goldlt:'#D8B074',
+      slate:'#4A5568', sage:'#5F6F64'
+    },
+    fontFamily: { display:['Fraunces','serif'], sans:['"Plus Jakarta Sans"','sans-serif'] }
+  }}
+}
+</script>
+<style>
+  html{ scroll-padding-top:88px; -webkit-text-size-adjust:100%; }
+  body{ background:#F8F2E7; color:#141B2E; font-family:'Plus Jakarta Sans',sans-serif; overflow-x:hidden; }
+  ::selection{ background:#B98D52; color:#FCF8F0; }
+  .font-display{ font-family:'Fraunces',serif; }
+  .eyebrow{ letter-spacing:.28em; text-transform:uppercase; font-weight:600; font-size:.72rem; }
+
+  /* gold shimmer on key headers */
+  .grad-text{
+    background:linear-gradient(100deg,#172038 0%,#B98D52 42%,#8a6a3d 55%,#172038 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite;
+  }
+  @keyframes shimmer{ 0%{background-position:0% 50%} 100%{background-position:220% 50%} }
+
+  /* masked word reveal */
+  .mask{ overflow:hidden; display:inline-block; vertical-align:top; padding-bottom:.08em; }
+  .mask > span{ display:inline-block; will-change:transform; }
+
+  /* reveals */
+  [data-reveal]{ opacity:0; transform:translateY(30px); will-change:opacity,transform; }
+  .revealed{ opacity:1 !important; transform:none !important; }
+
+  /* hero canvas */
+  #motes{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .hero-vignette{ position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(120% 90% at 78% 30%, transparent 42%, rgba(23,32,56,.06) 100%),
+               linear-gradient(180deg, rgba(248,242,231,0) 55%, rgba(239,230,213,.6) 100%); }
+  .grain::after{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.045; mix-blend-mode:multiply;
+    background-image:radial-gradient(#172038 .5px, transparent .5px); background-size:3px 3px; }
+
+  /* buttons */
+  .btn{ position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, filter .3s; }
+  .btn-primary{ background:#172038; color:#FCF8F0; }
+  .btn-primary::after{ content:""; position:absolute; top:0; left:-130%; width:60%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(216,176,116,.55),transparent); transform:skewX(-18deg); transition:left .8s cubic-bezier(.2,.7,.2,1); }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 18px 40px -18px rgba(23,32,56,.6); }
+  .btn-primary:hover::after{ left:130%; }
+  .btn-ghost{ border:1.5px solid rgba(23,32,56,.25); color:#172038; }
+  .btn-ghost:hover{ border-color:#B98D52; color:#8a6a3d; transform:translateY(-2px); }
+
+  /* underline grow */
+  .ug{ position:relative; }
+  .ug::after{ content:""; position:absolute; left:0; bottom:-3px; width:0; height:1.5px;
+    background:linear-gradient(90deg,#B98D52,#172038); transition:width .5s cubic-bezier(.2,.7,.2,1); }
+  .ug:hover::after{ width:100%; }
+
+  /* service rows */
+  .svc{ position:relative; transition:transform .5s cubic-bezier(.2,.7,.2,1); }
+  .svc::before{ content:""; position:absolute; left:0; top:0; height:100%; width:2px; background:#B98D52; transform:scaleY(0); transform-origin:top; transition:transform .55s cubic-bezier(.2,.7,.2,1); }
+  .svc:hover{ transform:translateX(8px); }
+  .svc:hover::before{ transform:scaleY(1); }
+  .svc:hover .svc-num{ color:#B98D52; }
+  .svc-num{ transition:color .4s; }
+
+  /* cards */
+  .rcard{ transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s; }
+  .rcard:hover{ transform:translateY(-6px); box-shadow:0 26px 50px -30px rgba(23,32,56,.45); }
+
+  /* process numbers */
+  .pnum{ font-family:'Fraunces',serif; -webkit-text-stroke:1.5px rgba(23,32,56,.28); color:transparent; line-height:.8; }
+
+  /* marquee */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .mtrack{ display:flex; gap:3rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .mtrack{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  .dot{ width:6px; height:6px; border-radius:50%; background:#B98D52; display:inline-block; }
+  .pulse{ animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.45; transform:scale(.7)} }
+
+  .scroll-prog{ position:fixed; top:0; left:0; height:2px; width:0; z-index:60; background:linear-gradient(90deg,#B98D52,#172038); }
+
+  /* sticky mobile bar */
+  .sticky-bar{ box-shadow:0 -8px 30px -12px rgba(23,32,56,.4); }
+
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration:.001s !important; transition-duration:.001s !important; } .mtrack{ animation:none } }
+</style>
+</head>
+<body class="antialiased">
+
+<div class="scroll-prog" id="scrollProg"></div>
+
+<!-- NAV -->
+<header class="fixed top-0 inset-x-0 z-50 transition-all duration-500" id="nav">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-[72px]">
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-navy text-cream font-display text-xl leading-none shadow-sm">L</span>
+        <span class="leading-tight">
+          <span class="block font-display text-[1.05rem] text-navy tracking-tight">Lisa Bookkeeping <span class="text-gold">&amp; Tax</span></span>
+          <span class="block text-[.64rem] tracking-[.22em] uppercase text-slate/80">San Antonio · Since 2004</span>
+        </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-[.9rem] font-medium text-slate">
+        <a href="#services" class="ug hover:text-navy transition">Services</a>
+        <a href="#process" class="ug hover:text-navy transition">How it works</a>
+        <a href="#reviews" class="ug hover:text-navy transition">Reviews</a>
+        <a href="#visit" class="ug hover:text-navy transition">Visit</a>
+      </nav>
+      <a href="tel:+12102651766" class="btn btn-primary hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[.85rem] font-semibold">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.9.36 1.79.7 2.63a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.44-1.27a2 2 0 0 1 2.11-.45c.84.34 1.73.57 2.63.7A2 2 0 0 1 22 16.92z"/></svg>
+        (210) 265-1766
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-[100svh] flex items-center grain overflow-hidden pt-[120px] pb-16 sm:pt-[110px]">
+  <canvas id="motes"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-10 items-center w-full">
+    <div class="lg:col-span-7">
+      <div class="flex items-center gap-3 mb-7" data-reveal>
+        <span class="dot pulse"></span>
+        <span class="eyebrow text-gold">Enrolled Agent · IRS-Authorized</span>
+      </div>
+      <h1 class="font-display text-navy font-medium tracking-[-.02em] leading-[.98] text-[clamp(2.6rem,7.4vw,5.6rem)]">
+        <span class="mask block"><span data-word>Twenty-one tax</span></span>
+        <span class="mask block"><span data-word>seasons. <span class="grad-text italic font-normal">Zero</span></span></span>
+        <span class="mask block"><span data-word><span class="grad-text italic font-normal">surprises.</span></span></span>
+      </h1>
+      <p class="mt-7 max-w-xl text-[1.06rem] leading-relaxed text-slate" data-reveal>
+        Lisa Moreno has quietly kept San Antonio's taxes filed and its books balanced since 2004. You bring the shoebox of receipts and the questions. She brings the calm, the credentials, and an answer you can trust.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-4" data-reveal>
+        <a href="tel:+12102651766" class="btn btn-primary inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[.95rem] font-semibold">
+          Call Lisa today
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#services" class="btn btn-ghost inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[.95rem] font-semibold">See what she handles</a>
+      </div>
+      <div class="mt-11 flex flex-wrap items-center gap-x-9 gap-y-4" data-reveal>
+        <div>
+          <div class="font-display text-navy text-[2rem] leading-none"><span data-count="21">21</span></div>
+          <div class="text-[.72rem] tracking-[.16em] uppercase text-slate/70 mt-1">Years serving SA</div>
+        </div>
+        <div class="w-px h-9 bg-navy/15"></div>
+        <div>
+          <div class="font-display text-navy text-[2rem] leading-none"><span data-count="4.8" data-decimals="1">4.8</span><span class="text-gold">★</span></div>
+          <div class="text-[.72rem] tracking-[.16em] uppercase text-slate/70 mt-1">Across 17 reviews</div>
+        </div>
+        <div class="w-px h-9 bg-navy/15"></div>
+        <div>
+          <div class="font-display text-navy text-[2rem] leading-none">EA</div>
+          <div class="text-[.72rem] tracking-[.16em] uppercase text-slate/70 mt-1">Enrolled Agent</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- editorial credential card -->
+    <div class="lg:col-span-5 lg:pl-6" data-reveal>
+      <div class="relative rounded-2xl bg-paper/80 backdrop-blur border border-navy/10 p-7 sm:p-8 shadow-[0_30px_60px_-40px_rgba(23,32,56,.5)]">
+        <div class="eyebrow text-gold mb-4">The person behind the desk</div>
+        <p class="font-display text-[1.5rem] leading-snug text-navy">"Super knowledgeable. They took all my stress away in one visit."</p>
+        <div class="mt-4 flex items-center gap-2 text-slate text-sm">
+          <span class="text-gold">★★★★★</span>
+          <span>Crystal Perry · Google review</span>
+        </div>
+        <div class="my-6 h-px bg-gradient-to-r from-transparent via-navy/15 to-transparent"></div>
+        <ul class="space-y-3 text-[.93rem] text-slate">
+          <li class="flex items-center gap-3"><span class="text-gold shrink-0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> Represents you before the IRS</li>
+          <li class="flex items-center gap-3"><span class="text-gold shrink-0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> Same trusted office since 2004</li>
+          <li class="flex items-center gap-3"><span class="text-gold shrink-0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> Notary on site for signing day</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <a href="#services" class="hidden sm:flex absolute bottom-7 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-slate/60 text-[.7rem] tracking-[.2em] uppercase">
+    Scroll
+    <span class="w-px h-8 bg-navy/25 overflow-hidden relative"><span class="absolute inset-0 bg-gold animate-[scrolldot_1.8s_ease-in-out_infinite]"></span></span>
+  </a>
+</section>
+<style>@keyframes scrolldot{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}</style>
+
+<!-- TRUST MARQUEE -->
+<section class="bg-navy py-5 border-y border-gold/20">
+  <div class="marquee">
+    <div class="mtrack text-cream/90 font-display text-[1.35rem] items-center">
+      <span class="flex items-center gap-3">IRS Enrolled Agent <span class="dot"></span></span>
+      <span class="flex items-center gap-3 italic text-goldlt">Serving San Antonio since 2004 <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Tax Preparation <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Bookkeeping <span class="dot"></span></span>
+      <span class="flex items-center gap-3 italic text-goldlt">Notary Public <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Tax Planning <span class="dot"></span></span>
+      <!-- dup -->
+      <span class="flex items-center gap-3">IRS Enrolled Agent <span class="dot"></span></span>
+      <span class="flex items-center gap-3 italic text-goldlt">Serving San Antonio since 2004 <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Tax Preparation <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Bookkeeping <span class="dot"></span></span>
+      <span class="flex items-center gap-3 italic text-goldlt">Notary Public <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Tax Planning <span class="dot"></span></span>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="py-24 sm:py-32 bg-cream relative grain">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <div class="eyebrow text-gold mb-6" data-reveal>Why people stay for decades</div>
+    <p class="font-display text-navy text-[clamp(1.6rem,4vw,2.7rem)] leading-[1.25] tracking-[-.01em]">
+      <span data-line>Big franchises rotate a new preparer through every April.</span>
+      <span data-line class="text-slate">Lisa has been at the same desk on Pan Am Expressway for two decades —</span>
+      <span data-line>the kind of <span class="grad-text italic">steady hands</span> you only find in a family-run office.</span>
+    </p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-24 sm:py-28 bg-paper">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 items-end mb-14">
+      <div class="lg:col-span-7" data-reveal>
+        <div class="eyebrow text-gold mb-4">What Lisa handles</div>
+        <h2 class="font-display text-navy text-[clamp(2rem,5vw,3.4rem)] leading-[1.02] tracking-[-.02em]">Every line on the return, <span class="grad-text italic">covered.</span></h2>
+      </div>
+      <div class="lg:col-span-5 lg:pb-2" data-reveal>
+        <p class="text-slate text-[1.02rem] leading-relaxed">From a first-time 1040 to a small business set of books, it all runs through one Enrolled Agent who actually answers her phone.</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-x-14 gap-y-2 border-t border-navy/12">
+      <!-- svc row -->
+      <div class="svc group flex gap-6 items-start py-7 pl-6 border-b border-navy/12" data-reveal>
+        <span class="svc-num font-display text-slate/40 text-xl pt-1">01</span>
+        <div>
+          <h3 class="font-display text-navy text-[1.35rem] mb-1.5 flex items-center gap-2.5">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B98D52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg>
+            Individual Tax Preparation
+          </h3>
+          <p class="text-slate text-[.95rem] leading-relaxed">Federal returns filed accurately and on time — W-2s, 1099s, credits, deductions, and the questions no software can answer.</p>
+        </div>
+      </div>
+      <div class="svc group flex gap-6 items-start py-7 pl-6 border-b border-navy/12" data-reveal>
+        <span class="svc-num font-display text-slate/40 text-xl pt-1">02</span>
+        <div>
+          <h3 class="font-display text-navy text-[1.35rem] mb-1.5 flex items-center gap-2.5">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B98D52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+            Tax Planning &amp; Consulting
+          </h3>
+          <p class="text-slate text-[.95rem] leading-relaxed">A year-round strategy, not just an April scramble — position this year and next so nothing catches you off guard.</p>
+        </div>
+      </div>
+      <div class="svc group flex gap-6 items-start py-7 pl-6 border-b border-navy/12" data-reveal>
+        <span class="svc-num font-display text-slate/40 text-xl pt-1">03</span>
+        <div>
+          <h3 class="font-display text-navy text-[1.35rem] mb-1.5 flex items-center gap-2.5">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B98D52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+            Small Business Bookkeeping
+          </h3>
+          <p class="text-slate text-[.95rem] leading-relaxed">Clean, current books that make tax time boring — reconciliations, categorized transactions, and reports you understand.</p>
+        </div>
+      </div>
+      <div class="svc group flex gap-6 items-start py-7 pl-6 border-b border-navy/12" data-reveal>
+        <span class="svc-num font-display text-slate/40 text-xl pt-1">04</span>
+        <div>
+          <h3 class="font-display text-navy text-[1.35rem] mb-1.5 flex items-center gap-2.5">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B98D52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M5 8h9a3 3 0 0 1 0 6H8"/></svg>
+            Income Tax Filing
+          </h3>
+          <p class="text-slate text-[.95rem] leading-relaxed">Refund maximized, obligations clear. Every credit you've earned, claimed correctly the first time.</p>
+        </div>
+      </div>
+      <div class="svc group flex gap-6 items-start py-7 pl-6 border-b border-navy/12 md:border-b-0" data-reveal>
+        <span class="svc-num font-display text-slate/40 text-xl pt-1">05</span>
+        <div>
+          <h3 class="font-display text-navy text-[1.35rem] mb-1.5 flex items-center gap-2.5">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B98D52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8 21l4-3 4 3"/></svg>
+            Notary Public
+          </h3>
+          <p class="text-slate text-[.95rem] leading-relaxed">Documents witnessed and stamped on the spot — no second trip across town on signing day.</p>
+        </div>
+      </div>
+      <div class="svc group flex gap-6 items-start py-7 pl-6 border-b border-navy/12 md:border-b-0" data-reveal>
+        <span class="svc-num font-display text-slate/40 text-xl pt-1">06</span>
+        <div>
+          <h3 class="font-display text-navy text-[1.35rem] mb-1.5 flex items-center gap-2.5">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B98D52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 7.5-8.5 9C7.5 19.5 4 17 4 12V6l8-3 9 3z"/></svg>
+            IRS Representation
+          </h3>
+          <p class="text-slate text-[.95rem] leading-relaxed">A letter from the IRS is stressful. As an Enrolled Agent, Lisa is federally authorized to stand between you and it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-wrap items-center gap-4" data-reveal>
+      <a href="tel:+12102651766" class="btn btn-primary inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[.95rem] font-semibold">Talk it through — (210) 265-1766</a>
+      <span class="text-slate text-sm">Walk-ins welcome at 5656 S Pan Am Expressway.</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS (editorial numbers) -->
+<section id="process" class="py-24 sm:py-32 bg-navy text-cream relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-16" data-reveal>
+      <div class="eyebrow text-goldlt mb-4">How it works</div>
+      <h2 class="font-display text-cream text-[clamp(2rem,5vw,3.4rem)] leading-[1.03] tracking-[-.02em]">Three unhurried steps, <span class="text-goldlt italic">start to filed.</span></h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-x-10 gap-y-14">
+      <div data-reveal>
+        <div class="pnum text-[5.5rem] mb-4" style="-webkit-text-stroke:1.5px rgba(216,176,116,.5)">01</div>
+        <h3 class="font-display text-[1.5rem] text-cream mb-2.5">Bring what you've got</h3>
+        <p class="text-cream/70 leading-relaxed text-[.98rem]">A neat folder or a shoebox — either is fine. Lisa sorts it and tells you exactly what's missing.</p>
+      </div>
+      <div data-reveal>
+        <div class="pnum text-[5.5rem] mb-4" style="-webkit-text-stroke:1.5px rgba(216,176,116,.5)">02</div>
+        <h3 class="font-display text-[1.5rem] text-cream mb-2.5">She does the heavy lifting</h3>
+        <p class="text-cream/70 leading-relaxed text-[.98rem]">Every credit found, every number double-checked, every question answered in plain English.</p>
+      </div>
+      <div data-reveal>
+        <div class="pnum text-[5.5rem] mb-4" style="-webkit-text-stroke:1.5px rgba(216,176,116,.5)">03</div>
+        <h3 class="font-display text-[1.5rem] text-cream mb-2.5">Sign, notarize, done</h3>
+        <p class="text-cream/70 leading-relaxed text-[.98rem]">Review it together, notarize on site, and file with confidence. You leave knowing where you stand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="py-24 sm:py-28 bg-cream relative grain">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 items-end mb-14">
+      <div class="lg:col-span-8" data-reveal>
+        <div class="eyebrow text-gold mb-4">In their words</div>
+        <h2 class="font-display text-navy text-[clamp(2rem,5vw,3.4rem)] leading-[1.02] tracking-[-.02em]">San Antonio keeps <span class="grad-text italic">coming back.</span></h2>
+      </div>
+      <div class="lg:col-span-4 lg:text-right" data-reveal>
+        <div class="font-display text-navy text-[3rem] leading-none">4.8<span class="text-gold">★</span></div>
+        <div class="text-slate text-sm mt-1">Averaged across 17 Google reviews</div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="rcard bg-paper border border-navy/10 rounded-2xl p-7" data-reveal>
+        <div class="text-gold text-lg mb-4">★★★★★</div>
+        <p class="font-display text-[1.2rem] leading-snug text-navy mb-5">"Super friendly folks! Super knowledgeable! They took all my stress away in one visit — I will definitely be a returning customer. May God bless this business, always!"</p>
+        <div class="text-slate text-sm">Crystal Perry <span class="text-slate/50">· Google review</span></div>
+      </div>
+      <div class="rcard bg-paper border border-navy/10 rounded-2xl p-7" data-reveal>
+        <div class="text-gold text-lg mb-4">★★★★★</div>
+        <p class="font-display text-[1.2rem] leading-snug text-navy mb-5">"Very professional, kind, and thorough. The whole process was quick and easy."</p>
+        <div class="text-slate text-sm">Verified Google reviewer</div>
+      </div>
+      <div class="rcard bg-paper border border-navy/10 rounded-2xl p-7" data-reveal>
+        <div class="text-gold text-lg mb-4">★★★★★</div>
+        <p class="font-display text-[1.2rem] leading-snug text-navy mb-5">"Everyone here is a joy to work with. I totally recommend them to anyone in San Antonio."</p>
+        <div class="text-slate text-sm">Verified Google reviewer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="py-24 sm:py-28 bg-paper">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-10 items-stretch">
+    <div data-reveal>
+      <div class="eyebrow text-gold mb-4">Find the office</div>
+      <h2 class="font-display text-navy text-[clamp(2rem,4.6vw,3.2rem)] leading-[1.03] tracking-[-.02em] mb-8">On the corner of Pan Am &amp; Fitch.</h2>
+
+      <div class="space-y-6">
+        <div class="flex gap-4">
+          <span class="text-gold mt-1 shrink-0"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div>
+            <div class="font-semibold text-navy">Address</div>
+            <a href="https://www.google.com/maps?q=5656+S+Pan+Am+Expressway+Suite+A-1+San+Antonio+TX+78211" target="_blank" rel="noopener" class="text-slate ug hover:text-navy">5656 S Pan Am Expressway, Suite A-1<br/>San Antonio, TX 78211</a>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <span class="text-gold mt-1 shrink-0"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.9.36 1.79.7 2.63a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.44-1.27a2 2 0 0 1 2.11-.45c.84.34 1.73.57 2.63.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div>
+            <div class="font-semibold text-navy">Phone</div>
+            <a href="tel:+12102651766" class="text-slate ug hover:text-navy">(210) 265-1766</a>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <span class="text-gold mt-1 shrink-0"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+          <div class="w-full">
+            <div class="font-semibold text-navy mb-2 flex items-center gap-2">Hours <span class="inline-flex items-center gap-1.5 text-[.7rem] font-medium text-sage"><span class="dot pulse" style="background:#6E7F73"></span>Open late through tax season</span></div>
+            <table class="text-slate text-[.92rem] w-full max-w-xs">
+              <tr><td class="py-0.5">Monday – Friday</td><td class="py-0.5 text-right font-medium text-navy">9:00 AM – 7:00 PM</td></tr>
+              <tr><td class="py-0.5">Saturday</td><td class="py-0.5 text-right font-medium text-navy">10:00 AM – 7:00 PM</td></tr>
+              <tr><td class="py-0.5">Sunday</td><td class="py-0.5 text-right text-slate/60">Closed</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <a href="tel:+12102651766" class="btn btn-primary inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[.95rem] font-semibold mt-9">Book your appointment</a>
+    </div>
+
+    <div class="relative rounded-2xl overflow-hidden border border-navy/12 shadow-[0_30px_60px_-40px_rgba(23,32,56,.5)] min-h-[420px]" style="background:#e6ebe5" data-reveal>
+      <!-- styled map fallback (behind the live embed; visible only if the tile is slow to load) -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-navy pointer-events-none"
+           style="background-image:linear-gradient(rgba(23,32,56,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(23,32,56,.05) 1px,transparent 1px);background-size:44px 44px">
+        <span class="text-gold"><svg width="34" height="34" viewBox="0 0 24 24" fill="#7C5F33" stroke="#F8F2E7" stroke-width="1.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3.2" fill="#F8F2E7"/></svg></span>
+        <span class="font-display text-navy text-lg">5656 S Pan Am Expressway</span>
+        <span class="text-slate text-sm">San Antonio, TX 78211 · corner of Fitch St</span>
+      </div>
+      <iframe
+        title="Map to Lisa Bookkeeping & Tax Services LLC, 5656 S Pan Am Expressway, San Antonio TX"
+        src="https://www.google.com/maps?q=5656%20S%20Pan%20Am%20Expressway%20Suite%20A-1%20San%20Antonio%20TX%2078211&output=embed"
+        class="absolute inset-0" width="100%" height="100%" style="border:0; min-height:420px; display:block;"
+        loading="eager" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 sm:py-32 bg-navy text-cream relative overflow-hidden grain">
+  <div class="absolute -top-32 -right-24 w-[420px] h-[420px] rounded-full" style="background:radial-gradient(circle,rgba(185,141,82,.35),transparent 62%); filter:blur(60px)"></div>
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center relative">
+    <span class="flex items-center justify-center w-14 h-14 mx-auto rounded-xl bg-cream/10 border border-gold/30 font-display text-2xl text-goldlt mb-8" data-reveal>L</span>
+    <h2 class="font-display text-[clamp(2.1rem,5.5vw,3.8rem)] leading-[1.03] tracking-[-.02em]" data-reveal>Let this be the year <span class="text-goldlt italic">taxes stop being scary.</span></h2>
+    <p class="mt-6 text-cream/70 text-[1.08rem] max-w-2xl mx-auto" data-reveal>One call to a real Enrolled Agent who has done this for San Antonio families and businesses for over twenty years.</p>
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-4" data-reveal>
+      <a href="tel:+12102651766" class="btn btn-primary inline-flex items-center gap-2 rounded-full px-8 py-4 text-[1rem] font-semibold" style="background:#D8B074; color:#172038">Call (210) 265-1766</a>
+      <a href="https://www.google.com/maps?q=5656+S+Pan+Am+Expressway+Suite+A-1+San+Antonio+TX+78211" target="_blank" rel="noopener" class="btn btn-ghost inline-flex items-center gap-2 rounded-full px-8 py-4 text-[1rem] font-semibold" style="border-color:rgba(248,242,231,.3); color:#F8F2E7">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-cream/70 py-14">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid md:grid-cols-3 gap-10 pb-10 border-b border-cream/10">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-cream/10 border border-gold/25 font-display text-xl text-goldlt">L</span>
+          <span class="font-display text-cream text-[1.05rem] leading-tight">Lisa Bookkeeping<br/>&amp; Tax Services LLC</span>
+        </div>
+        <p class="text-[.9rem] leading-relaxed text-cream/55">An IRS Enrolled Agent serving San Antonio families and small businesses since 2004.</p>
+      </div>
+      <div>
+        <div class="eyebrow text-goldlt mb-4">Services</div>
+        <ul class="space-y-2 text-[.92rem]">
+          <li><a href="#services" class="ug hover:text-cream">Tax Preparation</a></li>
+          <li><a href="#services" class="ug hover:text-cream">Tax Planning</a></li>
+          <li><a href="#services" class="ug hover:text-cream">Bookkeeping</a></li>
+          <li><a href="#services" class="ug hover:text-cream">Notary Public</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow text-goldlt mb-4">Visit</div>
+        <address class="not-italic text-[.92rem] leading-relaxed text-cream/70">
+          5656 S Pan Am Expressway, Suite A-1<br/>
+          San Antonio, TX 78211<br/>
+          <a href="tel:+12102651766" class="ug hover:text-cream mt-2 inline-block">(210) 265-1766</a><br/>
+          <span class="text-cream/55">Mon–Fri 9–7 · Sat 10–7 · Sun closed</span>
+        </address>
+      </div>
+    </div>
+    <div class="pt-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-[.8rem] text-cream/45">
+      <span>© <span id="yr">2026</span> Lisa Bookkeeping &amp; Tax Services LLC. All rights reserved.</span>
+      <span>Preview crafted by <a href="https://turnkeyweb.org" class="ug hover:text-cream">Turnkey Web</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE BAR -->
+<div class="sticky-bar sm:hidden fixed bottom-0 inset-x-0 z-50 bg-paper/95 backdrop-blur border-t border-navy/12 grid grid-cols-2">
+  <a href="tel:+12102651766" class="flex items-center justify-center gap-2 py-3.5 text-navy font-semibold text-[.9rem] border-r border-navy/12">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.9.36 1.79.7 2.63a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.44-1.27a2 2 0 0 1 2.11-.45c.84.34 1.73.57 2.63.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call Lisa
+  </a>
+  <a href="https://www.google.com/maps?q=5656+S+Pan+Am+Expressway+Suite+A-1+San+Antonio+TX+78211" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3.5 text-gold font-semibold text-[.9rem]">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AccountingService",
+  "name":"Lisa Bookkeeping & Tax Services LLC",
+  "description":"IRS Enrolled Agent providing tax preparation, tax planning, bookkeeping, income tax filing, and notary services in San Antonio since 2004.",
+  "url":"https://turnkeyweb.org/previews/lisa-bookkeeping-tax/",
+  "telephone":"+1-210-265-1766",
+  "foundingDate":"2004",
+  "priceRange":"$$",
+  "address":{"@type":"PostalAddress","streetAddress":"5656 S Pan Am Expressway, Suite A-1","addressLocality":"San Antonio","addressRegion":"TX","postalCode":"78211","addressCountry":"US"},
+  "areaServed":{"@type":"City","name":"San Antonio"},
+  "founder":{"@type":"Person","name":"Elizabeth \"Lisa\" Moreno","jobTitle":"Enrolled Agent"},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"19:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"19:00"}
+  ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"17"},
+  "review":[{"@type":"Review","author":{"@type":"Person","name":"Crystal Perry"},"reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"Super friendly folks! Super knowledgeable! They took all my stress away in one visit, I will definitely be a returning customer."}]
+}
+</script>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+/* ---------- Lenis smooth scroll driven by the single GSAP ticker ---------- */
+let lenis;
+if (window.Lenis && !reduce){
+  lenis = new Lenis({ duration:1.1, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+  if (window.gsap){
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.ticker.add(t=> lenis.raf(t*1000));
+    gsap.ticker.lagSmoothing(0);
+    lenis.on('scroll', ScrollTrigger.update);
+    ScrollTrigger.config({ ignoreMobileResize:true });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id=a.getAttribute('href'); if(id.length<2) return;
+      const t=document.querySelector(id); if(!t) return;
+      e.preventDefault(); lenis.scrollTo(t,{offset:-72});
+    });
+  });
+} else if (window.gsap){ gsap.registerPlugin(ScrollTrigger); }
+
+/* ---------- scroll progress + nav bg ---------- */
+const prog=document.getElementById('scrollProg'), nav=document.getElementById('nav');
+function onScroll(){
+  const st=window.pageYOffset||document.documentElement.scrollTop;
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  prog.style.width=(h>0?(st/h*100):0)+'%';
+  if(st>30){ nav.style.background='rgba(252,248,240,.88)'; nav.style.backdropFilter='blur(12px)'; nav.style.boxShadow='0 1px 0 rgba(23,32,56,.08)'; }
+  else { nav.style.background='transparent'; nav.style.backdropFilter='none'; nav.style.boxShadow='none'; }
+}
+window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+/* ---------- masked word + line reveals ---------- */
+if (window.gsap){
+  gsap.utils.toArray('[data-word]').forEach((el,i)=>{
+    gsap.set(el,{yPercent:115});
+    gsap.to(el,{yPercent:0,duration:1,delay:.15+i*.12,ease:'power4.out'});
+  });
+  gsap.utils.toArray('[data-line]').forEach((el)=>{
+    el.style.display='block';
+    gsap.from(el,{opacity:0,y:24,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+  });
+  gsap.utils.toArray('[data-reveal]').forEach((el)=>{
+    ScrollTrigger.create({ trigger:el, start:'top 92%', once:true,
+      onEnter:()=> gsap.to(el,{opacity:1,y:0,duration:.7,ease:'power3.out',onComplete:()=>el.classList.add('revealed')}) });
+  });
+  /* count-up */
+  gsap.utils.toArray('[data-count]').forEach(el=>{
+    const target=parseFloat(el.dataset.count), dec=parseInt(el.dataset.decimals||'0');
+    ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>{
+      gsap.fromTo({v:0},{v:0},{v:target,duration:1.6,ease:'power2.out',onUpdate:function(){ el.textContent=this.targets()[0].v.toFixed(dec); }});
+    }});
+  });
+}
+
+/* ---------- Three.js gold-mote drift (contained hero, light canvas) ---------- */
+(function(){
+  const canvas=document.getElementById('motes');
+  if(!canvas || !window.THREE || reduce){ return; }
+  let renderer, scene, camera, points, raf=null, visible=true;
+  try{
+    renderer=new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+  }catch(e){ return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile?1.5:2));
+  function size(){ renderer.setSize(canvas.clientWidth, canvas.clientHeight, false); }
+  scene=new THREE.Scene();
+  camera=new THREE.PerspectiveCamera(60, canvas.clientWidth/canvas.clientHeight, 0.1, 100);
+  camera.position.z=14;
+
+  const COUNT = isMobile ? 120 : 320;
+  const geo=new THREE.BufferGeometry();
+  const pos=new Float32Array(COUNT*3), spd=new Float32Array(COUNT), sway=new Float32Array(COUNT);
+  for(let i=0;i<COUNT;i++){
+    pos[i*3]=(Math.random()-0.5)*30;
+    pos[i*3+1]=(Math.random()-0.5)*20;
+    pos[i*3+2]=(Math.random()-0.5)*14;
+    spd[i]=0.004+Math.random()*0.010;
+    sway[i]=Math.random()*Math.PI*2;
+  }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  // soft round gold sprite
+  const c=document.createElement('canvas'); c.width=c.height=64;
+  const ctx=c.getContext('2d');
+  const g=ctx.createRadialGradient(32,32,0,32,32,32);
+  g.addColorStop(0,'rgba(185,141,82,0.9)'); g.addColorStop(.4,'rgba(185,141,82,0.35)'); g.addColorStop(1,'rgba(185,141,82,0)');
+  ctx.fillStyle=g; ctx.fillRect(0,0,64,64);
+  const tex=new THREE.CanvasTexture(c);
+  const mat=new THREE.PointsMaterial({ size:0.42, map:tex, transparent:true, depthWrite:false, blending:THREE.NormalBlending, opacity:0.85 });
+  points=new THREE.Points(geo,mat);
+  scene.add(points);
+  size();
+
+  function frame(){
+    const p=geo.attributes.position.array;
+    const t=performance.now()*0.001;
+    for(let i=0;i<COUNT;i++){
+      p[i*3+1]+=spd[i]*3;                       // drift up gently
+      p[i*3]+=Math.sin(t*0.5+sway[i])*0.006;    // lateral sway
+      if(p[i*3+1]>10.5){ p[i*3+1]=-10.5; p[i*3]=(Math.random()-0.5)*30; }
+    }
+    geo.attributes.position.needsUpdate=true;
+    points.rotation.y=Math.sin(t*0.05)*0.15;
+    renderer.render(scene,camera);
+    raf=requestAnimationFrame(frame);
+  }
+  function start(){ if(!raf && visible) frame(); }
+  function stop(){ if(raf){ cancelAnimationFrame(raf); raf=null; } }
+  window.addEventListener('resize', ()=>{ camera.aspect=canvas.clientWidth/canvas.clientHeight; camera.updateProjectionMatrix(); size(); }, {passive:true});
+  document.addEventListener('visibilitychange', ()=>{ if(document.hidden) stop(); else start(); });
+  // pause when hero scrolled offscreen
+  const io=new IntersectionObserver(es=>{ visible=es[0].isIntersecting; visible?start():stop(); }, {threshold:0.01});
+  io.observe(canvas);
+  start();
+})();
+
+/* ---------- 6s screenshot / crawler safety net ---------- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; el.classList.add('revealed'); });
+  document.querySelectorAll('[data-word]').forEach(el=> el.style.transform='none');
+  document.querySelectorAll('[data-line]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; });
+  document.querySelectorAll('[data-count]').forEach(el=>{ if(el.textContent.trim()==='0'||el.textContent.trim()===''){ el.textContent=el.dataset.count; } });
+}, 6000);
+</script>
+</body>
+</html>
