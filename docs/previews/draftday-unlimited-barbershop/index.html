@@ -122,8 +122,9 @@ tailwind.config = {
   .hero-scrim {
     position: absolute; inset: 0; z-index: 1; pointer-events: none;
     background:
-      linear-gradient(90deg, rgba(10,7,5,.90) 0%, rgba(10,7,5,.72) 34%, rgba(10,7,5,.30) 62%, rgba(10,7,5,.12) 100%),
-      linear-gradient(0deg, rgba(10,7,5,.60) 0%, rgba(10,7,5,0) 42%);
+      linear-gradient(180deg, rgba(10,7,5,.78) 0%, rgba(10,7,5,.10) 16%, rgba(10,7,5,0) 26%),
+      linear-gradient(90deg, rgba(10,7,5,.90) 0%, rgba(10,7,5,.74) 34%, rgba(10,7,5,.38) 62%, rgba(10,7,5,.22) 100%),
+      linear-gradient(0deg, rgba(10,7,5,.62) 0%, rgba(10,7,5,0) 42%);
   }
   .hero-grain::after {
     content:''; position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.05; mix-blend-mode:overlay;
@@ -177,7 +178,7 @@ tailwind.config = {
   .review-card:hover { transform: translateY(-6px); box-shadow: 0 28px 60px -34px rgba(25,21,18,.4); }
 
   [data-reveal] { opacity: 0; transform: translateY(30px); }
-  .stars { color: #B4372A; letter-spacing: .12em; }
+  .stars { color: #E4B45C; letter-spacing: .12em; }
 
   #particles { position:absolute; inset:0; z-index:0; pointer-events:none; }
 
@@ -185,7 +186,8 @@ tailwind.config = {
   #navbar .nav-word  { color: #F7F2EA; transition: color .45s; text-shadow: 0 1px 8px rgba(0,0,0,.45); }
   #navbar .nav-sub   { color: #B08D57; transition: color .45s; }
   #navbar.scrolled .nav-word { text-shadow: none; }
-  #navbar .nav-link  { color: rgba(247,242,234,.82); transition: color .3s; }
+  #navbar .nav-link  { color: rgba(247,242,234,.95); transition: color .3s; text-shadow: 0 1px 8px rgba(0,0,0,.55); }
+  #navbar.scrolled .nav-link { text-shadow: none; }
   #navbar .nav-phone { color: #F7F2EA; transition: color .3s; }
   #navbar .nav-badge { background: #B4372A; color:#F7F2EA; transition: background .45s, color .45s; }
   #navbar.scrolled .nav-word  { color: #191512; }
@@ -245,14 +247,14 @@ tailwind.config = {
   <div class="hero-scrim"></div>
 
   <div class="relative z-[3] w-full">
-    <div class="mx-auto max-w-7xl px-5 md:px-8 pb-14 md:pb-20 pt-32">
+    <div class="mx-auto max-w-7xl px-5 md:px-8 pb-16 md:pb-20 pt-36 md:pt-32">
       <div class="max-w-3xl">
-        <div class="chip mb-6" data-hero="1">
+        <div class="chip mb-5 md:mb-6" data-hero="1">
           <span class="dot"></span>
-          <span class="text-[11.5px] font-600 u-track text-bone/90">MACON, GEORGIA · BY JAY NEELEY</span>
+          <span class="text-[10.5px] md:text-[11.5px] font-600 u-track text-bone/90">MACON, GEORGIA · BY JAY NEELEY</span>
         </div>
 
-        <h1 class="font-display font-600 text-bone leading-[1.02] text-[13vw] sm:text-[9vw] md:text-[6.4vw] lg:text-[5.4rem]" style="text-shadow:0 3px 30px rgba(0,0,0,.5);">
+        <h1 class="font-display font-600 text-bone leading-[1.03] text-[10.8vw] sm:text-[9vw] md:text-[6.4vw] lg:text-[5.4rem]" style="text-shadow:0 3px 30px rgba(0,0,0,.5);">
           <span class="mask-line"><span class="word">Sit down a</span></span>
           <span class="mask-line"><span class="word">walk-in.</span></span>
           <span class="mask-line"><span class="word grad-text">Leave a first pick.</span></span>
@@ -404,7 +406,7 @@ tailwind.config = {
 </section>
 
 <!-- CINEMATIC BAND -->
-<section class="relative h-[52vh] md:h-[60vh] overflow-hidden flex items-center justify-center">
+<section class="relative h-[40vh] md:h-[58vh] overflow-hidden flex items-center justify-center">
   <img src="assets/band.jpg" alt="Vintage barber chair under warm light at Draftday Unlimited" class="absolute inset-0 w-full h-full object-cover" data-parallax="0.12">
   <div class="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/60 to-ink/70"></div>
   <div class="relative z-[2] text-center px-6 max-w-3xl" data-reveal>
@@ -569,12 +571,20 @@ tailwind.config = {
       </div>
     </div>
 
-    <div class="rounded-2xl overflow-hidden shadow-[0_40px_90px_-50px_rgba(25,21,18,.6)] min-h-[420px] lg:min-h-full border border-ink/8" data-reveal>
+    <div class="relative rounded-2xl overflow-hidden shadow-[0_40px_90px_-50px_rgba(25,21,18,.6)] min-h-[420px] lg:min-h-full border border-ink/8" data-reveal>
+      <!-- dark branded fallback behind the map (shows if tiles are still loading) -->
+      <div class="absolute inset-0 z-0 bg-ink flex flex-col items-center justify-center text-center px-6">
+        <span class="grid place-items-center w-12 h-12 rounded-xl bg-red/90 text-bone mb-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <p class="font-display text-bone text-[18px] tracking-[.06em]">3706 Mercer University Dr, Suite 45</p>
+        <p class="text-brass text-[13px] u-track font-600 mt-1">MACON, GA 31204</p>
+      </div>
       <iframe
         title="Draftday Unlimited Barbershop location map"
         src="https://www.google.com/maps?q=3706%20Mercer%20University%20Dr%20Suite%2045%20Macon%20GA%2031204&output=embed"
-        width="100%" height="100%" style="border:0; min-height:420px; display:block;"
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        width="100%" height="100%" style="border:0; min-height:420px; display:block; position:relative; z-index:1;"
+        loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
