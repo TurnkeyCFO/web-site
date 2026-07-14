@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<!--
+  Star Super Cleaners — Carrollton, TX — DRAFT preview build (Turnkey Web)
+  Art direction: light-luxury / "pressed & fresh" editorial. Base = warm cream, ink = deep slate navy,
+  primary accent = steam blue #2C6E8F, secondary = warm brass #B4894E. Diverges from recent salon/outdoor
+  builds via a cinematic dry-cleaning video hero, a WebGL "steam motes" field, and a giant-outlined-number
+  process section. Real data: name/address/phone verified (Yelp/GBP/YellowPages). Hours unverifiable ->
+  soft "call to confirm". Public reviews skew negative -> NO testimonials; value/service chips only, no
+  invented social proof, no aggregateRating in JSON-LD. No logo online -> custom wordmark.
+  Hero = AI cinematic (Higgsfield nano_banana_pro still -> Kling3.0 turbo motion), self-hosted assets/hero.mp4.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Super Cleaners | Dry Cleaning & Laundry in Carrollton, TX</title>
+<meta name="description" content="Star Super Cleaners on West Hebron Parkway in Carrollton, TX — dry cleaning, laundered & pressed shirts, wash & fold, alterations, and careful specialty care. Call (972) 395-9302.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/star-super-cleaners/">
+<meta property="og:type" content="business.business">
+<meta property="og:title" content="Star Super Cleaners | Dry Cleaning & Laundry in Carrollton, TX">
+<meta property="og:description" content="Dry cleaning, laundered shirts, wash & fold, and expert alterations on West Hebron Parkway in Carrollton.">
+<meta property="og:image" content="https://turnkeyweb.org/previews/star-super-cleaners/assets/hero.jpg">
+<meta property="og:url" content="https://turnkeyweb.org/previews/star-super-cleaners/">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      cream:'#FBF7F1', bone:'#F2EADD', paper:'#FFFDF9',
+      ink:'#182230', navy:'#123047', steam:'#2C6E8F', sky:'#5C97AF',
+      brass:'#B4894E', mist:'#DCE7EA', muted:'#5A6675'
+    },
+    fontFamily: { display:['Fraunces','serif'], sans:['"Plus Jakarta Sans"','sans-serif'] }
+  }}
+}
+</script>
+
+<style>
+:root{
+  --cream:#FBF7F1; --bone:#F2EADD; --paper:#FFFDF9; --ink:#182230; --navy:#123047;
+  --steam:#2C6E8F; --sky:#5C97AF; --brass:#B4894E; --mist:#DCE7EA; --muted:#5A6675;
+}
+*{ -webkit-font-smoothing:antialiased; }
+html{ scroll-behavior:auto; scroll-padding-top:88px; }
+body{ background:var(--cream); color:var(--ink); font-family:'Plus Jakarta Sans',sans-serif; overflow-x:hidden; }
+::selection{ background:var(--steam); color:#fff; }
+
+h1,h2,h3,.disp{ font-family:'Fraunces',serif; letter-spacing:-.015em; line-height:1.1; }
+
+/* ---- gradient shimmer (descender-safe) ---- */
+.grad-text{
+  background:linear-gradient(100deg,var(--steam) 0%,var(--brass) 42%,var(--navy) 72%,var(--steam) 100%);
+  background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  animation:shimmer 9s linear infinite; line-height:1.15; padding-bottom:.08em; display:inline-block;
+}
+@keyframes shimmer{ from{background-position:0% 50%} to{background-position:220% 50%} }
+.grad-cream{
+  background:linear-gradient(100deg,#ffffff 0%,#DCE7EA 40%,#E8D9BC 70%,#ffffff 100%);
+  background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  animation:shimmer 9s linear infinite; line-height:1.15; padding-bottom:.08em; display:inline-block;
+}
+
+/* ---- hero ---- */
+.hero-wrap{ position:relative; min-height:100svh; overflow:hidden; background:var(--navy); }
+.hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; will-change:transform; }
+.hero-scrim{
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(18,34,48,.55) 0%, rgba(18,34,48,0) 22%),
+    linear-gradient(104deg, rgba(18,34,48,.82) 0%, rgba(18,34,48,.55) 34%, rgba(18,34,48,.18) 60%, rgba(18,34,48,0) 82%),
+    linear-gradient(0deg, rgba(18,34,48,.42) 0%, rgba(18,34,48,0) 30%);
+}
+.hero-grain::after{
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:overlay;
+  background-image:radial-gradient(rgba(255,255,255,.9) 1px, transparent 1px); background-size:3px 3px;
+}
+
+/* ---- buttons ---- */
+.btn{ position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:.6rem;
+  font-weight:600; border-radius:999px; transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s,filter .3s; }
+.btn-primary{ background:var(--steam); color:#fff; padding:.95rem 1.7rem; box-shadow:0 12px 30px -12px rgba(44,110,143,.7); }
+.btn-primary:hover{ transform:translateY(-3px); filter:brightness(1.06); box-shadow:0 20px 40px -14px rgba(44,110,143,.8); }
+.btn-primary::after{ content:""; position:absolute; top:0; left:-120%; width:60%; height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent); transform:skewX(-18deg); transition:left .9s cubic-bezier(.2,.8,.2,1); }
+.btn-primary:hover::after{ left:130%; }
+.btn-ghost{ border:1.5px solid rgba(255,255,255,.55); color:#fff; padding:.9rem 1.55rem; backdrop-filter:blur(4px); }
+.btn-ghost:hover{ transform:translateY(-3px); background:rgba(255,255,255,.1); border-color:#fff; }
+.btn-ink{ border:1.5px solid rgba(24,34,48,.25); color:var(--ink); padding:.9rem 1.55rem; }
+.btn-ink:hover{ transform:translateY(-3px); border-color:var(--steam); color:var(--steam); }
+
+/* ---- chips ---- */
+.chip{ display:inline-flex; align-items:center; gap:.5rem; padding:.5rem 1rem; border-radius:999px;
+  background:var(--paper); border:1px solid rgba(24,34,48,.1); font-size:.85rem; font-weight:600; color:var(--navy);
+  box-shadow:0 6px 18px -14px rgba(24,34,48,.4); }
+.chip svg{ color:var(--steam); }
+
+/* ---- marquee ---- */
+.marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+.marquee-track{ display:flex; gap:2.6rem; width:max-content; animation:scrollX 40s linear infinite; align-items:center; }
+.marquee:hover .marquee-track{ animation-play-state:paused; }
+@keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.mq-item{ font-family:'Fraunces',serif; font-size:1.4rem; color:var(--navy); white-space:nowrap; }
+.mq-dot{ width:7px; height:7px; border-radius:50%; background:var(--brass); flex:none; }
+
+/* ---- service rows ---- */
+.svc-row{ position:relative; border-top:1px solid rgba(24,34,48,.12); padding:1.9rem 0; transition:padding-left .5s cubic-bezier(.2,.8,.2,1); }
+.svc-row:hover{ padding-left:1.1rem; }
+.svc-row::before{ content:""; position:absolute; left:0; top:0; height:100%; width:0; background:linear-gradient(180deg,var(--steam),var(--brass)); transition:width .5s cubic-bezier(.2,.8,.2,1); border-radius:2px; }
+.svc-row:hover::before{ width:4px; }
+.svc-num{ font-family:'Fraunces',serif; color:var(--brass); font-size:.95rem; }
+
+/* ---- process ---- */
+.proc-num{ font-family:'Fraunces',serif; font-weight:500; font-size:clamp(4.5rem,13vw,10rem); line-height:1;
+  color:transparent; -webkit-text-stroke:1.5px rgba(44,110,143,.42); letter-spacing:-.02em; padding-bottom:.06em; }
+
+/* ---- webgl steam ---- */
+#steam-canvas{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+
+/* ---- cards tilt ---- */
+.tilt{ transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .5s; transform-style:preserve-3d; will-change:transform; }
+
+/* ---- reveals ---- */
+[data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+.reveal-in{ opacity:1 !important; transform:none !important; }
+[data-reveal-image]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.2,.8,.2,1); }
+[data-reveal-image].img-in{ clip-path:inset(0 0 0% 0); }
+
+.underline-grow{ position:relative; }
+.underline-grow::after{ content:""; position:absolute; left:0; bottom:-3px; width:0; height:1.5px; background:linear-gradient(90deg,var(--steam),var(--brass)); transition:width .5s cubic-bezier(.2,.8,.2,1); }
+.underline-grow:hover::after{ width:100%; }
+
+.open-dot{ width:8px; height:8px; border-radius:50%; background:#3FA34D; box-shadow:0 0 0 0 rgba(63,163,77,.5); animation:pulse 2.2s ease-in-out infinite; }
+@keyframes pulse{ 0%,100%{box-shadow:0 0 0 0 rgba(63,163,77,.5)} 50%{box-shadow:0 0 0 7px rgba(63,163,77,0)} }
+
+.mobsticky{ display:none; }
+@media(max-width:767px){
+  .mobsticky{ display:flex; position:fixed; bottom:0; left:0; right:0; z-index:60; }
+  .hero-wrap{ min-height:92svh; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between py-4">
+    <a href="#top" class="flex items-center gap-2.5 group">
+      <span class="nav-mark inline-flex items-center justify-center w-9 h-9 rounded-lg text-white" style="background:linear-gradient(135deg,var(--navy),var(--steam));">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.3 20.3l1.7-6.6L2.8 9.3l6.8-.5z"/></svg>
+      </span>
+      <span class="leading-none">
+        <span class="nav-name block font-display text-[1.12rem] font-600 tracking-tight text-ink">Star Super Cleaners</span>
+        <span class="nav-sub block text-[.62rem] font-600 tracking-[.22em] uppercase text-muted">Carrollton, Texas</span>
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-[.9rem] font-500 text-ink/85">
+      <a href="#services" class="underline-grow">Services</a>
+      <a href="#standard" class="underline-grow">The Star Standard</a>
+      <a href="#how" class="underline-grow">How It Works</a>
+      <a href="#visit" class="underline-grow">Visit</a>
+    </nav>
+    <a href="tel:+19723959302" class="btn btn-primary text-[.9rem] !py-2.5 !px-5">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.6 15.6 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg>
+      (972) 395-9302
+    </a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="top" class="hero-wrap hero-grain">
+  <video class="hero-bg" autoplay muted loop playsinline poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 min-h-[100svh] flex flex-col justify-center pt-28 pb-28">
+    <div class="max-w-2xl">
+      <div data-reveal class="flex items-center gap-3 mb-6">
+        <span class="h-px w-9 bg-white/60"></span>
+        <span class="text-[.72rem] font-700 tracking-[.28em] uppercase text-white/85">Dry Cleaning &amp; Laundry · West Hebron Pkwy</span>
+      </div>
+      <h1 data-reveal class="text-white font-display font-500 text-[2.7rem] sm:text-[4rem] lg:text-[4.6rem]" style="line-height:1.08;">
+        Your wardrobe,<br><span class="grad-cream">pressed to perfection.</span>
+      </h1>
+      <p data-reveal class="mt-6 text-white/85 text-lg sm:text-xl max-w-xl" style="line-height:1.6;">
+        Dry cleaning, laundered shirts, wash &amp; fold, and expert alterations — cared for by hand and ready when you need them, right here in Carrollton.
+      </p>
+      <div data-reveal class="mt-9 flex flex-wrap items-center gap-4">
+        <a href="tel:+19723959302" class="btn btn-primary text-base">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.6 15.6 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg>
+          Call (972) 395-9302
+        </a>
+        <a href="#services" class="btn btn-ghost text-base">See our services</a>
+      </div>
+      <div data-reveal class="mt-9 flex items-center gap-2.5 text-white/80 text-sm font-500">
+        <span class="open-dot"></span> Open Monday–Saturday · Family-run neighborhood cleaner
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 text-white/70">
+    <span class="text-[.62rem] tracking-[.25em] uppercase">Scroll</span>
+    <span class="w-px h-9 bg-gradient-to-b from-white/70 to-transparent"></span>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="bg-bone border-y border-ink/10 py-5">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="mq-item">Dry Cleaning</span><span class="mq-dot"></span>
+      <span class="mq-item italic grad-text">Laundered Shirts</span><span class="mq-dot"></span>
+      <span class="mq-item">Wash &amp; Fold</span><span class="mq-dot"></span>
+      <span class="mq-item italic grad-text">Alterations &amp; Repairs</span><span class="mq-dot"></span>
+      <span class="mq-item">Comforters &amp; Bedding</span><span class="mq-dot"></span>
+      <span class="mq-item italic grad-text">Delicates &amp; Wool</span><span class="mq-dot"></span>
+      <span class="mq-item">Heavy Starch Done Right</span><span class="mq-dot"></span>
+      <!-- duplicate for seamless loop -->
+      <span class="mq-item">Dry Cleaning</span><span class="mq-dot"></span>
+      <span class="mq-item italic grad-text">Laundered Shirts</span><span class="mq-dot"></span>
+      <span class="mq-item">Wash &amp; Fold</span><span class="mq-dot"></span>
+      <span class="mq-item italic grad-text">Alterations &amp; Repairs</span><span class="mq-dot"></span>
+      <span class="mq-item">Comforters &amp; Bedding</span><span class="mq-dot"></span>
+      <span class="mq-item italic grad-text">Delicates &amp; Wool</span><span class="mq-dot"></span>
+      <span class="mq-item">Heavy Starch Done Right</span><span class="mq-dot"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= STATEMENT ================= -->
+<section class="bg-cream py-24 sm:py-32">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <span data-reveal class="text-[.72rem] font-700 tracking-[.28em] uppercase text-steam">The neighborhood cleaner on Hebron Parkway</span>
+    <h2 data-reveal class="mt-6 font-display font-400 text-[2rem] sm:text-[2.9rem] text-ink" style="line-height:1.22;">
+      Good clothes deserve <span class="grad-text">careful hands.</span> We treat every garment like it’s our own — inspected, cleaned, pressed, and returned the way it should be.
+    </h2>
+    <div data-reveal class="mt-10 mx-auto max-w-[200px] h-px bg-gradient-to-r from-transparent via-steam/40 to-transparent"></div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="bg-paper py-24 sm:py-28 relative">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-[1fr_1.15fr] gap-12 lg:gap-20 items-start">
+      <div class="lg:sticky lg:top-28">
+        <span data-reveal class="text-[.72rem] font-700 tracking-[.28em] uppercase text-brass">What we do</span>
+        <h2 data-reveal class="mt-4 font-display font-500 text-[2.4rem] sm:text-[3.2rem] text-ink" style="line-height:1.08;">
+          Full-service<br>garment care.
+        </h2>
+        <p data-reveal class="mt-6 text-muted text-lg max-w-md" style="line-height:1.6;">
+          From your everyday work shirts to the pieces you can’t replace — we handle it all under one roof in Carrollton.
+        </p>
+        <div data-reveal class="mt-8 overflow-hidden rounded-2xl shadow-xl shadow-ink/10">
+          <img data-reveal-image src="assets/band.jpg" alt="Freshly pressed shirts on the rail at Star Super Cleaners" class="w-full h-[240px] object-cover" loading="lazy">
+        </div>
+        <a data-reveal href="tel:+19723959302" class="btn btn-ink mt-8 text-base">Questions? Call (972) 395-9302</a>
+      </div>
+
+      <div data-reveal>
+        <div class="svc-row group">
+          <div class="flex items-baseline justify-between gap-4">
+            <div><span class="svc-num">01</span>
+              <h3 class="font-display text-2xl sm:text-[1.75rem] text-ink mt-1" style="line-height:1.15;">Dry Cleaning</h3></div>
+          </div>
+          <p class="text-muted mt-2 max-w-lg" style="line-height:1.55;">Suits, dresses, slacks, and delicate fabrics cleaned and finished with care to keep their color, shape, and feel.</p>
+        </div>
+        <div class="svc-row group">
+          <div><span class="svc-num">02</span>
+            <h3 class="font-display text-2xl sm:text-[1.75rem] text-ink mt-1" style="line-height:1.15;">Laundered &amp; Pressed Shirts</h3></div>
+          <p class="text-muted mt-2 max-w-lg" style="line-height:1.55;">Crisp, professionally pressed dress shirts — light, medium, or heavy starch, exactly the way you like them.</p>
+        </div>
+        <div class="svc-row group">
+          <div><span class="svc-num">03</span>
+            <h3 class="font-display text-2xl sm:text-[1.75rem] text-ink mt-1" style="line-height:1.15;">Wash &amp; Fold Laundry</h3></div>
+          <p class="text-muted mt-2 max-w-lg" style="line-height:1.55;">Drop off the everyday load and pick it up clean, neatly folded, and ready to put away.</p>
+        </div>
+        <div class="svc-row group">
+          <div><span class="svc-num">04</span>
+            <h3 class="font-display text-2xl sm:text-[1.75rem] text-ink mt-1" style="line-height:1.15;">Alterations &amp; Repairs</h3></div>
+          <p class="text-muted mt-2 max-w-lg" style="line-height:1.55;">Hems, seams, buttons, and fit adjustments — small fixes and tailoring that give your clothes a longer life.</p>
+        </div>
+        <div class="svc-row group">
+          <div><span class="svc-num">05</span>
+            <h3 class="font-display text-2xl sm:text-[1.75rem] text-ink mt-1" style="line-height:1.15;">Comforters &amp; Household</h3></div>
+          <p class="text-muted mt-2 max-w-lg" style="line-height:1.55;">Comforters, bedding, and larger household textiles cleaned and freshened — the items your home machine can’t handle.</p>
+        </div>
+        <div class="svc-row group" style="border-bottom:1px solid rgba(24,34,48,.12);">
+          <div><span class="svc-num">06</span>
+            <h3 class="font-display text-2xl sm:text-[1.75rem] text-ink mt-1" style="line-height:1.15;">Delicates &amp; Wool Care</h3></div>
+          <p class="text-muted mt-2 max-w-lg" style="line-height:1.55;">Fine knits, wool, and specialty fabrics handled gently by people who know how to treat them.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE STAR STANDARD (WebGL steam) ================= -->
+<section id="standard" class="relative overflow-hidden py-28 sm:py-36" style="background:linear-gradient(180deg,#0F2B3E,#123047 60%,#0E2536);">
+  <canvas id="steam-canvas"></canvas>
+  <div class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto">
+      <span data-reveal class="text-[.72rem] font-700 tracking-[.28em] uppercase text-sky">Why neighbors keep coming back</span>
+      <h2 data-reveal class="mt-5 font-display font-400 text-white text-[2.2rem] sm:text-[3.1rem]" style="line-height:1.14;">
+        The <span class="grad-cream">Star Standard</span>
+      </h2>
+      <p data-reveal class="mt-5 text-white/75 text-lg" style="line-height:1.6;">
+        No shortcuts, no guesswork. Just honest, careful cleaning from a local shop that stands behind its work.
+      </p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div data-reveal class="tilt rounded-2xl p-7 border border-white/12" style="background:rgba(255,255,255,.05);">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(92,151,175,.18);color:#8FC4D8;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h3 class="font-display text-xl text-white" style="line-height:1.2;">Inspected, not rushed</h3>
+        <p class="text-white/70 mt-2 text-[.98rem]" style="line-height:1.55;">Every garment is checked before and after cleaning, so nothing goes back to you half-done.</p>
+      </div>
+      <div data-reveal class="tilt rounded-2xl p-7 border border-white/12" style="background:rgba(255,255,255,.05);">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(180,137,78,.2);color:#E0B778;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.3 20.3l1.7-6.6L2.8 9.3l6.8-.5z"/></svg>
+        </div>
+        <h3 class="font-display text-xl text-white" style="line-height:1.2;">Pressed the right way</h3>
+        <p class="text-white/70 mt-2 text-[.98rem]" style="line-height:1.55;">Crisp collars, clean creases, and the starch level you actually asked for — every single time.</p>
+      </div>
+      <div data-reveal class="tilt rounded-2xl p-7 border border-white/12" style="background:rgba(255,255,255,.05);">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(92,151,175,.18);color:#8FC4D8;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V9l6-5 6 5v12M10 21v-6h4v6"/></svg>
+        </div>
+        <h3 class="font-display text-xl text-white" style="line-height:1.2;">A local you can talk to</h3>
+        <p class="text-white/70 mt-2 text-[.98rem]" style="line-height:1.55;">Family-run on West Hebron Parkway. Real people who remember your order and stand behind it.</p>
+      </div>
+    </div>
+
+    <div data-reveal class="mt-12 flex flex-wrap justify-center gap-3">
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>Same-roof convenience</span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>Heavy starch specialists</span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>Wool &amp; delicate care</span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>On-site alterations</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how" class="bg-cream py-24 sm:py-32">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-16">
+      <span data-reveal class="text-[.72rem] font-700 tracking-[.28em] uppercase text-brass">Simple as it should be</span>
+      <h2 data-reveal class="mt-4 font-display font-500 text-[2.4rem] sm:text-[3.2rem] text-ink" style="line-height:1.1;">How it works</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10 md:gap-8">
+      <div data-reveal class="text-center md:text-left">
+        <div class="proc-num">01</div>
+        <h3 class="font-display text-2xl text-ink mt-3" style="line-height:1.2;">Drop it off</h3>
+        <p class="text-muted mt-2" style="line-height:1.6;">Swing by the shop on West Hebron Parkway with your dry cleaning, shirts, or laundry. Tell us how you like it.</p>
+      </div>
+      <div data-reveal class="text-center md:text-left">
+        <div class="proc-num">02</div>
+        <h3 class="font-display text-2xl text-ink mt-3" style="line-height:1.2;">We treat &amp; press</h3>
+        <p class="text-muted mt-2" style="line-height:1.6;">Each piece is inspected, cleaned to its fabric, pressed, and given a final once-over before it’s bagged.</p>
+      </div>
+      <div data-reveal class="text-center md:text-left">
+        <div class="proc-num">03</div>
+        <h3 class="font-display text-2xl text-ink mt-3" style="line-height:1.2;">Fresh &amp; ready</h3>
+        <p class="text-muted mt-2" style="line-height:1.6;">Pick it up crisp, clean, and ready to wear. Call ahead and we’ll have it waiting for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CINEMATIC BAND ================= -->
+<section class="relative h-[52vh] min-h-[380px] overflow-hidden flex items-center justify-center">
+  <img src="assets/band.jpg" alt="Rows of pressed white shirts under warm light" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+  <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(18,34,48,.72),rgba(18,34,48,.35) 55%,rgba(18,34,48,.6));"></div>
+  <div class="relative z-10 text-center px-6 max-w-3xl">
+    <h2 data-reveal class="font-display font-400 text-white text-[2rem] sm:text-[3rem]" style="line-height:1.18;">
+      “Careful with every fiber, <span class="grad-cream">crisp with every collar.”</span>
+    </h2>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section id="visit" class="bg-paper py-24 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
+      <div data-reveal>
+        <span class="text-[.72rem] font-700 tracking-[.28em] uppercase text-steam">Find us</span>
+        <h2 class="mt-4 font-display font-500 text-[2.4rem] sm:text-[3.1rem] text-ink" style="line-height:1.08;">Visit the shop</h2>
+        <p class="mt-5 text-muted text-lg max-w-md" style="line-height:1.6;">We’re on West Hebron Parkway in Carrollton, easy in and out. Stop by or call ahead — we’re glad to help.</p>
+
+        <div class="mt-9 space-y-6">
+          <div class="flex items-start gap-4">
+            <span class="mt-1 flex-none w-10 h-10 rounded-xl flex items-center justify-center" style="background:var(--mist);color:var(--steam);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </span>
+            <div>
+              <div class="font-600 text-ink">Address</div>
+              <div class="text-muted">1621 W Hebron Pkwy<br>Carrollton, TX 75010</div>
+              <a href="https://www.google.com/maps?q=1621+W+Hebron+Pkwy,+Carrollton,+TX+75010" target="_blank" rel="noopener" class="text-steam font-600 text-sm underline-grow inline-block mt-1">Get directions</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="mt-1 flex-none w-10 h-10 rounded-xl flex items-center justify-center" style="background:var(--mist);color:var(--steam);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.6 15.6 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg>
+            </span>
+            <div>
+              <div class="font-600 text-ink">Phone</div>
+              <a href="tel:+19723959302" class="text-muted hover:text-steam transition">(972) 395-9302</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="mt-1 flex-none w-10 h-10 rounded-xl flex items-center justify-center" style="background:var(--mist);color:var(--steam);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <div>
+              <div class="font-600 text-ink flex items-center gap-2"><span class="open-dot"></span>Hours</div>
+              <div class="text-muted">Open Monday–Saturday. Call <a href="tel:+19723959302" class="text-steam font-600">(972) 395-9302</a> to confirm today’s hours.</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="tel:+19723959302" class="btn btn-primary mt-9 text-base">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.6 15.6 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg>
+          Call the shop
+        </a>
+      </div>
+
+      <div data-reveal class="rounded-2xl overflow-hidden shadow-2xl shadow-ink/15 border border-ink/10 min-h-[360px] lg:min-h-full">
+        <iframe
+          title="Star Super Cleaners location map"
+          src="https://www.google.com/maps?q=1621%20W%20Hebron%20Pkwy%2C%20Carrollton%2C%20TX%2075010&output=embed"
+          width="100%" height="100%" style="border:0; min-height:360px; display:block;"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="relative overflow-hidden py-24 sm:py-28" style="background:linear-gradient(120deg,var(--steam),var(--navy));">
+  <div class="hero-grain absolute inset-0"></div>
+  <div class="relative z-10 max-w-3xl mx-auto px-5 sm:px-8 text-center">
+    <span data-reveal class="inline-flex items-center gap-2.5 mb-6">
+      <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg text-white" style="background:rgba(255,255,255,.14);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.3 20.3l1.7-6.6L2.8 9.3l6.8-.5z"/></svg>
+      </span>
+    </span>
+    <h2 data-reveal class="font-display font-400 text-white text-[2.2rem] sm:text-[3.2rem]" style="line-height:1.12;">
+      Ready for <span class="grad-cream">fresh, pressed clothes?</span>
+    </h2>
+    <p data-reveal class="mt-5 text-white/85 text-lg" style="line-height:1.6;">
+      Bring in your next load or give us a call. We’ll take great care of it.
+    </p>
+    <div data-reveal class="mt-9 flex flex-wrap justify-center gap-4">
+      <a href="tel:+19723959302" class="btn text-base" style="background:#fff;color:var(--navy);padding:.95rem 1.8rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.6 15.6 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg>
+        (972) 395-9302
+      </a>
+      <a href="#visit" class="btn btn-ghost text-base">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-ink text-white/70 pt-16 pb-28 sm:pb-16">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg text-white" style="background:linear-gradient(135deg,var(--steam),var(--sky));">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.3 20.3l1.7-6.6L2.8 9.3l6.8-.5z"/></svg>
+          </span>
+          <span class="font-display text-xl text-white">Star Super Cleaners</span>
+        </div>
+        <p class="max-w-sm text-white/60" style="line-height:1.6;">Family-run dry cleaning &amp; laundry on West Hebron Parkway in Carrollton, Texas. Careful garment care, done right.</p>
+      </div>
+      <div>
+        <div class="text-white font-600 mb-3 text-sm tracking-wide uppercase">Services</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#services" class="hover:text-white transition">Dry Cleaning</a></li>
+          <li><a href="#services" class="hover:text-white transition">Laundered Shirts</a></li>
+          <li><a href="#services" class="hover:text-white transition">Wash &amp; Fold</a></li>
+          <li><a href="#services" class="hover:text-white transition">Alterations</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-white font-600 mb-3 text-sm tracking-wide uppercase">Visit</div>
+        <ul class="space-y-2 text-sm">
+          <li>1621 W Hebron Pkwy<br>Carrollton, TX 75010</li>
+          <li><a href="tel:+19723959302" class="hover:text-white transition">(972) 395-9302</a></li>
+          <li>Open Monday–Saturday</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/45">
+      <span>© <span id="yr"></span> Star Super Cleaners · Carrollton, TX</span>
+      <span>Preview crafted by Turnkey Web</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MOBILE STICKY ================= -->
+<div class="mobsticky">
+  <a href="tel:+19723959302" class="flex-1 flex items-center justify-center gap-2 py-3.5 text-white font-600" style="background:var(--steam);">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.6 15.6 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=1621+W+Hebron+Pkwy,+Carrollton,+TX+75010" target="_blank" rel="noopener" class="flex-1 flex items-center justify-center gap-2 py-3.5 text-white font-600" style="background:var(--navy);">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"DryCleaningOrLaundry",
+  "name":"Star Super Cleaners",
+  "description":"Family-run dry cleaning and laundry on West Hebron Parkway in Carrollton, TX — dry cleaning, laundered and pressed shirts, wash & fold, alterations, and specialty garment care.",
+  "url":"https://turnkeyweb.org/previews/star-super-cleaners/",
+  "telephone":"+1-972-395-9302",
+  "image":"https://turnkeyweb.org/previews/star-super-cleaners/assets/hero.jpg",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"1621 W Hebron Pkwy",
+    "addressLocality":"Carrollton",
+    "addressRegion":"TX",
+    "postalCode":"75010",
+    "addressCountry":"US"
+  },
+  "areaServed":["Carrollton","Lewisville","The Colony","Plano","Frisco"],
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Dry Cleaning"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Laundered & Pressed Shirts"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Wash & Fold Laundry"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Alterations & Repairs"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Comforters & Household Textiles"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Delicates & Wool Care"}}
+  ]
+}
+</script>
+
+<!-- Libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }</script>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---- Lenis smooth scroll driven by GSAP ticker (single rAF loop) ---- */
+let lenis;
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  lenis = new Lenis({ duration:1.1, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+  if (window.gsap){
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.ticker.add((time)=> lenis.raf(time*1000));
+    gsap.ticker.lagSmoothing(0);
+    lenis.on('scroll', ScrollTrigger.update);
+    ScrollTrigger.config({ ignoreMobileResize:true });
+  } else {
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id=a.getAttribute('href'); if(id.length<2) return;
+      const t=document.querySelector(id); if(!t) return;
+      e.preventDefault(); lenis.scrollTo(t,{offset:-80});
+    });
+  });
+})();
+
+/* ---- Nav scroll state ---- */
+const nav=document.getElementById('nav');
+function navState(){
+  if(window.scrollY>40){ nav.style.background='rgba(251,247,241,.9)'; nav.style.backdropFilter='blur(12px)'; nav.style.boxShadow='0 1px 0 rgba(24,34,48,.08)'; }
+  else { nav.style.background='transparent'; nav.style.backdropFilter='none'; nav.style.boxShadow='none'; }
+  // hero uses light text over video; before scroll keep nav text light
+  const light = window.scrollY<=40;
+  nav.querySelectorAll('.nav-name').forEach(el=> el.style.color = light ? '#fff' : 'var(--ink)');
+  nav.querySelectorAll('.nav-sub').forEach(el=> el.style.color = light ? 'rgba(255,255,255,.8)' : 'var(--muted)');
+  nav.querySelectorAll('nav a').forEach(el=> el.style.color = light ? 'rgba(255,255,255,.9)' : 'rgba(24,34,48,.85)');
+}
+navState(); window.addEventListener('scroll', navState, {passive:true});
+
+/* ---- GSAP reveals ---- */
+if(window.gsap){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:.7,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 92%',once:true},
+      onComplete:()=>{ el.classList.add('reveal-in'); el.style.willChange='auto'; }});
+  });
+  gsap.utils.toArray('[data-reveal-image]').forEach(el=>{
+    ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>el.classList.add('img-in')});
+  });
+  // hero video parallax (desktop only)
+  ScrollTrigger.matchMedia({
+    '(min-width:768px)':function(){
+      gsap.to('.hero-bg',{yPercent:16,scale:1.08,ease:'none',
+        scrollTrigger:{trigger:'.hero-wrap',start:'top top',end:'bottom top',scrub:true}});
+    }
+  });
+}
+
+/* ---- 3D tilt on standard cards (desktop/fine pointer only) ---- */
+if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.querySelectorAll('.tilt').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(800px) rotateY(${px*6}deg) rotateX(${-py*6}deg) translateY(-4px)`;
+      card.style.boxShadow='0 24px 50px -24px rgba(0,0,0,.55)';
+    });
+    card.addEventListener('mouseleave',()=>{ card.style.transform=''; card.style.boxShadow=''; });
+  });
+}
+
+/* ---- WebGL "steam motes" field (Three.js) ---- */
+(function(){
+  const canvas=document.getElementById('steam-canvas'); if(!canvas) return;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobile=window.innerWidth<768;
+  if(reduced){ return; } // static section bg is fine
+  let renderer,scene,camera,points,raf=null,running=false,mounted=false;
+  import('three').then(THREE=>{
+    const COUNT = mobile ? 90 : 240;
+    scene=new THREE.Scene();
+    camera=new THREE.PerspectiveCamera(60,1,0.1,100); camera.position.z=14;
+    const geo=new THREE.BufferGeometry();
+    const pos=new Float32Array(COUNT*3), spd=new Float32Array(COUNT), siz=new Float32Array(COUNT);
+    for(let i=0;i<COUNT;i++){
+      pos[i*3]=(Math.random()-.5)*30; pos[i*3+1]=(Math.random()-.5)*20; pos[i*3+2]=(Math.random()-.5)*10;
+      spd[i]=.006+Math.random()*.02; siz[i]=(Math.random()*.5+.25);
+    }
+    geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+    geo.setAttribute('aSize',new THREE.BufferAttribute(siz,1));
+    // soft round sprite
+    const c=document.createElement('canvas'); c.width=c.height=64; const g=c.getContext('2d');
+    const grd=g.createRadialGradient(32,32,0,32,32,32);
+    grd.addColorStop(0,'rgba(220,231,234,.9)'); grd.addColorStop(.4,'rgba(150,196,216,.45)'); grd.addColorStop(1,'rgba(150,196,216,0)');
+    g.fillStyle=grd; g.beginPath(); g.arc(32,32,32,0,Math.PI*2); g.fill();
+    const tex=new THREE.CanvasTexture(c);
+    const mat=new THREE.PointsMaterial({size:mobile?.9:1.35,map:tex,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,opacity:.55});
+    points=new THREE.Points(geo,mat); scene.add(points);
+    renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile?1.5:2));
+    mounted=true;
+    resize();
+    function resize(){
+      const r=canvas.getBoundingClientRect();
+      renderer.setSize(r.width,r.height,false);
+      camera.aspect=r.width/r.height; camera.updateProjectionMatrix();
+    }
+    window.addEventListener('resize',resize,{passive:true});
+    function tick(){
+      const p=geo.attributes.position.array;
+      for(let i=0;i<COUNT;i++){
+        p[i*3+1]+=spd[i]*2; p[i*3]+=Math.sin((Date.now()*.0002)+i)*.004;
+        if(p[i*3+1]>11){ p[i*3+1]=-11; p[i*3]=(Math.random()-.5)*30; }
+      }
+      geo.attributes.position.needsUpdate=true;
+      points.rotation.z+=.0004;
+      renderer.render(scene,camera);
+      raf=requestAnimationFrame(tick);
+    }
+    function start(){ if(running||!mounted) return; running=true; tick(); }
+    function stop(){ running=false; if(raf) cancelAnimationFrame(raf); raf=null; }
+    // pause offscreen + when tab hidden
+    const io=new IntersectionObserver(es=>{ es.forEach(e=> e.isIntersecting?start():stop()); },{threshold:.05});
+    io.observe(document.getElementById('standard'));
+    document.addEventListener('visibilitychange',()=>{ document.hidden?stop():start(); });
+  }).catch(()=>{ /* WebGL unsupported -> gradient bg stands in */ });
+})();
+
+/* ---- 6s screenshot / crawler safety net ---- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; el.classList.add('reveal-in'); });
+  document.querySelectorAll('[data-reveal-image]').forEach(el=> el.classList.add('img-in'));
+},6000);
+</script>
+</body>
+</html>
