@@ -111,7 +111,8 @@ tailwind.config = {
   .clip-img{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.16,1,.3,1); }
   .clip-img.in{ clip-path:inset(0 0 0% 0); }
 
-  [data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  [data-reveal]{ opacity:0; transform:translateY(30px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); will-change:opacity,transform; }
+  [data-reveal].is-in{ opacity:1; transform:none; }
   .pulse{ animation:pulse 2.2s ease-in-out infinite; }
   @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.82)} }
 
@@ -655,23 +656,34 @@ const isMobile = window.matchMedia('(max-width: 880px)').matches;
     });
   }
 
-  // reveals
-  gsap.utils.toArray('[data-reveal]').forEach(el=>{
-    gsap.to(el, { opacity:1, y:0, duration:0.7, ease:'power3.out',
-      scrollTrigger:{ trigger:el, start:'top 92%', once:true },
-      onComplete:()=> el.style.willChange='auto' });
-  });
-  // clip image reveal
-  gsap.utils.toArray('[data-clip]').forEach(el=>{
-    ScrollTrigger.create({ trigger:el, start:'top 85%', once:true, onEnter:()=> el.classList.add('in') });
-  });
-  // count-up
-  gsap.utils.toArray('.count').forEach(el=>{
-    const to=+el.dataset.to;
-    ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:()=>{
+  // Reveals via IntersectionObserver (Lenis/ScrollTrigger-independent → robust on touch + screenshot bots)
+  const stagger = new WeakMap();
+  const revIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el=e.target; el.classList.add('is-in');
+      el.addEventListener('transitionend', ()=> el.style.willChange='auto', {once:true});
+      revIO.unobserve(el);
+    });
+  }, { rootMargin:'0px 0px -8% 0px', threshold:0.02 });
+  document.querySelectorAll('[data-reveal]').forEach(el=> revIO.observe(el));
+
+  // Clip image reveal via IO
+  const clipIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); clipIO.unobserve(e.target); } });
+  }, { rootMargin:'0px 0px -10% 0px', threshold:0.02 });
+  document.querySelectorAll('[data-clip]').forEach(el=> clipIO.observe(el));
+
+  // Count-up via IO
+  const cntIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el=e.target, to=+el.dataset.to; cntIO.unobserve(el);
+      if(reduce){ el.textContent=to; return; }
       gsap.to({v:0},{v:to,duration:1.5,ease:'power2.out',onUpdate:function(){ el.textContent=Math.round(this.targets()[0].v); }});
-    }});
-  });
+    });
+  }, { threshold:0.4 });
+  document.querySelectorAll('.count').forEach(el=> cntIO.observe(el));
 
   // nav bg on scroll
   const nav=document.getElementById('nav');
@@ -683,12 +695,12 @@ const isMobile = window.matchMedia('(max-width: 880px)').matches;
   ScrollTrigger.refresh();
 })();
 
-/* ---------- 6s screenshot / crawler safety net ---------- */
+/* ---------- screenshot / crawler safety net (force-reveal everything) ---------- */
 setTimeout(()=>{
-  document.querySelectorAll('[data-reveal]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; });
+  document.querySelectorAll('[data-reveal]').forEach(el=> el.classList.add('is-in'));
   document.querySelectorAll('[data-clip]').forEach(el=> el.classList.add('in'));
   document.querySelectorAll('.count').forEach(el=>{ if(el.textContent.trim()==='0') el.textContent=el.dataset.to; });
-}, 6000);
+}, 2600);
 </script>
 </body>
 </html>
