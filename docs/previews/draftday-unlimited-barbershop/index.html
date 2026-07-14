@@ -182,8 +182,9 @@ tailwind.config = {
   #particles { position:absolute; inset:0; z-index:0; pointer-events:none; }
 
   /* nav adaptive colors — light over the dark hero at top, dark once scrolled onto paper */
-  #navbar .nav-word  { color: #F7F2EA; transition: color .45s; }
+  #navbar .nav-word  { color: #F7F2EA; transition: color .45s; text-shadow: 0 1px 8px rgba(0,0,0,.45); }
   #navbar .nav-sub   { color: #B08D57; transition: color .45s; }
+  #navbar.scrolled .nav-word { text-shadow: none; }
   #navbar .nav-link  { color: rgba(247,242,234,.82); transition: color .3s; }
   #navbar .nav-phone { color: #F7F2EA; transition: color .3s; }
   #navbar .nav-badge { background: #B4372A; color:#F7F2EA; transition: background .45s, color .45s; }
@@ -286,7 +287,7 @@ tailwind.config = {
     </div>
   </div>
 
-  <div class="absolute bottom-5 left-1/2 -translate-x-1/2 z-[3] flex flex-col items-center gap-1.5 text-bone/70" data-hero="5">
+  <div class="absolute bottom-5 left-1/2 -translate-x-1/2 z-[3] hidden md:flex flex-col items-center gap-1.5 text-bone/70" data-hero="5">
     <span class="text-[10px] u-track font-600">SCROLL</span>
     <span class="w-px h-8 bg-gradient-to-b from-bone/70 to-transparent"></span>
   </div>
