@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<!--
+  Best In Town Cleaners — Monument Rd, Jacksonville FL
+  Dry cleaning / wash & fold / alterations & tailoring. Women owned & operated (Erika Torres).
+  Palette: cream #FBF6F1 / bone #F4ECE3 base · teal #0E8C7F (fresh-clean accent) · deep teal #0A5F57 ·
+           soft steel-blue #5B8DB8 · warm gold #C0975A (scarce) · ink #16221F.
+  Real data: 2771 Monument Rd #7, Jacksonville FL 32225 · (904) 564-1911 · M-F 7-7 / Sat 9-4 / Sun closed.
+  Showpiece: Three.js drifting-fiber/steam WebGL hero (light canvas) + GSAP/ScrollTrigger/Lenis.
+  Draft prospect build for approval — NOT the client's live site.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best In Town Cleaners | Dry Cleaning &amp; Alterations · Monument Rd, Jacksonville FL</title>
+<meta name="description" content="Best In Town Cleaners on Monument Rd, Jacksonville — expert dry cleaning, wash &amp; fold, and same-day alterations. Wedding gowns, leather &amp; suede specialists. Women owned and operated. Call (904) 564-1911.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/best-in-town-cleaners/">
+<meta property="og:title" content="Best In Town Cleaners — Dry Cleaning &amp; Alterations, Jacksonville">
+<meta property="og:description" content="Dry cleaning, wash &amp; fold, and expert alterations on Monument Rd. Wedding gowns, leather &amp; suede. Women owned and operated.">
+<meta property="og:type" content="business.business">
+<meta property="og:url" content="https://turnkeyweb.org/previews/best-in-town-cleaners/">
+<meta name="robots" content="noindex,nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream: '#FBF6F1', bone: '#F4ECE3', teal: '#0E8C7F', deepteal: '#0A5F57',
+        steel: '#5B8DB8', gold: '#C0975A', ink: '#16221F', mist: '#EAF1EE'
+      },
+      fontFamily: {
+        display: ['Fraunces', 'serif'],
+        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  html { scroll-behavior: auto; scroll-padding-top: 88px; }
+  body { background:#FBF6F1; color:#16221F; font-family:'Plus Jakarta Sans',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  ::selection { background:#0E8C7F; color:#FBF6F1; }
+
+  /* Gradient shimmer — descender-safe (line-height 1.15 + padding-bottom) */
+  .grad-text{
+    background:linear-gradient(100deg,#0A5F57 0%,#0E8C7F 32%,#5B8DB8 60%,#0E8C7F 88%,#0A5F57 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    line-height:1.15; padding-bottom:.08em; display:inline-block;
+    animation:shimmer 9s linear infinite;
+  }
+  @keyframes shimmer{ 0%{background-position:0% 50%} 100%{background-position:220% 50%} }
+
+  .font-display{ line-height:1.1; }
+  h1,h2,h3{ letter-spacing:-.01em; }
+
+  /* Hero WebGL canvas */
+  #fiberCanvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .hero-scrim{ position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(120% 90% at 20% 20%, rgba(251,246,241,.20), transparent 55%),
+               linear-gradient(180deg, rgba(251,246,241,.35) 0%, rgba(251,246,241,.10) 30%, rgba(251,246,241,.55) 100%); }
+
+  .btn{ position:relative; overflow:hidden; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s, filter .4s; }
+  .btn-primary{ background:#0E8C7F; color:#FBF6F1; box-shadow:0 10px 30px -12px rgba(10,95,87,.55); }
+  .btn-primary::after{ content:""; position:absolute; top:0; left:-130%; width:60%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-18deg);
+    transition:left .9s cubic-bezier(.16,1,.3,1); }
+  .btn-primary:hover{ transform:translateY(-3px); filter:brightness(1.05); }
+  .btn-primary:hover::after{ left:130%; }
+  .btn-ghost{ border:1.5px solid rgba(22,34,31,.22); color:#16221F; }
+  .btn-ghost:hover{ border-color:#0E8C7F; color:#0A5F57; transform:translateY(-3px); }
+
+  .card{ transition:transform .55s cubic-bezier(.16,1,.3,1), box-shadow .55s; position:relative; }
+  .card::before{ content:""; position:absolute; left:0; top:0; height:3px; width:0%;
+    background:linear-gradient(90deg,#0E8C7F,#C0975A); transition:width .65s cubic-bezier(.16,1,.3,1); border-radius:3px; }
+  .card:hover{ transform:translateY(-7px); box-shadow:0 26px 50px -26px rgba(10,95,87,.32); }
+  .card:hover::before{ width:100%; }
+  .svc-icon{ transition:transform .5s cubic-bezier(.16,1,.3,1); }
+  .card:hover .svc-icon{ transform:rotate(-6deg) scale(1.08); }
+
+  .chip{ background:#EAF1EE; border:1px solid rgba(14,140,127,.18); }
+  .chip-dot{ animation:pulse 2.2s ease-in-out infinite; }
+  .open-dot{ animation:pulse 2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.45; transform:scale(.82)} }
+
+  .underline-grow{ position:relative; }
+  .underline-grow::after{ content:""; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+    background:linear-gradient(90deg,#0E8C7F,#5B8DB8); transition:width .5s cubic-bezier(.16,1,.3,1); }
+  .underline-grow:hover::after{ width:100%; }
+
+  /* marquee */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marquee-track{ display:flex; gap:3.25rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  [data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  .reveal-img{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.16,1,.3,1); }
+  .reveal-img.in{ clip-path:inset(0 0 0% 0); }
+
+  .num-outline{ font-family:'Fraunces',serif; -webkit-text-stroke:1.4px rgba(14,140,127,.55); color:transparent; line-height:1; }
+
+  .ambient{ position:absolute; border-radius:50%; filter:blur(78px); opacity:.5; pointer-events:none; will-change:transform; }
+
+  .mapshell{ box-shadow:0 30px 60px -30px rgba(10,95,87,.35); }
+
+  /* mobile sticky bar */
+  .sticky-bar{ transform:translateY(120%); transition:transform .5s cubic-bezier(.16,1,.3,1); }
+  .sticky-bar.show{ transform:translateY(0); }
+
+  @media (max-width:880px){
+    .hero-blend{ mix-blend-mode:normal !important; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="mt-3 rounded-2xl border border-ink/10 bg-cream/80 backdrop-blur-md flex items-center justify-between px-4 sm:px-5 py-3">
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-deepteal text-cream shadow-sm">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9.2 12.2l1.9 1.9 3.9-4.1"/></svg>
+        </span>
+        <span class="leading-tight">
+          <span class="block font-display text-[15px] sm:text-base font-600 text-ink">Best In Town Cleaners</span>
+          <span class="block text-[10.5px] tracking-[.18em] uppercase text-teal font-600">Monument Rd · Jacksonville</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-7 text-[14px] font-500 text-ink/75">
+        <a href="#services" class="underline-grow">Services</a>
+        <a href="#care" class="underline-grow">Our Care</a>
+        <a href="#specialty" class="underline-grow">Specialty</a>
+        <a href="#visit" class="underline-grow">Visit</a>
+      </nav>
+      <a href="tel:+19045641911" class="btn btn-primary hidden sm:inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-[13.5px] font-600">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (904) 564-1911
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-[100svh] flex items-end sm:items-center overflow-hidden">
+  <canvas id="fiberCanvas"></canvas>
+  <div class="hero-scrim"></div>
+  <div class="ambient" style="width:520px;height:520px;background:radial-gradient(circle,#0E8C7F,transparent 62%);top:-160px;right:-120px;"></div>
+  <div class="ambient" style="width:440px;height:440px;background:radial-gradient(circle,#5B8DB8,transparent 62%);bottom:-140px;left:-120px;opacity:.4;"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 pt-32 pb-28 sm:py-24 w-full">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2.5 chip rounded-full px-3.5 py-1.5 mb-7" data-reveal>
+        <span class="w-2 h-2 rounded-full bg-teal chip-dot"></span>
+        <span class="text-[12px] tracking-[.14em] uppercase font-600 text-deepteal">Women owned &amp; operated · Est. on Monument Rd</span>
+      </div>
+
+      <h1 class="font-display text-[16vw] sm:text-7xl lg:text-[5.6rem] font-500 text-ink leading-[1.02] mb-6" data-reveal>
+        Clothes that come back
+        <span class="grad-text italic">fresh, pressed</span>
+        &amp; perfectly&nbsp;fitted.
+      </h1>
+
+      <p class="text-[17px] sm:text-lg text-ink/70 max-w-xl leading-relaxed mb-9" data-reveal>
+        Expert dry cleaning, wash &amp; fold, and same-day alterations in the heart of Jacksonville. From everyday shirts to wedding gowns, leather and suede, we treat every piece like it matters.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-3.5 mb-10" data-reveal>
+        <a href="tel:+19045641911" class="btn btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-[15px] font-600">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call for a quick quote
+        </a>
+        <a href="#services" class="btn btn-ghost inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-[15px] font-600">
+          See our services
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="flex flex-wrap gap-x-9 gap-y-4" data-reveal>
+        <div>
+          <div class="font-display text-3xl sm:text-4xl font-500 text-deepteal"><span data-count="12" data-suffix="hr">0</span></div>
+          <div class="text-[12.5px] text-ink/55 font-500 mt-0.5">Open 12 hrs · Mon–Fri</div>
+        </div>
+        <div class="w-px bg-ink/12 self-stretch hidden sm:block"></div>
+        <div>
+          <div class="font-display text-3xl sm:text-4xl font-500 text-deepteal">Same&nbsp;day</div>
+          <div class="text-[12.5px] text-ink/55 font-500 mt-0.5">Alterations available</div>
+        </div>
+        <div class="w-px bg-ink/12 self-stretch hidden sm:block"></div>
+        <div>
+          <div class="font-display text-3xl sm:text-4xl font-500 text-deepteal">On&nbsp;site</div>
+          <div class="text-[12.5px] text-ink/55 font-500 mt-0.5">All tailoring done in-house</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#services" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 text-ink/45">
+    <span class="text-[10.5px] tracking-[.2em] uppercase font-600">Scroll</span>
+    <svg width="16" height="24" viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="1" width="14" height="22" rx="7"/><line x1="8" y1="6" x2="8" y2="10"/></svg>
+  </a>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee bg-deepteal py-4 border-y border-white/10">
+  <div class="marquee-track text-cream/90 text-[15px] font-500 tracking-wide items-center">
+    <span>Dry Cleaning</span><span class="text-gold">◆</span>
+    <span class="italic">Wash &amp; Fold</span><span class="text-gold">◆</span>
+    <span>Alterations &amp; Tailoring</span><span class="text-gold">◆</span>
+    <span class="italic">Wedding Gowns</span><span class="text-gold">◆</span>
+    <span>Leather &amp; Suede</span><span class="text-gold">◆</span>
+    <span class="italic">Same-Day Service</span><span class="text-gold">◆</span>
+    <span>Dry Cleaning</span><span class="text-gold">◆</span>
+    <span class="italic">Wash &amp; Fold</span><span class="text-gold">◆</span>
+    <span>Alterations &amp; Tailoring</span><span class="text-gold">◆</span>
+    <span class="italic">Wedding Gowns</span><span class="text-gold">◆</span>
+    <span>Leather &amp; Suede</span><span class="text-gold">◆</span>
+    <span class="italic">Same-Day Service</span><span class="text-gold">◆</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="relative py-24 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+      <div class="max-w-2xl">
+        <span class="text-[12px] tracking-[.2em] uppercase font-600 text-teal" data-reveal>What we do</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-500 text-ink mt-3 leading-[1.08]" data-reveal>
+          Everything your closet needs, <span class="grad-text italic">done right.</span>
+        </h2>
+      </div>
+      <p class="text-ink/60 text-[15.5px] max-w-sm leading-relaxed" data-reveal>
+        Drop off in the morning, pick up looking sharp. Honest pricing, careful hands, and a team that remembers your name.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Dry cleaning -->
+      <div class="card rounded-2xl bg-white/70 border border-ink/8 p-7" data-reveal>
+        <div class="svc-icon w-12 h-12 rounded-xl bg-mist text-deepteal flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V9l6-4 6 4v12"/><path d="M9 21v-5a3 3 0 0 1 6 0v5"/><path d="M12 5V3"/></svg>
+        </div>
+        <h3 class="font-display text-2xl font-500 text-ink mb-2">Dry Cleaning &amp; Pressing</h3>
+        <p class="text-ink/62 text-[14.5px] leading-relaxed">Suits, dresses, shirts and delicates cleaned and pressed to a crisp, ready-to-wear finish.</p>
+      </div>
+      <!-- Wash & fold -->
+      <div class="card rounded-2xl bg-white/70 border border-ink/8 p-7" data-reveal>
+        <div class="svc-icon w-12 h-12 rounded-xl bg-mist text-deepteal flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="6"/><circle cx="12" cy="13" r="2.4"/><path d="M4 5h16v3H4z"/><path d="M8 5V4"/></svg>
+        </div>
+        <h3 class="font-display text-2xl font-500 text-ink mb-2">Wash &amp; Fold Laundry</h3>
+        <p class="text-ink/62 text-[14.5px] leading-relaxed">Skip laundry day. Bring the basket, get it back clean, folded and neatly packaged.</p>
+      </div>
+      <!-- Alterations -->
+      <div class="card rounded-2xl bg-white/70 border border-ink/8 p-7" data-reveal>
+        <div class="svc-icon w-12 h-12 rounded-xl bg-mist text-deepteal flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4"/></svg>
+        </div>
+        <h3 class="font-display text-2xl font-500 text-ink mb-2">Alterations &amp; Tailoring</h3>
+        <p class="text-ink/62 text-[14.5px] leading-relaxed">Hems, take-ins, zippers and full re-fits — done on site, often the same day.</p>
+      </div>
+      <!-- Wedding -->
+      <div class="card rounded-2xl bg-white/70 border border-ink/8 p-7" data-reveal>
+        <div class="svc-icon w-12 h-12 rounded-xl bg-mist text-deepteal flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s3 3 3 6a3 3 0 0 1-6 0c0-3 3-6 3-6z"/><path d="M8 21c0-4 1.8-7 4-7s4 3 4 7"/></svg>
+        </div>
+        <h3 class="font-display text-2xl font-500 text-ink mb-2">Wedding Gowns</h3>
+        <p class="text-ink/62 text-[14.5px] leading-relaxed">Cleaning, fittings and bustling for gowns and bridal party — handled with real care.</p>
+      </div>
+      <!-- Leather -->
+      <div class="card rounded-2xl bg-white/70 border border-ink/8 p-7" data-reveal>
+        <div class="svc-icon w-12 h-12 rounded-xl bg-mist text-deepteal flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l4-3 4 2 4-2 4 3-3 4v7a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-7L4 7z"/></svg>
+        </div>
+        <h3 class="font-display text-2xl font-500 text-ink mb-2">Leather &amp; Suede</h3>
+        <p class="text-ink/62 text-[14.5px] leading-relaxed">Specialty cleaning and conditioning for jackets, coats and suede that need a gentle touch.</p>
+      </div>
+      <!-- Bulky -->
+      <div class="card rounded-2xl bg-white/70 border border-ink/8 p-7" data-reveal>
+        <div class="svc-icon w-12 h-12 rounded-xl bg-mist text-deepteal flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-5 9 5v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 9h18"/></svg>
+        </div>
+        <h3 class="font-display text-2xl font-500 text-ink mb-2">Comforters &amp; Bulky Items</h3>
+        <p class="text-ink/62 text-[14.5px] leading-relaxed">Duvets, comforters and oversized pieces cleaned fresh and returned ready for the bed.</p>
+      </div>
+    </div>
+
+    <p class="text-center text-ink/55 text-[14.5px] mt-10" data-reveal>
+      Have something unusual? <a href="tel:+19045641911" class="text-deepteal font-600 underline-grow">Call (904) 564-1911</a> — we'll tell you exactly how we'd handle it.
+    </p>
+  </div>
+</section>
+
+<!-- CARE / PROCESS -->
+<section id="care" class="relative py-24 sm:py-28 bg-bone/70">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-16">
+      <span class="text-[12px] tracking-[.2em] uppercase font-600 text-teal" data-reveal>How it works</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-500 text-ink mt-3 leading-[1.08]" data-reveal>
+        Simple to drop off. <span class="grad-text italic">A pleasure</span> to pick up.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 md:gap-6">
+      <div class="relative" data-reveal>
+        <div class="num-outline text-7xl sm:text-8xl mb-4">01</div>
+        <h3 class="font-display text-2xl font-500 text-ink mb-2">Bring it in</h3>
+        <p class="text-ink/62 text-[14.5px] leading-relaxed">Stop by on Monument Rd and tell us what you need. No account, no app, no fuss — just friendly faces.</p>
+      </div>
+      <div class="relative" data-reveal>
+        <div class="num-outline text-7xl sm:text-8xl mb-4">02</div>
+        <h3 class="font-display text-2xl font-500 text-ink mb-2">We do the work</h3>
+        <p class="text-ink/62 text-[14.5px] leading-relaxed">Cleaning, pressing and tailoring are handled in-house by people who actually care about the result.</p>
+      </div>
+      <div class="relative" data-reveal>
+        <div class="num-outline text-7xl sm:text-8xl mb-4">03</div>
+        <h3 class="font-display text-2xl font-500 text-ink mb-2">Pick it up fresh</h3>
+        <p class="text-ink/62 text-[14.5px] leading-relaxed">Everything comes back clean, crisp and ready to wear — often the same day for alterations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTY / STORY -->
+<section id="specialty" class="relative py-24 sm:py-28 overflow-hidden">
+  <div class="ambient" style="width:520px;height:520px;background:radial-gradient(circle,#5B8DB8,transparent 62%);top:10%;right:-180px;opacity:.32;"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-12 items-center relative z-10">
+    <div class="lg:col-span-6">
+      <span class="text-[12px] tracking-[.2em] uppercase font-600 text-teal" data-reveal>The details matter</span>
+      <h2 class="font-display text-4xl sm:text-[3.2rem] font-500 text-ink mt-3 leading-[1.1] mb-6" data-reveal>
+        For the pieces you <span class="grad-text italic">can't replace.</span>
+      </h2>
+      <p class="text-ink/68 text-[16px] leading-relaxed mb-6" data-reveal>
+        A wedding gown. A leather jacket you've had for years. The suit you wear when it counts. Those aren't ordinary loads of laundry, and we don't treat them that way. Best In Town Cleaners is women owned and operated, and that personal standard shows up in every garment we hand back.
+      </p>
+      <ul class="space-y-3.5" data-reveal>
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 text-teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="text-ink/72 text-[15px]"><span class="font-600 text-ink">All tailoring in-house</span> — your garments never leave the shop.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 text-teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="text-ink/72 text-[15px]"><span class="font-600 text-ink">Specialists in gowns, leather &amp; suede</span> — the tricky work done right.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 text-teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="text-ink/72 text-[15px]"><span class="font-600 text-ink">Same-day alterations</span> when you're on a deadline.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="lg:col-span-6">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="reveal-img rounded-2xl overflow-hidden bg-mist aspect-[3/4]" data-reveal-image>
+          <img src="https://images.unsplash.com/photo-1489274495757-95c7c837b101?auto=format&fit=crop&w=700&q=80" alt="Fresh pressed shirts on hangers" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#0E8C7F,#5B8DB8)'">
+        </div>
+        <div class="reveal-img rounded-2xl overflow-hidden bg-mist aspect-[3/4] mt-8" data-reveal-image>
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80" alt="Neatly organized garments on a rack" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#5B8DB8,#0A5F57)'">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="relative py-20 sm:py-24 bg-deepteal text-cream overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 text-center relative z-10">
+    <span class="text-[12px] tracking-[.2em] uppercase font-600 text-gold" data-reveal>The neighborhood knows</span>
+    <h2 class="font-display text-3xl sm:text-4xl font-500 mt-3 mb-4 leading-[1.12]" data-reveal>
+      Called "Best In Town" for a reason.
+    </h2>
+    <blockquote class="font-display text-2xl sm:text-3xl italic text-cream/95 max-w-3xl mx-auto leading-snug mb-4" data-reveal>
+      "Fast and efficient — they always manage to take off the stains in my clothing. They're called best in town for a reason."
+    </blockquote>
+    <p class="text-cream/60 text-[13.5px] font-500 mb-12" data-reveal>— Verified Yelp reviewer</p>
+
+    <div class="flex flex-wrap justify-center gap-3" data-reveal>
+      <span class="rounded-full border border-cream/20 bg-cream/5 px-4 py-2 text-[13.5px] font-500">Careful with delicates</span>
+      <span class="rounded-full border border-cream/20 bg-cream/5 px-4 py-2 text-[13.5px] font-500">Friendly, familiar faces</span>
+      <span class="rounded-full border border-cream/20 bg-cream/5 px-4 py-2 text-[13.5px] font-500">Fair, honest pricing</span>
+      <span class="rounded-full border border-cream/20 bg-cream/5 px-4 py-2 text-[13.5px] font-500">Quick turnaround</span>
+      <span class="rounded-full border border-cream/20 bg-cream/5 px-4 py-2 text-[13.5px] font-500">Local &amp; women owned</span>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="relative py-24 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 items-stretch">
+      <div class="lg:col-span-5">
+        <span class="text-[12px] tracking-[.2em] uppercase font-600 text-teal" data-reveal>Come see us</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-500 text-ink mt-3 leading-[1.08] mb-8" data-reveal>
+          Right on <span class="grad-text italic">Monument Rd.</span>
+        </h2>
+
+        <div class="space-y-5" data-reveal>
+          <div class="flex items-start gap-4">
+            <span class="w-11 h-11 rounded-xl bg-mist text-deepteal flex items-center justify-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div>
+              <div class="text-[12px] uppercase tracking-[.14em] font-600 text-ink/45 mb-0.5">Address</div>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=2771+Monument+Rd+Jacksonville+FL+32225" target="_blank" rel="noopener" class="text-ink font-500 text-[16px] underline-grow">2771 Monument Rd, Suite 7<br>Jacksonville, FL 32225</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <span class="w-11 h-11 rounded-xl bg-mist text-deepteal flex items-center justify-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div>
+              <div class="text-[12px] uppercase tracking-[.14em] font-600 text-ink/45 mb-0.5">Phone</div>
+              <a href="tel:+19045641911" class="text-ink font-500 text-[16px] underline-grow">(904) 564-1911</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <span class="w-11 h-11 rounded-xl bg-mist text-deepteal flex items-center justify-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div class="flex-1">
+              <div class="text-[12px] uppercase tracking-[.14em] font-600 text-ink/45 mb-1.5 flex items-center gap-2">Hours <span class="inline-flex items-center gap-1.5 text-teal font-600 normal-case tracking-normal text-[12px]"><span class="w-1.5 h-1.5 rounded-full bg-teal open-dot"></span>Open 7am–7pm weekdays</span></div>
+              <table class="text-[14.5px] text-ink/72">
+                <tr><td class="pr-8 py-0.5 font-500">Mon – Fri</td><td class="py-0.5">7:00 AM – 7:00 PM</td></tr>
+                <tr><td class="pr-8 py-0.5 font-500">Saturday</td><td class="py-0.5">9:00 AM – 4:00 PM</td></tr>
+                <tr><td class="pr-8 py-0.5 font-500">Sunday</td><td class="py-0.5 text-ink/45">Closed</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <a href="tel:+19045641911" class="btn btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-[15px] font-600 mt-9" data-reveal>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Best In Town Cleaners
+        </a>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="mapshell rounded-2xl overflow-hidden border border-ink/10 h-[420px] lg:h-full min-h-[420px]" data-reveal>
+          <iframe
+            title="Best In Town Cleaners location — 2771 Monument Rd, Jacksonville FL"
+            src="https://www.google.com/maps?q=2771+Monument+Rd,+Jacksonville,+FL+32225&z=15&output=embed"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative py-24 sm:py-28 bg-bone/80 overflow-hidden">
+  <div class="ambient" style="width:460px;height:460px;background:radial-gradient(circle,#0E8C7F,transparent 62%);top:-140px;left:20%;opacity:.35;"></div>
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center relative z-10">
+    <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-deepteal text-cream mb-7" data-reveal>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9.2 12.2l1.9 1.9 3.9-4.1"/></svg>
+    </span>
+    <h2 class="font-display text-4xl sm:text-6xl font-500 text-ink leading-[1.06] mb-6" data-reveal>
+      Ready for clothes that <span class="grad-text italic">look their best?</span>
+    </h2>
+    <p class="text-ink/65 text-[17px] max-w-xl mx-auto leading-relaxed mb-9" data-reveal>
+      Give us a call, or stop by the shop on Monument Rd. We'll take great care of everything you bring in.
+    </p>
+    <div class="flex flex-wrap justify-center gap-3.5" data-reveal>
+      <a href="tel:+19045641911" class="btn btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-4 text-[16px] font-600">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (904) 564-1911
+      </a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=2771+Monument+Rd+Jacksonville+FL+32225" target="_blank" rel="noopener" class="btn btn-ghost inline-flex items-center gap-2 rounded-xl px-7 py-4 text-[16px] font-600">
+        Get directions
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-cream/80 pt-16 pb-28 sm:pb-16">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-teal text-cream"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9.2 12.2l1.9 1.9 3.9-4.1"/></svg></span>
+          <span class="font-display text-xl font-500 text-cream">Best In Town Cleaners</span>
+        </div>
+        <p class="text-cream/55 text-[14.5px] leading-relaxed max-w-sm">Dry cleaning, wash &amp; fold, and expert alterations on Monument Rd in Jacksonville. Women owned and operated — every piece treated like it matters.</p>
+      </div>
+      <div>
+        <div class="text-[12px] uppercase tracking-[.16em] font-600 text-cream/40 mb-3">Visit</div>
+        <p class="text-[14.5px] leading-relaxed text-cream/70">2771 Monument Rd, Suite 7<br>Jacksonville, FL 32225</p>
+        <a href="tel:+19045641911" class="text-teal font-600 text-[15px] mt-2 inline-block underline-grow">(904) 564-1911</a>
+      </div>
+      <div>
+        <div class="text-[12px] uppercase tracking-[.16em] font-600 text-cream/40 mb-3">Hours</div>
+        <p class="text-[14px] leading-relaxed text-cream/70">Mon–Fri · 7am–7pm<br>Saturday · 9am–4pm<br>Sunday · Closed</p>
+      </div>
+    </div>
+    <div class="border-t border-cream/12 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-[13px] text-cream/45">
+      <p>© 2026 Best In Town Cleaners · Monument Rd, Jacksonville FL</p>
+      <p>Dry Cleaning · Wash &amp; Fold · Alterations · Leather &amp; Suede</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div id="stickyBar" class="sticky-bar sm:hidden fixed bottom-0 inset-x-0 z-50 bg-cream/95 backdrop-blur-md border-t border-ink/10 px-3 py-2.5 flex gap-2.5">
+  <a href="tel:+19045641911" class="btn btn-primary flex-1 inline-flex items-center justify-center gap-2 rounded-xl py-3 text-[14.5px] font-600">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=2771+Monument+Rd+Jacksonville+FL+32225" target="_blank" rel="noopener" class="btn btn-ghost flex-1 inline-flex items-center justify-center gap-2 rounded-xl py-3 text-[14.5px] font-600 bg-white/60">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"DryCleaningOrLaundry",
+  "name":"Best In Town Cleaners",
+  "description":"Dry cleaning, wash & fold laundry, and expert alterations & tailoring on Monument Rd in Jacksonville. Specialists in wedding gowns, leather and suede. Women owned and operated.",
+  "url":"https://turnkeyweb.org/previews/best-in-town-cleaners/",
+  "telephone":"+1-904-564-1911",
+  "address":{"@type":"PostalAddress","streetAddress":"2771 Monument Rd, Suite 7","addressLocality":"Jacksonville","addressRegion":"FL","postalCode":"32225","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":30.361894,"longitude":-81.50123},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"19:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"16:00"}
+  ],
+  "priceRange":"$$",
+  "areaServed":"Jacksonville, FL"
+}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isDesktop = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  /* ---------- Three.js drifting-fiber / steam hero ---------- */
+  (function heroWebGL(){
+    var canvas = document.getElementById('fiberCanvas');
+    if (!canvas || typeof THREE === 'undefined') { if(canvas) canvas.style.background='linear-gradient(160deg,#EAF1EE,#FBF6F1 55%,#F4ECE3)'; return; }
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    var renderer, scene, camera, points, raf, running = true;
+    try {
+      renderer = new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:true});
+    } catch(e){ canvas.style.background='linear-gradient(160deg,#EAF1EE,#FBF6F1 55%,#F4ECE3)'; return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth < 880 ? 1.5 : 2));
+    renderer.setSize(w, h, false);
+    renderer.setClearColor(0x000000, 0);
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(60, w/h, 0.1, 100);
+    camera.position.z = 18;
+
+    var mobile = window.innerWidth < 880;
+    var COUNT = reduce ? 260 : (mobile ? 360 : 900);
+    var geo = new THREE.BufferGeometry();
+    var pos = new Float32Array(COUNT*3);
+    var spd = new Float32Array(COUNT);
+    var col = new Float32Array(COUNT*3);
+    var cA = new THREE.Color(0x0E8C7F), cB = new THREE.Color(0x5B8DB8), cC = new THREE.Color(0xC0975A);
+    for (var i=0;i<COUNT;i++){
+      pos[i*3]   = (Math.random()-0.5)*44;
+      pos[i*3+1] = (Math.random()-0.5)*30;
+      pos[i*3+2] = (Math.random()-0.5)*20;
+      spd[i] = 0.006 + Math.random()*0.02;
+      var r = Math.random(); var c = r<0.6 ? cA : (r<0.9 ? cB : cC);
+      col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
+    }
+    geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+    geo.setAttribute('color', new THREE.BufferAttribute(col,3));
+
+    // soft round sprite
+    var cv = document.createElement('canvas'); cv.width=cv.height=64;
+    var ctx = cv.getContext('2d');
+    var g = ctx.createRadialGradient(32,32,0,32,32,32);
+    g.addColorStop(0,'rgba(255,255,255,0.95)'); g.addColorStop(0.35,'rgba(255,255,255,0.55)'); g.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=g; ctx.beginPath(); ctx.arc(32,32,32,0,Math.PI*2); ctx.fill();
+    var sprite = new THREE.CanvasTexture(cv);
+
+    var mat = new THREE.PointsMaterial({
+      size: mobile?0.42:0.5, map:sprite, vertexColors:true, transparent:true,
+      opacity:0.72, depthWrite:false, blending:THREE.NormalBlending
+    });
+    points = new THREE.Points(geo, mat);
+    scene.add(points);
+
+    var mx=0, my=0, tx=0, ty=0;
+    if (isDesktop && !reduce){
+      window.addEventListener('pointermove', function(e){
+        tx = (e.clientX/window.innerWidth - 0.5)*2;
+        ty = (e.clientY/window.innerHeight - 0.5)*2;
+      });
+    }
+
+    function frame(){
+      if(!running) return;
+      var p = geo.attributes.position.array;
+      for (var i=0;i<COUNT;i++){
+        p[i*3+1] += spd[i];                    // drift up like steam/lint
+        p[i*3]   += Math.sin((p[i*3+1]+i)*0.12)*0.004; // gentle sway
+        if (p[i*3+1] > 15){ p[i*3+1] = -15; p[i*3] = (Math.random()-0.5)*44; }
+      }
+      geo.attributes.position.needsUpdate = true;
+      mx += (tx-mx)*0.04; my += (ty-my)*0.04;
+      points.rotation.y = mx*0.18;
+      points.rotation.x = -my*0.10;
+      if(!reduce) points.rotation.z += 0.0006;
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(frame);
+    }
+    frame();
+
+    // pause offscreen + hidden
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (e.isIntersecting){ if(!running){ running=true; frame(); } }
+        else { running=false; if(raf) cancelAnimationFrame(raf); }
+      });
+    }, {threshold:0.02});
+    io.observe(canvas);
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden){ running=false; if(raf) cancelAnimationFrame(raf); }
+      else if(!running){ running=true; frame(); }
+    });
+    window.addEventListener('resize', function(){
+      w = canvas.clientWidth; h = canvas.clientHeight;
+      renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();
+    });
+  })();
+
+  /* ---------- Lenis + GSAP (single ticker) ---------- */
+  var lenis;
+  if (typeof Lenis !== 'undefined' && !reduce){
+    lenis = new Lenis({ duration:1.1, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}, smoothWheel:true, smoothTouch:false });
+    if (window.gsap){ gsap.ticker.add(function(time){ lenis.raf(time*1000); }); gsap.ticker.lagSmoothing(0); }
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var id = a.getAttribute('href'); if(id.length<2) return;
+        var t = document.querySelector(id); if(!t) return;
+        e.preventDefault(); lenis.scrollTo(t, {offset:-78});
+      });
+    });
+  }
+
+  if (window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize:true });
+
+    gsap.utils.toArray('[data-reveal]').forEach(function(el){
+      gsap.to(el, { opacity:1, y:0, duration:0.7, ease:'power3.out',
+        scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+        onComplete:function(){ el.style.willChange='auto'; } });
+    });
+    gsap.utils.toArray('[data-reveal-image]').forEach(function(el){
+      ScrollTrigger.create({ trigger:el, start:'top 85%', once:true, onEnter:function(){ el.classList.add('in'); } });
+    });
+    // count up
+    gsap.utils.toArray('[data-count]').forEach(function(el){
+      var target = parseFloat(el.dataset.count), suf = el.dataset.suffix||'';
+      ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:function(){
+        gsap.to({v:0},{v:target,duration:1.5,ease:'power2.out',onUpdate:function(){ el.textContent=Math.round(this.targets()[0].v)+suf; }});
+      }});
+    });
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.style.opacity=1; el.style.transform='none'; });
+    document.querySelectorAll('[data-reveal-image]').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* nav shadow on scroll */
+  var nav = document.getElementById('nav');
+  var stickyBar = document.getElementById('stickyBar');
+  function onScroll(){
+    if (window.scrollY > 40){ nav.querySelector('div>div').classList.add('shadow-lg'); }
+    else { nav.querySelector('div>div').classList.remove('shadow-lg'); }
+    if (window.scrollY > 620){ stickyBar.classList.add('show'); } else { stickyBar.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', onScroll); onScroll();
+
+  /* ---------- 6s screenshot / crawler safety net ---------- */
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      if (getComputedStyle(el).opacity < 0.95){ el.style.opacity=1; el.style.transform='none'; }
+    });
+    document.querySelectorAll('[data-reveal-image]').forEach(function(el){ el.classList.add('in'); });
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      if (el.textContent.trim()==='0' || el.textContent.trim()===''){ el.textContent = el.dataset.count + (el.dataset.suffix||''); }
+    });
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  }, 6000);
+});
+</script>
+</body>
+</html>
