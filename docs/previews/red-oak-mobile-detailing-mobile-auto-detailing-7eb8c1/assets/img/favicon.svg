@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Red Oak Mobile Detailing">
-  <rect width="64" height="64" rx="15" fill="#1B1A17"/>
-  <rect x="30" y="11" width="4.4" height="9" rx="2.2" fill="#D86A52"/>
-  <path d="M16.5 27 H47.5 C47.5 27 46 57 32 57 C18 57 16.5 27 16.5 27 Z" fill="#B23A2B"/>
-  <path d="M23 31.5 C21.5 40 23.7 49.6 28.8 53.5" stroke="#FAF5EC" stroke-opacity="0.55" stroke-width="3.2" fill="none" stroke-linecap="round"/>
-  <path d="M12.6 27.7 C12.6 17.6 21 11 32 11 C43 11 51.4 17.6 51.4 27.7 C51.4 29.8 49.7 31 47.6 31 H16.4 C14.3 31 12.6 29.8 12.6 27.7 Z" fill="#8E2A1E"/>
-</svg>

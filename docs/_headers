@@ -1,5 +1,0 @@
-# Preview builds must always revalidate so a normal browser tab never serves a
-# stale cached copy (incognito worked only because it had no cache). Scoped to
-# /previews/* — the production site keeps its own caching untouched.
-/previews/*
-  Cache-Control: public, max-age=0, must-revalidate

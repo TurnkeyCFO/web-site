@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<!--
+  On Site Plumber & Leak Detection — bespoke Turnkey Web prospect build
+  Owner: Cesar Garcia. Real data sourced from leaktroopers.com (same owner/brand family).
+  Palette: cream #F7F3EC base + deep navy ink #0F2440 + confident blue #1E6FB8 + teal #12A5B0 + steel #6B7A8A
+  Display: Bricolage Grotesque · Body: Plus Jakarta Sans
+  Showpiece: WebGL water-caustics shader hero (on a LIGHT canvas) + signature sonar-scan leak moment.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On Site Plumber & Leak Detection | Miramar & South Florida Leak Detection</title>
+<meta name="description" content="On Site Plumber & Leak Detection finds hidden leaks fast across Broward, Miami-Dade & Palm Beach. Slab leak detection, repipe, sewer camera, water heaters. We find the leak, guaranteed. Call 786-600-0270.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/on-site-plumber-leak-detection/">
+<meta property="og:title" content="On Site Plumber & Leak Detection — We find the leak, guaranteed">
+<meta property="og:description" content="Non-invasive leak detection & full-service plumbing across South Florida. Slab leaks, repipes, sewer camera, water heaters.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      cream:'#F7F3EC', bone:'#EFE8DC', ink:'#0F2440', navy:'#12305A',
+      blue:'#1E6FB8', teal:'#12A5B0', steel:'#6B7A8A', droplet:'#3FA7E0'
+    },
+    fontFamily: { display:['"Bricolage Grotesque"','sans-serif'], body:['"Plus Jakarta Sans"','sans-serif'] }
+  }}
+}
+</script>
+<style>
+  :root{ --nav-h: 74px; }
+  *{ -webkit-tap-highlight-color: transparent; }
+  html{ scroll-behavior:auto; scroll-padding-top: 88px; }
+  body{ background:#F7F3EC; color:#0F2440; font-family:'Plus Jakarta Sans',sans-serif; overflow-x:hidden; }
+  .font-display{ font-family:'Bricolage Grotesque',sans-serif; }
+
+  /* gradient shimmer for key headers (brand-tinted, descender-safe) */
+  .grad-text{
+    background: linear-gradient(100deg,#0F2440 0%,#1E6FB8 32%,#12A5B0 52%,#1E6FB8 72%,#0F2440 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite;
+    line-height:1.14; padding-bottom:0.1em;
+  }
+  @keyframes shimmer{ to{ background-position:220% 0; } }
+
+  /* hero canvas water layer */
+  #waterCanvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .hero-scrim{ position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(120% 80% at 18% 30%, rgba(247,243,236,.92) 0%, rgba(247,243,236,.55) 42%, rgba(247,243,236,0) 68%),
+      linear-gradient(180deg, rgba(247,243,236,.35) 0%, rgba(247,243,236,0) 30%, rgba(247,243,236,.15) 70%, rgba(247,243,236,.85) 100%);
+  }
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(#0F2440 0.5px, transparent 0.6px); background-size:3px 3px; }
+
+  .btn-primary{ position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, filter .4s; }
+  .btn-primary::after{ content:''; position:absolute; top:0; left:-120%; width:60%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform:skewX(-18deg); transition:left .9s cubic-bezier(.2,.7,.2,1); }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 18px 40px -14px rgba(30,111,184,.7); filter:brightness(1.04); }
+  .btn-primary:hover::after{ left:130%; }
+
+  .underline-grow{ position:relative; }
+  .underline-grow::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+    background:linear-gradient(90deg,#1E6FB8,#12A5B0); transition:width .45s cubic-bezier(.2,.7,.2,1); }
+  .underline-grow:hover::after{ width:100%; }
+
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); }
+  .marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  .card{ transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s, border-color .5s; will-change:transform; }
+  .card:hover{ transform:translateY(-7px); box-shadow:0 26px 50px -26px rgba(15,36,64,.34); }
+  .svc-num{ font-variant-numeric:tabular-nums; }
+
+  /* sonar / scan signature */
+  .sonar{ position:relative; }
+  .sonar-ring{ position:absolute; border:1.5px solid rgba(18,165,176,.55); border-radius:50%; left:50%; top:50%; transform:translate(-50%,-50%);
+    animation:ping 3.4s cubic-bezier(.2,.7,.2,1) infinite; }
+  .sonar-ring:nth-child(2){ animation-delay:1.13s; } .sonar-ring:nth-child(3){ animation-delay:2.26s; }
+  @keyframes ping{ 0%{ width:20px;height:20px;opacity:.9 } 100%{ width:320px;height:320px;opacity:0 } }
+  .scan-line{ position:absolute; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,rgba(30,111,184,.9),rgba(18,165,176,.9),transparent);
+    box-shadow:0 0 16px rgba(18,165,176,.7); animation:scanY 4.2s ease-in-out infinite; }
+  @keyframes scanY{ 0%,100%{ top:8% } 50%{ top:88% } }
+
+  .droplet{ animation:bob 3s ease-in-out infinite; }
+  @keyframes bob{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(6px) } }
+  .chip-dot{ animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{ opacity:1; transform:scale(1) } 50%{ opacity:.5; transform:scale(.82) } }
+
+  [data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  .reveal-done{ will-change:auto; }
+
+  /* mobile sticky bar */
+  .sticky-bar{ box-shadow:0 -8px 30px -12px rgba(15,36,64,.4); }
+  @media (max-width:880px){
+    :root{ --nav-h: 66px; }
+    .no-mobile-blend{ mix-blend-mode:normal !important; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .grad-text,.marquee-track,.sonar-ring,.scan-line,.droplet,.chip-dot{ animation:none !important; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex items-center justify-between h-[var(--nav-h)]">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-ink text-cream shadow-lg shadow-navy/20">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2.5s6.5 7 6.5 11.6A6.5 6.5 0 0 1 12 20.6a6.5 6.5 0 0 1-6.5-6.5C5.5 9.5 12 2.5 12 2.5Z" fill="#3FA7E0"/><path d="M9 13.5a3 3 0 0 0 3 3" stroke="#F7F3EC" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </span>
+        <span class="leading-tight">
+          <span class="block font-display font-extrabold text-[15px] sm:text-[16px] text-ink tracking-tight">On Site Plumber</span>
+          <span class="block text-[10.5px] font-semibold tracking-[0.18em] text-teal uppercase">& Leak Detection</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-[14px] font-semibold text-navy/85">
+        <a href="#services" class="underline-grow">Services</a>
+        <a href="#process" class="underline-grow">How we find it</a>
+        <a href="#reviews" class="underline-grow">Reviews</a>
+        <a href="#area" class="underline-grow">Service Area</a>
+      </nav>
+      <a href="tel:+17866000270" class="btn-primary hidden sm:inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-2.5 text-[14px] font-bold">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a12 12 0 0 0 6.6 6.6l2.2-2.2a1.3 1.3 0 0 1 1.3-.3 9 9 0 0 0 3 .5 1.3 1.3 0 0 1 1.3 1.3V20a1.3 1.3 0 0 1-1.3 1.3A17.7 17.7 0 0 1 3.4 4.7 1.3 1.3 0 0 1 4.7 3.4H8a1.3 1.3 0 0 1 1.3 1.3 9 9 0 0 0 .5 3 1.3 1.3 0 0 1-.3 1.3l-2.6 1.8Z" fill="currentColor"/></svg>
+        786-600-0270
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden grain">
+  <canvas id="waterCanvas"></canvas>
+  <div class="hero-scrim"></div>
+  <div class="relative z-10 w-full mx-auto max-w-7xl px-4 sm:px-6 pb-14 sm:pb-20" style="padding-top:calc(var(--nav-h) + 46px)">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 rounded-full bg-white/70 backdrop-blur border border-ink/10 px-3.5 py-1.5 text-[12px] font-semibold text-navy mb-6" data-reveal>
+        <span class="h-2 w-2 rounded-full bg-teal chip-dot"></span>
+        Licensed &amp; insured · Broward · Miami-Dade · Palm Beach
+      </div>
+      <h1 class="font-display font-extrabold tracking-tight text-ink text-[13vw] sm:text-[9vw] lg:text-[6.6rem] leading-[1.02]" style="padding-bottom:.06em" data-reveal>
+        We find the leak.<br>
+        <span class="grad-text">Guaranteed.</span>
+      </h1>
+      <p class="mt-6 text-[17px] sm:text-[19px] text-navy/85 max-w-xl leading-relaxed" data-reveal>
+        Hidden slab leaks, walls that never dry, a water bill that keeps climbing. On Site Plumber &amp; Leak Detection pinpoints the source without tearing your home apart, then fixes it right the first time.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-3.5" data-reveal>
+        <a href="tel:+17866000270" class="btn-primary inline-flex items-center gap-2.5 rounded-full bg-blue text-white px-7 py-4 text-[15px] font-bold">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a12 12 0 0 0 6.6 6.6l2.2-2.2a1.3 1.3 0 0 1 1.3-.3 9 9 0 0 0 3 .5 1.3 1.3 0 0 1 1.3 1.3V20a1.3 1.3 0 0 1-1.3 1.3A17.7 17.7 0 0 1 3.4 4.7 1.3 1.3 0 0 1 4.7 3.4H8a1.3 1.3 0 0 1 1.3 1.3 9 9 0 0 0 .5 3 1.3 1.3 0 0 1-.3 1.3l-2.6 1.8Z" fill="currentColor"/></svg>
+          Call 786-600-0270
+        </a>
+        <a href="#services" class="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur border border-ink/12 text-ink px-6 py-4 text-[15px] font-bold hover:bg-white transition">
+          See our services
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="mt-9 flex flex-wrap items-center gap-x-8 gap-y-3 text-[13px] font-semibold text-navy/80" data-reveal>
+        <span class="flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 22.6 5.9 20l1.5-6.5-5-4.4 6.6-.6L12 2Z" fill="#12A5B0"/></svg> 4.8&#9733; from South Florida homeowners</span>
+        <span class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-blue"></span> Non-invasive detection</span>
+        <span class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-blue"></span> 0% APR financing</span>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-5 right-6 z-10 hidden sm:flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] uppercase text-navy/60">
+    <span class="droplet"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2.5s6 6.5 6 10.8A6 6 0 0 1 6 13.3C6 9 12 2.5 12 2.5Z" fill="#1E6FB8"/></svg></span> Scroll
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<section class="bg-ink text-cream py-4 border-y border-white/10">
+  <div class="marquee">
+    <div class="marquee-track text-[15px] font-semibold uppercase tracking-[0.14em]">
+      <span class="flex items-center gap-3">Slab Leak Detection <span class="text-teal">&bull;</span></span>
+      <span class="flex items-center gap-3 italic text-droplet">Whole-Home Repipe <span class="text-teal">&bull;</span></span>
+      <span class="flex items-center gap-3">Sewer Camera Inspection <span class="text-teal">&bull;</span></span>
+      <span class="flex items-center gap-3 italic text-droplet">Hydro Jetting <span class="text-teal">&bull;</span></span>
+      <span class="flex items-center gap-3">Water Heater Repair <span class="text-teal">&bull;</span></span>
+      <span class="flex items-center gap-3 italic text-droplet">Backflow Certification <span class="text-teal">&bull;</span></span>
+      <!-- dup -->
+      <span class="flex items-center gap-3">Slab Leak Detection <span class="text-teal">&bull;</span></span>
+      <span class="flex items-center gap-3 italic text-droplet">Whole-Home Repipe <span class="text-teal">&bull;</span></span>
+      <span class="flex items-center gap-3">Sewer Camera Inspection <span class="text-teal">&bull;</span></span>
+      <span class="flex items-center gap-3 italic text-droplet">Hydro Jetting <span class="text-teal">&bull;</span></span>
+      <span class="flex items-center gap-3">Water Heater Repair <span class="text-teal">&bull;</span></span>
+      <span class="flex items-center gap-3 italic text-droplet">Backflow Certification <span class="text-teal">&bull;</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="relative py-24 sm:py-32 px-4 sm:px-6">
+  <div class="mx-auto max-w-5xl">
+    <p class="text-[12px] font-bold uppercase tracking-[0.24em] text-teal mb-7" data-reveal>The hidden problem</p>
+    <h2 class="font-display font-bold text-ink text-[7.5vw] sm:text-[3.4rem] leading-[1.1] tracking-tight" style="padding-bottom:.04em">
+      <span class="block" data-reveal>A leak you can&#8217;t see is</span>
+      <span class="block" data-reveal>still costing you every day.</span>
+      <span class="block text-navy/50" data-reveal>We make it visible, then we make it stop.</span>
+    </h2>
+    <div class="mt-14 grid sm:grid-cols-3 gap-8">
+      <div data-reveal>
+        <div class="font-display font-extrabold text-blue text-5xl svc-num" data-count="25" data-suffix=" yr">0</div>
+        <p class="mt-2 text-[15px] font-semibold text-ink">Whole-home repipe warranty</p>
+        <p class="text-[14px] text-steel">Acoustic and thermal tools first, jackhammer last.</p>
+      </div>
+      <div data-reveal>
+        <div class="font-display font-extrabold text-blue text-5xl svc-num" data-count="21" data-suffix="+">0</div>
+        <p class="mt-2 text-[15px] font-semibold text-ink">South Florida cities served</p>
+        <p class="text-[14px] text-steel">Broward, Miami-Dade and Palm Beach counties.</p>
+      </div>
+      <div data-reveal>
+        <div class="font-display font-extrabold text-blue text-5xl svc-num" data-count="4" data-suffix=".8&#9733;">0</div>
+        <p class="mt-2 text-[15px] font-semibold text-ink">Average homeowner rating</p>
+        <p class="text-[14px] text-steel">Professional, on time, no fuss, no muss.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="relative py-6 sm:py-10 px-4 sm:px-6">
+  <div class="mx-auto max-w-7xl">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+      <div>
+        <p class="text-[12px] font-bold uppercase tracking-[0.24em] text-teal mb-4" data-reveal>What we do</p>
+        <h2 class="font-display font-extrabold text-ink text-[9vw] sm:text-[3.6rem] leading-[1.06] tracking-tight" style="padding-bottom:.04em" data-reveal>
+          Full-service plumbing,<br><span class="grad-text">leak specialists at heart.</span>
+        </h2>
+      </div>
+      <a href="tel:+17866000270" class="text-[14px] font-bold text-blue underline-grow" data-reveal>Not sure what you need? Call us &rarr;</a>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- service cards -->
+      <div class="card rounded-2xl bg-white border border-ink/8 p-7" data-reveal>
+        <div class="h-12 w-12 rounded-xl bg-blue/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6" stroke="#1E6FB8" stroke-width="1.8"/><path d="m16 16 4 4" stroke="#1E6FB8" stroke-width="1.8" stroke-linecap="round"/><circle cx="11" cy="11" r="2" fill="#12A5B0"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-ink text-xl">Leak Detection</h3>
+        <p class="mt-2 text-[14.5px] text-steel leading-relaxed">Acoustic, thermal and pressure testing to pinpoint the exact source, behind walls, under slabs, underground.</p>
+      </div>
+      <div class="card rounded-2xl bg-white border border-ink/8 p-7" data-reveal>
+        <div class="h-12 w-12 rounded-xl bg-blue/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20h16M7 20V9m5 11V5m5 15v-8" stroke="#1E6FB8" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="5" r="2" fill="#12A5B0"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-ink text-xl">Slab Leak Repair</h3>
+        <p class="mt-2 text-[14.5px] text-steel leading-relaxed">Leaks under the foundation found and repaired with minimal disruption to your floors and your day.</p>
+      </div>
+      <div class="card rounded-2xl bg-white border border-ink/8 p-7" data-reveal>
+        <div class="h-12 w-12 rounded-xl bg-blue/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 4v6a3 3 0 0 0 3 3h6a3 3 0 0 1 3 3v4" stroke="#1E6FB8" stroke-width="1.8" stroke-linecap="round"/><circle cx="6" cy="4" r="1.6" fill="#12A5B0"/><circle cx="18" cy="20" r="1.6" fill="#12A5B0"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-ink text-xl">Whole-Home Repipe</h3>
+        <p class="mt-2 text-[14.5px] text-steel leading-relaxed">Aging or corroded pipes replaced end to end so you stop chasing one leak after another.</p>
+      </div>
+      <div class="card rounded-2xl bg-white border border-ink/8 p-7" data-reveal>
+        <div class="h-12 w-12 rounded-xl bg-blue/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#1E6FB8" stroke-width="1.8"/><circle cx="12" cy="12" r="2.4" fill="#12A5B0"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3" stroke="#1E6FB8" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-ink text-xl">Sewer Camera Inspection</h3>
+        <p class="mt-2 text-[14.5px] text-steel leading-relaxed">A live look inside your sewer line to find breaks, roots and blockages before they become emergencies.</p>
+      </div>
+      <div class="card rounded-2xl bg-white border border-ink/8 p-7" data-reveal>
+        <div class="h-12 w-12 rounded-xl bg-blue/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3c0 4-5 6-5 11a5 5 0 0 0 10 0c0-5-5-7-5-11Z" stroke="#1E6FB8" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 21v-4" stroke="#12A5B0" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-ink text-xl">Hydro Jetting &amp; Drains</h3>
+        <p class="mt-2 text-[14.5px] text-steel leading-relaxed">High-pressure jetting clears grease, scale and roots so your drains run like new, not just unclogged for a week.</p>
+      </div>
+      <div class="card rounded-2xl bg-white border border-ink/8 p-7" data-reveal>
+        <div class="h-12 w-12 rounded-xl bg-blue/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="6" y="3" width="12" height="18" rx="4" stroke="#1E6FB8" stroke-width="1.8"/><path d="M12 8v4" stroke="#12A5B0" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1.4" fill="#1E6FB8"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-ink text-xl">Water Heaters &amp; Repairs</h3>
+        <p class="mt-2 text-[14.5px] text-steel leading-relaxed">Water heater repair and replacement, toilet and disposal fixes, backflow certification and everyday plumbing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- bridge -->
+<div class="max-w-[200px] mx-auto my-14 h-px bg-gradient-to-r from-transparent via-blue/35 to-transparent"></div>
+
+<!-- PROCESS / SONAR SIGNATURE -->
+<section id="process" class="relative py-16 sm:py-24 px-4 sm:px-6 bg-ink text-cream overflow-hidden">
+  <div class="mx-auto max-w-7xl grid lg:grid-cols-2 gap-14 items-center">
+    <div>
+      <p class="text-[12px] font-bold uppercase tracking-[0.24em] text-teal mb-5" data-reveal>How we find it</p>
+      <h2 class="font-display font-extrabold text-[10vw] sm:text-[3.6rem] leading-[1.05] tracking-tight text-cream" style="padding-bottom:.04em" data-reveal>
+        A method, not a<br>guessing game.
+      </h2>
+      <p class="mt-5 text-[16px] text-cream/70 max-w-md leading-relaxed" data-reveal>
+        Most water damage comes from a leak no one can see. Our techs work the problem in a fixed order so nothing gets torn up on a hunch.
+      </p>
+      <div class="mt-10 space-y-8">
+        <div class="flex gap-5" data-reveal>
+          <div class="font-display font-extrabold text-teal text-3xl svc-num shrink-0 w-12">01</div>
+          <div><h3 class="font-display font-bold text-cream text-lg">Listen &amp; scan</h3><p class="text-cream/65 text-[14.5px] leading-relaxed">Acoustic sensors and thermal imaging map moisture and pressure across the system.</p></div>
+        </div>
+        <div class="flex gap-5" data-reveal>
+          <div class="font-display font-extrabold text-teal text-3xl svc-num shrink-0 w-12">02</div>
+          <div><h3 class="font-display font-bold text-cream text-lg">Pinpoint the source</h3><p class="text-cream/65 text-[14.5px] leading-relaxed">We isolate the exact spot, then show you what we found before any work begins.</p></div>
+        </div>
+        <div class="flex gap-5" data-reveal>
+          <div class="font-display font-extrabold text-teal text-3xl svc-num shrink-0 w-12">03</div>
+          <div><h3 class="font-display font-bold text-cream text-lg">Fix it &amp; guarantee it</h3><p class="text-cream/65 text-[14.5px] leading-relaxed">Targeted repair with a clean-up to match, backed by our find-the-leak guarantee.</p></div>
+        </div>
+      </div>
+    </div>
+    <!-- sonar visual -->
+    <div class="relative" data-reveal>
+      <div class="sonar relative aspect-square max-w-md mx-auto rounded-3xl bg-navy/40 border border-white/10 overflow-hidden">
+        <div class="scan-line"></div>
+        <!-- grid -->
+        <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 200 200"><defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#3FA7E0" stroke-width="0.5"/></pattern></defs><rect width="200" height="200" fill="url(#g)"/></svg>
+        <div class="sonar-ring"></div><div class="sonar-ring"></div><div class="sonar-ring"></div>
+        <!-- center target -->
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+          <div class="h-3 w-3 rounded-full bg-teal mx-auto shadow-[0_0_20px_rgba(18,165,176,.9)]"></div>
+          <p class="mt-4 text-[11px] font-bold uppercase tracking-[0.22em] text-teal">Leak located</p>
+        </div>
+        <div class="absolute bottom-4 left-4 text-[11px] font-semibold text-cream/50 tracking-wide">ACOUSTIC &middot; THERMAL &middot; PRESSURE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="relative py-24 sm:py-32 px-4 sm:px-6">
+  <div class="mx-auto max-w-7xl">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+      <div>
+        <p class="text-[12px] font-bold uppercase tracking-[0.24em] text-teal mb-4" data-reveal>Homeowner voices</p>
+        <h2 class="font-display font-extrabold text-ink text-[9vw] sm:text-[3.6rem] leading-[1.06] tracking-tight" style="padding-bottom:.04em" data-reveal>Trusted across<br><span class="grad-text">South Florida.</span></h2>
+      </div>
+      <div class="flex items-center gap-3 rounded-2xl bg-white border border-ink/8 px-5 py-4" data-reveal>
+        <span class="font-display font-extrabold text-4xl text-ink">4.8</span>
+        <div class="text-[13px]">
+          <div class="text-teal">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="text-steel font-semibold">Verified homeowner reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <figure class="card rounded-2xl bg-white border border-ink/8 p-7" data-reveal>
+        <div class="text-teal mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="text-[15.5px] text-ink leading-relaxed">&#8220;Exceeded my expectations. Cesar and the team were professional, attentive and dedicated from start to finish. I truly appreciate it.&#8221;</blockquote>
+        <figcaption class="mt-5 text-[13px] font-bold text-navy">Amy S. <span class="font-medium text-steel">&middot; Verified review</span></figcaption>
+      </figure>
+      <figure class="card rounded-2xl bg-white border border-ink/8 p-7" data-reveal>
+        <div class="text-teal mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="text-[15.5px] text-ink leading-relaxed">&#8220;Highly recommend. We had a massive leak and Ruben did a great job locating and fixing it, no fuss, no muss.&#8221;</blockquote>
+        <figcaption class="mt-5 text-[13px] font-bold text-navy">Sean C. <span class="font-medium text-steel">&middot; Verified review</span></figcaption>
+      </figure>
+      <figure class="card rounded-2xl bg-white border border-ink/8 p-7" data-reveal>
+        <div class="text-teal mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="text-[15.5px] text-ink leading-relaxed">&#8220;Outstanding customer service and quality of work. Always on time and did exactly what they said they would.&#8221;</blockquote>
+        <figcaption class="mt-5 text-[13px] font-bold text-navy">Eddie V. <span class="font-medium text-steel">&middot; Verified review</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA + MAP + HOURS -->
+<section id="area" class="relative py-6 sm:py-10 px-4 sm:px-6">
+  <div class="mx-auto max-w-7xl grid lg:grid-cols-2 gap-8 items-stretch">
+    <div class="rounded-3xl overflow-hidden border border-ink/10 min-h-[420px] bg-white" data-reveal>
+      <iframe title="On Site Plumber & Leak Detection service area map" src="https://www.google.com/maps?q=3056%20South%20State%20Rd%207%2C%20Unit%2063%2C%20Miramar%2C%20FL%2033023&output=embed" width="100%" height="100%" style="border:0; min-height:420px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="rounded-3xl bg-ink text-cream p-9 sm:p-11 flex flex-col justify-between" data-reveal>
+      <div>
+        <p class="text-[12px] font-bold uppercase tracking-[0.24em] text-teal mb-5">Visit / reach us</p>
+        <h2 class="font-display font-extrabold text-[8vw] sm:text-[2.6rem] leading-[1.08] tracking-tight" style="padding-bottom:.03em">On call across the tri-county.</h2>
+        <div class="mt-8 space-y-5 text-[15px]">
+          <div class="flex items-start gap-3">
+            <svg class="mt-0.5 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2c4 0 7 3 7 7 0 5-7 13-7 13S5 14 5 9c0-4 3-7 7-7Z" stroke="#3FA7E0" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" fill="#3FA7E0"/></svg>
+            <span class="text-cream/85">3056 South State Rd 7, Unit&nbsp;#63<br>Miramar, FL 33023</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg class="shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a12 12 0 0 0 6.6 6.6l2.2-2.2a1.3 1.3 0 0 1 1.3-.3 9 9 0 0 0 3 .5 1.3 1.3 0 0 1 1.3 1.3V20a1.3 1.3 0 0 1-1.3 1.3A17.7 17.7 0 0 1 3.4 4.7 1.3 1.3 0 0 1 4.7 3.4H8a1.3 1.3 0 0 1 1.3 1.3 9 9 0 0 0 .5 3 1.3 1.3 0 0 1-.3 1.3l-2.6 1.8Z" fill="#3FA7E0"/></svg>
+            <a href="tel:+17866000270" class="text-cream font-bold underline-grow">786-600-0270</a>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="mt-0.5 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#3FA7E0" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="#3FA7E0" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <span class="text-cream/85">Monday&ndash;Friday, 8:00 AM&ndash;6:00 PM<br><span class="text-cream/55 text-[13.5px]">Serving Broward, Miami-Dade &amp; Palm Beach</span></span>
+          </div>
+        </div>
+      </div>
+      <a href="tel:+17866000270" class="btn-primary mt-9 inline-flex items-center justify-center gap-2.5 rounded-full bg-blue text-white px-7 py-4 text-[15px] font-bold w-full sm:w-auto">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a12 12 0 0 0 6.6 6.6l2.2-2.2a1.3 1.3 0 0 1 1.3-.3 9 9 0 0 0 3 .5 1.3 1.3 0 0 1 1.3 1.3V20a1.3 1.3 0 0 1-1.3 1.3A17.7 17.7 0 0 1 3.4 4.7 1.3 1.3 0 0 1 4.7 3.4H8a1.3 1.3 0 0 1 1.3 1.3 9 9 0 0 0 .5 3 1.3 1.3 0 0 1-.3 1.3l-2.6 1.8Z" fill="currentColor"/></svg>
+        Schedule a leak inspection
+      </a>
+    </div>
+  </div>
+  <div class="mx-auto max-w-7xl mt-8 flex flex-wrap gap-2.5" data-reveal>
+    <!-- service area chips -->
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">Fort Lauderdale</span>
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">Hollywood</span>
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">Miramar</span>
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">Pembroke Pines</span>
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">Davie</span>
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">Weston</span>
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">Coral Springs</span>
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">Pompano Beach</span>
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">Plantation</span>
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">Sunrise</span>
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">Dania Beach</span>
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">Hallandale Beach</span>
+    <span class="rounded-full bg-white border border-ink/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-navy/80">+ more across the tri-county</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative py-24 sm:py-32 px-4 sm:px-6">
+  <div class="mx-auto max-w-4xl text-center">
+    <div class="inline-flex items-center gap-2 rounded-full bg-teal/12 border border-teal/25 px-4 py-1.5 text-[12.5px] font-bold text-teal mb-8" data-reveal>
+      <span class="h-2 w-2 rounded-full bg-teal chip-dot"></span> We find the leak, guaranteed
+    </div>
+    <h2 class="font-display font-extrabold text-ink text-[10vw] sm:text-[4.4rem] leading-[1.04] tracking-tight" style="padding-bottom:.05em" data-reveal>
+      Stop guessing.<br><span class="grad-text">Start with a scan.</span>
+    </h2>
+    <p class="mt-6 text-[17px] text-navy/80 max-w-xl mx-auto leading-relaxed" data-reveal>
+      One call and we&#8217;ll be out to find what&#8217;s driving that water bill, damp wall or spike in your meter, before it costs you more.
+    </p>
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-3.5" data-reveal>
+      <a href="tel:+17866000270" class="btn-primary inline-flex items-center gap-2.5 rounded-full bg-ink text-cream px-8 py-4 text-[15px] font-bold">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a12 12 0 0 0 6.6 6.6l2.2-2.2a1.3 1.3 0 0 1 1.3-.3 9 9 0 0 0 3 .5 1.3 1.3 0 0 1 1.3 1.3V20a1.3 1.3 0 0 1-1.3 1.3A17.7 17.7 0 0 1 3.4 4.7 1.3 1.3 0 0 1 4.7 3.4H8a1.3 1.3 0 0 1 1.3 1.3 9 9 0 0 0 .5 3 1.3 1.3 0 0 1-.3 1.3l-2.6 1.8Z" fill="currentColor"/></svg>
+        Call 786-600-0270
+      </a>
+      <a href="#services" class="inline-flex items-center gap-2 rounded-full bg-white border border-ink/12 text-ink px-7 py-4 text-[15px] font-bold hover:bg-bone transition">Explore services</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-cream pt-16 pb-28 sm:pb-14 px-4 sm:px-6">
+  <div class="mx-auto max-w-7xl">
+    <div class="flex flex-col sm:flex-row justify-between gap-10 pb-10 border-b border-white/10">
+      <div class="max-w-sm">
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-blue text-cream">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2.5s6.5 7 6.5 11.6A6.5 6.5 0 0 1 12 20.6a6.5 6.5 0 0 1-6.5-6.5C5.5 9.5 12 2.5 12 2.5Z" fill="#3FA7E0"/><path d="M9 13.5a3 3 0 0 0 3 3" stroke="#F7F3EC" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </span>
+          <span class="font-display font-extrabold text-lg">On Site Plumber &amp; Leak Detection</span>
+        </div>
+        <p class="text-cream/60 text-[14.5px] leading-relaxed">Leak detection specialists and full-service plumbers serving Broward, Miami-Dade and Palm Beach counties. We find the leak, guaranteed.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-10 text-[14px]">
+        <div>
+          <p class="font-bold text-teal uppercase tracking-[0.16em] text-[11.5px] mb-4">Services</p>
+          <ul class="space-y-2.5 text-cream/70">
+            <li><a href="#services" class="underline-grow">Leak Detection</a></li>
+            <li><a href="#services" class="underline-grow">Slab Leak Repair</a></li>
+            <li><a href="#services" class="underline-grow">Whole-Home Repipe</a></li>
+            <li><a href="#services" class="underline-grow">Sewer Camera</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-bold text-teal uppercase tracking-[0.16em] text-[11.5px] mb-4">Reach us</p>
+          <ul class="space-y-2.5 text-cream/70">
+            <li><a href="tel:+17866000270" class="underline-grow font-semibold text-cream">786-600-0270</a></li>
+            <li>Miramar, FL 33023</li>
+            <li>Mon&ndash;Fri &middot; 8AM&ndash;6PM</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="pt-6 flex flex-col sm:flex-row justify-between gap-3 text-[12.5px] text-cream/45">
+      <p>&copy; 2026 On Site Plumber &amp; Leak Detection. All rights reserved.</p>
+      <p>Website by <a href="https://turnkeyweb.org" class="text-cream/70 underline-grow">Turnkey Web</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="sticky-bar sm:hidden fixed bottom-0 inset-x-0 z-50 bg-ink/95 backdrop-blur border-t border-white/10 grid grid-cols-2">
+  <a href="tel:+17866000270" class="flex items-center justify-center gap-2 py-3.5 text-cream font-bold text-[14px]">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a12 12 0 0 0 6.6 6.6l2.2-2.2a1.3 1.3 0 0 1 1.3-.3 9 9 0 0 0 3 .5 1.3 1.3 0 0 1 1.3 1.3V20a1.3 1.3 0 0 1-1.3 1.3A17.7 17.7 0 0 1 3.4 4.7 1.3 1.3 0 0 1 4.7 3.4H8a1.3 1.3 0 0 1 1.3 1.3 9 9 0 0 0 .5 3 1.3 1.3 0 0 1-.3 1.3l-2.6 1.8Z" fill="currentColor"/></svg> Call
+  </a>
+  <a href="https://www.google.com/maps?q=3056+South+State+Rd+7,+Unit+63,+Miramar,+FL+33023" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3.5 bg-blue text-white font-bold text-[14px]">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2c4 0 7 3 7 7 0 5-7 13-7 13S5 14 5 9c0-4 3-7 7-7Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="9" r="2.2" fill="currentColor"/></svg> Directions
+  </a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Plumber",
+  "name":"On Site Plumber & Leak Detection",
+  "image":"https://turnkeyweb.org/previews/on-site-plumber-leak-detection/",
+  "url":"https://turnkeyweb.org/previews/on-site-plumber-leak-detection/",
+  "telephone":"+1-786-600-0270",
+  "priceRange":"$$",
+  "address":{"@type":"PostalAddress","streetAddress":"3056 South State Rd 7, Unit #63","addressLocality":"Miramar","addressRegion":"FL","postalCode":"33023","addressCountry":"US"},
+  "areaServed":["Fort Lauderdale","Hollywood","Miramar","Pembroke Pines","Davie","Weston","Coral Springs","Pompano Beach","Plantation","Sunrise","Broward County","Miami-Dade County","Palm Beach County"],
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"}],
+  "slogan":"We find the leak, guaranteed.",
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Leak Detection"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Slab Leak Repair"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Whole-Home Repipe"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Sewer Camera Inspection"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Hydro Jetting"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Water Heater Repair"}}
+  ]
+}
+</script>
+
+<script>
+/* ---------- WebGL water-caustics hero (light canvas) ---------- */
+(function(){
+  const canvas = document.getElementById('waterCanvas');
+  if(!canvas) return;
+  let gl;
+  try { gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl'); } catch(e){}
+  const isMobile = window.matchMedia('(max-width:880px)').matches;
+  if(!gl){
+    canvas.style.background = 'linear-gradient(160deg,#EAF3FA,#F7F3EC 55%,#E7F3F2)';
+    return;
+  }
+  const vs = `attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`;
+  const fs = `
+  precision highp float;
+  uniform vec2 u_res; uniform float u_time;
+  // brand tints on a light canvas
+  vec3 cream = vec3(0.969,0.953,0.925);
+  vec3 blue  = vec3(0.118,0.435,0.722);
+  vec3 teal  = vec3(0.071,0.647,0.690);
+  vec3 navy  = vec3(0.071,0.188,0.352);
+  float hash(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
+  float noise(vec2 p){
+    vec2 i=floor(p), f=fract(p);
+    float a=hash(i), b=hash(i+vec2(1.,0.)), c=hash(i+vec2(0.,1.)), d=hash(i+vec2(1.,1.));
+    vec2 u=f*f*(3.-2.*f);
+    return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);
+  }
+  float fbm(vec2 p){ float v=0.,a=.5; for(int i=0;i<5;i++){ v+=a*noise(p); p*=2.02; a*=.5; } return v; }
+  void main(){
+    vec2 uv = gl_FragCoord.xy/u_res.xy;
+    vec2 p = uv; p.x *= u_res.x/u_res.y;
+    float t = u_time*0.06;
+    // flowing caustic bands
+    float n1 = fbm(p*3.2 + vec2(t, t*0.6));
+    float n2 = fbm(p*5.5 - vec2(t*0.8, t*0.4) + n1);
+    float caustic = pow(abs(sin((n1+n2)*3.14159 + t*2.0)), 2.4);
+    float ripple = fbm(p*7.0 + n2*1.5 + t*1.2);
+    // base is cream; push blue/teal where caustics concentrate
+    vec3 col = cream;
+    col = mix(col, mix(blue, teal, ripple), caustic*0.32);
+    col = mix(col, teal, smoothstep(0.6,0.95,caustic)*0.14);
+    // faint navy depth low-left, keep upper-left light for headline
+    float depth = smoothstep(0.1,1.0, (1.0-uv.y)*0.6 + uv.x*0.3);
+    col = mix(col, mix(col,navy,0.10), depth*0.5);
+    // vignette darken edges (not glow)
+    float vig = smoothstep(1.25,0.35, distance(uv,vec2(0.5)));
+    col *= mix(0.93,1.0,vig);
+    // keep top-left bright for text
+    float clear = smoothstep(0.0,0.7, distance(uv,vec2(0.16,0.72)));
+    col = mix(cream, col, clamp(clear+0.35,0.0,1.0));
+    gl_FragColor = vec4(col,1.0);
+  }`;
+  function sh(type,src){ const s=gl.createShader(type); gl.shaderSource(s,src); gl.compileShader(s); return s; }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog); gl.useProgram(prog);
+  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog,'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+  const uRes = gl.getUniformLocation(prog,'u_res'), uTime = gl.getUniformLocation(prog,'u_time');
+  const dpr = Math.min(window.devicePixelRatio||1, isMobile?1.4:2);
+  function resize(){ const w=canvas.clientWidth, h=canvas.clientHeight; canvas.width=w*dpr; canvas.height=h*dpr; gl.viewport(0,0,canvas.width,canvas.height); }
+  window.addEventListener('resize', resize); resize();
+  let running=true, raf;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function frame(ts){ if(!running) return; gl.uniform2f(uRes,canvas.width,canvas.height); gl.uniform1f(uTime, reduce?12.0:ts*0.001); gl.drawArrays(gl.TRIANGLES,0,3); raf=requestAnimationFrame(frame); }
+  if(reduce){ gl.uniform2f(uRes,canvas.width,canvas.height); gl.uniform1f(uTime,12.0); gl.drawArrays(gl.TRIANGLES,0,3); }
+  else { raf=requestAnimationFrame(frame); }
+  // pause offscreen + when hidden
+  const io = new IntersectionObserver((ents)=>{ ents.forEach(e=>{ running = e.isIntersecting && !document.hidden && !reduce; if(running && !reduce){ cancelAnimationFrame(raf); raf=requestAnimationFrame(frame);} }); }, {threshold:0.02});
+  io.observe(canvas);
+  document.addEventListener('visibilitychange', ()=>{ if(document.hidden){ running=false; } else if(!reduce){ running=true; cancelAnimationFrame(raf); raf=requestAnimationFrame(frame);} });
+})();
+
+/* ---------- Motion: Lenis + GSAP ---------- */
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(window.Lenis && !reduce){
+    const lenis = new Lenis({ duration:1.1, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+    if(window.gsap){ gsap.ticker.add((t)=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0); if(window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update); }
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{ const id=a.getAttribute('href'); if(id.length>1){ const el=document.querySelector(id); if(el){ e.preventDefault(); lenis.scrollTo(el,{offset:-72}); } } });
+    });
+  }
+  if(window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize:true });
+    gsap.utils.toArray('[data-reveal]').forEach(el=>{
+      gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:.68,ease:'power3.out',
+        scrollTrigger:{trigger:el,start:'top 92%',once:true},
+        onComplete:()=>el.classList.add('reveal-done')});
+    });
+    // count-up
+    gsap.utils.toArray('[data-count]').forEach(el=>{
+      const target=parseFloat(el.dataset.count), suf=el.dataset.suffix||'';
+      const isDec = String(target).indexOf('.')>-1 || suf.indexOf('&#9733')>-1;
+      ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>{
+        gsap.to({v:0},{v:target,duration:1.5,ease:'power2.out',onUpdate:function(){
+          const v=this.targets()[0].v; el.innerHTML=(target%1===0? Math.round(v): v.toFixed(1))+suf;
+        }});
+      }});
+    });
+  }
+  // nav shadow on scroll
+  const nav=document.getElementById('nav');
+  const onScroll=()=>{ if(window.scrollY>24){ nav.classList.add('bg-cream/85','backdrop-blur','shadow-[0_6px_24px_-16px_rgba(15,36,64,.5)]'); } else { nav.classList.remove('bg-cream/85','backdrop-blur','shadow-[0_6px_24px_-16px_rgba(15,36,64,.5)]'); } };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* ---------- 6s screenshot / crawler safety net ---------- */
+  setTimeout(()=>{
+    document.querySelectorAll('[data-reveal]').forEach(el=>{ if(getComputedStyle(el).opacity!=='1'){ el.style.opacity='1'; el.style.transform='none'; } });
+    document.querySelectorAll('[data-count]').forEach(el=>{ if(el.textContent.trim()==='0'){ const t=parseFloat(el.dataset.count), suf=el.dataset.suffix||''; el.innerHTML=(t%1===0?Math.round(t):t.toFixed(1))+suf; } });
+  }, 6000);
+})();
+</script>
+</body>
+</html>

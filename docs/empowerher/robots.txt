@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://turnkeyweb.org/empowerher/sitemap.xml
