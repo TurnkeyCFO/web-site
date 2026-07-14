@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+<!--
+  Morben Auto Paint & Body Shop — Garland, TX  (DRAFT prospect build for approval)
+  Palette: cream/bone base + iron-red accent + charcoal/steel ink (auto category, light-first)
+  Display: Bricolage Grotesque · Body: Plus Jakarta Sans
+  Hero: AI cinematic video (Higgsfield nano_banana_pro -> Kling), self-hosted assets/hero.mp4
+  Showpiece: Three.js clearcoat-flow shader on one dramatic charcoal "The Finish" band
+  Real data: 124 E Buckingham Rd, Garland TX 75040 · (214) 469-5953 · est. 2000 · 4.7 / 41 Google
+  Reviews: real aggregate + anonymous "Verified Google reviewer" quotes (named reviews behind anti-scrape walls)
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Morben Auto Paint &amp; Body Shop | Collision Repair &amp; Custom Paint in Garland, TX</title>
+<meta name="description" content="Family-run auto body shop in Garland, TX since 2000. Collision repair, custom paint, dent removal and full restorations — finished like it never happened. Free towing and rental with repair. Call (214) 469-5953.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/morben-auto-paint-body/">
+<meta property="og:title" content="Morben Auto Paint &amp; Body Shop — Garland, TX">
+<meta property="og:description" content="Collision repair, custom paint and full restorations in Garland since 2000. Finished like it never happened.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://turnkeyweb.org/previews/morben-auto-paint-body/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/morben-auto-paint-body/assets/hero.jpg">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: {
+    paper:'#FBF6EF', cream:'#F7EFE4', bone:'#EFE4D4',
+    iron:'#A8362B', ironDeep:'#8A2A21', ember:'#C8503C',
+    charcoal:'#24201E', ink:'#181513', steel:'#6E7A80', steelSoft:'#98A2A6'
+  },
+  fontFamily:{ display:['"Bricolage Grotesque"','sans-serif'], sans:['"Plus Jakarta Sans"','sans-serif'] }
+}}}
+</script>
+<style>
+  :root{ --paper:#FBF6EF; --cream:#F7EFE4; --bone:#EFE4D4; --iron:#A8362B; --ironDeep:#8A2A21; --ember:#C8503C; --charcoal:#24201E; --ink:#181513; --steel:#6E7A80; --nav:74px; }
+  *{ -webkit-tap-highlight-color:transparent; }
+  html{ scroll-behavior:auto; scroll-padding-top:var(--nav); }
+  body{ background:var(--paper); color:var(--ink); font-family:'Plus Jakarta Sans',sans-serif; overflow-x:hidden; }
+  ::selection{ background:var(--iron); color:#fff; }
+  .font-display{ font-family:'Bricolage Grotesque',sans-serif; }
+
+  /* ---- descender-safe display type (HARD) ---- */
+  .display-xl{ font-family:'Bricolage Grotesque',sans-serif; font-weight:800; line-height:1.02; letter-spacing:-.02em; padding-bottom:.06em; }
+  .display-lg{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; line-height:1.06; letter-spacing:-.015em; padding-bottom:.06em; }
+  h1,h2,h3{ padding-bottom:.02em; }
+
+  /* ---- gradient shimmer (min-lightness floor keeps it AA) ---- */
+  .grad-text{
+    background:linear-gradient(100deg,var(--iron) 0%, var(--ember) 32%, #E07A5F 50%, var(--ember) 68%, var(--iron) 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
+    line-height:1.15; padding-bottom:.12em; display:inline-block;
+    animation:shimmer 7.5s linear infinite;
+  }
+  @keyframes shimmer{ from{background-position:220% 0} to{background-position:-20% 0} }
+
+  /* ---- hero ---- */
+  .hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .hero-scrim{ position:absolute; inset:0; background:
+      linear-gradient(180deg, rgba(251,246,239,.86) 0%, rgba(251,246,239,.42) 26%, rgba(251,246,239,.08) 46%, rgba(36,32,30,.10) 74%, rgba(36,32,30,.34) 100%),
+      radial-gradient(120% 80% at 18% 30%, rgba(251,246,239,.55), transparent 60%); }
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(rgba(24,21,19,.9) .6px, transparent .7px); background-size:3px 3px; }
+
+  .ambient{ position:absolute; border-radius:50%; filter:blur(90px); opacity:.4; pointer-events:none; will-change:transform; }
+  .amb-1{ width:520px;height:520px; background:radial-gradient(circle,var(--ember),transparent 62%); animation:drift1 24s ease-in-out infinite; }
+  .amb-2{ width:440px;height:440px; background:radial-gradient(circle,#B9C3C6,transparent 62%); animation:drift2 30s ease-in-out infinite; }
+  @keyframes drift1{ 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(38px,-30px) scale(1.09)} }
+  @keyframes drift2{ 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-34px,26px) scale(1.06)} }
+
+  /* ---- buttons ---- */
+  .btn{ position:relative; overflow:hidden; font-weight:700; letter-spacing:.01em; transition:transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s, filter .35s; }
+  .btn-iron{ background:var(--iron); color:#FBF6EF; box-shadow:0 12px 30px -12px rgba(168,54,43,.6); }
+  .btn-iron:hover{ transform:translateY(-3px); filter:brightness(1.06); box-shadow:0 20px 44px -14px rgba(168,54,43,.7); }
+  .btn-iron::after{ content:''; position:absolute; top:0; left:-130%; width:60%; height:100%; transform:skewX(-20deg);
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent); transition:left .9s cubic-bezier(.22,1,.36,1); }
+  .btn-iron:hover::after{ left:130%; }
+  .btn-ghost{ border:1.5px solid rgba(36,32,30,.28); color:var(--charcoal); background:transparent; transition:transform .35s cubic-bezier(.22,1,.36,1), border-color .35s, background .35s; }
+  .btn-ghost:hover{ transform:translateY(-3px); border-color:var(--iron); color:var(--iron); background:rgba(168,54,43,.05); }
+
+  .chip{ display:inline-flex; align-items:center; gap:.5rem; border:1px solid rgba(36,32,30,.16); border-radius:999px; background:rgba(255,255,255,.6); backdrop-filter:blur(6px); }
+  .pulse-dot{ width:8px;height:8px;border-radius:50%; background:var(--iron); animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.5);opacity:.55} }
+
+  /* ---- marquee ---- */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .marquee-track{ display:flex; gap:2.6rem; width:max-content; animation:scrollX 34s linear infinite; align-items:center; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ---- reveals ---- */
+  [data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  .line-mask{ display:block; overflow:hidden; padding-bottom:.14em; }
+  .line-inner{ display:block; transform:translateY(110%); }
+
+  /* ---- service rows ---- */
+  .svc-row{ position:relative; border-top:1px solid rgba(36,32,30,.13); transition:background .5s; }
+  .svc-row:last-child{ border-bottom:1px solid rgba(36,32,30,.13); }
+  .svc-row:hover{ background:rgba(168,54,43,.045); }
+  .svc-num{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; color:transparent; -webkit-text-stroke:1.4px rgba(36,32,30,.28); line-height:1; }
+  .svc-row:hover .svc-num{ -webkit-text-stroke:1.4px var(--iron); }
+  .svc-arrow{ transition:transform .5s cubic-bezier(.22,1,.36,1), color .5s; color:var(--steel); }
+  .svc-row:hover .svc-arrow{ transform:translateX(8px); color:var(--iron); }
+
+  .card{ transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s; }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 26px 60px -30px rgba(24,21,19,.5); }
+  .work-img{ transition:transform 1.1s cubic-bezier(.22,1,.36,1), filter .6s; }
+  .work-card:hover .work-img{ transform:scale(1.06); }
+
+  /* ---- finish (dark showpiece band) ---- */
+  #finish canvas{ position:absolute; inset:0; width:100%!important; height:100%!important; display:block; }
+
+  .stat-num{ font-family:'Bricolage Grotesque',sans-serif; font-weight:800; line-height:1.04; letter-spacing:-.01em; }
+
+  .underline-grow{ position:relative; }
+  .underline-grow::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:var(--iron); transition:width .45s cubic-bezier(.22,1,.36,1); }
+  .underline-grow:hover::after{ width:100%; }
+
+  .scroll-bar{ position:fixed; top:0; left:0; height:2.5px; width:0; z-index:60; background:linear-gradient(90deg,var(--iron),var(--ember)); }
+
+  /* mobile sticky bar */
+  .sticky-bar{ position:fixed; left:0; right:0; bottom:0; z-index:55; display:none; }
+  @media (max-width:820px){ .sticky-bar{ display:grid; } body{ padding-bottom:64px; } }
+
+  @media (prefers-reduced-motion:reduce){ *{ animation:none!important; transition:none!important; } [data-reveal]{opacity:1;transform:none;} .line-inner{transform:none;} }
+</style>
+</head>
+
+<body class="antialiased">
+
+<div class="scroll-bar" id="scrollBar"></div>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[74px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="font-display font-extrabold text-lg tracking-tight leading-none inline-flex items-center justify-center rounded-md bg-iron text-paper px-2.5 py-1.5">MB</span>
+      <span class="leading-tight">
+        <span class="block font-display font-bold text-[15px] text-charcoal tracking-tight">Morben Auto Paint &amp; Body</span>
+        <span class="block text-[11px] tracking-[.18em] uppercase text-steel">Garland, Texas · Since 2000</span>
+      </span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-[14px] font-medium text-charcoal/85">
+      <a href="#work" class="underline-grow">Our Work</a>
+      <a href="#services" class="underline-grow">Services</a>
+      <a href="#reviews" class="underline-grow">Reviews</a>
+      <a href="#visit" class="underline-grow">Visit</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="tel:+12144695953" class="hidden sm:inline-flex items-center gap-2 text-[14px] font-semibold text-charcoal">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (214) 469-5953
+      </a>
+      <a href="#visit" class="btn btn-iron inline-flex items-center rounded-full px-4 py-2.5 text-[13px]">Get an estimate</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden grain">
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+  <div class="ambient amb-1" style="top:-140px;right:-120px;"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pb-14 sm:pb-20 pt-[110px]">
+    <div class="chip px-4 py-1.5 text-[12.5px] font-semibold text-charcoal mb-6" data-reveal>
+      <span class="pulse-dot"></span> Collision · Custom paint · Restorations — Garland, TX
+    </div>
+
+    <h1 class="display-xl text-charcoal text-[16vw] sm:text-[11vw] lg:text-[8.6vw] max-w-[15ch]">
+      <span class="block" data-hero-line>Back to</span>
+      <span class="block" data-hero-line><span class="grad-text">flawless.</span></span>
+    </h1>
+
+    <p class="mt-6 max-w-xl text-[16px] sm:text-[18px] leading-relaxed text-charcoal/85 font-medium" data-reveal>
+      Collision repair, custom paint, and full restorations — finished so clean it looks like it never happened. Family-run in Garland since 2000.
+    </p>
+
+    <div class="mt-8 flex flex-wrap items-center gap-3" data-reveal>
+      <a href="tel:+12144695953" class="btn btn-iron inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[15px]">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call (214) 469-5953
+      </a>
+      <a href="#visit" class="btn btn-ghost inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[15px]">
+        Get directions
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <!-- hero stat strip -->
+    <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 max-w-2xl border-t border-charcoal/15 pt-7" data-reveal>
+      <div>
+        <div class="stat-num text-charcoal text-4xl"><span data-count="26">0</span></div>
+        <div class="text-[12px] tracking-[.14em] uppercase text-steel mt-1">Years in Garland</div>
+      </div>
+      <div>
+        <div class="stat-num text-iron text-4xl"><span data-count="4.7" data-dec="1">0</span></div>
+        <div class="text-[12px] tracking-[.14em] uppercase text-steel mt-1">Google rating</div>
+      </div>
+      <div>
+        <div class="stat-num text-charcoal text-4xl"><span data-count="41">0</span></div>
+        <div class="text-[12px] tracking-[.14em] uppercase text-steel mt-1">Google reviews</div>
+      </div>
+      <div>
+        <div class="stat-num text-charcoal text-4xl">Free</div>
+        <div class="text-[12px] tracking-[.14em] uppercase text-steel mt-1">Towing &amp; rental</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="bg-charcoal text-paper py-4 border-y border-black/20">
+  <div class="marquee">
+    <div class="marquee-track text-[15px] font-semibold tracking-wide uppercase">
+      <span>Collision Repair</span><span class="text-iron">◆</span>
+      <span class="italic font-display text-ember">Custom Paint</span><span class="text-iron">◆</span>
+      <span>Dent &amp; Ding Removal</span><span class="text-iron">◆</span>
+      <span class="italic font-display text-ember">Full Restorations</span><span class="text-iron">◆</span>
+      <span>Insurance Claims</span><span class="text-iron">◆</span>
+      <span class="italic font-display text-ember">Free Towing</span><span class="text-iron">◆</span>
+      <span>Frame &amp; Body Work</span><span class="text-iron">◆</span>
+      <span class="italic font-display text-ember">Color Matching</span><span class="text-iron">◆</span>
+      <!-- dup -->
+      <span>Collision Repair</span><span class="text-iron">◆</span>
+      <span class="italic font-display text-ember">Custom Paint</span><span class="text-iron">◆</span>
+      <span>Dent &amp; Ding Removal</span><span class="text-iron">◆</span>
+      <span class="italic font-display text-ember">Full Restorations</span><span class="text-iron">◆</span>
+      <span>Insurance Claims</span><span class="text-iron">◆</span>
+      <span class="italic font-display text-ember">Free Towing</span><span class="text-iron">◆</span>
+      <span>Frame &amp; Body Work</span><span class="text-iron">◆</span>
+      <span class="italic font-display text-ember">Color Matching</span><span class="text-iron">◆</span>
+    </div>
+  </div>
+</div>
+
+<!-- STATEMENT -->
+<section class="relative bg-paper py-24 sm:py-32 grain">
+  <div class="ambient amb-2" style="bottom:-160px;left:-120px;"></div>
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6">
+    <p class="text-[13px] tracking-[.24em] uppercase text-iron font-semibold mb-8" data-reveal>The Morben promise</p>
+    <h2 class="display-lg text-charcoal text-[8vw] sm:text-[5.4vw] lg:text-[3.9vw] max-w-[20ch]">
+      <span class="line-mask"><span class="line-inner">Two families bring us a car after</span></span>
+      <span class="line-mask"><span class="line-inner">an accident, a bad repaint, or years</span></span>
+      <span class="line-mask"><span class="line-inner">of wear. They drive off with the one</span></span>
+      <span class="line-mask"><span class="line-inner">they remember — <span class="text-iron">only better.</span></span></span>
+    </h2>
+    <p class="mt-8 max-w-2xl text-[17px] leading-relaxed text-charcoal/75" data-reveal>
+      Morben Auto Paint &amp; Body has been family owned and operated in Garland since 2000, serving Northeast Dallas and the surrounding area. Straightforward estimates, honest pricing, and a finish we're proud to put our name on.
+    </p>
+  </div>
+</section>
+
+<!-- WORK SHOWCASE -->
+<section id="work" class="relative bg-cream py-22 sm:py-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+      <div data-reveal>
+        <p class="text-[13px] tracking-[.24em] uppercase text-iron font-semibold mb-4">In the booth</p>
+        <h2 class="display-lg text-charcoal text-[9vw] sm:text-[5vw] lg:text-[3.4vw] max-w-[16ch]">Where the finish gets earned</h2>
+      </div>
+      <a href="#visit" class="hidden sm:inline-flex items-center gap-2 text-[15px] font-semibold text-charcoal underline-grow" data-reveal>
+        Bring us your car
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-5">
+      <figure class="work-card card md:col-span-7 relative rounded-2xl overflow-hidden bg-charcoal" data-reveal>
+        <img src="assets/work_spray.jpg" alt="Painter applying automotive basecoat in the Morben spray booth" class="work-img w-full h-[340px] sm:h-[440px] object-cover">
+        <figcaption class="absolute left-5 bottom-5 text-paper">
+          <span class="block font-display font-bold text-xl">Custom paint &amp; color matching</span>
+          <span class="block text-paper/80 text-sm mt-1">Booth-sprayed basecoat, matched to your factory color</span>
+        </figcaption>
+      </figure>
+      <figure class="work-card card md:col-span-5 relative rounded-2xl overflow-hidden bg-charcoal" data-reveal>
+        <img src="assets/work_polish.jpg" alt="Technician polishing a flawless clearcoat finish" class="work-img w-full h-[340px] sm:h-[440px] object-cover">
+        <figcaption class="absolute left-5 bottom-5 text-paper">
+          <span class="block font-display font-bold text-xl">Cut, buff &amp; clearcoat</span>
+          <span class="block text-paper/80 text-sm mt-1">A mirror finish — no overspray, no orange peel</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="relative bg-paper py-22 sm:py-28 grain">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="max-w-2xl mb-12" data-reveal>
+      <p class="text-[13px] tracking-[.24em] uppercase text-iron font-semibold mb-4">What we do</p>
+      <h2 class="display-lg text-charcoal text-[9vw] sm:text-[5vw] lg:text-[3.4vw]">Body and paint, <span class="grad-text">done right</span></h2>
+      <p class="mt-5 text-[17px] leading-relaxed text-charcoal/70">From a bumper scuff to a full repaint, everything runs through the same shop, the same crew, and the same standard.</p>
+    </div>
+
+    <div class="mt-4">
+      <!-- rows -->
+      <a href="#visit" class="svc-row group flex items-center gap-5 sm:gap-8 py-7 sm:py-8">
+        <span class="svc-num text-4xl sm:text-6xl w-[54px] sm:w-[86px] shrink-0">01</span>
+        <div class="flex-1">
+          <h3 class="font-display font-bold text-xl sm:text-2xl text-charcoal">Collision repair</h3>
+          <p class="text-charcoal/65 text-[15px] mt-1 max-w-xl">Fender-benders to major impact — panels, structure, and safe, precise repair back to spec.</p>
+        </div>
+        <svg class="svc-arrow shrink-0" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#visit" class="svc-row group flex items-center gap-5 sm:gap-8 py-7 sm:py-8">
+        <span class="svc-num text-4xl sm:text-6xl w-[54px] sm:w-[86px] shrink-0">02</span>
+        <div class="flex-1">
+          <h3 class="font-display font-bold text-xl sm:text-2xl text-charcoal">Custom paint &amp; refinishing</h3>
+          <p class="text-charcoal/65 text-[15px] mt-1 max-w-xl">Full repaints, panel blends, and custom color — booth-sprayed and matched so it disappears into the car.</p>
+        </div>
+        <svg class="svc-arrow shrink-0" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#visit" class="svc-row group flex items-center gap-5 sm:gap-8 py-7 sm:py-8">
+        <span class="svc-num text-4xl sm:text-6xl w-[54px] sm:w-[86px] shrink-0">03</span>
+        <div class="flex-1">
+          <h3 class="font-display font-bold text-xl sm:text-2xl text-charcoal">Dent &amp; ding removal</h3>
+          <p class="text-charcoal/65 text-[15px] mt-1 max-w-xl">Door dings, hail, and creases pulled clean — every dent out before it ever sees primer.</p>
+        </div>
+        <svg class="svc-arrow shrink-0" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#visit" class="svc-row group flex items-center gap-5 sm:gap-8 py-7 sm:py-8">
+        <span class="svc-num text-4xl sm:text-6xl w-[54px] sm:w-[86px] shrink-0">04</span>
+        <div class="flex-1">
+          <h3 class="font-display font-bold text-xl sm:text-2xl text-charcoal">Full restorations</h3>
+          <p class="text-charcoal/65 text-[15px] mt-1 max-w-xl">Bring back a car you love. Custom body work and vehicle restorations, panel by panel, to better-than-new.</p>
+        </div>
+        <svg class="svc-arrow shrink-0" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#visit" class="svc-row group flex items-center gap-5 sm:gap-8 py-7 sm:py-8">
+        <span class="svc-num text-4xl sm:text-6xl w-[54px] sm:w-[86px] shrink-0">05</span>
+        <div class="flex-1">
+          <h3 class="font-display font-bold text-xl sm:text-2xl text-charcoal">Insurance claims</h3>
+          <p class="text-charcoal/65 text-[15px] mt-1 max-w-xl">We work directly with your insurance and handle the claim — free towing and a free rental with your repair.</p>
+        </div>
+        <svg class="svc-arrow shrink-0" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FINISH — dark showpiece band with WebGL clearcoat shader -->
+<section id="finish" class="relative bg-charcoal overflow-hidden py-28 sm:py-36">
+  <canvas id="finishCanvas" aria-hidden="true"></canvas>
+  <div class="absolute inset-0" style="background:radial-gradient(120% 90% at 50% 40%, transparent, rgba(20,17,16,.55) 78%);"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <p class="text-[13px] tracking-[.26em] uppercase text-ember font-semibold mb-6" data-reveal>The finish</p>
+    <h2 class="display-lg text-paper text-[9vw] sm:text-[5.4vw] lg:text-[4vw] max-w-[16ch] mx-auto" data-reveal>
+      A finish worth <span class="grad-text">staring at.</span>
+    </h2>
+    <p class="mt-7 max-w-xl mx-auto text-[17px] leading-relaxed text-paper/80" data-reveal>
+      Clearcoat is the last inch and the whole game. We cut, buff, and inspect under the lights until the reflection runs straight — deep, even, and glossy. If it isn't right, it doesn't leave.
+    </p>
+    <a href="tel:+12144695953" class="mt-9 btn btn-iron inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[15px]" data-reveal>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Talk to the shop
+    </a>
+  </div>
+</section>
+
+<!-- VALUE / WHY -->
+<section class="relative bg-cream py-22 sm:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="max-w-2xl mb-12" data-reveal>
+      <p class="text-[13px] tracking-[.24em] uppercase text-iron font-semibold mb-4">Why Morben</p>
+      <h2 class="display-lg text-charcoal text-[9vw] sm:text-[5vw] lg:text-[3.4vw]">Easy on you, from tow to keys</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card bg-paper rounded-2xl p-7 border border-charcoal/10" data-reveal>
+        <div class="w-11 h-11 rounded-xl bg-iron/10 text-iron flex items-center justify-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.34a4 4 0 0 0-1.17-2.83L19 8h-5v8m-4 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm10 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 16V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10h2"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg text-charcoal">Free towing</h3>
+        <p class="text-charcoal/65 text-[14.5px] mt-2">Can't drive it in? We'll tow it in with your repair, no charge.</p>
+      </div>
+      <div class="card bg-paper rounded-2xl p-7 border border-charcoal/10" data-reveal>
+        <div class="w-11 h-11 rounded-xl bg-iron/10 text-iron flex items-center justify-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="12" rx="2"/><path d="M16 10h4l3 3v3a1 1 0 0 1-1 1h-2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg text-charcoal">Free rental</h3>
+        <p class="text-charcoal/65 text-[14.5px] mt-2">Keep moving while we work — a rental is included with your repair.</p>
+      </div>
+      <div class="card bg-paper rounded-2xl p-7 border border-charcoal/10" data-reveal>
+        <div class="w-11 h-11 rounded-xl bg-iron/10 text-iron flex items-center justify-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 4v5c0 4.4-3 8.5-7 9.9C8 17.5 5 13.4 5 9V7l7-4z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg text-charcoal">Insurance handled</h3>
+        <p class="text-charcoal/65 text-[14.5px] mt-2">We deal with the claim directly, so you don't have to chase it.</p>
+      </div>
+      <div class="card bg-paper rounded-2xl p-7 border border-charcoal/10" data-reveal>
+        <div class="w-11 h-11 rounded-xl bg-iron/10 text-iron flex items-center justify-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg text-charcoal">Honest pricing</h3>
+        <p class="text-charcoal/65 text-[14.5px] mt-2">Straight estimates and a fair price — a big reason folks keep coming back.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="relative bg-paper py-22 sm:py-28 grain">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+      <div data-reveal>
+        <p class="text-[13px] tracking-[.24em] uppercase text-iron font-semibold mb-4">Neighbors, not strangers</p>
+        <h2 class="display-lg text-charcoal text-[9vw] sm:text-[5vw] lg:text-[3.4vw]">Rated 4.7 by Garland drivers</h2>
+      </div>
+      <div class="flex items-center gap-4 chip px-5 py-3" data-reveal>
+        <div class="flex text-iron" aria-label="4.7 out of 5 stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="text-[14px] font-semibold text-charcoal">4.7 · 41 Google reviews</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <figure class="card bg-cream rounded-2xl p-7 border border-charcoal/10" data-reveal>
+        <div class="flex text-iron mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="text-[15.5px] leading-relaxed text-charcoal/85">"My Civic looked like it belonged in a junk yard. They pulled every dent, repainted the whole car, and it looked like it came right off the assembly line."</blockquote>
+        <figcaption class="mt-5 text-[13px] font-semibold text-charcoal">Verified Google reviewer <span class="text-steel font-medium">· Garland, TX</span></figcaption>
+      </figure>
+      <figure class="card bg-cream rounded-2xl p-7 border border-charcoal/10" data-reveal>
+        <div class="flex text-iron mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="text-[15.5px] leading-relaxed text-charcoal/85">"I trust Morben with my cars and any repair I need. Everyone there is knowledgeable and does great work for a good price."</blockquote>
+        <figcaption class="mt-5 text-[13px] font-semibold text-charcoal">Verified Google reviewer <span class="text-steel font-medium">· Garland, TX</span></figcaption>
+      </figure>
+      <figure class="card bg-cream rounded-2xl p-7 border border-charcoal/10" data-reveal>
+        <div class="flex text-iron mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="text-[15.5px] leading-relaxed text-charcoal/85">"No overspray, glossy finish, and the best price in town. Real professionalism and attention to detail."</blockquote>
+        <figcaption class="mt-5 text-[13px] font-semibold text-charcoal">Verified Google reviewer <span class="text-steel font-medium">· Garland, TX</span></figcaption>
+      </figure>
+    </div>
+    <p class="mt-6 text-[13px] text-steel" data-reveal>Review quotes reflect verified Google reviews for Morben Auto Paint &amp; Body. Reviewer names shown as verified to protect privacy.</p>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="relative bg-cream py-22 sm:py-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-10 items-stretch">
+      <div data-reveal>
+        <p class="text-[13px] tracking-[.24em] uppercase text-iron font-semibold mb-4">Visit the shop</p>
+        <h2 class="display-lg text-charcoal text-[10vw] sm:text-[5.4vw] lg:text-[3.6vw] max-w-[14ch]">Right on Buckingham Road</h2>
+        <p class="mt-5 text-[16.5px] leading-relaxed text-charcoal/70 max-w-lg">Swing by for a free estimate, or call and we'll walk you through it. Family-run, in Garland, since 2000.</p>
+
+        <div class="mt-8 space-y-5">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=124+E+Buckingham+Rd,+Garland,+TX+75040" target="_blank" rel="noopener" class="flex items-start gap-4 group">
+            <span class="w-11 h-11 rounded-xl bg-iron/10 text-iron flex items-center justify-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span>
+              <span class="block text-[12px] tracking-[.16em] uppercase text-steel">Address</span>
+              <span class="block font-semibold text-charcoal text-[16px] underline-grow">124 E Buckingham Rd, Garland, TX 75040</span>
+            </span>
+          </a>
+          <a href="tel:+12144695953" class="flex items-start gap-4 group">
+            <span class="w-11 h-11 rounded-xl bg-iron/10 text-iron flex items-center justify-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span>
+              <span class="block text-[12px] tracking-[.16em] uppercase text-steel">Phone</span>
+              <span class="block font-semibold text-charcoal text-[16px] underline-grow">(214) 469-5953</span>
+            </span>
+          </a>
+          <div class="flex items-start gap-4">
+            <span class="w-11 h-11 rounded-xl bg-iron/10 text-iron flex items-center justify-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <span>
+              <span class="block text-[12px] tracking-[.16em] uppercase text-steel">Hours</span>
+              <span class="block font-semibold text-charcoal text-[15.5px]">Mon–Fri 9:00 AM – 6:00 PM</span>
+              <span class="block font-semibold text-charcoal text-[15.5px]">Sat 9:00 AM – 2:00 PM · Sun Closed</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="tel:+12144695953" class="btn btn-iron inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[15px]">Call the shop</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=124+E+Buckingham+Rd,+Garland,+TX+75040" target="_blank" rel="noopener" class="btn btn-ghost inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[15px]">Directions</a>
+        </div>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden border border-charcoal/12 shadow-[0_30px_70px_-40px_rgba(24,21,19,.5)] min-h-[420px]" data-reveal>
+        <iframe title="Map to Morben Auto Paint &amp; Body Shop, 124 E Buckingham Rd, Garland, TX 75040"
+          src="https://www.google.com/maps?q=124%20E%20Buckingham%20Rd,%20Garland,%20TX%2075040&output=embed"
+          width="100%" height="100%" style="border:0; min-height:420px; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="relative bg-iron text-paper overflow-hidden py-24 sm:py-32">
+  <div class="ambient" style="width:560px;height:560px;background:radial-gradient(circle,rgba(255,255,255,.28),transparent 62%);top:-200px;right:-140px;filter:blur(80px);opacity:.5;"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <h2 class="display-lg text-paper text-[10vw] sm:text-[6vw] lg:text-[4.4vw] max-w-[18ch] mx-auto" data-reveal>Bring us the dent. Leave with the finish.</h2>
+    <p class="mt-6 max-w-xl mx-auto text-[17px] leading-relaxed text-paper/85" data-reveal>Free estimate, free towing with repair, and a free rental while we work. Call Morben and we'll take it from there.</p>
+    <div class="mt-9 flex flex-wrap justify-center gap-3" data-reveal>
+      <a href="tel:+12144695953" class="inline-flex items-center gap-2 rounded-full px-7 py-4 text-[16px] font-bold bg-paper text-iron transition-transform duration-300 hover:-translate-y-1 shadow-[0_16px_40px_-16px_rgba(0,0,0,.5)]">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (214) 469-5953
+      </a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=124+E+Buckingham+Rd,+Garland,+TX+75040" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full px-7 py-4 text-[16px] font-bold border border-paper/60 text-paper transition-transform duration-300 hover:-translate-y-1">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-charcoal text-paper/80 pt-16 pb-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid md:grid-cols-3 gap-10 pb-12 border-b border-white/10">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="font-display font-extrabold text-lg tracking-tight leading-none inline-flex items-center justify-center rounded-md bg-iron text-paper px-2.5 py-1.5">MB</span>
+          <span class="font-display font-bold text-paper text-[15px]">Morben Auto Paint &amp; Body</span>
+        </div>
+        <p class="text-[14.5px] leading-relaxed max-w-xs">Family-owned collision, paint, and restoration shop serving Garland and Northeast Dallas since 2000.</p>
+      </div>
+      <div>
+        <p class="text-[12px] tracking-[.18em] uppercase text-paper/50 mb-4">Services</p>
+        <ul class="space-y-2 text-[14.5px]">
+          <li>Collision repair</li><li>Custom paint &amp; refinishing</li><li>Dent &amp; ding removal</li><li>Full restorations</li><li>Insurance claims</li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-[12px] tracking-[.18em] uppercase text-paper/50 mb-4">Visit</p>
+        <ul class="space-y-2 text-[14.5px]">
+          <li><a href="https://www.google.com/maps/dir/?api=1&destination=124+E+Buckingham+Rd,+Garland,+TX+75040" target="_blank" rel="noopener" class="underline-grow">124 E Buckingham Rd, Garland, TX 75040</a></li>
+          <li><a href="tel:+12144695953" class="underline-grow font-semibold text-paper">(214) 469-5953</a></li>
+          <li>Mon–Fri 9–6 · Sat 9–2 · Sun Closed</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center justify-between gap-4 pt-8 text-[13px] text-paper/55">
+      <p>© <span id="yr"></span> Morben Auto Paint &amp; Body Shop. All rights reserved.</p>
+      <p>Garland, Texas</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="sticky-bar grid-cols-2 bg-charcoal/95 backdrop-blur border-t border-white/10">
+  <a href="tel:+12144695953" class="flex items-center justify-center gap-2 py-4 text-paper font-semibold text-[15px]">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=124+E+Buckingham+Rd,+Garland,+TX+75040" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-4 text-paper font-semibold text-[15px] bg-iron">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AutoBodyShop",
+  "name":"Morben Auto Paint & Body Shop",
+  "image":"https://turnkeyweb.org/previews/morben-auto-paint-body/assets/hero.jpg",
+  "url":"https://turnkeyweb.org/previews/morben-auto-paint-body/",
+  "telephone":"+1-214-469-5953",
+  "priceRange":"$$",
+  "foundingDate":"2000",
+  "address":{"@type":"PostalAddress","streetAddress":"124 E Buckingham Rd","addressLocality":"Garland","addressRegion":"TX","postalCode":"75040","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":32.930563,"longitude":-96.630369},
+  "areaServed":["Garland, TX","Northeast Dallas, TX"],
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"14:00"}
+  ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.7","reviewCount":"41"},
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Collision Repair"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Custom Paint & Refinishing"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Dent & Ding Removal"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Vehicle Restoration"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Insurance Claim Assistance"}}
+  ]
+}
+</script>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- Lenis smooth scroll (single GSAP ticker) ---------- */
+let lenis;
+if (window.Lenis && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  lenis = new Lenis({ duration:1.1, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+  if (window.gsap){ gsap.ticker.add((t)=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0); }
+}
+if (window.gsap && window.ScrollTrigger){
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize:true });
+  if (lenis) lenis.on('scroll', ScrollTrigger.update);
+}
+/* anchor scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id=a.getAttribute('href'); if(id.length<2) return;
+    const t=document.querySelector(id); if(!t) return;
+    e.preventDefault();
+    if(lenis) lenis.scrollTo(t,{offset:-64}); else t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* ---------- nav bg on scroll ---------- */
+const nav=document.getElementById('nav');
+const setNav=()=>{ if(window.scrollY>40){ nav.style.background='rgba(251,246,239,.9)'; nav.style.backdropFilter='blur(10px)'; nav.style.boxShadow='0 1px 0 rgba(36,32,30,.08)'; } else { nav.style.background='transparent'; nav.style.backdropFilter='none'; nav.style.boxShadow='none'; } };
+setNav(); window.addEventListener('scroll',setNav,{passive:true});
+
+/* ---------- scroll progress bar ---------- */
+const bar=document.getElementById('scrollBar');
+window.addEventListener('scroll',()=>{ const h=document.documentElement; const p=h.scrollTop/(h.scrollHeight-h.clientHeight); bar.style.width=(p*100)+'%'; },{passive:true});
+
+/* ---------- motion ---------- */
+function initMotion(){
+  if(!window.gsap||!window.ScrollTrigger) return;
+
+  // hero lines
+  gsap.set('[data-hero-line]',{ y:40, opacity:0 });
+  gsap.to('[data-hero-line]',{ y:0, opacity:1, duration:1.05, ease:'power3.out', stagger:.12, delay:.2 });
+
+  // masked statement lines (start translateY(110%) via CSS -> rise to 0)
+  gsap.utils.toArray('.line-inner').forEach(el=>{
+    gsap.fromTo(el,{ y:'110%' },{ y:'0%', duration:1.0, ease:'power4.out',
+      scrollTrigger:{ trigger:el.closest('.line-mask'), start:'top 92%', once:true } });
+  });
+
+  // generic reveals
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.to(el,{ opacity:1, y:0, duration:.7, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+      onComplete:()=>el.style.willChange='auto' });
+  });
+
+  // count-ups
+  gsap.utils.toArray('[data-count]').forEach(el=>{
+    const target=parseFloat(el.dataset.count); const dec=parseInt(el.dataset.dec||'0');
+    ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:()=>{
+      gsap.to({v:0},{ v:target, duration:1.6, ease:'power2.out',
+        onUpdate:function(){ el.textContent = dec? this.targets()[0].v.toFixed(dec) : Math.round(this.targets()[0].v); } });
+    }});
+  });
+}
+initMotion();
+
+/* ---------- WebGL clearcoat shader (contained, mobile-safe) ---------- */
+(function(){
+  const canvas=document.getElementById('finishCanvas');
+  const section=document.getElementById('finish');
+  if(!canvas||!window.THREE) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = matchMedia('(max-width:820px)').matches;
+
+  let renderer,scene,camera,mat,clock,raf=null,visible=true;
+  try{
+    renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile?1.5:2));
+  }catch(e){ return; }
+  scene=new THREE.Scene();
+  camera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+  clock=new THREE.Clock();
+
+  const frag=`
+    precision highp float;
+    uniform vec2 uRes; uniform float uTime;
+    // flowing metallic clearcoat: layered sine + fbm-ish noise, iron-red on dark
+    float hash(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
+    float noise(vec2 p){ vec2 i=floor(p),f=fract(p); f=f*f*(3.0-2.0*f);
+      float a=hash(i),b=hash(i+vec2(1,0)),c=hash(i+vec2(0,1)),d=hash(i+vec2(1,1));
+      return mix(mix(a,b,f.x),mix(c,d,f.x),f.y); }
+    float fbm(vec2 p){ float v=0.0,a=0.5; for(int i=0;i<5;i++){ v+=a*noise(p); p*=2.0; a*=0.5; } return v; }
+    void main(){
+      vec2 uv=(gl_FragCoord.xy*2.0-uRes)/uRes.y;
+      float t=uTime*0.12;
+      // rotate coords for a diagonal flow
+      float ca=cos(0.5), sa=sin(0.5);
+      vec2 ruv=vec2(uv.x*ca-uv.y*sa, uv.x*sa+uv.y*ca);
+      float flow=fbm(ruv*1.6 + vec2(t*1.5, -t))*1.2;
+      float ribbon=sin(ruv.x*2.4 + flow*3.2 + t*2.0);
+      ribbon=smoothstep(0.15,1.0, ribbon*0.5+0.5);
+      // light sweep travelling across
+      float sweep=smoothstep(0.0,0.35, 1.0-abs(fract(t*0.6)-0.5)*2.0 - abs(ruv.x*0.4-0.1));
+      vec3 iron=vec3(0.66,0.21,0.17);
+      vec3 ember=vec3(0.78,0.31,0.24);
+      vec3 hot=vec3(0.95,0.62,0.42);
+      vec3 col=mix(iron*0.35, ember, ribbon);
+      col+=hot*sweep*0.55*ribbon;
+      col+=hot*pow(ribbon,3.0)*0.25;
+      // subtle vignette darken to keep text legible on top
+      float vig=smoothstep(1.35,0.2,length(uv));
+      col*=mix(0.35,1.0,vig);
+      float alpha=0.9;
+      gl_FragColor=vec4(col,alpha);
+    }`;
+  mat=new THREE.ShaderMaterial({ transparent:true, uniforms:{ uRes:{value:new THREE.Vector2(1,1)}, uTime:{value:0} },
+    vertexShader:`void main(){ gl_Position=vec4(position,1.0); }`, fragmentShader:frag });
+  scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2), mat));
+
+  function resize(){ const w=section.clientWidth,h=section.clientHeight;
+    renderer.setSize(w,h,false); mat.uniforms.uRes.value.set(w*renderer.getPixelRatio(), h*renderer.getPixelRatio()); }
+  resize(); window.addEventListener('resize',resize);
+
+  function render(){ raf=requestAnimationFrame(render); if(!visible) return;
+    mat.uniforms.uTime.value=clock.getElapsedTime(); renderer.render(scene,camera); }
+
+  // pause offscreen + when reduced motion (render a single frame then stop)
+  const io=new IntersectionObserver((es)=>{ visible=es[0].isIntersecting; },{threshold:0.02});
+  io.observe(section);
+  document.addEventListener('visibilitychange',()=>{ visible=!document.hidden && visible; });
+
+  if(reduce){ mat.uniforms.uTime.value=2.0; renderer.render(scene,camera); }
+  else { render(); }
+})();
+
+/* ---------- 6s safety net (crawlers / screenshots) ---------- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; });
+  document.querySelectorAll('[data-hero-line]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; });
+  document.querySelectorAll('.line-inner').forEach(el=>{ el.style.transform='none'; });
+  document.querySelectorAll('[data-count]').forEach(el=>{ if(el.textContent==='0'){ const d=parseInt(el.dataset.dec||'0'); el.textContent=d? parseFloat(el.dataset.count).toFixed(d): el.dataset.count; } });
+}, 6000);
+</script>
+</body>
+</html>
