@@ -125,6 +125,9 @@ tailwind.config = {
   /* AA-safe bronze for star glyphs on light bands */
   .stars{ color:#9E5C0C; }
 
+  /* keep hero full-height on desktop; mobile stays compact for capture limits */
+  @media(min-width:881px){ #top{ min-height:100svh; } #top>div{ min-height:100svh; } }
+
   /* mobile sticky bar */
   .mobibar{ display:none; }
   @media(max-width:880px){
@@ -164,10 +167,10 @@ tailwind.config = {
 </header>
 
 <!-- HERO -->
-<section id="top" class="relative grain" style="min-height:100svh">
+<section id="top" class="relative grain" style="min-height:auto">
   <canvas id="topo"></canvas>
   <div class="hero-scrim"></div>
-  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 flex flex-col justify-center" style="min-height:100svh; padding-top:calc(var(--nav) + 40px); padding-bottom:70px">
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 flex flex-col justify-center" style="min-height:auto; padding-top:calc(var(--nav) + 34px); padding-bottom:38px">
     <div class="max-w-3xl">
       <div class="flex items-center gap-3 mb-7" data-reveal>
         <span class="w-8 h-px bg-amber"></span>
@@ -176,7 +179,7 @@ tailwind.config = {
       <h1 class="display font-900 text-ink" style="font-weight:900; font-size:clamp(2.7rem,7.4vw,5.6rem); line-height:1.02; letter-spacing:-0.03em" data-reveal>
         We move the ground<br>everything else<br><span class="grad-text">is built on.</span>
       </h1>
-      <p class="mt-7 text-[17px] sm:text-[19px] leading-relaxed text-ink/75 max-w-xl stk" data-reveal>
+      <p class="mt-6 text-[16px] sm:text-[19px] leading-relaxed text-ink/75 max-w-xl stk" data-reveal>
         For nearly four decades, Brady Construction of Ocala has cleared, dug, graded and
         piped the sites that North Central Florida builds on. Site clearing, excavation,
         underground utilities and concrete, self-performed by our own crews.
@@ -193,7 +196,7 @@ tailwind.config = {
       </div>
 
       <!-- hero stat strip -->
-      <div class="mt-12 grid grid-cols-3 gap-6 sm:gap-10 max-w-xl border-t border-ink/12 pt-7" data-reveal>
+      <div class="mt-8 grid grid-cols-3 gap-6 sm:gap-10 max-w-xl border-t border-ink/12 pt-6" data-reveal>
         <div>
           <div class="display font-extrabold text-ink text-3xl sm:text-4xl leading-none"><span class="count" data-to="39">0</span></div>
           <div class="mt-2 text-[11.5px] uppercase tracking-[.14em] text-steel font-semibold">Years of<br>ground broken</div>
@@ -217,7 +220,7 @@ tailwind.config = {
 </section>
 
 <!-- MARQUEE -->
-<div class="bg-graphite text-cream py-4 border-y border-black/20">
+<div class="bg-graphite text-cream py-3.5 border-y border-black/20">
   <div class="marquee">
     <div class="marquee-track">
       <!-- duplicated inline for seamless loop -->
@@ -246,9 +249,9 @@ tailwind.config = {
 </div>
 
 <!-- CAPABILITIES -->
-<section id="capabilities" class="relative py-24 sm:py-32 bg-cream">
+<section id="capabilities" class="relative py-10 sm:py-16 bg-cream">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="max-w-3xl mb-16" data-reveal>
+    <div class="max-w-3xl mb-10" data-reveal>
       <div class="flex items-center gap-3 mb-5">
         <span class="w-8 h-px bg-amber"></span>
         <span class="eyebrow text-[#4A565C]">What we self-perform</span>
@@ -263,44 +266,44 @@ tailwind.config = {
       </p>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
       <!-- 6 real service categories -->
-      <div class="svc p-8 rounded-[4px]" data-reveal>
+      <div class="svc p-5 sm:p-6 rounded-[4px]" data-reveal>
         <div class="svc-ico w-12 h-12 grid place-items-center rounded-[3px] bg-ink text-amber mb-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V11l6-5 6 5v10M4 11l8-6 8 6"/><path d="M9 21v-5h6v5"/></svg>
         </div>
         <h3 class="display font-bold text-xl text-ink mb-2">Site Clearing &amp; Demolition</h3>
         <p class="text-[15px] leading-relaxed text-ink/65">Clearing, grubbing and demolition that turns an overgrown or built-up parcel into open, workable ground.</p>
       </div>
-      <div class="svc p-8 rounded-[4px]" data-reveal>
+      <div class="svc p-5 sm:p-6 rounded-[4px]" data-reveal>
         <div class="svc-ico w-12 h-12 grid place-items-center rounded-[3px] bg-ink text-amber mb-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h5l3-3 4 2 3-9 3 3v7"/><path d="M2 20l4-4M14 6l2-2 3 3-2 2z"/></svg>
         </div>
         <h3 class="display font-bold text-xl text-ink mb-2">Excavation &amp; Earthwork</h3>
         <p class="text-[15px] leading-relaxed text-ink/65">Mass and structural excavation, cut-and-fill, hauling and export — moved with our own heavy fleet.</p>
       </div>
-      <div class="svc p-8 rounded-[4px]" data-reveal>
+      <div class="svc p-5 sm:p-6 rounded-[4px]" data-reveal>
         <div class="svc-ico w-12 h-12 grid place-items-center rounded-[3px] bg-ink text-amber mb-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c3 0 3-2 6-2s3 2 6 2 3-2 6-2M3 12c3 0 3-2 6-2s3 2 6 2 3-2 6-2M3 7c3 0 3-2 6-2s3 2 6 2 3-2 6-2"/></svg>
         </div>
         <h3 class="display font-bold text-xl text-ink mb-2">Grading &amp; Site Preparation</h3>
         <p class="text-[15px] leading-relaxed text-ink/65">Rough and fine grading, fill placement and compaction to engineered elevations, ready for foundations and paving.</p>
       </div>
-      <div class="svc p-8 rounded-[4px]" data-reveal>
+      <div class="svc p-5 sm:p-6 rounded-[4px]" data-reveal>
         <div class="svc-ico w-12 h-12 grid place-items-center rounded-[3px] bg-ink text-amber mb-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 6v12M20 6v12M4 18h16M8 6v12M12 6v12M16 6v12"/></svg>
         </div>
         <h3 class="display font-bold text-xl text-ink mb-2">Underground Utilities</h3>
         <p class="text-[15px] leading-relaxed text-ink/65">Water, sanitary sewer and storm systems installed to spec — certified, statewide, by a CUC-licensed contractor.</p>
       </div>
-      <div class="svc p-8 rounded-[4px]" data-reveal>
+      <div class="svc p-5 sm:p-6 rounded-[4px]" data-reveal>
         <div class="svc-ico w-12 h-12 grid place-items-center rounded-[3px] bg-ink text-amber mb-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v10H3z"/><path d="M3 11h18M7 7v10M15 7v10"/></svg>
         </div>
         <h3 class="display font-bold text-xl text-ink mb-2">Concrete &amp; Flatwork</h3>
         <p class="text-[15px] leading-relaxed text-ink/65">Curb, gutter, sidewalks, pads and site flatwork placed and finished as part of a complete site package.</p>
       </div>
-      <div class="svc p-8 rounded-[4px]" data-reveal>
+      <div class="svc p-5 sm:p-6 rounded-[4px]" data-reveal>
         <div class="svc-ico w-12 h-12 grid place-items-center rounded-[3px] bg-ink text-amber mb-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16M6 19l2-6h8l2 6M9 13l1-4h4l1 4"/></svg>
         </div>
@@ -317,7 +320,7 @@ tailwind.config = {
 </section>
 
 <!-- GROUNDWORK / STORY (split editorial) -->
-<section id="groundwork" class="relative bg-graphite text-cream py-24 sm:py-32 overflow-hidden">
+<section id="groundwork" class="relative bg-graphite text-cream py-10 sm:py-16 overflow-hidden">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
     <div data-reveal>
       <div class="flex items-center gap-3 mb-5">
@@ -345,7 +348,7 @@ tailwind.config = {
     </div>
     <div class="relative" data-reveal>
       <div class="work-img clip-img rounded-[4px] overflow-hidden shadow-2xl" data-clip>
-        <img src="https://images.unsplash.com/photo-1517089152318-42ec560349c0?w=1200&q=80&auto=format&fit=crop" alt="Aerial view of an active excavation and earthmoving site" class="w-full h-[420px] sm:h-[520px] object-cover" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1517089152318-42ec560349c0?w=1200&q=80&auto=format&fit=crop" alt="Aerial view of an active excavation and earthmoving site" class="w-full h-[280px] sm:h-[420px] object-cover" loading="lazy" />
       </div>
       <div class="absolute -bottom-5 -left-3 sm:-left-6 bg-amber text-ink px-6 py-4 rounded-[3px] shadow-xl">
         <div class="display font-extrabold text-lg leading-none">CUC1225509</div>
@@ -355,27 +358,27 @@ tailwind.config = {
   </div>
 </section>
 
-<div class="bg-cream"><div class="max-w-5xl mx-auto py-10"><div class="contour-rule"></div></div></div>
+<div class="bg-cream"><div class="max-w-5xl mx-auto py-6 sm:py-9"><div class="contour-rule"></div></div></div>
 
 <!-- RECENT GROUNDWORK SHOWCASE -->
-<section class="bg-cream pb-24 sm:pb-32">
+<section class="bg-cream pb-10 sm:pb-16">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="max-w-2xl mb-12" data-reveal>
+    <div class="max-w-2xl mb-8" data-reveal>
       <div class="flex items-center gap-3 mb-5"><span class="w-8 h-px bg-amber"></span><span class="eyebrow text-[#4A565C]">On the ground</span></div>
       <h2 class="display font-800 text-ink" style="font-weight:800; font-size:clamp(1.8rem,4vw,2.9rem); line-height:1.1">The work happens before anyone sees a building.</h2>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="work-img rounded-[4px] overflow-hidden aspect-[4/5]" data-reveal><img src="https://images.unsplash.com/photo-1626885930974-4b69aa21bbf9?w=800&q=80&auto=format&fit=crop" alt="Tracked excavator working a site" class="w-full h-full object-cover" loading="lazy"/></div>
-      <div class="work-img rounded-[4px] overflow-hidden aspect-[4/5]" data-reveal><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80&auto=format&fit=crop" alt="Crew reviewing an active concrete and earthwork site" class="w-full h-full object-cover" loading="lazy"/></div>
-      <div class="work-img rounded-[4px] overflow-hidden aspect-[4/5]" data-reveal><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80&auto=format&fit=crop" alt="Rebar and concrete site work" class="w-full h-full object-cover" loading="lazy"/></div>
-      <div class="work-img rounded-[4px] overflow-hidden aspect-[4/5]" data-reveal><img src="https://images.unsplash.com/photo-1558449028-b53a39d100fc?w=800&q=80&auto=format&fit=crop" alt="Supervisors coordinating an active jobsite" class="w-full h-full object-cover" loading="lazy"/></div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="work-img rounded-[4px] overflow-hidden aspect-square lg:aspect-[4/5]" data-reveal><img src="https://images.unsplash.com/photo-1626885930974-4b69aa21bbf9?w=800&q=80&auto=format&fit=crop" alt="Tracked excavator working a site" class="w-full h-full object-cover" loading="lazy"/></div>
+      <div class="work-img rounded-[4px] overflow-hidden aspect-square lg:aspect-[4/5]" data-reveal><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80&auto=format&fit=crop" alt="Crew reviewing an active concrete and earthwork site" class="w-full h-full object-cover" loading="lazy"/></div>
+      <div class="work-img rounded-[4px] overflow-hidden aspect-square lg:aspect-[4/5]" data-reveal><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80&auto=format&fit=crop" alt="Rebar and concrete site work" class="w-full h-full object-cover" loading="lazy"/></div>
+      <div class="work-img rounded-[4px] overflow-hidden aspect-square lg:aspect-[4/5]" data-reveal><img src="https://images.unsplash.com/photo-1558449028-b53a39d100fc?w=800&q=80&auto=format&fit=crop" alt="Supervisors coordinating an active jobsite" class="w-full h-full object-cover" loading="lazy"/></div>
     </div>
     <p class="mt-5 text-[13px] text-ink/45" data-reveal>Representative site-work imagery. Real Brady project photography can replace these on the live site.</p>
   </div>
 </section>
 
 <!-- WHO WE BUILD FOR -->
-<section class="relative bg-bone py-20 sm:py-28">
+<section class="relative bg-bone py-10 sm:py-14">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="grid lg:grid-cols-[1fr_1.3fr] gap-12 items-start">
       <div data-reveal>
@@ -383,20 +386,20 @@ tailwind.config = {
         <h2 class="display font-800 text-ink" style="font-weight:800; font-size:clamp(1.8rem,4vw,2.8rem); line-height:1.1">The contractor other builders call first.</h2>
         <p class="mt-5 text-[16.5px] leading-relaxed text-ink/70">General contractors, developers, and owners across North Central Florida trust Brady to open the ground and set the grade before the vertical work begins.</p>
       </div>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div class="bg-paper border border-ink/10 rounded-[4px] p-7" data-reveal><div class="num-outline text-4xl mb-3">01</div><h3 class="display font-bold text-lg text-ink mb-1.5">General Contractors</h3><p class="text-[14.5px] text-ink/65 leading-relaxed">A reliable site-work partner who hits grade and keeps your schedule intact.</p></div>
-        <div class="bg-paper border border-ink/10 rounded-[4px] p-7" data-reveal><div class="num-outline text-4xl mb-3">02</div><h3 class="display font-bold text-lg text-ink mb-1.5">Developers</h3><p class="text-[14.5px] text-ink/65 leading-relaxed">Raw land turned shovel-ready — cleared, cut, piped and compacted.</p></div>
-        <div class="bg-paper border border-ink/10 rounded-[4px] p-7" data-reveal><div class="num-outline text-4xl mb-3">03</div><h3 class="display font-bold text-lg text-ink mb-1.5">Commercial &amp; Industrial</h3><p class="text-[14.5px] text-ink/65 leading-relaxed">Pads, utilities and drainage for the buildings your business runs on.</p></div>
-        <div class="bg-paper border border-ink/10 rounded-[4px] p-7" data-reveal><div class="num-outline text-4xl mb-3">04</div><h3 class="display font-bold text-lg text-ink mb-1.5">Municipal &amp; Site Owners</h3><p class="text-[14.5px] text-ink/65 leading-relaxed">Certified underground utility work held to public-project standards.</p></div>
+      <div class="grid grid-cols-2 gap-3 sm:gap-4">
+        <div class="bg-paper border border-ink/10 rounded-[4px] p-5 sm:p-6" data-reveal><div class="num-outline text-4xl mb-3">01</div><h3 class="display font-bold text-lg text-ink mb-1.5">General Contractors</h3><p class="text-[14.5px] text-ink/65 leading-relaxed">A reliable site-work partner who hits grade and keeps your schedule intact.</p></div>
+        <div class="bg-paper border border-ink/10 rounded-[4px] p-5 sm:p-6" data-reveal><div class="num-outline text-4xl mb-3">02</div><h3 class="display font-bold text-lg text-ink mb-1.5">Developers</h3><p class="text-[14.5px] text-ink/65 leading-relaxed">Raw land turned shovel-ready — cleared, cut, piped and compacted.</p></div>
+        <div class="bg-paper border border-ink/10 rounded-[4px] p-5 sm:p-6" data-reveal><div class="num-outline text-4xl mb-3">03</div><h3 class="display font-bold text-lg text-ink mb-1.5">Commercial &amp; Industrial</h3><p class="text-[14.5px] text-ink/65 leading-relaxed">Pads, utilities and drainage for the buildings your business runs on.</p></div>
+        <div class="bg-paper border border-ink/10 rounded-[4px] p-5 sm:p-6" data-reveal><div class="num-outline text-4xl mb-3">04</div><h3 class="display font-bold text-lg text-ink mb-1.5">Municipal &amp; Site Owners</h3><p class="text-[14.5px] text-ink/65 leading-relaxed">Certified underground utility work held to public-project standards.</p></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PROOF / REVIEWS -->
-<section id="proof" class="relative bg-cream py-24 sm:py-32">
+<section id="proof" class="relative bg-cream py-10 sm:py-16">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14" data-reveal>
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-9" data-reveal>
       <div class="max-w-xl">
         <div class="flex items-center gap-3 mb-5"><span class="w-8 h-px bg-amber"></span><span class="eyebrow text-[#4A565C]">In their words</span></div>
         <h2 class="display font-800 text-ink" style="font-weight:800; font-size:clamp(1.9rem,4.4vw,3.1rem); line-height:1.08">Good people to deal with.</h2>
@@ -410,25 +413,25 @@ tailwind.config = {
       </div>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-5">
-      <figure class="svc p-8 rounded-[4px]" data-reveal>
+    <div class="grid grid-cols-2 gap-3 md:gap-5">
+      <figure class="svc p-5 sm:p-6 rounded-[4px]" data-reveal>
         <div class="stars text-lg mb-3">★★★★★</div>
-        <blockquote class="text-[19px] leading-relaxed text-ink/85 display font-semibold">"Good people to deal with."</blockquote>
+        <blockquote class="text-[15px] sm:text-[18px] leading-relaxed text-ink/85 display font-semibold">"Good people to deal with."</blockquote>
         <figcaption class="mt-5 flex items-center gap-3 text-[13.5px] text-ink/60"><span class="w-8 h-8 grid place-items-center rounded-full bg-ink text-amber font-bold">D</span><span><span class="font-semibold text-ink">Don Teed</span> · Google review</span></figcaption>
       </figure>
-      <figure class="svc p-8 rounded-[4px]" data-reveal>
+      <figure class="svc p-5 sm:p-6 rounded-[4px]" data-reveal>
         <div class="stars text-lg mb-3">★★★★★</div>
-        <blockquote class="text-[19px] leading-relaxed text-ink/85 display font-semibold">"Great place to work. Office personnel are great!"</blockquote>
+        <blockquote class="text-[15px] sm:text-[18px] leading-relaxed text-ink/85 display font-semibold">"Great place to work. Office personnel are great!"</blockquote>
         <figcaption class="mt-5 flex items-center gap-3 text-[13.5px] text-ink/60"><span class="w-8 h-8 grid place-items-center rounded-full bg-ink text-amber font-bold">C</span><span><span class="font-semibold text-ink">Clay Cunningham</span> · Google review</span></figcaption>
       </figure>
-      <figure class="svc p-8 rounded-[4px]" data-reveal>
+      <figure class="svc p-5 sm:p-6 rounded-[4px]" data-reveal>
         <div class="stars text-lg mb-3">★★★★★</div>
-        <blockquote class="text-[19px] leading-relaxed text-ink/85 display font-semibold">"It served all my needs."</blockquote>
+        <blockquote class="text-[15px] sm:text-[18px] leading-relaxed text-ink/85 display font-semibold">"It served all my needs."</blockquote>
         <figcaption class="mt-5 flex items-center gap-3 text-[13.5px] text-ink/60"><span class="w-8 h-8 grid place-items-center rounded-full bg-ink text-amber font-bold">C</span><span><span class="font-semibold text-ink">Claude Grant</span> · Google review</span></figcaption>
       </figure>
-      <figure class="svc p-8 rounded-[4px]" data-reveal>
+      <figure class="svc p-5 sm:p-6 rounded-[4px]" data-reveal>
         <div class="stars text-lg mb-3">★★★★★</div>
-        <blockquote class="text-[19px] leading-relaxed text-ink/85 display font-semibold">"The best."</blockquote>
+        <blockquote class="text-[15px] sm:text-[18px] leading-relaxed text-ink/85 display font-semibold">"The best."</blockquote>
         <figcaption class="mt-5 flex items-center gap-3 text-[13.5px] text-ink/60"><span class="w-8 h-8 grid place-items-center rounded-full bg-ink text-amber font-bold">L</span><span><span class="font-semibold text-ink">Leslie Shaw</span> · Google review</span></figcaption>
       </figure>
     </div>
@@ -436,7 +439,7 @@ tailwind.config = {
 </section>
 
 <!-- VISIT / CONTACT + MAP -->
-<section id="visit" class="relative bg-graphite text-cream py-24 sm:py-32">
+<section id="visit" class="relative bg-graphite text-cream py-10 sm:py-16">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-14 items-stretch">
     <div data-reveal>
       <div class="flex items-center gap-3 mb-5"><span class="w-8 h-px bg-amber"></span><span class="eyebrow text-amber">Break ground with Brady</span></div>
@@ -469,19 +472,19 @@ tailwind.config = {
       </div>
     </div>
 
-    <div class="rounded-[4px] overflow-hidden border border-white/10 min-h-[380px]" data-reveal>
+    <div class="rounded-[4px] overflow-hidden border border-white/10 min-h-[340px]" data-reveal>
       <iframe title="Brady Construction of Ocala location map"
         src="https://www.google.com/maps?q=1930+NW+58th+Lane,+Ocala,+FL+34475&output=embed"
-        width="100%" height="100%" style="border:0; min-height:420px; filter:grayscale(.15) contrast(1.02);"
+        width="100%" height="100%" style="border:0; min-height:360px; filter:grayscale(.15) contrast(1.02);"
         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-ink text-cream/80 pt-16 pb-28 sm:pb-16">
+<footer class="bg-ink text-cream/80 pt-12 pb-24 sm:pb-14">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10 pb-12 border-b border-white/10">
+    <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-8 pb-9 border-b border-white/10">
       <div>
         <div class="flex items-center gap-3 mb-4">
           <span class="grid place-items-center w-10 h-10 bg-cream/10 rounded-[3px]"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E0912B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-6h6v6"/></svg></span>
