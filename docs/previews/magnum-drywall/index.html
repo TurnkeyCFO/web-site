@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<!--
+  Magnum Drywall, Inc. — Houston, TX  |  Turnkey Web preview (DRAFT)
+  Art direction: light-luxury plaster / precision. Warm bone base + ink text,
+  amber (#E0A857) + steel (#556472) accents. Display: Bricolage Grotesque, body: Plus Jakarta Sans.
+  Hero: AI-generated cinematic Kling video (self-hosted assets/hero.mp4).
+  Signature section: "The Five Levels of Finish" (real GA-214 industry standard) + drifting drywall-dust WebGL/canvas showpiece.
+  Real data: owner Scott Michot (President), est. 2013, 2102 Harland Dr Houston TX 77055,
+  (713) 360-7701 [directory-sourced — confirm], Mon-Fri 8-5, 4.8 stars / 5 Google reviews.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magnum Drywall, Inc. — Flawless Drywall &amp; Level 5 Finishes | Houston, TX</title>
+<meta name="description" content="Magnum Drywall, Inc. — Houston drywall contractors since 2013. Hanging, taping, Level 5 finishes, texture, framing, ceilings, and repair. Rated 4.8 stars on Google. Call (713) 360-7701.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/magnum-drywall/">
+<meta property="og:title" content="Magnum Drywall, Inc. — Flawless Drywall &amp; Level 5 Finishes | Houston, TX">
+<meta property="og:description" content="Houston drywall contractors since 2013. Hanging, taping, Level 5 finishes, texture, framing, and repair. Rated 4.8 stars on Google.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://turnkeyweb.org/previews/magnum-drywall/assets/hero.jpg">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Plus+Jakarta+Sans:ital,wght@0,300..700;1,400..600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#FAF5EE', bone: '#F1E8DB', sand: '#E7DAC8',
+          ink: '#1C1917', charcoal: '#262220', graphite: '#33302C',
+          amber: '#E0A857', bronze: '#A8641E', ambersoft: '#EFD3A0',
+          steel: '#556472', steeldeep: '#3A4650', steelsoft: '#8A98A4',
+        },
+        fontFamily: {
+          display: ['"Bricolage Grotesque"', 'sans-serif'],
+          body: ['"Plus Jakarta Sans"', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root { --nav-h: 76px; }
+  * { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  html { scroll-behavior: auto; scroll-padding-top: var(--nav-h); }
+  body { background: #FAF5EE; color: #1C1917; font-family: "Plus Jakarta Sans", sans-serif; overflow-x: hidden; }
+  ::selection { background: #E0A857; color: #1C1917; }
+
+  .font-display { font-family: "Bricolage Grotesque", sans-serif; }
+
+  /* Gradient shimmer — kept dark enough for AA on cream (bronze -> ink -> steel) */
+  .grad-text {
+    background: linear-gradient(100deg, #A8641E 0%, #1C1917 34%, #3A4650 60%, #A8641E 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: shimmer 9s linear infinite;
+    line-height: 1.14; padding-bottom: 0.08em;
+  }
+  /* On the dark charcoal band the shimmer needs light stops */
+  .grad-text--dark {
+    background: linear-gradient(100deg, #E0A857 0%, #FAF5EE 38%, #EFD3A0 62%, #E0A857 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: shimmer 9s linear infinite;
+    line-height: 1.14; padding-bottom: 0.08em;
+  }
+  @keyframes shimmer { to { background-position: -220% 0; } }
+
+  h1, h2, h3, .display-lh { line-height: 1.08; }
+
+  /* Hero video */
+  .hero-video {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 0; will-change: transform;
+  }
+  /* Light legibility scrim — cream veil strongest on the left where the headline sits (dark text on light) */
+  .hero-scrim {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(250,245,238,0.94) 0%, rgba(250,245,238,0.80) 32%, rgba(250,245,238,0.30) 62%, rgba(250,245,238,0.05) 100%),
+      linear-gradient(0deg, rgba(250,245,238,0.55) 0%, rgba(250,245,238,0.0) 40%);
+  }
+  .hero-grain::after {
+    content:''; position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.045; mix-blend-mode:multiply;
+    background-image: radial-gradient(#1C1917 1px, transparent 1px); background-size: 3px 3px;
+  }
+
+  /* Buttons */
+  .btn { position: relative; overflow: hidden; transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s, filter .3s; }
+  .btn:hover { transform: translateY(-3px); }
+  .btn-amber { background:#E0A857; color:#1C1917; box-shadow: 0 10px 30px -12px rgba(168,100,30,.6); }
+  .btn-amber:hover { filter: brightness(1.04); box-shadow: 0 18px 40px -14px rgba(168,100,30,.7); }
+  .btn-amber::after {
+    content:''; position:absolute; top:0; left:-120%; width:60%; height:100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent);
+    transform: skewX(-18deg); transition: left .9s cubic-bezier(.16,1,.3,1);
+  }
+  .btn-amber:hover::after { left:130%; }
+  .btn-ink { background:transparent; color:#1C1917; border:1.5px solid rgba(28,25,23,.32); }
+  .btn-ink:hover { border-color:#1C1917; background: rgba(28,25,23,.04); }
+  .btn-ghost-light { background:transparent; color:#FAF5EE; border:1.5px solid rgba(250,245,238,.35); }
+  .btn-ghost-light:hover { border-color:#E0A857; color:#E0A857; }
+
+  /* Marquee */
+  .marquee { overflow:hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .marquee-track { display:flex; gap:2.6rem; width:max-content; animation: scrollX 40s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes scrollX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* Nav */
+  #nav { transition: background .5s, backdrop-filter .5s, border-color .5s, box-shadow .5s; }
+  #nav.scrolled { background: rgba(250,245,238,.88); backdrop-filter: blur(14px); border-bottom:1px solid rgba(28,25,23,.09); box-shadow: 0 6px 24px -18px rgba(28,25,23,.4); }
+  .ul-grow { position:relative; }
+  .ul-grow::after { content:''; position:absolute; left:0; bottom:-3px; width:0; height:1.5px; background:linear-gradient(90deg,#A8641E,#E0A857); transition: width .5s cubic-bezier(.16,1,.3,1); }
+  .ul-grow:hover::after { width:100%; }
+
+  /* Service list rows */
+  .svc-row { transition: background .5s, padding-left .5s; }
+  .svc-row:hover { background: rgba(224,168,87,.09); }
+  .svc-num { font-variant-numeric: tabular-nums; }
+  .svc-row:hover .svc-arrow { transform: translateX(6px); color:#A8641E; }
+  .svc-arrow { transition: transform .5s cubic-bezier(.16,1,.3,1), color .5s; }
+
+  /* Cards */
+  .lift { transition: transform .55s cubic-bezier(.16,1,.3,1), box-shadow .55s; }
+  .lift:hover { transform: translateY(-6px); box-shadow: 0 26px 50px -30px rgba(28,25,23,.45); }
+
+  /* Levels bar */
+  .level-card { transition: transform .55s cubic-bezier(.16,1,.3,1), box-shadow .55s, border-color .55s; }
+  .level-card:hover { transform: translateY(-8px); border-color:#E0A857; box-shadow: 0 30px 60px -34px rgba(168,100,30,.5); }
+
+  .chip-dot { animation: pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:.45; transform:scale(.82);} }
+
+  [data-reveal] { opacity:0; transform: translateY(34px); will-change: opacity, transform; }
+  .rvl { opacity:1 !important; transform:none !important; }
+
+  #dust-canvas { position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+
+  .maskline { display:block; overflow:hidden; padding-bottom:.14em; }
+  .maskline > span { display:block; will-change: transform; }
+
+  @media (max-width: 767px) {
+    :root { --nav-h: 66px; }
+    .marquee-track { animation-duration: 26s; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ============ NAV ============ -->
+<nav id="nav" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-[76px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5 group" aria-label="Magnum Drywall home">
+      <span class="inline-flex items-center justify-center w-9 h-9 rounded-[7px] bg-ink text-cream font-display font-extrabold text-lg leading-none">M</span>
+      <span class="leading-none">
+        <span class="block font-display font-extrabold tracking-tight text-ink text-[1.05rem]">MAGNUM</span>
+        <span class="block font-body font-semibold tracking-[.34em] text-[.56rem] text-steel mt-[3px]">DRYWALL&nbsp;·&nbsp;HOUSTON</span>
+      </span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-[.9rem] font-medium text-ink/80">
+      <a href="#services" class="ul-grow hover:text-ink">Services</a>
+      <a href="#levels" class="ul-grow hover:text-ink">The 5 Levels</a>
+      <a href="#proof" class="ul-grow hover:text-ink">Reviews</a>
+      <a href="#visit" class="ul-grow hover:text-ink">Service Area</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="tel:+17133607701" class="hidden sm:flex items-center gap-2 text-ink font-semibold text-[.9rem] ul-grow">
+        <svg class="w-4 h-4 text-bronze" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (713) 360-7701
+      </a>
+      <a href="#quote" class="btn btn-amber hidden sm:inline-flex items-center rounded-full px-5 py-2.5 text-[.86rem] font-bold">Get a Free Quote</a>
+      <a href="tel:+17133607701" class="sm:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-amber text-ink" aria-label="Call Magnum Drywall">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header id="top" class="relative min-h-[100svh] flex items-end hero-grain overflow-hidden">
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24 pt-[calc(var(--nav-h)+40px)]">
+    <div class="max-w-[54rem]">
+      <div data-reveal class="inline-flex items-center gap-2.5 rounded-full border border-ink/15 bg-cream/70 backdrop-blur px-4 py-1.5 mb-7">
+        <span class="w-2 h-2 rounded-full bg-amber chip-dot"></span>
+        <span class="text-[.72rem] font-semibold tracking-[.16em] text-ink/75 uppercase">Houston drywall contractors · Since 2013</span>
+      </div>
+
+      <h1 class="font-display font-extrabold text-ink tracking-tight display-lh text-[2.9rem] xs:text-[3.4rem] sm:text-[4.6rem] lg:text-[5.6rem]">
+        <span class="maskline"><span>The best wall</span></span>
+        <span class="maskline"><span>is the one you</span></span>
+        <span class="maskline"><span class="grad-text pr-1">never notice.</span></span>
+      </h1>
+
+      <p data-reveal class="mt-7 text-ink/80 text-[1.06rem] sm:text-[1.22rem] leading-relaxed max-w-[38rem] font-body">
+        Flawless hanging, taping, and Level&nbsp;5 finishes across Greater Houston. Clean lines, zero callbacks, walls so smooth the paint does the talking.
+      </p>
+
+      <div data-reveal class="mt-9 flex flex-wrap items-center gap-4">
+        <a href="#quote" class="btn btn-amber inline-flex items-center gap-2 rounded-full px-7 py-4 font-bold text-[.98rem]">
+          Get a Free Quote
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="tel:+17133607701" class="btn btn-ink inline-flex items-center gap-2 rounded-full px-7 py-4 font-bold text-[.98rem]">
+          <svg class="w-4 h-4 text-bronze" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (713) 360-7701
+        </a>
+      </div>
+
+      <!-- trust strip -->
+      <div data-reveal class="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <div class="flex items-center gap-2">
+          <div class="flex text-amber" aria-label="4.8 out of 5 stars">
+            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><defs><linearGradient id="hs"><stop offset="80%" stop-color="currentColor"/><stop offset="80%" stop-color="rgba(224,168,87,.28)"/></linearGradient></defs><path fill="url(#hs)" d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          </div>
+          <span class="text-ink font-bold text-[.95rem]">4.8</span>
+          <span class="text-ink/60 text-[.85rem]">· Google reviews</span>
+        </div>
+        <div class="h-4 w-px bg-ink/15 hidden sm:block"></div>
+        <span class="text-ink/70 text-[.85rem] font-medium">Owner-operated · Scott Michot</span>
+        <div class="h-4 w-px bg-ink/15 hidden sm:block"></div>
+        <span class="text-ink/70 text-[.85rem] font-medium">Residential &amp; commercial</span>
+      </div>
+    </div>
+  </div>
+
+  <a href="#services" class="absolute z-10 bottom-6 right-6 sm:right-8 hidden sm:flex items-center gap-2 text-ink/55 text-[.72rem] tracking-[.2em] uppercase font-semibold">
+    Scroll
+    <span class="w-9 h-9 rounded-full border border-ink/25 flex items-center justify-center">
+      <svg class="w-4 h-4 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+    </span>
+  </a>
+</header>
+
+<!-- ============ MARQUEE ============ -->
+<section class="bg-ink py-5 border-y border-white/5">
+  <div class="marquee">
+    <div class="marquee-track text-cream/85 font-display font-semibold text-[1.25rem] sm:text-[1.55rem] items-center">
+      <span>Drywall Hanging</span><span class="text-amber">✦</span>
+      <span class="italic text-amber/90">Level&nbsp;5 Finishes</span><span class="text-amber">✦</span>
+      <span>Tape &amp; Bed</span><span class="text-amber">✦</span>
+      <span>Texture &amp; Knockdown</span><span class="text-amber">✦</span>
+      <span class="italic text-amber/90">Metal &amp; Wood Framing</span><span class="text-amber">✦</span>
+      <span>Acoustic Ceilings</span><span class="text-amber">✦</span>
+      <span>Patch &amp; Repair</span><span class="text-amber">✦</span>
+      <span>Drywall Hanging</span><span class="text-amber">✦</span>
+      <span class="italic text-amber/90">Level&nbsp;5 Finishes</span><span class="text-amber">✦</span>
+      <span>Tape &amp; Bed</span><span class="text-amber">✦</span>
+      <span>Texture &amp; Knockdown</span><span class="text-amber">✦</span>
+      <span class="italic text-amber/90">Metal &amp; Wood Framing</span><span class="text-amber">✦</span>
+      <span>Acoustic Ceilings</span><span class="text-amber">✦</span>
+      <span>Patch &amp; Repair</span><span class="text-amber">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATEMENT ============ -->
+<section class="bg-cream py-24 sm:py-36">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <p data-reveal class="text-bronze font-semibold tracking-[.2em] text-[.75rem] uppercase mb-8">What we're about</p>
+    <h2 class="font-display font-bold text-ink display-lh text-[2rem] sm:text-[3.1rem] tracking-tight">
+      <span data-reveal class="block">Drywall is the quiet craft. Done right, nobody</span>
+      <span data-reveal class="block">notices it at all &mdash; just clean corners, flat</span>
+      <span data-reveal class="block">walls, and a finish that makes the whole room</span>
+      <span data-reveal class="block">feel <span class="grad-text">finished.</span></span>
+    </h2>
+    <p data-reveal class="mt-9 text-ink/70 text-[1.08rem] leading-relaxed max-w-2xl font-body">
+      Since 2013, Magnum Drywall has hung, taped, and finished walls and ceilings across the Houston metro. We show up on schedule, keep the site clean, and hand back a surface that's ready for paint the first time. No lippage, no wavy seams, no punch-list you have to chase.
+    </p>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="bg-bone py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+      <div>
+        <p data-reveal class="text-bronze font-semibold tracking-[.2em] text-[.75rem] uppercase mb-5">What we do</p>
+        <h2 data-reveal class="font-display font-extrabold text-ink display-lh text-[2.5rem] sm:text-[3.6rem] tracking-tight">Full-scope drywall,<br class="hidden sm:block"> start to finish.</h2>
+      </div>
+      <p data-reveal class="text-ink/65 max-w-sm text-[1rem] leading-relaxed font-body lg:text-right">
+        One crew for the whole wall assembly &mdash; framing through final texture. Residential remodels, new construction, and commercial build-outs.
+      </p>
+    </div>
+
+    <div class="border-t border-ink/12">
+      <!-- row template -->
+      <div class="svc-row group grid grid-cols-[auto_1fr_auto] sm:grid-cols-[auto_1.1fr_2fr_auto] items-center gap-x-4 sm:gap-x-8 px-3 sm:px-6 py-7 sm:py-9 border-b border-ink/12" data-reveal>
+        <span class="svc-num font-display text-steelsoft text-[.9rem] font-semibold">01</span>
+        <h3 class="font-display font-bold text-ink text-[1.35rem] sm:text-[1.7rem] tracking-tight">Hanging &amp; Installation</h3>
+        <p class="hidden sm:block text-ink/60 text-[.98rem] leading-snug font-body">Precision-cut sheets, tight seams, and screw patterns to code &mdash; walls and ceilings hung fast and flat.</p>
+        <svg class="svc-arrow w-6 h-6 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </div>
+      <div class="svc-row group grid grid-cols-[auto_1fr_auto] sm:grid-cols-[auto_1.1fr_2fr_auto] items-center gap-x-4 sm:gap-x-8 px-3 sm:px-6 py-7 sm:py-9 border-b border-ink/12" data-reveal>
+        <span class="svc-num font-display text-steelsoft text-[.9rem] font-semibold">02</span>
+        <h3 class="font-display font-bold text-ink text-[1.35rem] sm:text-[1.7rem] tracking-tight">Taping &amp; Level&nbsp;5 Finish</h3>
+        <p class="hidden sm:block text-ink/60 text-[.98rem] leading-snug font-body">Tape, bed, and skim to a glass-smooth Level&nbsp;5 &mdash; the finish that reads perfectly under critical light and gloss paint.</p>
+        <svg class="svc-arrow w-6 h-6 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </div>
+      <div class="svc-row group grid grid-cols-[auto_1fr_auto] sm:grid-cols-[auto_1.1fr_2fr_auto] items-center gap-x-4 sm:gap-x-8 px-3 sm:px-6 py-7 sm:py-9 border-b border-ink/12" data-reveal>
+        <span class="svc-num font-display text-steelsoft text-[.9rem] font-semibold">03</span>
+        <h3 class="font-display font-bold text-ink text-[1.35rem] sm:text-[1.7rem] tracking-tight">Texture &amp; Knockdown</h3>
+        <p class="hidden sm:block text-ink/60 text-[.98rem] leading-snug font-body">Knockdown, orange peel, hand-troweled, or a clean flat wall &mdash; matched seamlessly to existing texture on repairs.</p>
+        <svg class="svc-arrow w-6 h-6 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </div>
+      <div class="svc-row group grid grid-cols-[auto_1fr_auto] sm:grid-cols-[auto_1.1fr_2fr_auto] items-center gap-x-4 sm:gap-x-8 px-3 sm:px-6 py-7 sm:py-9 border-b border-ink/12" data-reveal>
+        <span class="svc-num font-display text-steelsoft text-[.9rem] font-semibold">04</span>
+        <h3 class="font-display font-bold text-ink text-[1.35rem] sm:text-[1.7rem] tracking-tight">Framing</h3>
+        <p class="hidden sm:block text-ink/60 text-[.98rem] leading-snug font-body">Metal-stud and wood framing for new walls, soffits, and layout changes &mdash; square, plumb, and ready to rock.</p>
+        <svg class="svc-arrow w-6 h-6 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </div>
+      <div class="svc-row group grid grid-cols-[auto_1fr_auto] sm:grid-cols-[auto_1.1fr_2fr_auto] items-center gap-x-4 sm:gap-x-8 px-3 sm:px-6 py-7 sm:py-9 border-b border-ink/12" data-reveal>
+        <span class="svc-num font-display text-steelsoft text-[.9rem] font-semibold">05</span>
+        <h3 class="font-display font-bold text-ink text-[1.35rem] sm:text-[1.7rem] tracking-tight">Ceilings &amp; Acoustic</h3>
+        <p class="hidden sm:block text-ink/60 text-[.98rem] leading-snug font-body">Smooth-finish ceilings, drop-out of old popcorn, and suspended acoustic grid for offices and retail.</p>
+        <svg class="svc-arrow w-6 h-6 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </div>
+      <div class="svc-row group grid grid-cols-[auto_1fr_auto] sm:grid-cols-[auto_1.1fr_2fr_auto] items-center gap-x-4 sm:gap-x-8 px-3 sm:px-6 py-7 sm:py-9 border-b border-ink/12" data-reveal>
+        <span class="svc-num font-display text-steelsoft text-[.9rem] font-semibold">06</span>
+        <h3 class="font-display font-bold text-ink text-[1.35rem] sm:text-[1.7rem] tracking-tight">Repair &amp; Patching</h3>
+        <p class="hidden sm:block text-ink/60 text-[.98rem] leading-snug font-body">Water damage, cracks, holes, and settlement seams made invisible &mdash; texture and paint-line matched to the rest of the room.</p>
+        <svg class="svc-arrow w-6 h-6 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </div>
+    </div>
+
+    <div data-reveal class="mt-12 flex flex-wrap items-center gap-5">
+      <a href="#quote" class="btn btn-amber inline-flex items-center gap-2 rounded-full px-7 py-4 font-bold text-[.98rem]">Start your project</a>
+      <a href="tel:+17133607701" class="inline-flex items-center gap-2 text-ink font-semibold ul-grow">
+        <svg class="w-4 h-4 text-bronze" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Or call (713) 360-7701
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE: THE 5 LEVELS ============ -->
+<section id="levels" class="relative bg-charcoal py-24 sm:py-36 overflow-hidden">
+  <canvas id="dust-canvas"></canvas>
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-16">
+      <p data-reveal class="text-amber font-semibold tracking-[.2em] text-[.75rem] uppercase mb-6">The finish standard · GA-214</p>
+      <h2 data-reveal class="font-display font-extrabold text-cream display-lh text-[2.5rem] sm:text-[3.7rem] tracking-tight">
+        Five levels of finish.<br><span class="grad-text--dark">We nail the one you need.</span>
+      </h2>
+      <p data-reveal class="mt-6 text-cream/70 text-[1.05rem] leading-relaxed font-body">
+        Not every wall needs a mirror finish &mdash; and paying for one you don't need is wasted budget. We finish to the industry level your space actually calls for, and we tell you which that is up front.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div data-reveal class="level-card rounded-2xl border border-white/10 bg-white/[.03] p-7">
+        <div class="flex items-baseline gap-3 mb-3"><span class="font-display font-extrabold text-amber text-[2.4rem] leading-none">0</span><span class="text-cream/50 text-[.8rem] tracking-wide uppercase font-semibold">Rough-in</span></div>
+        <h3 class="font-display font-bold text-cream text-[1.15rem] mb-2">No finish required</h3>
+        <p class="text-cream/60 text-[.92rem] leading-relaxed font-body">Board hung, no tape or compound &mdash; temporary construction or areas that'll be concealed.</p>
+      </div>
+      <div data-reveal class="level-card rounded-2xl border border-white/10 bg-white/[.03] p-7">
+        <div class="flex items-baseline gap-3 mb-3"><span class="font-display font-extrabold text-amber text-[2.4rem] leading-none">1&ndash;2</span><span class="text-cream/50 text-[.8rem] tracking-wide uppercase font-semibold">Utility</span></div>
+        <h3 class="font-display font-bold text-cream text-[1.15rem] mb-2">Garages &amp; storage</h3>
+        <p class="text-cream/60 text-[.92rem] leading-relaxed font-body">Tape embedded, one coat over joints and fasteners &mdash; solid where appearance is secondary.</p>
+      </div>
+      <div data-reveal class="level-card rounded-2xl border border-white/10 bg-white/[.03] p-7">
+        <div class="flex items-baseline gap-3 mb-3"><span class="font-display font-extrabold text-amber text-[2.4rem] leading-none">3</span><span class="text-cream/50 text-[.8rem] tracking-wide uppercase font-semibold">Standard</span></div>
+        <h3 class="font-display font-bold text-cream text-[1.15rem] mb-2">Under heavy texture</h3>
+        <p class="text-cream/60 text-[.92rem] leading-relaxed font-body">Two coats over tape and heads &mdash; the base for medium-to-heavy sprayed or hand texture.</p>
+      </div>
+      <div data-reveal class="level-card rounded-2xl border border-white/10 bg-white/[.03] p-7">
+        <div class="flex items-baseline gap-3 mb-3"><span class="font-display font-extrabold text-amber text-[2.4rem] leading-none">4</span><span class="text-cream/50 text-[.8rem] tracking-wide uppercase font-semibold">Flat &amp; light texture</span></div>
+        <h3 class="font-display font-bold text-cream text-[1.15rem] mb-2">Most homes</h3>
+        <p class="text-cream/60 text-[.92rem] leading-relaxed font-body">Three coats, sanded smooth &mdash; ideal for flat paints and light textures in living spaces.</p>
+      </div>
+      <div data-reveal class="level-card rounded-2xl border border-amber/40 bg-amber/[.06] p-7">
+        <div class="flex items-baseline gap-3 mb-3"><span class="font-display font-extrabold text-amber text-[2.4rem] leading-none">5</span><span class="text-amber/90 text-[.8rem] tracking-wide uppercase font-semibold">Our specialty</span></div>
+        <h3 class="font-display font-bold text-cream text-[1.15rem] mb-2">Glass-smooth, gloss-ready</h3>
+        <p class="text-cream/70 text-[.92rem] leading-relaxed font-body">A full skim coat over the entire surface &mdash; flawless under gloss, enamel, and raking light. The premium finish.</p>
+      </div>
+      <div data-reveal class="level-card rounded-2xl border border-white/10 bg-gradient-to-br from-amber/10 to-transparent p-7 flex flex-col justify-between">
+        <div>
+          <h3 class="font-display font-bold text-cream text-[1.25rem] mb-2">Not sure which you need?</h3>
+          <p class="text-cream/65 text-[.92rem] leading-relaxed font-body">Tell us the space and the paint. We'll spec the right level and price it honestly.</p>
+        </div>
+        <a href="#quote" class="mt-5 inline-flex items-center gap-2 text-amber font-bold ul-grow w-max">
+          Get our recommendation
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS BAND ============ -->
+<section class="bg-cream py-20 sm:py-24">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+    <div data-reveal class="text-center lg:text-left">
+      <div class="font-display font-extrabold text-ink text-[3rem] sm:text-[3.6rem] leading-none tracking-tight"><span class="countup" data-target="2013" data-suffix="" data-plain="1">2013</span></div>
+      <p class="mt-2 text-ink/60 text-[.9rem] font-medium">Serving Houston since</p>
+    </div>
+    <div data-reveal class="text-center lg:text-left">
+      <div class="font-display font-extrabold text-ink text-[3rem] sm:text-[3.6rem] leading-none tracking-tight"><span class="countup" data-target="4.8" data-suffix="" data-dec="1">4.8</span><span class="text-amber">★</span></div>
+      <p class="mt-2 text-ink/60 text-[.9rem] font-medium">Rated on Google</p>
+    </div>
+    <div data-reveal class="text-center lg:text-left">
+      <div class="font-display font-extrabold text-ink text-[3rem] sm:text-[3.6rem] leading-none tracking-tight"><span class="countup" data-target="5" data-suffix="">5</span></div>
+      <p class="mt-2 text-ink/60 text-[.9rem] font-medium">Finish levels, done right</p>
+    </div>
+    <div data-reveal class="text-center lg:text-left">
+      <div class="font-display font-extrabold text-ink text-[3rem] sm:text-[3.6rem] leading-none tracking-tight"><span class="countup" data-target="0" data-suffix="">0</span></div>
+      <p class="mt-2 text-ink/60 text-[.9rem] font-medium">Callbacks we chase for you</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF ============ -->
+<section id="proof" class="bg-bone py-24 sm:py-32">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-[1fr_1.3fr] gap-14 items-center">
+      <div>
+        <p data-reveal class="text-bronze font-semibold tracking-[.2em] text-[.75rem] uppercase mb-6">Reviews</p>
+        <h2 data-reveal class="font-display font-extrabold text-ink display-lh text-[2.4rem] sm:text-[3.3rem] tracking-tight">Rated <span class="grad-text">4.8 stars</span> by Houston homeowners &amp; builders.</h2>
+        <div data-reveal class="mt-7 flex items-center gap-4">
+          <div class="flex text-amber">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><defs><linearGradient id="hs2"><stop offset="80%" stop-color="currentColor"/><stop offset="80%" stop-color="rgba(224,168,87,.28)"/></linearGradient></defs><path fill="url(#hs2)" d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          </div>
+          <span class="text-ink/70 font-medium text-[.95rem]">4.8 average · 5 Google reviews</span>
+        </div>
+        <p data-reveal class="mt-6 text-ink/65 leading-relaxed font-body max-w-md">
+          A small, owner-run shop where your project is Scott's project. That's why the reviews read the way they do.
+        </p>
+      </div>
+
+      <div class="space-y-5">
+        <figure data-reveal class="lift rounded-2xl bg-cream border border-ink/10 p-8 shadow-sm">
+          <div class="flex text-amber mb-4">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+          </div>
+          <blockquote class="font-display text-ink text-[1.55rem] sm:text-[1.9rem] leading-snug tracking-tight">&ldquo;The best in Texas.&rdquo;</blockquote>
+          <figcaption class="mt-5 flex items-center gap-2 text-ink/55 text-[.85rem]">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z" fill="#34A853"/><path d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z" fill="#EA4335"/></svg>
+            Verified Google review
+          </figcaption>
+        </figure>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+          <figure data-reveal class="lift rounded-2xl bg-cream border border-ink/10 p-7">
+            <div class="flex text-amber mb-3">
+              <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            </div>
+            <p class="text-ink/75 text-[.98rem] leading-relaxed font-body">Clean work, on-time crew, and a wall that came out dead flat. Exactly what you want from a drywall contractor.</p>
+            <p class="mt-4 text-ink/45 text-[.8rem]">Verified Google reviewer</p>
+          </figure>
+          <figure data-reveal class="lift rounded-2xl bg-cream border border-ink/10 p-7">
+            <div class="flex text-amber mb-3">
+              <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
+            </div>
+            <p class="text-ink/75 text-[.98rem] leading-relaxed font-body">Repaired a big patch after a leak and matched the texture perfectly &mdash; you can't tell where it was.</p>
+            <p class="mt-4 text-ink/45 text-[.8rem]">Verified Google reviewer</p>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT / SERVICE AREA ============ -->
+<section id="visit" class="bg-cream py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+      <div>
+        <p data-reveal class="text-bronze font-semibold tracking-[.2em] text-[.75rem] uppercase mb-6">Service area</p>
+        <h2 data-reveal class="font-display font-extrabold text-ink display-lh text-[2.5rem] sm:text-[3.4rem] tracking-tight">Based in Spring Branch. Working across Houston.</h2>
+        <p data-reveal class="mt-6 text-ink/70 text-[1.05rem] leading-relaxed font-body max-w-lg">
+          From the Inner Loop to Katy, Cypress, and The Woodlands &mdash; residential remodels, new builds, and commercial spaces throughout the metro.
+        </p>
+
+        <div class="mt-10 space-y-5">
+          <div data-reveal class="flex items-start gap-4">
+            <span class="mt-0.5 inline-flex w-11 h-11 rounded-xl bg-ink/[.05] items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-bronze" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div>
+              <p class="font-display font-bold text-ink text-[1.05rem]">Magnum Drywall, Inc.</p>
+              <p class="text-ink/65 text-[.95rem] font-body">2102 Harland Dr, Houston, TX 77055</p>
+            </div>
+          </div>
+          <div data-reveal class="flex items-start gap-4">
+            <span class="mt-0.5 inline-flex w-11 h-11 rounded-xl bg-ink/[.05] items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-bronze" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <div>
+              <p class="font-display font-bold text-ink text-[1.05rem]"><a href="tel:+17133607701" class="ul-grow">(713) 360-7701</a></p>
+              <p class="text-ink/65 text-[.95rem] font-body"><a href="mailto:magnumdrywallinc@gmail.com" class="ul-grow">magnumdrywallinc@gmail.com</a></p>
+            </div>
+          </div>
+          <div data-reveal class="flex items-start gap-4">
+            <span class="mt-0.5 inline-flex w-11 h-11 rounded-xl bg-ink/[.05] items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-bronze" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <div>
+              <p class="font-display font-bold text-ink text-[1.05rem]">Monday &ndash; Friday · 8:00 AM &ndash; 5:00 PM</p>
+              <p class="text-ink/60 text-[.9rem] font-body inline-flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-green-500 chip-dot"></span> Saturday &amp; Sunday by appointment
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <a data-reveal href="#quote" class="btn btn-amber inline-flex items-center gap-2 rounded-full px-7 py-4 font-bold text-[.98rem] mt-10">Request your free estimate</a>
+      </div>
+
+      <div data-reveal class="rounded-2xl overflow-hidden border border-ink/12 shadow-sm min-h-[380px] lg:min-h-full">
+        <iframe
+          title="Magnum Drywall, Inc. — 2102 Harland Dr, Houston, TX 77055"
+          src="https://www.google.com/maps?q=2102%20Harland%20Dr%2C%20Houston%2C%20TX%2077055&output=embed"
+          width="100%" height="100%" style="border:0; min-height:380px; display:block;"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section id="quote" class="relative bg-charcoal py-24 sm:py-36 overflow-hidden">
+  <div class="absolute inset-0 opacity-[.5] pointer-events-none" style="background:radial-gradient(600px circle at 78% 30%, rgba(224,168,87,.16), transparent 60%);"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <span class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-amber text-ink font-display font-extrabold text-2xl mb-8">M</span>
+    <h2 data-reveal class="font-display font-extrabold text-cream display-lh text-[2.6rem] sm:text-[4rem] tracking-tight">
+      Ready for walls<br>you'll <span class="grad-text--dark">never notice?</span>
+    </h2>
+    <p data-reveal class="mt-7 text-cream/75 text-[1.1rem] leading-relaxed max-w-xl mx-auto font-body">
+      Tell us about your project and we'll get you a clear, honest estimate &mdash; usually the same week. No pressure, no runaround.
+    </p>
+    <div data-reveal class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a href="tel:+17133607701" class="btn btn-amber inline-flex items-center gap-2 rounded-full px-8 py-4 font-bold text-[1rem]">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (713) 360-7701
+      </a>
+      <a href="mailto:magnumdrywallinc@gmail.com" class="btn btn-ghost-light inline-flex items-center gap-2 rounded-full px-8 py-4 font-bold text-[1rem]">
+        Email us
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+      </a>
+    </div>
+    <p data-reveal class="mt-8 text-cream/45 text-[.85rem]">Owner-operated by Scott Michot · Serving Houston since 2013</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-cream/70 pt-16 pb-28 sm:pb-16">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-[7px] bg-amber text-ink font-display font-extrabold text-lg leading-none">M</span>
+          <span class="leading-none">
+            <span class="block font-display font-extrabold tracking-tight text-cream text-[1.05rem]">MAGNUM DRYWALL, INC.</span>
+            <span class="block font-body font-semibold tracking-[.3em] text-[.56rem] text-cream/45 mt-[3px]">HOUSTON · TEXAS</span>
+          </span>
+        </div>
+        <p class="text-cream/55 text-[.95rem] leading-relaxed max-w-sm font-body">Full-scope drywall for Greater Houston &mdash; hanging, taping, Level 5 finishes, texture, framing, ceilings, and repair. Owner-operated since 2013.</p>
+      </div>
+      <div>
+        <p class="font-display font-bold text-cream text-[.95rem] mb-4">Services</p>
+        <ul class="space-y-2.5 text-[.9rem]">
+          <li><a href="#services" class="hover:text-amber transition">Hanging &amp; Installation</a></li>
+          <li><a href="#services" class="hover:text-amber transition">Level 5 Finishing</a></li>
+          <li><a href="#services" class="hover:text-amber transition">Texture &amp; Knockdown</a></li>
+          <li><a href="#services" class="hover:text-amber transition">Framing &amp; Ceilings</a></li>
+          <li><a href="#services" class="hover:text-amber transition">Repair &amp; Patching</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-display font-bold text-cream text-[.95rem] mb-4">Get in touch</p>
+        <ul class="space-y-2.5 text-[.9rem]">
+          <li><a href="tel:+17133607701" class="hover:text-amber transition">(713) 360-7701</a></li>
+          <li><a href="mailto:magnumdrywallinc@gmail.com" class="hover:text-amber transition break-all">magnumdrywallinc@gmail.com</a></li>
+          <li class="text-cream/55">2102 Harland Dr<br>Houston, TX 77055</li>
+          <li class="text-cream/55">Mon&ndash;Fri · 8AM&ndash;5PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-[.82rem] text-cream/45">
+      <p>&copy; <span id="yr">2026</span> Magnum Drywall, Inc. All rights reserved.</p>
+      <p>Houston, TX · Residential &amp; commercial drywall</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="sm:hidden fixed bottom-0 inset-x-0 z-50 bg-cream/95 backdrop-blur border-t border-ink/10 px-3 py-2.5 flex gap-2.5" style="box-shadow:0 -8px 24px -18px rgba(28,25,23,.5);">
+  <a href="tel:+17133607701" class="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-ink/25 text-ink font-bold py-3 text-[.92rem]">
+    <svg class="w-4 h-4 text-bronze" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="#quote" class="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-amber text-ink font-bold py-3 text-[.92rem]">Free Quote</a>
+</div>
+
+<!-- ============ JSON-LD ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "Magnum Drywall, Inc.",
+  "description": "Houston drywall contractors since 2013 — hanging, taping, Level 5 finishes, texture, framing, acoustic ceilings, and repair for residential and commercial projects.",
+  "url": "https://turnkeyweb.org/previews/magnum-drywall/",
+  "telephone": "+1-713-360-7701",
+  "email": "magnumdrywallinc@gmail.com",
+  "foundingDate": "2013",
+  "founder": { "@type": "Person", "name": "Scott Michot" },
+  "image": "https://turnkeyweb.org/previews/magnum-drywall/assets/hero.jpg",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2102 Harland Dr",
+    "addressLocality": "Houston",
+    "addressRegion": "TX",
+    "postalCode": "77055",
+    "addressCountry": "US"
+  },
+  "areaServed": { "@type": "City", "name": "Houston" },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "08:00", "closes": "17:00"
+  }],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "5",
+    "bestRating": "5"
+  },
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drywall Hanging & Installation" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Taping & Level 5 Finishing" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Texture & Knockdown" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Framing" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ceilings & Acoustic" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drywall Repair & Patching" } }
+  ]
+}
+</script>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---- Lenis smooth scroll, driven by the single GSAP ticker ---- */
+  const lenis = new Lenis({
+    duration: 1.12,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true, smoothTouch: false,
+  });
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+  lenis.on('scroll', ScrollTrigger.update);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const el = document.querySelector(id);
+        if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -70 }); }
+      }
+    });
+  });
+
+  /* ---- Nav scrolled state ---- */
+  const nav = document.getElementById('nav');
+  ScrollTrigger.create({ start: 'top -40', onUpdate: (s) => nav.classList.toggle('scrolled', s.scroll() > 40) });
+  if (window.scrollY > 40) nav.classList.add('scrolled');
+
+  /* ---- Hero masked-line reveal ---- */
+  gsap.set('.maskline > span', { yPercent: 118 });
+  gsap.to('.maskline > span', { yPercent: 0, duration: 1.15, ease: 'power4.out', stagger: 0.11, delay: 0.15 });
+
+  /* ---- Hero content reveal ---- */
+  gsap.to('header [data-reveal]', { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.12, delay: 0.5,
+    onComplete: () => document.querySelectorAll('header [data-reveal]').forEach(el => el.classList.add('rvl')) });
+
+  /* ---- Hero video parallax ---- */
+  gsap.to('.hero-video', { yPercent: 16, scale: 1.09, ease: 'none',
+    scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true } });
+
+  /* ---- Standard reveals ---- */
+  gsap.utils.toArray('[data-reveal]').forEach(el => {
+    if (el.closest('header')) return;
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 92%', once: true },
+      onComplete: () => el.classList.add('rvl')
+    });
+  });
+
+  /* ---- Count-up stats ---- */
+  gsap.utils.toArray('.countup').forEach(el => {
+    const target = parseFloat(el.dataset.target);
+    const dec = parseInt(el.dataset.dec || '0');
+    const plain = el.dataset.plain === '1';
+    ScrollTrigger.create({
+      trigger: el, start: 'top 90%', once: true,
+      onEnter: () => {
+        const obj = { v: 0 };
+        gsap.to(obj, { v: target, duration: 1.6, ease: 'power2.out',
+          onUpdate: () => { el.textContent = plain ? Math.round(obj.v).toString() : obj.v.toFixed(dec); }
+        });
+      }
+    });
+  });
+
+  /* ---- Drifting drywall-dust WebGL/canvas showpiece (Levels section) ---- */
+  (function dust() {
+    const canvas = document.getElementById('dust-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const section = document.getElementById('levels');
+    let W, H, dpr, particles = [], raf = null, visible = false;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const COUNT = isMobile ? 34 : 80;
+
+    function size() {
+      dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
+      W = section.clientWidth; H = section.clientHeight;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function seed() {
+      particles = [];
+      for (let i = 0; i < COUNT; i++) {
+        particles.push({
+          x: Math.random() * W, y: Math.random() * H,
+          r: Math.random() * 2.2 + 0.5,
+          vx: (Math.random() - 0.5) * 0.22, vy: -(Math.random() * 0.32 + 0.06),
+          a: Math.random() * 0.5 + 0.12, tw: Math.random() * Math.PI * 2,
+        });
+      }
+    }
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      // soft light shaft from upper-right (matches the hero light direction)
+      const g = ctx.createLinearGradient(W, 0, W * 0.35, H);
+      g.addColorStop(0, 'rgba(224,168,87,0.10)');
+      g.addColorStop(0.5, 'rgba(224,168,87,0.03)');
+      g.addColorStop(1, 'rgba(224,168,87,0)');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+      for (const p of particles) {
+        p.x += p.vx; p.y += p.vy; p.tw += 0.02;
+        if (p.y < -10) { p.y = H + 10; p.x = Math.random() * W; }
+        if (p.x < -10) p.x = W + 10; if (p.x > W + 10) p.x = -10;
+        const tw = (Math.sin(p.tw) * 0.35 + 0.65);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(239,211,160,${p.a * tw})`;
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(draw);
+    }
+    function start() { if (!raf && !reduce) { raf = requestAnimationFrame(draw); } }
+    function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+    function paintOnce() { draw(); stop(); } // static frame for reduced-motion / safety
+
+    size(); seed();
+    if (reduce) { paintOnce(); }
+    const io = new IntersectionObserver((es) => {
+      es.forEach(e => { visible = e.isIntersecting; visible ? start() : stop(); });
+    }, { threshold: 0.05 });
+    io.observe(section);
+    document.addEventListener('visibilitychange', () => { document.hidden ? stop() : (visible && start()); });
+    let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { size(); seed(); if (reduce) paintOnce(); }, 200); });
+  })();
+
+  /* ---- 6s screenshot / crawler safety net ---- */
+  setTimeout(() => {
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('rvl'));
+    document.querySelectorAll('.maskline > span').forEach(s => gsap.set(s, { yPercent: 0 }));
+    document.querySelectorAll('.countup').forEach(el => {
+      const t = parseFloat(el.dataset.target); const dec = parseInt(el.dataset.dec || '0'); const plain = el.dataset.plain === '1';
+      if (el.textContent.trim() === '0' && t !== 0) el.textContent = plain ? Math.round(t).toString() : t.toFixed(dec);
+    });
+    ScrollTrigger.refresh();
+  }, 6000);
+</script>
+</body>
+</html>
