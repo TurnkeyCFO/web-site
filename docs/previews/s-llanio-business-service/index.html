@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>S. Llanio Business Service — Bookkeeping, Accounting & Tax in Cape Coral, FL</title>
+<meta name="description" content="Bilingual bookkeeping, accounting, payroll and tax preparation in Cape Coral, Florida. Serving families and small businesses since 2006. Se habla español. Call (239) 542-9104." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/s-llanio-business-service/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="S. Llanio Business Service — Bookkeeping, Accounting & Tax" />
+<meta property="og:description" content="Bilingual bookkeeping, accounting, payroll and tax help in Cape Coral, FL. Since 2006. Se habla español." />
+<meta property="og:image" content="https://turnkeyweb.org/previews/s-llanio-business-service/assets/hero.jpg" />
+<meta name="robots" content="noindex, nofollow" />
+<!--
+  S. LLANIO BUSINESS SERVICE — bespoke light-luxury build (finance heritage)
+  Palette (tailored): ivory #F7F2EA · paper #FBF7F0 · pine #12433B · pine-deep #0E322C · brass #B98D52 · ink #1E1A17 · slate #5B5750
+  Type: Fraunces (display serif, warm finance-heritage) + Plus Jakarta Sans (body)
+  Hero: AI cinematic Kling video (Higgsfield nano_banana_pro -> kling3_0_turbo), self-hosted assets/hero.mp4
+  Showpiece: Three.js drifting gold-mote field on the pine CTA band (ties to the hero motes), static fallback + mobile downgrade
+  No logo found online -> custom typographic wordmark + SL monogram (SVG)
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300..800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      ivory:'#F7F2EA', paper:'#FBF7F0', pine:'#12433B', pinedeep:'#0E322C',
+      brass:'#B98D52', brasslt:'#C9A268', ink:'#1E1A17', slate:'#5B5750', sage:'#7FA88C'
+    },
+    fontFamily: { display:['Fraunces','serif'], sans:['"Plus Jakarta Sans"','sans-serif'] }
+  }}
+}
+</script>
+<style>
+  :root{ --nav-h:74px; }
+  *{ -webkit-tap-highlight-color:transparent; }
+  html{ scroll-behavior:auto; scroll-padding-top:var(--nav-h); }
+  body{ background:#F7F2EA; color:#1E1A17; font-family:'Plus Jakarta Sans',sans-serif; overflow-x:hidden; }
+  ::selection{ background:#12433B; color:#F7F2EA; }
+
+  .font-display{ font-family:'Fraunces',serif; }
+  .lede{ letter-spacing:-.02em; line-height:1.12; }
+
+  /* gradient shimmer text (descender-safe: line-height + padding-bottom, no clip box) */
+  .grad-text{
+    background:linear-gradient(100deg,#12433B 0%,#B98D52 42%,#7FA88C 66%,#12433B 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite;
+    line-height:1.16; padding-bottom:.08em; display:inline-block;
+  }
+  @keyframes shimmer{ 0%{background-position:0% 50%} 100%{background-position:220% 50%} }
+
+  /* hero video */
+  .hero{ position:relative; min-height:100svh; overflow:hidden; }
+  .hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; will-change:transform; }
+  /* light-first legibility: soft cream veil strongest on the LEFT where headline sits */
+  .hero-scrim{
+    position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(90deg, rgba(247,242,234,.94) 0%, rgba(247,242,234,.80) 26%, rgba(247,242,234,.30) 50%, rgba(247,242,234,0) 72%),
+      linear-gradient(0deg, rgba(30,26,23,.16) 0%, rgba(30,26,23,0) 30%);
+  }
+  @media (max-width:900px){
+    .hero-scrim{ background:
+      linear-gradient(180deg, rgba(247,242,234,.90) 0%, rgba(247,242,234,.62) 40%, rgba(247,242,234,.30) 70%, rgba(247,242,234,.55) 100%); }
+  }
+
+  /* nav */
+  .nav-wrap{ transition:background .4s ease, box-shadow .4s ease, backdrop-filter .4s; }
+  .nav-scrolled{ background:rgba(247,242,234,.86); backdrop-filter:blur(12px); box-shadow:0 1px 0 rgba(30,26,23,.08); }
+  .underline-grow{ position:relative; }
+  .underline-grow::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+    background:linear-gradient(90deg,#12433B,#B98D52); transition:width .5s cubic-bezier(.22,1,.36,.15); }
+  .underline-grow:hover::after{ width:100%; }
+
+  /* buttons */
+  .btn{ position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s, filter .4s; }
+  .btn:hover{ transform:translateY(-3px); filter:brightness(1.04); }
+  .btn-primary{ background:#12433B; color:#F7F2EA; box-shadow:0 10px 30px -12px rgba(18,67,59,.7); }
+  .btn-primary::after{ content:''; position:absolute; top:0; left:-120%; width:60%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(201,162,104,.55),transparent); transform:skewX(-18deg);
+    transition:left .9s cubic-bezier(.22,1,.36,1); }
+  .btn-primary:hover::after{ left:130%; }
+  .btn-ghost{ border:1.5px solid rgba(18,67,59,.35); color:#12433B; background:transparent; }
+  .btn-ghost:hover{ border-color:#12433B; background:rgba(18,67,59,.05); }
+
+  /* cards */
+  .card{ position:relative; background:#FBF7F0; border:1px solid rgba(30,26,23,.08);
+    transition:transform .55s cubic-bezier(.22,1,.36,1), box-shadow .55s, border-color .55s; overflow:hidden; }
+  .card::before{ content:''; position:absolute; top:0; left:0; height:2px; width:0;
+    background:linear-gradient(90deg,#12433B,#B98D52); transition:width .65s cubic-bezier(.22,1,.36,1); }
+  .card:hover{ transform:translateY(-7px); box-shadow:0 26px 50px -30px rgba(18,67,59,.45); border-color:rgba(185,141,82,.4); }
+  .card:hover::before{ width:100%; }
+  .svc-icon{ transition:transform .55s cubic-bezier(.22,1,.36,1); }
+  .card:hover .svc-icon{ transform:rotate(-6deg) scale(1.07); }
+
+  /* marquee */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 40s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* reveals (GPU-only) */
+  [data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  [data-reveal].in{ opacity:1; transform:none; }
+
+  .dot{ width:6px; height:6px; border-radius:50%; background:#B98D52; display:inline-block; }
+  .pulse{ animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:.5; transform:scale(.9)} 50%{opacity:1; transform:scale(1.15)} }
+
+  .outline-num{ font-family:'Fraunces',serif; font-weight:600; line-height:.9;
+    color:transparent; -webkit-text-stroke:1.4px rgba(18,67,59,.32); }
+
+  /* CTA particle canvas */
+  #cta-canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+
+  .eyebrow{ letter-spacing:.24em; text-transform:uppercase; font-weight:600; font-size:.72rem; }
+  .ledger-rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(185,141,82,.55),transparent); }
+
+  a.mobcall{ transition:filter .3s; }
+  @media (max-width:768px){ .hide-mob{ display:none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header id="nav" class="nav-wrap fixed top-0 inset-x-0 z-50">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 h-[74px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <span class="inline-flex items-center justify-center w-10 h-10 rounded-md bg-pine text-ivory font-display font-semibold text-lg shadow-sm">SL</span>
+      <span class="leading-tight">
+        <span class="font-display font-semibold text-[1.06rem] text-ink tracking-tight">S. Llanio</span>
+        <span class="block text-[.62rem] tracking-[.22em] uppercase text-slate font-semibold">Business Service</span>
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-[.92rem] text-ink/80 font-medium">
+      <a href="#services" class="underline-grow">Services</a>
+      <a href="#approach" class="underline-grow">Our Approach</a>
+      <a href="#reviews" class="underline-grow">Reviews</a>
+      <a href="#visit" class="underline-grow">Visit</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <span class="hidden lg:inline-flex items-center gap-2 text-[.78rem] font-semibold text-pine px-3 py-1.5 rounded-full bg-pine/8 border border-pine/15">
+        <span class="dot pulse"></span> Se habla español
+      </span>
+      <a href="tel:+12395429104" class="btn btn-primary text-[.86rem] font-semibold px-4 py-2.5 rounded-full inline-flex items-center gap-2">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="hidden sm:inline">(239) 542-9104</span><span class="sm:hidden">Call</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="top" class="hero">
+  <video class="hero-bg" autoplay muted loop playsinline poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 max-w-[1240px] mx-auto px-5 md:px-8 min-h-[100svh] flex items-center">
+    <div class="max-w-[640px] pt-[120px] pb-24 md:py-0">
+      <div data-reveal class="inline-flex items-center gap-2.5 mb-6 px-3.5 py-1.5 rounded-full bg-paper/80 border border-ink/10 backdrop-blur-sm">
+        <span class="dot pulse"></span>
+        <span class="eyebrow text-pine">Cape Coral, Florida · Since 2006</span>
+      </div>
+
+      <h1 data-reveal class="font-display font-semibold text-ink lede text-[2.7rem] sm:text-[3.4rem] lg:text-[4.15rem]" style="line-height:1.06; padding-bottom:.06em; text-shadow:0 1px 18px rgba(247,242,234,.55)">
+        Your books, <span class="grad-text">in order.</span><br />Your mind, at ease.
+      </h1>
+
+      <p data-reveal class="mt-6 text-[1.06rem] md:text-[1.16rem] text-ink/80 max-w-[500px]" style="line-height:1.6">
+        Bookkeeping, accounting, payroll and tax preparation for the families and
+        small businesses of Southwest Florida. Careful work, plain answers, and a
+        team that speaks your language — in English y en español.
+      </p>
+
+      <div data-reveal class="mt-9 flex flex-wrap items-center gap-3.5">
+        <a href="tel:+12395429104" class="btn btn-primary font-semibold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5">
+          <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (239) 542-9104
+        </a>
+        <a href="#services" class="btn btn-ghost font-semibold px-6 py-3.5 rounded-full">See what we do</a>
+      </div>
+
+      <!-- hero stats -->
+      <div data-reveal class="mt-11 grid grid-cols-3 gap-5 max-w-[440px]">
+        <div>
+          <div class="font-display font-semibold text-pine text-3xl md:text-4xl"><span class="count" data-to="18" data-suffix="+">0</span></div>
+          <div class="text-[.74rem] text-slate mt-1 leading-snug">Years serving<br/>Cape Coral</div>
+        </div>
+        <div>
+          <div class="font-display font-semibold text-pine text-3xl md:text-4xl"><span class="count" data-to="55" data-suffix="+">0</span></div>
+          <div class="text-[.74rem] text-slate mt-1 leading-snug">Client reviews,<br/>4.1★ on Google</div>
+        </div>
+        <div>
+          <div class="font-display font-semibold text-pine text-3xl md:text-4xl">2</div>
+          <div class="text-[.74rem] text-slate mt-1 leading-snug">Languages,<br/>one team</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="bg-pine text-ivory py-4 border-y border-brass/20">
+  <div class="marquee">
+    <div class="marquee-track text-[.98rem] font-medium tracking-wide">
+      <span class="flex items-center gap-3">Tax Preparation <span class="dot"></span></span>
+      <span class="flex items-center gap-3 font-display italic text-brasslt">Bookkeeping <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Payroll <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Accounting <span class="dot"></span></span>
+      <span class="flex items-center gap-3 font-display italic text-brasslt">Se habla español <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Tax Planning <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Estate &amp; Trust Taxes <span class="dot"></span></span>
+      <!-- duplicate for seamless loop -->
+      <span class="flex items-center gap-3">Tax Preparation <span class="dot"></span></span>
+      <span class="flex items-center gap-3 font-display italic text-brasslt">Bookkeeping <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Payroll <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Accounting <span class="dot"></span></span>
+      <span class="flex items-center gap-3 font-display italic text-brasslt">Se habla español <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Tax Planning <span class="dot"></span></span>
+      <span class="flex items-center gap-3">Estate &amp; Trust Taxes <span class="dot"></span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="py-24 md:py-32 bg-ivory relative">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8">
+    <div class="max-w-[680px] mb-14">
+      <p data-reveal class="eyebrow text-brass mb-4">What we handle</p>
+      <h2 data-reveal class="font-display font-semibold text-ink text-[2.2rem] md:text-[3rem] lede">
+        Everything the numbers ask of you — <span class="grad-text">handled with care.</span>
+      </h2>
+      <p data-reveal class="mt-5 text-ink/70 text-[1.05rem] leading-relaxed">
+        From a shoebox of receipts to a clean set of year-end books, we keep your finances
+        accurate, current, and ready — so tax season is calm instead of frantic.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Bookkeeping -->
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="svc-icon w-12 h-12 rounded-xl bg-pine/8 text-pine flex items-center justify-center mb-5">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11a2 2 0 0 1 2 2v14H6a2 2 0 0 1-2-2z"/><path d="M17 8h3v10a2 2 0 0 1-2 2h-1"/><path d="M8 8h5M8 12h5M8 16h3"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl text-ink mb-2">Bookkeeping</h3>
+        <p class="text-ink/70 text-[.95rem] leading-relaxed">Monthly reconciliations, categorized transactions, and books you can actually trust — kept current all year long.</p>
+      </div>
+      <!-- Tax Preparation -->
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="svc-icon w-12 h-12 rounded-xl bg-pine/8 text-pine flex items-center justify-center mb-5">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M14 2v4h4"/><path d="M9 13l2 2 4-4"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl text-ink mb-2">Tax Preparation</h3>
+        <p class="text-ink/70 text-[.95rem] leading-relaxed">Individual and business returns prepared thoroughly and filed on time, with every deduction you're entitled to reviewed.</p>
+      </div>
+      <!-- Accounting -->
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="svc-icon w-12 h-12 rounded-xl bg-pine/8 text-pine flex items-center justify-center mb-5">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l3-4 3 3 4-6"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl text-ink mb-2">Accounting &amp; Reporting</h3>
+        <p class="text-ink/70 text-[.95rem] leading-relaxed">Clear financial statements that show where your money is going — and what it means for the decisions ahead.</p>
+      </div>
+      <!-- Payroll -->
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="svc-icon w-12 h-12 rounded-xl bg-pine/8 text-pine flex items-center justify-center mb-5">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl text-ink mb-2">Payroll</h3>
+        <p class="text-ink/70 text-[.95rem] leading-relaxed">Your team paid accurately and on schedule, with the filings and records handled quietly in the background.</p>
+      </div>
+      <!-- Tax Planning -->
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="svc-icon w-12 h-12 rounded-xl bg-pine/8 text-pine flex items-center justify-center mb-5">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl text-ink mb-2">Tax Planning &amp; Advisory</h3>
+        <p class="text-ink/70 text-[.95rem] leading-relaxed">Year-round strategy so April holds no surprises — we look ahead, not just back, to keep more of what you earn.</p>
+      </div>
+      <!-- Estate & Trust -->
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="svc-icon w-12 h-12 rounded-xl bg-pine/8 text-pine flex items-center justify-center mb-5">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl text-ink mb-2">Estate &amp; Trust Taxes</h3>
+        <p class="text-ink/70 text-[.95rem] leading-relaxed">Careful, respectful handling of estate and trust filings when families need a steady hand the most.</p>
+      </div>
+    </div>
+
+    <p data-reveal class="mt-10 text-ink/60 text-[.95rem]">
+      Not sure which you need? <a href="tel:+12395429104" class="text-pine font-semibold underline-grow">Call us at (239) 542-9104</a> — we'll point you the right way.
+    </p>
+  </div>
+</section>
+
+<!-- ===== FULL-BLEED BAND (reuses the cinematic still) ===== -->
+<section class="relative py-28 md:py-36 overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="assets/band.jpg" alt="Ledger and paperwork on a desk" class="w-full h-full object-cover" data-parallax="0.12" />
+    <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(14,50,44,.92) 0%,rgba(14,50,44,.78) 40%,rgba(14,50,44,.35) 75%,rgba(14,50,44,.15) 100%)"></div>
+  </div>
+  <div class="relative z-10 max-w-[1240px] mx-auto px-5 md:px-8">
+    <div class="max-w-[620px]">
+      <p data-reveal class="eyebrow text-brasslt mb-5">Why S. Llanio</p>
+      <h2 data-reveal class="font-display font-semibold text-ivory text-[2rem] md:text-[2.9rem] lede">
+        Two decades of steady hands on Southwest Florida's books.
+      </h2>
+      <p data-reveal class="mt-6 text-ivory/85 text-[1.05rem] leading-relaxed">
+        S. Llanio Business Service has been a fixture in Cape Coral since 2006 — the kind of
+        local firm where clients stay for years and send their family across town, or even
+        across the state, just to keep working with a team they trust. One client drives nearly
+        three hours for the service he "can't seem to find anywhere else."
+      </p>
+      <p data-reveal class="mt-4 text-ivory/85 text-[1.05rem] leading-relaxed">
+        We keep it personal, professional, and bilingual — because your finances deserve
+        someone who understands both your numbers and your words.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APPROACH (signature: big outlined numbers) ===== -->
+<section id="approach" class="py-24 md:py-32 bg-paper">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8">
+    <div class="max-w-[640px] mb-16">
+      <p data-reveal class="eyebrow text-brass mb-4">How it works</p>
+      <h2 data-reveal class="font-display font-semibold text-ink text-[2.1rem] md:text-[2.9rem] lede">Simple, from hello to filed.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10 md:gap-8">
+      <div data-reveal class="relative">
+        <div class="outline-num text-[5.5rem] mb-3">01</div>
+        <h3 class="font-display font-semibold text-xl text-ink mb-2">We talk it through</h3>
+        <p class="text-ink/70 text-[.97rem] leading-relaxed">Call or stop by the office. Tell us where things stand — behind, ahead, or just starting out. No judgment, no jargon.</p>
+      </div>
+      <div data-reveal class="relative">
+        <div class="outline-num text-[5.5rem] mb-3">02</div>
+        <h3 class="font-display font-semibold text-xl text-ink mb-2">We put it in order</h3>
+        <p class="text-ink/70 text-[.97rem] leading-relaxed">We organize the books, reconcile the accounts, and prepare exactly what you need — accurately and on time.</p>
+      </div>
+      <div data-reveal class="relative">
+        <div class="outline-num text-[5.5rem] mb-3">03</div>
+        <h3 class="font-display font-semibold text-xl text-ink mb-2">You stay at ease</h3>
+        <p class="text-ink/70 text-[.97rem] leading-relaxed">We keep you current year-round and reachable when questions come up — so nothing sneaks up at tax time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews" class="py-24 md:py-32 bg-ivory">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-14">
+      <div class="max-w-[560px]">
+        <p data-reveal class="eyebrow text-brass mb-4">In their words</p>
+        <h2 data-reveal class="font-display font-semibold text-ink text-[2.1rem] md:text-[2.9rem] lede">Clients who stay — <span class="grad-text">for years.</span></h2>
+      </div>
+      <div data-reveal class="inline-flex items-center gap-3 px-4 py-2.5 rounded-full bg-pine/8 border border-pine/15">
+        <span class="text-brass text-lg tracking-tight">★★★★★</span>
+        <span class="text-[.9rem] font-semibold text-pine">4.1 on Google · 55+ reviews</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <figure data-reveal class="card rounded-2xl p-7">
+        <svg class="w-8 h-8 text-brass/40 mb-4" viewBox="0 0 24 24" fill="currentColor"><path d="M9.6 8H6a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v3H5v2h5v-6.5C10 9.6 9.9 8 9.6 8zm9 0H15a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v3h-3v2h5v-6.5C19 9.6 18.9 8 18.6 8z"/></svg>
+        <blockquote class="text-ink/85 text-[.98rem] leading-relaxed">"Great crew they have there. I moved from Cape Coral many years ago, but will drive almost 3 hours just to get the service I can't seem to find anywhere else. Highly recommend them!"</blockquote>
+        <figcaption class="mt-5 flex items-center gap-2 text-[.85rem] text-slate font-semibold">
+          <span class="w-7 h-7 rounded-full bg-pine text-ivory flex items-center justify-center text-[.72rem] font-bold">JG</span>
+          Jerry Gonzalez · Google review
+        </figcaption>
+      </figure>
+
+      <figure data-reveal class="card rounded-2xl p-7">
+        <svg class="w-8 h-8 text-brass/40 mb-4" viewBox="0 0 24 24" fill="currentColor"><path d="M9.6 8H6a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v3H5v2h5v-6.5C10 9.6 9.9 8 9.6 8zm9 0H15a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v3h-3v2h5v-6.5C19 9.6 18.9 8 18.6 8z"/></svg>
+        <blockquote class="text-ink/85 text-[.98rem] leading-relaxed">"I love this business! The staff is knowledgeable and always kind. Talk about professionalism — they're the best. I'm glad I was able to receive service from them. Amazing team."</blockquote>
+        <figcaption class="mt-5 flex items-center gap-2 text-[.85rem] text-slate font-semibold">
+          <span class="w-7 h-7 rounded-full bg-pine text-ivory flex items-center justify-center text-[.72rem] font-bold">LB</span>
+          Lee Bernavel · Google review
+        </figcaption>
+      </figure>
+
+      <figure data-reveal class="card rounded-2xl p-7">
+        <svg class="w-8 h-8 text-brass/40 mb-4" viewBox="0 0 24 24" fill="currentColor"><path d="M9.6 8H6a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v3H5v2h5v-6.5C10 9.6 9.9 8 9.6 8zm9 0H15a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v3h-3v2h5v-6.5C19 9.6 18.9 8 18.6 8z"/></svg>
+        <blockquote class="text-ink/85 text-[.98rem] leading-relaxed">"Soy cliente hace tres años y la verdad son los mejores. Trato excepcional."</blockquote>
+        <p class="mt-2 text-ink/50 text-[.82rem] italic">"A client for three years — truly the best. Exceptional care."</p>
+        <figcaption class="mt-5 flex items-center gap-2 text-[.85rem] text-slate font-semibold">
+          <span class="w-7 h-7 rounded-full bg-pine text-ivory flex items-center justify-center text-[.72rem] font-bold">DC</span>
+          Deyanira Concepcion · Google review
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT (map + hours + phone) ===== -->
+<section id="visit" class="py-24 md:py-32 bg-paper">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 items-stretch">
+      <div data-reveal>
+        <p class="eyebrow text-brass mb-4">Come see us</p>
+        <h2 class="font-display font-semibold text-ink text-[2.1rem] md:text-[2.8rem] lede mb-8">Right here in Cape Coral.</h2>
+
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-pine/8 text-pine flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold text-ink">Office</div>
+              <div class="text-ink/70 text-[.97rem]">1325 SE 47th St, Unit H<br/>Cape Coral, FL 33904</div>
+              <a href="https://www.google.com/maps?q=1325+SE+47th+St+Unit+H+Cape+Coral+FL+33904" target="_blank" rel="noopener" class="inline-block mt-1.5 text-pine text-[.9rem] font-semibold underline-grow">Get directions</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-pine/8 text-pine flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold text-ink">Phone</div>
+              <a href="tel:+12395429104" class="text-pine text-[1.05rem] font-semibold">(239) 542-9104</a>
+              <div class="text-ink/60 text-[.9rem]">Se habla español</div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-pine/8 text-pine flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold text-ink">Appointments</div>
+              <div class="text-ink/70 text-[.97rem]">By appointment — call ahead and we'll find a time that works for you.</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="tel:+12395429104" class="btn btn-primary font-semibold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 mt-9">
+          <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call to schedule
+        </a>
+      </div>
+
+      <div data-reveal class="rounded-2xl overflow-hidden border border-ink/10 shadow-[0_30px_60px_-40px_rgba(18,67,59,.5)] min-h-[380px]">
+        <iframe
+          title="S. Llanio Business Service location map"
+          src="https://www.google.com/maps?q=1325%20SE%2047th%20St%20Unit%20H%20Cape%20Coral%20FL%2033904&output=embed"
+          width="100%" height="100%" style="border:0; min-height:380px; display:block;"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BAND (Three.js gold-mote showpiece) ===== -->
+<section class="relative overflow-hidden bg-pinedeep">
+  <canvas id="cta-canvas"></canvas>
+  <div class="relative z-10 max-w-[1240px] mx-auto px-5 md:px-8 py-24 md:py-32 text-center">
+    <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-ivory/10 text-ivory font-display font-semibold text-xl mb-7 mx-auto backdrop-blur-sm">SL</div>
+    <h2 data-reveal class="font-display font-semibold text-ivory text-[2.2rem] md:text-[3.3rem] lede max-w-[760px] mx-auto" style="line-height:1.08; padding-bottom:.05em">
+      Let's get your books <span class="grad-text">in order</span> — and keep them there.
+    </h2>
+    <p data-reveal class="mt-6 text-ivory/80 text-[1.08rem] max-w-[560px] mx-auto leading-relaxed">
+      One call is all it takes. Whether you're behind, ahead, or just getting started,
+      we'll meet you where you are — in English or in Spanish.
+    </p>
+    <div data-reveal class="mt-9 flex flex-wrap items-center justify-center gap-4">
+      <a href="tel:+12395429104" class="btn btn-primary font-semibold px-7 py-4 rounded-full inline-flex items-center gap-2.5" style="background:#B98D52; color:#0E322C; box-shadow:0 14px 40px -14px rgba(185,141,82,.7)">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call (239) 542-9104
+      </a>
+      <a href="https://www.google.com/maps?q=1325+SE+47th+St+Unit+H+Cape+Coral+FL+33904" target="_blank" rel="noopener" class="text-ivory/90 font-semibold underline-grow">Visit the office →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-ink text-ivory/75">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 py-16">
+    <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-md bg-pine text-ivory font-display font-semibold text-lg">SL</span>
+          <span class="leading-tight">
+            <span class="font-display font-semibold text-[1.05rem] text-ivory">S. Llanio</span>
+            <span class="block text-[.62rem] tracking-[.22em] uppercase text-ivory/50 font-semibold">Business Service</span>
+          </span>
+        </div>
+        <p class="text-[.92rem] text-ivory/60 max-w-[320px] leading-relaxed">Bilingual bookkeeping, accounting, payroll and tax help for Southwest Florida since 2006.</p>
+      </div>
+      <div>
+        <div class="text-ivory font-semibold text-[.9rem] mb-4">Services</div>
+        <ul class="space-y-2 text-[.92rem]">
+          <li><a href="#services" class="underline-grow hover:text-ivory">Bookkeeping</a></li>
+          <li><a href="#services" class="underline-grow hover:text-ivory">Tax Preparation</a></li>
+          <li><a href="#services" class="underline-grow hover:text-ivory">Payroll</a></li>
+          <li><a href="#services" class="underline-grow hover:text-ivory">Tax Planning</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-ivory font-semibold text-[.9rem] mb-4">Contact</div>
+        <ul class="space-y-2 text-[.92rem]">
+          <li><a href="tel:+12395429104" class="underline-grow hover:text-ivory">(239) 542-9104</a></li>
+          <li>1325 SE 47th St, Unit H</li>
+          <li>Cape Coral, FL 33904</li>
+          <li class="text-brasslt font-semibold pt-1">Se habla español</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ledger-rule my-10"></div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-[.82rem] text-ivory/45">
+      <span>© 2026 S. Llanio Business Service. All rights reserved.</span>
+      <span>Cape Coral, Florida</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE STICKY BAR ===== -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-paper/95 backdrop-blur border-t border-ink/10 flex">
+  <a href="tel:+12395429104" class="mobcall flex-1 flex items-center justify-center gap-2 py-3.5 text-pine font-semibold text-[.92rem]">
+    <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=1325+SE+47th+St+Unit+H+Cape+Coral+FL+33904" target="_blank" rel="noopener" class="flex-1 flex items-center justify-center gap-2 py-3.5 text-ivory font-semibold text-[.92rem] bg-pine">
+    <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- ===== JSON-LD ===== -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AccountingService",
+  "name":"S. Llanio Business Service",
+  "image":"https://turnkeyweb.org/previews/s-llanio-business-service/assets/hero.jpg",
+  "description":"Bilingual bookkeeping, accounting, payroll and tax preparation for families and small businesses in Cape Coral, Florida since 2006.",
+  "telephone":"+12395429104",
+  "url":"https://turnkeyweb.org/previews/s-llanio-business-service/",
+  "priceRange":"$$",
+  "address":{"@type":"PostalAddress","streetAddress":"1325 SE 47th St, Unit H","addressLocality":"Cape Coral","addressRegion":"FL","postalCode":"33904","addressCountry":"US"},
+  "areaServed":"Cape Coral, Fort Myers and Southwest Florida",
+  "knowsLanguage":["en","es"],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.1","reviewCount":"55"},
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Bookkeeping"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tax Preparation"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Accounting & Reporting"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Payroll"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tax Planning & Advisory"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Estate & Trust Taxes"}}
+  ]
+}
+</script>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }</script>
+<script>
+/* ---------- nav scroll state ---------- */
+const nav = document.getElementById('nav');
+const onScrollNav = () => nav.classList.toggle('nav-scrolled', window.scrollY > 40);
+onScrollNav(); window.addEventListener('scroll', onScrollNav, {passive:true});
+
+/* ---------- Lenis + GSAP (single ticker) ---------- */
+let lenis;
+if (window.Lenis){
+  lenis = new Lenis({ duration:1.1, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+  if (window.gsap){
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.ticker.add((time)=> lenis.raf(time*1000));
+    gsap.ticker.lagSmoothing(0);
+    lenis.on('scroll', ScrollTrigger.update);
+    ScrollTrigger.config({ ignoreMobileResize:true });
+  } else {
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+  }
+  // anchored smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href'); if(id.length<2) return;
+      const el = document.querySelector(id); if(!el) return;
+      e.preventDefault(); lenis.scrollTo(el, { offset:-74 });
+    });
+  });
+}
+
+/* ---------- reveals ---------- */
+if (window.gsap){
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.to(el, { opacity:1, y:0, duration:.7, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+      onStart:()=>el.classList.add('in'),
+      onComplete:()=>{ el.style.willChange='auto'; } });
+  });
+  // hero stats count-up
+  gsap.utils.toArray('.count').forEach(el=>{
+    const to = parseFloat(el.dataset.to)||0; const suf = el.dataset.suffix||'';
+    ScrollTrigger.create({ trigger:el, start:'top 92%', once:true, onEnter:()=>{
+      gsap.fromTo(el,{innerText:0},{ innerText:to, duration:1.5, ease:'power2.out', snap:{innerText:1},
+        onUpdate:function(){ el.textContent = Math.round(this.targets()[0].innerText)+suf; },
+        onComplete:()=>{ el.textContent = to+suf; } });
+    }});
+  });
+  // desktop-only parallax on band image
+  ScrollTrigger.matchMedia({
+    '(min-width:768px)':()=>{
+      gsap.utils.toArray('[data-parallax]').forEach(el=>{
+        const speed = parseFloat(el.dataset.parallax)||0.1;
+        gsap.to(el,{ yPercent:speed*100, ease:'none',
+          scrollTrigger:{ trigger:el, start:'top bottom', end:'bottom top', scrub:0.6 } });
+      });
+      // hero video parallax
+      gsap.to('.hero-bg',{ yPercent:14, scale:1.06, ease:'none',
+        scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
+    }
+  });
+}
+
+/* ---------- 6s screenshot / crawler safety net ---------- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{
+    el.style.opacity=1; el.style.transform='none'; el.classList.add('in');
+  });
+  document.querySelectorAll('.count').forEach(el=>{
+    if(el.textContent.trim()==='0'||el.textContent.trim()===''){ el.textContent=(el.dataset.to||'')+(el.dataset.suffix||''); }
+  });
+}, 6000);
+
+/* ---------- Three.js gold-mote showpiece on CTA (light-safe, mobile-downgrade, offscreen-pause) ---------- */
+(async()=>{
+  const canvas = document.getElementById('cta-canvas'); if(!canvas) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const smallOrWeak = window.innerWidth < 768 || (navigator.hardwareConcurrency||8) <= 4;
+  if (reduce){ return; } // static pine band is a fine fallback
+  let THREE;
+  try { THREE = await import('three'); } catch(e){ return; }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, canvas.clientWidth/canvas.clientHeight, 0.1, 100);
+  camera.position.z = 14;
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, smallOrWeak?1.5:2));
+
+  const COUNT = smallOrWeak ? 140 : 380;
+  const geo = new THREE.BufferGeometry();
+  const pos = new Float32Array(COUNT*3);
+  const spd = new Float32Array(COUNT);
+  for(let i=0;i<COUNT;i++){
+    pos[i*3]   = (Math.random()-0.5)*34;
+    pos[i*3+1] = (Math.random()-0.5)*20;
+    pos[i*3+2] = (Math.random()-0.5)*10;
+    spd[i] = 0.004 + Math.random()*0.010;
+  }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  const mat = new THREE.PointsMaterial({ color:0xC9A268, size:0.14, transparent:true, opacity:0.85,
+    blending:THREE.AdditiveBlending, depthWrite:false });
+  const pts = new THREE.Points(geo, mat);
+  scene.add(pts);
+
+  function resize(){
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    if(canvas.width!==w||canvas.height!==h){ renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); }
+  }
+
+  let visible = true, tabVisible = true;
+  const io = new IntersectionObserver(es=>{ visible = es[0].isIntersecting; }, {threshold:0.02});
+  io.observe(canvas.parentElement);
+  document.addEventListener('visibilitychange', ()=>{ tabVisible = !document.hidden; });
+
+  const arr = geo.attributes.position.array;
+  function loop(){
+    requestAnimationFrame(loop);
+    if(!visible || !tabVisible) return;
+    resize();
+    for(let i=0;i<COUNT;i++){
+      arr[i*3+1] += spd[i];
+      if(arr[i*3+1] > 10){ arr[i*3+1] = -10; arr[i*3] = (Math.random()-0.5)*34; }
+    }
+    geo.attributes.position.needsUpdate = true;
+    pts.rotation.y += 0.0004;
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
