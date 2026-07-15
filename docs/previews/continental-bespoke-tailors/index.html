@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Continental Bespoke Tailors & Alterations | Custom Suits & Tailoring in Austin, TX</title>
+<meta name="description" content="Continental Bespoke Tailors in Austin, TX — custom-made suits, expert alterations, and formalwear finished by a master tailor with 45 years at the bench. Off Research Blvd (Hwy 183). Call (512) 949-7663." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/continental-bespoke-tailors/" />
+<meta property="og:type" content="business.business" />
+<meta property="og:title" content="Continental Bespoke Tailors & Alterations — Austin, TX" />
+<meta property="og:description" content="Custom suits, expert alterations, and formalwear by a master tailor with 45 years of craft. Austin, Texas." />
+<meta property="og:image" content="https://turnkeyweb.org/previews/continental-bespoke-tailors/assets/hero.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ivory:#F7F2E9; --paper:#FBF8F1; --bone:#EEE5D5; --sand:#E4D8C2;
+    --ink:#221E19; --stone:#6B6155; --muted:#8B8173;
+    --brass:#A9793F; --brass-2:#C39A5B; --oxblood:#7C2B2B; --charcoal:#2A2723;
+    --line:rgba(34,30,25,.12);
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:auto;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+  body{background:var(--ivory);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  ::selection{background:var(--oxblood);color:#fff}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.12;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+  .eyebrow{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--brass)}
+  .serif-it{font-family:var(--serif);font-style:italic;font-weight:400}
+
+  /* shimmer text */
+  .grad-text{
+    background:linear-gradient(100deg,var(--oxblood) 0%,var(--brass) 30%,var(--brass-2) 50%,var(--brass) 70%,var(--oxblood) 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    animation:shimmer 9s linear infinite;
+    padding-bottom:.1em;line-height:1.16;display:inline-block;
+  }
+  @keyframes shimmer{to{background-position:220% 0}}
+
+  /* buttons */
+  .btn{position:relative;display:inline-flex;align-items:center;gap:.6em;font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:.02em;padding:15px 30px;border-radius:2px;cursor:pointer;transition:transform .4s cubic-bezier(.2,.7,.2,1),background .4s,color .4s,box-shadow .4s;overflow:hidden;border:1px solid transparent}
+  .btn svg{width:16px;height:16px;flex:none}
+  .btn-primary{background:var(--ink);color:var(--ivory)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 34px -14px rgba(34,30,25,.5)}
+  .btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 20%,rgba(255,255,255,.16) 50%,transparent 80%);transform:translateX(-120%);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .btn-primary:hover::after{transform:translateX(120%)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-3px)}
+  .btn-brass{background:var(--brass);color:#fff}
+  .btn-brass:hover{transform:translateY(-3px);box-shadow:0 16px 34px -14px rgba(169,121,63,.6);background:var(--oxblood)}
+
+  /* nav */
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .5s,box-shadow .5s,border-color .5s;border-bottom:1px solid transparent}
+  header.nav .bar{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brandmark{display:flex;flex-direction:column;line-height:1;color:var(--ink)}
+  .brandmark .b1{font-family:var(--serif);font-size:22px;letter-spacing:.12em;font-weight:500}
+  .brandmark .b2{font-family:var(--sans);font-size:9.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--brass);margin-top:5px;font-weight:500}
+  .nav.scrolled{background:rgba(247,242,233,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line);box-shadow:0 1px 24px -16px rgba(34,30,25,.6)}
+  .nav.scrolled .brandmark,.nav.scrolled .navlinks a{color:var(--ink)}
+  .nav.top .brandmark .b1{color:#F7F2E9}
+  .nav.top .brandmark .b2{color:var(--brass-2)}
+  .nav.top .navlinks a{color:rgba(247,242,233,.9)}
+  .nav.top .navphone{color:#F7F2E9}
+  .navlinks{display:flex;align-items:center;gap:34px}
+  .navlinks a{font-size:13px;font-weight:400;letter-spacing:.02em;position:relative;transition:color .4s}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;height:1.5px;width:0;background:var(--brass);transition:width .45s cubic-bezier(.2,.7,.2,1)}
+  .navlinks a:hover::after{width:100%}
+  .navphone{font-size:13px;letter-spacing:.04em;display:inline-flex;align-items:center;gap:7px;transition:color .4s}
+  .navphone svg{width:14px;height:14px}
+  .nav-cta{display:inline-flex}
+  .menu-btn{display:none}
+
+  /* hero */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--charcoal)}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;will-change:transform}
+  .hero-scrim{position:absolute;inset:0;z-index:1;background:
+     linear-gradient(90deg,rgba(20,17,13,.86) 0%,rgba(20,17,13,.62) 34%,rgba(20,17,13,.15) 62%,rgba(20,17,13,0) 82%),
+     linear-gradient(0deg,rgba(20,17,13,.72) 0%,rgba(20,17,13,.1) 40%,rgba(20,17,13,.15) 100%)}
+  .hero-inner{position:relative;z-index:2;padding-bottom:clamp(56px,9vh,110px);padding-top:120px;width:100%}
+  .hero-inner .eyebrow{color:var(--brass-2)}
+  .hero h1{color:#F8F3EA;font-size:clamp(44px,7.6vw,104px);line-height:1.06;margin:22px 0 0;max-width:16ch;letter-spacing:-.018em;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+  .hero h1 .line2{display:block;padding-bottom:.06em}
+  .hero p.sub{color:rgba(245,240,231,.9);font-size:clamp(16px,1.5vw,20px);max-width:46ch;margin-top:28px;line-height:1.6;text-shadow:0 1px 16px rgba(0,0,0,.4)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+  .hero-cta .btn-ghost{color:#F7F2E9;border-color:rgba(247,242,233,.35)}
+  .hero-cta .btn-ghost:hover{border-color:#F7F2E9;background:rgba(247,242,233,.08)}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:26px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(247,242,233,.16);max-width:560px}
+  .hero-meta .hm{display:flex;flex-direction:column;gap:3px}
+  .hero-meta .hm b{font-family:var(--serif);font-size:26px;color:#F7F2E9;font-weight:500;line-height:1.1}
+  .hero-meta .hm span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-2)}
+  .scroll-hint{position:absolute;right:clamp(20px,5vw,64px);bottom:38px;z-index:2;display:flex;align-items:center;gap:10px;color:rgba(247,242,233,.7);font-size:11px;letter-spacing:.24em;text-transform:uppercase;writing-mode:vertical-rl}
+  .scroll-hint .rail{width:1px;height:52px;background:linear-gradient(rgba(247,242,233,.7),transparent);animation:railpulse 2.2s ease-in-out infinite}
+  @keyframes railpulse{0%,100%{opacity:.35;transform:scaleY(.7)}50%{opacity:1;transform:scaleY(1)}}
+
+  /* marquee */
+  .marquee{background:var(--charcoal);color:var(--ivory);padding:18px 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .marquee-track{display:flex;gap:3rem;width:max-content;animation:scrollX 44s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee-track span{font-family:var(--serif);font-size:19px;letter-spacing:.02em;color:rgba(247,242,233,.82);white-space:nowrap;display:inline-flex;align-items:center;gap:3rem}
+  .marquee-track span i{font-style:italic;color:var(--brass-2)}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--brass);display:inline-block}
+  @keyframes scrollX{to{transform:translateX(-50%)}}
+
+  section{position:relative}
+  .sec-pad{padding:clamp(80px,12vh,150px) 0}
+  .sec-head .eyebrow{display:block}
+  .sec-head h2{font-size:clamp(32px,4.6vw,60px);line-height:1.1;margin-top:16px;letter-spacing:-.015em}
+  .lead{color:var(--stone);font-size:clamp(16px,1.35vw,19px);line-height:1.7;max-width:56ch}
+
+  /* the house */
+  #house{background:var(--paper)}
+  #house .particles{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.9}
+  #house .wrap{position:relative;z-index:2}
+  .house-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,88px);align-items:center}
+  .house-grid .lead{margin-top:26px}
+  .house-grid .lead + .lead{margin-top:18px}
+  .stitch{display:block;width:100%;max-width:340px;height:24px;margin:34px 0 8px}
+  .stitch path{stroke:var(--brass);stroke-width:2;stroke-dasharray:8 7;fill:none;stroke-linecap:round}
+  .stats{display:flex;gap:38px;margin-top:40px;flex-wrap:wrap}
+  .stat b{font-family:var(--serif);font-size:clamp(40px,5vw,62px);color:var(--ink);font-weight:500;line-height:1;display:block;letter-spacing:-.02em;padding-bottom:.06em}
+  .stat span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-top:8px;display:block}
+  .house-portrait{position:relative}
+  .house-portrait figure{position:relative;border-radius:3px;overflow:hidden;box-shadow:0 40px 80px -50px rgba(34,30,25,.6)}
+  .house-portrait img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3.4}
+  .house-portrait .tag{position:absolute;left:20px;bottom:20px;background:rgba(247,242,233,.94);backdrop-filter:blur(6px);padding:12px 18px;border-radius:2px;border:1px solid var(--line)}
+  .house-portrait .tag b{font-family:var(--serif);font-size:16px;display:block}
+  .house-portrait .tag span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+
+  /* the work — interactive index */
+  #work{background:var(--ivory)}
+  .work-grid{display:grid;grid-template-columns:1fr 1.02fr;gap:clamp(36px,5vw,72px);margin-top:52px;align-items:start}
+  .svc-list{border-top:1px solid var(--line)}
+  .svc-item{border-bottom:1px solid var(--line);padding:24px 6px;cursor:pointer;transition:padding-left .5s cubic-bezier(.2,.7,.2,1)}
+  .svc-item .row{display:flex;align-items:baseline;gap:18px}
+  .svc-item .num{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--brass);font-weight:500;width:28px;flex:none}
+  .svc-item h3{font-size:clamp(22px,2.5vw,30px);color:var(--muted);transition:color .45s;font-weight:400;line-height:1.16;padding-bottom:.04em}
+  .svc-item .plus{margin-left:auto;color:var(--muted);transition:color .45s,transform .45s}
+  .svc-item .plus svg{width:18px;height:18px}
+  .svc-item.active{padding-left:16px}
+  .svc-item.active h3{color:var(--ink)}
+  .svc-item.active .plus{color:var(--brass);transform:rotate(90deg)}
+  .svc-item .detail{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.2,.7,.2,1),opacity .5s,margin .5s;opacity:0;margin-top:0}
+  .svc-item.active .detail{max-height:220px;opacity:1;margin-top:16px}
+  .svc-item .detail p{color:var(--stone);font-size:15.5px;line-height:1.65;max-width:52ch;padding-left:46px}
+  .svc-item .detail p b{color:var(--ink);font-weight:500}
+  .work-visual{position:sticky;top:100px}
+  .work-visual .frame{position:relative;border-radius:3px;overflow:hidden;box-shadow:0 40px 80px -52px rgba(34,30,25,.55);aspect-ratio:4/3}
+  .work-visual .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s cubic-bezier(.4,0,.2,1),transform 7s ease-out}
+  .work-visual .frame img.on{opacity:1;transform:scale(1.06)}
+  .work-visual .cap{margin-top:16px;font-size:13px;color:var(--muted);letter-spacing:.02em;padding-left:2px}
+  .work-visual .cap b{color:var(--ink);font-family:var(--serif);font-size:16px;font-weight:500}
+
+  /* craft band */
+  .craft{position:relative;min-height:60vh;display:flex;align-items:center;overflow:hidden;background:var(--charcoal)}
+  .craft-bg{position:absolute;inset:0;width:100%;height:120%;object-fit:cover;z-index:0;will-change:transform}
+  .craft-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(20,17,13,.78),rgba(20,17,13,.34) 60%,rgba(20,17,13,.5))}
+  .craft .wrap{position:relative;z-index:2;text-align:center;padding:clamp(70px,12vh,130px) 0}
+  .craft .eyebrow{color:var(--brass-2)}
+  .craft h2{color:#F8F3EA;font-size:clamp(34px,5.2vw,68px);margin-top:16px;line-height:1.12;text-shadow:0 2px 26px rgba(0,0,0,.4)}
+  .craft p{color:rgba(245,240,231,.86);max-width:52ch;margin:22px auto 0;font-size:clamp(15px,1.3vw,18px)}
+
+  /* fabrics */
+  #fabrics{background:var(--paper)}
+  .fab-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(36px,5vw,72px);align-items:center}
+  .fab-photo{border-radius:3px;overflow:hidden;box-shadow:0 40px 80px -54px rgba(34,30,25,.5)}
+  .fab-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3.2}
+  .houses{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .house-chip{border:1px solid var(--line);border-radius:2px;padding:12px 18px;background:var(--ivory);transition:transform .4s,border-color .4s,box-shadow .4s}
+  .house-chip:hover{transform:translateY(-4px);border-color:var(--brass);box-shadow:0 14px 30px -20px rgba(169,121,63,.5)}
+  .house-chip b{font-family:var(--serif);font-size:17px;display:block;line-height:1.2}
+  .house-chip span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .fab-notes{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .fab-note{flex:1;min-width:150px;border-left:2px solid var(--brass);padding:4px 0 4px 16px}
+  .fab-note b{font-family:var(--serif);font-size:22px;display:block;line-height:1.1;padding-bottom:.04em}
+  .fab-note span{font-size:12.5px;color:var(--stone);letter-spacing:.01em}
+
+  /* voices */
+  #voices{background:var(--charcoal);color:var(--ivory)}
+  #voices .eyebrow{color:var(--brass-2)}
+  #voices h2{color:#F8F3EA}
+  .rating-row{display:flex;align-items:center;gap:14px;margin-top:22px}
+  .stars{display:inline-flex;gap:3px}
+  .stars svg{width:19px;height:19px;fill:var(--brass-2)}
+  .rating-row .rt{font-family:var(--serif);font-size:22px;color:#F7F2E9}
+  .rating-row .rs{font-size:13px;color:rgba(247,242,233,.6);letter-spacing:.03em}
+  .voices-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:52px}
+  .quote{border:1px solid rgba(247,242,233,.14);border-radius:3px;padding:34px 30px;background:rgba(247,242,233,.03);position:relative;transition:transform .5s,border-color .5s,background .5s}
+  .quote:hover{transform:translateY(-5px);border-color:rgba(195,154,91,.5);background:rgba(247,242,233,.05)}
+  .quote .mark{font-family:var(--serif);font-size:56px;line-height:.5;color:var(--brass);opacity:.5;height:26px;display:block}
+  .quote p{color:rgba(247,242,233,.9);font-family:var(--serif);font-size:clamp(17px,1.5vw,20px);line-height:1.5;font-weight:300}
+  .quote .by{margin-top:20px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-2);display:flex;align-items:center;gap:9px}
+  .quote .by .ln{width:22px;height:1px;background:var(--brass)}
+
+  /* visit */
+  #visit{background:var(--ivory)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(34px,4.5vw,64px);align-items:stretch;margin-top:52px}
+  .visit-card{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:clamp(28px,3.4vw,44px);display:flex;flex-direction:column}
+  .vinfo{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .vinfo:first-of-type{padding-top:0}
+  .vinfo .ic{width:38px;height:38px;flex:none;border-radius:50%;background:var(--bone);display:flex;align-items:center;justify-content:center;color:var(--brass)}
+  .vinfo .ic svg{width:17px;height:17px}
+  .vinfo .vt span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);display:block;margin-bottom:5px}
+  .vinfo .vt b{font-weight:500;font-size:16px;line-height:1.5;color:var(--ink)}
+  .vinfo .vt a{color:var(--ink);border-bottom:1px solid transparent;transition:border-color .3s}
+  .vinfo .vt a:hover{border-color:var(--brass)}
+  .hours-line{display:flex;justify-content:space-between;font-size:14.5px;padding:5px 0;color:var(--stone)}
+  .hours-line b{color:var(--ink);font-weight:500}
+  .hours-line.today{color:var(--oxblood)}
+  .hours-line.today b{color:var(--oxblood)}
+  .visit-card .btn{margin-top:26px;width:100%;justify-content:center}
+  .map-wrap{border-radius:3px;overflow:hidden;border:1px solid var(--line);min-height:420px;box-shadow:0 40px 80px -56px rgba(34,30,25,.5)}
+  .map-wrap iframe{width:100%;height:100%;min-height:420px;border:0;filter:saturate(.92) contrast(1.02)}
+
+  /* closing cta */
+  #cta{background:var(--paper);text-align:center;overflow:hidden;position:relative}
+  #cta .ring{position:absolute;border-radius:50%;border:1px solid rgba(169,121,63,.18);pointer-events:none}
+  #cta h2{font-size:clamp(38px,6vw,84px);line-height:1.1;letter-spacing:-.02em;position:relative;z-index:2}
+  #cta .lead{margin:22px auto 0;text-align:center}
+  #cta .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px;position:relative;z-index:2}
+  .wordmark-badge{display:inline-flex;flex-direction:column;align-items:center;line-height:1;margin-bottom:30px}
+  .wordmark-badge .w1{font-family:var(--serif);font-size:26px;letter-spacing:.14em}
+  .wordmark-badge .w2{font-family:var(--sans);font-size:10px;letter-spacing:.44em;text-transform:uppercase;color:var(--brass);margin-top:7px}
+
+  /* footer */
+  footer{background:var(--charcoal);color:rgba(247,242,233,.72);padding:70px 0 130px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+  footer .brandmark .b1{color:#F7F2E9}
+  footer .fdesc{margin-top:18px;font-size:14px;line-height:1.7;max-width:38ch;color:rgba(247,242,233,.6)}
+  footer h4{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-2);margin-bottom:16px;font-weight:500}
+  footer .fl{font-size:14px;line-height:1.9;color:rgba(247,242,233,.72)}
+  footer .fl a{transition:color .3s}
+  footer .fl a:hover{color:#F7F2E9}
+  .foot-bottom{border-top:1px solid rgba(247,242,233,.12);margin-top:52px;padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:rgba(247,242,233,.5)}
+  .foot-bottom a{color:var(--brass-2)}
+
+  /* mobile sticky bar */
+  .mobar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(42,39,35,.97);backdrop-filter:blur(10px);border-top:1px solid rgba(247,242,233,.14);padding:10px 14px;gap:10px}
+  .mobar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:2px;font-size:14px;font-weight:500;letter-spacing:.02em}
+  .mobar svg{width:16px;height:16px}
+  .mobar .call{background:var(--brass);color:#fff}
+  .mobar .dir{background:transparent;color:#F7F2E9;border:1px solid rgba(247,242,233,.3)}
+
+  [data-reveal]{opacity:0;transform:translateY(32px);will-change:opacity,transform}
+
+  @media (max-width:960px){
+    .house-grid,.work-grid,.fab-grid,.visit-grid,.foot-grid{grid-template-columns:1fr}
+    .work-visual{position:relative;top:0;order:-1}
+    .voices-grid{grid-template-columns:1fr}
+    .hero h1{max-width:20ch}
+  }
+  @media (max-width:760px){
+    .navlinks,.navphone,.nav-cta{display:none}
+    .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;color:var(--ink);background:transparent;border:0;cursor:pointer}
+    .nav.top .menu-btn{color:#F7F2E9}
+    .mobar{display:flex}
+    footer{padding-bottom:96px}
+    .hero{min-height:94svh}
+    .hero-inner{padding-top:104px}
+    .hero-meta{gap:20px}
+    .scroll-hint{display:none}
+    body{padding-bottom:0}
+    .stats{gap:26px}
+    .fab-notes{flex-direction:column}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001s!important;animation-iteration-count:1!important}
+    .hero-bg,.craft-bg{transform:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav top" id="nav">
+  <div class="wrap bar">
+    <a href="#top" class="brandmark" aria-label="Continental Bespoke Tailors home">
+      <span class="b1">CONTINENTAL</span>
+      <span class="b2">Bespoke Tailors</span>
+    </a>
+    <nav class="navlinks">
+      <a href="#house">The House</a>
+      <a href="#work">The Work</a>
+      <a href="#fabrics">Fabrics</a>
+      <a href="#voices">Reviews</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="navphone" href="tel:+15129497663">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (512) 949-7663
+    </a>
+    <a class="btn btn-brass nav-cta" href="#visit">Book a fitting</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Call the shop" onclick="location.href='tel:+15129497663'">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <video class="hero-bg" autoplay muted loop playsinline poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-scrim"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Bespoke Tailoring &nbsp;·&nbsp; Austin, Texas</span>
+    <h1>
+      The quiet art of
+      <span class="line2"><span class="grad-text serif-it">a perfect fit.</span></span>
+    </h1>
+    <p class="sub">Custom suits cut to your measure, alterations done with precision, and formalwear finished by a master's hand. Forty-five years of craft, tucked just off Research Boulevard.</p>
+    <div class="hero-cta">
+      <a class="btn btn-brass" href="#visit">Book a fitting</a>
+      <a class="btn btn-ghost" href="tel:+15129497663">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (512) 949-7663
+      </a>
+    </div>
+    <div class="hero-meta">
+      <div class="hm"><b data-count="45" data-suffix="">45</b><span>Years at the bench</span></div>
+      <div class="hm"><b>By hand</b><span>Every finish</span></div>
+      <div class="hm"><b>Off Hwy 183</b><span>Research Blvd</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><span class="rail"></span></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Ermenegildo Zegna<i class="dot"></i>Loro Piana<i class="dot"></i>Baroni Super 150s<i class="dot"></i>Hart Schaffner Marx<i class="dot"></i><i>Hand-finished</i><i class="dot"></i>Bespoke Suits<i class="dot"></i>Expert Alterations<i class="dot"></i></span>
+    <span>Ermenegildo Zegna<i class="dot"></i>Loro Piana<i class="dot"></i>Baroni Super 150s<i class="dot"></i>Hart Schaffner Marx<i class="dot"></i><i>Hand-finished</i><i class="dot"></i>Bespoke Suits<i class="dot"></i>Expert Alterations<i class="dot"></i></span>
+  </div>
+</div>
+
+<!-- THE HOUSE -->
+<section id="house" class="sec-pad">
+  <canvas class="particles" id="dust" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="house-grid">
+      <div>
+        <div class="sec-head" data-reveal>
+          <span class="eyebrow">The House of Continental</span>
+          <h2>A master at the bench,<br>and one pair of hands.</h2>
+        </div>
+        <p class="lead" data-reveal>Continental Bespoke Tailors is the work of Vasile "Vas" Hotnog — a Romanian master tailor who has spent forty-five years turning fine cloth into garments that look made for the person wearing them. Clients call him a lost gem: an artist who does everything so precisely you'd never know a stitch was touched.</p>
+        <p class="lead" data-reveal>Every suit, every alteration, and every hem passes through his hands alone. No assembly line, no shortcuts — just a quiet Austin atelier where craft still takes the time it deserves.</p>
+        <svg class="stitch" viewBox="0 0 340 24" data-reveal><path d="M2 12 H338"/></svg>
+        <div class="stats">
+          <div class="stat" data-reveal><b data-count="45">0</b><span>Years of craft</span></div>
+          <div class="stat" data-reveal><b data-count="3" data-suffix="-day">0</b><span>Typical turnaround</span></div>
+          <div class="stat" data-reveal><b>1:1</b><span>Master, never a factory</span></div>
+        </div>
+      </div>
+      <div class="house-portrait" data-reveal>
+        <figure>
+          <img src="assets/suits.jpg" alt="A brass rail of finished bespoke suit jackets in charcoal, navy and grey wool in the Continental atelier" loading="lazy" />
+          <div class="tag"><b>The fitting room</b><span>Research Blvd, Austin</span></div>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE WORK -->
+<section id="work" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">The Work</span>
+      <h2>From a first fitting to a final press.</h2>
+    </div>
+    <div class="work-grid">
+      <div class="svc-list" id="svcList" data-reveal>
+        <div class="svc-item active" data-img="0">
+          <div class="row"><span class="num">01</span><h3>Bespoke &amp; Custom Suits</h3><span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          <div class="detail"><p>A suit built to your measurements from the cloth up. Choose from <b>Zegna, Loro Piana, Baroni Super 150s</b> and more, then let Vas cut, canvas and hand-finish a jacket that sits the way it should. Custom made-to-measure suiting, tuxedos and top coats.</p></div>
+        </div>
+        <div class="svc-item" data-img="1">
+          <div class="row"><span class="num">02</span><h3>Alterations &amp; Tailoring</h3><span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          <div class="detail"><p>Taper, take in, let out, hem and reshape — precise alterations for suits, trousers, shirts and jackets. <b>Simple alterations are often finished within a day</b>, and everything comes back looking as though it was cut that way.</p></div>
+        </div>
+        <div class="svc-item" data-img="2">
+          <div class="row"><span class="num">03</span><h3>Weddings &amp; Formalwear</h3><span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          <div class="detail"><p>The day everything has to be perfect. Groom and groomsmen suiting, tuxedo fittings, and dress and formalwear alterations — <b>fitted, pressed and ready</b> well before the aisle. Bring the whole party in.</p></div>
+        </div>
+        <div class="svc-item" data-img="0">
+          <div class="row"><span class="num">04</span><h3>Ready-Made &amp; Tuxedos</h3><span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          <div class="detail"><p>Off-the-rack suits, tuxedos, prom suiting and top coats on the floor — <b>then tailored in-house</b> to fit you exactly. A curated selection of quality menswear with the alterations built right in.</p></div>
+        </div>
+      </div>
+      <div class="work-visual" data-reveal>
+        <div class="frame">
+          <img class="wv on" src="assets/suits.jpg" alt="Finished bespoke suits on a brass rail" loading="lazy" />
+          <img class="wv" src="assets/hero.jpg" alt="Hand-stitching a suit lapel with brass shears and silk thread" loading="lazy" />
+          <img class="wv" src="assets/fabric.jpg" alt="Bolts of luxury wool suiting fabric with a brass measuring tape" loading="lazy" />
+        </div>
+        <div class="cap"><b>In the atelier.</b> &nbsp;Real cloth, real hands, finished on Research Blvd.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRAFT BAND -->
+<section class="craft">
+  <img class="craft-bg" src="assets/band.jpg" alt="Close detail of hand-stitching on a charcoal wool lapel" loading="lazy" />
+  <div class="craft-scrim"></div>
+  <div class="wrap">
+    <span class="eyebrow">The Standard</span>
+    <h2>Every stitch, by hand.</h2>
+    <p>Machines are quick. Hands are exact. At Continental, the finishing that decides how a garment falls is still done by a master's hand — the difference you feel the moment you put it on.</p>
+  </div>
+</section>
+
+<!-- FABRICS -->
+<section id="fabrics" class="sec-pad">
+  <div class="wrap">
+    <div class="fab-grid">
+      <div class="fab-photo" data-reveal>
+        <img src="assets/fabric.jpg" alt="Rolled bolts of luxury wool and cashmere suiting in cream, camel, charcoal and oxblood" loading="lazy" />
+      </div>
+      <div>
+        <div class="sec-head" data-reveal>
+          <span class="eyebrow">The Cloth</span>
+          <h2>Only the mills worth wearing.</h2>
+        </div>
+        <p class="lead" data-reveal>A suit is only as good as the cloth it starts from. Continental works in the fabrics the finest houses in the world are known for — chosen for hand, drape and how they wear over the years.</p>
+        <div class="houses" data-reveal>
+          <div class="house-chip"><b>Ermenegildo Zegna</b><span>Italian worsteds</span></div>
+          <div class="house-chip"><b>Loro Piana</b><span>Wool &amp; cashmere</span></div>
+          <div class="house-chip"><b>Baroni</b><span>Super 150s trend</span></div>
+          <div class="house-chip"><b>Hart Schaffner Marx</b><span>American heritage</span></div>
+        </div>
+        <div class="fab-notes" data-reveal>
+          <div class="fab-note"><b>Made-to-measure</b><span>Cut from your chosen cloth</span></div>
+          <div class="fab-note"><b>Ready to wear</b><span>Suits, tuxedos &amp; prom on the floor</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section id="voices" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">In Their Words</span>
+      <h2>Austin's quietly kept secret.</h2>
+      <div class="rating-row">
+        <span class="stars" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+        <span class="rt">4.8</span>
+        <span class="rs">average rating from Austin clients</span>
+      </div>
+    </div>
+    <div class="voices-grid">
+      <div class="quote" data-reveal>
+        <span class="mark">&ldquo;</span>
+        <p>This man is a true custom tailor and does outstanding work. He does everything so precisely you'd never know it was altered in any way — a one-of-a-kind tailor who's more of an artist in his own right.</p>
+        <div class="by"><span class="ln"></span>Verified Google reviewer</div>
+      </div>
+      <div class="quote" data-reveal>
+        <span class="mark">&ldquo;</span>
+        <p>An amazing gentleman from Romania — literally a lost gem in this day and age. A little hidden shop off 183, and worth every mile of the drive.</p>
+        <div class="by"><span class="ln"></span>Verified Google reviewer</div>
+      </div>
+      <div class="quote" data-reveal>
+        <span class="mark">&ldquo;</span>
+        <p>The owner is genuinely kind and completes simple alterations within a day. Fast, friendly and done right the first time.</p>
+        <div class="by"><span class="ln"></span>Verified Google reviewer</div>
+      </div>
+      <div class="quote" data-reveal>
+        <span class="mark">&ldquo;</span>
+        <p>Tapered my pants in three days — precise work, quick turnaround, exactly what I asked for. I won't take my suits anywhere else.</p>
+        <div class="by"><span class="ln"></span>Verified Google reviewer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Visit The Shop</span>
+      <h2>Come in for a fitting.</h2>
+      <p class="lead" style="margin-top:16px">Fittings and consultations are by appointment — a quick call is the best way to start. You'll find Continental just off Research Boulevard (Hwy 183) in north Austin.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-card" data-reveal>
+        <div class="vinfo">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="vt"><span>Location</span><b>12591 Research Blvd, Suite 202<br>Austin, TX 78759</b></div>
+        </div>
+        <div class="vinfo">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="vt"><span>Call to book</span><b><a href="tel:+15129497663">(512) 949-7663</a></b></div>
+        </div>
+        <div class="vinfo" style="border-bottom:0">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div class="vt" style="flex:1">
+            <span>Hours</span>
+            <div class="hours-line" id="h-mon"><span>Monday – Friday</span><b>10:00 AM – 6:00 PM</b></div>
+            <div class="hours-line" id="h-sat"><span>Saturday</span><b>By appointment</b></div>
+            <div class="hours-line" id="h-sun"><span>Sunday</span><b>Closed</b></div>
+          </div>
+        </div>
+        <a class="btn btn-primary" href="tel:+15129497663">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call to schedule a fitting
+        </a>
+      </div>
+      <div class="map-wrap" data-reveal>
+        <iframe src="https://www.google.com/maps?q=12591%20Research%20Blvd%20Suite%20202%2C%20Austin%2C%20TX%2078759&output=embed" loading="lazy" title="Map to Continental Bespoke Tailors, 12591 Research Blvd Suite 202, Austin TX" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section id="cta" class="sec-pad">
+  <span class="ring" style="width:520px;height:520px;top:-140px;left:50%;transform:translateX(-50%)"></span>
+  <span class="ring" style="width:820px;height:820px;top:-280px;left:50%;transform:translateX(-50%)"></span>
+  <div class="wrap">
+    <div class="wordmark-badge" data-reveal><span class="w1">CONTINENTAL</span><span class="w2">Bespoke Tailors</span></div>
+    <h2 data-reveal>Dress like it was<br><span class="grad-text serif-it">made for you.</span></h2>
+    <p class="lead" data-reveal>Because it will be. Bring in a suit that needs saving, or start one from the cloth up — either way, you're in a master's hands.</p>
+    <div class="cta-btns" data-reveal>
+      <a class="btn btn-brass" href="tel:+15129497663">Call (512) 949-7663</a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps?q=12591+Research+Blvd+Suite+202,+Austin,+TX+78759" target="_blank" rel="noopener">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brandmark"><span class="b1">CONTINENTAL</span><span class="b2">Bespoke Tailors</span></div>
+        <p class="fdesc">Custom suits, expert alterations and formalwear by a master tailor with forty-five years at the bench. Proudly cut and finished in Austin, Texas.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <p class="fl">12591 Research Blvd, Ste 202<br>Austin, TX 78759<br><a href="tel:+15129497663">(512) 949-7663</a></p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <p class="fl">Mon – Fri &nbsp; 10a – 6p<br>Saturday &nbsp; By appointment<br>Sunday &nbsp; Closed</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr">2026</span> Continental Bespoke Tailors &amp; Alterations. All rights reserved.</span>
+      <span>Website preview by <a href="https://turnkeyweb.org" target="_blank" rel="noopener">Turnkey Web</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mobar">
+  <a class="call" href="tel:+15129497663"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call</a>
+  <a class="dir" href="https://www.google.com/maps?q=12591+Research+Blvd+Suite+202,+Austin,+TX+78759" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Directions</a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ClothingStore",
+  "name":"Continental Bespoke Tailors & Alterations",
+  "description":"Custom-made suits, expert alterations and formalwear by a master tailor with 45 years of experience in Austin, Texas.",
+  "image":"https://turnkeyweb.org/previews/continental-bespoke-tailors/assets/hero.jpg",
+  "url":"https://turnkeyweb.org/previews/continental-bespoke-tailors/",
+  "telephone":"+1-512-949-7663",
+  "priceRange":"$$-$$$",
+  "address":{"@type":"PostalAddress","streetAddress":"12591 Research Blvd, Suite 202","addressLocality":"Austin","addressRegion":"TX","postalCode":"78759","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":30.4193,"longitude":-97.7690},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"18:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","description":"By appointment"}
+  ],
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Bespoke & Custom Suits"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Suit & Garment Alterations"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Wedding & Formalwear Alterations"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Ready-Made Suiting & Tuxedos"}}
+  ]
+}
+</script>
+
+<!-- LIBS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+var isTouch = !window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+var isMobile = window.matchMedia('(max-width:760px)').matches;
+
+/* ---- nav state ---- */
+var nav = document.getElementById('nav');
+var hero = document.getElementById('top');
+function navState(){
+  var past = window.scrollY > (hero.offsetHeight - 120);
+  nav.classList.toggle('scrolled', past);
+  nav.classList.toggle('top', !past);
+}
+navState();
+window.addEventListener('scroll', navState, {passive:true});
+
+/* ---- Lenis smooth scroll driven by GSAP ticker (single rAF loop) ---- */
+var lenis = null;
+if(!reduce){
+  lenis = new Lenis({ duration:1.1, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}, smoothWheel:true, smoothTouch:false });
+  if(window.gsap){
+    gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+    gsap.ticker.lagSmoothing(0);
+    if(window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  }
+}
+if(window.ScrollTrigger) ScrollTrigger.config({ ignoreMobileResize:true });
+/* anchor scroll */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var id = a.getAttribute('href');
+    if(id.length>1){
+      var t = document.querySelector(id);
+      if(t){ e.preventDefault(); if(lenis){ lenis.scrollTo(t, {offset:-70}); } else { t.scrollIntoView({behavior:'smooth'}); } }
+    }
+  });
+});
+
+/* ---- reveals ---- */
+if(window.gsap && window.ScrollTrigger){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('[data-reveal]').forEach(function(el){
+    gsap.fromTo(el, {opacity:0,y:32}, {opacity:1,y:0,duration:.7,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 92%',once:true},
+      onComplete:function(){ el.style.willChange='auto'; }});
+  });
+
+  /* count-up */
+  gsap.utils.toArray('[data-count]').forEach(function(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:function(){
+      var o={v:0}; gsap.to(o,{v:target,duration:1.5,ease:'power2.out',onUpdate:function(){ el.textContent=Math.round(o.v)+suffix; }});
+    }});
+  });
+
+  /* hero video parallax (desktop only) */
+  if(!isTouch){
+    gsap.to('.hero-bg', {yPercent:16,scale:1.08,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    gsap.to('.craft-bg', {yPercent:-12,ease:'none',scrollTrigger:{trigger:'.craft',start:'top bottom',end:'bottom top',scrub:true}});
+  }
+
+  /* stitch draw-on-scroll */
+  var stitch = document.querySelector('.stitch path');
+  if(stitch){
+    var len = stitch.getTotalLength();
+    stitch.style.strokeDasharray = len; stitch.style.strokeDashoffset = len;
+    gsap.to(stitch, {strokeDashoffset:0,duration:1.4,ease:'power2.inOut',
+      scrollTrigger:{trigger:'.stitch',start:'top 88%',once:true},
+      onComplete:function(){ stitch.style.strokeDasharray='8 7'; stitch.style.strokeDashoffset='0'; }});
+  }
+}
+
+/* ---- services interactive index ---- */
+(function(){
+  var items = Array.prototype.slice.call(document.querySelectorAll('.svc-item'));
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('.work-visual .wv'));
+  function activate(it){
+    items.forEach(function(x){ x.classList.remove('active'); });
+    it.classList.add('active');
+    var idx = parseInt(it.getAttribute('data-img'),10) || 0;
+    imgs.forEach(function(im,i){ im.classList.toggle('on', i===idx); });
+  }
+  items.forEach(function(it){
+    it.addEventListener('click', function(){ activate(it); });
+    if(!isTouch){ it.addEventListener('mouseenter', function(){ activate(it); }); }
+  });
+})();
+
+/* ---- Three.js atelier dust (light canvas, brass motes) ---- */
+(function(){
+  var canvas = document.getElementById('dust');
+  if(!canvas || !window.THREE || reduce || isMobile) return;
+  var host = document.getElementById('house');
+  var renderer, scene, camera, points, raf=null, running=false;
+  try{
+    renderer = new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  }catch(e){ return; }
+  function size(){ var w=host.clientWidth,h=host.clientHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); }
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(60,1,0.1,100); camera.position.z=18;
+  var N=140, geo=new THREE.BufferGeometry(), pos=new Float32Array(N*3), spd=new Float32Array(N);
+  for(var i=0;i<N;i++){ pos[i*3]=(Math.random()-0.5)*44; pos[i*3+1]=(Math.random()-0.5)*26; pos[i*3+2]=(Math.random()-0.5)*20; spd[i]=0.004+Math.random()*0.010; }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  var mat=new THREE.PointsMaterial({color:0xB0854C,size:0.13,transparent:true,opacity:0.55,depthWrite:false,blending:THREE.NormalBlending});
+  points=new THREE.Points(geo,mat); scene.add(points);
+  size(); window.addEventListener('resize', size);
+  function tick(){ var p=geo.attributes.position.array; for(var i=0;i<N;i++){ p[i*3+1]+=spd[i]; p[i*3]+=Math.sin((Date.now()*0.0002)+i)*0.004; if(p[i*3+1]>14){ p[i*3+1]=-14; } } geo.attributes.position.needsUpdate=true; points.rotation.y+=0.0004; renderer.render(scene,camera); raf=requestAnimationFrame(tick); }
+  function start(){ if(!running){ running=true; tick(); } }
+  function stop(){ running=false; if(raf) cancelAnimationFrame(raf); raf=null; }
+  var io=new IntersectionObserver(function(en){ en.forEach(function(e){ e.isIntersecting?start():stop(); }); },{threshold:0.02});
+  io.observe(host);
+  document.addEventListener('visibilitychange', function(){ document.hidden?stop():(isInView()&&start()); });
+  function isInView(){ var r=host.getBoundingClientRect(); return r.bottom>0 && r.top<window.innerHeight; }
+})();
+
+/* ---- highlight today's hours ---- */
+(function(){
+  var d=new Date().getDay(); // 0 Sun ... 6 Sat
+  var el = d===0 ? 'h-sun' : d===6 ? 'h-sat' : 'h-mon';
+  var node=document.getElementById(el); if(node) node.classList.add('today');
+})();
+
+/* ---- 6s screenshot / crawler safety net ---- */
+setTimeout(function(){
+  document.querySelectorAll('[data-reveal]').forEach(function(el){
+    if(getComputedStyle(el).opacity < 0.9){ el.style.opacity=1; el.style.transform='none'; }
+  });
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    if(el.textContent.trim()==='0'){ var t=el.getAttribute('data-count'); var s=el.getAttribute('data-suffix')||''; el.textContent=t+s; }
+  });
+  var sp=document.querySelector('.stitch path'); if(sp){ sp.style.strokeDashoffset='0'; }
+}, 6000);
+</script>
+</body>
+</html>
