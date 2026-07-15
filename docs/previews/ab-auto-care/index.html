@@ -27,7 +27,7 @@ tailwind.config = {
   theme: { extend: {
     colors: {
       bone:'#F5F1EA', cream:'#FBF8F3', paper:'#FFFFFF',
-      ink:'#141A24', navy:'#16233B', steel:'#5E6C7E',
+      ink:'#141A24', navy:'#16233B', steel:'#47505C',
       blue:'#2B6FE0', blue2:'#1E5FC4', bluelt:'#5C9CF0'
     },
     fontFamily: { display:['"Space Grotesk"','sans-serif'], sans:['Inter','sans-serif'] }
@@ -217,7 +217,7 @@ tailwind.config = {
 <section id="services" class="py-24 sm:py-28 bg-bone relative">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="max-w-2xl">
-      <div data-reveal class="text-sm font-semibold text-blue uppercase tracking-[.2em]">What we do</div>
+      <div data-reveal class="text-sm font-semibold text-blue2 uppercase tracking-[.2em]">What we do</div>
       <h2 data-reveal class="display mt-4 text-[clamp(2rem,4.5vw,3.2rem)] font-700 text-ink">Everything your car needs,<br>under <span class="grad-text">one roof</span>.</h2>
       <p data-reveal class="mt-5 text-steel text-lg leading-relaxed">Body shop, mechanic bay, tow truck, and a lot full of clean used cars. You don't need five phone numbers — you need ours.</p>
     </div>
@@ -273,7 +273,7 @@ tailwind.config = {
 <section id="lanes" class="py-24 sm:py-28 bg-cream relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="max-w-2xl mb-14">
-      <div data-reveal class="text-sm font-semibold text-blue uppercase tracking-[.2em]">Two lanes, one shop</div>
+      <div data-reveal class="text-sm font-semibold text-blue2 uppercase tracking-[.2em]">Two lanes, one shop</div>
       <h2 data-reveal class="display mt-4 text-[clamp(2rem,4.5vw,3.2rem)] font-700 text-ink">Fix the one you love,<br>or <span class="grad-text">find the next one</span>.</h2>
     </div>
 
@@ -322,10 +322,10 @@ tailwind.config = {
 <!-- WORK BAND -->
 <section id="work" class="relative">
   <div class="band-fixed grain relative min-h-[46vh] flex items-center">
-    <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(22,35,59,.78),rgba(22,35,59,.34))"></div>
+    <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(15,24,42,.92),rgba(15,24,42,.5))"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full py-20">
       <div data-reveal class="max-w-xl text-white">
-        <div class="text-sm font-semibold text-bluelt uppercase tracking-[.2em]">Real work, real cars</div>
+        <div class="text-sm font-semibold uppercase tracking-[.2em]" style="color:#AECCF8">Real work, real cars</div>
         <h2 class="display mt-4 text-[clamp(1.9rem,4vw,3rem)] font-700">The kind of finish<br>you can see up close.</h2>
         <p class="mt-4 text-white/75 leading-relaxed text-lg">Every panel, brake job, and detail leaves the shop the way we'd want our own to.</p>
       </div>
@@ -351,7 +351,7 @@ tailwind.config = {
 <section id="reviews" class="py-24 sm:py-28 bg-cream">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="max-w-2xl mb-14">
-      <div data-reveal class="text-sm font-semibold text-blue uppercase tracking-[.2em]">In their words</div>
+      <div data-reveal class="text-sm font-semibold text-blue2 uppercase tracking-[.2em]">In their words</div>
       <h2 data-reveal class="display mt-4 text-[clamp(2rem,4.5vw,3.2rem)] font-700 text-ink">Neighbors who <span class="grad-text">came back</span>.</h2>
     </div>
     <div class="grid md:grid-cols-3 gap-5">
@@ -393,7 +393,7 @@ tailwind.config = {
 <section id="visit" class="py-24 sm:py-28 bg-bone">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-10 items-stretch">
     <div data-reveal>
-      <div class="text-sm font-semibold text-blue uppercase tracking-[.2em]">Come by the shop</div>
+      <div class="text-sm font-semibold text-blue2 uppercase tracking-[.2em]">Come by the shop</div>
       <h2 class="display mt-4 text-[clamp(2rem,4.5vw,3.2rem)] font-700 text-ink">Stop in, or<br>get a <span class="grad-text">tow to us</span>.</h2>
 
       <div class="mt-8 space-y-6">
@@ -423,11 +423,11 @@ tailwind.config = {
       </div>
     </div>
 
-    <div data-reveal class="rounded-2xl overflow-hidden border border-navy/10 shadow-lg min-h-[360px]">
+    <div data-reveal class="rounded-2xl overflow-hidden border border-navy/10 shadow-lg bg-navy/5" style="min-height:420px">
       <iframe
         title="AB Auto Care location map"
         src="https://www.google.com/maps?q=901%20Marcella%20St%2C%20Houston%2C%20TX%2077091&output=embed"
-        width="100%" height="100%" style="border:0; min-height:360px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        width="100%" height="440" style="border:0; display:block; width:100%; height:440px" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
