@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  AB Auto Care LLC — Houston, TX auto body + mechanic + towing + used-car sales
+  Bespoke premium build (Turnkey Web). Light-luxury art direction.
+  Brand palette overridden to the client's real logo blue (electric blue + deep navy) on a warm bone base.
+  Hero = AI cinematic Kling video (self-hosted assets/hero.mp4) behind a cream editorial scrim panel.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AB Auto Care | Auto Body, Mechanic & Towing in Houston, TX</title>
+<meta name="description" content="AB Auto Care in Houston keeps your car in top shape — collision & auto body repair, paintless dent repair, general mechanic work, towing, plus quality used cars with financing. Call 832-879-2809.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/ab-auto-care/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AB Auto Care | Auto Body, Mechanic & Towing in Houston, TX">
+<meta property="og:description" content="Collision & body repair, dent repair, mechanic service, towing, and quality used cars with financing — one trusted Houston shop.">
+<meta property="og:image" content="https://turnkeyweb.org/previews/ab-auto-care/assets/hero.jpg">
+<meta name="theme-color" content="#F5F1EA">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      bone:'#F5F1EA', cream:'#FBF8F3', paper:'#FFFFFF',
+      ink:'#141A24', navy:'#16233B', steel:'#5E6C7E',
+      blue:'#2B6FE0', blue2:'#1E5FC4', bluelt:'#5C9CF0'
+    },
+    fontFamily: { display:['"Space Grotesk"','sans-serif'], sans:['Inter','sans-serif'] }
+  }}
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<style>
+  :root{ --nav-h:76px; }
+  *{ -webkit-font-smoothing:antialiased; }
+  html{ scroll-behavior:auto; scroll-padding-top:var(--nav-h); }
+  body{ background:#F5F1EA; color:#141A24; font-family:Inter,sans-serif; overflow-x:hidden; }
+  ::selection{ background:#2B6FE0; color:#fff; }
+
+  .display{ font-family:"Space Grotesk",sans-serif; letter-spacing:-.02em; line-height:1.08; }
+
+  /* gradient shimmer — brand blue, min-lightness floor, descender-safe */
+  .grad-text{
+    background:linear-gradient(100deg,#1E5FC4 0%,#2B6FE0 30%,#5C9CF0 50%,#2B6FE0 70%,#1E5FC4 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 8s linear infinite;
+    line-height:1.15; padding-bottom:.08em;
+  }
+  @keyframes shimmer{ from{background-position:0% 50%} to{background-position:220% 50%} }
+
+  /* nav */
+  .nav{ transition:background .4s ease, box-shadow .4s ease, border-color .4s; }
+  .nav.solid{ background:rgba(251,248,243,.86); backdrop-filter:blur(12px); box-shadow:0 1px 0 rgba(20,26,36,.06); }
+  .underline-grow{ position:relative; }
+  .underline-grow::after{ content:''; position:absolute; left:0; bottom:-4px; height:1.5px; width:0;
+    background:linear-gradient(90deg,#2B6FE0,#1E5FC4); transition:width .45s cubic-bezier(.16,1,.3,1); }
+  .underline-grow:hover::after{ width:100%; }
+
+  /* hero */
+  .hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .hero-scrim{ position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(100deg, rgba(245,241,234,.97) 0%, rgba(245,241,234,.93) 30%, rgba(245,241,234,.55) 50%, rgba(245,241,234,0) 68%),
+      linear-gradient(0deg, rgba(245,241,234,.5) 0%, rgba(245,241,234,0) 30%);
+  }
+  @media(max-width:860px){
+    .hero-scrim{ background:
+      linear-gradient(180deg, rgba(245,241,234,.72) 0%, rgba(245,241,234,.86) 46%, rgba(245,241,234,.97) 100%); }
+  }
+
+  /* buttons */
+  .btn{ position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s, filter .3s; }
+  .btn-blue{ background:linear-gradient(135deg,#2B6FE0,#1E5FC4); color:#fff; box-shadow:0 14px 30px -12px rgba(43,111,224,.6); }
+  .btn-blue:hover{ transform:translateY(-3px); filter:brightness(1.05); box-shadow:0 20px 40px -14px rgba(43,111,224,.7); }
+  .btn-blue::after{ content:''; position:absolute; top:0; left:-120%; width:60%; height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-18deg);
+    transition:left .9s cubic-bezier(.16,1,.3,1); }
+  .btn-blue:hover::after{ left:130%; }
+  .btn-ghost{ border:1.5px solid rgba(20,26,36,.18); color:#141A24; }
+  .btn-ghost:hover{ border-color:#2B6FE0; color:#1E5FC4; transform:translateY(-3px); }
+
+  /* cards */
+  .card{ position:relative; background:#fff; border:1px solid rgba(20,26,36,.07);
+    transition:transform .55s cubic-bezier(.16,1,.3,1), box-shadow .55s, border-color .55s; overflow:hidden; }
+  .card::before{ content:''; position:absolute; top:0; left:0; height:3px; width:0;
+    background:linear-gradient(90deg,#2B6FE0,#5C9CF0); transition:width .65s cubic-bezier(.16,1,.3,1); }
+  .card:hover{ transform:translateY(-7px); box-shadow:0 30px 60px -30px rgba(20,26,36,.28); border-color:rgba(43,111,224,.25); }
+  .card:hover::before{ width:100%; }
+  .card:hover .svc-ic{ transform:rotate(-6deg) scale(1.08); color:#1E5FC4; }
+  .svc-ic{ transition:transform .55s cubic-bezier(.16,1,.3,1), color .55s; color:#2B6FE0; }
+
+  /* lane split (signature) */
+  .lane{ transition:flex .6s cubic-bezier(.16,1,.3,1), background .6s; }
+  .lane .lane-body{ transition:opacity .5s ease, transform .5s ease; }
+
+  /* marquee */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .marquee-track{ display:flex; gap:2.6rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* dot pulse */
+  .pulse-dot{ animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.45; transform:scale(.82)} }
+
+  /* reveals */
+  [data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  [data-reveal].in{ opacity:1; transform:none; }
+  [data-img]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.16,1,.3,1); }
+  [data-img].in{ clip-path:inset(0 0 0% 0); }
+
+  .band-fixed{ background-image:url('assets/band.jpg'); background-size:cover; background-position:center; }
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(#141a24 1px, transparent 1px); background-size:4px 4px; }
+
+  .mobile-bar{ transition:transform .4s ease; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav" class="nav fixed top-0 inset-x-0 z-50">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between" style="height:var(--nav-h)">
+    <a href="#top" class="flex items-center gap-2">
+      <img src="assets/logo.png" alt="AB Auto Care" class="h-8 sm:h-9 w-auto">
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-navy/85">
+      <a href="#services" class="underline-grow">Services</a>
+      <a href="#lanes" class="underline-grow">Repair &amp; Buy</a>
+      <a href="#work" class="underline-grow">Our Work</a>
+      <a href="#reviews" class="underline-grow">Reviews</a>
+      <a href="#visit" class="underline-grow">Visit</a>
+    </nav>
+    <a href="tel:+18328792809" class="btn btn-blue hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      832-879-2809
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero relative min-h-[100svh] flex items-center overflow-hidden">
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8" style="padding-top:calc(var(--nav-h) + 2rem)">
+    <div class="max-w-[640px]">
+      <div data-reveal class="inline-flex items-center gap-2 rounded-full bg-white/70 border border-navy/10 px-4 py-1.5 text-[13px] font-semibold text-navy/80 backdrop-blur-sm">
+        <span class="w-2 h-2 rounded-full bg-blue pulse-dot"></span>
+        Houston, TX &middot; Auto body, mechanic &amp; towing
+      </div>
+
+      <h1 data-reveal class="display mt-6 text-[clamp(2.6rem,7vw,5.1rem)] font-700 text-ink">
+        Keeping your car<br>in <span class="grad-text">top shape</span>,<br>so you keep moving.
+      </h1>
+
+      <p data-reveal class="mt-6 text-[17px] sm:text-lg text-steel max-w-[520px] leading-relaxed">
+        Family-run in Houston. From a fender bender to a full repaint, brakes to a tow home — and quality used cars when you're ready for the next one. Honest work, no pressure.
+      </p>
+
+      <div data-reveal class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="tel:+18328792809" class="btn btn-blue inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-semibold">
+          Call the shop
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#services" class="btn btn-ghost inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-semibold">
+          See what we do
+        </a>
+      </div>
+
+      <div data-reveal class="mt-10 flex flex-wrap gap-x-9 gap-y-4">
+        <div><div class="display text-2xl font-700 text-ink"><span class="count" data-to="30" data-suffix="+">0</span></div><div class="text-[13px] font-medium text-steel mt-0.5 uppercase tracking-wide">Years of experience</div></div>
+        <div class="w-px h-11 bg-navy/12 hidden sm:block"></div>
+        <div><div class="display text-2xl font-700 text-ink">One&nbsp;stop</div><div class="text-[13px] font-medium text-steel mt-0.5 uppercase tracking-wide">Fix it &middot; tow it &middot; buy it</div></div>
+        <div class="w-px h-11 bg-navy/12 hidden sm:block"></div>
+        <div><div class="display text-2xl font-700 text-ink">Se habla<br class="sm:hidden"> español</div><div class="text-[13px] font-medium text-steel mt-0.5 uppercase tracking-wide">Straight answers</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<section class="bg-navy py-4 relative overflow-hidden">
+  <div class="marquee">
+    <div class="marquee-track text-white/85 text-[15px] font-medium items-center">
+      <span>Collision &amp; Body Repair</span><span class="text-bluelt">◆</span>
+      <span class="italic text-bluelt">Paintless Dent Repair</span><span class="text-bluelt">◆</span>
+      <span>Bumper Repair</span><span class="text-bluelt">◆</span>
+      <span>Frame Straightening</span><span class="text-bluelt">◆</span>
+      <span class="italic text-bluelt">Brakes &amp; Mechanic Work</span><span class="text-bluelt">◆</span>
+      <span>24/7 Towing</span><span class="text-bluelt">◆</span>
+      <span class="italic text-bluelt">Used Cars &amp; Financing</span><span class="text-bluelt">◆</span>
+      <!-- dup -->
+      <span>Collision &amp; Body Repair</span><span class="text-bluelt">◆</span>
+      <span class="italic text-bluelt">Paintless Dent Repair</span><span class="text-bluelt">◆</span>
+      <span>Bumper Repair</span><span class="text-bluelt">◆</span>
+      <span>Frame Straightening</span><span class="text-bluelt">◆</span>
+      <span class="italic text-bluelt">Brakes &amp; Mechanic Work</span><span class="text-bluelt">◆</span>
+      <span>24/7 Towing</span><span class="text-bluelt">◆</span>
+      <span class="italic text-bluelt">Used Cars &amp; Financing</span><span class="text-bluelt">◆</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-24 sm:py-28 bg-bone relative">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl">
+      <div data-reveal class="text-sm font-semibold text-blue uppercase tracking-[.2em]">What we do</div>
+      <h2 data-reveal class="display mt-4 text-[clamp(2rem,4.5vw,3.2rem)] font-700 text-ink">Everything your car needs,<br>under <span class="grad-text">one roof</span>.</h2>
+      <p data-reveal class="mt-5 text-steel text-lg leading-relaxed">Body shop, mechanic bay, tow truck, and a lot full of clean used cars. You don't need five phone numbers — you need ours.</p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- 1 -->
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="svc-ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5"/><path d="M5 13h14v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H8v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/><circle cx="7.5" cy="15.5" r="1"/><circle cx="16.5" cy="15.5" r="1"/></svg></div>
+        <h3 class="display text-xl font-600 text-ink mt-5">Collision &amp; Body Repair</h3>
+        <p class="text-steel mt-2.5 leading-relaxed">Fender benders to major collision work. We straighten, refinish, and blend the paint so it looks like it never happened.</p>
+      </div>
+      <!-- 2 -->
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="svc-ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15c3-1 5-6 8-6s5 3 8 3"/><path d="M4 15c0 2 2 3 4 3s3-1 4-2"/><circle cx="15.5" cy="8.5" r="1.2"/></svg></div>
+        <h3 class="display text-xl font-600 text-ink mt-5">Paintless Dent Repair</h3>
+        <p class="text-steel mt-2.5 leading-relaxed">Door dings and hail dents massaged out from behind the panel — factory finish kept, no filler, no repaint.</p>
+      </div>
+      <!-- 3 -->
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="svc-ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2z"/></svg></div>
+        <h3 class="display text-xl font-600 text-ink mt-5">General Mechanic Work</h3>
+        <p class="text-steel mt-2.5 leading-relaxed">Brakes, diagnostics, and the everyday repairs that keep you on the road. We tell you what it needs — and what it doesn't.</p>
+      </div>
+      <!-- 4 -->
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="svc-ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="12" width="9" height="5" rx="1"/><path d="M11 13h4l3 2h2a1 1 0 0 1 1 1v1h-3"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/><path d="M2 12l2-3h5v3"/></svg></div>
+        <h3 class="display text-xl font-600 text-ink mt-5">Towing &amp; Roadside</h3>
+        <p class="text-steel mt-2.5 leading-relaxed">Stuck on the side of the road? We'll come get the car and bring it straight to the shop — one call, one handoff.</p>
+      </div>
+      <!-- 5 -->
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="svc-ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l1.5-4A2 2 0 0 1 8.4 8h7.2a2 2 0 0 1 1.9 1L19 13v5h-2v-2H7v2H5z"/><circle cx="8" cy="15" r="1"/><circle cx="16" cy="15" r="1"/><path d="M9 5h6M12 3v4" stroke-width="1.6"/></svg></div>
+        <h3 class="display text-xl font-600 text-ink mt-5">Quality Used Cars</h3>
+        <p class="text-steel mt-2.5 leading-relaxed">A hand-picked lot from budget-friendly to near-new. Cars we'd put our own family in — no hard sell, ever.</p>
+      </div>
+      <!-- 6 -->
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="svc-ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/><circle cx="8" cy="14" r="1.3"/><path d="M13 14h4"/></svg></div>
+        <h3 class="display text-xl font-600 text-ink mt-5">Financing Made Simple</h3>
+        <p class="text-steel mt-2.5 leading-relaxed">In-house financing through Westlake. Options that work for real budgets and a range of credit histories.</p>
+      </div>
+    </div>
+
+    <div data-reveal class="mt-12 flex flex-wrap items-center gap-x-3 gap-y-2 text-steel">
+      <span class="text-ink font-semibold">Not sure who to call?</span>
+      <span>Start with the shop —</span>
+      <a href="tel:+18328792809" class="text-blue2 font-semibold underline-grow">832-879-2809</a>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE: TWO LANES -->
+<section id="lanes" class="py-24 sm:py-28 bg-cream relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-14">
+      <div data-reveal class="text-sm font-semibold text-blue uppercase tracking-[.2em]">Two lanes, one shop</div>
+      <h2 data-reveal class="display mt-4 text-[clamp(2rem,4.5vw,3.2rem)] font-700 text-ink">Fix the one you love,<br>or <span class="grad-text">find the next one</span>.</h2>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-5">
+      <!-- lane repair -->
+      <div data-reveal class="lane flex-1 rounded-3xl border border-navy/8 bg-white p-8 sm:p-10 relative overflow-hidden">
+        <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full" style="background:radial-gradient(circle,rgba(43,111,224,.14),transparent 65%)"></div>
+        <div class="lane-body relative">
+          <div class="inline-flex items-center gap-2 text-blue2 font-semibold text-sm uppercase tracking-widest">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2z"/></svg>
+            Repair lane
+          </div>
+          <h3 class="display text-3xl font-700 text-ink mt-4">Bring it back to new.</h3>
+          <p class="text-steel mt-4 leading-relaxed text-[17px]">Body damage, dents, paint, brakes, a tow off the shoulder — we handle the whole recovery so you drop off once and drive away right.</p>
+          <ul class="mt-6 space-y-3 text-navy/90">
+            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-blue"></span> Insurance-friendly collision estimates</li>
+            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-blue"></span> Paintless dent &amp; bumper repair</li>
+            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-blue"></span> Mechanic work &amp; 24/7 towing</li>
+          </ul>
+          <a href="tel:+18328792809" class="mt-8 btn btn-blue inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">Get an estimate</a>
+        </div>
+      </div>
+
+      <!-- lane buy -->
+      <div data-reveal class="lane flex-1 rounded-3xl border border-navy/8 bg-navy p-8 sm:p-10 relative overflow-hidden text-white">
+        <div class="absolute -bottom-20 -left-16 w-64 h-64 rounded-full" style="background:radial-gradient(circle,rgba(92,156,240,.24),transparent 65%)"></div>
+        <div class="lane-body relative">
+          <div class="inline-flex items-center gap-2 text-bluelt font-semibold text-sm uppercase tracking-widest">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l1.5-4A2 2 0 0 1 8.4 8h7.2a2 2 0 0 1 1.9 1L19 13v5h-2v-2H7v2H5z"/><circle cx="8" cy="15" r="1"/><circle cx="16" cy="15" r="1"/></svg>
+            Buy-a-car lane
+          </div>
+          <h3 class="display text-3xl font-700 mt-4">Ready for the next one?</h3>
+          <p class="text-white/70 mt-4 leading-relaxed text-[17px]">A clean, hand-picked lot with cars from around $2,000 up to newer models — every one inspected by the same shop that repairs them.</p>
+          <ul class="mt-6 space-y-3 text-white/90">
+            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-bluelt"></span> Inspected in-house before it hits the lot</li>
+            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-bluelt"></span> Financing through Westlake</li>
+            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-bluelt"></span> No-pressure, straight answers</li>
+          </ul>
+          <a href="tel:+18328792809" class="mt-8 btn inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold bg-white text-navy hover:-translate-y-[3px] transition">Ask what's on the lot</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK BAND -->
+<section id="work" class="relative">
+  <div class="band-fixed grain relative min-h-[46vh] flex items-center">
+    <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(22,35,59,.78),rgba(22,35,59,.34))"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full py-20">
+      <div data-reveal class="max-w-xl text-white">
+        <div class="text-sm font-semibold text-bluelt uppercase tracking-[.2em]">Real work, real cars</div>
+        <h2 class="display mt-4 text-[clamp(1.9rem,4vw,3rem)] font-700">The kind of finish<br>you can see up close.</h2>
+        <p class="mt-4 text-white/75 leading-relaxed text-lg">Every panel, brake job, and detail leaves the shop the way we'd want our own to.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-bone py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 grid md:grid-cols-2 gap-5">
+      <div data-img class="overflow-hidden rounded-2xl md:row-span-2">
+        <img src="assets/photo-car.jpg" alt="Freshly detailed car at AB Auto Care" class="w-full h-full object-cover min-h-[280px]">
+      </div>
+      <div data-img class="overflow-hidden rounded-2xl">
+        <img src="assets/photo-mechanic.jpg" alt="Brake service in the mechanic bay" class="w-full h-full object-cover min-h-[220px]">
+      </div>
+      <div data-img class="overflow-hidden rounded-2xl">
+        <img src="assets/photo-dent.jpg" alt="Paintless dent and collision repair work" class="w-full h-full object-cover min-h-[220px]">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="py-24 sm:py-28 bg-cream">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-14">
+      <div data-reveal class="text-sm font-semibold text-blue uppercase tracking-[.2em]">In their words</div>
+      <h2 data-reveal class="display mt-4 text-[clamp(2rem,4.5vw,3.2rem)] font-700 text-ink">Neighbors who <span class="grad-text">came back</span>.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="flex gap-1 text-blue mb-4">★★★★★</div>
+        <p class="text-ink text-[17px] leading-relaxed">"I'm definitely happy with the results of my vehicle. My car looks brand new all over again."</p>
+        <div class="mt-5 text-sm font-semibold text-navy">— Danae Green</div>
+      </div>
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="flex gap-1 text-blue mb-4">★★★★★</div>
+        <p class="text-ink text-[17px] leading-relaxed">"A great experience. Plenty of useful information given, and no pressure at all."</p>
+        <div class="mt-5 text-sm font-semibold text-navy">— John Jimenez</div>
+      </div>
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="flex gap-1 text-blue mb-4">★★★★★</div>
+        <p class="text-ink text-[17px] leading-relaxed">"Very professional work. I would recommend this shop to anyone."</p>
+        <div class="mt-5 text-sm font-semibold text-navy">— Chris Cabrera</div>
+      </div>
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="flex gap-1 text-blue mb-4">★★★★★</div>
+        <p class="text-ink text-[17px] leading-relaxed">"Timely and top-notch work. Ana was a great help through the whole thing."</p>
+        <div class="mt-5 text-sm font-semibold text-navy">— Tommy Meeks</div>
+      </div>
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="flex gap-1 text-blue mb-4">★★★★★</div>
+        <p class="text-ink text-[17px] leading-relaxed">"A really positive car-buying experience. No hard sell, just honest help."</p>
+        <div class="mt-5 text-sm font-semibold text-navy">— Willard Donovan</div>
+      </div>
+      <div data-reveal class="card rounded-2xl p-7">
+        <div class="flex gap-1 text-blue mb-4">★★★★★</div>
+        <p class="text-ink text-[17px] leading-relaxed">"Their committed staff strive to find the right car for every customer."</p>
+        <div class="mt-5 text-sm font-semibold text-navy">— Alana Dyan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="py-24 sm:py-28 bg-bone">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-10 items-stretch">
+    <div data-reveal>
+      <div class="text-sm font-semibold text-blue uppercase tracking-[.2em]">Come by the shop</div>
+      <h2 class="display mt-4 text-[clamp(2rem,4.5vw,3.2rem)] font-700 text-ink">Stop in, or<br>get a <span class="grad-text">tow to us</span>.</h2>
+
+      <div class="mt-8 space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="mt-1 text-blue"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="font-semibold text-ink">AB Auto Care</div>
+            <div class="text-steel">901 Marcella St, Houston, TX 77091</div>
+            <a href="https://www.google.com/maps?q=901+Marcella+St+Houston+TX+77091" target="_blank" rel="noopener" class="text-blue2 text-sm font-semibold underline-grow inline-block mt-1">Get directions</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="mt-1 text-blue"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="font-semibold text-ink">Call or text the shop</div>
+            <a href="tel:+18328792809" class="text-steel hover:text-blue2 transition">832-879-2809</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="mt-1 text-blue"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div>
+            <div class="font-semibold text-ink">Hours</div>
+            <div class="text-steel">Monday – Friday &middot; 9:00 AM – 5:00 PM</div>
+            <div class="text-steel">Saturday &amp; Sunday &middot; By appointment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal class="rounded-2xl overflow-hidden border border-navy/10 shadow-lg min-h-[360px]">
+      <iframe
+        title="AB Auto Care location map"
+        src="https://www.google.com/maps?q=901%20Marcella%20St%2C%20Houston%2C%20TX%2077091&output=embed"
+        width="100%" height="100%" style="border:0; min-height:360px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="relative bg-navy overflow-hidden py-24 sm:py-28">
+  <div class="absolute -top-24 right-0 w-[520px] h-[520px] rounded-full" style="background:radial-gradient(circle,rgba(43,111,224,.3),transparent 62%)"></div>
+  <div class="absolute -bottom-32 -left-20 w-[520px] h-[520px] rounded-full" style="background:radial-gradient(circle,rgba(92,156,240,.22),transparent 62%)"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <img src="assets/logo-white.png" alt="AB Auto Care" data-reveal class="h-11 w-auto mx-auto mb-8 opacity-95">
+    <h2 data-reveal class="display text-[clamp(2.2rem,5vw,3.6rem)] font-700 text-white">Let's get you<br><span class="grad-text">back on the road</span>.</h2>
+    <p data-reveal class="mt-5 text-white/70 text-lg max-w-xl mx-auto leading-relaxed">One shop for the fix, the tow, and the next car. Call and talk to a real person who'll shoot you straight.</p>
+    <div data-reveal class="mt-9 flex flex-wrap justify-center gap-3">
+      <a href="tel:+18328792809" class="btn btn-blue inline-flex items-center gap-2 rounded-full px-8 py-4 text-[15px] font-semibold">
+        Call 832-879-2809
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://www.google.com/maps?q=901+Marcella+St+Houston+TX+77091" target="_blank" rel="noopener" class="btn inline-flex items-center gap-2 rounded-full px-8 py-4 text-[15px] font-semibold bg-white/10 text-white border border-white/25 hover:bg-white/15 transition">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-cream border-t border-navy/8 py-12">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+    <div>
+      <img src="assets/logo.png" alt="AB Auto Care" class="h-8 w-auto">
+      <p class="mt-3 text-steel text-sm max-w-sm">Auto body, mechanic, towing &amp; quality used cars — Houston, TX. Keeping your car in top shape so you keep moving.</p>
+    </div>
+    <div class="text-sm text-steel">
+      <div class="font-semibold text-ink">901 Marcella St, Houston, TX 77091</div>
+      <a href="tel:+18328792809" class="hover:text-blue2 transition">832-879-2809</a>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 mt-8 pt-6 border-t border-navy/8 text-xs text-steel/80 flex flex-wrap justify-between gap-2">
+    <span>© 2026 AB Auto Care LLC. All rights reserved.</span>
+    <span>Preview site crafted by Turnkey Web</span>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mobile-bar fixed bottom-0 inset-x-0 z-50 sm:hidden bg-cream/95 backdrop-blur border-t border-navy/10 grid grid-cols-2 gap-2 p-2.5">
+  <a href="tel:+18328792809" class="flex items-center justify-center gap-2 rounded-xl bg-blue text-white py-3 text-sm font-semibold">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=901+Marcella+St+Houston+TX+77091" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 rounded-xl border border-navy/20 text-navy py-3 text-sm font-semibold">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":["AutoRepair","AutoBodyShop"],
+  "name":"AB Auto Care",
+  "description":"Auto body & collision repair, paintless dent repair, general mechanic work, towing, and quality used cars with financing in Houston, TX.",
+  "url":"https://turnkeyweb.org/previews/ab-auto-care/",
+  "telephone":"+1-832-879-2809",
+  "image":"https://turnkeyweb.org/previews/ab-auto-care/assets/hero.jpg",
+  "address":{"@type":"PostalAddress","streetAddress":"901 Marcella St","addressLocality":"Houston","addressRegion":"TX","postalCode":"77091","addressCountry":"US"},
+  "areaServed":"Houston, TX",
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"}],
+  "makesOffer":["Collision & Auto Body Repair","Paintless Dent Repair","Bumper Repair","Frame Straightening","General Mechanic Service","Towing & Roadside Assistance","Used Car Sales","Auto Financing"]
+}
+</script>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Nav solid on scroll
+  var nav = document.getElementById('nav');
+  function onScroll(){ if(window.scrollY > 40) nav.classList.add('solid'); else nav.classList.remove('solid'); }
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+
+  // Lenis smooth scroll driven by the single GSAP ticker
+  var lenis;
+  if (window.Lenis && !reduce){
+    lenis = new Lenis({ duration:1.1, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}, smoothWheel:true, smoothTouch:false });
+    if (window.gsap){ gsap.ticker.add(function(t){ lenis.raf(t*1000); }); gsap.ticker.lagSmoothing(0); if(window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update); }
+    else { function raf(t){ lenis.raf(t); requestAnimationFrame(raf);} requestAnimationFrame(raf); }
+    if (window.ScrollTrigger) ScrollTrigger.config({ ignoreMobileResize:true });
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){ var t=document.querySelector(a.getAttribute('href')); if(t){ e.preventDefault(); lenis.scrollTo(t,{offset:-70}); } });
+    });
+  }
+
+  // Reveals
+  if (window.gsap && window.ScrollTrigger && !reduce){
+    gsap.utils.toArray('[data-reveal]').forEach(function(el){
+      ScrollTrigger.create({ trigger:el, start:'top 92%', once:true, onEnter:function(){ el.classList.add('in'); } });
+    });
+    gsap.utils.toArray('[data-img]').forEach(function(el){
+      ScrollTrigger.create({ trigger:el, start:'top 88%', once:true, onEnter:function(){ el.classList.add('in'); } });
+    });
+    // hero video scroll parallax
+    var hv = document.querySelector('.hero-video');
+    if (hv){ gsap.to(hv, { yPercent:14, scale:1.08, ease:'none', scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } }); }
+    // count-up
+    gsap.utils.toArray('.count').forEach(function(el){
+      var to=parseFloat(el.dataset.to)||0, suf=el.dataset.suffix||'';
+      ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:function(){
+        var o={v:0}; gsap.to(o,{v:to,duration:1.6,ease:'power2.out',onUpdate:function(){ el.textContent=Math.round(o.v)+suf; }});
+      }});
+    });
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(function(e){e.classList.add('in');});
+    document.querySelectorAll('[data-img]').forEach(function(e){e.classList.add('in');});
+    document.querySelectorAll('.count').forEach(function(e){e.textContent=(e.dataset.to||'')+(e.dataset.suffix||'');});
+  }
+
+  // Magnetic hero primary buttons (desktop only)
+  if (window.matchMedia('(hover:hover) and (pointer:fine)').matches && !reduce){
+    document.querySelectorAll('.btn-blue').forEach(function(b){
+      b.addEventListener('mousemove', function(e){ var r=b.getBoundingClientRect(); var x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2; b.style.transform='translate('+(x*.15)+'px,'+(y*.22-3)+'px)'; });
+      b.addEventListener('mouseleave', function(){ b.style.transform=''; });
+    });
+  }
+
+  // 6s screenshot / crawler safety net
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]:not(.in)').forEach(function(e){e.classList.add('in');});
+    document.querySelectorAll('[data-img]:not(.in)').forEach(function(e){e.classList.add('in');});
+    document.querySelectorAll('.count').forEach(function(e){ if(e.textContent.trim()==='0') e.textContent=(e.dataset.to||'')+(e.dataset.suffix||''); });
+  }, 6000);
+})();
+</script>
+</body>
+</html>
