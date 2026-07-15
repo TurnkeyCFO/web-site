@@ -16,8 +16,8 @@
 <style>
   :root{
     --ivory:#F7F2E9; --paper:#FBF8F1; --bone:#EEE5D5; --sand:#E4D8C2;
-    --ink:#221E19; --stone:#6B6155; --muted:#8B8173;
-    --brass:#A9793F; --brass-2:#C39A5B; --oxblood:#7C2B2B; --charcoal:#2A2723;
+    --ink:#221E19; --stone:#645A4E; --muted:#645A4E;
+    --brass:#8A5620; --brass-hair:#A9793F; --brass-2:#C39A5B; --oxblood:#7C2B2B; --charcoal:#2A2723;
     --line:rgba(34,30,25,.12);
     --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
   }
@@ -41,6 +41,14 @@
     animation:shimmer 9s linear infinite;
     padding-bottom:.1em;line-height:1.16;display:inline-block;
   }
+  .grad-ink{
+    background:linear-gradient(100deg,var(--oxblood) 0%,var(--brass-hair) 32%,var(--brass) 50%,var(--brass-hair) 68%,var(--oxblood) 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    animation:shimmer 9s linear infinite;
+    padding-bottom:.1em;line-height:1.16;display:inline-block;
+  }
   @keyframes shimmer{to{background-position:220% 0}}
 
   /* buttons */
@@ -52,7 +60,7 @@
   .btn-primary:hover::after{transform:translateX(120%)}
   .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
   .btn-ghost:hover{border-color:var(--ink);transform:translateY(-3px)}
-  .btn-brass{background:var(--brass);color:#fff}
+  .btn-brass{background:var(--brass);color:#fff;font-weight:600}
   .btn-brass:hover{transform:translateY(-3px);box-shadow:0 16px 34px -14px rgba(169,121,63,.6);background:var(--oxblood)}
 
   /* nav */
@@ -83,7 +91,7 @@
      linear-gradient(90deg,rgba(20,17,13,.86) 0%,rgba(20,17,13,.62) 34%,rgba(20,17,13,.15) 62%,rgba(20,17,13,0) 82%),
      linear-gradient(0deg,rgba(20,17,13,.72) 0%,rgba(20,17,13,.1) 40%,rgba(20,17,13,.15) 100%)}
   .hero-inner{position:relative;z-index:2;padding-bottom:clamp(56px,9vh,110px);padding-top:120px;width:100%}
-  .hero-inner .eyebrow{color:var(--brass-2)}
+  .hero-inner .eyebrow{color:#EAC98C;text-shadow:0 1px 12px rgba(0,0,0,.6)}
   .hero h1{color:#F8F3EA;font-size:clamp(44px,7.6vw,104px);line-height:1.06;margin:22px 0 0;max-width:16ch;letter-spacing:-.018em;text-shadow:0 2px 30px rgba(0,0,0,.35)}
   .hero h1 .line2{display:block;padding-bottom:.06em}
   .hero p.sub{color:rgba(245,240,231,.9);font-size:clamp(16px,1.5vw,20px);max-width:46ch;margin-top:28px;line-height:1.6;text-shadow:0 1px 16px rgba(0,0,0,.4)}
@@ -99,8 +107,8 @@
   @keyframes railpulse{0%,100%{opacity:.35;transform:scaleY(.7)}50%{opacity:1;transform:scaleY(1)}}
 
   /* marquee */
-  .marquee{background:var(--charcoal);color:var(--ivory);padding:18px 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-  .marquee-track{display:flex;gap:3rem;width:max-content;animation:scrollX 44s linear infinite}
+  .marquee{background:var(--charcoal);color:var(--ivory);padding:18px 0;overflow:hidden}
+  .marquee-track{display:flex;gap:3rem;width:max-content;animation:scrollX 44s linear infinite;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
   .marquee:hover .marquee-track{animation-play-state:paused}
   .marquee-track span{font-family:var(--serif);font-size:19px;letter-spacing:.02em;color:rgba(247,242,233,.82);white-space:nowrap;display:inline-flex;align-items:center;gap:3rem}
   .marquee-track span i{font-style:italic;color:var(--brass-2)}
@@ -153,7 +161,7 @@
   .work-visual .frame{position:relative;border-radius:3px;overflow:hidden;box-shadow:0 40px 80px -52px rgba(34,30,25,.55);aspect-ratio:4/3}
   .work-visual .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s cubic-bezier(.4,0,.2,1),transform 7s ease-out}
   .work-visual .frame img.on{opacity:1;transform:scale(1.06)}
-  .work-visual .cap{margin-top:16px;font-size:13px;color:var(--muted);letter-spacing:.02em;padding-left:2px}
+  .work-visual .cap{margin-top:16px;font-size:13px;color:var(--stone);letter-spacing:.02em;padding-left:2px}
   .work-visual .cap b{color:var(--ink);font-family:var(--serif);font-size:16px;font-weight:500}
 
   /* craft band */
@@ -231,7 +239,8 @@
   footer{background:var(--charcoal);color:rgba(247,242,233,.72);padding:70px 0 130px}
   .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
   footer .brandmark .b1{color:#F7F2E9}
-  footer .fdesc{margin-top:18px;font-size:14px;line-height:1.7;max-width:38ch;color:rgba(247,242,233,.6)}
+  footer .brandmark .b2{color:var(--brass-2)}
+  footer .fdesc{margin-top:18px;font-size:14.5px;line-height:1.75;max-width:40ch;color:rgba(247,242,233,.74)}
   footer h4{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-2);margin-bottom:16px;font-weight:500}
   footer .fl{font-size:14px;line-height:1.9;color:rgba(247,242,233,.72)}
   footer .fl a{transition:color .3s}
@@ -260,9 +269,12 @@
     .nav.top .menu-btn{color:#F7F2E9}
     .mobar{display:flex}
     footer{padding-bottom:96px}
-    .hero{min-height:94svh}
-    .hero-inner{padding-top:104px}
-    .hero-meta{gap:20px}
+    .hero{min-height:92svh}
+    .hero-inner{padding-top:120px;padding-bottom:38px}
+    .hero h1{font-size:37px;line-height:1.1;max-width:20ch;margin-top:16px}
+    .hero p.sub{margin-top:20px;font-size:16px}
+    .hero-cta{margin-top:26px}
+    .hero-meta{display:none}
     .scroll-hint{display:none}
     body{padding-bottom:0}
     .stats{gap:26px}
@@ -532,7 +544,7 @@
   <span class="ring" style="width:820px;height:820px;top:-280px;left:50%;transform:translateX(-50%)"></span>
   <div class="wrap">
     <div class="wordmark-badge" data-reveal><span class="w1">CONTINENTAL</span><span class="w2">Bespoke Tailors</span></div>
-    <h2 data-reveal>Dress like it was<br><span class="grad-text serif-it">made for you.</span></h2>
+    <h2 data-reveal>Dress like it was<br><span class="grad-ink serif-it">made for you.</span></h2>
     <p class="lead" data-reveal>Because it will be. Bring in a suit that needs saving, or start one from the cloth up — either way, you're in a master's hands.</p>
     <div class="cta-btns" data-reveal>
       <a class="btn btn-brass" href="tel:+15129497663">Call (512) 949-7663</a>
