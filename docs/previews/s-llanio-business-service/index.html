@@ -124,7 +124,12 @@ tailwind.config = {
   .ledger-rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(185,141,82,.55),transparent); }
 
   a.mobcall{ transition:filter .3s; }
-  @media (max-width:768px){ .hide-mob{ display:none !important; } }
+  @media (max-width:768px){
+    .hide-mob{ display:none !important; }
+    body{ padding-bottom:58px; }              /* clear the fixed mobile call bar */
+    .hero{ min-height:92svh; }
+    .hero > div{ padding-bottom:64px; }        /* stats sit clear of the fold + bar */
+  }
 </style>
 </head>
 <body>
@@ -235,7 +240,7 @@ tailwind.config = {
 <section id="services" class="py-24 md:py-32 bg-ivory relative">
   <div class="max-w-[1240px] mx-auto px-5 md:px-8">
     <div class="max-w-[680px] mb-14">
-      <p data-reveal class="eyebrow text-brass mb-4">What we handle</p>
+      <p data-reveal class="eyebrow text-pine mb-4">What we handle</p>
       <h2 data-reveal class="font-display font-semibold text-ink text-[2.2rem] md:text-[3rem] lede">
         Everything the numbers ask of you — <span class="grad-text">handled with care.</span>
       </h2>
@@ -332,7 +337,7 @@ tailwind.config = {
 <section id="approach" class="py-24 md:py-32 bg-paper">
   <div class="max-w-[1240px] mx-auto px-5 md:px-8">
     <div class="max-w-[640px] mb-16">
-      <p data-reveal class="eyebrow text-brass mb-4">How it works</p>
+      <p data-reveal class="eyebrow text-pine mb-4">How it works</p>
       <h2 data-reveal class="font-display font-semibold text-ink text-[2.1rem] md:text-[2.9rem] lede">Simple, from hello to filed.</h2>
     </div>
     <div class="grid md:grid-cols-3 gap-10 md:gap-8">
@@ -360,12 +365,12 @@ tailwind.config = {
   <div class="max-w-[1240px] mx-auto px-5 md:px-8">
     <div class="flex flex-wrap items-end justify-between gap-6 mb-14">
       <div class="max-w-[560px]">
-        <p data-reveal class="eyebrow text-brass mb-4">In their words</p>
+        <p data-reveal class="eyebrow text-pine mb-4">In their words</p>
         <h2 data-reveal class="font-display font-semibold text-ink text-[2.1rem] md:text-[2.9rem] lede">Clients who stay — <span class="grad-text">for years.</span></h2>
       </div>
-      <div data-reveal class="inline-flex items-center gap-3 px-4 py-2.5 rounded-full bg-pine/8 border border-pine/15">
-        <span class="text-brass text-lg tracking-tight">★★★★★</span>
-        <span class="text-[.9rem] font-semibold text-pine">4.1 on Google · 55+ reviews</span>
+      <div data-reveal class="inline-flex items-center gap-3 px-4 py-2.5 rounded-full bg-pine border border-pine">
+        <span class="text-brasslt text-lg tracking-tight">★★★★★</span>
+        <span class="text-[.9rem] font-semibold text-ivory">4.1 on Google · 55+ reviews</span>
       </div>
     </div>
 
@@ -406,7 +411,7 @@ tailwind.config = {
   <div class="max-w-[1240px] mx-auto px-5 md:px-8">
     <div class="grid lg:grid-cols-2 gap-10 items-stretch">
       <div data-reveal>
-        <p class="eyebrow text-brass mb-4">Come see us</p>
+        <p class="eyebrow text-pine mb-4">Come see us</p>
         <h2 class="font-display font-semibold text-ink text-[2.1rem] md:text-[2.8rem] lede mb-8">Right here in Cape Coral.</h2>
 
         <div class="space-y-6">
@@ -452,9 +457,9 @@ tailwind.config = {
       <div data-reveal class="rounded-2xl overflow-hidden border border-ink/10 shadow-[0_30px_60px_-40px_rgba(18,67,59,.5)] min-h-[380px]">
         <iframe
           title="S. Llanio Business Service location map"
-          src="https://www.google.com/maps?q=1325%20SE%2047th%20St%20Unit%20H%20Cape%20Coral%20FL%2033904&output=embed"
+          src="https://maps.google.com/maps?width=100%25&height=380&hl=en&q=1325%20SE%2047th%20St%20Unit%20H%20Cape%20Coral%20FL%2033904&t=&z=15&ie=UTF8&iwloc=B&output=embed"
           width="100%" height="100%" style="border:0; min-height:380px; display:block;"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
