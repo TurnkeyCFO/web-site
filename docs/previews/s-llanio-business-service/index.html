@@ -38,7 +38,7 @@ tailwind.config = {
   :root{ --nav-h:74px; }
   *{ -webkit-tap-highlight-color:transparent; }
   html{ scroll-behavior:auto; scroll-padding-top:var(--nav-h); }
-  body{ background:#F7F2EA; color:#1E1A17; font-family:'Plus Jakarta Sans',sans-serif; overflow-x:hidden; }
+  body{ background:#F7F2EA; color:#1E1A17; font-family:'Plus Jakarta Sans',sans-serif; overflow-x:clip; }
   ::selection{ background:#12433B; color:#F7F2EA; }
 
   .font-display{ font-family:'Fraunces',serif; }
@@ -126,9 +126,8 @@ tailwind.config = {
   a.mobcall{ transition:filter .3s; }
   @media (max-width:768px){
     .hide-mob{ display:none !important; }
-    body{ padding-bottom:58px; }              /* clear the fixed mobile call bar */
     .hero{ min-height:92svh; }
-    .hero > div{ padding-bottom:64px; }        /* stats sit clear of the fold + bar */
+    .hero > div{ padding-bottom:48px; }
   }
 </style>
 </head>
@@ -528,8 +527,8 @@ tailwind.config = {
   </div>
 </footer>
 
-<!-- ===== MOBILE STICKY BAR (revealed after hero) ===== -->
-<div id="mobbar" class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-paper/95 backdrop-blur border-t border-ink/10 flex translate-y-full transition-transform duration-500">
+<!-- ===== MOBILE STICKY BAR (in-flow sticky — docks to viewport bottom on phones) ===== -->
+<div id="mobbar" class="md:hidden sticky bottom-0 inset-x-0 z-50 bg-paper/95 backdrop-blur border-t border-ink/10 flex">
   <a href="tel:+12395429104" class="mobcall flex-1 flex items-center justify-center gap-2 py-3.5 text-pine font-semibold text-[.92rem]">
     <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     Call
@@ -574,12 +573,7 @@ tailwind.config = {
 <script>
 /* ---------- nav scroll state ---------- */
 const nav = document.getElementById('nav');
-const mobbar = document.getElementById('mobbar');
-const onScrollNav = () => {
-  nav.classList.toggle('nav-scrolled', window.scrollY > 40);
-  // reveal the mobile call bar only after the hero has scrolled past (keeps it off the hero)
-  if (mobbar) mobbar.classList.toggle('translate-y-full', window.scrollY < window.innerHeight * 0.8);
-};
+const onScrollNav = () => nav.classList.toggle('nav-scrolled', window.scrollY > 40);
 onScrollNav(); window.addEventListener('scroll', onScrollNav, {passive:true});
 
 /* ---------- Lenis + GSAP (single ticker) ---------- */
