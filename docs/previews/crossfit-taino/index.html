@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<!--
+  CrossFit Taino — Turnkey Web draft preview (DRAFT, not client-approved)
+  ----------------------------------------------------------------------
+  Palette sourced from the business's REAL assets:
+    red  #F41E1E / deep #A91400  — sampled from their own class-schedule graphic + "red-*" site art
+    ink  #16110F                 — their logo (Taino thunderbird petroglyph w/ CT shield) is black line art
+    bone #F7F2EA / sand #EFE7DA  — light-luxury base (workspace light-first hard rule)
+  Logo: their REAL mark, recovered from crossfittaino.com/wp-content/uploads/2024/08/ (Wayback), cleaned
+        (screenshot bars removed, background keyed to transparent) -> assets/taino-mark*.png
+  Photos: their REAL gym photography, recovered from crossfittaino.com/wp-content/uploads/2020-11/ (Wayback)
+  Hero:  AI cinematic (Higgsfield nano_banana_pro still -> Kling kling3_0_turbo motion), ~9.5 credits
+  NOTE:  crossfittaino.com domain registration has EXPIRED (Namecheap parking page as of 2026-07-16).
+  Facts verified against: their archived site, Yelp, Facebook, CrossFit affiliate #16457.
+  Deliberately NOT used: unverified owner name from the build request; unconfirmed 4.9 aggregate rating;
+  the old site's FitKit-theme filler stats ("50+ Expert Trainers", "500+ Happy Clients").
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CrossFit Taino | CrossFit Gym in South Orlando, FL</title>
+<meta name="description" content="CrossFit Taino is a coach-led CrossFit gym on S Orange Blossom Trail in south Orlando. Five certified coaches, classes for every level, CrossFit Kids, open gym and drop-ins. Your first class is free.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/crossfit-taino/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CrossFit Taino | CrossFit Gym in South Orlando, FL">
+<meta property="og:description" content="Coach-led CrossFit in south Orlando. Five certified coaches, all levels welcome, kids classes and open gym. Your first class is free.">
+<meta property="og:image" content="https://turnkeyweb.org/previews/crossfit-taino/assets/hero.jpg">
+<meta property="og:url" content="https://turnkeyweb.org/previews/crossfit-taino/">
+<meta name="theme-color" content="#F7F2EA">
+<link rel="icon" href="assets/taino-mark.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: {
+    bone:'#F7F2EA', sand:'#EFE7DA', shell:'#E4D9C8',
+    ink:'#16110F', ink2:'#4A423D', ink3:'#6E645D',
+    red:'#F41E1E', redd:'#A91400', redx:'#7C0F00'
+  },
+  fontFamily: { display:['Anton','Impact','sans-serif'], serif:['"Instrument Serif"','Georgia','serif'], sans:['Inter','system-ui','sans-serif'] }
+}}}
+</script>
+<style>
+  :root{ --nav-h:74px; --bone:#F7F2EA; --sand:#EFE7DA; --ink:#16110F; --red:#F41E1E; --redd:#A91400; }
+  html{ scroll-padding-top:calc(var(--nav-h) + 12px); -webkit-text-size-adjust:100%; }
+  body{ background:var(--bone); color:var(--ink); font-family:Inter,system-ui,sans-serif; overflow-x:hidden; }
+
+  /* ---- DESCENDER SAFETY (hard rule): never clip g y p j q ---- */
+  h1,h2,h3,h4,h5{ line-height:1.12; }
+  .display{ font-family:Anton,Impact,sans-serif; letter-spacing:.005em; line-height:1.08; padding-bottom:.06em; text-transform:uppercase; }
+  .display-tight{ line-height:1.06; padding-bottom:.08em; }
+  .grad-text{ line-height:1.15; padding-bottom:.09em; display:inline-block;
+    background:linear-gradient(100deg,#A91400 0%,#F41E1E 28%,#FF6A4A 46%,#F41E1E 64%,#A91400 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent; animation:shimmer 8s linear infinite; }
+  @keyframes shimmer{ 0%{background-position:0% 50%} 100%{background-position:220% 50%} }
+  @media (prefers-reduced-motion:reduce){ .grad-text{ animation:none; background-position:30% 50%; } }
+
+  /* ---- HERO ---- */
+  .hero{ position:relative; isolation:isolate; min-height:100svh; }
+  .hero-media{ position:absolute; inset:0; overflow:hidden; z-index:0; }
+  .hero-bg{ position:absolute; inset:-8% -4%; width:108%; height:116%; object-fit:cover; will-change:transform; }
+  /* light scrim: BRIGHTEST (most opaque bone) on the LEFT where the dark headline sits */
+  .hero-scrim{ position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      linear-gradient(96deg, rgba(247,242,234,.985) 0%, rgba(247,242,234,.95) 26%, rgba(247,242,234,.72) 44%, rgba(247,242,234,.26) 62%, rgba(247,242,234,0) 78%),
+      linear-gradient(to bottom, rgba(247,242,234,.55) 0%, rgba(247,242,234,0) 26%, rgba(247,242,234,0) 62%, rgba(247,242,234,.92) 100%); }
+  @media (max-width:900px){
+    .hero-scrim{ background:
+      linear-gradient(to bottom, rgba(247,242,234,.97) 0%, rgba(247,242,234,.93) 42%, rgba(247,242,234,.72) 62%, rgba(247,242,234,.55) 78%, rgba(247,242,234,.95) 100%); }
+  }
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; z-index:2; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(#16110F 1px, transparent 1px); background-size:3px 3px; }
+
+  /* ---- buttons ---- */
+  .btn{ position:relative; overflow:hidden; transition:transform .45s cubic-bezier(.2,.7,.2,1), filter .45s, box-shadow .45s; }
+  .btn:hover{ transform:translateY(-3px); }
+  .btn-primary{ background:var(--redd); color:#FFF6F2; box-shadow:0 10px 26px -12px rgba(169,20,0,.75); }
+  .btn-primary:hover{ filter:brightness(1.08); box-shadow:0 16px 34px -12px rgba(169,20,0,.85); }
+  .btn-primary::after{ content:''; position:absolute; top:0; left:0; width:42%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,.42), transparent);
+    transform:translateX(-160%) skewX(-18deg); transition:transform .9s cubic-bezier(.2,.7,.2,1); }
+  .btn-primary:hover::after{ transform:translateX(320%) skewX(-18deg); }
+  .btn-ghost{ border:1.5px solid rgba(22,17,15,.28); color:var(--ink); background:rgba(247,242,234,.6); backdrop-filter:blur(4px); }
+  .btn-ghost:hover{ border-color:var(--redd); color:var(--redd); }
+
+  /* ---- marquee ---- */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marquee-track{ display:flex; gap:2.6rem; width:max-content; animation:scrollX 42s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ---- cards ---- */
+  .card{ position:relative; background:#FFFDF9; border:1px solid rgba(22,17,15,.09); border-radius:14px; overflow:hidden;
+    transition:transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s, border-color .55s; }
+  .card::before{ content:''; position:absolute; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg,var(--redd),var(--red)); transition:width .65s cubic-bezier(.2,.7,.2,1); z-index:3; }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 26px 50px -26px rgba(22,17,15,.34); border-color:rgba(169,20,0,.28); }
+  .card:hover::before{ width:100%; }
+  .card-img{ transition:transform 1.1s cubic-bezier(.2,.7,.2,1); }
+  .card:hover .card-img{ transform:scale(1.06); }
+
+  .chip-dot{ animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.42; transform:scale(.78)} }
+
+  .ul-grow{ position:relative; }
+  .ul-grow::after{ content:''; position:absolute; left:0; bottom:-4px; height:1.5px; width:0;
+    background:linear-gradient(90deg,var(--redd),var(--red)); transition:width .5s cubic-bezier(.2,.7,.2,1); }
+  .ul-grow:hover::after{ width:100%; }
+
+  [data-reveal]{ will-change:opacity, transform; }
+  [data-reveal-image]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal-image].in{ clip-path:inset(0 0 0% 0); }
+
+  .rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(169,20,0,.34),transparent); }
+
+  /* ---- thunderbird showpiece ---- */
+  #tb-wrap{ position:relative; width:100%; aspect-ratio:1/1; max-width:560px; margin-inline:auto; }
+  #tb-canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+  #tb-fallback{ position:absolute; inset:0; margin:auto; width:74%; height:auto; object-fit:contain; opacity:0; transition:opacity .6s; }
+  #tb-fallback.show{ opacity:1; }
+
+  .band{ position:relative; overflow:hidden; }
+  .band-img{ position:absolute; inset:-12% 0; width:100%; height:124%; object-fit:cover; will-change:transform; }
+
+  .sticky-bar{ box-shadow:0 -8px 26px -12px rgba(22,17,15,.4); }
+  @supports(padding:env(safe-area-inset-bottom)){ .sticky-bar{ padding-bottom:env(safe-area-inset-bottom); } }
+  @media (max-width:767px){ body{ padding-bottom:66px; } }
+  iframe{ border:0; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ================= NAV ================= -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" style="background:rgba(247,242,234,.86); backdrop-filter:blur(12px); border-bottom:1px solid rgba(22,17,15,.08);">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 h-[74px] flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-2.5 shrink-0">
+      <img src="assets/taino-mark.png" alt="CrossFit Taino thunderbird mark" class="h-9 w-auto" width="34" height="36">
+      <span class="leading-none">
+        <span class="block display text-[15px] sm:text-[17px] text-ink" style="padding-bottom:0">CrossFit Taino</span>
+        <span class="block text-[9.5px] tracking-[.22em] text-ink3 font-medium mt-[3px]">SOUTH ORLANDO, FL</span>
+      </span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-[13.5px] font-medium text-ink2">
+      <a href="#programs" class="ul-grow hover:text-ink transition-colors">Programs</a>
+      <a href="#tribe" class="ul-grow hover:text-ink transition-colors">The Mark</a>
+      <a href="#coaches" class="ul-grow hover:text-ink transition-colors">Coaches</a>
+      <a href="#membership" class="ul-grow hover:text-ink transition-colors">Membership</a>
+      <a href="#visit" class="ul-grow hover:text-ink transition-colors">Visit</a>
+    </nav>
+    <a href="tel:+14076868989" class="btn btn-primary hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13.5px] font-semibold">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (407) 686-8989
+    </a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="top" class="hero grain flex items-center">
+  <div class="hero-media">
+    <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg" aria-hidden="true">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 w-full max-w-[1240px] mx-auto px-4 sm:px-6 pt-[128px] pb-[86px] md:py-[120px]">
+    <div class="max-w-[640px]">
+      <div class="flex items-center gap-2.5 mb-6" data-reveal>
+        <span class="chip-dot inline-block w-1.5 h-1.5 rounded-full" style="background:var(--redd)"></span>
+        <span class="text-[10.5px] sm:text-[11px] tracking-[.26em] font-semibold text-ink2">CROSSFIT AFFILIATE #16457 &nbsp;·&nbsp; SOUTH ORLANDO</span>
+      </div>
+
+      <h1 class="display display-tight text-ink text-[clamp(3.4rem,12vw,7.4rem)]" data-reveal>
+        Taíno<br><span class="grad-text">Strong</span>
+      </h1>
+
+      <p class="mt-6 text-[16.5px] sm:text-[18px] leading-relaxed text-ink2 max-w-[30rem]" data-reveal>
+        Functional fitness, coached properly, in a room where people know your name.
+        Five certified coaches. Every level welcome. <span class="font-semibold text-ink">Your first class is free.</span>
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3" data-reveal>
+        <a href="#visit" class="btn btn-primary inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[14.5px] font-semibold">
+          Claim your free class
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="tel:+14076868989" class="btn btn-ghost inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[14.5px] font-semibold">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (407) 686-8989
+        </a>
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center gap-x-7 gap-y-2 text-[12.5px] text-ink3 font-medium" data-reveal>
+        <span class="inline-flex items-center gap-2">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--redd)"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Mon–Fri 6:00a–12:00p &amp; 4:00p–8:30p · Sat 9:00a–12:00p
+        </span>
+        <span class="inline-flex items-center gap-2">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--redd)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          11709 S Orange Blossom Trl, Ste 103
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<section class="py-4 border-y" style="background:var(--ink); border-color:rgba(22,17,15,1)">
+  <div class="marquee">
+    <div class="marquee-track text-[12.5px] tracking-[.2em] font-semibold" style="color:#EFE7DA">
+      <span>CROSSFIT CLASSES</span><span style="color:var(--red)">·</span>
+      <span class="font-serif italic tracking-normal text-[17px]" style="color:#FF7A5E">Taíno Kids</span><span style="color:var(--red)">·</span>
+      <span>OPEN GYM</span><span style="color:var(--red)">·</span>
+      <span>DROP-INS WELCOME</span><span style="color:var(--red)">·</span>
+      <span class="font-serif italic tracking-normal text-[17px]" style="color:#FF7A5E">All levels</span><span style="color:var(--red)">·</span>
+      <span>FREE PARKING</span><span style="color:var(--red)">·</span>
+      <span>FREE SHOWERS</span><span style="color:var(--red)">·</span>
+      <span>SUGARWOD</span><span style="color:var(--red)">·</span>
+      <span>FIRST CLASS FREE</span><span style="color:var(--red)">·</span>
+      <!-- duplicate for seamless loop -->
+      <span>CROSSFIT CLASSES</span><span style="color:var(--red)">·</span>
+      <span class="font-serif italic tracking-normal text-[17px]" style="color:#FF7A5E">Taíno Kids</span><span style="color:var(--red)">·</span>
+      <span>OPEN GYM</span><span style="color:var(--red)">·</span>
+      <span>DROP-INS WELCOME</span><span style="color:var(--red)">·</span>
+      <span class="font-serif italic tracking-normal text-[17px]" style="color:#FF7A5E">All levels</span><span style="color:var(--red)">·</span>
+      <span>FREE PARKING</span><span style="color:var(--red)">·</span>
+      <span>FREE SHOWERS</span><span style="color:var(--red)">·</span>
+      <span>SUGARWOD</span><span style="color:var(--red)">·</span>
+      <span>FIRST CLASS FREE</span><span style="color:var(--red)">·</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORY ================= -->
+<section class="py-20 md:py-28" style="background:var(--bone)">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-16 items-center">
+      <div class="relative" data-reveal>
+        <div class="overflow-hidden rounded-2xl" data-reveal-image>
+          <img src="assets/front-squat.jpg" alt="A CrossFit Taino athlete driving out of a heavy front squat inside the gym" class="w-full h-[420px] sm:h-[540px] object-cover" loading="lazy" width="800" height="1000">
+        </div>
+        <div class="hidden sm:block absolute -bottom-7 -right-5 rounded-xl px-6 py-5" style="background:var(--ink)">
+          <div class="display text-[2.6rem]" style="color:#F7F2EA; padding-bottom:0">10<span style="color:var(--red)">+</span></div>
+          <div class="text-[10px] tracking-[.2em] font-semibold mt-1" style="color:#A79B90">YEARS COACHING</div>
+        </div>
+      </div>
+
+      <div>
+        <span class="text-[10.5px] tracking-[.26em] font-semibold" style="color:var(--redd)" data-reveal>WHO WE ARE</span>
+        <h2 class="display display-tight mt-4 text-ink text-[clamp(2.2rem,5.2vw,3.5rem)]" data-reveal>
+          Working hard<br>should be <span class="grad-text">fun.</span>
+        </h2>
+        <p class="mt-6 text-[16px] leading-relaxed text-ink2" data-reveal>
+          We built CrossFit Taino to be a room you actually enjoy being a part of. When you have a good
+          time, walking back through the doors tomorrow gets easy, and that is the whole game. We are
+          here to help you set real goals and get stronger, physically and mentally.
+        </p>
+        <p class="mt-4 text-[16px] leading-relaxed text-ink2" data-reveal>
+          The workouts are varied and genuinely challenging. Our WODs scale to whoever shows up, so the
+          person on day one and the person on year six are in the same class, working just as hard.
+        </p>
+
+        <div class="mt-9 grid sm:grid-cols-2 gap-4" data-reveal>
+          <div class="card p-5">
+            <div class="flex items-center gap-2.5 mb-2">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--redd)"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <h3 class="display text-[15px] text-ink" style="padding-bottom:0">Fitness</h3>
+            </div>
+            <p class="text-[13.5px] leading-relaxed text-ink2">Lose body fat, hold onto lean muscle, feel better in your body. Eager to learn new movements, not interested in competing.</p>
+          </div>
+          <div class="card p-5">
+            <div class="flex items-center gap-2.5 mb-2">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--redd)"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              <h3 class="display text-[15px] text-ink" style="padding-bottom:0">Performance</h3>
+            </div>
+            <p class="text-[13.5px] leading-relaxed text-ink2">Be better at the things you love, from climbing to pickup basketball. Challenged hard every day, on your terms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-[200px] mx-auto rule"></div>
+
+<!-- ============ SIGNATURE: THUNDERBIRD ============ -->
+<section id="tribe" class="py-20 md:py-28 relative overflow-hidden" style="background:var(--sand)">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-center">
+
+      <div class="order-2 lg:order-1">
+        <span class="text-[10.5px] tracking-[.26em] font-semibold" style="color:var(--redd)" data-reveal>THE MARK</span>
+        <h2 class="mt-4 text-ink text-[clamp(2rem,4.6vw,3.1rem)] font-serif leading-[1.14]" data-reveal style="padding-bottom:.05em">
+          The name on the door<br>is not decoration.
+        </h2>
+        <p class="mt-6 text-[16px] leading-relaxed text-ink2" data-reveal>
+          The Taíno were the indigenous people of the Caribbean. Our mark is a thunderbird carved in that
+          petroglyph line, wings open, carrying the CT shield at its chest. It is the first thing you see
+          on the wall and the last thing you see on your way out.
+        </p>
+        <p class="mt-4 text-[16px] leading-relaxed text-ink2" data-reveal>
+          It stands for the thing this gym is actually built on. You are not a membership number here.
+          You show up, you get coached by name, and the room notices when you are gone.
+        </p>
+
+        <div class="mt-10 grid grid-cols-3 gap-4" data-reveal>
+          <div>
+            <div class="display text-ink text-[clamp(1.9rem,4vw,2.7rem)]" data-count="10" data-suffix="+">0</div>
+            <div class="text-[10px] tracking-[.16em] font-semibold text-ink3 mt-1">YEARS COACHING</div>
+          </div>
+          <div>
+            <div class="display text-ink text-[clamp(1.9rem,4vw,2.7rem)]" data-count="5" data-suffix="">0</div>
+            <div class="text-[10px] tracking-[.16em] font-semibold text-ink3 mt-1">CERTIFIED COACHES</div>
+          </div>
+          <div>
+            <div class="display text-ink text-[clamp(1.9rem,4vw,2.7rem)]" data-count="6" data-suffix="">0</div>
+            <div class="text-[10px] tracking-[.16em] font-semibold text-ink3 mt-1">DAYS A WEEK</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-1 lg:order-2" data-reveal>
+        <div id="tb-wrap">
+          <canvas id="tb-canvas" aria-hidden="true"></canvas>
+          <img id="tb-fallback" src="assets/taino-mark.png" alt="The CrossFit Taino thunderbird mark, carved in Taíno petroglyph line work with a CT shield at its chest">
+        </div>
+        <p class="text-center text-[11px] tracking-[.16em] font-semibold text-ink3 mt-4">CROSSFIT TAINO &nbsp;·&nbsp; ORLANDO, FLORIDA</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAMS ================= -->
+<section id="programs" class="py-20 md:py-28" style="background:var(--bone)">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6">
+    <div class="max-w-[640px] mb-12">
+      <span class="text-[10.5px] tracking-[.26em] font-semibold" style="color:var(--redd)" data-reveal>WHAT WE RUN</span>
+      <h2 class="display display-tight mt-4 text-ink text-[clamp(2.2rem,5.2vw,3.5rem)]" data-reveal>Four ways in</h2>
+      <p class="mt-5 text-[16px] leading-relaxed text-ink2" data-reveal>
+        Whether you have never touched a barbell or you are chasing a number, there is a lane for you.
+        Every class is coached start to finish.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <article class="card" data-reveal>
+        <div class="overflow-hidden h-[210px]"><img src="assets/class-floor.jpg" alt="A coached CrossFit class training on the floor at CrossFit Taino with the roll-up door open" class="card-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="p-6">
+          <h3 class="display text-[19px] text-ink">CrossFit Classes</h3>
+          <p class="mt-2.5 text-[13.5px] leading-relaxed text-ink2">The daily WOD, coached from warm-up to cool-down. Strength, conditioning, gymnastics. Every movement scales to you.</p>
+          <div class="mt-4 text-[11px] tracking-[.14em] font-semibold text-ink3">ALL LEVELS · MON–SAT</div>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <div class="overflow-hidden h-[210px]"><img src="assets/kids-run.jpg" alt="Kids running together during a CrossFit Taino youth class" class="card-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="p-6">
+          <h3 class="display text-[19px] text-ink">Taíno Kids</h3>
+          <p class="mt-2.5 text-[13.5px] leading-relaxed text-ink2">Real coaching for young athletes, built around movement quality and having fun. Grouped by age and ability.</p>
+          <div class="mt-4 text-[11px] tracking-[.14em] font-semibold text-ink3">YOUTH · PUNCHCARD</div>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <div class="overflow-hidden h-[210px]"><img src="assets/plates.jpg" alt="Loaded barbells and bumper plates racked on the floor at CrossFit Taino" class="card-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="p-6">
+          <h3 class="display text-[19px] text-ink">Open Gym</h3>
+          <p class="mt-2.5 text-[13.5px] leading-relaxed text-ink2">The whole floor, your programming, your clock. Add 24-hour access if your schedule refuses to cooperate.</p>
+          <div class="mt-4 text-[11px] tracking-[.14em] font-semibold text-ink3">SELF-LED · 24HR OPTION</div>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <div class="overflow-hidden h-[210px]"><img src="assets/fistbump.jpg" alt="Two CrossFit Taino members bumping fists after finishing a workout" class="card-img w-full h-full object-cover" loading="lazy"></div>
+        <div class="p-6">
+          <h3 class="display text-[19px] text-ink">Drop-Ins</h3>
+          <p class="mt-2.5 text-[13.5px] leading-relaxed text-ink2">In Orlando for the week? Come train. Give us a call before you head over and we will get you into a class.</p>
+          <div class="mt-4 text-[11px] tracking-[.14em] font-semibold text-ink3">VISITORS WELCOME</div>
+        </div>
+      </article>
+    </div>
+
+    <p class="mt-10 text-[14.5px] text-ink2" data-reveal>
+      Not sure where you fit? Call <a href="tel:+14076868989" class="ul-grow font-semibold" style="color:var(--redd)">(407) 686-8989</a> and we will point you at the right class.
+    </p>
+  </div>
+</section>
+
+<!-- ================= BAND ================= -->
+<section class="band h-[300px] md:h-[380px] flex items-center grain">
+  <img src="assets/band.jpg" alt="" aria-hidden="true" class="band-img" loading="lazy">
+  <div class="absolute inset-0" style="background:linear-gradient(90deg, rgba(247,242,234,.97) 0%, rgba(247,242,234,.9) 34%, rgba(247,242,234,.5) 56%, rgba(247,242,234,.1) 76%)"></div>
+  <div class="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 w-full">
+    <div class="max-w-[560px]">
+      <h2 class="display display-tight text-ink text-[clamp(1.9rem,4.6vw,3rem)]" data-reveal>
+        The hardest part is<br>the <span class="grad-text">parking lot.</span>
+      </h2>
+      <p class="mt-4 text-[15.5px] text-ink2 max-w-[26rem]" data-reveal>
+        Everyone in that room walked in for the first time once. Your first class is free, so the only
+        thing it costs you is an hour.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COACHES ================= -->
+<section id="coaches" class="py-20 md:py-28" style="background:var(--sand)">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
+      <div>
+        <span class="text-[10.5px] tracking-[.26em] font-semibold" style="color:var(--redd)" data-reveal>THE COACHES</span>
+        <h2 class="display display-tight mt-4 text-ink text-[clamp(2.2rem,5.2vw,3.5rem)]" data-reveal>Coached by<br><span class="grad-text">name.</span></h2>
+        <p class="mt-6 text-[16px] leading-relaxed text-ink2" data-reveal>
+          Five CrossFit-certified coaches on the floor. Nobody hands you a whiteboard and walks off. You
+          get watched, corrected, and scaled, whichever class you are in.
+        </p>
+        <div class="mt-8 overflow-hidden rounded-2xl" data-reveal-image>
+          <img src="assets/coaching.jpg" alt="A CrossFit Taino coach briefing the class before a workout" class="w-full h-[240px] object-cover" loading="lazy">
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <article class="card p-6 sm:col-span-2" data-reveal style="background:var(--ink); border-color:rgba(22,17,15,1)">
+          <div class="flex items-center gap-5">
+            <img src="assets/taino-mark-red.png" alt="" aria-hidden="true" class="h-14 w-auto shrink-0 opacity-90">
+            <div>
+              <h3 class="display text-[22px]" style="color:#F7F2EA">Dee Ortiz</h3>
+              <div class="text-[12px] tracking-[.14em] font-semibold mt-1.5" style="color:#FF7A5E">OWNER &amp; HEAD COACH · CF-L2</div>
+              <p class="mt-2.5 text-[13.5px] leading-relaxed" style="color:#C9BDB2">Owns the box, runs the floor, and knows every member by name.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card p-5" data-reveal>
+          <div class="display text-[26px]" style="color:var(--redd); padding-bottom:0">AG</div>
+          <h3 class="display text-[16px] text-ink mt-2">Alexis Gutierrez</h3>
+          <div class="text-[11px] tracking-[.14em] font-semibold text-ink3 mt-1.5">CROSSFIT COACH · CF-L1</div>
+        </article>
+        <article class="card p-5" data-reveal>
+          <div class="display text-[26px]" style="color:var(--redd); padding-bottom:0">RP</div>
+          <h3 class="display text-[16px] text-ink mt-2">Rosiel Pernia</h3>
+          <div class="text-[11px] tracking-[.14em] font-semibold text-ink3 mt-1.5">CROSSFIT COACH · CF-L1</div>
+        </article>
+        <article class="card p-5" data-reveal>
+          <div class="display text-[26px]" style="color:var(--redd); padding-bottom:0">RC</div>
+          <h3 class="display text-[16px] text-ink mt-2">Roderick Castro</h3>
+          <div class="text-[11px] tracking-[.14em] font-semibold text-ink3 mt-1.5">CROSSFIT COACH · CF-L2</div>
+        </article>
+        <article class="card p-5" data-reveal>
+          <div class="display text-[26px]" style="color:var(--redd); padding-bottom:0">JR</div>
+          <h3 class="display text-[16px] text-ink mt-2">John Rodriguez</h3>
+          <div class="text-[11px] tracking-[.14em] font-semibold text-ink3 mt-1.5">CROSSFIT COACH · CF-L2</div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="py-20 md:py-28" style="background:var(--bone)">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6">
+    <div class="max-w-[640px] mb-12">
+      <span class="text-[10.5px] tracking-[.26em] font-semibold" style="color:var(--redd)" data-reveal>IN THEIR WORDS</span>
+      <h2 class="display display-tight mt-4 text-ink text-[clamp(2.2rem,5.2vw,3.5rem)]" data-reveal>Ask the room</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <figure class="card p-7" data-reveal>
+        <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="text-[15px] leading-relaxed text-ink2">“If you’re looking for a great gym that really makes you feel like family and not just a money sign, you can stop looking. There are plenty of class schedules.”</blockquote>
+        <figcaption class="mt-5 text-[12px] font-semibold text-ink3">— Billy S., Yelp review</figcaption>
+      </figure>
+
+      <figure class="card p-7" data-reveal>
+        <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="text-[15px] leading-relaxed text-ink2">“This place is the place to go! Such good people and a great facility. The programming is great for any skill type!”</blockquote>
+        <figcaption class="mt-5 text-[12px] font-semibold text-ink3">— Brittany Beinborn, Facebook review</figcaption>
+      </figure>
+
+      <figure class="card p-7" data-reveal>
+        <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--red)"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="text-[15px] leading-relaxed text-ink2">“One of the options I have found since moving to Orlando. Highly recommend trying the gym out.”</blockquote>
+        <figcaption class="mt-5 text-[12px] font-semibold text-ink3">— Louis C., Yelp review</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MEMBERSHIP ================= -->
+<section id="membership" class="py-20 md:py-28" style="background:var(--sand)">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6">
+    <div class="max-w-[640px] mb-12">
+      <span class="text-[10.5px] tracking-[.26em] font-semibold" style="color:var(--redd)" data-reveal>MEMBERSHIP</span>
+      <h2 class="display display-tight mt-4 text-ink text-[clamp(2.2rem,5.2vw,3.5rem)]" data-reveal>Find your fit</h2>
+      <p class="mt-5 text-[16px] leading-relaxed text-ink2" data-reveal>
+        No contracts to decode. Pick the lane that matches how often you can actually train.
+        Every option includes free parking and a spot on the floor.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <article class="card p-6" data-reveal>
+        <h3 class="display text-[17px] text-ink">Taíno Kids</h3>
+        <div class="mt-3 flex items-baseline gap-1">
+          <span class="display text-[2.5rem] text-ink" style="padding-bottom:0">$80</span>
+          <span class="text-[13px] text-ink3 font-medium">/ month</span>
+        </div>
+        <ul class="mt-5 space-y-2.5 text-[13.5px] text-ink2">
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>10 class punchcard</li>
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Expires in 6 months</li>
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Free parking</li>
+        </ul>
+      </article>
+
+      <article class="card p-6" data-reveal>
+        <h3 class="display text-[17px] text-ink">Open Gym</h3>
+        <div class="mt-3 flex items-baseline gap-1">
+          <span class="display text-[2.5rem] text-ink" style="padding-bottom:0">$100</span>
+          <span class="text-[13px] text-ink3 font-medium">/ month</span>
+        </div>
+        <ul class="mt-5 space-y-2.5 text-[13.5px] text-ink2">
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Open gym access</li>
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Free showers</li>
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Free parking</li>
+        </ul>
+      </article>
+
+      <article class="card p-6" data-reveal>
+        <h3 class="display text-[17px] text-ink">10 Class Punchcard</h3>
+        <div class="mt-3 flex items-baseline gap-1">
+          <span class="display text-[2.5rem] text-ink" style="padding-bottom:0">$120</span>
+          <span class="text-[13px] text-ink3 font-medium">/ card</span>
+        </div>
+        <ul class="mt-5 space-y-2.5 text-[13.5px] text-ink2">
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>10 classes per card</li>
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Expires in one year</li>
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Free showers &amp; parking</li>
+        </ul>
+      </article>
+
+      <article class="card p-6" data-reveal>
+        <h3 class="display text-[17px] text-ink">CrossFit 3x</h3>
+        <div class="mt-3 flex items-baseline gap-1">
+          <span class="display text-[2.5rem] text-ink" style="padding-bottom:0">$130</span>
+          <span class="text-[13px] text-ink3 font-medium">/ month</span>
+        </div>
+        <ul class="mt-5 space-y-2.5 text-[13.5px] text-ink2">
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>3 classes per week</li>
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Access to SugarWOD</li>
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Free showers &amp; parking</li>
+        </ul>
+      </article>
+
+      <article class="card p-6 relative" data-reveal style="border-color:rgba(169,20,0,.45); box-shadow:0 18px 44px -24px rgba(169,20,0,.5)">
+        <div class="absolute top-0 right-0 text-[9.5px] tracking-[.18em] font-bold px-3 py-1.5 rounded-bl-lg" style="background:var(--redd); color:#FFF6F2">MOST POPULAR</div>
+        <h3 class="display text-[17px] text-ink">Unlimited CrossFit</h3>
+        <div class="mt-3 flex items-baseline gap-1">
+          <span class="display text-[2.5rem]" style="color:var(--redd); padding-bottom:0">$145</span>
+          <span class="text-[13px] text-ink3 font-medium">/ month</span>
+        </div>
+        <ul class="mt-5 space-y-2.5 text-[13.5px] text-ink2">
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Unlimited classes</li>
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Access to SugarWOD</li>
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Free showers &amp; parking</li>
+        </ul>
+      </article>
+
+      <article class="card p-6" data-reveal>
+        <h3 class="display text-[17px] text-ink">Unlimited 24-Hour</h3>
+        <div class="mt-3 flex items-baseline gap-1">
+          <span class="display text-[2.5rem] text-ink" style="padding-bottom:0">$175</span>
+          <span class="text-[13px] text-ink3 font-medium">/ month</span>
+        </div>
+        <ul class="mt-5 space-y-2.5 text-[13.5px] text-ink2">
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>24 hour gym access</li>
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Unlimited classes</li>
+          <li class="flex gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[3px]" style="color:var(--redd)"><path d="M20 6 9 17l-5-5"/></svg>Access to SugarWOD</li>
+        </ul>
+      </article>
+
+    </div>
+    <p class="mt-8 text-[13px] text-ink3" data-reveal>Call for current pricing and to book your free intro class.</p>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section id="visit" class="py-20 md:py-28" style="background:var(--bone)">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6">
+    <div class="max-w-[640px] mb-12">
+      <span class="text-[10.5px] tracking-[.26em] font-semibold" style="color:var(--redd)" data-reveal>VISIT</span>
+      <h2 class="display display-tight mt-4 text-ink text-[clamp(2.2rem,5.2vw,3.5rem)]" data-reveal>Come see the room</h2>
+    </div>
+
+    <div class="grid lg:grid-cols-[1fr_1.25fr] gap-8 items-stretch">
+      <div class="card p-7 sm:p-8 flex flex-col" data-reveal>
+        <div class="flex items-center gap-2 mb-6">
+          <span class="chip-dot inline-block w-2 h-2 rounded-full" style="background:#2E7D32"></span>
+          <span class="text-[11px] tracking-[.16em] font-semibold text-ink2">OPEN 6 DAYS A WEEK</span>
+        </div>
+
+        <div class="mb-6">
+          <div class="text-[10.5px] tracking-[.2em] font-semibold text-ink3 mb-2">ADDRESS</div>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=11709%20S%20Orange%20Blossom%20Trl%20Ste%20103%2C%20Orlando%2C%20FL%2032837" target="_blank" rel="noopener" class="ul-grow text-[16px] font-semibold text-ink leading-snug inline-block">
+            11709 S Orange Blossom Trl, Ste 103<br>Orlando, FL 32837
+          </a>
+        </div>
+
+        <div class="mb-6">
+          <div class="text-[10.5px] tracking-[.2em] font-semibold text-ink3 mb-2">PHONE</div>
+          <a href="tel:+14076868989" class="ul-grow text-[16px] font-semibold text-ink">(407) 686-8989</a>
+        </div>
+
+        <div class="mb-6">
+          <div class="text-[10.5px] tracking-[.2em] font-semibold text-ink3 mb-3">HOURS</div>
+          <dl class="text-[13.5px] text-ink2 space-y-1.5">
+            <div class="flex justify-between gap-4"><dt class="font-medium text-ink">Mon – Fri</dt><dd class="text-right">6:00a – 12:00p<br>4:00p – 8:30p</dd></div>
+            <div class="flex justify-between gap-4 pt-1.5" style="border-top:1px solid rgba(22,17,15,.08)"><dt class="font-medium text-ink">Saturday</dt><dd>9:00a – 12:00p</dd></div>
+            <div class="flex justify-between gap-4 pt-1.5" style="border-top:1px solid rgba(22,17,15,.08)"><dt class="font-medium text-ink">Sunday</dt><dd class="text-ink3">Closed</dd></div>
+          </dl>
+        </div>
+
+        <div class="mt-auto pt-5 flex flex-wrap gap-3" style="border-top:1px solid rgba(22,17,15,.08)">
+          <a href="tel:+14076868989" class="btn btn-primary inline-flex items-center gap-2 rounded-full px-6 py-3 text-[13.5px] font-semibold">Book your free class</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=11709%20S%20Orange%20Blossom%20Trl%20Ste%20103%2C%20Orlando%2C%20FL%2032837" target="_blank" rel="noopener" class="btn btn-ghost inline-flex items-center gap-2 rounded-full px-6 py-3 text-[13.5px] font-semibold">Directions</a>
+        </div>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden min-h-[400px] lg:min-h-full" data-reveal style="border:1px solid rgba(22,17,15,.1)">
+        <iframe
+          src="https://www.google.com/maps?q=11709%20S%20Orange%20Blossom%20Trl%20Ste%20103%2C%20Orlando%2C%20FL%2032837&output=embed"
+          width="100%" height="100%" style="min-height:400px; display:block;"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to CrossFit Taino, 11709 S Orange Blossom Trl, Ste 103, Orlando, FL 32837"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="py-20 md:py-28 relative overflow-hidden" style="background:var(--ink)">
+  <img src="assets/taino-mark-white.png" alt="" aria-hidden="true" class="absolute -right-16 -bottom-24 w-[420px] opacity-[.05] pointer-events-none select-none">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 relative z-10">
+    <div class="max-w-[720px]">
+      <img src="assets/taino-mark-white.png" alt="CrossFit Taino" class="h-16 w-auto mb-8" data-reveal>
+      <h2 class="display display-tight text-[clamp(2.3rem,6vw,4rem)]" style="color:#F7F2EA" data-reveal>
+        Your first class<br>is on <span class="grad-text">the house.</span>
+      </h2>
+      <p class="mt-6 text-[16.5px] leading-relaxed max-w-[34rem]" style="color:#C9BDB2" data-reveal>
+        Call, tell us you have never been in, and we will put you in a class with a coach who will
+        walk you through every movement. No pressure, no contract, no sales pitch.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-3" data-reveal>
+        <a href="tel:+14076868989" class="btn btn-primary inline-flex items-center gap-2 rounded-full px-7 py-4 text-[15px] font-semibold">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (407) 686-8989
+        </a>
+        <a href="#visit" class="inline-flex items-center gap-2 rounded-full px-6 py-4 text-[15px] font-semibold transition-colors" style="border:1.5px solid rgba(247,242,234,.3); color:#F7F2EA" onmouseover="this.style.borderColor='#F41E1E'" onmouseout="this.style.borderColor='rgba(247,242,234,.3)'">See the schedule</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="py-14" style="background:#0D0A09; border-top:1px solid rgba(247,242,234,.09)">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6">
+    <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="assets/taino-mark-white.png" alt="CrossFit Taino thunderbird mark" class="h-10 w-auto">
+          <div>
+            <div class="display text-[17px]" style="color:#F7F2EA; padding-bottom:0">CrossFit Taino</div>
+            <div class="text-[9.5px] tracking-[.2em] font-medium mt-1" style="color:#877C73">AFFILIATE #16457</div>
+          </div>
+        </div>
+        <p class="text-[13.5px] leading-relaxed max-w-[22rem]" style="color:#9C9188">
+          A coach-led CrossFit gym on South Orange Blossom Trail. Every level, every age, coached by name.
+        </p>
+        <div class="flex gap-3 mt-5">
+          <a href="https://www.instagram.com/crossfit__taino/" target="_blank" rel="noopener" aria-label="CrossFit Taino on Instagram" class="inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors" style="border:1px solid rgba(247,242,234,.2); color:#C9BDB2" onmouseover="this.style.borderColor='#F41E1E';this.style.color='#F41E1E'" onmouseout="this.style.borderColor='rgba(247,242,234,.2)';this.style.color='#C9BDB2'">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/CrossFitTaino/" target="_blank" rel="noopener" aria-label="CrossFit Taino on Facebook" class="inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors" style="border:1px solid rgba(247,242,234,.2); color:#C9BDB2" onmouseover="this.style.borderColor='#F41E1E';this.style.color='#F41E1E'" onmouseout="this.style.borderColor='rgba(247,242,234,.2)';this.style.color='#C9BDB2'">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="text-[10.5px] tracking-[.2em] font-semibold mb-4" style="color:#877C73">EXPLORE</div>
+        <ul class="space-y-2.5 text-[13.5px]" style="color:#C9BDB2">
+          <li><a href="#programs" class="ul-grow hover:text-white transition-colors">Programs</a></li>
+          <li><a href="#tribe" class="ul-grow hover:text-white transition-colors">The Mark</a></li>
+          <li><a href="#coaches" class="ul-grow hover:text-white transition-colors">Coaches</a></li>
+          <li><a href="#membership" class="ul-grow hover:text-white transition-colors">Membership</a></li>
+          <li><a href="#visit" class="ul-grow hover:text-white transition-colors">Visit</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-[10.5px] tracking-[.2em] font-semibold mb-4" style="color:#877C73">FIND US</div>
+        <ul class="space-y-3 text-[13.5px]" style="color:#C9BDB2">
+          <li><a href="tel:+14076868989" class="ul-grow hover:text-white transition-colors">(407) 686-8989</a></li>
+          <li><a href="mailto:crossfittaino@gmail.com" class="ul-grow hover:text-white transition-colors">crossfittaino@gmail.com</a></li>
+          <li class="leading-relaxed">11709 S Orange Blossom Trl<br>Ste 103, Orlando, FL 32837</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-[11.5px]" style="border-top:1px solid rgba(247,242,234,.09); color:#736961">
+      <span>© 2026 CrossFit Taino. All rights reserved.</span>
+      <span>Orlando, Florida</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="sticky-bar fixed bottom-0 inset-x-0 z-50 md:hidden grid grid-cols-2" style="background:var(--ink)">
+  <a href="tel:+14076868989" class="flex items-center justify-center gap-2 py-4 text-[14px] font-semibold" style="color:#F7F2EA">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--red)"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=11709%20S%20Orange%20Blossom%20Trl%20Ste%20103%2C%20Orlando%2C%20FL%2032837" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-4 text-[14px] font-semibold" style="color:#F7F2EA; border-left:1px solid rgba(247,242,234,.14)">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--red)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- ================= JSON-LD ================= -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ExerciseGym",
+  "name":"CrossFit Taino",
+  "description":"A coach-led CrossFit gym in south Orlando, Florida offering CrossFit classes, CrossFit Kids, open gym and drop-ins for all fitness levels.",
+  "url":"https://turnkeyweb.org/previews/crossfit-taino/",
+  "image":"https://turnkeyweb.org/previews/crossfit-taino/assets/hero.jpg",
+  "logo":"https://turnkeyweb.org/previews/crossfit-taino/assets/taino-mark.png",
+  "telephone":"+1-407-686-8989",
+  "email":"crossfittaino@gmail.com",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"11709 S Orange Blossom Trl, Ste 103",
+    "addressLocality":"Orlando",
+    "addressRegion":"FL",
+    "postalCode":"32837",
+    "addressCountry":"US"
+  },
+  "sameAs":[
+    "https://www.instagram.com/crossfit__taino/",
+    "https://www.facebook.com/CrossFitTaino/",
+    "https://www.crossfit.com/gym/16457/crossfit-taino"
+  ],
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"06:00","closes":"12:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"16:00","closes":"20:30"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"12:00"}
+  ],
+  "amenityFeature":[
+    {"@type":"LocationFeatureSpecification","name":"Free parking","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Free showers","value":true},
+    {"@type":"LocationFeatureSpecification","name":"24 hour access option","value":true}
+  ],
+  "hasOfferCatalog":{
+    "@type":"OfferCatalog",
+    "name":"Memberships",
+    "itemListElement":[
+      {"@type":"Offer","name":"Taíno Kids","price":"80","priceCurrency":"USD"},
+      {"@type":"Offer","name":"Open Gym","price":"100","priceCurrency":"USD"},
+      {"@type":"Offer","name":"10 Class Punchcard","price":"120","priceCurrency":"USD"},
+      {"@type":"Offer","name":"CrossFit 3x","price":"130","priceCurrency":"USD"},
+      {"@type":"Offer","name":"Unlimited CrossFit","price":"145","priceCurrency":"USD"},
+      {"@type":"Offer","name":"Unlimited 24-Hour","price":"175","priceCurrency":"USD"}
+    ]
+  }
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  /* ---------- Lenis: ONE rAF loop, driven by the GSAP ticker ---------- */
+  let lenis = null;
+  if (!reduce && typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+      duration: 1.1,
+      easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10*t)),
+      smoothWheel: true,
+      smoothTouch: false
+    });
+    gsap.ticker.add((time)=> lenis.raf(time*1000));
+    gsap.ticker.lagSmoothing(0);
+    lenis.on('scroll', ScrollTrigger.update);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if (!id || id === '#') return;
+      const t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(t, { offset:-70 });
+      else t.scrollIntoView({ behavior:'smooth' });
+    });
+  });
+
+  /* ---------- nav shadow ---------- */
+  ScrollTrigger.create({ start:'top -80', onUpdate:s=>{
+    document.getElementById('nav').style.boxShadow = s.progress>0 ? '0 10px 30px -18px rgba(22,17,15,.4)' : 'none';
+  }});
+
+  /* ---------- reveals (GPU-only, once) ---------- */
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.fromTo(el, {opacity:0, y:30}, {
+      opacity:1, y:0, duration:.7, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+      onComplete(){ el.style.willChange='auto'; }
+    });
+  });
+  gsap.utils.toArray('[data-reveal-image]').forEach(el=>{
+    ScrollTrigger.create({ trigger:el, start:'top 88%', once:true, onEnter:()=> el.classList.add('in') });
+  });
+
+  /* ---------- count-up ---------- */
+  gsap.utils.toArray('[data-count]').forEach(el=>{
+    const target = parseFloat(el.dataset.count), suf = el.dataset.suffix || '';
+    ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter(){
+      const o = {v:0};
+      gsap.to(o, {v:target, duration:1.6, ease:'power2.out', onUpdate(){ el.textContent = Math.round(o.v)+suf; }});
+    }});
+  });
+
+  /* ---------- hero video + band parallax (desktop only) ---------- */
+  ScrollTrigger.matchMedia({
+    '(min-width: 768px)': function(){
+      gsap.to('.hero-bg', { yPercent:14, scale:1.07, ease:'none',
+        scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
+      gsap.utils.toArray('.band-img').forEach(img=>{
+        gsap.fromTo(img, {yPercent:-7}, { yPercent:7, ease:'none',
+          scrollTrigger:{ trigger:img.closest('.band'), start:'top bottom', end:'bottom top', scrub:.6 } });
+      });
+    }
+  });
+
+  /* ---------- 6s crawler / screenshot safety net (REQUIRED) ---------- */
+  setTimeout(()=>{
+    document.querySelectorAll('[data-reveal]').forEach(el=>{
+      const s = getComputedStyle(el);
+      if (parseFloat(s.opacity) < .96) gsap.set(el, {opacity:1, y:0, clearProps:'willChange'});
+    });
+    document.querySelectorAll('[data-reveal-image]').forEach(el=> el.classList.add('in'));
+    document.querySelectorAll('[data-count]').forEach(el=>{
+      if (el.textContent.trim()==='0') el.textContent = el.dataset.count + (el.dataset.suffix||'');
+    });
+    if (window.__tbForce) window.__tbForce();
+  }, 6000);
+})();
+</script>
+
+<!-- ============ SIGNATURE SHOWPIECE: the thunderbird assembles from chalk dust ============ -->
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+const wrap = document.getElementById('tb-wrap');
+const canvas = document.getElementById('tb-canvas');
+const fallback = document.getElementById('tb-fallback');
+const showFallback = () => { canvas.style.display='none'; fallback.classList.add('show'); };
+
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = window.matchMedia('(max-width: 767px)').matches;
+const lowPower = (navigator.hardwareConcurrency || 8) <= 4;
+
+// Reduced motion / low-power / no-WebGL -> just show their real mark. Always legible.
+let gl = null;
+try { gl = canvas.getContext('webgl2') || canvas.getContext('webgl'); } catch(e){}
+if (reduce || !gl) { showFallback(); }
+else {
+  const img = new Image();
+  img.onerror = showFallback;
+  img.onload = () => { try { init(img); } catch(e){ showFallback(); } };
+  img.src = 'assets/taino-mark.png';
+
+  function init(img){
+    // ---- sample the real logo's alpha into particle targets ----
+    const S = 220;
+    const c = document.createElement('canvas');
+    const ar = img.width / img.height;
+    const sw = ar >= 1 ? S : Math.round(S*ar);
+    const sh = ar >= 1 ? Math.round(S/ar) : S;
+    c.width = sw; c.height = sh;
+    const cx = c.getContext('2d', { willReadFrequently:true });
+    cx.drawImage(img, 0, 0, sw, sh);
+    const data = cx.getImageData(0,0,sw,sh).data;
+
+    const pts = [];
+    for (let y=0; y<sh; y++){
+      for (let x=0; x<sw; x++){
+        if (data[(y*sw+x)*4+3] > 120) pts.push([x, y]);
+      }
+    }
+    if (!pts.length) { showFallback(); return; }
+
+    const MAX = isMobile || lowPower ? 4200 : 11000;
+    // shuffle then take MAX so the sample is even across the mark
+    for (let i=pts.length-1; i>0; i--){ const j = (Math.random()*(i+1))|0; const t=pts[i]; pts[i]=pts[j]; pts[j]=t; }
+    const use = pts.slice(0, Math.min(MAX, pts.length));
+    const N = use.length;
+
+    const SPAN = 52;
+    const scale = SPAN / sw;
+    const pos = new Float32Array(N*3);      // scattered start
+    const tgt = new Float32Array(N*3);      // thunderbird target
+    const rnd = new Float32Array(N);
+
+    for (let i=0; i<N; i++){
+      const [x,y] = use[i];
+      tgt[i*3+0] = (x - sw/2) * scale;
+      tgt[i*3+1] = -(y - sh/2) * scale;
+      tgt[i*3+2] = (Math.random()-0.5) * 1.2;
+      const a = Math.random()*Math.PI*2, r = 24 + Math.random()*30;
+      pos[i*3+0] = Math.cos(a)*r*1.5;
+      pos[i*3+1] = Math.sin(a)*r*1.1;
+      pos[i*3+2] = (Math.random()-0.5)*30;
+      rnd[i] = Math.random();
+    }
+
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+    geo.setAttribute('aTarget',  new THREE.BufferAttribute(tgt,3));
+    geo.setAttribute('aRand',    new THREE.BufferAttribute(rnd,1));
+
+    const mat = new THREE.ShaderMaterial({
+      transparent:true, depthWrite:false,
+      uniforms:{ uProgress:{value:0}, uTime:{value:0}, uSize:{value: isMobile ? 26 : 20} },
+      vertexShader:`
+        attribute vec3 aTarget; attribute float aRand;
+        uniform float uProgress, uTime, uSize;
+        varying vec3 vColor; varying float vA;
+        void main(){
+          float p = clamp(uProgress*1.45 - aRand*0.42, 0.0, 1.0);
+          p = p*p*(3.0-2.0*p);
+          vec3 pp = mix(position, aTarget, p);
+          float drift = 1.0 - p*0.86;
+          pp.x += sin(uTime*0.45 + aRand*11.0) * 1.5 * drift;
+          pp.y += cos(uTime*0.38 + aRand*8.0)  * 1.5 * drift;
+          pp.z += sin(uTime*0.3  + aRand*5.0)  * 1.0 * drift;
+          // ~13% brand-red embers, rest ink
+          vColor = aRand < 0.13 ? vec3(0.957,0.118,0.118) : vec3(0.086,0.067,0.059);
+          vA = 0.28 + p*0.72;
+          vec4 mv = modelViewMatrix * vec4(pp,1.0);
+          gl_PointSize = uSize * (1.0/-mv.z) * 22.0;
+          gl_Position = projectionMatrix * mv;
+        }`,
+      fragmentShader:`
+        varying vec3 vColor; varying float vA;
+        void main(){
+          float d = length(gl_PointCoord - vec2(0.5));
+          if (d > 0.5) discard;
+          float a = smoothstep(0.5, 0.12, d) * vA;
+          gl_FragColor = vec4(vColor, a);
+        }`
+    });
+
+    const scene = new THREE.Scene();
+    const pts3 = new THREE.Points(geo, mat);
+    scene.add(pts3);
+    const cam = new THREE.PerspectiveCamera(50, 1, 0.1, 400);
+    cam.position.z = 74;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:!isMobile });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+    renderer.setClearColor(0x000000, 0);
+
+    function resize(){
+      const r = wrap.getBoundingClientRect();
+      const w = Math.max(1, r.width), h = Math.max(1, r.height);
+      renderer.setSize(w, h, false);
+      cam.aspect = w/h; cam.updateProjectionMatrix();
+    }
+    resize();
+    new ResizeObserver(resize).observe(wrap);
+
+    // ---- scrub the assembly on scroll ----
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.to(mat.uniforms.uProgress, {
+        value:1, ease:'none',
+        scrollTrigger:{ trigger:wrap, start:'top 85%', end:'bottom 55%', scrub:0.8 }
+      });
+    } else { mat.uniforms.uProgress.value = 1; }
+
+    // ---- render only when visible AND tab active ----
+    let onScreen = false, visible = !document.hidden, raf = null;
+    const clock = new THREE.Clock();
+    function loop(){
+      raf = requestAnimationFrame(loop);
+      if (!onScreen || !visible) return;
+      mat.uniforms.uTime.value = clock.getElapsedTime();
+      renderer.render(scene, cam);
+    }
+    new IntersectionObserver(es=>{ onScreen = es[0].isIntersecting; }, {threshold:0.01}).observe(wrap);
+    document.addEventListener('visibilitychange', ()=>{ visible = !document.hidden; });
+    requestAnimationFrame(loop);
+
+    // safety net: a screenshot bot must see the assembled bird
+    window.__tbForce = () => {
+      mat.uniforms.uProgress.value = 1;
+      onScreen = true; visible = true;
+      renderer.render(scene, cam);
+    };
+  }
+}
+</script>
+</body>
+</html>
