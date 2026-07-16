@@ -63,15 +63,18 @@ tailwind.config = { theme: { extend: {
   /* ---- HERO ---- */
   .hero{ position:relative; isolation:isolate; min-height:100svh; }
   .hero-media{ position:absolute; inset:0; overflow:hidden; z-index:0; }
-  .hero-bg{ position:absolute; inset:-8% -4%; width:108%; height:116%; object-fit:cover; will-change:transform; }
+  .hero-bg{ position:absolute; inset:-8% -4%; width:108%; height:116%; object-fit:cover;
+    filter:contrast(1.07) saturate(1.1); will-change:transform; }
   /* light scrim: BRIGHTEST (most opaque bone) on the LEFT where the dark headline sits */
   .hero-scrim{ position:absolute; inset:0; z-index:1; pointer-events:none;
     background:
-      linear-gradient(96deg, rgba(247,242,234,.985) 0%, rgba(247,242,234,.95) 26%, rgba(247,242,234,.72) 44%, rgba(247,242,234,.26) 62%, rgba(247,242,234,0) 78%),
-      linear-gradient(to bottom, rgba(247,242,234,.55) 0%, rgba(247,242,234,0) 26%, rgba(247,242,234,0) 62%, rgba(247,242,234,.92) 100%); }
+      linear-gradient(96deg, rgba(247,242,234,.98) 0%, rgba(247,242,234,.93) 26%, rgba(247,242,234,.6) 44%, rgba(247,242,234,.14) 64%, rgba(247,242,234,0) 80%),
+      linear-gradient(to bottom, rgba(247,242,234,.5) 0%, rgba(247,242,234,0) 26%, rgba(247,242,234,0) 64%, rgba(247,242,234,.9) 100%); }
   @media (max-width:900px){
+    /* frame the interesting side (roll-up door + red plate + chalk dust), not the blank wall */
+    .hero-bg{ object-position:70% 50%; }
     .hero-scrim{ background:
-      linear-gradient(to bottom, rgba(247,242,234,.97) 0%, rgba(247,242,234,.93) 42%, rgba(247,242,234,.72) 62%, rgba(247,242,234,.55) 78%, rgba(247,242,234,.95) 100%); }
+      linear-gradient(to bottom, rgba(247,242,234,.95) 0%, rgba(247,242,234,.9) 40%, rgba(247,242,234,.62) 58%, rgba(247,242,234,.2) 76%, rgba(247,242,234,.12) 88%, rgba(247,242,234,.82) 100%); }
   }
   .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; z-index:2; opacity:.05; mix-blend-mode:multiply;
     background-image:radial-gradient(#16110F 1px, transparent 1px); background-size:3px 3px; }
@@ -654,7 +657,7 @@ tailwind.config = { theme: { extend: {
         <iframe
           src="https://www.google.com/maps?q=11709%20S%20Orange%20Blossom%20Trl%20Ste%20103%2C%20Orlando%2C%20FL%2032837&output=embed"
           width="100%" height="100%" style="min-height:400px; display:block;"
-          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen loading="eager" referrerpolicy="no-referrer-when-downgrade"
           title="Map to CrossFit Taino, 11709 S Orange Blossom Trl, Ste 103, Orlando, FL 32837"></iframe>
       </div>
     </div>
