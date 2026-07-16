@@ -158,25 +158,25 @@ tailwind.config = { theme: { extend: {
   <div class="hero-scrim"></div>
   <canvas id="steam" aria-hidden="true"></canvas>
 
-  <div class="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 min-h-[100svh] flex items-center pt-[var(--nav)] pb-28">
+  <div class="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 min-h-[100svh] flex items-center pt-[calc(var(--nav)+8px)] pb-32 sm:pb-24">
     <div class="max-w-[640px]">
-      <div class="flex items-center gap-2.5 mb-7" data-reveal>
+      <div class="flex items-center gap-2.5 mb-5" data-reveal>
         <span class="w-1.5 h-1.5 rounded-full bg-brass dot"></span>
         <span class="text-[11px] tracking-[0.26em] uppercase font-semibold text-cypress">Lafayette, Louisiana</span>
       </div>
 
-      <h1 class="display text-[clamp(2.9rem,7.6vw,5.2rem)] text-ink mb-7" data-reveal>
+      <h1 class="display text-[clamp(2.15rem,5.4vw,4.15rem)] text-ink mb-5" data-reveal>
         <span class="line-mask">Your good things,</span>
         <span class="line-mask"><em class="grad-text italic">given back to you</em></span>
         <span class="line-mask">better than you left them.</span>
       </h1>
 
-      <p class="text-[16.5px] sm:text-[17.5px] leading-[1.72] text-ink/80 max-w-[500px] mb-9" data-reveal>
+      <p class="text-[15px] sm:text-[16.5px] leading-[1.68] text-ink/80 max-w-[470px] mb-7" data-reveal>
         A locally owned dry cleaner on Westgate Road. Suits, shirts, comforters, gowns, and the
         alterations that make them fit. Pressed by hand, checked by people who put their name on it.
       </p>
 
-      <div class="flex flex-wrap items-center gap-3.5 mb-11" data-reveal>
+      <div class="flex flex-wrap items-center gap-3 mb-8" data-reveal>
         <a href="tel:+13372620240" class="btn inline-flex items-center gap-2.5 rounded-full bg-cypress text-linen px-7 py-4 text-[14.5px] font-semibold shadow-[0_14px_36px_-12px_rgba(30,58,52,.6)]">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
           Call (337) 262-0240
@@ -428,13 +428,13 @@ tailwind.config = { theme: { extend: {
       </div>
       <div class="flex items-center gap-5 shrink-0" data-reveal>
         <div>
-          <div class="display text-[3.2rem] text-brassLt leading-none" data-count="4.8" data-dec="1">0</div>
-          <div class="text-[11.5px] text-linen/60 mt-1.5 font-medium">out of 5</div>
+          <div class="display text-[3.2rem] text-brassLt" style="line-height:1.14" data-count="4.8" data-dec="1">0</div>
+          <div class="text-[11.5px] text-linen/60 mt-1 font-medium">out of 5</div>
         </div>
         <div class="w-px h-14 bg-linen/20"></div>
         <div>
-          <div class="display text-[3.2rem] text-brassLt leading-none" data-count="41" data-suffix="">0</div>
-          <div class="text-[11.5px] text-linen/60 mt-1.5 font-medium">Google reviews</div>
+          <div class="display text-[3.2rem] text-brassLt" style="line-height:1.14" data-count="41" data-suffix="">0</div>
+          <div class="text-[11.5px] text-linen/60 mt-1 font-medium">Google reviews</div>
         </div>
       </div>
     </div>
