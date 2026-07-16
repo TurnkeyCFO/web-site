@@ -97,6 +97,10 @@ tailwind.config = {
     -webkit-text-fill-color:transparent; color:transparent;
     animation:shimmer 9s linear infinite;
     line-height:1.15; padding-bottom:.1em; display:inline-block;
+    /* MUST stay none. .hero-h1 sets a cream text-shadow for legibility over the
+       video; an inherited shadow paints on top of a background-clip:text fill and
+       washes the gradient out to near-silver. */
+    text-shadow:none !important;
   }
   @keyframes shimmer{ from{background-position:0% 50%} to{background-position:220% 50%} }
 
