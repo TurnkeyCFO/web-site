@@ -629,10 +629,17 @@ tailwind.config = {
 
       <!-- map -->
       <div data-reveal class="lg:col-span-7">
-        <div class="h-full min-h-[380px] md:min-h-[520px] rounded-xl overflow-hidden border border-navy/12 bg-dune">
+        <!-- Static poster of the REAL rendered map sits behind the live embed. The
+             cross-origin embed drops its painted tiles when the viewport is resized
+             (full-page screenshots, crawlers, slow connections), which left a blank
+             beige box. The poster guarantees a real map is always visible; the live
+             interactive embed layers on top whenever it paints. -->
+        <div class="relative h-full min-h-[380px] md:min-h-[520px] rounded-xl overflow-hidden border border-navy/12 bg-dune bg-center bg-cover"
+             style="background-image:url('assets/map.jpg')">
           <iframe
             title="Map to Westside Tax Services, 1115 Babcock Rd, San Antonio, TX 78201"
             src="https://www.google.com/maps?q=1115%20Babcock%20Rd%2C%20San%20Antonio%2C%20TX%2078201&output=embed"
+            class="relative z-10"
             width="100%" height="100%" style="border:0;min-height:380px;display:block"
             loading="eager" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
@@ -717,7 +724,7 @@ tailwind.config = {
     Directions
   </a>
 </div>
-<div class="lg:hidden h-[74px]"></div>
+<div class="lg:hidden h-[92px]"></div>
 
 <!-- ================= JSON-LD ================= -->
 <script type="application/ld+json">
