@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<!--
+  Service Electric of North Texas — Turnkey Web prospect preview (DRAFT)
+  ---------------------------------------------------------------------
+  ART DIRECTION: "Copper on warm white." The business has NO existing logo, NO brand
+  colors (their live site is an unstyled GoDaddy template serving default greys), and
+  NO images at all. So the brand is built from their actual material: copper conductor.
+  Light-luxury base (#FAF7F2 warm white) + copper #B4552D + live-current amber #E8A13A.
+  Type: Archivo Expanded (engineered display) + Public Sans (body) + IBM Plex Mono
+  (schematic spec labels). Deliberately divergent from recent builds (Newsreader,
+  Fraunces, Bricolage).
+
+  SIGNATURE MOMENT: the copper conductor spine — an SVG line that draws down the page
+  as you scroll, with nodes that energize (amber) as each section passes. The site
+  literally carries current.
+
+  SHOWPIECES: (1) Kling cinematic macro hero video (Higgsfield nano_banana_pro ->
+  kling3_0_turbo, self-hosted). (2) Three.js copper "current field" — drifting copper
+  motes + faint conductor lines on the light canvas.
+
+  REAL DATA ONLY — every fact below verified first-party from myserviceelectric.com:
+    Name:    Service Electric of North Texas (footer copyright line)
+    Phone:   940-391-5683 (site header, footer, home CTA)
+    Address: 106 S. Hwy 377, Aubrey, TX 76227 (contact page)
+    Tagline: "SEASONED PROS / Go with someone who's been there" (their own homepage)
+    Services: Repairs, Installations, Build outs, Residential (their "OUR SERVICES")
+    Copy anchors: "industry-certified master electricians", "years of on-the-job
+      experience", "Professional, quality electrical work" — all verbatim from them.
+  OMITTED (unverifiable — never fabricated):
+    Hours (not published anywhere) -> no hours card, map kept.
+    Reviews (ZERO on Google/Yelp/Facebook/BBB; their site shows an unedited GoDaddy
+      demo testimonial "Mim Purr, GLOBAL CO.") -> value chips only, no invented quotes.
+    Owner name (BBB says Ryan Smith; build request says Brent Smith; unresolved) -> omitted.
+    Years in business (sources conflict: 2000 / 2005 / "19 years") -> omitted.
+    License number (a TECL exists under "SERVICE ELECTRIC" but can't be tied to them) -> omitted.
+-->
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service Electric of North Texas | Master Electricians in Aubrey, TX</title>
+<meta name="description" content="Industry-certified master electricians serving Aubrey and North Texas. Residential repairs, installations and build outs done right the first time. Call 940-391-5683.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/service-electric/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Service Electric of North Texas | Master Electricians in Aubrey, TX">
+<meta property="og:description" content="Seasoned pros. Go with someone who's been there. Residential electrical repairs, installations and build outs across North Texas.">
+<meta property="og:url" content="https://turnkeyweb.org/previews/service-electric/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/service-electric/assets/hero.jpg">
+<meta name="theme-color" content="#FAF7F2">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Public+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: {
+    paper:'#FAF7F2', bone:'#F1EBE1', sand:'#E3D8C9',
+    ink:'#171310', slate:'#5A4E45',
+    copper:'#B4552D', amber:'#E8A13A', deep:'#241C17'
+  },
+  fontFamily: { display:['Archivo','system-ui','sans-serif'], body:['"Public Sans"','system-ui','sans-serif'], mono:['"IBM Plex Mono"','ui-monospace','monospace'] }
+}}};
+</script>
+
+<style>
+  :root{ --paper:#FAF7F2; --bone:#F1EBE1; --ink:#171310; --slate:#5A4E45; --copper:#B4552D; --amber:#E8A13A; --deep:#241C17; --nav:76px; }
+  html{ scroll-padding-top:96px; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Public Sans',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .disp{ font-family:'Archivo',system-ui,sans-serif; font-stretch:118%; font-weight:700; letter-spacing:-.022em; line-height:1.1; padding-bottom:.06em; }
+  .mono{ font-family:'IBM Plex Mono',ui-monospace,monospace; }
+
+  /* ---- descender safety (HARD): never clip g/y/p/j/q ---- */
+  h1,h2,h3,h4,.disp,.grad-text{ padding-bottom:.08em; }
+  h1,h2,h3{ line-height:1.1; }
+
+  /* ---- gradient shimmer on key headers ---- */
+  .grad-text{
+    background:linear-gradient(90deg,var(--copper) 0%,#8E3F1E 22%,var(--amber) 50%,#8E3F1E 78%,var(--copper) 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite; line-height:1.15; padding-bottom:.1em; display:inline-block;
+  }
+  @keyframes shimmer{ from{background-position:0% 50%} to{background-position:220% 50%} }
+  @media (prefers-reduced-motion:reduce){ .grad-text{ animation:none; } }
+
+  /* ---- hero ---- */
+  .hero-wrap{ position:relative; overflow:hidden; background:var(--bone); }
+  .hero-bg{ position:absolute; inset:-8% -4% -8% -4%; width:108%; height:116%; object-fit:cover; will-change:transform; }
+  /* legibility scrim — a warm-white wash, DENSEST on the left third where the dark headline sits */
+  .hero-scrim{ position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(90deg, rgba(250,247,242,.97) 0%, rgba(250,247,242,.93) 30%, rgba(250,247,242,.62) 52%, rgba(250,247,242,.10) 74%, rgba(250,247,242,0) 100%),
+      linear-gradient(180deg, rgba(250,247,242,.86) 0%, rgba(250,247,242,.30) 26%, rgba(250,247,242,0) 55%, rgba(250,247,242,.34) 100%);
+  }
+  @media (max-width:880px){
+    .hero-scrim{ background:
+      linear-gradient(180deg, rgba(250,247,242,.96) 0%, rgba(250,247,242,.92) 40%, rgba(250,247,242,.72) 62%, rgba(250,247,242,.42) 100%),
+      linear-gradient(90deg, rgba(250,247,242,.86) 0%, rgba(250,247,242,.40) 70%, rgba(250,247,242,.10) 100%); }
+  }
+
+  /* ---- conductor spine (signature) ---- */
+  .spine{ position:absolute; left:0; top:0; height:100%; width:2px; pointer-events:none; }
+  .spine-track{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(180,85,45,.14), rgba(180,85,45,.14)); }
+  .spine-live{ position:absolute; left:0; top:0; width:100%; height:0%;
+    background:linear-gradient(180deg, var(--copper), var(--amber)); box-shadow:0 0 12px rgba(232,161,58,.55); }
+  .node{ position:absolute; left:50%; width:11px; height:11px; margin-left:-5.5px; border-radius:50%;
+    background:var(--paper); border:2px solid rgba(180,85,45,.35); transition:all .5s cubic-bezier(.2,.7,.3,1); }
+  .node.on{ border-color:var(--amber); background:var(--amber); box-shadow:0 0 0 5px rgba(232,161,58,.16), 0 0 14px rgba(232,161,58,.7); }
+
+  /* ---- cards ---- */
+  .card{ position:relative; background:#fff; border:1px solid rgba(35,20,25,.09); border-radius:14px; overflow:hidden;
+    transition:transform .55s cubic-bezier(.2,.7,.3,1), box-shadow .55s cubic-bezier(.2,.7,.3,1), border-color .55s; }
+  .card::before{ content:''; position:absolute; top:0; left:0; height:2px; width:0%;
+    background:linear-gradient(90deg,var(--copper),var(--amber)); transition:width .65s cubic-bezier(.2,.7,.3,1); }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 22px 48px -22px rgba(36,28,23,.34); border-color:rgba(180,85,45,.3); }
+  .card:hover::before{ width:100%; }
+  .card:hover .ico{ transform:rotate(-6deg) scale(1.06); }
+  .ico{ transition:transform .5s cubic-bezier(.2,.7,.3,1); }
+
+  /* ---- buttons ---- */
+  .btn{ position:relative; overflow:hidden; transition:transform .35s cubic-bezier(.2,.7,.3,1), filter .35s, box-shadow .35s; }
+  .btn::after{ content:''; position:absolute; top:0; left:-130%; width:55%; height:100%; transform:skewX(-20deg);
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent); transition:left .9s cubic-bezier(.2,.7,.3,1); }
+  .btn:hover{ transform:translateY(-3px); filter:brightness(1.05); box-shadow:0 16px 32px -14px rgba(180,85,45,.7); }
+  .btn:hover::after{ left:130%; }
+
+  .ulg{ position:relative; }
+  .ulg::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+    background:linear-gradient(90deg,var(--copper),var(--amber)); transition:width .5s cubic-bezier(.2,.7,.3,1); }
+  .ulg:hover::after{ width:100%; }
+
+  .dot{ animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.42;transform:scale(.82)} }
+
+  [data-reveal]{ opacity:0; transform:translateY(26px); will-change:opacity,transform; }
+  [data-reveal].in{ opacity:1; transform:none; }
+
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(rgba(36,28,23,.9) .6px, transparent .7px); background-size:3px 3px; }
+
+  #field{ position:absolute; inset:0; width:100%; height:100%; }
+
+  @media (prefers-reduced-motion:reduce){ *{ animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Electrician",
+  "name":"Service Electric of North Texas",
+  "alternateName":"Service Electric",
+  "description":"Industry-certified master electricians serving Aubrey and North Texas. Residential electrical repairs, installations and build outs.",
+  "url":"https://turnkeyweb.org/previews/service-electric/",
+  "telephone":"+1-940-391-5683",
+  "faxNumber":"+1-940-365-0881",
+  "address":{"@type":"PostalAddress","streetAddress":"106 S. Hwy 377","addressLocality":"Aubrey","addressRegion":"TX","postalCode":"76227","addressCountry":"US"},
+  "areaServed":[
+    {"@type":"City","name":"Aubrey"},{"@type":"City","name":"Denton"},{"@type":"City","name":"Little Elm"},
+    {"@type":"City","name":"Prosper"},{"@type":"City","name":"Cross Roads"},{"@type":"City","name":"Pilot Point"},
+    {"@type":"City","name":"Providence Village"},{"@type":"City","name":"Oak Point"}
+  ],
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Electrical Repairs"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Electrical Installations"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Build Outs"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Residential Electrical"}}
+  ]
+}
+</script>
+</head>
+
+<body class="antialiased">
+
+<!-- ===================== NAV ===================== -->
+<header id="top" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" data-nav>
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex items-center justify-between h-[var(--nav)]">
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-deep shrink-0">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#E8A13A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5z"/></svg>
+        </span>
+        <span class="leading-none">
+          <span class="disp block text-[15px] tracking-tight text-ink">SERVICE ELECTRIC</span>
+          <span class="mono block text-[9.5px] tracking-[.2em] text-slate mt-[3px]">OF NORTH TEXAS</span>
+        </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-[14px] font-medium text-slate">
+        <a href="#work" class="ulg hover:text-ink transition-colors">The Work</a>
+        <a href="#pros" class="ulg hover:text-ink transition-colors">Seasoned Pros</a>
+        <a href="#area" class="ulg hover:text-ink transition-colors">Service Area</a>
+        <a href="#contact" class="ulg hover:text-ink transition-colors">Contact</a>
+      </nav>
+      <a href="tel:9403915683" class="btn hidden sm:inline-flex items-center gap-2 rounded-full bg-copper text-white px-5 py-2.5 text-[13.5px] font-semibold">
+        <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+        940-391-5683
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero-wrap min-h-[100svh] flex items-center pt-[calc(var(--nav)+34px)] pb-16 sm:pt-[var(--nav)]">
+  <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 w-full">
+    <div class="max-w-[640px]">
+      <div class="flex items-center gap-2.5 mb-6" data-reveal>
+        <span class="dot w-1.5 h-1.5 rounded-full bg-copper"></span>
+        <span class="mono text-[10.5px] tracking-[.26em] text-slate uppercase">Seasoned Pros &middot; Aubrey, Texas</span>
+      </div>
+
+      <h1 class="disp text-[clamp(2.6rem,7vw,4.9rem)] text-ink" data-reveal>
+        Go with someone<br>who&rsquo;s <span class="grad-text">been there.</span>
+      </h1>
+
+      <p class="mt-7 text-[clamp(1.02rem,1.7vw,1.2rem)] leading-relaxed text-slate max-w-[520px]" data-reveal>
+        Industry-certified master electricians serving North Texas homes. Repairs, installations and
+        build outs, handled by people who have seen the problem before and know exactly what it takes to fix it.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3.5" data-reveal>
+        <a href="tel:9403915683" class="btn inline-flex items-center gap-2.5 rounded-full bg-copper text-white px-7 py-3.5 text-[15px] font-semibold">
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+          Call 940-391-5683
+        </a>
+        <a href="#work" class="inline-flex items-center gap-2 rounded-full border border-ink/20 bg-paper/70 backdrop-blur px-6 py-3.5 text-[15px] font-semibold text-ink hover:border-copper hover:text-copper transition-colors">
+          See the work
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-11 flex flex-wrap gap-x-9 gap-y-4" data-reveal>
+        <div>
+          <div class="disp text-[1.55rem] text-ink"><span data-count="4" data-suffix="">0</span></div>
+          <div class="mono text-[10px] tracking-[.16em] text-slate uppercase mt-1">Core services</div>
+        </div>
+        <div class="w-px bg-ink/10 self-stretch hidden sm:block"></div>
+        <div>
+          <div class="disp text-[1.55rem] text-ink">Master</div>
+          <div class="mono text-[10px] tracking-[.16em] text-slate uppercase mt-1">Industry certified</div>
+        </div>
+        <div class="w-px bg-ink/10 self-stretch hidden sm:block"></div>
+        <div>
+          <div class="disp text-[1.55rem] text-ink">Residential</div>
+          <div class="mono text-[10px] tracking-[.16em] text-slate uppercase mt-1">Our specialty</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MAIN (conductor spine runs the length) ===================== -->
+<main class="relative">
+  <div class="spine hidden lg:block" id="spine" style="left:max(26px, calc(50vw - 640px - 34px))">
+    <div class="spine-track"></div>
+    <div class="spine-live" id="spineLive"></div>
+  </div>
+
+  <!-- ---------- THE WORK ---------- -->
+  <section id="work" class="relative py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="max-w-2xl mb-14">
+        <div class="mono text-[10.5px] tracking-[.26em] text-copper uppercase mb-4" data-reveal>01 &mdash; What we do</div>
+        <h2 class="disp text-[clamp(2rem,4.4vw,3.1rem)] text-ink" data-reveal>Professional, quality<br>electrical work.</h2>
+        <p class="mt-5 text-[1.05rem] leading-relaxed text-slate" data-reveal>
+          Four things, done properly. If your home needs it wired, fixed, replaced or built out, it lands in one of these.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Repairs -->
+        <div class="card p-7" data-reveal data-node>
+          <div class="ico w-11 h-11 rounded-lg bg-copper/10 flex items-center justify-center mb-6">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#B4552D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3 class="disp text-[1.22rem] text-ink mb-2.5">Repairs</h3>
+          <p class="text-[.94rem] leading-relaxed text-slate">Dead outlets, tripping breakers, flickering lights, panels that hum. We find the actual cause instead of guessing at it.</p>
+        </div>
+        <!-- Installations -->
+        <div class="card p-7" data-reveal data-node>
+          <div class="ico w-11 h-11 rounded-lg bg-copper/10 flex items-center justify-center mb-6">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#B4552D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>
+          </div>
+          <h3 class="disp text-[1.22rem] text-ink mb-2.5">Installations</h3>
+          <p class="text-[.94rem] leading-relaxed text-slate">Fixtures, fans, outlets, switches, dedicated circuits. New work installed to code and finished clean.</p>
+        </div>
+        <!-- Build outs -->
+        <div class="card p-7" data-reveal data-node>
+          <div class="ico w-11 h-11 rounded-lg bg-copper/10 flex items-center justify-center mb-6">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#B4552D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+          </div>
+          <h3 class="disp text-[1.22rem] text-ink mb-2.5">Build outs</h3>
+          <p class="text-[.94rem] leading-relaxed text-slate">Additions, remodels, garages and finished-out spaces wired from the rough-in through the final trim.</p>
+        </div>
+        <!-- Residential -->
+        <div class="card p-7" data-reveal data-node>
+          <div class="ico w-11 h-11 rounded-lg bg-copper/10 flex items-center justify-center mb-6">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#B4552D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M12 8.5 10.5 12h3L12 15.5"/></svg>
+          </div>
+          <h3 class="disp text-[1.22rem] text-ink mb-2.5">Residential</h3>
+          <p class="text-[.94rem] leading-relaxed text-slate">Homes are what we do all day. Our master electricians work for residential clients, not around them.</p>
+        </div>
+      </div>
+
+      <p class="mt-10 text-[.97rem] text-slate" data-reveal>
+        Not sure which one you need? That is a normal place to start.
+        <a href="tel:9403915683" class="ulg font-semibold text-copper">Call 940-391-5683</a> and describe what it is doing.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- CINEMATIC BAND (same generated still, 0 extra credits) ---------- -->
+  <section class="relative h-[42vh] min-h-[300px] overflow-hidden" aria-hidden="true">
+    <img src="assets/band.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" data-parallax="0.14">
+    <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(250,247,242,.96) 0%,rgba(250,247,242,.55) 42%,rgba(250,247,242,.05) 78%,rgba(250,247,242,0) 100%)"></div>
+    <div class="absolute inset-0 flex items-center">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8 w-full">
+        <p class="disp text-[clamp(1.35rem,3vw,2.3rem)] text-ink max-w-[520px] leading-[1.18]" data-reveal>
+          Copper doesn&rsquo;t forgive<br>a shortcut.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- SEASONED PROS (Three.js current field) ---------- -->
+  <section id="pros" class="relative py-24 sm:py-32 bg-bone grain overflow-hidden">
+    <canvas id="field"></canvas>
+    <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7">
+          <div class="mono text-[10.5px] tracking-[.26em] text-copper uppercase mb-4" data-reveal data-node>02 &mdash; Seasoned pros</div>
+          <h2 class="disp text-[clamp(2rem,4.4vw,3.1rem)] text-ink" data-reveal>
+            The best and most<br><span class="grad-text">skilled hands</span> it can be in.
+          </h2>
+          <div class="mt-6 space-y-5 text-[1.05rem] leading-relaxed text-slate max-w-[560px]">
+            <p data-reveal>
+              All of our electricians possess years of on-the-job experience. Not only that, they are
+              industry certified and committed to keeping up with the latest advances in the field.
+            </p>
+            <p data-reveal>
+              That matters more than it sounds. Electrical work is unforgiving, and most of what goes
+              wrong in a house traces back to someone who had not seen that particular problem before.
+              We have. You can rest easy, because your electrical job will be in the best and most
+              skilled hands that it can be.
+            </p>
+          </div>
+          <div class="mt-9 flex flex-wrap gap-2.5" data-reveal>
+            <span class="mono text-[10.5px] tracking-[.14em] uppercase rounded-full border border-copper/30 bg-paper px-4 py-2 text-slate">Master electricians</span>
+            <span class="mono text-[10.5px] tracking-[.14em] uppercase rounded-full border border-copper/30 bg-paper px-4 py-2 text-slate">Industry certified</span>
+            <span class="mono text-[10.5px] tracking-[.14em] uppercase rounded-full border border-copper/30 bg-paper px-4 py-2 text-slate">Residential focused</span>
+            <span class="mono text-[10.5px] tracking-[.14em] uppercase rounded-full border border-copper/30 bg-paper px-4 py-2 text-slate">North Texas based</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5" data-reveal>
+          <div class="card p-8 bg-white/85 backdrop-blur-sm">
+            <svg viewBox="0 0 24 24" class="w-7 h-7 mb-5" fill="none" stroke="#B4552D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5z"/></svg>
+            <p class="disp text-[1.42rem] leading-[1.28] text-ink">
+              &ldquo;Go with someone who&rsquo;s been there.&rdquo;
+            </p>
+            <p class="mt-4 text-[.95rem] leading-relaxed text-slate">
+              It is the shortest, truest way to say what separates an electrician who has run the
+              trade for years from one who is learning on your house.
+            </p>
+            <div class="mt-6 pt-6 border-t border-ink/10">
+              <div class="mono text-[10px] tracking-[.18em] text-slate uppercase">Service Electric of North Texas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- SERVICE AREA ---------- -->
+  <section id="area" class="relative py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="max-w-2xl mb-12">
+        <div class="mono text-[10.5px] tracking-[.26em] text-copper uppercase mb-4" data-reveal data-node>03 &mdash; Where we work</div>
+        <h2 class="disp text-[clamp(2rem,4.4vw,3.1rem)] text-ink" data-reveal>Rooted on Highway 377.</h2>
+        <p class="mt-5 text-[1.05rem] leading-relaxed text-slate" data-reveal>
+          Our office sits on S. Hwy 377 in Aubrey, which puts most of North Texas within a short
+          drive. If you are in or around these communities, we can get to you.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" data-reveal>
+        <div class="rounded-xl border border-ink/10 bg-white px-5 py-4 text-center"><span class="disp text-[1.02rem] text-ink">Aubrey</span></div>
+        <div class="rounded-xl border border-ink/10 bg-white px-5 py-4 text-center"><span class="disp text-[1.02rem] text-ink">Denton</span></div>
+        <div class="rounded-xl border border-ink/10 bg-white px-5 py-4 text-center"><span class="disp text-[1.02rem] text-ink">Little Elm</span></div>
+        <div class="rounded-xl border border-ink/10 bg-white px-5 py-4 text-center"><span class="disp text-[1.02rem] text-ink">Prosper</span></div>
+        <div class="rounded-xl border border-ink/10 bg-white px-5 py-4 text-center"><span class="disp text-[1.02rem] text-ink">Cross Roads</span></div>
+        <div class="rounded-xl border border-ink/10 bg-white px-5 py-4 text-center"><span class="disp text-[1.02rem] text-ink">Pilot Point</span></div>
+        <div class="rounded-xl border border-ink/10 bg-white px-5 py-4 text-center"><span class="disp text-[1.02rem] text-ink">Providence Village</span></div>
+        <div class="rounded-xl border border-ink/10 bg-white px-5 py-4 text-center"><span class="disp text-[1.02rem] text-ink">Oak Point</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CONTACT / MAP ---------- -->
+  <section id="contact" class="relative py-24 sm:py-32 bg-bone">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="grid lg:grid-cols-12 gap-10 items-stretch">
+        <div class="lg:col-span-5">
+          <div class="mono text-[10.5px] tracking-[.26em] text-copper uppercase mb-4" data-reveal data-node>04 &mdash; The office</div>
+          <h2 class="disp text-[clamp(2rem,4.2vw,2.9rem)] text-ink" data-reveal>Come by, or just call.</h2>
+
+          <div class="mt-8 space-y-6" data-reveal>
+            <div class="flex gap-4">
+              <span class="shrink-0 w-10 h-10 rounded-lg bg-copper/10 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="#B4552D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <div>
+                <div class="mono text-[10px] tracking-[.18em] text-slate uppercase mb-1.5">Our office</div>
+                <a class="text-[1.05rem] font-semibold text-ink ulg" target="_blank" rel="noopener"
+                   href="https://www.google.com/maps?q=106%20S.%20Hwy%20377%2C%20Aubrey%2C%20TX%2076227">
+                  106 S. Hwy 377<br>Aubrey, TX 76227
+                </a>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="shrink-0 w-10 h-10 rounded-lg bg-copper/10 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="#B4552D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <div>
+                <div class="mono text-[10px] tracking-[.18em] text-slate uppercase mb-1.5">Phone</div>
+                <a href="tel:9403915683" class="text-[1.05rem] font-semibold text-ink ulg">940-391-5683</a>
+                <div class="mono text-[11px] text-slate mt-1.5">Fax 940-365-0881</div>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="shrink-0 w-10 h-10 rounded-lg bg-copper/10 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="#B4552D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2zM9 21h6"/></svg>
+              </span>
+              <div>
+                <div class="mono text-[10px] tracking-[.18em] text-slate uppercase mb-1.5">Request an estimate</div>
+                <p class="text-[.95rem] leading-relaxed text-slate max-w-[300px]">
+                  Tell us what the problem is doing and we will tell you what it takes to fix it.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <a href="tel:9403915683" class="btn mt-9 inline-flex items-center gap-2.5 rounded-full bg-copper text-white px-7 py-3.5 text-[15px] font-semibold">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+            Call 940-391-5683
+          </a>
+        </div>
+
+        <div class="lg:col-span-7" data-reveal>
+          <div class="rounded-2xl overflow-hidden border border-ink/10 shadow-[0_24px_60px_-30px_rgba(36,28,23,.5)] h-full min-h-[380px] bg-white">
+            <iframe
+              title="Service Electric of North Texas — 106 S. Hwy 377, Aubrey, TX 76227"
+              src="https://www.google.com/maps?q=106%20S.%20Hwy%20377%2C%20Aubrey%2C%20TX%2076227&output=embed"
+              width="100%" height="100%" style="border:0; min-height:380px; display:block"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CTA BAND ---------- -->
+  <section class="relative py-20 sm:py-24 bg-deep overflow-hidden">
+    <div class="absolute inset-0 opacity-[.5]" style="background:radial-gradient(620px 300px at 78% 50%, rgba(180,85,45,.55), transparent 70%), radial-gradient(460px 240px at 12% 30%, rgba(232,161,58,.22), transparent 70%)"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 text-center">
+      <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/10 mb-7" data-reveal>
+        <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="#E8A13A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5z"/></svg>
+      </span>
+      <h2 class="disp text-[clamp(1.9rem,4.2vw,3rem)] text-white max-w-3xl mx-auto" data-reveal>
+        Your electrical job, in hands<br>that have done it before.
+      </h2>
+      <p class="mt-5 text-[1.05rem] text-white/70 max-w-xl mx-auto" data-reveal>
+        Serving Aubrey and North Texas homes with repairs, installations and build outs.
+      </p>
+      <a href="tel:9403915683" class="btn mt-9 inline-flex items-center gap-2.5 rounded-full bg-amber text-deep px-8 py-4 text-[15.5px] font-bold" data-reveal>
+        <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+        940-391-5683
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-[#1A1410] pt-16 pb-28 sm:pb-16">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid sm:grid-cols-3 gap-10 pb-10 border-b border-white/10">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-white/10 shrink-0">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#E8A13A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5z"/></svg>
+          </span>
+          <span class="leading-none">
+            <span class="disp block text-[15px] text-white">SERVICE ELECTRIC</span>
+            <span class="mono block text-[9.5px] tracking-[.2em] text-white/45 mt-[3px]">OF NORTH TEXAS</span>
+          </span>
+        </div>
+        <p class="text-[.92rem] leading-relaxed text-white/55 max-w-[280px]">
+          Industry-certified master electricians serving North Texas homes.
+        </p>
+      </div>
+      <div>
+        <div class="mono text-[10px] tracking-[.2em] text-white/40 uppercase mb-4">Services</div>
+        <ul class="space-y-2.5 text-[.94rem] text-white/70">
+          <li><a href="#work" class="ulg hover:text-amber transition-colors">Repairs</a></li>
+          <li><a href="#work" class="ulg hover:text-amber transition-colors">Installations</a></li>
+          <li><a href="#work" class="ulg hover:text-amber transition-colors">Build outs</a></li>
+          <li><a href="#work" class="ulg hover:text-amber transition-colors">Residential</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="mono text-[10px] tracking-[.2em] text-white/40 uppercase mb-4">Contact</div>
+        <ul class="space-y-2.5 text-[.94rem] text-white/70">
+          <li><a href="tel:9403915683" class="ulg hover:text-amber transition-colors font-semibold">940-391-5683</a></li>
+          <li class="text-white/50">Fax 940-365-0881</li>
+          <li><a target="_blank" rel="noopener" href="https://www.google.com/maps?q=106%20S.%20Hwy%20377%2C%20Aubrey%2C%20TX%2076227" class="ulg hover:text-amber transition-colors">106 S. Hwy 377<br>Aubrey, TX 76227</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="mono text-[10.5px] tracking-[.1em] text-white/40">&copy; <span id="yr">2026</span> Service Electric of North Texas. All rights reserved.</p>
+      <p class="mono text-[10.5px] tracking-[.1em] text-white/30">Aubrey, Texas</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== MOBILE STICKY BAR ===================== -->
+<div class="sm:hidden fixed bottom-0 inset-x-0 z-50 border-t border-ink/10 bg-paper/95 backdrop-blur-md">
+  <div class="grid grid-cols-2 gap-2 p-2.5">
+    <a href="tel:9403915683" class="inline-flex items-center justify-center gap-2 rounded-full bg-copper text-white py-3 text-[14px] font-semibold">
+      <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+      Call
+    </a>
+    <a target="_blank" rel="noopener" href="https://www.google.com/maps?q=106%20S.%20Hwy%20377%2C%20Aubrey%2C%20TX%2076227" class="inline-flex items-center justify-center gap-2 rounded-full border border-ink/20 text-ink py-3 text-[14px] font-semibold">
+      <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Directions
+    </a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isMobile = window.matchMedia('(max-width: 880px)').matches;
+
+  /* ---------- Lenis: ONE rAF loop, driven by the GSAP ticker ---------- */
+  var lenis = null;
+  try {
+    lenis = new Lenis({ duration:1.1, easing:function(t){ return Math.min(1, 1.001 - Math.pow(2, -10*t)); },
+                        smoothWheel:true, smoothTouch:false });
+    if (window.gsap) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+      gsap.ticker.lagSmoothing(0);
+      lenis.on('scroll', ScrollTrigger.update);
+      ScrollTrigger.config({ ignoreMobileResize:true });
+    }
+  } catch(e){}
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return; e.preventDefault();
+      if (lenis) lenis.scrollTo(t, { offset:-70 }); else t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  /* ---------- nav condense ---------- */
+  var nav = document.querySelector('[data-nav]');
+  function onScroll(){
+    if (window.scrollY > 24) nav.classList.add('bg-paper/90','backdrop-blur-md','shadow-[0_1px_0_rgba(35,20,25,.08)]');
+    else nav.classList.remove('bg-paper/90','backdrop-blur-md','shadow-[0_1px_0_rgba(35,20,25,.08)]');
+  }
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* ---------- reveals (GPU-only, once) ---------- */
+  if (window.gsap) {
+    gsap.utils.toArray('[data-reveal]').forEach(function(el){
+      gsap.fromTo(el, {opacity:0, y:26}, {
+        opacity:1, y:0, duration:.7, ease:'power3.out', overwrite:'auto',
+        scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+        onComplete:function(){ el.classList.add('in'); el.style.willChange='auto'; }
+      });
+    });
+
+    /* hero video parallax */
+    gsap.to('.hero-bg', { yPercent:14, scale:1.07, ease:'none',
+      scrollTrigger:{ trigger:'.hero-wrap', start:'top top', end:'bottom top', scrub:true } });
+
+    /* mid-page band parallax — desktop only (scrub fights native touch scroll) */
+    if (!isMobile) {
+      gsap.utils.toArray('[data-parallax]').forEach(function(el){
+        var sp = parseFloat(el.dataset.parallax) || 0.1;
+        gsap.to(el, { y:function(){ return sp*220; }, ease:'none',
+          scrollTrigger:{ trigger:el, start:'top bottom', end:'bottom top', scrub:0.6 } });
+      });
+    }
+
+    /* count-up */
+    gsap.utils.toArray('[data-count]').forEach(function(el){
+      var target = parseFloat(el.dataset.count), suf = el.dataset.suffix || '', o = {v:0};
+      ScrollTrigger.create({ trigger:el, start:'top 92%', once:true, onEnter:function(){
+        gsap.to(o, { v:target, duration:1.5, ease:'power2.out',
+          onUpdate:function(){ el.textContent = Math.round(o.v) + suf; } });
+      }});
+    });
+
+    /* ---------- SIGNATURE: the conductor spine ---------- */
+    var live = document.getElementById('spineLive'), spine = document.getElementById('spine');
+    if (live && spine && !isMobile) {
+      var main = document.querySelector('main');
+      /* place a node on the spine at each [data-node] marker's vertical position */
+      var place = function(){
+        spine.querySelectorAll('.node').forEach(function(n){ n.remove(); });
+        var mTop = main.getBoundingClientRect().top + window.scrollY;
+        var mH = main.offsetHeight;
+        document.querySelectorAll('[data-node]').forEach(function(m){
+          var y = m.getBoundingClientRect().top + window.scrollY - mTop + 10;
+          var n = document.createElement('div');
+          n.className = 'node'; n.style.top = (y / mH * 100) + '%';
+          n.dataset.at = y; spine.appendChild(n);
+        });
+      };
+      place();
+      ScrollTrigger.create({
+        trigger: main, start:'top 78%', end:'bottom bottom', scrub:0.5,
+        onUpdate: function(self){
+          live.style.height = (self.progress*100) + '%';
+          var frontY = self.progress * main.offsetHeight;
+          spine.querySelectorAll('.node').forEach(function(n){
+            if (parseFloat(n.dataset.at) <= frontY) n.classList.add('on'); else n.classList.remove('on');
+          });
+        }
+      });
+      window.addEventListener('resize', function(){ place(); ScrollTrigger.refresh(); });
+    }
+  }
+
+  /* ---------- SHOWPIECE: Three.js copper current field (light canvas) ---------- */
+  (function(){
+    var cv = document.getElementById('field');
+    if (!cv || !window.THREE || reduce) return;
+    var host = cv.parentElement, running = false, visible = false, raf = null;
+    var scene = new THREE.Scene();
+    var cam = new THREE.PerspectiveCamera(60, host.clientWidth/host.clientHeight, 1, 900);
+    cam.position.z = 320;
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({canvas:cv, antialias:!isMobile, alpha:true}); }
+    catch(e){ return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+    renderer.setSize(host.clientWidth, host.clientHeight, false);
+
+    var COUNT = isMobile ? 34 : 76;            /* hard downgrade on mobile */
+    var pos = new Float32Array(COUNT*3), vel = [];
+    for (var i=0;i<COUNT;i++){
+      pos[i*3]   = (Math.random()-.5)*760;
+      pos[i*3+1] = (Math.random()-.5)*420;
+      pos[i*3+2] = (Math.random()-.5)*180;
+      vel.push({x:(Math.random()-.5)*.16, y:(Math.random()-.5)*.13});
+    }
+    var pg = new THREE.BufferGeometry();
+    pg.setAttribute('position', new THREE.BufferAttribute(pos,3));
+    /* copper motes — solid tint + soft size, reads as depth on a LIGHT canvas (no glow-on-black) */
+    var pts = new THREE.Points(pg, new THREE.PointsMaterial({
+      color:0xB4552D, size:3.4, sizeAttenuation:true, transparent:true, opacity:.62, depthWrite:false }));
+    scene.add(pts);
+
+    /* faint conductor lines between near neighbours */
+    var lg = new THREE.BufferGeometry();
+    var lpos = new Float32Array(COUNT*COUNT*6);
+    lg.setAttribute('position', new THREE.BufferAttribute(lpos,3));
+    var lines = new THREE.LineSegments(lg, new THREE.LineBasicMaterial({
+      color:0xB4552D, transparent:true, opacity:.16, depthWrite:false }));
+    scene.add(lines);
+
+    var DIST = isMobile ? 118 : 138;
+    function step(){
+      var p = pg.attributes.position.array, n = 0;
+      for (var i=0;i<COUNT;i++){
+        p[i*3] += vel[i].x; p[i*3+1] += vel[i].y;
+        if (p[i*3] > 400 || p[i*3] < -400) vel[i].x *= -1;
+        if (p[i*3+1] > 230 || p[i*3+1] < -230) vel[i].y *= -1;
+      }
+      for (var a=0;a<COUNT;a++){
+        for (var b=a+1;b<COUNT;b++){
+          var dx=p[a*3]-p[b*3], dy=p[a*3+1]-p[b*3+1], dz=p[a*3+2]-p[b*3+2];
+          if (dx*dx+dy*dy+dz*dz < DIST*DIST){
+            lpos[n++]=p[a*3]; lpos[n++]=p[a*3+1]; lpos[n++]=p[a*3+2];
+            lpos[n++]=p[b*3]; lpos[n++]=p[b*3+1]; lpos[n++]=p[b*3+2];
+          }
+        }
+      }
+      lg.setDrawRange(0, n/3);
+      lg.attributes.position.needsUpdate = true;
+      pg.attributes.position.needsUpdate = true;
+      renderer.render(scene, cam);
+      raf = requestAnimationFrame(step);
+    }
+    function start(){ if(!running && visible && !document.hidden){ running=true; step(); } }
+    function stop(){ running=false; if(raf) cancelAnimationFrame(raf); raf=null; }
+
+    new IntersectionObserver(function(en){
+      visible = en[0].isIntersecting; visible ? start() : stop();
+    }, {threshold:0.01}).observe(host);
+    document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+    window.addEventListener('resize', function(){
+      cam.aspect = host.clientWidth/host.clientHeight; cam.updateProjectionMatrix();
+      renderer.setSize(host.clientWidth, host.clientHeight, false);
+    });
+    renderer.render(scene, cam);   /* one frame immediately so it's never blank */
+  })();
+
+  /* ---------- 6s crawler / screenshot safety net (REQUIRED) ---------- */
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      var o = parseFloat(getComputedStyle(el).opacity);
+      if (o < 0.98){ el.style.opacity = 1; el.style.transform = 'none'; el.classList.add('in'); }
+    });
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      if (el.textContent.trim() === '0') el.textContent = el.dataset.count + (el.dataset.suffix || '');
+    });
+  }, 6000);
+})();
+</script>
+</body>
+</html>
