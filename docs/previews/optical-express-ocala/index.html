@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<!--
+  Optical Express — Ocala, FL  |  Dr. Paul E. Anderson, O.D.
+  Turnkey Web prospect preview (DRAFT). Preview-only.
+
+  BRAND: palette derived from the client's REAL logo (ocalaoptical.com script wordmark,
+  royal blue sampled #003C90 / #004890). Light-luxury: cream base, navy ink, royal accent.
+
+  ART DIRECTION (unique to this build): "Refraction." The business is optics, so the site's
+  signature is light bending through glass — a Higgsfield->Kling cinematic hero of suspended
+  optical lenses casting a royal-blue caustic, a live WebGL lens showpiece, and a doctor-first
+  section order (the doctor IS the differentiator vs. chain optical).
+
+  ACCURACY NOTE: Dr. Anderson is an OPTOMETRIST (O.D.), NOT an ophthalmologist. The build
+  request said "Opthamologist" — that is incorrect (NPI 1881678415, taxonomy 152W00000X,
+  FL license 2261). Surgical work is referenced only as "surgical co-management," which is
+  what he actually does. No "MD", no "surgeon", no "ophthalmologist" anywhere.
+
+  UNVERIFIED / OMITTED ON PURPOSE:
+   - Google aggregate rating + review count: not verifiable -> no aggregateRating in JSON-LD.
+   - "Serving Marion County since 1940": directory-only claim -> NOT used.
+   - Insurance list: unverified -> phrased as "we'll verify your benefits", no carrier names.
+   - Hours: their .com and .net disagree. Using the newer .com /location/ version verbatim.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Optical Express | Dr. Paul E. Anderson, O.D. — Optometrist in Ocala, FL</title>
+<meta name="description" content="Independent optometry in Ocala since 2002. Dr. Paul E. Anderson, O.D. — comprehensive eye exams, pediatric myopia control, Ortho-K, low vision, emergency eye care, and over 700 frames. Call 352-867-1888.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/optical-express-ocala/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Optical Express | Dr. Paul E. Anderson, O.D. — Ocala, FL">
+<meta property="og:description" content="Independent optometry in Ocala since 2002. Comprehensive eye care, Ortho-K, myopia control, low vision, and over 700 frames.">
+<meta property="og:image" content="https://turnkeyweb.org/previews/optical-express-ocala/assets/hero.jpg">
+<meta property="og:url" content="https://turnkeyweb.org/previews/optical-express-ocala/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      paper:  '#F8F5EF',
+      bone:   '#EFEAE1',
+      cream:  '#FCFAF6',
+      royal:  '#003C90',
+      royalLt:'#18549C',
+      sky:    '#A8C0D8',
+      navy:   '#0B1B33',
+      ink:    '#111C2E',
+      sand:   '#C9A961'
+    },
+    fontFamily: { display: ['Fraunces','Georgia','serif'], sans: ['Inter','system-ui','sans-serif'] }
+  }}
+}
+</script>
+<style>
+  :root{
+    --paper:#F8F5EF; --bone:#EFEAE1; --cream:#FCFAF6; --royal:#003C90; --royalLt:#18549C;
+    --sky:#A8C0D8; --navy:#0B1B33; --ink:#111C2E; --sand:#C9A961;
+  }
+  html{ scroll-behavior:auto; scroll-padding-top:88px; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Inter',system-ui,sans-serif; overflow-x:hidden; }
+
+  /* ---- descender safety (HARD): never clip g y p j q ---- */
+  h1,h2,h3,h4,.display{ line-height:1.12; padding-bottom:.06em; }
+  .display-xl{ line-height:1.08; padding-bottom:.1em; }
+
+  .font-display{ font-family:'Fraunces',Georgia,serif; }
+
+  /* ---- gradient shimmer on key headers ---- */
+  .grad-text{
+    background:linear-gradient(100deg,var(--royal) 0%,var(--royalLt) 30%,var(--sand) 50%,var(--royalLt) 70%,var(--royal) 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite;
+    line-height:1.15; padding-bottom:.09em; display:inline-block;
+  }
+  @keyframes shimmer{ from{background-position:200% 0} to{background-position:-20% 0} }
+
+  /* ---- hero ---- */
+  .hero{ position:relative; overflow:hidden; background:var(--bone); }
+  .hero-media{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; will-change:transform; }
+  /* LIGHT-FIRST scrim: LIGHTEST on the left where the navy headline sits */
+  .hero-scrim{
+    position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(90deg, rgba(248,245,239,.985) 0%, rgba(248,245,239,.965) 26%, rgba(248,245,239,.80) 44%, rgba(248,245,239,.30) 62%, rgba(248,245,239,.06) 80%, rgba(248,245,239,0) 100%);
+  }
+  .hero-scrim-b{
+    position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(180deg, rgba(248,245,239,.55) 0%, rgba(248,245,239,0) 26%, rgba(248,245,239,0) 62%, rgba(248,245,239,.42) 100%);
+  }
+  @media (max-width:880px){
+    .hero-scrim{ background:linear-gradient(180deg, rgba(248,245,239,.97) 0%, rgba(248,245,239,.93) 42%, rgba(248,245,239,.66) 66%, rgba(248,245,239,.34) 100%); }
+  }
+
+  /* ---- lens showpiece canvas ---- */
+  #lens-canvas{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:.9; }
+
+  /* ---- reveals ---- */
+  [data-reveal]{ opacity:0; transform:translateY(24px); will-change:opacity,transform; }
+  [data-reveal].in{ opacity:1; transform:none; }
+  [data-reveal-image]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.25s cubic-bezier(.16,1,.3,1); }
+  [data-reveal-image].in{ clip-path:inset(0 0 0% 0); }
+
+  /* ---- rule / bridge ---- */
+  .bridge{ height:1px; max-width:190px; margin:0 auto; background:linear-gradient(90deg,transparent,rgba(0,60,144,.34),transparent); }
+
+  /* ---- cards ---- */
+  .card{ position:relative; background:var(--cream); border:1px solid rgba(11,27,51,.09); border-radius:2px; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s, border-color .5s; overflow:hidden; }
+  .card::before{ content:''; position:absolute; top:0; left:0; height:2px; width:0%; background:linear-gradient(90deg,var(--royal),var(--sand)); transition:width .65s cubic-bezier(.16,1,.3,1); }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 24px 60px -24px rgba(11,27,51,.28); border-color:rgba(0,60,144,.22); }
+  .card:hover::before{ width:100%; }
+  .card:hover .svc-ic{ transform:rotate(-6deg) scale(1.06); }
+  .svc-ic{ transition:transform .55s cubic-bezier(.16,1,.3,1); }
+
+  /* ---- buttons ---- */
+  .btn{ position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s, filter .4s; }
+  .btn::after{ content:''; position:absolute; top:0; left:-120%; width:60%; height:100%; transform:skewX(-18deg);
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent); transition:left .9s cubic-bezier(.16,1,.3,1); }
+  .btn:hover::after{ left:130%; }
+  .btn:hover{ transform:translateY(-3px); box-shadow:0 16px 34px -12px rgba(0,60,144,.5); }
+
+  /* ---- nav underline ---- */
+  .ul-grow{ position:relative; }
+  .ul-grow::after{ content:''; position:absolute; left:0; bottom:-4px; height:1.5px; width:0;
+    background:linear-gradient(90deg,var(--royal),var(--sand)); transition:width .5s cubic-bezier(.16,1,.3,1); }
+  .ul-grow:hover::after{ width:100%; }
+
+  /* ---- marquee ---- */
+  .marq{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marq-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 44s linear infinite; }
+  .marq:hover .marq-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ---- pulse dot ---- */
+  .dot{ animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.82)} }
+
+  /* ---- ambient ---- */
+  .blob{ position:absolute; border-radius:50%; filter:blur(90px); pointer-events:none; will-change:transform; }
+
+  /* ---- mission arc numerals ---- */
+  .arcnum{ font-family:'Fraunces',Georgia,serif; font-weight:300; line-height:1; padding-bottom:.08em; }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important; }
+    [data-reveal]{ opacity:1 !important; transform:none !important; }
+    [data-reveal-image]{ clip-path:none !important; }
+  }
+</style>
+</head>
+<body class="bg-paper text-ink antialiased">
+
+<!-- ================= NAV ================= -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex items-center justify-between gap-4 py-3.5 sm:py-4">
+      <a href="#top" class="flex items-center gap-3 shrink-0">
+        <img src="assets/logo.png" alt="Optical Express" class="h-7 sm:h-8 w-auto">
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-[13px] font-medium tracking-wide text-navy/75">
+        <a href="#doctor" class="ul-grow hover:text-royal transition-colors">The Doctor</a>
+        <a href="#care" class="ul-grow hover:text-royal transition-colors">Eye Care</a>
+        <a href="#missions" class="ul-grow hover:text-royal transition-colors">Missions</a>
+        <a href="#eyewear" class="ul-grow hover:text-royal transition-colors">Eyewear</a>
+        <a href="#visit" class="ul-grow hover:text-royal transition-colors">Visit</a>
+      </nav>
+      <a href="tel:+13528671888" class="btn shrink-0 inline-flex items-center gap-2 rounded-sm bg-royal px-4 sm:px-5 py-2.5 text-[12.5px] sm:text-[13px] font-semibold tracking-wide text-white">
+        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="hidden sm:inline">352-867-1888</span><span class="sm:hidden">Call</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="top" class="hero min-h-[100svh] flex items-center pt-28 pb-16 sm:pt-32 sm:pb-20">
+  <video class="hero-media" autoplay muted loop playsinline poster="assets/hero.jpg" aria-hidden="true">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+  <div class="hero-scrim-b"></div>
+
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8">
+    <div class="max-w-[640px]">
+      <div class="flex items-center gap-2.5 mb-6" data-reveal>
+        <span class="dot h-1.5 w-1.5 rounded-full bg-royal"></span>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-royal">Independent optometry · Ocala, Florida</span>
+      </div>
+
+      <h1 class="display-xl font-display text-[clamp(2.6rem,7vw,5.1rem)] font-light text-navy" data-reveal>
+        Everything you see<br>
+        depends on <span class="grad-text font-normal italic">getting this right.</span>
+      </h1>
+
+      <p class="mt-7 max-w-[498px] text-[16.5px] sm:text-[17.5px] leading-[1.72] text-navy/78" data-reveal>
+        Dr. Paul E. Anderson has been examining eyes since 1986 and has owned this practice
+        on SW 10th Street since 2002. Same doctor, same chair, every visit. Not a chain,
+        not a rotating roster.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3.5" data-reveal>
+        <a href="tel:+13528671888" class="btn inline-flex items-center gap-2.5 rounded-sm bg-royal px-7 py-4 text-[14px] font-semibold tracking-wide text-white">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Book an eye exam
+        </a>
+        <a href="#care" class="inline-flex items-center gap-2 rounded-sm border border-navy/22 bg-cream/70 px-7 py-4 text-[14px] font-semibold tracking-wide text-navy hover:border-royal/45 hover:text-royal transition-colors">
+          What we treat
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-12 grid grid-cols-3 gap-5 max-w-[470px] border-t border-navy/12 pt-7" data-reveal>
+        <div>
+          <div class="font-display text-[2.05rem] font-light text-royal" data-count="40" data-suffix="+">0</div>
+          <div class="mt-1 text-[11px] uppercase tracking-[0.15em] text-navy/58">Years in practice</div>
+        </div>
+        <div>
+          <div class="font-display text-[2.05rem] font-light text-royal" data-count="700" data-suffix="+">0</div>
+          <div class="mt-1 text-[11px] uppercase tracking-[0.15em] text-navy/58">Frames in stock</div>
+        </div>
+        <div>
+          <div class="font-display text-[2.05rem] font-light text-royal" data-count="5" data-suffix="">0</div>
+          <div class="mt-1 text-[11px] uppercase tracking-[0.15em] text-navy/58">Eye-care missions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<section class="border-y border-navy/10 bg-navy py-4">
+  <div class="marq">
+    <div class="marq-track text-[12.5px] font-medium uppercase tracking-[0.2em] text-paper/80">
+      <span>Comprehensive eye exams</span><span class="text-sand">·</span>
+      <span class="italic text-sand">Ortho-K corneal reshaping</span><span class="text-sand">·</span>
+      <span>Pediatric myopia control</span><span class="text-sand">·</span>
+      <span class="italic text-sand">Emergency &amp; urgent eye care</span><span class="text-sand">·</span>
+      <span>Specialty contact lenses</span><span class="text-sand">·</span>
+      <span class="italic text-sand">Low vision services</span><span class="text-sand">·</span>
+      <span>Surgical co-management</span><span class="text-sand">·</span>
+      <span class="italic text-sand">Se habla español</span><span class="text-sand">·</span>
+      <span>Comprehensive eye exams</span><span class="text-sand">·</span>
+      <span class="italic text-sand">Ortho-K corneal reshaping</span><span class="text-sand">·</span>
+      <span>Pediatric myopia control</span><span class="text-sand">·</span>
+      <span class="italic text-sand">Emergency &amp; urgent eye care</span><span class="text-sand">·</span>
+      <span>Specialty contact lenses</span><span class="text-sand">·</span>
+      <span class="italic text-sand">Low vision services</span><span class="text-sand">·</span>
+      <span>Surgical co-management</span><span class="text-sand">·</span>
+      <span class="italic text-sand">Se habla español</span><span class="text-sand">·</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE DOCTOR (doctor-first, not services-first) ================= -->
+<section id="doctor" class="relative overflow-hidden py-24 sm:py-32">
+  <div class="blob" style="width:520px;height:520px;background:radial-gradient(circle,rgba(168,192,216,.5),transparent 62%);top:-190px;right:-150px;"></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20 items-start">
+
+      <div data-reveal>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-royal">The doctor</span>
+        <h2 class="mt-5 font-display text-[clamp(2.1rem,4.4vw,3.4rem)] font-light text-navy">
+          You will always see<br><span class="grad-text font-normal italic">Dr. Anderson.</span>
+        </h2>
+        <div class="mt-8 space-y-5 text-[15.5px] leading-[1.8] text-navy/76">
+          <p>
+            Paul Anderson grew up in Cleveland, the son of Scottish parents. He took a chemistry
+            degree at Ashland University, then earned his Doctor of Optometry at
+            <strong class="font-semibold text-navy">The Ohio State University in 1986</strong>.
+          </p>
+          <p>
+            After a stretch at a laser eye center in Orlando, he came to this Ocala practice in
+            2000 and bought it outright on
+            <strong class="font-semibold text-navy">January 15, 2002</strong>. He has been the
+            doctor here ever since.
+          </p>
+          <p>
+            He examines adults and children, manages disease, fits the difficult contact lenses
+            other offices give up on, and handles the pre- and post-operative care when a patient
+            needs LASIK, cataract, or glaucoma surgery. He speaks enough Spanish to run a basic
+            exam in it.
+          </p>
+        </div>
+
+        <div class="mt-9 flex flex-wrap gap-2.5">
+          <span class="rounded-sm border border-royal/25 bg-cream px-3.5 py-2 text-[12px] font-medium text-royal">Doctor of Optometry, Ohio State '86</span>
+          <span class="rounded-sm border border-royal/25 bg-cream px-3.5 py-2 text-[12px] font-medium text-royal">Florida license 2261</span>
+          <span class="rounded-sm border border-royal/25 bg-cream px-3.5 py-2 text-[12px] font-medium text-royal">Owner since 2002</span>
+          <span class="rounded-sm border border-royal/25 bg-cream px-3.5 py-2 text-[12px] font-medium text-royal">Se habla español</span>
+        </div>
+      </div>
+
+      <!-- credential timeline -->
+      <div class="relative" data-reveal>
+        <div class="border border-navy/10 bg-cream p-8 sm:p-11">
+          <h3 class="font-display text-[1.45rem] font-normal text-navy">Forty years, one specialty</h3>
+          <div class="mt-8 space-y-0">
+
+            <div class="relative border-l border-navy/14 pl-7 pb-8">
+              <span class="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-royal"></span>
+              <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-royal">1986</div>
+              <div class="mt-1.5 text-[14.5px] font-semibold text-navy">Doctor of Optometry</div>
+              <p class="mt-1 text-[13.5px] leading-relaxed text-navy/68">The Ohio State University College of Optometry.</p>
+            </div>
+
+            <div class="relative border-l border-navy/14 pl-7 pb-8">
+              <span class="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-royal/55"></span>
+              <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-royal">Before Ocala</div>
+              <div class="mt-1.5 text-[14.5px] font-semibold text-navy">Icon Laser Eye Center, Orlando</div>
+              <p class="mt-1 text-[13.5px] leading-relaxed text-navy/68">Where the surgical co-management side of the practice comes from.</p>
+            </div>
+
+            <div class="relative border-l border-navy/14 pl-7 pb-8">
+              <span class="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-royal/55"></span>
+              <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-royal">2000 → 2002</div>
+              <div class="mt-1.5 text-[14.5px] font-semibold text-navy">Joined, then bought the practice</div>
+              <p class="mt-1 text-[13.5px] leading-relaxed text-navy/68">Owner and operating doctor since January 15, 2002.</p>
+            </div>
+
+            <div class="relative border-l border-transparent pl-7">
+              <span class="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-sand"></span>
+              <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-royal">Ongoing</div>
+              <div class="mt-1.5 text-[14.5px] font-semibold text-navy">Service beyond the office</div>
+              <p class="mt-1 text-[13.5px] leading-relaxed text-navy/68">President of VOSH Southeast. Past president, Silver Springs Lions Club. Board member, Interfaith Emergency Services.</p>
+            </div>
+
+          </div>
+        </div>
+        <div class="mt-6 border border-navy/10 bg-navy p-7">
+          <p class="font-display text-[1.28rem] font-light italic leading-[1.6] text-paper">
+            “The staff was very professional and friendly from the time I walked in the door.”
+          </p>
+          <p class="mt-4 text-[12px] uppercase tracking-[0.14em] text-sand">Patricia S. · Verified patient review</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="bridge"></div>
+
+<!-- ================= CARE ================= -->
+<section id="care" class="py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-royal">Eye care</span>
+      <h2 class="mt-5 font-display text-[clamp(2.1rem,4.4vw,3.4rem)] font-light text-navy">
+        A full eye exam, and<br>everything that follows it.
+      </h2>
+      <p class="mt-6 text-[16px] leading-[1.75] text-navy/72">
+        This is a full-scope optometric practice. Routine vision correction sits alongside disease
+        management, specialty lens work, and urgent care — so most of what an eye can do wrong
+        gets handled in one place.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+      <div class="card p-8" data-reveal>
+        <svg class="svc-ic h-7 w-7 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        <h3 class="mt-6 font-display text-[1.4rem] font-normal text-navy">Comprehensive eye exams</h3>
+        <p class="mt-3.5 text-[14px] leading-[1.72] text-navy/70">
+          Adult and pediatric eye health examinations — a full look at how the eye is working and
+          how healthy it is, not just a prescription check.
+        </p>
+      </div>
+
+      <div class="card p-8" data-reveal>
+        <svg class="svc-ic h-7 w-7 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 4.8a10 10 0 1 0 14.4 14.4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3.4"/></svg>
+        <h3 class="mt-6 font-display text-[1.4rem] font-normal text-navy">Disease management</h3>
+        <p class="mt-3.5 text-[14px] leading-[1.72] text-navy/70">
+          Glaucoma, cataracts, diabetic eye disease, macular degeneration, dry eye, allergy eye,
+          infections, and retinal or vitreous detachment — diagnosed and managed here.
+        </p>
+      </div>
+
+      <div class="card p-8" data-reveal>
+        <svg class="svc-ic h-7 w-7 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9 9 9 0 0 1-9-9 9 9 0 0 1 9-9z"/><path d="M12 7.5a4.5 4.5 0 0 1 0 9"/></svg>
+        <h3 class="mt-6 font-display text-[1.4rem] font-normal text-navy">Ortho-K corneal reshaping</h3>
+        <p class="mt-3.5 text-[14px] leading-[1.72] text-navy/70">
+          Nonsurgical corneal reshaping. Lenses worn overnight reshape the cornea so the day is
+          spent without glasses or contacts.
+        </p>
+      </div>
+
+      <div class="card p-8" data-reveal>
+        <svg class="svc-ic h-7 w-7 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <h3 class="mt-6 font-display text-[1.4rem] font-normal text-navy">Myopia control for children</h3>
+        <p class="mt-3.5 text-[14px] leading-[1.72] text-navy/70">
+          Near-sightedness tends to get worse through childhood. Myopia control is about slowing
+          that progression down while the eye is still growing.
+        </p>
+      </div>
+
+      <div class="card p-8" data-reveal>
+        <svg class="svc-ic h-7 w-7 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+        <h3 class="mt-6 font-display text-[1.4rem] font-normal text-navy">Emergency &amp; urgent eye care</h3>
+        <p class="mt-3.5 text-[14px] leading-[1.72] text-navy/70">
+          Trauma, sudden changes, infections, something in the eye. Call the office — urgent eye
+          problems belong with an eye doctor, not a waiting room.
+        </p>
+      </div>
+
+      <div class="card p-8" data-reveal>
+        <svg class="svc-ic h-7 w-7 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        <h3 class="mt-6 font-display text-[1.4rem] font-normal text-navy">Surgical co-management</h3>
+        <p class="mt-3.5 text-[14px] leading-[1.72] text-navy/70">
+          For LASIK, cataract, and glaucoma surgery, Dr. Anderson handles the pre-operative workup
+          and the post-operative care, and refers the procedure to the right surgeon.
+        </p>
+      </div>
+
+      <div class="card p-8" data-reveal>
+        <svg class="svc-ic h-7 w-7 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="4"/><circle cx="17" cy="12" r="4"/><path d="M11 12h2"/></svg>
+        <h3 class="mt-6 font-display text-[1.4rem] font-normal text-navy">Specialty contact lenses</h3>
+        <p class="mt-3.5 text-[14px] leading-[1.72] text-navy/70">
+          Fittings for the eyes that are difficult to fit, plus everyday soft lenses. AcuVue and
+          more — and we fill outside prescriptions.
+        </p>
+      </div>
+
+      <div class="card p-8" data-reveal>
+        <svg class="svc-ic h-7 w-7 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2-6 4 12 3-9 2 3h4"/></svg>
+        <h3 class="mt-6 font-display text-[1.4rem] font-normal text-navy">Low vision services</h3>
+        <p class="mt-3.5 text-[14px] leading-[1.72] text-navy/70">
+          For the partially sighted — help getting as much use as possible out of the vision that
+          remains.
+        </p>
+      </div>
+
+      <div class="card p-8" data-reveal>
+        <svg class="svc-ic h-7 w-7 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+        <h3 class="mt-6 font-display text-[1.4rem] font-normal text-navy">Computer strain &amp; ocular nutrition</h3>
+        <p class="mt-3.5 text-[14px] leading-[1.72] text-navy/70">
+          Screen-related vision problems, and the nutrition side of keeping eyes healthy for the
+          long run.
+        </p>
+      </div>
+
+    </div>
+
+    <p class="mt-12 text-center text-[14.5px] text-navy/70" data-reveal>
+      Not sure which one you need? That is what the exam is for —
+      <a href="tel:+13528671888" class="ul-grow font-semibold text-royal">call 352-867-1888</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ================= SIGNATURE SECTION: MISSIONS ================= -->
+<section id="missions" class="relative overflow-hidden bg-navy py-24 sm:py-32 text-paper">
+  <canvas id="lens-canvas"></canvas>
+  <div class="blob" style="width:600px;height:600px;background:radial-gradient(circle,rgba(0,60,144,.6),transparent 64%);bottom:-260px;left:-180px;"></div>
+  <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid gap-14 lg:grid-cols-[1fr_0.85fr] lg:gap-20 items-center">
+      <div data-reveal>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-sand">Beyond the exam room</span>
+        <h2 class="mt-5 font-display text-[clamp(2.1rem,4.4vw,3.5rem)] font-light text-paper">
+          He has carried this practice<br><span class="italic text-sand">to Peru and Nicaragua.</span>
+        </h2>
+        <p class="mt-7 max-w-[540px] text-[16px] leading-[1.78] text-paper/76">
+          Dr. Anderson is president of VOSH Southeast — Volunteer Optometric Services to Humanity.
+          He has taken five humanitarian eye-care missions: four to Peru, one to Nicaragua,
+          examining people who would otherwise never see an eye doctor at all.
+        </p>
+        <p class="mt-5 max-w-[540px] text-[16px] leading-[1.78] text-paper/76">
+          Closer to home, he is a past president of the Silver Springs Lions Club and sits on the
+          board of Interfaith Emergency Services. It is the same instinct, applied in Marion County.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4" data-reveal>
+        <div class="border border-paper/16 bg-paper/[0.045] p-7">
+          <div class="arcnum text-[3.3rem] text-sand" data-count="4" data-suffix="">0</div>
+          <div class="mt-2.5 text-[12px] uppercase tracking-[0.14em] text-paper/62">Missions to Peru</div>
+        </div>
+        <div class="border border-paper/16 bg-paper/[0.045] p-7">
+          <div class="arcnum text-[3.3rem] text-sand" data-count="1" data-suffix="">0</div>
+          <div class="mt-2.5 text-[12px] uppercase tracking-[0.14em] text-paper/62">Mission to Nicaragua</div>
+        </div>
+        <div class="col-span-2 border border-paper/16 bg-paper/[0.045] p-7">
+          <div class="text-[12px] uppercase tracking-[0.14em] text-sand">President</div>
+          <div class="mt-2 font-display text-[1.6rem] font-light leading-tight text-paper">VOSH Southeast</div>
+          <p class="mt-2.5 text-[13.5px] leading-relaxed text-paper/68">Volunteer Optometric Services to Humanity</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EYEWEAR ================= -->
+<section id="eyewear" class="py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-16 items-center">
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="overflow-hidden" data-reveal-image>
+          <img src="assets/eyeglasses.jpg" alt="Eyeglasses fitted at Optical Express in Ocala" class="h-full w-full object-cover aspect-[4/5]" loading="lazy">
+        </div>
+        <div class="overflow-hidden mt-8" data-reveal-image>
+          <img src="assets/sunglasses.jpg" alt="Sunglasses available at Optical Express in Ocala" class="h-full w-full object-cover aspect-[4/5]" loading="lazy">
+        </div>
+      </div>
+
+      <div data-reveal>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-royal">Eyewear</span>
+        <h2 class="mt-5 font-display text-[clamp(2.1rem,4.4vw,3.4rem)] font-light text-navy">
+          Over <span class="grad-text font-normal italic">700 frames</span><br>on the wall.
+        </h2>
+        <p class="mt-6 text-[16px] leading-[1.76] text-navy/74">
+          Women's, men's, and children's frames, plus sunglasses — picked out in person, with
+          someone who actually knows how a frame should sit on your face.
+          <strong class="font-semibold text-navy">Tracie Thompson, LDO</strong>, the practice
+          manager and licensed optician, has been doing exactly that here for years.
+        </p>
+
+        <div class="mt-9 space-y-4">
+          <div class="flex gap-4">
+            <svg class="mt-0.5 h-5 w-5 shrink-0 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <p class="text-[14.5px] leading-[1.7] text-navy/76"><strong class="font-semibold text-navy">We fill any prescription.</strong> Ours or someone else's — and we can duplicate the pair you already like.</p>
+          </div>
+          <div class="flex gap-4">
+            <svg class="mt-0.5 h-5 w-5 shrink-0 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <p class="text-[14.5px] leading-[1.7] text-navy/76"><strong class="font-semibold text-navy">Free adjustments and minor repairs</strong> on anything you bought from us. Walk in, we'll fix it.</p>
+          </div>
+          <div class="flex gap-4">
+            <svg class="mt-0.5 h-5 w-5 shrink-0 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <p class="text-[14.5px] leading-[1.7] text-navy/76"><strong class="font-semibold text-navy">Contacts too.</strong> AcuVue and other brands, fitted properly rather than guessed at.</p>
+          </div>
+        </div>
+
+        <a href="tel:+13528671888" class="btn mt-10 inline-flex items-center gap-2.5 rounded-sm bg-royal px-7 py-4 text-[14px] font-semibold tracking-wide text-white">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          352-867-1888
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="bridge"></div>
+
+<!-- ================= VOICES ================= -->
+<section class="py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-royal">Patients</span>
+      <h2 class="mt-5 font-display text-[clamp(2.1rem,4.4vw,3.4rem)] font-light text-navy">
+        What Ocala says<br>about <span class="grad-text font-normal italic">this office.</span>
+      </h2>
+    </div>
+
+    <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="card p-7" data-reveal>
+        <svg class="h-6 w-6 text-sand" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 5C6.5 6.8 5 9.6 5 13.3V19h6.2v-6H8.3c0-2.4.9-4.1 2.7-5.2L9.5 5zm9 0c-3 1.8-4.5 4.6-4.5 8.3V19H20v-6h-2.9c0-2.4.9-4.1 2.7-5.2L18.5 5z"/></svg>
+        <p class="mt-5 text-[14.5px] leading-[1.75] text-navy/80">“This by far this the best doctor's office I've ever had.”</p>
+        <p class="mt-6 text-[11.5px] uppercase tracking-[0.13em] text-navy/55">Nikia Hagins · Google review</p>
+      </div>
+      <div class="card p-7" data-reveal>
+        <svg class="h-6 w-6 text-sand" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 5C6.5 6.8 5 9.6 5 13.3V19h6.2v-6H8.3c0-2.4.9-4.1 2.7-5.2L9.5 5zm9 0c-3 1.8-4.5 4.6-4.5 8.3V19H20v-6h-2.9c0-2.4.9-4.1 2.7-5.2L18.5 5z"/></svg>
+        <p class="mt-5 text-[14.5px] leading-[1.75] text-navy/80">“Had a great experience between getting the exam and the professional experience getting fitted for new glasses.”</p>
+        <p class="mt-6 text-[11.5px] uppercase tracking-[0.13em] text-navy/55">Ken Watson · Google review</p>
+      </div>
+      <div class="card p-7" data-reveal>
+        <svg class="h-6 w-6 text-sand" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 5C6.5 6.8 5 9.6 5 13.3V19h6.2v-6H8.3c0-2.4.9-4.1 2.7-5.2L9.5 5zm9 0c-3 1.8-4.5 4.6-4.5 8.3V19H20v-6h-2.9c0-2.4.9-4.1 2.7-5.2L18.5 5z"/></svg>
+        <p class="mt-5 text-[14.5px] leading-[1.75] text-navy/80">“I had a great experience. The receptionist was very nice Dr Anderson was wonderful.”</p>
+        <p class="mt-6 text-[11.5px] uppercase tracking-[0.13em] text-navy/55">Diana Pisano · Google review</p>
+      </div>
+      <div class="card p-7" data-reveal>
+        <svg class="h-6 w-6 text-sand" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 5C6.5 6.8 5 9.6 5 13.3V19h6.2v-6H8.3c0-2.4.9-4.1 2.7-5.2L9.5 5zm9 0c-3 1.8-4.5 4.6-4.5 8.3V19H20v-6h-2.9c0-2.4.9-4.1 2.7-5.2L18.5 5z"/></svg>
+        <p class="mt-5 text-[14.5px] leading-[1.75] text-navy/80">“So far my favorite place.. The doctor is really knowledgeable and always nice.”</p>
+        <p class="mt-6 text-[11.5px] uppercase tracking-[0.13em] text-navy/55">Meghann McKenna · Google review</p>
+      </div>
+    </div>
+
+    <div class="mt-8 border border-navy/10 bg-cream p-8 sm:p-10" data-reveal>
+      <p class="font-display text-[clamp(1.3rem,2.5vw,1.85rem)] font-light italic leading-[1.55] text-navy">
+        “I have been going to Optical Express for over 30 years and I now take my children there as well.”
+      </p>
+      <p class="mt-5 text-[11.5px] uppercase tracking-[0.13em] text-navy/55">Verified patient review</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section id="visit" class="bg-bone py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-royal">Visit</span>
+      <h2 class="mt-5 font-display text-[clamp(2.1rem,4.4vw,3.4rem)] font-light text-navy">
+        On SW 10th Street,<br>since 2002.
+      </h2>
+    </div>
+
+    <div class="mt-14 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
+
+      <div class="space-y-5">
+        <div class="border border-navy/10 bg-cream p-8" data-reveal>
+          <div class="flex items-start gap-4">
+            <svg class="mt-0.5 h-5 w-5 shrink-0 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-navy/55">Address</div>
+              <p class="mt-2 text-[15.5px] font-medium leading-[1.6] text-navy">600 SW 10th St, Ste 104<br>Ocala, FL 34471</p>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=600%20SW%2010th%20St%20Ste%20104%2C%20Ocala%2C%20FL%2034471" target="_blank" rel="noopener" class="ul-grow mt-3 inline-block text-[13px] font-semibold text-royal">Get directions</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="border border-navy/10 bg-cream p-8" data-reveal>
+          <div class="flex items-start gap-4">
+            <svg class="mt-0.5 h-5 w-5 shrink-0 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 1.9"/></svg>
+            <div class="w-full">
+              <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-navy/55">Hours</div>
+              <dl class="mt-3 space-y-2 text-[14px]">
+                <div class="flex justify-between gap-6"><dt class="text-navy/70">Monday – Thursday</dt><dd class="font-medium text-navy">8:00 – 5:30</dd></div>
+                <div class="flex justify-between gap-6"><dt class="text-navy/70">Friday</dt><dd class="font-medium text-navy">8:00 – 1:00</dd></div>
+                <div class="flex justify-between gap-6"><dt class="text-navy/70">Saturday – Sunday</dt><dd class="font-medium text-navy/55">Closed</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div class="border border-navy/10 bg-royal p-8" data-reveal>
+          <div class="flex items-start gap-4">
+            <svg class="mt-0.5 h-5 w-5 shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70">Call the office</div>
+              <a href="tel:+13528671888" class="mt-2 block font-display text-[1.85rem] font-light text-white hover:text-sand transition-colors">352-867-1888</a>
+              <p class="mt-2.5 text-[13.5px] leading-relaxed text-white/78">Urgent eye problem? Say so when you call. We'll get you seen.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="overflow-hidden border border-navy/10" data-reveal-image>
+          <img src="assets/location.jpg" alt="The Optical Express building at 600 SW 10th Street in Ocala, Florida" class="w-full object-cover aspect-[16/10]" loading="lazy">
+        </div>
+        <p class="text-[12.5px] leading-relaxed text-navy/58">Look for the OPTICAL sign on SW 10th Street. Parking is right out front.</p>
+      </div>
+
+      <div class="min-h-[440px] overflow-hidden border border-navy/10 lg:min-h-full" data-reveal>
+        <iframe
+          src="https://www.google.com/maps?q=600%20SW%2010th%20St%20Ste%20104%2C%20Ocala%2C%20FL%2034471&output=embed"
+          class="h-full min-h-[440px] w-full" style="border:0" loading="lazy" title="Map to Optical Express, 600 SW 10th St, Ocala FL"
+          referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="relative overflow-hidden bg-navy py-24 sm:py-32 text-paper">
+  <div class="blob" style="width:560px;height:560px;background:radial-gradient(circle,rgba(0,60,144,.65),transparent 62%);top:-200px;right:-140px;"></div>
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8 text-center">
+    <img src="assets/logo-white.png" alt="Optical Express" class="mx-auto h-9 sm:h-11 w-auto" data-reveal>
+    <h2 class="mt-9 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-light leading-[1.14] text-paper" data-reveal>
+      Book the exam you've<br>been putting off.
+    </h2>
+    <p class="mt-6 text-[16px] leading-[1.75] text-paper/74" data-reveal>
+      Most eye disease is quiet until it isn't. An exam takes an hour, and Dr. Anderson has been
+      doing them for forty years.
+    </p>
+    <div class="mt-10 flex flex-wrap justify-center gap-3.5" data-reveal>
+      <a href="tel:+13528671888" class="btn inline-flex items-center gap-2.5 rounded-sm bg-paper px-8 py-4 text-[14px] font-semibold tracking-wide text-navy">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        352-867-1888
+      </a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=600%20SW%2010th%20St%20Ste%20104%2C%20Ocala%2C%20FL%2034471" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-sm border border-paper/28 px-8 py-4 text-[14px] font-semibold tracking-wide text-paper hover:border-sand hover:text-sand transition-colors">
+        Get directions
+      </a>
+    </div>
+    <p class="mt-8 text-[13px] text-paper/58" data-reveal>600 SW 10th St, Ste 104 · Ocala, FL 34471 · Se habla español</p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="border-t border-navy/12 bg-paper py-14">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid gap-10 sm:grid-cols-3">
+      <div>
+        <img src="assets/logo.png" alt="Optical Express" class="h-7 w-auto">
+        <p class="mt-5 text-[13.5px] leading-[1.7] text-navy/68">
+          Independent optometry in Ocala. Dr. Paul E. Anderson, O.D. — owner and operating doctor
+          since 2002.
+        </p>
+      </div>
+      <div>
+        <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-navy/55">Office</div>
+        <p class="mt-4 text-[13.5px] leading-[1.75] text-navy/72">
+          600 SW 10th St, Ste 104<br>Ocala, FL 34471<br>
+          <a href="tel:+13528671888" class="ul-grow font-semibold text-royal">352-867-1888</a>
+        </p>
+      </div>
+      <div>
+        <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-navy/55">Hours</div>
+        <p class="mt-4 text-[13.5px] leading-[1.75] text-navy/72">
+          Mon – Thu · 8:00 – 5:30<br>Fri · 8:00 – 1:00<br>Sat – Sun · Closed
+        </p>
+        <a href="https://www.facebook.com/OpticalExpressOcala" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 text-[13px] font-medium text-navy/68 hover:text-royal transition-colors">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          Facebook
+        </a>
+      </div>
+    </div>
+    <div class="mt-12 flex flex-col gap-2 border-t border-navy/12 pt-7 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-[12px] text-navy/55">© <span id="yr">2026</span> Optical Express · Ocala, Florida</p>
+      <p class="text-[12px] text-navy/45">Draft preview by Turnkey Web</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MOBILE STICKY BAR ================= -->
+<div class="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 border-t border-navy/15 bg-cream/97 backdrop-blur lg:hidden">
+  <a href="tel:+13528671888" class="flex items-center justify-center gap-2 py-3.5 text-[13.5px] font-semibold text-royal">
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=600%20SW%2010th%20St%20Ste%20104%2C%20Ocala%2C%20FL%2034471" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 border-l border-navy/15 py-3.5 text-[13.5px] font-semibold text-navy">
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+<div class="h-[52px] lg:hidden"></div>
+
+<!-- ================= JSON-LD ================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Optometric",
+  "@id": "https://turnkeyweb.org/previews/optical-express-ocala/#business",
+  "name": "Optical Express",
+  "description": "Independent optometry practice in Ocala, Florida. Dr. Paul E. Anderson, O.D. provides comprehensive eye exams, ocular disease management, Ortho-K corneal reshaping, pediatric myopia control, low vision services, specialty contact lens fittings, emergency eye care, and surgical co-management.",
+  "url": "https://turnkeyweb.org/previews/optical-express-ocala/",
+  "telephone": "+1-352-867-1888",
+  "faxNumber": "+1-352-867-5652",
+  "email": "opticalexpress.ocala@gmail.com",
+  "image": "https://turnkeyweb.org/previews/optical-express-ocala/assets/hero.jpg",
+  "logo": "https://turnkeyweb.org/previews/optical-express-ocala/assets/logo.png",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "600 SW 10th St, Ste 104",
+    "addressLocality": "Ocala",
+    "addressRegion": "FL",
+    "postalCode": "34471",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 29.1785, "longitude": -82.1412 },
+  "areaServed": [
+    { "@type": "City", "name": "Ocala" },
+    { "@type": "AdministrativeArea", "name": "Marion County, Florida" }
+  ],
+  "sameAs": ["https://www.facebook.com/OpticalExpressOcala"],
+  "availableLanguage": ["English", "Spanish"],
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "08:00", "closes": "17:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "08:00", "closes": "13:00" }
+  ],
+  "employee": {
+    "@type": "Person",
+    "name": "Paul E. Anderson",
+    "honorificSuffix": "O.D.",
+    "jobTitle": "Optometrist",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "The Ohio State University College of Optometry" }
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Eye care services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Comprehensive adult and pediatric eye examinations" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Management of diseases and disorders of the eye" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ortho-K nonsurgical corneal reshaping" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Myopia control for children" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Low vision services for the partially sighted" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Specialty contact lens fittings" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency and urgent eye care" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Surgical co-management for LASIK, cataract and glaucoma" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Eyeglasses and sunglasses" } }
+    ]
+  }
+}
+</script>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isDesktop = window.matchMedia('(min-width: 880px)').matches;
+
+  /* ---------- Lenis: ONE rAF loop, driven by GSAP ticker ---------- */
+  if (window.Lenis && !reduce) {
+    var lenis = new Lenis({
+      duration: 1.1,
+      easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smoothWheel: true,
+      smoothTouch: false
+    });
+    if (window.gsap) {
+      gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+      if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -74 }); }
+      });
+    });
+  }
+
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+  }
+
+  /* ---------- nav condense ---------- */
+  var nav = document.getElementById('nav');
+  function navState(){
+    if (window.scrollY > 24) nav.classList.add('bg-cream/94','backdrop-blur','shadow-[0_1px_0_rgba(11,27,51,.10)]');
+    else nav.classList.remove('bg-cream/94','backdrop-blur','shadow-[0_1px_0_rgba(11,27,51,.10)]');
+  }
+  navState(); window.addEventListener('scroll', navState, { passive:true });
+
+  /* ---------- reveals (GPU only, once) ---------- */
+  if (window.gsap && window.ScrollTrigger && !reduce) {
+    gsap.utils.toArray('[data-reveal]').forEach(function(el){
+      ScrollTrigger.create({
+        trigger: el, start: 'top 92%', once: true,
+        onEnter: function(){
+          gsap.to(el, { opacity:1, y:0, duration:.68, ease:'power3.out',
+            onComplete: function(){ el.style.willChange = 'auto'; } });
+          el.classList.add('in');
+        }
+      });
+    });
+    gsap.utils.toArray('[data-reveal-image]').forEach(function(el){
+      ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true,
+        onEnter: function(){ el.classList.add('in'); } });
+    });
+  } else {
+    document.querySelectorAll('[data-reveal],[data-reveal-image]').forEach(function(el){
+      el.classList.add('in'); el.style.opacity = 1; el.style.transform = 'none';
+    });
+  }
+
+  /* ---------- count-ups ---------- */
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var target = parseFloat(el.dataset.count) || 0;
+    var suffix = el.dataset.suffix || '';
+    function run(){
+      if (!window.gsap || reduce) { el.textContent = target + suffix; return; }
+      var o = { v: 0 };
+      gsap.to(o, { v: target, duration: 1.5, ease: 'power2.out',
+        onUpdate: function(){ el.textContent = Math.round(o.v) + suffix; } });
+    }
+    if (window.ScrollTrigger && !reduce) ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true, onEnter: run });
+    else run();
+  });
+
+  /* ---------- hero video parallax (desktop only) ---------- */
+  if (window.gsap && window.ScrollTrigger && isDesktop && !reduce) {
+    gsap.to('.hero-media', {
+      yPercent: 14, scale: 1.07, ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+    });
+  }
+
+  /* ---------- SHOWPIECE: WebGL refracting lens field (the optics metaphor) ---------- */
+  (function(){
+    var cvs = document.getElementById('lens-canvas');
+    if (!cvs || !window.THREE || reduce) { if (cvs) cvs.style.display='none'; return; }
+    if (!isDesktop) { cvs.style.display = 'none'; return; }   // static navy on mobile
+
+    var gl;
+    try { gl = new THREE.WebGLRenderer({ canvas: cvs, alpha: true, antialias: true }); }
+    catch(e){ cvs.style.display = 'none'; return; }
+
+    var host = cvs.parentElement;
+    var w = host.clientWidth, h = host.clientHeight;
+    gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    gl.setSize(w, h, false);
+
+    var scene = new THREE.Scene();
+    var cam = new THREE.PerspectiveCamera(48, w/h, 0.1, 100);
+    cam.position.z = 9;
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+    var key = new THREE.DirectionalLight(0xA8C0D8, 1.5); key.position.set(-4, 3, 6); scene.add(key);
+    var rim = new THREE.DirectionalLight(0xC9A961, 1.1); rim.position.set(5, -2, 3);  scene.add(rim);
+
+    // Lens discs — the practice's own object, drifting like the hero still
+    var lenses = [];
+    var geo = new THREE.SphereGeometry(1, 48, 32);
+    geo.scale(1, 1, 0.17);                       // flatten a sphere into a lens
+    for (var i = 0; i < 7; i++) {
+      var mat = new THREE.MeshPhysicalMaterial({
+        color: 0xDCE8F4, transparent: true, opacity: 0.4,
+        roughness: 0.06, metalness: 0.0, clearcoat: 1.0, clearcoatRoughness: 0.04,
+        transmission: 0.85, ior: 1.5, reflectivity: 0.55
+      });
+      var m = new THREE.Mesh(geo, mat);
+      var s = 0.5 + Math.random() * 0.85;
+      m.scale.setScalar(s);
+      m.position.set((Math.random()-0.5)*13, (Math.random()-0.5)*7, (Math.random()-0.5)*4 - 1);
+      m.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
+      m.userData = { sx:(Math.random()-0.5)*0.00028, sy:(Math.random()-0.5)*0.00022, ph:Math.random()*6.28, amp:0.16+Math.random()*0.2, y0:m.position.y };
+      scene.add(m); lenses.push(m);
+    }
+
+    var running = true, visible = true, t0 = performance.now();
+    function frame(now){
+      if (!running) return;
+      requestAnimationFrame(frame);
+      if (!visible || document.hidden) return;
+      var t = (now - t0) * 0.001;
+      for (var i=0;i<lenses.length;i++){
+        var m = lenses[i], d = m.userData;
+        m.rotation.x += d.sx * 16; m.rotation.y += d.sy * 16;
+        m.position.y = d.y0 + Math.sin(t*0.32 + d.ph) * d.amp;
+      }
+      gl.render(scene, cam);
+    }
+    requestAnimationFrame(frame);
+
+    document.addEventListener('visibilitychange', function(){ visible = !document.hidden; });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(en){ visible = en[0].isIntersecting && !document.hidden; }, { threshold: 0 }).observe(cvs);
+    }
+    var rt;
+    window.addEventListener('resize', function(){
+      clearTimeout(rt);
+      rt = setTimeout(function(){
+        if (!window.matchMedia('(min-width: 880px)').matches) { running = false; cvs.style.display='none'; return; }
+        w = host.clientWidth; h = host.clientHeight;
+        cam.aspect = w/h; cam.updateProjectionMatrix(); gl.setSize(w, h, false);
+      }, 180);
+    }, { passive:true });
+  })();
+
+  /* ---------- 6s crawler / screenshot safety net (REQUIRED) ---------- */
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      var o = parseFloat(getComputedStyle(el).opacity);
+      if (!o || o < 0.98) { el.style.opacity = 1; el.style.transform = 'none'; el.classList.add('in'); }
+    });
+    document.querySelectorAll('[data-reveal-image]').forEach(function(el){ el.classList.add('in'); el.style.clipPath = 'none'; });
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      if (el.textContent.trim() === '0') el.textContent = (el.dataset.count || '') + (el.dataset.suffix || '');
+    });
+  }, 6000);
+
+  /* ---------- keep hero video playing (autoplay guard) ---------- */
+  var hv = document.querySelector('.hero-media');
+  if (hv) {
+    var tryPlay = function(){ var p = hv.play(); if (p && p.catch) p.catch(function(){}); };
+    tryPlay();
+    hv.addEventListener('loadeddata', tryPlay);
+    document.addEventListener('visibilitychange', function(){ if (!document.hidden) tryPlay(); });
+  }
+})();
+</script>
+</body>
+</html>
