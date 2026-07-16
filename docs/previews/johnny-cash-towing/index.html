@@ -80,6 +80,9 @@ tailwind.config = { theme: { extend: {
     line-height:1.15; padding-bottom:.1em; display:inline-block;
     filter:drop-shadow(0 2px 16px rgba(0,0,0,.75));
   }
+  /* text-shadow paints THROUGH a transparent (background-clip:text) fill and greys the gradient.
+     Kill it on shimmer text and use drop-shadow on the element instead. */
+  .grad-text, .grad-text-light{ text-shadow:none !important; }
   @keyframes shimmer{ from{background-position:200% 0} to{background-position:0% 0} }
 
   /* --- hero --- */
