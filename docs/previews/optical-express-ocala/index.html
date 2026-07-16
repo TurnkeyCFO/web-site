@@ -191,7 +191,8 @@ tailwind.config = {
 </header>
 
 <!-- ================= HERO ================= -->
-<section id="top" class="hero min-h-[100svh] flex items-center pt-28 pb-16 sm:pt-32 sm:pb-20">
+<!-- pb-28 on mobile keeps the stat row clear of the sticky call/directions bar -->
+<section id="top" class="hero min-h-[100svh] flex items-center pt-28 pb-28 sm:pt-32 sm:pb-20">
   <video class="hero-media" autoplay muted loop playsinline poster="assets/hero.jpg" aria-hidden="true">
     <source src="assets/hero.mp4" type="video/mp4">
   </video>
@@ -200,8 +201,8 @@ tailwind.config = {
 
   <div class="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8">
     <div class="max-w-[640px]">
-      <div class="flex items-center gap-2.5 mb-6" data-reveal>
-        <span class="dot h-1.5 w-1.5 rounded-full bg-royal"></span>
+      <div class="flex items-start gap-2.5 mb-6" data-reveal>
+        <span class="dot mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-royal"></span>
         <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-royal">Independent optometry · Ocala, Florida</span>
       </div>
 
