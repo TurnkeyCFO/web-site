@@ -657,10 +657,13 @@ tailwind.config = {
         <p class="text-[12.5px] leading-relaxed text-navy/65">Look for the OPTICAL sign on SW 10th Street. Parking is right out front.</p>
       </div>
 
-      <div class="min-h-[440px] overflow-hidden border border-navy/10 lg:min-h-full" data-reveal>
+      <!-- Map loads EAGERLY on purpose: with loading="lazy" the panel reads as an empty beige
+           frame until it is scrolled to (flagged by the self-critique gate, and a real problem
+           for anyone scrolling fast). The bone background is a skeleton so it is never blank. -->
+      <div class="min-h-[440px] overflow-hidden border border-navy/10 bg-bone lg:min-h-full" data-reveal>
         <iframe
           src="https://www.google.com/maps?q=600%20SW%2010th%20St%20Ste%20104%2C%20Ocala%2C%20FL%2034471&output=embed"
-          class="h-full min-h-[440px] w-full" style="border:0" loading="lazy" title="Map to Optical Express, 600 SW 10th St, Ocala FL"
+          class="h-full min-h-[440px] w-full" style="border:0" loading="eager" title="Map to Optical Express, 600 SW 10th St, Ocala FL"
           referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
 
