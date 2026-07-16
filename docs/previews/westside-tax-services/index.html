@@ -62,7 +62,9 @@ tailwind.config = {
       navyd:  '#121C33',
       honey:  '#B98D52',
       honeyl: '#D8AE74',
+      honeyd: '#7E5525',
       slatex: '#5A6373',
+      navlink:'#3E4655',
       ink:    '#1C1F26'
     },
     fontFamily: {
@@ -74,6 +76,13 @@ tailwind.config = {
 </script>
 <style>
   html { scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; }
+
+  /* Persistent cream scrim behind the nav so links never sit on bare hero footage
+     (the video's warm desk tones fail AA against slate links without it). */
+  #nav::before{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(to bottom, rgba(250,246,240,.94) 0%, rgba(250,246,240,.70) 58%, rgba(250,246,240,0) 100%);
+  }
   body { background:#FAF6F0; color:#1C1F26; font-family:'Inter Tight',system-ui,sans-serif; overflow-x:hidden; }
 
   /* ---- descender safety (HARD RULE): never crop g/y/p/j/q ---- */
@@ -164,18 +173,18 @@ tailwind.config = {
         <span class="inline-flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-[7px] bg-navy text-linen font-display text-[19px] md:text-[21px] leading-none pt-[3px]">W</span>
         <span class="leading-[1.05]">
           <span class="block font-display text-[17px] md:text-[19px] text-ink tracking-tight">Westside</span>
-          <span class="block font-sans text-[8.5px] md:text-[9px] tracking-[.24em] text-slatex font-semibold uppercase">Tax Services</span>
+          <span class="block font-sans text-[8.5px] md:text-[9px] tracking-[.24em] text-navlink font-semibold uppercase">Tax Services</span>
         </span>
       </a>
       <nav class="hidden lg:flex items-center gap-8 font-sans text-[13.5px] text-slatex">
-        <a href="#family" class="underline-grow hover:text-ink transition-colors">The Family</a>
-        <a href="#services" class="underline-grow hover:text-ink transition-colors">Services</a>
-        <a href="#bring" class="underline-grow hover:text-ink transition-colors">What to Bring</a>
-        <a href="#reviews" class="underline-grow hover:text-ink transition-colors">Reviews</a>
-        <a href="#visit" class="underline-grow hover:text-ink transition-colors">Visit</a>
+        <a href="#family" class="underline-grow text-navlink hover:text-ink transition-colors">The Family</a>
+        <a href="#services" class="underline-grow text-navlink hover:text-ink transition-colors">Services</a>
+        <a href="#bring" class="underline-grow text-navlink hover:text-ink transition-colors">What to Bring</a>
+        <a href="#reviews" class="underline-grow text-navlink hover:text-ink transition-colors">Reviews</a>
+        <a href="#visit" class="underline-grow text-navlink hover:text-ink transition-colors">Visit</a>
       </nav>
       <div class="flex items-center gap-3">
-        <span id="navStatus" class="hidden md:inline-flex items-center gap-1.5 text-[11.5px] font-sans font-medium text-slatex"></span>
+        <span id="navStatus" class="hidden md:inline-flex items-center gap-1.5 text-[11.5px] font-sans font-medium text-navlink"></span>
         <a href="tel:+12107324000" class="btn-primary inline-flex items-center gap-2 rounded-full bg-navy px-4 py-2.5 md:px-5 md:py-3 text-linen font-sans text-[12.5px] md:text-[13.5px] font-semibold">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <span class="hidden sm:inline">(210) 732-4000</span><span class="sm:hidden">Call</span>
@@ -266,7 +275,7 @@ tailwind.config = {
   <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       <div class="lg:col-span-6">
-        <p data-reveal class="font-sans text-[10.5px] tracking-[.28em] uppercase text-honey font-semibold mb-5">The people</p>
+        <p data-reveal class="font-sans text-[10.5px] tracking-[.28em] uppercase text-honeyd font-semibold mb-5">The people</p>
         <h2 data-reveal class="font-display text-[32px] sm:text-[40px] md:text-[48px] text-ink tracking-[-.015em]">
           You are not a file number.<br>
           You are <span class="grad-text italic">somebody&rsquo;s neighbor</span>.
@@ -331,7 +340,7 @@ tailwind.config = {
 <section id="services" class="py-20 md:py-28 bg-linen">
   <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
     <div class="max-w-[620px]">
-      <p data-reveal class="font-sans text-[10.5px] tracking-[.28em] uppercase text-honey font-semibold mb-5">What we do</p>
+      <p data-reveal class="font-sans text-[10.5px] tracking-[.28em] uppercase text-honeyd font-semibold mb-5">What we do</p>
       <h2 data-reveal class="font-display text-[32px] sm:text-[40px] md:text-[46px] text-ink tracking-[-.015em]">
         Taxes and books, <span class="grad-text italic">all year</span>.
       </h2>
@@ -401,7 +410,7 @@ tailwind.config = {
   <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
       <div class="lg:col-span-5">
-        <p data-reveal class="font-sans text-[10.5px] tracking-[.28em] uppercase text-honey font-semibold mb-5">Before you come in</p>
+        <p data-reveal class="font-sans text-[10.5px] tracking-[.28em] uppercase text-honeyd font-semibold mb-5">Before you come in</p>
         <h2 data-reveal class="font-display text-[32px] sm:text-[40px] md:text-[46px] text-ink tracking-[-.015em]">
           Bring these and you are <span class="grad-text italic">in and out</span>.
         </h2>
@@ -489,7 +498,7 @@ tailwind.config = {
   <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
       <div class="max-w-[560px]">
-        <p data-reveal class="font-sans text-[10.5px] tracking-[.28em] uppercase text-honey font-semibold mb-5">In their words</p>
+        <p data-reveal class="font-sans text-[10.5px] tracking-[.28em] uppercase text-honeyd font-semibold mb-5">In their words</p>
         <h2 data-reveal class="font-display text-[32px] sm:text-[40px] md:text-[46px] text-ink tracking-[-.015em]">
           Twenty&#8209;six reviews, <span class="grad-text italic">one theme</span>.
         </h2>
@@ -564,7 +573,7 @@ tailwind.config = {
 <section id="visit" class="py-20 md:py-28 bg-sand">
   <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
     <div class="max-w-[620px]">
-      <p data-reveal class="font-sans text-[10.5px] tracking-[.28em] uppercase text-honey font-semibold mb-5">Come see us</p>
+      <p data-reveal class="font-sans text-[10.5px] tracking-[.28em] uppercase text-honeyd font-semibold mb-5">Come see us</p>
       <h2 data-reveal class="font-display text-[32px] sm:text-[40px] md:text-[46px] text-ink tracking-[-.015em]">
         On Babcock Road, <span class="grad-text italic">open after work</span>.
       </h2>
