@@ -95,9 +95,11 @@ tailwind.config = { theme: { extend: {
       linear-gradient(180deg, rgba(250,247,242,.86) 0%, rgba(250,247,242,.30) 26%, rgba(250,247,242,0) 55%, rgba(250,247,242,.34) 100%);
   }
   @media (max-width:880px){
+    /* crop toward the copper coils so the hero asset actually reads on a phone */
+    .hero-bg{ object-position:76% 42%; }
     .hero-scrim{ background:
-      linear-gradient(180deg, rgba(250,247,242,.95) 0%, rgba(250,247,242,.90) 42%, rgba(250,247,242,.62) 66%, rgba(250,247,242,.30) 100%),
-      linear-gradient(90deg, rgba(250,247,242,.86) 0%, rgba(250,247,242,.40) 70%, rgba(250,247,242,.10) 100%); }
+      linear-gradient(180deg, rgba(250,247,242,.95) 0%, rgba(250,247,242,.90) 40%, rgba(250,247,242,.58) 64%, rgba(250,247,242,.26) 100%),
+      linear-gradient(90deg, rgba(250,247,242,.84) 0%, rgba(250,247,242,.38) 72%, rgba(250,247,242,.06) 100%); }
   }
 
   /* ---- conductor spine (signature) ---- */
