@@ -73,12 +73,12 @@ tailwind.config = { theme: { extend: {
     line-height:1.15; padding-bottom:.1em; display:inline-block;
   }
   .grad-text-light{
-    background:linear-gradient(100deg,#F4C489 0%,#FFE7C4 30%,#FFF6E8 46%,#FFE7C4 62%,#F4C489 100%);
+    background:linear-gradient(100deg,#FFD9A3 0%,#FFF0D6 28%,#FFFFFF 46%,#FFF0D6 64%,#FFD9A3 100%);
     background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
     -webkit-text-fill-color:transparent; color:transparent;
     animation:shimmer 8s linear infinite;
     line-height:1.15; padding-bottom:.1em; display:inline-block;
-    filter:drop-shadow(0 2px 14px rgba(0,0,0,.5));
+    filter:drop-shadow(0 2px 16px rgba(0,0,0,.75));
   }
   @keyframes shimmer{ from{background-position:200% 0} to{background-position:0% 0} }
 
@@ -246,7 +246,7 @@ tailwind.config = { theme: { extend: {
       </div>
 
       <!-- live dispatch readout — the signature -->
-      <div class="mt-10 inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-xl border border-white/12 bg-black/35 backdrop-blur px-5 py-3.5" data-reveal>
+      <div class="mt-10 inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-xl border border-white/10 bg-black/35 backdrop-blur px-5 py-3.5" data-reveal>
         <span class="inline-flex items-center gap-2">
           <span class="live-dot"></span>
           <span class="font-mono text-[10.5px] tracking-[.16em] text-cream/70">RIGHT NOW IN PLAINVIEW</span>
@@ -264,7 +264,7 @@ tailwind.config = { theme: { extend: {
 </section>
 
 <!-- ============================== MARQUEE ============================== -->
-<div class="bg-ink py-3.5 border-y border-white/8">
+<div class="bg-ink py-3.5 border-y border-white/10">
   <div class="marquee">
     <div class="marquee-track">
       <!-- duplicated inline for a seamless loop -->
@@ -295,7 +295,7 @@ tailwind.config = { theme: { extend: {
 
       <!-- live clock console -->
       <div data-reveal>
-        <div class="rounded-2xl border border-ink/12 bg-cream p-7 sm:p-8 shadow-[0_28px_70px_-40px_rgba(22,18,15,.55)]">
+        <div class="rounded-2xl border border-ink/10 bg-cream p-7 sm:p-8 shadow-[0_28px_70px_-40px_rgba(22,18,15,.55)]">
           <div class="flex items-center gap-2.5 mb-6">
             <span class="live-dot"></span>
             <span class="font-mono text-[10px] tracking-[.2em] text-ink/55">DISPATCH STATUS</span>
@@ -322,7 +322,7 @@ tailwind.config = { theme: { extend: {
 
       <!-- what happens when you call -->
       <div>
-        <span class="font-mono text-[10.5px] tracking-[.22em] text-ember" data-reveal>[ WHAT HAPPENS WHEN YOU CALL ]</span>
+        <span class="font-mono text-[10.5px] tracking-[.22em] text-rust" data-reveal>[ WHAT HAPPENS WHEN YOU CALL ]</span>
         <h2 class="mt-4 font-display font-extrabold tracking-[-.03em] text-ink text-[clamp(1.9rem,4.4vw,3rem)]" data-reveal>
           A bad night gets<br><span class="grad-text">shorter from here.</span>
         </h2>
@@ -332,24 +332,24 @@ tailwind.config = { theme: { extend: {
 
         <ol class="mt-10 space-y-8">
           <li class="flex gap-5" data-reveal>
-            <span class="font-mono text-[13px] font-bold text-ember/85 pt-1 flex-none w-8">01</span>
+            <span class="font-mono text-[13px] font-bold text-rust pt-1 flex-none w-8">01</span>
             <div>
               <h3 class="font-display font-bold text-ink text-[18.5px]">You call. A person answers.</h3>
-              <p class="mt-1.5 text-ink/62 text-[15px] leading-relaxed">Not a queue, not a national call center reading a script from three states away. A local number in Plainview.</p>
+              <p class="mt-1.5 text-ink/60 text-[15px] leading-relaxed">Not a queue, not a national call center reading a script from three states away. A local number in Plainview.</p>
             </div>
           </li>
           <li class="flex gap-5" data-reveal>
-            <span class="font-mono text-[13px] font-bold text-ember/85 pt-1 flex-none w-8">02</span>
+            <span class="font-mono text-[13px] font-bold text-rust pt-1 flex-none w-8">02</span>
             <div>
               <h3 class="font-display font-bold text-ink text-[18.5px]">You say where you are.</h3>
-              <p class="mt-1.5 text-ink/62 text-[15px] leading-relaxed">A mile marker, a cross street, a field road with no name. Local knowledge is the difference between found and hunting.</p>
+              <p class="mt-1.5 text-ink/60 text-[15px] leading-relaxed">A mile marker, a cross street, a field road with no name. Local knowledge is the difference between found and hunting.</p>
             </div>
           </li>
           <li class="flex gap-5" data-reveal>
-            <span class="font-mono text-[13px] font-bold text-ember/85 pt-1 flex-none w-8">03</span>
+            <span class="font-mono text-[13px] font-bold text-rust pt-1 flex-none w-8">03</span>
             <div>
               <h3 class="font-display font-bold text-ink text-[18.5px]">A truck rolls.</h3>
-              <p class="mt-1.5 text-ink/62 text-[15px] leading-relaxed">Tow, recovery, a lockout, or a fix right there on the shoulder. Whatever gets you moving or gets your vehicle home.</p>
+              <p class="mt-1.5 text-ink/60 text-[15px] leading-relaxed">Tow, recovery, a lockout, or a fix right there on the shoulder. Whatever gets you moving or gets your vehicle home.</p>
             </div>
           </li>
         </ol>
@@ -366,7 +366,7 @@ tailwind.config = { theme: { extend: {
   <div class="mx-auto max-w-7xl px-5 sm:px-6">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 sm:mb-16">
       <div>
-        <span class="font-mono text-[10.5px] tracking-[.22em] text-ember" data-reveal>[ SERVICES ]</span>
+        <span class="font-mono text-[10.5px] tracking-[.22em] text-rust" data-reveal>[ SERVICES ]</span>
         <h2 class="mt-4 font-display font-extrabold tracking-[-.03em] text-ink text-[clamp(2rem,5vw,3.4rem)]" data-reveal>
           Six ways we get<br>you <span class="grad-text">unstuck.</span>
         </h2>
@@ -388,7 +388,7 @@ tailwind.config = { theme: { extend: {
         </span>
         <span class="flex-1 min-w-0">
           <h3 class="font-display font-bold text-ink text-[clamp(1.15rem,2.6vw,1.6rem)]">24-Hour Towing</h3>
-          <p class="mt-1 text-ink/58 text-[14.5px] leading-relaxed">Cars, trucks and light-duty hauls moved to the shop, the yard, or your driveway. Any hour on the clock.</p>
+          <p class="mt-1 text-ink/60 text-[14.5px] leading-relaxed">Cars, trucks and light-duty hauls moved to the shop, the yard, or your driveway. Any hour on the clock.</p>
         </span>
         <span class="svc-arrow flex-none hidden sm:block">
           <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#B4531A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -404,7 +404,7 @@ tailwind.config = { theme: { extend: {
         </span>
         <span class="flex-1 min-w-0">
           <h3 class="font-display font-bold text-ink text-[clamp(1.15rem,2.6vw,1.6rem)]">Vehicle Recovery</h3>
-          <p class="mt-1 text-ink/58 text-[14.5px] leading-relaxed">Off the shoulder, out of the ditch, sunk in a caliche pit after a rain. Winched out and back on solid ground.</p>
+          <p class="mt-1 text-ink/60 text-[14.5px] leading-relaxed">Off the shoulder, out of the ditch, sunk in a caliche pit after a rain. Winched out and back on solid ground.</p>
         </span>
         <span class="svc-arrow flex-none hidden sm:block">
           <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#B4531A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -420,7 +420,7 @@ tailwind.config = { theme: { extend: {
         </span>
         <span class="flex-1 min-w-0">
           <h3 class="font-display font-bold text-ink text-[clamp(1.15rem,2.6vw,1.6rem)]">Lockout Service</h3>
-          <p class="mt-1 text-ink/58 text-[14.5px] leading-relaxed">Keys on the seat, engine running, groceries melting. Opened without wrecking your door or your day.</p>
+          <p class="mt-1 text-ink/60 text-[14.5px] leading-relaxed">Keys on the seat, engine running, groceries melting. Opened without wrecking your door or your day.</p>
         </span>
         <span class="svc-arrow flex-none hidden sm:block">
           <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#B4531A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -436,7 +436,7 @@ tailwind.config = { theme: { extend: {
         </span>
         <span class="flex-1 min-w-0">
           <h3 class="font-display font-bold text-ink text-[clamp(1.15rem,2.6vw,1.6rem)]">24-Hour Roadside Assistance</h3>
-          <p class="mt-1 text-ink/58 text-[14.5px] leading-relaxed">A dedicated round-the-clock program. Dead battery, flat, out of fuel, or a wheel that will not come off.</p>
+          <p class="mt-1 text-ink/60 text-[14.5px] leading-relaxed">A dedicated round-the-clock program. Dead battery, flat, out of fuel, or a wheel that will not come off.</p>
         </span>
         <span class="svc-arrow flex-none hidden sm:block">
           <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#B4531A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -452,7 +452,7 @@ tailwind.config = { theme: { extend: {
         </span>
         <span class="flex-1 min-w-0">
           <h3 class="font-display font-bold text-ink text-[clamp(1.15rem,2.6vw,1.6rem)]">Roadside Repairs</h3>
-          <p class="mt-1 text-ink/58 text-[14.5px] leading-relaxed">Diagnosis and repair right where you sit. If it can be fixed on the shoulder, it does not need a tow.</p>
+          <p class="mt-1 text-ink/60 text-[14.5px] leading-relaxed">Diagnosis and repair right where you sit. If it can be fixed on the shoulder, it does not need a tow.</p>
         </span>
         <span class="svc-arrow flex-none hidden sm:block">
           <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#B4531A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -468,7 +468,7 @@ tailwind.config = { theme: { extend: {
         </span>
         <span class="flex-1 min-w-0">
           <h3 class="font-display font-bold text-ink text-[clamp(1.15rem,2.6vw,1.6rem)]">Accident Recovery</h3>
-          <p class="mt-1 text-ink/58 text-[14.5px] leading-relaxed">After a wreck, when you are shaken and the road is blocked. Cleared, loaded, and moved where it needs to go.</p>
+          <p class="mt-1 text-ink/60 text-[14.5px] leading-relaxed">After a wreck, when you are shaken and the road is blocked. Cleared, loaded, and moved where it needs to go.</p>
         </span>
         <span class="svc-arrow flex-none hidden sm:block">
           <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#B4531A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -478,7 +478,7 @@ tailwind.config = { theme: { extend: {
 
     <p class="mt-10 text-center text-ink/60 text-[15px]" data-reveal>
       Not sure which one you need? That is fine. Call
-      <a href="tel:+18064297162" class="underline-grow font-semibold text-ember">(806) 429-7162</a>
+      <a href="tel:+18064297162" class="underline-grow font-semibold text-rust">(806) 429-7162</a>
       and describe what you are looking at.
     </p>
   </div>
@@ -487,12 +487,12 @@ tailwind.config = { theme: { extend: {
 <!-- ============================== CINEMATIC BAND ============================== -->
 <section class="relative overflow-hidden bg-ink">
   <img src="assets/band.jpg" alt="A flatbed tow truck on an open West Texas highway at golden hour, amber beacon lit" class="absolute inset-0 w-full h-full object-cover opacity-70" data-parallax="0.12">
-  <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(11,8,6,.72),rgba(11,8,6,.5) 45%,rgba(11,8,6,.82));"></div>
+  <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(11,8,6,.78),rgba(11,8,6,.66) 45%,rgba(11,8,6,.88));"></div>
   <div class="relative mx-auto max-w-4xl px-6 py-24 sm:py-32 text-center">
     <h2 class="font-display font-extrabold tracking-[-.03em] text-cream text-[clamp(2rem,5.6vw,3.6rem)]" data-reveal style="text-shadow:0 2px 24px rgba(0,0,0,.6);">
       One number. <span class="grad-text-light">Any hour.</span>
     </h2>
-    <p class="mt-6 text-cream/78 text-[17px] leading-relaxed max-w-[560px] mx-auto" data-reveal>
+    <p class="mt-6 text-cream/80 text-[17px] leading-relaxed max-w-[560px] mx-auto" data-reveal>
       Breakdowns do not check the time. Neither does the phone at Johnny Cash Towing and Recovery.
     </p>
     <a href="tel:+18064297162" class="btn mt-9 inline-flex items-center justify-center gap-2.5 rounded-full bg-amber px-8 py-4 text-ink font-bold text-base shadow-2xl shadow-black/40" data-reveal>
@@ -508,7 +508,7 @@ tailwind.config = { theme: { extend: {
 <section id="coverage" class="bg-bone py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-5 sm:px-6">
     <div class="mb-12 sm:mb-16">
-      <span class="font-mono text-[10.5px] tracking-[.22em] text-ember" data-reveal>[ COVERAGE ]</span>
+      <span class="font-mono text-[10.5px] tracking-[.22em] text-rust" data-reveal>[ COVERAGE ]</span>
       <h2 class="mt-4 font-display font-extrabold tracking-[-.03em] text-ink text-[clamp(2rem,5vw,3.4rem)] max-w-[620px]" data-reveal>
         Based in Plainview.<br>Out on <span class="grad-text">the county roads.</span>
       </h2>
@@ -516,7 +516,7 @@ tailwind.config = { theme: { extend: {
 
     <div class="grid lg:grid-cols-[minmax(0,1.25fr)_minmax(0,.75fr)] gap-8">
       <!-- map -->
-      <div class="rounded-2xl overflow-hidden border border-ink/12 shadow-[0_30px_80px_-45px_rgba(22,18,15,.6)] min-h-[380px] lg:min-h-[520px] bg-sand" data-reveal>
+      <div class="rounded-2xl overflow-hidden border border-ink/10 shadow-[0_30px_80px_-45px_rgba(22,18,15,.6)] min-h-[380px] lg:min-h-[520px] bg-sand" data-reveal>
         <iframe
           title="Map to Johnny Cash Towing and Recovery, 300 E 5th St, Plainview, TX 79072"
           src="https://www.google.com/maps?q=300%20E%205th%20St%2C%20Plainview%2C%20TX%2079072&output=embed"
@@ -534,9 +534,9 @@ tailwind.config = { theme: { extend: {
             <span class="font-mono text-[10px] tracking-[.2em] text-ink/50">LOCATION</span>
           </div>
           <p class="font-display font-bold text-ink text-[19px]">300 E 5th St</p>
-          <p class="text-ink/62 text-[15px] mt-0.5">Plainview, TX 79072</p>
+          <p class="text-ink/60 text-[15px] mt-0.5">Plainview, TX 79072</p>
           <p class="text-ink/55 text-[14px] mt-4 leading-relaxed">Serving Plainview and the surrounding Hale County area.</p>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=300+E+5th+St%2C+Plainview%2C+TX+79072" target="_blank" rel="noopener" class="underline-grow inline-flex items-center gap-1.5 mt-4 font-semibold text-ember text-[14px]">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=300+E+5th+St%2C+Plainview%2C+TX+79072" target="_blank" rel="noopener" class="underline-grow inline-flex items-center gap-1.5 mt-4 font-semibold text-rust text-[14px]">
             Get directions
             <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
           </a>
@@ -553,7 +553,7 @@ tailwind.config = { theme: { extend: {
             <span class="live-dot"></span>
             <p class="font-display font-bold text-ink text-[19px]">Open 24 hours</p>
           </div>
-          <p class="text-ink/62 text-[15px] mt-1.5">Monday through Sunday. Every day of the year.</p>
+          <p class="text-ink/60 text-[15px] mt-1.5">Monday through Sunday. Every day of the year.</p>
         </div>
 
         <div class="fact rounded-2xl p-6 sm:p-7" data-reveal>
@@ -563,7 +563,7 @@ tailwind.config = { theme: { extend: {
             </svg>
             <span class="font-mono text-[10px] tracking-[.2em] text-ink/50">PAYMENT</span>
           </div>
-          <p class="text-ink/72 text-[15px] leading-relaxed">Cash, credit card, and ATM/debit accepted.</p>
+          <p class="text-ink/70 text-[15px] leading-relaxed">Cash, credit card, and ATM/debit accepted.</p>
         </div>
 
         <a href="tel:+18064297162" class="btn block rounded-2xl bg-ember p-6 sm:p-7 text-center shadow-xl shadow-rust/20" data-reveal>
@@ -580,7 +580,7 @@ tailwind.config = { theme: { extend: {
   <div class="relative mx-auto max-w-3xl px-6 text-center">
     <span class="inline-flex items-center gap-2 rounded-full border border-ember/25 bg-bone px-3.5 py-1.5 mb-7" data-reveal>
       <span class="beacon"></span>
-      <span class="font-mono text-[10px] tracking-[.18em] text-ember">24 HOURS &middot; PLAINVIEW, TX</span>
+      <span class="font-mono text-[10px] tracking-[.18em] text-rust">24 HOURS &middot; PLAINVIEW, TX</span>
     </span>
     <h2 class="font-display font-extrabold tracking-[-.035em] text-ink text-[clamp(2.2rem,6vw,4rem)]" data-reveal>
       Still on the shoulder?
@@ -603,7 +603,7 @@ tailwind.config = { theme: { extend: {
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
       <div class="lg:col-span-2">
         <div class="flex items-center gap-2.5">
-          <span class="inline-flex items-center justify-center w-10 h-10 rounded-[7px] bg-white/6 border border-white/10">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-[7px] bg-white/5 border border-white/10">
             <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#E0A857" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M3 17h2m14 0h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>
               <path d="M9 17h6"/><path d="M3 17v-4h9l3-3h3l3 4v3"/><path d="M12 13V9"/>
@@ -618,7 +618,7 @@ tailwind.config = { theme: { extend: {
           24-hour towing, recovery, lockouts and roadside assistance in Plainview, Texas and the surrounding
           Hale County area.
         </p>
-        <div class="mt-6 inline-flex items-center gap-2.5 rounded-full border border-white/12 bg-white/5 px-3.5 py-2">
+        <div class="mt-6 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-2">
           <span class="live-dot"></span>
           <span class="font-mono text-[10px] tracking-[.16em] text-cream/75">ON CALL &middot; 24/7/365</span>
         </div>
@@ -662,7 +662,7 @@ tailwind.config = { theme: { extend: {
       </svg>
       Call now
     </a>
-    <a href="https://www.google.com/maps/dir/?api=1&destination=300+E+5th+St%2C+Plainview%2C+TX+79072" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/18 bg-white/5 py-3.5 text-cream font-semibold text-[14.5px]">
+    <a href="https://www.google.com/maps/dir/?api=1&destination=300+E+5th+St%2C+Plainview%2C+TX+79072" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 py-3.5 text-cream font-semibold text-[14.5px]">
       <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
       </svg>
