@@ -58,7 +58,7 @@ tailwind.config = { theme: { extend: {
   colors: {
     paper:'#FAF7F2', bone:'#F1EBE1', sand:'#E3D8C9',
     ink:'#171310', slate:'#5A4E45',
-    copper:'#B4552D', amber:'#E8A13A', deep:'#241C17'
+    copper:'#B4552D', copperInk:'#8E3F1E', amber:'#E8A13A', deep:'#241C17'
   },
   fontFamily: { display:['Archivo','system-ui','sans-serif'], body:['"Public Sans"','system-ui','sans-serif'], mono:['"IBM Plex Mono"','ui-monospace','monospace'] }
 }}};
@@ -96,7 +96,7 @@ tailwind.config = { theme: { extend: {
   }
   @media (max-width:880px){
     .hero-scrim{ background:
-      linear-gradient(180deg, rgba(250,247,242,.96) 0%, rgba(250,247,242,.92) 40%, rgba(250,247,242,.72) 62%, rgba(250,247,242,.42) 100%),
+      linear-gradient(180deg, rgba(250,247,242,.95) 0%, rgba(250,247,242,.90) 42%, rgba(250,247,242,.62) 66%, rgba(250,247,242,.30) 100%),
       linear-gradient(90deg, rgba(250,247,242,.86) 0%, rgba(250,247,242,.40) 70%, rgba(250,247,242,.10) 100%); }
   }
 
@@ -201,7 +201,7 @@ tailwind.config = { theme: { extend: {
 </header>
 
 <!-- ===================== HERO ===================== -->
-<section class="hero-wrap min-h-[100svh] flex items-center pt-[calc(var(--nav)+34px)] pb-16 sm:pt-[var(--nav)]">
+<section class="hero-wrap min-h-[100svh] flex items-center pt-[calc(var(--nav)+26px)] pb-32 sm:pb-16 sm:pt-[var(--nav)]">
   <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg">
     <source src="assets/hero.mp4" type="video/mp4">
   </video>
@@ -214,11 +214,11 @@ tailwind.config = { theme: { extend: {
         <span class="mono text-[10.5px] tracking-[.26em] text-slate uppercase">Seasoned Pros &middot; Aubrey, Texas</span>
       </div>
 
-      <h1 class="disp text-[clamp(2.6rem,7vw,4.9rem)] text-ink" data-reveal>
+      <h1 class="disp text-[clamp(2.15rem,6.4vw,4.9rem)] text-ink" data-reveal>
         Go with someone<br>who&rsquo;s <span class="grad-text">been there.</span>
       </h1>
 
-      <p class="mt-7 text-[clamp(1.02rem,1.7vw,1.2rem)] leading-relaxed text-slate max-w-[520px]" data-reveal>
+      <p class="mt-6 sm:mt-7 text-[clamp(.98rem,1.7vw,1.2rem)] leading-relaxed text-slate max-w-[520px]" data-reveal>
         Industry-certified master electricians serving North Texas homes. Repairs, installations and
         build outs, handled by people who have seen the problem before and know exactly what it takes to fix it.
       </p>
@@ -234,7 +234,7 @@ tailwind.config = { theme: { extend: {
         </a>
       </div>
 
-      <div class="mt-11 flex flex-wrap gap-x-9 gap-y-4" data-reveal>
+      <div class="mt-9 sm:mt-11 flex flex-wrap gap-x-8 gap-y-4" data-reveal>
         <div>
           <div class="disp text-[1.55rem] text-ink"><span data-count="4" data-suffix="">0</span></div>
           <div class="mono text-[10px] tracking-[.16em] text-slate uppercase mt-1">Core services</div>
@@ -265,7 +265,7 @@ tailwind.config = { theme: { extend: {
   <section id="work" class="relative py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-5 sm:px-8">
       <div class="max-w-2xl mb-14">
-        <div class="mono text-[10.5px] tracking-[.26em] text-copper uppercase mb-4" data-reveal>01 &mdash; What we do</div>
+        <div class="mono text-[10.5px] tracking-[.26em] text-copperInk uppercase mb-4" data-reveal>01 &mdash; What we do</div>
         <h2 class="disp text-[clamp(2rem,4.4vw,3.1rem)] text-ink" data-reveal>Professional, quality<br>electrical work.</h2>
         <p class="mt-5 text-[1.05rem] leading-relaxed text-slate" data-reveal>
           Four things, done properly. If your home needs it wired, fixed, replaced or built out, it lands in one of these.
@@ -333,7 +333,7 @@ tailwind.config = { theme: { extend: {
     <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-7">
-          <div class="mono text-[10.5px] tracking-[.26em] text-copper uppercase mb-4" data-reveal data-node>02 &mdash; Seasoned pros</div>
+          <div class="mono text-[10.5px] tracking-[.26em] text-copperInk uppercase mb-4" data-reveal data-node>02 &mdash; Seasoned pros</div>
           <h2 class="disp text-[clamp(2rem,4.4vw,3.1rem)] text-ink" data-reveal>
             The best and most<br><span class="grad-text">skilled hands</span> it can be in.
           </h2>
@@ -380,7 +380,7 @@ tailwind.config = { theme: { extend: {
   <section id="area" class="relative py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-5 sm:px-8">
       <div class="max-w-2xl mb-12">
-        <div class="mono text-[10.5px] tracking-[.26em] text-copper uppercase mb-4" data-reveal data-node>03 &mdash; Where we work</div>
+        <div class="mono text-[10.5px] tracking-[.26em] text-copperInk uppercase mb-4" data-reveal data-node>03 &mdash; Where we work</div>
         <h2 class="disp text-[clamp(2rem,4.4vw,3.1rem)] text-ink" data-reveal>Rooted on Highway 377.</h2>
         <p class="mt-5 text-[1.05rem] leading-relaxed text-slate" data-reveal>
           Our office sits on S. Hwy 377 in Aubrey, which puts most of North Texas within a short
@@ -405,7 +405,7 @@ tailwind.config = { theme: { extend: {
     <div class="mx-auto max-w-7xl px-5 sm:px-8">
       <div class="grid lg:grid-cols-12 gap-10 items-stretch">
         <div class="lg:col-span-5">
-          <div class="mono text-[10.5px] tracking-[.26em] text-copper uppercase mb-4" data-reveal data-node>04 &mdash; The office</div>
+          <div class="mono text-[10.5px] tracking-[.26em] text-copperInk uppercase mb-4" data-reveal data-node>04 &mdash; The office</div>
           <h2 class="disp text-[clamp(2rem,4.2vw,2.9rem)] text-ink" data-reveal>Come by, or just call.</h2>
 
           <div class="mt-8 space-y-6" data-reveal>
@@ -497,15 +497,15 @@ tailwind.config = { theme: { extend: {
           </span>
           <span class="leading-none">
             <span class="disp block text-[15px] text-white">SERVICE ELECTRIC</span>
-            <span class="mono block text-[9.5px] tracking-[.2em] text-white/45 mt-[3px]">OF NORTH TEXAS</span>
+            <span class="mono block text-[9.5px] tracking-[.2em] text-white/60 mt-[3px]">OF NORTH TEXAS</span>
           </span>
         </div>
-        <p class="text-[.92rem] leading-relaxed text-white/55 max-w-[280px]">
+        <p class="text-[.92rem] leading-relaxed text-white/65 max-w-[280px]">
           Industry-certified master electricians serving North Texas homes.
         </p>
       </div>
       <div>
-        <div class="mono text-[10px] tracking-[.2em] text-white/40 uppercase mb-4">Services</div>
+        <div class="mono text-[10px] tracking-[.2em] text-white/60 uppercase mb-4">Services</div>
         <ul class="space-y-2.5 text-[.94rem] text-white/70">
           <li><a href="#work" class="ulg hover:text-amber transition-colors">Repairs</a></li>
           <li><a href="#work" class="ulg hover:text-amber transition-colors">Installations</a></li>
@@ -514,17 +514,17 @@ tailwind.config = { theme: { extend: {
         </ul>
       </div>
       <div>
-        <div class="mono text-[10px] tracking-[.2em] text-white/40 uppercase mb-4">Contact</div>
+        <div class="mono text-[10px] tracking-[.2em] text-white/60 uppercase mb-4">Contact</div>
         <ul class="space-y-2.5 text-[.94rem] text-white/70">
           <li><a href="tel:9403915683" class="ulg hover:text-amber transition-colors font-semibold">940-391-5683</a></li>
-          <li class="text-white/50">Fax 940-365-0881</li>
+          <li class="text-white/60">Fax 940-365-0881</li>
           <li><a target="_blank" rel="noopener" href="https://www.google.com/maps?q=106%20S.%20Hwy%20377%2C%20Aubrey%2C%20TX%2076227" class="ulg hover:text-amber transition-colors">106 S. Hwy 377<br>Aubrey, TX 76227</a></li>
         </ul>
       </div>
     </div>
     <div class="pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p class="mono text-[10.5px] tracking-[.1em] text-white/40">&copy; <span id="yr">2026</span> Service Electric of North Texas. All rights reserved.</p>
-      <p class="mono text-[10.5px] tracking-[.1em] text-white/30">Aubrey, Texas</p>
+      <p class="mono text-[10.5px] tracking-[.1em] text-white/60">&copy; <span id="yr">2026</span> Service Electric of North Texas. All rights reserved.</p>
+      <p class="mono text-[10.5px] tracking-[.1em] text-white/55">Aubrey, Texas</p>
     </div>
   </div>
 </footer>
