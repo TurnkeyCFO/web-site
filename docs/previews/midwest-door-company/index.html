@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midwest Door Company | Commercial Garage Doors — Ozark, MO</title>
+<meta name="description" content="Family-owned since 1992, Midwest Door Company installs, repairs, and services commercial and residential garage doors across the Ozarks. OSHA-certified crews, BBB A+ rated. Go with the pros — (417) 865-7005.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/midwest-door-company/">
+<meta property="og:title" content="Midwest Door Company | Commercial Garage Doors — Ozark, MO">
+<meta property="og:description" content="Commercial and residential garage door installation, repair, and service across the Ozarks since 1992. OSHA-certified. BBB A+.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://turnkeyweb.org/previews/midwest-door-company/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/midwest-door-company/assets/hero.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        bone:      '#F3EEE7',
+        cream:     '#FBF7F1',
+        steel:     '#2C5F7C',
+        steeldk:   '#204A61',
+        deepsteel: '#16303E',
+        ink:       '#17222A',
+        amber:     '#E0A857',
+        muted:     '#5A6B75',
+      },
+      fontFamily: {
+        display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+        body:    ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+      },
+    },
+  },
+};
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<style>
+  :root { --nav: 74px; }
+  * { -webkit-font-smoothing: antialiased; }
+  html { scroll-padding-top: var(--nav); }
+  body {
+    font-family: '"Plus Jakarta Sans"', system-ui, sans-serif;
+    background: #F3EEE7;
+    color: #17222A;
+    overflow-x: hidden;
+  }
+  .font-display { font-family: '"Space Grotesk"', system-ui, sans-serif; }
+
+  /* ---- gradient shimmer (brand-tinted, descender-safe) ---- */
+  .grad-text {
+    background: linear-gradient(100deg, #2C5F7C 0%, #E0A857 42%, #204A61 72%, #2C5F7C 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    line-height: 1.15; padding-bottom: 0.08em;
+    animation: shimmer 9s linear infinite;
+  }
+  .grad-light {
+    background: linear-gradient(100deg, #F3EEE7 0%, #E0A857 46%, #FBF7F1 74%, #F3EEE7 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    line-height: 1.15; padding-bottom: 0.08em;
+    animation: shimmer 9s linear infinite;
+  }
+  @keyframes shimmer { from { background-position: 0% 50%; } to { background-position: -220% 50%; } }
+
+  /* ---- masked word reveal (descender-safe: padding-bottom on mask) ---- */
+  .reveal-mask { display: inline-block; overflow: hidden; padding-bottom: 0.16em; vertical-align: top; }
+  .reveal-mask > span { display: inline-block; will-change: transform; }
+
+  /* ---- hero video ---- */
+  .hero-bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; will-change: transform;
+  }
+  .hero-scrim {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(105deg, rgba(11,20,26,0.86) 0%, rgba(11,20,26,0.55) 38%, rgba(11,20,26,0.12) 66%, rgba(11,20,26,0.30) 100%),
+      linear-gradient(0deg, rgba(11,20,26,0.55) 0%, rgba(11,20,26,0) 42%);
+  }
+
+  /* ---- buttons ---- */
+  .btn-primary {
+    position: relative; overflow: hidden;
+    transition: transform .5s cubic-bezier(.2,.8,.2,1), filter .5s, box-shadow .5s;
+  }
+  .btn-primary::after {
+    content: ''; position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.35), transparent);
+    transform: skewX(-18deg); transition: left .9s cubic-bezier(.2,.8,.2,1);
+  }
+  .btn-primary:hover { transform: translateY(-3px); filter: brightness(1.05); box-shadow: 0 16px 34px -14px rgba(32,74,97,.6); }
+  .btn-primary:hover::after { left: 130%; }
+
+  .underline-grow { position: relative; }
+  .underline-grow::after {
+    content: ''; position: absolute; left: 0; bottom: -3px; height: 1.5px; width: 0%;
+    background: linear-gradient(90deg, #2C5F7C, #E0A857); transition: width .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .underline-grow:hover::after { width: 100%; }
+
+  /* ---- cards ---- */
+  .svc-row {
+    position: relative; transition: transform .5s cubic-bezier(.2,.8,.2,1), background-color .5s;
+  }
+  .svc-row::before {
+    content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 3px;
+    background: linear-gradient(180deg, #2C5F7C, #E0A857); transform: scaleY(0); transform-origin: top;
+    transition: transform .55s cubic-bezier(.2,.8,.2,1);
+  }
+  .svc-row:hover::before { transform: scaleY(1); }
+  .svc-row:hover { transform: translateX(6px); }
+  .svc-row:hover .svc-ico { color: #E0A857; transform: rotate(-6deg) scale(1.08); }
+  .svc-ico { transition: transform .5s cubic-bezier(.2,.8,.2,1), color .5s; }
+
+  .pillar { transition: transform .55s cubic-bezier(.2,.8,.2,1); }
+  .pillar:hover { transform: translateY(-8px); }
+  .pillar:hover .pillar-num { color: #E0A857; }
+  .pillar-num { transition: color .5s; }
+
+  /* ---- marquee ---- */
+  .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); }
+  .marquee-track { display: flex; gap: 3.25rem; width: max-content; animation: scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes scrollX { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ---- door-slat reveal (signature) ---- */
+  .slat-reveal { position: relative; }
+  .slat-reveal .slat {
+    position: absolute; left: 0; width: 100%; background: #F3EEE7;
+    transform: scaleY(1); transform-origin: top; z-index: 5;
+  }
+
+  /* ---- reveals ---- */
+  [data-reveal] { opacity: 0; transform: translateY(34px); will-change: opacity, transform; }
+  [data-reveal-img] { clip-path: inset(0 0 100% 0); transition: clip-path 1.3s cubic-bezier(.16,1,.3,1); }
+  [data-reveal-img].in { clip-path: inset(0 0 0% 0); }
+
+  .chip-dot { width: 8px; height: 8px; border-radius: 50%; animation: pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: .5; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.15); } }
+
+  .grain::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .05; mix-blend-mode: multiply;
+    background-image: radial-gradient(#000 1px, transparent 1px); background-size: 3px 3px;
+  }
+
+  #cta-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  .noise-soft { position: relative; }
+
+  @media (max-width: 880px) {
+    :root { --nav: 66px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .grad-text, .grad-light, .marquee-track, .chip-dot { animation: none !important; }
+  }
+</style>
+</head>
+
+<body class="font-body antialiased selection:bg-amber/30">
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex items-center justify-between" style="height: var(--nav);">
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="inline-flex items-center justify-center h-9 w-9 rounded bg-deepsteel text-cream shrink-0" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-5 9 5v12"/><path d="M3 9h18M3 13h18M3 17h18"/></svg>
+        </span>
+        <span class="leading-none">
+          <span class="block font-display font-700 tracking-tight text-[15px] sm:text-[16px] text-ink" data-navtext>MIDWEST DOOR</span>
+          <span class="block text-[10px] tracking-[0.24em] text-muted font-600" data-navtext>COMMERCIAL · OZARK, MO</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-[14px] font-600 text-ink" data-navtext>
+        <a href="#capabilities" class="underline-grow">Capabilities</a>
+        <a href="#pillars" class="underline-grow">Install · Repair · Service</a>
+        <a href="#why" class="underline-grow">Why Midwest</a>
+        <a href="#visit" class="underline-grow">Visit</a>
+      </nav>
+      <a href="tel:+14178657005" class="btn-primary inline-flex items-center gap-2 rounded-full bg-steel px-4 sm:px-5 py-2.5 text-cream text-[13px] sm:text-[14px] font-700">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="hidden sm:inline">(417) 865-7005</span>
+        <span class="sm:hidden">Call</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden">
+  <video class="hero-bg" autoplay muted loop playsinline poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl w-full px-4 sm:px-6 pb-16 sm:pb-24" style="padding-top: calc(var(--nav) + 40px);">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2.5 rounded-full border border-cream/25 bg-cream/10 px-3.5 py-1.5 backdrop-blur-sm mb-7" data-reveal>
+        <span class="chip-dot bg-amber"></span>
+        <span class="text-[11.5px] sm:text-[12px] tracking-[0.16em] font-700 text-cream/90">FAMILY-OWNED SINCE 1992 · BBB A+ RATED</span>
+      </div>
+
+      <h1 class="font-display font-700 text-cream text-[2.7rem] leading-[1.05] sm:text-[4.1rem] sm:leading-[1.04] tracking-[-0.02em]" style="text-shadow: 0 2px 30px rgba(0,0,0,.35);">
+        <span class="reveal-mask"><span>Commercial doors,</span></span><br>
+        <span class="reveal-mask"><span>handled by the <span class="grad-light">pros</span>.</span></span>
+      </h1>
+
+      <p class="mt-6 max-w-xl text-[16px] sm:text-[18px] leading-relaxed text-cream/85" data-reveal style="text-shadow: 0 1px 12px rgba(0,0,0,.4);">
+        Overhead, rolling steel, dock equipment, operators. For thirty-four years the Ozarks has trusted Midwest Door to install it right, fix it fast, and keep it running. OSHA-certified crews, one call away.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3.5" data-reveal>
+        <a href="tel:+14178657005" class="btn-primary inline-flex items-center gap-2.5 rounded-full bg-amber px-7 py-3.5 text-deepsteel text-[15px] font-700">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (417) 865-7005
+        </a>
+        <a href="#capabilities" class="btn-primary inline-flex items-center gap-2 rounded-full border border-cream/35 bg-cream/5 px-6 py-3.5 text-cream text-[15px] font-600 backdrop-blur-sm">
+          See what we handle
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-11 grid grid-cols-3 gap-5 max-w-lg border-t border-cream/15 pt-6" data-reveal>
+        <div>
+          <div class="font-display font-700 text-cream text-[2rem] sm:text-[2.4rem] leading-none"><span data-count="34">0</span></div>
+          <div class="mt-1.5 text-[11.5px] tracking-[0.1em] text-cream/70 font-600">YEARS IN THE OZARKS</div>
+        </div>
+        <div>
+          <div class="font-display font-700 text-cream text-[2rem] sm:text-[2.4rem] leading-none">A+</div>
+          <div class="mt-1.5 text-[11.5px] tracking-[0.1em] text-cream/70 font-600">BBB RATED</div>
+        </div>
+        <div>
+          <div class="font-display font-700 text-cream text-[2rem] sm:text-[2.4rem] leading-none">OSHA</div>
+          <div class="mt-1.5 text-[11.5px] tracking-[0.1em] text-cream/70 font-600">CERTIFIED CREWS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="bg-deepsteel py-4 border-y border-white/5">
+  <div class="marquee">
+    <div class="marquee-track font-display text-[15px] font-600 text-cream/80">
+      <span class="flex items-center gap-3.25"><span>Commercial Overhead Doors</span><span class="text-amber">●</span><span class="italic grad-light">Rolling Steel</span><span class="text-amber">●</span><span>Dock Plates &amp; Equipment</span><span class="text-amber">●</span><span>Electric Operators</span><span class="text-amber">●</span><span class="italic grad-light">Spring Repair</span><span class="text-amber">●</span><span>Security Doors</span><span class="text-amber">●</span><span>Preventive Maintenance</span><span class="text-amber">●</span></span>
+      <span class="flex items-center gap-3.25" aria-hidden="true"><span>Commercial Overhead Doors</span><span class="text-amber">●</span><span class="italic grad-light">Rolling Steel</span><span class="text-amber">●</span><span>Dock Plates &amp; Equipment</span><span class="text-amber">●</span><span>Electric Operators</span><span class="text-amber">●</span><span class="italic grad-light">Spring Repair</span><span class="text-amber">●</span><span>Security Doors</span><span class="text-amber">●</span><span>Preventive Maintenance</span><span class="text-amber">●</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CAPABILITIES (editorial split) ============ -->
+<section id="capabilities" class="relative bg-bone grain py-24 sm:py-32 overflow-hidden">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-12 gap-y-12 lg:gap-x-16">
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-28">
+          <span class="text-[12px] tracking-[0.22em] font-700 text-steel" data-reveal>WHAT WE HANDLE</span>
+          <h2 class="mt-4 font-display font-700 text-ink text-[2.3rem] leading-[1.08] sm:text-[3rem] sm:leading-[1.06] tracking-[-0.02em]" data-reveal>
+            Built first for <span class="grad-text">commercial</span>.
+          </h2>
+          <p class="mt-5 text-[16px] leading-relaxed text-muted max-w-sm" data-reveal>
+            Warehouses, shops, docks, and storefronts run on their doors. We install and service every type, on every brand, and we keep residential covered too.
+          </p>
+          <a href="tel:+14178657005" class="mt-7 inline-flex items-center gap-2 text-steel font-700 text-[15px] underline-grow" data-reveal>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Talk to a real person
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="divide-y divide-ink/10 border-t border-ink/10">
+          <!-- rows -->
+          <div class="svc-row group flex items-start gap-5 py-6 pl-5" data-reveal>
+            <span class="svc-ico text-steel mt-0.5 shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M3 14h18"/></svg></span>
+            <div>
+              <h3 class="font-display font-700 text-ink text-[1.35rem] leading-snug">Commercial Overhead Doors</h3>
+              <p class="mt-1.5 text-[15px] leading-relaxed text-muted">Sectional and insulated overhead doors sized for warehouses, shops, and fleet bays — installed to spec, on any brand.</p>
+            </div>
+          </div>
+          <div class="svc-row group flex items-start gap-5 py-6 pl-5" data-reveal>
+            <span class="svc-ico text-steel mt-0.5 shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 7h16M4 11h16M4 15h16"/></svg></span>
+            <div>
+              <h3 class="font-display font-700 text-ink text-[1.35rem] leading-snug">Rolling Steel &amp; Security Doors</h3>
+              <p class="mt-1.5 text-[15px] leading-relaxed text-muted">Coiling rolling-steel and security doors for storefronts, docks, and secured openings — install, repair, and replacement.</p>
+            </div>
+          </div>
+          <div class="svc-row group flex items-start gap-5 py-6 pl-5" data-reveal>
+            <span class="svc-ico text-steel mt-0.5 shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18v3H3z"/><path d="M6 17V9l6-4 6 4v8"/><path d="M9 17v-4h6v4"/></svg></span>
+            <div>
+              <h3 class="font-display font-700 text-ink text-[1.35rem] leading-snug">Dock Plates &amp; Loading Equipment</h3>
+              <p class="mt-1.5 text-[15px] leading-relaxed text-muted">Commercial dock plates sold, installed, and replaced — keeping your loading dock moving and safe.</p>
+            </div>
+          </div>
+          <div class="svc-row group flex items-start gap-5 py-6 pl-5" data-reveal>
+            <span class="svc-ico text-steel mt-0.5 shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg></span>
+            <div>
+              <h3 class="font-display font-700 text-ink text-[1.35rem] leading-snug">Electric Operators &amp; Openers</h3>
+              <p class="mt-1.5 text-[15px] leading-relaxed text-muted">We install and replace any type of electric operator or opener — commercial-grade or residential, matched to the door.</p>
+            </div>
+          </div>
+          <div class="svc-row group flex items-start gap-5 py-6 pl-5" data-reveal>
+            <span class="svc-ico text-steel mt-0.5 shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><circle cx="7" cy="12" r="2"/><circle cx="17" cy="12" r="2"/><path d="M9 12h6"/></svg></span>
+            <div>
+              <h3 class="font-display font-700 text-ink text-[1.35rem] leading-snug">Springs &amp; Emergency Repair</h3>
+              <p class="mt-1.5 text-[15px] leading-relaxed text-muted">Broken springs, cables, rollers, off-track doors — the fast, safe fixes that get an opening working again.</p>
+            </div>
+          </div>
+          <div class="svc-row group flex items-start gap-5 py-6 pl-5" data-reveal>
+            <span class="svc-ico text-steel mt-0.5 shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0l-6.17-6.17a2 2 0 0 1 0-2.83l7.17-7.17a2 2 0 0 1 2.83 0l6.17 6.17a2 2 0 0 1 0 2.83z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+            <div>
+              <h3 class="font-display font-700 text-ink text-[1.35rem] leading-snug">Service &amp; Preventive Maintenance</h3>
+              <p class="mt-1.5 text-[15px] leading-relaxed text-muted">Ongoing service for commercial and residential doors — so a small worn part never becomes a shut-down opening.</p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-6 pl-5 text-[14px] text-muted" data-reveal>Residential garage doors installed, repaired, and serviced too — same crews, same standard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PILLARS (install / repair / service) ============ -->
+<section id="pillars" class="relative bg-cream py-24 sm:py-32 overflow-hidden">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="max-w-2xl mb-14 sm:mb-20">
+      <span class="text-[12px] tracking-[0.22em] font-700 text-steel" data-reveal>THREE THINGS, DONE RIGHT</span>
+      <h2 class="mt-4 font-display font-700 text-ink text-[2.3rem] leading-[1.08] sm:text-[3rem] sm:leading-[1.06] tracking-[-0.02em]" data-reveal>
+        Install. Repair. <span class="grad-text">Service</span>.
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10 sm:gap-8">
+      <div class="pillar" data-reveal>
+        <div class="pillar-num font-display font-700 text-steel/25 text-[4.5rem] leading-none">01</div>
+        <h3 class="mt-3 font-display font-700 text-ink text-[1.6rem]">Install</h3>
+        <p class="mt-3 text-[15.5px] leading-relaxed text-muted">New commercial and residential doors, operators, and dock equipment — measured, ordered, and set to spec by crews who have done it since 1992.</p>
+      </div>
+      <div class="pillar" data-reveal>
+        <div class="pillar-num font-display font-700 text-steel/25 text-[4.5rem] leading-none">02</div>
+        <h3 class="mt-3 font-display font-700 text-ink text-[1.6rem]">Repair</h3>
+        <p class="mt-3 text-[15.5px] leading-relaxed text-muted">Springs, cables, panels, tracks, openers — on any brand. When a door goes down, a punctual, polite tech is on the way to get it moving.</p>
+      </div>
+      <div class="pillar" data-reveal>
+        <div class="pillar-num font-display font-700 text-steel/25 text-[4.5rem] leading-none">03</div>
+        <h3 class="mt-3 font-display font-700 text-ink text-[1.6rem]">Service</h3>
+        <p class="mt-3 text-[15.5px] leading-relaxed text-muted">Scheduled maintenance for commercial and domestic doors, so openings stay safe and reliable long after the install.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE BAND (reuse still) ============ -->
+<section class="relative h-[52vh] min-h-[360px] flex items-center overflow-hidden">
+  <img data-reveal-img src="assets/band.jpg" alt="Ribbed steel commercial door with raking light" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(11,20,26,.82) 0%, rgba(11,20,26,.45) 55%, rgba(11,20,26,.15) 100%);"></div>
+  <div class="relative z-10 mx-auto max-w-7xl w-full px-4 sm:px-6">
+    <div class="max-w-2xl">
+      <h2 class="font-display font-700 text-cream text-[2rem] leading-[1.1] sm:text-[3rem] sm:leading-[1.08] tracking-[-0.02em]" data-reveal style="text-shadow: 0 2px 26px rgba(0,0,0,.4);">
+        A door is only "done" when it <span class="grad-light">works every time</span>.
+      </h2>
+      <p class="mt-5 max-w-lg text-[16px] sm:text-[17px] leading-relaxed text-cream/85" data-reveal style="text-shadow: 0 1px 12px rgba(0,0,0,.45);">
+        That is the standard we have kept as the longest locally-owned door company in the area — because a shop can't ship, and a store can't open, behind a door that won't move.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY MIDWEST (trust) ============ -->
+<section id="why" class="relative bg-bone grain py-24 sm:py-32 overflow-hidden">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-y-12 lg:gap-x-20 items-center">
+      <div>
+        <span class="text-[12px] tracking-[0.22em] font-700 text-steel" data-reveal>WHY MIDWEST DOOR</span>
+        <h2 class="mt-4 font-display font-700 text-ink text-[2.3rem] leading-[1.08] sm:text-[3rem] sm:leading-[1.06] tracking-[-0.02em]" data-reveal>
+          Thirty-four years, <span class="grad-text">one family</span>, one standard.
+        </h2>
+        <p class="mt-6 text-[16px] leading-relaxed text-muted max-w-lg" data-reveal>
+          The Quackenbush family bought Midwest Door Company in 1992 and never left the Ozarks. That is why the crews are OSHA-certified, why the techs show up punctual and polite, and why "go with the pros" has meant the same thing here for over three decades.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-2.5" data-reveal>
+          <span class="inline-flex items-center gap-2 rounded-full border border-ink/12 bg-cream px-4 py-2 text-[13.5px] font-600 text-ink"><span class="chip-dot bg-steel"></span>Family-owned since 1992</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-ink/12 bg-cream px-4 py-2 text-[13.5px] font-600 text-ink"><span class="chip-dot bg-amber"></span>BBB A+ &amp; accredited</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-ink/12 bg-cream px-4 py-2 text-[13.5px] font-600 text-ink"><span class="chip-dot bg-steel"></span>OSHA-certified crews</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-ink/12 bg-cream px-4 py-2 text-[13.5px] font-600 text-ink"><span class="chip-dot bg-amber"></span>All brands serviced</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 sm:gap-5" data-reveal>
+        <div class="rounded-2xl bg-deepsteel p-7 text-cream noise-soft">
+          <div class="font-display font-700 text-[3rem] leading-none grad-light">1992</div>
+          <div class="mt-2 text-[13.5px] text-cream/75 leading-snug">The year the Quackenbushes made it theirs</div>
+        </div>
+        <div class="rounded-2xl border border-ink/12 bg-cream p-7">
+          <div class="font-display font-700 text-[3rem] leading-none text-steel">A+</div>
+          <div class="mt-2 text-[13.5px] text-muted leading-snug">BBB rating, accredited since 2016</div>
+        </div>
+        <div class="rounded-2xl border border-ink/12 bg-cream p-7">
+          <div class="font-display font-700 text-[3rem] leading-none text-steel">All</div>
+          <div class="mt-2 text-[13.5px] text-muted leading-snug">Brands installed, repaired &amp; serviced</div>
+        </div>
+        <div class="rounded-2xl bg-steel p-7 text-cream noise-soft">
+          <div class="font-display font-700 text-[3rem] leading-none text-cream">Local</div>
+          <div class="mt-2 text-[13.5px] text-cream/80 leading-snug">The longest locally-owned door company in the area</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT (map + hours) ============ -->
+<section id="visit" class="relative bg-cream py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+      <div data-reveal>
+        <span class="text-[12px] tracking-[0.22em] font-700 text-steel">VISIT OR CALL</span>
+        <h2 class="mt-4 font-display font-700 text-ink text-[2.3rem] leading-[1.08] sm:text-[3rem] sm:leading-[1.06] tracking-[-0.02em]">
+          Right here in <span class="grad-text">Ozark</span>.
+        </h2>
+
+        <div class="mt-9 space-y-6">
+          <div class="flex items-start gap-4">
+            <span class="text-steel mt-0.5 shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div>
+              <div class="text-[12px] tracking-[0.14em] font-700 text-muted">SHOP</div>
+              <div class="mt-1 text-[16.5px] font-600 text-ink">5000 N 22nd St, Ozark, MO 65721</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-steel mt-0.5 shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div>
+              <div class="text-[12px] tracking-[0.14em] font-700 text-muted">CALL</div>
+              <a href="tel:+14178657005" class="mt-1 block text-[16.5px] font-600 text-ink underline-grow">(417) 865-7005</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-steel mt-0.5 shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div>
+              <div class="text-[12px] tracking-[0.14em] font-700 text-muted">HOURS</div>
+              <div class="mt-1 text-[16px] text-ink">
+                <div class="flex items-center gap-3"><span class="inline-flex items-center gap-1.5 text-[13px] font-700 text-steel"><span class="chip-dot bg-steel"></span>Mon – Fri</span><span class="font-600">8:00 AM – 4:30 PM</span></div>
+                <div class="mt-1.5 text-muted text-[15px]">Saturday &amp; Sunday — Closed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href="tel:+14178657005" class="btn-primary inline-flex items-center gap-2 rounded-full bg-steel px-6 py-3.5 text-cream text-[15px] font-700">Call the shop</a>
+          <a href="https://www.google.com/maps?q=5000+N+22nd+St,+Ozark,+MO+65721" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3.5 text-ink text-[15px] font-600 underline-grow">
+            Get directions
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden border border-ink/10 shadow-[0_24px_60px_-30px_rgba(23,34,42,.4)] min-h-[360px]" data-reveal>
+        <iframe
+          title="Midwest Door Company — 5000 N 22nd St, Ozark, MO"
+          src="https://www.google.com/maps?q=5000%20N%2022nd%20St%2C%20Ozark%2C%20MO%2065721&output=embed"
+          width="100%" height="100%" style="border:0; min-height:360px; display:block;"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA (WebGL showpiece behind) ============ -->
+<section class="relative bg-deepsteel py-24 sm:py-32 overflow-hidden">
+  <canvas id="cta-canvas"></canvas>
+  <div class="absolute inset-0" style="background: radial-gradient(120% 120% at 20% 20%, rgba(22,48,62,.2), rgba(22,48,62,.85) 70%);"></div>
+  <div class="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center">
+    <span class="inline-flex items-center gap-2 rounded-full border border-cream/20 bg-cream/5 px-4 py-1.5 text-[11.5px] tracking-[0.16em] font-700 text-cream/85" data-reveal><span class="chip-dot bg-amber"></span>SERVING THE OZARKS SINCE 1992</span>
+    <h2 class="mt-6 font-display font-700 text-cream text-[2.4rem] leading-[1.08] sm:text-[3.4rem] sm:leading-[1.06] tracking-[-0.02em]" data-reveal>
+      Go with the <span class="grad-light">pros</span>.
+    </h2>
+    <p class="mt-5 max-w-xl mx-auto text-[16.5px] leading-relaxed text-cream/80" data-reveal>
+      New install, emergency repair, or a maintenance plan for your building's doors — one call gets a real person and a real crew.
+    </p>
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-3.5" data-reveal>
+      <a href="tel:+14178657005" class="btn-primary inline-flex items-center gap-2.5 rounded-full bg-amber px-8 py-4 text-deepsteel text-[16px] font-700">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (417) 865-7005
+      </a>
+      <a href="https://www.google.com/maps?q=5000+N+22nd+St,+Ozark,+MO+65721" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-cream/30 px-7 py-4 text-cream text-[16px] font-600 underline-grow">Visit the shop</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-cream/80 py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex items-center justify-center h-10 w-10 rounded bg-steel text-cream shrink-0" aria-hidden="true">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-5 9 5v12"/><path d="M3 9h18M3 13h18M3 17h18"/></svg>
+          </span>
+          <div class="leading-none">
+            <div class="font-display font-700 text-cream text-[17px] tracking-tight">MIDWEST DOOR COMPANY</div>
+            <div class="text-[11px] tracking-[0.2em] text-cream/55 font-600 mt-1">GO WITH THE PROS · SINCE 1992</div>
+          </div>
+        </div>
+        <p class="mt-5 max-w-md text-[15px] leading-relaxed text-cream/65">
+          Commercial and residential garage door installation, repair, and service across Ozark and the greater Springfield-Ozarks area. Family-owned, OSHA-certified, BBB A+ rated.
+        </p>
+      </div>
+      <div>
+        <div class="text-[12px] tracking-[0.16em] font-700 text-cream/50">CONTACT</div>
+        <ul class="mt-4 space-y-2.5 text-[15px]">
+          <li><a href="tel:+14178657005" class="text-cream/85 underline-grow font-600">(417) 865-7005</a></li>
+          <li class="text-cream/65">5000 N 22nd St<br>Ozark, MO 65721</li>
+          <li><a href="https://www.facebook.com/323150617552442" target="_blank" rel="noopener" class="text-cream/85 underline-grow">Facebook</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[12px] tracking-[0.16em] font-700 text-cream/50">HOURS</div>
+        <ul class="mt-4 space-y-2.5 text-[15px] text-cream/70">
+          <li class="flex justify-between gap-4"><span>Mon – Fri</span><span class="text-cream/90 font-600">8:00 – 4:30</span></li>
+          <li class="flex justify-between gap-4"><span>Sat – Sun</span><span>Closed</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-7 border-t border-cream/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-cream/45">
+      <span>© <span id="yr">2026</span> Midwest Door Company · Quackenbush Enterprises Inc. · Ozark, MO</span>
+      <span>Preview crafted by <a href="https://turnkeyweb.org" target="_blank" rel="noopener" class="text-cream/70 underline-grow">Turnkey Web</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-ink/95 backdrop-blur border-t border-cream/10 grid grid-cols-2">
+  <a href="tel:+14178657005" class="flex items-center justify-center gap-2 py-3.5 text-cream text-[14px] font-700 border-r border-cream/10">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=5000+N+22nd+St,+Ozark,+MO+65721" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3.5 text-amber text-[14px] font-700">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- ============ JSON-LD ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Midwest Door Company",
+  "alternateName": "Quackenbush Enterprises Inc.",
+  "description": "Family-owned commercial and residential garage door installation, repair, and service across the Ozarks since 1992. OSHA-certified crews, BBB A+ rated.",
+  "url": "https://turnkeyweb.org/previews/midwest-door-company/",
+  "telephone": "+1-417-865-7005",
+  "foundingDate": "1992",
+  "slogan": "Go with the pros",
+  "image": "https://turnkeyweb.org/previews/midwest-door-company/assets/hero.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "5000 N 22nd St",
+    "addressLocality": "Ozark",
+    "addressRegion": "MO",
+    "postalCode": "65721",
+    "addressCountry": "US"
+  },
+  "areaServed": "Ozark, Springfield and the greater Ozarks, Missouri",
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "08:00", "closes": "16:30"
+  }],
+  "sameAs": ["https://www.facebook.com/323150617552442"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Garage Door Services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Commercial Overhead Door Installation & Repair"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rolling Steel & Security Doors"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Commercial Dock Plates & Loading Equipment"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Electric Operators & Openers"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Spring & Emergency Garage Door Repair"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Preventive Maintenance & Service"}}
+    ]
+  }
+}
+</script>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---- Lenis: ONE ticker, no touch smoothing ---- */
+const lenis = new Lenis({
+  duration: 1.1,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true,
+  smoothTouch: false,
+});
+gsap.ticker.add((time) => lenis.raf(time * 1000));
+gsap.ticker.lagSmoothing(0);
+lenis.on('scroll', ScrollTrigger.update);
+ScrollTrigger.config({ ignoreMobileResize: true });
+
+document.querySelectorAll('a[href^="#"]').forEach((a) => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href');
+    if (id.length > 1) {
+      const el = document.querySelector(id);
+      if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -70 }); }
+    }
+  });
+});
+
+/* ---- nav state ---- */
+const nav = document.getElementById('nav');
+function navState() {
+  if (window.scrollY > 40) {
+    nav.classList.add('bg-cream/92', 'backdrop-blur-md', 'shadow-[0_8px_30px_-16px_rgba(23,34,42,.35)]');
+  } else {
+    nav.classList.remove('bg-cream/92', 'backdrop-blur-md', 'shadow-[0_8px_30px_-16px_rgba(23,34,42,.35)]');
+  }
+}
+navState();
+window.addEventListener('scroll', navState, { passive: true });
+
+/* ---- hero masked reveal ---- */
+window.addEventListener('load', () => {
+  const heroWords = document.querySelectorAll('.reveal-mask > span');
+  gsap.set(heroWords, { yPercent: 115 });
+  gsap.to(heroWords, { yPercent: 0, duration: 1.05, ease: 'power4.out', stagger: 0.12, delay: 0.15 });
+});
+
+/* ---- hero video parallax ---- */
+gsap.to('.hero-bg', {
+  yPercent: 16, scale: 1.08, ease: 'none',
+  scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+/* ---- generic reveals ---- */
+gsap.utils.toArray('[data-reveal]').forEach((el) => {
+  gsap.to(el, {
+    opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 92%', once: true },
+    onComplete: () => el.style.willChange = 'auto'
+  });
+});
+
+/* ---- image clip reveal ---- */
+gsap.utils.toArray('[data-reveal-img]').forEach((el) => {
+  ScrollTrigger.create({ trigger: el, start: 'top 85%', once: true, onEnter: () => el.classList.add('in') });
+});
+
+/* ---- count up ---- */
+gsap.utils.toArray('[data-count]').forEach((el) => {
+  const target = +el.dataset.count;
+  ScrollTrigger.create({
+    trigger: el, start: 'top 90%', once: true,
+    onEnter: () => gsap.to({ v: 0 }, { v: target, duration: 1.6, ease: 'power2.out', onUpdate: function () { el.textContent = Math.round(this.targets()[0].v); } })
+  });
+});
+
+/* ---- WebGL showpiece: drifting steel particles on CTA (light-canvas friendly, mobile-downgraded, offscreen-paused) ---- */
+(function () {
+  const canvas = document.getElementById('cta-canvas');
+  if (!canvas || !window.THREE) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobile = window.innerWidth < 880;
+  if (reduce) return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+  camera.position.z = 22;
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.5 : 2));
+
+  const COUNT = mobile ? 90 : 220;
+  const geo = new THREE.BufferGeometry();
+  const pos = new Float32Array(COUNT * 3);
+  const spd = new Float32Array(COUNT);
+  for (let i = 0; i < COUNT; i++) {
+    pos[i*3] = (Math.random() - 0.5) * 46;
+    pos[i*3+1] = (Math.random() - 0.5) * 30;
+    pos[i*3+2] = (Math.random() - 0.5) * 20;
+    spd[i] = 0.004 + Math.random() * 0.012;
+  }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const mat = new THREE.PointsMaterial({ color: 0x7FA8BE, size: mobile ? 0.16 : 0.13, transparent: true, opacity: 0.7, depthWrite: false });
+  const pts = new THREE.Points(geo, mat);
+  scene.add(pts);
+  const mat2 = new THREE.PointsMaterial({ color: 0xE0A857, size: 0.18, transparent: true, opacity: 0.55, depthWrite: false });
+  const geo2 = new THREE.BufferGeometry();
+  const pos2 = new Float32Array(30 * 3);
+  for (let i = 0; i < 30; i++) { pos2[i*3]=(Math.random()-0.5)*40; pos2[i*3+1]=(Math.random()-0.5)*26; pos2[i*3+2]=(Math.random()-0.5)*16; }
+  geo2.setAttribute('position', new THREE.BufferAttribute(pos2, 3));
+  scene.add(new THREE.Points(geo2, mat2));
+
+  function size() {
+    const r = canvas.getBoundingClientRect();
+    renderer.setSize(r.width, r.height, false);
+    camera.aspect = r.width / r.height; camera.updateProjectionMatrix();
+  }
+  size();
+  window.addEventListener('resize', size);
+
+  let visible = true, hidden = false;
+  const io = new IntersectionObserver((es) => { visible = es[0].isIntersecting; }, { threshold: 0.02 });
+  io.observe(canvas);
+  document.addEventListener('visibilitychange', () => { hidden = document.hidden; });
+
+  function tick() {
+    requestAnimationFrame(tick);
+    if (!visible || hidden) return;
+    const p = geo.attributes.position.array;
+    for (let i = 0; i < COUNT; i++) { p[i*3+1] += spd[i]; if (p[i*3+1] > 15) p[i*3+1] = -15; }
+    geo.attributes.position.needsUpdate = true;
+    pts.rotation.y += 0.0009;
+    renderer.render(scene, camera);
+  }
+  tick();
+})();
+
+/* ---- 6s screenshot / crawler safety net ---- */
+setTimeout(() => {
+  document.querySelectorAll('[data-reveal]').forEach((el) => {
+    if (getComputedStyle(el).opacity === '0') { el.style.opacity = 1; el.style.transform = 'none'; }
+  });
+  document.querySelectorAll('.reveal-mask > span').forEach((el) => { el.style.transform = 'none'; });
+  document.querySelectorAll('[data-reveal-img]').forEach((el) => el.classList.add('in'));
+  document.querySelectorAll('[data-count]').forEach((el) => { if (el.textContent.trim() === '0') el.textContent = el.dataset.count; });
+}, 6000);
+</script>
+</body>
+</html>
