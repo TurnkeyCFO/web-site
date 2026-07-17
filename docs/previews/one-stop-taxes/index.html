@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<!--
+  One Stop Taxes — Clarksville, TN | Turnkey Web prospect preview
+  Art direction: light-luxury professional. Cream base + deep navy + brushed gold.
+  Display: Fraunces / Body: Inter. Hero: AI cinematic Kling video (Higgsfield -> Kling3.0 turbo, ~9.5 credits).
+  Showpieces: cinematic video hero + gold-dust canvas particle field on the CTA band.
+  Diverges from westside-tax-services (Newsreader/Inter-Tight, centered hero) by design.
+  Real data only: address/phone/rating/reviews verified via Google/Yelp/BBB/FinanceClarksvilleTN.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>One Stop Taxes | Tax Preparation & Filing in Clarksville, TN</title>
+<meta name="description" content="One Stop Taxes in Clarksville, TN — professional, IRS/EFILE-certified tax preparation, fast refunds, business and individual filing, and IRS resolution. Serving Fort Campbell and Clarksville since 2010. Call (931) 494-9698.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/one-stop-taxes/">
+<meta property="og:type" content="business.business">
+<meta property="og:title" content="One Stop Taxes | Clarksville, TN Tax Preparation">
+<meta property="og:description" content="IRS/EFILE-certified tax preparation, fast refunds, and IRS resolution in Clarksville, TN. Serving Fort Campbell since 2010.">
+<meta property="og:url" content="https://turnkeyweb.org/previews/one-stop-taxes/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/one-stop-taxes/assets/hero.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      cream:'#F8F5EE', bone:'#EFE8DA', paper:'#FDFBF7',
+      navy:'#14213D', deep:'#0E1830', ink:'#1A2238',
+      gold:'#B98D52', gold2:'#D8B778', slate:'#4A5568', mute:'#6B6152'
+    },
+    fontFamily: { display:['Fraunces','serif'], sans:['Inter','sans-serif'] }
+  }}
+}
+</script>
+
+<style>
+  html{ scroll-behavior:auto; scroll-padding-top:88px; }
+  body{ background:#F8F5EE; color:#1A2238; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .font-display{ font-family:'Fraunces',serif; }
+
+  /* gradient shimmer text — descender-safe (line-height >=1.12, padding-bottom) */
+  .grad-text{
+    background:linear-gradient(100deg,#B98D52 0%,#D8B778 30%,#8A6A38 55%,#D8B778 78%,#B98D52 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 8.5s linear infinite;
+    line-height:1.14; padding-bottom:.09em; display:inline-block;
+  }
+  @keyframes shimmer{ from{background-position:0% 50%} to{background-position:220% 50%} }
+
+  /* hero */
+  .hero{ position:relative; min-height:100svh; overflow:hidden; background:#0E1830; }
+  .hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; will-change:transform; }
+  /* scrim darkest on the LEFT where the headline sits, plus a base floor */
+  .hero-scrim{ position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, rgba(9,14,28,.86) 0%, rgba(9,14,28,.62) 34%, rgba(9,14,28,.18) 62%, rgba(9,14,28,.05) 100%),
+      linear-gradient(0deg, rgba(9,14,28,.55) 0%, rgba(9,14,28,0) 42%);
+  }
+  .hero h1{ text-shadow:0 2px 30px rgba(6,10,22,.45); }
+
+  /* buttons */
+  .btn-primary{ position:relative; overflow:hidden; background:#B98D52; color:#14213D; font-weight:600;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1), filter .5s, box-shadow .5s;
+    box-shadow:0 10px 30px -12px rgba(185,141,82,.6); }
+  .btn-primary:hover{ transform:translateY(-3px); filter:brightness(1.05); box-shadow:0 18px 40px -14px rgba(185,141,82,.7); }
+  .btn-primary::after{ content:""; position:absolute; top:0; left:-120%; width:60%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent); transform:skewX(-18deg);
+    transition:left .9s cubic-bezier(.2,.8,.2,1); }
+  .btn-primary:hover::after{ left:130%; }
+  .btn-ghost{ transition:transform .5s cubic-bezier(.2,.8,.2,1), background .4s, color .4s, border-color .4s; }
+  .btn-ghost:hover{ transform:translateY(-3px); }
+
+  /* cards */
+  .card{ position:relative; background:#FDFBF7; border:1px solid rgba(20,33,61,.08);
+    transition:transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .55s, border-color .55s; overflow:hidden; }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 26px 50px -28px rgba(20,33,61,.4); border-color:rgba(185,141,82,.5); }
+  .card::before{ content:""; position:absolute; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg,#B98D52,#D8B778); transition:width .65s cubic-bezier(.2,.8,.2,1); }
+  .card:hover::before{ width:100%; }
+  .svc-icon{ transition:transform .55s cubic-bezier(.2,.8,.2,1); }
+  .card:hover .svc-icon{ transform:translateY(-2px) scale(1.06); }
+
+  /* marquee */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 40s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* reveals */
+  [data-reveal]{ opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  .reveal-img{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.16,1,.3,1); }
+  .reveal-img.in{ clip-path:inset(0 0 0% 0); }
+
+  /* dots */
+  .pulse-dot{ animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.45; transform:scale(.82)} }
+
+  .underline-grow{ position:relative; }
+  .underline-grow::after{ content:""; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+    background:linear-gradient(90deg,#B98D52,#D8B778); transition:width .5s cubic-bezier(.2,.8,.2,1); }
+  .underline-grow:hover::after{ width:100%; }
+
+  .stat-num{ font-family:'Fraunces',serif; line-height:1.08; }
+  .link-nav{ position:relative; }
+
+  /* descender safety on all display headings */
+  h1,h2,h3,.font-display{ padding-bottom:.02em; }
+
+  @media (max-width:767px){
+    .hero{ min-height:100svh; }
+    .marquee-track{ animation-duration:28s; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .grad-text{ animation:none; } .marquee-track{ animation:none; } .pulse-dot{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="mt-3 flex items-center justify-between rounded-2xl border border-navy/10 bg-cream/80 backdrop-blur-xl px-4 sm:px-6 py-3 shadow-[0_10px_40px_-24px_rgba(20,33,61,.5)]">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="grid place-items-center h-9 w-9 rounded-xl bg-navy text-gold2 font-display font-semibold text-lg leading-none">1</span>
+        <span class="leading-tight">
+          <span class="block font-display text-[19px] font-semibold text-navy tracking-[-.01em]">One Stop Taxes</span>
+          <span class="block text-[10.5px] uppercase tracking-[.24em] text-gold font-semibold">Clarksville, TN</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-[14px] font-medium text-slate">
+        <a href="#services" class="link-nav underline-grow hover:text-navy transition-colors">Services</a>
+        <a href="#process" class="link-nav underline-grow hover:text-navy transition-colors">How It Works</a>
+        <a href="#about" class="link-nav underline-grow hover:text-navy transition-colors">About</a>
+        <a href="#reviews" class="link-nav underline-grow hover:text-navy transition-colors">Reviews</a>
+        <a href="#visit" class="link-nav underline-grow hover:text-navy transition-colors">Visit</a>
+      </nav>
+      <a href="tel:+19314949698" class="btn-primary inline-flex items-center gap-2 rounded-xl px-4 sm:px-5 py-2.5 text-[13.5px]">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="hidden sm:inline">(931) 494-9698</span><span class="sm:hidden">Call</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="top" class="hero">
+  <video class="hero-bg" autoplay muted loop playsinline preload="auto" poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 min-h-[100svh] flex items-center">
+    <div class="max-w-2xl pt-28 pb-40 sm:pb-28">
+      <div class="inline-flex items-center gap-2 rounded-full border border-gold2/40 bg-navy/30 backdrop-blur px-4 py-1.5 mb-7">
+        <span class="h-1.5 w-1.5 rounded-full bg-gold2 pulse-dot"></span>
+        <span class="text-[11.5px] uppercase tracking-[.22em] text-gold2 font-semibold">IRS / EFILE Certified &middot; Since 2010</span>
+      </div>
+
+      <h1 class="font-display text-[42px] leading-[1.08] sm:text-[58px] md:text-[68px] lg:text-[74px] text-cream font-normal tracking-[-.015em]">
+        Your taxes, done<br class="hidden sm:block"> right the <span class="grad-text">first time</span>.
+      </h1>
+
+      <p class="mt-6 max-w-lg text-[16.5px] sm:text-[18px] leading-relaxed text-cream/85">
+        Straightforward, IRS-certified tax preparation for the families and businesses of Clarksville and Fort Campbell. Real people, honest work, and the biggest refund you&rsquo;re owed.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3.5">
+        <a href="tel:+19314949698" class="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-[15px]">
+          <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call to book your filing
+        </a>
+        <a href="#services" class="btn-ghost inline-flex items-center gap-2 rounded-xl border border-cream/40 px-6 py-3.5 text-[15px] font-medium text-cream hover:bg-cream hover:text-navy">
+          See our services
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- hero mini stats -->
+      <div class="mt-11 flex flex-wrap items-center gap-x-9 gap-y-4">
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="stat-num text-cream text-[26px]" data-count="4.9" data-dec="1">4.9</span>
+            <svg class="h-4 w-4 text-gold2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          </div>
+          <div class="text-[11px] uppercase tracking-[.18em] text-cream/60 mt-1">Google rating</div>
+        </div>
+        <div class="h-9 w-px bg-cream/20"></div>
+        <div>
+          <div class="stat-num text-cream text-[26px]"><span data-count="15" data-suffix="+">0</span></div>
+          <div class="text-[11px] uppercase tracking-[.18em] text-cream/60 mt-1">5-star reviews</div>
+        </div>
+        <div class="h-9 w-px bg-cream/20"></div>
+        <div>
+          <div class="stat-num text-cream text-[26px]"><span data-count="14" data-suffix="+ yrs">0</span></div>
+          <div class="text-[11px] uppercase tracking-[.18em] text-cream/60 mt-1">Serving Clarksville</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 text-cream/55">
+    <span class="text-[10px] uppercase tracking-[.3em]">Scroll</span>
+    <span class="h-9 w-px bg-gradient-to-b from-cream/60 to-transparent"></span>
+  </div>
+</section>
+
+<!-- ================= TRUST MARQUEE ================= -->
+<div class="bg-navy py-4 border-y border-gold/25">
+  <div class="marquee">
+    <div class="marquee-track text-cream/90 text-[14px] uppercase tracking-[.2em] font-medium items-center">
+      <span>IRS &amp; EFILE Certified</span><span class="text-gold">&bull;</span>
+      <span class="font-display italic text-gold2 normal-case tracking-normal text-[17px]">Fast, accurate refunds</span><span class="text-gold">&bull;</span>
+      <span>Serving Fort Campbell</span><span class="text-gold">&bull;</span>
+      <span>Individual &amp; Business Returns</span><span class="text-gold">&bull;</span>
+      <span class="font-display italic text-gold2 normal-case tracking-normal text-[17px]">In office or virtual</span><span class="text-gold">&bull;</span>
+      <span>Notary Services</span><span class="text-gold">&bull;</span>
+      <span>IRS Problem Resolution</span><span class="text-gold">&bull;</span>
+      <!-- duplicate for seamless loop -->
+      <span>IRS &amp; EFILE Certified</span><span class="text-gold">&bull;</span>
+      <span class="font-display italic text-gold2 normal-case tracking-normal text-[17px]">Fast, accurate refunds</span><span class="text-gold">&bull;</span>
+      <span>Serving Fort Campbell</span><span class="text-gold">&bull;</span>
+      <span>Individual &amp; Business Returns</span><span class="text-gold">&bull;</span>
+      <span class="font-display italic text-gold2 normal-case tracking-normal text-[17px]">In office or virtual</span><span class="text-gold">&bull;</span>
+      <span>Notary Services</span><span class="text-gold">&bull;</span>
+      <span>IRS Problem Resolution</span><span class="text-gold">&bull;</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= INTRO / VALUE ================= -->
+<section class="py-20 sm:py-28 bg-cream">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div class="lg:col-span-5" data-reveal>
+        <span class="text-[12px] uppercase tracking-[.24em] text-gold font-semibold">Clarksville &middot; Tennessee</span>
+        <h2 class="mt-4 font-display text-[34px] sm:text-[44px] leading-[1.1] text-navy tracking-[-.015em]">
+          Tax time shouldn&rsquo;t feel like a <span class="grad-text">second job</span>.
+        </h2>
+      </div>
+      <div class="lg:col-span-7" data-reveal>
+        <p class="text-[17px] sm:text-[19px] leading-relaxed text-slate">
+          For more than a decade, One Stop Taxes has sat right on Fort Campbell Boulevard, filing returns for soldiers, families, and small-business owners across Clarksville. You bring your paperwork &mdash; we handle the rest, explain it in plain English, and make sure every credit and deduction you&rsquo;ve earned lands in your refund.
+        </p>
+        <p class="mt-5 text-[17px] sm:text-[19px] leading-relaxed text-slate">
+          No hidden fees, no jargon, no runaround. Just careful, certified work from people who&rsquo;ll still be here next April.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="py-20 sm:py-28 bg-paper border-y border-navy/8">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-2xl mb-14" data-reveal>
+      <span class="text-[12px] uppercase tracking-[.24em] text-gold font-semibold">What we do</span>
+      <h2 class="mt-4 font-display text-[34px] sm:text-[46px] leading-[1.1] text-navy tracking-[-.015em]">
+        Everything you need, <span class="grad-text">under one roof</span>.
+      </h2>
+      <p class="mt-5 text-[17px] leading-relaxed text-slate">From a simple W-2 to a full business return, it&rsquo;s all handled here &mdash; in the office or fully online.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+      <!-- 1 -->
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon grid place-items-center h-12 w-12 rounded-xl bg-navy/6 text-navy mb-5">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
+        </div>
+        <h3 class="font-display text-[22px] text-navy mb-2">Individual Tax Prep</h3>
+        <p class="text-[15px] leading-relaxed text-slate">W-2s, 1099s, itemized returns, dependents, and every credit you qualify for &mdash; filed accurately and on time.</p>
+      </div>
+      <!-- 2 -->
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon grid place-items-center h-12 w-12 rounded-xl bg-navy/6 text-navy mb-5">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01"/></svg>
+        </div>
+        <h3 class="font-display text-[22px] text-navy mb-2">Business &amp; Self-Employed</h3>
+        <p class="text-[15px] leading-relaxed text-slate">Schedule C, LLC, partnership, and corporate returns &mdash; plus the year-round guidance to keep your books clean.</p>
+      </div>
+      <!-- 3 -->
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon grid place-items-center h-12 w-12 rounded-xl bg-navy/6 text-navy mb-5">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        </div>
+        <h3 class="font-display text-[22px] text-navy mb-2">Fast E-File &amp; Refunds</h3>
+        <p class="text-[15px] leading-relaxed text-slate">IRS/EFILE-certified electronic filing so your return goes out the door and your refund comes back as quickly as possible.</p>
+      </div>
+      <!-- 4 -->
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon grid place-items-center h-12 w-12 rounded-xl bg-navy/6 text-navy mb-5">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        </div>
+        <h3 class="font-display text-[22px] text-navy mb-2">Tax Planning</h3>
+        <p class="text-[15px] leading-relaxed text-slate">A plan for next year, not just this one &mdash; withholding, estimated payments, and moves to lower what you owe.</p>
+      </div>
+      <!-- 5 -->
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon grid place-items-center h-12 w-12 rounded-xl bg-navy/6 text-navy mb-5">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3 class="font-display text-[22px] text-navy mb-2">IRS Resolution &amp; Audits</h3>
+        <p class="text-[15px] leading-relaxed text-slate">Notices, back taxes, and audit support &mdash; we&rsquo;ll stand between you and the IRS and get it sorted.</p>
+      </div>
+      <!-- 6 -->
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="svc-icon grid place-items-center h-12 w-12 rounded-xl bg-navy/6 text-navy mb-5">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v14H8l-4 4V4z"/><path d="M9 9h6M9 13h4"/></svg>
+        </div>
+        <h3 class="font-display text-[22px] text-navy mb-2">Notary &amp; Virtual Filing</h3>
+        <p class="text-[15px] leading-relaxed text-slate">On-site notary services and secure remote filing &mdash; do the whole thing from your couch if you&rsquo;d rather not drive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS (signature section) ================= -->
+<section id="process" class="py-20 sm:py-28 bg-cream">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-2xl mb-14" data-reveal>
+      <span class="text-[12px] uppercase tracking-[.24em] text-gold font-semibold">How it works</span>
+      <h2 class="mt-4 font-display text-[34px] sm:text-[46px] leading-[1.1] text-navy tracking-[-.015em]">
+        Three steps. That&rsquo;s <span class="grad-text">the whole thing</span>.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8 relative">
+      <div class="relative" data-reveal>
+        <div class="font-display text-[64px] leading-none text-gold/30">01</div>
+        <h3 class="mt-2 font-display text-[24px] text-navy">Bring your paperwork</h3>
+        <p class="mt-3 text-[15.5px] leading-relaxed text-slate">Walk in, call ahead, or upload securely from home. W-2s, 1099s, last year&rsquo;s return &mdash; whatever you&rsquo;ve got.</p>
+      </div>
+      <div class="relative" data-reveal>
+        <div class="font-display text-[64px] leading-none text-gold/30">02</div>
+        <h3 class="mt-2 font-display text-[24px] text-navy">We do the work</h3>
+        <p class="mt-3 text-[15.5px] leading-relaxed text-slate">A certified preparer builds your return by hand, chases down every credit, and walks you through it line by line.</p>
+      </div>
+      <div class="relative" data-reveal>
+        <div class="font-display text-[64px] leading-none text-gold/30">03</div>
+        <h3 class="mt-2 font-display text-[24px] text-navy">File and get paid</h3>
+        <p class="mt-3 text-[15.5px] leading-relaxed text-slate">We e-file the moment you approve it, then track your refund all the way to your account.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT / STORY ================= -->
+<section id="about" class="py-20 sm:py-28 bg-navy relative overflow-hidden">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div data-reveal>
+        <span class="text-[12px] uppercase tracking-[.24em] text-gold2 font-semibold">The people behind the desk</span>
+        <h2 class="mt-4 font-display text-[34px] sm:text-[46px] leading-[1.1] text-cream tracking-[-.015em]">
+          Local, certified, and here <span class="grad-text">year after year</span>.
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-cream/80">
+          One Stop Taxes is owner-operated by Juan Saldana and a team that has filed for Clarksville and Fort Campbell families since 2010. We&rsquo;re not a pop-up kiosk that disappears after April &mdash; we&rsquo;re a fixture on Fort Campbell Boulevard, and a lot of our clients have trusted us with their returns for years.
+        </p>
+        <p class="mt-5 text-[17px] leading-relaxed text-cream/80">
+          That&rsquo;s the whole idea: sit down with someone who knows your situation, get it done right, and know exactly where to find us if the IRS ever comes calling.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <span class="inline-flex items-center gap-2 rounded-full border border-cream/20 px-4 py-2 text-[13px] text-cream/85"><span class="h-1.5 w-1.5 rounded-full bg-gold2"></span> IRS / EFILE Certified</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-cream/20 px-4 py-2 text-[13px] text-cream/85"><span class="h-1.5 w-1.5 rounded-full bg-gold2"></span> Serving Fort Campbell</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-cream/20 px-4 py-2 text-[13px] text-cream/85"><span class="h-1.5 w-1.5 rounded-full bg-gold2"></span> Established 2010</span>
+        </div>
+      </div>
+      <div data-reveal>
+        <div class="reveal-img rounded-3xl overflow-hidden border border-gold/20 shadow-2xl">
+          <img src="assets/band.jpg" alt="Warm light across a tax preparer's desk at One Stop Taxes in Clarksville, TN" class="w-full h-[340px] sm:h-[420px] object-cover" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STAT BAND ================= -->
+<section class="py-16 sm:py-20 bg-paper border-b border-navy/8">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div data-reveal>
+        <div class="stat-num text-navy text-[44px] sm:text-[52px]"><span data-count="4.9" data-dec="1">4.9</span></div>
+        <div class="mt-1 text-[12px] uppercase tracking-[.18em] text-mute">Google star rating</div>
+      </div>
+      <div data-reveal>
+        <div class="stat-num text-navy text-[44px] sm:text-[52px]"><span data-count="15" data-suffix="+">0</span></div>
+        <div class="mt-1 text-[12px] uppercase tracking-[.18em] text-mute">Happy reviewers</div>
+      </div>
+      <div data-reveal>
+        <div class="stat-num text-navy text-[44px] sm:text-[52px]"><span data-count="2010">0</span></div>
+        <div class="mt-1 text-[12px] uppercase tracking-[.18em] text-mute">Serving since</div>
+      </div>
+      <div data-reveal>
+        <div class="stat-num text-navy text-[44px] sm:text-[52px]">100<span class="text-gold">%</span></div>
+        <div class="mt-1 text-[12px] uppercase tracking-[.18em] text-mute">Certified &amp; local</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section id="reviews" class="py-20 sm:py-28 bg-cream">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-14" data-reveal>
+      <div class="max-w-xl">
+        <span class="text-[12px] uppercase tracking-[.24em] text-gold font-semibold">In their words</span>
+        <h2 class="mt-4 font-display text-[34px] sm:text-[46px] leading-[1.1] text-navy tracking-[-.015em]">
+          Clarksville <span class="grad-text">keeps coming back</span>.
+        </h2>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="flex text-gold2">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+        </div>
+        <span class="text-[14px] text-slate"><span class="font-semibold text-navy">4.9</span> on Google &middot; 15 reviews</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5 sm:gap-6">
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="flex text-gold2 mb-4">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-[16px] leading-relaxed text-ink">&ldquo;Had a great experience first time filing. I recommend asking for Juan or jatayvious. Very professional, reasonable, &amp; helpful service.&rdquo;</p>
+        <div class="mt-5 flex items-center gap-3">
+          <span class="grid place-items-center h-9 w-9 rounded-full bg-navy text-gold2 font-semibold text-sm">F</span>
+          <div><div class="text-[14px] font-semibold text-navy">Franky mc</div><div class="text-[12px] text-mute">Google review</div></div>
+        </div>
+      </div>
+
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="flex text-gold2 mb-4">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-[16px] leading-relaxed text-ink">&ldquo;Edwin&rsquo;s team was amazing! They helped my husband and I file our taxes quick.&rdquo;</p>
+        <div class="mt-5 flex items-center gap-3">
+          <span class="grid place-items-center h-9 w-9 rounded-full bg-navy text-gold2 font-semibold text-sm">A</span>
+          <div><div class="text-[14px] font-semibold text-navy">Angelina Marroquin</div><div class="text-[12px] text-mute">Google review</div></div>
+        </div>
+      </div>
+
+      <div class="card rounded-2xl p-7" data-reveal>
+        <div class="flex text-gold2 mb-4">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-[16px] leading-relaxed text-ink">&ldquo;Great place to get taxes done!&rdquo;</p>
+        <div class="mt-5 flex items-center gap-3">
+          <span class="grid place-items-center h-9 w-9 rounded-full bg-navy text-gold2 font-semibold text-sm">D</span>
+          <div><div class="text-[14px] font-semibold text-navy">Doug Brawley</div><div class="text-[12px] text-mute">Google review</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section id="visit" class="py-20 sm:py-28 bg-paper border-t border-navy/8">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+      <div data-reveal>
+        <span class="text-[12px] uppercase tracking-[.24em] text-gold font-semibold">Come see us</span>
+        <h2 class="mt-4 font-display text-[34px] sm:text-[46px] leading-[1.1] text-navy tracking-[-.015em]">
+          Right on Fort <span class="grad-text">Campbell Blvd</span>.
+        </h2>
+
+        <div class="mt-8 space-y-5">
+          <div class="flex items-start gap-4">
+            <span class="grid place-items-center h-11 w-11 rounded-xl bg-navy/6 text-navy shrink-0"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div>
+              <div class="text-[13px] uppercase tracking-[.16em] text-mute">Address</div>
+              <a href="https://www.google.com/maps?q=1685+Fort+Campbell+Blvd,+Clarksville,+TN+37042" target="_blank" rel="noopener" class="underline-grow text-[17px] font-medium text-navy">1685 Fort Campbell Blvd, Ste D, Clarksville, TN 37042</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="grid place-items-center h-11 w-11 rounded-xl bg-navy/6 text-navy shrink-0"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div>
+              <div class="text-[13px] uppercase tracking-[.16em] text-mute">Phone</div>
+              <a href="tel:+19314949698" class="underline-grow text-[17px] font-medium text-navy">(931) 494-9698</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="grid place-items-center h-11 w-11 rounded-xl bg-navy/6 text-navy shrink-0"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div>
+              <div class="text-[13px] uppercase tracking-[.16em] text-mute">Tax-season hours</div>
+              <div class="text-[16px] text-navy leading-relaxed">
+                Mon &ndash; Fri &nbsp;8:00 AM &ndash; 8:00 PM<br>
+                Saturday &nbsp;10:00 AM &ndash; 6:00 PM<br>
+                <span class="text-slate">Sunday &nbsp;Closed</span>
+              </div>
+              <div class="mt-1 text-[13px] text-mute">Off-season hours vary &mdash; please call ahead.</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://www.google.com/maps?q=1685+Fort+Campbell+Blvd,+Clarksville,+TN+37042" target="_blank" rel="noopener" class="btn-primary mt-9 inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-[15px]">
+          <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-5.5 2.5v-15L9 5m0 15 6-3m-6 3v-15m6 12 5.5 2.5v-15L15 5m0 12v-12m0 0L9 5"/></svg>
+          Get directions
+        </a>
+      </div>
+
+      <div data-reveal class="rounded-3xl overflow-hidden border border-navy/12 shadow-[0_28px_60px_-32px_rgba(20,33,61,.5)] min-h-[380px]">
+        <iframe
+          title="One Stop Taxes location map — 1685 Fort Campbell Blvd, Clarksville, TN 37042"
+          src="https://www.google.com/maps?q=1685%20Fort%20Campbell%20Blvd%2C%20Clarksville%2C%20TN%2037042&output=embed"
+          width="100%" height="100%" style="border:0; min-height:380px; display:block;"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA (gold-dust canvas showpiece) ================= -->
+<section class="relative bg-deep overflow-hidden py-24 sm:py-32">
+  <canvas id="dust" class="absolute inset-0 w-full h-full pointer-events-none opacity-70"></canvas>
+  <div class="absolute inset-0" style="background:radial-gradient(120% 80% at 50% 0%, rgba(185,141,82,.18), transparent 60%)"></div>
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8 text-center">
+    <div class="inline-flex items-center gap-2 rounded-full border border-gold2/40 px-4 py-1.5 mb-7">
+      <span class="h-1.5 w-1.5 rounded-full bg-gold2 pulse-dot"></span>
+      <span class="text-[11.5px] uppercase tracking-[.22em] text-gold2 font-semibold">Booking now for tax season</span>
+    </div>
+    <h2 class="font-display text-[36px] sm:text-[52px] leading-[1.1] text-cream tracking-[-.015em]">
+      Let&rsquo;s get your refund <span class="grad-text">started</span>.
+    </h2>
+    <p class="mt-6 text-[17px] sm:text-[19px] leading-relaxed text-cream/80">
+      One call is all it takes. Sit down with a certified preparer who knows Clarksville, and file with total confidence this year.
+    </p>
+    <div class="mt-9 flex flex-wrap justify-center items-center gap-3.5">
+      <a href="tel:+19314949698" class="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-4 text-[15.5px]">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (931) 494-9698
+      </a>
+      <a href="https://www.google.com/maps?q=1685+Fort+Campbell+Blvd,+Clarksville,+TN+37042" target="_blank" rel="noopener" class="btn-ghost inline-flex items-center gap-2 rounded-xl border border-cream/35 px-7 py-4 text-[15.5px] font-medium text-cream hover:bg-cream hover:text-navy">Visit the office</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-navy text-cream/70">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 py-14">
+    <div class="grid md:grid-cols-4 gap-10">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2.5">
+          <span class="grid place-items-center h-9 w-9 rounded-xl bg-cream/10 text-gold2 font-display font-semibold text-lg leading-none">1</span>
+          <span class="font-display text-[20px] font-semibold text-cream">One Stop Taxes</span>
+        </div>
+        <p class="mt-4 max-w-sm text-[15px] leading-relaxed text-cream/65">
+          Professional, IRS/EFILE-certified tax preparation for the families and businesses of Clarksville and Fort Campbell. Owner-operated since 2010.
+        </p>
+      </div>
+      <div>
+        <div class="text-[12px] uppercase tracking-[.2em] text-gold2 mb-4">Services</div>
+        <ul class="space-y-2 text-[14.5px]">
+          <li><a href="#services" class="underline-grow hover:text-cream transition-colors">Individual tax prep</a></li>
+          <li><a href="#services" class="underline-grow hover:text-cream transition-colors">Business returns</a></li>
+          <li><a href="#services" class="underline-grow hover:text-cream transition-colors">E-file &amp; refunds</a></li>
+          <li><a href="#services" class="underline-grow hover:text-cream transition-colors">IRS resolution</a></li>
+          <li><a href="#services" class="underline-grow hover:text-cream transition-colors">Notary &amp; virtual filing</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[12px] uppercase tracking-[.2em] text-gold2 mb-4">Visit</div>
+        <ul class="space-y-2 text-[14.5px]">
+          <li><a href="https://www.google.com/maps?q=1685+Fort+Campbell+Blvd,+Clarksville,+TN+37042" target="_blank" rel="noopener" class="underline-grow hover:text-cream transition-colors">1685 Fort Campbell Blvd, Ste D<br>Clarksville, TN 37042</a></li>
+          <li><a href="tel:+19314949698" class="underline-grow hover:text-cream transition-colors">(931) 494-9698</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-cream/12 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12.5px] text-cream/50">
+      <span>&copy; <span id="yr">2026</span> One Stop Taxes &middot; Clarksville, Tennessee</span>
+      <span>IRS / EFILE Certified &middot; Serving Fort Campbell since 2010</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MOBILE STICKY BAR ================= -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-navy/95 backdrop-blur-lg border-t border-gold/25 px-3 py-2.5 flex gap-2.5" style="padding-bottom:calc(.625rem + env(safe-area-inset-bottom));">
+  <a href="tel:+19314949698" class="btn-primary flex-1 inline-flex items-center justify-center gap-2 rounded-xl py-3 text-[14px]">
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=1685+Fort+Campbell+Blvd,+Clarksville,+TN+37042" target="_blank" rel="noopener" class="btn-ghost flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-cream/40 py-3 text-[14px] font-medium text-cream">
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- ================= JSON-LD ================= -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AccountingService",
+  "name":"One Stop Taxes",
+  "image":"https://turnkeyweb.org/previews/one-stop-taxes/assets/hero.jpg",
+  "url":"https://turnkeyweb.org/previews/one-stop-taxes/",
+  "telephone":"+1-931-494-9698",
+  "priceRange":"$$",
+  "founder":"Juan Saldana",
+  "foundingDate":"2010",
+  "areaServed":["Clarksville, TN","Fort Campbell","Montgomery County, TN"],
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"1685 Fort Campbell Blvd, Ste D",
+    "addressLocality":"Clarksville",
+    "addressRegion":"TN",
+    "postalCode":"37042",
+    "addressCountry":"US"
+  },
+  "geo":{"@type":"GeoCoordinates","latitude":36.5698,"longitude":-87.3861},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"20:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"18:00"}
+  ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"15"},
+  "review":[
+    {"@type":"Review","author":{"@type":"Person","name":"Franky mc"},"reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"Had a great experience first time filing. I recommend asking for Juan or jatayvious. Very professional, reasonable, & helpful service."},
+    {"@type":"Review","author":{"@type":"Person","name":"Angelina Marroquin"},"reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"Edwin's team was amazing! They helped my husband and I file our taxes quick."},
+    {"@type":"Review","author":{"@type":"Person","name":"Doug Brawley"},"reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"Great place to get taxes done!"}
+  ],
+  "hasOfferCatalog":{
+    "@type":"OfferCatalog","name":"Tax Services",
+    "itemListElement":[
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Individual Tax Preparation"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Business & Self-Employed Tax Preparation"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"E-File & Refund Processing"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tax Planning"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"IRS Resolution & Audit Support"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Notary & Virtual Filing"}}
+    ]
+  }
+}
+</script>
+
+<!-- ================= LIBS ================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- nav shadow on scroll ---------- */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => {
+  nav.classList.toggle('shadow-lg', scrollY > 20);
+}, {passive:true});
+
+/* ---------- Lenis (single GSAP-ticker loop, no touch smoothing) ---------- */
+let lenis;
+if (window.Lenis){
+  lenis = new Lenis({ duration:1.1, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+  if (window.gsap){
+    gsap.ticker.add((time)=> lenis.raf(time*1000));
+    gsap.ticker.lagSmoothing(0);
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  } else {
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id=a.getAttribute('href'); if(id.length<2) return;
+      const el=document.querySelector(id); if(!el) return;
+      e.preventDefault(); lenis.scrollTo(el,{offset:-80});
+    });
+  });
+}
+
+/* ---------- GSAP ---------- */
+if (window.gsap && window.ScrollTrigger){
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize:true });
+
+  /* reveals — GPU-only, once */
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.fromTo(el, {opacity:0,y:34}, {
+      opacity:1, y:0, duration:.7, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+      onComplete:()=> el.style.willChange='auto'
+    });
+  });
+
+  /* clip-path image reveals */
+  gsap.utils.toArray('.reveal-img').forEach(el=>{
+    ScrollTrigger.create({ trigger:el, start:'top 85%', once:true, onEnter:()=> el.classList.add('in') });
+  });
+
+  /* count-up stats */
+  gsap.utils.toArray('[data-count]').forEach(el=>{
+    const target=parseFloat(el.dataset.count), dec=parseInt(el.dataset.dec||'0'), suf=el.dataset.suffix||'';
+    ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:()=>{
+      gsap.fromTo(el,{innerText:0},{innerText:target,duration:1.6,ease:'power2.out',snap:{innerText:dec?0.1:1},
+        onUpdate:function(){ const v=parseFloat(el.innerText); el.textContent=(dec?v.toFixed(dec):Math.round(v))+suf; },
+        onComplete:()=>{ el.textContent=(dec?target.toFixed(dec):Math.round(target))+suf; } });
+    }});
+  });
+
+  /* hero video parallax — desktop only */
+  ScrollTrigger.matchMedia({
+    "(min-width:768px)":function(){
+      gsap.to('.hero-bg',{ yPercent:16, scale:1.08, ease:'none',
+        scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
+    }
+  });
+}
+
+/* ---------- gold-dust canvas showpiece (CTA) ---------- */
+(function(){
+  const c=document.getElementById('dust'); if(!c) return;
+  const ctx=c.getContext('2d'); let w,h,parts=[],raf=null,vis=true;
+  const mobile = matchMedia('(max-width:767px)').matches;
+  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function resize(){ const r=c.getBoundingClientRect(); w=c.width=r.width*Math.min(devicePixelRatio,2); h=c.height=r.height*Math.min(devicePixelRatio,2); }
+  function make(){
+    const n = mobile? 34 : 80; parts=[];
+    for(let i=0;i<n;i++) parts.push({ x:Math.random()*w, y:Math.random()*h, r:(Math.random()*2+0.6)*Math.min(devicePixelRatio,2),
+      vx:(Math.random()-.5)*0.25*Math.min(devicePixelRatio,2), vy:(-Math.random()*0.4-0.1)*Math.min(devicePixelRatio,2), a:Math.random()*0.5+0.2 });
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(const p of parts){
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.y< -10){ p.y=h+10; p.x=Math.random()*w; }
+      if(p.x< -10) p.x=w+10; if(p.x>w+10) p.x=-10;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283);
+      ctx.fillStyle='rgba(216,183,120,'+p.a+')'; ctx.fill();
+    }
+    raf=requestAnimationFrame(draw);
+  }
+  function start(){ if(!raf && vis && !reduce) draw(); }
+  function stop(){ if(raf){ cancelAnimationFrame(raf); raf=null; } }
+  resize(); make();
+  if(reduce){ draw(); } // one static frame
+  else {
+    const io=new IntersectionObserver(es=>{ es.forEach(e=>{ vis=e.isIntersecting; vis?start():stop(); }); },{threshold:0.05});
+    io.observe(c);
+    addEventListener('visibilitychange',()=>{ document.hidden?stop():start(); });
+  }
+  let rt; addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(()=>{ resize(); make(); },200); },{passive:true});
+})();
+
+/* ---------- 6s screenshot / crawler safety net ---------- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; });
+  document.querySelectorAll('.reveal-img').forEach(el=> el.classList.add('in'));
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    if(parseFloat(el.textContent)===0 || el.textContent.trim()==='0'){
+      const t=parseFloat(el.dataset.count), dec=parseInt(el.dataset.dec||'0'), suf=el.dataset.suffix||'';
+      el.textContent=(dec?t.toFixed(dec):Math.round(t))+suf;
+    }
+  });
+}, 6000);
+</script>
+</body>
+</html>
