@@ -309,7 +309,8 @@ h2.big em.sf{color:var(--violet)}
 .dw-wrap{position:relative;overflow:hidden;cursor:grab;padding:14px 0 26px}
 .dw-wrap.dragging{cursor:grabbing}
 .dw-strip{display:flex;gap:clamp(18px,2.2vw,30px);padding:0 clamp(20px,5vw,64px);width:max-content;will-change:transform}
-.dw-card{flex:none;width:clamp(300px,34vw,480px);border-radius:16px;overflow:hidden;background:var(--void3);border:1px solid rgba(157,92,255,.18);transition:transform .35s,border-color .35s,box-shadow .35s;display:block}
+.dw-card{flex:none;width:clamp(300px,34vw,480px);border-radius:16px;overflow:hidden;background:var(--void3);border:1px solid rgba(157,92,255,.18);transition:transform .35s,border-color .35s,box-shadow .35s;display:block;-webkit-user-drag:none;user-select:none;-webkit-user-select:none}
+.dw-card img{-webkit-user-drag:none}
 .dw-card:hover{transform:translateY(-6px);border-color:rgba(157,92,255,.55);box-shadow:0 30px 80px rgba(124,58,237,.25)}
 .dw-card .wbar{display:flex;align-items:center;gap:7px;background:#241539;padding:11px 14px}
 .dw-card .wbar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.22)}
@@ -507,20 +508,10 @@ footer ul a:hover{color:var(--violet2)}
   </div>
   <div class="dw-wrap" id="dwwrap">
     <div class="dw-strip" id="dwstrip">
-      <a class="dw-card" href="https://turnkeyweb.org/previews/odyssey/" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="Take the journey">
-        <div class="wbar"><i></i><i></i><i></i><span class="url">turnkeyweb.org/previews/odyssey</span></div>
-        <div class="shot"><img src="/assets/fable/work/odyssey.jpg" alt="Odyssey website" loading="lazy"></div>
-        <div class="wmeta"><div><h3>Odyssey</h3><p>Cinematic 3D scroll journey</p></div><span class="go">&rarr;</span></div>
-      </a>
       <a class="dw-card" href="https://docs-slushies.com" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="Visit site">
         <div class="wbar"><i></i><i></i><i></i><span class="url">docs-slushies.com</span></div>
         <div class="shot"><img src="/assets/fable/work/docs-slushies.jpg" alt="Doc's Slushies website" loading="lazy"></div>
         <div class="wmeta"><div><h3>Doc's Slushies</h3><p>Frozen drink rental - real client</p></div><span class="go">&rarr;</span></div>
-      </a>
-      <a class="dw-card" href="https://turnkeyweb.org/previews/aurora-studio/" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="See the light">
-        <div class="wbar"><i></i><i></i><i></i><span class="url">turnkeyweb.org/previews/aurora-studio</span></div>
-        <div class="shot"><img src="/assets/fable/work/aurora-studio.jpg" alt="Aurora Studio website" loading="lazy"></div>
-        <div class="wmeta"><div><h3>Aurora Studio</h3><p>Light-luxury studio site</p></div><span class="go">&rarr;</span></div>
       </a>
       <a class="dw-card" href="/portfolio/sites/05-lumina-medspa/" target="_blank" rel="noopener" data-cursor-hover data-cursor-text="Visit site">
         <div class="wbar"><i></i><i></i><i></i><span class="url">lumina-medspa</span></div>
@@ -998,6 +989,9 @@ function countUps(instant){
     lastX = e.touches ? e.touches[0].clientX : e.clientX;
     vx = 0;
     if(raf) cancelAnimationFrame(raf);
+    // stop the browser starting a native link/image drag or text selection,
+    // which hijacks the pointer and leaves the strip stuck mid-drag
+    if(!e.touches && e.cancelable) e.preventDefault();
   }
   function onMove(e){
     if(!dragging) return;
@@ -1018,9 +1012,12 @@ function countUps(instant){
   wrap.addEventListener('mousedown', onDown);
   window.addEventListener('mousemove', onMove);
   window.addEventListener('mouseup', onUp);
+  window.addEventListener('blur', onUp);
+  wrap.addEventListener('dragstart', function(e){ e.preventDefault(); });
   wrap.addEventListener('touchstart', onDown, { passive: true });
   wrap.addEventListener('touchmove', onMove, { passive: false });
   wrap.addEventListener('touchend', onUp);
+  wrap.addEventListener('touchcancel', onUp);
   wrap.addEventListener('click', function(e){ if(moved > 8){ e.preventDefault(); e.stopPropagation(); } }, true);
   var interacted = false;
   wrap.addEventListener('mousedown', function(){ interacted = true; });

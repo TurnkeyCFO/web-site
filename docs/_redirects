@@ -8,9 +8,8 @@
 /guides/how-much-does-a-small-business-website-cost             /  302
 /guides/how-much-does-a-small-business-website-cost/            /  302
 /guides/how-much-does-a-small-business-website-cost/index.html  /  302
-/portfolio                                                      /  302
-/portfolio/                                                     /  302
-/portfolio/index.html                                           /  302
+# /portfolio index restored 2026-07-17 (Ricky: "View full portfolio" button must
+# land on the portfolio, not the homepage). Pricing sub-pages below stay hidden.
 /portfolio/get-a-quote.html                                     /  302
 /portfolio/services.html                                        /  302
 /portfolio/process.html                                         /  302
