@@ -105,7 +105,16 @@ tailwind.config = {
   #railViewport{ overflow:hidden; }
   .rail-track{ display:flex; gap:1.5rem; width:max-content; padding-inline:6vw; }
   .rail-step{ width:340px; flex:0 0 auto; }
-  @media (max-width:880px){ .rail-step{ width:255px; } .rail-track{ gap:1rem; padding-inline:5vw; } }
+  @media (max-width:767px){
+    /* mobile: no pin/scrub — a clean, snappable swipe rail that never looks clipped */
+    #railViewport{ overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+    #railViewport::-webkit-scrollbar{ display:none; }
+    .rail-track{ gap:.9rem; padding-inline:5vw; }
+    .rail-step{ width:82vw; max-width:320px; scroll-snap-align:center; }
+  }
+  /* keep page content clear of the mobile sticky call bar */
+  @media (max-width:639px){ body{ padding-bottom:58px; } }
 
   .dot-pulse{ animation:pulse 2.3s ease-in-out infinite; }
   @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.82)} }
@@ -181,7 +190,7 @@ tailwind.config = {
 </header>
 
 <!-- ================= HERO ================= -->
-<section id="top" class="hero-wrap min-h-[100svh] flex items-end sm:items-center pt-[104px] sm:pt-[78px] pb-16 sm:pb-0">
+<section id="top" class="hero-wrap min-h-[100svh] flex items-center pt-[150px] sm:pt-[110px] pb-24 sm:pb-16">
   <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg" aria-hidden="true">
     <source src="assets/hero.mp4" type="video/mp4">
   </video>
@@ -387,6 +396,10 @@ tailwind.config = {
     <h2 class="font-display text-[clamp(2.1rem,5vw,3.4rem)] mt-5 text-cream max-w-[620px]" style="line-height:1.12;padding-bottom:.07em">
       What happens between <span class="grad-text-light">drop-off and done</span>
     </h2>
+    <p class="md:hidden mt-5 flex items-center gap-2 text-[13px] text-cream/60">
+      <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      Swipe to follow the steps
+    </p>
   </div>
 
   <div id="railViewport" class="mt-14">
@@ -554,7 +567,7 @@ tailwind.config = {
           title="Map to Americlean Dry Cleaners and Alterations, 8960 Taft St, Pembroke Pines, FL 33024"
           src="https://www.google.com/maps?q=8960%20Taft%20St%2C%20Pembroke%20Pines%2C%20FL%2033024&output=embed"
           width="100%" height="100%" style="border:0;min-height:440px;display:block"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          loading="eager" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
     </div>
   </div>
