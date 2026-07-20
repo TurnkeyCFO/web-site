@@ -29,7 +29,8 @@
 tailwind.config = { theme: { extend: {
   colors: {
     bone:'#F4ECE3', warm:'#FBF8F3', sage:'#7FA88C', olive:'#38542F',
-    deep:'#22371C', amber:'#B98D52', ink:'#1A2118', mute:'#5C6B55'
+    deep:'#22371C', amber:'#B98D52', ink:'#1A2118', mute:'#5C6B55',
+    amberlt:'#EBD4AE', amberdk:'#7E5B1F'
   },
   fontFamily: { display:['Fraunces','Georgia','serif'], sans:['Inter','system-ui','sans-serif'] }
 }}};
@@ -37,7 +38,17 @@ tailwind.config = { theme: { extend: {
 
 <style>
   :root{ --bone:#F4ECE3; --warm:#FBF8F3; --sage:#7FA88C; --olive:#38542F;
-         --deep:#22371C; --amber:#B98D52; --ink:#1A2118; --mute:#5C6B55; --nav:76px; }
+         --deep:#22371C; --amber:#B98D52; --ink:#1A2118; --mute:#5C6B55;
+         --amberlt:#EBD4AE; --amberdk:#7E5B1F; --nav:76px; }
+  /* nav legibility scrim over the cinematic hero */
+  #nav::before{ content:''; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(to bottom, rgba(12,22,10,.62), rgba(12,22,10,0));
+    opacity:1; transition:opacity .5s; }
+  #nav.solid::before{ opacity:0; }
+  #nav > *{ position:relative; z-index:2; }
+  #nav a, #nav span{ text-shadow:0 1px 10px rgba(8,16,6,.55); }
+  #nav.solid a, #nav.solid span{ text-shadow:none; }
+  #nav .btn-amber{ text-shadow:none; }
   *{ -webkit-tap-highlight-color:transparent; }
   html{ scroll-padding-top:96px; }
   body{ background:var(--warm); color:var(--ink); font-family:Inter,system-ui,sans-serif;
@@ -101,7 +112,7 @@ tailwind.config = { theme: { extend: {
     background:linear-gradient(90deg,var(--olive),var(--amber)); transform:scaleX(0); transform-origin:left;
     transition:transform .7s cubic-bezier(.2,.8,.2,1); border-radius:2px; }
   .stop:hover::before{ transform:scaleX(1); }
-  .stop-no{ font-family:Fraunces,serif; font-size:.82rem; letter-spacing:.24em; color:var(--amber); font-weight:600; }
+  .stop-no{ font-family:Fraunces,serif; font-size:.82rem; letter-spacing:.24em; color:var(--amberdk); font-weight:600; }
   .round-line{ position:absolute; left:0; top:50%; height:2px; width:100%;
     background:repeating-linear-gradient(90deg, rgba(56,84,47,.3) 0 12px, transparent 12px 26px); }
 
@@ -180,7 +191,7 @@ tailwind.config = { theme: { extend: {
 <body>
 
 <!-- ================= NAV ================= -->
-<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500 overflow-hidden">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="flex items-center justify-between h-[72px] md:h-[76px]">
       <a href="#top" class="flex items-center gap-3 group">
@@ -264,21 +275,21 @@ tailwind.config = { theme: { extend: {
 
 <!-- ================= MARQUEE ================= -->
 <div class="bg-olive py-4 marquee">
-  <div class="mtrack text-[.82rem] tracking-[.22em] uppercase text-bone/90 font-medium">
-    <span>Mowing &amp; edging</span><span class="text-amber">&bull;</span>
-    <span class="italic font-disp normal-case tracking-normal text-[1.05rem] text-amber">Hedges shaped right</span><span class="text-amber">&bull;</span>
-    <span>Tree care</span><span class="text-amber">&bull;</span>
-    <span>Fertilize &amp; weed control</span><span class="text-amber">&bull;</span>
-    <span class="italic font-disp normal-case tracking-normal text-[1.05rem] text-amber">Cleaned up before we leave</span><span class="text-amber">&bull;</span>
-    <span>Junk pickup &amp; haul-off</span><span class="text-amber">&bull;</span>
-    <span>Killeen &amp; Harker Heights</span><span class="text-amber">&bull;</span>
-    <span>Mowing &amp; edging</span><span class="text-amber">&bull;</span>
-    <span class="italic font-disp normal-case tracking-normal text-[1.05rem] text-amber">Hedges shaped right</span><span class="text-amber">&bull;</span>
-    <span>Tree care</span><span class="text-amber">&bull;</span>
-    <span>Fertilize &amp; weed control</span><span class="text-amber">&bull;</span>
-    <span class="italic font-disp normal-case tracking-normal text-[1.05rem] text-amber">Cleaned up before we leave</span><span class="text-amber">&bull;</span>
-    <span>Junk pickup &amp; haul-off</span><span class="text-amber">&bull;</span>
-    <span>Killeen &amp; Harker Heights</span><span class="text-amber">&bull;</span>
+  <div class="mtrack text-[.84rem] tracking-[.22em] uppercase text-bone font-medium">
+    <span>Mowing &amp; edging</span><span class="text-amberlt">&bull;</span>
+    <span class="italic font-disp normal-case tracking-normal text-[1.05rem] text-amberlt">Hedges shaped right</span><span class="text-amberlt">&bull;</span>
+    <span>Tree care</span><span class="text-amberlt">&bull;</span>
+    <span>Fertilize &amp; weed control</span><span class="text-amberlt">&bull;</span>
+    <span class="italic font-disp normal-case tracking-normal text-[1.05rem] text-amberlt">Cleaned up before we leave</span><span class="text-amberlt">&bull;</span>
+    <span>Junk pickup &amp; haul-off</span><span class="text-amberlt">&bull;</span>
+    <span>Killeen &amp; Harker Heights</span><span class="text-amberlt">&bull;</span>
+    <span>Mowing &amp; edging</span><span class="text-amberlt">&bull;</span>
+    <span class="italic font-disp normal-case tracking-normal text-[1.05rem] text-amberlt">Hedges shaped right</span><span class="text-amberlt">&bull;</span>
+    <span>Tree care</span><span class="text-amberlt">&bull;</span>
+    <span>Fertilize &amp; weed control</span><span class="text-amberlt">&bull;</span>
+    <span class="italic font-disp normal-case tracking-normal text-[1.05rem] text-amberlt">Cleaned up before we leave</span><span class="text-amberlt">&bull;</span>
+    <span>Junk pickup &amp; haul-off</span><span class="text-amberlt">&bull;</span>
+    <span>Killeen &amp; Harker Heights</span><span class="text-amberlt">&bull;</span>
   </div>
 </div>
 
@@ -411,7 +422,7 @@ tailwind.config = { theme: { extend: {
             Wasn&rsquo;t disappointed. They cut ours, my neighbor&rsquo;s yard, and others in
             the neighborhood.&rdquo;
           </p>
-          <footer class="mt-5 text-[.82rem] tracking-[.16em] uppercase text-amber">Ester &middot; Google review</footer>
+          <footer class="mt-5 text-[.82rem] tracking-[.16em] uppercase text-amberlt">Ester &middot; Google review</footer>
         </blockquote>
       </div>
     </div>
@@ -610,7 +621,7 @@ tailwind.config = { theme: { extend: {
       </div>
 
       <div>
-        <div class="text-[.72rem] tracking-[.22em] uppercase text-amber mb-4">Services</div>
+        <div class="text-[.72rem] tracking-[.22em] uppercase text-amberlt mb-4">Services</div>
         <ul class="space-y-2 text-[.93rem]">
           <li>Mowing &amp; edging</li>
           <li>Hedge &amp; shrub trimming</li>
@@ -621,7 +632,7 @@ tailwind.config = { theme: { extend: {
       </div>
 
       <div>
-        <div class="text-[.72rem] tracking-[.22em] uppercase text-amber mb-4">Get in touch</div>
+        <div class="text-[.72rem] tracking-[.22em] uppercase text-amberlt mb-4">Get in touch</div>
         <a href="tel:+12546611455" class="ulink block font-disp text-[1.35rem] text-bone" style="padding-bottom:.06em">(254) 661-1455</a>
         <div class="mt-3 text-[.93rem]">Killeen, Texas 76542</div>
         <div class="text-[.93rem]">Mon &ndash; Fri, 9:00am &ndash; 6:00pm</div>
@@ -694,12 +705,13 @@ tailwind.config = { theme: { extend: {
       navsub = document.getElementById('navsub'), navLinks = document.querySelectorAll('.nav-l');
   function navState(){
     var solid = window.scrollY > (window.innerHeight * 0.72);
+    nav.classList.toggle('solid', solid);
     nav.style.background = solid ? 'rgba(251,248,243,.94)' : 'transparent';
     nav.style.backdropFilter = solid ? 'saturate(140%) blur(12px)' : 'none';
     nav.style.boxShadow = solid ? '0 1px 0 rgba(56,84,47,.14)' : 'none';
     navname.style.color = solid ? '#1A2118' : '#FBF8F3';
     navsub.style.color  = solid ? '#5C6B55' : 'rgba(251,248,243,.72)';
-    navLinks.forEach(function(l){ l.style.color = solid ? '#38542F' : 'rgba(251,248,243,.88)'; });
+    navLinks.forEach(function(l){ l.style.color = solid ? '#38542F' : '#FBF8F3'; });
   }
   navState();
   window.addEventListener('scroll', navState, { passive:true });
