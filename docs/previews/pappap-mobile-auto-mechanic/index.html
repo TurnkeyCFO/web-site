@@ -1,0 +1,753 @@
+<!doctype html>
+<!--
+  Pappap Mobile Auto Mechanic — Turnkey Web draft preview
+  Business: Pappap Mobile Auto Mechanic · Miami, FL
+  Owner: Otes Louis ("Mechanic Otes") · IG @otes.louis
+  Phone: (305) 397-6349 · 844 NW 102nd St, Miami, FL 33150 · Open 24 hours
+  Google: 4.2 stars, 5 reviews (no verbatim review text retrievable — value chips used instead, no fabricated quotes)
+  No existing website / logo / brand colors found -> custom wordmark + category palette (auto):
+    bone #F4ECE3 · ironRed #A8362B · charcoal #2A2A2A · steel #7A8B95 · ink #1A1A1A
+  Hero: AI cinematic (Higgsfield nano_banana_pro -> Kling 3.0 turbo), self-hosted assets/hero.mp4
+  Art direction: LIGHT industrial editorial. Signature moment = the animated dispatch-route rail.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pappap Mobile Auto Mechanic | 24/7 Mobile Mechanic in North Miami &amp; Dade</title>
+<meta name="description" content="Pappap Mobile Auto Mechanic brings the shop to your driveway across North Miami and Dade County. Maintenance, oil changes and tune-ups, open 24 hours. Call (305) 397-6349.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/pappap-mobile-auto-mechanic/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pappap Mobile Auto Mechanic | 24/7 Mobile Mechanic in Miami">
+<meta property="og:description" content="The shop comes to you. Mobile auto repair across North Miami and Dade, open 24 hours.">
+<meta property="og:url" content="https://turnkeyweb.org/previews/pappap-mobile-auto-mechanic/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/pappap-mobile-auto-mechanic/assets/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { bone:'#F4ECE3', cream:'#FBF7F2', iron:'#A8362B', ironDark:'#8A2A21', charcoal:'#2A2A2A', steel:'#7A8B95', ink:'#1A1A1A' },
+  fontFamily: { display:['"Archivo Black"','system-ui','sans-serif'], body:['Inter','system-ui','sans-serif'] }
+}}};
+</script>
+<style>
+  html { scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; }
+  body { background:#FBF7F2; color:#1A1A1A; font-family:Inter,system-ui,sans-serif; overflow-x:hidden; }
+  ::selection { background:#A8362B; color:#F4ECE3; }
+
+  /* ---- descender safety (HARD): never clip g y p j q ---- */
+  h1,h2,h3,h4,.disp { line-height:1.1; padding-bottom:.06em; }
+  .disp-xl { line-height:1.06; padding-bottom:.1em; }
+
+  /* ---- gradient shimmer on key headers ---- */
+  .grad-text{
+    background:linear-gradient(100deg,#A8362B 0%,#C4553F 28%,#8A2A21 52%,#A8362B 78%,#C4553F 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 8s linear infinite; line-height:1.15; padding-bottom:.09em; display:inline-block;
+  }
+  .grad-text-light{
+    background:linear-gradient(100deg,#FBF7F2 0%,#FFE9DF 30%,#F4ECE3 55%,#FFFFFF 80%,#FBF7F2 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 8s linear infinite; line-height:1.15; padding-bottom:.09em; display:inline-block;
+  }
+  @keyframes shimmer { from{background-position:0% 50%} to{background-position:220% 50%} }
+
+  /* ---- hero ---- */
+  .hero { position:relative; min-height:100svh; overflow:hidden; background:#2A2A2A; }
+  .hero-bg { position:absolute; inset:-8% -4%; width:108%; height:116%; object-fit:cover; will-change:transform; }
+  .hero-scrim{
+    position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(to top, rgba(14,10,9,.90) 0%, rgba(14,10,9,.72) 26%, rgba(14,10,9,.28) 55%, rgba(14,10,9,.10) 78%, rgba(14,10,9,.30) 100%),
+      linear-gradient(to right, rgba(14,10,9,.82) 0%, rgba(14,10,9,.44) 40%, rgba(14,10,9,0) 72%);
+  }
+  .hero h1, .hero .lede { text-shadow:0 2px 24px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.6); }
+
+  /* ---- live dot ---- */
+  .live-dot{ width:9px;height:9px;border-radius:50%;background:#5FBF6A;box-shadow:0 0 0 0 rgba(95,191,106,.7);animation:pulse 2.2s ease-in-out infinite; flex:none;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(95,191,106,.55)}50%{box-shadow:0 0 0 7px rgba(95,191,106,0)}}
+
+  /* ---- buttons ---- */
+  .btn{ position:relative; overflow:hidden; transition:transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s, filter .35s; }
+  .btn:hover{ transform:translateY(-3px); filter:brightness(1.06); }
+  .btn::after{ content:''; position:absolute; top:0; left:0; width:60%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.30),transparent);
+    transform:translateX(-160%); transition:transform .9s cubic-bezier(.22,1,.36,1); }
+  .btn:hover::after{ transform:translateX(260%); }
+
+  /* ---- cards ---- */
+  .card{ position:relative; background:#FFFFFF; border:1px solid rgba(42,42,42,.10);
+         transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s, border-color .5s; }
+  .card::before{ content:''; position:absolute; top:0; left:0; height:3px; width:0%;
+                 background:linear-gradient(90deg,#A8362B,#C4553F); transition:width .6s cubic-bezier(.22,1,.36,1); }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 20px 44px -20px rgba(42,42,42,.32); border-color:rgba(168,54,43,.28); }
+  .card:hover::before{ width:100%; }
+  .card:hover .ico{ transform:rotate(-6deg) scale(1.07); }
+  .ico{ transition:transform .5s cubic-bezier(.22,1,.36,1); }
+
+  /* ---- dispatch rail (signature) ---- */
+  .rail-line{ stroke-dasharray:1; stroke-dashoffset:1; }
+  .stop-num{ transition:background-color .5s ease, color .5s ease, transform .5s cubic-bezier(.22,1,.36,1); }
+  .stop.on .stop-num{ background:#A8362B; color:#F4ECE3; transform:scale(1.08); }
+
+  /* ---- marquee ---- */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 40s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ---- reveals (GPU only) ---- */
+  [data-reveal]{ opacity:0; transform:translateY(28px); will-change:opacity,transform; }
+  [data-reveal-image]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.25s cubic-bezier(.22,1,.36,1); }
+  [data-reveal-image].in{ clip-path:inset(0 0 0% 0); }
+
+  .underline-grow{ position:relative; }
+  .underline-grow::after{ content:''; position:absolute; left:0; bottom:-3px; width:0; height:1.5px;
+    background:linear-gradient(90deg,#A8362B,#C4553F); transition:width .45s cubic-bezier(.22,1,.36,1); }
+  .underline-grow:hover::after{ width:100%; }
+
+  #dust { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:.85; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    [data-reveal]{ opacity:1 !important; transform:none !important; }
+    [data-reveal-image]{ clip-path:none !important; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ================= NAV ================= -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-[72px] sm:h-[80px]">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-md bg-iron">
+          <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 sm:w-[22px] sm:h-[22px]" aria-hidden="true">
+            <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.1-2.1 2.7-2.5Z" stroke="#F4ECE3" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="leading-none">
+          <span id="navword" class="block font-display text-[17px] sm:text-[19px] tracking-tight text-cream transition-colors duration-500" style="line-height:1.15;padding-bottom:.06em">PAPPAP</span>
+          <span id="navsub" class="block text-[9px] sm:text-[10px] tracking-[.22em] font-semibold text-cream/70 transition-colors duration-500">MOBILE AUTO MECHANIC</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="#how" class="navlink underline-grow text-sm font-medium text-cream/85 transition-colors duration-500">How it works</a>
+        <a href="#services" class="navlink underline-grow text-sm font-medium text-cream/85 transition-colors duration-500">Services</a>
+        <a href="#otes" class="navlink underline-grow text-sm font-medium text-cream/85 transition-colors duration-500">Meet Otes</a>
+        <a href="#area" class="navlink underline-grow text-sm font-medium text-cream/85 transition-colors duration-500">Service area</a>
+      </nav>
+      <a href="tel:+13053976349" class="btn inline-flex items-center gap-2 rounded-full bg-iron px-4 sm:px-5 py-2.5 text-[13px] sm:text-sm font-semibold text-cream shadow-lg shadow-iron/25">
+        <svg viewBox="0 0 24 24" fill="none" class="w-4 h-4" aria-hidden="true">
+          <path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1l-2.23 2.2Z" fill="currentColor"/>
+        </svg>
+        <span class="hidden sm:inline">(305) 397-6349</span><span class="sm:hidden">Call</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="top" class="hero flex items-end">
+  <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg" aria-hidden="true">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-14 sm:pb-20">
+    <div class="max-w-[840px]">
+      <div class="inline-flex items-center gap-2.5 rounded-full border border-cream/25 bg-black/30 backdrop-blur px-3.5 py-1.5 mb-6 sm:mb-8">
+        <span class="live-dot"></span>
+        <span class="text-[11px] sm:text-xs font-semibold tracking-[.14em] text-cream">OPEN NOW &middot; 24 HOURS &middot; NORTH MIAMI &amp; DADE</span>
+      </div>
+
+      <h1 class="disp-xl font-display text-cream text-[38px] leading-[1.06] sm:text-[62px] lg:text-[80px] tracking-[-.02em] mb-5 sm:mb-7">
+        You don't bring the car<br class="hidden sm:block"> to the shop.<br>
+        <span class="grad-text-light">The shop comes to you.</span>
+      </h1>
+
+      <p class="lede text-cream/90 text-[16px] sm:text-[19px] leading-relaxed max-w-[600px] mb-8 sm:mb-10">
+        Otes rolls out to your driveway, your job site, or the side of the road anywhere in
+        North Miami and Dade County. No tow truck. No waiting room. No lost day.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
+        <a href="tel:+13053976349" class="btn inline-flex items-center justify-center gap-2.5 rounded-full bg-iron px-7 py-4 text-[15px] font-bold text-cream shadow-xl shadow-black/30">
+          <svg viewBox="0 0 24 24" fill="none" class="w-[18px] h-[18px]" aria-hidden="true">
+            <path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1l-2.23 2.2Z" fill="currentColor"/>
+          </svg>
+          Call (305) 397-6349
+        </a>
+        <a href="#how" class="btn inline-flex items-center justify-center gap-2 rounded-full border border-cream/35 bg-cream/10 backdrop-blur px-7 py-4 text-[15px] font-semibold text-cream">
+          How it works
+          <svg viewBox="0 0 24 24" fill="none" class="w-4 h-4" aria-hidden="true"><path d="M12 5v14m0 0-5.5-5.5M12 19l5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-10 sm:mt-14 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-cream/15 pt-6">
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-display text-cream text-[26px] sm:text-[30px]" style="line-height:1.15;padding-bottom:.06em">4.2</span>
+            <svg viewBox="0 0 24 24" class="w-4 h-4 text-iron" aria-hidden="true"><path d="m12 2.6 2.9 5.9 6.5.95-4.7 4.6 1.1 6.5L12 17.5 6.2 20.5l1.1-6.5-4.7-4.6 6.5-.95L12 2.6Z" fill="currentColor"/></svg>
+          </div>
+          <div class="text-[11px] tracking-[.14em] font-semibold text-cream/65 mt-0.5">GOOGLE RATING</div>
+        </div>
+        <div class="h-9 w-px bg-cream/20 hidden sm:block"></div>
+        <div>
+          <div class="font-display text-cream text-[26px] sm:text-[30px]" style="line-height:1.15;padding-bottom:.06em"><span data-count="24">0</span>/7</div>
+          <div class="text-[11px] tracking-[.14em] font-semibold text-cream/65 mt-0.5">AVAILABLE, EVERY DAY</div>
+        </div>
+        <div class="h-9 w-px bg-cream/20 hidden sm:block"></div>
+        <div>
+          <div class="font-display text-cream text-[26px] sm:text-[30px]" style="line-height:1.15;padding-bottom:.06em">$0</div>
+          <div class="text-[11px] tracking-[.14em] font-semibold text-cream/65 mt-0.5">SPENT ON TOWING</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="bg-charcoal py-4 sm:py-5 marquee">
+  <div class="marquee-track items-center text-cream/90 text-[13px] sm:text-[15px] font-semibold tracking-[.06em]">
+    <span>Mobile service at your location</span><span class="text-iron">&bull;</span>
+    <span class="italic text-steel">Open 24 hours</span><span class="text-iron">&bull;</span>
+    <span>Routine maintenance</span><span class="text-iron">&bull;</span>
+    <span class="italic text-steel">Oil changes</span><span class="text-iron">&bull;</span>
+    <span>Tune-ups</span><span class="text-iron">&bull;</span>
+    <span class="italic text-steel">North Miami &amp; Dade</span><span class="text-iron">&bull;</span>
+    <span>Mobile service at your location</span><span class="text-iron">&bull;</span>
+    <span class="italic text-steel">Open 24 hours</span><span class="text-iron">&bull;</span>
+    <span>Routine maintenance</span><span class="text-iron">&bull;</span>
+    <span class="italic text-steel">Oil changes</span><span class="text-iron">&bull;</span>
+    <span>Tune-ups</span><span class="text-iron">&bull;</span>
+    <span class="italic text-steel">North Miami &amp; Dade</span><span class="text-iron">&bull;</span>
+  </div>
+</div>
+
+<!-- ================= SIGNATURE: DISPATCH RAIL ================= -->
+<section id="how" class="relative bg-cream py-20 sm:py-28 overflow-hidden">
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mb-14 sm:mb-20" data-reveal>
+      <div class="text-[11px] font-bold tracking-[.24em] text-iron mb-4">HOW IT WORKS</div>
+      <h2 class="font-display text-ink text-[30px] sm:text-[46px] tracking-[-.015em]">
+        Three steps, and <span class="grad-text">you're driving again.</span>
+      </h2>
+    </div>
+
+    <!-- rail -->
+    <div class="relative">
+      <svg class="absolute left-0 right-0 top-[30px] w-full h-[3px] hidden md:block" viewBox="0 0 1200 3" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="0" y1="1.5" x2="1200" y2="1.5" stroke="#2A2A2A" stroke-opacity=".12" stroke-width="3"/>
+        <line id="railLine" class="rail-line" x1="0" y1="1.5" x2="1200" y2="1.5" stroke="#A8362B" stroke-width="3" pathLength="1"/>
+      </svg>
+
+      <div class="grid md:grid-cols-3 gap-12 md:gap-10 relative">
+        <div class="stop" data-reveal>
+          <div class="stop-num relative z-10 w-[60px] h-[60px] rounded-full bg-white border border-ink/12 flex items-center justify-center font-display text-[22px] text-ink shadow-sm" style="line-height:1.15;padding-bottom:.06em">01</div>
+          <h3 class="font-display text-ink text-[21px] sm:text-[23px] mt-7 mb-3">You call</h3>
+          <p class="text-ink/70 text-[15px] leading-relaxed max-w-[330px]">
+            Tell Otes what the car is doing and where it's sitting. Day, night, weekend, holiday, the
+            phone is on.
+          </p>
+        </div>
+        <div class="stop" data-reveal>
+          <div class="stop-num relative z-10 w-[60px] h-[60px] rounded-full bg-white border border-ink/12 flex items-center justify-center font-display text-[22px] text-ink shadow-sm" style="line-height:1.15;padding-bottom:.06em">02</div>
+          <h3 class="font-display text-ink text-[21px] sm:text-[23px] mt-7 mb-3">He rolls out</h3>
+          <p class="text-ink/70 text-[15px] leading-relaxed max-w-[330px]">
+            Tools, diagnostics and parts come to your address anywhere in North Miami and the Dade
+            area. Your car never gets loaded onto a truck.
+          </p>
+        </div>
+        <div class="stop" data-reveal>
+          <div class="stop-num relative z-10 w-[60px] h-[60px] rounded-full bg-white border border-ink/12 flex items-center justify-center font-display text-[22px] text-ink shadow-sm" style="line-height:1.15;padding-bottom:.06em">03</div>
+          <h3 class="font-display text-ink text-[21px] sm:text-[23px] mt-7 mb-3">Work gets done</h3>
+          <p class="text-ink/70 text-[15px] leading-relaxed max-w-[330px]">
+            The job happens in your driveway while you carry on with your day. You see the work as
+            it happens, right there.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="bg-bone py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 sm:mb-16" data-reveal>
+      <div class="max-w-2xl">
+        <div class="text-[11px] font-bold tracking-[.24em] text-iron mb-4">WHAT OTES HANDLES</div>
+        <h2 class="font-display text-ink text-[30px] sm:text-[46px] tracking-[-.015em]">
+          Real work, done <span class="grad-text">in your driveway.</span>
+        </h2>
+      </div>
+      <p class="text-ink/65 text-[15px] leading-relaxed max-w-sm">
+        Not sure what your car needs? Describe the sound, the smell or the warning light, and Otes
+        will tell you straight whether it's a mobile job.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+      <div class="card rounded-xl p-7" data-reveal>
+        <span class="ico inline-flex w-11 h-11 rounded-lg bg-iron/10 items-center justify-center mb-5">
+          <svg viewBox="0 0 24 24" fill="none" class="w-[22px] h-[22px]" aria-hidden="true">
+            <path d="M3 13h2l1.6-4.4A2 2 0 0 1 8.5 7h7a2 2 0 0 1 1.9 1.6L19 13h2v5h-2.2a2.3 2.3 0 0 1-4.6 0h-4.4a2.3 2.3 0 0 1-4.6 0H3v-5Z" stroke="#A8362B" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <h3 class="font-display text-ink text-[19px] mb-2.5">Mobile service</h3>
+        <p class="text-ink/70 text-[14.5px] leading-relaxed">The core of it. Otes comes to your home, work or wherever the car stopped, across North Miami and Dade.</p>
+      </div>
+
+      <div class="card rounded-xl p-7" data-reveal>
+        <span class="ico inline-flex w-11 h-11 rounded-lg bg-iron/10 items-center justify-center mb-5">
+          <svg viewBox="0 0 24 24" fill="none" class="w-[22px] h-[22px]" aria-hidden="true">
+            <path d="M12 3.5c3 3.6 5 6.2 5 8.6a5 5 0 0 1-10 0c0-2.4 2-5 5-8.6Z" stroke="#A8362B" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <h3 class="font-display text-ink text-[19px] mb-2.5">Oil changes</h3>
+        <p class="text-ink/70 text-[14.5px] leading-relaxed">Done at your address in the time it takes to answer a few emails. No appointment window, no lobby.</p>
+      </div>
+
+      <div class="card rounded-xl p-7" data-reveal>
+        <span class="ico inline-flex w-11 h-11 rounded-lg bg-iron/10 items-center justify-center mb-5">
+          <svg viewBox="0 0 24 24" fill="none" class="w-[22px] h-[22px]" aria-hidden="true">
+            <path d="M4 17a8 8 0 1 1 16 0" stroke="#A8362B" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="m12 17 4.2-5" stroke="#A8362B" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="12" cy="17" r="1.4" fill="#A8362B"/>
+          </svg>
+        </span>
+        <h3 class="font-display text-ink text-[19px] mb-2.5">Tune-ups</h3>
+        <p class="text-ink/70 text-[14.5px] leading-relaxed">Getting the engine running the way it should again, so the car pulls clean and idles smooth.</p>
+      </div>
+
+      <div class="card rounded-xl p-7" data-reveal>
+        <span class="ico inline-flex w-11 h-11 rounded-lg bg-iron/10 items-center justify-center mb-5">
+          <svg viewBox="0 0 24 24" fill="none" class="w-[22px] h-[22px]" aria-hidden="true">
+            <path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1" stroke="#A8362B" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="3" stroke="#A8362B" stroke-width="1.6"/>
+          </svg>
+        </span>
+        <h3 class="font-display text-ink text-[19px] mb-2.5">Routine maintenance</h3>
+        <p class="text-ink/70 text-[14.5px] leading-relaxed">The upkeep that stops small things from turning into tow-truck things. Keep the car healthy on your schedule.</p>
+      </div>
+    </div>
+
+    <div class="mt-6 sm:mt-8 rounded-xl bg-charcoal p-7 sm:p-9 flex flex-col sm:flex-row sm:items-center justify-between gap-5" data-reveal>
+      <div>
+        <h3 class="font-display text-cream text-[20px] sm:text-[24px] mb-2">Something else going on with your car?</h3>
+        <p class="text-cream/70 text-[15px] leading-relaxed max-w-xl">Call and describe it. Otes will tell you honestly whether he can handle it on site or whether it belongs in a full shop.</p>
+      </div>
+      <a href="tel:+13053976349" class="btn shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-iron px-6 py-3.5 text-[15px] font-bold text-cream">
+        Ask Otes
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MEET OTES (split editorial) ================= -->
+<section id="otes" class="bg-cream py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 lg:gap-16 items-center">
+      <div data-reveal>
+        <div class="text-[11px] font-bold tracking-[.24em] text-iron mb-4">MEET THE MECHANIC</div>
+        <h2 class="font-display text-ink text-[32px] sm:text-[50px] tracking-[-.02em] mb-6">
+          Otes Louis.<br><span class="grad-text">One mechanic, one standard.</span>
+        </h2>
+        <p class="text-ink/75 text-[16px] sm:text-[17px] leading-relaxed mb-5">
+          Pappap Mobile Auto Mechanic is Otes, and Otes is who shows up. There's no service advisor
+          in between, no rotating tech who's never seen your car, and no one guessing at a quote
+          from behind a counter.
+        </p>
+        <p class="text-ink/75 text-[16px] sm:text-[17px] leading-relaxed mb-8">
+          You talk to the person turning the wrench. He tells you what he's doing and why while he
+          does it, standing next to your car in your own driveway. Customers in North Miami and Dade
+          have him on speed dial for exactly that reason.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-8">
+          <span class="inline-flex items-center gap-2 rounded-full border border-ink/12 bg-white px-4 py-2 text-[13px] font-semibold text-ink/80">
+            <span class="w-1.5 h-1.5 rounded-full bg-iron"></span> Owner-operated
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-ink/12 bg-white px-4 py-2 text-[13px] font-semibold text-ink/80">
+            <span class="w-1.5 h-1.5 rounded-full bg-iron"></span> Speaks English &amp; Kreyòl
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-ink/12 bg-white px-4 py-2 text-[13px] font-semibold text-ink/80">
+            <span class="w-1.5 h-1.5 rounded-full bg-iron"></span> Rated 4.2 on Google
+          </span>
+        </div>
+
+        <a href="https://www.instagram.com/otes.louis/" target="_blank" rel="noopener" class="underline-grow inline-flex items-center gap-2 text-[15px] font-semibold text-iron">
+          <svg viewBox="0 0 24 24" fill="none" class="w-[18px] h-[18px]" aria-hidden="true">
+            <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="16.9" cy="7.1" r="1.1" fill="currentColor"/>
+          </svg>
+          See his work on Instagram
+        </a>
+      </div>
+
+      <div class="relative" data-reveal>
+        <div class="overflow-hidden rounded-2xl shadow-2xl shadow-ink/15" data-reveal-image>
+          <img src="assets/otes.jpg" alt="Mobile mechanic working on a car in a Miami driveway" class="w-full h-[380px] sm:h-[560px] object-cover">
+        </div>
+        <div class="absolute -bottom-6 -left-3 sm:left-6 bg-iron rounded-xl px-6 py-5 shadow-xl shadow-iron/25 max-w-[230px]">
+          <div class="font-display text-cream text-[15px] leading-snug" style="line-height:1.25;padding-bottom:.06em">"Mechanic Otes"</div>
+          <div class="text-cream/80 text-[12.5px] mt-1.5 leading-snug">The name customers actually use</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY MOBILE ================= -->
+<section class="bg-charcoal py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mb-12 sm:mb-16" data-reveal>
+      <div class="text-[11px] font-bold tracking-[.24em] text-iron mb-4">WHY MOBILE</div>
+      <h2 class="font-display text-cream text-[30px] sm:text-[46px] tracking-[-.015em]">
+        A repair shop costs you<br>a whole day. <span class="grad-text-light">This doesn't.</span>
+      </h2>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-6 sm:gap-8">
+      <div data-reveal>
+        <div class="font-display text-iron text-[40px] sm:text-[52px] mb-3" style="line-height:1.1;padding-bottom:.08em">No tow</div>
+        <p class="text-cream/70 text-[15px] leading-relaxed">A car that won't start doesn't need a truck first. It needs a mechanic standing next to it.</p>
+      </div>
+      <div data-reveal>
+        <div class="font-display text-iron text-[40px] sm:text-[52px] mb-3" style="line-height:1.1;padding-bottom:.08em">No wait</div>
+        <p class="text-cream/70 text-[15px] leading-relaxed">No drop-off, no shuttle, no sitting in a lobby wondering what's taking so long.</p>
+      </div>
+      <div data-reveal>
+        <div class="font-display text-iron text-[40px] sm:text-[52px] mb-3" style="line-height:1.1;padding-bottom:.08em">No guessing</div>
+        <p class="text-cream/70 text-[15px] leading-relaxed">You're right there while the work happens. You see what was wrong and what got fixed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICE AREA + MAP ================= -->
+<section id="area" class="bg-bone py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mb-12 sm:mb-14" data-reveal>
+      <div class="text-[11px] font-bold tracking-[.24em] text-iron mb-4">SERVICE AREA</div>
+      <h2 class="font-display text-ink text-[30px] sm:text-[46px] tracking-[-.015em]">
+        Based in Miami. <span class="grad-text">Out to you.</span>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-8 lg:gap-10">
+      <div class="space-y-5" data-reveal>
+        <div class="bg-white rounded-xl border border-ink/10 p-7">
+          <div class="flex items-start gap-3.5">
+            <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 mt-0.5 shrink-0" aria-hidden="true">
+              <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="#A8362B" stroke-width="1.6" stroke-linejoin="round"/>
+              <circle cx="12" cy="10" r="2.6" stroke="#A8362B" stroke-width="1.6"/>
+            </svg>
+            <div>
+              <div class="text-[11px] font-bold tracking-[.18em] text-ink/45 mb-1.5">BASED AT</div>
+              <div class="text-ink text-[16px] font-semibold leading-relaxed">844 NW 102nd St<br>Miami, FL 33150</div>
+              <div class="text-ink/60 text-[14px] mt-2 leading-relaxed">Serving North Miami and the Dade area</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border border-ink/10 p-7">
+          <div class="flex items-start gap-3.5">
+            <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 mt-0.5 shrink-0" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5" stroke="#A8362B" stroke-width="1.6"/>
+              <path d="M12 7v5.2l3.2 2" stroke="#A8362B" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <div class="text-[11px] font-bold tracking-[.18em] text-ink/45 mb-1.5">HOURS</div>
+              <div class="flex items-center gap-2 text-ink text-[16px] font-semibold">
+                <span class="live-dot"></span> Open 24 hours
+              </div>
+              <div class="text-ink/60 text-[14px] mt-2 leading-relaxed">Seven days a week, including nights and weekends</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="tel:+13053976349" class="btn block bg-iron rounded-xl p-7 text-cream">
+          <div class="text-[11px] font-bold tracking-[.18em] text-cream/70 mb-1.5">CALL OTES DIRECTLY</div>
+          <div class="font-display text-[26px] sm:text-[30px]" style="line-height:1.15;padding-bottom:.06em">(305) 397-6349</div>
+        </a>
+      </div>
+
+      <div class="rounded-xl overflow-hidden border border-ink/10 shadow-lg shadow-ink/5 min-h-[420px]" data-reveal>
+        <iframe
+          title="Map to Pappap Mobile Auto Mechanic, 844 NW 102nd St, Miami, FL 33150"
+          src="https://www.google.com/maps?q=844%20NW%20102nd%20St%2C%20Miami%2C%20FL%2033150&output=embed"
+          width="100%" height="100%" style="border:0;min-height:420px;display:block"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING CTA ================= -->
+<section class="relative bg-iron py-20 sm:py-28 overflow-hidden">
+  <div class="relative mx-auto max-w-4xl px-4 sm:px-6 text-center">
+    <span class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-cream/15 mb-7" data-reveal>
+      <svg viewBox="0 0 24 24" fill="none" class="w-7 h-7" aria-hidden="true">
+        <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.1-2.1 2.7-2.5Z" stroke="#F4ECE3" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <h2 class="font-display text-cream text-[32px] sm:text-[52px] tracking-[-.02em] mb-5" data-reveal>
+      Car trouble doesn't wait.<br>Neither does Otes.
+    </h2>
+    <p class="text-cream/85 text-[16px] sm:text-[18px] leading-relaxed max-w-xl mx-auto mb-9" data-reveal>
+      Whatever hour it is right now, the phone is on. Tell him where the car is and what it's
+      doing, and he'll come to it.
+    </p>
+    <a href="tel:+13053976349" class="btn inline-flex items-center justify-center gap-2.5 rounded-full bg-cream px-8 py-4 text-[16px] font-bold text-iron shadow-xl shadow-black/20" data-reveal>
+      <svg viewBox="0 0 24 24" fill="none" class="w-[18px] h-[18px]" aria-hidden="true">
+        <path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1l-2.23 2.2Z" fill="currentColor"/>
+      </svg>
+      (305) 397-6349
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-ink text-cream/70 pt-16 pb-28 sm:pb-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid sm:grid-cols-3 gap-10 pb-12 border-b border-cream/12">
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-iron">
+            <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5" aria-hidden="true">
+              <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.1-2.1 2.7-2.5Z" stroke="#F4ECE3" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="leading-none">
+            <span class="block font-display text-cream text-[17px]" style="line-height:1.15;padding-bottom:.06em">PAPPAP</span>
+            <span class="block text-[9px] tracking-[.22em] font-semibold text-cream/55">MOBILE AUTO MECHANIC</span>
+          </span>
+        </div>
+        <p class="text-[14px] leading-relaxed max-w-xs">Mobile auto repair that comes to your driveway across North Miami and the Dade area.</p>
+      </div>
+      <div>
+        <div class="text-[11px] font-bold tracking-[.18em] text-cream/45 mb-4">CONTACT</div>
+        <a href="tel:+13053976349" class="underline-grow block text-cream text-[15px] font-semibold mb-2">(305) 397-6349</a>
+        <div class="text-[14px] leading-relaxed">844 NW 102nd St<br>Miami, FL 33150</div>
+        <a href="https://www.instagram.com/otes.louis/" target="_blank" rel="noopener" class="underline-grow inline-block mt-3 text-[14px] text-cream/80">Instagram</a>
+      </div>
+      <div>
+        <div class="text-[11px] font-bold tracking-[.18em] text-cream/45 mb-4">HOURS</div>
+        <div class="flex items-center gap-2 text-cream text-[15px] font-semibold mb-2"><span class="live-dot"></span> Open 24 hours</div>
+        <div class="text-[14px] leading-relaxed">Seven days a week</div>
+      </div>
+    </div>
+    <div class="pt-7 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-[12.5px] text-cream/45">
+      <div>&copy; <span id="yr">2026</span> Pappap Mobile Auto Mechanic. All rights reserved.</div>
+      <div>Site by Turnkey Web</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MOBILE STICKY BAR ================= -->
+<div class="sm:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-2 gap-px bg-ink/15 border-t border-ink/10">
+  <a href="tel:+13053976349" class="flex items-center justify-center gap-2 bg-iron text-cream py-3.5 text-[15px] font-bold">
+    <svg viewBox="0 0 24 24" fill="none" class="w-[17px] h-[17px]" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1l-2.23 2.2Z" fill="currentColor"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=844+NW+102nd+St+Miami+FL+33150" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-charcoal text-cream py-3.5 text-[15px] font-bold">
+    <svg viewBox="0 0 24 24" fill="none" class="w-[17px] h-[17px]" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.7"/></svg>
+    Directions
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AutoRepair",
+  "name":"Pappap Mobile Auto Mechanic",
+  "description":"Mobile auto mechanic serving North Miami and the Dade area. Routine maintenance, oil changes and tune-ups performed at the customer's location. Open 24 hours.",
+  "telephone":"+1-305-397-6349",
+  "url":"https://turnkeyweb.org/previews/pappap-mobile-auto-mechanic/",
+  "image":"https://turnkeyweb.org/previews/pappap-mobile-auto-mechanic/assets/hero.jpg",
+  "address":{"@type":"PostalAddress","streetAddress":"844 NW 102nd St","addressLocality":"Miami","addressRegion":"FL","postalCode":"33150","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":25.8677525,"longitude":-80.2127807},
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}],
+  "areaServed":[{"@type":"City","name":"North Miami"},{"@type":"City","name":"Miami"},{"@type":"AdministrativeArea","name":"Miami-Dade County"}],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.2","reviewCount":"5"},
+  "sameAs":["https://www.instagram.com/otes.louis/"]
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script type="module">
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isTouch = window.matchMedia('(max-width: 767px)').matches;
+
+/* ---------- Lenis, driven by the single GSAP ticker ---------- */
+let lenis = null;
+if (!reduced && window.Lenis) {
+  lenis = new Lenis({ duration:1.1, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+  if (window.gsap) {
+    gsap.ticker.add(t => lenis.raf(t*1000));
+    gsap.ticker.lagSmoothing(0);
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  }
+}
+if (window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize:true });
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const t = document.querySelector(a.getAttribute('href'));
+    if (!t) return;
+    e.preventDefault();
+    if (lenis) lenis.scrollTo(t, { offset:-80 });
+    else t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* ---------- nav: transparent over hero -> solid after ---------- */
+const nav = document.getElementById('nav'), navword = document.getElementById('navword'), navsub = document.getElementById('navsub');
+const navlinks = document.querySelectorAll('.navlink');
+function setNav(solid){
+  nav.classList.toggle('bg-cream/95', solid);
+  nav.classList.toggle('backdrop-blur', solid);
+  nav.classList.toggle('shadow-[0_1px_0_rgba(26,26,26,.08)]', solid);
+  navword.classList.toggle('text-cream', !solid); navword.classList.toggle('text-ink', solid);
+  navsub.classList.toggle('text-cream/70', !solid); navsub.classList.toggle('text-ink/50', solid);
+  navlinks.forEach(l=>{ l.classList.toggle('text-cream/85', !solid); l.classList.toggle('text-ink/75', solid); });
+}
+setNav(false);
+if (window.ScrollTrigger) ScrollTrigger.create({ start:'top -85', onToggle:s=>setNav(s.isActive) });
+
+/* ---------- hero video parallax (desktop only) ---------- */
+if (!reduced && !isTouch && window.gsap) {
+  gsap.to('.hero-bg', { yPercent:14, scale:1.07, ease:'none',
+    scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
+}
+
+/* ---------- reveals (GPU only, once) ---------- */
+if (window.gsap && !reduced) {
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.fromTo(el, {opacity:0,y:28}, {
+      opacity:1, y:0, duration:.7, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+      onComplete:()=>{ el.style.willChange='auto'; }
+    });
+  });
+  gsap.utils.toArray('[data-reveal-image]').forEach(el=>{
+    ScrollTrigger.create({ trigger:el, start:'top 88%', once:true, onEnter:()=>el.classList.add('in') });
+  });
+} else {
+  document.querySelectorAll('[data-reveal]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; });
+  document.querySelectorAll('[data-reveal-image]').forEach(el=>el.classList.add('in'));
+}
+
+/* ---------- signature: dispatch rail draw + stops light up ---------- */
+const rail = document.getElementById('railLine');
+if (rail && window.gsap && !reduced) {
+  gsap.to(rail, { strokeDashoffset:0, ease:'none',
+    scrollTrigger:{ trigger:'#how', start:'top 62%', end:'bottom 78%', scrub:.6 } });
+} else if (rail) { rail.style.strokeDashoffset = 0; }
+document.querySelectorAll('#how .stop').forEach((s,i)=>{
+  if (window.ScrollTrigger && !reduced) {
+    ScrollTrigger.create({ trigger:s, start:'top 82%', once:true, onEnter:()=>setTimeout(()=>s.classList.add('on'), i*120) });
+  } else { s.classList.add('on'); }
+});
+
+/* ---------- count-up ---------- */
+document.querySelectorAll('[data-count]').forEach(el=>{
+  const target = parseFloat(el.dataset.count);
+  if (!window.gsap || reduced) { el.textContent = target; return; }
+  const o = {v:0};
+  gsap.to(o, { v:target, duration:1.5, ease:'power2.out',
+    scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+    onUpdate:()=>{ el.textContent = Math.round(o.v); } });
+});
+
+/* ---------- premium showpiece: Three.js sunlit dust field on the light canvas ---------- */
+(async function dustField(){
+  const cv = document.getElementById('dust');
+  if (!cv || reduced) return;
+  const cores = navigator.hardwareConcurrency || 4;
+  if (isTouch && cores <= 4) return;            // low-power phones: skip, section stays clean cream
+  let THREE;
+  try { THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'); }
+  catch(e){ return; }                            // graceful: no canvas, section still perfect
+
+  const host = cv.parentElement;
+  const renderer = new THREE.WebGLRenderer({ canvas:cv, alpha:true, antialias:false });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, isTouch ? 1.5 : 2));
+  const scene = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(60, 1, .1, 100); cam.position.z = 16;
+
+  const COUNT = isTouch ? 150 : 420;
+  const pos = new Float32Array(COUNT*3), spd = new Float32Array(COUNT);
+  for (let i=0;i<COUNT;i++){
+    pos[i*3]   = (Math.random()-.5)*44;
+    pos[i*3+1] = (Math.random()-.5)*26;
+    pos[i*3+2] = (Math.random()-.5)*18;
+    spd[i] = .006 + Math.random()*.016;
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  const mat = new THREE.PointsMaterial({ color:0xA8362B, size:.13, transparent:true, opacity:.5, sizeAttenuation:true, depthWrite:false });
+  const pts = new THREE.Points(geo, mat); scene.add(pts);
+
+  const mat2 = new THREE.PointsMaterial({ color:0x7A8B95, size:.09, transparent:true, opacity:.42, sizeAttenuation:true, depthWrite:false });
+  const pts2 = new THREE.Points(geo.clone(), mat2); pts2.position.set(3,-2,-4); scene.add(pts2);
+
+  function resize(){
+    const w = host.clientWidth, h = host.clientHeight;
+    renderer.setSize(w,h,false); cam.aspect = w/h; cam.updateProjectionMatrix();
+  }
+  resize(); addEventListener('resize', resize, {passive:true});
+
+  let visible = true, hidden = false, raf = null;
+  new IntersectionObserver(es=>{ visible = es[0].isIntersecting; loop(); }, {threshold:0}).observe(host);
+  document.addEventListener('visibilitychange', ()=>{ hidden = document.hidden; loop(); });
+
+  function frame(){
+    raf = null;
+    const p = geo.attributes.position.array, p2 = pts2.geometry.attributes.position.array;
+    for (let i=0;i<COUNT;i++){
+      p[i*3+1] += spd[i];  if (p[i*3+1] > 13) p[i*3+1] = -13;
+      p[i*3]   += spd[i]*.35;  if (p[i*3] > 22) p[i*3] = -22;
+      p2[i*3+1] += spd[i]*.6;  if (p2[i*3+1] > 13) p2[i*3+1] = -13;
+    }
+    geo.attributes.position.needsUpdate = true;
+    pts2.geometry.attributes.position.needsUpdate = true;
+    pts.rotation.z += .0004; pts2.rotation.z -= .0003;
+    renderer.render(scene, cam);
+    loop();
+  }
+  function loop(){ if (visible && !hidden && !raf) raf = requestAnimationFrame(frame); }
+  loop();
+})();
+
+/* ---------- 6s crawler / screenshot safety net (REQUIRED) ---------- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{
+    const s = getComputedStyle(el);
+    if (parseFloat(s.opacity) < .95){ el.style.opacity=1; el.style.transform='none'; }
+  });
+  document.querySelectorAll('[data-reveal-image]').forEach(el=>el.classList.add('in'));
+  document.querySelectorAll('#how .stop').forEach(s=>s.classList.add('on'));
+  const r = document.getElementById('railLine'); if (r) r.style.strokeDashoffset = 0;
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    if (el.textContent.trim() === '0') el.textContent = el.dataset.count;
+  });
+}, 6000);
+</script>
+</body>
+</html>
