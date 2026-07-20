@@ -115,6 +115,25 @@ tailwind.config = {
     background:linear-gradient(90deg,var(--teal),var(--brass)); transition:width .5s cubic-bezier(.22,1,.36,1); }
   .ul-grow:hover::after{ width:100%; }
 
+  /* ---- nav: light-on-dark over the hero, dark-on-light once scrolled ---- */
+  #nav{ transition:background .45s ease, box-shadow .45s ease; }
+  #nav .nav-mark{ background:rgba(243,236,227,.16); transition:background .4s ease; }
+  #nav .nav-mark svg{ stroke:#F3ECE3; transition:stroke .4s ease; }
+  #nav .nav-word{ color:#FBF7F1; transition:color .4s ease; }
+  #nav .nav-sub{ color:#E8D3AC; transition:color .4s ease; }
+  #nav .nav-link{ color:rgba(251,247,241,.88); transition:color .4s ease; }
+  #nav .nav-link:hover{ color:#FFFFFF; }
+  #nav .nav-cta{ background:#FBF7F1; color:#16202B; transition:background .4s ease, color .4s ease; }
+
+  #nav.is-scrolled{ background:rgba(251,247,241,.95); backdrop-filter:blur(14px); box-shadow:0 1px 0 rgba(22,32,43,.09); }
+  #nav.is-scrolled .nav-mark{ background:#16202B; }
+  #nav.is-scrolled .nav-mark svg{ stroke:#F3ECE3; }
+  #nav.is-scrolled .nav-word{ color:#16202B; }
+  #nav.is-scrolled .nav-sub{ color:#2C6E6A; }
+  #nav.is-scrolled .nav-link{ color:rgba(22,32,43,.82); }
+  #nav.is-scrolled .nav-link:hover{ color:#16202B; }
+  #nav.is-scrolled .nav-cta{ background:#16202B; color:#FBF7F1; }
+
   [data-reveal]{ opacity:0; transform:translateY(28px); will-change:opacity,transform; }
   .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
     background-image:radial-gradient(rgba(22,32,43,.9) .5px, transparent .5px); background-size:3px 3px; }
@@ -133,25 +152,25 @@ tailwind.config = {
     <div class="flex items-center justify-between h-[70px] sm:h-[78px]">
       <a href="#top" class="flex items-center gap-3 group">
         <!-- custom wordmark mark: hanger hook + press line -->
-        <span class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-ink">
+        <span class="nav-mark inline-flex items-center justify-center h-10 w-10 rounded-full">
           <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="#F3ECE3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 6.2a1.9 1.9 0 1 1 1.9 1.9c-1 0-1.9.5-1.9 1.6"/>
             <path d="M12 9.9 3.6 15.4c-.9.6-.5 2 .6 2h15.6c1.1 0 1.5-1.4.6-2L12 9.9Z"/>
           </svg>
         </span>
         <span class="leading-none">
-          <span class="block font-display text-[20px] sm:text-[22px] tracking-tight text-ink" style="line-height:1.15;padding-bottom:.04em">Americlean</span>
-          <span class="block text-[9.5px] sm:text-[10px] uppercase tracking-[.24em] text-teal font-semibold">Dry Cleaners &amp; Alterations</span>
+          <span class="nav-word block font-display text-[20px] sm:text-[22px] tracking-tight" style="line-height:1.15;padding-bottom:.04em">Americlean</span>
+          <span class="nav-sub block text-[9.5px] sm:text-[10px] uppercase tracking-[.24em] font-semibold">Dry Cleaners &amp; Alterations</span>
         </span>
       </a>
-      <nav class="hidden lg:flex items-center gap-8 text-[14px] font-medium text-ink/80">
-        <a href="#services" class="ul-grow hover:text-ink transition">Services</a>
-        <a href="#craft" class="ul-grow hover:text-ink transition">Our Craft</a>
-        <a href="#journey" class="ul-grow hover:text-ink transition">How It Works</a>
-        <a href="#reviews" class="ul-grow hover:text-ink transition">Reviews</a>
-        <a href="#visit" class="ul-grow hover:text-ink transition">Visit</a>
+      <nav class="hidden lg:flex items-center gap-8 text-[14px] font-medium">
+        <a href="#services" class="nav-link ul-grow transition">Services</a>
+        <a href="#craft" class="nav-link ul-grow transition">Our Craft</a>
+        <a href="#journey" class="nav-link ul-grow transition">How It Works</a>
+        <a href="#reviews" class="nav-link ul-grow transition">Reviews</a>
+        <a href="#visit" class="nav-link ul-grow transition">Visit</a>
       </nav>
-      <a href="tel:+19544372080" class="btn hidden sm:inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13.5px] font-semibold text-cream">
+      <a href="tel:+19544372080" class="nav-cta btn hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13.5px] font-semibold">
         <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
         </svg>
@@ -695,8 +714,7 @@ tailwind.config = {
   /* ---------- nav background on scroll ---------- */
   var nav = document.getElementById('nav');
   function navState(){
-    if (window.scrollY > 40) nav.style.cssText = 'background:rgba(251,247,241,.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(22,32,43,.09)';
-    else nav.style.cssText = '';
+    nav.classList.toggle('is-scrolled', window.scrollY > 40);
   }
   navState(); window.addEventListener('scroll', navState, { passive:true });
 
