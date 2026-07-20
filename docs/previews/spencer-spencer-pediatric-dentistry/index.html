@@ -207,8 +207,8 @@ h1,h2,h3,h4,.display{line-height:1.12;padding-bottom:.06em}
 </div>
 
 <!-- SIGNATURE: pinned horizontal first-visit journey -->
-<section id="visit-journey" class="bg-cream py-20 md:py-28">
-  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+<section id="visit-journey" class="bg-cream py-20 md:py-24 md:min-h-screen md:flex md:flex-col md:justify-center">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 w-full">
     <div class="max-w-3xl" data-reveal>
       <p class="text-[13px] font-semibold tracking-[.18em] uppercase text-lagoon">The First Visit</p>
       <h2 class="mt-4 text-[2.1rem] sm:text-[2.9rem] font-semibold tracking-[-.015em] text-ink">
@@ -221,7 +221,7 @@ h1,h2,h3,h4,.display{line-height:1.12;padding-bottom:.06em}
     </div>
   </div>
 
-  <div id="journeyWrap" class="mt-14 md:mt-16">
+  <div id="journeyWrap" class="mt-14 md:mt-14 w-full">
     <div id="journeyTrack" class="flex gap-6 md:gap-8 px-5 sm:px-8 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory md:snap-none">
       <article class="step snap-start card rounded-2xl bg-bone border border-sand p-8 md:p-10">
         <div class="stepnum">01</div>
@@ -703,13 +703,13 @@ if (isDesktop && !reduce) {
 /* ---- SIGNATURE: pinned horizontal first-visit journey (desktop only) ---- */
 if (isDesktop && !reduce) {
   const track = document.getElementById('journeyTrack');
-  const wrap  = document.getElementById('journeyWrap');
-  if (track && wrap) {
+  const sect  = document.getElementById('visit-journey');
+  if (track && sect) {
     ScrollTrigger.matchMedia({
       '(min-width: 768px)': function(){
-        const dist = () => Math.max(0, track.scrollWidth - window.innerWidth + 64);
+        const dist = () => Math.max(0, track.scrollWidth - window.innerWidth + 72);
         gsap.to(track, { x: () => -dist(), ease:'none',
-          scrollTrigger:{ trigger: wrap, start:'top 88px', end: () => '+=' + dist(),
+          scrollTrigger:{ trigger: sect, start:'top top', end: () => '+=' + dist(),
             pin:true, scrub:0.8, invalidateOnRefresh:true, anticipatePin:1 } });
       }
     });
