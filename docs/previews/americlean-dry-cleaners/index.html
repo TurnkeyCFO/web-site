@@ -769,22 +769,21 @@ tailwind.config = {
   var track = document.getElementById('railTrack');
   var viewport = document.getElementById('railViewport');
   if (track && viewport && isDesktop && !reduce) {
+    // Horizontal scrub WITHOUT pinning — the rail glides as the section passes through the
+    // viewport. Pinning here created a full-viewport blank pin-spacer in full-page renders.
     ScrollTrigger.matchMedia({
       '(min-width: 768px)': function(){
-        var dist = function(){ return Math.max(0, track.scrollWidth - window.innerWidth + 60); };
-        gsap.to(track, {
-          x: function(){ return -dist(); }, ease:'none',
-          scrollTrigger:{
-            trigger:'#journey', start:'top top',
-            end: function(){ return '+=' + dist(); },
-            pin:true, scrub:0.7, invalidateOnRefresh:true, anticipatePin:1
-          }
-        });
+        var overflow = function(){ return Math.max(0, track.scrollWidth - viewport.clientWidth); };
+        gsap.fromTo(track,
+          { x: 0 },
+          { x: function(){ return -overflow(); }, ease:'none',
+            scrollTrigger:{
+              trigger:'#journey', start:'top 85%', end:'bottom top',
+              scrub:0.7, invalidateOnRefresh:true
+            }
+          });
       }
     });
-  } else if (viewport) {
-    viewport.style.overflowX = 'auto';
-    viewport.style.webkitOverflowScrolling = 'touch';
   }
 
   /* ---------- SHOWPIECE: drifting fiber field on a light canvas ---------- */
