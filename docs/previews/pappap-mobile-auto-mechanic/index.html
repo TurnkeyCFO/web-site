@@ -49,7 +49,7 @@ tailwind.config = { theme: { extend: {
     animation:shimmer 8s linear infinite; line-height:1.15; padding-bottom:.09em; display:inline-block;
   }
   .grad-text-light{
-    background:linear-gradient(100deg,#FBF7F2 0%,#FFE9DF 30%,#F4ECE3 55%,#FFFFFF 80%,#FBF7F2 100%);
+    background:linear-gradient(100deg,#FFFFFF 0%,#FFE2D2 26%,#FFFFFF 52%,#FFD9C4 74%,#FFFFFF 100%);
     background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
     -webkit-text-fill-color:transparent; color:transparent;
     animation:shimmer 8s linear infinite; line-height:1.15; padding-bottom:.09em; display:inline-block;
@@ -66,6 +66,9 @@ tailwind.config = { theme: { extend: {
       linear-gradient(to right, rgba(14,10,9,.82) 0%, rgba(14,10,9,.44) 40%, rgba(14,10,9,0) 72%);
   }
   .hero h1, .hero .lede { text-shadow:0 2px 24px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.6); }
+  /* transparent-fill shimmer glyphs let text-shadow show through as grey — kill it, use drop-shadow */
+  .hero h1 .grad-text-light, .hero h1 .grad-text { text-shadow:none;
+    filter:drop-shadow(0 2px 10px rgba(0,0,0,.55)) drop-shadow(0 1px 2px rgba(0,0,0,.6)); }
 
   /* ---- live dot ---- */
   .live-dot{ width:9px;height:9px;border-radius:50%;background:#5FBF6A;box-shadow:0 0 0 0 rgba(95,191,106,.7);animation:pulse 2.2s ease-in-out infinite; flex:none;}
@@ -160,15 +163,15 @@ tailwind.config = { theme: { extend: {
   </video>
   <div class="hero-scrim"></div>
 
-  <div class="relative z-10 w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-14 sm:pb-20">
+  <div class="relative z-10 w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-40 sm:pt-32 pb-14 sm:pb-20">
     <div class="max-w-[840px]">
       <div class="inline-flex items-center gap-2.5 rounded-full border border-cream/25 bg-black/30 backdrop-blur px-3.5 py-1.5 mb-6 sm:mb-8">
         <span class="live-dot"></span>
         <span class="text-[11px] sm:text-xs font-semibold tracking-[.14em] text-cream">OPEN NOW &middot; 24 HOURS &middot; NORTH MIAMI &amp; DADE</span>
       </div>
 
-      <h1 class="disp-xl font-display text-cream text-[38px] leading-[1.06] sm:text-[62px] lg:text-[80px] tracking-[-.02em] mb-5 sm:mb-7">
-        You don't bring the car<br class="hidden sm:block"> to the shop.<br>
+      <h1 class="disp-xl font-display text-cream text-[33px] sm:text-[52px] lg:text-[66px] tracking-[-.02em] mb-5 sm:mb-7 max-w-[15ch] sm:max-w-none">
+        You don't bring<br>the car to the shop.<br>
         <span class="grad-text-light">The shop comes to you.</span>
       </h1>
 
