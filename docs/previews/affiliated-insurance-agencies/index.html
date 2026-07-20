@@ -68,9 +68,10 @@ tailwind.config = {
   /* directional scrim: brightest legibility on the LEFT where the headline sits */
   .hero-scrim{ position:absolute; inset:0;
     background:
-      linear-gradient(90deg, rgba(251,247,241,.92) 0%, rgba(251,247,241,.72) 26%, rgba(251,247,241,.30) 48%, rgba(251,247,241,0) 66%),
-      linear-gradient(180deg, rgba(251,247,241,.55) 0%, rgba(251,247,241,0) 22%, rgba(251,247,241,0) 68%, rgba(20,24,29,.14) 100%);
+      linear-gradient(90deg, rgba(251,247,241,.95) 0%, rgba(251,247,241,.86) 34%, rgba(251,247,241,.52) 55%, rgba(251,247,241,.12) 74%, rgba(251,247,241,0) 88%),
+      linear-gradient(180deg, rgba(251,247,241,.55) 0%, rgba(251,247,241,0) 26%, rgba(251,247,241,0) 52%, rgba(251,247,241,.55) 100%);
   }
+  .lift{ text-shadow:0 1px 10px rgba(251,247,241,.95), 0 0 2px rgba(251,247,241,.8); }
   .hero-grain::after{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
     background-image:radial-gradient(#14181D 1px, transparent 1px); background-size:3px 3px; }
 
@@ -137,7 +138,7 @@ tailwind.config = {
 <body class="antialiased">
 
 <!-- ============ NAV ============ -->
-<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500 bg-cream/85 backdrop-blur border-b border-ink/5">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="flex items-center justify-between" style="height:var(--nav-h)">
       <a href="#top" class="flex items-center gap-2.5 group" aria-label="Affiliated Insurance Agencies home">
@@ -154,11 +155,11 @@ tailwind.config = {
           <span class="font-body font-semibold text-[9.5px] tracking-[0.22em] text-azure block -mt-0.5">INSURANCE AGENCIES</span>
         </span>
       </a>
-      <nav class="hidden lg:flex items-center gap-8 text-[14px] font-medium text-mute">
-        <a href="#coverage" class="underline-grow hover:text-ink transition">Coverage</a>
-        <a href="#heritage" class="underline-grow hover:text-ink transition">Since 1986</a>
-        <a href="#voices" class="underline-grow hover:text-ink transition">Reviews</a>
-        <a href="#visit" class="underline-grow hover:text-ink transition">Visit</a>
+      <nav class="hidden lg:flex items-center gap-8 text-[14px] font-semibold text-ink/75">
+        <a href="#coverage" class="underline-grow hover:text-azure transition">Coverage</a>
+        <a href="#heritage" class="underline-grow hover:text-azure transition">Since 1986</a>
+        <a href="#voices" class="underline-grow hover:text-azure transition">Reviews</a>
+        <a href="#visit" class="underline-grow hover:text-azure transition">Visit</a>
       </nav>
       <a href="tel:+18508776660" class="btn btn-primary font-semibold text-[14px] rounded-full px-4 sm:px-5 py-2.5 flex items-center gap-2">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.24 1L6.6 10.8Z" fill="currentColor"/></svg>
@@ -177,7 +178,7 @@ tailwind.config = {
   <div class="hero-grain absolute inset-0"></div>
 
   <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 min-h-[100svh] flex items-center">
-    <div class="max-w-[680px] pt-24 pb-28">
+    <div class="max-w-[680px] pt-28 sm:pt-24 pb-28">
       <div data-reveal class="inline-flex items-center gap-2 rounded-full bg-white/70 backdrop-blur border border-ink/10 px-3.5 py-1.5 mb-6">
         <span class="w-2 h-2 rounded-full bg-ember chip-dot"></span>
         <span class="text-[12px] font-semibold tracking-[0.14em] text-mute uppercase">Tallahassee, Florida · Since 1986</span>
@@ -204,27 +205,27 @@ tailwind.config = {
         </a>
       </div>
 
-      <div data-reveal class="mt-11 flex items-center gap-6 text-ink">
+      <div data-reveal class="mt-11 flex items-center gap-6 text-ink lift">
         <div>
           <div class="font-display font-extrabold text-[30px] leading-none"><span class="cu" data-target="38" data-suffix="+">0</span></div>
-          <div class="text-[12px] text-mute mt-1 tracking-wide">Years serving Tallahassee</div>
+          <div class="text-[12px] text-ink/80 font-medium mt-1 tracking-wide">Years serving Tallahassee</div>
         </div>
-        <div class="w-px h-9 bg-ink/12"></div>
+        <div class="w-px h-9 bg-ink/20"></div>
         <div>
           <div class="font-display font-extrabold text-[30px] leading-none flex items-center gap-1"><span class="cu" data-target="4.5" data-dec="1">0</span><span class="text-azure text-[20px]">★</span></div>
-          <div class="text-[12px] text-mute mt-1 tracking-wide">Rated on Google</div>
+          <div class="text-[12px] text-ink/80 font-medium mt-1 tracking-wide">Rated on Google</div>
         </div>
-        <div class="w-px h-9 bg-ink/12 hidden sm:block"></div>
+        <div class="w-px h-9 bg-ink/20 hidden sm:block"></div>
         <div class="hidden sm:block">
           <div class="font-display font-extrabold text-[30px] leading-none"><span class="cu" data-target="6" data-suffix="+">0</span></div>
-          <div class="text-[12px] text-mute mt-1 tracking-wide">Lines of coverage</div>
+          <div class="text-[12px] text-ink/80 font-medium mt-1 tracking-wide">Lines of coverage</div>
         </div>
       </div>
     </div>
   </div>
 
-  <a href="#coverage" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 text-mute/80" aria-label="Scroll down">
-    <span class="text-[10px] tracking-[0.25em] uppercase">Scroll</span>
+  <a href="#coverage" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 text-ink/70 lift" aria-label="Scroll down">
+    <span class="text-[10px] tracking-[0.25em] uppercase font-semibold">Scroll</span>
     <svg width="18" height="26" viewBox="0 0 18 26" fill="none" class="animate-bounce"><rect x="1" y="1" width="16" height="24" rx="8" stroke="currentColor" stroke-width="1.4"/><circle cx="9" cy="8" r="2.4" fill="currentColor"/></svg>
   </a>
 </section>
@@ -373,7 +374,7 @@ tailwind.config = {
   <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(20,24,29,.9) 0%,rgba(20,24,29,.7) 45%,rgba(20,24,29,.35) 100%)"></div>
   <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 py-24 sm:py-32">
     <div class="max-w-[620px]">
-      <div data-reveal class="text-[13px] font-semibold tracking-[0.2em] text-sky uppercase mb-5">The Affiliated difference</div>
+      <div data-reveal class="text-[13px] font-semibold tracking-[0.2em] text-[#8FC7F2] uppercase mb-5">The Affiliated difference</div>
       <h2 data-reveal class="font-display font-extrabold text-cream text-[8.5vw] sm:text-[44px] lg:text-[50px] leading-[1.07]">
         Like the old oaks over Tallahassee — steady, and here when the weather turns.
       </h2>
@@ -491,11 +492,21 @@ tailwind.config = {
         </a>
       </div>
 
-      <div data-reveal class="rounded-2xl overflow-hidden border border-ink/10 shadow-sm min-h-[380px] lg:min-h-full">
+      <div data-reveal class="relative rounded-2xl overflow-hidden border border-ink/10 shadow-sm min-h-[340px] lg:min-h-full bg-bone">
+        <!-- branded fallback (shows if map tiles are slow / in screenshot capture) -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
+             style="background:radial-gradient(circle at 30% 25%, rgba(3,99,185,.10), transparent 55%), radial-gradient(circle at 80% 85%, rgba(216,32,31,.08), transparent 50%), #F3EBDD">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" class="mb-3"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z" fill="#0363b9"/><circle cx="12" cy="10" r="2.6" fill="#fff"/></svg>
+          <div class="font-display font-bold text-ink text-[16px]">2500 Apalachee Parkway, Suite C</div>
+          <div class="text-[14px] text-mute mt-0.5">Tallahassee, FL 32301</div>
+          <a href="https://www.google.com/maps?q=2500+Apalachee+Parkway+Suite+C+Tallahassee+FL+32301" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-azure underline-grow">Open in Google Maps
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
         <iframe
           title="Map to Affiliated Insurance Agencies, 2500 Apalachee Parkway Suite C, Tallahassee FL"
           src="https://www.google.com/maps?q=2500%20Apalachee%20Parkway%20Suite%20C%2C%20Tallahassee%2C%20FL%2032301&output=embed"
-          width="100%" height="100%" style="border:0;min-height:380px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          class="relative w-full h-full" style="border:0;min-height:340px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
     </div>
   </div>
