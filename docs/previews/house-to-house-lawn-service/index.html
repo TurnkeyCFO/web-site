@@ -146,13 +146,15 @@ tailwind.config = { theme: { extend: {
   .maskimg{ clip-path:inset(0 0 100% 0); transition:clip-path 1.25s cubic-bezier(.2,.8,.2,1); }
   .maskimg.in{ clip-path:inset(0 0 0% 0); }
 
-  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
-            mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent); }
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 4.5%,#000 95.5%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 4.5%,#000 95.5%,transparent); }
   .mtrack{ display:flex; gap:3rem; width:max-content; animation:scrollX 42s linear infinite; }
   .marquee:hover .mtrack{ animation-play-state:paused; }
   @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
+  .mapframe{ height:470px; }
   @media (max-width:880px){
+    .mapframe{ height:330px; }
     .hero-media{ inset:0; height:100%; }
     .stop{ width:82vw; }
   }
@@ -226,7 +228,7 @@ tailwind.config = { theme: { extend: {
   </video>
   <div class="hero-scrim"></div>
 
-  <div class="relative z-10 w-full mx-auto max-w-7xl px-5 sm:px-8 pt-[172px] md:pt-[150px] pb-16 md:pb-20">
+  <div class="relative z-10 w-full mx-auto max-w-7xl px-5 sm:px-8 pt-[200px] md:pt-[150px] pb-16 md:pb-20">
     <div class="max-w-[720px]">
       <span class="eyebrow pill bg-white/12 text-warm border border-white/25 backdrop-blur-sm" data-reveal>
         <span class="dot"></span> Killeen · Harker Heights · Nolanville
@@ -566,7 +568,7 @@ tailwind.config = { theme: { extend: {
           <iframe
             title="Map of Killeen, Texas — House to House Lawn Service area"
             src="https://www.google.com/maps?q=Killeen%2C%20Texas%2076542&output=embed"
-            width="100%" height="470" style="border:0; display:block;"
+            width="100%" height="470" class="mapframe" style="border:0; display:block;"
             referrerpolicy="no-referrer-when-downgrade"
             allowfullscreen></iframe>
         </div>
