@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<!--
+  Americlean Dry Cleaners and Alterations — Pembroke Pines, FL
+  Turnkey Web draft preview. Light-luxury art direction.
+  Palette: cream #FBF7F1 / paper #F3ECE3 / ink #16202B / teal #2C6E6A / brass #B98D52
+  Type: Instrument Serif (display) + Inter Tight (body)
+  Hero: AI cinematic (Higgsfield nano_banana_pro -> Kling 3.0 turbo), self-hosted.
+  Signature moment: pinned horizontal "garment journey" scrub rail.
+  Showpiece: Three.js drifting fiber field on a light canvas.
+  All business data researched + verified. No fabricated reviews.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Americlean Dry Cleaners and Alterations | Pembroke Pines, FL</title>
+<meta name="description" content="Dry cleaning, alterations and tailoring in Pembroke Pines, FL. Family-run on Taft Street since 2020. Rated 4.7 on Google. Call (954) 437-2080.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/americlean-dry-cleaners/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Americlean Dry Cleaners and Alterations | Pembroke Pines, FL">
+<meta property="og:description" content="Dry cleaning and expert alterations under one roof. 8960 Taft St, Pembroke Pines.">
+<meta property="og:image" content="https://turnkeyweb.org/previews/americlean-dry-cleaners/assets/hero.jpg">
+<meta property="og:url" content="https://turnkeyweb.org/previews/americlean-dry-cleaners/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      cream:'#FBF7F1', paper:'#F3ECE3', ink:'#16202B',
+      teal:'#2C6E6A', tealDeep:'#1E4F4C', brass:'#B98D52', muted:'#5A6672'
+    },
+    fontFamily: { display:['"Instrument Serif"','Georgia','serif'], body:['"Inter Tight"','system-ui','sans-serif'] }
+  }}
+}
+</script>
+<style>
+  :root{ --cream:#FBF7F1; --paper:#F3ECE3; --ink:#16202B; --teal:#2C6E6A; --brass:#B98D52; --muted:#5A6672; }
+  html{ scroll-padding-top:88px; -webkit-text-size-adjust:100%; }
+  body{ background:var(--cream); color:var(--ink); font-family:'Inter Tight',system-ui,sans-serif; overflow-x:hidden; }
+  ::selection{ background:var(--teal); color:#fff; }
+
+  /* ---- descender safety (HARD): never clip g y p j q ---- */
+  h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
+  .grad-text{
+    background:linear-gradient(100deg,var(--teal) 0%,var(--brass) 42%,var(--tealDeep,#1E4F4C) 74%,var(--teal) 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite; line-height:1.18; padding-bottom:.1em; display:inline-block;
+  }
+  .grad-text-light{
+    background:linear-gradient(100deg,#FFFFFF 0%,#F0E2C8 40%,#E8D3AC 62%,#FFFFFF 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite; line-height:1.18; padding-bottom:.1em; display:inline-block;
+  }
+  @keyframes shimmer{ 0%{background-position:0% 50%} 100%{background-position:220% 50%} }
+
+  /* ---- hero ---- */
+  .hero-wrap{ position:relative; overflow:hidden; background:#0E1A20; }
+  .hero-bg{ position:absolute; inset:-8% 0 -8% 0; width:100%; height:116%; object-fit:cover; will-change:transform; }
+  .hero-scrim{
+    position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(90deg, rgba(9,22,27,.94) 0%, rgba(9,22,27,.88) 34%, rgba(9,22,27,.42) 58%, rgba(9,22,27,.14) 78%, rgba(9,22,27,.28) 100%),
+      linear-gradient(180deg, rgba(9,22,27,.62) 0%, rgba(9,22,27,0) 26%, rgba(9,22,27,.30) 100%);
+  }
+  @media (max-width:880px){
+    .hero-scrim{ background:linear-gradient(180deg, rgba(9,22,27,.86) 0%, rgba(9,22,27,.62) 42%, rgba(9,22,27,.80) 100%); }
+  }
+  .hero-copy h1{ text-shadow:0 2px 26px rgba(4,12,16,.62); }
+  .hero-copy p{ text-shadow:0 1px 14px rgba(4,12,16,.72); }
+
+  /* ---- fiber canvas showpiece ---- */
+  #fiberCanvas{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:.9; }
+
+  /* ---- cards ---- */
+  .card{ position:relative; background:#fff; border:1px solid rgba(22,32,43,.09);
+    transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease, border-color .4s ease; }
+  .card::before{ content:''; position:absolute; top:0; left:0; height:2px; width:0;
+    background:linear-gradient(90deg,var(--teal),var(--brass)); transition:width .62s cubic-bezier(.22,1,.36,1); }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 22px 48px -22px rgba(22,32,43,.30); border-color:rgba(44,110,106,.28); }
+  .card:hover::before{ width:100%; }
+  .card:hover .svc-ico{ transform:rotate(-6deg) scale(1.07); }
+  .svc-ico{ transition:transform .5s cubic-bezier(.22,1,.36,1); }
+
+  /* ---- buttons ---- */
+  .btn{ position:relative; overflow:hidden; transition:transform .35s cubic-bezier(.22,1,.36,1), filter .35s ease, box-shadow .35s ease; }
+  .btn:hover{ transform:translateY(-3px); filter:brightness(1.04); }
+  .btn::after{ content:''; position:absolute; top:0; left:-130%; width:60%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.34),transparent); transform:skewX(-18deg); }
+  .btn:hover::after{ left:130%; transition:left .9s cubic-bezier(.22,1,.36,1); }
+
+  /* ---- marquee ---- */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 42s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ---- journey rail (signature) ---- */
+  #railViewport{ overflow:hidden; }
+  .rail-track{ display:flex; gap:1.5rem; width:max-content; padding-inline:6vw; }
+  .rail-step{ width:340px; flex:0 0 auto; }
+  @media (max-width:880px){ .rail-step{ width:255px; } .rail-track{ gap:1rem; padding-inline:5vw; } }
+
+  .dot-pulse{ animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.82)} }
+
+  .ul-grow{ position:relative; }
+  .ul-grow::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+    background:linear-gradient(90deg,var(--teal),var(--brass)); transition:width .5s cubic-bezier(.22,1,.36,1); }
+  .ul-grow:hover::after{ width:100%; }
+
+  [data-reveal]{ opacity:0; transform:translateY(28px); will-change:opacity,transform; }
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(rgba(22,32,43,.9) .5px, transparent .5px); background-size:3px 3px; }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation:none!important; transition:none!important; }
+    [data-reveal]{ opacity:1!important; transform:none!important; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ================= NAV ================= -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex items-center justify-between h-[70px] sm:h-[78px]">
+      <a href="#top" class="flex items-center gap-3 group">
+        <!-- custom wordmark mark: hanger hook + press line -->
+        <span class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-ink">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="#F3ECE3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 6.2a1.9 1.9 0 1 1 1.9 1.9c-1 0-1.9.5-1.9 1.6"/>
+            <path d="M12 9.9 3.6 15.4c-.9.6-.5 2 .6 2h15.6c1.1 0 1.5-1.4.6-2L12 9.9Z"/>
+          </svg>
+        </span>
+        <span class="leading-none">
+          <span class="block font-display text-[20px] sm:text-[22px] tracking-tight text-ink" style="line-height:1.15;padding-bottom:.04em">Americlean</span>
+          <span class="block text-[9.5px] sm:text-[10px] uppercase tracking-[.24em] text-teal font-semibold">Dry Cleaners &amp; Alterations</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-[14px] font-medium text-ink/80">
+        <a href="#services" class="ul-grow hover:text-ink transition">Services</a>
+        <a href="#craft" class="ul-grow hover:text-ink transition">Our Craft</a>
+        <a href="#journey" class="ul-grow hover:text-ink transition">How It Works</a>
+        <a href="#reviews" class="ul-grow hover:text-ink transition">Reviews</a>
+        <a href="#visit" class="ul-grow hover:text-ink transition">Visit</a>
+      </nav>
+      <a href="tel:+19544372080" class="btn hidden sm:inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13.5px] font-semibold text-cream">
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+        </svg>
+        (954) 437-2080
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="top" class="hero-wrap min-h-[100svh] flex items-end sm:items-center pt-[104px] sm:pt-[78px] pb-16 sm:pb-0">
+  <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg" aria-hidden="true">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 w-full mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-[640px] hero-copy">
+      <div class="flex items-center gap-2.5 mb-6" data-reveal>
+        <span class="h-1.5 w-1.5 rounded-full bg-brass dot-pulse"></span>
+        <span class="text-[10.5px] sm:text-[11px] uppercase tracking-[.28em] text-cream/90 font-semibold">Pembroke Pines, Florida</span>
+      </div>
+
+      <h1 class="font-display text-[clamp(2.6rem,7.2vw,4.9rem)] text-cream" style="line-height:1.09;padding-bottom:.08em" data-reveal>
+        Pressed with care.<br>
+        <em class="grad-text-light not-italic">Tailored to fit.</em>
+      </h1>
+
+      <p class="mt-6 text-[16.5px] sm:text-[18px] leading-relaxed text-cream/85 max-w-[510px]" data-reveal>
+        Two crafts under one roof on Taft Street. Expert dry cleaning and a seamstress who
+        actually knows how a garment should sit on you. Family-run, and rated 4.7 on Google.
+      </p>
+
+      <div class="mt-9 flex flex-col sm:flex-row gap-3.5 sm:items-center" data-reveal>
+        <a href="tel:+19544372080" class="btn inline-flex items-center justify-center gap-2.5 rounded-full bg-cream px-8 py-4 text-[15px] font-semibold text-ink">
+          <svg viewBox="0 0 24 24" class="h-[17px] w-[17px]" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+          </svg>
+          Call (954) 437-2080
+        </a>
+        <a href="#visit" class="btn inline-flex items-center justify-center gap-2 rounded-full border border-cream/45 px-8 py-4 text-[15px] font-semibold text-cream hover:bg-cream/10">
+          Find the shop
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-11 flex flex-wrap items-center gap-x-9 gap-y-5 border-t border-cream/20 pt-7" data-reveal>
+        <div>
+          <div class="font-display text-[30px] text-cream" style="line-height:1.12;padding-bottom:.05em"><span data-count="4.7" data-dec="1">0</span><span class="text-brass">★</span></div>
+          <div class="text-[10.5px] uppercase tracking-[.2em] text-cream/70 mt-1 font-medium">Google rating</div>
+        </div>
+        <div>
+          <div class="font-display text-[30px] text-cream" style="line-height:1.12;padding-bottom:.05em"><span data-count="2020">0</span></div>
+          <div class="text-[10.5px] uppercase tracking-[.2em] text-cream/70 mt-1 font-medium">Serving since</div>
+        </div>
+        <div>
+          <div class="font-display text-[30px] text-cream" style="line-height:1.12;padding-bottom:.05em">6<span class="text-brass">-day</span></div>
+          <div class="text-[10.5px] uppercase tracking-[.2em] text-cream/70 mt-1 font-medium">Open Mon&ndash;Sat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="bg-ink py-4 sm:py-5">
+  <div class="marquee">
+    <div class="marquee-track text-[13px] sm:text-[14px] uppercase tracking-[.2em] text-cream/75 font-medium">
+      <span>Dry Cleaning</span><span class="text-brass">&bull;</span>
+      <span class="italic font-display normal-case text-[17px] text-brass" style="line-height:1.2;padding-bottom:.06em">Alterations &amp; Tailoring</span><span class="text-brass">&bull;</span>
+      <span>Hemming</span><span class="text-brass">&bull;</span>
+      <span>Stain Treatment</span><span class="text-brass">&bull;</span>
+      <span>Press Only</span><span class="text-brass">&bull;</span>
+      <span class="italic font-display normal-case text-[17px] text-brass" style="line-height:1.2;padding-bottom:.06em">Mending &amp; Repair</span><span class="text-brass">&bull;</span>
+      <span>Suits &amp; Formalwear</span><span class="text-brass">&bull;</span>
+      <!-- duplicate for seamless loop -->
+      <span>Dry Cleaning</span><span class="text-brass">&bull;</span>
+      <span class="italic font-display normal-case text-[17px] text-brass" style="line-height:1.2;padding-bottom:.06em">Alterations &amp; Tailoring</span><span class="text-brass">&bull;</span>
+      <span>Hemming</span><span class="text-brass">&bull;</span>
+      <span>Stain Treatment</span><span class="text-brass">&bull;</span>
+      <span>Press Only</span><span class="text-brass">&bull;</span>
+      <span class="italic font-display normal-case text-[17px] text-brass" style="line-height:1.2;padding-bottom:.06em">Mending &amp; Repair</span><span class="text-brass">&bull;</span>
+      <span>Suits &amp; Formalwear</span><span class="text-brass">&bull;</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CRAFT (WebGL showpiece) ================= -->
+<section id="craft" class="relative overflow-hidden bg-paper grain py-24 sm:py-32">
+  <canvas id="fiberCanvas" aria-hidden="true"></canvas>
+  <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-[620px]" data-reveal>
+      <span class="text-[10.5px] uppercase tracking-[.28em] text-teal font-bold">Two crafts, one counter</span>
+      <h2 class="font-display text-[clamp(2.1rem,5vw,3.5rem)] mt-5 text-ink" style="line-height:1.12;padding-bottom:.07em">
+        Most cleaners just clean.<br><span class="grad-text">We also make it fit.</span>
+      </h2>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 gap-6">
+      <div class="card rounded-2xl p-9 sm:p-11" data-reveal>
+        <div class="svc-ico inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal/10 text-teal">
+          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a2 2 0 1 0 2 2c-1.1 0-2 .6-2 1.7"/>
+            <path d="M12 6.7 3.2 12.6c-1 .7-.5 2.2.7 2.2h16.2c1.2 0 1.7-1.5.7-2.2L12 6.7Z"/>
+            <path d="M6 18.5h12"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-[27px] mt-6 text-ink" style="line-height:1.16;padding-bottom:.06em">The cleaning</h3>
+        <p class="mt-4 text-[15.5px] leading-relaxed text-muted">
+          Everyday shirts, work suits, dresses and formalwear. Stains get looked at
+          individually before anything goes through, and everything comes back pressed
+          properly rather than just heat-flattened.
+        </p>
+        <ul class="mt-7 space-y-3 text-[14.5px] text-ink/80">
+          <li class="flex gap-3"><span class="mt-[7px] h-1.5 w-1.5 rounded-full bg-brass shrink-0"></span>Shirts, suits, dresses and formalwear</li>
+          <li class="flex gap-3"><span class="mt-[7px] h-1.5 w-1.5 rounded-full bg-brass shrink-0"></span>Targeted stain treatment</li>
+          <li class="flex gap-3"><span class="mt-[7px] h-1.5 w-1.5 rounded-full bg-brass shrink-0"></span>Press-only service if it just needs a crease</li>
+        </ul>
+      </div>
+
+      <div class="card rounded-2xl p-9 sm:p-11" data-reveal>
+        <div class="svc-ico inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brass/15 text-brass">
+          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/>
+            <path d="M8.4 7.6 20 18M20 6 8.4 16.4"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-[27px] mt-6 text-ink" style="line-height:1.16;padding-bottom:.06em">The tailoring</h3>
+        <p class="mt-4 text-[15.5px] leading-relaxed text-muted">
+          This is the part people keep coming back for. Hems, taking in a waist, sleeves,
+          zippers, a split seam on something you thought was finished. Real alterations by
+          someone who has done it for years, not a quick machine job.
+        </p>
+        <ul class="mt-7 space-y-3 text-[14.5px] text-ink/80">
+          <li class="flex gap-3"><span class="mt-[7px] h-1.5 w-1.5 rounded-full bg-teal shrink-0"></span>Hemming and length adjustments</li>
+          <li class="flex gap-3"><span class="mt-[7px] h-1.5 w-1.5 rounded-full bg-teal shrink-0"></span>Taking in, letting out, resizing</li>
+          <li class="flex gap-3"><span class="mt-[7px] h-1.5 w-1.5 rounded-full bg-teal shrink-0"></span>Mending, repairs and zipper replacement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="bg-cream py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-7" data-reveal>
+      <div class="max-w-[560px]">
+        <span class="text-[10.5px] uppercase tracking-[.28em] text-teal font-bold">What we do</span>
+        <h2 class="font-display text-[clamp(2.1rem,5vw,3.4rem)] mt-5 text-ink" style="line-height:1.12;padding-bottom:.07em">
+          Bring it in. We&rsquo;ll handle it.
+        </h2>
+      </div>
+      <a href="tel:+19544372080" class="text-[15px] font-semibold text-teal ul-grow shrink-0">Questions? Call the shop &rarr;</a>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- 1 -->
+      <div class="card rounded-2xl p-8" data-reveal>
+        <div class="svc-ico inline-flex h-11 w-11 items-center justify-center rounded-lg bg-teal/10 text-teal">
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.7 3.2 12.6c-1 .7-.5 2.2.7 2.2h16.2c1.2 0 1.7-1.5.7-2.2L12 6.7Z"/><path d="M12 3a2 2 0 1 0 2 2c-1.1 0-2 .6-2 1.7"/></svg>
+        </div>
+        <h3 class="font-display text-[22px] mt-5 text-ink" style="line-height:1.18;padding-bottom:.06em">Dry Cleaning</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-muted">Shirts, suits, dresses, coats and formalwear, cleaned and finished properly.</p>
+      </div>
+      <!-- 2 -->
+      <div class="card rounded-2xl p-8" data-reveal>
+        <div class="svc-ico inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brass/15 text-brass">
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><path d="M8.4 7.6 20 18M20 6 8.4 16.4"/></svg>
+        </div>
+        <h3 class="font-display text-[22px] mt-5 text-ink" style="line-height:1.18;padding-bottom:.06em">Alterations</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-muted">Hems, waists, sleeves and resizing so a garment actually fits the person wearing it.</p>
+      </div>
+      <!-- 3 -->
+      <div class="card rounded-2xl p-8" data-reveal>
+        <div class="svc-ico inline-flex h-11 w-11 items-center justify-center rounded-lg bg-teal/10 text-teal">
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20s2.5-6 8-6 8 6 8 6"/><path d="M12 14V4"/><path d="M9 6.5 12 4l3 2.5"/></svg>
+        </div>
+        <h3 class="font-display text-[22px] mt-5 text-ink" style="line-height:1.18;padding-bottom:.06em">Mending &amp; Repair</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-muted">Split seams, loose buttons, zippers. The fixes that save a piece you like.</p>
+      </div>
+      <!-- 4 -->
+      <div class="card rounded-2xl p-8" data-reveal>
+        <div class="svc-ico inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brass/15 text-brass">
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s5 5.4 5 9a5 5 0 0 1-10 0c0-3.6 5-9 5-9Z"/></svg>
+        </div>
+        <h3 class="font-display text-[22px] mt-5 text-ink" style="line-height:1.18;padding-bottom:.06em">Stain Treatment</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-muted">Stains are assessed one at a time before cleaning, not just run through and hoped for.</p>
+      </div>
+      <!-- 5 -->
+      <div class="card rounded-2xl p-8" data-reveal>
+        <div class="svc-ico inline-flex h-11 w-11 items-center justify-center rounded-lg bg-teal/10 text-teal">
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="9" rx="2"/><path d="M7 8V5h10v3M7 17v2h10v-2"/></svg>
+        </div>
+        <h3 class="font-display text-[22px] mt-5 text-ink" style="line-height:1.18;padding-bottom:.06em">Press Only</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-muted">Already clean and just needs a sharp finish? Bring it in for pressing alone.</p>
+      </div>
+      <!-- 6 -->
+      <div class="card rounded-2xl p-8" data-reveal>
+        <div class="svc-ico inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brass/15 text-brass">
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+        </div>
+        <h3 class="font-display text-[22px] mt-5 text-ink" style="line-height:1.18;padding-bottom:.06em">Fast Turnaround</h3>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-muted">Customers regularly mention same-day service. Ask at the counter and we&rsquo;ll tell you straight.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOURNEY RAIL (signature) ================= -->
+<section id="journey" class="bg-ink py-24 sm:py-32 overflow-hidden">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8" data-reveal>
+    <span class="text-[10.5px] uppercase tracking-[.28em] text-brass font-bold">How it works</span>
+    <h2 class="font-display text-[clamp(2.1rem,5vw,3.4rem)] mt-5 text-cream max-w-[620px]" style="line-height:1.12;padding-bottom:.07em">
+      What happens between <span class="grad-text-light">drop-off and done</span>
+    </h2>
+  </div>
+
+  <div id="railViewport" class="mt-14">
+    <div class="rail-track" id="railTrack">
+      <div class="rail-step">
+        <div class="h-full rounded-2xl border border-cream/15 bg-cream/[.04] p-8">
+          <span class="font-display text-[42px] text-brass" style="line-height:1.1;padding-bottom:.05em">01</span>
+          <h3 class="font-display text-[24px] text-cream mt-3" style="line-height:1.18;padding-bottom:.06em">Drop it off</h3>
+          <p class="mt-3.5 text-[14.5px] leading-relaxed text-cream/70">Walk in at 8960 Taft Street. Tell us what it is and what you need. You get a ticket with your pickup time on it.</p>
+        </div>
+      </div>
+      <div class="rail-step">
+        <div class="h-full rounded-2xl border border-cream/15 bg-cream/[.04] p-8">
+          <span class="font-display text-[42px] text-brass" style="line-height:1.1;padding-bottom:.05em">02</span>
+          <h3 class="font-display text-[24px] text-cream mt-3" style="line-height:1.18;padding-bottom:.06em">We inspect it</h3>
+          <p class="mt-3.5 text-[14.5px] leading-relaxed text-cream/70">Every piece is checked for stains, fabric type and anything loose before it goes anywhere near a machine.</p>
+        </div>
+      </div>
+      <div class="rail-step">
+        <div class="h-full rounded-2xl border border-cream/15 bg-cream/[.04] p-8">
+          <span class="font-display text-[42px] text-brass" style="line-height:1.1;padding-bottom:.05em">03</span>
+          <h3 class="font-display text-[24px] text-cream mt-3" style="line-height:1.18;padding-bottom:.06em">Clean or tailor</h3>
+          <p class="mt-3.5 text-[14.5px] leading-relaxed text-cream/70">Cleaning goes one way, alterations go to the seamstress. If you asked for both, it does both.</p>
+        </div>
+      </div>
+      <div class="rail-step">
+        <div class="h-full rounded-2xl border border-cream/15 bg-cream/[.04] p-8">
+          <span class="font-display text-[42px] text-brass" style="line-height:1.1;padding-bottom:.05em">04</span>
+          <h3 class="font-display text-[24px] text-cream mt-3" style="line-height:1.18;padding-bottom:.06em">Pressed and finished</h3>
+          <p class="mt-3.5 text-[14.5px] leading-relaxed text-cream/70">Steamed, pressed and hung. This is the step that decides whether it looks cared for or just washed.</p>
+        </div>
+      </div>
+      <div class="rail-step">
+        <div class="h-full rounded-2xl border border-cream/15 bg-cream/[.04] p-8">
+          <span class="font-display text-[42px] text-brass" style="line-height:1.1;padding-bottom:.05em">05</span>
+          <h3 class="font-display text-[24px] text-cream mt-3" style="line-height:1.18;padding-bottom:.06em">Ready when we said</h3>
+          <p class="mt-3.5 text-[14.5px] leading-relaxed text-cream/70">Come back at the time on your ticket. Not sure it&rsquo;s ready? Call ahead and we&rsquo;ll check for you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BAND ================= -->
+<section class="relative h-[38svh] sm:h-[46svh] overflow-hidden">
+  <img src="assets/band.jpg" alt="Freshly pressed shirts on the rail at Americlean Dry Cleaners" class="absolute inset-0 h-full w-full object-cover" data-parallax="0.12">
+  <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(9,22,27,.82) 0%,rgba(9,22,27,.55) 46%,rgba(9,22,27,.20) 100%)"></div>
+  <div class="relative z-10 h-full flex items-center">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 w-full">
+      <p class="font-display italic text-[clamp(1.5rem,3.6vw,2.6rem)] text-cream max-w-[620px]" style="line-height:1.24;padding-bottom:.08em" data-reveal>
+        &ldquo;Great business with outstanding service and staff.&rdquo;
+      </p>
+      <p class="mt-4 text-[13px] uppercase tracking-[.2em] text-cream/70 font-semibold" data-reveal>Lupe S. &mdash; Yelp review</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section id="reviews" class="bg-paper py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-[620px]" data-reveal>
+      <span class="text-[10.5px] uppercase tracking-[.28em] text-teal font-bold">In their words</span>
+      <h2 class="font-display text-[clamp(2.1rem,5vw,3.4rem)] mt-5 text-ink" style="line-height:1.12;padding-bottom:.07em">
+        Rated <span class="grad-text">4.7 on Google</span>
+      </h2>
+      <p class="mt-5 text-[16px] leading-relaxed text-muted">Real reviews, quoted as customers wrote them.</p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-5">
+      <figure class="card rounded-2xl p-8 flex flex-col" data-reveal>
+        <div class="flex gap-1 text-brass" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+        </div>
+        <blockquote class="mt-5 text-[15.5px] leading-relaxed text-ink/85 flex-1">
+          &ldquo;I would highly recommend this cleaner. I had alteration done on my dress pants.
+          Maria did an amazing job, completed the work very quickly. Would definitely recommend
+          this cleaner, thanks for being courteous throughout the whole process.&rdquo;
+        </blockquote>
+        <figcaption class="mt-6 pt-5 border-t border-ink/10 text-[13px] font-semibold uppercase tracking-[.14em] text-teal">Andrew W. &mdash; Yelp review</figcaption>
+      </figure>
+
+      <figure class="card rounded-2xl p-8 flex flex-col" data-reveal>
+        <div class="flex gap-1 text-brass" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+        </div>
+        <blockquote class="mt-5 text-[15.5px] leading-relaxed text-ink/85 flex-1">
+          &ldquo;Randomly saw them while driving by and decided to stop in to get my clothing
+          cleaned. Great service and good pricing. I would definitely return here for continued
+          dry cleaning services.&rdquo;
+        </blockquote>
+        <figcaption class="mt-6 pt-5 border-t border-ink/10 text-[13px] font-semibold uppercase tracking-[.14em] text-teal">Shenika T. &mdash; Yelp review</figcaption>
+      </figure>
+
+      <figure class="card rounded-2xl p-8 flex flex-col" data-reveal>
+        <div class="flex gap-1 text-brass" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+        </div>
+        <blockquote class="mt-5 text-[15.5px] leading-relaxed text-ink/85 flex-1">
+          &ldquo;Great business with outstanding service and staff. I dropped off my clothes and
+          it was ready for me the same day. Lupe did a great job on my alterations and dry
+          cleaning.&rdquo;
+        </blockquote>
+        <figcaption class="mt-6 pt-5 border-t border-ink/10 text-[13px] font-semibold uppercase tracking-[.14em] text-teal">Lupe S. &mdash; Yelp review</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section id="visit" class="bg-cream py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-[620px]" data-reveal>
+      <span class="text-[10.5px] uppercase tracking-[.28em] text-teal font-bold">Visit the shop</span>
+      <h2 class="font-display text-[clamp(2.1rem,5vw,3.4rem)] mt-5 text-ink" style="line-height:1.12;padding-bottom:.07em">
+        Pine Lake Plaza, on Taft Street
+      </h2>
+    </div>
+
+    <div class="mt-14 grid lg:grid-cols-[1fr_1.15fr] gap-6">
+      <!-- info -->
+      <div class="space-y-5">
+        <div class="card rounded-2xl p-8" data-reveal>
+          <h3 class="text-[11px] uppercase tracking-[.24em] text-teal font-bold">Address</h3>
+          <p class="mt-4 font-display text-[24px] text-ink" style="line-height:1.3;padding-bottom:.06em">
+            8960 Taft St<br>Pembroke Pines, FL 33024
+          </p>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=8960+Taft+St%2C+Pembroke+Pines%2C+FL+33024" target="_blank" rel="noopener"
+             class="mt-5 inline-flex items-center gap-2 text-[15px] font-semibold text-teal ul-grow">
+            Get directions
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="card rounded-2xl p-8" data-reveal>
+          <h3 class="text-[11px] uppercase tracking-[.24em] text-teal font-bold">Hours</h3>
+          <dl class="mt-5 space-y-2.5 text-[15px]">
+            <div class="flex justify-between gap-4"><dt class="text-muted">Monday &ndash; Friday</dt><dd class="font-semibold text-ink">8:00 AM &ndash; 6:00 PM</dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-muted">Saturday</dt><dd class="font-semibold text-ink">9:00 AM &ndash; 5:00 PM</dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-muted">Sunday</dt><dd class="font-semibold text-ink/55">Closed</dd></div>
+          </dl>
+        </div>
+
+        <div class="card rounded-2xl p-8" data-reveal>
+          <h3 class="text-[11px] uppercase tracking-[.24em] text-teal font-bold">Call the shop</h3>
+          <a href="tel:+19544372080" class="mt-4 block font-display text-[30px] text-ink hover:text-teal transition" style="line-height:1.22;padding-bottom:.06em">(954) 437-2080</a>
+          <p class="mt-3 text-[14.5px] text-muted">Family-run by Claudia Perez. Serving Pembroke Pines since 2020.</p>
+        </div>
+      </div>
+
+      <!-- map -->
+      <div class="rounded-2xl overflow-hidden border border-ink/10 min-h-[440px] lg:min-h-full" data-reveal>
+        <iframe
+          title="Map to Americlean Dry Cleaners and Alterations, 8960 Taft St, Pembroke Pines, FL 33024"
+          src="https://www.google.com/maps?q=8960%20Taft%20St%2C%20Pembroke%20Pines%2C%20FL%2033024&output=embed"
+          width="100%" height="100%" style="border:0;min-height:440px;display:block"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="relative bg-ink py-24 sm:py-32 overflow-hidden grain">
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8 text-center">
+    <span class="inline-flex items-center justify-center h-14 w-14 rounded-full bg-cream/10" data-reveal>
+      <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="#E8D3AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 6.2a1.9 1.9 0 1 1 1.9 1.9c-1 0-1.9.5-1.9 1.6"/>
+        <path d="M12 9.9 3.6 15.4c-.9.6-.5 2 .6 2h15.6c1.1 0 1.5-1.4.6-2L12 9.9Z"/>
+      </svg>
+    </span>
+    <h2 class="font-display text-[clamp(2.2rem,5.4vw,3.6rem)] mt-7 text-cream" style="line-height:1.13;padding-bottom:.07em" data-reveal>
+      Got something that needs <span class="grad-text-light">cleaning or fixing?</span>
+    </h2>
+    <p class="mt-6 text-[17px] leading-relaxed text-cream/75" data-reveal>
+      Bring it by the shop on Taft Street, or call and ask. We&rsquo;ll tell you what it needs
+      and when it will be ready.
+    </p>
+    <div class="mt-10 flex flex-col sm:flex-row gap-3.5 justify-center" data-reveal>
+      <a href="tel:+19544372080" class="btn inline-flex items-center justify-center gap-2.5 rounded-full bg-cream px-8 py-4 text-[15px] font-semibold text-ink">
+        <svg viewBox="0 0 24 24" class="h-[17px] w-[17px]" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        (954) 437-2080
+      </a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=8960+Taft+St%2C+Pembroke+Pines%2C+FL+33024" target="_blank" rel="noopener"
+         class="btn inline-flex items-center justify-center gap-2 rounded-full border border-cream/40 px-8 py-4 text-[15px] font-semibold text-cream hover:bg-cream/10">
+        Directions
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-[#0E1720] pt-16 pb-28 sm:pb-16">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid sm:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-cream/10">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="#E8D3AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 6.2a1.9 1.9 0 1 1 1.9 1.9c-1 0-1.9.5-1.9 1.6"/>
+              <path d="M12 9.9 3.6 15.4c-.9.6-.5 2 .6 2h15.6c1.1 0 1.5-1.4.6-2L12 9.9Z"/>
+            </svg>
+          </span>
+          <span class="leading-none">
+            <span class="block font-display text-[20px] text-cream" style="line-height:1.15;padding-bottom:.04em">Americlean</span>
+            <span class="block text-[9.5px] uppercase tracking-[.22em] text-brass font-semibold">Dry Cleaners &amp; Alterations</span>
+          </span>
+        </div>
+        <p class="mt-5 text-[14.5px] leading-relaxed text-cream/60 max-w-[280px]">
+          Dry cleaning and expert alterations in Pembroke Pines, Florida.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-[11px] uppercase tracking-[.24em] text-brass font-bold">Find us</h3>
+        <p class="mt-5 text-[14.5px] leading-relaxed text-cream/70">
+          8960 Taft St<br>Pembroke Pines, FL 33024
+        </p>
+        <a href="tel:+19544372080" class="mt-3 inline-block text-[15px] font-semibold text-cream hover:text-brass transition">(954) 437-2080</a>
+      </div>
+
+      <div>
+        <h3 class="text-[11px] uppercase tracking-[.24em] text-brass font-bold">Hours</h3>
+        <dl class="mt-5 space-y-1.5 text-[14.5px] text-cream/70">
+          <div class="flex justify-between gap-3"><dt>Mon &ndash; Fri</dt><dd class="text-cream/90">8:00 AM &ndash; 6:00 PM</dd></div>
+          <div class="flex justify-between gap-3"><dt>Saturday</dt><dd class="text-cream/90">9:00 AM &ndash; 5:00 PM</dd></div>
+          <div class="flex justify-between gap-3"><dt>Sunday</dt><dd class="text-cream/55">Closed</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-7 border-t border-cream/12 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+      <p class="text-[13px] text-cream/50">&copy; <span id="yr">2026</span> Americlean Dry Cleaners and Alterations</p>
+      <p class="text-[13px] text-cream/40">Draft site preview by Turnkey Web</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MOBILE STICKY BAR ================= -->
+<div class="sm:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-2 border-t border-cream/15">
+  <a href="tel:+19544372080" class="flex items-center justify-center gap-2 bg-ink py-4 text-[14.5px] font-semibold text-cream">
+    <svg viewBox="0 0 24 24" class="h-[16px] w-[16px]" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=8960+Taft+St%2C+Pembroke+Pines%2C+FL+33024" target="_blank" rel="noopener"
+     class="flex items-center justify-center gap-2 bg-teal py-4 text-[14.5px] font-semibold text-white">
+    <svg viewBox="0 0 24 24" class="h-[16px] w-[16px]" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/></svg>
+    Directions
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"DryCleaningOrLaundry",
+  "name":"Americlean Dry Cleaners and Alterations",
+  "description":"Dry cleaning, alterations and tailoring in Pembroke Pines, Florida.",
+  "url":"https://turnkeyweb.org/previews/americlean-dry-cleaners/",
+  "image":"https://turnkeyweb.org/previews/americlean-dry-cleaners/assets/hero.jpg",
+  "telephone":"+1-954-437-2080",
+  "address":{"@type":"PostalAddress","streetAddress":"8960 Taft St","addressLocality":"Pembroke Pines","addressRegion":"FL","postalCode":"33024","addressCountry":"US"},
+  "areaServed":["Pembroke Pines","Hollywood","Miramar","Davie","Cooper City","Broward County"],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.7","bestRating":"5"},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"17:00"}
+  ],
+  "hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Dry Cleaning"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Alterations and Tailoring"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Mending and Repair"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Stain Treatment"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pressing"}}
+  ]}
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isDesktop = window.matchMedia('(min-width: 768px)').matches;
+
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  /* ---------- Lenis: ONE rAF loop, driven by the GSAP ticker ---------- */
+  var lenis = null;
+  if (!reduce && window.Lenis) {
+    lenis = new Lenis({
+      duration: 1.1,
+      easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smoothWheel: true,
+      smoothTouch: false
+    });
+    gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+    lenis.on('scroll', ScrollTrigger.update);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(t, { offset: -70 });
+      else t.scrollIntoView({ behavior:'smooth' });
+    });
+  });
+
+  /* ---------- nav background on scroll ---------- */
+  var nav = document.getElementById('nav');
+  function navState(){
+    if (window.scrollY > 40) nav.style.cssText = 'background:rgba(251,247,241,.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(22,32,43,.09)';
+    else nav.style.cssText = '';
+  }
+  navState(); window.addEventListener('scroll', navState, { passive:true });
+
+  /* ---------- reveals (GPU only, once) ---------- */
+  gsap.utils.toArray('[data-reveal]').forEach(function(el){
+    gsap.fromTo(el, { opacity:0, y:28 }, {
+      opacity:1, y:0, duration:.68, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+      onComplete: function(){ el.style.willChange = 'auto'; }
+    });
+  });
+
+  /* ---------- count-up ---------- */
+  gsap.utils.toArray('[data-count]').forEach(function(el){
+    var target = parseFloat(el.dataset.count);
+    var dec = parseInt(el.dataset.dec || '0', 10);
+    ScrollTrigger.create({
+      trigger: el, start:'top 92%', once:true,
+      onEnter: function(){
+        gsap.to({ v:0 }, { v:target, duration:1.5, ease:'power2.out',
+          onUpdate:function(){ el.textContent = this.targets()[0].v.toFixed(dec); },
+          onComplete:function(){ el.textContent = target.toFixed(dec); } });
+      }
+    });
+  });
+
+  /* ---------- desktop-only parallax ---------- */
+  if (isDesktop && !reduce) {
+    gsap.to('.hero-bg', { yPercent: 14, scale: 1.06, ease:'none',
+      scrollTrigger:{ trigger:'.hero-wrap', start:'top top', end:'bottom top', scrub:true } });
+    gsap.utils.toArray('[data-parallax]').forEach(function(el){
+      var s = parseFloat(el.dataset.parallax) || 0.1;
+      gsap.fromTo(el, { yPercent: -s*40 }, { yPercent: s*40, ease:'none',
+        scrollTrigger:{ trigger:el, start:'top bottom', end:'bottom top', scrub:0.6 } });
+    });
+  }
+
+  /* ---------- SIGNATURE: pinned horizontal journey rail (desktop) ---------- */
+  var track = document.getElementById('railTrack');
+  var viewport = document.getElementById('railViewport');
+  if (track && viewport && isDesktop && !reduce) {
+    ScrollTrigger.matchMedia({
+      '(min-width: 768px)': function(){
+        var dist = function(){ return Math.max(0, track.scrollWidth - window.innerWidth + 60); };
+        gsap.to(track, {
+          x: function(){ return -dist(); }, ease:'none',
+          scrollTrigger:{
+            trigger:'#journey', start:'top top',
+            end: function(){ return '+=' + dist(); },
+            pin:true, scrub:0.7, invalidateOnRefresh:true, anticipatePin:1
+          }
+        });
+      }
+    });
+  } else if (viewport) {
+    viewport.style.overflowX = 'auto';
+    viewport.style.webkitOverflowScrolling = 'touch';
+  }
+
+  /* ---------- SHOWPIECE: drifting fiber field on a light canvas ---------- */
+  (function fiberField(){
+    var cv = document.getElementById('fiberCanvas');
+    if (!cv || !window.THREE || reduce) { if (cv) cv.style.display='none'; return; }
+    var small = window.innerWidth < 880;
+    var COUNT = small ? 320 : 900;
+    var host = cv.parentElement;
+
+    var scene = new THREE.Scene();
+    var cam = new THREE.PerspectiveCamera(60, host.clientWidth/host.clientHeight, .1, 100);
+    cam.position.z = 16;
+    var renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas: cv, antialias:!small, alpha:true });
+    } catch(e){ cv.style.display='none'; return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, small ? 1.5 : 2));
+    renderer.setSize(host.clientWidth, host.clientHeight, false);
+
+    var geo = new THREE.BufferGeometry();
+    var pos = new Float32Array(COUNT*3), spd = new Float32Array(COUNT);
+    for (var i=0;i<COUNT;i++){
+      pos[i*3]   = (Math.random()-.5)*46;
+      pos[i*3+1] = (Math.random()-.5)*26;
+      pos[i*3+2] = (Math.random()-.5)*16;
+      spd[i] = .004 + Math.random()*.012;
+    }
+    geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+    // teal fibers, tuned light so they read as texture on the cream canvas, never as noise over text
+    var mat = new THREE.PointsMaterial({ color:0x2C6E6A, size:.085, transparent:true, opacity:.34, sizeAttenuation:true });
+    var pts = new THREE.Points(geo, mat);
+    scene.add(pts);
+
+    var visible = true, hidden = false;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }, { threshold:0 }).observe(host);
+    }
+    document.addEventListener('visibilitychange', function(){ hidden = document.hidden; });
+
+    function tick(){
+      if (visible && !hidden) {
+        var p = geo.attributes.position.array;
+        for (var i=0;i<COUNT;i++){
+          p[i*3+1] += spd[i];
+          if (p[i*3+1] > 13) p[i*3+1] = -13;
+          p[i*3] += Math.sin((p[i*3+1] + i) * .06) * .004;
+        }
+        geo.attributes.position.needsUpdate = true;
+        pts.rotation.y += .0004;
+        renderer.render(scene, cam);
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    window.addEventListener('resize', function(){
+      if (!host.clientWidth) return;
+      cam.aspect = host.clientWidth/host.clientHeight; cam.updateProjectionMatrix();
+      renderer.setSize(host.clientWidth, host.clientHeight, false);
+    }, { passive:true });
+  })();
+
+  /* ---------- 6s crawler / screenshot safety net (REQUIRED) ---------- */
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      var o = parseFloat(getComputedStyle(el).opacity);
+      if (!o || o < .95) { el.style.opacity = 1; el.style.transform = 'none'; }
+    });
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      if (el.textContent.trim() === '0' || el.textContent.trim() === '0.0') {
+        var d = parseInt(el.dataset.dec || '0', 10);
+        el.textContent = parseFloat(el.dataset.count).toFixed(d);
+      }
+    });
+    ScrollTrigger.refresh();
+  }, 6000);
+})();
+</script>
+</body>
+</html>
