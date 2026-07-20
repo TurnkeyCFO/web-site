@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<!--
+  House to House Lawn Service — Killeen, TX  |  Turnkey Web draft preview
+  Owner: Greg Little  ·  Phone: (254) 661-1455  ·  4.8★ / 6 Google reviews
+  Art direction: "The Round" — the name IS the concept. Light-luxury bone/olive palette,
+  Fraunces editorial display + Inter body, cinematic Kling hero (Higgsfield → Kling 3.0 turbo),
+  pinned horizontal route section as the signature moment, Three.js drifting-clipping field.
+  No logo exists online → custom wordmark. All facts researched, none fabricated.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>House to House Lawn Service | Lawn Care, Tree Work &amp; Hauling in Killeen, TX</title>
+<meta name="description" content="Greg Little's House to House Lawn Service keeps Killeen and Harker Heights yards sharp — mowing, edging, hedge and tree work, fertilizing, weed control and haul-off. 4.8 stars on Google. Call (254) 661-1455.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/house-to-house-lawn-service/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="House to House Lawn Service — Killeen, TX">
+<meta property="og:description" content="Mowing, edging, hedge and tree work, fertilizing and haul-off across Killeen and Harker Heights. Family-run by Greg Little. 4.8 stars on Google.">
+<meta property="og:image" content="https://turnkeyweb.org/previews/house-to-house-lawn-service/assets/hero.jpg">
+<meta property="og:url" content="https://turnkeyweb.org/previews/house-to-house-lawn-service/">
+<meta name="theme-color" content="#F4ECE3">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: {
+    bone:'#F4ECE3', warm:'#FBF8F3', sage:'#7FA88C', olive:'#38542F',
+    deep:'#22371C', amber:'#B98D52', ink:'#1A2118', mute:'#5C6B55'
+  },
+  fontFamily: { display:['Fraunces','Georgia','serif'], sans:['Inter','system-ui','sans-serif'] }
+}}};
+</script>
+
+<style>
+  :root{ --bone:#F4ECE3; --warm:#FBF8F3; --sage:#7FA88C; --olive:#38542F;
+         --deep:#22371C; --amber:#B98D52; --ink:#1A2118; --mute:#5C6B55; --nav:76px; }
+  *{ -webkit-tap-highlight-color:transparent; }
+  html{ scroll-padding-top:96px; }
+  body{ background:var(--warm); color:var(--ink); font-family:Inter,system-ui,sans-serif;
+        overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+
+  /* ---- descender safety: never clip g y p j q ---- */
+  h1,h2,h3,h4,.disp{ line-height:1.12; padding-bottom:.10em; }
+  .disp-xl{ line-height:1.08; padding-bottom:.14em; }
+  .grad-text{ line-height:1.16; padding-bottom:.10em; display:inline-block; }
+
+  .font-disp{ font-family:Fraunces,Georgia,serif; font-weight:400; letter-spacing:-.015em; }
+
+  /* ---- gradient shimmer (brand tinted) ---- */
+  .grad-text{
+    background:linear-gradient(100deg, var(--olive) 0%, var(--amber) 34%, var(--olive) 52%, var(--sage) 72%, var(--olive) 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite;
+  }
+  .grad-text.on-dark{
+    background:linear-gradient(100deg,#FFFDF8 0%, var(--amber) 30%, #FFFDF8 50%, #DCE9DC 74%, #FFFDF8 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  @keyframes shimmer{ from{background-position:200% 0} to{background-position:0 0} }
+
+  /* ---- hero ---- */
+  .hero{ position:relative; min-height:100svh; overflow:hidden; background:var(--deep); }
+  .hero-media{ position:absolute; inset:-8% 0 -8% 0; width:100%; height:116%;
+               object-fit:cover; will-change:transform; }
+  .hero-scrim{ position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(96deg, rgba(15,26,12,.90) 0%, rgba(15,26,12,.74) 34%, rgba(15,26,12,.30) 62%, rgba(15,26,12,.16) 100%),
+      linear-gradient(to top, rgba(12,22,10,.80) 0%, rgba(12,22,10,0) 46%);
+  }
+  .hero h1, .hero p, .hero .eyebrow{ text-shadow:0 2px 22px rgba(8,16,6,.62); }
+
+  /* ---- buttons ---- */
+  .btn{ position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:.6rem;
+        border-radius:999px; font-weight:600; letter-spacing:.005em;
+        transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s, filter .45s; }
+  .btn:hover{ transform:translateY(-3px); filter:brightness(1.04); }
+  .btn::after{ content:''; position:absolute; top:0; left:0; width:42%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.42),transparent);
+    transform:translateX(-160%) skewX(-18deg); transition:transform .9s cubic-bezier(.2,.8,.2,1); }
+  .btn:hover::after{ transform:translateX(320%) skewX(-18deg); }
+  .btn-amber{ background:var(--amber); color:#231A0C; box-shadow:0 10px 30px rgba(185,141,82,.34); }
+  .btn-olive{ background:var(--olive); color:#F7FBF4; box-shadow:0 10px 30px rgba(34,55,28,.28); }
+  .btn-ghost{ border:1.5px solid rgba(255,255,255,.5); color:#FFFDF8; }
+  .btn-ghost:hover{ background:rgba(255,255,255,.10); }
+
+  /* ---- the round (signature) ---- */
+  #round{ background:var(--bone); position:relative; }
+  .round-track{ display:flex; align-items:center; will-change:transform; }
+  .stop{ flex:0 0 auto; width:min(78vw,430px); margin-right:2.2rem; position:relative;
+         background:var(--warm); border:1px solid rgba(56,84,47,.16); border-radius:20px;
+         padding:2.1rem 1.9rem 2.2rem; box-shadow:0 14px 40px rgba(34,55,28,.07);
+         transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s, border-color .5s; }
+  .stop:hover{ transform:translateY(-7px); box-shadow:0 24px 60px rgba(34,55,28,.13); border-color:rgba(185,141,82,.45); }
+  .stop::before{ content:''; position:absolute; top:0; left:1.9rem; right:1.9rem; height:2px;
+    background:linear-gradient(90deg,var(--olive),var(--amber)); transform:scaleX(0); transform-origin:left;
+    transition:transform .7s cubic-bezier(.2,.8,.2,1); border-radius:2px; }
+  .stop:hover::before{ transform:scaleX(1); }
+  .stop-no{ font-family:Fraunces,serif; font-size:.82rem; letter-spacing:.24em; color:var(--amber); font-weight:600; }
+  .round-line{ position:absolute; left:0; top:50%; height:2px; width:100%;
+    background:repeating-linear-gradient(90deg, rgba(56,84,47,.3) 0 12px, transparent 12px 26px); }
+
+  /* ---- cards / reviews ---- */
+  .rcard{ background:var(--warm); border:1px solid rgba(56,84,47,.15); border-radius:18px;
+          padding:1.9rem 1.7rem; box-shadow:0 10px 32px rgba(34,55,28,.06);
+          transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s; }
+  .rcard:hover{ transform:translateY(-6px); box-shadow:0 22px 54px rgba(34,55,28,.12); }
+
+  .pill{ display:inline-flex; align-items:center; gap:.5rem; border-radius:999px;
+         padding:.42rem .95rem; font-size:.78rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+  .dot{ width:7px; height:7px; border-radius:50%; background:var(--sage); animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:.5; transform:scale(.82)} 50%{opacity:1; transform:scale(1.12)} }
+
+  .ulink{ position:relative; }
+  .ulink::after{ content:''; position:absolute; left:0; bottom:-3px; width:0; height:1.5px;
+    background:linear-gradient(90deg,var(--olive),var(--amber)); transition:width .5s cubic-bezier(.2,.8,.2,1); }
+  .ulink:hover::after{ width:100%; }
+
+  .band{ position:relative; background:var(--deep); color:#F7FBF4; overflow:hidden; }
+  .band-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.30; }
+  .band::after{ content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,34,16,.80), rgba(20,34,16,.90)); }
+  .band > *{ position:relative; z-index:2; }
+
+  #clip-canvas{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:.75; }
+
+  [data-reveal]{ opacity:0; transform:translateY(26px); will-change:opacity,transform; }
+  [data-reveal].in{ opacity:1; transform:none; }
+
+  .maskimg{ clip-path:inset(0 0 100% 0); transition:clip-path 1.25s cubic-bezier(.2,.8,.2,1); }
+  .maskimg.in{ clip-path:inset(0 0 0% 0); }
+
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .mtrack{ display:flex; gap:3rem; width:max-content; animation:scrollX 42s linear infinite; }
+  .marquee:hover .mtrack{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  @media (max-width:880px){
+    .hero-media{ inset:0; height:100%; }
+    .stop{ width:82vw; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{ animation-duration:.001s !important; transition-duration:.001s !important; }
+    [data-reveal]{ opacity:1 !important; transform:none !important; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HomeAndConstructionBusiness",
+  "name":"House to House Lawn Service",
+  "description":"Lawn care, tree work, hedge trimming, fertilizing, weed treatment and junk hauling serving Killeen and Harker Heights, Texas.",
+  "telephone":"+1-254-661-1455",
+  "url":"https://turnkeyweb.org/previews/house-to-house-lawn-service/",
+  "image":"https://turnkeyweb.org/previews/house-to-house-lawn-service/assets/hero.jpg",
+  "founder":{"@type":"Person","name":"Greg Little"},
+  "address":{"@type":"PostalAddress","addressLocality":"Killeen","addressRegion":"TX","postalCode":"76542","addressCountry":"US"},
+  "areaServed":[{"@type":"City","name":"Killeen"},{"@type":"City","name":"Harker Heights"},{"@type":"City","name":"Nolanville"},{"@type":"City","name":"Fort Cavazos"}],
+  "sameAs":["https://www.instagram.com/house_to_house_lawn_service_/"],
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"}],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"6"},
+  "hasOfferCatalog":{"@type":"OfferCatalog","name":"Lawn and property services","itemListElement":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Mowing and edging"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Hedge and shrub trimming"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tree care"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Fertilizing and weed treatment"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Junk pickup and haul-off"}}
+  ]}
+}
+</script>
+</head>
+
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex items-center justify-between h-[72px] md:h-[76px]">
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-[11px] bg-olive shadow-lg shrink-0">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#E9D9BE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18"/><path d="M5 21V10l7-6 7 6v11"/><path d="M9.5 21v-5h5v5"/>
+          </svg>
+        </span>
+        <span class="leading-none">
+          <span id="navname" class="block font-disp text-[1.02rem] md:text-[1.12rem] text-warm transition-colors duration-500" style="padding-bottom:.06em">House to House</span>
+          <span id="navsub" class="block text-[.6rem] tracking-[.26em] uppercase text-warm/70 transition-colors duration-500 mt-[3px]">Lawn Service · Killeen</span>
+        </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-[.85rem] font-medium">
+        <a href="#round" class="ulink nav-l text-warm/85 hover:text-warm transition-colors duration-500">What we do</a>
+        <a href="#greg" class="ulink nav-l text-warm/85 hover:text-warm transition-colors duration-500">Greg</a>
+        <a href="#reviews" class="ulink nav-l text-warm/85 hover:text-warm transition-colors duration-500">Reviews</a>
+        <a href="#area" class="ulink nav-l text-warm/85 hover:text-warm transition-colors duration-500">Service area</a>
+      </nav>
+      <a href="tel:+12546611455" class="btn btn-amber px-5 py-2.5 text-[.86rem]">
+        <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+        <span class="hidden sm:inline">(254) 661-1455</span><span class="sm:hidden">Call</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="top" class="hero flex items-end">
+  <video class="hero-media" autoplay muted loop playsinline preload="auto" poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 w-full mx-auto max-w-7xl px-5 sm:px-8 pt-[136px] md:pt-[150px] pb-16 md:pb-20">
+    <div class="max-w-[720px]">
+      <span class="eyebrow pill bg-white/12 text-warm border border-white/25 backdrop-blur-sm" data-reveal>
+        <span class="dot"></span> Killeen · Harker Heights · Nolanville
+      </span>
+
+      <h1 class="disp-xl font-disp text-warm mt-6 text-[2.7rem] sm:text-[3.6rem] lg:text-[4.5rem]" data-reveal>
+        We work the block<br><span class="grad-text on-dark">house to house.</span>
+      </h1>
+
+      <p class="mt-6 text-[1.05rem] sm:text-[1.16rem] leading-relaxed text-warm/90 max-w-[560px]" data-reveal>
+        Greg Little and his crew keep Central Texas yards sharp — mowed, edged, trimmed,
+        fed and hauled clean. Pull up to one house on your street and half the neighborhood
+        usually books by the end of the day.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3.5" data-reveal>
+        <a href="tel:+12546611455" class="btn btn-amber px-7 py-3.5 text-[.97rem]">
+          <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+          Call for a quote
+        </a>
+        <a href="#round" class="btn btn-ghost px-7 py-3.5 text-[.97rem]">See what we do</a>
+      </div>
+
+      <div class="mt-11 flex flex-wrap items-center gap-x-9 gap-y-5" data-reveal>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-disp text-[2rem] text-warm" data-count="4.8" data-dec="1">0</span>
+            <svg viewBox="0 0 24 24" class="w-5 h-5 mb-1.5" fill="#E4B75E"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          </div>
+          <div class="text-[.72rem] tracking-[.2em] uppercase text-warm/70 mt-1">Google rating</div>
+        </div>
+        <div class="w-px h-11 bg-white/25 hidden sm:block"></div>
+        <div>
+          <div class="font-disp text-[2rem] text-warm">Mon&ndash;Fri</div>
+          <div class="text-[.72rem] tracking-[.2em] uppercase text-warm/70 mt-1">9am &ndash; 6pm</div>
+        </div>
+        <div class="w-px h-11 bg-white/25 hidden sm:block"></div>
+        <div>
+          <div class="font-disp text-[2rem] text-warm">Owner-run</div>
+          <div class="text-[.72rem] tracking-[.2em] uppercase text-warm/70 mt-1">Greg is on the truck</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="bg-olive py-4 marquee">
+  <div class="mtrack text-[.82rem] tracking-[.22em] uppercase text-bone/90 font-medium">
+    <span>Mowing &amp; edging</span><span class="text-amber">&bull;</span>
+    <span class="italic font-disp normal-case tracking-normal text-[1.05rem] text-amber">Hedges shaped right</span><span class="text-amber">&bull;</span>
+    <span>Tree care</span><span class="text-amber">&bull;</span>
+    <span>Fertilize &amp; weed control</span><span class="text-amber">&bull;</span>
+    <span class="italic font-disp normal-case tracking-normal text-[1.05rem] text-amber">Cleaned up before we leave</span><span class="text-amber">&bull;</span>
+    <span>Junk pickup &amp; haul-off</span><span class="text-amber">&bull;</span>
+    <span>Killeen &amp; Harker Heights</span><span class="text-amber">&bull;</span>
+    <span>Mowing &amp; edging</span><span class="text-amber">&bull;</span>
+    <span class="italic font-disp normal-case tracking-normal text-[1.05rem] text-amber">Hedges shaped right</span><span class="text-amber">&bull;</span>
+    <span>Tree care</span><span class="text-amber">&bull;</span>
+    <span>Fertilize &amp; weed control</span><span class="text-amber">&bull;</span>
+    <span class="italic font-disp normal-case tracking-normal text-[1.05rem] text-amber">Cleaned up before we leave</span><span class="text-amber">&bull;</span>
+    <span>Junk pickup &amp; haul-off</span><span class="text-amber">&bull;</span>
+    <span>Killeen &amp; Harker Heights</span><span class="text-amber">&bull;</span>
+  </div>
+</div>
+
+<!-- ================= THE ROUND (signature) ================= -->
+<section id="round" class="relative py-24 md:py-32 overflow-hidden">
+  <canvas id="clip-canvas"></canvas>
+  <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-[680px]">
+      <span class="pill bg-olive/10 text-olive border border-olive/20" data-reveal>The round</span>
+      <h2 class="font-disp text-[2.15rem] sm:text-[3rem] lg:text-[3.4rem] mt-5 text-ink" data-reveal>
+        Five stops, and your yard is <span class="grad-text">handled.</span>
+      </h2>
+      <p class="mt-5 text-[1.04rem] leading-relaxed text-mute max-w-[540px]" data-reveal>
+        Everything below is what the truck already carries. Book one, book all five &mdash;
+        most folks start with a mow and end up on a standing route.
+      </p>
+    </div>
+  </div>
+
+  <div class="relative z-10 mt-14 md:mt-16">
+    <div id="round-view" class="overflow-hidden">
+      <div class="round-track px-5 sm:px-8" id="round-track">
+
+        <article class="stop" data-reveal>
+          <div class="stop-no">STOP 01</div>
+          <svg viewBox="0 0 24 24" class="w-8 h-8 mt-4 mb-4" fill="none" stroke="#38542F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 20h18"/><path d="M6 20v-4"/><path d="M10 20v-7"/><path d="M14 20v-5"/><path d="M18 20v-9"/><path d="M4 11c3-3 6-3 9 0s6 3 8 0"/>
+          </svg>
+          <h3 class="font-disp text-[1.42rem] text-ink">Mowing &amp; edging</h3>
+          <p class="mt-2.5 text-[.95rem] leading-relaxed text-mute">
+            Clean cut, crisp edges along the walk and drive, and the clippings blown off
+            your concrete before the trailer gate closes. Weekly or bi-weekly.
+          </p>
+        </article>
+
+        <article class="stop" data-reveal>
+          <div class="stop-no">STOP 02</div>
+          <svg viewBox="0 0 24 24" class="w-8 h-8 mt-4 mb-4" fill="none" stroke="#38542F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21v-5"/><path d="M7 16a5 5 0 0 1 0-10 5 5 0 0 1 10 0 5 5 0 0 1 0 10Z"/><path d="M9 11h6"/>
+          </svg>
+          <h3 class="font-disp text-[1.42rem] text-ink">Hedges &amp; shrubs</h3>
+          <p class="mt-2.5 text-[.95rem] leading-relaxed text-mute">
+            Red tips, boxwoods, foundation beds &mdash; shaped square and even, both sides
+            of the house, then raked and bagged so the bed looks finished.
+          </p>
+        </article>
+
+        <article class="stop" data-reveal>
+          <div class="stop-no">STOP 03</div>
+          <svg viewBox="0 0 24 24" class="w-8 h-8 mt-4 mb-4" fill="none" stroke="#38542F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22v-6"/><path d="M12 16c-4 0-7-2.6-7-6a5 5 0 0 1 3-4.6A4.6 4.6 0 0 1 12 2a4.6 4.6 0 0 1 4 3.4A5 5 0 0 1 19 10c0 3.4-3 6-7 6Z"/>
+          </svg>
+          <h3 class="font-disp text-[1.42rem] text-ink">Tree care</h3>
+          <p class="mt-2.5 text-[.95rem] leading-relaxed text-mute">
+            Limbing up low branches, clearing the roofline and the driveway, and taking
+            down what needs to come out. Ask Greg before storm season.
+          </p>
+        </article>
+
+        <article class="stop" data-reveal>
+          <div class="stop-no">STOP 04</div>
+          <svg viewBox="0 0 24 24" class="w-8 h-8 mt-4 mb-4" fill="none" stroke="#38542F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3c-2 3-4 4.6-4 7a4 4 0 0 0 8 0c0-2.4-2-4-4-7Z"/><path d="M4 20h16"/><path d="M8 20v-2"/><path d="M16 20v-2"/>
+          </svg>
+          <h3 class="font-disp text-[1.42rem] text-ink">Fertilize &amp; weed control</h3>
+          <p class="mt-2.5 text-[.95rem] leading-relaxed text-mute">
+            Feeding the turf and treating the weeds so the yard fills in thick instead of
+            you fighting the same patches every spring.
+          </p>
+        </article>
+
+        <article class="stop" data-reveal>
+          <div class="stop-no">STOP 05</div>
+          <svg viewBox="0 0 24 24" class="w-8 h-8 mt-4 mb-4" fill="none" stroke="#38542F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7h18"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M5 7l1 13a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-13"/>
+          </svg>
+          <h3 class="font-disp text-[1.42rem] text-ink">Junk pickup &amp; haul-off</h3>
+          <p class="mt-2.5 text-[.95rem] leading-relaxed text-mute">
+            Brush piles, old furniture, the stuff stacked behind the garage. Loaded up
+            and gone in the same visit &mdash; no trip to the dump on your Saturday.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 mt-12">
+    <p class="text-[.95rem] text-mute" data-reveal>
+      Not sure what your yard needs? Call
+      <a href="tel:+12546611455" class="ulink text-olive font-semibold">(254) 661-1455</a>
+      and Greg will tell you straight.
+    </p>
+  </div>
+</section>
+
+<!-- ================= GREG ================= -->
+<section id="greg" class="band py-24 md:py-32">
+  <img class="band-img" src="assets/band.jpg" alt="Golden hour light across a freshly mown Central Texas lawn">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div class="lg:col-span-7">
+        <span class="pill bg-white/12 text-bone border border-white/25" data-reveal>The owner</span>
+        <h2 class="font-disp text-[2.15rem] sm:text-[3rem] mt-5 text-warm" data-reveal>
+          Greg Little answers the phone, and <span class="grad-text on-dark">Greg shows up.</span>
+        </h2>
+        <p class="mt-6 text-[1.05rem] leading-relaxed text-bone/90 max-w-[620px]" data-reveal>
+          Greg came to Texas from Mississippi in the early nineties with the military and
+          never left. House to House started the way most good route businesses do &mdash;
+          one yard, done well, then the neighbor asks who did it.
+        </p>
+        <p class="mt-4 text-[1.05rem] leading-relaxed text-bone/90 max-w-[620px]" data-reveal>
+          That is still how it runs. Small crew, owner on the job, and customers who keep
+          the same slot week after week. When you call, you get the man whose name is on
+          the truck.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-3.5" data-reveal>
+          <a href="tel:+12546611455" class="btn btn-amber px-7 py-3.5 text-[.97rem]">Talk to Greg</a>
+          <a href="https://www.instagram.com/house_to_house_lawn_service_/" target="_blank" rel="noopener" class="btn btn-ghost px-7 py-3.5 text-[.97rem]">
+            <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+            See the work
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5" data-reveal>
+        <blockquote class="border-l-2 border-amber pl-6 sm:pl-7">
+          <p class="font-disp text-[1.32rem] sm:text-[1.5rem] leading-[1.5] text-warm" style="padding-bottom:.12em">
+            &ldquo;We came home one day and found his flyer on the door and decided to try.
+            Wasn&rsquo;t disappointed. They cut ours, my neighbor&rsquo;s yard, and others in
+            the neighborhood.&rdquo;
+          </p>
+          <footer class="mt-5 text-[.82rem] tracking-[.16em] uppercase text-amber">Ester &middot; Google review</footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section id="reviews" class="py-24 md:py-32 bg-warm">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-8">
+      <div class="max-w-[600px]">
+        <span class="pill bg-olive/10 text-olive border border-olive/20" data-reveal>Neighbors</span>
+        <h2 class="font-disp text-[2.15rem] sm:text-[3rem] mt-5 text-ink" data-reveal>
+          What Killeen actually <span class="grad-text">says about us.</span>
+        </h2>
+      </div>
+      <div class="flex items-center gap-4" data-reveal>
+        <div class="flex items-center gap-1">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+        </div>
+        <div>
+          <div class="font-disp text-[1.5rem] text-ink leading-none" style="padding-bottom:.08em">4.8 out of 5</div>
+          <div class="text-[.75rem] tracking-[.16em] uppercase text-mute mt-1">Google reviews</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-14">
+      <article class="rcard md:mt-0" data-reveal>
+        <div class="flex gap-1 mb-4">
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+        </div>
+        <p class="text-[1rem] leading-relaxed text-ink/85">
+          &ldquo;Trimmed all our red tips on both sides of the house, did a great job!!
+          Trimmed the bushes out front. Cleaned everything up. Fertilized the lawn and
+          treated the weeds. They were professional and respectful. I highly recommend!!&rdquo;
+        </p>
+        <div class="mt-6 pt-5 border-t border-olive/12 text-[.82rem] tracking-[.12em] uppercase text-mute">
+          Laura Escobar &middot; Google
+        </div>
+      </article>
+
+      <article class="rcard md:mt-8" data-reveal>
+        <div class="flex gap-1 mb-4">
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+        </div>
+        <p class="text-[1rem] leading-relaxed text-ink/85">
+          &ldquo;Greg and his team are fast. Great service at a great price.&rdquo;
+        </p>
+        <div class="mt-6 pt-5 border-t border-olive/12 text-[.82rem] tracking-[.12em] uppercase text-mute">
+          Judith Roldan &middot; Google
+        </div>
+      </article>
+
+      <article class="rcard md:mt-16" data-reveal>
+        <div class="flex gap-1 mb-4">
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#B98D52"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>
+        </div>
+        <p class="text-[1rem] leading-relaxed text-ink/85">
+          &ldquo;Thorough and professional. Excellent service.&rdquo;
+        </p>
+        <div class="mt-6 pt-5 border-t border-olive/12 text-[.82rem] tracking-[.12em] uppercase text-mute">
+          William Smith &middot; Google
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICE AREA ================= -->
+<section id="area" class="py-24 md:py-32 bg-bone">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 items-start">
+
+      <div class="lg:col-span-5">
+        <span class="pill bg-olive/10 text-olive border border-olive/20" data-reveal>Service area</span>
+        <h2 class="font-disp text-[2.15rem] sm:text-[2.9rem] mt-5 text-ink" data-reveal>
+          Based in Killeen. On your <span class="grad-text">street weekly.</span>
+        </h2>
+        <p class="mt-5 text-[1.02rem] leading-relaxed text-mute" data-reveal>
+          House to House runs routes across Killeen, Harker Heights, Nolanville and the
+          neighborhoods around Fort Cavazos. If your block is close to one we already run,
+          scheduling is easy.
+        </p>
+
+        <div class="mt-9 space-y-5" data-reveal>
+          <div class="flex gap-4">
+            <span class="shrink-0 w-10 h-10 rounded-xl bg-olive/10 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" class="w-[19px] h-[19px]" fill="none" stroke="#38542F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+            </span>
+            <div>
+              <div class="text-[.72rem] tracking-[.2em] uppercase text-mute">Phone</div>
+              <a href="tel:+12546611455" class="ulink font-disp text-[1.32rem] text-ink">(254) 661-1455</a>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <span class="shrink-0 w-10 h-10 rounded-xl bg-olive/10 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" class="w-[19px] h-[19px]" fill="none" stroke="#38542F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 1.9"/></svg>
+            </span>
+            <div>
+              <div class="text-[.72rem] tracking-[.2em] uppercase text-mute">Hours</div>
+              <div class="text-[1.02rem] text-ink mt-0.5">Monday &ndash; Friday, 9:00am &ndash; 6:00pm</div>
+              <div class="text-[.92rem] text-mute">Saturday &amp; Sunday &mdash; closed</div>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <span class="shrink-0 w-10 h-10 rounded-xl bg-olive/10 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" class="w-[19px] h-[19px]" fill="none" stroke="#38542F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/></svg>
+            </span>
+            <div>
+              <div class="text-[.72rem] tracking-[.2em] uppercase text-mute">Based in</div>
+              <div class="text-[1.02rem] text-ink mt-0.5">Killeen, Texas 76542</div>
+              <div class="text-[.92rem] text-mute">Serving Killeen &middot; Harker Heights &middot; Nolanville</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="tel:+12546611455" class="btn btn-olive px-7 py-3.5 text-[.97rem] mt-9" data-reveal>Get on the route</a>
+      </div>
+
+      <div class="lg:col-span-7" data-reveal>
+        <div class="rounded-2xl overflow-hidden border border-olive/15 shadow-[0_18px_50px_rgba(34,55,28,.10)]">
+          <iframe
+            title="Map of Killeen, Texas — House to House Lawn Service area"
+            src="https://www.google.com/maps?q=Killeen%2C%20Texas%2076542&output=embed"
+            width="100%" height="470" style="border:0; display:block;"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="band py-24 md:py-28">
+  <img class="band-img" src="assets/band.jpg" alt="">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 text-center">
+    <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-amber/95 mb-7 shadow-xl" data-reveal>
+      <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="#231A0C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18"/><path d="M5 21V10l7-6 7 6v11"/><path d="M9.5 21v-5h5v5"/>
+      </svg>
+    </span>
+    <h2 class="font-disp text-[2.2rem] sm:text-[3.1rem] text-warm max-w-[760px] mx-auto" data-reveal>
+      Tell us your address. We&rsquo;ll tell you the <span class="grad-text on-dark">price.</span>
+    </h2>
+    <p class="mt-5 text-[1.05rem] leading-relaxed text-bone/85 max-w-[560px] mx-auto" data-reveal>
+      One call, a straight number, and a day we can be there. No contracts, no runaround.
+    </p>
+    <div class="mt-9 flex flex-wrap justify-center gap-3.5" data-reveal>
+      <a href="tel:+12546611455" class="btn btn-amber px-8 py-4 text-[1rem]">
+        <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+        (254) 661-1455
+      </a>
+      <a href="#round" class="btn btn-ghost px-8 py-4 text-[1rem]">What we handle</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-ink text-bone/70 pt-16 pb-28 md:pb-14">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid md:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-[11px] bg-olive shrink-0">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="#E9D9BE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18"/><path d="M5 21V10l7-6 7 6v11"/><path d="M9.5 21v-5h5v5"/>
+            </svg>
+          </span>
+          <span class="font-disp text-[1.12rem] text-bone" style="padding-bottom:.06em">House to House Lawn Service</span>
+        </div>
+        <p class="mt-4 text-[.93rem] leading-relaxed max-w-[320px]">
+          Owner-run lawn care, tree work and haul-off for Killeen, Harker Heights and
+          Nolanville. Greg Little, owner.
+        </p>
+      </div>
+
+      <div>
+        <div class="text-[.72rem] tracking-[.22em] uppercase text-amber mb-4">Services</div>
+        <ul class="space-y-2 text-[.93rem]">
+          <li>Mowing &amp; edging</li>
+          <li>Hedge &amp; shrub trimming</li>
+          <li>Tree care</li>
+          <li>Fertilizing &amp; weed control</li>
+          <li>Junk pickup &amp; haul-off</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-[.72rem] tracking-[.22em] uppercase text-amber mb-4">Get in touch</div>
+        <a href="tel:+12546611455" class="ulink block font-disp text-[1.35rem] text-bone" style="padding-bottom:.06em">(254) 661-1455</a>
+        <div class="mt-3 text-[.93rem]">Killeen, Texas 76542</div>
+        <div class="text-[.93rem]">Mon &ndash; Fri, 9:00am &ndash; 6:00pm</div>
+        <a href="https://www.instagram.com/house_to_house_lawn_service_/" target="_blank" rel="noopener" class="ulink inline-flex items-center gap-2 mt-4 text-[.93rem] text-bone/85">
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-7 border-t border-bone/15 flex flex-wrap gap-3 justify-between text-[.82rem] text-bone/55">
+      <span>&copy; <span id="yr">2026</span> House to House Lawn Service. All rights reserved.</span>
+      <span>Draft site by Turnkey Web</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MOBILE STICKY BAR ================= -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-warm/97 backdrop-blur border-t border-olive/18 px-3 py-2.5 flex gap-2.5">
+  <a href="tel:+12546611455" class="btn btn-amber flex-1 justify-center py-3 text-[.92rem]">
+    <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+    Call Greg
+  </a>
+  <a href="#area" class="btn btn-olive flex-1 justify-center py-3 text-[.92rem]">
+    <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/></svg>
+    Service area
+  </a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isDesktop = window.matchMedia('(min-width: 880px)').matches;
+
+  /* ---------- smooth scroll: ONE rAF loop ---------- */
+  var lenis = null;
+  if (window.Lenis && !reduce) {
+    lenis = new Lenis({
+      duration: 1.1,
+      easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10*t)); },
+      smoothWheel: true, smoothTouch: false
+    });
+  }
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    if (lenis) {
+      gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+      lenis.on('scroll', ScrollTrigger.update);
+    }
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(t, { offset: -80 });
+      else t.scrollIntoView({ behavior:'smooth' });
+    });
+  });
+
+  /* ---------- nav state (dark hero -> light page) ---------- */
+  var nav = document.getElementById('nav'), navname = document.getElementById('navname'),
+      navsub = document.getElementById('navsub'), navLinks = document.querySelectorAll('.nav-l');
+  function navState(){
+    var solid = window.scrollY > (window.innerHeight * 0.72);
+    nav.style.background = solid ? 'rgba(251,248,243,.94)' : 'transparent';
+    nav.style.backdropFilter = solid ? 'saturate(140%) blur(12px)' : 'none';
+    nav.style.boxShadow = solid ? '0 1px 0 rgba(56,84,47,.14)' : 'none';
+    navname.style.color = solid ? '#1A2118' : '#FBF8F3';
+    navsub.style.color  = solid ? '#5C6B55' : 'rgba(251,248,243,.72)';
+    navLinks.forEach(function(l){ l.style.color = solid ? '#38542F' : 'rgba(251,248,243,.88)'; });
+  }
+  navState();
+  window.addEventListener('scroll', navState, { passive:true });
+
+  /* ---------- reveals (GPU only, once) ---------- */
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.utils.toArray('[data-reveal]').forEach(function(el, i){
+      ScrollTrigger.create({
+        trigger: el, start: 'top 92%', once: true,
+        onEnter: function(){
+          el.classList.add('in');
+          gsap.fromTo(el, { opacity:0, y:26 },
+            { opacity:1, y:0, duration:.68, ease:'power3.out', delay: (i % 3) * 0.06,
+              onComplete: function(){ el.style.willChange = 'auto'; } });
+        }
+      });
+    });
+
+    /* count-up */
+    gsap.utils.toArray('[data-count]').forEach(function(el){
+      var target = parseFloat(el.dataset.count), dec = parseInt(el.dataset.dec || '0', 10);
+      ScrollTrigger.create({ trigger: el, start:'top 92%', once:true, onEnter:function(){
+        var o = { v: 0 };
+        gsap.to(o, { v: target, duration:1.5, ease:'power2.out',
+          onUpdate: function(){ el.textContent = o.v.toFixed(dec); } });
+      }});
+    });
+
+    /* hero video parallax — desktop only */
+    if (isDesktop && !reduce) {
+      gsap.to('.hero-media', {
+        yPercent: 14, scale: 1.07, ease:'none',
+        scrollTrigger: { trigger:'.hero', start:'top top', end:'bottom top', scrub: true }
+      });
+    }
+
+    /* THE ROUND — horizontal scrub (desktop only; mobile = native swipe) */
+    if (isDesktop && !reduce) {
+      var track = document.getElementById('round-track');
+      var view  = document.getElementById('round-view');
+      var dist = function(){ return Math.max(0, track.scrollWidth - view.clientWidth + 40); };
+      gsap.to(track, {
+        x: function(){ return -dist(); }, ease:'none',
+        scrollTrigger: {
+          trigger: '#round', start: 'top top', end: function(){ return '+=' + dist(); },
+          pin: true, scrub: 0.7, invalidateOnRefresh: true, anticipatePin: 1
+        }
+      });
+    } else {
+      var v = document.getElementById('round-view');
+      v.style.overflowX = 'auto';
+      v.style.scrollSnapType = 'x mandatory';
+      v.style.webkitOverflowScrolling = 'touch';
+      document.querySelectorAll('.stop').forEach(function(s){ s.style.scrollSnapAlign = 'center'; });
+    }
+  }
+
+  /* ---------- Three.js: drifting clippings on the light canvas ---------- */
+  (function(){
+    var cvs = document.getElementById('clip-canvas');
+    if (!cvs || !window.THREE || reduce) return;
+    var lowPower = !isDesktop || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+    var COUNT = lowPower ? 150 : 520;
+
+    var renderer, scene, camera, pts, running = false, visible = false, raf = null;
+    function init(){
+      try {
+        renderer = new THREE.WebGLRenderer({ canvas: cvs, alpha:true, antialias:false });
+      } catch(e){ return; }
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, lowPower ? 1.5 : 2));
+      var w = cvs.clientWidth, h = cvs.clientHeight;
+      renderer.setSize(w, h, false);
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(60, w/h, 0.1, 100);
+      camera.position.z = 14;
+
+      var geo = new THREE.BufferGeometry();
+      var pos = new Float32Array(COUNT*3), col = new Float32Array(COUNT*3), spd = new Float32Array(COUNT);
+      var pal = [[0.22,0.33,0.18],[0.50,0.66,0.55],[0.73,0.55,0.32]];
+      for (var i=0;i<COUNT;i++){
+        pos[i*3]   = (Math.random()-0.5)*34;
+        pos[i*3+1] = (Math.random()-0.5)*20;
+        pos[i*3+2] = (Math.random()-0.5)*12;
+        var c = pal[(Math.random()*pal.length)|0];
+        col[i*3]=c[0]; col[i*3+1]=c[1]; col[i*3+2]=c[2];
+        spd[i] = 0.004 + Math.random()*0.010;
+      }
+      geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+      geo.setAttribute('color', new THREE.BufferAttribute(col,3));
+      var mat = new THREE.PointsMaterial({ size:0.085, vertexColors:true, transparent:true, opacity:0.62, depthWrite:false });
+      pts = new THREE.Points(geo, mat);
+      pts.userData.spd = spd;
+      scene.add(pts);
+      running = true;
+    }
+
+    function frame(t){
+      if (!running || !visible || document.hidden) { raf = null; return; }
+      var p = pts.geometry.attributes.position.array, spd = pts.userData.spd;
+      for (var i=0;i<COUNT;i++){
+        p[i*3+1] += spd[i];
+        p[i*3]   += Math.sin((t*0.00016) + i) * 0.0032;
+        if (p[i*3+1] > 10.5) { p[i*3+1] = -10.5; }
+      }
+      pts.geometry.attributes.position.needsUpdate = true;
+      pts.rotation.y = Math.sin(t*0.00005) * 0.06;
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(frame);
+    }
+    function kick(){ if (running && visible && !document.hidden && raf === null) raf = requestAnimationFrame(frame); }
+
+    function resize(){
+      if (!renderer) return;
+      var w = cvs.clientWidth, h = cvs.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w/h; camera.updateProjectionMatrix();
+    }
+
+    // lazy-init after first paint so WebGL never blocks the hero
+    requestAnimationFrame(function(){ setTimeout(function(){
+      init();
+      if (!running) return;
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function(en){
+          visible = en[0].isIntersecting; kick();
+        }, { threshold: 0 }).observe(document.getElementById('round'));
+      } else { visible = true; kick(); }
+      document.addEventListener('visibilitychange', kick);
+      window.addEventListener('resize', resize, { passive:true });
+    }, 260); });
+  })();
+
+  /* ---------- 6s crawler / screenshot safety net (REQUIRED) ---------- */
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      var cs = getComputedStyle(el);
+      if (parseFloat(cs.opacity) < 0.95) {
+        el.classList.add('in');
+        el.style.opacity = '1'; el.style.transform = 'none';
+      }
+    });
+    document.querySelectorAll('.maskimg').forEach(function(el){ el.classList.add('in'); });
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      if (parseFloat(el.textContent) === 0) {
+        var d = parseInt(el.dataset.dec || '0', 10);
+        el.textContent = parseFloat(el.dataset.count).toFixed(d);
+      }
+    });
+  }, 6000);
+})();
+</script>
+</body>
+</html>
