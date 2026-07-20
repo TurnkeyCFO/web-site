@@ -226,7 +226,7 @@ tailwind.config = { theme: { extend: {
   </video>
   <div class="hero-scrim"></div>
 
-  <div class="relative z-10 w-full mx-auto max-w-7xl px-5 sm:px-8 pt-[136px] md:pt-[150px] pb-16 md:pb-20">
+  <div class="relative z-10 w-full mx-auto max-w-7xl px-5 sm:px-8 pt-[172px] md:pt-[150px] pb-16 md:pb-20">
     <div class="max-w-[720px]">
       <span class="eyebrow pill bg-white/12 text-warm border border-white/25 backdrop-blur-sm" data-reveal>
         <span class="dot"></span> Killeen · Harker Heights · Nolanville
@@ -753,11 +753,11 @@ tailwind.config = { theme: { extend: {
       var track = document.getElementById('round-track');
       var view  = document.getElementById('round-view');
       var dist = function(){ return Math.max(0, track.scrollWidth - view.clientWidth + 40); };
-      gsap.to(track, {
+      gsap.fromTo(track, { x: 0 }, {
         x: function(){ return -dist(); }, ease:'none',
         scrollTrigger: {
-          trigger: '#round', start: 'top top', end: function(){ return '+=' + dist(); },
-          pin: true, scrub: 0.7, invalidateOnRefresh: true, anticipatePin: 1
+          trigger: '#round', start: 'top 62%', end: 'bottom bottom',
+          scrub: 0.8, invalidateOnRefresh: true
         }
       });
     } else {
