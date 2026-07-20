@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<!--
+  Spencer & Spencer Pediatric Dentistry — Lee's Summit, MO
+  Turnkey Web draft preview. Palette derived from the practice's REAL logo
+  (carved-wood amber #C6803C, lagoon blue #2E6B85, cream). Light-first.
+  Hero: AI cinematic (Higgsfield nano_banana_pro -> Kling 3.0 turbo), self-hosted.
+  Signature moment: pinned horizontal "First visit, start to finish" journey.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spencer &amp; Spencer Pediatric Dentistry | Pediatric Dentist in Lee's Summit, MO</title>
+<meta name="description" content="Board-certified pediatric dentists in Lee's Summit, MO. Dr. Jodie and Dr. Glynn Spencer care for infants, children, teens and kids with special needs. Call 816-607-6000.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/spencer-spencer-pediatric-dentistry/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Spencer &amp; Spencer Pediatric Dentistry | Lee's Summit, MO">
+<meta property="og:description" content="Board-certified pediatric dentists caring for infants, children and teens in Lee's Summit, Blue Springs and Independence.">
+<meta property="og:image" content="https://turnkeyweb.org/previews/spencer-spencer-pediatric-dentistry/assets/hero.jpg">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{
+  cream:'#FBF6EE', bone:'#F3E9DA', sand:'#E7D8C2',
+  amber:'#C6803C', amberDeep:'#A2652C',
+  lagoon:'#2E6B85', lagoonDeep:'#1F4C60', sage:'#7FAFA8',
+  ink:'#231F1B', ink2:'#4A423A'
+}, fontFamily:{display:['Fraunces','Georgia','serif'], sans:['Inter','system-ui','sans-serif']}}}}
+</script>
+<style>
+html{scroll-behavior:auto;scroll-padding-top:96px}
+body{background:#FBF6EE;color:#231F1B;font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,.display{font-family:Fraunces,Georgia,serif}
+
+/* descender safety — global floor */
+h1,h2,h3,h4,.display{line-height:1.12;padding-bottom:.06em}
+
+.grad-text{
+  background:linear-gradient(100deg,#A2652C 0%,#C6803C 22%,#2E6B85 50%,#C6803C 78%,#A2652C 100%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:shimmer 9s linear infinite;
+  line-height:1.15;padding-bottom:.1em;display:inline-block;
+}
+@keyframes shimmer{0%{background-position:0% 50%}100%{background-position:220% 50%}}
+
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;will-change:transform}
+.hero-scrim{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+   linear-gradient(100deg, rgba(251,246,238,.97) 0%, rgba(251,246,238,.93) 30%, rgba(251,246,238,.62) 50%, rgba(251,246,238,.10) 72%, rgba(251,246,238,0) 100%),
+   linear-gradient(to top, rgba(251,246,238,.92) 0%, rgba(251,246,238,0) 34%);
+}
+@media(max-width:767px){
+  .hero-scrim{background:
+    linear-gradient(to bottom, rgba(251,246,238,.97) 0%, rgba(251,246,238,.90) 46%, rgba(251,246,238,.55) 68%, rgba(251,246,238,.30) 100%),
+    linear-gradient(to top, rgba(251,246,238,.85) 0%, rgba(251,246,238,0) 30%);}
+}
+
+#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+.card{transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;height:2px;width:0;
+  background:linear-gradient(90deg,#C6803C,#2E6B85);transition:width .6s cubic-bezier(.22,1,.36,1)}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -22px rgba(35,31,27,.28)}
+.card:hover::before{width:100%}
+
+.btn{position:relative;overflow:hidden;transition:transform .35s,filter .35s}
+.btn:hover{transform:translateY(-3px);filter:brightness(1.06)}
+.btn::after{content:'';position:absolute;top:0;left:-130%;width:60%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transition:left .9s cubic-bezier(.22,1,.36,1)}
+.btn:hover::after{left:130%}
+
+.ul-grow{position:relative}
+.ul-grow::after{content:'';position:absolute;left:0;bottom:-4px;height:1.5px;width:0;
+  background:linear-gradient(90deg,#C6803C,#2E6B85);transition:width .5s cubic-bezier(.22,1,.36,1)}
+.ul-grow:hover::after{width:100%}
+
+.dot{animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.mtrack{display:flex;gap:3rem;width:max-content;animation:scrollX 42s linear infinite;align-items:center}
+.marquee:hover .mtrack{animation-play-state:paused}
+@keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+[data-reveal]{opacity:0;transform:translateY(30px);will-change:opacity,transform}
+[data-reveal].in{opacity:1;transform:none}
+
+.revimg{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s cubic-bezier(.22,1,.36,1)}
+.revimg.in{clip-path:inset(0 0 0% 0)}
+
+.step{flex:0 0 auto;width:min(84vw,430px)}
+.stepnum{font-family:Fraunces,serif;font-size:4.2rem;line-height:1.05;padding-bottom:.08em;
+  color:transparent;-webkit-text-stroke:1.4px rgba(198,128,60,.62)}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}
+ [data-reveal]{opacity:1!important;transform:none!important}.revimg{clip-path:none!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-cream/88 border-b border-sand/70">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-[72px] md:h-[84px] flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-3 shrink-0">
+      <img src="assets/logo.png" alt="Spencer &amp; Spencer Pediatric Dentistry" class="h-10 md:h-12 w-auto">
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-ink2">
+      <a href="#visit-journey" class="ul-grow hover:text-ink">First Visit</a>
+      <a href="#care" class="ul-grow hover:text-ink">Care</a>
+      <a href="#doctors" class="ul-grow hover:text-ink">Our Doctors</a>
+      <a href="#parents" class="ul-grow hover:text-ink">Parents</a>
+      <a href="#visit" class="ul-grow hover:text-ink">Visit Us</a>
+    </nav>
+    <a href="tel:+18166076000" class="btn shrink-0 inline-flex items-center gap-2 rounded-full bg-lagoonDeep text-cream px-4 sm:px-6 py-2.5 text-[14px] sm:text-[15px] font-semibold">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="hidden sm:inline">816-607-6000</span><span class="sm:hidden">Call</span>
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero min-h-[86vh] md:min-h-[92vh] flex items-end pt-[112px] md:pt-[84px] pb-16 md:pb-24">
+  <video class="hero-media" autoplay muted loop playsinline poster="assets/hero.jpg" aria-hidden="true">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 w-full">
+    <div class="max-w-[660px]">
+      <span class="inline-flex items-center gap-2 rounded-full bg-cream/85 border border-sand px-4 py-1.5 text-[12.5px] font-semibold tracking-[.14em] uppercase text-amberDeep" data-reveal>
+        <span class="dot w-1.5 h-1.5 rounded-full bg-amber"></span> Lee's Summit, Missouri
+      </span>
+
+      <h1 class="mt-6 text-[2.6rem] sm:text-[3.6rem] lg:text-[4.5rem] font-semibold tracking-[-.02em] text-ink" data-reveal>
+        The dentist your kid<br class="hidden sm:block"> actually wants<br class="hidden sm:block">
+        <span class="grad-text">to go to.</span>
+      </h1>
+
+      <p class="mt-6 text-[17px] sm:text-[19px] leading-relaxed text-ink2 max-w-[52ch]" data-reveal>
+        Two board-certified pediatric dentists. Gentle, unhurried care for infants, children, teens
+        and kids with special dental needs. Every patient treated as if they were our own.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3.5" data-reveal>
+        <a href="tel:+18166076000" class="btn inline-flex items-center gap-2.5 rounded-full bg-amberDeep text-cream px-7 py-3.5 text-[16px] font-semibold shadow-lg shadow-amber/25">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Schedule a visit
+        </a>
+        <a href="#visit-journey" class="inline-flex items-center gap-2 rounded-full border border-ink/25 bg-cream/70 text-ink px-7 py-3.5 text-[16px] font-semibold hover:bg-cream transition">
+          See the first visit
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAND (WebGL showpiece behind) -->
+<section class="relative bg-bone border-y border-sand overflow-hidden">
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 py-14 md:py-16 grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
+    <div data-reveal>
+      <div class="text-[2.6rem] font-display font-semibold text-ink leading-none pb-1"><span data-count="2" data-suffix="">0</span></div>
+      <p class="mt-1 text-[13.5px] font-semibold tracking-[.1em] uppercase text-amberDeep">Board-certified<br>pediatric dentists</p>
+    </div>
+    <div data-reveal>
+      <div class="text-[2.6rem] font-display font-semibold text-ink leading-none pb-1"><span data-count="4.5" data-decimal="1">0</span><span class="text-amber">★</span></div>
+      <p class="mt-1 text-[13.5px] font-semibold tracking-[.1em] uppercase text-amberDeep">Google rating<br>184 reviews</p>
+    </div>
+    <div data-reveal>
+      <div class="text-[2.6rem] font-display font-semibold text-ink leading-none pb-1">0&ndash;<span data-count="18">0</span></div>
+      <p class="mt-1 text-[13.5px] font-semibold tracking-[.1em] uppercase text-amberDeep">Infants, children<br>and teens</p>
+    </div>
+    <div data-reveal>
+      <div class="text-[2.6rem] font-display font-semibold text-ink leading-none pb-1"><span data-count="3">0</span></div>
+      <p class="mt-1 text-[13.5px] font-semibold tracking-[.1em] uppercase text-amberDeep">Communities served<br>Lee's Summit &middot; Blue Springs &middot; Independence</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee bg-lagoonDeep text-cream py-3.5">
+  <div class="mtrack text-[14px] font-medium tracking-[.12em] uppercase">
+    <span>Preventative Care</span><span class="text-amber">&bull;</span>
+    <span class="italic">Nitrous Oxide Sedation</span><span class="text-amber">&bull;</span>
+    <span>Digital X-Rays</span><span class="text-amber">&bull;</span>
+    <span class="italic">Special Needs Dentistry</span><span class="text-amber">&bull;</span>
+    <span>Laser Dentistry</span><span class="text-amber">&bull;</span>
+    <span class="italic">Athletic Mouthguards</span><span class="text-amber">&bull;</span>
+    <span>Tooth-Colored Fillings</span><span class="text-amber">&bull;</span>
+    <span>Preventative Care</span><span class="text-amber">&bull;</span>
+    <span class="italic">Nitrous Oxide Sedation</span><span class="text-amber">&bull;</span>
+    <span>Digital X-Rays</span><span class="text-amber">&bull;</span>
+    <span class="italic">Special Needs Dentistry</span><span class="text-amber">&bull;</span>
+    <span>Laser Dentistry</span><span class="text-amber">&bull;</span>
+    <span class="italic">Athletic Mouthguards</span><span class="text-amber">&bull;</span>
+    <span>Tooth-Colored Fillings</span><span class="text-amber">&bull;</span>
+  </div>
+</div>
+
+<!-- SIGNATURE: pinned horizontal first-visit journey -->
+<section id="visit-journey" class="bg-cream py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-3xl" data-reveal>
+      <p class="text-[13px] font-semibold tracking-[.18em] uppercase text-lagoon">The First Visit</p>
+      <h2 class="mt-4 text-[2.1rem] sm:text-[2.9rem] font-semibold tracking-[-.015em] text-ink">
+        Nobody cries on the way in. <span class="grad-text">Or on the way out.</span>
+      </h2>
+      <p class="mt-5 text-[17px] leading-relaxed text-ink2 max-w-[60ch]">
+        Most of the fear around a dental visit comes from not knowing what happens next. So here is
+        exactly what a first appointment looks like, start to finish, before you ever walk in.
+      </p>
+    </div>
+  </div>
+
+  <div id="journeyWrap" class="mt-14 md:mt-16">
+    <div id="journeyTrack" class="flex gap-6 md:gap-8 px-5 sm:px-8 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory md:snap-none">
+      <article class="step snap-start card rounded-2xl bg-bone border border-sand p-8 md:p-10">
+        <div class="stepnum">01</div>
+        <h3 class="mt-4 text-[1.45rem] font-semibold text-ink">You arrive, they relax</h3>
+        <p class="mt-3 text-[15.5px] leading-relaxed text-ink2">
+          Kids come back to a room built at their scale, with TVs on the ceiling above every
+          station. Parents come back too. There is no separating a nervous child from you.
+        </p>
+      </article>
+      <article class="step snap-start card rounded-2xl bg-bone border border-sand p-8 md:p-10">
+        <div class="stepnum">02</div>
+        <h3 class="mt-4 text-[1.45rem] font-semibold text-ink">A gentle cleaning</h3>
+        <p class="mt-3 text-[15.5px] leading-relaxed text-ink2">
+          A hygienist counts, brushes and polishes, narrating every step out loud so nothing is a
+          surprise. Distraction technique is a real skill here, and the team has it down.
+        </p>
+      </article>
+      <article class="step snap-start card rounded-2xl bg-bone border border-sand p-8 md:p-10">
+        <div class="stepnum">03</div>
+        <h3 class="mt-4 text-[1.45rem] font-semibold text-ink">Digital x-rays, if needed</h3>
+        <p class="mt-3 text-[15.5px] leading-relaxed text-ink2">
+          Digital sensors mean dramatically reduced radiation compared with film, and images appear
+          on screen immediately so you can see what we see.
+        </p>
+      </article>
+      <article class="step snap-start card rounded-2xl bg-bone border border-sand p-8 md:p-10">
+        <div class="stepnum">04</div>
+        <h3 class="mt-4 text-[1.45rem] font-semibold text-ink">The doctor exam</h3>
+        <p class="mt-3 text-[15.5px] leading-relaxed text-ink2">
+          Dr. Jodie or Dr. Glynn checks growth, bite, spacing and every surface, then walks you
+          through what they found in plain language, not dental shorthand.
+        </p>
+      </article>
+      <article class="step snap-start card rounded-2xl bg-bone border border-sand p-8 md:p-10">
+        <div class="stepnum">05</div>
+        <h3 class="mt-4 text-[1.45rem] font-semibold text-ink">A plan you agree to</h3>
+        <p class="mt-3 text-[15.5px] leading-relaxed text-ink2">
+          If treatment is needed, you hear the options, the timing and the reasoning first. If a
+          referral serves your child better than we can, we tell you that too.
+        </p>
+      </article>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 mt-10 md:mt-14">
+    <div class="max-w-[200px] h-px bg-gradient-to-r from-transparent via-amber/45 to-transparent"></div>
+  </div>
+</section>
+
+<!-- CARE -->
+<section id="care" class="bg-bone border-y border-sand py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6" data-reveal>
+      <div class="max-w-2xl">
+        <p class="text-[13px] font-semibold tracking-[.18em] uppercase text-lagoon">What we do</p>
+        <h2 class="mt-4 text-[2.1rem] sm:text-[2.9rem] font-semibold tracking-[-.015em] text-ink">
+          Everything a growing smile needs, <span class="grad-text">under one roof.</span>
+        </h2>
+      </div>
+      <a href="tel:+18166076000" class="shrink-0 text-[15.5px] font-semibold text-amberDeep ul-grow">Questions? Call 816-607-6000</a>
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+      <!-- 1 -->
+      <div class="card rounded-2xl bg-cream border border-sand p-7" data-reveal>
+        <div class="w-11 h-11 rounded-xl bg-lagoon/10 text-lagoonDeep flex items-center justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a5 5 0 0 0-5 5c0 2 .5 3.5.5 6 0 3 .5 9 2.5 9s2-4 2-6 2-2 2 0 0 6 2 6 2.5-6 2.5-9c0-2.5.5-4 .5-6a5 5 0 0 0-5-5z"/></svg>
+        </div>
+        <h3 class="mt-5 text-[1.25rem] font-semibold text-ink">Routine cleanings &amp; exams</h3>
+        <p class="mt-2.5 text-[15.5px] leading-relaxed text-ink2">Preventative visits that keep small problems small, plus orthodontia cleanings for kids in braces.</p>
+      </div>
+      <!-- 2 -->
+      <div class="card rounded-2xl bg-cream border border-sand p-7" data-reveal>
+        <div class="w-11 h-11 rounded-xl bg-amber/12 text-amberDeep flex items-center justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 3v18M16 3v18M3 9h18M3 15h18"/></svg>
+        </div>
+        <h3 class="mt-5 text-[1.25rem] font-semibold text-ink">Digital x-rays</h3>
+        <p class="mt-2.5 text-[15.5px] leading-relaxed text-ink2">Modern digital sensors deliver significantly reduced radiation and instant, sharper images.</p>
+      </div>
+      <!-- 3 -->
+      <div class="card rounded-2xl bg-cream border border-sand p-7" data-reveal>
+        <div class="w-11 h-11 rounded-xl bg-sage/20 text-lagoonDeep flex items-center justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-6 3 12 2.5-8 1.8 4H21"/></svg>
+        </div>
+        <h3 class="mt-5 text-[1.25rem] font-semibold text-ink">Nitrous oxide &amp; general anesthesia</h3>
+        <p class="mt-2.5 text-[15.5px] leading-relaxed text-ink2">For anxious kids or longer procedures, sedation options are available and discussed with you first.</p>
+      </div>
+      <!-- 4 -->
+      <div class="card rounded-2xl bg-cream border border-sand p-7" data-reveal>
+        <div class="w-11 h-11 rounded-xl bg-amber/12 text-amberDeep flex items-center justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg>
+        </div>
+        <h3 class="mt-5 text-[1.25rem] font-semibold text-ink">Fillings, sealants &amp; extractions</h3>
+        <p class="mt-2.5 text-[15.5px] leading-relaxed text-ink2">Tooth-colored fillings, protective sealants on molars, and extractions handled calmly when needed.</p>
+      </div>
+      <!-- 5 -->
+      <div class="card rounded-2xl bg-cream border border-sand p-7" data-reveal>
+        <div class="w-11 h-11 rounded-xl bg-lagoon/10 text-lagoonDeep flex items-center justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+        </div>
+        <h3 class="mt-5 text-[1.25rem] font-semibold text-ink">Special dental needs</h3>
+        <p class="mt-2.5 text-[15.5px] leading-relaxed text-ink2">Both doctors are trained and experienced in caring for children with special dental needs.</p>
+      </div>
+      <!-- 6 -->
+      <div class="card rounded-2xl bg-cream border border-sand p-7" data-reveal>
+        <div class="w-11 h-11 rounded-xl bg-sage/20 text-lagoonDeep flex items-center justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 5-3 7.5-7 9-4-1.5-7-4-7-9V6z"/></svg>
+        </div>
+        <h3 class="mt-5 text-[1.25rem] font-semibold text-ink">Laser dentistry &amp; mouthguards</h3>
+        <p class="mt-2.5 text-[15.5px] leading-relaxed text-ink2">Laser treatment for select procedures, plus custom athletic mouthguards for young athletes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section id="doctors" class="bg-cream py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-3xl" data-reveal>
+      <p class="text-[13px] font-semibold tracking-[.18em] uppercase text-lagoon">Our Doctors</p>
+      <h2 class="mt-4 text-[2.1rem] sm:text-[2.9rem] font-semibold tracking-[-.015em] text-ink">
+        Two board-certified pediatric dentists. <span class="grad-text">Both served first.</span>
+      </h2>
+      <p class="mt-5 text-[17px] leading-relaxed text-ink2 max-w-[60ch]">
+        Dr. Jodie and Dr. Glynn Spencer are both Diplomates of the American Board of Pediatric
+        Dentistry. Before either of them treated a child, each of them wore a uniform.
+      </p>
+    </div>
+
+    <div class="mt-14 grid lg:grid-cols-2 gap-8 md:gap-10">
+      <!-- Jodie -->
+      <article class="rounded-3xl bg-bone border border-sand overflow-hidden" data-reveal>
+        <div class="aspect-[4/3] overflow-hidden bg-sand">
+          <img src="assets/dr-jodie.jpg" alt="Dr. Jodie Spencer, board-certified pediatric dentist" class="revimg w-full h-full object-cover" data-reveal-image loading="lazy">
+        </div>
+        <div class="p-8 md:p-10">
+          <span class="inline-block rounded-full bg-lagoon/10 text-lagoonDeep px-3.5 py-1 text-[12px] font-semibold tracking-[.12em] uppercase">U.S. Navy &middot; Full Scholarship</span>
+          <h3 class="mt-4 text-[1.7rem] font-semibold text-ink">Dr. Jodie Spencer</h3>
+          <p class="mt-1.5 text-[14.5px] font-semibold tracking-[.08em] uppercase text-amberDeep">Board-Certified Pediatric Dentist</p>
+          <p class="mt-4 text-[15.5px] leading-relaxed text-ink2">
+            Born and raised in Maryville, Missouri. She attended dental school at UMKC on a full Navy
+            scholarship and was commissioned in 1999, then served three years stationed in Japan,
+            where her two youngest children were born. She was recognized as Junior Officer of the
+            Quarter and of the Year, and earned two Navy and Marine Corps Achievement Medals and a
+            Navy Commendation Medal.
+          </p>
+          <p class="mt-3.5 text-[15.5px] leading-relaxed text-ink2">
+            Her patients get what the practice calls a gentle mother's touch. Away from the office
+            she is usually camping with family, on the boat, traveling or reading.
+          </p>
+        </div>
+      </article>
+
+      <!-- Glynn -->
+      <article class="rounded-3xl bg-bone border border-sand overflow-hidden" data-reveal>
+        <div class="aspect-[4/3] overflow-hidden bg-sand">
+          <img src="assets/dr-glynn.jpg" alt="Dr. Glynn Spencer, board-certified pediatric dentist" class="revimg w-full h-full object-cover" data-reveal-image loading="lazy">
+        </div>
+        <div class="p-8 md:p-10">
+          <span class="inline-block rounded-full bg-amber/14 text-amberDeep px-3.5 py-1 text-[12px] font-semibold tracking-[.12em] uppercase">U.S. Army &middot; Combat Infantryman</span>
+          <h3 class="mt-4 text-[1.7rem] font-semibold text-ink">Dr. Glynn Spencer</h3>
+          <p class="mt-1.5 text-[14.5px] font-semibold tracking-[.08em] uppercase text-amberDeep">Board-Certified Pediatric Dentist</p>
+          <p class="mt-4 text-[15.5px] leading-relaxed text-ink2">
+            He grew up in Springdale, Arkansas as an avid outdoorsman. After a year of college he
+            enlisted in the U.S. Army and served as a combat infantryman at Ft. Benning and Ft. Riley.
+            He later studied at Washburn University and graduated with Honors in Pediatric Dentistry
+            from UMKC, receiving the Arthur Iwersen Award for Excellence in Pediatric Dentistry.
+          </p>
+          <p class="mt-3.5 text-[15.5px] leading-relaxed text-ink2">
+            Outside the practice he restores vehicles, especially Jeeps, and spends his time on
+            football, boating, hiking, hunting, fishing and family.
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-2.5" data-reveal>
+      <span class="rounded-full border border-sand bg-bone px-4 py-2 text-[13.5px] font-medium text-ink2">American Board of Pediatric Dentistry &mdash; Diplomates</span>
+      <span class="rounded-full border border-sand bg-bone px-4 py-2 text-[13.5px] font-medium text-ink2">American Academy of Pediatric Dentistry</span>
+      <span class="rounded-full border border-sand bg-bone px-4 py-2 text-[13.5px] font-medium text-ink2">American Dental Association</span>
+      <span class="rounded-full border border-sand bg-bone px-4 py-2 text-[13.5px] font-medium text-ink2">Missouri Dental Association</span>
+      <span class="rounded-full border border-sand bg-bone px-4 py-2 text-[13.5px] font-medium text-ink2">Greater Kansas City Dental Society</span>
+      <span class="rounded-full border border-sand bg-bone px-4 py-2 text-[13.5px] font-medium text-ink2">Eastern Jackson County Dental Society</span>
+    </div>
+  </div>
+</section>
+
+<!-- PARENTS / REVIEWS -->
+<section id="parents" class="bg-lagoonDeep text-cream py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-3xl" data-reveal>
+      <p class="text-[13px] font-semibold tracking-[.18em] uppercase text-sage">What parents say</p>
+      <h2 class="mt-4 text-[2.1rem] sm:text-[2.9rem] font-semibold tracking-[-.015em] text-cream">
+        Kids who used to dread it now ask when they get to go back.
+      </h2>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+      <figure class="rounded-2xl bg-cream/8 border border-cream/20 p-7" data-reveal>
+        <div class="text-amber text-[15px] tracking-[.16em]" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="mt-4 text-[15.5px] leading-relaxed text-cream/95">
+          &ldquo;Want to take your kids to a place that will have them BEGGING to go the dentist and
+          jumping for joy on teeth cleaning day? THIS PLACE ROCKS!! The staff is friendly and sweet
+          and so helpful. Dr Jody and Dr Glynn are rockstar dentists.&rdquo;
+        </blockquote>
+        <figcaption class="mt-5 text-[13.5px] font-semibold tracking-[.08em] uppercase text-sage">Kelly T. &mdash; Yelp review</figcaption>
+      </figure>
+
+      <figure class="rounded-2xl bg-cream/8 border border-cream/20 p-7" data-reveal>
+        <div class="text-amber text-[15px] tracking-[.16em]" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="mt-4 text-[15.5px] leading-relaxed text-cream/95">
+          &ldquo;My 8 yr old son literally said &lsquo;Oh, I love this place!&rsquo; when we arrived for a
+          cleaning. They take excellent care of their young patients, and worried parents. They have
+          the distraction techniques down to a science and every kid I've seen there is happy.&rdquo;
+        </blockquote>
+        <figcaption class="mt-5 text-[13.5px] font-semibold tracking-[.08em] uppercase text-sage">Melissa T. H. &mdash; Yelp review</figcaption>
+      </figure>
+
+      <figure class="rounded-2xl bg-cream/8 border border-cream/20 p-7" data-reveal>
+        <div class="text-amber text-[15px] tracking-[.16em]" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="mt-4 text-[15.5px] leading-relaxed text-cream/95">
+          &ldquo;I have taken my son to Spencer and Spencer for a couple of years. He went from being
+          terrified of dentists to loving it. The staff as well as both Dr. Spencer's are awesome.&rdquo;
+        </blockquote>
+        <figcaption class="mt-5 text-[13.5px] font-semibold tracking-[.08em] uppercase text-sage">Erin E. &mdash; Yelp review</figcaption>
+      </figure>
+
+      <figure class="rounded-2xl bg-cream/8 border border-cream/20 p-7" data-reveal>
+        <div class="text-amber text-[15px] tracking-[.16em]" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="mt-4 text-[15.5px] leading-relaxed text-cream/95">
+          &ldquo;Wonderful office for kids! The atmosphere and everyone that works in office is sooo
+          nice and welcoming. Even scheduling was a breeze because the ladies in the office worked
+          us in for the day. Only pediatric dentist office I'll bring my girls.&rdquo;
+        </blockquote>
+        <figcaption class="mt-5 text-[13.5px] font-semibold tracking-[.08em] uppercase text-sage">Andrea G. &mdash; Yelp review</figcaption>
+      </figure>
+
+      <figure class="rounded-2xl bg-cream/8 border border-cream/20 p-7" data-reveal>
+        <div class="text-amber text-[15px] tracking-[.16em]" aria-label="4 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <blockquote class="mt-4 text-[15.5px] leading-relaxed text-cream/95">
+          &ldquo;We've been going to Spencer &amp; Spencer for years and I am continually pleased. They
+          have TVs on the ceiling above the kids stations so they can watch movies during their
+          cleaning. The hygienists are always nice and knowledgeable. The dentist is down to earth,
+          caring and professional.&rdquo;
+        </blockquote>
+        <figcaption class="mt-5 text-[13.5px] font-semibold tracking-[.08em] uppercase text-sage">Q M. &mdash; Yelp review</figcaption>
+      </figure>
+
+      <figure class="rounded-2xl bg-amber/18 border border-amber/40 p-7" data-reveal>
+        <div class="text-amber text-[15px] tracking-[.16em]" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="mt-4 text-[15.5px] leading-relaxed text-cream">
+          &ldquo;My daughter is just over 2 years old and this was her first dental visit. My husband
+          and I were completely shocked when our daughter got right up in the chair and let the
+          hygienist brush her teeth. They are fantastic!&rdquo;
+        </blockquote>
+        <figcaption class="mt-5 text-[13.5px] font-semibold tracking-[.08em] uppercase text-cream/85">Abby Rowe &mdash; patient family</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="bg-cream py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-start">
+      <div data-reveal>
+        <p class="text-[13px] font-semibold tracking-[.18em] uppercase text-lagoon">Visit us</p>
+        <h2 class="mt-4 text-[2.1rem] sm:text-[2.9rem] font-semibold tracking-[-.015em] text-ink">
+          Find us on <span class="grad-text">NE Mulberry.</span>
+        </h2>
+
+        <div class="mt-9 space-y-7">
+          <div class="flex gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-xl bg-amber/14 text-amberDeep flex items-center justify-center">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <p class="text-[13px] font-semibold tracking-[.12em] uppercase text-ink2">Address</p>
+              <p class="mt-1 text-[17px] font-medium text-ink">301 NE Mulberry St, Suite 201<br>Lee's Summit, MO 64086</p>
+              <a href="https://www.google.com/maps?q=301%20NE%20Mulberry%20St%20Suite%20201%2C%20Lee%27s%20Summit%2C%20MO%2064086" target="_blank" rel="noopener" class="mt-1.5 inline-block text-[15px] font-semibold text-amberDeep ul-grow">Get directions</a>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-xl bg-lagoon/10 text-lagoonDeep flex items-center justify-center">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <p class="text-[13px] font-semibold tracking-[.12em] uppercase text-ink2">Phone &amp; email</p>
+              <a href="tel:+18166076000" class="mt-1 block text-[17px] font-medium text-ink ul-grow">816-607-6000</a>
+              <a href="mailto:office@spencerdental.com" class="text-[15.5px] text-ink2 ul-grow">office@spencerdental.com</a>
+              <p class="mt-1 text-[14.5px] text-ink2">Fax 816-607-6001</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-xl bg-sage/20 text-lagoonDeep flex items-center justify-center">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <div class="w-full">
+              <p class="text-[13px] font-semibold tracking-[.12em] uppercase text-ink2">Office hours</p>
+              <dl class="mt-2.5 text-[15.5px] max-w-[320px]">
+                <div class="flex justify-between py-1.5 border-b border-sand"><dt class="text-ink2">Monday</dt><dd class="font-medium text-ink">8:30 am &ndash; 4:30 pm</dd></div>
+                <div class="flex justify-between py-1.5 border-b border-sand"><dt class="text-ink2">Tuesday</dt><dd class="font-medium text-ink">8:30 am &ndash; 4:30 pm</dd></div>
+                <div class="flex justify-between py-1.5 border-b border-sand"><dt class="text-ink2">Wednesday</dt><dd class="font-medium text-ink">8:30 am &ndash; 4:00 pm</dd></div>
+                <div class="flex justify-between py-1.5 border-b border-sand"><dt class="text-ink2">Thursday</dt><dd class="font-medium text-ink">8:30 am &ndash; 4:30 pm</dd></div>
+                <div class="flex justify-between py-1.5"><dt class="text-ink2">Friday &ndash; Sunday</dt><dd class="font-medium text-ink2">Closed</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-3xl overflow-hidden border border-sand bg-bone shadow-xl shadow-ink/5" data-reveal>
+        <iframe
+          title="Map to Spencer &amp; Spencer Pediatric Dentistry, 301 NE Mulberry St Suite 201, Lee's Summit, MO 64086"
+          src="https://www.google.com/maps?q=301%20NE%20Mulberry%20St%20Suite%20201%2C%20Lee%27s%20Summit%2C%20MO%2064086&output=embed"
+          width="100%" height="520" style="border:0;display:block" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative overflow-hidden bg-bone border-y border-sand">
+  <img src="assets/band.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover opacity-45">
+  <div class="absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/85 to-cream/55"></div>
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 py-20 md:py-28 text-center">
+    <img src="assets/logo.png" alt="Spencer &amp; Spencer Pediatric Dentistry" class="h-16 md:h-20 w-auto mx-auto" data-reveal>
+    <h2 class="mt-8 text-[2.1rem] sm:text-[3rem] font-semibold tracking-[-.015em] text-ink max-w-[20ch] mx-auto" data-reveal>
+      Let's get them <span class="grad-text">looking forward to it.</span>
+    </h2>
+    <p class="mt-5 text-[17px] leading-relaxed text-ink2 max-w-[54ch] mx-auto" data-reveal>
+      New patients welcome, from a first tooth to a senior in braces. Call the office and we will
+      find a time that works around school and work.
+    </p>
+    <div class="mt-9 flex flex-wrap justify-center gap-3.5" data-reveal>
+      <a href="tel:+18166076000" class="btn inline-flex items-center gap-2.5 rounded-full bg-amberDeep text-cream px-8 py-4 text-[16.5px] font-semibold shadow-lg shadow-amber/25">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        816-607-6000
+      </a>
+      <a href="mailto:office@spencerdental.com" class="inline-flex items-center gap-2 rounded-full border border-ink/25 bg-cream/80 text-ink px-8 py-4 text-[16.5px] font-semibold hover:bg-cream transition">
+        Email the office
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-cream/85 pt-16 pb-28 md:pb-16">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid md:grid-cols-3 gap-10">
+      <div>
+        <img src="assets/logo.png" alt="Spencer &amp; Spencer Pediatric Dentistry" class="h-14 w-auto">
+        <p class="mt-5 text-[15px] leading-relaxed text-cream/75 max-w-[40ch]">
+          Board-certified pediatric dentistry for infants, children and teens in Lee's Summit,
+          Blue Springs and Independence, Missouri.
+        </p>
+      </div>
+      <div>
+        <p class="text-[13px] font-semibold tracking-[.14em] uppercase text-amber">Office</p>
+        <p class="mt-4 text-[15.5px] leading-relaxed text-cream/85">301 NE Mulberry St, Suite 201<br>Lee's Summit, MO 64086</p>
+        <a href="tel:+18166076000" class="mt-3 block text-[15.5px] font-medium text-cream ul-grow">816-607-6000</a>
+        <a href="mailto:office@spencerdental.com" class="text-[15.5px] text-cream/85 ul-grow">office@spencerdental.com</a>
+      </div>
+      <div>
+        <p class="text-[13px] font-semibold tracking-[.14em] uppercase text-amber">Hours</p>
+        <p class="mt-4 text-[15.5px] leading-relaxed text-cream/85">
+          Monday 8:30 am &ndash; 4:30 pm<br>
+          Tuesday 8:30 am &ndash; 4:30 pm<br>
+          Wednesday 8:30 am &ndash; 4:00 pm<br>
+          Thursday 8:30 am &ndash; 4:30 pm<br>
+          Friday &ndash; Sunday closed
+        </p>
+      </div>
+    </div>
+    <div class="mt-12 pt-7 border-t border-cream/15 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-[13.5px] text-cream/60">
+      <p>&copy; <span id="yr">2026</span> Spencer &amp; Spencer Pediatric Dentistry. All rights reserved.</p>
+      <p>Draft preview by Turnkey Web</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-2 border-t border-sand bg-cream/97 backdrop-blur">
+  <a href="tel:+18166076000" class="flex items-center justify-center gap-2 py-4 text-[15px] font-semibold text-ink border-r border-sand">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=301%20NE%20Mulberry%20St%20Suite%20201%2C%20Lee%27s%20Summit%2C%20MO%2064086" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-4 text-[15px] font-semibold text-ink">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Dentist",
+  "name":"Spencer & Spencer Pediatric Dentistry",
+  "description":"Board-certified pediatric dentistry for infants, children, teens and children with special dental needs in Lee's Summit, Missouri.",
+  "url":"https://spencerdental.com",
+  "telephone":"+1-816-607-6000",
+  "faxNumber":"+1-816-607-6001",
+  "email":"office@spencerdental.com",
+  "image":"https://turnkeyweb.org/previews/spencer-spencer-pediatric-dentistry/assets/hero.jpg",
+  "address":{"@type":"PostalAddress","streetAddress":"301 NE Mulberry St, Suite 201","addressLocality":"Lee's Summit","addressRegion":"MO","postalCode":"64086","addressCountry":"US"},
+  "areaServed":[{"@type":"City","name":"Lee's Summit"},{"@type":"City","name":"Blue Springs"},{"@type":"City","name":"Independence"}],
+  "medicalSpecialty":"Pediatric",
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","reviewCount":"184"},
+  "employee":[
+    {"@type":"Person","name":"Dr. Jodie Spencer","jobTitle":"Board-Certified Pediatric Dentist"},
+    {"@type":"Person","name":"Dr. Glynn Spencer","jobTitle":"Board-Certified Pediatric Dentist"}
+  ],
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Thursday"],"opens":"08:30","closes":"16:30"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Wednesday","opens":"08:30","closes":"16:00"}
+  ]
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });
+
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+
+/* ---- Lenis: ONE rAF loop, driven by the GSAP ticker ---- */
+let lenis = null;
+if (!reduce && window.Lenis) {
+  lenis = new Lenis({ duration:1.1, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+  gsap.ticker.add(t => lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+  lenis.on('scroll', ScrollTrigger.update);
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const t = document.querySelector(a.getAttribute('href')); if(!t) return;
+    e.preventDefault();
+    if (lenis) lenis.scrollTo(t, { offset:-84 });
+    else t.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+/* ---- Reveals (GPU-only, once) ---- */
+gsap.utils.toArray('[data-reveal]').forEach(el=>{
+  ScrollTrigger.create({ trigger:el, start:'top 92%', once:true,
+    onEnter:()=>{ el.classList.add('in');
+      gsap.to(el,{opacity:1,y:0,duration:.68,ease:'power3.out',
+        onComplete:()=>el.style.willChange='auto'}); } });
+});
+gsap.utils.toArray('[data-reveal-image]').forEach(el=>{
+  ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:()=>el.classList.add('in')});
+});
+
+/* ---- Count-ups ---- */
+gsap.utils.toArray('[data-count]').forEach(el=>{
+  const target = parseFloat(el.dataset.count);
+  const dec = parseInt(el.dataset.decimal||'0',10);
+  ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:()=>{
+    gsap.to({v:0},{v:target,duration:1.5,ease:'power2.out',
+      onUpdate:function(){ el.textContent = this.targets()[0].v.toFixed(dec); },
+      onComplete:()=>{ el.textContent = target.toFixed(dec); }});
+  }});
+});
+
+/* ---- Hero video parallax (desktop only) ---- */
+if (isDesktop && !reduce) {
+  gsap.to('.hero-media', { yPercent:14, scale:1.07, ease:'none',
+    scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
+}
+
+/* ---- SIGNATURE: pinned horizontal first-visit journey (desktop only) ---- */
+if (isDesktop && !reduce) {
+  const track = document.getElementById('journeyTrack');
+  const wrap  = document.getElementById('journeyWrap');
+  if (track && wrap) {
+    ScrollTrigger.matchMedia({
+      '(min-width: 768px)': function(){
+        const dist = () => Math.max(0, track.scrollWidth - window.innerWidth + 64);
+        gsap.to(track, { x: () => -dist(), ease:'none',
+          scrollTrigger:{ trigger: wrap, start:'top 88px', end: () => '+=' + dist(),
+            pin:true, scrub:0.8, invalidateOnRefresh:true, anticipatePin:1 } });
+      }
+    });
+  }
+}
+
+/* ---- PREMIUM SHOWPIECE: drifting warm motes on a light canvas (Three.js) ---- */
+(function(){
+  const cvs = document.getElementById('fx'); if(!cvs || reduce) return;
+  const small = window.innerWidth < 768;
+  import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js').then(THREE=>{
+    const host = cvs.parentElement;
+    const renderer = new THREE.WebGLRenderer({canvas:cvs, alpha:true, antialias:false});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, small?1.5:2));
+    const scene = new THREE.Scene();
+    const cam = new THREE.PerspectiveCamera(60,1,0.1,100); cam.position.z = 14;
+
+    const N = small ? 90 : 260;
+    const pos = new Float32Array(N*3), col = new Float32Array(N*3), spd = new Float32Array(N);
+    const tints = [[0.776,0.502,0.235],[0.180,0.420,0.522],[0.498,0.686,0.659]];
+    for(let i=0;i<N;i++){
+      pos[i*3]   = (Math.random()-0.5)*34;
+      pos[i*3+1] = (Math.random()-0.5)*14;
+      pos[i*3+2] = (Math.random()-0.5)*10;
+      const c = tints[(Math.random()*tints.length)|0];
+      col[i*3]=c[0]; col[i*3+1]=c[1]; col[i*3+2]=c[2];
+      spd[i] = 0.12 + Math.random()*0.3;
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+    geo.setAttribute('color', new THREE.BufferAttribute(col,3));
+    const mat = new THREE.PointsMaterial({size:0.34, vertexColors:true, transparent:true,
+      opacity:0.55, depthWrite:false, sizeAttenuation:true});
+    const pts = new THREE.Points(geo, mat); scene.add(pts);
+
+    function resize(){
+      const w = host.clientWidth, h = host.clientHeight;
+      renderer.setSize(w,h,false); cam.aspect = w/h; cam.updateProjectionMatrix();
+    }
+    resize(); window.addEventListener('resize', resize);
+
+    let visible = true, running = true, raf = null;
+    new IntersectionObserver(es=>{ visible = es[0].isIntersecting; loop(); },{threshold:0}).observe(host);
+    document.addEventListener('visibilitychange', ()=>{ running = !document.hidden; loop(); });
+
+    const p = geo.attributes.position.array;
+    function frame(){
+      raf = null;
+      for(let i=0;i<N;i++){
+        p[i*3+1] += spd[i]*0.011;
+        p[i*3]   += Math.sin(performance.now()*0.00012 + i)*0.004;
+        if (p[i*3+1] > 7.4) p[i*3+1] = -7.4;
+      }
+      geo.attributes.position.needsUpdate = true;
+      renderer.render(scene, cam);
+      loop();
+    }
+    function loop(){ if(visible && running && raf===null) raf = requestAnimationFrame(frame); }
+    loop();
+  }).catch(()=>{});
+})();
+
+/* ---- 6s crawler / screenshot safety net (REQUIRED) ---- */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{
+    el.classList.add('in'); el.style.opacity='1'; el.style.transform='none';
+  });
+  document.querySelectorAll('[data-reveal-image]').forEach(el=>el.classList.add('in'));
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    if(parseFloat(el.textContent)===0){
+      const d = parseInt(el.dataset.decimal||'0',10);
+      el.textContent = parseFloat(el.dataset.count).toFixed(d);
+    }
+  });
+  ScrollTrigger.refresh();
+}, 6000);
+</script>
+</body>
+</html>
