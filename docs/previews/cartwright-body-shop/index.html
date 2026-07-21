@@ -40,7 +40,7 @@ tailwind.config = { theme: { extend: {
 <style>
   :root{ --nav-h:72px; }
   html{ scroll-behavior:auto; scroll-padding-top:88px; -webkit-text-size-adjust:100%; }
-  body{ background:#F5EFE7; color:#16130F; font-family:'Manrope',system-ui,sans-serif; overflow-x:hidden; }
+  body{ background:#F5EFE7; color:#16130F; font-family:'Manrope',system-ui,sans-serif; overflow-x:clip; }
   ::selection{ background:#C1272D; color:#FFFDFA; }
 
   /* ---- descender safety: never clip g y p j q ---- */
@@ -303,7 +303,7 @@ tailwind.config = { theme: { extend: {
 <div class="mx-auto max-w-[200px] rule"></div>
 
 <!-- ================= SIGNATURE: THE REFINISH (scroll-scrubbed WebGL) ================= -->
-<section id="process" class="relative bg-ink text-paper overflow-hidden">
+<section id="process" class="relative bg-ink text-paper">
   <div class="relative h-[220vh]" id="panelScroll">
     <div class="sticky top-0 h-[100svh] flex items-center overflow-hidden">
       <!-- WebGL panel -->
