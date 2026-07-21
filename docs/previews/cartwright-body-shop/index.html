@@ -22,6 +22,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://turnkeyweb.org/previews/cartwright-body-shop/">
 <meta property="og:image" content="https://turnkeyweb.org/previews/cartwright-body-shop/assets/hero.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23C1272D'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-style='italic' font-size='19' fill='%23FFFDFA' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -50,7 +51,7 @@ tailwind.config = { theme: { extend: {
     -webkit-text-fill-color:transparent; color:transparent;
     animation:shimmer 9s linear infinite; line-height:1.16; padding-bottom:.1em; display:inline-block;
   }
-  .grad-text.on-dark{ background:linear-gradient(100deg,#F0C9C0 0%,#FF8E76 30%,#FFF1EA 50%,#FF8E76 70%,#F0C9C0 100%); background-size:220% 100%; -webkit-background-clip:text; background-clip:text; }
+  .grad-text.on-dark{ background:linear-gradient(100deg,#FFD9CE 0%,#FFAE97 28%,#FFFBF7 50%,#FFAE97 72%,#FFD9CE 100%); background-size:220% 100%; -webkit-background-clip:text; background-clip:text; }
   @keyframes shimmer{ from{background-position:200% 0} to{background-position:-20% 0} }
 
   /* ---- hero ---- */
@@ -64,8 +65,19 @@ tailwind.config = { theme: { extend: {
   .hero-type{ text-shadow:0 2px 26px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.5); }
 
   /* ---- wordmark (recreates the real Loop 12 sign lockup) ---- */
-  .wm-script{ font-family:'Fraunces',serif; font-style:italic; font-weight:600; color:#C1272D; letter-spacing:-.01em; }
+  .wm-script{ font-family:'Fraunces',serif; font-style:italic; font-weight:600; color:#C1272D; letter-spacing:-.01em; line-height:1.2 !important; padding-bottom:.14em !important; }
   .wm-block{ font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:.18em; }
+
+  /* nav sits over a dark cinematic hero at rest -> light type; goes dark once scrolled */
+  #nav .navlink{ color:#EFE3DA; text-shadow:0 1px 10px rgba(0,0,0,.6); transition:color .35s, text-shadow .35s; }
+  #nav .navmeta{ color:#E3D3CA; text-shadow:0 1px 10px rgba(0,0,0,.6); transition:color .35s, text-shadow .35s; }
+  #nav .navmark{ color:#FF8163; text-shadow:0 1px 12px rgba(0,0,0,.6); transition:color .35s, text-shadow .35s; }
+  #nav .navsub{ color:#EFE3DA; text-shadow:0 1px 10px rgba(0,0,0,.6); transition:color .35s, text-shadow .35s; }
+  #nav.solid .navlink{ color:#3A342D; text-shadow:none; }
+  #nav.solid .navlink:hover{ color:#16130F; }
+  #nav.solid .navmeta{ color:#3A342D; text-shadow:none; }
+  #nav.solid .navmark{ color:#C1272D; text-shadow:none; }
+  #nav.solid .navsub{ color:rgba(22,19,15,.8); text-shadow:none; }
 
   /* ---- sign band marquee ---- */
   .marq{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
@@ -127,19 +139,19 @@ tailwind.config = { theme: { extend: {
     <div class="flex items-center justify-between h-[68px] md:h-[76px]">
       <a href="#top" class="flex items-center gap-2.5 shrink-0">
         <span class="inline-flex flex-col leading-none">
-          <span class="wm-script text-[19px] md:text-[22px]" style="line-height:1.05;padding-bottom:.04em;">Cartwright</span>
-          <span class="wm-block text-[9px] md:text-[10px] text-ink/80" style="line-height:1.2;">BODY SHOP</span>
+          <span class="wm-script navmark text-[19px] md:text-[22px]">Cartwright</span>
+          <span class="wm-block navsub text-[9px] md:text-[10px]" style="line-height:1.3;">BODY SHOP</span>
         </span>
       </a>
-      <nav class="hidden lg:flex items-center gap-8 text-[13.5px] font-semibold text-graphite">
-        <a href="#work" class="ul-grow hover:text-ink transition">What We Fix</a>
-        <a href="#process" class="ul-grow hover:text-ink transition">The Process</a>
-        <a href="#reviews" class="ul-grow hover:text-ink transition">Reviews</a>
-        <a href="#shop" class="ul-grow hover:text-ink transition">The Shop</a>
-        <a href="#visit" class="ul-grow hover:text-ink transition">Visit</a>
+      <nav class="hidden lg:flex items-center gap-8 text-[13.5px] font-semibold">
+        <a href="#work" class="ul-grow navlink transition">What We Fix</a>
+        <a href="#process" class="ul-grow navlink transition">The Process</a>
+        <a href="#reviews" class="ul-grow navlink transition">Reviews</a>
+        <a href="#shop" class="ul-grow navlink transition">The Shop</a>
+        <a href="#visit" class="ul-grow navlink transition">Visit</a>
       </nav>
       <div class="flex items-center gap-3">
-        <span class="hidden xl:flex items-center gap-2 text-[12.5px] font-semibold text-graphite">
+        <span class="hidden xl:flex items-center gap-2 text-[12.5px] font-semibold navmeta">
           <span class="w-1.5 h-1.5 rounded-full bg-signred pulse"></span> Irving, TX since 1972
         </span>
         <a href="tel:+19725798868" class="btn inline-flex items-center gap-2 rounded-full bg-signred text-paper px-4 md:px-5 py-2.5 text-[13px] font-extrabold tracking-wide shadow-lg shadow-signred/20">
@@ -165,7 +177,7 @@ tailwind.config = { theme: { extend: {
         <span class="text-[11px] md:text-[12px] font-extrabold tracking-[.26em] text-[#F3D9D2] uppercase">806 S Loop 12 &middot; Irving, Texas</span>
       </div>
 
-      <h1 class="font-display text-[13.5vw] leading-[.98] sm:text-[8.4vw] lg:text-[76px] xl:text-[86px] font-semibold text-[#FDF7F0]" style="line-height:1.04;padding-bottom:.1em;" data-reveal>
+      <h1 class="font-display text-[13.5vw] leading-[.98] sm:text-[8.4vw] lg:text-[76px] xl:text-[86px] font-semibold text-[#FDF7F0]" style="line-height:1.09;padding-bottom:.12em;" data-reveal>
         Fifty-four years<br>
         of <span class="grad-text on-dark italic">straight answers</span><br>
         and straight metal.
@@ -292,15 +304,15 @@ tailwind.config = { theme: { extend: {
 
 <!-- ================= SIGNATURE: THE REFINISH (scroll-scrubbed WebGL) ================= -->
 <section id="process" class="relative bg-ink text-paper overflow-hidden">
-  <div class="relative h-[300vh]" id="panelScroll">
+  <div class="relative h-[220vh]" id="panelScroll">
     <div class="sticky top-0 h-[100svh] flex items-center overflow-hidden">
       <!-- WebGL panel -->
       <div class="absolute inset-0" id="panelWrap">
         <canvas id="panel-canvas"></canvas>
       </div>
       <!-- static fallback poster (behind canvas, shows if WebGL is off) -->
-      <img src="assets/band.jpg" alt="" id="panelFallback" class="absolute inset-0 w-full h-full object-cover opacity-30" aria-hidden="true">
-      <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(10,8,6,.94) 0%,rgba(10,8,6,.80) 34%,rgba(10,8,6,.30) 62%,rgba(10,8,6,.55) 100%);"></div>
+      <img src="assets/band.jpg" alt="" id="panelFallback" class="absolute inset-0 w-full h-full object-cover opacity-60" aria-hidden="true">
+      <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(10,8,6,.93) 0%,rgba(10,8,6,.76) 32%,rgba(10,8,6,.22) 58%,rgba(10,8,6,.10) 100%);"></div>
 
       <div class="relative mx-auto max-w-[1200px] px-5 sm:px-6 w-full">
         <div class="max-w-[520px]">
@@ -650,8 +662,8 @@ tailwind.config = { theme: { extend: {
   /* ---- nav state ---- */
   var nav = document.getElementById('nav');
   function navState(){
-    if (window.scrollY > 40){ nav.style.background='rgba(255,253,250,.92)'; nav.style.boxShadow='0 1px 0 rgba(22,19,15,.08), 0 10px 30px -24px rgba(22,19,15,.5)'; }
-    else { nav.style.background='transparent'; nav.style.boxShadow='none'; }
+    if (window.scrollY > 40){ nav.classList.add('solid'); nav.style.background='rgba(255,253,250,.94)'; nav.style.boxShadow='0 1px 0 rgba(22,19,15,.08), 0 10px 30px -24px rgba(22,19,15,.5)'; }
+    else { nav.classList.remove('solid'); nav.style.background='transparent'; nav.style.boxShadow='none'; }
   }
   navState();
 
@@ -778,9 +790,9 @@ tailwind.config = { theme: { extend: {
         fragmentShader:[
           'varying vec2 vUv; varying float vH; uniform float uTime; uniform float uProg;',
           'void main(){',
-          '  vec3 primer = vec3(0.42,0.41,0.40);',
-          '  vec3 sealer = vec3(0.30,0.29,0.30);',
-          '  vec3 candy  = vec3(0.757,0.153,0.176);',
+          '  vec3 primer = vec3(0.60,0.585,0.565);',
+          '  vec3 sealer = vec3(0.46,0.45,0.47);',
+          '  vec3 candy  = vec3(0.80,0.17,0.19);',
           '  float p = clamp(uProg,0.0,1.0);',
           // stage blend: primer -> sealer -> candy, wiped left-to-right per stage
           '  float wipeA = smoothstep(vUv.x-0.35, vUv.x+0.05, p*1.9);',
@@ -790,13 +802,13 @@ tailwind.config = { theme: { extend: {
           '  vec3 col = mix(base, candy, clamp(paint*wipe*1.4,0.0,1.0));',
           // clearcoat: a moving specular band, strength grows with progress
           '  float band = exp(-pow((vUv.x + vH*0.35 - fract(uTime*0.055))*5.2, 2.0));',
-          '  float gloss = mix(0.10, 0.95, p);',
-          '  col += vec3(1.0,0.94,0.90) * band * gloss * 0.65;',
+          '  float gloss = mix(0.45, 1.05, p);',
+          '  col += vec3(1.0,0.95,0.91) * band * gloss * 0.85;',
           // soft top light + vignette
-          '  col += vec3(0.16,0.10,0.09) * smoothstep(0.15,1.0,vUv.y) * (0.25+0.5*p);',
+          '  col += vec3(0.20,0.13,0.11) * smoothstep(0.10,1.0,vUv.y) * (0.35+0.5*p);',
           '  float vig = smoothstep(1.15,0.25,distance(vUv,vec2(0.5)));',
-          '  col *= 0.42 + 0.58*vig;',
-          '  float a = 0.90 * vig;',
+          '  col *= 0.60 + 0.40*vig;',
+          '  float a = 0.94 * smoothstep(0.05,0.55,vig);',
           '  gl_FragColor = vec4(col, a); }'
         ].join('\n')
       });
@@ -805,7 +817,7 @@ tailwind.config = { theme: { extend: {
       scene.add(mesh);
       running = true;
       loop(0);
-      var fb = document.getElementById('panelFallback'); if (fb) fb.style.opacity = '0.10';
+      var fb = document.getElementById('panelFallback'); if (fb) fb.style.opacity = '0.16';
     }
 
     function loop(t){
