@@ -39,14 +39,14 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = { theme: { extend: { colors: {
-  cream:'#FAF7F2', linen:'#EFEAE1', sand:'#E2DACE', ink:'#16202F', mute:'#63707F',
+  cream:'#FAF7F2', linen:'#EFEAE1', sand:'#E2DACE', ink:'#16202F', mute:'#4E5A68',
   blue:'#336BB5', blueLt:'#5B93D8', navy:'#1C2E52', brass:'#C39A55'
 }}}};
 </script>
 <style>
   :root{
-    --cream:#FAF7F2; --linen:#EFEAE1; --sand:#E2DACE; --ink:#16202F; --mute:#63707F;
-    --blue:#336BB5; --blueLt:#5B93D8; --navy:#1C2E52; --brass:#C39A55;
+    --cream:#FAF7F2; --linen:#EFEAE1; --sand:#E2DACE; --ink:#16202F; --mute:#4E5A68;
+    --blue:#336BB5; --blueDeep:#2C5EA0; --blueLt:#5B93D8; --navy:#1C2E52; --brass:#C39A55;
   }
   *{-webkit-tap-highlight-color:transparent}
   html{scroll-behavior:auto; scroll-padding-top:96px}
@@ -151,8 +151,8 @@ tailwind.config = { theme: { extend: { colors: {
     background:linear-gradient(180deg, rgba(12,19,30,.26) 0%, rgba(12,19,30,.64) 55%, rgba(12,19,30,.88) 100%);}
 
   /* ---- marquee ---- */
-  .marquee{overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
-           mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);}
+  .marquee{overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+           mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);}
   .mq-track{display:flex; gap:3rem; width:max-content; animation:scrollX 42s linear infinite; will-change:transform;}
   .marquee:hover .mq-track{animation-play-state:paused;}
   @keyframes scrollX{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
@@ -215,7 +215,7 @@ tailwind.config = { theme: { extend: { colors: {
   </video>
   <div class="hero-scrim"></div>
 
-  <div class="relative w-full max-w-[1240px] mx-auto px-5 sm:px-8 pb-14 sm:pb-20 pt-[calc(72px+80px)] sm:pt-[calc(72px+96px)]">
+  <div class="relative w-full max-w-[1240px] mx-auto px-5 sm:px-8 pb-14 sm:pb-20 pt-[calc(72px+124px)] sm:pt-[calc(72px+96px)]">
     <div class="max-w-[720px]">
       <p class="eyebrow mb-6 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[10px] sm:text-[.688rem]" style="color:#C9DDF6">
         <span>Independence, Missouri</span>
@@ -285,7 +285,7 @@ tailwind.config = { theme: { extend: { colors: {
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8 py-20 sm:py-28">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-end mb-12 sm:mb-16">
       <div class="lg:col-span-7" data-reveal>
-        <p class="eyebrow mb-4" style="color:var(--blue)">What we do</p>
+        <p class="eyebrow mb-4" style="color:var(--blueDeep)">What we do</p>
         <h2 class="display text-[clamp(2.1rem,4.6vw,3.5rem)]">
           One crew, <span class="grad-dark">start to finish.</span>
         </h2>
@@ -404,7 +404,7 @@ tailwind.config = { theme: { extend: { colors: {
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
       <div class="lg:col-span-5 order-2 lg:order-1" data-reveal>
-        <p class="eyebrow mb-4" style="color:var(--blue)">The color studio</p>
+        <p class="eyebrow mb-4" style="color:var(--blueDeep)">The color studio</p>
         <h2 class="display text-[clamp(2rem,4.3vw,3.3rem)] mb-5">
           Stop guessing at <span class="grad-dark">the swatch.</span>
         </h2>
@@ -439,7 +439,7 @@ tailwind.config = { theme: { extend: { colors: {
           <div class="studio-fallback" id="studioFallback" aria-hidden="true"><div class="tint" id="studioTint" style="background-color:#336BB5"></div></div>
           <canvas id="paintCanvas" aria-label="A wall being repainted in the selected color"></canvas>
         </div>
-        <p class="mt-3 text-[.78rem] text-right" style="color:var(--mute)">Tap any chip to roll it on the wall</p>
+        <p class="mt-3 text-[.78rem] text-right" style="color:#3F4A57">Tap any chip to roll it on the wall</p>
       </div>
 
     </div>
@@ -463,7 +463,7 @@ tailwind.config = { theme: { extend: { colors: {
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8 py-20 sm:py-28">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
       <div class="lg:col-span-5" data-reveal>
-        <p class="eyebrow mb-4" style="color:var(--blue)">Who you&rsquo;re hiring</p>
+        <p class="eyebrow mb-4" style="color:var(--blueDeep)">Who you&rsquo;re hiring</p>
         <h2 class="display text-[clamp(2rem,4.3vw,3.3rem)]">
           Locally owned. <span class="grad-dark">Personally answered.</span>
         </h2>
@@ -555,7 +555,7 @@ tailwind.config = { theme: { extend: { colors: {
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
 
       <div class="lg:col-span-5" data-reveal>
-        <p class="eyebrow mb-4" style="color:var(--blue)">Find us</p>
+        <p class="eyebrow mb-4" style="color:var(--blueDeep)">Find us</p>
         <h2 class="display text-[clamp(2rem,4.3vw,3.1rem)] mb-8">Based in Independence.</h2>
 
         <div class="space-y-7">
@@ -602,12 +602,20 @@ tailwind.config = { theme: { extend: { colors: {
       </div>
 
       <div class="lg:col-span-7" data-reveal>
-        <div class="rounded-2xl overflow-hidden h-[340px] sm:h-[460px] lg:h-full min-h-[340px]" style="box-shadow:0 26px 60px -28px rgba(22,32,47,.42); border:1px solid rgba(22,32,47,.10)">
-          <iframe
+        <div class="relative rounded-2xl overflow-hidden h-[340px] sm:h-[460px] lg:h-full min-h-[340px]" style="box-shadow:0 26px 60px -28px rgba(22,32,47,.42); border:1px solid rgba(22,32,47,.10); background:var(--linen)">
+          <!-- placeholder sits behind the map so the card is never a blank white box while tiles load -->
+          <div class="absolute inset-0 grid place-items-center text-center px-6" aria-hidden="true">
+            <div>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" class="mx-auto mb-3" style="color:var(--blueDeep)"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>
+              <p class="display text-[1.15rem]" style="line-height:1.3">1008 N Osage St</p>
+              <p class="text-[.85rem] mt-1" style="color:var(--mute)">Independence, MO 64050</p>
+            </div>
+          </div>
+          <iframe class="relative"
             title="Map to Striving General Contractor Inc, 1008 N Osage St, Independence, MO 64050"
             src="https://www.google.com/maps?q=1008%20N%20Osage%20St%2C%20Independence%2C%20MO%2064050&output=embed"
             width="100%" height="100%" style="border:0; display:block; min-height:340px"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            loading="eager" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -754,7 +762,7 @@ tailwind.config = { theme: { extend: { colors: {
       for (var i=0;i<items.length;i++){
         var em = (i % 3 === 1);
         html += '<span class="flex items-center gap-3 shrink-0 text-[13px] tracking-[.12em] uppercase font-medium' +
-                (em ? ' italic' : '') + '" style="color:' + (em ? '#9CC2EE' : 'rgba(251,252,254,.82)') + '">' +
+                (em ? ' italic' : '') + '" style="color:' + (em ? '#BBD6F5' : 'rgba(251,252,254,.82)') + '">' +
                 items[i] +
                 '<span style="width:4px;height:4px;border-radius:50%;background:#C39A55;display:inline-block;opacity:.8"></span></span>';
       }
