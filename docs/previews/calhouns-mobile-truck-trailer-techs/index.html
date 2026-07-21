@@ -129,6 +129,13 @@ tailwind.config = {
 
   #dust-canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
 
+  /* Tailwind Play CDN does NOT resolve bg-<customColor>/<opacity> — declare these explicitly
+     or the nav renders transparent and the dark wordmark lands on the dark hero (illegible). */
+  .navbar{ background:rgba(250,245,238,.945); }
+  .footer-badge{ background:rgba(250,245,238,.10); }
+  .glass-card{ background:rgba(250,245,238,.07); }
+  .process-line-track{ background:rgba(20,22,26,.12); }
+
   @media (prefers-reduced-motion: reduce){
     *{ animation:none !important; transition:none !important; }
     [data-reveal]{ opacity:1; transform:none; } [data-reveal-image]{ clip-path:none; }
@@ -165,7 +172,7 @@ tailwind.config = {
 
 <!-- ============ NAV ============ -->
 <header class="fixed top-0 inset-x-0 z-50">
-  <div class="bg-cream/92 backdrop-blur-md border-b border-ink/10">
+  <div class="navbar backdrop-blur-md border-b border-ink/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[62px] flex items-center justify-between gap-3">
       <a href="#top" class="flex items-center gap-2.5 shrink-0" aria-label="Calhoun's Mobile Truck and Trailer Techs home">
         <span class="inline-flex items-center justify-center w-9 h-9 rounded-[7px] bg-ink shrink-0">
@@ -229,7 +236,7 @@ tailwind.config = {
       <p class="eyebrow text-[10.5px] sm:text-[11.5px] font-bold tracking-[0.26em] uppercase text-beacon mb-5">
         Tyler, Texas &middot; Mobile Truck &amp; Trailer Repair
       </p>
-      <h1 class="display text-cream font-black text-[2.6rem] leading-[1.04] sm:text-[4.1rem] lg:text-[5.1rem] mb-6" style="padding-bottom:.10em">
+      <h1 class="display text-cream font-black text-[2.6rem] leading-[1.09] sm:text-[4.1rem] lg:text-[5.1rem] mb-6" style="padding-bottom:.10em">
         You don't tow it.<br><span class="grad-light">We come to it.</span>
       </h1>
       <p class="text-cream/85 text-[15.5px] sm:text-[18px] leading-relaxed max-w-[560px] mb-9">
@@ -402,7 +409,7 @@ tailwind.config = {
     </div>
 
     <div class="relative">
-      <div class="hidden md:block absolute top-[26px] left-[8%] right-[8%] h-px bg-ink/12"></div>
+      <div class="hidden md:block absolute top-[26px] left-[8%] right-[8%] h-px process-line-track"></div>
       <div class="hidden md:block absolute top-[26px] left-[8%] h-px bg-ember" data-progress-line style="width:0"></div>
 
       <div class="grid md:grid-cols-3 gap-10 md:gap-8 relative">
@@ -569,22 +576,22 @@ tailwind.config = {
       </div>
 
       <div data-reveal class="grid sm:grid-cols-2 gap-4">
-        <div class="bg-cream/[0.06] border border-cream/15 rounded-[12px] p-6">
+        <div class="glass-card border border-cream/15 rounded-[12px] p-6">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E0871B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 1.9"/></svg>
           <h3 class="display font-extrabold text-[1.05rem] mt-4">24 hours, 7 days</h3>
           <p class="text-cream/70 text-[13.5px] leading-relaxed mt-2">Breakdowns don't keep business hours. Neither does the phone.</p>
         </div>
-        <div class="bg-cream/[0.06] border border-cream/15 rounded-[12px] p-6">
+        <div class="glass-card border border-cream/15 rounded-[12px] p-6">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E0871B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17h2l1.5-5.5A2 2 0 0 1 8.4 10H14v7h1.5"/><path d="M14 11h3.2l2.3 3.1V17H18"/><circle cx="7" cy="18" r="1.8"/><circle cx="16.5" cy="18" r="1.8"/></svg>
           <h3 class="display font-extrabold text-[1.05rem] mt-4">Mobile, not a shop</h3>
           <p class="text-cream/70 text-[13.5px] leading-relaxed mt-2">The service truck comes to your breakdown, yard or dock.</p>
         </div>
-        <div class="bg-cream/[0.06] border border-cream/15 rounded-[12px] p-6">
+        <div class="glass-card border border-cream/15 rounded-[12px] p-6">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E0871B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.5 3.4v5c0 4.6-3.1 8.5-7.5 9.6-4.4-1.1-7.5-5-7.5-9.6v-5z"/><path d="M9.2 12.1l2 2 3.6-3.9"/></svg>
           <h3 class="display font-extrabold text-[1.05rem] mt-4">31 years running</h3>
           <p class="text-cream/70 text-[13.5px] leading-relaxed mt-2">Family owned since 1995, on all truck and trailer makes.</p>
         </div>
-        <div class="bg-cream/[0.06] border border-cream/15 rounded-[12px] p-6">
+        <div class="glass-card border border-cream/15 rounded-[12px] p-6">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E0871B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s7-4.6 7-10a7 7 0 1 0-14 0c0 5.4 7 10 7 10z"/><circle cx="12" cy="10" r="2.6"/></svg>
           <h3 class="display font-extrabold text-[1.05rem] mt-4">I&#8209;20, Exit 556</h3>
           <p class="text-cream/70 text-[13.5px] leading-relaxed mt-2">Right on the corridor, so the roll-out time stays short.</p>
@@ -674,7 +681,7 @@ tailwind.config = {
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
       <div class="lg:col-span-2">
         <div class="flex items-center gap-2.5 mb-5">
-          <span class="inline-flex items-center justify-center w-9 h-9 rounded-[7px] bg-cream/10">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-[7px] footer-badge">
             <svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <rect x="3" y="9.5" width="18" height="5" rx="2.2" fill="#E0871B"/>
               <rect x="6.4" y="10.9" width="2.4" height="2.2" rx=".6" fill="#14161A"/>
