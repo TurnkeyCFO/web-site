@@ -276,8 +276,11 @@ tailwind.config = { theme: { extend: { colors: {
 </section>
 
 <!-- ================= MARQUEE ================= -->
-<div class="marquee py-5" style="background:var(--navy)">
-  <div class="mq-track" id="mq"></div>
+<!-- band colour lives on the OUTER wrapper; the mask only fades the scrolling text, never the band -->
+<div class="py-5" style="background:var(--navy)">
+  <div class="marquee">
+    <div class="mq-track" id="mq"></div>
+  </div>
 </div>
 
 <!-- ================= WHAT WE DO ================= -->
