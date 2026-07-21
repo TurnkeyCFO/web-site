@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<!--
+  Cartwright Body Shop — Irving, TX  |  Turnkey Web draft preview
+  Art direction: light-luxury "workshop paper" — bone/paper base, ink text, the shop's OWN
+  sign red (#C1272D, sampled from the real Loop 12 marquee) as the single scarce accent.
+  Type: Fraunces (heritage display, fits a 1972 family shop) + Manrope (body).
+  Hero: AI-generated cinematic refinish asset (Higgsfield nano_banana_pro -> Kling 3.0 turbo),
+  self-hosted at assets/hero.mp4 + assets/hero.jpg.
+  Signature moment: scroll-scrubbed WebGL "refinish" panel — primer grey cures to candy red
+  as you scroll the three-stage process. Brand metaphor, not decoration.
+  All facts verified: Google Business Profile, BBB, City of Irving P&Z agenda, Street View.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cartwright Body Shop — Body, Frame &amp; Wheel Alignment in Irving, TX Since 1972</title>
+<meta name="description" content="Family-owned auto body shop on S Loop 12 in Irving, Texas since 1972. Collision and body repair, frame work, paint and refinishing, wheel alignment. 4.9 stars on Google. Call (972) 579-8868.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/cartwright-body-shop/">
+<meta property="og:title" content="Cartwright Body Shop — Irving, TX Since 1972">
+<meta property="og:description" content="Body, frame, wheel alignment and paint on S Loop 12 in Irving since 1972. Straight answers before the work starts.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://turnkeyweb.org/previews/cartwright-body-shop/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/cartwright-body-shop/assets/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: {
+    paper:'#FFFDFA', bone:'#F5EFE7', linen:'#EBE2D6',
+    signred:'#C1272D', deepred:'#7C1A1E', ember:'#E0563F',
+    ink:'#16130F', graphite:'#3A342D', steel:'#6E7A80'
+  },
+  fontFamily: { display:['Fraunces','Georgia','serif'], sans:['Manrope','system-ui','sans-serif'] }
+}}}
+</script>
+<style>
+  :root{ --nav-h:72px; }
+  html{ scroll-behavior:auto; scroll-padding-top:88px; -webkit-text-size-adjust:100%; }
+  body{ background:#F5EFE7; color:#16130F; font-family:'Manrope',system-ui,sans-serif; overflow-x:hidden; }
+  ::selection{ background:#C1272D; color:#FFFDFA; }
+
+  /* ---- descender safety: never clip g y p j q ---- */
+  h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
+  .grad-text{
+    background:linear-gradient(100deg,#7C1A1E 0%,#C1272D 32%,#E0563F 50%,#C1272D 68%,#7C1A1E 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite; line-height:1.16; padding-bottom:.1em; display:inline-block;
+  }
+  .grad-text.on-dark{ background:linear-gradient(100deg,#F0C9C0 0%,#FF8E76 30%,#FFF1EA 50%,#FF8E76 70%,#F0C9C0 100%); background-size:220% 100%; -webkit-background-clip:text; background-clip:text; }
+  @keyframes shimmer{ from{background-position:200% 0} to{background-position:-20% 0} }
+
+  /* ---- hero ---- */
+  .hero-media{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; will-change:transform; }
+  .hero-scrim{
+    position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(90deg, rgba(10,6,5,.92) 0%, rgba(10,6,5,.80) 30%, rgba(10,6,5,.38) 58%, rgba(10,6,5,.18) 100%),
+      linear-gradient(180deg, rgba(10,6,5,.62) 0%, rgba(10,6,5,.10) 30%, rgba(10,6,5,.30) 78%, rgba(245,239,231,.98) 100%);
+  }
+  .hero-type{ text-shadow:0 2px 26px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.5); }
+
+  /* ---- wordmark (recreates the real Loop 12 sign lockup) ---- */
+  .wm-script{ font-family:'Fraunces',serif; font-style:italic; font-weight:600; color:#C1272D; letter-spacing:-.01em; }
+  .wm-block{ font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:.18em; }
+
+  /* ---- sign band marquee ---- */
+  .marq{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
+  .marq-track{ display:flex; gap:2.6rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marq:hover .marq-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ---- cards ---- */
+  .card{ position:relative; background:#FFFDFA; border:1px solid #E5DBCC; border-radius:14px;
+         transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s; overflow:hidden; }
+  .card::before{ content:''; position:absolute; top:0; left:0; height:2px; width:0%;
+         background:linear-gradient(90deg,#C1272D,#E0563F); transition:width .6s cubic-bezier(.16,1,.3,1); }
+  .card:hover{ transform:translateY(-5px); box-shadow:0 18px 44px -22px rgba(22,19,15,.34); border-color:#D8C9B4; }
+  .card:hover::before{ width:100%; }
+  .ico{ transition:transform .5s cubic-bezier(.16,1,.3,1); }
+  .card:hover .ico{ transform:rotate(-7deg) scale(1.07); }
+
+  .btn{ position:relative; overflow:hidden; transition:transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s, filter .35s; }
+  .btn::after{ content:''; position:absolute; top:0; left:-130%; width:55%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent); transform:skewX(-18deg); transition:left .85s cubic-bezier(.16,1,.3,1); }
+  .btn:hover::after{ left:130%; }
+  .btn:hover{ transform:translateY(-2px); filter:brightness(1.05); }
+
+  .ul-grow{ position:relative; }
+  .ul-grow::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+    background:linear-gradient(90deg,#C1272D,#E0563F); transition:width .45s cubic-bezier(.16,1,.3,1); }
+  .ul-grow:hover::after{ width:100%; }
+
+  .pulse{ animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.82)} }
+
+  [data-reveal]{ opacity:0; transform:translateY(26px); will-change:opacity,transform; }
+  [data-reveal].shown{ opacity:1; transform:none; }
+
+  .rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(193,39,45,.35),transparent); }
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.045; mix-blend-mode:multiply;
+    background-image:radial-gradient(#16130F 1px, transparent 1px); background-size:3px 3px; }
+
+  .ticket{ background:#FFFDFA; border:1px solid #E5DBCC; border-radius:14px;
+    background-image:repeating-linear-gradient(180deg, transparent 0 33px, rgba(22,19,15,.045) 33px 34px); }
+
+  #panel-canvas{ display:block; width:100%; height:100%; }
+
+  @media (max-width:880px){
+    .hero-scrim{ background:
+      linear-gradient(180deg, rgba(10,6,5,.80) 0%, rgba(10,6,5,.62) 42%, rgba(10,6,5,.55) 72%, rgba(245,239,231,.98) 100%); }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .grad-text,.marq-track,.pulse{ animation:none !important; }
+    [data-reveal]{ opacity:1 !important; transform:none !important; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ================= NAV ================= -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" style="backdrop-filter:saturate(1.2) blur(10px);">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6">
+    <div class="flex items-center justify-between h-[68px] md:h-[76px]">
+      <a href="#top" class="flex items-center gap-2.5 shrink-0">
+        <span class="inline-flex flex-col leading-none">
+          <span class="wm-script text-[19px] md:text-[22px]" style="line-height:1.05;padding-bottom:.04em;">Cartwright</span>
+          <span class="wm-block text-[9px] md:text-[10px] text-ink/80" style="line-height:1.2;">BODY SHOP</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-[13.5px] font-semibold text-graphite">
+        <a href="#work" class="ul-grow hover:text-ink transition">What We Fix</a>
+        <a href="#process" class="ul-grow hover:text-ink transition">The Process</a>
+        <a href="#reviews" class="ul-grow hover:text-ink transition">Reviews</a>
+        <a href="#shop" class="ul-grow hover:text-ink transition">The Shop</a>
+        <a href="#visit" class="ul-grow hover:text-ink transition">Visit</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <span class="hidden xl:flex items-center gap-2 text-[12.5px] font-semibold text-graphite">
+          <span class="w-1.5 h-1.5 rounded-full bg-signred pulse"></span> Irving, TX since 1972
+        </span>
+        <a href="tel:+19725798868" class="btn inline-flex items-center gap-2 rounded-full bg-signred text-paper px-4 md:px-5 py-2.5 text-[13px] font-extrabold tracking-wide shadow-lg shadow-signred/20">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="hidden sm:inline">(972) 579-8868</span><span class="sm:hidden">Call</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="top" class="relative min-h-[100svh] flex items-end overflow-hidden">
+  <video class="hero-media" id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/hero.jpg" aria-hidden="true">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative w-full mx-auto max-w-[1200px] px-5 sm:px-6 pt-[150px] md:pt-[180px] pb-14 md:pb-20">
+    <div class="max-w-[820px] hero-type">
+      <div class="flex items-center gap-3 mb-6" data-reveal>
+        <span class="h-px w-10 bg-signred"></span>
+        <span class="text-[11px] md:text-[12px] font-extrabold tracking-[.26em] text-[#F3D9D2] uppercase">806 S Loop 12 &middot; Irving, Texas</span>
+      </div>
+
+      <h1 class="font-display text-[13.5vw] leading-[.98] sm:text-[8.4vw] lg:text-[76px] xl:text-[86px] font-semibold text-[#FDF7F0]" style="line-height:1.04;padding-bottom:.1em;" data-reveal>
+        Fifty-four years<br>
+        of <span class="grad-text on-dark italic">straight answers</span><br>
+        and straight metal.
+      </h1>
+
+      <p class="mt-7 max-w-[560px] text-[16.5px] md:text-[18.5px] leading-relaxed text-[#EBDFD6] font-light" data-reveal>
+        Body, frame, wheel alignment and paint. Same family shop on Loop 12 since 1972, run by
+        John Ramirez Jr. You hear the price and the plan before a single panel gets touched.
+      </p>
+
+      <div class="mt-9 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center" data-reveal>
+        <a href="tel:+19725798868" class="btn inline-flex items-center justify-center gap-2.5 rounded-full bg-signred text-paper px-7 py-4 text-[15px] font-extrabold tracking-wide shadow-2xl shadow-black/40">
+          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call the shop
+        </a>
+        <a href="#work" class="btn inline-flex items-center justify-center gap-2.5 rounded-full border border-white/40 text-[#FDF7F0] px-7 py-4 text-[15px] font-bold tracking-wide hover:bg-white/10 transition">
+          See what we fix
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-11 grid grid-cols-3 gap-4 sm:gap-8 max-w-[540px] border-t border-white/20 pt-6" data-reveal>
+        <div>
+          <div class="font-display text-[30px] sm:text-[38px] font-semibold text-[#FDF7F0]" style="line-height:1.1;padding-bottom:.06em;"><span data-count="54" data-suffix="">0</span></div>
+          <div class="text-[10.5px] font-bold tracking-[.16em] uppercase text-[#D9C9C0] mt-1">Years on Loop 12</div>
+        </div>
+        <div>
+          <div class="font-display text-[30px] sm:text-[38px] font-semibold text-[#FDF7F0]" style="line-height:1.1;padding-bottom:.06em;"><span data-count="4.9" data-dec="1">0</span><span class="text-signred">&#9733;</span></div>
+          <div class="text-[10.5px] font-bold tracking-[.16em] uppercase text-[#D9C9C0] mt-1">Google rating</div>
+        </div>
+        <div>
+          <div class="font-display text-[30px] sm:text-[38px] font-semibold text-[#FDF7F0]" style="line-height:1.1;padding-bottom:.06em;"><span data-count="1" data-suffix="">0</span></div>
+          <div class="text-[10.5px] font-bold tracking-[.16em] uppercase text-[#D9C9C0] mt-1">Owner, start to finish</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIGN BAND (their actual marquee copy) ================= -->
+<section class="relative bg-signred text-paper py-4 md:py-5 border-y border-deepred/40">
+  <div class="marq">
+    <div class="marq-track">
+      <!--m--><span class="flex items-center gap-2.6 shrink-0"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHAT WE FIX ================= -->
+<section id="work" class="relative py-24 md:py-32 grain">
+  <div class="mx-auto max-w-[1200px] px-5 sm:px-6">
+    <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-12 lg:gap-20 items-start">
+      <div class="lg:sticky lg:top-28" data-reveal>
+        <span class="text-[11px] font-extrabold tracking-[.26em] uppercase text-signred">What we fix</span>
+        <h2 class="font-display text-[38px] sm:text-[46px] lg:text-[54px] font-semibold mt-4" style="line-height:1.08;padding-bottom:.08em;">
+          Everything that<br><span class="grad-text italic">bends, breaks</span><br>or stops lining up.
+        </h2>
+        <p class="mt-6 text-[16px] leading-relaxed text-graphite/85 max-w-[380px] font-light">
+          Cartwright is a full body shop, not a parts swapper. Collision work, frame straightening,
+          refinishing and alignment all happen under the same roof on Loop 12 &mdash; which is why the
+          car leaves fitting the way it did before.
+        </p>
+        <a href="tel:+19725798868" class="mt-8 inline-flex items-center gap-2 text-[14px] font-extrabold text-signred ul-grow">
+          Talk it through: (972) 579-8868
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 md:gap-5">
+        <!-- 1 -->
+        <div class="card p-6 md:p-7" data-reveal>
+          <div class="ico w-11 h-11 rounded-xl bg-signred/10 text-signred flex items-center justify-center mb-5">
+            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6.5 17l1.6-5.6A2 2 0 0 1 10 10h4a2 2 0 0 1 1.9 1.4L17.5 17"/><circle cx="7.5" cy="19" r="2"/><circle cx="16.5" cy="19" r="2"/><path d="M9 7l1.5-2.5M15 7l-1.5-2.5"/></svg>
+          </div>
+          <h3 class="font-display text-[23px] font-semibold" style="line-height:1.14;padding-bottom:.06em;">Collision &amp; body repair</h3>
+          <p class="mt-2.5 text-[14.5px] leading-relaxed text-graphite/80 font-light">Rear-end damage, crumpled quarters, doors and fenders. Panels repaired or replaced so the gaps come back even.</p>
+        </div>
+        <!-- 2 -->
+        <div class="card p-6 md:p-7" data-reveal>
+          <div class="ico w-11 h-11 rounded-xl bg-signred/10 text-signred flex items-center justify-center mb-5">
+            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="10" rx="1.5"/><path d="M3 12h18M8 7v10M16 7v10"/></svg>
+          </div>
+          <h3 class="font-display text-[23px] font-semibold" style="line-height:1.14;padding-bottom:.06em;">Frame &amp; unibody</h3>
+          <p class="mt-2.5 text-[14.5px] leading-relaxed text-graphite/80 font-light">Frame testing and straightening. If the structure moved in the hit, it gets measured and pulled back before anything cosmetic happens.</p>
+        </div>
+        <!-- 3 -->
+        <div class="card p-6 md:p-7" data-reveal>
+          <div class="ico w-11 h-11 rounded-xl bg-signred/10 text-signred flex items-center justify-center mb-5">
+            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4.5-4.5"/><path d="M14.5 3.5l6 6-8 8-6-6z"/><path d="M9.5 8.5l6 6"/></svg>
+          </div>
+          <h3 class="font-display text-[23px] font-semibold" style="line-height:1.14;padding-bottom:.06em;">Paint &amp; refinishing</h3>
+          <p class="mt-2.5 text-[14.5px] leading-relaxed text-graphite/80 font-light">Color matched and blended into the surrounding panels, then cleared. The repair should disappear, not announce itself.</p>
+        </div>
+        <!-- 4 -->
+        <div class="card p-6 md:p-7" data-reveal>
+          <div class="ico w-11 h-11 rounded-xl bg-signred/10 text-signred flex items-center justify-center mb-5">
+            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.6"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg>
+          </div>
+          <h3 class="font-display text-[23px] font-semibold" style="line-height:1.14;padding-bottom:.06em;">Wheel alignment</h3>
+          <p class="mt-2.5 text-[14.5px] leading-relaxed text-graphite/80 font-light">On the sign since day one. Steering and suspension checked and set so it tracks straight and stops eating tires.</p>
+        </div>
+        <!-- 5 -->
+        <div class="card p-6 md:p-7" data-reveal>
+          <div class="ico w-11 h-11 rounded-xl bg-signred/10 text-signred flex items-center justify-center mb-5">
+            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15h18M5 15l1.2-4.2A2 2 0 0 1 8.1 9.4h7.8a2 2 0 0 1 1.9 1.4L19 15"/><path d="M4 15v2.5M20 15v2.5"/></svg>
+          </div>
+          <h3 class="font-display text-[23px] font-semibold" style="line-height:1.14;padding-bottom:.06em;">Bumper repair</h3>
+          <p class="mt-2.5 text-[14.5px] leading-relaxed text-graphite/80 font-light">Scuffs, transfer marks and cracked covers. Often repairable rather than replaceable, which is usually the cheaper honest answer.</p>
+        </div>
+        <!-- 6 -->
+        <div class="card p-6 md:p-7" data-reveal>
+          <div class="ico w-11 h-11 rounded-xl bg-signred/10 text-signred flex items-center justify-center mb-5">
+            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18v3h3l5.7-5.7a4.5 4.5 0 0 0 6-6l-2.4 2.4-2.1-2.1z"/></svg>
+          </div>
+          <h3 class="font-display text-[23px] font-semibold" style="line-height:1.14;padding-bottom:.06em;">Mechanical work</h3>
+          <p class="mt-2.5 text-[14.5px] leading-relaxed text-graphite/80 font-light">Brakes, air conditioning, electrical, radiators and general repair, including foreign makes. Ask and we will tell you straight if it is in our lane.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mx-auto max-w-[200px] rule"></div>
+
+<!-- ================= SIGNATURE: THE REFINISH (scroll-scrubbed WebGL) ================= -->
+<section id="process" class="relative bg-ink text-paper overflow-hidden">
+  <div class="relative h-[300vh]" id="panelScroll">
+    <div class="sticky top-0 h-[100svh] flex items-center overflow-hidden">
+      <!-- WebGL panel -->
+      <div class="absolute inset-0" id="panelWrap">
+        <canvas id="panel-canvas"></canvas>
+      </div>
+      <!-- static fallback poster (behind canvas, shows if WebGL is off) -->
+      <img src="assets/band.jpg" alt="" id="panelFallback" class="absolute inset-0 w-full h-full object-cover opacity-30" aria-hidden="true">
+      <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(10,8,6,.94) 0%,rgba(10,8,6,.80) 34%,rgba(10,8,6,.30) 62%,rgba(10,8,6,.55) 100%);"></div>
+
+      <div class="relative mx-auto max-w-[1200px] px-5 sm:px-6 w-full">
+        <div class="max-w-[520px]">
+          <span class="text-[11px] font-extrabold tracking-[.26em] uppercase text-ember">The refinish</span>
+          <h2 class="font-display text-[36px] sm:text-[44px] lg:text-[52px] font-semibold mt-4 text-[#FDF7F0]" style="line-height:1.08;padding-bottom:.08em;">
+            Three stages,<br><span class="grad-text on-dark italic">no guessing</span>.
+          </h2>
+
+          <div class="mt-9 space-y-1" id="stepList">
+            <div class="stepItem py-4 border-t border-white/15 transition-all duration-500" data-step="0">
+              <div class="flex items-start gap-4">
+                <span class="stepNum font-display text-[16px] font-semibold text-ember/60 mt-1 w-6 shrink-0" style="line-height:1.2;">01</span>
+                <div>
+                  <h3 class="stepTitle font-display text-[22px] sm:text-[25px] font-semibold text-[#FDF7F0]/55 transition-colors duration-500" style="line-height:1.16;padding-bottom:.06em;">Look and level</h3>
+                  <p class="stepBody text-[14.5px] leading-relaxed text-[#E4D8CF]/0 font-light mt-1.5 transition-all duration-500 h-0 overflow-hidden">Damage assessed, frame measured, panels straightened and filled flat. You get the price and the plan at this point, not after.</p>
+                </div>
+              </div>
+            </div>
+            <div class="stepItem py-4 border-t border-white/15 transition-all duration-500" data-step="1">
+              <div class="flex items-start gap-4">
+                <span class="stepNum font-display text-[16px] font-semibold text-ember/60 mt-1 w-6 shrink-0" style="line-height:1.2;">02</span>
+                <div>
+                  <h3 class="stepTitle font-display text-[22px] sm:text-[25px] font-semibold text-[#FDF7F0]/55 transition-colors duration-500" style="line-height:1.16;padding-bottom:.06em;">Prime and prep</h3>
+                  <p class="stepBody text-[14.5px] leading-relaxed text-[#E4D8CF]/0 font-light mt-1.5 transition-all duration-500 h-0 overflow-hidden">Sealed, blocked and masked. The dull grey stage nobody photographs is the one that decides whether the finish holds.</p>
+                </div>
+              </div>
+            </div>
+            <div class="stepItem py-4 border-t border-b border-white/15 transition-all duration-500" data-step="2">
+              <div class="flex items-start gap-4">
+                <span class="stepNum font-display text-[16px] font-semibold text-ember/60 mt-1 w-6 shrink-0" style="line-height:1.2;">03</span>
+                <div>
+                  <h3 class="stepTitle font-display text-[22px] sm:text-[25px] font-semibold text-[#FDF7F0]/55 transition-colors duration-500" style="line-height:1.16;padding-bottom:.06em;">Color and clear</h3>
+                  <p class="stepBody text-[14.5px] leading-relaxed text-[#E4D8CF]/0 font-light mt-1.5 transition-all duration-500 h-0 overflow-hidden">Matched, blended into the neighboring panels and cleared. Then alignment checked so it drives the way it looks.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-8 text-[12.5px] tracking-wide text-[#C9BAB1] font-light">Scroll to watch the panel come back.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section id="reviews" class="relative py-24 md:py-32 bg-bone grain">
+  <div class="mx-auto max-w-[1200px] px-5 sm:px-6">
+    <div class="max-w-[720px]" data-reveal>
+      <span class="text-[11px] font-extrabold tracking-[.26em] uppercase text-signred">4.9 &#9733; on Google &middot; 14 reviews</span>
+      <h2 class="font-display text-[38px] sm:text-[46px] lg:text-[54px] font-semibold mt-4" style="line-height:1.08;padding-bottom:.08em;">
+        Every review says<br>the same <span class="grad-text italic">one word</span>.
+      </h2>
+      <p class="mt-5 text-[16px] leading-relaxed text-graphite/85 font-light max-w-[520px]">
+        Honest. It shows up in review after review, going back years. Read them yourself &mdash; these are
+        verbatim from Google.
+      </p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-4 md:gap-5">
+      <div class="card p-7 md:p-8 flex flex-col" data-reveal>
+        <div class="text-signred text-[15px] tracking-[.16em] mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="font-display text-[19px] leading-[1.5] text-ink/90 flex-1" style="padding-bottom:.05em;">&ldquo;The best auto care in all of Irving. John is the most honest mechanic I&rsquo;ve ever known. I&rsquo;ve been taking my cars here for over 25 years, and will not go anywhere else.&rdquo;</p>
+        <div class="mt-6 pt-5 border-t border-linen text-[12.5px] font-bold tracking-wide text-graphite/75">melissa bonnet &middot; Google review</div>
+      </div>
+      <div class="card p-7 md:p-8 flex flex-col" data-reveal>
+        <div class="text-signred text-[15px] tracking-[.16em] mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="font-display text-[19px] leading-[1.5] text-ink/90 flex-1" style="padding-bottom:.05em;">&ldquo;Cartwright Body Shop is the only honest and fair body shop in Dallas. As women, we get conned at auto shops, but not here. Cartwright gives you feedback on repairs and cost before work is completed.&rdquo;</p>
+        <div class="mt-6 pt-5 border-t border-linen text-[12.5px] font-bold tracking-wide text-graphite/75">Erica Wilson &middot; Google review</div>
+      </div>
+      <div class="card p-7 md:p-8 flex flex-col" data-reveal>
+        <div class="text-signred text-[15px] tracking-[.16em] mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="font-display text-[19px] leading-[1.5] text-ink/90 flex-1" style="padding-bottom:.05em;">&ldquo;Honest, reliable, and affordable; what more could I ask for?&rdquo;</p>
+        <div class="mt-6 pt-5 border-t border-linen text-[12.5px] font-bold tracking-wide text-graphite/75">Michelle &middot; Google review</div>
+        <div class="mt-6 pt-5 border-t border-linen">
+          <p class="font-display text-[19px] leading-[1.5] text-ink/90" style="padding-bottom:.05em;">&ldquo;Cartwright always does a professional, courteous, job in a timely manner!&rdquo;</p>
+          <div class="mt-4 text-[12.5px] font-bold tracking-wide text-graphite/75">Mark Eliasen &middot; Google review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 grid md:grid-cols-2 gap-4 md:gap-5">
+      <div class="card p-7 md:p-8" data-reveal>
+        <div class="text-signred text-[15px] tracking-[.16em] mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="font-display text-[19px] leading-[1.5] text-ink/90" style="padding-bottom:.05em;">&ldquo;My service was great, keeped me notified through the whole thing, look for the cheapest parts, did not try and rip me off. Very honest, respectful, very good customer service, very communicative. Overall great service, I suggest going.&rdquo;</p>
+        <div class="mt-6 pt-5 border-t border-linen text-[12.5px] font-bold tracking-wide text-graphite/75">John R. &middot; Verified Yelp reviewer</div>
+      </div>
+      <div class="card p-7 md:p-8 flex flex-col justify-center" data-reveal>
+        <div class="text-signred text-[15px] tracking-[.16em] mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="font-display text-[19px] leading-[1.5] text-ink/90" style="padding-bottom:.05em;">&ldquo;The honest gentleman in the DFW area.&rdquo;</p>
+        <div class="mt-4 text-[12.5px] font-bold tracking-wide text-graphite/75">Paheeradan Nagulan &middot; Google review</div>
+        <div class="mt-7 pt-6 border-t border-linen">
+          <p class="font-display text-[19px] leading-[1.5] text-ink/90" style="padding-bottom:.05em;">&ldquo;Best shop in DFW.&rdquo;</p>
+          <div class="mt-4 text-[12.5px] font-bold tracking-wide text-graphite/75">Sean Sanchez &middot; Google review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE SHOP (real Street View) ================= -->
+<section id="shop" class="relative py-24 md:py-32 bg-paper">
+  <div class="mx-auto max-w-[1200px] px-5 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div class="relative" data-reveal>
+        <div class="overflow-hidden rounded-2xl border border-linen shadow-2xl shadow-ink/10">
+          <img src="assets/shop-front.jpg" alt="Cartwright Body Shop at 806 S Loop 12 in Irving, Texas" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="hidden sm:block absolute -bottom-8 -right-3 lg:-right-8 w-[46%] overflow-hidden rounded-xl border-[5px] border-paper shadow-2xl shadow-ink/20">
+          <img src="assets/shop-sign.jpg" alt="The Cartwright Body Shop sign reading Body, Frame, Wheel Alignment" class="w-full h-auto" loading="lazy">
+        </div>
+      </div>
+
+      <div data-reveal>
+        <span class="text-[11px] font-extrabold tracking-[.26em] uppercase text-signred">The shop</span>
+        <h2 class="font-display text-[38px] sm:text-[44px] lg:text-[50px] font-semibold mt-4" style="line-height:1.08;padding-bottom:.08em;">
+          Same corner of<br>Loop 12 <span class="grad-text italic">since 1972</span>.
+        </h2>
+        <p class="mt-6 text-[16.5px] leading-relaxed text-graphite/85 font-light">
+          Cartwright opened in 1972 and has been owner-operated by John Ramirez Jr. ever since.
+          No call center, no service advisor between you and the person doing the work. You talk
+          to John, John looks at the car, and John tells you what it needs.
+        </p>
+        <p class="mt-4 text-[16.5px] leading-relaxed text-graphite/85 font-light">
+          Fifty-four years in one place in a trade people are taught to be wary of is its own kind
+          of reference. Customers in the reviews below have been coming back for over twenty-five
+          of those years.
+        </p>
+
+        <div class="mt-9 grid grid-cols-2 gap-4">
+          <div class="ticket p-5">
+            <div class="text-[11px] font-extrabold tracking-[.2em] uppercase text-signred mb-2">Established</div>
+            <div class="font-display text-[30px] font-semibold" style="line-height:1.12;padding-bottom:.05em;">1972</div>
+          </div>
+          <div class="ticket p-5">
+            <div class="text-[11px] font-extrabold tracking-[.2em] uppercase text-signred mb-2">Owner</div>
+            <div class="font-display text-[22px] font-semibold" style="line-height:1.18;padding-bottom:.06em;">John Ramirez Jr.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section id="visit" class="relative py-24 md:py-32 bg-bone grain">
+  <div class="mx-auto max-w-[1200px] px-5 sm:px-6">
+    <div class="max-w-[640px] mb-12" data-reveal>
+      <span class="text-[11px] font-extrabold tracking-[.26em] uppercase text-signred">Visit</span>
+      <h2 class="font-display text-[38px] sm:text-[46px] lg:text-[52px] font-semibold mt-4" style="line-height:1.08;padding-bottom:.08em;">
+        Drop by. Bring<br>the <span class="grad-text italic">damage</span>.
+      </h2>
+      <p class="mt-5 text-[16px] leading-relaxed text-graphite/85 font-light">
+        South Loop 12 in Irving, minutes from Highway 183 and Loop 12. Come by during shop hours
+        and get eyes on it.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-[1fr_1.35fr] gap-5 md:gap-6 items-stretch">
+      <div class="space-y-5" data-reveal>
+        <div class="card p-7">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-signred/10 text-signred flex items-center justify-center shrink-0">
+              <svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="text-[11px] font-extrabold tracking-[.2em] uppercase text-graphite/60 mb-1.5">Address</div>
+              <div class="font-display text-[21px] font-semibold" style="line-height:1.25;padding-bottom:.05em;">806 S Loop 12<br>Irving, TX 75060</div>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=806+S+Loop+12%2C+Irving%2C+TX+75060" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-1.5 text-[13.5px] font-extrabold text-signred ul-grow">
+                Get directions
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-7">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-signred/10 text-signred flex items-center justify-center shrink-0">
+              <svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            </div>
+            <div class="w-full">
+              <div class="text-[11px] font-extrabold tracking-[.2em] uppercase text-graphite/60 mb-2.5">Shop hours</div>
+              <dl class="text-[14.5px] space-y-1.5">
+                <div class="flex justify-between gap-6"><dt class="text-graphite/80 font-medium">Monday &ndash; Friday</dt><dd class="font-bold text-ink">8:30a &ndash; 5:30p</dd></div>
+                <div class="flex justify-between gap-6"><dt class="text-graphite/60 font-medium">Saturday</dt><dd class="font-semibold text-graphite/60">Closed</dd></div>
+                <div class="flex justify-between gap-6"><dt class="text-graphite/60 font-medium">Sunday</dt><dd class="font-semibold text-graphite/60">Closed</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <a href="tel:+19725798868" class="card p-7 block group">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-signred text-paper flex items-center justify-center shrink-0">
+              <svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="text-[11px] font-extrabold tracking-[.2em] uppercase text-graphite/60 mb-1.5">Call the shop</div>
+              <div class="font-display text-[26px] font-semibold text-signred" style="line-height:1.2;padding-bottom:.05em;">(972) 579-8868</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden border border-linen shadow-2xl shadow-ink/10 min-h-[420px] lg:min-h-full" data-reveal>
+        <iframe
+          src="https://www.google.com/maps?q=806%20S%20Loop%2012%2C%20Irving%2C%20TX%2075060&output=embed"
+          width="100%" height="100%" style="border:0;min-height:420px;display:block;"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Cartwright Body Shop, 806 S Loop 12, Irving, TX 75060"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="relative overflow-hidden">
+  <img src="assets/band.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true">
+  <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(12,7,6,.82),rgba(12,7,6,.90));"></div>
+  <div class="relative mx-auto max-w-[1200px] px-5 sm:px-6 py-24 md:py-32 text-center">
+    <div data-reveal>
+      <span class="inline-flex flex-col leading-none items-center mb-8">
+        <span class="wm-script text-[30px] md:text-[38px]" style="color:#FF7A6B;line-height:1.05;padding-bottom:.06em;">Cartwright</span>
+        <span class="wm-block text-[11px] md:text-[12px] text-[#EBDFD6]" style="line-height:1.3;">BODY SHOP</span>
+      </span>
+      <h2 class="font-display text-[36px] sm:text-[46px] lg:text-[58px] font-semibold text-[#FDF7F0] max-w-[820px] mx-auto" style="line-height:1.08;padding-bottom:.08em;">
+        Tell us what happened.<br>We&rsquo;ll tell you <span class="grad-text on-dark italic">what it takes</span>.
+      </h2>
+      <p class="mt-6 text-[16.5px] leading-relaxed text-[#E4D8CF] max-w-[540px] mx-auto font-light">
+        One call, one honest look, one price before the work starts. Same as it has been since 1972.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-3.5 justify-center items-center">
+        <a href="tel:+19725798868" class="btn inline-flex items-center justify-center gap-2.5 rounded-full bg-signred text-paper px-8 py-4 text-[15.5px] font-extrabold tracking-wide shadow-2xl shadow-black/40">
+          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (972) 579-8868
+        </a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=806+S+Loop+12%2C+Irving%2C+TX+75060" target="_blank" rel="noopener" class="btn inline-flex items-center justify-center gap-2.5 rounded-full border border-white/40 text-[#FDF7F0] px-8 py-4 text-[15.5px] font-bold tracking-wide hover:bg-white/10 transition">
+          Directions to the shop
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-ink text-[#CDBFB6] pt-16 pb-28 md:pb-16">
+  <div class="mx-auto max-w-[1200px] px-5 sm:px-6">
+    <div class="grid md:grid-cols-[1.3fr_1fr_1fr] gap-10 md:gap-8">
+      <div>
+        <span class="inline-flex flex-col leading-none mb-4">
+          <span class="wm-script text-[24px]" style="color:#FF7A6B;line-height:1.05;padding-bottom:.05em;">Cartwright</span>
+          <span class="wm-block text-[10px] text-[#CDBFB6]" style="line-height:1.3;">BODY SHOP</span>
+        </span>
+        <p class="text-[14px] leading-relaxed font-light max-w-[320px]">
+          Body, frame, wheel alignment and paint on South Loop 12 in Irving, Texas.
+          Owner-operated since 1972.
+        </p>
+      </div>
+      <div>
+        <div class="text-[11px] font-extrabold tracking-[.2em] uppercase text-[#8F8078] mb-4">Find us</div>
+        <p class="text-[14.5px] leading-relaxed">806 S Loop 12<br>Irving, TX 75060</p>
+        <p class="mt-3 text-[14.5px]"><a href="tel:+19725798868" class="ul-grow font-bold text-[#FF7A6B]">(972) 579-8868</a></p>
+      </div>
+      <div>
+        <div class="text-[11px] font-extrabold tracking-[.2em] uppercase text-[#8F8078] mb-4">Hours</div>
+        <p class="text-[14.5px] leading-relaxed">Monday &ndash; Friday<br>8:30a &ndash; 5:30p</p>
+        <p class="mt-2 text-[14.5px] text-[#8F8078]">Saturday &amp; Sunday closed</p>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-[12.5px] text-[#8F8078]">
+      <span>&copy; <span id="yr">2026</span> Cartwright Body Shop &middot; Irving, Texas</span>
+      <span>Draft preview by Turnkey Web</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MOBILE STICKY BAR ================= -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-2 gap-px bg-linen border-t border-linen" style="padding-bottom:env(safe-area-inset-bottom);">
+  <a href="tel:+19725798868" class="flex items-center justify-center gap-2 bg-signred text-paper py-4 text-[14px] font-extrabold tracking-wide">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=806+S+Loop+12%2C+Irving%2C+TX+75060" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-paper text-ink py-4 text-[14px] font-extrabold tracking-wide">
+    <svg class="w-4 h-4 text-signred" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AutoBodyShop",
+  "name":"Cartwright Body Shop",
+  "description":"Family-owned auto body shop in Irving, Texas since 1972. Collision and body repair, frame straightening, paint and refinishing, bumper repair and wheel alignment.",
+  "url":"https://turnkeyweb.org/previews/cartwright-body-shop/",
+  "image":"https://turnkeyweb.org/previews/cartwright-body-shop/assets/hero.jpg",
+  "telephone":"+1-972-579-8868",
+  "foundingDate":"1972",
+  "founder":{"@type":"Person","name":"John Ramirez Jr."},
+  "address":{"@type":"PostalAddress","streetAddress":"806 S Loop 12","addressLocality":"Irving","addressRegion":"TX","postalCode":"75060","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":32.8051939,"longitude":-96.9210748},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:30","closes":"17:30"}
+  ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"14"},
+  "review":[
+    {"@type":"Review","author":{"@type":"Person","name":"melissa bonnet"},"reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"The best auto care in all of Irving. John is the most honest mechanic I've ever known. I've been taking my cars here for over 25 years, and will not go anywhere else."},
+    {"@type":"Review","author":{"@type":"Person","name":"Erica Wilson"},"reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"Cartwright Body Shop is the only honest and fair body shop in Dallas. Cartwright gives you feedback on repairs and cost before work is completed."}
+  ],
+  "hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Collision and auto body repair"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Frame testing and straightening"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Auto painting and refinishing"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Wheel alignment"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Bumper repair"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Auto steering and suspension repair"}}
+  ]},
+  "areaServed":[{"@type":"City","name":"Irving"},{"@type":"City","name":"Grand Prairie"},{"@type":"City","name":"Dallas"}]
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isDesktop = window.matchMedia('(min-width: 880px)').matches;
+
+  /* ---- marquee (their real sign copy) ---- */
+  (function(){
+    var items = ['Body','Frame','Wheel Alignment','Paint','Collision Repair','Bumper Repair','Since 1972','Irving, Texas'];
+    var html = '';
+    for (var pass=0; pass<2; pass++){
+      for (var i=0;i<items.length;i++){
+        html += '<span class="shrink-0 inline-flex items-center gap-2.5 whitespace-nowrap">' +
+                '<span class="text-[13px] md:text-[15px] font-extrabold tracking-[.22em] uppercase">'+items[i]+'</span>' +
+                '<span class="w-1.5 h-1.5 rounded-full bg-white/50"></span></span>';
+      }
+    }
+    var t = document.querySelector('.marq-track');
+    if (t) t.innerHTML = html;
+  })();
+
+  /* ---- nav state ---- */
+  var nav = document.getElementById('nav');
+  function navState(){
+    if (window.scrollY > 40){ nav.style.background='rgba(255,253,250,.92)'; nav.style.boxShadow='0 1px 0 rgba(22,19,15,.08), 0 10px 30px -24px rgba(22,19,15,.5)'; }
+    else { nav.style.background='transparent'; nav.style.boxShadow='none'; }
+  }
+  navState();
+
+  /* ---- Lenis (single rAF, driven by GSAP ticker) ---- */
+  var lenis = null;
+  if (!reduce && window.Lenis){
+    lenis = new Lenis({ duration:1.1, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}, smoothWheel:true, smoothTouch:false });
+    gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+    gsap.ticker.lagSmoothing(0);
+    lenis.on('scroll', function(){ navState(); if (window.ScrollTrigger) ScrollTrigger.update(); });
+  } else {
+    window.addEventListener('scroll', navState, {passive:true});
+  }
+  if (window.ScrollTrigger) ScrollTrigger.config({ ignoreMobileResize:true });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var el = document.querySelector(a.getAttribute('href'));
+      if (!el) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(el, { offset:-72 });
+      else el.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  /* ---- reveals (GPU only, once) ---- */
+  gsap.utils.toArray('[data-reveal]').forEach(function(el){
+    gsap.to(el, { opacity:1, y:0, duration:.7, ease:'power3.out', overwrite:true,
+      scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+      onComplete:function(){ el.classList.add('shown'); el.style.willChange='auto'; } });
+  });
+
+  /* ---- count-ups ---- */
+  gsap.utils.toArray('[data-count]').forEach(function(el){
+    var target = parseFloat(el.dataset.count), dec = parseInt(el.dataset.dec||'0',10), suf = el.dataset.suffix||'';
+    ScrollTrigger.create({ trigger:el, start:'top 95%', once:true, onEnter:function(){
+      var o = {v:0};
+      gsap.to(o,{ v:target, duration:1.5, ease:'power2.out', onUpdate:function(){ el.textContent = o.v.toFixed(dec)+suf; } });
+    }});
+  });
+
+  /* ---- hero video parallax (desktop only) ---- */
+  if (isDesktop && !reduce){
+    gsap.to('#heroVid', { yPercent:14, scale:1.07, ease:'none',
+      scrollTrigger:{ trigger:'#top', start:'top top', end:'bottom top', scrub:true } });
+  }
+  var hv = document.getElementById('heroVid');
+  if (hv){ var p = hv.play(); if (p && p.catch) p.catch(function(){}); }
+
+  /* ================= SIGNATURE: scroll-scrubbed WebGL refinish panel ================= */
+  (function(){
+    var canvas = document.getElementById('panel-canvas');
+    var wrap   = document.getElementById('panelWrap');
+    var items  = Array.prototype.slice.call(document.querySelectorAll('.stepItem'));
+
+    function setStep(i){
+      items.forEach(function(it, idx){
+        var t = it.querySelector('.stepTitle'), b = it.querySelector('.stepBody'), n = it.querySelector('.stepNum');
+        var on = (idx === i);
+        t.style.color = on ? '#FDF7F0' : 'rgba(253,247,240,.45)';
+        n.style.color = on ? '#E0563F' : 'rgba(224,86,63,.5)';
+        b.style.color = on ? 'rgba(228,216,207,.95)' : 'rgba(228,216,207,0)';
+        b.style.height = on ? (b.scrollHeight ? b.scrollHeight+'px' : 'auto') : '0px';
+        b.style.marginTop = on ? '.4rem' : '0';
+      });
+    }
+    // measure heights once, then collapse
+    items.forEach(function(it){ var b=it.querySelector('.stepBody'); b.style.height='auto'; b.dataset.h=b.scrollHeight; b.style.height='0px'; });
+    function setStep2(i){
+      items.forEach(function(it, idx){
+        var t=it.querySelector('.stepTitle'), b=it.querySelector('.stepBody'), n=it.querySelector('.stepNum');
+        var on=(idx===i);
+        t.style.color = on ? '#FDF7F0' : 'rgba(253,247,240,.45)';
+        n.style.color = on ? '#E0563F' : 'rgba(224,86,63,.5)';
+        b.style.color = on ? 'rgba(228,216,207,.95)' : 'rgba(228,216,207,0)';
+        b.style.height = on ? (b.dataset.h+'px') : '0px';
+        b.style.marginTop = on ? '.4rem' : '0';
+      });
+    }
+    setStep2(0);
+
+    var prog = { v:0 };
+    ScrollTrigger.create({
+      trigger:'#panelScroll', start:'top top', end:'bottom bottom', scrub:.6,
+      onUpdate:function(self){
+        prog.v = self.progress;
+        var i = self.progress < .34 ? 0 : (self.progress < .69 ? 1 : 2);
+        if (i !== setStep2.last){ setStep2(i); setStep2.last = i; }
+      }
+    });
+
+    // WebGL only on capable devices; otherwise the static poster carries it
+    var lowPower = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) || window.innerWidth < 700;
+    if (reduce || !canvas){ return; }
+
+    var running = false, visible = true, renderer, scene, camera, mesh, uni, raf3;
+    function boot(){
+      if (!window.THREE) return;
+      try {
+        renderer = new THREE.WebGLRenderer({canvas:canvas, antialias:!lowPower, alpha:true});
+      } catch(e){ return; }
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, lowPower?1.25:2));
+      var w = wrap.clientWidth, h = wrap.clientHeight;
+      renderer.setSize(w,h,false);
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(38, w/h, .1, 100);
+      camera.position.set(0,0,4.2);
+
+      uni = {
+        uTime:{value:0}, uProg:{value:0}, uRes:{value:new THREE.Vector2(w,h)}
+      };
+      var geo = new THREE.PlaneGeometry(7.2, 4.4, 120, 80);
+      var mat = new THREE.ShaderMaterial({
+        transparent:true, uniforms:uni,
+        vertexShader:[
+          'varying vec2 vUv; varying float vH; uniform float uTime;',
+          'void main(){ vUv=uv;',
+          '  float w1 = sin(uv.x*3.4 + uTime*0.25)*0.16;',
+          '  float w2 = cos(uv.y*2.6 - uTime*0.18)*0.10;',
+          '  vH = w1+w2;',
+          '  vec3 p = position; p.z += vH;',
+          '  gl_Position = projectionMatrix * modelViewMatrix * vec4(p,1.0); }'
+        ].join('\n'),
+        fragmentShader:[
+          'varying vec2 vUv; varying float vH; uniform float uTime; uniform float uProg;',
+          'void main(){',
+          '  vec3 primer = vec3(0.42,0.41,0.40);',
+          '  vec3 sealer = vec3(0.30,0.29,0.30);',
+          '  vec3 candy  = vec3(0.757,0.153,0.176);',
+          '  float p = clamp(uProg,0.0,1.0);',
+          // stage blend: primer -> sealer -> candy, wiped left-to-right per stage
+          '  float wipeA = smoothstep(vUv.x-0.35, vUv.x+0.05, p*1.9);',
+          '  vec3 base = mix(primer, sealer, clamp(p*2.6,0.0,1.0));',
+          '  float paint = smoothstep(0.52,1.0,p);',
+          '  float wipe = smoothstep(vUv.x-0.30, vUv.x+0.10, (p-0.45)*2.6);',
+          '  vec3 col = mix(base, candy, clamp(paint*wipe*1.4,0.0,1.0));',
+          // clearcoat: a moving specular band, strength grows with progress
+          '  float band = exp(-pow((vUv.x + vH*0.35 - fract(uTime*0.055))*5.2, 2.0));',
+          '  float gloss = mix(0.10, 0.95, p);',
+          '  col += vec3(1.0,0.94,0.90) * band * gloss * 0.65;',
+          // soft top light + vignette
+          '  col += vec3(0.16,0.10,0.09) * smoothstep(0.15,1.0,vUv.y) * (0.25+0.5*p);',
+          '  float vig = smoothstep(1.15,0.25,distance(vUv,vec2(0.5)));',
+          '  col *= 0.42 + 0.58*vig;',
+          '  float a = 0.90 * vig;',
+          '  gl_FragColor = vec4(col, a); }'
+        ].join('\n')
+      });
+      mesh = new THREE.Mesh(geo, mat);
+      mesh.rotation.set(-0.18, 0.30, 0.04);
+      scene.add(mesh);
+      running = true;
+      loop(0);
+      var fb = document.getElementById('panelFallback'); if (fb) fb.style.opacity = '0.10';
+    }
+
+    function loop(t){
+      if (!running) return;
+      raf3 = requestAnimationFrame(loop);
+      if (!visible || document.hidden) return;
+      uni.uTime.value = t*0.001;
+      uni.uProg.value += (prog.v - uni.uProg.value)*0.09;
+      mesh.rotation.y = 0.30 - uni.uProg.value*0.14;
+      renderer.render(scene, camera);
+    }
+
+    window.addEventListener('resize', function(){
+      if (!renderer) return;
+      var w = wrap.clientWidth, h = wrap.clientHeight;
+      renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();
+      uni.uRes.value.set(w,h);
+    });
+
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(e){ visible = e[0].isIntersecting; }, {threshold:0}).observe(wrap);
+    }
+
+    // lazy-load three AFTER first paint so it never blocks
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        var s = document.createElement('script');
+        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+        s.onload = boot; s.onerror = function(){};
+        document.head.appendChild(s);
+      }, 350);
+    });
+  })();
+
+  /* ---- 6s crawler / screenshot safety net ---- */
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      var o = window.getComputedStyle(el).opacity;
+      if (parseFloat(o) < .95){ el.style.opacity='1'; el.style.transform='none'; el.classList.add('shown'); }
+    });
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      if (el.textContent.trim()==='0'){
+        var dec = parseInt(el.dataset.dec||'0',10);
+        el.textContent = parseFloat(el.dataset.count).toFixed(dec) + (el.dataset.suffix||'');
+      }
+    });
+  }, 6000);
+})();
+</script>
+</body>
+</html>
