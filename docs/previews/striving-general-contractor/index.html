@@ -57,11 +57,12 @@ tailwind.config = { theme: { extend: { colors: {
 
   /* ---- gradient shimmer (min-lightness floor kept for AA on both canvases) ---- */
   .grad-text{  /* on dark */
-    background:linear-gradient(100deg,#CFE1F7 0%,#FFFFFF 26%,#CFE1F7 52%,#EAF2FC 76%,#CFE1F7 100%);
+    background:linear-gradient(100deg,#DCEBFC 0%,#FFFFFF 24%,#E4F0FE 50%,#FFFFFF 74%,#DCEBFC 100%);
     background-size:220% 100%;
     -webkit-background-clip:text; background-clip:text;
     -webkit-text-fill-color:transparent; color:transparent;
     animation:shimmer 9s linear infinite;
+    filter:drop-shadow(0 2px 18px rgba(0,0,0,.55));
     line-height:1.2; padding-bottom:.11em; display:inline-block;
   }
   .grad-dark{  /* on cream */
@@ -77,14 +78,15 @@ tailwind.config = { theme: { extend: { colors: {
 
   /* ---- hero ---- */
   .hero{position:relative; overflow:hidden; background:#10161F;}
-  .hero-media{position:absolute; inset:-8% -2% -2% -2%; width:104%; height:116%; object-fit:cover; will-change:transform;}
+  .hero-media{position:absolute; inset:-4% -1% -1% -1%; width:102%; height:108%; object-fit:cover; object-position:center 62%; will-change:transform;}
   .hero-scrim{position:absolute; inset:0; pointer-events:none;
     background:
-      linear-gradient(90deg, rgba(10,15,22,.95) 0%, rgba(10,15,22,.90) 34%, rgba(10,15,22,.58) 56%, rgba(11,17,26,.24) 78%, rgba(11,17,26,.34) 100%),
-      linear-gradient(180deg, rgba(10,15,22,.70) 0%, rgba(10,15,22,.14) 34%, rgba(10,15,22,.22) 70%, rgba(10,15,22,.76) 100%);
+      linear-gradient(90deg, rgba(10,15,22,.93) 0%, rgba(10,15,22,.86) 32%, rgba(10,15,22,.46) 54%, rgba(11,17,26,.10) 74%, rgba(11,17,26,.16) 100%),
+      linear-gradient(180deg, rgba(10,15,22,.62) 0%, rgba(10,15,22,.06) 32%, rgba(10,15,22,.14) 68%, rgba(10,15,22,.70) 100%);
   }
   @media(max-width:820px){
-    .hero-scrim{background:linear-gradient(180deg, rgba(10,15,22,.88) 0%, rgba(10,15,22,.66) 40%, rgba(10,15,22,.62) 68%, rgba(10,15,22,.92) 100%);}
+    .hero-media{object-position:center 55%;}
+    .hero-scrim{background:linear-gradient(180deg, rgba(10,15,22,.84) 0%, rgba(10,15,22,.48) 34%, rgba(10,15,22,.60) 66%, rgba(10,15,22,.92) 100%);}
   }
   .hero h1, .hero p, .hero .eyebrow{text-shadow:0 2px 26px rgba(0,0,0,.58), 0 1px 3px rgba(0,0,0,.5);}
 
@@ -213,7 +215,7 @@ tailwind.config = { theme: { extend: { colors: {
 
   <div class="relative w-full max-w-[1240px] mx-auto px-5 sm:px-8 pb-14 sm:pb-20 pt-[calc(72px+80px)] sm:pt-[calc(72px+96px)]">
     <div class="max-w-[720px]">
-      <p class="eyebrow mb-6 flex flex-wrap items-center gap-x-3 gap-y-2" style="color:#BFD6F2">
+      <p class="eyebrow mb-6 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[10px] sm:text-[.688rem]" style="color:#C9DDF6">
         <span>Independence, Missouri</span>
         <span style="opacity:.42">&#47;&#47;</span>
         <span>Painting &amp; Remodeling</span>
@@ -447,7 +449,7 @@ tailwind.config = { theme: { extend: { colors: {
   <img src="assets/exterior.jpg" id="bandImg" alt="A freshly painted craftsman home with crisp navy trim at golden hour">
   <div class="band-scrim"></div>
   <div class="relative w-full max-w-[1240px] mx-auto px-5 sm:px-8 pb-12 sm:pb-16">
-    <h2 class="display text-[clamp(1.9rem,4.6vw,3.6rem)] max-w-[16ch]" style="color:#FBFCFE; text-shadow:0 2px 24px rgba(0,0,0,.55)">
+    <h2 class="display text-[clamp(1.9rem,4.6vw,3.6rem)] max-w-[24ch]" style="color:#FBFCFE; text-shadow:0 2px 24px rgba(0,0,0,.55)">
       <span class="lm"><span>A fresh face on the house</span></span>
       <span class="lm"><span>changes the whole street.</span></span>
     </h2>
@@ -863,7 +865,7 @@ tailwind.config = { theme: { extend: { colors: {
     });
 
     if (!isTouch){
-      gsap.to('#heroVid', { yPercent:14, scale:1.07, ease:'none',
+      gsap.to('#heroVid', { yPercent:10, scale:1.04, ease:'none',
         scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:.6 }});
       gsap.to('#bandImg', { yPercent:-9, ease:'none',
         scrollTrigger:{ trigger:'.band', start:'top bottom', end:'bottom top', scrub:.6 }});
