@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<!--
+  Brite Touch — Columbia, SC  |  Turnkey Web draft preview
+  Art direction: light-luxury "optics lab" — warm bone base, cool glass accents.
+  Palette sourced from the owner's own Linktree brand avatar: cyan #02ABC4 + deep blue #061493 + #2666D6.
+  Hero: AI cinematic moving asset (Higgsfield nano_banana_pro -> Kling 3.0 turbo), self-hosted.
+  Signature moment: THE TINT LAB — an interactive canvas VLT selector.
+  All business facts researched + verified. No fabricated reviewers, no invented pricing.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brite Touch | Window Tinting &amp; Auto Detailing in Columbia, SC</title>
+<meta name="description" content="Brite Touch on West Beltline has been tinting and detailing in Columbia, South Carolina for nearly three decades. Automotive, residential and commercial window film — carbon, ceramic and 2% limo. Call (803) 252-2003.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/brite-touch/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Brite Touch | Window Tinting &amp; Auto Detailing in Columbia, SC">
+<meta property="og:description" content="Nearly three decades of window film and detail work on West Beltline Blvd. Auto, home and business.">
+<meta property="og:url" content="https://turnkeyweb.org/previews/brite-touch/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/brite-touch/assets/hero.jpg">
+<meta name="theme-color" content="#F5F3EF">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{
+  bone:'#F5F3EF', paper:'#FFFFFF', ink:'#0E1620', graphite:'#39434F',
+  navy:'#061493', cyan:'#02ABC4', blue:'#2666D6', line:'#E4E0D8', mist:'#EDEAE4'
+},fontFamily:{display:['Syne','system-ui','sans-serif'],sans:['"Plus Jakarta Sans"','system-ui','sans-serif']}}}}
+</script>
+<style>
+  :root{ --bone:#F5F3EF; --ink:#0E1620; --navy:#061493; --cyan:#02ABC4; --blue:#2666D6; --line:#E4E0D8; --nav:72px; }
+  *{ -webkit-tap-highlight-color:transparent; }
+  html{ scroll-padding-top:96px; }
+  body{ background:var(--bone); color:var(--ink); font-family:'Plus Jakarta Sans',system-ui,sans-serif; overflow-x:hidden; }
+  ::selection{ background:var(--cyan); color:#fff; }
+
+  h1,h2,h3,.font-display{ font-family:'Syne',system-ui,sans-serif; }
+  /* DESCENDER SAFETY — never below 1.08, always padded */
+  h1,h2,h3{ line-height:1.1; padding-bottom:.06em; }
+
+  .grad-text{
+    background:linear-gradient(100deg,var(--navy) 0%,var(--blue) 28%,var(--cyan) 52%,var(--blue) 76%,var(--navy) 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite; line-height:1.15; padding-bottom:.1em; display:inline-block;
+  }
+  .grad-light{
+    background:linear-gradient(100deg,#EAF7FA 0%,#8FE3F0 30%,#02ABC4 55%,#8FE3F0 78%,#EAF7FA 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite; line-height:1.15; padding-bottom:.1em; display:inline-block;
+  }
+  @keyframes shimmer{ from{background-position:0% 50%} to{background-position:220% 50%} }
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; min-height:100svh; overflow:hidden; background:#0A1118; }
+  .hero-bg{ position:absolute; inset:-8% 0 -8% 0; width:100%; height:116%; object-fit:cover; will-change:transform; }
+  .hero-scrim{
+    position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(to top, rgba(6,12,18,.90) 0%, rgba(6,12,18,.62) 34%, rgba(6,12,18,.16) 62%, rgba(6,12,18,.34) 100%),
+      linear-gradient(to right, rgba(6,12,18,.80) 0%, rgba(6,12,18,.34) 46%, rgba(6,12,18,0) 78%);
+  }
+  .hero h1, .hero p, .hero .heroLine{ text-shadow:0 2px 26px rgba(0,0,0,.62); }
+
+  .lineMask{ overflow:hidden; padding-bottom:.16em; display:block; }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 42s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ---------- CARDS / LINKS ---------- */
+  .lane{ position:relative; transition:transform .5s cubic-bezier(.2,.7,.3,1), box-shadow .5s; }
+  .lane::before{ content:''; position:absolute; left:0; top:0; height:2px; width:0;
+    background:linear-gradient(90deg,var(--navy),var(--cyan)); transition:width .65s cubic-bezier(.2,.7,.3,1); }
+  .lane:hover{ transform:translateY(-6px); box-shadow:0 26px 60px -30px rgba(6,20,40,.45); }
+  .lane:hover::before{ width:100%; }
+
+  .btn{ position:relative; overflow:hidden; transition:transform .35s, box-shadow .35s, filter .35s; }
+  .btn::after{ content:''; position:absolute; top:0; left:-130%; width:60%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.42),transparent); transform:skewX(-18deg); transition:left .9s cubic-bezier(.2,.7,.3,1); }
+  .btn:hover::after{ left:130%; }
+  .btn:hover{ transform:translateY(-3px); box-shadow:0 18px 34px -16px rgba(2,171,196,.6); }
+
+  .ul-grow{ position:relative; }
+  .ul-grow::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+    background:linear-gradient(90deg,var(--cyan),var(--blue)); transition:width .45s cubic-bezier(.2,.7,.3,1); }
+  .ul-grow:hover::after{ width:100%; }
+
+  .dot{ width:7px; height:7px; border-radius:50%; background:var(--cyan); display:inline-block; animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.4; transform:scale(.78)} }
+
+  /* ---------- TINT LAB ---------- */
+  #tintCanvas{ display:block; width:100%; height:100%; }
+  .lab-frame{ position:relative; border-radius:18px; overflow:hidden; background:#0A1118;
+    box-shadow:0 40px 90px -46px rgba(6,20,40,.6), inset 0 0 0 1px rgba(255,255,255,.08); }
+  input[type=range].vlt{ -webkit-appearance:none; appearance:none; width:100%; height:3px; border-radius:99px;
+    background:linear-gradient(90deg,#0A1118,#7FD8E6,#EDEAE4); outline:none; }
+  input[type=range].vlt::-webkit-slider-thumb{ -webkit-appearance:none; width:26px; height:26px; border-radius:50%;
+    background:#fff; border:3px solid var(--cyan); cursor:grab; box-shadow:0 6px 18px -6px rgba(2,171,196,.9); }
+  input[type=range].vlt::-moz-range-thumb{ width:26px; height:26px; border-radius:50%; background:#fff; border:3px solid var(--cyan); cursor:grab; }
+  .vltBtn{ transition:all .3s; }
+  .vltBtn[aria-pressed="true"]{ background:var(--ink); color:#fff; border-color:var(--ink); }
+
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.045; mix-blend-mode:multiply;
+    background-image:radial-gradient(#000 1px, transparent 1px); background-size:3px 3px; }
+
+  [data-reveal]{ opacity:0; transform:translateY(30px); will-change:opacity,transform; }
+  [data-reveal-image]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.2,.7,.3,1); }
+  [data-reveal-image].in{ clip-path:inset(0 0 0% 0); }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important; }
+    [data-reveal]{ opacity:1 !important; transform:none !important; }
+    [data-reveal-image]{ clip-path:none !important; }
+  }
+  @media (max-width:880px){
+    .hero{ min-height:92svh; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AutoRepair",
+  "name":"Brite Touch",
+  "description":"Automotive window tinting, residential and commercial window film, and full auto detailing in Columbia, South Carolina.",
+  "url":"https://turnkeyweb.org/previews/brite-touch/",
+  "telephone":"+1-803-252-2003",
+  "address":{"@type":"PostalAddress","streetAddress":"4123 W Beltline Blvd","addressLocality":"Columbia","addressRegion":"SC","postalCode":"29204","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":34.0372694,"longitude":-81.0055831},
+  "areaServed":[{"@type":"City","name":"Columbia"},{"@type":"City","name":"Lexington"},{"@type":"State","name":"South Carolina"}],
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"17:00"}
+  ],
+  "sameAs":["https://www.instagram.com/britetouch/","https://www.tiktok.com/@britetouchharry","https://www.facebook.com/p/Brite-Touch-100069409742246/"],
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Automotive window tinting"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Ceramic and carbon window film"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Residential window film"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Commercial window film"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Auto detailing"}}
+  ]
+}
+</script>
+</head>
+
+<body class="antialiased">
+
+<!-- ======================= NAV ======================= -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
+    <div id="navInner" class="flex items-center justify-between h-[72px] transition-all duration-500">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="grid place-items-center w-9 h-9 rounded-[9px]" style="background:linear-gradient(135deg,#061493,#02ABC4)">
+          <svg viewBox="0 0 24 24" class="w-[19px] h-[19px]" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 15.5 12 4l8 11.5"/><path d="M4 15.5h16"/><path d="M8.5 15.5 12 9.5l3.5 6"/>
+          </svg>
+        </span>
+        <span class="leading-none">
+          <span id="navName" class="block font-display font-extrabold tracking-tight text-[19px] text-ink transition-colors duration-500">BRITE&nbsp;TOUCH</span>
+          <span id="navSub" class="block text-[9.5px] tracking-[.26em] font-semibold mt-[3px] text-graphite/70 transition-colors duration-500">COLUMBIA · SOUTH CAROLINA</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-[13.5px] font-semibold">
+        <a href="#lab" class="navlink ul-grow text-ink/80 hover:text-ink transition-colors">Tint Lab</a>
+        <a href="#work" class="navlink ul-grow text-ink/80 hover:text-ink transition-colors">What We Do</a>
+        <a href="#proof" class="navlink ul-grow text-ink/80 hover:text-ink transition-colors">Proof</a>
+        <a href="#visit" class="navlink ul-grow text-ink/80 hover:text-ink transition-colors">Visit</a>
+      </nav>
+      <div class="flex items-center gap-2.5">
+        <a href="tel:+18032522003" class="hidden sm:flex items-center gap-2 text-[13.5px] font-bold text-ink navlink">
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg>
+          (803) 252-2003
+        </a>
+        <a href="#quote" class="btn rounded-full px-5 py-2.5 text-[13px] font-bold text-white" style="background:linear-gradient(120deg,#061493,#2666D6 55%,#02ABC4)">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ======================= HERO ======================= -->
+<section id="top" class="hero flex items-end">
+  <video class="hero-bg" autoplay muted loop playsinline preload="auto" poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 w-full">
+    <div class="mx-auto max-w-[1240px] px-5 sm:px-8 pt-[128px] pb-14 sm:pb-20">
+      <div class="max-w-[820px]">
+        <div class="heroLine flex items-center gap-2.5 mb-6 opacity-0" id="heroKicker">
+          <span class="dot"></span>
+          <span class="text-[11px] sm:text-[11.5px] tracking-[.3em] font-bold text-white/85">4123 W BELTLINE BLVD · SINCE THE '90s</span>
+        </div>
+
+        <h1 class="font-display font-extrabold text-white text-[40px] sm:text-[64px] lg:text-[80px] tracking-[-.02em]">
+          <span class="lineMask"><span class="heroLine block opacity-0">Glass done</span></span>
+          <span class="lineMask"><span class="heroLine block opacity-0"><span class="grad-light">properly.</span></span></span>
+        </h1>
+
+        <p class="heroLine opacity-0 mt-6 text-[16px] sm:text-[19px] leading-relaxed text-white/85 max-w-[590px]">
+          Nearly three decades of window film and detail work out of one shop on West Beltline.
+          Cars, homes, storefronts. Heat and UV stay outside where they belong.
+        </p>
+
+        <div class="heroLine opacity-0 mt-9 flex flex-wrap items-center gap-3">
+          <a href="tel:+18032522003" class="btn rounded-full px-7 py-4 text-[14.5px] font-bold text-white flex items-center gap-2.5" style="background:linear-gradient(120deg,#061493,#2666D6 55%,#02ABC4)">
+            <svg viewBox="0 0 24 24" class="w-[17px] h-[17px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg>
+            Call (803) 252-2003
+          </a>
+          <a href="#lab" class="rounded-full px-7 py-4 text-[14.5px] font-bold text-white border border-white/35 hover:bg-white/10 hover:border-white/60 transition-all duration-400 backdrop-blur-sm">
+            Try the Tint Lab
+          </a>
+        </div>
+
+        <div class="heroLine opacity-0 mt-11 sm:mt-14 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/18 pt-7">
+          <div>
+            <div class="font-display font-extrabold text-[30px] sm:text-[36px] text-white leading-none" data-count="28" data-suffix="">0</div>
+            <div class="text-[10.5px] tracking-[.2em] font-semibold text-white/60 mt-2">YEARS IN COLUMBIA</div>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-[30px] sm:text-[36px] text-white leading-none" data-count="11" data-suffix="+">0</div>
+            <div class="text-[10.5px] tracking-[.2em] font-semibold text-white/60 mt-2">YEARS A STATE OF SC VENDOR</div>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-[30px] sm:text-[36px] text-white leading-none" data-count="142" data-suffix="K">0</div>
+            <div class="text-[10.5px] tracking-[.2em] font-semibold text-white/60 mt-2">LIKES ON TIKTOK</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CREDENTIAL RIBBON ======================= -->
+<section class="bg-ink text-white py-4 overflow-hidden">
+  <div class="marquee">
+    <div class="marquee-track text-[12.5px] tracking-[.22em] font-semibold uppercase">
+      <span class="flex items-center gap-3 text-white/85">Ceramic film<span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3 text-white/85">Carbon film<span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3"><em class="grad-light not-italic">2% limo blackout</em><span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3 text-white/85">Rear windshields<span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3 text-white/85">Home &amp; office film<span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3"><em class="grad-light not-italic">Full detailing</em><span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3 text-white/85">Interior cleaning<span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3 text-white/85">Heat &amp; UV rejection<span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <!-- duplicate for seamless loop -->
+      <span class="flex items-center gap-3 text-white/85">Ceramic film<span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3 text-white/85">Carbon film<span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3"><em class="grad-light not-italic">2% limo blackout</em><span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3 text-white/85">Rear windshields<span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3 text-white/85">Home &amp; office film<span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3"><em class="grad-light not-italic">Full detailing</em><span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3 text-white/85">Interior cleaning<span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+      <span class="flex items-center gap-3 text-white/85">Heat &amp; UV rejection<span class="w-1 h-1 rounded-full bg-cyan"></span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= THE TINT LAB (signature) ======================= -->
+<section id="lab" class="relative py-20 sm:py-28 grain">
+  <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10" data-reveal>
+      <div class="max-w-[640px]">
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="dot"></span>
+          <span class="text-[11px] tracking-[.3em] font-bold text-graphite/70">THE TINT LAB</span>
+        </div>
+        <h2 class="font-display font-extrabold text-[34px] sm:text-[50px] tracking-[-.02em]">
+          See it before <span class="grad-text">we cut it.</span>
+        </h2>
+        <p class="mt-5 text-[16px] sm:text-[17px] leading-relaxed text-graphite max-w-[540px]">
+          Most people pick a shade off a chart in a folder. Drag the slider and watch what each film actually
+          does to the light. Then call us and say the number.
+        </p>
+      </div>
+      <div class="shrink-0">
+        <div class="text-[11px] tracking-[.2em] font-bold text-graphite/60 mb-1.5">VISIBLE LIGHT TRANSMISSION</div>
+        <div class="font-display font-extrabold text-[54px] sm:text-[64px] leading-none text-ink"><span id="vltNum">35</span><span class="text-cyan">%</span></div>
+      </div>
+    </div>
+
+    <div class="lab-frame aspect-[16/9] sm:aspect-[21/9]" data-reveal>
+      <canvas id="tintCanvas" width="1600" height="686"></canvas>
+      <div class="absolute left-5 bottom-5 sm:left-7 sm:bottom-7 pointer-events-none">
+        <div id="labLabel" class="font-display font-extrabold text-white text-[22px] sm:text-[30px] leading-tight" style="text-shadow:0 2px 20px rgba(0,0,0,.7)">Factory glass</div>
+        <div id="labSub" class="text-white/75 text-[12.5px] sm:text-[14px] font-medium mt-1" style="text-shadow:0 2px 14px rgba(0,0,0,.8)">No film. Every bit of heat and glare comes straight in.</div>
+      </div>
+      <div class="absolute right-5 top-5 sm:right-7 sm:top-7 flex items-center gap-2 pointer-events-none">
+        <span class="w-1.5 h-1.5 rounded-full bg-cyan"></span>
+        <span class="text-[10.5px] tracking-[.22em] font-bold text-white/70">LIVE PREVIEW</span>
+      </div>
+    </div>
+
+    <div class="mt-7 grid lg:grid-cols-[1fr_auto] gap-7 lg:gap-12 items-center">
+      <div>
+        <input id="vlt" class="vlt" type="range" min="0" max="4" step="1" value="2" aria-label="Select window film shade">
+        <div class="flex justify-between mt-3 text-[11px] sm:text-[12px] font-bold text-graphite/70">
+          <span>2% Limo</span><span>20%</span><span>35%</span><span>50%</span><span>70%</span>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button class="vltBtn rounded-full border border-line px-4 py-2 text-[12.5px] font-bold text-ink bg-paper" data-vlt="0" aria-pressed="false">2%</button>
+        <button class="vltBtn rounded-full border border-line px-4 py-2 text-[12.5px] font-bold text-ink bg-paper" data-vlt="1" aria-pressed="false">20%</button>
+        <button class="vltBtn rounded-full border border-line px-4 py-2 text-[12.5px] font-bold text-ink bg-paper" data-vlt="2" aria-pressed="true">35%</button>
+        <button class="vltBtn rounded-full border border-line px-4 py-2 text-[12.5px] font-bold text-ink bg-paper" data-vlt="3" aria-pressed="false">50%</button>
+        <button class="vltBtn rounded-full border border-line px-4 py-2 text-[12.5px] font-bold text-ink bg-paper" data-vlt="4" aria-pressed="false">70%</button>
+      </div>
+    </div>
+
+    <p class="mt-7 text-[13px] text-graphite/70 max-w-[720px] leading-relaxed">
+      A visual guide, not a legal one. South Carolina sets its own limits on how dark each window can go,
+      and the rules are different for the front doors, the back doors and the rear glass. We tint to the
+      law every day and we will tell you straight what your vehicle can run.
+    </p>
+  </div>
+</section>
+
+<!-- ======================= WHAT WE DO ======================= -->
+<section id="work" class="py-20 sm:py-28 bg-paper border-y border-line">
+  <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
+    <div class="max-w-[660px] mb-14" data-reveal>
+      <div class="flex items-center gap-2.5 mb-4">
+        <span class="dot"></span><span class="text-[11px] tracking-[.3em] font-bold text-graphite/70">WHAT WE DO</span>
+      </div>
+      <h2 class="font-display font-extrabold text-[34px] sm:text-[50px] tracking-[-.02em]">Three kinds of <span class="grad-text">glass.</span></h2>
+      <p class="mt-5 text-[16px] sm:text-[17px] leading-relaxed text-graphite">
+        Same hands, same film, same standard, whether it is a truck door or a west-facing living room.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5" data-reveal>
+      <!-- AUTO -->
+      <article class="lane bg-bone border border-line rounded-2xl p-8 overflow-hidden">
+        <span class="grid place-items-center w-12 h-12 rounded-xl mb-6" style="background:linear-gradient(135deg,#061493,#2666D6)">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14"/><path d="M3 17v-4.2a2 2 0 0 1 .4-1.2l2.2-3A2 2 0 0 1 7.2 8h9.6a2 2 0 0 1 1.6.8l2.2 3a2 2 0 0 1 .4 1.2V17"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/></svg>
+        </span>
+        <h3 class="font-display font-extrabold text-[24px] tracking-tight">Automotive</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-graphite">
+          Full vehicles, single windows, rear windshields. Carbon and ceramic film, plus 2% limo
+          when you want the cabin gone dark.
+        </p>
+        <ul class="mt-6 space-y-2.5 text-[14px] text-ink/80">
+          <li class="flex gap-2.5"><svg viewBox="0 0 24 24" class="w-4 h-4 mt-[3px] shrink-0" fill="none" stroke="#02ABC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>Carbon &amp; ceramic film</li>
+          <li class="flex gap-2.5"><svg viewBox="0 0 24 24" class="w-4 h-4 mt-[3px] shrink-0" fill="none" stroke="#02ABC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>2% limo blackout, GeoShield</li>
+          <li class="flex gap-2.5"><svg viewBox="0 0 24 24" class="w-4 h-4 mt-[3px] shrink-0" fill="none" stroke="#02ABC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>Rear windshield work</li>
+          <li class="flex gap-2.5"><svg viewBox="0 0 24 24" class="w-4 h-4 mt-[3px] shrink-0" fill="none" stroke="#02ABC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>Heat &amp; UV rejection</li>
+        </ul>
+      </article>
+
+      <!-- HOME -->
+      <article class="lane bg-bone border border-line rounded-2xl p-8 overflow-hidden">
+        <span class="grid place-items-center w-12 h-12 rounded-xl mb-6" style="background:linear-gradient(135deg,#2666D6,#02ABC4)">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10.5 9-7 9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-6h4v6"/></svg>
+        </span>
+        <h3 class="font-display font-extrabold text-[24px] tracking-tight">Residential</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-graphite">
+          The room that cooks all afternoon, the floors going pale by the window, the neighbours
+          who can see your kitchen. Film fixes all three.
+        </p>
+        <ul class="mt-6 space-y-2.5 text-[14px] text-ink/80">
+          <li class="flex gap-2.5"><svg viewBox="0 0 24 24" class="w-4 h-4 mt-[3px] shrink-0" fill="none" stroke="#02ABC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>Home window film</li>
+          <li class="flex gap-2.5"><svg viewBox="0 0 24 24" class="w-4 h-4 mt-[3px] shrink-0" fill="none" stroke="#02ABC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>Glare &amp; hot-room control</li>
+          <li class="flex gap-2.5"><svg viewBox="0 0 24 24" class="w-4 h-4 mt-[3px] shrink-0" fill="none" stroke="#02ABC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>Furniture &amp; floor UV protection</li>
+          <li class="flex gap-2.5"><svg viewBox="0 0 24 24" class="w-4 h-4 mt-[3px] shrink-0" fill="none" stroke="#02ABC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>Daytime privacy</li>
+        </ul>
+      </article>
+
+      <!-- COMMERCIAL + DETAIL -->
+      <article class="lane bg-bone border border-line rounded-2xl p-8 overflow-hidden">
+        <span class="grid place-items-center w-12 h-12 rounded-xl mb-6" style="background:linear-gradient(135deg,#02ABC4,#061493)">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M9 10v10"/></svg>
+        </span>
+        <h3 class="font-display font-extrabold text-[24px] tracking-tight">Business &amp; Detail</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-graphite">
+          Storefronts and offices, plus the detail side we have been running for the State of South
+          Carolina and everybody else since the nineties.
+        </p>
+        <ul class="mt-6 space-y-2.5 text-[14px] text-ink/80">
+          <li class="flex gap-2.5"><svg viewBox="0 0 24 24" class="w-4 h-4 mt-[3px] shrink-0" fill="none" stroke="#02ABC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>Storefront &amp; office film</li>
+          <li class="flex gap-2.5"><svg viewBox="0 0 24 24" class="w-4 h-4 mt-[3px] shrink-0" fill="none" stroke="#02ABC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>Full auto detailing</li>
+          <li class="flex gap-2.5"><svg viewBox="0 0 24 24" class="w-4 h-4 mt-[3px] shrink-0" fill="none" stroke="#02ABC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>Interior cleaning &amp; repair</li>
+          <li class="flex gap-2.5"><svg viewBox="0 0 24 24" class="w-4 h-4 mt-[3px] shrink-0" fill="none" stroke="#02ABC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>Fleet work welcome</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px]" data-reveal>
+      <span class="text-graphite">Not sure which film you want?</span>
+      <a href="tel:+18032522003" class="font-bold text-ink ul-grow">Call (803) 252-2003</a>
+      <span class="text-graphite/40">or</span>
+      <a href="sms:+18039204685" class="font-bold text-ink ul-grow">text (803) 920-4685</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= STATEMENT BAND ======================= -->
+<section class="relative overflow-hidden">
+  <img src="assets/band.jpg" alt="Window film being squeegeed onto automotive glass at Brite Touch in Columbia, South Carolina" class="absolute inset-0 w-full h-full object-cover" data-parallax="0.14">
+  <div class="absolute inset-0" style="background:linear-gradient(105deg,rgba(6,12,18,.90) 0%,rgba(6,12,18,.66) 48%,rgba(6,12,18,.30) 100%)"></div>
+  <div class="relative z-10 mx-auto max-w-[1240px] px-5 sm:px-8 py-24 sm:py-36">
+    <div class="max-w-[660px]" data-reveal>
+      <h2 class="font-display font-extrabold text-white text-[32px] sm:text-[52px] tracking-[-.02em]" style="text-shadow:0 2px 26px rgba(0,0,0,.6)">
+        A South Carolina summer is <span class="grad-light">not a suggestion.</span>
+      </h2>
+      <p class="mt-6 text-[16px] sm:text-[18px] leading-relaxed text-white/85" style="text-shadow:0 2px 18px rgba(0,0,0,.7)">
+        Ninety-eight degrees, no shade in the lot, and a black interior that has been baking since ten in
+        the morning. Film is the cheapest thing you can do about it, and it is the one thing you only want
+        done once. Clean lines, no bubbles, no purple in three years.
+      </p>
+      <a href="#quote" class="btn inline-flex items-center gap-2.5 mt-9 rounded-full px-7 py-4 text-[14.5px] font-bold text-white" style="background:linear-gradient(120deg,#061493,#2666D6 55%,#02ABC4)">
+        Request a quote
+        <svg viewBox="0 0 24 24" class="w-[17px] h-[17px]" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PROOF ======================= -->
+<section id="proof" class="py-20 sm:py-28">
+  <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
+
+    <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 lg:gap-16 items-start">
+
+      <div data-reveal>
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="dot"></span><span class="text-[11px] tracking-[.3em] font-bold text-graphite/70">PROOF</span>
+        </div>
+        <h2 class="font-display font-extrabold text-[34px] sm:text-[48px] tracking-[-.02em]">
+          Columbia has been <span class="grad-text">checking our work</span> for 28 years.
+        </h2>
+        <p class="mt-5 text-[16px] leading-relaxed text-graphite max-w-[520px]">
+          The State of South Carolina put Brite Touch on its vendor rolls and kept us there year after year
+          for vehicle detailing. Everybody else just tells their friends.
+        </p>
+
+        <div class="mt-9 grid sm:grid-cols-2 gap-4">
+          <div class="bg-paper border border-line rounded-2xl p-6">
+            <div class="font-display font-extrabold text-[32px] leading-none text-ink">FY13&ndash;FY23</div>
+            <div class="text-[13px] text-graphite mt-2.5 leading-relaxed">Listed on the South Carolina Comptroller General's state vendor records for vehicle detailing, every year.</div>
+          </div>
+          <div class="bg-paper border border-line rounded-2xl p-6">
+            <div class="font-display font-extrabold text-[32px] leading-none text-ink">7,800<span class="text-cyan">+</span></div>
+            <div class="text-[13px] text-graphite mt-2.5 leading-relaxed">People following the shop on TikTok watching tint go on, one window at a time.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-4" data-reveal>
+        <figure class="lane bg-paper border border-line rounded-2xl p-7 overflow-hidden">
+          <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          </div>
+          <blockquote class="text-[16px] leading-relaxed text-ink">&ldquo;When I say this is the BEST in the city!!!! Fly that car over there and if you LOVE your whip, do not let anyone else touch it!!!!&rdquo;</blockquote>
+          <figcaption class="mt-4 text-[12.5px] font-semibold text-graphite/70">Verified Google reviewer &middot; October 2025</figcaption>
+        </figure>
+
+        <figure class="lane bg-paper border border-line rounded-2xl p-7 overflow-hidden">
+          <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          </div>
+          <blockquote class="text-[16px] leading-relaxed text-ink">&ldquo;I&rsquo;ve been going to Brite&hellip; for years, they do Awesome job on your vehicles, there customer service in excellent, I love these men, you will not be disappointed&rdquo;</blockquote>
+          <figcaption class="mt-4 text-[12.5px] font-semibold text-graphite/70">Verified Google reviewer &middot; February 2026</figcaption>
+        </figure>
+
+        <figure class="lane bg-paper border border-line rounded-2xl p-7 overflow-hidden">
+          <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="#02ABC4"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+          </div>
+          <blockquote class="text-[16px] leading-relaxed text-ink">&ldquo;Amazing group of men! Outstanding customer service and excellent work.&rdquo;</blockquote>
+          <figcaption class="mt-4 text-[12.5px] font-semibold text-graphite/70">Verified Google reviewer &middot; September 2025</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= VISIT ======================= -->
+<section id="visit" class="py-20 sm:py-28 bg-paper border-y border-line">
+  <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
+    <div class="max-w-[600px] mb-12" data-reveal>
+      <div class="flex items-center gap-2.5 mb-4">
+        <span class="dot"></span><span class="text-[11px] tracking-[.3em] font-bold text-graphite/70">VISIT THE SHOP</span>
+      </div>
+      <h2 class="font-display font-extrabold text-[34px] sm:text-[48px] tracking-[-.02em]">West Beltline, <span class="grad-text">Columbia.</span></h2>
+    </div>
+
+    <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-6">
+      <div class="space-y-4" data-reveal>
+        <div class="bg-bone border border-line rounded-2xl p-7">
+          <div class="text-[11px] tracking-[.24em] font-bold text-graphite/60 mb-3">ADDRESS</div>
+          <address class="not-italic text-[19px] font-semibold leading-snug text-ink">
+            4123 W Beltline Blvd<br>Columbia, SC 29204
+          </address>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=4123+W+Beltline+Blvd,+Columbia,+SC+29204" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-4 text-[14px] font-bold text-ink ul-grow">
+            Get directions
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="bg-bone border border-line rounded-2xl p-7">
+          <div class="text-[11px] tracking-[.24em] font-bold text-graphite/60 mb-4">HOURS</div>
+          <dl class="text-[15px] space-y-2.5">
+            <div class="flex justify-between gap-4"><dt class="text-graphite">Tuesday &ndash; Saturday</dt><dd class="font-semibold text-ink">9:00 AM &ndash; 5:00 PM</dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-graphite">Sunday</dt><dd class="font-semibold text-ink">Closed</dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-graphite">Monday</dt><dd class="font-semibold text-ink">Call to confirm</dd></div>
+          </dl>
+        </div>
+
+        <div class="bg-bone border border-line rounded-2xl p-7">
+          <div class="text-[11px] tracking-[.24em] font-bold text-graphite/60 mb-4">REACH US</div>
+          <div class="space-y-3">
+            <a href="tel:+18032522003" class="flex items-center gap-3 text-[17px] font-bold text-ink ul-grow w-fit">
+              <svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-cyan" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg>
+              (803) 252-2003
+            </a>
+            <a href="sms:+18039204685" class="flex items-center gap-3 text-[17px] font-bold text-ink ul-grow w-fit">
+              <svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-cyan" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 3.6 11a8.4 8.4 0 0 1 8.4-8.4h.5A8.4 8.4 0 0 1 21 11z"/></svg>
+              Text (803) 920-4685
+            </a>
+          </div>
+          <div class="flex gap-2.5 mt-6 pt-6 border-t border-line">
+            <a href="https://www.instagram.com/britetouch/" target="_blank" rel="noopener" aria-label="Brite Touch on Instagram" class="grid place-items-center w-10 h-10 rounded-xl border border-line hover:border-cyan hover:bg-cyan/5 transition-all duration-300">
+              <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="#0E1620" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="#0E1620" stroke="none"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@britetouchharry" target="_blank" rel="noopener" aria-label="Brite Touch on TikTok" class="grid place-items-center w-10 h-10 rounded-xl border border-line hover:border-cyan hover:bg-cyan/5 transition-all duration-300">
+              <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="#0E1620"><path d="M16.5 2h-3v13.1a2.6 2.6 0 1 1-2.3-2.6v-3a5.6 5.6 0 1 0 5.3 5.6V9.4a7 7 0 0 0 4 1.3V7.7a4.2 4.2 0 0 1-4-4.2V2z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/p/Brite-Touch-100069409742246/" target="_blank" rel="noopener" aria-label="Brite Touch on Facebook" class="grid place-items-center w-10 h-10 rounded-xl border border-line hover:border-cyan hover:bg-cyan/5 transition-all duration-300">
+              <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="#0E1620"><path d="M14 9V7.2c0-.8.2-1.2 1.4-1.2H17V3.1A19 19 0 0 0 14.7 3C12.2 3 10.5 4.5 10.5 7v2H8v3.2h2.5V21H14v-8.8h2.5l.4-3.2H14z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden border border-line min-h-[440px] bg-mist" data-reveal>
+        <iframe
+          src="https://www.google.com/maps?q=4123%20W%20Beltline%20Blvd%2C%20Columbia%2C%20SC%2029204&output=embed"
+          title="Map showing Brite Touch at 4123 W Beltline Blvd, Columbia, SC 29204"
+          width="100%" height="100%" style="border:0; min-height:440px; display:block"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CTA ======================= -->
+<section id="quote" class="relative py-24 sm:py-32 bg-ink text-white overflow-hidden">
+  <div class="absolute -top-40 -right-32 w-[520px] h-[520px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(2,171,196,.30),transparent 62%); filter:blur(70px)"></div>
+  <div class="absolute -bottom-48 -left-24 w-[480px] h-[480px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(38,102,214,.26),transparent 62%); filter:blur(70px)"></div>
+
+  <div class="relative z-10 mx-auto max-w-[1240px] px-5 sm:px-8 text-center">
+    <span class="grid place-items-center w-14 h-14 rounded-2xl mx-auto mb-8" style="background:linear-gradient(135deg,#061493,#02ABC4)" data-reveal>
+      <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15.5 12 4l8 11.5"/><path d="M4 15.5h16"/><path d="M8.5 15.5 12 9.5l3.5 6"/></svg>
+    </span>
+    <h2 class="font-display font-extrabold text-[36px] sm:text-[58px] tracking-[-.02em] max-w-[860px] mx-auto" data-reveal>
+      Tell us the car. We&rsquo;ll tell you <span class="grad-light">the number.</span>
+    </h2>
+    <p class="mt-6 text-[16px] sm:text-[18px] text-white/75 max-w-[540px] mx-auto leading-relaxed" data-reveal>
+      Call the shop, send a text, or fill out the quote form and we will come back to you with a price
+      for your vehicle and the shade you want.
+    </p>
+    <div class="mt-10 flex flex-wrap justify-center gap-3" data-reveal>
+      <a href="tel:+18032522003" class="btn rounded-full px-8 py-4 text-[15px] font-bold text-white" style="background:linear-gradient(120deg,#061493,#2666D6 55%,#02ABC4)">Call (803) 252-2003</a>
+      <a href="https://form.jotform.com/261272067345052" target="_blank" rel="noopener" class="rounded-full px-8 py-4 text-[15px] font-bold text-white border border-white/30 hover:bg-white/10 hover:border-white/55 transition-all duration-400">Request a quote</a>
+    </div>
+    <p class="mt-8 text-[13.5px] text-white/50" data-reveal>4123 W Beltline Blvd, Columbia, SC 29204 &middot; Tuesday to Saturday, 9 to 5</p>
+  </div>
+</section>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="bg-ink text-white border-t border-white/10 pt-14 pb-32 lg:pb-14">
+  <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      <div class="flex items-center gap-3">
+        <span class="grid place-items-center w-11 h-11 rounded-xl" style="background:linear-gradient(135deg,#061493,#02ABC4)">
+          <svg viewBox="0 0 24 24" class="w-[22px] h-[22px]" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15.5 12 4l8 11.5"/><path d="M4 15.5h16"/><path d="M8.5 15.5 12 9.5l3.5 6"/></svg>
+        </span>
+        <span class="leading-none">
+          <span class="block font-display font-extrabold tracking-tight text-[21px]">BRITE&nbsp;TOUCH</span>
+          <span class="block text-[9.5px] tracking-[.26em] font-semibold mt-[4px] text-white/45">WINDOW TINT &amp; AUTO DETAIL</span>
+        </span>
+      </div>
+      <div class="flex flex-wrap gap-x-7 gap-y-2 text-[13.5px] font-semibold text-white/70">
+        <a href="#lab" class="hover:text-white transition-colors">Tint Lab</a>
+        <a href="#work" class="hover:text-white transition-colors">What We Do</a>
+        <a href="#proof" class="hover:text-white transition-colors">Proof</a>
+        <a href="#visit" class="hover:text-white transition-colors">Visit</a>
+        <a href="#quote" class="hover:text-white transition-colors">Quote</a>
+      </div>
+    </div>
+    <div class="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[12.5px] text-white/45">
+      <p>&copy; <span id="yr">2026</span> Brite Touch &middot; 4123 W Beltline Blvd, Columbia, SC 29204 &middot; (803) 252-2003</p>
+      <p>Serving Columbia, Lexington and the Midlands.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ======================= MOBILE STICKY BAR ======================= -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-ink/95 backdrop-blur-md border-t border-white/12 px-3 py-2.5 flex gap-2.5" style="padding-bottom:calc(.625rem + env(safe-area-inset-bottom))">
+  <a href="tel:+18032522003" class="flex-1 flex items-center justify-center gap-2 rounded-full py-3.5 text-[14px] font-bold text-white" style="background:linear-gradient(120deg,#061493,#2666D6 55%,#02ABC4)">
+    <svg viewBox="0 0 24 24" class="w-[16px] h-[16px]" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=4123+W+Beltline+Blvd,+Columbia,+SC+29204" target="_blank" rel="noopener" class="flex-1 flex items-center justify-center gap-2 rounded-full py-3.5 text-[14px] font-bold text-white border border-white/28">
+    <svg viewBox="0 0 24 24" class="w-[16px] h-[16px]" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/></svg>
+    Directions
+  </a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+var REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var DESKTOP = window.matchMedia('(min-width: 768px)').matches;
+
+/* ---------- SMOOTH SCROLL — ONE rAF LOOP ---------- */
+(function(){
+  if (REDUCE || typeof Lenis === 'undefined') return;
+  var lenis = new Lenis({
+    duration: 1.1,
+    easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10*t)); },
+    smoothWheel: true, smoothTouch: false
+  });
+  if (window.gsap) {
+    gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if (t){ e.preventDefault(); lenis.scrollTo(t, { offset: -70 }); }
+    });
+  });
+})();
+if (window.ScrollTrigger) ScrollTrigger.config({ ignoreMobileResize: true });
+
+/* ---------- NAV STATE ---------- */
+(function(){
+  var nav = document.getElementById('nav'), inner = document.getElementById('navInner');
+  var name = document.getElementById('navName'), sub = document.getElementById('navSub');
+  var links = document.querySelectorAll('.navlink');
+  function set(scrolled){
+    if (scrolled){
+      nav.style.background = 'rgba(245,243,239,.92)';
+      nav.style.backdropFilter = 'blur(14px)';
+      nav.style.borderBottom = '1px solid #E4E0D8';
+      inner.style.height = '64px';
+      name.style.color = '#0E1620'; sub.style.color = 'rgba(57,67,79,.7)';
+      links.forEach(function(l){ l.style.color = '#0E1620'; });
+    } else {
+      nav.style.background = 'transparent'; nav.style.backdropFilter = 'none';
+      nav.style.borderBottom = '1px solid transparent'; inner.style.height = '72px';
+      name.style.color = '#fff'; sub.style.color = 'rgba(255,255,255,.6)';
+      links.forEach(function(l){ l.style.color = 'rgba(255,255,255,.88)'; });
+    }
+  }
+  set(window.scrollY > 60);
+  window.addEventListener('scroll', function(){ set(window.scrollY > 60); }, { passive:true });
+})();
+
+/* ---------- HERO INTRO ---------- */
+if (window.gsap) {
+  gsap.to('.heroLine', { opacity:1, y:0, duration:1, ease:'power3.out', stagger:0.11, delay:0.25,
+    startAt:{ y: 26 } });
+
+  /* hero video parallax (desktop only) */
+  if (DESKTOP && !REDUCE) {
+    gsap.to('.hero-bg', { yPercent: 14, scale: 1.07, ease:'none',
+      scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub: true } });
+  }
+
+  /* reveals */
+  gsap.utils.toArray('[data-reveal]').forEach(function(el){
+    gsap.to(el, { opacity:1, y:0, duration:0.7, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+      onComplete: function(){ el.style.willChange = 'auto'; } });
+  });
+
+  /* parallax band (desktop only) */
+  if (DESKTOP && !REDUCE) {
+    gsap.utils.toArray('[data-parallax]').forEach(function(el){
+      var s = parseFloat(el.dataset.parallax) || 0.1;
+      gsap.to(el, { y: function(){ return s * 200; }, ease:'none',
+        scrollTrigger:{ trigger:el, start:'top bottom', end:'bottom top', scrub:0.6 } });
+    });
+  }
+
+  /* count-up */
+  gsap.utils.toArray('[data-count]').forEach(function(el){
+    var target = parseFloat(el.dataset.count), suf = el.dataset.suffix || '';
+    ScrollTrigger.create({ trigger: el, start:'top 92%', once:true, onEnter: function(){
+      gsap.to({v:0}, { v:target, duration:1.5, ease:'power2.out',
+        onUpdate: function(){ el.textContent = Math.round(this.targets()[0].v) + suf; },
+        onComplete: function(){ el.textContent = target + suf; } });
+    }});
+  });
+}
+
+/* ---------- THE TINT LAB (canvas showpiece) ---------- */
+(function(){
+  var canvas = document.getElementById('tintCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var slider = document.getElementById('vlt');
+  var num = document.getElementById('vltNum');
+  var label = document.getElementById('labLabel');
+  var sub = document.getElementById('labSub');
+  var btns = document.querySelectorAll('.vltBtn');
+
+  var STEPS = [
+    { vlt:2,  darken:0.90, tint:[4,10,18],   name:'2% Limo',        copy:'Blackout. From outside, the cabin is gone.' },
+    { vlt:20, darken:0.70, tint:[6,14,24],   name:'20% Film',       copy:'Deep and private, still easy to drive at night.' },
+    { vlt:35, darken:0.50, tint:[8,18,30],   name:'35% Film',       copy:'The everyday favourite. Cuts the glare, keeps the view.' },
+    { vlt:50, darken:0.32, tint:[10,22,34],  name:'50% Film',       copy:'Light touch. Heat and UV handled, barely reads as tint.' },
+    { vlt:70, darken:0.14, tint:[12,26,38],  name:'70% Ceramic',    copy:'Nearly clear film that still refuses the heat.' }
+  ];
+  var idx = 2, cur = STEPS[2].darken, targetD = STEPS[2].darken;
+
+  var img = new Image();
+  var loaded = false;
+  img.onload = function(){ loaded = true; draw(); };
+  img.onerror = function(){ loaded = false; draw(); };
+  img.src = 'assets/band.jpg';
+
+  var t0 = performance.now();
+  function draw(){
+    var W = canvas.width, H = canvas.height;
+    ctx.clearRect(0,0,W,H);
+
+    if (loaded) {
+      /* cover-fit */
+      var ir = img.width / img.height, cr = W / H, dw, dh, dx, dy;
+      if (ir > cr){ dh = H; dw = H * ir; } else { dw = W; dh = W / ir; }
+      dx = (W - dw) / 2; dy = (H - dh) / 2;
+      ctx.drawImage(img, dx, dy, dw, dh);
+    } else {
+      var g0 = ctx.createLinearGradient(0,0,W,H);
+      g0.addColorStop(0,'#243040'); g0.addColorStop(1,'#0A1118');
+      ctx.fillStyle = g0; ctx.fillRect(0,0,W,H);
+    }
+
+    /* the film itself — a cool neutral wash whose opacity IS the shade */
+    var s = STEPS[idx];
+    ctx.fillStyle = 'rgba(' + s.tint[0] + ',' + s.tint[1] + ',' + s.tint[2] + ',' + cur.toFixed(3) + ')';
+    ctx.fillRect(0,0,W,H);
+
+    /* travelling glare across the glass — the "live" tell */
+    var t = (performance.now() - t0) / 1000;
+    var px = ((t * 0.10) % 1.5 - 0.25) * W;
+    var gl = ctx.createLinearGradient(px, 0, px + W * 0.34, H);
+    var strength = 0.13 * (1 - cur * 0.55);
+    gl.addColorStop(0,   'rgba(255,255,255,0)');
+    gl.addColorStop(0.5, 'rgba(190,240,250,' + strength.toFixed(3) + ')');
+    gl.addColorStop(1,   'rgba(255,255,255,0)');
+    ctx.fillStyle = gl; ctx.fillRect(0,0,W,H);
+
+    /* soft vignette so the caption stays legible */
+    var vg = ctx.createLinearGradient(0, H*0.35, 0, H);
+    vg.addColorStop(0, 'rgba(6,12,18,0)'); vg.addColorStop(1, 'rgba(6,12,18,.62)');
+    ctx.fillStyle = vg; ctx.fillRect(0,0,W,H);
+  }
+
+  var running = false, visible = true;
+  function loop(){
+    if (!running) return;
+    cur += (targetD - cur) * 0.10;
+    draw();
+    requestAnimationFrame(loop);
+  }
+  function start(){ if (!running && visible && !REDUCE){ running = true; requestAnimationFrame(loop); } }
+  function stop(){ running = false; }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      visible = es[0].isIntersecting;
+      visible ? start() : stop();
+    }, { threshold: 0.04 }).observe(canvas);
+  } else { visible = true; start(); }
+  document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+
+  function apply(i){
+    idx = Math.max(0, Math.min(4, i|0));
+    var s = STEPS[idx];
+    targetD = s.darken;
+    num.textContent = s.vlt;
+    label.textContent = s.name;
+    sub.textContent = s.copy;
+    slider.value = idx;
+    btns.forEach(function(b){ b.setAttribute('aria-pressed', String(+b.dataset.vlt === idx)); });
+    if (REDUCE || !running){ cur = targetD; draw(); }
+  }
+  slider.addEventListener('input', function(){ apply(+slider.value); });
+  btns.forEach(function(b){ b.addEventListener('click', function(){ apply(+b.dataset.vlt); }); });
+  apply(2);
+  draw();
+})();
+
+/* ---------- 6s CRAWLER / SCREENSHOT SAFETY NET ---------- */
+setTimeout(function(){
+  document.querySelectorAll('[data-reveal]').forEach(function(el){
+    var o = parseFloat(getComputedStyle(el).opacity);
+    if (!o || o < 0.95){ el.style.opacity = 1; el.style.transform = 'none'; }
+  });
+  document.querySelectorAll('.heroLine').forEach(function(el){
+    var o = parseFloat(getComputedStyle(el).opacity);
+    if (!o || o < 0.95){ el.style.opacity = 1; el.style.transform = 'none'; }
+  });
+  document.querySelectorAll('[data-reveal-image]').forEach(function(el){ el.classList.add('in'); });
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    if (el.textContent.trim() === '0'){ el.textContent = el.dataset.count + (el.dataset.suffix || ''); }
+  });
+}, 6000);
+</script>
+</body>
+</html>
