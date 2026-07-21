@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<!--
+  Calhoun's Mobile Truck & Trailer Techs. — Tyler, TX
+  Turnkey Web draft preview. Light-first industrial-editorial art direction.
+  Palette (greenfield — business has no existing logo or brand colors):
+    cream #FAF5EE · paper #FFFFFF · ink #14161A · steel #5D6873
+    beacon amber #E0871B · oxide #A8362B
+  Hero: AI cinematic asset (Higgsfield nano_banana_pro -> Kling 3.0 Turbo), self-hosted.
+  All facts (phone, address, hours, reviews, founding year, owner) researched, not invented.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calhoun's Mobile Truck &amp; Trailer Techs. | 24/7 Mobile Truck Repair in Tyler, TX</title>
+<meta name="description" content="Family-owned mobile truck and trailer repair in Tyler, Texas since 1995. 24-hour roadside service on the I-20 corridor: air, brakes, engine, electrical, A/C, transmission and preventive maintenance. Call (214) 208-6783.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/calhouns-mobile-truck-trailer-techs/">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calhoun's Mobile Truck &amp; Trailer Techs. — 24/7 Mobile Truck Repair, Tyler TX">
+<meta property="og:description" content="You don't tow it. We come to it. Family-owned mobile truck and trailer repair on the I-20 corridor since 1995.">
+<meta property="og:image" content="https://turnkeyweb.org/previews/calhouns-mobile-truck-trailer-techs/assets/hero.jpg">
+<meta property="og:url" content="https://turnkeyweb.org/previews/calhouns-mobile-truck-trailer-techs/">
+<meta name="theme-color" content="#14161A">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      cream:'#FAF5EE', paper:'#FFFFFF', ink:'#14161A', ink2:'#1E2229',
+      steel:'#5D6873', mist:'#E7DFD4', beacon:'#E0871B', ember:'#B4551A', oxide:'#A8362B'
+    },
+    fontFamily: { display:['Archivo','system-ui','sans-serif'], body:['Inter','system-ui','sans-serif'] }
+  } }
+}
+</script>
+<style>
+  :root { --nav-h: 62px; }
+  html { scroll-behavior:auto; scroll-padding-top: 110px; -webkit-text-size-adjust:100%; }
+  body { background:#FAF5EE; color:#14161A; font-family:'Inter',system-ui,sans-serif; overflow-x:hidden; }
+  ::selection { background:#E0871B; color:#14161A; }
+
+  h1,h2,h3,.display { font-family:'Archivo',system-ui,sans-serif; letter-spacing:-0.02em; }
+  /* DESCENDER SAFETY — never below 1.05, big display type gets breathing room */
+  h1 { line-height:1.06; padding-bottom:.10em; }
+  h2 { line-height:1.10; padding-bottom:.08em; }
+  h3 { line-height:1.15; padding-bottom:.04em; }
+  .num { font-variant-numeric: tabular-nums; line-height:1.12; padding-bottom:.06em; }
+
+  /* Gradient shimmer — light-surface variant keeps every stop dark enough for AA on cream */
+  .grad-text{
+    background:linear-gradient(100deg,#8F2A20 0%,#B4551A 28%,#8F2A20 55%,#B4551A 82%,#8F2A20 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite; line-height:1.15; padding-bottom:.10em; display:inline-block;
+  }
+  .grad-light{
+    background:linear-gradient(100deg,#FFF6E8 0%,#F6C77E 30%,#FFF6E8 58%,#F6C77E 84%,#FFF6E8 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite; line-height:1.15; padding-bottom:.10em; display:inline-block;
+  }
+  @keyframes shimmer{ 0%{background-position:0% 50%} 100%{background-position:220% 50%} }
+
+  /* ---- Dispatch strip (signature) ---- */
+  .beacon-dot{ width:9px;height:9px;border-radius:50%;background:#E0871B;box-shadow:0 0 0 0 rgba(224,135,27,.7); animation:beaconPulse 2.1s ease-out infinite; }
+  @keyframes beaconPulse{ 0%{box-shadow:0 0 0 0 rgba(224,135,27,.65)} 70%{box-shadow:0 0 0 11px rgba(224,135,27,0)} 100%{box-shadow:0 0 0 0 rgba(224,135,27,0)} }
+
+  /* ---- Hero ---- */
+  .hero{ position:relative; overflow:hidden; background:#14161A; }
+  .hero-media{ position:absolute; inset:-8% -4%; width:108%; height:116%; object-fit:cover; will-change:transform; }
+  .hero-scrim{
+    position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(90deg, rgba(10,11,13,.94) 0%, rgba(10,11,13,.86) 34%, rgba(10,11,13,.42) 62%, rgba(10,11,13,.20) 100%),
+      linear-gradient(0deg, rgba(10,11,13,.80) 0%, rgba(10,11,13,.10) 42%, rgba(10,11,13,.42) 100%);
+  }
+  @media (max-width:768px){
+    .hero-scrim{ background:
+      linear-gradient(180deg, rgba(10,11,13,.72) 0%, rgba(10,11,13,.60) 40%, rgba(10,11,13,.88) 100%),
+      linear-gradient(90deg, rgba(10,11,13,.70) 0%, rgba(10,11,13,.42) 100%); }
+  }
+  .hero h1, .hero p, .hero .eyebrow { text-shadow:0 2px 22px rgba(0,0,0,.55); }
+
+  /* ---- Buttons ---- */
+  .btn{ position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:.6rem;
+        transition:transform .4s cubic-bezier(.2,.8,.2,1), filter .4s, background-color .4s, color .4s; }
+  .btn:hover{ transform:translateY(-3px); filter:brightness(1.04); }
+  .btn::after{ content:''; position:absolute; top:0; left:-130%; width:60%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.42),transparent); transform:skewX(-18deg);
+    transition:left .9s cubic-bezier(.2,.8,.2,1); }
+  .btn:hover::after{ left:130%; }
+
+  /* ---- Service index rows ---- */
+  .svc-row{ position:relative; transition:background-color .45s ease, padding-left .45s cubic-bezier(.2,.8,.2,1); }
+  .svc-row::before{ content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:#B4551A; transform:scaleY(0); transform-origin:top; transition:transform .5s cubic-bezier(.2,.8,.2,1); }
+  .svc-row:hover::before{ transform:scaleY(1); }
+  .svc-row:hover{ background:#FFFFFF; padding-left:1.15rem; }
+  .svc-row:hover .svc-idx{ color:#B4551A; }
+  .svc-idx{ transition:color .45s ease; }
+
+  .card{ transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease; }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 22px 46px -22px rgba(20,22,26,.30); }
+
+  .underline-grow{ position:relative; }
+  .underline-grow::after{ content:''; position:absolute; left:0; bottom:-4px; height:1.5px; width:0;
+    background:linear-gradient(90deg,#B4551A,#E0871B); transition:width .5s cubic-bezier(.2,.8,.2,1); }
+  .underline-grow:hover::after{ width:100%; }
+
+  /* ---- Marquee ---- */
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 42s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ---- Reveals (GPU only) ---- */
+  [data-reveal]{ opacity:0; transform:translateY(26px); will-change:opacity,transform; }
+  [data-reveal].in{ opacity:1; transform:none; }
+  [data-reveal-image]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.25s cubic-bezier(.2,.8,.2,1); }
+  [data-reveal-image].in{ clip-path:inset(0 0 0% 0); }
+
+  .rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(20,22,26,.20),transparent); }
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:radial-gradient(#14161A .6px, transparent .6px); background-size:3px 3px; }
+
+  #dust-canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    [data-reveal]{ opacity:1; transform:none; } [data-reveal-image]{ clip-path:none; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AutoRepair",
+  "name":"Calhoun's Mobile Truck & Trailer Techs.",
+  "description":"Family-owned 24-hour mobile truck and trailer repair serving Tyler and the I-20 corridor in East Texas since 1995. On-site roadside repair and preventive maintenance for heavy trucks and trailers.",
+  "url":"https://turnkeyweb.org/previews/calhouns-mobile-truck-trailer-techs/",
+  "telephone":"+1-214-208-6783",
+  "email":"calhounsmobile@gmail.com",
+  "foundingDate":"1995",
+  "founder":{"@type":"Person","name":"Rick Calhoun"},
+  "address":{"@type":"PostalAddress","streetAddress":"1615 Magnolia Dr","addressLocality":"Tyler","addressRegion":"TX","postalCode":"75701","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":32.331238,"longitude":-95.28675},
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}],
+  "areaServed":[{"@type":"City","name":"Tyler"},{"@type":"City","name":"Chandler"},{"@type":"City","name":"Van"},{"@type":"City","name":"Hawkins"},{"@type":"City","name":"Overton"},{"@type":"City","name":"Marshall"},{"@type":"State","name":"Texas"}],
+  "paymentAccepted":"Cash, Check",
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"29"},
+  "review":[
+    {"@type":"Review","author":{"@type":"Person","name":"Nadi Sha"},"reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"Ricky and his daughter are amazing, they have been doing this for many years. He fixed our issue and got us on the road in no time. Very honest and doesn't overcharge."},
+    {"@type":"Review","author":{"@type":"Person","name":"andrew cowsky"},"reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"You won't find a shop that offers the skills, knowledge, friendly service and the prices are owner operator friendly!!"},
+    {"@type":"Review","author":{"@type":"Person","name":"Boss Lady Ash"},"reviewRating":{"@type":"Rating","ratingValue":"5"},"reviewBody":"Really great guy. He was on time and honest. He didn't try to just come up with temporary solutions just to make money as many other shops do."}
+  ]
+}
+</script>
+</head>
+
+<body class="antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <div class="bg-cream/92 backdrop-blur-md border-b border-ink/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[62px] flex items-center justify-between gap-3">
+      <a href="#top" class="flex items-center gap-2.5 shrink-0" aria-label="Calhoun's Mobile Truck and Trailer Techs home">
+        <span class="inline-flex items-center justify-center w-9 h-9 rounded-[7px] bg-ink shrink-0">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="9.5" width="18" height="5" rx="2.2" fill="#E0871B"/>
+            <rect x="6.4" y="10.9" width="2.4" height="2.2" rx=".6" fill="#14161A"/>
+            <rect x="10.8" y="10.9" width="2.4" height="2.2" rx=".6" fill="#14161A"/>
+            <rect x="15.2" y="10.9" width="2.4" height="2.2" rx=".6" fill="#14161A"/>
+            <path d="M7 6.6c1.6-1.5 3.2-2.2 5-2.2s3.4.7 5 2.2" stroke="#E0871B" stroke-width="1.5" stroke-linecap="round" opacity=".55"/>
+            <path d="M5.4 18.4h13.2" stroke="#FAF5EE" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+          </svg>
+        </span>
+        <span class="leading-none">
+          <span class="block display font-black text-ink text-[15px] sm:text-[17px] tracking-[-0.01em]">CALHOUN'S</span>
+          <span class="block text-[8.5px] sm:text-[9.5px] font-semibold tracking-[0.19em] text-steel mt-[3px]">MOBILE TRUCK &amp; TRAILER</span>
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-[13.5px] font-semibold text-ink/75">
+        <a href="#services" class="underline-grow hover:text-ink transition-colors">What We Fix</a>
+        <a href="#how" class="underline-grow hover:text-ink transition-colors">How It Works</a>
+        <a href="#story" class="underline-grow hover:text-ink transition-colors">Our Story</a>
+        <a href="#reviews" class="underline-grow hover:text-ink transition-colors">Reviews</a>
+        <a href="#coverage" class="underline-grow hover:text-ink transition-colors">Coverage</a>
+      </nav>
+
+      <a href="tel:+12142086783" class="btn shrink-0 bg-ink text-cream rounded-[7px] px-3.5 sm:px-5 py-2.5 text-[12.5px] sm:text-[13.5px] font-bold">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E0871B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="hidden sm:inline">(214) 208-6783</span><span class="sm:hidden">Call</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- SIGNATURE: live dispatch status strip -->
+  <div class="bg-ink text-cream/90">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[38px] flex items-center justify-between gap-4 text-[10.5px] sm:text-[11.5px] font-semibold tracking-[0.13em] uppercase">
+      <div class="flex items-center gap-2.5 shrink-0">
+        <span class="beacon-dot"></span>
+        <span class="text-beacon">On call now</span>
+        <span class="hidden sm:inline text-cream/40">/</span>
+        <span class="hidden sm:inline text-cream/70">Tyler, TX <span id="dispatch-clock" class="text-cream/95 tabular-nums"></span></span>
+      </div>
+      <div class="flex items-center gap-4 sm:gap-6 text-cream/60 shrink-0">
+        <span class="hidden md:inline">I&#8209;20 &middot; Exit 556</span>
+        <span class="hidden sm:inline">24 hours &middot; 7 days</span>
+        <span class="text-cream/85">Est. 1995</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="hero min-h-[92svh] flex items-end pt-[132px] sm:pt-[128px] pb-14 sm:pb-20">
+  <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg" aria-hidden="true">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6">
+    <div class="max-w-[720px]">
+      <p class="eyebrow text-[10.5px] sm:text-[11.5px] font-bold tracking-[0.26em] uppercase text-beacon mb-5">
+        Tyler, Texas &middot; Mobile Truck &amp; Trailer Repair
+      </p>
+      <h1 class="display text-cream font-black text-[2.6rem] leading-[1.04] sm:text-[4.1rem] lg:text-[5.1rem] mb-6" style="padding-bottom:.10em">
+        You don't tow it.<br><span class="grad-light">We come to it.</span>
+      </h1>
+      <p class="text-cream/85 text-[15.5px] sm:text-[18px] leading-relaxed max-w-[560px] mb-9">
+        Family owned since 1995. Rick Calhoun answers the phone himself, rolls a stocked
+        service truck out to wherever you're sitting, and gets you moving again.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-11">
+        <a href="tel:+12142086783" class="btn justify-center bg-beacon text-ink rounded-[8px] px-7 py-4 text-[15px] font-bold">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#14161A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (214) 208-6783
+        </a>
+        <a href="#services" class="btn justify-center border border-cream/45 text-cream rounded-[8px] px-7 py-4 text-[15px] font-bold hover:bg-cream hover:text-ink">
+          See what we fix
+        </a>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-x-7 gap-y-3 text-cream/75 text-[12.5px] font-semibold">
+        <span class="flex items-center gap-2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          4.8 on Google &middot; 29 reviews
+        </span>
+        <span class="hidden sm:inline text-cream/25">|</span>
+        <span>Heavy truck &amp; trailer, all makes</span>
+        <span class="hidden sm:inline text-cream/25">|</span>
+        <span>Cash &amp; check accepted</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAT BAND ============ -->
+<section class="bg-cream border-b border-ink/10 relative grain">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 py-12 sm:py-16">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
+      <div data-reveal>
+        <div class="num display font-black text-ink text-[2.9rem] sm:text-[3.6rem]"><span data-count="31">0</span></div>
+        <div class="text-[11px] font-bold tracking-[0.17em] uppercase text-steel mt-1.5">Years on the road</div>
+      </div>
+      <div data-reveal>
+        <div class="num display font-black text-ink text-[2.9rem] sm:text-[3.6rem]">24<span class="text-beacon">/</span>7</div>
+        <div class="text-[11px] font-bold tracking-[0.17em] uppercase text-steel mt-1.5">Emergency dispatch</div>
+      </div>
+      <div data-reveal>
+        <div class="num display font-black text-ink text-[2.9rem] sm:text-[3.6rem]"><span data-count="4.8" data-dec="1">0</span></div>
+        <div class="text-[11px] font-bold tracking-[0.17em] uppercase text-steel mt-1.5">Google rating</div>
+      </div>
+      <div data-reveal>
+        <div class="num display font-black text-ink text-[2.9rem] sm:text-[3.6rem]"><span data-count="29">0</span></div>
+        <div class="text-[11px] font-bold tracking-[0.17em] uppercase text-steel mt-1.5">Driver reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<section class="bg-ink py-4 sm:py-5 overflow-hidden">
+  <div class="marquee">
+    <div class="marquee-track text-[13px] sm:text-[15px] font-bold tracking-[0.16em] uppercase text-cream/80">
+      <span>Air leaks</span><span class="text-beacon">&bull;</span>
+      <span>Brakes &amp; chambers</span><span class="text-beacon">&bull;</span>
+      <span>Engine repair</span><span class="text-beacon">&bull;</span>
+      <span>Electrical diagnostics</span><span class="text-beacon">&bull;</span>
+      <span>Transmission</span><span class="text-beacon">&bull;</span>
+      <span>A/C service</span><span class="text-beacon">&bull;</span>
+      <span>Trailer repair</span><span class="text-beacon">&bull;</span>
+      <span>Preventive maintenance</span><span class="text-beacon">&bull;</span>
+      <span>Air leaks</span><span class="text-beacon">&bull;</span>
+      <span>Brakes &amp; chambers</span><span class="text-beacon">&bull;</span>
+      <span>Engine repair</span><span class="text-beacon">&bull;</span>
+      <span>Electrical diagnostics</span><span class="text-beacon">&bull;</span>
+      <span>Transmission</span><span class="text-beacon">&bull;</span>
+      <span>A/C service</span><span class="text-beacon">&bull;</span>
+      <span>Trailer repair</span><span class="text-beacon">&bull;</span>
+      <span>Preventive maintenance</span><span class="text-beacon">&bull;</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES — diagnostic index ============ -->
+<section id="services" class="bg-cream py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6">
+    <div class="grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)] gap-12 lg:gap-20">
+
+      <div data-reveal class="lg:sticky lg:top-[140px] lg:self-start">
+        <p class="text-[10.5px] font-bold tracking-[0.26em] uppercase text-ember mb-5">What stopped you</p>
+        <h2 class="display font-black text-ink text-[2.2rem] sm:text-[3rem]">
+          Tell us what it's<br><span class="grad-text">doing.</span>
+        </h2>
+        <p class="text-steel text-[15.5px] leading-relaxed mt-6 max-w-[420px]">
+          Thirty-one years of heavy truck and trailer work, on all makes. If it's keeping
+          your truck parked, describe it on the phone and Rick will tell you straight
+          whether it's a roadside fix or a shop job.
+        </p>
+        <div class="mt-8 p-5 bg-paper border border-ink/10 rounded-[10px] max-w-[420px]">
+          <p class="text-[13px] text-steel leading-relaxed">
+            Not sure what it is? That's normal. Call it in and we'll work it out together.
+          </p>
+          <a href="tel:+12142086783" class="inline-flex items-center gap-2 mt-3 text-ink font-bold text-[14.5px] underline-grow">
+            (214) 208-6783
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B4551A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div data-reveal class="border-t border-ink/12">
+        <div class="svc-row border-b border-ink/12 py-6 sm:py-7 flex gap-5 sm:gap-8 cursor-default">
+          <span class="svc-idx display font-black text-[13px] text-steel/50 pt-1.5 w-8 shrink-0">01</span>
+          <div>
+            <h3 class="display font-extrabold text-ink text-[1.28rem] sm:text-[1.5rem]">Emergency roadside service</h3>
+            <p class="text-steel text-[14.5px] leading-relaxed mt-2 max-w-[520px]">Broken down on the shoulder, in a yard, at a dock or at a truck stop. We come to the truck, 24 hours a day, seven days a week.</p>
+          </div>
+        </div>
+        <div class="svc-row border-b border-ink/12 py-6 sm:py-7 flex gap-5 sm:gap-8 cursor-default">
+          <span class="svc-idx display font-black text-[13px] text-steel/50 pt-1.5 w-8 shrink-0">02</span>
+          <div>
+            <h3 class="display font-extrabold text-ink text-[1.28rem] sm:text-[1.5rem]">Air systems, leaks &amp; brakes</h3>
+            <p class="text-steel text-[14.5px] leading-relaxed mt-2 max-w-[520px]">Air leaks, air lines, brake work and brake chambers. The things that dump your pressure and end your day.</p>
+          </div>
+        </div>
+        <div class="svc-row border-b border-ink/12 py-6 sm:py-7 flex gap-5 sm:gap-8 cursor-default">
+          <span class="svc-idx display font-black text-[13px] text-steel/50 pt-1.5 w-8 shrink-0">03</span>
+          <div>
+            <h3 class="display font-extrabold text-ink text-[1.28rem] sm:text-[1.5rem]">Electrical diagnostics</h3>
+            <p class="text-steel text-[14.5px] leading-relaxed mt-2 max-w-[520px]">Chasing a fault nobody else could find is what drivers write reviews about. Wiring, batteries, breakers and no-start diagnosis.</p>
+          </div>
+        </div>
+        <div class="svc-row border-b border-ink/12 py-6 sm:py-7 flex gap-5 sm:gap-8 cursor-default">
+          <span class="svc-idx display font-black text-[13px] text-steel/50 pt-1.5 w-8 shrink-0">04</span>
+          <div>
+            <h3 class="display font-extrabold text-ink text-[1.28rem] sm:text-[1.5rem]">Engine, transmission &amp; valves</h3>
+            <p class="text-steel text-[14.5px] leading-relaxed mt-2 max-w-[520px]">Engine repair, transmission work, valve repairs and belts. Handled on site wherever the job allows it.</p>
+          </div>
+        </div>
+        <div class="svc-row border-b border-ink/12 py-6 sm:py-7 flex gap-5 sm:gap-8 cursor-default">
+          <span class="svc-idx display font-black text-[13px] text-steel/50 pt-1.5 w-8 shrink-0">05</span>
+          <div>
+            <h3 class="display font-extrabold text-ink text-[1.28rem] sm:text-[1.5rem]">Trailer, reefer &amp; tire service</h3>
+            <p class="text-steel text-[14.5px] leading-relaxed mt-2 max-w-[520px]">Trailer repair, refrigeration units and mobile tire service, so the box behind you isn't the reason you're sitting.</p>
+          </div>
+        </div>
+        <div class="svc-row border-b border-ink/12 py-6 sm:py-7 flex gap-5 sm:gap-8 cursor-default">
+          <span class="svc-idx display font-black text-[13px] text-steel/50 pt-1.5 w-8 shrink-0">06</span>
+          <div>
+            <h3 class="display font-extrabold text-ink text-[1.28rem] sm:text-[1.5rem]">A/C repair</h3>
+            <p class="text-steel text-[14.5px] leading-relaxed mt-2 max-w-[520px]">Texas summers are not the place to run a hot cab. A/C diagnosis and repair on site.</p>
+          </div>
+        </div>
+        <div class="svc-row border-b border-ink/12 py-6 sm:py-7 flex gap-5 sm:gap-8 cursor-default">
+          <span class="svc-idx display font-black text-[13px] text-steel/50 pt-1.5 w-8 shrink-0">07</span>
+          <div>
+            <h3 class="display font-extrabold text-ink text-[1.28rem] sm:text-[1.5rem]">Preventive maintenance, on your yard</h3>
+            <p class="text-steel text-[14.5px] leading-relaxed mt-2 max-w-[520px]">Scheduled PM service for fleets and owner operators, done where your equipment already sits. The cheapest repair is the breakdown that never happens.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="max-w-[200px] mx-auto rule"></div>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how" class="bg-cream py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6">
+    <div class="max-w-[620px] mb-14" data-reveal>
+      <p class="text-[10.5px] font-bold tracking-[0.26em] uppercase text-ember mb-5">Roadside triage</p>
+      <h2 class="display font-black text-ink text-[2.2rem] sm:text-[3rem]">Three steps, one phone call.</h2>
+    </div>
+
+    <div class="relative">
+      <div class="hidden md:block absolute top-[26px] left-[8%] right-[8%] h-px bg-ink/12"></div>
+      <div class="hidden md:block absolute top-[26px] left-[8%] h-px bg-ember" data-progress-line style="width:0"></div>
+
+      <div class="grid md:grid-cols-3 gap-10 md:gap-8 relative">
+        <div data-reveal>
+          <div class="w-[52px] h-[52px] rounded-full bg-ink text-cream display font-black text-[17px] flex items-center justify-center relative z-10">1</div>
+          <h3 class="display font-extrabold text-ink text-[1.3rem] mt-6">You call, Rick answers</h3>
+          <p class="text-steel text-[14.5px] leading-relaxed mt-3">No call center, no ticket queue. You get the owner, day or night, and you tell him where you are and what it's doing.</p>
+        </div>
+        <div data-reveal>
+          <div class="w-[52px] h-[52px] rounded-full bg-ink text-cream display font-black text-[17px] flex items-center justify-center relative z-10">2</div>
+          <h3 class="display font-extrabold text-ink text-[1.3rem] mt-6">We roll to you</h3>
+          <p class="text-steel text-[14.5px] leading-relaxed mt-3">A stocked service truck heads to your location on the I&#8209;20 corridor. You stay with your load instead of paying for a tow.</p>
+        </div>
+        <div data-reveal>
+          <div class="w-[52px] h-[52px] rounded-full bg-ink text-cream display font-black text-[17px] flex items-center justify-center relative z-10">3</div>
+          <h3 class="display font-extrabold text-ink text-[1.3rem] mt-6">Straight answer, then wheels turning</h3>
+          <p class="text-steel text-[14.5px] leading-relaxed mt-3">If it's a roadside fix, we fix it. If it truly belongs in a shop, we'll tell you that instead of selling you a patch.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section id="story" class="bg-paper py-20 sm:py-28 border-y border-ink/10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div data-reveal-image class="rounded-[12px] overflow-hidden order-2 lg:order-1">
+        <img src="assets/band.jpg" alt="A heavy truck stopped on the shoulder at dawn with a mobile service truck alongside it" class="w-full h-[300px] sm:h-[430px] object-cover" loading="lazy" width="1600" height="900">
+      </div>
+      <div data-reveal class="order-1 lg:order-2">
+        <p class="text-[10.5px] font-bold tracking-[0.26em] uppercase text-ember mb-5">Family owned since 1995</p>
+        <h2 class="display font-black text-ink text-[2.2rem] sm:text-[3rem] mb-7">
+          Rick grew up in the home of an <span class="grad-text">owner operator.</span>
+        </h2>
+        <p class="text-steel text-[15.5px] leading-relaxed mb-5">
+          That's not a marketing line. It's why the phone gets answered at two in the morning.
+          When a truck isn't moving, the load isn't moving, and neither is anybody's revenue.
+        </p>
+        <p class="text-steel text-[15.5px] leading-relaxed mb-5">
+          Calhoun's has been a family business since 1995. Today Rick still runs the calls,
+          often alongside his daughter, and drivers notice. Two separate Google reviewers
+          thanked them by name for getting back on the road the same day.
+        </p>
+        <p class="text-steel text-[15.5px] leading-relaxed mb-8">
+          The reputation is built on the unglamorous part: honest diagnosis, fair pricing for
+          owner operators, and telling you the truth about what your truck actually needs.
+        </p>
+        <div class="flex flex-wrap gap-x-8 gap-y-4">
+          <div>
+            <div class="display font-black text-ink text-[1.7rem] num">1995</div>
+            <div class="text-[10.5px] font-bold tracking-[0.16em] uppercase text-steel mt-1">Year founded</div>
+          </div>
+          <div>
+            <div class="display font-black text-ink text-[1.7rem]">Rick Calhoun</div>
+            <div class="text-[10.5px] font-bold tracking-[0.16em] uppercase text-steel mt-1">Owner &amp; lead tech</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" class="bg-cream py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-12" data-reveal>
+      <div>
+        <p class="text-[10.5px] font-bold tracking-[0.26em] uppercase text-ember mb-5">From the drivers</p>
+        <h2 class="display font-black text-ink text-[2.2rem] sm:text-[3rem]">4.8 stars, and they<br>all say the same thing.</h2>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="flex gap-1">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+        </div>
+        <span class="text-[13px] font-semibold text-steel">29 Google reviews</span>
+      </div>
+    </div>
+
+    <!-- feature quote -->
+    <blockquote data-reveal class="bg-ink text-cream rounded-[14px] p-8 sm:p-12 mb-6 relative overflow-hidden">
+      <svg class="absolute top-6 right-7 opacity-[0.13]" width="76" height="76" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M7.6 6C4.9 7.6 3.2 10.3 3.2 13.4c0 2.7 1.6 4.6 3.9 4.6 2 0 3.5-1.5 3.5-3.4 0-1.9-1.3-3.3-3.1-3.3-.4 0-.8.1-.9.1.4-1.6 1.9-3.2 3.6-4.2L7.6 6zm9.1 0c-2.7 1.6-4.4 4.3-4.4 7.4 0 2.7 1.6 4.6 3.9 4.6 2 0 3.5-1.5 3.5-3.4 0-1.9-1.3-3.3-3.1-3.3-.4 0-.8.1-.9.1.4-1.6 1.9-3.2 3.6-4.2L16.7 6z"/></svg>
+      <p class="display font-bold text-[1.35rem] sm:text-[2rem] leading-[1.34] max-w-[840px] relative z-10" style="padding-bottom:.06em">
+        &ldquo;You won't find a shop that offers the skills, knowledge, friendly service and the
+        prices are owner operator friendly. This shop, the owner in particular, solved my issue
+        and had me up and running in no time after being broke down on the side of the road.&rdquo;
+      </p>
+      <footer class="mt-7 text-[13px] font-semibold text-beacon relative z-10">andrew cowsky &middot; Google review</footer>
+    </blockquote>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <figure data-reveal class="card bg-paper border border-ink/10 rounded-[12px] p-7">
+        <div class="flex gap-1 mb-4">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+        </div>
+        <blockquote class="text-ink/85 text-[14.5px] leading-relaxed">&ldquo;Ricky and his daughter are amazing, they have been doing this for many years. He fixed our issue and got us on the road in no time. Very honest and doesn't overcharge.&rdquo;</blockquote>
+        <figcaption class="mt-5 text-[12.5px] font-bold text-steel">Nadi Sha &middot; Google review</figcaption>
+      </figure>
+
+      <figure data-reveal class="card bg-paper border border-ink/10 rounded-[12px] p-7">
+        <div class="flex gap-1 mb-4">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+        </div>
+        <blockquote class="text-ink/85 text-[14.5px] leading-relaxed">&ldquo;Really great guy. He was on time and honest. He told me straight up that it could be a really big issue that may require service at a shop. He didn't try to just come up with temporary solutions just to make money as many other shops do.&rdquo;</blockquote>
+        <figcaption class="mt-5 text-[12.5px] font-bold text-steel">Boss Lady Ash &middot; Google review</figcaption>
+      </figure>
+
+      <figure data-reveal class="card bg-paper border border-ink/10 rounded-[12px] p-7">
+        <div class="flex gap-1 mb-4">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#E0871B" aria-hidden="true"><path d="M12 2l2.9 6.26 6.85.72-5.1 4.6 1.44 6.72L12 16.9l-6.09 3.4 1.44-6.72-5.1-4.6 6.85-.72z"/></svg>
+        </div>
+        <blockquote class="text-ink/85 text-[14.5px] leading-relaxed">&ldquo;Great guy! Fair prices and dedicated to his work once on it. Will use again in the future!&rdquo;</blockquote>
+        <figcaption class="mt-5 text-[12.5px] font-bold text-steel">K-Pol Express Inc &middot; Google review</figcaption>
+        <blockquote class="text-ink/85 text-[14.5px] leading-relaxed mt-6 pt-6 border-t border-ink/10">&ldquo;Professional experience and got me back up and going quickly!&rdquo;</blockquote>
+        <figcaption class="mt-5 text-[12.5px] font-bold text-steel">Reece Jackson &middot; Google review</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COVERAGE (WebGL showpiece band) ============ -->
+<section id="coverage" class="relative bg-ink text-cream py-20 sm:py-28 overflow-hidden">
+  <canvas id="dust-canvas" aria-hidden="true"></canvas>
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(120% 80% at 15% 40%, rgba(20,22,26,.55), rgba(20,22,26,.88) 70%)"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div data-reveal>
+        <p class="text-[10.5px] font-bold tracking-[0.26em] uppercase text-beacon mb-5">Where we run</p>
+        <h2 class="display font-black text-[2.2rem] sm:text-[3rem] mb-7">
+          Based in Tyler.<br><span class="grad-light">Out on I&#8209;20.</span>
+        </h2>
+        <p class="text-cream/80 text-[15.5px] leading-relaxed mb-8 max-w-[480px]">
+          We're a mobile operation, not a walk-in shop. Tyler is home base, just off
+          I&#8209;20 at Exit 556, and we run the East Texas corridor around it. If you're
+          sitting somewhere near here, call and ask.
+        </p>
+        <div class="flex flex-wrap gap-2.5">
+          <span class="px-3.5 py-2 rounded-full border border-cream/25 text-[12.5px] font-semibold text-cream/90">Tyler</span>
+          <span class="px-3.5 py-2 rounded-full border border-cream/25 text-[12.5px] font-semibold text-cream/90">Chandler</span>
+          <span class="px-3.5 py-2 rounded-full border border-cream/25 text-[12.5px] font-semibold text-cream/90">Van</span>
+          <span class="px-3.5 py-2 rounded-full border border-cream/25 text-[12.5px] font-semibold text-cream/90">Hawkins</span>
+          <span class="px-3.5 py-2 rounded-full border border-cream/25 text-[12.5px] font-semibold text-cream/90">Overton</span>
+          <span class="px-3.5 py-2 rounded-full border border-cream/25 text-[12.5px] font-semibold text-cream/90">Griffin</span>
+          <span class="px-3.5 py-2 rounded-full border border-cream/25 text-[12.5px] font-semibold text-cream/90">Marshall</span>
+          <span class="px-3.5 py-2 rounded-full border border-cream/25 text-[12.5px] font-semibold text-cream/90">Lufkin</span>
+        </div>
+      </div>
+
+      <div data-reveal class="grid sm:grid-cols-2 gap-4">
+        <div class="bg-cream/[0.06] border border-cream/15 rounded-[12px] p-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E0871B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 1.9"/></svg>
+          <h3 class="display font-extrabold text-[1.05rem] mt-4">24 hours, 7 days</h3>
+          <p class="text-cream/70 text-[13.5px] leading-relaxed mt-2">Breakdowns don't keep business hours. Neither does the phone.</p>
+        </div>
+        <div class="bg-cream/[0.06] border border-cream/15 rounded-[12px] p-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E0871B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17h2l1.5-5.5A2 2 0 0 1 8.4 10H14v7h1.5"/><path d="M14 11h3.2l2.3 3.1V17H18"/><circle cx="7" cy="18" r="1.8"/><circle cx="16.5" cy="18" r="1.8"/></svg>
+          <h3 class="display font-extrabold text-[1.05rem] mt-4">Mobile, not a shop</h3>
+          <p class="text-cream/70 text-[13.5px] leading-relaxed mt-2">The service truck comes to your breakdown, yard or dock.</p>
+        </div>
+        <div class="bg-cream/[0.06] border border-cream/15 rounded-[12px] p-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E0871B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.5 3.4v5c0 4.6-3.1 8.5-7.5 9.6-4.4-1.1-7.5-5-7.5-9.6v-5z"/><path d="M9.2 12.1l2 2 3.6-3.9"/></svg>
+          <h3 class="display font-extrabold text-[1.05rem] mt-4">31 years running</h3>
+          <p class="text-cream/70 text-[13.5px] leading-relaxed mt-2">Family owned since 1995, on all truck and trailer makes.</p>
+        </div>
+        <div class="bg-cream/[0.06] border border-cream/15 rounded-[12px] p-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E0871B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s7-4.6 7-10a7 7 0 1 0-14 0c0 5.4 7 10 7 10z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <h3 class="display font-extrabold text-[1.05rem] mt-4">I&#8209;20, Exit 556</h3>
+          <p class="text-cream/70 text-[13.5px] leading-relaxed mt-2">Right on the corridor, so the roll-out time stays short.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DISPATCH / MAP ============ -->
+<section id="dispatch" class="bg-cream py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6">
+    <div class="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-10 lg:gap-14 items-stretch">
+
+      <div data-reveal class="bg-paper border border-ink/10 rounded-[14px] p-8 sm:p-10 flex flex-col justify-between">
+        <div>
+          <p class="text-[10.5px] font-bold tracking-[0.26em] uppercase text-ember mb-5">Dispatch</p>
+          <h2 class="display font-black text-ink text-[2rem] sm:text-[2.6rem] mb-8">Call it in.</h2>
+
+          <div class="space-y-7">
+            <div class="flex gap-4">
+              <svg class="mt-0.5 shrink-0" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B4551A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <div>
+                <div class="text-[10.5px] font-bold tracking-[0.16em] uppercase text-steel mb-1.5">Phone &mdash; 24/7</div>
+                <a href="tel:+12142086783" class="display font-black text-ink text-[1.55rem] sm:text-[1.85rem] underline-grow num">(214) 208-6783</a>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <svg class="mt-0.5 shrink-0" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B4551A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s7-4.6 7-10a7 7 0 1 0-14 0c0 5.4 7 10 7 10z"/><circle cx="12" cy="10" r="2.6"/></svg>
+              <div>
+                <div class="text-[10.5px] font-bold tracking-[0.16em] uppercase text-steel mb-1.5">Base</div>
+                <p class="text-ink font-semibold text-[15.5px] leading-relaxed">1615 Magnolia Dr<br>Tyler, TX 75701</p>
+                <p class="text-steel text-[13px] mt-1.5">Mobile service &mdash; we come to you.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <svg class="mt-0.5 shrink-0" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B4551A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 1.9"/></svg>
+              <div>
+                <div class="text-[10.5px] font-bold tracking-[0.16em] uppercase text-steel mb-1.5">Hours</div>
+                <p class="text-ink font-semibold text-[15.5px]">Open 24 hours, every day</p>
+                <p class="text-steel text-[13px] mt-1.5">Including weekends and holidays.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-col sm:flex-row gap-3">
+          <a href="tel:+12142086783" class="btn justify-center flex-1 bg-ink text-cream rounded-[8px] px-6 py-3.5 text-[14.5px] font-bold">Call now</a>
+          <a href="https://www.google.com/maps?q=1615+Magnolia+Dr,+Tyler,+TX+75701" target="_blank" rel="noopener" class="btn justify-center flex-1 border border-ink/25 text-ink rounded-[8px] px-6 py-3.5 text-[14.5px] font-bold hover:bg-ink hover:text-cream">Get directions</a>
+        </div>
+      </div>
+
+      <div data-reveal class="rounded-[14px] overflow-hidden border border-ink/10 min-h-[380px] lg:min-h-full bg-mist">
+        <iframe
+          src="https://www.google.com/maps?q=1615%20Magnolia%20Dr%2C%20Tyler%2C%20TX%2075701&output=embed"
+          title="Map showing Calhoun's Mobile Truck &amp; Trailer Techs base at 1615 Magnolia Dr, Tyler, TX 75701"
+          width="100%" height="100%" style="border:0;min-height:380px;display:block"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="bg-beacon relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 py-16 sm:py-24 text-center relative z-10">
+    <div data-reveal>
+      <p class="text-[10.5px] font-bold tracking-[0.26em] uppercase text-ink/70 mb-6">Sitting on the shoulder right now?</p>
+      <h2 class="display font-black text-ink text-[2.3rem] sm:text-[3.6rem] mb-8 max-w-[860px] mx-auto">
+        Every hour parked is an hour you're not paid for.
+      </h2>
+      <a href="tel:+12142086783" class="btn bg-ink text-cream rounded-[9px] px-9 py-5 text-[17px] sm:text-[19px] font-black num">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#E0871B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (214) 208-6783
+      </a>
+      <p class="text-ink/70 text-[13.5px] font-semibold mt-6">Answered 24 hours a day by Rick Calhoun.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-cream/70 pt-16 pb-28 sm:pb-16">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-2.5 mb-5">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-[7px] bg-cream/10">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="9.5" width="18" height="5" rx="2.2" fill="#E0871B"/>
+              <rect x="6.4" y="10.9" width="2.4" height="2.2" rx=".6" fill="#14161A"/>
+              <rect x="10.8" y="10.9" width="2.4" height="2.2" rx=".6" fill="#14161A"/>
+              <rect x="15.2" y="10.9" width="2.4" height="2.2" rx=".6" fill="#14161A"/>
+              <path d="M7 6.6c1.6-1.5 3.2-2.2 5-2.2s3.4.7 5 2.2" stroke="#E0871B" stroke-width="1.5" stroke-linecap="round" opacity=".55"/>
+              <path d="M5.4 18.4h13.2" stroke="#FAF5EE" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+            </svg>
+          </span>
+          <span class="leading-none">
+            <span class="block display font-black text-cream text-[16px]">CALHOUN'S</span>
+            <span class="block text-[8.5px] font-semibold tracking-[0.19em] text-cream/55 mt-[3px]">MOBILE TRUCK &amp; TRAILER TECHS</span>
+          </span>
+        </div>
+        <p class="text-[14px] leading-relaxed max-w-[400px]">
+          Family owned mobile truck and trailer repair, serving Tyler and the East Texas
+          I&#8209;20 corridor since 1995. All truck and trailer makes.
+        </p>
+      </div>
+
+      <div>
+        <div class="text-[10.5px] font-bold tracking-[0.18em] uppercase text-cream/95 mb-4">Contact</div>
+        <ul class="space-y-2.5 text-[14px]">
+          <li><a href="tel:+12142086783" class="hover:text-beacon transition-colors num">(214) 208-6783</a></li>
+          <li><a href="mailto:calhounsmobile@gmail.com" class="hover:text-beacon transition-colors break-all">calhounsmobile@gmail.com</a></li>
+          <li>1615 Magnolia Dr<br>Tyler, TX 75701</li>
+          <li><a href="https://www.facebook.com/calhounsmobiletruck/" target="_blank" rel="noopener" class="hover:text-beacon transition-colors">Facebook</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-[10.5px] font-bold tracking-[0.18em] uppercase text-cream/95 mb-4">Service</div>
+        <ul class="space-y-2.5 text-[14px]">
+          <li>Open 24 hours, 7 days</li>
+          <li>Emergency roadside</li>
+          <li>Preventive maintenance</li>
+          <li>Cash &amp; check accepted</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-cream/12 flex flex-col sm:flex-row justify-between gap-4 text-[12.5px] text-cream/55">
+      <p>&copy; <span id="yr">2026</span> Calhoun's Mobile Truck &amp; Trailer Techs. All rights reserved.</p>
+      <p>Tyler, Texas &middot; I&#8209;20 Exit 556</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="sm:hidden fixed bottom-0 inset-x-0 z-50 bg-ink border-t border-cream/12 px-3 py-2.5 flex gap-2.5" style="padding-bottom:calc(0.625rem + env(safe-area-inset-bottom))">
+  <a href="tel:+12142086783" class="flex-1 bg-beacon text-ink rounded-[8px] py-3 text-[14px] font-black flex items-center justify-center gap-2">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#14161A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call 24/7
+  </a>
+  <a href="https://www.google.com/maps?q=1615+Magnolia+Dr,+Tyler,+TX+75701" target="_blank" rel="noopener" class="flex-1 border border-cream/35 text-cream rounded-[8px] py-3 text-[14px] font-bold flex items-center justify-center gap-2">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E0871B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s7-4.6 7-10a7 7 0 1 0-14 0c0 5.4 7 10 7 10z"/><circle cx="12" cy="10" r="2.6"/></svg>
+    Directions
+  </a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---- SIGNATURE: live Tyler, TX dispatch clock ---- */
+  var clockEl = document.getElementById('dispatch-clock');
+  function tickClock(){
+    if(!clockEl) return;
+    try{
+      clockEl.textContent = new Intl.DateTimeFormat('en-US',{
+        timeZone:'America/Chicago', hour:'numeric', minute:'2-digit', hour12:true
+      }).format(new Date());
+    }catch(e){ clockEl.textContent = ''; }
+  }
+  tickClock(); setInterval(tickClock, 15000);
+
+  var isTouch = window.matchMedia('(hover: none)').matches || window.innerWidth < 768;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Lenis, driven by the single GSAP ticker ---- */
+  var lenis = null;
+  if (window.Lenis && !reduced){
+    lenis = new Lenis({ duration:1.1, easing:function(t){return Math.min(1, 1.001 - Math.pow(2,-10*t));},
+                        smoothWheel:true, smoothTouch:false });
+    if (window.gsap){
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+      gsap.ticker.lagSmoothing(0);
+      lenis.on('scroll', ScrollTrigger.update);
+    } else {
+      (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(0);
+    }
+  } else if (window.gsap){ gsap.registerPlugin(ScrollTrigger); }
+
+  if (window.ScrollTrigger) ScrollTrigger.config({ ignoreMobileResize:true });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return; e.preventDefault();
+      if (lenis) lenis.scrollTo(t, { offset:-104 });
+      else t.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  /* ---- Reveals (GPU only, once) ---- */
+  if (window.gsap && window.ScrollTrigger && !reduced){
+    gsap.utils.toArray('[data-reveal]').forEach(function(el){
+      ScrollTrigger.create({ trigger:el, start:'top 92%', once:true,
+        onEnter:function(){ el.classList.add('in'); gsap.to(el,{opacity:1,y:0,duration:.66,ease:'power3.out',
+          onComplete:function(){ el.style.willChange='auto'; }}); } });
+    });
+    gsap.utils.toArray('[data-reveal-image]').forEach(function(el){
+      ScrollTrigger.create({ trigger:el, start:'top 88%', once:true, onEnter:function(){ el.classList.add('in'); } });
+    });
+
+    /* count-ups */
+    gsap.utils.toArray('[data-count]').forEach(function(el){
+      var target = parseFloat(el.dataset.count), dec = parseInt(el.dataset.dec||'0',10);
+      ScrollTrigger.create({ trigger:el, start:'top 92%', once:true, onEnter:function(){
+        var o = {v:0};
+        gsap.to(o,{v:target,duration:1.5,ease:'power2.out',onUpdate:function(){
+          el.textContent = dec ? o.v.toFixed(dec) : Math.round(o.v);
+        }});
+      }});
+    });
+
+    /* process progress line — desktop only */
+    var line = document.querySelector('[data-progress-line]');
+    if (line && !isTouch){
+      gsap.to(line,{ width:'84%', ease:'none',
+        scrollTrigger:{ trigger:'#how', start:'top 62%', end:'bottom 78%', scrub:.8 } });
+    }
+
+    /* hero parallax — desktop only (scrub fights native touch scroll) */
+    if (!isTouch){
+      gsap.to('.hero-media',{ yPercent:14, scale:1.07, ease:'none',
+        scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
+    }
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(function(e){ e.classList.add('in'); e.style.opacity=1; e.style.transform='none'; });
+    document.querySelectorAll('[data-reveal-image]').forEach(function(e){ e.classList.add('in'); });
+    document.querySelectorAll('[data-count]').forEach(function(e){ e.textContent = e.dataset.count; });
+  }
+
+  /* ---- 6s crawler / screenshot safety net (REQUIRED) ---- */
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]').forEach(function(e){
+      if (getComputedStyle(e).opacity < 0.9){ e.classList.add('in'); e.style.opacity=1; e.style.transform='none'; }
+    });
+    document.querySelectorAll('[data-reveal-image]').forEach(function(e){ e.classList.add('in'); });
+    document.querySelectorAll('[data-count]').forEach(function(e){
+      var t = e.textContent.trim();
+      if (t === '0' || t === '' || t === '0.0'){ e.textContent = e.dataset.count; }
+    });
+    var pl = document.querySelector('[data-progress-line]');
+    if (pl && (!pl.style.width || pl.style.width === '0px' || pl.style.width === '0')) pl.style.width = '84%';
+    var v = document.querySelector('.hero-media');
+    if (v && v.paused) { v.play().catch(function(){}); }
+  }, 6000);
+
+  /* keep the hero video playing if the browser stalls it */
+  var hv = document.querySelector('.hero-media');
+  if (hv){
+    hv.addEventListener('canplay', function(){ hv.play().catch(function(){}); });
+    hv.play().catch(function(){});
+  }
+})();
+</script>
+
+<!-- ---- PREMIUM SHOWPIECE: Three.js amber road-dust field behind the coverage band ---- -->
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+const canvas = document.getElementById('dust-canvas');
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const small = window.innerWidth < 768;
+
+if (canvas && !reduced && !small){
+  let renderer, scene, camera, points, raf = null, visible = false, hidden = document.hidden;
+
+  const init = () => {
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:false, powerPreference:'low-power' });
+    } catch(e){ return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const resize = () => {
+      const r = canvas.getBoundingClientRect();
+      renderer.setSize(r.width, r.height, false);
+      if (camera){ camera.aspect = r.width / Math.max(r.height,1); camera.updateProjectionMatrix(); }
+    };
+
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(58, 16/9, 0.1, 120);
+    camera.position.z = 26;
+
+    const COUNT = 520;
+    const pos = new Float32Array(COUNT*3);
+    const spd = new Float32Array(COUNT);
+    for (let i=0;i<COUNT;i++){
+      pos[i*3]   = (Math.random()-0.5)*88;
+      pos[i*3+1] = (Math.random()-0.5)*40;
+      pos[i*3+2] = (Math.random()-0.5)*34;
+      spd[i]     = 0.018 + Math.random()*0.055;
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+
+    // soft round amber mote
+    const c = document.createElement('canvas'); c.width = c.height = 64;
+    const g = c.getContext('2d');
+    const grd = g.createRadialGradient(32,32,0,32,32,32);
+    grd.addColorStop(0,'rgba(255,203,124,1)');
+    grd.addColorStop(0.35,'rgba(224,135,27,0.55)');
+    grd.addColorStop(1,'rgba(224,135,27,0)');
+    g.fillStyle = grd; g.fillRect(0,0,64,64);
+    const tex = new THREE.CanvasTexture(c);
+
+    const mat = new THREE.PointsMaterial({
+      size: 0.85, map: tex, transparent:true, depthWrite:false,
+      blending: THREE.AdditiveBlending, opacity: 0.62
+    });
+    points = new THREE.Points(geo, mat);
+    scene.add(points);
+
+    resize();
+    window.addEventListener('resize', resize, { passive:true });
+
+    const tick = () => {
+      const p = points.geometry.attributes.position.array;
+      for (let i=0;i<COUNT;i++){
+        p[i*3] += spd[i];                       // drift like dust caught in headlights
+        p[i*3+1] += Math.sin((p[i*3]+i)*0.02)*0.006;
+        if (p[i*3] > 44) p[i*3] = -44;
+      }
+      points.geometry.attributes.position.needsUpdate = true;
+      points.rotation.z += 0.00018;
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(tick);
+    };
+
+    const start = () => { if (raf === null && visible && !hidden) raf = requestAnimationFrame(tick); };
+    const stop  = () => { if (raf !== null){ cancelAnimationFrame(raf); raf = null; } };
+
+    // render one frame immediately so screenshots/crawlers see it
+    renderer.render(scene, camera);
+
+    new IntersectionObserver((entries) => {
+      visible = entries[0].isIntersecting;
+      visible ? start() : stop();
+    }, { threshold: 0.01 }).observe(canvas);
+
+    document.addEventListener('visibilitychange', () => {
+      hidden = document.hidden;
+      hidden ? stop() : start();
+    });
+  };
+
+  if ('requestIdleCallback' in window) requestIdleCallback(init, { timeout: 1500 });
+  else setTimeout(init, 400);
+}
+</script>
+
+</body>
+</html>
