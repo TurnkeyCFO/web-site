@@ -51,7 +51,8 @@ tailwind.config = { theme: { extend: {
     -webkit-text-fill-color:transparent; color:transparent;
     animation:shimmer 9s linear infinite; line-height:1.16; padding-bottom:.1em; display:inline-block;
   }
-  .grad-text.on-dark{ background:linear-gradient(100deg,#FFD9CE 0%,#FFAE97 28%,#FFFBF7 50%,#FFAE97 72%,#FFD9CE 100%); background-size:220% 100%; -webkit-background-clip:text; background-clip:text; }
+  .grad-text.on-dark{ background:linear-gradient(100deg,#FFE2D6 0%,#FF9273 26%,#FFFFFF 50%,#FF9273 74%,#FFE2D6 100%); background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    filter:drop-shadow(0 2px 10px rgba(0,0,0,.85)) drop-shadow(0 0 30px rgba(0,0,0,.55)); }
   @keyframes shimmer{ from{background-position:200% 0} to{background-position:-20% 0} }
 
   /* ---- hero ---- */
@@ -123,7 +124,7 @@ tailwind.config = { theme: { extend: {
 
   @media (max-width:880px){
     .hero-scrim{ background:
-      linear-gradient(180deg, rgba(10,6,5,.80) 0%, rgba(10,6,5,.62) 42%, rgba(10,6,5,.55) 72%, rgba(245,239,231,.98) 100%); }
+      linear-gradient(180deg, rgba(10,6,5,.84) 0%, rgba(10,6,5,.74) 38%, rgba(10,6,5,.70) 62%, rgba(10,6,5,.62) 82%, rgba(245,239,231,.98) 100%); }
   }
   @media (prefers-reduced-motion:reduce){
     .grad-text,.marq-track,.pulse{ animation:none !important; }
@@ -177,7 +178,7 @@ tailwind.config = { theme: { extend: {
         <span class="text-[11px] md:text-[12px] font-extrabold tracking-[.26em] text-[#F3D9D2] uppercase">806 S Loop 12 &middot; Irving, Texas</span>
       </div>
 
-      <h1 class="font-display text-[13.5vw] leading-[.98] sm:text-[8.4vw] lg:text-[76px] xl:text-[86px] font-semibold text-[#FDF7F0]" style="line-height:1.09;padding-bottom:.12em;" data-reveal>
+      <h1 class="font-display text-[10.6vw] sm:text-[8.2vw] lg:text-[76px] xl:text-[86px] font-semibold text-[#FDF7F0]" style="line-height:1.09;padding-bottom:.12em;" data-reveal>
         Fifty-four years<br>
         of <span class="grad-text on-dark italic">straight answers</span><br>
         and straight metal.
