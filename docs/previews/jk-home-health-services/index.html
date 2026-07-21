@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<!--
+  JK Home Health Services — Mesquite, TX  |  Turnkey Web draft preview
+  Brand palette sampled from the client's own logo: navy #0939B2 · azure #00ADEF · gray #B5B7BA
+  Hero: AI cinematic asset (Higgsfield nano_banana_pro -> Kling 3.0 turbo), self-hosted assets/hero.mp4
+  Type: Instrument Serif (display) + Figtree (body)
+  All facts sourced from jkhomehealthservices.com, Medicare.gov Care Compare, NPI registry, TX HHSC.
+-->
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JK Home Health Services | Medicare-Certified Home Health in Mesquite &amp; DFW</title>
+<meta name="description" content="JK Home Health Services provides Medicare-certified skilled nursing, physical, occupational and speech therapy at home across Mesquite, Dallas and the DFW metroplex. Referrals accepted 24/7. Call 972-329-3900.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/jk-home-health-services/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JK Home Health Services | Home Health Care in Mesquite &amp; DFW">
+<meta property="og:description" content="Medicare-certified home health care delivered in your own home. Skilled nursing, therapy and personal care across the DFW metroplex.">
+<meta property="og:url" content="https://turnkeyweb.org/previews/jk-home-health-services/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/jk-home-health-services/assets/hero.jpg">
+<link rel="icon" href="assets/logo-mark.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      paper:'#FBF8F4', bone:'#F2EDE6', shell:'#E7E0D6',
+      navy:'#0939B2', navyDeep:'#062676', azure:'#00ADEF', azureSoft:'#8FD8F6',
+      ink:'#0B1220', slate:'#55606F', mist:'#9AA3AF'
+    },
+    fontFamily: { display:['"Instrument Serif"','Georgia','serif'], sans:['Figtree','system-ui','sans-serif'] }
+  }}
+}
+</script>
+<style>
+  :root{ --nav-h:74px; }
+  html{ scroll-padding-top:96px; -webkit-text-size-adjust:100%; }
+  body{ background:#FBF8F4; color:#0B1220; font-family:Figtree,system-ui,sans-serif; overflow-x:hidden; }
+  ::selection{ background:#00ADEF; color:#fff; }
+
+  /* ---------- display type + descender safety ---------- */
+  .disp{ font-family:"Instrument Serif",Georgia,serif; font-weight:400; line-height:1.1; letter-spacing:-.01em; padding-bottom:.06em; }
+  h1,h2,h3,h4{ line-height:1.12; padding-bottom:.04em; }
+  .grad-text{
+    background:linear-gradient(100deg,#0939B2 0%,#0B63D6 26%,#00ADEF 50%,#0B63D6 74%,#0939B2 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shimmer 9s linear infinite; line-height:1.18; padding-bottom:.10em; display:inline-block;
+  }
+  @keyframes shimmer{ 0%{background-position:0% 50%} 100%{background-position:220% 50%} }
+  @media (prefers-reduced-motion:reduce){ .grad-text{animation:none} }
+
+  /* ---------- nav ---------- */
+  .nav{ transition:background .45s ease, box-shadow .45s ease, backdrop-filter .45s ease; }
+  .nav.solid{ background:rgba(251,248,244,.93); backdrop-filter:blur(14px); box-shadow:0 1px 0 rgba(11,18,32,.07); }
+  .ulink{ position:relative; }
+  .ulink::after{ content:''; position:absolute; left:0; bottom:-5px; height:1.5px; width:0;
+    background:linear-gradient(90deg,#0939B2,#00ADEF); transition:width .5s cubic-bezier(.22,1,.36,1); }
+  .ulink:hover::after{ width:100%; }
+
+  /* ---------- hero ---------- */
+  .hero{ position:relative; overflow:hidden; background:#F2EDE6; }
+  .hero-media{ position:absolute; inset:-8% -4% -14% -4%; z-index:0; will-change:transform; }
+  .hero-bg{ width:100%; height:100%; object-fit:cover; display:block; }
+  .hero-scrim{ position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      linear-gradient(96deg, rgba(251,248,244,.985) 0%, rgba(251,248,244,.965) 30%, rgba(251,248,244,.80) 45%, rgba(251,248,244,.28) 62%, rgba(251,248,244,.06) 78%, rgba(251,248,244,0) 100%),
+      linear-gradient(180deg, rgba(251,248,244,.92) 0%, rgba(251,248,244,.14) 22%, rgba(251,248,244,0) 46%);
+  }
+  @media (max-width:880px){
+    .hero-scrim{ background:
+      linear-gradient(180deg, rgba(251,248,244,.97) 0%, rgba(251,248,244,.955) 44%, rgba(251,248,244,.80) 62%, rgba(251,248,244,.34) 82%, rgba(251,248,244,.10) 100%); }
+  }
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.045; mix-blend-mode:multiply; z-index:2;
+    background-image:radial-gradient(#0B1220 1px, transparent 1px); background-size:3px 3px; }
+
+  /* ---------- blobs ---------- */
+  .blob{ position:absolute; border-radius:50%; filter:blur(90px); pointer-events:none; will-change:transform; }
+  .b1{ width:520px;height:520px; background:radial-gradient(circle,rgba(0,173,239,.30),transparent 62%); animation:drift1 26s ease-in-out infinite; }
+  .b2{ width:460px;height:460px; background:radial-gradient(circle,rgba(9,57,178,.20),transparent 64%); animation:drift2 31s ease-in-out infinite; }
+  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(44px,-32px) scale(1.09)}}
+  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-38px,30px) scale(1.07)}}
+
+  /* ---------- buttons ---------- */
+  .btn{ position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease, filter .4s ease; }
+  .btn:hover{ transform:translateY(-3px); filter:brightness(1.04); }
+  .btn::after{ content:''; position:absolute; top:0; left:-130%; width:55%; height:100%; transform:skewX(-22deg);
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.42),transparent); transition:left .9s cubic-bezier(.22,1,.36,1); }
+  .btn:hover::after{ left:130%; }
+
+  /* ---------- cards ---------- */
+  .card{ position:relative; background:#fff; border:1px solid rgba(11,18,32,.075); border-radius:18px; overflow:hidden;
+    transition:transform .55s cubic-bezier(.22,1,.36,1), box-shadow .55s ease, border-color .55s ease; }
+  .card::before{ content:''; position:absolute; top:0; left:0; height:3px; width:0;
+    background:linear-gradient(90deg,#0939B2,#00ADEF); transition:width .65s cubic-bezier(.22,1,.36,1); }
+  .card:hover{ transform:translateY(-7px); box-shadow:0 26px 60px -28px rgba(9,57,178,.35); border-color:rgba(0,173,239,.32); }
+  .card:hover::before{ width:100%; }
+  .card:hover .ic{ transform:rotate(-7deg) scale(1.07); }
+  .ic{ transition:transform .55s cubic-bezier(.22,1,.36,1); }
+
+  /* ---------- marquee ---------- */
+  .marq{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marq-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 42s linear infinite; }
+  .marq:hover .marq-track{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ---------- timeline (signature) ---------- */
+  .rail{ position:absolute; left:0; top:0; height:2px; width:100%; background:rgba(9,57,178,.14); }
+  .rail-fill{ position:absolute; left:0; top:0; height:2px; width:0; background:linear-gradient(90deg,#0939B2,#00ADEF); }
+  .step-num{ font-family:"Instrument Serif",Georgia,serif; line-height:1.14; padding-bottom:.05em; }
+
+  /* ---------- reveals ---------- */
+  [data-reveal]{ opacity:0; transform:translateY(30px); will-change:opacity,transform; }
+  [data-reveal].shown{ opacity:1; transform:none; }
+  [data-img]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.25s cubic-bezier(.22,1,.36,1); }
+  [data-img].in{ clip-path:inset(0 0 0% 0); }
+
+  /* ---------- faq ---------- */
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height .55s cubic-bezier(.22,1,.36,1); }
+  .faq.open .faq-a{ max-height:340px; }
+  .faq.open .faq-plus{ transform:rotate(45deg); }
+  .faq-plus{ transition:transform .45s cubic-bezier(.22,1,.36,1); }
+
+  .dot{ animation:pulse 2.3s ease-in-out infinite; }
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+
+  #motes{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation-duration:.01ms!important; transition-duration:.01ms!important; }
+    [data-reveal]{opacity:1;transform:none}
+  }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ══════════════ NAV ══════════════ -->
+<header class="nav fixed top-0 inset-x-0 z-50">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-8 h-[74px] flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-2.5 shrink-0">
+      <img src="assets/logo-mark.png" alt="JK Home Health Services" class="h-9 sm:h-10 w-auto">
+      <span class="hidden sm:block leading-tight">
+        <span class="block text-[15px] font-semibold tracking-tight text-navyDeep">JK Home Health</span>
+        <span class="block text-[10px] tracking-[.22em] uppercase text-mist">Services · Mesquite, TX</span>
+      </span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-[14px] font-medium text-slate">
+      <a href="#care" class="ulink hover:text-navy transition-colors">Care Programs</a>
+      <a href="#begin" class="ulink hover:text-navy transition-colors">Getting Started</a>
+      <a href="#why" class="ulink hover:text-navy transition-colors">Why JK</a>
+      <a href="#area" class="ulink hover:text-navy transition-colors">Service Area</a>
+      <a href="#visit" class="ulink hover:text-navy transition-colors">Contact</a>
+    </nav>
+    <a href="tel:+19723293900" class="btn shrink-0 inline-flex items-center gap-2 rounded-full bg-navy text-white px-4 sm:px-5 py-2.5 text-[13px] sm:text-sm font-semibold shadow-lg shadow-navy/25">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="relative z-10">972-329-3900</span>
+    </a>
+  </div>
+</header>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="top" class="hero grain min-h-[92vh] sm:min-h-[100vh] flex items-end sm:items-center pt-[112px] sm:pt-[74px] pb-16 sm:pb-0">
+  <div class="hero-media">
+    <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg" aria-hidden="true">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 w-full max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="max-w-[640px]">
+      <div data-reveal class="inline-flex items-center gap-2.5 rounded-full bg-white/85 border border-navy/12 px-3.5 py-1.5 mb-6 backdrop-blur-sm">
+        <span class="dot w-1.5 h-1.5 rounded-full bg-azure"></span>
+        <span class="text-[11px] font-semibold tracking-[.16em] uppercase text-navyDeep">Medicare-certified since 2006</span>
+      </div>
+
+      <h1 data-reveal class="disp text-[clamp(2.6rem,7.4vw,5.1rem)] text-ink mb-6">
+        Care that comes<br><span class="grad-text italic">to your doorstep.</span>
+      </h1>
+
+      <p data-reveal class="text-[17px] sm:text-[19px] leading-relaxed text-slate max-w-[520px] mb-9">
+        Skilled nursing and therapy delivered where recovery actually happens — in your own home, on your own terms. Serving Mesquite, Dallas and the wider DFW metroplex.
+      </p>
+
+      <div data-reveal class="flex flex-wrap items-center gap-3 mb-11">
+        <a href="tel:+19723293900" class="btn inline-flex items-center gap-2 rounded-full bg-navy text-white px-7 py-3.5 text-[15px] font-semibold shadow-xl shadow-navy/25">
+          <span class="relative z-10">Call 972-329-3900</span>
+        </a>
+        <a href="#begin" class="btn inline-flex items-center gap-2 rounded-full bg-white text-navyDeep border border-navy/18 px-7 py-3.5 text-[15px] font-semibold shadow-sm">
+          <span class="relative z-10">How care begins</span>
+          <svg class="w-4 h-4 relative z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div data-reveal class="grid grid-cols-3 gap-5 sm:gap-8 max-w-[500px] border-t border-navy/12 pt-6">
+        <div>
+          <div class="disp text-[2rem] sm:text-[2.4rem] text-navy" data-count="20" data-suffix="+">0</div>
+          <div class="text-[11px] tracking-[.13em] uppercase text-mist mt-0.5">Years serving DFW</div>
+        </div>
+        <div>
+          <div class="disp text-[2rem] sm:text-[2.4rem] text-navy" data-count="44" data-suffix="+">0</div>
+          <div class="text-[11px] tracking-[.13em] uppercase text-mist mt-0.5">ZIP codes covered</div>
+        </div>
+        <div>
+          <div class="disp text-[2rem] sm:text-[2.4rem] text-navy">24/7</div>
+          <div class="text-[11px] tracking-[.13em] uppercase text-mist mt-0.5">Referral intake</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CREDENTIAL MARQUEE ══════════════ -->
+<section class="bg-navyDeep py-4 sm:py-5 relative overflow-hidden">
+  <div class="marq">
+    <div class="marq-track text-[13px] sm:text-[14px] tracking-[.14em] uppercase text-white/85 font-medium">
+      <span>Medicare Certified</span><span class="text-azure">•</span>
+      <span class="italic text-azureSoft" style="font-family:'Instrument Serif',serif;text-transform:none;letter-spacing:0;font-size:19px">Skilled Nursing</span><span class="text-azure">•</span>
+      <span>Texas HHS Licensed #009373</span><span class="text-azure">•</span>
+      <span class="italic text-azureSoft" style="font-family:'Instrument Serif',serif;text-transform:none;letter-spacing:0;font-size:19px">Physical Therapy</span><span class="text-azure">•</span>
+      <span>Medicaid Managed Care Accepted</span><span class="text-azure">•</span>
+      <span class="italic text-azureSoft" style="font-family:'Instrument Serif',serif;text-transform:none;letter-spacing:0;font-size:19px">Occupational Therapy</span><span class="text-azure">•</span>
+      <span>Referrals Accepted 24/7</span><span class="text-azure">•</span>
+      <span class="italic text-azureSoft" style="font-family:'Instrument Serif',serif;text-transform:none;letter-spacing:0;font-size:19px">Speech Pathology</span><span class="text-azure">•</span>
+      <span>Medicare Certified</span><span class="text-azure">•</span>
+      <span class="italic text-azureSoft" style="font-family:'Instrument Serif',serif;text-transform:none;letter-spacing:0;font-size:19px">Skilled Nursing</span><span class="text-azure">•</span>
+      <span>Texas HHS Licensed #009373</span><span class="text-azure">•</span>
+      <span class="italic text-azureSoft" style="font-family:'Instrument Serif',serif;text-transform:none;letter-spacing:0;font-size:19px">Physical Therapy</span><span class="text-azure">•</span>
+      <span>Medicaid Managed Care Accepted</span><span class="text-azure">•</span>
+      <span class="italic text-azureSoft" style="font-family:'Instrument Serif',serif;text-transform:none;letter-spacing:0;font-size:19px">Occupational Therapy</span><span class="text-azure">•</span>
+      <span>Referrals Accepted 24/7</span><span class="text-azure">•</span>
+      <span class="italic text-azureSoft" style="font-family:'Instrument Serif',serif;text-transform:none;letter-spacing:0;font-size:19px">Speech Pathology</span><span class="text-azure">•</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CARE PROGRAMS ══════════════ -->
+<section id="care" class="relative py-24 sm:py-32 bg-paper overflow-hidden">
+  <div class="blob b1" style="top:-160px;right:-180px"></div>
+  <div class="relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="max-w-[720px] mb-14 sm:mb-20">
+      <div data-reveal class="text-[11px] tracking-[.24em] uppercase text-azure font-semibold mb-4">Care Programs</div>
+      <h2 data-reveal class="disp text-[clamp(2.1rem,5vw,3.6rem)] text-ink mb-5">
+        Six programs, one <span class="grad-text italic">personalized</span> plan.
+      </h2>
+      <p data-reveal class="text-[17px] leading-relaxed text-slate">
+        No two conditions are the same, so no two care plans are either. Every plan starts with a full health assessment and is built around what you actually need.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+
+      <article data-reveal class="card p-7 sm:p-8">
+        <div class="ic w-12 h-12 rounded-xl bg-navy/8 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3 class="disp text-[1.6rem] text-ink mb-3">Chronic Disease Care</h3>
+        <p class="text-[15px] leading-relaxed text-slate">A control plan built to help you manage long-term illness, stay independent and reduce hospital visits. Includes Alzheimer's disease, dementia, Parkinson's disease and congestive heart failure.</p>
+      </article>
+
+      <article data-reveal class="card p-7 sm:p-8">
+        <div class="ic w-12 h-12 rounded-xl bg-azure/12 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-azure" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3v2a4 4 0 0 0 2 3.46V17a3 3 0 0 0 6 0M12 2a3 3 0 0 1 3 3v1a3 3 0 0 1 3 3v2a4 4 0 0 1-2 3.46V17"/><circle cx="12" cy="20" r="2"/></svg>
+        </div>
+        <h3 class="disp text-[1.6rem] text-ink mb-3">Neurological Injury</h3>
+        <p class="text-[15px] leading-relaxed text-slate">Comprehensive rehabilitation after a stroke, anoxia, traumatic brain injury or other neurological event. The goal is to enhance function, lessen symptoms and restore wellbeing.</p>
+      </article>
+
+      <article data-reveal class="card p-7 sm:p-8">
+        <div class="ic w-12 h-12 rounded-xl bg-navy/8 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg>
+        </div>
+        <h3 class="disp text-[1.6rem] text-ink mb-3">Cardiopulmonary Rehab</h3>
+        <p class="text-[15px] leading-relaxed text-slate">A medically supervised program of exercise and education tailored to each individual, for people diagnosed with heart or lung disease. Built to boost endurance and quality of life.</p>
+      </article>
+
+      <article data-reveal class="card p-7 sm:p-8">
+        <div class="ic w-12 h-12 rounded-xl bg-azure/12 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-azure" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 15.5h5M12 13v5"/></svg>
+        </div>
+        <h3 class="disp text-[1.6rem] text-ink mb-3">Personal Care</h3>
+        <p class="text-[15px] leading-relaxed text-slate">Help with the everyday things — bathing, dressing and grooming, basic housekeeping, medication reminders. Delivered by care providers who are genuinely good at being in someone's home.</p>
+      </article>
+
+      <article data-reveal class="card p-7 sm:p-8">
+        <div class="ic w-12 h-12 rounded-xl bg-navy/8 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v4M16 3v4"/><rect x="4" y="7" width="16" height="14" rx="3"/><path d="M9 14h6M12 11v6"/></svg>
+        </div>
+        <h3 class="disp text-[1.6rem] text-ink mb-3">Orthopedic Rehabilitation</h3>
+        <p class="text-[15px] leading-relaxed text-slate">A physician-supervised program for recovery from musculoskeletal disease, injury or surgery — correcting limitations and relieving pain from trauma, illness or an operation.</p>
+      </article>
+
+      <article data-reveal class="card p-7 sm:p-8">
+        <div class="ic w-12 h-12 rounded-xl bg-azure/12 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-azure" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="3"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/><path d="M12 12v4M10 14h4"/></svg>
+        </div>
+        <h3 class="disp text-[1.6rem] text-ink mb-3">Medical Home Care</h3>
+        <p class="text-[15px] leading-relaxed text-slate">Physician-prescribed home health delivered by a nurse, nurse assistant, home health aide or doctor — the services you would ordinarily receive in a hospital, rehab facility or nursing home.</p>
+      </article>
+
+    </div>
+
+    <p data-reveal class="mt-12 text-[15px] text-slate">
+      Not sure which fits? Call <a href="tel:+19723293900" class="ulink font-semibold text-navy">972-329-3900</a> and we will talk it through.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════ SIGNATURE: THE FIRST 24 HOURS ══════════════ -->
+<section id="begin" class="relative py-24 sm:py-32 bg-bone overflow-hidden">
+  <div class="relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="max-w-[760px] mb-14 sm:mb-20">
+      <div data-reveal class="text-[11px] tracking-[.24em] uppercase text-azure font-semibold mb-4">Getting Started</div>
+      <h2 data-reveal class="disp text-[clamp(2.1rem,5vw,3.6rem)] text-ink mb-5">The first <span class="grad-text italic">24 hours.</span></h2>
+      <p data-reveal class="text-[17px] leading-relaxed text-slate">
+        Starting home health should not feel like paperwork. Here is exactly what happens from the moment a referral reaches our office.
+      </p>
+    </div>
+
+    <div class="relative">
+      <div class="rail hidden lg:block" style="top:38px"></div>
+      <div class="rail-fill hidden lg:block" id="railFill" style="top:38px"></div>
+
+      <div class="grid lg:grid-cols-4 gap-10 lg:gap-8">
+        <div data-reveal class="relative pt-0 lg:pt-[74px]">
+          <span class="hidden lg:block absolute left-0 top-[32px] w-3.5 h-3.5 rounded-full bg-navy ring-4 ring-bone"></span>
+          <div class="step-num text-[2.6rem] text-azure mb-2">01</div>
+          <h3 class="text-[17px] font-semibold text-ink mb-2.5">The referral arrives</h3>
+          <p class="text-[15px] leading-relaxed text-slate">Your physician sends a referral, or you call us directly for non-medical care. Our intake form can be downloaded and faxed to <span class="whitespace-nowrap font-medium text-navyDeep">972-329-3903</span> at any hour.</p>
+        </div>
+
+        <div data-reveal class="relative pt-0 lg:pt-[74px]">
+          <span class="hidden lg:block absolute left-0 top-[32px] w-3.5 h-3.5 rounded-full bg-navy ring-4 ring-bone"></span>
+          <div class="step-num text-[2.6rem] text-azure mb-2">02</div>
+          <h3 class="text-[17px] font-semibold text-ink mb-2.5">We call you back within 24 hours</h3>
+          <p class="text-[15px] leading-relaxed text-slate">A real person from our office reaches out. We confirm the referral, review your insurance and answer the questions families always have before anyone sets foot in the house.</p>
+        </div>
+
+        <div data-reveal class="relative pt-0 lg:pt-[74px]">
+          <span class="hidden lg:block absolute left-0 top-[32px] w-3.5 h-3.5 rounded-full bg-navy ring-4 ring-bone"></span>
+          <div class="step-num text-[2.6rem] text-azure mb-2">03</div>
+          <h3 class="text-[17px] font-semibold text-ink mb-2.5">An in-home assessment</h3>
+          <p class="text-[15px] leading-relaxed text-slate">We come to your home and assess the real conditions — the stairs, the medications, the routine, the person. Not a checklist filled out over the phone.</p>
+        </div>
+
+        <div data-reveal class="relative pt-0 lg:pt-[74px]">
+          <span class="hidden lg:block absolute left-0 top-[32px] w-3.5 h-3.5 rounded-full bg-navy ring-4 ring-bone"></span>
+          <div class="step-num text-[2.6rem] text-azure mb-2">04</div>
+          <h3 class="text-[17px] font-semibold text-ink mb-2.5">Your care plan begins</h3>
+          <p class="text-[15px] leading-relaxed text-slate">We recommend the plan and the services, coordinate directly with your healthcare provider, and start care. You will know what to expect before it starts.</p>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal class="mt-14 flex flex-wrap items-center gap-4">
+      <a href="tel:+19723293900" class="btn inline-flex items-center gap-2 rounded-full bg-navy text-white px-7 py-3.5 text-[15px] font-semibold shadow-xl shadow-navy/25">
+        <span class="relative z-10">Start with a call</span>
+      </a>
+      <span class="text-[14px] text-slate">Or fax a referral to <span class="font-semibold text-navyDeep">972-329-3903</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ WHY JK — WebGL showpiece band ══════════════ -->
+<section id="why" class="relative py-24 sm:py-32 bg-navyDeep overflow-hidden">
+  <canvas id="motes" aria-hidden="true"></canvas>
+  <div class="absolute inset-0 z-[1]" style="background:linear-gradient(180deg,rgba(6,38,118,.82),rgba(6,38,118,.90))"></div>
+
+  <div class="relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="max-w-[760px] mb-14 sm:mb-18">
+      <div data-reveal class="text-[11px] tracking-[.24em] uppercase text-azureSoft font-semibold mb-4">Why Families Choose JK</div>
+      <h2 data-reveal class="disp text-[clamp(2.1rem,5vw,3.6rem)] text-white mb-5" style="line-height:1.14">
+        The agency you call<br>when it actually matters.
+      </h2>
+      <p data-reveal class="text-[17px] leading-relaxed text-white/80">
+        We are responsive and ready to serve, available 24 hours a day to accept new patients into home care. Contact our office today, or fax over your new patient referral.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div data-reveal class="rounded-2xl bg-white/8 border border-white/14 p-7 backdrop-blur-sm">
+        <svg class="w-7 h-7 text-azureSoft mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l7.5 3.5v5c0 4.5-3.2 8.4-7.5 9.5-4.3-1.1-7.5-5-7.5-9.5v-5z"/></svg>
+        <h3 class="text-[16px] font-semibold text-white mb-2.5">Screened, skilled team</h3>
+        <p class="text-[14.5px] leading-relaxed text-white/75">Every team member goes through a screening process, an interview, and background and license verification before they are selected.</p>
+      </div>
+      <div data-reveal class="rounded-2xl bg-white/8 border border-white/14 p-7 backdrop-blur-sm">
+        <svg class="w-7 h-7 text-azureSoft mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <h3 class="text-[16px] font-semibold text-white mb-2.5">Around the clock</h3>
+        <p class="text-[14.5px] leading-relaxed text-white/75">A professional manager is available to answer questions and offer clinical help. Referrals are accepted 24 hours a day, seven days a week.</p>
+      </div>
+      <div data-reveal class="rounded-2xl bg-white/8 border border-white/14 p-7 backdrop-blur-sm">
+        <svg class="w-7 h-7 text-azureSoft mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.35-7-9.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7 3.5C19 15.65 12 20 12 20z"/></svg>
+        <h3 class="text-[16px] font-semibold text-white mb-2.5">A plan built for one person</h3>
+        <p class="text-[14.5px] leading-relaxed text-white/75">We review your health assessment and complete a proper needs assessment before a single line of the care plan is written.</p>
+      </div>
+      <div data-reveal class="rounded-2xl bg-white/8 border border-white/14 p-7 backdrop-blur-sm">
+        <svg class="w-7 h-7 text-azureSoft mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+        <h3 class="text-[16px] font-semibold text-white mb-2.5">Short term or long term</h3>
+        <p class="text-[14.5px] leading-relaxed text-white/75">Whatever the condition, illness or rehabilitation required, we provide holistic care in the comfort of your own home for as long as it is needed.</p>
+      </div>
+    </div>
+
+    <div data-reveal class="mt-14 pt-10 border-t border-white/15 grid sm:grid-cols-3 gap-8">
+      <div>
+        <div class="text-[11px] tracking-[.2em] uppercase text-azureSoft mb-2">Certification</div>
+        <p class="text-[15px] text-white/85 leading-relaxed">Medicare-certified home health agency since January 2006.</p>
+      </div>
+      <div>
+        <div class="text-[11px] tracking-[.2em] uppercase text-azureSoft mb-2">Licensing</div>
+        <p class="text-[15px] text-white/85 leading-relaxed">Texas Health and Human Services home health license #009373.</p>
+      </div>
+      <div>
+        <div class="text-[11px] tracking-[.2em] uppercase text-azureSoft mb-2">Coverage</div>
+        <p class="text-[15px] text-white/85 leading-relaxed">Medicare, plus Medicaid managed care through Superior HealthPlan and Amerigroup Texas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SERVICE AREA ══════════════ -->
+<section id="area" class="relative py-24 sm:py-32 bg-paper overflow-hidden">
+  <div class="blob b2" style="bottom:-140px;left:-160px"></div>
+  <div class="relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8 grid lg:grid-cols-[minmax(0,.85fr)_minmax(0,1.15fr)] gap-14 lg:gap-20 items-center">
+    <div>
+      <div data-reveal class="text-[11px] tracking-[.24em] uppercase text-azure font-semibold mb-4">Service Area</div>
+      <h2 data-reveal class="disp text-[clamp(2.1rem,5vw,3.6rem)] text-ink mb-5">
+        Across <span class="grad-text italic">the metroplex.</span>
+      </h2>
+      <p data-reveal class="text-[17px] leading-relaxed text-slate mb-7">
+        Our office is in Mesquite, but our nurses and therapists cover more than forty ZIP codes across Dallas, Tarrant, Collin, Rockwall and Kaufman counties.
+      </p>
+      <p data-reveal class="text-[15px] leading-relaxed text-slate">
+        If you are not sure whether your address falls inside the service area, call the office and we will check it in a minute.
+      </p>
+      <a data-reveal href="tel:+19723293900" class="btn mt-8 inline-flex items-center gap-2 rounded-full bg-navy text-white px-7 py-3.5 text-[15px] font-semibold shadow-xl shadow-navy/25">
+        <span class="relative z-10">Check your address</span>
+      </a>
+    </div>
+
+    <div data-reveal class="flex flex-wrap gap-2.5">
+      <span class="rounded-full bg-navy text-white px-4 py-2 text-[13.5px] font-semibold">Mesquite</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Dallas</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Garland</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Rowlett</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Richardson</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Plano</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Frisco</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">McKinney</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Irving</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Arlington</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Fort Worth</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Carrollton</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Lewisville</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Rockwall</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Forney</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Kaufman</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Balch Springs</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Seagoville</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">DeSoto</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Duncanville</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Cedar Hill</span>
+      <span class="rounded-full bg-white border border-navy/14 px-4 py-2 text-[13.5px] text-navyDeep font-medium">Lancaster</span>
+      <span class="rounded-full bg-azure/12 border border-azure/30 px-4 py-2 text-[13.5px] text-navyDeep font-semibold">+ 22 more</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FAQ ══════════════ -->
+<section id="faq" class="py-24 sm:py-32 bg-bone">
+  <div class="max-w-[900px] mx-auto px-5 sm:px-8">
+    <div class="mb-12 sm:mb-16">
+      <div data-reveal class="text-[11px] tracking-[.24em] uppercase text-azure font-semibold mb-4">Common Questions</div>
+      <h2 data-reveal class="disp text-[clamp(2.1rem,5vw,3.6rem)] text-ink">Straight answers, first.</h2>
+    </div>
+
+    <div class="divide-y divide-navy/12 border-y border-navy/12">
+      <div data-reveal class="faq py-6 cursor-pointer">
+        <div class="flex items-start justify-between gap-6">
+          <h3 class="text-[17px] sm:text-[18px] font-semibold text-ink">How do we start home health services?</h3>
+          <svg class="faq-plus w-5 h-5 shrink-0 mt-0.5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a"><p class="pt-4 text-[15.5px] leading-relaxed text-slate max-w-[720px]">Your provider makes a referral for services. Download the intake form from our office, or call us at 972-329-3900 and we will walk you through it. Once we have it, we come to your home to do an assessment and recommend the care plan and services you need.</p></div>
+      </div>
+
+      <div data-reveal class="faq py-6 cursor-pointer">
+        <div class="flex items-start justify-between gap-6">
+          <h3 class="text-[17px] sm:text-[18px] font-semibold text-ink">Do I need a referral from my provider?</h3>
+          <svg class="faq-plus w-5 h-5 shrink-0 mt-0.5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a"><p class="pt-4 text-[15.5px] leading-relaxed text-slate max-w-[720px]">It depends on the service. Non-medical home care needs no pre-authorization or prescription — call us directly. Medical home care does need your doctor's authorization, because the care plan is written from the physician's orders.</p></div>
+      </div>
+
+      <div data-reveal class="faq py-6 cursor-pointer">
+        <div class="flex items-start justify-between gap-6">
+          <h3 class="text-[17px] sm:text-[18px] font-semibold text-ink">Do you take Medicare and Medicaid?</h3>
+          <svg class="faq-plus w-5 h-5 shrink-0 mt-0.5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a"><p class="pt-4 text-[15.5px] leading-relaxed text-slate max-w-[720px]">We are a Medicare-certified agency and we are listed in the Superior HealthPlan and Amerigroup Texas Medicaid managed care directories. Depending on medical necessity, your insurance may or may not cover your care. We review your coverage up front and tell you about any out-of-pocket expense before care begins.</p></div>
+      </div>
+
+      <div data-reveal class="faq py-6 cursor-pointer">
+        <div class="flex items-start justify-between gap-6">
+          <h3 class="text-[17px] sm:text-[18px] font-semibold text-ink">How much will services cost?</h3>
+          <svg class="faq-plus w-5 h-5 shrink-0 mt-0.5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a"><p class="pt-4 text-[15.5px] leading-relaxed text-slate max-w-[720px]">No two care plans are the same, so there is no single price. Cost depends on the service and the health condition behind it. Call us and we will set up a conversation about the care plan you want and what the service fees would be.</p></div>
+      </div>
+
+      <div data-reveal class="faq py-6 cursor-pointer">
+        <div class="flex items-start justify-between gap-6">
+          <h3 class="text-[17px] sm:text-[18px] font-semibold text-ink">How qualified is your staff?</h3>
+          <svg class="faq-plus w-5 h-5 shrink-0 mt-0.5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a"><p class="pt-4 text-[15.5px] leading-relaxed text-slate max-w-[720px]">Every staff member goes through a screening process and an interview before selection, and we verify their background and licensing. Our team includes nurses, nurse assistants, home health aides and therapists.</p></div>
+      </div>
+
+      <div data-reveal class="faq py-6 cursor-pointer">
+        <div class="flex items-start justify-between gap-6">
+          <h3 class="text-[17px] sm:text-[18px] font-semibold text-ink">Are you available 24/7?</h3>
+          <svg class="faq-plus w-5 h-5 shrink-0 mt-0.5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a"><p class="pt-4 text-[15.5px] leading-relaxed text-slate max-w-[720px]">Yes. We offer around-the-clock service, and a professional manager is available to answer your questions and offer clinical help.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ VISIT / MAP ══════════════ -->
+<section id="visit" class="py-24 sm:py-32 bg-paper">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="max-w-[700px] mb-12 sm:mb-16">
+      <div data-reveal class="text-[11px] tracking-[.24em] uppercase text-azure font-semibold mb-4">The Office</div>
+      <h2 data-reveal class="disp text-[clamp(2.1rem,5vw,3.6rem)] text-ink">609 N. Ebrite Street, Mesquite.</h2>
+    </div>
+
+    <div class="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] gap-8 lg:gap-10 items-stretch">
+      <div data-reveal class="card p-8 sm:p-9 flex flex-col justify-between">
+        <div>
+          <img src="assets/logo-full.png" alt="JK Home Health Services" class="h-16 w-auto mb-8">
+
+          <div class="mb-7">
+            <div class="text-[11px] tracking-[.18em] uppercase text-mist mb-2">Address</div>
+            <p class="text-[16px] leading-relaxed text-ink font-medium">609 N. Ebrite Street, Suite 103<br>Mesquite, Texas 75149</p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-6 mb-7">
+            <div>
+              <div class="text-[11px] tracking-[.18em] uppercase text-mist mb-2">Phone</div>
+              <a href="tel:+19723293900" class="ulink text-[16px] font-semibold text-navy">972-329-3900</a>
+            </div>
+            <div>
+              <div class="text-[11px] tracking-[.18em] uppercase text-mist mb-2">Fax referrals</div>
+              <p class="text-[16px] font-semibold text-ink">972-329-3903</p>
+            </div>
+          </div>
+
+          <div class="mb-7">
+            <div class="text-[11px] tracking-[.18em] uppercase text-mist mb-2">Email</div>
+            <a href="mailto:admin@jkhomehealthservices.co" class="ulink text-[15.5px] font-medium text-navy break-all">admin@jkhomehealthservices.co</a>
+          </div>
+
+          <div class="flex items-center gap-2.5 rounded-xl bg-azure/8 border border-azure/22 px-4 py-3">
+            <span class="dot w-2 h-2 rounded-full bg-azure shrink-0"></span>
+            <span class="text-[14px] font-medium text-navyDeep">Referrals accepted 24 hours a day</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-3 mt-8">
+          <a href="tel:+19723293900" class="btn inline-flex items-center gap-2 rounded-full bg-navy text-white px-6 py-3 text-[14.5px] font-semibold shadow-lg shadow-navy/25"><span class="relative z-10">Call the office</span></a>
+          <a href="https://www.google.com/maps?q=609+N+Ebrite+St+Suite+103,+Mesquite,+TX+75149" target="_blank" rel="noopener" class="btn inline-flex items-center gap-2 rounded-full bg-white text-navyDeep border border-navy/18 px-6 py-3 text-[14.5px] font-semibold"><span class="relative z-10">Directions</span></a>
+        </div>
+      </div>
+
+      <div data-reveal data-img class="rounded-[18px] overflow-hidden border border-navy/10 min-h-[400px] lg:min-h-full shadow-xl shadow-navy/8">
+        <iframe
+          src="https://www.google.com/maps?q=609%20N%20Ebrite%20St%20Suite%20103%2C%20Mesquite%2C%20TX%2075149&output=embed"
+          width="100%" height="100%" style="border:0;min-height:400px;display:block"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="JK Home Health Services — 609 N Ebrite St, Mesquite, TX"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CTA ══════════════ -->
+<section class="relative py-24 sm:py-32 bg-navyDeep overflow-hidden">
+  <div class="blob b1" style="top:-180px;left:-140px;opacity:.5"></div>
+  <div class="relative z-10 max-w-[900px] mx-auto px-5 sm:px-8 text-center">
+    <img data-reveal src="assets/logo-mark.png" alt="JK Home Health Services" class="h-14 w-auto mx-auto mb-8" style="filter:brightness(0) invert(1)">
+    <h2 data-reveal class="disp text-[clamp(2.2rem,5.6vw,4rem)] text-white mb-6" style="line-height:1.14">Accepting new patients today.</h2>
+    <p data-reveal class="text-[17px] sm:text-[18px] leading-relaxed text-white/80 max-w-[620px] mx-auto mb-10">
+      We will work together with your healthcare provider so the care plan actually fits your condition. Call the office, or have your provider fax the referral, and we will take it from there.
+    </p>
+    <div data-reveal class="flex flex-wrap justify-center gap-3">
+      <a href="tel:+19723293900" class="btn inline-flex items-center gap-2 rounded-full bg-azure text-navyDeep px-8 py-4 text-[16px] font-bold shadow-2xl shadow-black/25">
+        <span class="relative z-10">Call 972-329-3900</span>
+      </a>
+      <a href="mailto:admin@jkhomehealthservices.co" class="btn inline-flex items-center gap-2 rounded-full bg-white/10 text-white border border-white/25 px-8 py-4 text-[16px] font-semibold backdrop-blur-sm">
+        <span class="relative z-10">Email the office</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="bg-ink pt-16 pb-28 sm:pb-14">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/12">
+      <div class="lg:col-span-2">
+        <img src="assets/logo-full.png" alt="JK Home Health Services" class="h-20 w-auto mb-6" style="filter:brightness(0) invert(1)">
+        <p class="text-[15px] leading-relaxed text-white/60 max-w-[380px]">
+          A Medicare-certified home health agency providing individualized care across the Dallas–Fort Worth metroplex.
+        </p>
+      </div>
+      <div>
+        <div class="text-[11px] tracking-[.2em] uppercase text-azureSoft mb-4">Care</div>
+        <ul class="space-y-2.5 text-[14.5px] text-white/65">
+          <li><a href="#care" class="ulink hover:text-white transition-colors">Chronic Disease Care</a></li>
+          <li><a href="#care" class="ulink hover:text-white transition-colors">Neurological Injury</a></li>
+          <li><a href="#care" class="ulink hover:text-white transition-colors">Cardiopulmonary Rehab</a></li>
+          <li><a href="#care" class="ulink hover:text-white transition-colors">Personal Care</a></li>
+          <li><a href="#care" class="ulink hover:text-white transition-colors">Orthopedic Rehabilitation</a></li>
+          <li><a href="#care" class="ulink hover:text-white transition-colors">Medical Home Care</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[11px] tracking-[.2em] uppercase text-azureSoft mb-4">Office</div>
+        <ul class="space-y-2.5 text-[14.5px] text-white/65">
+          <li>609 N. Ebrite Street, Suite 103<br>Mesquite, Texas 75149</li>
+          <li><a href="tel:+19723293900" class="ulink hover:text-white transition-colors">Phone: 972-329-3900</a></li>
+          <li>Fax: 972-329-3903</li>
+          <li><a href="mailto:admin@jkhomehealthservices.co" class="ulink hover:text-white transition-colors break-all">admin@jkhomehealthservices.co</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <p class="text-[13px] text-white/45">© 2026 JK Home Health Services. Texas HHS license #009373. Medicare-certified.</p>
+      <p class="text-[13px] text-white/35">Draft preview by Turnkey Web</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════ MOBILE STICKY BAR ══════════════ -->
+<div class="sm:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-2 border-t border-white/12">
+  <a href="tel:+19723293900" class="flex items-center justify-center gap-2 bg-navy text-white py-4 text-[15px] font-semibold">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=609+N+Ebrite+St+Suite+103,+Mesquite,+TX+75149" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-ink text-white py-4 text-[15px] font-semibold">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- ══════════════ JSON-LD ══════════════ -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"MedicalBusiness",
+  "additionalType":"https://schema.org/HomeHealthCareService",
+  "name":"JK Home Health Services",
+  "url":"https://turnkeyweb.org/previews/jk-home-health-services/",
+  "image":"https://turnkeyweb.org/previews/jk-home-health-services/assets/hero.jpg",
+  "logo":"https://turnkeyweb.org/previews/jk-home-health-services/assets/logo-full.png",
+  "telephone":"+1-972-329-3900",
+  "faxNumber":"+1-972-329-3903",
+  "email":"admin@jkhomehealthservices.co",
+  "description":"Medicare-certified home health agency providing skilled nursing, physical therapy, occupational therapy, speech pathology, medical social services and home health aide care throughout the Dallas-Fort Worth metroplex.",
+  "address":{"@type":"PostalAddress","streetAddress":"609 N. Ebrite Street, Suite 103","addressLocality":"Mesquite","addressRegion":"TX","postalCode":"75149","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":32.7852,"longitude":-96.5992},
+  "areaServed":[
+    {"@type":"City","name":"Mesquite"},{"@type":"City","name":"Dallas"},{"@type":"City","name":"Garland"},
+    {"@type":"City","name":"Rowlett"},{"@type":"City","name":"Richardson"},{"@type":"City","name":"Plano"},
+    {"@type":"City","name":"Irving"},{"@type":"City","name":"Arlington"},{"@type":"City","name":"Fort Worth"},
+    {"@type":"City","name":"Rockwall"},{"@type":"City","name":"Forney"},{"@type":"City","name":"Duncanville"}
+  ],
+  "hasCredential":"Texas Health and Human Services home health license #009373",
+  "hasOfferCatalog":{
+    "@type":"OfferCatalog","name":"Home Health Programs",
+    "itemListElement":[
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Chronic Disease Care"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Neurological Injury Rehabilitation"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Cardiopulmonary Rehabilitation"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Personal Care"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Orthopedic Rehabilitation"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Medical Home Care"}}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"How do we start home health services?","acceptedAnswer":{"@type":"Answer","text":"Your provider makes a referral for services. Download the intake form, or call 972-329-3900. Once we have it, we come to your home to do an assessment and recommend the care plan and services you need."}},
+    {"@type":"Question","name":"Do I need a referral from my provider?","acceptedAnswer":{"@type":"Answer","text":"Non-medical home care needs no pre-authorization or prescription. Medical home care does need your doctor's authorization, because the care plan is written from the physician's orders."}},
+    {"@type":"Question","name":"Do you take Medicare and Medicaid?","acceptedAnswer":{"@type":"Answer","text":"JK Home Health Services is a Medicare-certified agency and is listed in the Superior HealthPlan and Amerigroup Texas Medicaid managed care directories. Coverage depends on medical necessity; we review your coverage up front."}},
+    {"@type":"Question","name":"Are you available 24/7?","acceptedAnswer":{"@type":"Answer","text":"Yes. We offer around-the-clock service, and a professional manager is available to answer questions and offer clinical help."}}
+  ]
+}
+</script>
+
+<!-- ══════════════ SCRIPTS ══════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouch = window.matchMedia('(max-width: 880px)').matches;
+
+  /* ---------- Lenis (single rAF via GSAP ticker) ---------- */
+  let lenis = null;
+  if (window.Lenis && !reduce) {
+    lenis = new Lenis({ duration:1.1, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+    if (window.gsap) {
+      gsap.ticker.add(t => lenis.raf(t*1000));
+      gsap.ticker.lagSmoothing(0);
+      if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+    }
+  }
+  if (window.ScrollTrigger) { gsap.registerPlugin(ScrollTrigger); ScrollTrigger.config({ ignoreMobileResize:true }); }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const t = document.querySelector(a.getAttribute('href'));
+      if(!t) return; e.preventDefault();
+      if(lenis) lenis.scrollTo(t,{offset:-80}); else t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  /* ---------- nav ---------- */
+  const nav = document.querySelector('.nav');
+  const onScroll = ()=> nav.classList.toggle('solid', window.scrollY > 40);
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* ---------- reveals ---------- */
+  if (window.gsap && window.ScrollTrigger && !reduce) {
+    gsap.utils.toArray('[data-reveal]').forEach(el=>{
+      gsap.to(el,{opacity:1,y:0,duration:.68,ease:'power3.out',
+        scrollTrigger:{trigger:el,start:'top 92%',once:true},
+        onComplete(){ el.style.willChange='auto'; }});
+    });
+    gsap.utils.toArray('[data-img]').forEach(el=>{
+      ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:()=>el.classList.add('in')});
+    });
+    /* hero parallax — desktop only */
+    if (!isTouch) {
+      gsap.to('.hero-media',{yPercent:16,scale:1.07,ease:'none',
+        scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    }
+    /* timeline rail fill */
+    const fill = document.getElementById('railFill');
+    if (fill) gsap.to(fill,{width:'100%',ease:'none',
+      scrollTrigger:{trigger:'#begin',start:'top 62%',end:'bottom 78%',scrub:.6}});
+    /* count-ups */
+    document.querySelectorAll('[data-count]').forEach(el=>{
+      const target = parseFloat(el.dataset.count), suf = el.dataset.suffix||'';
+      ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter(){
+        const o={v:0}; gsap.to(o,{v:target,duration:1.5,ease:'power2.out',
+          onUpdate(){ el.textContent = Math.round(o.v)+suf; }});
+      }});
+    });
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(e=>e.classList.add('shown'));
+    document.querySelectorAll('[data-img]').forEach(e=>e.classList.add('in'));
+    document.querySelectorAll('[data-count]').forEach(e=>e.textContent = e.dataset.count + (e.dataset.suffix||''));
+  }
+
+  /* ---------- FAQ ---------- */
+  document.querySelectorAll('.faq').forEach(f=>{
+    f.addEventListener('click',()=>{
+      const open = f.classList.contains('open');
+      document.querySelectorAll('.faq').forEach(x=>x.classList.remove('open'));
+      if(!open) f.classList.add('open');
+      if(window.ScrollTrigger) setTimeout(()=>ScrollTrigger.refresh(), 600);
+    });
+  });
+
+  /* ---------- WebGL showpiece: drifting light motes ---------- */
+  (function motes(){
+    const cvs = document.getElementById('motes');
+    if(!cvs || !window.THREE || reduce) return;
+    const host = cvs.parentElement;
+    let renderer, scene, camera, pts, raf=null, visible=false;
+    const COUNT = isTouch ? 320 : 1100;
+    try {
+      renderer = new THREE.WebGLRenderer({canvas:cvs, alpha:true, antialias:false, powerPreference:'low-power'});
+    } catch(e){ return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isTouch ? 1.5 : 2));
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+    camera.position.z = 22;
+
+    const geo = new THREE.BufferGeometry();
+    const pos = new Float32Array(COUNT*3), col = new Float32Array(COUNT*3), spd = new Float32Array(COUNT);
+    const cA = new THREE.Color('#8FD8F6'), cB = new THREE.Color('#00ADEF'), cC = new THREE.Color('#FFFFFF');
+    for(let i=0;i<COUNT;i++){
+      pos[i*3]   = (Math.random()-0.5)*46;
+      pos[i*3+1] = (Math.random()-0.5)*30;
+      pos[i*3+2] = (Math.random()-0.5)*22;
+      const r = Math.random();
+      const c = r<0.45 ? cA : (r<0.85 ? cB : cC);
+      col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
+      spd[i] = 0.006 + Math.random()*0.018;
+    }
+    geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+    geo.setAttribute('color', new THREE.BufferAttribute(col,3));
+    const mat = new THREE.PointsMaterial({ size:0.20, vertexColors:true, transparent:true,
+      opacity:0.72, depthWrite:false, blending:THREE.AdditiveBlending, sizeAttenuation:true });
+    pts = new THREE.Points(geo, mat);
+    scene.add(pts);
+
+    function size(){
+      const w = host.clientWidth, h = host.clientHeight;
+      if(!w||!h) return;
+      renderer.setSize(w,h,false);
+      camera.aspect = w/h; camera.updateProjectionMatrix();
+    }
+    size();
+    window.addEventListener('resize', size, {passive:true});
+
+    let t=0;
+    function loop(){
+      raf = requestAnimationFrame(loop);
+      t += 0.004;
+      const p = geo.attributes.position.array;
+      for(let i=0;i<COUNT;i++){
+        p[i*3+1] += spd[i];
+        p[i*3]   += Math.sin(t + i*0.35)*0.004;
+        if(p[i*3+1] > 15){ p[i*3+1] = -15; }
+      }
+      geo.attributes.position.needsUpdate = true;
+      pts.rotation.y = Math.sin(t*0.22)*0.10;
+      renderer.render(scene,camera);
+    }
+    function start(){ if(!raf && visible && !document.hidden){ size(); loop(); } }
+    function stop(){ if(raf){ cancelAnimationFrame(raf); raf=null; } }
+
+    new IntersectionObserver(es=>{ visible = es[0].isIntersecting; visible ? start() : stop(); },
+      {threshold:0.02}).observe(host);
+    document.addEventListener('visibilitychange', ()=> document.hidden ? stop() : start());
+    // one static frame so a screenshot never shows an empty canvas
+    requestAnimationFrame(()=>{ size(); renderer.render(scene,camera); });
+  })();
+
+  /* ---------- 6s crawler / screenshot safety net ---------- */
+  setTimeout(()=>{
+    document.querySelectorAll('[data-reveal]').forEach(el=>{
+      const o = parseFloat(getComputedStyle(el).opacity);
+      if(o < 0.9){ el.style.opacity=1; el.style.transform='none'; }
+    });
+    document.querySelectorAll('[data-img]').forEach(el=>el.classList.add('in'));
+    document.querySelectorAll('[data-count]').forEach(el=>{
+      if(el.textContent.trim()==='0') el.textContent = el.dataset.count + (el.dataset.suffix||'');
+    });
+    if(window.ScrollTrigger) ScrollTrigger.refresh();
+  }, 6000);
+
+  /* ---------- hero video resilience ---------- */
+  const hv = document.querySelector('.hero-bg');
+  if(hv){
+    const play = ()=>{ const p = hv.play(); if(p&&p.catch) p.catch(()=>{}); };
+    play();
+    hv.addEventListener('loadeddata', play);
+    document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) play(); });
+  }
+})();
+</script>
+</body>
+</html>
