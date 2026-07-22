@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<!--
+  MJ Mobile Tire Repair — Memphis / Cordova, TN  ·  Turnkey Web draft preview
+  Art direction: light-luxury "roadside service" — warm bone canvas, near-black type,
+  signal-red accent pulled from the tire equipment in the hero. Signature moment: a LIVE
+  Central-Time clock band that re-writes its own line by hour of day (the whole business is 24/7).
+  Showpiece: hand-built Three.js wheel that rotates on scroll, on a light canvas.
+  Hero: AI cinematic asset (Higgsfield nano_banana_pro -> Kling 3.0 turbo), self-hosted.
+  All facts (phone, hours, rating, reviews, services, founding date) researched + verified.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MJ Mobile Tire Repair | 24/7 Mobile Tire Service in Memphis &amp; Cordova, TN</title>
+<meta name="description" content="MJ Mobile Tire Repair brings the tire shop to you anywhere in Memphis and Shelby County. New and used tires, plugs, patches, mounting and balancing. Open 24 hours, 7 days a week. Call or text (901) 907-3576.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/mj-mobile-tire-repair/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MJ Mobile Tire Repair | 24/7 Mobile Tire Service, Memphis TN">
+<meta property="og:description" content="Flat tire? Stay in your car. MJ brings the tire shop to you, anywhere in Memphis, any hour. Call or text (901) 907-3576.">
+<meta property="og:url" content="https://turnkeyweb.org/previews/mj-mobile-tire-repair/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/mj-mobile-tire-repair/assets/hero.jpg">
+<meta name="theme-color" content="#F7F2EA">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{
+  cream:'#FDFBF7', bone:'#F7F2EA', sand:'#EDE4D6', ink:'#14161A',
+  char:'#23262C', red:'#C3372B', redDeep:'#9C2A20', steel:'#7C8794', amber:'#E5A13A'
+},fontFamily:{display:['"Bricolage Grotesque"','serif'],sans:['"Inter Tight"','system-ui','sans-serif']}}}}
+</script>
+
+<style>
+:root{--cream:#FDFBF7;--bone:#F7F2EA;--sand:#EDE4D6;--ink:#14161A;--char:#23262C;--red:#C3372B;--steel:#7C8794;--amber:#E5A13A}
+*{-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:auto;scroll-padding-top:88px}
+body{background:var(--bone);color:var(--ink);font-family:'Inter Tight',system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,.display{font-family:'Bricolage Grotesque',serif;line-height:1.08;padding-bottom:.04em}
+
+/* ---- descender safety (hard rule) ---- */
+h1,h2,h3,.display,.grad-text{line-height:1.1}
+.grad-text{
+  background:linear-gradient(100deg,var(--ink) 0%,var(--red) 34%,var(--redDeep,#9C2A20) 52%,var(--ink) 78%,var(--ink) 100%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:shimmer 9s linear infinite;line-height:1.15;padding-bottom:.1em;display:inline-block;
+}
+@keyframes shimmer{0%{background-position:220% 0}100%{background-position:-20% 0}}
+
+/* ---- hero ---- */
+.hero{position:relative;overflow:hidden;background:var(--sand)}
+.hero-media{position:absolute;inset:-6% 0 -6% 0;width:100%;height:112%;object-fit:cover;will-change:transform}
+.hero-scrim{position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(253,251,247,.97) 0%,rgba(253,251,247,.88) 26%,rgba(253,251,247,.42) 50%,rgba(253,251,247,0) 72%),
+    linear-gradient(95deg,rgba(253,251,247,.9) 0%,rgba(253,251,247,.5) 42%,rgba(253,251,247,0) 68%);
+}
+.hero-fade{position:absolute;left:0;right:0;bottom:-1px;height:150px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(247,242,234,0),var(--bone))}
+.hero h1{text-shadow:0 1px 0 rgba(253,251,247,.9),0 2px 22px rgba(253,251,247,.75)}
+
+/* ---- misc ---- */
+.rule{height:1px;background:linear-gradient(90deg,transparent,rgba(20,22,26,.16),transparent)}
+.chip{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(20,22,26,.14);
+  background:rgba(253,251,247,.82);border-radius:999px;padding:.4rem .85rem;font-size:.74rem;
+  letter-spacing:.13em;text-transform:uppercase;font-weight:600;backdrop-filter:blur(6px)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 2.2s ease-in-out infinite;flex:none}
+.dot.live{background:#1E9E5A}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.42;transform:scale(.76)}}
+
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  border-radius:999px;font-weight:600;letter-spacing:.01em;transition:transform .35s cubic-bezier(.2,.7,.3,1),box-shadow .35s,filter .35s}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:var(--red);color:#fff;box-shadow:0 10px 26px -12px rgba(195,55,43,.85)}
+.btn-primary:hover{filter:brightness(1.06);box-shadow:0 18px 36px -14px rgba(195,55,43,.9)}
+.btn-primary::after{content:'';position:absolute;top:0;left:0;width:42%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.42),transparent);
+  transform:translateX(-160%) skewX(-18deg);transition:transform .9s cubic-bezier(.2,.7,.3,1)}
+.btn-primary:hover::after{transform:translateX(340%) skewX(-18deg)}
+.btn-ghost{border:1.5px solid rgba(20,22,26,.24);color:var(--ink);background:rgba(253,251,247,.6)}
+.btn-ghost:hover{border-color:var(--ink);background:#fff}
+
+.card{position:relative;background:var(--cream);border:1px solid rgba(20,22,26,.09);border-radius:20px;
+  transition:transform .5s cubic-bezier(.2,.7,.3,1),box-shadow .5s,border-color .5s;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;height:2px;width:0;
+  background:linear-gradient(90deg,var(--red),var(--amber));transition:width .65s cubic-bezier(.2,.7,.3,1)}
+.card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -30px rgba(20,22,26,.4);border-color:rgba(20,22,26,.16)}
+.card:hover::before{width:100%}
+.card:hover .ico{transform:rotate(-7deg) scale(1.07)}
+.ico{transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.mq-track{display:flex;gap:3rem;width:max-content;animation:scrollX 42s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+@keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+[data-reveal]{opacity:0;transform:translateY(30px);will-change:opacity,transform}
+[data-reveal].in{opacity:1;transform:none}
+
+.ul-grow{position:relative}
+.ul-grow::after{content:'';position:absolute;left:0;bottom:-3px;height:1.5px;width:0;
+  background:linear-gradient(90deg,var(--red),var(--amber));transition:width .45s cubic-bezier(.2,.7,.3,1)}
+.ul-grow:hover::after{width:100%}
+
+.numstep{font-family:'Bricolage Grotesque',serif;font-weight:800;line-height:1;
+  -webkit-text-stroke:1.4px rgba(20,22,26,.26);color:transparent;padding-bottom:.06em}
+
+#wheelwrap{position:relative}
+#wheel{width:100%;height:100%;display:block}
+.wheel-fallback{position:absolute;inset:0;display:grid;place-items:center}
+
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none;will-change:transform}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(46px,-34px) scale(1.09)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,30px) scale(1.07)}}
+
+.grain::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+  background-image:radial-gradient(rgba(20,22,26,.7) .6px,transparent .6px);background-size:3px 3px}
+
+.stickybar{box-shadow:0 -10px 30px -18px rgba(20,22,26,.7)}
+@media (max-width:767px){body{padding-bottom:70px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div id="navinner" class="mt-3 flex items-center justify-between rounded-2xl border border-ink/10 bg-cream/80 px-4 py-2.5 backdrop-blur-xl transition-all duration-500">
+      <a href="#top" class="flex items-center gap-2.5">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-ink">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9.2" stroke="#F7F2EA" stroke-width="2.1"/>
+            <circle cx="12" cy="12" r="3.4" stroke="#C3372B" stroke-width="2.1"/>
+            <path d="M12 2.8v5M12 16.2v5M2.8 12h5M16.2 12h5" stroke="#F7F2EA" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="leading-none">
+          <span class="block font-display text-[15px] font-extrabold tracking-tight">MJ MOBILE</span>
+          <span class="block text-[9.5px] font-semibold uppercase tracking-[.26em] text-steel">Tire Repair</span>
+        </span>
+      </a>
+      <nav class="hidden items-center gap-7 text-[13.5px] font-medium md:flex">
+        <a href="#fix" class="ul-grow">What we fix</a>
+        <a href="#how" class="ul-grow">How it works</a>
+        <a href="#tires" class="ul-grow">Tires</a>
+        <a href="#proof" class="ul-grow">Reviews</a>
+        <a href="#area" class="ul-grow">Service area</a>
+      </nav>
+      <a href="tel:+19019073576" class="btn btn-primary px-4 py-2.5 text-[13.5px] sm:px-5">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h3l1.5 4-2.1 1.4a12.5 12.5 0 006.6 6.6L17 12.9l4 1.5v3a2 2 0 01-2.2 2A16.8 16.8 0 013.5 5.2 2 2 0 015.5 3z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>
+        <span class="hidden sm:inline">(901) 907-3576</span><span class="sm:hidden">Call now</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="hero flex min-h-[100svh] items-end pt-32 sm:items-center sm:pt-24">
+  <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg" aria-hidden="true">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-5 pb-20 sm:px-8 sm:pb-0">
+    <div class="max-w-3xl">
+      <span class="chip mb-6"><span class="dot"></span>Memphis &amp; Shelby County · Open 24 hours</span>
+      <h1 class="font-display text-[clamp(2.6rem,8.2vw,5.4rem)] font-extrabold tracking-[-.028em]">
+        Flat tire?<br><span class="grad-text">Stay in your car.</span>
+      </h1>
+      <p class="mt-6 max-w-xl text-[clamp(1.02rem,2.3vw,1.28rem)] leading-relaxed text-char/85">
+        MJ brings the whole tire shop to you. New and used tires, plugs, patches, mounting and
+        balancing, done where you're parked. Any hour, any day, anywhere in Memphis.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-3">
+        <a href="tel:+19019073576" class="btn btn-primary px-7 py-4 text-[15px]">Call or text Mike</a>
+        <a href="#how" class="btn btn-ghost px-7 py-4 text-[15px]">How it works</a>
+      </div>
+      <div class="mt-10 flex flex-wrap items-center gap-x-9 gap-y-4">
+        <div><div class="font-display text-3xl font-extrabold"><span data-count="4.8" data-dec="1">0</span></div><div class="mt-.5 text-[11px] font-semibold uppercase tracking-[.18em] text-steel">Google rating</div></div>
+        <div class="hidden h-9 w-px bg-ink/12 sm:block"></div>
+        <div><div class="font-display text-3xl font-extrabold"><span data-count="65">0</span>+</div><div class="mt-.5 text-[11px] font-semibold uppercase tracking-[.18em] text-steel">Google reviews</div></div>
+        <div class="hidden h-9 w-px bg-ink/12 sm:block"></div>
+        <div><div class="font-display text-3xl font-extrabold">24/7</div><div class="mt-.5 text-[11px] font-semibold uppercase tracking-[.18em] text-steel">Every day since 2021</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-fade"></div>
+</section>
+
+<!-- ============ SIGNATURE: LIVE CLOCK BAND ============ -->
+<section class="relative bg-ink text-cream">
+  <div class="mx-auto max-w-7xl px-5 py-9 sm:px-8 sm:py-11">
+    <div class="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+      <div class="flex items-center gap-5">
+        <div class="grid h-14 w-14 flex-none place-items-center rounded-2xl border border-cream/18 bg-cream/8">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="#F7F2EA" stroke-width="1.8"/>
+            <path d="M12 7.2V12l3.1 1.9" stroke="#E5A13A" stroke-width="1.9" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[.2em] text-cream/60">
+            <span class="dot live"></span><span>Right now in Memphis</span>
+          </div>
+          <div class="mt-1.5 font-display text-[clamp(1.5rem,4.6vw,2.35rem)] font-extrabold tracking-tight">
+            <span id="clock">—</span><span class="ml-2 text-cream/45" id="clockday"></span>
+          </div>
+        </div>
+      </div>
+      <p id="clockline" class="max-w-md text-[clamp(1rem,2.2vw,1.15rem)] leading-relaxed text-cream/78">
+        Whatever the clock says, the phone still gets answered.
+      </p>
+      <a href="tel:+19019073576" class="btn btn-primary flex-none px-6 py-3.5 text-[14.5px]">(901) 907-3576</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee border-y border-ink/8 bg-sand/70 py-4">
+  <div class="mq-track text-[13px] font-semibold uppercase tracking-[.22em] text-char/75">
+    <span class="flex gap-3 items-center">New tires</span><span class="text-red">•</span>
+    <span class="flex gap-3 items-center">Used tires</span><span class="text-red">•</span>
+    <span class="italic grad-text">Plugs &amp; patches</span><span class="text-red">•</span>
+    <span class="flex gap-3 items-center">Mounting</span><span class="text-red">•</span>
+    <span class="flex gap-3 items-center">Balancing</span><span class="text-red">•</span>
+    <span class="italic grad-text">Roadside flat repair</span><span class="text-red">•</span>
+    <span class="flex gap-3 items-center">Slow-leak fix</span><span class="text-red">•</span>
+    <span class="flex gap-3 items-center">We come to you</span><span class="text-red">•</span>
+    <span class="flex gap-3 items-center">New tires</span><span class="text-red">•</span>
+    <span class="flex gap-3 items-center">Used tires</span><span class="text-red">•</span>
+    <span class="italic grad-text">Plugs &amp; patches</span><span class="text-red">•</span>
+    <span class="flex gap-3 items-center">Mounting</span><span class="text-red">•</span>
+    <span class="flex gap-3 items-center">Balancing</span><span class="text-red">•</span>
+    <span class="italic grad-text">Roadside flat repair</span><span class="text-red">•</span>
+    <span class="flex gap-3 items-center">Slow-leak fix</span><span class="text-red">•</span>
+    <span class="flex gap-3 items-center">We come to you</span><span class="text-red">•</span>
+  </div>
+</div>
+
+<!-- ============ WHAT WE FIX (problem-first) ============ -->
+<section id="fix" class="relative overflow-hidden py-24 sm:py-32 grain">
+  <div class="blob" style="width:520px;height:520px;background:radial-gradient(circle,rgba(195,55,43,.16),transparent 62%);top:-190px;right:-150px;animation:drift1 24s ease-in-out infinite"></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip"><span class="dot"></span>What goes wrong</span>
+      <h2 class="mt-6 font-display text-[clamp(2rem,5.4vw,3.4rem)] font-extrabold tracking-[-.024em]">
+        Six ways a tire ruins your day. <span class="grad-text">One number fixes all of them.</span>
+      </h2>
+      <p class="mt-5 text-[1.05rem] leading-relaxed text-char/80">
+        You should not have to limp a car across town on a donut, or leave it in a parking lot
+        overnight. Tell Mike where you are and what the car is. He loads the right tire and drives to it.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- 1 -->
+      <div class="card p-7" data-reveal>
+        <div class="ico mb-5 grid h-11 w-11 place-items-center rounded-xl bg-ink/6">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M3 17h18M5.5 17l1.6-6.2A2.6 2.6 0 019.6 8.8h4.8a2.6 2.6 0 012.5 2L18.5 17" stroke="#C3372B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.4 20.2l.9-3.2M16.6 20.2l-.9-3.2" stroke="#14161A" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display text-[1.28rem] font-extrabold">Flat on the shoulder</h3>
+        <p class="mt-2.5 text-[.97rem] leading-relaxed text-char/78">Pull over safely, stay in the car, send your location. Mike comes to the roadside and changes it there.</p>
+      </div>
+      <!-- 2 -->
+      <div class="card p-7" data-reveal>
+        <div class="ico mb-5 grid h-11 w-11 place-items-center rounded-xl bg-ink/6">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l2.3 5 5.4.6-4 3.7 1.1 5.3L12 14.7l-4.8 2.7 1.1-5.3-4-3.7 5.4-.6z" stroke="#C3372B" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 21h16" stroke="#14161A" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display text-[1.28rem] font-extrabold">Blowout, no spare</h3>
+        <p class="mt-2.5 text-[.97rem] leading-relaxed text-char/78">No spare in the trunk is not a dead end. He carries new and used tires in common sizes and fits one on the spot.</p>
+      </div>
+      <!-- 3 -->
+      <div class="card p-7" data-reveal>
+        <div class="ico mb-5 grid h-11 w-11 place-items-center rounded-xl bg-ink/6">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M12 3.4s5.4 5.5 5.4 9a5.4 5.4 0 11-10.8 0c0-3.5 5.4-9 5.4-9z" stroke="#C3372B" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.6 13.6a2.4 2.4 0 002.4 2.4" stroke="#14161A" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display text-[1.28rem] font-extrabold">The slow leak you keep airing up</h3>
+        <p class="mt-2.5 text-[.97rem] leading-relaxed text-char/78">Stop feeding quarters to the air machine. A proper plug or patch, done right, and the tire holds.</p>
+      </div>
+      <!-- 4 -->
+      <div class="card p-7" data-reveal>
+        <div class="ico mb-5 grid h-11 w-11 place-items-center rounded-xl bg-ink/6">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M12 20.5V9.5M12 9.5l-3 3M12 9.5l3 3" stroke="#C3372B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 4.5h10l-1.4 4H8.4z" stroke="#14161A" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-display text-[1.28rem] font-extrabold">A nail in the tread</h3>
+        <p class="mt-2.5 text-[.97rem] leading-relaxed text-char/78">If it can be repaired, he repairs it instead of selling you a tire. If it can't, he tells you straight.</p>
+      </div>
+      <!-- 5 -->
+      <div class="card p-7" data-reveal>
+        <div class="ico mb-5 grid h-11 w-11 place-items-center rounded-xl bg-ink/6">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.6" stroke="#C3372B" stroke-width="1.7"/><path d="M12 7.6V12l3 1.8" stroke="#14161A" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display text-[1.28rem] font-extrabold">2 a.m. in a parking lot</h3>
+        <p class="mt-2.5 text-[.97rem] leading-relaxed text-char/78">Open 24 hours means 24 hours. Late shift, early flight, holiday weekend, the phone still gets picked up.</p>
+      </div>
+      <!-- 6 -->
+      <div class="card p-7" data-reveal>
+        <div class="ico mb-5 grid h-11 w-11 place-items-center rounded-xl bg-ink/6">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M4 8h11M4 12h16M4 16h8" stroke="#C3372B" stroke-width="1.8" stroke-linecap="round"/><circle cx="18.4" cy="8" r="2.2" stroke="#14161A" stroke-width="1.7"/></svg>
+        </div>
+        <h3 class="font-display text-[1.28rem] font-extrabold">Nobody has your size</h3>
+        <p class="mt-2.5 text-[.97rem] leading-relaxed text-char/78">Give him the numbers off the sidewall when you call. He shows up with the correct size, not a close-enough one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule mx-auto max-w-[220px]"></div>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how" class="py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid gap-14 lg:grid-cols-[minmax(0,.86fr)_minmax(0,1.14fr)] lg:gap-20">
+      <div data-reveal>
+        <span class="chip"><span class="dot"></span>How it works</span>
+        <h2 class="mt-6 font-display text-[clamp(2rem,5.4vw,3.3rem)] font-extrabold tracking-[-.024em]">
+          Three steps.<br><span class="grad-text">No tow truck.</span>
+        </h2>
+        <p class="mt-5 text-[1.05rem] leading-relaxed text-char/80">
+          Mike has run MJ Mobile Tire Repair since November 2021, out of a truck that carries the
+          tires, the jack, the mounting gear and the balancer. That is the whole idea: the shop
+          drives to the car instead of the car limping to the shop.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href="tel:+19019073576" class="btn btn-primary px-7 py-4 text-[15px]">Call (901) 907-3576</a>
+          <a href="sms:+19019073576" class="btn btn-ghost px-7 py-4 text-[15px]">Text instead</a>
+        </div>
+        <p class="mt-5 text-[.9rem] text-steel">Call or text is the fastest way to reach him. He does not use Messenger.</p>
+      </div>
+
+      <div class="space-y-5">
+        <div class="card flex gap-6 p-7 sm:p-8" data-reveal>
+          <span class="numstep text-[clamp(2.6rem,7vw,3.6rem)]">01</span>
+          <div>
+            <h3 class="font-display text-[1.35rem] font-extrabold">Call or text where you are</h3>
+            <p class="mt-2.5 text-[.99rem] leading-relaxed text-char/78">Drop a pin, or just say the cross streets. Read him the tire size off the sidewall if you can see it, and say whether the car is drivable.</p>
+          </div>
+        </div>
+        <div class="card flex gap-6 p-7 sm:p-8" data-reveal>
+          <span class="numstep text-[clamp(2.6rem,7vw,3.6rem)]">02</span>
+          <div>
+            <h3 class="font-display text-[1.35rem] font-extrabold">He loads the tire and rolls</h3>
+            <p class="mt-2.5 text-[.99rem] leading-relaxed text-char/78">You get a straight answer on price and an honest arrival window before he leaves, not after he is standing at your bumper.</p>
+          </div>
+        </div>
+        <div class="card flex gap-6 p-7 sm:p-8" data-reveal>
+          <span class="numstep text-[clamp(2.6rem,7vw,3.6rem)]">03</span>
+          <div>
+            <h3 class="font-display text-[1.35rem] font-extrabold">Mounted, balanced, back on the road</h3>
+            <p class="mt-2.5 text-[.99rem] leading-relaxed text-char/78">Repair or replace, torqued properly, old tire hauled off. Most jobs are finished while you sit in the driver's seat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIRES + WEBGL WHEEL ============ -->
+<section id="tires" class="relative overflow-hidden border-y border-ink/8 bg-cream py-24 sm:py-32">
+  <div class="blob" style="width:480px;height:480px;background:radial-gradient(circle,rgba(229,161,58,.18),transparent 62%);bottom:-180px;left:-140px;animation:drift2 27s ease-in-out infinite"></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+
+      <div id="wheelwrap" class="order-2 aspect-square w-full max-w-[440px] justify-self-center lg:order-1" data-reveal>
+        <canvas id="wheel" aria-hidden="true"></canvas>
+        <noscript><div class="wheel-fallback text-steel">Tire service</div></noscript>
+      </div>
+
+      <div class="order-1 lg:order-2" data-reveal>
+        <span class="chip"><span class="dot"></span>Tires &amp; repairs</span>
+        <h2 class="mt-6 font-display text-[clamp(2rem,5.4vw,3.3rem)] font-extrabold tracking-[-.024em]">
+          New, used, or <span class="grad-text">just repaired.</span>
+        </h2>
+        <p class="mt-5 text-[1.05rem] leading-relaxed text-char/80">
+          Not every flat needs a new tire, and not every budget wants one. You get told which
+          situation you're actually in, and then the work gets done on the spot.
+        </p>
+        <div class="mt-9 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+          <div class="flex items-start gap-3 border-b border-ink/8 pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">New tires</div><div class="text-[.9rem] text-char/70">Fitted at your location</div></div></div>
+          <div class="flex items-start gap-3 border-b border-ink/8 pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Quality used tires</div><div class="text-[.9rem] text-char/70">When the budget matters</div></div></div>
+          <div class="flex items-start gap-3 border-b border-ink/8 pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Plugs</div><div class="text-[.9rem] text-char/70">Fast fix for a clean puncture</div></div></div>
+          <div class="flex items-start gap-3 border-b border-ink/8 pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Patches</div><div class="text-[.9rem] text-char/70">Sealed from the inside</div></div></div>
+          <div class="flex items-start gap-3 border-b border-ink/8 pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Mounting</div><div class="text-[.9rem] text-char/70">Off the rim and back on</div></div></div>
+          <div class="flex items-start gap-3 border-b border-ink/8 pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Balancing</div><div class="text-[.9rem] text-char/70">No shake at highway speed</div></div></div>
+        </div>
+        <p class="mt-8 text-[.95rem] text-steel">Have the size ready when you call, for example 225/65R17. It is printed on the tire sidewall.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF ============ -->
+<section id="proof" class="py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end" data-reveal>
+      <div class="max-w-xl">
+        <span class="chip"><span class="dot"></span>What Memphis says</span>
+        <h2 class="mt-6 font-display text-[clamp(2rem,5.4vw,3.3rem)] font-extrabold tracking-[-.024em]">
+          4.8 stars, <span class="grad-text">65 Google reviews.</span>
+        </h2>
+      </div>
+      <div class="flex items-center gap-3 rounded-2xl border border-ink/10 bg-cream px-5 py-4">
+        <div class="flex gap-.5" aria-label="4.8 out of 5 stars">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="#E5A13A"><path d="M12 2.6l2.9 6 6.6.8-4.8 4.5 1.2 6.5L12 17.2 6.1 20.4l1.2-6.5L2.5 9.4l6.6-.8z"/></svg>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="#E5A13A"><path d="M12 2.6l2.9 6 6.6.8-4.8 4.5 1.2 6.5L12 17.2 6.1 20.4l1.2-6.5L2.5 9.4l6.6-.8z"/></svg>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="#E5A13A"><path d="M12 2.6l2.9 6 6.6.8-4.8 4.5 1.2 6.5L12 17.2 6.1 20.4l1.2-6.5L2.5 9.4l6.6-.8z"/></svg>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="#E5A13A"><path d="M12 2.6l2.9 6 6.6.8-4.8 4.5 1.2 6.5L12 17.2 6.1 20.4l1.2-6.5L2.5 9.4l6.6-.8z"/></svg>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="#E5A13A"><path d="M12 2.6l2.9 6 6.6.8-4.8 4.5 1.2 6.5L12 17.2 6.1 20.4l1.2-6.5L2.5 9.4l6.6-.8z"/></svg>
+        </div>
+        <span class="text-[.92rem] font-semibold">Google Business Profile</span>
+      </div>
+    </div>
+
+    <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <blockquote class="card p-8" data-reveal>
+        <p class="font-display text-[1.32rem] font-semibold leading-snug">"AMAZING service and you can't beat the price."</p>
+        <footer class="mt-6 text-[.88rem] font-semibold uppercase tracking-[.14em] text-steel">Tyler Sexton · Google review</footer>
+      </blockquote>
+      <blockquote class="card p-8" data-reveal>
+        <p class="font-display text-[1.32rem] font-semibold leading-snug">"Fast, communicative, and unbeatable prices."</p>
+        <footer class="mt-6 text-[.88rem] font-semibold uppercase tracking-[.14em] text-steel">Dara Gonzales · Google review</footer>
+      </blockquote>
+      <blockquote class="card p-8" data-reveal>
+        <p class="text-[1.06rem] leading-relaxed text-char/85">"Responded to my call quickly. Was able to come and fix my tire about an hour later."</p>
+        <footer class="mt-6 text-[.88rem] font-semibold uppercase tracking-[.14em] text-steel">Shane Wilson · Google review</footer>
+      </blockquote>
+      <blockquote class="card p-8 md:col-span-2" data-reveal>
+        <p class="text-[1.12rem] leading-relaxed text-char/85">"This was a great customer experience. I called the man at 7:30pm and got my tire changed by 8pm. He came straight to me and I will definitely spread this news and the phone number to my coworkers. Thanks MJ."</p>
+        <footer class="mt-6 text-[.88rem] font-semibold uppercase tracking-[.14em] text-steel">Verified Google reviewer</footer>
+      </blockquote>
+      <blockquote class="card p-8" data-reveal>
+        <p class="text-[1.06rem] leading-relaxed text-char/85">"Immediate communication, showed up as quickly as possible with estimated time of arrival, respectful, really good prices, fast service. I would highly recommend him."</p>
+        <footer class="mt-6 text-[.88rem] font-semibold uppercase tracking-[.14em] text-steel">Verified Google reviewer</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICE AREA + MAP ============ -->
+<section id="area" class="border-y border-ink/8 bg-sand/50 py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-16">
+      <div data-reveal>
+        <span class="chip"><span class="dot"></span>Service area</span>
+        <h2 class="mt-6 font-display text-[clamp(2rem,5.4vw,3.2rem)] font-extrabold tracking-[-.024em]">
+          Wherever you're stuck <span class="grad-text">in Shelby County.</span>
+        </h2>
+        <p class="mt-5 text-[1.05rem] leading-relaxed text-char/80">
+          MJ Mobile Tire Repair is a mobile service, so there is no waiting room and no shop to drive
+          to. Memphis, Cordova, Bartlett, Collierville and the surrounding Shelby County area.
+        </p>
+
+        <div class="mt-9 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl border border-ink/10 bg-cream p-6">
+            <div class="text-[11px] font-semibold uppercase tracking-[.2em] text-steel">Hours</div>
+            <div class="mt-2 font-display text-[1.5rem] font-extrabold">Open 24 hours</div>
+            <div class="mt-1 text-[.94rem] text-char/72">Seven days a week, holidays included</div>
+          </div>
+          <div class="rounded-2xl border border-ink/10 bg-cream p-6">
+            <div class="text-[11px] font-semibold uppercase tracking-[.2em] text-steel">Call or text</div>
+            <a href="tel:+19019073576" class="mt-2 block font-display text-[1.5rem] font-extrabold ul-grow">(901) 907-3576</a>
+            <div class="mt-1 text-[.94rem] text-char/72">Ask for Mike</div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="chip">Memphis</span><span class="chip">Cordova</span><span class="chip">Bartlett</span>
+          <span class="chip">Collierville</span><span class="chip">Shelby County</span>
+        </div>
+      </div>
+
+      <div class="overflow-hidden rounded-3xl border border-ink/12 shadow-[0_30px_60px_-40px_rgba(20,22,26,.55)]" data-reveal>
+        <iframe
+          src="https://www.google.com/maps?q=Cordova%2C%20TN%2038016&output=embed"
+          title="Service area map — Memphis and Cordova, Tennessee"
+          width="100%" height="480" style="border:0;display:block;min-height:420px"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="relative overflow-hidden bg-ink py-24 text-cream sm:py-32">
+  <div class="blob" style="width:560px;height:560px;background:radial-gradient(circle,rgba(195,55,43,.42),transparent 64%);top:-200px;left:50%;transform:translateX(-50%);animation:drift1 26s ease-in-out infinite"></div>
+  <div class="relative mx-auto max-w-3xl px-5 text-center sm:px-8">
+    <span class="grid h-14 w-14 mx-auto place-items-center rounded-2xl bg-cream/10 border border-cream/18">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="9.2" stroke="#F7F2EA" stroke-width="2"/>
+        <circle cx="12" cy="12" r="3.4" stroke="#C3372B" stroke-width="2"/>
+        <path d="M12 2.8v5M12 16.2v5M2.8 12h5M16.2 12h5" stroke="#F7F2EA" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <h2 class="mt-7 font-display text-[clamp(2.1rem,6.2vw,3.7rem)] font-extrabold tracking-[-.026em]">
+      Still sitting on a flat?
+    </h2>
+    <p class="mx-auto mt-5 max-w-xl text-[1.08rem] leading-relaxed text-cream/78">
+      One call and the tire shop comes to you. Any hour, anywhere in Memphis.
+    </p>
+    <div class="mt-9 flex flex-wrap justify-center gap-3">
+      <a href="tel:+19019073576" class="btn btn-primary px-8 py-4 text-[15.5px]">Call (901) 907-3576</a>
+      <a href="sms:+19019073576" class="btn px-8 py-4 text-[15.5px] border-[1.5px] border-cream/30 text-cream hover:border-cream hover:bg-cream/10">Send a text</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-char py-16 text-cream/72">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid gap-10 md:grid-cols-3">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="grid h-9 w-9 place-items-center rounded-xl bg-cream/10">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9.2" stroke="#F7F2EA" stroke-width="2.1"/>
+              <circle cx="12" cy="12" r="3.4" stroke="#C3372B" stroke-width="2.1"/>
+              <path d="M12 2.8v5M12 16.2v5M2.8 12h5M16.2 12h5" stroke="#F7F2EA" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="leading-none">
+            <span class="block font-display text-[15px] font-extrabold tracking-tight text-cream">MJ MOBILE</span>
+            <span class="block text-[9.5px] font-semibold uppercase tracking-[.26em] text-cream/50">Tire Repair</span>
+          </span>
+        </div>
+        <p class="mt-5 max-w-xs text-[.95rem] leading-relaxed">
+          Mobile tire service for Memphis and Shelby County. Owned and operated by Michael Allen since 2021.
+        </p>
+      </div>
+      <div>
+        <div class="text-[11px] font-semibold uppercase tracking-[.2em] text-cream/45">Contact</div>
+        <a href="tel:+19019073576" class="mt-4 block font-display text-[1.4rem] font-extrabold text-cream ul-grow">(901) 907-3576</a>
+        <p class="mt-3 text-[.95rem]">Call or text. Open 24 hours, 7 days a week.</p>
+        <a href="https://www.facebook.com/p/Mj-Mobile-Tire-Repair-100092454451229/" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 text-[.95rem] ul-grow">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V6.9c0-.8.2-1.2 1.4-1.2H17V2.8h-2.6c-3 0-4.1 1.5-4.1 4v1.7H8.3v2.9h2v8.8h3.6v-8.8h2.5l.4-2.9z"/></svg>
+          Facebook
+        </a>
+      </div>
+      <div>
+        <div class="text-[11px] font-semibold uppercase tracking-[.2em] text-cream/45">Serving</div>
+        <ul class="mt-4 space-y-1.5 text-[.95rem]">
+          <li>Memphis, TN</li><li>Cordova, TN</li><li>Bartlett, TN</li><li>Collierville, TN</li><li>Shelby County</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 border-t border-cream/12 pt-6 text-[.84rem] text-cream/50">
+      &copy; <span id="yr">2026</span> MJ Mobile Tire Repair. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="stickybar fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2 border-t border-ink/10 bg-cream/95 p-2.5 backdrop-blur-xl md:hidden">
+  <a href="tel:+19019073576" class="btn btn-primary py-3.5 text-[14.5px]">Call now</a>
+  <a href="sms:+19019073576" class="btn btn-ghost py-3.5 text-[14.5px]">Text Mike</a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AutoRepair",
+  "name":"MJ Mobile Tire Repair",
+  "description":"Mobile tire repair and replacement serving Memphis, Cordova and Shelby County, Tennessee. New and used tires, plugs, patches, mounting and balancing, brought to your location 24 hours a day.",
+  "telephone":"+1-901-907-3576",
+  "email":"mjmobiletirerepair@gmail.com",
+  "url":"https://turnkeyweb.org/previews/mj-mobile-tire-repair/",
+  "image":"https://turnkeyweb.org/previews/mj-mobile-tire-repair/assets/hero.jpg",
+  "founder":{"@type":"Person","name":"Michael Allen"},
+  "foundingDate":"2021-11-08",
+  "address":{"@type":"PostalAddress","addressLocality":"Cordova","addressRegion":"TN","postalCode":"38016","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":35.1786075,"longitude":-89.7962406},
+  "areaServed":[
+    {"@type":"City","name":"Memphis"},{"@type":"City","name":"Cordova"},
+    {"@type":"City","name":"Bartlett"},{"@type":"City","name":"Collierville"},
+    {"@type":"AdministrativeArea","name":"Shelby County"}
+  ],
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"65"},
+  "sameAs":["https://www.facebook.com/p/Mj-Mobile-Tire-Repair-100092454451229/"],
+  "hasOfferCatalog":{"@type":"OfferCatalog","name":"Mobile tire services","itemListElement":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"New tires"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Used tires"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tire plugs"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tire patches"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tire mounting"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tire balancing"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Roadside flat repair"}}
+  ]}
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- live Memphis clock (signature) ---------- */
+(function(){
+  var c=document.getElementById('clock'), d=document.getElementById('clockday'), l=document.getElementById('clockline');
+  var lines=[
+    [0,4,"Two in the morning is exactly when a tire goes flat. He still answers."],
+    [4,7,"Early shift, dark parking lot, soft tire. Call before you risk the drive."],
+    [7,10,"Running late already? Do not drive on it. He will meet you where you parked."],
+    [10,15,"Middle of the day, middle of Memphis. Usually the quickest window to get out to you."],
+    [15,19,"School run, commute, a nail you picked up somewhere. One call handles it."],
+    [19,24,"Shop closed, tire flat, evening gone. That is the whole reason this truck exists."]
+  ];
+  function tick(){
+    var now=new Date();
+    var t=new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',hour:'numeric',minute:'2-digit',second:'2-digit',hour12:true}).formatToParts(now);
+    var o={}; t.forEach(function(p){o[p.type]=p.value});
+    c.textContent=o.hour+':'+o.minute+':'+o.second+' '+o.dayPeriod;
+    d.textContent=new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',weekday:'long'}).format(now);
+    var h=parseInt(new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',hour:'numeric',hour12:false}).format(now),10);
+    for(var i=0;i<lines.length;i++){ if(h>=lines[i][0]&&h<lines[i][1]){ if(l.textContent.trim()!==lines[i][2]) l.textContent=lines[i][2]; break; } }
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+/* ---------- Lenis, single ticker ---------- */
+(function(){
+  if(!window.Lenis) return;
+  var lenis=new Lenis({duration:1.1,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true,smoothTouch:false});
+  if(window.gsap){
+    gsap.ticker.add(function(time){lenis.raf(time*1000)});
+    gsap.ticker.lagSmoothing(0);
+    if(window.ScrollTrigger) lenis.on('scroll',ScrollTrigger.update);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el){e.preventDefault();lenis.scrollTo(el,{offset:-78})}
+    });
+  });
+})();
+
+/* ---------- reveals + parallax + counters ---------- */
+(function(){
+  if(!window.gsap||!window.ScrollTrigger) { document.querySelectorAll('[data-reveal]').forEach(function(e){e.classList.add('in')}); return; }
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ignoreMobileResize:true});
+
+  gsap.utils.toArray('[data-reveal]').forEach(function(el){
+    ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:function(){
+      el.classList.add('in');
+      gsap.fromTo(el,{opacity:0,y:30},{opacity:1,y:0,duration:.68,ease:'power3.out',onComplete:function(){el.style.willChange='auto'}});
+    }});
+  });
+
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var target=parseFloat(el.dataset.count), dec=parseInt(el.dataset.dec||'0',10);
+    ScrollTrigger.create({trigger:el,start:'top 94%',once:true,onEnter:function(){
+      gsap.to({v:0},{v:target,duration:1.5,ease:'power2.out',onUpdate:function(){el.textContent=this.targets()[0].v.toFixed(dec)},onComplete:function(){el.textContent=target.toFixed(dec)}});
+    }});
+  });
+
+  if(window.matchMedia('(min-width:768px)').matches){
+    gsap.to('.hero-media',{yPercent:14,scale:1.06,ease:'none',
+      scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  }
+
+  var nav=document.getElementById('navinner');
+  ScrollTrigger.create({start:60,onUpdate:function(s){
+    if(s.progress>0||window.scrollY>60){nav.classList.add('shadow-[0_14px_34px_-26px_rgba(20,22,26,.85)]')}
+    else{nav.classList.remove('shadow-[0_14px_34px_-26px_rgba(20,22,26,.85)]')}
+  }});
+})();
+
+/* ---------- screenshot / crawler safety net ---------- */
+setTimeout(function(){
+  document.querySelectorAll('[data-reveal]').forEach(function(el){
+    var s=getComputedStyle(el);
+    if(parseFloat(s.opacity)<1){el.classList.add('in');el.style.opacity=1;el.style.transform='none'}
+  });
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    if(parseFloat(el.textContent)===0||el.textContent==='0'||el.textContent==='0.0'){
+      var d=parseInt(el.dataset.dec||'0',10); el.textContent=parseFloat(el.dataset.count).toFixed(d);
+    }
+  });
+},6000);
+</script>
+
+<!-- ---------- Three.js showpiece: the wheel ---------- -->
+<script type="module">
+const wrap = document.getElementById('wheelwrap');
+const cv   = document.getElementById('wheel');
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (wrap && cv && !reduce) {
+  try {
+    const THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+    const isMobile = window.innerWidth < 768;
+
+    const renderer = new THREE.WebGLRenderer({canvas:cv, antialias:true, alpha:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+    const size = () => { const r = wrap.getBoundingClientRect(); renderer.setSize(r.width, r.height, false); return r; };
+    let r = size();
+
+    const scene  = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, r.width/r.height, 0.1, 100);
+    camera.position.set(0, 0.9, 7.4);
+    camera.lookAt(0, 0, 0);
+
+    const wheel = new THREE.Group();
+    wheel.rotation.x = 0.34;
+    wheel.rotation.y = -0.42;
+    scene.add(wheel);
+
+    // tire
+    const tire = new THREE.Mesh(
+      new THREE.TorusGeometry(2.05, 0.72, 26, 96),
+      new THREE.MeshStandardMaterial({color:0x191b1f, roughness:0.82, metalness:0.12})
+    );
+    wheel.add(tire);
+
+    // tread blocks
+    const treadMat = new THREE.MeshStandardMaterial({color:0x101216, roughness:0.95, metalness:0.05});
+    const treadGeo = new THREE.BoxGeometry(0.26, 0.2, 0.62);
+    const TREADS = isMobile ? 30 : 52;
+    for (let i=0;i<TREADS;i++){
+      const a = (i/TREADS) * Math.PI*2;
+      const m = new THREE.Mesh(treadGeo, treadMat);
+      m.position.set(Math.cos(a)*2.72, Math.sin(a)*2.72, 0);
+      m.rotation.z = a + Math.PI/2;
+      wheel.add(m);
+    }
+
+    // rim face
+    const rim = new THREE.Mesh(
+      new THREE.CylinderGeometry(1.42, 1.42, 0.5, 64),
+      new THREE.MeshStandardMaterial({color:0xd9dde2, roughness:0.26, metalness:0.9})
+    );
+    rim.rotation.x = Math.PI/2;
+    wheel.add(rim);
+
+    // red accent ring
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(1.44, 0.085, 14, 72),
+      new THREE.MeshStandardMaterial({color:0xC3372B, roughness:0.32, metalness:0.55})
+    );
+    ring.position.z = 0.26;
+    wheel.add(ring);
+
+    // spokes
+    const spokeMat = new THREE.MeshStandardMaterial({color:0xe6eaee, roughness:0.24, metalness:0.92});
+    for (let i=0;i<5;i++){
+      const a = (i/5)*Math.PI*2;
+      const s = new THREE.Mesh(new THREE.BoxGeometry(0.36, 1.5, 0.3), spokeMat);
+      s.position.set(Math.cos(a)*0.72, Math.sin(a)*0.72, 0.15);
+      s.rotation.z = a - Math.PI/2;
+      wheel.add(s);
+    }
+    // hub
+    const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.4,0.4,0.62,32),
+      new THREE.MeshStandardMaterial({color:0x2b2f36, roughness:0.35, metalness:0.8}));
+    hub.rotation.x = Math.PI/2; hub.position.z = 0.14;
+    wheel.add(hub);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 1.05));
+    const key = new THREE.DirectionalLight(0xfff2e2, 2.3); key.position.set(4,5,6); scene.add(key);
+    const fill = new THREE.DirectionalLight(0xC3372B, 0.85); fill.position.set(-5,-2,3); scene.add(fill);
+    const rimL = new THREE.DirectionalLight(0xE5A13A, 0.9); rimL.position.set(-3,4,-5); scene.add(rimL);
+
+    let visible = true, scrollBoost = 0;
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; }, {threshold:0.02}).observe(wrap);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) visible = false; });
+
+    let lastY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      scrollBoost += Math.min(Math.abs(window.scrollY - lastY) * 0.0016, 0.05);
+      lastY = window.scrollY;
+    }, {passive:true});
+
+    window.addEventListener('resize', () => {
+      r = size(); camera.aspect = r.width/r.height; camera.updateProjectionMatrix();
+    });
+
+    let raf;
+    const loop = () => {
+      raf = requestAnimationFrame(loop);
+      if (!visible || document.hidden) return;
+      scrollBoost *= 0.94;
+      wheel.rotation.z -= 0.0032 + scrollBoost;
+      wheel.rotation.y = -0.42 + Math.sin(performance.now()*0.00022) * 0.1;
+      renderer.render(scene, camera);
+    };
+    requestAnimationFrame(() => { size(); loop(); });
+  } catch (e) { /* static fallback: the section still reads fine without it */ }
+}
+</script>
+</body>
+</html>
