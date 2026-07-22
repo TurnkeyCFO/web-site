@@ -40,7 +40,7 @@ tailwind.config = {
       colors: {
         ivory:'#FAF6F0', paper:'#F2EAE0', shell:'#EDE2D6',
         pine:'#12514F', teal:'#1F7A72', mist:'#A9C6BE',
-        clay:'#C2703F', ink:'#17211F', muted:'#55635F'
+        clay:'#C2703F', clayink:'#95481C', claysoft:'#E8B08A', ink:'#17211F', muted:'#55635F'
       },
       fontFamily: { display:['Fraunces','Georgia','serif'], sans:['"Plus Jakarta Sans"','system-ui','sans-serif'] }
     }
@@ -52,7 +52,7 @@ tailwind.config = {
 :root{
   --ivory:#FAF6F0; --paper:#F2EAE0; --shell:#EDE2D6;
   --pine:#12514F; --teal:#1F7A72; --mist:#A9C6BE;
-  --clay:#C2703F; --ink:#17211F; --muted:#55635F;
+  --clay:#C2703F; --clayink:#95481C; --claysoft:#E8B08A; --ink:#17211F; --muted:#55635F;
   --nav-h:74px;
 }
 *{ -webkit-tap-highlight-color: transparent; }
@@ -70,7 +70,8 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
 
 /* ---------- gradient shimmer on key headers ---------- */
 .grad-text{
-  background:linear-gradient(100deg,var(--pine) 0%,var(--teal) 26%,var(--clay) 50%,var(--teal) 74%,var(--pine) 100%);
+  /* every stop stays dark enough to clear AA on the ivory base — no light dip mid-sweep */
+  background:linear-gradient(100deg,var(--pine) 0%,var(--teal) 26%,var(--clayink) 50%,var(--teal) 74%,var(--pine) 100%);
   background-size:220% 100%;
   -webkit-background-clip:text; background-clip:text;
   -webkit-text-fill-color:transparent; color:transparent;
@@ -249,7 +250,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
 
       <div class="flex flex-wrap gap-x-9 gap-y-5" data-reveal>
         <div>
-          <div class="font-display text-[2rem] text-pine leading-none pb-1"><span data-count="30" data-suffix="">0</span><span class="text-clay">+</span></div>
+          <div class="font-display text-[2rem] text-pine leading-none pb-1"><span data-count="30" data-suffix="">0</span><span class="text-clayink">+</span></div>
           <div class="eyebrow text-muted mt-1.5">Years in practice</div>
         </div>
         <div>
@@ -269,20 +270,20 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
 <section class="bg-pine py-4 border-y border-pine">
   <div class="marquee">
     <div class="marquee-track text-ivory/85 text-[.82rem] tracking-[.18em] uppercase font-medium">
-      <span>Pelvic Health</span><span class="text-clay">&bull;</span>
-      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Incontinence</span><span class="text-clay">&bull;</span>
-      <span>Osteoporosis</span><span class="text-clay">&bull;</span>
-      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Sexual Dysfunction</span><span class="text-clay">&bull;</span>
-      <span>Outpatient Physical Therapy</span><span class="text-clay">&bull;</span>
-      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Occupational Therapy</span><span class="text-clay">&bull;</span>
-      <span>All Genders Welcome</span><span class="text-clay">&bull;</span>
-      <span>Pelvic Health</span><span class="text-clay">&bull;</span>
-      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Incontinence</span><span class="text-clay">&bull;</span>
-      <span>Osteoporosis</span><span class="text-clay">&bull;</span>
-      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Sexual Dysfunction</span><span class="text-clay">&bull;</span>
-      <span>Outpatient Physical Therapy</span><span class="text-clay">&bull;</span>
-      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Occupational Therapy</span><span class="text-clay">&bull;</span>
-      <span>All Genders Welcome</span><span class="text-clay">&bull;</span>
+      <span>Pelvic Health</span><span class="text-claysoft">&bull;</span>
+      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Incontinence</span><span class="text-claysoft">&bull;</span>
+      <span>Osteoporosis</span><span class="text-claysoft">&bull;</span>
+      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Sexual Dysfunction</span><span class="text-claysoft">&bull;</span>
+      <span>Outpatient Physical Therapy</span><span class="text-claysoft">&bull;</span>
+      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Occupational Therapy</span><span class="text-claysoft">&bull;</span>
+      <span>All Genders Welcome</span><span class="text-claysoft">&bull;</span>
+      <span>Pelvic Health</span><span class="text-claysoft">&bull;</span>
+      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Incontinence</span><span class="text-claysoft">&bull;</span>
+      <span>Osteoporosis</span><span class="text-claysoft">&bull;</span>
+      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Sexual Dysfunction</span><span class="text-claysoft">&bull;</span>
+      <span>Outpatient Physical Therapy</span><span class="text-claysoft">&bull;</span>
+      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Occupational Therapy</span><span class="text-claysoft">&bull;</span>
+      <span>All Genders Welcome</span><span class="text-claysoft">&bull;</span>
     </div>
   </div>
 </section>
@@ -292,7 +293,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
   <div class="relative max-w-[1240px] mx-auto px-5 sm:px-8">
     <div class="grid lg:grid-cols-[1fr_.85fr] gap-14 lg:gap-20 items-center">
       <div>
-        <div class="eyebrow text-clay mb-6" data-reveal>Why this clinic treats what it treats</div>
+        <div class="eyebrow text-clayink mb-6" data-reveal>Why this clinic treats what it treats</div>
         <h2 class="font-display font-light text-[clamp(1.95rem,4.3vw,3.15rem)] tracking-[-.015em] mb-8" data-reveal>
           It started with<br><span class="grad-text font-normal italic">her grandmother.</span>
         </h2>
@@ -359,7 +360,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
 <section id="care" class="bg-paper py-24 sm:py-32">
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
     <div class="max-w-[660px] mb-16">
-      <div class="eyebrow text-clay mb-6" data-reveal>What we treat</div>
+      <div class="eyebrow text-clayink mb-6" data-reveal>What we treat</div>
       <h2 class="font-display font-light text-[clamp(1.95rem,4.3vw,3.15rem)] tracking-[-.015em] mb-6" data-reveal>
         Four focus areas, and<br>the <span class="grad-text font-normal italic">everyday work</span> too.
       </h2>
@@ -475,7 +476,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
   <div class="relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
     <div class="grid lg:grid-cols-[.9fr_1fr] gap-14 lg:gap-20">
       <div>
-        <div class="eyebrow text-clay mb-6" data-reveal>The letters after the name</div>
+        <div class="eyebrow text-clayink mb-6" data-reveal>The letters after the name</div>
         <h2 class="font-display font-light text-[clamp(1.95rem,4.3vw,3.15rem)] tracking-[-.015em] mb-7" data-reveal>
           <span class="grad-text font-normal italic">PT, BCB-PMD, PRPC.</span><br>Here is what they mean.
         </h2>
@@ -489,7 +490,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
       <div class="space-y-3">
         <div class="cred bg-white/70 backdrop-blur-sm rounded-[14px] border border-ink/8 p-7" data-reveal data-cred>
           <div class="cred-letters font-display text-[1.6rem] text-pine mb-2 pb-1">PT</div>
-          <div class="text-[.8rem] font-semibold text-clay uppercase tracking-[.14em] mb-3">Physical Therapist</div>
+          <div class="text-[.8rem] font-semibold text-clayink uppercase tracking-[.14em] mb-3">Physical Therapist</div>
           <p class="text-[.94rem] leading-[1.75] text-muted">
             Licensed since 1988. The first fourteen years were spent in acute care,
             inpatient rehabilitation and outpatient settings before the specialty work began.
@@ -498,7 +499,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
 
         <div class="cred bg-white/70 backdrop-blur-sm rounded-[14px] border border-ink/8 p-7" data-reveal data-cred>
           <div class="cred-letters font-display text-[1.6rem] text-pine mb-2 pb-1">BCB-PMD</div>
-          <div class="text-[.8rem] font-semibold text-clay uppercase tracking-[.14em] mb-3">Board Certified in Biofeedback for Pelvic Muscle Dysfunction</div>
+          <div class="text-[.8rem] font-semibold text-clayink uppercase tracking-[.14em] mb-3">Board Certified in Biofeedback for Pelvic Muscle Dysfunction</div>
           <p class="text-[.94rem] leading-[1.75] text-muted">
             Earned in 2013. Biofeedback lets a patient see muscle activity they cannot
             otherwise feel, which is often the difference between guessing at an exercise
@@ -508,7 +509,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
 
         <div class="cred bg-white/70 backdrop-blur-sm rounded-[14px] border border-ink/8 p-7" data-reveal data-cred>
           <div class="cred-letters font-display text-[1.6rem] text-pine mb-2 pb-1">PRPC</div>
-          <div class="text-[.8rem] font-semibold text-clay uppercase tracking-[.14em] mb-3">Pelvic Rehabilitation Practitioner Certification</div>
+          <div class="text-[.8rem] font-semibold text-clayink uppercase tracking-[.14em] mb-3">Pelvic Rehabilitation Practitioner Certification</div>
           <p class="text-[.94rem] leading-[1.75] text-muted">
             Attained in 2019, following the APTA Certificate of Achievement in Pelvic
             Physical Therapy in 2008. Together they represent eleven years of
@@ -526,7 +527,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
   <div class="relative max-w-[1240px] mx-auto px-5 sm:px-8">
     <div class="grid lg:grid-cols-[1fr_.8fr] gap-12 items-center">
       <div>
-        <div class="eyebrow text-clay mb-6" data-reveal>In the treatment room</div>
+        <div class="eyebrow text-claysoft mb-6" data-reveal>In the treatment room</div>
         <h2 class="font-display font-light text-[clamp(1.8rem,3.9vw,2.85rem)] text-ivory tracking-[-.015em] mb-6" data-reveal>
           Real-time ultrasound, used<br>as a mirror for muscles<br>you cannot see.
         </h2>
@@ -553,7 +554,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
       <div class="max-w-[620px]">
-        <div class="eyebrow text-clay mb-6" data-reveal>What patients say</div>
+        <div class="eyebrow text-clayink mb-6" data-reveal>What patients say</div>
         <h2 class="font-display font-light text-[clamp(1.95rem,4.3vw,3.15rem)] tracking-[-.015em]" data-reveal>
           Eleven reviews.<br><span class="grad-text font-normal italic">Every one of them five stars.</span>
         </h2>
@@ -574,7 +575,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <blockquote class="card rounded-[16px] p-8 md:row-span-2" data-reveal>
+      <blockquote class="card rounded-[16px] p-8 md:col-span-2 lg:col-span-1 lg:row-span-2" data-reveal>
         <svg class="mb-6" width="26" height="26" viewBox="0 0 24 24" fill="#A9C6BE"><path d="M9.5 5C6.5 6.6 5 9.2 5 12.8V19h6.2v-6.2H8.4c0-2.2.9-3.7 2.7-4.6zm9 0C15.5 6.6 14 9.2 14 12.8V19h6.2v-6.2h-2.8c0-2.2.9-3.7 2.7-4.6z"/></svg>
         <p class="text-[.98rem] leading-[1.82] text-ink/85 mb-7">
           &ldquo;I've been to physical therapy before and honestly it was mostly just workouts
@@ -657,7 +658,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
 <section id="team" class="bg-paper py-24 sm:py-32">
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
     <div class="max-w-[620px] mb-14">
-      <div class="eyebrow text-clay mb-6" data-reveal>Who you will actually see</div>
+      <div class="eyebrow text-clayink mb-6" data-reveal>Who you will actually see</div>
       <h2 class="font-display font-light text-[clamp(1.95rem,4.3vw,3.15rem)] tracking-[-.015em]" data-reveal>
         A <span class="grad-text font-normal italic">small clinic</span>,<br>on purpose.
       </h2>
@@ -667,7 +668,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
       <div class="card rounded-[16px] p-8" data-reveal>
         <div class="w-11 h-11 rounded-full bg-pine text-ivory flex items-center justify-center font-display text-[1.05rem] mb-5 pb-0">KB</div>
         <h3 class="font-display text-[1.24rem] text-ink mb-1.5">Kirk Bravo</h3>
-        <div class="text-[.76rem] font-semibold text-clay uppercase tracking-[.14em] mb-3.5">Physical Therapist &middot; Owner</div>
+        <div class="text-[.76rem] font-semibold text-clayink uppercase tracking-[.14em] mb-3.5">Physical Therapist &middot; Owner</div>
         <p class="text-[.92rem] leading-[1.75] text-muted">
           Owner and president of the practice, with close to four decades as a practicing
           physical therapist. Patients consistently describe hands-on treatment rather
@@ -677,7 +678,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
       <div class="card rounded-[16px] p-8" data-reveal>
         <div class="w-11 h-11 rounded-full bg-pine text-ivory flex items-center justify-center font-display text-[1.05rem] mb-5 pb-0">JB</div>
         <h3 class="font-display text-[1.24rem] text-ink mb-1.5">Jacqueline Bravo</h3>
-        <div class="text-[.76rem] font-semibold text-clay uppercase tracking-[.14em] mb-3.5">PT, BCB-PMD, PRPC</div>
+        <div class="text-[.76rem] font-semibold text-clayink uppercase tracking-[.14em] mb-3.5">PT, BCB-PMD, PRPC</div>
         <p class="text-[.92rem] leading-[1.75] text-muted">
           Physical therapist since 1988 and the clinic's pelvic health specialist.
           Outside the clinic she camps and hikes with her husband Kirk and their son Luke,
@@ -685,9 +686,9 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
         </p>
       </div>
       <div class="card rounded-[16px] p-8" data-reveal>
-        <div class="w-11 h-11 rounded-full bg-clay text-ivory flex items-center justify-center font-display text-[1.05rem] mb-5 pb-0">MH</div>
+        <div class="w-11 h-11 rounded-full bg-clayink text-ivory flex items-center justify-center font-display text-[1.05rem] mb-5 pb-0">MH</div>
         <h3 class="font-display text-[1.24rem] text-ink mb-1.5">Marquita Henry</h3>
-        <div class="text-[.76rem] font-semibold text-clay uppercase tracking-[.14em] mb-3.5">Manager of Operations</div>
+        <div class="text-[.76rem] font-semibold text-clayink uppercase tracking-[.14em] mb-3.5">Manager of Operations</div>
         <p class="text-[.92rem] leading-[1.75] text-muted">
           The person who answers when you call. Scheduling, intake and insurance
           questions all start here.
@@ -703,7 +704,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
 <section id="visit" class="bg-ivory py-24 sm:py-32">
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
     <div class="max-w-[620px] mb-14">
-      <div class="eyebrow text-clay mb-6" data-reveal>Visit the clinic</div>
+      <div class="eyebrow text-clayink mb-6" data-reveal>Visit the clinic</div>
       <h2 class="font-display font-light text-[clamp(1.95rem,4.3vw,3.15rem)] tracking-[-.015em]" data-reveal>
         Westmark Boulevard,<br><span class="grad-text font-normal italic">Suite 107.</span>
       </h2>
@@ -805,7 +806,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
         </p>
       </div>
       <div>
-        <div class="eyebrow text-clay mb-5">Clinic</div>
+        <div class="eyebrow text-claysoft mb-5">Clinic</div>
         <ul class="space-y-3 text-[.93rem] text-mist">
           <li><a href="#care" class="ul-grow hover:text-ivory transition">What we treat</a></li>
           <li><a href="#story" class="ul-grow hover:text-ivory transition">Why pelvic health</a></li>
@@ -814,7 +815,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
         </ul>
       </div>
       <div>
-        <div class="eyebrow text-clay mb-5">Contact</div>
+        <div class="eyebrow text-claysoft mb-5">Contact</div>
         <ul class="space-y-3 text-[.93rem] text-mist">
           <li><a href="tel:+13374060712" class="ul-grow hover:text-ivory transition">(337) 406-0712</a></li>
           <li>Fax (337) 406-0715</li>
