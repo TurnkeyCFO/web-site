@@ -48,6 +48,7 @@
   --deep:#1E5445;
   --forest:#123B31;
   --gold:#B8862F;
+  --gold-ink:#8A6215;
   --ink:#12201C;
   --muted:#4E625B;
   --line:#DFD8CD;
@@ -70,7 +71,7 @@ h1,h2,h3,h4,.dsp{line-height:1.12;padding-bottom:.06em}
 
 /* ---------- gradient shimmer ---------- */
 .grad-text{
-  background:linear-gradient(100deg,var(--forest) 0%,var(--deep) 22%,var(--green) 45%,var(--gold) 62%,var(--deep) 82%,var(--forest) 100%);
+  background:linear-gradient(100deg,var(--forest) 0%,var(--deep) 22%,var(--green) 45%,#94681A 62%,var(--deep) 82%,var(--forest) 100%);
   background-size:220% 100%;
   -webkit-background-clip:text;background-clip:text;
   color:transparent;-webkit-text-fill-color:transparent;
@@ -103,8 +104,10 @@ h1,h2,h3,h4,.dsp{line-height:1.12;padding-bottom:.06em}
 [data-img].in{clip-path:inset(0 0 0% 0)}
 
 /* ---------- marquee ---------- */
-.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee{position:relative;overflow:hidden}
+.marquee::before,.marquee::after{content:'';position:absolute;top:0;bottom:0;width:9%;z-index:2;pointer-events:none}
+.marquee::before{left:0;background:linear-gradient(90deg,#123B31,rgba(18,59,49,0))}
+.marquee::after{right:0;background:linear-gradient(270deg,#123B31,rgba(18,59,49,0))}
 .marquee-track{display:flex;gap:3rem;width:max-content;animation:scrollX 42s linear infinite;align-items:center}
 .marquee:hover .marquee-track{animation-play-state:paused}
 @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -195,7 +198,7 @@ h1,h2,h3,h4,.dsp{line-height:1.12;padding-bottom:.06em}
       </span>
       <span class="leading-none">
         <span class="dsp block text-[15px] sm:text-[17px] font-semibold tracking-tight" style="color:var(--forest);padding-bottom:.02em">Simple Weight Loss</span>
-        <span class="block text-[9px] sm:text-[10px] font-semibold tracking-[.28em] uppercase" style="color:var(--gold)">Solutions</span>
+        <span class="block text-[9px] sm:text-[10px] font-semibold tracking-[.28em] uppercase" style="color:var(--gold-ink)">Solutions</span>
       </span>
     </a>
 
@@ -344,7 +347,7 @@ h1,h2,h3,h4,.dsp{line-height:1.12;padding-bottom:.06em}
       <div class="stage-pane cur" data-pane="0">
         <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           <div class="lg:col-span-5">
-            <div class="dsp text-[15px] tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Stage One</div>
+            <div class="dsp text-[15px] tracking-[.2em] uppercase font-semibold" style="color:var(--gold-ink)">Stage One</div>
             <h3 class="dsp h-md font-light mt-3" style="color:var(--forest)">You sit down with the doctor.</h3>
           </div>
           <div class="lg:col-span-7">
@@ -360,7 +363,7 @@ h1,h2,h3,h4,.dsp{line-height:1.12;padding-bottom:.06em}
       <div class="stage-pane" data-pane="1">
         <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           <div class="lg:col-span-5">
-            <div class="dsp text-[15px] tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Stage Two</div>
+            <div class="dsp text-[15px] tracking-[.2em] uppercase font-semibold" style="color:var(--gold-ink)">Stage Two</div>
             <h3 class="dsp h-md font-light mt-3" style="color:var(--forest)">A plan built around your life.</h3>
           </div>
           <div class="lg:col-span-7">
@@ -376,7 +379,7 @@ h1,h2,h3,h4,.dsp{line-height:1.12;padding-bottom:.06em}
       <div class="stage-pane" data-pane="2">
         <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           <div class="lg:col-span-5">
-            <div class="dsp text-[15px] tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Stage Three</div>
+            <div class="dsp text-[15px] tracking-[.2em] uppercase font-semibold" style="color:var(--gold-ink)">Stage Three</div>
             <h3 class="dsp h-md font-light mt-3" style="color:var(--forest)">Someone in your corner, on a schedule.</h3>
           </div>
           <div class="lg:col-span-7">
@@ -392,7 +395,7 @@ h1,h2,h3,h4,.dsp{line-height:1.12;padding-bottom:.06em}
       <div class="stage-pane" data-pane="3">
         <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           <div class="lg:col-span-5">
-            <div class="dsp text-[15px] tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Stage Four</div>
+            <div class="dsp text-[15px] tracking-[.2em] uppercase font-semibold" style="color:var(--gold-ink)">Stage Four</div>
             <h3 class="dsp h-md font-light mt-3" style="color:var(--forest)">Long term, not just this month.</h3>
           </div>
           <div class="lg:col-span-7">
@@ -430,37 +433,37 @@ h1,h2,h3,h4,.dsp{line-height:1.12;padding-bottom:.06em}
     <div id="svclist">
       <!-- rows injected below in markup for crawlers -->
       <a href="tel:+19544321485" class="row-svc grid grid-cols-[36px_1fr_28px] sm:grid-cols-[70px_1fr_1fr_28px] gap-4 sm:gap-8 items-center py-7 sm:py-9 px-1 sm:px-3" data-reveal>
-        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold)">01</span>
+        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold-ink)">01</span>
         <span class="dsp text-[19px] sm:text-[25px] font-light" style="color:var(--forest)">Physician-supervised weight loss</span>
         <span class="hidden sm:block text-[14.5px] leading-relaxed font-light" style="color:var(--muted)">A personalized program overseen by a board-certified family physician, start to finish.</span>
         <span class="arrow justify-self-end" style="color:var(--deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.4-5.4M18 12l-5.4 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
       <a href="tel:+19544321485" class="row-svc grid grid-cols-[36px_1fr_28px] sm:grid-cols-[70px_1fr_1fr_28px] gap-4 sm:gap-8 items-center py-7 sm:py-9 px-1 sm:px-3" data-reveal>
-        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold)">02</span>
+        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold-ink)">02</span>
         <span class="dsp text-[19px] sm:text-[25px] font-light" style="color:var(--forest)">One-on-one counseling</span>
         <span class="hidden sm:block text-[14.5px] leading-relaxed font-light" style="color:var(--muted)">Real conversations at each visit, with guidance and motivation when you need it most.</span>
         <span class="arrow justify-self-end" style="color:var(--deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.4-5.4M18 12l-5.4 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
       <a href="tel:+19544321485" class="row-svc grid grid-cols-[36px_1fr_28px] sm:grid-cols-[70px_1fr_1fr_28px] gap-4 sm:gap-8 items-center py-7 sm:py-9 px-1 sm:px-3" data-reveal>
-        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold)">03</span>
+        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold-ink)">03</span>
         <span class="dsp text-[19px] sm:text-[25px] font-light" style="color:var(--forest)">B12 and lipotropic injections</span>
         <span class="hidden sm:block text-[14.5px] leading-relaxed font-light" style="color:var(--muted)">Available on site as a supporting option when appropriate for your plan.</span>
         <span class="arrow justify-self-end" style="color:var(--deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.4-5.4M18 12l-5.4 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
       <a href="tel:+19544321485" class="row-svc grid grid-cols-[36px_1fr_28px] sm:grid-cols-[70px_1fr_1fr_28px] gap-4 sm:gap-8 items-center py-7 sm:py-9 px-1 sm:px-3" data-reveal>
-        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold)">04</span>
+        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold-ink)">04</span>
         <span class="dsp text-[19px] sm:text-[25px] font-light" style="color:var(--forest)">Family medicine</span>
         <span class="hidden sm:block text-[14.5px] leading-relaxed font-light" style="color:var(--muted)">Primary care for adults, with Dr. Hirsch accepting new patients and telehealth visits.</span>
         <span class="arrow justify-self-end" style="color:var(--deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.4-5.4M18 12l-5.4 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
       <a href="tel:+19544321485" class="row-svc grid grid-cols-[36px_1fr_28px] sm:grid-cols-[70px_1fr_1fr_28px] gap-4 sm:gap-8 items-center py-7 sm:py-9 px-1 sm:px-3" data-reveal>
-        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold)">05</span>
+        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold-ink)">05</span>
         <span class="dsp text-[19px] sm:text-[25px] font-light" style="color:var(--forest)">Diagnostic &amp; preventative testing</span>
         <span class="hidden sm:block text-[14.5px] leading-relaxed font-light" style="color:var(--muted)">Bloodwork and screening handled in the same office, so nothing gets lost between visits.</span>
         <span class="arrow justify-self-end" style="color:var(--deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.4-5.4M18 12l-5.4 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
       <a href="tel:+19544321485" class="row-svc grid grid-cols-[36px_1fr_28px] sm:grid-cols-[70px_1fr_1fr_28px] gap-4 sm:gap-8 items-center py-7 sm:py-9 px-1 sm:px-3" data-reveal>
-        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold)">06</span>
+        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold-ink)">06</span>
         <span class="dsp text-[19px] sm:text-[25px] font-light" style="color:var(--forest)">Allergy testing</span>
         <span class="hidden sm:block text-[14.5px] leading-relaxed font-light" style="color:var(--muted)">Offered through the family practice at the same Pembroke Pines location.</span>
         <span class="arrow justify-self-end" style="color:var(--deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.4-5.4M18 12l-5.4 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -667,7 +670,7 @@ h1,h2,h3,h4,.dsp{line-height:1.12;padding-bottom:.06em}
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg>
             </span>
             <div>
-              <div class="text-[11px] font-semibold tracking-[.18em] uppercase mb-1.5" style="color:var(--gold)">Address</div>
+              <div class="text-[11px] font-semibold tracking-[.18em] uppercase mb-1.5" style="color:var(--gold-ink)">Address</div>
               <a href="https://www.google.com/maps?q=601+N+Flamingo+Rd+Suite+103+Pembroke+Pines+FL+33028" target="_blank" rel="noopener" class="text-[16px] leading-relaxed ul-grow" style="color:var(--ink)">
                 601 N Flamingo Rd, Suite 103<br>Pembroke Pines, FL 33028
               </a>
@@ -679,7 +682,7 @@ h1,h2,h3,h4,.dsp{line-height:1.12;padding-bottom:.06em}
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5.3l3.4 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
             <div class="w-full">
-              <div class="text-[11px] font-semibold tracking-[.18em] uppercase mb-1.5" style="color:var(--gold)">Office hours</div>
+              <div class="text-[11px] font-semibold tracking-[.18em] uppercase mb-1.5" style="color:var(--gold-ink)">Office hours</div>
               <table class="text-[15px] w-full max-w-[300px]" style="color:var(--ink)">
                 <tr><td class="py-1 pr-6 font-light">Monday &ndash; Thursday</td><td class="py-1 font-medium">9:00 am &ndash; 5:00 pm</td></tr>
                 <tr><td class="py-1 pr-6 font-light">Friday</td><td class="py-1 font-medium">9:00 am &ndash; 3:00 pm</td></tr>
@@ -693,7 +696,7 @@ h1,h2,h3,h4,.dsp{line-height:1.12;padding-bottom:.06em}
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-2 1.4a12.4 12.4 0 0 0 6.2 6.2l1.4-2 3.8 1.5v3a2 2 0 0 1-2.2 2A17.2 17.2 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
             </span>
             <div>
-              <div class="text-[11px] font-semibold tracking-[.18em] uppercase mb-1.5" style="color:var(--gold)">Phone &amp; fax</div>
+              <div class="text-[11px] font-semibold tracking-[.18em] uppercase mb-1.5" style="color:var(--gold-ink)">Phone &amp; fax</div>
               <a href="tel:+19544321485" class="dsp text-[24px] font-medium ul-grow" style="color:var(--forest)">(954) 432-1485</a>
               <div class="text-[14px] font-light mt-1" style="color:var(--muted)">Fax (954) 433-0850</div>
             </div>
