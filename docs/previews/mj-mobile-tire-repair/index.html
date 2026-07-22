@@ -29,12 +29,12 @@
 <script>
 tailwind.config={theme:{extend:{colors:{
   cream:'#FDFBF7', bone:'#F7F2EA', sand:'#EDE4D6', ink:'#14161A',
-  char:'#23262C', red:'#C3372B', redDeep:'#9C2A20', steel:'#7C8794', amber:'#E5A13A'
+  char:'#23262C', red:'#C3372B', redDeep:'#9C2A20', steel:'#4E5763', amber:'#E5A13A'
 },fontFamily:{display:['"Bricolage Grotesque"','serif'],sans:['"Inter Tight"','system-ui','sans-serif']}}}}
 </script>
 
 <style>
-:root{--cream:#FDFBF7;--bone:#F7F2EA;--sand:#EDE4D6;--ink:#14161A;--char:#23262C;--red:#C3372B;--steel:#7C8794;--amber:#E5A13A}
+:root{--cream:#FDFBF7;--bone:#F7F2EA;--sand:#EDE4D6;--ink:#14161A;--char:#23262C;--red:#C3372B;--steel:#4E5763;--amber:#E5A13A}
 *{-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:auto;scroll-padding-top:88px}
 body{background:var(--bone);color:var(--ink);font-family:'Inter Tight',system-ui,sans-serif;overflow-x:hidden}
@@ -106,7 +106,7 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
   background:linear-gradient(90deg,var(--red),var(--amber));transition:width .45s cubic-bezier(.2,.7,.3,1)}
 .ul-grow:hover::after{width:100%}
 
-.numstep{font-family:'Bricolage Grotesque',serif;font-weight:800;line-height:1;
+.numstep{font-family:'Bricolage Grotesque',serif;font-weight:800;line-height:1.1;
   -webkit-text-stroke:1.4px rgba(20,22,26,.26);color:transparent;padding-bottom:.06em}
 
 #wheelwrap{position:relative}
@@ -161,7 +161,7 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
 </header>
 
 <!-- ============ HERO ============ -->
-<section id="top" class="hero flex min-h-[100svh] items-end pt-32 sm:items-center sm:pt-24">
+<section id="top" class="hero flex min-h-[72svh] sm:min-h-[100svh] items-end pt-28 sm:items-center sm:pt-24">
   <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg" aria-hidden="true">
     <source src="assets/hero.mp4" type="video/mp4">
   </video>
@@ -177,16 +177,16 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
         MJ brings the whole tire shop to you. New and used tires, plugs, patches, mounting and
         balancing, done where you're parked. Any hour, any day, anywhere in Memphis.
       </p>
-      <div class="mt-9 flex flex-wrap items-center gap-3">
+      <div class="mt-7 sm:mt-9 flex flex-wrap items-center gap-3">
         <a href="tel:+19019073576" class="btn btn-primary px-7 py-4 text-[15px]">Call or text Mike</a>
         <a href="#how" class="btn btn-ghost px-7 py-4 text-[15px]">How it works</a>
       </div>
-      <div class="mt-10 flex flex-wrap items-center gap-x-9 gap-y-4">
-        <div><div class="font-display text-3xl font-extrabold"><span data-count="4.8" data-dec="1">0</span></div><div class="mt-.5 text-[11px] font-semibold uppercase tracking-[.18em] text-steel">Google rating</div></div>
+      <div class="mt-7 sm:mt-10 flex flex-wrap items-center gap-x-8 gap-y-3">
+        <div><div class="font-display text-3xl font-extrabold"><span data-count="4.8" data-dec="1">0</span></div><div class="mt-1 text-[11px] font-semibold uppercase tracking-[.18em] text-char/80">Google rating</div></div>
         <div class="hidden h-9 w-px bg-ink/12 sm:block"></div>
-        <div><div class="font-display text-3xl font-extrabold"><span data-count="65">0</span>+</div><div class="mt-.5 text-[11px] font-semibold uppercase tracking-[.18em] text-steel">Google reviews</div></div>
+        <div><div class="font-display text-3xl font-extrabold"><span data-count="65">0</span>+</div><div class="mt-1 text-[11px] font-semibold uppercase tracking-[.18em] text-char/80">Google reviews</div></div>
         <div class="hidden h-9 w-px bg-ink/12 sm:block"></div>
-        <div><div class="font-display text-3xl font-extrabold">24/7</div><div class="mt-.5 text-[11px] font-semibold uppercase tracking-[.18em] text-steel">Every day since 2021</div></div>
+        <div><div class="font-display text-3xl font-extrabold">24/7</div><div class="mt-1 text-[11px] font-semibold uppercase tracking-[.18em] text-char/80">Every day since 2021</div></div>
       </div>
     </div>
   </div>
@@ -195,7 +195,7 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
 
 <!-- ============ SIGNATURE: LIVE CLOCK BAND ============ -->
 <section class="relative bg-ink text-cream">
-  <div class="mx-auto max-w-7xl px-5 py-9 sm:px-8 sm:py-11">
+  <div class="mx-auto max-w-7xl px-5 py-6 sm:px-8 sm:py-11">
     <div class="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
       <div class="flex items-center gap-5">
         <div class="grid h-14 w-14 flex-none place-items-center rounded-2xl border border-cream/18 bg-cream/8">
@@ -222,7 +222,7 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
 </section>
 
 <!-- ============ MARQUEE ============ -->
-<div class="marquee border-y border-ink/8 bg-sand/70 py-4">
+<div class="marquee border-y border-ink/8 bg-sand/70 py-3 sm:py-4">
   <div class="mq-track text-[13px] font-semibold uppercase tracking-[.22em] text-char/75">
     <span class="flex gap-3 items-center">New tires</span><span class="text-red">•</span>
     <span class="flex gap-3 items-center">Used tires</span><span class="text-red">•</span>
@@ -244,7 +244,7 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
 </div>
 
 <!-- ============ WHAT WE FIX (problem-first) ============ -->
-<section id="fix" class="relative overflow-hidden py-24 sm:py-32 grain">
+<section id="fix" class="relative overflow-hidden py-11 sm:py-28 grain">
   <div class="blob" style="width:520px;height:520px;background:radial-gradient(circle,rgba(195,55,43,.16),transparent 62%);top:-190px;right:-150px;animation:drift1 24s ease-in-out infinite"></div>
   <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
     <div class="max-w-2xl" data-reveal>
@@ -258,54 +258,54 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
       </p>
     </div>
 
-    <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-7 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-5 lg:grid-cols-3">
       <!-- 1 -->
-      <div class="card p-7" data-reveal>
-        <div class="ico mb-5 grid h-11 w-11 place-items-center rounded-xl bg-ink/6">
+      <div class="card p-5 sm:p-7" data-reveal>
+        <div class="ico mb-4 grid h-10 w-10 sm:mb-5 sm:h-11 sm:w-11 place-items-center rounded-xl bg-ink/6">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M3 17h18M5.5 17l1.6-6.2A2.6 2.6 0 019.6 8.8h4.8a2.6 2.6 0 012.5 2L18.5 17" stroke="#C3372B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.4 20.2l.9-3.2M16.6 20.2l-.9-3.2" stroke="#14161A" stroke-width="1.8" stroke-linecap="round"/></svg>
         </div>
-        <h3 class="font-display text-[1.28rem] font-extrabold">Flat on the shoulder</h3>
-        <p class="mt-2.5 text-[.97rem] leading-relaxed text-char/78">Pull over safely, stay in the car, send your location. Mike comes to the roadside and changes it there.</p>
+        <h3 class="font-display text-[1.02rem] sm:text-[1.28rem] font-extrabold">Flat on the shoulder</h3>
+        <p class="mt-2 text-[.86rem] sm:text-[.97rem] leading-relaxed text-char/78">Pull over safely, stay in the car, send your location. Mike comes to the roadside and changes it there.</p>
       </div>
       <!-- 2 -->
-      <div class="card p-7" data-reveal>
-        <div class="ico mb-5 grid h-11 w-11 place-items-center rounded-xl bg-ink/6">
+      <div class="card p-5 sm:p-7" data-reveal>
+        <div class="ico mb-4 grid h-10 w-10 sm:mb-5 sm:h-11 sm:w-11 place-items-center rounded-xl bg-ink/6">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l2.3 5 5.4.6-4 3.7 1.1 5.3L12 14.7l-4.8 2.7 1.1-5.3-4-3.7 5.4-.6z" stroke="#C3372B" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 21h16" stroke="#14161A" stroke-width="1.8" stroke-linecap="round"/></svg>
         </div>
-        <h3 class="font-display text-[1.28rem] font-extrabold">Blowout, no spare</h3>
-        <p class="mt-2.5 text-[.97rem] leading-relaxed text-char/78">No spare in the trunk is not a dead end. He carries new and used tires in common sizes and fits one on the spot.</p>
+        <h3 class="font-display text-[1.02rem] sm:text-[1.28rem] font-extrabold">Blowout, no spare</h3>
+        <p class="mt-2 text-[.86rem] sm:text-[.97rem] leading-relaxed text-char/78">No spare in the trunk is not a dead end. He carries new and used tires in common sizes and fits one on the spot.</p>
       </div>
       <!-- 3 -->
-      <div class="card p-7" data-reveal>
-        <div class="ico mb-5 grid h-11 w-11 place-items-center rounded-xl bg-ink/6">
+      <div class="card p-5 sm:p-7" data-reveal>
+        <div class="ico mb-4 grid h-10 w-10 sm:mb-5 sm:h-11 sm:w-11 place-items-center rounded-xl bg-ink/6">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M12 3.4s5.4 5.5 5.4 9a5.4 5.4 0 11-10.8 0c0-3.5 5.4-9 5.4-9z" stroke="#C3372B" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.6 13.6a2.4 2.4 0 002.4 2.4" stroke="#14161A" stroke-width="1.7" stroke-linecap="round"/></svg>
         </div>
-        <h3 class="font-display text-[1.28rem] font-extrabold">The slow leak you keep airing up</h3>
-        <p class="mt-2.5 text-[.97rem] leading-relaxed text-char/78">Stop feeding quarters to the air machine. A proper plug or patch, done right, and the tire holds.</p>
+        <h3 class="font-display text-[1.02rem] sm:text-[1.28rem] font-extrabold">The slow leak you keep airing up</h3>
+        <p class="mt-2 text-[.86rem] sm:text-[.97rem] leading-relaxed text-char/78">Stop feeding quarters to the air machine. A proper plug or patch, done right, and the tire holds.</p>
       </div>
       <!-- 4 -->
-      <div class="card p-7" data-reveal>
-        <div class="ico mb-5 grid h-11 w-11 place-items-center rounded-xl bg-ink/6">
+      <div class="card p-5 sm:p-7" data-reveal>
+        <div class="ico mb-4 grid h-10 w-10 sm:mb-5 sm:h-11 sm:w-11 place-items-center rounded-xl bg-ink/6">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M12 20.5V9.5M12 9.5l-3 3M12 9.5l3 3" stroke="#C3372B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 4.5h10l-1.4 4H8.4z" stroke="#14161A" stroke-width="1.7" stroke-linejoin="round"/></svg>
         </div>
-        <h3 class="font-display text-[1.28rem] font-extrabold">A nail in the tread</h3>
-        <p class="mt-2.5 text-[.97rem] leading-relaxed text-char/78">If it can be repaired, he repairs it instead of selling you a tire. If it can't, he tells you straight.</p>
+        <h3 class="font-display text-[1.02rem] sm:text-[1.28rem] font-extrabold">A nail in the tread</h3>
+        <p class="mt-2 text-[.86rem] sm:text-[.97rem] leading-relaxed text-char/78">If it can be repaired, he repairs it instead of selling you a tire. If it can't, he tells you straight.</p>
       </div>
       <!-- 5 -->
-      <div class="card p-7" data-reveal>
-        <div class="ico mb-5 grid h-11 w-11 place-items-center rounded-xl bg-ink/6">
+      <div class="card p-5 sm:p-7" data-reveal>
+        <div class="ico mb-4 grid h-10 w-10 sm:mb-5 sm:h-11 sm:w-11 place-items-center rounded-xl bg-ink/6">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.6" stroke="#C3372B" stroke-width="1.7"/><path d="M12 7.6V12l3 1.8" stroke="#14161A" stroke-width="1.8" stroke-linecap="round"/></svg>
         </div>
-        <h3 class="font-display text-[1.28rem] font-extrabold">2 a.m. in a parking lot</h3>
-        <p class="mt-2.5 text-[.97rem] leading-relaxed text-char/78">Open 24 hours means 24 hours. Late shift, early flight, holiday weekend, the phone still gets picked up.</p>
+        <h3 class="font-display text-[1.02rem] sm:text-[1.28rem] font-extrabold">2 a.m. in a parking lot</h3>
+        <p class="mt-2 text-[.86rem] sm:text-[.97rem] leading-relaxed text-char/78">Open 24 hours means 24 hours. Late shift, early flight, holiday weekend, the phone still gets picked up.</p>
       </div>
       <!-- 6 -->
-      <div class="card p-7" data-reveal>
-        <div class="ico mb-5 grid h-11 w-11 place-items-center rounded-xl bg-ink/6">
+      <div class="card p-5 sm:p-7" data-reveal>
+        <div class="ico mb-4 grid h-10 w-10 sm:mb-5 sm:h-11 sm:w-11 place-items-center rounded-xl bg-ink/6">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M4 8h11M4 12h16M4 16h8" stroke="#C3372B" stroke-width="1.8" stroke-linecap="round"/><circle cx="18.4" cy="8" r="2.2" stroke="#14161A" stroke-width="1.7"/></svg>
         </div>
-        <h3 class="font-display text-[1.28rem] font-extrabold">Nobody has your size</h3>
-        <p class="mt-2.5 text-[.97rem] leading-relaxed text-char/78">Give him the numbers off the sidewall when you call. He shows up with the correct size, not a close-enough one.</p>
+        <h3 class="font-display text-[1.02rem] sm:text-[1.28rem] font-extrabold">Nobody has your size</h3>
+        <p class="mt-2 text-[.86rem] sm:text-[.97rem] leading-relaxed text-char/78">Give him the numbers off the sidewall when you call. He shows up with the correct size, not a close-enough one.</p>
       </div>
     </div>
   </div>
@@ -314,7 +314,7 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
 <div class="rule mx-auto max-w-[220px]"></div>
 
 <!-- ============ HOW IT WORKS ============ -->
-<section id="how" class="py-24 sm:py-32">
+<section id="how" class="py-11 sm:py-28">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="grid gap-14 lg:grid-cols-[minmax(0,.86fr)_minmax(0,1.14fr)] lg:gap-20">
       <div data-reveal>
@@ -327,7 +327,7 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
           tires, the jack, the mounting gear and the balancer. That is the whole idea: the shop
           drives to the car instead of the car limping to the shop.
         </p>
-        <div class="mt-9 flex flex-wrap gap-3">
+        <div class="mt-7 sm:mt-9 flex flex-wrap gap-3">
           <a href="tel:+19019073576" class="btn btn-primary px-7 py-4 text-[15px]">Call (901) 907-3576</a>
           <a href="sms:+19019073576" class="btn btn-ghost px-7 py-4 text-[15px]">Text instead</a>
         </div>
@@ -335,21 +335,21 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
       </div>
 
       <div class="space-y-5">
-        <div class="card flex gap-6 p-7 sm:p-8" data-reveal>
+        <div class="card flex gap-4 p-5 sm:gap-6 sm:p-8" data-reveal>
           <span class="numstep text-[clamp(2.6rem,7vw,3.6rem)]">01</span>
           <div>
             <h3 class="font-display text-[1.35rem] font-extrabold">Call or text where you are</h3>
             <p class="mt-2.5 text-[.99rem] leading-relaxed text-char/78">Drop a pin, or just say the cross streets. Read him the tire size off the sidewall if you can see it, and say whether the car is drivable.</p>
           </div>
         </div>
-        <div class="card flex gap-6 p-7 sm:p-8" data-reveal>
+        <div class="card flex gap-4 p-5 sm:gap-6 sm:p-8" data-reveal>
           <span class="numstep text-[clamp(2.6rem,7vw,3.6rem)]">02</span>
           <div>
             <h3 class="font-display text-[1.35rem] font-extrabold">He loads the tire and rolls</h3>
             <p class="mt-2.5 text-[.99rem] leading-relaxed text-char/78">You get a straight answer on price and an honest arrival window before he leaves, not after he is standing at your bumper.</p>
           </div>
         </div>
-        <div class="card flex gap-6 p-7 sm:p-8" data-reveal>
+        <div class="card flex gap-4 p-5 sm:gap-6 sm:p-8" data-reveal>
           <span class="numstep text-[clamp(2.6rem,7vw,3.6rem)]">03</span>
           <div>
             <h3 class="font-display text-[1.35rem] font-extrabold">Mounted, balanced, back on the road</h3>
@@ -362,12 +362,12 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
 </section>
 
 <!-- ============ TIRES + WEBGL WHEEL ============ -->
-<section id="tires" class="relative overflow-hidden border-y border-ink/8 bg-cream py-24 sm:py-32">
+<section id="tires" class="relative overflow-hidden border-y border-ink/8 bg-cream py-11 sm:py-28">
   <div class="blob" style="width:480px;height:480px;background:radial-gradient(circle,rgba(229,161,58,.18),transparent 62%);bottom:-180px;left:-140px;animation:drift2 27s ease-in-out infinite"></div>
   <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
     <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
 
-      <div id="wheelwrap" class="order-2 aspect-square w-full max-w-[440px] justify-self-center lg:order-1" data-reveal>
+      <div id="wheelwrap" class="order-2 aspect-square w-full max-w-[248px] sm:max-w-[440px] justify-self-center lg:order-1" data-reveal>
         <canvas id="wheel" aria-hidden="true"></canvas>
         <noscript><div class="wheel-fallback text-steel">Tire service</div></noscript>
       </div>
@@ -381,13 +381,13 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
           Not every flat needs a new tire, and not every budget wants one. You get told which
           situation you're actually in, and then the work gets done on the spot.
         </p>
-        <div class="mt-9 grid gap-x-8 gap-y-4 sm:grid-cols-2">
-          <div class="flex items-start gap-3 border-b border-ink/8 pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">New tires</div><div class="text-[.9rem] text-char/70">Fitted at your location</div></div></div>
-          <div class="flex items-start gap-3 border-b border-ink/8 pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Quality used tires</div><div class="text-[.9rem] text-char/70">When the budget matters</div></div></div>
-          <div class="flex items-start gap-3 border-b border-ink/8 pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Plugs</div><div class="text-[.9rem] text-char/70">Fast fix for a clean puncture</div></div></div>
-          <div class="flex items-start gap-3 border-b border-ink/8 pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Patches</div><div class="text-[.9rem] text-char/70">Sealed from the inside</div></div></div>
-          <div class="flex items-start gap-3 border-b border-ink/8 pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Mounting</div><div class="text-[.9rem] text-char/70">Off the rim and back on</div></div></div>
-          <div class="flex items-start gap-3 border-b border-ink/8 pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Balancing</div><div class="text-[.9rem] text-char/70">No shake at highway speed</div></div></div>
+        <div class="mt-7 grid grid-cols-2 gap-x-5 gap-y-3 sm:mt-9 sm:gap-x-8 sm:gap-y-4">
+          <div class="flex items-start gap-2.5 border-b border-ink/8 pb-3 sm:gap-3 sm:pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">New tires</div><div class="text-[.82rem] sm:text-[.9rem] text-char/70">Fitted at your location</div></div></div>
+          <div class="flex items-start gap-2.5 border-b border-ink/8 pb-3 sm:gap-3 sm:pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Quality used tires</div><div class="text-[.82rem] sm:text-[.9rem] text-char/70">When the budget matters</div></div></div>
+          <div class="flex items-start gap-2.5 border-b border-ink/8 pb-3 sm:gap-3 sm:pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Plugs</div><div class="text-[.82rem] sm:text-[.9rem] text-char/70">Fast fix for a clean puncture</div></div></div>
+          <div class="flex items-start gap-2.5 border-b border-ink/8 pb-3 sm:gap-3 sm:pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Patches</div><div class="text-[.82rem] sm:text-[.9rem] text-char/70">Sealed from the inside</div></div></div>
+          <div class="flex items-start gap-2.5 border-b border-ink/8 pb-3 sm:gap-3 sm:pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Mounting</div><div class="text-[.82rem] sm:text-[.9rem] text-char/70">Off the rim and back on</div></div></div>
+          <div class="flex items-start gap-2.5 border-b border-ink/8 pb-3 sm:gap-3 sm:pb-4"><svg class="mt-1 flex-none" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4.5 12.6l5 5L19.5 6.6" stroke="#C3372B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="font-semibold">Balancing</div><div class="text-[.82rem] sm:text-[.9rem] text-char/70">No shake at highway speed</div></div></div>
         </div>
         <p class="mt-8 text-[.95rem] text-steel">Have the size ready when you call, for example 225/65R17. It is printed on the tire sidewall.</p>
       </div>
@@ -396,7 +396,7 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
 </section>
 
 <!-- ============ PROOF ============ -->
-<section id="proof" class="py-24 sm:py-32">
+<section id="proof" class="py-11 sm:py-28">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end" data-reveal>
       <div class="max-w-xl">
@@ -417,33 +417,30 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
       </div>
     </div>
 
-    <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      <blockquote class="card p-8" data-reveal>
+    <div class="mt-7 grid gap-4 sm:mt-14 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <blockquote class="card p-6 sm:p-8" data-reveal>
         <p class="font-display text-[1.32rem] font-semibold leading-snug">"AMAZING service and you can't beat the price."</p>
         <footer class="mt-6 text-[.88rem] font-semibold uppercase tracking-[.14em] text-steel">Tyler Sexton · Google review</footer>
       </blockquote>
-      <blockquote class="card p-8" data-reveal>
+      <blockquote class="card p-6 sm:p-8" data-reveal>
         <p class="font-display text-[1.32rem] font-semibold leading-snug">"Fast, communicative, and unbeatable prices."</p>
         <footer class="mt-6 text-[.88rem] font-semibold uppercase tracking-[.14em] text-steel">Dara Gonzales · Google review</footer>
       </blockquote>
-      <blockquote class="card p-8" data-reveal>
+      <blockquote class="card p-6 sm:p-8" data-reveal>
         <p class="text-[1.06rem] leading-relaxed text-char/85">"Responded to my call quickly. Was able to come and fix my tire about an hour later."</p>
         <footer class="mt-6 text-[.88rem] font-semibold uppercase tracking-[.14em] text-steel">Shane Wilson · Google review</footer>
       </blockquote>
-      <blockquote class="card p-8 md:col-span-2" data-reveal>
+      <blockquote class="card p-6 sm:p-8 md:col-span-2" data-reveal>
         <p class="text-[1.12rem] leading-relaxed text-char/85">"This was a great customer experience. I called the man at 7:30pm and got my tire changed by 8pm. He came straight to me and I will definitely spread this news and the phone number to my coworkers. Thanks MJ."</p>
         <footer class="mt-6 text-[.88rem] font-semibold uppercase tracking-[.14em] text-steel">Verified Google reviewer</footer>
       </blockquote>
-      <blockquote class="card p-8" data-reveal>
-        <p class="text-[1.06rem] leading-relaxed text-char/85">"Immediate communication, showed up as quickly as possible with estimated time of arrival, respectful, really good prices, fast service. I would highly recommend him."</p>
-        <footer class="mt-6 text-[.88rem] font-semibold uppercase tracking-[.14em] text-steel">Verified Google reviewer</footer>
-      </blockquote>
+      
     </div>
   </div>
 </section>
 
 <!-- ============ SERVICE AREA + MAP ============ -->
-<section id="area" class="border-y border-ink/8 bg-sand/50 py-24 sm:py-32">
+<section id="area" class="border-y border-ink/8 bg-sand/50 py-11 sm:py-28">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-16">
       <div data-reveal>
@@ -456,7 +453,7 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
           to. Memphis, Cordova, Bartlett, Collierville and the surrounding Shelby County area.
         </p>
 
-        <div class="mt-9 grid gap-4 sm:grid-cols-2">
+        <div class="mt-6 grid grid-cols-2 gap-3 sm:mt-9 sm:gap-4">
           <div class="rounded-2xl border border-ink/10 bg-cream p-6">
             <div class="text-[11px] font-semibold uppercase tracking-[.2em] text-steel">Hours</div>
             <div class="mt-2 font-display text-[1.5rem] font-extrabold">Open 24 hours</div>
@@ -479,7 +476,7 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
         <iframe
           src="https://www.google.com/maps?q=Cordova%2C%20TN%2038016&output=embed"
           title="Service area map — Memphis and Cordova, Tennessee"
-          width="100%" height="480" style="border:0;display:block;min-height:420px"
+          width="100%" height="360" style="border:0;display:block;height:250px" class="sm:!h-[440px]"
           loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
     </div>
@@ -511,7 +508,7 @@ h1,h2,h3,.display,.grad-text{line-height:1.1}
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer class="bg-char py-16 text-cream/72">
+<footer class="bg-char py-9 sm:py-16 text-cream/72">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <div class="grid gap-10 md:grid-cols-3">
       <div>
