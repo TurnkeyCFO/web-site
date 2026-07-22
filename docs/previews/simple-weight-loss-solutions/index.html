@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<!--
+  Simple Weight Loss Solutions - Pembroke Pines, FL
+  DRAFT prospect build by Turnkey Web. Preview only.
+
+  Art direction: "Clinical Calm" - light-luxury wellness. Cream/bone base, deep clinical
+  green, seafoam, scarce warm gold. Fraunces (editorial serif) + Plus Jakarta Sans.
+  Deliberately diverged from recent trades/service builds (mj-mobile-tire, brite-touch,
+  cartwright-body-shop) which lean industrial/dark-accent + Space Grotesk.
+
+  Hero: AI-generated cinematic moving asset (Higgsfield nano_banana_pro still ->
+  Kling 3.0 turbo image-to-video, ~9.5 credits), self-hosted at assets/hero.mp4.
+  Showpiece: hand-written Three.js GLSL displaced ripple mesh on a LIGHT canvas.
+
+  All business facts researched and real. No fabricated reviews, names, or figures.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Simple Weight Loss Solutions | Physician-Supervised Weight Loss in Pembroke Pines, FL</title>
+<meta name="description" content="Physician-supervised, personalized weight loss with one-on-one counseling in Pembroke Pines, FL. No exercise required, no prepackaged foods. Led by Dr. Michael S. Hirsch, DO. Call (954) 432-1485.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/simple-weight-loss-solutions/">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Simple Weight Loss Solutions | Pembroke Pines, FL">
+<meta property="og:description" content="Physician-supervised, personalized weight loss with one-on-one counseling. No exercise required, no prepackaged foods.">
+<meta property="og:image" content="https://turnkeyweb.org/previews/simple-weight-loss-solutions/assets/hero.jpg">
+<meta property="og:url" content="https://turnkeyweb.org/previews/simple-weight-loss-solutions/">
+<meta name="theme-color" content="#FAF7F2">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+
+<style>
+:root{
+  --cream:#FAF7F2;
+  --paper:#FFFFFF;
+  --mint:#E9F2ED;
+  --seafoam:#8FC5B2;
+  --green:#3E9B7C;
+  --deep:#1E5445;
+  --forest:#123B31;
+  --gold:#B8862F;
+  --ink:#12201C;
+  --muted:#4E625B;
+  --line:#DFD8CD;
+}
+*{-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:auto;scroll-padding-top:96px}
+body{
+  background:var(--cream); color:var(--ink);
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+.dsp{font-family:'Fraunces',Georgia,serif; font-optical-sizing:auto;}
+.eyebrow{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600;color:var(--deep)}
+
+/* ---------- descender safety (HARD) ---------- */
+h1,h2,h3,h4,.dsp{line-height:1.12;padding-bottom:.06em}
+.h-xl{font-size:clamp(2.7rem,7vw,5.6rem);line-height:1.08;padding-bottom:.1em;letter-spacing:-.022em}
+.h-lg{font-size:clamp(2.1rem,4.6vw,3.7rem);line-height:1.12;padding-bottom:.09em;letter-spacing:-.018em}
+.h-md{font-size:clamp(1.45rem,2.5vw,2.1rem);line-height:1.18;padding-bottom:.08em;letter-spacing:-.012em}
+
+/* ---------- gradient shimmer ---------- */
+.grad-text{
+  background:linear-gradient(100deg,var(--forest) 0%,var(--deep) 22%,var(--green) 45%,var(--gold) 62%,var(--deep) 82%,var(--forest) 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  animation:shimmer 9s linear infinite;
+  line-height:1.15;padding-bottom:.1em;display:inline-block;
+}
+@keyframes shimmer{0%{background-position:0% 50%}100%{background-position:220% 50%}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--mint)}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;will-change:transform}
+.hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(100deg, rgba(250,247,242,.97) 0%, rgba(250,247,242,.93) 26%, rgba(250,247,242,.72) 46%, rgba(250,247,242,.18) 68%, rgba(250,247,242,0) 88%),
+    linear-gradient(to top, rgba(250,247,242,.92) 0%, rgba(250,247,242,.35) 22%, rgba(250,247,242,0) 52%);
+}
+.hero-vign{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(120% 90% at 70% 30%, transparent 40%, rgba(18,59,49,.10) 100%)}
+.hero-inner{position:relative;z-index:3;width:100%}
+.hero h1{text-shadow:0 1px 0 rgba(255,255,255,.55)}
+
+/* ---------- grain ---------- */
+.grain::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:2;opacity:.045;
+  background-image:radial-gradient(circle at 1px 1px, #123B31 1px, transparent 0);background-size:3px 3px}
+
+/* ---------- reveals ---------- */
+[data-reveal]{opacity:0;transform:translateY(30px);will-change:opacity,transform}
+[data-reveal].done{will-change:auto}
+[data-img]{clip-path:inset(0 0 100% 0);transition:clip-path 1.25s cubic-bezier(.16,1,.3,1)}
+[data-img].in{clip-path:inset(0 0 0% 0)}
+
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee-track{display:flex;gap:3rem;width:max-content;animation:scrollX 42s linear infinite;align-items:center}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- buttons ---------- */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:.6rem;
+  border-radius:999px;font-weight:600;letter-spacing:.01em;transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s,background .35s,color .35s}
+.btn-primary{background:var(--deep);color:#F6FBF8;padding:1rem 1.9rem;box-shadow:0 10px 26px -12px rgba(18,59,49,.55)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 38px -14px rgba(18,59,49,.6)}
+.btn-primary::after{content:'';position:absolute;top:0;left:0;width:45%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);
+  transform:translateX(-160%) skewX(-18deg);transition:transform .95s cubic-bezier(.16,1,.3,1)}
+.btn-primary:hover::after{transform:translateX(320%) skewX(-18deg)}
+.btn-ghost{border:1.5px solid var(--deep);color:var(--forest);padding:.94rem 1.7rem;background:rgba(255,255,255,.55)}
+.btn-ghost:hover{background:var(--deep);color:#F6FBF8;transform:translateY(-3px)}
+
+/* ---------- cards / rows ---------- */
+.row-svc{position:relative;border-top:1px solid var(--line);transition:background .5s}
+.row-svc:last-child{border-bottom:1px solid var(--line)}
+.row-svc::before{content:'';position:absolute;left:0;top:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--deep),var(--gold));transition:width .7s cubic-bezier(.16,1,.3,1)}
+.row-svc:hover::before{width:100%}
+.row-svc:hover{background:rgba(233,242,237,.55)}
+.row-svc .arrow{transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .4s;opacity:.35}
+.row-svc:hover .arrow{transform:translateX(8px);opacity:1}
+
+.qcard{background:var(--paper);border:1px solid var(--line);border-radius:20px;transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .55s,border-color .5s}
+.qcard:hover{transform:translateY(-6px);box-shadow:0 24px 48px -28px rgba(18,59,49,.4);border-color:var(--seafoam)}
+
+/* ---------- program rail (signature interaction) ---------- */
+.rail{position:relative;height:3px;background:var(--line);border-radius:3px}
+.rail-fill{position:absolute;left:0;top:0;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--seafoam),var(--green),var(--deep));transition:width .7s cubic-bezier(.16,1,.3,1)}
+.knob{position:absolute;top:50%;width:15px;height:15px;border-radius:50%;background:var(--paper);border:2.5px solid var(--line);
+  transform:translate(-50%,-50%);cursor:pointer;transition:border-color .45s,background .45s,transform .45s cubic-bezier(.16,1,.3,1);z-index:2}
+.knob:hover{transform:translate(-50%,-50%) scale(1.25)}
+.knob.on{border-color:var(--deep);background:var(--deep)}
+.knob.cur{border-color:var(--deep);background:var(--paper);transform:translate(-50%,-50%) scale(1.5);box-shadow:0 0 0 5px rgba(62,155,124,.18)}
+.stage-label{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;font-weight:600;color:var(--muted);cursor:pointer;transition:color .4s}
+.stage-label.cur{color:var(--forest)}
+.stage-pane{display:none}
+.stage-pane.cur{display:block;animation:paneIn .6s cubic-bezier(.16,1,.3,1)}
+@keyframes paneIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---------- webgl band ---------- */
+.wgl-wrap{position:relative;overflow:hidden;background:var(--mint)}
+#wgl{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.wgl-poster{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+
+/* ---------- misc ---------- */
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2.3s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
+.ul-grow{position:relative}
+.ul-grow::after{content:'';position:absolute;left:0;bottom:-4px;height:1.5px;width:0;background:linear-gradient(90deg,var(--deep),var(--gold));transition:width .5s cubic-bezier(.16,1,.3,1)}
+.ul-grow:hover::after{width:100%}
+.bridge{height:1px;max-width:190px;margin:0 auto;background:linear-gradient(90deg,transparent,rgba(30,84,69,.35),transparent)}
+.mark{display:inline-flex;align-items:center;gap:.55rem}
+.mark-badge{width:38px;height:38px;border-radius:11px;background:linear-gradient(140deg,var(--deep),var(--forest));display:grid;place-items:center;flex:none;box-shadow:0 6px 16px -8px rgba(18,59,49,.6)}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
+.b1{width:460px;height:460px;background:radial-gradient(circle,rgba(143,197,178,.55),transparent 62%);animation:drift1 26s ease-in-out infinite}
+.b2{width:380px;height:380px;background:radial-gradient(circle,rgba(184,134,47,.28),transparent 62%);animation:drift2 31s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(44px,-34px) scale(1.08)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-38px,30px) scale(1.1)}}
+
+.mapframe{border:0;width:100%;height:100%;display:block;filter:saturate(.94) contrast(1.02)}
+
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none}
+@media(max-width:880px){
+  .stickybar{display:grid;grid-template-columns:1fr 1fr}
+  .blob{filter:blur(70px);opacity:.75}
+  body{padding-bottom:60px}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style="background:rgba(250,247,242,.78);backdrop-filter:blur(14px);border-bottom:1px solid transparent">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-7 h-[68px] sm:h-[76px] flex items-center justify-between gap-4">
+    <a href="#top" class="mark" aria-label="Simple Weight Loss Solutions home">
+      <span class="mark-badge">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 15.5c3.2-4.4 6.1-6.6 8.7-6.6 2.1 0 3.5 1.2 3.5 3 0 1.7-1.2 2.9-2.8 2.9-1.2 0-2-.6-2-1.5 0-.7.5-1.2 1.1-1.2" stroke="#DCEFE6" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M3 19.6h18" stroke="#B8862F" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="18.4" cy="6.6" r="2" stroke="#8FC5B2" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span class="leading-none">
+        <span class="dsp block text-[15px] sm:text-[17px] font-semibold tracking-tight" style="color:var(--forest);padding-bottom:.02em">Simple Weight Loss</span>
+        <span class="block text-[9px] sm:text-[10px] font-semibold tracking-[.28em] uppercase" style="color:var(--gold)">Solutions</span>
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 text-[14px] font-medium" style="color:var(--muted)">
+      <a href="#program" class="ul-grow hover:text-[color:var(--forest)] transition-colors">The Program</a>
+      <a href="#included" class="ul-grow hover:text-[color:var(--forest)] transition-colors">What's Included</a>
+      <a href="#doctor" class="ul-grow hover:text-[color:var(--forest)] transition-colors">Dr. Hirsch</a>
+      <a href="#patients" class="ul-grow hover:text-[color:var(--forest)] transition-colors">Patients</a>
+      <a href="#visit" class="ul-grow hover:text-[color:var(--forest)] transition-colors">Visit</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="tel:+19544321485" class="hidden sm:flex items-center gap-2 text-[14px] font-semibold" style="color:var(--forest)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-2 1.4a12.4 12.4 0 0 0 6.2 6.2l1.4-2 3.8 1.5v3a2 2 0 0 1-2.2 2A17.2 17.2 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        (954) 432-1485
+      </a>
+      <a href="tel:+19544321485" class="btn btn-primary !py-2.5 !px-5 text-[13.5px]">Book a Consult</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="hero grain">
+  <video class="hero-bg" autoplay muted loop playsinline preload="auto" poster="assets/hero.jpg" aria-hidden="true">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+  <div class="hero-vign"></div>
+
+  <div class="hero-inner max-w-[1240px] mx-auto px-5 sm:px-7 pt-[130px] sm:pt-[150px] pb-14 sm:pb-20">
+    <div class="max-w-[760px]">
+      <div class="flex items-center gap-2.5 mb-6" data-reveal>
+        <span class="dot"></span>
+        <span class="eyebrow">Pembroke Pines, Florida &middot; Established 2017</span>
+      </div>
+
+      <h1 class="dsp h-xl font-light" style="color:var(--forest)" data-reveal>
+        Losing the weight<br>
+        should be the <em class="grad-text font-medium" style="font-style:italic">simple</em> part.
+      </h1>
+
+      <p class="mt-7 text-[17px] sm:text-[19.5px] leading-[1.65] max-w-[560px] font-light" style="color:var(--muted)" data-reveal>
+        A personalized, physician-supervised weight loss program with one-on-one counseling &mdash;
+        built inside a family practice, not a franchise. No exercise required. No prepackaged foods.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3.5" data-reveal>
+        <a href="tel:+19544321485" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-2 1.4a12.4 12.4 0 0 0 6.2 6.2l1.4-2 3.8 1.5v3a2 2 0 0 1-2.2 2A17.2 17.2 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          Call (954) 432-1485
+        </a>
+        <a href="#program" class="btn btn-ghost">See how it works</a>
+      </div>
+
+      <div class="mt-11 sm:mt-14 grid grid-cols-3 gap-5 sm:gap-8 max-w-[540px] pt-7" style="border-top:1px solid rgba(30,84,69,.18)" data-reveal>
+        <div>
+          <div class="dsp text-[26px] sm:text-[34px] font-medium" style="color:var(--forest)"><span data-count="35" data-suffix="+">0</span></div>
+          <div class="text-[11.5px] mt-1 leading-snug font-medium" style="color:var(--muted)">Years Dr.&nbsp;Hirsch<br>has practiced</div>
+        </div>
+        <div>
+          <div class="dsp text-[26px] sm:text-[34px] font-medium" style="color:var(--forest)"><span data-count="1" data-suffix=":1">0</span></div>
+          <div class="text-[11.5px] mt-1 leading-snug font-medium" style="color:var(--muted)">Counseling, every<br>single visit</div>
+        </div>
+        <div>
+          <div class="dsp text-[26px] sm:text-[34px] font-medium" style="color:var(--forest)"><span data-count="2017" data-raw="1">0</span></div>
+          <div class="text-[11.5px] mt-1 leading-snug font-medium" style="color:var(--muted)">Serving Broward<br>County since</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee py-5 sm:py-6" style="background:var(--forest)">
+  <div class="marquee-track" id="mq">
+    <!-- filled by JS (duplicated for seamless loop) -->
+  </div>
+</div>
+
+<!-- ============ STATEMENT ============ -->
+<section class="relative py-24 sm:py-36 overflow-hidden">
+  <div class="blob b1" style="top:-160px;right:-120px"></div>
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-7 relative z-10">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-3">
+        <span class="eyebrow" data-reveal>The idea</span>
+        <div class="dsp mt-4 text-[62px] sm:text-[86px] font-light leading-none" style="color:rgba(30,84,69,.16);padding-bottom:.06em" data-reveal>01</div>
+      </div>
+      <div class="lg:col-span-9">
+        <h2 class="dsp h-lg font-light" style="color:var(--forest)" data-reveal>
+          Dr. Hirsch tried the program himself. It worked. So he brought it into his practice.
+        </h2>
+        <div class="mt-8 grid sm:grid-cols-2 gap-8 sm:gap-12 max-w-[880px]">
+          <p class="text-[16.5px] leading-[1.75] font-light" style="color:var(--muted)" data-reveal>
+            Most weight loss programs hand you a box of food and a login. This one starts with a physician
+            who has practiced family medicine in Broward County for more than three decades, and who
+            watched the program work before he ever offered it to a patient.
+          </p>
+          <p class="text-[16.5px] leading-[1.75] font-light" style="color:var(--muted)" data-reveal>
+            Since 2017 he has offered it to his own patients and to anyone else in Pembroke Pines carrying
+            weight they want off. You eat real food you buy yourself. You sit down with someone one-on-one.
+            And your health is watched the whole way through.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bridge"></div>
+
+<!-- ============ PROGRAM — signature interaction ============ -->
+<section id="program" class="py-24 sm:py-32" style="background:var(--paper)">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-7">
+    <div class="max-w-[620px]">
+      <span class="eyebrow" data-reveal>How it works</span>
+      <h2 class="dsp h-lg font-light mt-4" style="color:var(--forest)" data-reveal>
+        Four stages, <em class="grad-text font-medium" style="font-style:italic">one</em> conversation at a time.
+      </h2>
+      <p class="mt-5 text-[16.5px] leading-relaxed font-light" style="color:var(--muted)" data-reveal>
+        Drag the marker or tap a stage to see what happens at each point of the program.
+      </p>
+    </div>
+
+    <!-- rail -->
+    <div class="mt-14 sm:mt-16" data-reveal>
+      <div class="relative select-none" id="railwrap" style="padding:26px 0">
+        <div class="rail">
+          <div class="rail-fill" id="railfill" style="width:0%"></div>
+        </div>
+        <div class="knob on cur" data-stage="0" style="left:0%"   role="button" tabindex="0" aria-label="Stage 1"></div>
+        <div class="knob"        data-stage="1" style="left:33.333%" role="button" tabindex="0" aria-label="Stage 2"></div>
+        <div class="knob"        data-stage="2" style="left:66.666%" role="button" tabindex="0" aria-label="Stage 3"></div>
+        <div class="knob"        data-stage="3" style="left:100%" role="button" tabindex="0" aria-label="Stage 4"></div>
+      </div>
+      <div class="grid grid-cols-4 gap-2 mt-1">
+        <div class="stage-label cur text-left"   data-stage="0">Consult</div>
+        <div class="stage-label text-center sm:text-left" data-stage="1">Your plan</div>
+        <div class="stage-label text-center sm:text-left" data-stage="2">Check-ins</div>
+        <div class="stage-label text-right"      data-stage="3">Keep it off</div>
+      </div>
+    </div>
+
+    <!-- panes -->
+    <div class="mt-12 sm:mt-14 min-h-[240px]">
+      <div class="stage-pane cur" data-pane="0">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+          <div class="lg:col-span-5">
+            <div class="dsp text-[15px] tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Stage One</div>
+            <h3 class="dsp h-md font-light mt-3" style="color:var(--forest)">You sit down with the doctor.</h3>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-[16.5px] leading-[1.8] font-light" style="color:var(--muted)">
+              The first visit is a real medical consult, not an intake form. Dr. Hirsch reviews your history,
+              what you have already tried, and what has gotten in the way &mdash; then tells you honestly whether
+              this program is the right fit for you. If it is not, he will say so.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-pane" data-pane="1">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+          <div class="lg:col-span-5">
+            <div class="dsp text-[15px] tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Stage Two</div>
+            <h3 class="dsp h-md font-light mt-3" style="color:var(--forest)">A plan built around your life.</h3>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-[16.5px] leading-[1.8] font-light" style="color:var(--muted)">
+              Your plan is personalized, and it uses real food you buy at your own grocery store. There are no
+              prepackaged meals to order and no gym membership to keep up with. The program is designed to work
+              without an exercise requirement, so a demanding job or a bad knee does not end it in week two.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-pane" data-pane="2">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+          <div class="lg:col-span-5">
+            <div class="dsp text-[15px] tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Stage Three</div>
+            <h3 class="dsp h-md font-light mt-3" style="color:var(--forest)">Someone in your corner, on a schedule.</h3>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-[16.5px] leading-[1.8] font-light" style="color:var(--muted)">
+              One-on-one counseling is the part patients talk about most. You are checked on, encouraged, and
+              adjusted &mdash; and because this sits inside a family practice, supporting options like B12 shots
+              and lipotropic injections are available on site when they are appropriate for you.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-pane" data-pane="3">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+          <div class="lg:col-span-5">
+            <div class="dsp text-[15px] tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Stage Four</div>
+            <h3 class="dsp h-md font-light mt-3" style="color:var(--forest)">Long term, not just this month.</h3>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-[16.5px] leading-[1.8] font-light" style="color:var(--muted)">
+              The point of doing this with a physician is what comes after the weight comes off. Dr. Hirsch has
+              seen meaningful improvement in patients' overall health after the program, along with weight loss
+              that holds &mdash; and he is still your doctor when the program ends.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INCLUDED ============ -->
+<section id="included" class="py-24 sm:py-32 relative overflow-hidden">
+  <div class="blob b2" style="bottom:-120px;left:-100px"></div>
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-7 relative z-10">
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-end mb-12 sm:mb-16">
+      <div class="lg:col-span-7">
+        <span class="eyebrow" data-reveal>On offer</span>
+        <h2 class="dsp h-lg font-light mt-4" style="color:var(--forest)" data-reveal>
+          What the practice actually <em class="grad-text font-medium" style="font-style:italic">offers</em>.
+        </h2>
+      </div>
+      <div class="lg:col-span-5">
+        <p class="text-[15.5px] leading-relaxed font-light" style="color:var(--muted)" data-reveal>
+          The weight loss program is the front door. Behind it is a full family practice, which is why your
+          bloodwork, your allergies, and your primary care can all live under one roof.
+        </p>
+      </div>
+    </div>
+
+    <div id="svclist">
+      <!-- rows injected below in markup for crawlers -->
+      <a href="tel:+19544321485" class="row-svc grid grid-cols-[36px_1fr_28px] sm:grid-cols-[70px_1fr_1fr_28px] gap-4 sm:gap-8 items-center py-7 sm:py-9 px-1 sm:px-3" data-reveal>
+        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold)">01</span>
+        <span class="dsp text-[19px] sm:text-[25px] font-light" style="color:var(--forest)">Physician-supervised weight loss</span>
+        <span class="hidden sm:block text-[14.5px] leading-relaxed font-light" style="color:var(--muted)">A personalized program overseen by a board-certified family physician, start to finish.</span>
+        <span class="arrow justify-self-end" style="color:var(--deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.4-5.4M18 12l-5.4 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a href="tel:+19544321485" class="row-svc grid grid-cols-[36px_1fr_28px] sm:grid-cols-[70px_1fr_1fr_28px] gap-4 sm:gap-8 items-center py-7 sm:py-9 px-1 sm:px-3" data-reveal>
+        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold)">02</span>
+        <span class="dsp text-[19px] sm:text-[25px] font-light" style="color:var(--forest)">One-on-one counseling</span>
+        <span class="hidden sm:block text-[14.5px] leading-relaxed font-light" style="color:var(--muted)">Real conversations at each visit, with guidance and motivation when you need it most.</span>
+        <span class="arrow justify-self-end" style="color:var(--deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.4-5.4M18 12l-5.4 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a href="tel:+19544321485" class="row-svc grid grid-cols-[36px_1fr_28px] sm:grid-cols-[70px_1fr_1fr_28px] gap-4 sm:gap-8 items-center py-7 sm:py-9 px-1 sm:px-3" data-reveal>
+        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold)">03</span>
+        <span class="dsp text-[19px] sm:text-[25px] font-light" style="color:var(--forest)">B12 and lipotropic injections</span>
+        <span class="hidden sm:block text-[14.5px] leading-relaxed font-light" style="color:var(--muted)">Available on site as a supporting option when appropriate for your plan.</span>
+        <span class="arrow justify-self-end" style="color:var(--deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.4-5.4M18 12l-5.4 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a href="tel:+19544321485" class="row-svc grid grid-cols-[36px_1fr_28px] sm:grid-cols-[70px_1fr_1fr_28px] gap-4 sm:gap-8 items-center py-7 sm:py-9 px-1 sm:px-3" data-reveal>
+        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold)">04</span>
+        <span class="dsp text-[19px] sm:text-[25px] font-light" style="color:var(--forest)">Family medicine</span>
+        <span class="hidden sm:block text-[14.5px] leading-relaxed font-light" style="color:var(--muted)">Primary care for adults, with Dr. Hirsch accepting new patients and telehealth visits.</span>
+        <span class="arrow justify-self-end" style="color:var(--deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.4-5.4M18 12l-5.4 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a href="tel:+19544321485" class="row-svc grid grid-cols-[36px_1fr_28px] sm:grid-cols-[70px_1fr_1fr_28px] gap-4 sm:gap-8 items-center py-7 sm:py-9 px-1 sm:px-3" data-reveal>
+        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold)">05</span>
+        <span class="dsp text-[19px] sm:text-[25px] font-light" style="color:var(--forest)">Diagnostic &amp; preventative testing</span>
+        <span class="hidden sm:block text-[14.5px] leading-relaxed font-light" style="color:var(--muted)">Bloodwork and screening handled in the same office, so nothing gets lost between visits.</span>
+        <span class="arrow justify-self-end" style="color:var(--deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.4-5.4M18 12l-5.4 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a href="tel:+19544321485" class="row-svc grid grid-cols-[36px_1fr_28px] sm:grid-cols-[70px_1fr_1fr_28px] gap-4 sm:gap-8 items-center py-7 sm:py-9 px-1 sm:px-3" data-reveal>
+        <span class="dsp text-[15px] sm:text-[17px] font-medium" style="color:var(--gold)">06</span>
+        <span class="dsp text-[19px] sm:text-[25px] font-light" style="color:var(--forest)">Allergy testing</span>
+        <span class="hidden sm:block text-[14.5px] leading-relaxed font-light" style="color:var(--muted)">Offered through the family practice at the same Pembroke Pines location.</span>
+        <span class="arrow justify-self-end" style="color:var(--deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.4-5.4M18 12l-5.4 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+
+    <p class="mt-8 text-[13px] font-light" style="color:var(--muted)" data-reveal>
+      CareCredit financing is accepted. Individual results vary &mdash; ask Dr.&nbsp;Hirsch what is realistic for you.
+    </p>
+  </div>
+</section>
+
+<!-- ============ WEBGL BAND ============ -->
+<section class="wgl-wrap py-28 sm:py-40">
+  <div class="wgl-poster" style="background-image:url('assets/band.jpg');opacity:.55"></div>
+  <canvas id="wgl" aria-hidden="true"></canvas>
+  <div class="absolute inset-0 z-[1]" style="background:linear-gradient(90deg,rgba(250,247,242,.94) 0%,rgba(250,247,242,.82) 42%,rgba(250,247,242,.4) 76%,rgba(250,247,242,.2) 100%)"></div>
+  <div class="relative z-10 max-w-[1240px] mx-auto px-5 sm:px-7">
+    <div class="max-w-[720px]">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true" data-reveal><path d="M9.4 6.5C6.6 7.9 5 10.2 5 13.1c0 2.6 1.6 4.4 3.8 4.4 1.9 0 3.3-1.4 3.3-3.2 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.8.1.3-1.4 1.4-2.6 3-3.4l-1.9-1.4Zm8.2 0c-2.8 1.4-4.4 3.7-4.4 6.6 0 2.6 1.6 4.4 3.8 4.4 1.9 0 3.3-1.4 3.3-3.2 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.8.1.3-1.4 1.4-2.6 3-3.4l-1.9-1.4Z" fill="#B8862F"/></svg>
+      <blockquote class="dsp mt-6 text-[25px] sm:text-[38px] leading-[1.3] font-light" style="color:var(--forest);padding-bottom:.08em" data-reveal>
+        &ldquo;I have lost 34 lbs and have another 20 to go, but with the guidance and motivation
+        I receive from Liza at times when I most need it, has kept me going.&rdquo;
+      </blockquote>
+      <div class="mt-6 flex items-center gap-3" data-reveal>
+        <span style="width:26px;height:1px;background:var(--gold);display:block"></span>
+        <span class="text-[13.5px] font-semibold" style="color:var(--forest)">Barbie S.</span>
+        <span class="text-[13px] font-light" style="color:var(--muted)">&middot; Yelp review, July 2019</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOCTOR ============ -->
+<section id="doctor" class="py-24 sm:py-32" style="background:var(--paper)">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-7">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div class="lg:col-span-5">
+        <div class="relative max-w-[380px]" data-img>
+          <div class="absolute -inset-3 rounded-[26px]" style="background:linear-gradient(150deg,var(--mint),rgba(184,134,47,.16))"></div>
+          <div class="relative rounded-[22px] overflow-hidden" style="border:1px solid var(--line);background:var(--cream)">
+            <img src="assets/dr-hirsch.jpg" alt="Dr. Michael S. Hirsch, DO, family medicine physician in Pembroke Pines, Florida" width="380" height="380" loading="lazy" class="w-full h-auto block" style="image-rendering:auto">
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-7">
+        <span class="eyebrow" data-reveal>The physician</span>
+        <h2 class="dsp h-lg font-light mt-4" style="color:var(--forest)" data-reveal>Dr. Michael S. Hirsch, DO</h2>
+        <p class="mt-5 text-[16.5px] leading-[1.8] font-light" style="color:var(--muted)" data-reveal>
+          Dr. Hirsch is a family medicine physician in Pembroke Pines with more than 35 years in the
+          medical field. He graduated from Kansas City University College of Osteopathic Medicine in 1986,
+          is board certified by the American Osteopathic Board of Family Physicians, and is affiliated with
+          Memorial Hospital West. He speaks English and Spanish, and is accepting new patients.
+        </p>
+        <div class="mt-9 grid sm:grid-cols-3 gap-4">
+          <div class="qcard p-5" data-reveal>
+            <div class="dsp text-[27px] font-medium" style="color:var(--forest)"><span data-count="35" data-suffix="+">0</span></div>
+            <div class="text-[12.5px] mt-1.5 font-medium" style="color:var(--muted)">Years in the medical field</div>
+          </div>
+          <div class="qcard p-5" data-reveal>
+            <div class="dsp text-[27px] font-medium" style="color:var(--forest)"><span data-count="4" data-decimal="1">0</span><span class="text-[16px]" style="color:var(--muted)">&nbsp;/ 5</span></div>
+            <div class="text-[12.5px] mt-1.5 font-medium" style="color:var(--muted)">Across 41 Healthgrades ratings</div>
+          </div>
+          <div class="qcard p-5" data-reveal>
+            <div class="dsp text-[27px] font-medium" style="color:var(--forest)">DO</div>
+            <div class="text-[12.5px] mt-1.5 font-medium" style="color:var(--muted)">Board certified, AOBFP</div>
+          </div>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-2.5" data-reveal>
+          <span class="text-[12.5px] font-medium px-3.5 py-2 rounded-full" style="background:var(--mint);color:var(--forest)">Memorial Hospital West affiliated</span>
+          <span class="text-[12.5px] font-medium px-3.5 py-2 rounded-full" style="background:var(--mint);color:var(--forest)">English &amp; Spanish</span>
+          <span class="text-[12.5px] font-medium px-3.5 py-2 rounded-full" style="background:var(--mint);color:var(--forest)">Telehealth available</span>
+          <span class="text-[12.5px] font-medium px-3.5 py-2 rounded-full" style="background:var(--mint);color:var(--forest)">TopLine MD Alliance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bridge"></div>
+
+<!-- ============ PATIENTS ============ -->
+<section id="patients" class="py-24 sm:py-32">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-7">
+    <div class="max-w-[640px] mb-12 sm:mb-16">
+      <span class="eyebrow" data-reveal>In their words</span>
+      <h2 class="dsp h-lg font-light mt-4" style="color:var(--forest)" data-reveal>
+        What <em class="grad-text font-medium" style="font-style:italic">patients</em> say.
+      </h2>
+      <p class="mt-5 text-[15.5px] leading-relaxed font-light" style="color:var(--muted)" data-reveal>
+        Published reviews of the weight loss program and of Dr.&nbsp;Hirsch's practice, quoted as written.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+      <div class="qcard p-7 sm:p-8 flex flex-col" data-reveal>
+        <div class="flex gap-1 mb-5" aria-label="5 star review">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+        </div>
+        <p class="text-[15.5px] leading-[1.75] font-light flex-1" style="color:var(--ink)">
+          &ldquo;I toally recommend this weight loss program to anyone wanting to lose weight and change
+          their lives. Having struggled with my weight for many years I was skeptical to try yet another
+          weight loss program but I couldn't be happier with my results.&rdquo;
+        </p>
+        <div class="mt-6 pt-5" style="border-top:1px solid var(--line)">
+          <div class="text-[13.5px] font-semibold" style="color:var(--forest)">Barbie S.</div>
+          <div class="text-[12px] font-light mt-0.5" style="color:var(--muted)">Yelp review &middot; July 2019</div>
+        </div>
+      </div>
+
+      <div class="qcard p-7 sm:p-8 flex flex-col" data-reveal>
+        <div class="flex gap-1 mb-5" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+        </div>
+        <p class="text-[15.5px] leading-[1.75] font-light flex-1" style="color:var(--ink)">
+          &ldquo;Dr. Hirsch has been my primary Doctor for over twenty years. I have always been able to
+          get an appointment when needed. His Staff have been courteous and caring. I have recommended
+          Dr. Hirsch to several of my friends who are now his patients.&rdquo;
+        </p>
+        <div class="mt-6 pt-5" style="border-top:1px solid var(--line)">
+          <div class="text-[13.5px] font-semibold" style="color:var(--forest)">Anita A.</div>
+          <div class="text-[12px] font-light mt-0.5" style="color:var(--muted)">Patient testimonial &middot; TopLine MD</div>
+        </div>
+      </div>
+
+      <div class="qcard p-7 sm:p-8 flex flex-col" data-reveal>
+        <div class="flex gap-1 mb-5" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+        </div>
+        <p class="text-[15.5px] leading-[1.75] font-light flex-1" style="color:var(--ink)">
+          &ldquo;Great staff and Dr. There was no long waiting time. Which I love! Office clean and one
+          stop shop (Blood work).&rdquo;
+        </p>
+        <div class="mt-6 pt-5" style="border-top:1px solid var(--line)">
+          <div class="text-[13.5px] font-semibold" style="color:var(--forest)">Mrs. Bella</div>
+          <div class="text-[12px] font-light mt-0.5" style="color:var(--muted)">Healthgrades &middot; August 2022</div>
+        </div>
+      </div>
+
+      <div class="qcard p-7 sm:p-8 flex flex-col md:col-span-2 lg:col-span-2" data-reveal>
+        <div class="flex gap-1 mb-5" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+        </div>
+        <p class="dsp text-[19px] sm:text-[23px] leading-[1.5] font-light flex-1" style="color:var(--forest);padding-bottom:.06em">
+          &ldquo;Have been going to Dr Hirsch for nearly a quarter of a century, despite moving to another
+          city, make the long drive as he is a keeper, an excellent knowledgeable primary doctor who at the
+          same time works with me.&rdquo;
+        </p>
+        <div class="mt-6 pt-5" style="border-top:1px solid var(--line)">
+          <div class="text-[13.5px] font-semibold" style="color:var(--forest)">Vivian Gendernalik</div>
+          <div class="text-[12px] font-light mt-0.5" style="color:var(--muted)">Healthgrades &middot; July 2024</div>
+        </div>
+      </div>
+
+      <div class="qcard p-7 sm:p-8 flex flex-col" data-reveal>
+        <div class="flex gap-1 mb-5" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B8862F"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.6l1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z"/></svg>
+        </div>
+        <p class="text-[15.5px] leading-[1.75] font-light flex-1" style="color:var(--ink)">
+          &ldquo;My first office visit and I must say this Doc has excellent bedside manners.&rdquo;
+        </p>
+        <div class="mt-6 pt-5" style="border-top:1px solid var(--line)">
+          <div class="text-[13.5px] font-semibold" style="color:var(--forest)">Maggie S.</div>
+          <div class="text-[12px] font-light mt-0.5" style="color:var(--muted)">Patient testimonial &middot; TopLine MD</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT / MAP ============ -->
+<section id="visit" class="py-24 sm:py-32" style="background:var(--paper)">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-7">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
+      <div class="lg:col-span-5">
+        <span class="eyebrow" data-reveal>Come see us</span>
+        <h2 class="dsp h-lg font-light mt-4" style="color:var(--forest)" data-reveal>
+          601 N Flamingo Road,<br>Suite 103.
+        </h2>
+
+        <div class="mt-9 space-y-7">
+          <div class="flex gap-4" data-reveal>
+            <span class="flex-none mt-0.5" style="color:var(--deep)">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <div>
+              <div class="text-[11px] font-semibold tracking-[.18em] uppercase mb-1.5" style="color:var(--gold)">Address</div>
+              <a href="https://www.google.com/maps?q=601+N+Flamingo+Rd+Suite+103+Pembroke+Pines+FL+33028" target="_blank" rel="noopener" class="text-[16px] leading-relaxed ul-grow" style="color:var(--ink)">
+                601 N Flamingo Rd, Suite 103<br>Pembroke Pines, FL 33028
+              </a>
+            </div>
+          </div>
+
+          <div class="flex gap-4" data-reveal>
+            <span class="flex-none mt-0.5" style="color:var(--deep)">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5.3l3.4 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="w-full">
+              <div class="text-[11px] font-semibold tracking-[.18em] uppercase mb-1.5" style="color:var(--gold)">Office hours</div>
+              <table class="text-[15px] w-full max-w-[300px]" style="color:var(--ink)">
+                <tr><td class="py-1 pr-6 font-light">Monday &ndash; Thursday</td><td class="py-1 font-medium">9:00 am &ndash; 5:00 pm</td></tr>
+                <tr><td class="py-1 pr-6 font-light">Friday</td><td class="py-1 font-medium">9:00 am &ndash; 3:00 pm</td></tr>
+                <tr><td class="py-1 pr-6 font-light">Saturday &amp; Sunday</td><td class="py-1 font-light" style="color:var(--muted)">Closed</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="flex gap-4" data-reveal>
+            <span class="flex-none mt-0.5" style="color:var(--deep)">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-2 1.4a12.4 12.4 0 0 0 6.2 6.2l1.4-2 3.8 1.5v3a2 2 0 0 1-2.2 2A17.2 17.2 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <div>
+              <div class="text-[11px] font-semibold tracking-[.18em] uppercase mb-1.5" style="color:var(--gold)">Phone &amp; fax</div>
+              <a href="tel:+19544321485" class="dsp text-[24px] font-medium ul-grow" style="color:var(--forest)">(954) 432-1485</a>
+              <div class="text-[14px] font-light mt-1" style="color:var(--muted)">Fax (954) 433-0850</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="tel:+19544321485" class="btn btn-primary mt-10" data-reveal>Call to book a consult</a>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="rounded-[22px] overflow-hidden h-[340px] sm:h-[440px] lg:h-full min-h-[340px]" style="border:1px solid var(--line);box-shadow:0 24px 60px -36px rgba(18,59,49,.45)" data-reveal>
+          <iframe
+            class="mapframe"
+            title="Map to Simple Weight Loss Solutions, 601 N Flamingo Rd Suite 103, Pembroke Pines, FL 33028"
+            src="https://www.google.com/maps?q=601%20N%20Flamingo%20Rd%20Suite%20103%2C%20Pembroke%20Pines%2C%20FL%2033028&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="relative py-24 sm:py-32 overflow-hidden" style="background:var(--forest)">
+  <div class="absolute inset-0 z-0" style="background:radial-gradient(90% 120% at 82% 15%, rgba(62,155,124,.42), transparent 62%), radial-gradient(70% 100% at 8% 90%, rgba(184,134,47,.20), transparent 60%)"></div>
+  <div class="relative z-10 max-w-[1240px] mx-auto px-5 sm:px-7 text-center">
+    <span class="mark-badge mx-auto mb-7" style="background:rgba(255,255,255,.10);border:1px solid rgba(220,239,230,.28)" data-reveal>
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 15.5c3.2-4.4 6.1-6.6 8.7-6.6 2.1 0 3.5 1.2 3.5 3 0 1.7-1.2 2.9-2.8 2.9-1.2 0-2-.6-2-1.5 0-.7.5-1.2 1.1-1.2" stroke="#DCEFE6" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M3 19.6h18" stroke="#E4C078" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="18.4" cy="6.6" r="2" stroke="#8FC5B2" stroke-width="1.5"/>
+      </svg>
+    </span>
+    <h2 class="dsp text-[clamp(2rem,5vw,3.6rem)] font-light max-w-[840px] mx-auto" style="color:#F4FAF7;line-height:1.14;padding-bottom:.1em" data-reveal>
+      One phone call is the whole first step.
+    </h2>
+    <p class="mt-6 text-[16.5px] sm:text-[18px] leading-relaxed max-w-[560px] mx-auto font-light" style="color:rgba(228,242,236,.86)" data-reveal>
+      Ask what the program looks like for you. If it is not the right fit, Dr.&nbsp;Hirsch will tell you that too.
+    </p>
+    <div class="mt-10 flex flex-wrap justify-center gap-3.5" data-reveal>
+      <a href="tel:+19544321485" class="btn text-[15px]" style="background:#F4FAF7;color:var(--forest);padding:1.05rem 2rem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-2 1.4a12.4 12.4 0 0 0 6.2 6.2l1.4-2 3.8 1.5v3a2 2 0 0 1-2.2 2A17.2 17.2 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        (954) 432-1485
+      </a>
+      <a href="https://www.google.com/maps?q=601+N+Flamingo+Rd+Suite+103+Pembroke+Pines+FL+33028" target="_blank" rel="noopener" class="btn text-[15px]" style="border:1.5px solid rgba(220,239,230,.42);color:#EAF5F0;padding:1.02rem 1.9rem">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="py-14 sm:py-16" style="background:#0D2A23">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-7">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-9 lg:gap-8">
+      <div class="lg:col-span-2">
+        <div class="mark">
+          <span class="mark-badge" style="background:rgba(255,255,255,.09);border:1px solid rgba(220,239,230,.2)">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 15.5c3.2-4.4 6.1-6.6 8.7-6.6 2.1 0 3.5 1.2 3.5 3 0 1.7-1.2 2.9-2.8 2.9-1.2 0-2-.6-2-1.5 0-.7.5-1.2 1.1-1.2" stroke="#DCEFE6" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M3 19.6h18" stroke="#E4C078" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="18.4" cy="6.6" r="2" stroke="#8FC5B2" stroke-width="1.5"/>
+            </svg>
+          </span>
+          <span class="leading-none">
+            <span class="dsp block text-[17px] font-semibold tracking-tight" style="color:#F1F8F4;padding-bottom:.02em">Simple Weight Loss</span>
+            <span class="block text-[10px] font-semibold tracking-[.28em] uppercase" style="color:#E4C078">Solutions</span>
+          </span>
+        </div>
+        <p class="mt-5 text-[14.5px] leading-relaxed max-w-[380px] font-light" style="color:rgba(214,232,224,.72)">
+          Personalized, physician-supervised weight loss with one-on-one counseling, offered inside
+          Dr.&nbsp;Michael S. Hirsch's family practice in Pembroke Pines since 2017.
+        </p>
+      </div>
+
+      <div>
+        <div class="text-[10.5px] font-semibold tracking-[.2em] uppercase mb-4" style="color:#E4C078">Visit</div>
+        <address class="not-italic text-[14.5px] leading-relaxed font-light" style="color:rgba(214,232,224,.82)">
+          601 N Flamingo Rd, Suite 103<br>
+          Pembroke Pines, FL 33028
+        </address>
+        <a href="tel:+19544321485" class="block mt-3 text-[15px] font-medium ul-grow" style="color:#F1F8F4">(954) 432-1485</a>
+      </div>
+
+      <div>
+        <div class="text-[10.5px] font-semibold tracking-[.2em] uppercase mb-4" style="color:#E4C078">Hours</div>
+        <div class="text-[14.5px] leading-relaxed font-light" style="color:rgba(214,232,224,.82)">
+          Mon &ndash; Thu&nbsp; 9:00 am &ndash; 5:00 pm<br>
+          Friday&nbsp; 9:00 am &ndash; 3:00 pm<br>
+          Sat &amp; Sun&nbsp; Closed
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-7 flex flex-col sm:flex-row gap-3 justify-between items-start sm:items-center" style="border-top:1px solid rgba(220,239,230,.15)">
+      <p class="text-[12.5px] font-light" style="color:rgba(214,232,224,.6)">
+        &copy; <span id="yr">2026</span> Simple Weight Loss Solutions &middot; Pembroke Pines, Florida
+      </p>
+      <p class="text-[12px] font-light" style="color:rgba(214,232,224,.45)">
+        Individual results vary. This site is for information only and is not medical advice.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="stickybar" style="background:var(--forest);border-top:1px solid rgba(220,239,230,.18)">
+  <a href="tel:+19544321485" class="flex items-center justify-center gap-2 py-4 text-[14px] font-semibold" style="color:#F1F8F4">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-2 1.4a12.4 12.4 0 0 0 6.2 6.2l1.4-2 3.8 1.5v3a2 2 0 0 1-2.2 2A17.2 17.2 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=601+N+Flamingo+Rd+Suite+103+Pembroke+Pines+FL+33028" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-4 text-[14px] font-semibold" style="color:#F1F8F4;border-left:1px solid rgba(220,239,230,.18)">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- ============ JSON-LD ============ -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"MedicalBusiness",
+  "name":"Simple Weight Loss Solutions",
+  "description":"Personalized, physician-supervised weight loss programs with one-on-one counseling in Pembroke Pines, Florida. Established 2017 within the family practice of Dr. Michael S. Hirsch, DO.",
+  "url":"https://turnkeyweb.org/previews/simple-weight-loss-solutions/",
+  "image":"https://turnkeyweb.org/previews/simple-weight-loss-solutions/assets/hero.jpg",
+  "telephone":"+1-954-432-1485",
+  "faxNumber":"+1-954-433-0850",
+  "foundingDate":"2017",
+  "priceRange":"$$",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"601 N Flamingo Rd, Suite 103",
+    "addressLocality":"Pembroke Pines",
+    "addressRegion":"FL",
+    "postalCode":"33028",
+    "addressCountry":"US"
+  },
+  "areaServed":[
+    {"@type":"City","name":"Pembroke Pines"},
+    {"@type":"City","name":"Miramar"},
+    {"@type":"City","name":"Weston"},
+    {"@type":"City","name":"Davie"},
+    {"@type":"AdministrativeArea","name":"Broward County"}
+  ],
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"09:00","closes":"17:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"09:00","closes":"15:00"}
+  ],
+  "employee":{
+    "@type":"Physician",
+    "name":"Michael S. Hirsch, DO",
+    "medicalSpecialty":"https://schema.org/PrimaryCare",
+    "alumniOf":"Kansas City University College of Osteopathic Medicine",
+    "knowsLanguage":["English","Spanish"]
+  },
+  "hasOfferCatalog":{
+    "@type":"OfferCatalog",
+    "name":"Services",
+    "itemListElement":[
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Physician-supervised weight loss program"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"One-on-one weight loss counseling"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"B12 injections"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Lipotropic injections"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Family medicine"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Diagnostic and preventative testing"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Allergy testing"}}
+    ]
+  },
+  "review":[
+    {"@type":"Review","author":{"@type":"Person","name":"Barbie S."},"datePublished":"2019-07-18",
+     "reviewBody":"I toally recommend this weight loss program to anyone wanting to lose weight and change their lives. Having struggled with my weight for many years I was skeptical to try yet another weight loss program but I couldn't be happier with my results.",
+     "reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"}}
+  ]
+}
+</script>
+
+<!-- ============ JS ============ -->
+<script>
+(function(){
+  'use strict';
+  var isTouch = window.matchMedia('(hover: none)').matches;
+  var isSmall = window.innerWidth < 880;
+  var reduce  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---------- marquee ---------- */
+  (function(){
+    var items = ['Physician supervised','One-on-one counseling','No prepackaged foods','No exercise required',
+                 'B12 &amp; lipotropic injections','Family medicine','Pembroke Pines, FL','Since 2017'];
+    var html = '';
+    for (var d=0; d<2; d++){
+      for (var i=0;i<items.length;i++){
+        var it = items[i];
+        var cls = (i%2===1) ? 'italic' : '';
+        html += '<span class="'+cls+' text-[14px] sm:text-[16px] font-light whitespace-nowrap" style="color:'+(i%2===1?'#E4C078':'rgba(238,248,243,.9)')+';font-family:'+(i%2===1?"'Fraunces',serif":"inherit")+'">'+it+'</span>';
+        html += '<span style="width:5px;height:5px;border-radius:50%;background:rgba(143,197,178,.6);flex:none"></span>';
+      }
+    }
+    document.getElementById('mq').innerHTML = html;
+  })();
+
+  /* ---------- Lenis (single rAF via GSAP ticker) ---------- */
+  var lenis = null;
+  try{
+    if (window.Lenis && !reduce){
+      lenis = new Lenis({ duration:1.1, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));},
+                          smoothWheel:true, smoothTouch:false });
+    }
+  }catch(e){}
+
+  if (window.gsap){
+    gsap.registerPlugin(window.ScrollTrigger);
+    if (lenis){
+      gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+      gsap.ticker.lagSmoothing(0);
+      if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+    }
+    if (window.ScrollTrigger) ScrollTrigger.config({ ignoreMobileResize:true });
+  }
+
+  /* anchors */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(t, { offset:-78 });
+      else t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  /* ---------- nav shadow ---------- */
+  var nav = document.getElementById('nav');
+  function onScroll(){
+    if (window.scrollY > 24){ nav.style.borderBottomColor = 'rgba(30,84,69,.12)'; nav.style.boxShadow='0 6px 22px -18px rgba(18,59,49,.5)'; }
+    else { nav.style.borderBottomColor = 'transparent'; nav.style.boxShadow='none'; }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* ---------- reveals ---------- */
+  function reveal(){
+    if (!window.gsap || !window.ScrollTrigger){
+      document.querySelectorAll('[data-reveal]').forEach(function(el){ el.style.opacity=1; el.style.transform='none'; });
+      document.querySelectorAll('[data-img]').forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    gsap.utils.toArray('[data-reveal]').forEach(function(el,i){
+      gsap.fromTo(el, {opacity:0,y:30}, {
+        opacity:1, y:0, duration:.66, ease:'power3.out', delay:(i%4)*0.05,
+        scrollTrigger:{ trigger:el, start:'top 92%', once:true },
+        onComplete:function(){ el.classList.add('done'); }
+      });
+    });
+    gsap.utils.toArray('[data-img]').forEach(function(el){
+      ScrollTrigger.create({ trigger:el, start:'top 88%', once:true, onEnter:function(){ el.classList.add('in'); } });
+    });
+
+    /* count-ups */
+    gsap.utils.toArray('[data-count]').forEach(function(el){
+      var target = parseFloat(el.dataset.count);
+      var suffix = el.dataset.suffix || '';
+      var dec = el.dataset.decimal ? parseInt(el.dataset.decimal,10) : 0;
+      var raw = el.dataset.raw;
+      ScrollTrigger.create({ trigger:el, start:'top 92%', once:true, onEnter:function(){
+        var o = {v:0};
+        gsap.to(o, { v:target, duration:1.5, ease:'power2.out', onUpdate:function(){
+          el.textContent = (raw ? Math.round(o.v).toString() : (dec ? o.v.toFixed(dec) : Math.round(o.v))) + suffix;
+        }});
+      }});
+    });
+
+    /* hero video parallax — desktop only */
+    if (!isTouch && !reduce && window.matchMedia('(min-width:768px)').matches){
+      gsap.to('.hero-bg', { yPercent:14, scale:1.07, ease:'none',
+        scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
+    }
+    ScrollTrigger.refresh();
+  }
+  requestAnimationFrame(function(){ requestAnimationFrame(reveal); });
+
+  /* ---------- safety net (6s) ---------- */
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      var o = parseFloat(getComputedStyle(el).opacity);
+      if (!o || o < 0.9){ el.style.opacity=1; el.style.transform='none'; }
+    });
+    document.querySelectorAll('[data-img]').forEach(function(el){ el.classList.add('in'); });
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      if (el.textContent.trim()==='0'){
+        var d = el.dataset.decimal ? parseFloat(el.dataset.count).toFixed(parseInt(el.dataset.decimal,10))
+                                   : el.dataset.count;
+        el.textContent = d + (el.dataset.suffix||'');
+      }
+    });
+  }, 6000);
+
+  /* ---------- signature: program rail ---------- */
+  (function(){
+    var wrap = document.getElementById('railwrap');
+    if (!wrap) return;
+    var fill = document.getElementById('railfill');
+    var knobs = Array.prototype.slice.call(wrap.querySelectorAll('.knob'));
+    var labels = Array.prototype.slice.call(document.querySelectorAll('.stage-label'));
+    var panes = Array.prototype.slice.call(document.querySelectorAll('.stage-pane'));
+    var cur = 0, dragging = false;
+
+    function set(i, animate){
+      i = Math.max(0, Math.min(3, i));
+      cur = i;
+      fill.style.transition = animate === false ? 'none' : '';
+      fill.style.width = (i/3*100) + '%';
+      knobs.forEach(function(k,ki){
+        k.classList.toggle('on', ki <= i);
+        k.classList.toggle('cur', ki === i);
+      });
+      labels.forEach(function(l,li){ l.classList.toggle('cur', li === i); });
+      panes.forEach(function(p,pi){ p.classList.toggle('cur', pi === i); });
+    }
+    set(0);
+
+    knobs.concat(labels).forEach(function(el){
+      el.addEventListener('click', function(){ set(parseInt(el.dataset.stage,10)); });
+      el.addEventListener('keydown', function(e){
+        if (e.key==='Enter'||e.key===' '){ e.preventDefault(); set(parseInt(el.dataset.stage,10)); }
+        if (e.key==='ArrowRight') set(cur+1);
+        if (e.key==='ArrowLeft')  set(cur-1);
+      });
+    });
+
+    function posToStage(clientX){
+      var r = wrap.getBoundingClientRect();
+      var p = (clientX - r.left) / r.width;
+      return Math.round(Math.max(0, Math.min(1, p)) * 3);
+    }
+    function down(e){ dragging = true; var x = e.touches ? e.touches[0].clientX : e.clientX; set(posToStage(x)); }
+    function move(e){ if(!dragging) return; var x = e.touches ? e.touches[0].clientX : e.clientX; set(posToStage(x)); }
+    function up(){ dragging = false; }
+
+    wrap.addEventListener('mousedown', down);
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+    wrap.addEventListener('touchstart', down, {passive:true});
+    wrap.addEventListener('touchmove', move, {passive:true});
+    window.addEventListener('touchend', up);
+  })();
+
+  /* ---------- showpiece: Three.js displaced ripple mesh (light canvas) ---------- */
+  (function(){
+    var cv = document.getElementById('wgl');
+    if (!cv || !window.THREE) return;
+    if (reduce){ cv.style.display='none'; return; }
+    if (isSmall && (navigator.hardwareConcurrency||4) <= 4){ cv.style.display='none'; return; }
+
+    var renderer, scene, camera, mesh, raf = null, visible = false, t0 = performance.now();
+    try{
+      renderer = new THREE.WebGLRenderer({canvas:cv, antialias:true, alpha:true});
+    }catch(e){ cv.style.display='none'; return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isSmall ? 1.5 : 2));
+
+    scene = new THREE.Scene();
+    camera = new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+
+    var uniforms = {
+      uTime:{value:0},
+      uRes:{value:new THREE.Vector2(1,1)},
+      cA:{value:new THREE.Color(0x8FC5B2)},
+      cB:{value:new THREE.Color(0x3E9B7C)},
+      cC:{value:new THREE.Color(0xB8862F)}
+    };
+
+    var frag = [
+      'precision mediump float;',
+      'uniform float uTime; uniform vec2 uRes;',
+      'uniform vec3 cA; uniform vec3 cB; uniform vec3 cC;',
+      'varying vec2 vUv;',
+      'float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }',
+      'float noise(vec2 p){',
+      '  vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f);',
+      '  return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x), mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),f.x), f.y);',
+      '}',
+      'float fbm(vec2 p){ float v=0.0, a=0.5; for(int i=0;i<4;i++){ v+=a*noise(p); p*=2.03; a*=0.5; } return v; }',
+      'void main(){',
+      '  vec2 uv = vUv;',
+      '  float ar = uRes.x/max(uRes.y,1.0);',
+      '  vec2 p = vec2(uv.x*ar, uv.y);',
+      '  float t = uTime*0.055;',
+      '  float n = fbm(p*2.6 + vec2(t, -t*0.6));',
+      '  float ribbons = sin((p.x*3.1 + n*2.4 - t*1.4)*3.14159);',
+      '  ribbons = smoothstep(0.15, 0.95, abs(ribbons));',
+      '  float caustic = pow(1.0 - ribbons, 2.4);',
+      '  vec3 col = mix(cA, cB, smoothstep(0.25,0.85,n));',
+      '  col = mix(col, cC, caustic*0.18);',
+      '  float alpha = caustic*0.42 + n*0.10;',
+      '  alpha *= smoothstep(0.0,0.30,uv.x);',
+      '  alpha *= smoothstep(0.0,0.16,uv.y) * smoothstep(1.0,0.84,uv.y);',
+      '  gl_FragColor = vec4(col, clamp(alpha,0.0,0.55));',
+      '}'
+    ].join('\n');
+
+    var vert = 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }';
+
+    mesh = new THREE.Mesh(
+      new THREE.PlaneGeometry(2,2),
+      new THREE.ShaderMaterial({ uniforms:uniforms, vertexShader:vert, fragmentShader:frag, transparent:true, depthTest:false })
+    );
+    scene.add(mesh);
+
+    function size(){
+      var r = cv.parentElement.getBoundingClientRect();
+      renderer.setSize(r.width, r.height, false);
+      uniforms.uRes.value.set(r.width, r.height);
+    }
+    size();
+    window.addEventListener('resize', size);
+
+    function loop(){
+      uniforms.uTime.value = (performance.now() - t0)/1000;
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(loop);
+    }
+    function start(){ if (raf===null && visible && !document.hidden) loop(); }
+    function stop(){ if (raf!==null){ cancelAnimationFrame(raf); raf=null; } }
+
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){
+        visible = es[0].isIntersecting;
+        visible ? start() : stop();
+      }, {threshold:0.01}).observe(cv);
+    } else { visible = true; start(); }
+
+    document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+    renderer.render(scene, camera);
+  })();
+})();
+</script>
+</body>
+</html>
