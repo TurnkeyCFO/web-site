@@ -188,21 +188,19 @@ tailwind.config = { theme: { extend: {
   ]}
 }
 </script>
-<style id="tkw-video-rescue-css">video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none!important;opacity:0!important}video::-webkit-media-controls-overlay-play-button{display:none!important;opacity:0!important}video::-webkit-media-controls{display:none!important}video::-webkit-media-controls-panel{display:none!important}</style>
-<style id="tk-video-hardening-v3">
-/* tk-video-hardening-v3: background videos never surface native player chrome */
-video::-webkit-media-controls,
-video::-webkit-media-controls-enclosure,
-video::-webkit-media-controls-panel,
-video::-webkit-media-controls-overlay-play-button,
-video::-webkit-media-controls-start-playback-button,
+<style id="tk-video-hardening">
+/* tk-video-hardening: background videos must never surface native player chrome */
 video:not([controls])::-webkit-media-controls,
+video:not([controls])::-webkit-media-controls-enclosure,
+video:not([controls])::-webkit-media-controls-panel,
+video:not([controls])::-webkit-media-controls-overlay-play-button,
 video:not([controls])::-webkit-media-controls-start-playback-button{
-  display:none !important; -webkit-appearance:none !important;
-  opacity:0 !important; width:0 !important; height:0 !important;
+  display:none !important; -webkit-appearance:none !important; opacity:0 !important;
 }
 video:not([controls]){ pointer-events:none; }
 </style>
+
+<style id="tkw-video-rescue-css" data-v="2">video::-webkit-media-controls-start-playback-button,video::-webkit-media-controls-overlay-play-button,video::-webkit-media-controls,video::-webkit-media-controls-panel{display:none!important;opacity:0!important;-webkit-appearance:none!important}video.tkw-vid-blocked{opacity:0!important;visibility:hidden!important}</style>
 </head>
 
 <body>
@@ -880,101 +878,73 @@ video:not([controls]){ pointer-events:none; }
   }, 6000);
 })();
 </script>
-<script id="tkw-video-rescue">
+<script id="tk-video-hardening-js">
+/* tk-video-hardening: guarantee muted autoplay, retry if the browser blocks the first attempt */
 (function(){
-  function kick(){
-    document.querySelectorAll('video').forEach(function(v){
-      if(v.hasAttribute('controls')) return;
-      v.muted=true; v.setAttribute('muted',''); v.playsInline=true; v.setAttribute('playsinline','');
-      if(v.paused){ var p=v.play(); if(p&&p.catch){ p.catch(function(){}); } }
-    });
-  }
-  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',kick); } else { kick(); }
-  window.addEventListener('load',kick);
-  window.addEventListener('pageshow',kick);
-  ['touchstart','touchend','click','scroll'].forEach(function(e){
-    window.addEventListener(e,kick,{once:true,passive:true});
-  });
-  document.addEventListener('visibilitychange',function(){ if(!document.hidden) kick(); });
-  var tries=0; var iv=setInterval(function(){ kick(); if(++tries>=5) clearInterval(iv); },2000);
-})();
-</script>
-<script id="tk-video-hardening-v3-js">
-/* tk-video-hardening-v3: guarantee muted autoplay; if the browser refuses (iOS Low Power Mode),
-   show the poster as an <img> so no native play button can ever appear. */
-(function(){
-  var vids = [].slice.call(document.querySelectorAll('video[autoplay]:not([controls])'));
+  var vids = document.querySelectorAll('video[autoplay]:not([controls])');
   if(!vids.length) return;
-
-  function posterOf(v){
-    var p = v.getAttribute('poster');
-    if(p) return p;
-    var bg = getComputedStyle(v).backgroundImage || '';
-    var m = bg.match(/url\((['"]?)(.*?)\1\)/);
-    return m ? m[2] : null;
-  }
-  function showFallback(v){
-    if(v.dataset.tkFb === '1') return;
-    v.dataset.tkFb = '1';
-    var src = posterOf(v);
-    if(src && v.parentNode){
-      var img = document.createElement('img');
-      img.src = src; img.alt = ''; img.setAttribute('aria-hidden','true');
-      img.className = v.className;
-      img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;';
-      img.setAttribute('data-tk-fb','1');
-      v.parentNode.insertBefore(img, v);
-      v._tkImg = img;
-    }
-    v.style.visibility = 'hidden';
-  }
-  function clearFallback(v){
-    if(v.dataset.tkFb !== '1') return;
-    v.dataset.tkFb = '0';
-    if(v._tkImg && v._tkImg.parentNode) v._tkImg.parentNode.removeChild(v._tkImg);
-    v._tkImg = null;
-    v.style.visibility = '';
-  }
-  function kick(){
+  var kick = function(){
     vids.forEach(function(v){
       v.muted = true; v.defaultMuted = true; v.playsInline = true;
       v.controls = false; v.removeAttribute('controls');
-      v.setAttribute('playsinline',''); v.setAttribute('webkit-playsinline','');
       v.setAttribute('disablepictureinpicture','');
-      if(v.paused){
-        var p = v.play();
-        if(p && p.then) p.then(function(){ clearFallback(v); }).catch(function(){});
-      } else { clearFallback(v); }
+      if(v.paused){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
     });
-  }
-  /* v.paused lies: it flips false the instant play() is called even if nothing
-     decodes. The only trustworthy signal is whether frames actually advance. */
-  function audit(){
-    if(document.hidden) return;
-    vids.forEach(function(v){
-      var t0 = v.currentTime;
-      if(v.error){ showFallback(v); return; }
-      setTimeout(function(){
-        if(document.hidden) return;
-        if(v.error || v.readyState < 2 || v.currentTime <= t0) showFallback(v);
-        else clearFallback(v);
-      }, 800);
-    });
-  }
-
+  };
   kick();
   document.addEventListener('DOMContentLoaded', kick);
-  window.addEventListener('load', function(){ kick(); setTimeout(audit, 1200); });
+  window.addEventListener('load', kick);
   document.addEventListener('visibilitychange', function(){ if(!document.hidden) kick(); });
-  vids.forEach(function(v){
-    v.addEventListener('playing', function(){ clearFallback(v); });
-    v.addEventListener('canplay', kick);
-    v.addEventListener('error', function(){ showFallback(v); });
+  ['pointerdown','touchstart','keydown','scroll'].forEach(function(e){
+    window.addEventListener(e, kick, {once:true, passive:true});
   });
-  ['touchend','click','pointerup','keydown'].forEach(function(e){
-    document.addEventListener(e, function(){ kick(); setTimeout(audit, 400); }, {passive:true});
-  });
-  setTimeout(audit, 1500);
+})();
+</script>
+
+<script id="tkw-video-rescue" data-v="2">
+(function(){
+  function fallback(v){
+    if(!v.classList.contains('tkw-vid-blocked')){
+      v.classList.add('tkw-vid-blocked');
+      var host=v.parentElement,p=v.getAttribute('poster');
+      if(host&&p&&!host.getAttribute('data-tkw-poster')){
+        host.setAttribute('data-tkw-poster','1');
+        if(!/url\(/.test(host.style.backgroundImage||'')){
+          host.style.backgroundImage='url("'+p+'")';
+          host.style.backgroundSize='cover';
+          host.style.backgroundPosition='center';
+        }
+      }
+    }
+  }
+  function kick(){
+    var pending=false;
+    document.querySelectorAll('video').forEach(function(v){
+      if(v.hasAttribute('controls'))return;
+      v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');
+      v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
+      v.autoplay=true;v.setAttribute('autoplay','');
+      if(v.paused){
+        pending=true;
+        try{
+          var p=v.play();
+          if(p&&p.then){p.then(function(){v.classList.remove('tkw-vid-blocked');})
+                         .catch(function(){fallback(v);});}
+        }catch(e){fallback(v);}
+      }else{v.classList.remove('tkw-vid-blocked');}
+    });
+    return pending;
+  }
+  var evs=['pointerdown','touchend','click','keydown','scroll'];
+  function onGesture(){ if(!kick()){ evs.forEach(function(e){window.removeEventListener(e,onGesture,true);}); } }
+  evs.forEach(function(e){window.addEventListener(e,onGesture,true);});
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',kick);}else{kick();}
+  window.addEventListener('load',kick);
+  window.addEventListener('pageshow',kick);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)kick();});
+  document.addEventListener('canplay',function(e){if(e.target&&e.target.tagName==='VIDEO')kick();},true);
+  document.addEventListener('loadeddata',function(e){if(e.target&&e.target.tagName==='VIDEO')kick();},true);
+  var tries=0;var iv=setInterval(function(){kick();if(++tries>=20)clearInterval(iv);},1500);
 })();
 </script>
 </body>
