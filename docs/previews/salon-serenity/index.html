@@ -28,7 +28,7 @@
 <script>
 tailwind.config = { theme: { extend: { colors: {
   cream:'#FBF6F1', bone:'#F4ECE3', blush:'#E3C4BE', sage:'#7E9B8F',
-  gold:'#B98D52', plum:'#4A2B3A', ink:'#241A22', mist:'#EDE3DA'
+  gold:'#B98D52', goldd:'#8A6234', plum:'#4A2B3A', ink:'#241A22', mist:'#EDE3DA'
 }, fontFamily: { display:['"Instrument Serif"','Georgia','serif'], body:['Manrope','system-ui','sans-serif'] } } } };
 </script>
 <style>
@@ -41,7 +41,7 @@ tailwind.config = { theme: { extend: { colors: {
   /* ---- descender safety (HARD) ---- */
   h1,h2,h3,.display{ line-height:1.12; padding-bottom:.06em; }
   .grad-text{
-    background:linear-gradient(100deg,#4A2B3A 0%,#B98D52 32%,#8C5A65 55%,#4A2B3A 100%);
+    background:linear-gradient(100deg,#3C2230 0%,#8A6234 30%,#6E3D4C 56%,#3C2230 100%);
     background-size:220% 100%;
     -webkit-background-clip:text; background-clip:text;
     -webkit-text-fill-color:transparent; color:transparent;
@@ -159,7 +159,7 @@ tailwind.config = { theme: { extend: { colors: {
         </span>
         <span class="leading-none">
           <span class="block font-display text-[20px] tracking-tight text-plum">Salon Serenity</span>
-          <span class="block font-body text-[9.5px] tracking-[0.24em] uppercase text-ink/55 mt-[3px]">Independence, MO</span>
+          <span class="block font-body text-[9.5px] tracking-[0.24em] uppercase text-ink/75 mt-[3px]">Independence, MO</span>
         </span>
       </a>
       <nav class="hidden lg:flex items-center gap-9 font-body text-[13px] tracking-wide text-ink/75">
@@ -220,17 +220,17 @@ tailwind.config = { theme: { extend: { colors: {
             <span class="font-display text-[30px] text-plum leading-none" data-count="4.9" data-dec="1">0</span>
             <svg viewBox="0 0 24 24" width="17" height="17" fill="#B98D52"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
           </div>
-          <div class="font-body text-[10.5px] tracking-[0.18em] uppercase text-ink/55 mt-2">Google rating</div>
+          <div class="font-body text-[10.5px] tracking-[0.18em] uppercase text-ink/75 mt-2">Google rating</div>
         </div>
         <div class="w-px h-11 bg-plum/15"></div>
         <div>
           <div class="font-display text-[30px] text-plum leading-none"><span data-count="53">0</span></div>
-          <div class="font-body text-[10.5px] tracking-[0.18em] uppercase text-ink/55 mt-2">Google reviews</div>
+          <div class="font-body text-[10.5px] tracking-[0.18em] uppercase text-ink/75 mt-2">Google reviews</div>
         </div>
         <div class="w-px h-11 bg-plum/15 hidden sm:block"></div>
         <div>
           <div class="font-display text-[30px] text-plum leading-none">Til&nbsp;9<span class="text-[19px] align-top">pm</span></div>
-          <div class="font-body text-[10.5px] tracking-[0.18em] uppercase text-ink/55 mt-2">Evening appointments</div>
+          <div class="font-body text-[10.5px] tracking-[0.18em] uppercase text-ink/75 mt-2">Evening appointments</div>
         </div>
       </div>
     </div>
@@ -264,7 +264,7 @@ tailwind.config = { theme: { extend: { colors: {
   <canvas id="ribbon" aria-hidden="true"></canvas>
   <div class="relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
     <div class="max-w-[860px]">
-      <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-gold mb-8">The difference</div>
+      <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-goldd mb-8">The difference</div>
       <p class="font-display text-[clamp(1.9rem,4.4vw,3.3rem)] text-plum tracking-[-0.01em] leading-[1.28]">
         <span class="line-mask"><span data-l>You are not booked into a rotation. You sit</span></span>
         <span class="line-mask"><span data-l>in <em class="italic">one chair</em>, with <em class="italic">one stylist</em>, who</span></span>
@@ -273,15 +273,15 @@ tailwind.config = { theme: { extend: { colors: {
       <div data-reveal class="mt-10 grid sm:grid-cols-3 gap-8 sm:gap-10 max-w-[820px]">
         <div>
           <div class="font-display text-[19px] text-plum mb-2">No waiting room</div>
-          <p class="font-body text-[14.5px] leading-[1.7] text-ink/70">Clients say it plainly: they have never had to wait to be seen. Your time slot is yours.</p>
+          <p class="font-body text-[14.5px] leading-[1.7] text-ink/75">Clients say it plainly: they have never had to wait to be seen. Your time slot is yours.</p>
         </div>
         <div>
           <div class="font-display text-[19px] text-plum mb-2">Hair that stays healthy</div>
-          <p class="font-body text-[14.5px] leading-[1.7] text-ink/70">Regulars of many years point to the same thing &mdash; their real hair grew stronger underneath the styles.</p>
+          <p class="font-body text-[14.5px] leading-[1.7] text-ink/75">Regulars of many years point to the same thing &mdash; their real hair grew stronger underneath the styles.</p>
         </div>
         <div>
           <div class="font-display text-[19px] text-plum mb-2">Quiet, clean, unhurried</div>
-          <p class="font-body text-[14.5px] leading-[1.7] text-ink/70">A calm room, good conversation, and work that is finished properly before you leave.</p>
+          <p class="font-body text-[14.5px] leading-[1.7] text-ink/75">A calm room, good conversation, and work that is finished properly before you leave.</p>
         </div>
       </div>
     </div>
@@ -293,12 +293,12 @@ tailwind.config = { theme: { extend: { colors: {
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
     <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
       <div>
-        <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-gold mb-5">From the chair</div>
+        <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-goldd mb-5">From the chair</div>
         <h2 data-reveal class="font-display text-[clamp(2.1rem,5vw,3.5rem)] text-plum tracking-[-0.015em]">
           Her <span class="grad-text">actual work</span>
         </h2>
       </div>
-      <p data-reveal class="font-body text-[14.5px] leading-[1.7] text-ink/65 max-w-[330px]">
+      <p data-reveal class="font-body text-[14.5px] leading-[1.7] text-ink/72 max-w-[330px]">
         Real photographs from Salon Serenity &mdash; braids, twists, curls and kids&rsquo; styles, done in this room.
       </p>
     </div>
@@ -328,11 +328,11 @@ tailwind.config = { theme: { extend: { colors: {
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
     <div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-14 lg:gap-20">
       <div class="lg:sticky lg:top-28 self-start">
-        <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-gold mb-5">What she does</div>
+        <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-goldd mb-5">What she does</div>
         <h2 data-reveal class="font-display text-[clamp(2.1rem,5vw,3.5rem)] text-plum tracking-[-0.015em] mb-6">
           Protective styling,<br><span class="grad-text">done properly</span>
         </h2>
-        <p data-reveal class="font-body text-[15.5px] leading-[1.75] text-ink/70 mb-8 max-w-[380px]">
+        <p data-reveal class="font-body text-[15.5px] leading-[1.75] text-ink/75 mb-8 max-w-[380px]">
           Salon Serenity specializes in Black hair care &mdash; braids, locs, extensions and natural styling &mdash;
           alongside everyday cuts and blowouts for the whole family.
         </p>
@@ -347,32 +347,32 @@ tailwind.config = { theme: { extend: { colors: {
         <div class="svc grid grid-cols-[42px_1fr] gap-4 py-6">
           <span class="font-display text-[15px] text-gold pt-1">01</span>
           <div><h3 class="font-display text-[24px] text-plum mb-1.5">Hair Braiding</h3>
-            <p class="font-body text-[14.5px] leading-[1.65] text-ink/68">Box braids, cornrows, feed&#8209;ins and barrel twists. Reviewers single out her braid work on short and fine hair.</p></div>
+            <p class="font-body text-[14.5px] leading-[1.65] text-ink/75">Box braids, cornrows, feed&#8209;ins and barrel twists. Reviewers single out her braid work on short and fine hair.</p></div>
         </div>
         <div class="svc grid grid-cols-[42px_1fr] gap-4 py-6">
           <span class="font-display text-[15px] text-gold pt-1">02</span>
           <div><h3 class="font-display text-[24px] text-plum mb-1.5">Locs &amp; Faux Locs</h3>
-            <p class="font-body text-[14.5px] leading-[1.65] text-ink/68">Loc styling and full faux loc installs &mdash; one client had a wash, set and full install finished in under three hours.</p></div>
+            <p class="font-body text-[14.5px] leading-[1.65] text-ink/75">Loc styling and full faux loc installs &mdash; one client had a wash, set and full install finished in under three hours.</p></div>
         </div>
         <div class="svc grid grid-cols-[42px_1fr] gap-4 py-6">
           <span class="font-display text-[15px] text-gold pt-1">03</span>
           <div><h3 class="font-display text-[24px] text-plum mb-1.5">Sew&#8209;In Weaves &amp; Extensions</h3>
-            <p class="font-body text-[14.5px] leading-[1.65] text-ink/68">Sew&#8209;ins and extensions applied and styled so your own hair keeps growing underneath.</p></div>
+            <p class="font-body text-[14.5px] leading-[1.65] text-ink/75">Sew&#8209;ins and extensions applied and styled so your own hair keeps growing underneath.</p></div>
         </div>
         <div class="svc grid grid-cols-[42px_1fr] gap-4 py-6">
           <span class="font-display text-[15px] text-gold pt-1">04</span>
           <div><h3 class="font-display text-[24px] text-plum mb-1.5">Natural &amp; Curly Hair</h3>
-            <p class="font-body text-[14.5px] leading-[1.65] text-ink/68">Wash&#8209;and&#8209;set, blow&#8209;dry and styling built around your natural texture rather than fighting it.</p></div>
+            <p class="font-body text-[14.5px] leading-[1.65] text-ink/75">Wash&#8209;and&#8209;set, blow&#8209;dry and styling built around your natural texture rather than fighting it.</p></div>
         </div>
         <div class="svc grid grid-cols-[42px_1fr] gap-4 py-6">
           <span class="font-display text-[15px] text-gold pt-1">05</span>
           <div><h3 class="font-display text-[24px] text-plum mb-1.5">Cuts &mdash; Women &amp; Children</h3>
-            <p class="font-body text-[14.5px] leading-[1.65] text-ink/68">Everyday cuts through to a sharp pixie, plus kids&rsquo; cuts and braided styles.</p></div>
+            <p class="font-body text-[14.5px] leading-[1.65] text-ink/75">Everyday cuts through to a sharp pixie, plus kids&rsquo; cuts and braided styles.</p></div>
         </div>
         <div class="svc grid grid-cols-[42px_1fr] gap-4 py-6">
           <span class="font-display text-[15px] text-gold pt-1">06</span>
           <div><h3 class="font-display text-[24px] text-plum mb-1.5">Color, Highlights &amp; Perms</h3>
-            <p class="font-body text-[14.5px] leading-[1.65] text-ink/68">Color and chemical services when you want them, kept on the healthy side of your hair&rsquo;s limits.</p></div>
+            <p class="font-body text-[14.5px] leading-[1.65] text-ink/75">Color and chemical services when you want them, kept on the healthy side of your hair&rsquo;s limits.</p></div>
         </div>
       </div>
     </div>
@@ -383,7 +383,7 @@ tailwind.config = { theme: { extend: { colors: {
 <section id="voices" class="bg-cream py-24 sm:py-32">
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
     <div class="text-center max-w-[640px] mx-auto mb-14">
-      <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-gold mb-5">4.9 stars &middot; 53 Google reviews</div>
+      <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-goldd mb-5">4.9 stars &middot; 53 Google reviews</div>
       <h2 data-reveal class="font-display text-[clamp(2.1rem,5vw,3.5rem)] text-plum tracking-[-0.015em]">
         In their <span class="grad-text">own words</span>
       </h2>
@@ -395,7 +395,7 @@ tailwind.config = { theme: { extend: { colors: {
           <svg viewBox="0 0 24 24" width="14" height="14" fill="#B98D52"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="#B98D52"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="#B98D52"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="#B98D52"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="#B98D52"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
         </div>
         <p class="font-body text-[15px] leading-[1.72] text-ink/80">&ldquo;I&rsquo;ve been wanting to get my hair braided for a long time but I have very soft short hair, LaDia was able to do my hair exactly how I wanted and was so sweet and fun to talk to! I love my experience here and will 100% be coming back!!&rdquo;</p>
-        <div class="mt-5 pt-4 border-t border-plum/12 font-body text-[11.5px] tracking-wide text-ink/55">Google review</div>
+        <div class="mt-5 pt-4 border-t border-plum/12 font-body text-[11.5px] tracking-wide text-ink/75">Google review</div>
       </div>
 
       <div data-reveal class="qcard rounded-2xl border border-plum/14 bg-plum p-7">
@@ -411,7 +411,7 @@ tailwind.config = { theme: { extend: { colors: {
           <svg viewBox="0 0 24 24" width="14" height="14" fill="#B98D52"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="#B98D52"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="#B98D52"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="#B98D52"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="#B98D52"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
         </div>
         <p class="font-body text-[15px] leading-[1.72] text-ink/80">&ldquo;I went in for a simple pixie cut and got way more than just that. The atmosphere was clean, the stylist was very nice and professional. And my hair in the end came out lovely. I would recommend Salon Serenity to anyone and I will be returning.&rdquo;</p>
-        <div class="mt-5 pt-4 border-t border-plum/12 font-body text-[11.5px] tracking-wide text-ink/55">Google review</div>
+        <div class="mt-5 pt-4 border-t border-plum/12 font-body text-[11.5px] tracking-wide text-ink/75">Google review</div>
       </div>
     </div>
 
@@ -420,12 +420,12 @@ tailwind.config = { theme: { extend: { colors: {
     <div class="grid md:grid-cols-2 gap-5">
       <div data-reveal class="qcard rounded-2xl border border-plum/14 bg-bone p-7">
         <p class="font-body text-[15px] leading-[1.72] text-ink/80">&ldquo;I really enjoy my quality experience every time I sit in LaDia&rsquo;s chair. The professionalism and soothing environment that is there makes you feel welcome each time you walk in those doors. I&rsquo;ve never had to wait to receive my services. LaDia is very punctual and does thorough job when she&rsquo;s giving you what you&rsquo;ve asked for. I have and will continue to give referrals to Salon Serenity&hellip;&rdquo;</p>
-        <div class="mt-5 pt-4 border-t border-plum/12 font-body text-[11.5px] tracking-wide text-ink/55">Google review</div>
+        <div class="mt-5 pt-4 border-t border-plum/12 font-body text-[11.5px] tracking-wide text-ink/75">Google review</div>
       </div>
       <div data-reveal class="qcard rounded-2xl border border-plum/14 bg-bone p-7">
         <p class="font-body text-[15px] leading-[1.72] text-ink/80">&ldquo;I have went to this salon for years. She&rsquo;s an excellent hair stylist. But she also makes sure my hair stays healthy and grows. I&rsquo;ve never been disappointed.&rdquo;</p>
         <p class="font-body text-[15px] leading-[1.72] text-ink/80 mt-4">&ldquo;Very professional she makes you feel like y&rsquo;all known each other for years.&rdquo;</p>
-        <div class="mt-5 pt-4 border-t border-plum/12 font-body text-[11.5px] tracking-wide text-ink/55">Google reviews &mdash; incl. Marcus Malone</div>
+        <div class="mt-5 pt-4 border-t border-plum/12 font-body text-[11.5px] tracking-wide text-ink/75">Google reviews &mdash; incl. Marcus Malone</div>
       </div>
     </div>
   </div>
@@ -436,7 +436,7 @@ tailwind.config = { theme: { extend: { colors: {
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8 relative z-10">
     <div class="grid lg:grid-cols-2 gap-14 items-center">
       <div>
-        <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-gold mb-5">When she&rsquo;s in</div>
+        <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-goldd mb-5">When she&rsquo;s in</div>
         <h2 data-reveal class="font-display text-[clamp(2.1rem,5vw,3.5rem)] tracking-[-0.015em] mb-6 text-cream">
           Built around<br>the working week
         </h2>
@@ -453,8 +453,8 @@ tailwind.config = { theme: { extend: { colors: {
             <span class="text-[14px] text-gold font-600">9:00 AM &ndash; 9:00 PM</span>
           </li>
           <li class="flex items-center justify-between py-3.5">
-            <span class="text-[15px] text-cream/45">Tuesday &ndash; Friday</span>
-            <span class="text-[14px] text-cream/45">Closed</span>
+            <span class="text-[15px] text-cream/62">Tuesday &ndash; Friday</span>
+            <span class="text-[14px] text-cream/62">Closed</span>
           </li>
           <li class="flex items-center justify-between py-3.5">
             <span class="text-[15px] text-cream">Saturday</span>
@@ -477,7 +477,7 @@ tailwind.config = { theme: { extend: { colors: {
 <section id="visit" class="bg-cream py-24 sm:py-32">
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
     <div class="mb-12">
-      <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-gold mb-5">Find her</div>
+      <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-goldd mb-5">Find her</div>
       <h2 data-reveal class="font-display text-[clamp(2.1rem,5vw,3.5rem)] text-plum tracking-[-0.015em]">
         Independence, <span class="grad-text">Missouri</span>
       </h2>
@@ -489,7 +489,7 @@ tailwind.config = { theme: { extend: { colors: {
           <div class="flex items-start gap-3.5 mb-7">
             <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#B98D52" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             <div>
-              <div class="font-body text-[10.5px] tracking-[0.2em] uppercase text-ink/50 mb-1.5">Address</div>
+              <div class="font-body text-[10.5px] tracking-[0.2em] uppercase text-ink/75 mb-1.5">Address</div>
               <address class="not-italic font-display text-[21px] leading-[1.42] text-plum">
                 10512 E 28th Terrace S<br>Independence, MO 64052
               </address>
@@ -499,7 +499,7 @@ tailwind.config = { theme: { extend: { colors: {
           <div class="flex items-start gap-3.5 mb-7">
             <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#B98D52" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
             <div>
-              <div class="font-body text-[10.5px] tracking-[0.2em] uppercase text-ink/50 mb-1.5">Booking</div>
+              <div class="font-body text-[10.5px] tracking-[0.2em] uppercase text-ink/75 mb-1.5">Booking</div>
               <a href="mailto:ladiamhaynes@yahoo.com?subject=Appointment%20request%20—%20Salon%20Serenity" class="ulink font-body text-[15.5px] text-plum break-all">ladiamhaynes@yahoo.com</a>
             </div>
           </div>
@@ -507,7 +507,7 @@ tailwind.config = { theme: { extend: { colors: {
           <div class="flex items-start gap-3.5">
             <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#B98D52" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
             <div>
-              <div class="font-body text-[10.5px] tracking-[0.2em] uppercase text-ink/50 mb-1.5">Open</div>
+              <div class="font-body text-[10.5px] tracking-[0.2em] uppercase text-ink/75 mb-1.5">Open</div>
               <div class="font-body text-[15px] text-ink/80 leading-[1.6]">Mon, Sat &amp; Sun &mdash; until 9:00 PM</div>
             </div>
           </div>
@@ -533,7 +533,7 @@ tailwind.config = { theme: { extend: { colors: {
           title="Map to Salon Serenity, 10512 E 28th Terrace S, Independence, MO 64052"
           src="https://www.google.com/maps?q=10512%20E%2028th%20Terrace%20S%2C%20Independence%2C%20MO%2064052&output=embed"
           width="100%" height="100%" style="border:0;min-height:380px;display:block"
-          loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+          allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
@@ -544,7 +544,7 @@ tailwind.config = { theme: { extend: { colors: {
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8 text-center relative z-10">
     <div data-reveal class="inline-flex items-center gap-2.5 rounded-full border border-plum/22 bg-cream px-4 py-1.5 mb-8">
       <span class="dot w-1.5 h-1.5 rounded-full bg-sage"></span>
-      <span class="font-body text-[10.5px] tracking-[0.2em] uppercase text-ink/70">Now booking Monday, Saturday &amp; Sunday</span>
+      <span class="font-body text-[10.5px] tracking-[0.2em] uppercase text-ink/75">Now booking Monday, Saturday &amp; Sunday</span>
     </div>
     <h2 class="font-display text-[clamp(2.3rem,6.2vw,4.6rem)] text-plum tracking-[-0.02em] max-w-[820px] mx-auto">
       <span class="line-mask"><span data-l>Let my hands do the</span></span>
@@ -583,25 +583,25 @@ tailwind.config = { theme: { extend: { colors: {
         </p>
       </div>
       <div>
-        <div class="font-body text-[10.5px] tracking-[0.22em] uppercase text-cream/45 mb-4">Visit</div>
+        <div class="font-body text-[10.5px] tracking-[0.22em] uppercase text-cream/62 mb-4">Visit</div>
         <address class="not-italic font-body text-[14.5px] leading-[1.75] text-cream/80">
           10512 E 28th Terrace S<br>Independence, MO 64052
         </address>
         <a href="mailto:ladiamhaynes@yahoo.com" class="ulink inline-block mt-3 font-body text-[14.5px] text-cream/80 break-all">ladiamhaynes@yahoo.com</a>
       </div>
       <div>
-        <div class="font-body text-[10.5px] tracking-[0.22em] uppercase text-cream/45 mb-4">Hours</div>
+        <div class="font-body text-[10.5px] tracking-[0.22em] uppercase text-cream/62 mb-4">Hours</div>
         <ul class="font-body text-[14.5px] leading-[1.85] text-cream/80">
           <li>Monday &mdash; 9:00 AM to 9:00 PM</li>
           <li>Saturday &mdash; 11:00 AM to 9:00 PM</li>
           <li>Sunday &mdash; 1:00 PM to 9:00 PM</li>
-          <li class="text-cream/45">Tuesday to Friday &mdash; Closed</li>
+          <li class="text-cream/62">Tuesday to Friday &mdash; Closed</li>
         </ul>
       </div>
     </div>
     <div class="pt-7 border-t border-cream/12 flex flex-wrap items-center justify-between gap-4">
-      <p class="font-body text-[12.5px] text-cream/45">&copy; <span id="yr">2026</span> Salon Serenity &middot; Independence, Missouri</p>
-      <p class="font-body text-[12.5px] text-cream/35">Draft preview by Turnkey Web</p>
+      <p class="font-body text-[12.5px] text-cream/62">&copy; <span id="yr">2026</span> Salon Serenity &middot; Independence, Missouri</p>
+      <p class="font-body text-[12.5px] text-cream/60">Draft preview by Turnkey Web</p>
     </div>
   </div>
 </footer>
