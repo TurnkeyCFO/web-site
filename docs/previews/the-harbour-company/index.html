@@ -18,6 +18,17 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"GeneralContractor","name":"The Harbour Company","image":"https://theharbourcompany.com/","@id":"https://theharbourcompany.com/","url":"https://theharbourcompany.com/","telephone":"+14104249185","email":"hello@theharbourcompany.com","priceRange":"$$$","address":{"@type":"PostalAddress","streetAddress":"8830 Stanford Blvd LL35","addressLocality":"Columbia","addressRegion":"MD","postalCode":"21045","addressCountry":"US"},"areaServed":["Washington D.C.","Maryland","Northern Virginia"],"founder":["Mario Merrills","Lauren Merrills"],"slogan":"Your home, elevated."}
 </script>
+<style id="tk-video-hardening">
+/* tk-video-hardening: background videos must never surface native player chrome */
+video:not([controls])::-webkit-media-controls,
+video:not([controls])::-webkit-media-controls-enclosure,
+video:not([controls])::-webkit-media-controls-panel,
+video:not([controls])::-webkit-media-controls-overlay-play-button,
+video:not([controls])::-webkit-media-controls-start-playback-button{
+  display:none !important; -webkit-appearance:none !important; opacity:0 !important;
+}
+video:not([controls]){ pointer-events:none; }
+</style>
 </head>
 <body>
 
@@ -228,5 +239,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script src="assets/app.js"></script>
+<script id="tk-video-hardening-js">
+/* tk-video-hardening: guarantee muted autoplay, retry if the browser blocks the first attempt */
+(function(){
+  var vids = document.querySelectorAll('video[autoplay]:not([controls])');
+  if(!vids.length) return;
+  var kick = function(){
+    vids.forEach(function(v){
+      v.muted = true; v.defaultMuted = true; v.playsInline = true;
+      v.controls = false; v.removeAttribute('controls');
+      v.setAttribute('disablepictureinpicture','');
+      if(v.paused){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+    });
+  };
+  kick();
+  document.addEventListener('DOMContentLoaded', kick);
+  window.addEventListener('load', kick);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) kick(); });
+  ['pointerdown','touchstart','keydown','scroll'].forEach(function(e){
+    window.addEventListener(e, kick, {once:true, passive:true});
+  });
+})();
+</script>
 </body>
 </html>

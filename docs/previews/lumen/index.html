@@ -115,6 +115,17 @@ footer .wrap{max-width:1320px;margin:0 auto}
 .pre .l{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--faint)}
 @media(prefers-reduced-motion:reduce){.grain,.cue .rail::after{animation:none}}
 </style>
+<style id="tk-video-hardening">
+/* tk-video-hardening: background videos must never surface native player chrome */
+video:not([controls])::-webkit-media-controls,
+video:not([controls])::-webkit-media-controls-enclosure,
+video:not([controls])::-webkit-media-controls-panel,
+video:not([controls])::-webkit-media-controls-overlay-play-button,
+video:not([controls])::-webkit-media-controls-start-playback-button{
+  display:none !important; -webkit-appearance:none !important; opacity:0 !important;
+}
+video:not([controls]){ pointer-events:none; }
+</style>
 </head>
 <body>
 <div class="pre" id="pre"><div class="c" id="count">0</div><div class="l">Lumen Studio</div></div>
@@ -248,6 +259,28 @@ function boot(){
   if(RM){el.textContent="100";done();return;}
   gsap.to(v,{n:100,duration:1.8,ease:"power2.inOut",onUpdate:()=>el.textContent=Math.round(v.n),onComplete:done});
   setTimeout(done,4000);
+})();
+</script>
+<script id="tk-video-hardening-js">
+/* tk-video-hardening: guarantee muted autoplay, retry if the browser blocks the first attempt */
+(function(){
+  var vids = document.querySelectorAll('video[autoplay]:not([controls])');
+  if(!vids.length) return;
+  var kick = function(){
+    vids.forEach(function(v){
+      v.muted = true; v.defaultMuted = true; v.playsInline = true;
+      v.controls = false; v.removeAttribute('controls');
+      v.setAttribute('disablepictureinpicture','');
+      if(v.paused){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+    });
+  };
+  kick();
+  document.addEventListener('DOMContentLoaded', kick);
+  window.addEventListener('load', kick);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) kick(); });
+  ['pointerdown','touchstart','keydown','scroll'].forEach(function(e){
+    window.addEventListener(e, kick, {once:true, passive:true});
+  });
 })();
 </script>
 </body>

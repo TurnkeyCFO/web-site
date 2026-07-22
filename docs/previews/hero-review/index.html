@@ -21,6 +21,17 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#0c0a14;col
 .desc{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:60px 20px 22px;text-align:center;font-size:13.5px;color:#d8cdf0;background:linear-gradient(180deg,transparent,rgba(12,10,20,.8))}
 .note{max-width:820px;margin:10px auto 70px;padding:0 20px;text-align:center;color:#a89cc4;font-size:13.5px}
 </style>
+<style id="tk-video-hardening">
+/* tk-video-hardening: background videos must never surface native player chrome */
+video:not([controls])::-webkit-media-controls,
+video:not([controls])::-webkit-media-controls-enclosure,
+video:not([controls])::-webkit-media-controls-panel,
+video:not([controls])::-webkit-media-controls-overlay-play-button,
+video:not([controls])::-webkit-media-controls-start-playback-button{
+  display:none !important; -webkit-appearance:none !important; opacity:0 !important;
+}
+video:not([controls]){ pointer-events:none; }
+</style>
 </head>
 <body>
 <div class="intro">
@@ -88,5 +99,27 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#0c0a14;col
 </section>
 
 <p class="note">Pick a letter and I'll build it in at 1080p with the full multi-layer depth hero (giant text sandwiched behind the subject, three-rate parallax), plus the sub-lines and CTAs.</p>
+<script id="tk-video-hardening-js">
+/* tk-video-hardening: guarantee muted autoplay, retry if the browser blocks the first attempt */
+(function(){
+  var vids = document.querySelectorAll('video[autoplay]:not([controls])');
+  if(!vids.length) return;
+  var kick = function(){
+    vids.forEach(function(v){
+      v.muted = true; v.defaultMuted = true; v.playsInline = true;
+      v.controls = false; v.removeAttribute('controls');
+      v.setAttribute('disablepictureinpicture','');
+      if(v.paused){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+    });
+  };
+  kick();
+  document.addEventListener('DOMContentLoaded', kick);
+  window.addEventListener('load', kick);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) kick(); });
+  ['pointerdown','touchstart','keydown','scroll'].forEach(function(e){
+    window.addEventListener(e, kick, {once:true, passive:true});
+  });
+})();
+</script>
 </body>
 </html>

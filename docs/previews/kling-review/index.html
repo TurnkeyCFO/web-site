@@ -30,6 +30,17 @@ h2.tg{color:#1668B8;border-color:#3B9BFF}
 .meta .place b{color:#0d241a}
 .note{margin-top:40px;background:#fff;border:1px solid rgba(13,36,26,.12);border-radius:14px;padding:20px 22px;font-size:14px;color:#5c6f64}
 </style>
+<style id="tk-video-hardening">
+/* tk-video-hardening: background videos must never surface native player chrome */
+video:not([controls])::-webkit-media-controls,
+video:not([controls])::-webkit-media-controls-enclosure,
+video:not([controls])::-webkit-media-controls-panel,
+video:not([controls])::-webkit-media-controls-overlay-play-button,
+video:not([controls])::-webkit-media-controls-start-playback-button{
+  display:none !important; -webkit-appearance:none !important; opacity:0 !important;
+}
+video:not([controls]){ pointer-events:none; }
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -121,5 +132,27 @@ h2.tg{color:#1668B8;border-color:#3B9BFF}
 
   <div class="note">Generation cost for this whole set: ~50 credits (~2,830 remaining). Videos are 720p Kling loops, compressed and self-hosted. Reply with which assets to ship and I'll integrate, verify desktop + mobile, and deploy.</div>
 </div>
+<script id="tk-video-hardening-js">
+/* tk-video-hardening: guarantee muted autoplay, retry if the browser blocks the first attempt */
+(function(){
+  var vids = document.querySelectorAll('video[autoplay]:not([controls])');
+  if(!vids.length) return;
+  var kick = function(){
+    vids.forEach(function(v){
+      v.muted = true; v.defaultMuted = true; v.playsInline = true;
+      v.controls = false; v.removeAttribute('controls');
+      v.setAttribute('disablepictureinpicture','');
+      if(v.paused){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+    });
+  };
+  kick();
+  document.addEventListener('DOMContentLoaded', kick);
+  window.addEventListener('load', kick);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) kick(); });
+  ['pointerdown','touchstart','keydown','scroll'].forEach(function(e){
+    window.addEventListener(e, kick, {once:true, passive:true});
+  });
+})();
+</script>
 </body>
 </html>

@@ -111,6 +111,17 @@ tailwind.config = {
     .grad-text,.marquee-track,.sonar-ring,.scan-line,.droplet,.chip-dot{ animation:none !important; }
   }
 </style>
+<style id="tk-video-hardening">
+/* tk-video-hardening: background videos must never surface native player chrome */
+video:not([controls])::-webkit-media-controls,
+video:not([controls])::-webkit-media-controls-enclosure,
+video:not([controls])::-webkit-media-controls-panel,
+video:not([controls])::-webkit-media-controls-overlay-play-button,
+video:not([controls])::-webkit-media-controls-start-playback-button{
+  display:none !important; -webkit-appearance:none !important; opacity:0 !important;
+}
+video:not([controls]){ pointer-events:none; }
+</style>
 </head>
 <body class="antialiased">
 
@@ -647,6 +658,28 @@ tailwind.config = {
     document.querySelectorAll('[data-reveal]').forEach(el=>{ if(getComputedStyle(el).opacity!=='1'){ el.style.opacity='1'; el.style.transform='none'; } });
     document.querySelectorAll('[data-count]').forEach(el=>{ if(el.textContent.trim()==='0'){ const t=parseFloat(el.dataset.count), suf=el.dataset.suffix||''; el.innerHTML=(t%1===0?Math.round(t):t.toFixed(1))+suf; } });
   }, 6000);
+})();
+</script>
+<script id="tk-video-hardening-js">
+/* tk-video-hardening: guarantee muted autoplay, retry if the browser blocks the first attempt */
+(function(){
+  var vids = document.querySelectorAll('video[autoplay]:not([controls])');
+  if(!vids.length) return;
+  var kick = function(){
+    vids.forEach(function(v){
+      v.muted = true; v.defaultMuted = true; v.playsInline = true;
+      v.controls = false; v.removeAttribute('controls');
+      v.setAttribute('disablepictureinpicture','');
+      if(v.paused){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+    });
+  };
+  kick();
+  document.addEventListener('DOMContentLoaded', kick);
+  window.addEventListener('load', kick);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) kick(); });
+  ['pointerdown','touchstart','keydown','scroll'].forEach(function(e){
+    window.addEventListener(e, kick, {once:true, passive:true});
+  });
 })();
 </script>
 </body>
