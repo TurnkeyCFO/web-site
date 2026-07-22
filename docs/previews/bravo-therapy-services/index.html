@@ -39,8 +39,8 @@ tailwind.config = {
     extend: {
       colors: {
         ivory:'#FAF6F0', paper:'#F2EAE0', shell:'#EDE2D6',
-        pine:'#12514F', teal:'#1F7A72', mist:'#A9C6BE',
-        clay:'#C2703F', clayink:'#95481C', claysoft:'#E8B08A', ink:'#17211F', muted:'#55635F'
+        pine:'#12514F', teal:'#1F7A72', mist:'#C6DBD5',
+        clay:'#C2703F', clayink:'#95481C', statlabel:'#2C3734', claysoft:'#F0C9A8', ink:'#17211F', muted:'#55635F'
       },
       fontFamily: { display:['Fraunces','Georgia','serif'], sans:['"Plus Jakarta Sans"','system-ui','sans-serif'] }
     }
@@ -51,8 +51,8 @@ tailwind.config = {
 <style>
 :root{
   --ivory:#FAF6F0; --paper:#F2EAE0; --shell:#EDE2D6;
-  --pine:#12514F; --teal:#1F7A72; --mist:#A9C6BE;
-  --clay:#C2703F; --clayink:#95481C; --claysoft:#E8B08A; --ink:#17211F; --muted:#55635F;
+  --pine:#12514F; --teal:#1F7A72; --mist:#C6DBD5;
+  --clay:#C2703F; --clayink:#95481C; --claysoft:#F0C9A8; --ink:#17211F; --muted:#55635F;
   --nav-h:74px;
 }
 *{ -webkit-tap-highlight-color: transparent; }
@@ -230,7 +230,7 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
         physical therapy.
       </h1>
 
-      <p class="sub text-[1.06rem] sm:text-[1.15rem] leading-[1.72] text-muted max-w-[520px] mb-9" data-reveal>
+      <p class="sub text-[1.06rem] sm:text-[1.15rem] leading-[1.72] text-statlabel max-w-[520px] mb-9" data-reveal>
         Bravo Therapy Services is a small outpatient clinic in Lafayette with an
         unusual specialty. Alongside general physical therapy, we treat pelvic floor
         dysfunction for all genders, with board-certified training you will not find
@@ -251,15 +251,15 @@ h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
       <div class="flex flex-wrap gap-x-9 gap-y-5" data-reveal>
         <div>
           <div class="font-display text-[2rem] text-pine leading-none pb-1"><span data-count="30" data-suffix="">0</span><span class="text-clayink">+</span></div>
-          <div class="eyebrow text-muted mt-1.5">Years in practice</div>
+          <div class="eyebrow text-statlabel mt-1.5">Years in practice</div>
         </div>
         <div>
           <div class="font-display text-[2rem] text-pine leading-none pb-1"><span data-count="3" data-suffix="">0</span></div>
-          <div class="eyebrow text-muted mt-1.5">Pelvic certifications</div>
+          <div class="eyebrow text-statlabel mt-1.5">Pelvic certifications</div>
         </div>
         <div>
           <div class="font-display text-[2rem] text-pine leading-none pb-1"><span data-count="4" data-suffix="">0</span></div>
-          <div class="eyebrow text-muted mt-1.5">Languages spoken</div>
+          <div class="eyebrow text-statlabel mt-1.5">Languages spoken</div>
         </div>
       </div>
     </div>
