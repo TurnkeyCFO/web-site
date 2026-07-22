@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<!--
+  Bravo Therapy Services, Inc. — Lafayette, LA
+  Turnkey Web prospect draft. Preview only.
+
+  Art direction: "Light-luxury clinical calm."
+  Palette derived from the practice's character (30-yr specialty pelvic-health clinic,
+  privacy + dignity + breath): warm ivory base, deep pine-teal as the brand ink,
+  scarce warm clay accent. Type: Fraunces (humanist display) + Plus Jakarta Sans.
+  Signature moment: "What the letters mean" credential decoder over a Three.js breath field.
+  Hero: AI-generated cinematic asset (Higgsfield nano_banana_pro -> Kling 3.0 Turbo).
+
+  ALL business facts verified from: BBB profile, APTA ChoosePT directory,
+  Herman & Wallace pelvicrehab.com practitioner profile, APTA Pelvic Health locator,
+  the practice's own bravotherapy.com, and their Facebook listing.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bravo Therapy Services | Pelvic Health &amp; Physical Therapy in Lafayette, LA</title>
+<meta name="description" content="Bravo Therapy Services, Inc. — a specialty outpatient physical therapy clinic in Lafayette, Louisiana. Board-certified pelvic floor rehabilitation for all genders, plus incontinence, osteoporosis and sexual dysfunction care. Thirty years of practice. (337) 406-0712.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/bravo-therapy-services/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bravo Therapy Services | Pelvic Health &amp; Physical Therapy in Lafayette, LA">
+<meta property="og:description" content="A specialty outpatient pelvic health and physical therapy clinic in Lafayette, Louisiana. Thirty years of practice. Board-certified pelvic floor rehabilitation for all genders.">
+<meta property="og:url" content="https://turnkeyweb.org/previews/bravo-therapy-services/">
+<meta property="og:image" content="https://turnkeyweb.org/previews/bravo-therapy-services/assets/hero.jpg">
+<meta name="theme-color" content="#FAF6F0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ivory:'#FAF6F0', paper:'#F2EAE0', shell:'#EDE2D6',
+        pine:'#12514F', teal:'#1F7A72', mist:'#A9C6BE',
+        clay:'#C2703F', ink:'#17211F', muted:'#55635F'
+      },
+      fontFamily: { display:['Fraunces','Georgia','serif'], sans:['"Plus Jakarta Sans"','system-ui','sans-serif'] }
+    }
+  }
+}
+</script>
+
+<style>
+:root{
+  --ivory:#FAF6F0; --paper:#F2EAE0; --shell:#EDE2D6;
+  --pine:#12514F; --teal:#1F7A72; --mist:#A9C6BE;
+  --clay:#C2703F; --ink:#17211F; --muted:#55635F;
+  --nav-h:74px;
+}
+*{ -webkit-tap-highlight-color: transparent; }
+html{ scroll-behavior:auto; scroll-padding-top:96px; }
+body{
+  background:var(--ivory); color:var(--ink);
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+::selection{ background:var(--mist); color:var(--ink); }
+
+/* ---------- DESCENDER SAFETY (hard rule) ---------- */
+h1,h2,h3,h4,.display{ line-height:1.1; padding-bottom:.06em; }
+.display-xl{ line-height:1.08; padding-bottom:.1em; }
+
+/* ---------- gradient shimmer on key headers ---------- */
+.grad-text{
+  background:linear-gradient(100deg,var(--pine) 0%,var(--teal) 26%,var(--clay) 50%,var(--teal) 74%,var(--pine) 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  animation:shimmer 9s linear infinite;
+  line-height:1.15; padding-bottom:.1em; display:inline-block;
+}
+@keyframes shimmer{ from{background-position:0% 50%} to{background-position:220% 50%} }
+@media (prefers-reduced-motion:reduce){ .grad-text{ animation:none; } }
+
+/* ---------- nav ---------- */
+.nav{ transition:background .45s ease, box-shadow .45s ease, backdrop-filter .45s ease; }
+.nav.solid{ background:rgba(250,246,240,.93); backdrop-filter:blur(14px); box-shadow:0 1px 0 rgba(23,33,31,.08); }
+.ul-grow{ position:relative; }
+.ul-grow::after{
+  content:''; position:absolute; left:0; bottom:-5px; height:1.5px; width:0;
+  background:linear-gradient(90deg,var(--teal),var(--clay)); transition:width .5s cubic-bezier(.22,1,.36,1);
+}
+.ul-grow:hover::after{ width:100%; }
+
+/* ---------- hero ---------- */
+.hero{ position:relative; overflow:hidden; background:var(--paper); }
+.hero-media{ position:absolute; inset:-6% 0 -6% 0; width:100%; height:112%; object-fit:cover; will-change:transform; }
+/* MANDATORY legibility scrim — brightest/most opaque on the LEFT where the dark headline sits */
+.hero-scrim{
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    linear-gradient(96deg, rgba(250,246,240,.97) 0%, rgba(250,246,240,.95) 26%, rgba(250,246,240,.78) 42%, rgba(250,246,240,.28) 60%, rgba(250,246,240,.05) 78%, rgba(250,246,240,0) 100%),
+    linear-gradient(180deg, rgba(250,246,240,.55) 0%, rgba(250,246,240,0) 22%, rgba(250,246,240,0) 68%, rgba(250,246,240,.5) 100%);
+}
+@media (max-width:900px){
+  .hero-scrim{
+    background:
+      linear-gradient(180deg, rgba(250,246,240,.94) 0%, rgba(250,246,240,.9) 44%, rgba(250,246,240,.68) 66%, rgba(250,246,240,.34) 100%),
+      linear-gradient(96deg, rgba(250,246,240,.7) 0%, rgba(250,246,240,.2) 70%, rgba(250,246,240,0) 100%);
+  }
+}
+.hero h1{ text-shadow:0 1px 26px rgba(250,246,240,.95), 0 0 60px rgba(250,246,240,.8); }
+.hero .sub{ text-shadow:0 1px 18px rgba(250,246,240,.95); }
+
+/* ---------- rules + chips ---------- */
+.eyebrow{ font-size:.68rem; letter-spacing:.24em; text-transform:uppercase; font-weight:600; }
+.chip{
+  display:inline-flex; align-items:center; gap:.5rem; padding:.42rem .85rem; border-radius:999px;
+  border:1px solid rgba(18,81,79,.22); background:rgba(255,255,255,.6);
+  font-size:.76rem; font-weight:500; color:var(--pine);
+}
+.chip-dot{ width:6px; height:6px; border-radius:50%; background:var(--clay); animation:pulse 2.4s ease-in-out infinite; }
+@keyframes pulse{ 0%,100%{opacity:.45; transform:scale(.82)} 50%{opacity:1; transform:scale(1.12)} }
+
+/* ---------- buttons ---------- */
+.btn{ position:relative; overflow:hidden; transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease, filter .4s ease; }
+.btn:hover{ transform:translateY(-3px); }
+.btn-primary{ background:var(--pine); color:#FAF6F0; box-shadow:0 10px 30px -12px rgba(18,81,79,.6); }
+.btn-primary:hover{ box-shadow:0 18px 40px -14px rgba(18,81,79,.72); filter:brightness(1.06); }
+.btn-primary::after{
+  content:''; position:absolute; top:0; left:0; width:42%; height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.3),transparent);
+  transform:translateX(-160%); transition:transform .9s cubic-bezier(.22,1,.36,1);
+}
+.btn-primary:hover::after{ transform:translateX(320%); }
+.btn-ghost{ border:1px solid rgba(18,81,79,.3); color:var(--pine); background:rgba(255,255,255,.5); }
+.btn-ghost:hover{ background:#fff; border-color:var(--pine); }
+
+/* ---------- cards ---------- */
+.card{
+  position:relative; background:#fff; border:1px solid rgba(23,33,31,.07);
+  transition:transform .55s cubic-bezier(.22,1,.36,1), box-shadow .55s ease, border-color .55s ease;
+}
+.card::before{
+  content:''; position:absolute; top:0; left:0; height:2px; width:0;
+  background:linear-gradient(90deg,var(--teal),var(--clay)); transition:width .65s cubic-bezier(.22,1,.36,1);
+}
+.card:hover{ transform:translateY(-6px); box-shadow:0 24px 50px -28px rgba(18,81,79,.4); border-color:rgba(18,81,79,.16); }
+.card:hover::before{ width:100%; }
+.card:hover .ico{ transform:rotate(-6deg) scale(1.07); }
+.ico{ transition:transform .55s cubic-bezier(.22,1,.36,1); }
+
+/* ---------- signature: credential decoder ---------- */
+.cred{ position:relative; padding-left:1.6rem; }
+.cred::before{
+  content:''; position:absolute; left:0; top:.55em; width:0; height:1.5px;
+  background:linear-gradient(90deg,var(--clay),transparent); transition:width 1s cubic-bezier(.22,1,.36,1);
+}
+.cred.in::before{ width:1.05rem; }
+.cred-letters{ letter-spacing:.06em; }
+
+/* ---------- webgl breath field ---------- */
+#breath{ position:absolute; inset:0; width:100%; height:100%; display:block; opacity:.85; pointer-events:none; }
+
+/* ---------- reveals ---------- */
+[data-reveal]{ opacity:0; transform:translateY(26px); will-change:opacity,transform; }
+[data-reveal].in{ opacity:1; transform:none; }
+[data-reveal-image]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.35s cubic-bezier(.22,1,.36,1); }
+[data-reveal-image].in{ clip-path:inset(0 0 0% 0); }
+
+/* ---------- marquee ---------- */
+.marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+.marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 44s linear infinite; }
+.marquee:hover .marquee-track{ animation-play-state:paused; }
+@keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ---------- misc ---------- */
+.grain::after{
+  content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+  background-image:radial-gradient(rgba(23,33,31,.5) .6px, transparent .6px); background-size:3px 3px;
+}
+.bridge{ max-width:180px; height:1px; margin:0 auto; background:linear-gradient(90deg,transparent,rgba(18,81,79,.35),transparent); }
+.mapwrap iframe{ width:100%; height:100%; border:0; display:block; filter:saturate(.82) contrast(1.02); }
+.sticky-bar{ box-shadow:0 -8px 30px -14px rgba(23,33,31,.4); }
+@media (max-width:900px){ body{ padding-bottom:66px; } }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="nav fixed top-0 inset-x-0 z-50">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-8 h-[74px] flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-3 shrink-0">
+      <span class="inline-flex items-center justify-center w-9 h-9 rounded-[10px] bg-pine text-ivory font-display text-[19px] leading-none pb-0">B</span>
+      <span class="leading-tight">
+        <span class="block font-display text-[19px] sm:text-[21px] text-ink tracking-tight">Bravo Therapy</span>
+        <span class="block eyebrow text-[.56rem] text-muted">Lafayette, Louisiana</span>
+      </span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-[.86rem] font-medium text-muted">
+      <a href="#care" class="ul-grow hover:text-pine transition">What We Treat</a>
+      <a href="#story" class="ul-grow hover:text-pine transition">Why Pelvic Health</a>
+      <a href="#credentials" class="ul-grow hover:text-pine transition">Credentials</a>
+      <a href="#team" class="ul-grow hover:text-pine transition">Our Team</a>
+      <a href="#visit" class="ul-grow hover:text-pine transition">Visit</a>
+    </nav>
+    <a href="tel:+13374060712" class="btn btn-primary rounded-full px-5 py-2.5 text-[.83rem] font-semibold inline-flex items-center gap-2 shrink-0">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="hidden sm:inline">(337) 406-0712</span><span class="sm:hidden">Call</span>
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="hero min-h-[100svh] flex items-center pt-[130px] sm:pt-[120px] lg:pt-[74px] pb-20">
+  <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg" aria-hidden="true">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 w-full max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="max-w-[640px]">
+      <div class="chip mb-7" data-reveal>
+        <span class="chip-dot"></span>Serving Acadiana since 1996
+      </div>
+
+      <h1 class="display-xl font-display font-light text-[clamp(2.5rem,6.6vw,4.7rem)] text-ink tracking-[-.02em] mb-7" data-reveal>
+        Thirty years of<br>
+        <span class="grad-text font-normal italic">quiet, careful</span><br>
+        physical therapy.
+      </h1>
+
+      <p class="sub text-[1.06rem] sm:text-[1.15rem] leading-[1.72] text-muted max-w-[520px] mb-9" data-reveal>
+        Bravo Therapy Services is a small outpatient clinic in Lafayette with an
+        unusual specialty. Alongside general physical therapy, we treat pelvic floor
+        dysfunction for all genders, with board-certified training you will not find
+        on most corners of Acadiana.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-3.5 mb-11" data-reveal>
+        <a href="tel:+13374060712" class="btn btn-primary rounded-full px-7 py-3.5 text-[.92rem] font-semibold inline-flex items-center gap-2.5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (337) 406-0712
+        </a>
+        <a href="#care" class="btn btn-ghost rounded-full px-7 py-3.5 text-[.92rem] font-semibold inline-flex items-center gap-2.5">
+          What we treat
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </a>
+      </div>
+
+      <div class="flex flex-wrap gap-x-9 gap-y-5" data-reveal>
+        <div>
+          <div class="font-display text-[2rem] text-pine leading-none pb-1"><span data-count="30" data-suffix="">0</span><span class="text-clay">+</span></div>
+          <div class="eyebrow text-muted mt-1.5">Years in practice</div>
+        </div>
+        <div>
+          <div class="font-display text-[2rem] text-pine leading-none pb-1"><span data-count="3" data-suffix="">0</span></div>
+          <div class="eyebrow text-muted mt-1.5">Pelvic certifications</div>
+        </div>
+        <div>
+          <div class="font-display text-[2rem] text-pine leading-none pb-1"><span data-count="4" data-suffix="">0</span></div>
+          <div class="eyebrow text-muted mt-1.5">Languages spoken</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<section class="bg-pine py-4 border-y border-pine">
+  <div class="marquee">
+    <div class="marquee-track text-ivory/85 text-[.82rem] tracking-[.18em] uppercase font-medium">
+      <span>Pelvic Health</span><span class="text-clay">&bull;</span>
+      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Incontinence</span><span class="text-clay">&bull;</span>
+      <span>Osteoporosis</span><span class="text-clay">&bull;</span>
+      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Sexual Dysfunction</span><span class="text-clay">&bull;</span>
+      <span>Outpatient Physical Therapy</span><span class="text-clay">&bull;</span>
+      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Occupational Therapy</span><span class="text-clay">&bull;</span>
+      <span>All Genders Welcome</span><span class="text-clay">&bull;</span>
+      <span>Pelvic Health</span><span class="text-clay">&bull;</span>
+      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Incontinence</span><span class="text-clay">&bull;</span>
+      <span>Osteoporosis</span><span class="text-clay">&bull;</span>
+      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Sexual Dysfunction</span><span class="text-clay">&bull;</span>
+      <span>Outpatient Physical Therapy</span><span class="text-clay">&bull;</span>
+      <span class="italic font-display normal-case text-[1rem] tracking-normal text-mist">Occupational Therapy</span><span class="text-clay">&bull;</span>
+      <span>All Genders Welcome</span><span class="text-clay">&bull;</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE: THE STORY ============ -->
+<section id="story" class="relative bg-ivory grain py-24 sm:py-32 overflow-hidden">
+  <div class="relative max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-[1fr_.85fr] gap-14 lg:gap-20 items-center">
+      <div>
+        <div class="eyebrow text-clay mb-6" data-reveal>Why this clinic treats what it treats</div>
+        <h2 class="font-display font-light text-[clamp(1.95rem,4.3vw,3.15rem)] tracking-[-.015em] mb-8" data-reveal>
+          It started with<br><span class="grad-text font-normal italic">her grandmother.</span>
+        </h2>
+        <div class="space-y-6 text-[1.03rem] leading-[1.82] text-muted max-w-[560px]">
+          <p data-reveal>
+            Jacqueline Bravo had already been a physical therapist since 1988. Fourteen
+            years across acute care, inpatient rehabilitation and outpatient clinics.
+            Then her grandmother was diagnosed with severe pelvic organ prolapse.
+          </p>
+          <p data-reveal>
+            What she found was a field most clinics quietly route around. So she went and
+            learned it properly. The APTA Certificate of Achievement in Pelvic Physical
+            Therapy in 2008. Board certification in biofeedback for pelvic floor muscle
+            dysfunction in 2013. Her Pelvic Rehabilitation Practitioner Certification in 2019.
+          </p>
+          <p data-reveal>
+            She has since spoken at the Louisiana Urological Society and the Woman's
+            Foundation Inc. OB/GYN Conference. And she still runs a small clinic on
+            Westmark Boulevard, where the door closes and you get an hour of somebody's
+            full attention.
+          </p>
+        </div>
+        <div class="mt-10 pl-6 border-l-2 border-clay" data-reveal>
+          <p class="font-display italic text-[1.28rem] sm:text-[1.42rem] text-pine leading-[1.55] pb-1">
+            We're a small business but we get big results.
+          </p>
+          <p class="eyebrow text-muted mt-3">Bravo Therapy Services</p>
+        </div>
+      </div>
+
+      <div class="relative" data-reveal>
+        <div class="absolute -inset-5 rounded-[26px] bg-gradient-to-br from-mist/35 to-clay/10 blur-2xl"></div>
+        <div class="relative rounded-[20px] overflow-hidden bg-white border border-ink/8 p-9 sm:p-11">
+          <svg class="mb-7" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#C2703F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg>
+          <div class="eyebrow text-muted mb-4">The practice, plainly</div>
+          <p class="text-[1.02rem] leading-[1.8] text-ink/85 mb-8">
+            An outpatient physical therapy clinic for patients with pelvic floor
+            dysfunction. Care is provided to all genders. Real-time ultrasound imaging
+            is used for biofeedback during pelvic floor rehabilitation.
+          </p>
+          <div class="space-y-4 pt-7 border-t border-ink/10">
+            <div class="flex items-start gap-3.5">
+              <svg class="mt-1 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#12514F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span class="text-[.93rem] text-muted leading-relaxed">Member, American Physical Therapy Association</span>
+            </div>
+            <div class="flex items-start gap-3.5">
+              <svg class="mt-1 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#12514F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span class="text-[.93rem] text-muted leading-relaxed">English, Malay, Tagalog and Visayan spoken</span>
+            </div>
+            <div class="flex items-start gap-3.5">
+              <svg class="mt-1 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#12514F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span class="text-[.93rem] text-muted leading-relaxed">Appointments Monday through Thursday</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bridge"></div>
+
+<!-- ============ CARE AREAS ============ -->
+<section id="care" class="bg-paper py-24 sm:py-32">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="max-w-[660px] mb-16">
+      <div class="eyebrow text-clay mb-6" data-reveal>What we treat</div>
+      <h2 class="font-display font-light text-[clamp(1.95rem,4.3vw,3.15rem)] tracking-[-.015em] mb-6" data-reveal>
+        Four focus areas, and<br>the <span class="grad-text font-normal italic">everyday work</span> too.
+      </h2>
+      <p class="text-[1.03rem] leading-[1.8] text-muted" data-reveal>
+        Most people arrive for one of the first four. Many stay because the general
+        outpatient physical therapy is thorough and unhurried.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Pelvic Health -->
+      <article class="card rounded-[16px] p-8" data-reveal>
+        <div class="ico w-12 h-12 rounded-[12px] bg-pine/8 flex items-center justify-center mb-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#12514F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg>
+        </div>
+        <h3 class="font-display text-[1.32rem] text-ink mb-3">Pelvic Health</h3>
+        <p class="text-[.94rem] leading-[1.75] text-muted">
+          The clinic's specialty and the reason many patients travel to reach it.
+          Assessment and rehabilitation of pelvic floor dysfunction, provided to
+          patients of all genders.
+        </p>
+      </article>
+
+      <!-- Incontinence -->
+      <article class="card rounded-[16px] p-8" data-reveal>
+        <div class="ico w-12 h-12 rounded-[12px] bg-pine/8 flex items-center justify-center mb-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#12514F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7s6 6.4 6 10.4a6 6 0 0 1-12 0c0-4 6-10.4 6-10.4z"/></svg>
+        </div>
+        <h3 class="font-display text-[1.32rem] text-ink mb-3">Incontinence</h3>
+        <p class="text-[.94rem] leading-[1.75] text-muted">
+          One of the most common reasons people come in, and one of the least often
+          talked about. Conservative, therapist-led treatment in a private room.
+        </p>
+      </article>
+
+      <!-- Sexual Dysfunction -->
+      <article class="card rounded-[16px] p-8" data-reveal>
+        <div class="ico w-12 h-12 rounded-[12px] bg-pine/8 flex items-center justify-center mb-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#12514F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h3l2.5-6 4 12L16 12h4"/></svg>
+        </div>
+        <h3 class="font-display text-[1.32rem] text-ink mb-3">Sexual Dysfunction</h3>
+        <p class="text-[.94rem] leading-[1.75] text-muted">
+          A listed focus area of the practice, handled with the discretion it deserves.
+          Care is provided to all genders by a board-certified pelvic clinician.
+        </p>
+      </article>
+
+      <!-- Osteoporosis -->
+      <article class="card rounded-[16px] p-8" data-reveal>
+        <div class="ico w-12 h-12 rounded-[12px] bg-pine/8 flex items-center justify-center mb-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#12514F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v6a5 5 0 0 0 10 0V4M7 20v-6a5 5 0 0 1 10 0v6"/></svg>
+        </div>
+        <h3 class="font-display text-[1.32rem] text-ink mb-3">Osteoporosis</h3>
+        <p class="text-[.94rem] leading-[1.75] text-muted">
+          Loading, balance and safe-movement programs built for bone health, delivered
+          one-to-one rather than handed over as a printed sheet.
+        </p>
+      </article>
+
+      <!-- Outpatient PT -->
+      <article class="card rounded-[16px] p-8" data-reveal>
+        <div class="ico w-12 h-12 rounded-[12px] bg-pine/8 flex items-center justify-center mb-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#12514F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>
+        </div>
+        <h3 class="font-display text-[1.32rem] text-ink mb-3">Outpatient Physical Therapy</h3>
+        <p class="text-[.94rem] leading-[1.75] text-muted">
+          The general practice that has run for three decades. Post-operative recovery,
+          orthopedic complaints, strength and mobility work.
+        </p>
+      </article>
+
+      <!-- OT -->
+      <article class="card rounded-[16px] p-8" data-reveal>
+        <div class="ico w-12 h-12 rounded-[12px] bg-pine/8 flex items-center justify-center mb-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#12514F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11m0 0V4.5a1.5 1.5 0 0 1 3 0V11m0 0V6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6v-3a1.5 1.5 0 0 1 3 0"/></svg>
+        </div>
+        <h3 class="font-display text-[1.32rem] text-ink mb-3">Occupational Therapy</h3>
+        <p class="text-[.94rem] leading-[1.75] text-muted">
+          Listed alongside physical therapy in the practice's registered services.
+          Call the clinic to confirm current availability and scheduling.
+        </p>
+      </article>
+    </div>
+
+    <div class="mt-14 pt-12 border-t border-ink/10">
+      <div class="eyebrow text-muted mb-6" data-reveal>Conditions commonly seen at the clinic</div>
+      <div class="flex flex-wrap gap-2.5 mb-10" data-reveal>
+        <span class="chip">Urinary incontinence</span>
+        <span class="chip">Bowel incontinence</span>
+        <span class="chip">Pelvic pain</span>
+        <span class="chip">Constipation</span>
+        <span class="chip">Pregnancy &amp; postpartum</span>
+        <span class="chip">Male pelvic health</span>
+        <span class="chip">Pediatric pelvic health</span>
+        <span class="chip">Transgender pelvic health</span>
+        <span class="chip">Fibromyalgia</span>
+        <span class="chip">Osteoporosis</span>
+        <span class="chip">Post-surgical recovery</span>
+        <span class="chip">Surface EMG biofeedback</span>
+      </div>
+      <p class="text-[.98rem] text-muted" data-reveal>
+        Not sure which one fits? That is a normal place to start.
+        <a href="tel:+13374060712" class="text-pine font-semibold ul-grow">Call (337) 406-0712</a>
+        and ask Marquita.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE: CREDENTIAL DECODER + WEBGL BREATH FIELD ============ -->
+<section id="credentials" class="relative bg-ivory py-24 sm:py-32 overflow-hidden">
+  <canvas id="breath" aria-hidden="true"></canvas>
+  <div class="relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-[.9fr_1fr] gap-14 lg:gap-20">
+      <div>
+        <div class="eyebrow text-clay mb-6" data-reveal>The letters after the name</div>
+        <h2 class="font-display font-light text-[clamp(1.95rem,4.3vw,3.15rem)] tracking-[-.015em] mb-7" data-reveal>
+          <span class="grad-text font-normal italic">PT, BCB-PMD, PRPC.</span><br>Here is what they mean.
+        </h2>
+        <p class="text-[1.03rem] leading-[1.8] text-muted max-w-[460px]" data-reveal>
+          Credentials in this field are genuinely hard to read, and most clinics never
+          explain them. These three took Jacqueline Bravo eleven years to accumulate,
+          and they are the reason the clinic can treat what it treats.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <div class="cred bg-white/70 backdrop-blur-sm rounded-[14px] border border-ink/8 p-7" data-reveal data-cred>
+          <div class="cred-letters font-display text-[1.6rem] text-pine mb-2 pb-1">PT</div>
+          <div class="text-[.8rem] font-semibold text-clay uppercase tracking-[.14em] mb-3">Physical Therapist</div>
+          <p class="text-[.94rem] leading-[1.75] text-muted">
+            Licensed since 1988. The first fourteen years were spent in acute care,
+            inpatient rehabilitation and outpatient settings before the specialty work began.
+          </p>
+        </div>
+
+        <div class="cred bg-white/70 backdrop-blur-sm rounded-[14px] border border-ink/8 p-7" data-reveal data-cred>
+          <div class="cred-letters font-display text-[1.6rem] text-pine mb-2 pb-1">BCB-PMD</div>
+          <div class="text-[.8rem] font-semibold text-clay uppercase tracking-[.14em] mb-3">Board Certified in Biofeedback for Pelvic Muscle Dysfunction</div>
+          <p class="text-[.94rem] leading-[1.75] text-muted">
+            Earned in 2013. Biofeedback lets a patient see muscle activity they cannot
+            otherwise feel, which is often the difference between guessing at an exercise
+            and actually performing it.
+          </p>
+        </div>
+
+        <div class="cred bg-white/70 backdrop-blur-sm rounded-[14px] border border-ink/8 p-7" data-reveal data-cred>
+          <div class="cred-letters font-display text-[1.6rem] text-pine mb-2 pb-1">PRPC</div>
+          <div class="text-[.8rem] font-semibold text-clay uppercase tracking-[.14em] mb-3">Pelvic Rehabilitation Practitioner Certification</div>
+          <p class="text-[.94rem] leading-[1.75] text-muted">
+            Attained in 2019, following the APTA Certificate of Achievement in Pelvic
+            Physical Therapy in 2008. Together they represent eleven years of
+            certification specific to the pelvic floor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ULTRASOUND BAND ============ -->
+<section class="relative bg-pine py-20 sm:py-24 overflow-hidden">
+  <div class="absolute inset-0 opacity-[.09]" style="background-image:radial-gradient(circle at 22% 40%, #A9C6BE 0%, transparent 42%), radial-gradient(circle at 82% 62%, #C2703F 0%, transparent 46%);"></div>
+  <div class="relative max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-[1fr_.8fr] gap-12 items-center">
+      <div>
+        <div class="eyebrow text-clay mb-6" data-reveal>In the treatment room</div>
+        <h2 class="font-display font-light text-[clamp(1.8rem,3.9vw,2.85rem)] text-ivory tracking-[-.015em] mb-6" data-reveal>
+          Real-time ultrasound, used<br>as a mirror for muscles<br>you cannot see.
+        </h2>
+        <p class="text-[1.02rem] leading-[1.8] text-mist max-w-[540px]" data-reveal>
+          The pelvic floor is one of the few muscle groups you cannot watch yourself use.
+          Jacqueline added real-time ultrasound imaging to the clinic so patients get
+          visual biofeedback during rehabilitation. You see the muscle respond, and you
+          learn faster because of it.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-3" data-reveal>
+        <span class="chip !bg-ivory/10 !border-ivory/25 !text-ivory">All genders treated</span>
+        <span class="chip !bg-ivory/10 !border-ivory/25 !text-ivory">Private treatment rooms</span>
+        <span class="chip !bg-ivory/10 !border-ivory/25 !text-ivory">One-to-one care</span>
+        <span class="chip !bg-ivory/10 !border-ivory/25 !text-ivory">Speaker, LA Urological Society</span>
+        <span class="chip !bg-ivory/10 !border-ivory/25 !text-ivory">Woman's Foundation OB/GYN Conference</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REAL GOOGLE REVIEWS ============ -->
+<section id="reviews" class="bg-ivory py-24 sm:py-32">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
+      <div class="max-w-[620px]">
+        <div class="eyebrow text-clay mb-6" data-reveal>What patients say</div>
+        <h2 class="font-display font-light text-[clamp(1.95rem,4.3vw,3.15rem)] tracking-[-.015em]" data-reveal>
+          Eleven reviews.<br><span class="grad-text font-normal italic">Every one of them five stars.</span>
+        </h2>
+      </div>
+      <div class="flex items-center gap-5 shrink-0" data-reveal>
+        <div class="font-display text-[3.4rem] text-pine leading-none pb-2">5.0</div>
+        <div>
+          <div class="flex gap-1 mb-2">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#C2703F"><path d="M12 2l2.9 6.3 6.8.8-5 4.7 1.3 6.8L12 17.3 6 20.6l1.3-6.8-5-4.7 6.8-.8z"/></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#C2703F"><path d="M12 2l2.9 6.3 6.8.8-5 4.7 1.3 6.8L12 17.3 6 20.6l1.3-6.8-5-4.7 6.8-.8z"/></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#C2703F"><path d="M12 2l2.9 6.3 6.8.8-5 4.7 1.3 6.8L12 17.3 6 20.6l1.3-6.8-5-4.7 6.8-.8z"/></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#C2703F"><path d="M12 2l2.9 6.3 6.8.8-5 4.7 1.3 6.8L12 17.3 6 20.6l1.3-6.8-5-4.7 6.8-.8z"/></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#C2703F"><path d="M12 2l2.9 6.3 6.8.8-5 4.7 1.3 6.8L12 17.3 6 20.6l1.3-6.8-5-4.7 6.8-.8z"/></svg>
+          </div>
+          <div class="text-[.86rem] text-muted">11 reviews on Google</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <blockquote class="card rounded-[16px] p-8 md:row-span-2" data-reveal>
+        <svg class="mb-6" width="26" height="26" viewBox="0 0 24 24" fill="#A9C6BE"><path d="M9.5 5C6.5 6.6 5 9.2 5 12.8V19h6.2v-6.2H8.4c0-2.2.9-3.7 2.7-4.6zm9 0C15.5 6.6 14 9.2 14 12.8V19h6.2v-6.2h-2.8c0-2.2.9-3.7 2.7-4.6z"/></svg>
+        <p class="text-[.98rem] leading-[1.82] text-ink/85 mb-7">
+          &ldquo;I've been to physical therapy before and honestly it was mostly just workouts
+          and stretches I could've done at home. Working with Kirk Bravo has been a completely
+          different experience. He actually takes the time to treat the problem instead of just
+          handing me exercises. You can genuinely tell this is his passion and that he knows
+          exactly what he's doing. I've felt more relief and improvement with him than I ever
+          have before.&rdquo;
+        </p>
+        <footer class="pt-6 border-t border-ink/10">
+          <div class="font-semibold text-[.94rem] text-ink">Jira Bernard</div>
+          <div class="text-[.8rem] text-muted mt-1">Google review</div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="card rounded-[16px] p-8" data-reveal>
+        <p class="text-[.96rem] leading-[1.8] text-ink/85 mb-6">
+          &ldquo;Very attentive to my needs and treatment of my incontinence issues and helped
+          me to regain complete control of my problems.&rdquo;
+        </p>
+        <footer class="pt-5 border-t border-ink/10">
+          <div class="font-semibold text-[.92rem] text-ink">Kenneth Champagne</div>
+          <div class="text-[.8rem] text-muted mt-1">Google review</div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="card rounded-[16px] p-8" data-reveal>
+        <p class="text-[.96rem] leading-[1.8] text-ink/85 mb-6">
+          &ldquo;Jackie is awesome. Personal, professional &amp; very knowledgeable. Her
+          techniques work so effectively to retrain muscles &amp; this resolves many problems
+          for seniors.&rdquo;
+        </p>
+        <footer class="pt-5 border-t border-ink/10">
+          <div class="font-semibold text-[.92rem] text-ink">Ms Fruge</div>
+          <div class="text-[.8rem] text-muted mt-1">Google review</div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="card rounded-[16px] p-8" data-reveal>
+        <p class="text-[.96rem] leading-[1.8] text-ink/85 mb-6">
+          &ldquo;I have been to Bravo for therapy after two surgeries. Kirk and Jackie Bravo are
+          very knowledgeable and skilled and I have had excellent results. We are lucky to have
+          them in Lafayette. I wouldn't go anywhere else.&rdquo;
+        </p>
+        <footer class="pt-5 border-t border-ink/10">
+          <div class="font-semibold text-[.92rem] text-ink">Nita Piccione</div>
+          <div class="text-[.8rem] text-muted mt-1">Google review</div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="card rounded-[16px] p-8" data-reveal>
+        <p class="text-[.96rem] leading-[1.8] text-ink/85 mb-6">
+          &ldquo;I had an excellent experience going to Bravo Therapy. The physiotherapists are
+          very skilled and I experienced a huge improvement in neck mobility and decrease in
+          pain level.&rdquo;
+        </p>
+        <footer class="pt-5 border-t border-ink/10">
+          <div class="font-semibold text-[.92rem] text-ink">N. G.</div>
+          <div class="text-[.8rem] text-muted mt-1">Google review</div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="card rounded-[16px] p-8" data-reveal>
+        <p class="text-[.96rem] leading-[1.8] text-ink/85 mb-6">
+          &ldquo;I have been a patient since 2019 and I am very satisfied with their services and
+          my results are always good and I would recommend all my friends and family.&rdquo;
+        </p>
+        <footer class="pt-5 border-t border-ink/10">
+          <div class="font-semibold text-[.92rem] text-ink">Constance Jackson</div>
+          <div class="text-[.8rem] text-muted mt-1">Google review</div>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<div class="bridge"></div>
+
+<!-- ============ TEAM ============ -->
+<section id="team" class="bg-paper py-24 sm:py-32">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="max-w-[620px] mb-14">
+      <div class="eyebrow text-clay mb-6" data-reveal>Who you will actually see</div>
+      <h2 class="font-display font-light text-[clamp(1.95rem,4.3vw,3.15rem)] tracking-[-.015em]" data-reveal>
+        A <span class="grad-text font-normal italic">small clinic</span>,<br>on purpose.
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="card rounded-[16px] p-8" data-reveal>
+        <div class="w-11 h-11 rounded-full bg-pine text-ivory flex items-center justify-center font-display text-[1.05rem] mb-5 pb-0">KB</div>
+        <h3 class="font-display text-[1.24rem] text-ink mb-1.5">Kirk Bravo</h3>
+        <div class="text-[.76rem] font-semibold text-clay uppercase tracking-[.14em] mb-3.5">Physical Therapist &middot; Owner</div>
+        <p class="text-[.92rem] leading-[1.75] text-muted">
+          Owner and president of the practice, with close to four decades as a practicing
+          physical therapist. Patients consistently describe hands-on treatment rather
+          than a printed exercise sheet.
+        </p>
+      </div>
+      <div class="card rounded-[16px] p-8" data-reveal>
+        <div class="w-11 h-11 rounded-full bg-pine text-ivory flex items-center justify-center font-display text-[1.05rem] mb-5 pb-0">JB</div>
+        <h3 class="font-display text-[1.24rem] text-ink mb-1.5">Jacqueline Bravo</h3>
+        <div class="text-[.76rem] font-semibold text-clay uppercase tracking-[.14em] mb-3.5">PT, BCB-PMD, PRPC</div>
+        <p class="text-[.92rem] leading-[1.75] text-muted">
+          Physical therapist since 1988 and the clinic's pelvic health specialist.
+          Outside the clinic she camps and hikes with her husband Kirk and their son Luke,
+          and rescues orchids.
+        </p>
+      </div>
+      <div class="card rounded-[16px] p-8" data-reveal>
+        <div class="w-11 h-11 rounded-full bg-clay text-ivory flex items-center justify-center font-display text-[1.05rem] mb-5 pb-0">MH</div>
+        <h3 class="font-display text-[1.24rem] text-ink mb-1.5">Marquita Henry</h3>
+        <div class="text-[.76rem] font-semibold text-clay uppercase tracking-[.14em] mb-3.5">Manager of Operations</div>
+        <p class="text-[.92rem] leading-[1.75] text-muted">
+          The person who answers when you call. Scheduling, intake and insurance
+          questions all start here.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bridge"></div>
+
+<!-- ============ VISIT ============ -->
+<section id="visit" class="bg-ivory py-24 sm:py-32">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="max-w-[620px] mb-14">
+      <div class="eyebrow text-clay mb-6" data-reveal>Visit the clinic</div>
+      <h2 class="font-display font-light text-[clamp(1.95rem,4.3vw,3.15rem)] tracking-[-.015em]" data-reveal>
+        Westmark Boulevard,<br><span class="grad-text font-normal italic">Suite 107.</span>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-6">
+      <div class="space-y-5">
+        <div class="bg-white rounded-[16px] border border-ink/8 p-8" data-reveal>
+          <div class="flex items-start gap-4 mb-7">
+            <svg class="mt-0.5 shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#12514F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <div class="eyebrow text-muted mb-2">Address</div>
+              <p class="text-[1.02rem] leading-[1.65] text-ink">
+                106 Westmark Blvd, Suite 107<br>Lafayette, LA 70506
+              </p>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=106%20Westmark%20Blvd%20Suite%20107%2C%20Lafayette%2C%20LA%2070506" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 mt-3 text-[.88rem] font-semibold text-pine ul-grow">
+                Get directions
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 mb-7 pt-7 border-t border-ink/10">
+            <svg class="mt-0.5 shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#12514F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            <div>
+              <div class="eyebrow text-muted mb-2">Appointment hours</div>
+              <div class="flex items-center justify-between gap-8 text-[.98rem] text-ink mb-1.5">
+                <span>Monday &ndash; Thursday</span><span class="font-semibold">7:30a &ndash; 5:30p</span>
+              </div>
+              <div class="flex items-center justify-between gap-8 text-[.98rem] text-muted">
+                <span>Friday &ndash; Sunday</span><span>Closed</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 pt-7 border-t border-ink/10">
+            <svg class="mt-0.5 shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#12514F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <div class="eyebrow text-muted mb-2">Contact</div>
+              <a href="tel:+13374060712" class="block font-display text-[1.5rem] text-pine leading-tight pb-1 hover:text-clay transition">(337) 406-0712</a>
+              <p class="text-[.9rem] text-muted mt-1.5">Fax (337) 406-0715</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="tel:+13374060712" class="btn btn-primary rounded-[16px] w-full px-7 py-5 text-[1rem] font-semibold inline-flex items-center justify-center gap-2.5" data-reveal>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call to book an appointment
+        </a>
+      </div>
+
+      <div class="mapwrap rounded-[16px] overflow-hidden border border-ink/8 min-h-[440px] lg:min-h-full bg-white" data-reveal>
+        <iframe
+          src="https://www.google.com/maps?q=106%20Westmark%20Blvd%20Suite%20107%2C%20Lafayette%2C%20LA%2070506&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Bravo Therapy Services, 106 Westmark Blvd Suite 107, Lafayette, LA 70506"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="relative bg-ivory grain py-24 sm:py-32 overflow-hidden">
+  <div class="absolute -top-32 -right-24 w-[480px] h-[480px] rounded-full opacity-40 blur-[80px]" style="background:radial-gradient(circle,#A9C6BE,transparent 62%);"></div>
+  <div class="absolute -bottom-40 -left-20 w-[420px] h-[420px] rounded-full opacity-30 blur-[80px]" style="background:radial-gradient(circle,#C2703F,transparent 62%);"></div>
+  <div class="relative max-w-[820px] mx-auto px-5 sm:px-8 text-center">
+    <div class="chip mb-8 mx-auto" data-reveal><span class="chip-dot"></span>Now booking Monday through Thursday</div>
+    <h2 class="font-display font-light text-[clamp(2.05rem,5vw,3.6rem)] tracking-[-.02em] mb-7" data-reveal>
+      It is a normal thing<br>to <span class="grad-text font-normal italic">ask about.</span>
+    </h2>
+    <p class="text-[1.06rem] leading-[1.8] text-muted max-w-[560px] mx-auto mb-11" data-reveal>
+      Most people wait far longer than they need to. One phone call to Marquita
+      is enough to find out whether this clinic is the right place for what you
+      are dealing with.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-3.5" data-reveal>
+      <a href="tel:+13374060712" class="btn btn-primary rounded-full px-9 py-4 text-[.98rem] font-semibold inline-flex items-center gap-2.5">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (337) 406-0712
+      </a>
+      <a href="#visit" class="btn btn-ghost rounded-full px-9 py-4 text-[.98rem] font-semibold">Find the clinic</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-pine text-ivory pt-20 pb-10">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+    <div class="grid md:grid-cols-[1.3fr_1fr_1fr] gap-12 pb-14 border-b border-ivory/15">
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-[10px] bg-ivory text-pine font-display text-[21px] leading-none pb-0">B</span>
+          <span class="font-display text-[1.35rem] text-ivory">Bravo Therapy Services</span>
+        </div>
+        <p class="text-[.94rem] leading-[1.8] text-mist max-w-[380px]">
+          An outpatient physical therapy clinic in Lafayette, Louisiana, specializing
+          in pelvic floor rehabilitation for all genders. Thirty years in practice.
+        </p>
+      </div>
+      <div>
+        <div class="eyebrow text-clay mb-5">Clinic</div>
+        <ul class="space-y-3 text-[.93rem] text-mist">
+          <li><a href="#care" class="ul-grow hover:text-ivory transition">What we treat</a></li>
+          <li><a href="#story" class="ul-grow hover:text-ivory transition">Why pelvic health</a></li>
+          <li><a href="#credentials" class="ul-grow hover:text-ivory transition">Credentials</a></li>
+          <li><a href="#team" class="ul-grow hover:text-ivory transition">Our team</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow text-clay mb-5">Contact</div>
+        <ul class="space-y-3 text-[.93rem] text-mist">
+          <li><a href="tel:+13374060712" class="ul-grow hover:text-ivory transition">(337) 406-0712</a></li>
+          <li>Fax (337) 406-0715</li>
+          <li class="leading-relaxed">106 Westmark Blvd, Ste 107<br>Lafayette, LA 70506</li>
+          <li>Mon &ndash; Thu, 7:30a &ndash; 5:30p</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[.82rem] text-mist/75">
+      <p>&copy; <span id="yr">2026</span> Bravo Therapy Services, Inc. All rights reserved.</p>
+      <p>Member, American Physical Therapy Association</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="sticky-bar lg:hidden fixed bottom-0 inset-x-0 z-50 bg-ivory border-t border-ink/10 grid grid-cols-2">
+  <a href="tel:+13374060712" class="flex items-center justify-center gap-2 py-4 text-[.9rem] font-semibold text-ivory bg-pine">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=106%20Westmark%20Blvd%20Suite%20107%2C%20Lafayette%2C%20LA%2070506" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-4 text-[.9rem] font-semibold text-pine">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- ============ JSON-LD ============ -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"MedicalBusiness",
+  "additionalType":"https://schema.org/PhysicalTherapy",
+  "name":"Bravo Therapy Services, Inc.",
+  "description":"Outpatient physical therapy clinic in Lafayette, Louisiana specializing in pelvic floor rehabilitation for all genders, incontinence, osteoporosis and sexual dysfunction, alongside general outpatient physical therapy and occupational therapy.",
+  "url":"https://turnkeyweb.org/previews/bravo-therapy-services/",
+  "telephone":"+1-337-406-0712",
+  "faxNumber":"+1-337-406-0715",
+  "foundingDate":"1996",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"106 Westmark Blvd, Suite 107",
+    "addressLocality":"Lafayette",
+    "addressRegion":"LA",
+    "postalCode":"70506",
+    "addressCountry":"US"
+  },
+  "areaServed":{"@type":"City","name":"Lafayette, Louisiana"},
+  "medicalSpecialty":"PhysicalTherapy",
+  "availableLanguage":["English","Malay","Tagalog","Visayan"],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"11","bestRating":"5"},
+  "review":[
+    {"@type":"Review","author":{"@type":"Person","name":"Jira Bernard"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Working with Kirk Bravo has been a completely different experience. He actually takes the time to treat the problem instead of just handing me exercises."},
+    {"@type":"Review","author":{"@type":"Person","name":"Kenneth Champagne"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Very attentive to my needs and treatment of my incontinence issues and helped me to regain complete control of my problems."},
+    {"@type":"Review","author":{"@type":"Person","name":"Nita Piccione"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Kirk and Jackie Bravo are very knowledgeable and skilled and I have had excellent results. We are lucky to have them in Lafayette."}
+  ],
+  "openingHoursSpecification":[{
+    "@type":"OpeningHoursSpecification",
+    "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],
+    "opens":"07:30","closes":"17:30"
+  }],
+  "employee":[
+    {"@type":"Person","name":"Kirk Bravo","jobTitle":"Physical Therapist, Owner"},
+    {"@type":"Person","name":"Jacqueline Bravo","jobTitle":"Physical Therapist","honorificSuffix":"PT, BCB-PMD, PRPC"},
+    {"@type":"Person","name":"Marquita Henry","jobTitle":"Manager of Operations"}
+  ],
+  "hasOfferCatalog":{
+    "@type":"OfferCatalog","name":"Services",
+    "itemListElement":[
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pelvic Floor Rehabilitation"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Incontinence Treatment"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Sexual Dysfunction Care"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Osteoporosis Programs"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Outpatient Physical Therapy"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Occupational Therapy"}}
+    ]
+  }
+}
+</script>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const IS_TOUCH = !window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+const IS_SMALL = window.matchMedia('(max-width: 900px)').matches;
+
+/* ---------- Lenis (ONE rAF loop, driven by the GSAP ticker) ---------- */
+let lenis = null;
+if (!REDUCED && window.Lenis) {
+  lenis = new Lenis({
+    duration: 1.1,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    smoothTouch: false
+  });
+  if (window.gsap) {
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  }
+}
+if (window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+}
+
+/* ---------- anchored scroll ---------- */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (!id || id === '#') return;
+    const t = document.querySelector(id);
+    if (!t) return;
+    e.preventDefault();
+    if (lenis) lenis.scrollTo(t, { offset: -70 });
+    else t.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+/* ---------- nav solid on scroll ---------- */
+const navEl = document.getElementById('nav');
+const onScroll = () => navEl.classList.toggle('solid', window.scrollY > 28);
+onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+
+/* ---------- reveals (GPU-only, once) ---------- */
+if (window.gsap && window.ScrollTrigger) {
+  gsap.utils.toArray('[data-reveal]').forEach(el => {
+    ScrollTrigger.create({
+      trigger: el, start: 'top 92%', once: true,
+      onEnter: () => {
+        gsap.to(el, {
+          opacity: 1, y: 0, duration: .68, ease: 'power3.out',
+          onComplete: () => { el.classList.add('in'); el.style.willChange = 'auto'; }
+        });
+      }
+    });
+  });
+
+  gsap.utils.toArray('[data-reveal-image]').forEach(el => {
+    ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: () => el.classList.add('in') });
+  });
+
+  /* credential decoder lines — the signature interaction */
+  gsap.utils.toArray('[data-cred]').forEach((el, i) => {
+    ScrollTrigger.create({
+      trigger: el, start: 'top 88%', once: true,
+      onEnter: () => setTimeout(() => el.classList.add('in'), i * 140)
+    });
+  });
+
+  /* count-ups */
+  gsap.utils.toArray('[data-count]').forEach(el => {
+    const target = parseFloat(el.dataset.count) || 0;
+    const suffix = el.dataset.suffix || '';
+    ScrollTrigger.create({
+      trigger: el, start: 'top 92%', once: true,
+      onEnter: () => {
+        const o = { v: 0 };
+        gsap.to(o, {
+          v: target, duration: 1.5, ease: 'power2.out',
+          onUpdate: () => { el.textContent = Math.round(o.v) + suffix; }
+        });
+      }
+    });
+  });
+
+  /* hero video parallax — desktop only (scrub fights native touch scroll) */
+  if (!IS_TOUCH && !REDUCED) {
+    gsap.to('.hero-media', {
+      yPercent: 12, scale: 1.06, ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .6 }
+    });
+  }
+}
+
+/* ---------- WEBGL SHOWPIECE: the "breath field" ----------
+   A slow undulating point-lattice behind the credentials section — teal on the
+   light ivory canvas. Brand metaphor: breath is the foundation of pelvic floor
+   rehabilitation. Degrades to a static single frame on mobile / reduced-motion. */
+(function breathField() {
+  const canvas = document.getElementById('breath');
+  if (!canvas || !window.THREE) return;
+
+  const section = canvas.closest('section');
+  let renderer, scene, camera, points, running = false, visible = true, raf = null;
+  const COLS = IS_SMALL ? 46 : 88;
+  const ROWS = IS_SMALL ? 26 : 46;
+
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  } catch (e) { return; }
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, IS_SMALL ? 1.5 : 2));
+  renderer.setClearColor(0x000000, 0);
+
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(52, 1, 0.1, 100);
+  camera.position.set(0, 2.9, 8.4);
+  camera.lookAt(0, 0, 0);
+
+  const positions = new Float32Array(COLS * ROWS * 3);
+  const colors = new Float32Array(COLS * ROWS * 3);
+  const base = [];
+  const cPine = new THREE.Color(0x12514F);
+  const cMist = new THREE.Color(0xA9C6BE);
+  const cClay = new THREE.Color(0xC2703F);
+
+  let i = 0;
+  for (let x = 0; x < COLS; x++) {
+    for (let z = 0; z < ROWS; z++) {
+      const px = (x / (COLS - 1) - 0.5) * 17;
+      const pz = (z / (ROWS - 1) - 0.5) * 10;
+      positions[i * 3] = px; positions[i * 3 + 1] = 0; positions[i * 3 + 2] = pz;
+      base.push({ x: px, z: pz });
+      const d = Math.min(1, Math.hypot(px / 8.5, pz / 5));
+      const col = d < .48 ? cPine.clone().lerp(cMist, d / .48)
+                          : cMist.clone().lerp(cClay, (d - .48) / .52 * .55);
+      colors[i * 3] = col.r; colors[i * 3 + 1] = col.g; colors[i * 3 + 2] = col.b;
+      i++;
+    }
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  const mat = new THREE.PointsMaterial({
+    size: IS_SMALL ? .052 : .044, vertexColors: true,
+    transparent: true, opacity: .72, sizeAttenuation: true, depthWrite: false
+  });
+  points = new THREE.Points(geo, mat);
+  scene.add(points);
+
+  function resize() {
+    const r = canvas.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    renderer.setSize(r.width, r.height, false);
+    camera.aspect = r.width / r.height;
+    camera.updateProjectionMatrix();
+  }
+
+  function frame(t) {
+    raf = null;
+    const time = (t || 0) * 0.00016;               // very slow — a breath, not a wave
+    const pos = geo.attributes.position.array;
+    for (let k = 0; k < base.length; k++) {
+      const b = base[k];
+      const breath = Math.sin(time * 1.5) * 0.5 + 0.5;          // 0..1 inhale/exhale
+      const y = Math.sin(b.x * 0.42 + time * 1.8) * 0.34
+              + Math.cos(b.z * 0.55 - time * 1.35) * 0.26;
+      pos[k * 3 + 1] = y * (0.62 + breath * 0.52);
+    }
+    geo.attributes.position.needsUpdate = true;
+    points.rotation.y = Math.sin(time * 0.42) * 0.055;
+    renderer.render(scene, camera);
+    if (running && visible) raf = requestAnimationFrame(frame);
+  }
+
+  resize();
+  window.addEventListener('resize', () => { resize(); if (!running) frame(performance.now()); }, { passive: true });
+
+  // Static single frame when motion is unwanted or the device is small/low-power.
+  const lowPower = REDUCED || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+  if (lowPower) { frame(2600); return; }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      visible = e.isIntersecting;
+      if (visible && running && !raf) raf = requestAnimationFrame(frame);
+    });
+  }, { rootMargin: '120px' });
+  io.observe(section);
+
+  document.addEventListener('visibilitychange', () => {
+    const hidden = document.hidden;
+    if (hidden) { running = false; if (raf) { cancelAnimationFrame(raf); raf = null; } }
+    else { running = true; if (visible && !raf) raf = requestAnimationFrame(frame); }
+  });
+
+  // lazy-init after first paint so WebGL never blocks the hero
+  requestAnimationFrame(() => setTimeout(() => {
+    running = true; resize();
+    if (visible && !raf) raf = requestAnimationFrame(frame);
+    else frame(2600);
+  }, 260));
+})();
+
+/* ---------- CRAWLER / SCREENSHOT SAFETY NET (6s) ---------- */
+setTimeout(() => {
+  document.querySelectorAll('[data-reveal]').forEach(el => {
+    const o = parseFloat(getComputedStyle(el).opacity);
+    if (!o || o < .98) { el.style.opacity = '1'; el.style.transform = 'none'; }
+    el.classList.add('in');
+  });
+  document.querySelectorAll('[data-reveal-image]').forEach(el => el.classList.add('in'));
+  document.querySelectorAll('[data-cred]').forEach(el => el.classList.add('in'));
+  document.querySelectorAll('[data-count]').forEach(el => {
+    if (el.textContent.trim() === '0') el.textContent = (el.dataset.count || '') + (el.dataset.suffix || '');
+  });
+  if (window.ScrollTrigger) ScrollTrigger.refresh();
+}, 6000);
+
+/* ---------- keep the hero video playing (autoplay recovery) ---------- */
+(function heroVideo(){
+  const v = document.querySelector('.hero-media');
+  if (!v) return;
+  const tryPlay = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+  v.addEventListener('loadeddata', tryPlay);
+  v.addEventListener('canplay', tryPlay);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
+  tryPlay();
+})();
+</script>
+</body>
+</html>
