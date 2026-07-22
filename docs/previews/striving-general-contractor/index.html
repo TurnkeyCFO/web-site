@@ -187,6 +187,8 @@ video:not([controls])::-webkit-media-controls-start-playback-button{
 }
 video:not([controls]){ pointer-events:none; }
 </style>
+
+<style id="tkw-video-rescue-css">video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none!important;opacity:0!important}video::-webkit-media-controls-overlay-play-button{display:none!important;opacity:0!important}video::-webkit-media-controls{display:none!important}video::-webkit-media-controls-panel{display:none!important}</style>
 </head>
 <body class="antialiased">
 
@@ -1094,6 +1096,26 @@ video:not([controls]){ pointer-events:none; }
   ['pointerdown','touchstart','keydown','scroll'].forEach(function(e){
     window.addEventListener(e, kick, {once:true, passive:true});
   });
+})();
+</script>
+
+<script id="tkw-video-rescue">
+(function(){
+  function kick(){
+    document.querySelectorAll('video').forEach(function(v){
+      if(v.hasAttribute('controls')) return;
+      v.muted=true; v.setAttribute('muted',''); v.playsInline=true; v.setAttribute('playsinline','');
+      if(v.paused){ var p=v.play(); if(p&&p.catch){ p.catch(function(){}); } }
+    });
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',kick); } else { kick(); }
+  window.addEventListener('load',kick);
+  window.addEventListener('pageshow',kick);
+  ['touchstart','touchend','click','scroll'].forEach(function(e){
+    window.addEventListener(e,kick,{once:true,passive:true});
+  });
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) kick(); });
+  var tries=0; var iv=setInterval(function(){ kick(); if(++tries>=5) clearInterval(iv); },2000);
 })();
 </script>
 </body>
