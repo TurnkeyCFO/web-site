@@ -28,7 +28,7 @@
 <script>
 tailwind.config = { theme: { extend: { colors: {
   cream:'#FBF6F1', bone:'#F4ECE3', blush:'#E3C4BE', sage:'#7E9B8F',
-  gold:'#B98D52', goldd:'#8A6234', plum:'#4A2B3A', ink:'#241A22', mist:'#EDE3DA'
+  gold:'#B98D52', goldd:'#8A6234', goldl:'#E0B96B', plum:'#4A2B3A', ink:'#241A22', mist:'#EDE3DA'
 }, fontFamily: { display:['"Instrument Serif"','Georgia','serif'], body:['Manrope','system-ui','sans-serif'] } } } };
 </script>
 <style>
@@ -96,7 +96,7 @@ tailwind.config = { theme: { extend: { colors: {
   .dot{ animation:pulse 2.4s ease-in-out infinite; }
   @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.82)} }
 
-  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent); mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent); }
   .mtrack{ display:flex; gap:3rem; width:max-content; animation:scrollX 46s linear infinite; }
   .marquee:hover .mtrack{ animation-play-state:paused; }
   @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
@@ -240,23 +240,23 @@ tailwind.config = { theme: { extend: { colors: {
 
 <!-- ================= MARQUEE ================= -->
 <div class="marquee bg-plum py-4 border-y border-plum">
-  <div class="mtrack font-body text-[12px] tracking-[0.22em] uppercase text-cream/85">
+  <div class="mtrack font-body text-[12px] tracking-[0.22em] uppercase text-cream">
     <span>Box Braids</span><span class="text-gold">&bull;</span>
-    <span class="italic font-display text-[17px] tracking-normal normal-case text-gold">Faux Locs</span><span class="text-gold">&bull;</span>
+    <span class="italic font-display text-[17px] tracking-normal normal-case text-goldl">Faux Locs</span><span class="text-gold">&bull;</span>
     <span>Cornrows</span><span class="text-gold">&bull;</span>
     <span>Sew&#8209;In Weaves</span><span class="text-gold">&bull;</span>
     <span class="italic font-display text-[17px] tracking-normal normal-case text-blush">Barrel Twists</span><span class="text-gold">&bull;</span>
     <span>Natural Hair</span><span class="text-gold">&bull;</span>
     <span>Kids&rsquo; Styles</span><span class="text-gold">&bull;</span>
-    <span class="italic font-display text-[17px] tracking-normal normal-case text-gold">Healthy Growth</span><span class="text-gold">&bull;</span>
+    <span class="italic font-display text-[17px] tracking-normal normal-case text-goldl">Healthy Growth</span><span class="text-gold">&bull;</span>
     <span>Box Braids</span><span class="text-gold">&bull;</span>
-    <span class="italic font-display text-[17px] tracking-normal normal-case text-gold">Faux Locs</span><span class="text-gold">&bull;</span>
+    <span class="italic font-display text-[17px] tracking-normal normal-case text-goldl">Faux Locs</span><span class="text-gold">&bull;</span>
     <span>Cornrows</span><span class="text-gold">&bull;</span>
     <span>Sew&#8209;In Weaves</span><span class="text-gold">&bull;</span>
     <span class="italic font-display text-[17px] tracking-normal normal-case text-blush">Barrel Twists</span><span class="text-gold">&bull;</span>
     <span>Natural Hair</span><span class="text-gold">&bull;</span>
     <span>Kids&rsquo; Styles</span><span class="text-gold">&bull;</span>
-    <span class="italic font-display text-[17px] tracking-normal normal-case text-gold">Healthy Growth</span><span class="text-gold">&bull;</span>
+    <span class="italic font-display text-[17px] tracking-normal normal-case text-goldl">Healthy Growth</span><span class="text-gold">&bull;</span>
   </div>
 </div>
 
@@ -346,32 +346,32 @@ tailwind.config = { theme: { extend: { colors: {
 
       <div data-reveal class="divide-y divide-plum/12 border-t border-plum/12">
         <div class="svc grid grid-cols-[42px_1fr] gap-4 py-6">
-          <span class="font-display text-[15px] text-gold pt-1">01</span>
+          <span class="font-display text-[15px] text-[#6E3D4C] pt-1">01</span>
           <div><h3 class="font-display text-[24px] text-plum mb-1.5">Hair Braiding</h3>
             <p class="font-body text-[14.5px] leading-[1.65] text-ink/75">Box braids, cornrows, feed&#8209;ins and barrel twists. Reviewers single out her braid work on short and fine hair.</p></div>
         </div>
         <div class="svc grid grid-cols-[42px_1fr] gap-4 py-6">
-          <span class="font-display text-[15px] text-gold pt-1">02</span>
+          <span class="font-display text-[15px] text-[#6E3D4C] pt-1">02</span>
           <div><h3 class="font-display text-[24px] text-plum mb-1.5">Locs &amp; Faux Locs</h3>
             <p class="font-body text-[14.5px] leading-[1.65] text-ink/75">Loc styling and full faux loc installs &mdash; one client had a wash, set and full install finished in under three hours.</p></div>
         </div>
         <div class="svc grid grid-cols-[42px_1fr] gap-4 py-6">
-          <span class="font-display text-[15px] text-gold pt-1">03</span>
+          <span class="font-display text-[15px] text-[#6E3D4C] pt-1">03</span>
           <div><h3 class="font-display text-[24px] text-plum mb-1.5">Sew&#8209;In Weaves &amp; Extensions</h3>
             <p class="font-body text-[14.5px] leading-[1.65] text-ink/75">Sew&#8209;ins and extensions applied and styled so your own hair keeps growing underneath.</p></div>
         </div>
         <div class="svc grid grid-cols-[42px_1fr] gap-4 py-6">
-          <span class="font-display text-[15px] text-gold pt-1">04</span>
+          <span class="font-display text-[15px] text-[#6E3D4C] pt-1">04</span>
           <div><h3 class="font-display text-[24px] text-plum mb-1.5">Natural &amp; Curly Hair</h3>
             <p class="font-body text-[14.5px] leading-[1.65] text-ink/75">Wash&#8209;and&#8209;set, blow&#8209;dry and styling built around your natural texture rather than fighting it.</p></div>
         </div>
         <div class="svc grid grid-cols-[42px_1fr] gap-4 py-6">
-          <span class="font-display text-[15px] text-gold pt-1">05</span>
+          <span class="font-display text-[15px] text-[#6E3D4C] pt-1">05</span>
           <div><h3 class="font-display text-[24px] text-plum mb-1.5">Cuts &mdash; Women &amp; Children</h3>
             <p class="font-body text-[14.5px] leading-[1.65] text-ink/75">Everyday cuts through to a sharp pixie, plus kids&rsquo; cuts and braided styles.</p></div>
         </div>
         <div class="svc grid grid-cols-[42px_1fr] gap-4 py-6">
-          <span class="font-display text-[15px] text-gold pt-1">06</span>
+          <span class="font-display text-[15px] text-[#6E3D4C] pt-1">06</span>
           <div><h3 class="font-display text-[24px] text-plum mb-1.5">Color, Highlights &amp; Perms</h3>
             <p class="font-body text-[14.5px] leading-[1.65] text-ink/75">Color and chemical services when you want them, kept on the healthy side of your hair&rsquo;s limits.</p></div>
         </div>
@@ -437,7 +437,7 @@ tailwind.config = { theme: { extend: { colors: {
   <div class="max-w-[1240px] mx-auto px-5 sm:px-8 relative z-10">
     <div class="grid lg:grid-cols-2 gap-14 items-center">
       <div>
-        <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-goldd mb-5">When she&rsquo;s in</div>
+        <div data-reveal class="font-body text-[10.5px] tracking-[0.26em] uppercase text-goldl mb-5">When she&rsquo;s in</div>
         <h2 data-reveal class="font-display text-[clamp(2.1rem,5vw,3.5rem)] tracking-[-0.015em] mb-6 text-cream">
           Built around<br>the working week
         </h2>
@@ -451,7 +451,7 @@ tailwind.config = { theme: { extend: { colors: {
         <ul class="font-body divide-y divide-cream/12">
           <li class="flex items-center justify-between py-3.5">
             <span class="text-[15px] text-cream">Monday</span>
-            <span class="text-[14px] text-gold font-600">9:00 AM &ndash; 9:00 PM</span>
+            <span class="text-[14px] text-goldl font-600">9:00 AM &ndash; 9:00 PM</span>
           </li>
           <li class="flex items-center justify-between py-3.5">
             <span class="text-[15px] text-cream/62">Tuesday &ndash; Friday</span>
@@ -459,11 +459,11 @@ tailwind.config = { theme: { extend: { colors: {
           </li>
           <li class="flex items-center justify-between py-3.5">
             <span class="text-[15px] text-cream">Saturday</span>
-            <span class="text-[14px] text-gold font-600">11:00 AM &ndash; 9:00 PM</span>
+            <span class="text-[14px] text-goldl font-600">11:00 AM &ndash; 9:00 PM</span>
           </li>
           <li class="flex items-center justify-between py-3.5">
             <span class="text-[15px] text-cream">Sunday</span>
-            <span class="text-[14px] text-gold font-600">1:00 PM &ndash; 9:00 PM</span>
+            <span class="text-[14px] text-goldl font-600">1:00 PM &ndash; 9:00 PM</span>
           </li>
         </ul>
         <p class="mt-6 pt-5 border-t border-cream/12 font-body text-[13px] leading-[1.65] text-cream/70">
