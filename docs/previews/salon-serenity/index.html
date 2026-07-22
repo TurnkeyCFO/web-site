@@ -47,6 +47,7 @@ tailwind.config = { theme: { extend: { colors: {
     -webkit-text-fill-color:transparent; color:transparent;
     animation:shimmer 9s linear infinite;
     line-height:1.16; padding-bottom:.1em; display:inline-block;
+    text-shadow:none !important;
   }
   @keyframes shimmer{ from{background-position:0% 0} to{background-position:220% 0} }
   .line-mask{ overflow:hidden; padding-bottom:.16em; display:block; }
@@ -61,7 +62,7 @@ tailwind.config = { theme: { extend: { colors: {
   }
   @media (max-width:860px){
     .hero-scrim{ background:
-      linear-gradient(to bottom, rgba(251,246,241,.96) 0%, rgba(251,246,241,.9) 42%, rgba(251,246,241,.55) 66%, rgba(244,236,227,.92) 100%); }
+      linear-gradient(to bottom, rgba(251,246,241,.93) 0%, rgba(251,246,241,.86) 40%, rgba(251,246,241,.42) 66%, rgba(244,236,227,.9) 100%); }
   }
   .hero-type{ position:relative; z-index:2; text-shadow:0 1px 0 rgba(251,246,241,.75); }
 
