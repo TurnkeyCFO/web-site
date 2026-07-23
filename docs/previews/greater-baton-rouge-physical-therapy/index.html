@@ -56,6 +56,14 @@ body{ background:#F7F3EC; color:#16282B; font-family:'Inter',sans-serif; overflo
 
 .font-display{ font-family:'Fraunces',serif }
 
+/* nav always has a light backing so text stays legible over the hero video */
+#nav{ background:linear-gradient(180deg, rgba(247,243,236,.94) 0%, rgba(247,243,236,.55) 58%, rgba(247,243,236,0) 100%) }
+/* lighter gold for stars sitting on the teal bands (contrast) */
+.star-light{ color:#F2DCAC }
+/* hero copy: dark enough to clear AA on the cream scrim */
+.hero-sub{ color:rgba(22,40,43,.82); text-shadow:0 1px 16px rgba(247,243,236,.55) }
+.hero-trust{ color:rgba(22,40,43,.78) }
+
 /* gradient shimmer */
 .grad-text{
   background:linear-gradient(100deg,#0E5B61 0%,#14958F 30%,#C39A5E 52%,#14958F 74%,#0E5B61 100%);
@@ -167,7 +175,7 @@ body{ background:#F7F3EC; color:#16282B; font-family:'Inter',sans-serif; overflo
         <span class="block text-[.62rem] tracking-[.28em] uppercase text-teal font-semibold -mt-0.5">Physical Therapy</span>
       </span>
     </a>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ink/70">
       <a href="#care" class="ul-grow hover:text-ink transition">Care</a>
       <a href="#path" class="ul-grow hover:text-ink transition">Your Path</a>
       <a href="#story" class="ul-grow hover:text-ink transition">Our Clinic</a>
@@ -199,7 +207,7 @@ body{ background:#F7F3EC; color:#16282B; font-family:'Inter',sans-serif; overflo
       <h1 class="font-display h-xl text-ink font-semibold text-[2.65rem] sm:text-6xl lg:text-[4.4rem] mb-6" data-split>
         The path back to <span class="grad-text italic">the way you move.</span>
       </h1>
-      <p class="text-lg sm:text-xl text-muted leading-relaxed max-w-xl mb-9">
+      <p class="hero-sub text-lg sm:text-xl leading-relaxed max-w-xl mb-9">
         Expert, one-on-one physical therapy in North Baton Rouge — orthopedic recovery,
         post-surgical rehab, and real pain relief, guided by therapists who know your name.
       </p>
@@ -210,7 +218,7 @@ body{ background:#F7F3EC; color:#16282B; font-family:'Inter',sans-serif; overflo
         </a>
         <a href="#care" class="btn btn-ghost px-8 py-4 rounded-full text-base font-semibold">Explore our care</a>
       </div>
-      <div class="flex flex-wrap items-center gap-6 mt-10 text-sm text-muted">
+      <div class="hero-trust flex flex-wrap items-center gap-6 mt-10 text-sm">
         <span class="flex items-center gap-1.5 font-semibold text-ink">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="#C39A5E"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           4.8 on Google
@@ -228,7 +236,7 @@ body{ background:#F7F3EC; color:#16282B; font-family:'Inter',sans-serif; overflo
 <section class="bg-teal text-cream relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
     <div data-reveal>
-      <div class="font-display text-4xl sm:text-5xl mb-1"><span class="stat" data-target="4.8" data-dec="1">0</span><span class="text-sand">★</span></div>
+      <div class="font-display text-4xl sm:text-5xl mb-1"><span class="stat" data-target="4.8" data-dec="1">0</span><span class="star-light">★</span></div>
       <div class="text-sm text-cream/70 tracking-wide">Google rating</div>
     </div>
     <div data-reveal>
@@ -430,35 +438,35 @@ body{ background:#F7F3EC; color:#16282B; font-family:'Inter',sans-serif; overflo
         <h2 class="font-display text-4xl sm:text-5xl font-semibold" style="line-height:1.12;padding-bottom:.04em">Recovery worth<br>talking about</h2>
       </div>
       <div class="flex items-center gap-3 text-cream/85">
-        <div class="flex text-sand text-xl">★★★★★</div>
+        <div class="flex star-light text-xl">★★★★★</div>
         <div class="text-sm"><span class="font-semibold text-cream">4.8 / 5</span> · 25 Google reviews</div>
       </div>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">
       <figure class="rounded-2xl p-7 bg-cream/[.06] border border-cream/10 backdrop-blur-sm" data-reveal>
-        <div class="flex text-sand mb-4">★★★★★</div>
+        <div class="flex star-light mb-4">★★★★★</div>
         <blockquote class="text-cream/90 leading-relaxed mb-6">"The physician and staff are very friendly and personable and exhibit genuine concern for each patient and their recovery."</blockquote>
         <figcaption class="text-sm text-cream/65">— Eula Shelmire, Google review</figcaption>
       </figure>
       <figure class="rounded-2xl p-7 bg-cream/[.06] border border-cream/10 backdrop-blur-sm" data-reveal>
-        <div class="flex text-sand mb-4">★★★★★</div>
+        <div class="flex star-light mb-4">★★★★★</div>
         <blockquote class="text-cream/90 leading-relaxed mb-6">"A wonderful place to have your needs met. The doctors and staff are exceptional and the environment is warm and welcoming. I would gladly recommend this business."</blockquote>
         <figcaption class="text-sm text-cream/65">— Edith Smothers, Google review</figcaption>
       </figure>
       <figure class="rounded-2xl p-7 bg-cream/[.06] border border-cream/10 backdrop-blur-sm" data-reveal>
-        <div class="flex text-sand mb-4">★★★★★</div>
+        <div class="flex star-light mb-4">★★★★★</div>
         <blockquote class="text-cream/90 leading-relaxed mb-6">"Dr. Christy is very compassionate, empathetic, thorough, and knowledgeable of what to do and why. One of the best decisions of my life."</blockquote>
         <figcaption class="text-sm text-cream/65">— Holly Richardson, Google review</figcaption>
       </figure>
       <figure class="rounded-2xl p-7 bg-cream/[.06] border border-cream/10 backdrop-blur-sm md:col-span-1" data-reveal>
-        <div class="flex text-sand mb-4">★★★★★</div>
+        <div class="flex star-light mb-4">★★★★★</div>
         <blockquote class="text-cream/90 leading-relaxed mb-6">"Dr. Famuyide and Celeste were awesome and took very good care of me. I improved so quickly and now there is no pain."</blockquote>
         <figcaption class="text-sm text-cream/65">— Theresa McCants, Google review</figcaption>
       </figure>
       <figure class="rounded-2xl p-7 bg-cream/[.06] border border-cream/10 backdrop-blur-sm md:col-span-2 flex flex-col sm:flex-row sm:items-center gap-6" data-reveal>
         <div class="flex-1">
-          <div class="flex text-sand mb-4">★★★★★</div>
+          <div class="flex star-light mb-4">★★★★★</div>
           <blockquote class="text-cream/90 leading-relaxed mb-2">"Dr. Ayo takes time to explain what the problem might be and what to expect. The staff also takes time to work with you — professional, knowledgeable, and kind."</blockquote>
           <figcaption class="text-sm text-cream/65">— Patrick, Healthgrades review</figcaption>
         </div>
@@ -519,11 +527,16 @@ body{ background:#F7F3EC; color:#16282B; font-family:'Inter',sans-serif; overflo
       </a>
     </div>
 
-    <div class="rounded-[26px] overflow-hidden shadow-xl border border-ink/8 min-h-[420px]" data-reveal>
+    <div class="relative rounded-[26px] overflow-hidden shadow-xl border border-ink/8 min-h-[420px]" data-reveal>
+      <div class="absolute inset-0 z-0 flex flex-col items-center justify-center text-center bg-teal/10 px-8">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0E5B61" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mb-3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="font-display text-xl text-teal">Greater Baton Rouge Physical Therapy</div>
+        <div class="text-muted text-sm mt-1">3676 Harding Blvd, Ste B &amp; C · Baton Rouge, LA 70807</div>
+      </div>
       <iframe
         title="Greater Baton Rouge Physical Therapy on Google Maps"
         src="https://www.google.com/maps?q=3676%20Harding%20Blvd%2C%20Baton%20Rouge%2C%20LA%2070807&output=embed"
-        width="100%" height="100%" style="border:0;min-height:420px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        width="100%" height="100%" style="border:0;min-height:420px;position:relative;z-index:1" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     </div>
   </div>
 </section>
