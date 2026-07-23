@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<!--
+  Greater Baton Rouge Physical Therapy — Turnkey Web prospect preview
+  Art direction: light-luxury healthcare. Warm cream base, deep healing teal,
+  warm sand accent, sage. Fraunces (display) + Inter (body).
+  Hero: AI cinematic Kling video (Higgsfield → Kling), self-hosted assets/hero.mp4.
+  Signature moment: a scroll-drawn "path back to motion" recovery journey line.
+  Showpiece: Three.js drifting particle field on a light canvas behind the closing CTA.
+  Real data: (225) 454-6005 · 3676 Harding Blvd Ste B & C, Baton Rouge, LA 70807 ·
+  4.8★ / 25 Google reviews · lead PT Dr. Ayodeji "Ayo" Famuyide. No logo online → custom wordmark.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greater Baton Rouge Physical Therapy — Move Better, Live Better | Baton Rouge, LA</title>
+<meta name="description" content="Greater Baton Rouge Physical Therapy is a trusted outpatient rehab clinic on Harding Blvd — orthopedic recovery, post-surgical rehab, pain relief, and in-home visits. 4.8★ on Google. Call (225) 454-6005.">
+<link rel="canonical" href="https://turnkeyweb.org/previews/greater-baton-rouge-physical-therapy/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Greater Baton Rouge Physical Therapy — Move Better, Live Better">
+<meta property="og:description" content="Compassionate, expert physical therapy in Baton Rouge. Orthopedic and post-surgical rehab, pain relief, and in-home care. 4.8★ on Google.">
+<meta property="og:url" content="https://turnkeyweb.org/previews/greater-baton-rouge-physical-therapy/">
+<meta name="theme-color" content="#0E5B61">
+
+<style id="tkw-video-rescue-css" data-v="2">video::-webkit-media-controls-start-playback-button,video::-webkit-media-controls-overlay-play-button,video::-webkit-media-controls,video::-webkit-media-controls-panel{display:none!important;opacity:0!important;-webkit-appearance:none!important}video.tkw-vid-blocked{opacity:0!important;visibility:hidden!important}video:not([controls]){pointer-events:none}</style>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream:'#F7F3EC', surface:'#FCF9F3', bone:'#EFE8DC',
+        teal:'#0E5B61', tealBright:'#14958F', sky:'#8FC5C9',
+        sand:'#C39A5E', sage:'#7FA88C', ink:'#16282B', muted:'#586A6B'
+      },
+      fontFamily:{ display:['Fraunces','serif'], sans:['Inter','sans-serif'] }
+    }
+  }
+}
+</script>
+
+<style>
+:root{ --nav-h:74px }
+*{ -webkit-tap-highlight-color:transparent }
+html{ scroll-behavior:auto; scroll-padding-top:88px }
+body{ background:#F7F3EC; color:#16282B; font-family:'Inter',sans-serif; overflow-x:hidden }
+::selection{ background:#0E5B61; color:#F7F3EC }
+
+.font-display{ font-family:'Fraunces',serif }
+
+/* gradient shimmer */
+.grad-text{
+  background:linear-gradient(100deg,#0E5B61 0%,#14958F 30%,#C39A5E 52%,#14958F 74%,#0E5B61 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  animation:shimmer 9s linear infinite;
+  line-height:1.15; padding-bottom:.08em;
+}
+@keyframes shimmer{ 0%{background-position:200% 0} 100%{background-position:-20% 0} }
+
+/* hero */
+.hero{ position:relative; min-height:100svh; display:flex; align-items:center; overflow:hidden; background:#EAE3D6 }
+.hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; will-change:transform }
+.hero-scrim{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    linear-gradient(112deg, rgba(247,243,236,.94) 0%, rgba(247,243,236,.74) 32%, rgba(247,243,236,.28) 55%, rgba(247,243,236,0) 74%),
+    linear-gradient(0deg, rgba(22,40,43,.30) 0%, rgba(22,40,43,0) 34%);
+}
+.hero-content{ position:relative; z-index:2 }
+
+/* headline descender-safe */
+.h-xl{ line-height:1.04; padding-bottom:.06em; letter-spacing:-.015em }
+
+/* buttons */
+.btn{ position:relative; overflow:hidden; transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s, filter .4s; will-change:transform }
+.btn-primary{ background:#0E5B61; color:#F7F3EC; box-shadow:0 10px 30px -12px rgba(14,91,97,.6) }
+.btn-primary::after{ content:''; position:absolute; top:0; left:-120%; width:60%; height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent); transform:skewX(-18deg); transition:left .9s cubic-bezier(.2,.7,.2,1) }
+.btn-primary:hover{ transform:translateY(-3px); filter:brightness(1.06); box-shadow:0 18px 40px -14px rgba(14,91,97,.65) }
+.btn-primary:hover::after{ left:130% }
+.btn-ghost{ border:1.5px solid rgba(14,91,97,.35); color:#0E5B61; background:rgba(252,249,243,.5); backdrop-filter:blur(4px) }
+.btn-ghost:hover{ transform:translateY(-3px); border-color:#0E5B61; background:rgba(252,249,243,.9) }
+
+/* cards */
+.card{ position:relative; background:#FCF9F3; border:1px solid rgba(22,40,43,.07); border-radius:20px; overflow:hidden;
+  transition:transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s; will-change:transform }
+.card::before{ content:''; position:absolute; top:0; left:0; height:3px; width:0%;
+  background:linear-gradient(90deg,#0E5B61,#C39A5E); transition:width .65s cubic-bezier(.2,.7,.2,1) }
+.card:hover{ transform:translateY(-7px); box-shadow:0 26px 50px -28px rgba(22,40,43,.4) }
+.card:hover::before{ width:100% }
+.card:hover .svc-icon{ transform:rotate(-7deg) scale(1.08) }
+.svc-icon{ transition:transform .55s cubic-bezier(.2,.7,.2,1) }
+
+/* chips */
+.chip{ display:inline-flex; align-items:center; gap:.5rem; padding:.4rem .85rem; border-radius:999px;
+  background:rgba(252,249,243,.75); border:1px solid rgba(14,91,97,.16); font-size:.8rem; font-weight:500; color:#586A6B }
+.chip-dot{ width:7px; height:7px; border-radius:50%; background:#14958F; animation:pulse 2.3s ease-in-out infinite }
+.open-dot{ width:8px; height:8px; border-radius:50%; background:#7FA88C; box-shadow:0 0 0 0 rgba(127,168,140,.6); animation:pulse 2.1s ease-in-out infinite }
+@keyframes pulse{ 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.5; transform:scale(.82)} }
+
+/* marquee */
+.marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent) }
+.marquee-track{ display:flex; gap:3rem; width:max-content; animation:scrollX 40s linear infinite }
+.marquee:hover .marquee-track{ animation-play-state:paused }
+@keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* underline grow */
+.ul-grow{ position:relative }
+.ul-grow::after{ content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0;
+  background:linear-gradient(90deg,#0E5B61,#C39A5E); transition:width .5s cubic-bezier(.2,.7,.2,1) }
+.ul-grow:hover::after{ width:100% }
+
+/* recovery path line */
+.path-line{ position:absolute; left:27px; top:8px; bottom:8px; width:2px; background:rgba(14,91,97,.14); overflow:hidden }
+.path-line-fill{ position:absolute; inset:0 0 auto 0; height:0%; width:100%; background:linear-gradient(#0E5B61,#14958F,#7FA88C) }
+.step-num{ position:relative; z-index:2; width:56px; height:56px; flex:none; border-radius:50%;
+  background:#FCF9F3; border:2px solid rgba(14,91,97,.2); display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces',serif; font-size:1.35rem; color:#0E5B61; transition:.5s cubic-bezier(.2,.7,.2,1) }
+.step.active .step-num{ background:#0E5B61; color:#F7F3EC; border-color:#0E5B61; box-shadow:0 10px 26px -12px rgba(14,91,97,.7) }
+
+/* reveal */
+[data-reveal]{ opacity:0; transform:translateY(30px); will-change:opacity,transform }
+[data-reveal].in{ opacity:1; transform:none }
+
+/* image reveal */
+[data-img]{ clip-path:inset(0 0 100% 0); transition:clip-path 1.3s cubic-bezier(.2,.7,.2,1) }
+[data-img].in{ clip-path:inset(0 0 0% 0) }
+
+/* particle canvas */
+#cta-canvas{ position:absolute; inset:0; z-index:0; pointer-events:none }
+
+.grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.04; mix-blend-mode:multiply;
+  background-image:radial-gradient(#16282B 1px, transparent 1px); background-size:3px 3px }
+
+/* mobile sticky bar */
+.sticky-bar{ position:fixed; left:0; right:0; bottom:0; z-index:60; display:none }
+@media (max-width:767px){ .sticky-bar{ display:grid } }
+
+.bridge{ max-width:200px; height:1px; margin:0 auto; background:linear-gradient(90deg,transparent,rgba(14,91,97,.35),transparent) }
+
+@media (max-width:767px){
+  .h-xl{ line-height:1.06 }
+  .hero{ min-height:100svh }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="fixed top-0 inset-x-0 z-50 transition-all duration-500" id="nav">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between" style="height:var(--nav-h)">
+    <a href="#top" class="flex items-center gap-2.5 group">
+      <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-teal text-cream font-display text-lg leading-none shadow-md" style="padding-top:2px">G</span>
+      <span class="leading-tight">
+        <span class="block font-display text-[1.05rem] text-ink font-semibold tracking-tight">Greater Baton Rouge</span>
+        <span class="block text-[.62rem] tracking-[.28em] uppercase text-teal font-semibold -mt-0.5">Physical Therapy</span>
+      </span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
+      <a href="#care" class="ul-grow hover:text-ink transition">Care</a>
+      <a href="#path" class="ul-grow hover:text-ink transition">Your Path</a>
+      <a href="#story" class="ul-grow hover:text-ink transition">Our Clinic</a>
+      <a href="#reviews" class="ul-grow hover:text-ink transition">Reviews</a>
+      <a href="#visit" class="ul-grow hover:text-ink transition">Visit</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="tel:+12254546005" class="hidden sm:flex items-center gap-2 text-sm font-semibold text-teal ul-grow">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (225) 454-6005
+      </a>
+      <a href="tel:+12254546005" class="btn btn-primary text-sm font-semibold px-5 py-2.5 rounded-full">Book a visit</a>
+    </div>
+  </div>
+</nav>
+
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<header class="hero grain">
+  <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="hero-content max-w-7xl mx-auto px-5 sm:px-8 w-full pt-28 pb-16">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip mb-6"><span class="chip-dot"></span>Baton Rouge · Harding Blvd · Since 2006</span>
+      <h1 class="font-display h-xl text-ink font-semibold text-[2.65rem] sm:text-6xl lg:text-[4.4rem] mb-6" data-split>
+        The path back to <span class="grad-text italic">the way you move.</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-muted leading-relaxed max-w-xl mb-9">
+        Expert, one-on-one physical therapy in North Baton Rouge — orthopedic recovery,
+        post-surgical rehab, and real pain relief, guided by therapists who know your name.
+      </p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="tel:+12254546005" class="btn btn-primary px-8 py-4 rounded-full text-base font-semibold flex items-center gap-2.5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (225) 454-6005
+        </a>
+        <a href="#care" class="btn btn-ghost px-8 py-4 rounded-full text-base font-semibold">Explore our care</a>
+      </div>
+      <div class="flex flex-wrap items-center gap-6 mt-10 text-sm text-muted">
+        <span class="flex items-center gap-1.5 font-semibold text-ink">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="#C39A5E"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          4.8 on Google
+        </span>
+        <span class="w-px h-4 bg-ink/15"></span>
+        <span>25 patient reviews</span>
+        <span class="w-px h-4 bg-ink/15"></span>
+        <span>In-clinic &amp; in-home care</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STATS BAND ============ -->
+<section class="bg-teal text-cream relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div data-reveal>
+      <div class="font-display text-4xl sm:text-5xl mb-1"><span class="stat" data-target="4.8" data-dec="1">0</span><span class="text-sand">★</span></div>
+      <div class="text-sm text-cream/70 tracking-wide">Google rating</div>
+    </div>
+    <div data-reveal>
+      <div class="font-display text-4xl sm:text-5xl mb-1"><span class="stat" data-target="19" data-suffix="+">0</span></div>
+      <div class="text-sm text-cream/70 tracking-wide">Years serving Baton Rouge</div>
+    </div>
+    <div data-reveal>
+      <div class="font-display text-4xl sm:text-5xl mb-1"><span class="stat" data-target="25" data-suffix="+">0</span></div>
+      <div class="text-sm text-cream/70 tracking-wide">Five-star reviews</div>
+    </div>
+    <div data-reveal>
+      <div class="font-display text-4xl sm:text-5xl mb-1">1:1</div>
+      <div class="text-sm text-cream/70 tracking-wide">Therapist to patient</div>
+    </div>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="marquee bg-surface py-5 border-y border-ink/5">
+  <div class="marquee-track text-lg font-display text-ink/75">
+    <span>Orthopedic Rehab</span><span class="text-sand">•</span>
+    <span class="italic grad-text">Post-Surgical Recovery</span><span class="text-sand">•</span>
+    <span>Pain Relief</span><span class="text-sand">•</span>
+    <span>Balance &amp; Mobility</span><span class="text-sand">•</span>
+    <span class="italic grad-text">In-Home Visits</span><span class="text-sand">•</span>
+    <span>Sports &amp; Work Injuries</span><span class="text-sand">•</span>
+    <span>Orthopedic Rehab</span><span class="text-sand">•</span>
+    <span class="italic grad-text">Post-Surgical Recovery</span><span class="text-sand">•</span>
+    <span>Pain Relief</span><span class="text-sand">•</span>
+    <span>Balance &amp; Mobility</span><span class="text-sand">•</span>
+    <span class="italic grad-text">In-Home Visits</span><span class="text-sand">•</span>
+    <span>Sports &amp; Work Injuries</span><span class="text-sand">•</span>
+  </div>
+</div>
+
+<!-- ============ CARE / SERVICES ============ -->
+<section id="care" class="py-24 sm:py-28 relative">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-16" data-reveal>
+      <span class="chip mb-5"><span class="chip-dot"></span>How we help</span>
+      <h2 class="font-display text-4xl sm:text-5xl text-ink font-semibold mb-5" style="line-height:1.1;padding-bottom:.04em">Care built around <span class="grad-text italic">your recovery.</span></h2>
+      <p class="text-lg text-muted leading-relaxed">Every plan starts with a real evaluation and a therapist who stays with you — not a rotating cast and a room full of machines.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- 1 -->
+      <div class="card p-8" data-reveal>
+        <div class="svc-icon w-14 h-14 rounded-2xl bg-teal/8 text-teal flex items-center justify-center mb-6">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3 class="font-display text-2xl text-ink mb-3">Orthopedic &amp; Pain Rehab</h3>
+        <p class="text-muted leading-relaxed">Hands-on treatment for back, neck, joint, and nerve pain — restoring strength and easing the aches that hold you back.</p>
+      </div>
+      <!-- 2 -->
+      <div class="card p-8" data-reveal>
+        <div class="svc-icon w-14 h-14 rounded-2xl bg-teal/8 text-teal flex items-center justify-center mb-6">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="m9 15 2 2 4-4"/></svg>
+        </div>
+        <h3 class="font-display text-2xl text-ink mb-3">Post-Surgical Recovery</h3>
+        <p class="text-muted leading-relaxed">A step-by-step return after surgery — knee, hip, shoulder, and spine — rebuilding motion safely and at your pace.</p>
+      </div>
+      <!-- 3 -->
+      <div class="card p-8" data-reveal>
+        <div class="svc-icon w-14 h-14 rounded-2xl bg-teal/8 text-teal flex items-center justify-center mb-6">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V12a8 8 0 0 1 16 0v10"/><path d="M12 12v10M4 17h16"/></svg>
+        </div>
+        <h3 class="font-display text-2xl text-ink mb-3">Balance &amp; Mobility</h3>
+        <p class="text-muted leading-relaxed">Fall-prevention, gait, and strength work that keeps you steady, independent, and confident on your feet.</p>
+      </div>
+      <!-- 4 -->
+      <div class="card p-8" data-reveal>
+        <div class="svc-icon w-14 h-14 rounded-2xl bg-teal/8 text-teal flex items-center justify-center mb-6">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>
+        </div>
+        <h3 class="font-display text-2xl text-ink mb-3">Sports &amp; Work Injuries</h3>
+        <p class="text-muted leading-relaxed">Get back to the field, the job, and the routine you love with targeted rehab that treats the cause, not just the pain.</p>
+      </div>
+      <!-- 5 -->
+      <div class="card p-8" data-reveal>
+        <div class="svc-icon w-14 h-14 rounded-2xl bg-teal/8 text-teal flex items-center justify-center mb-6">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </div>
+        <h3 class="font-display text-2xl text-ink mb-3">In-Home Physical Therapy</h3>
+        <p class="text-muted leading-relaxed">For homebound patients, our therapists bring the same expert care to you — because recovery shouldn't wait on a ride.</p>
+      </div>
+      <!-- 6 -->
+      <div class="card p-8" data-reveal>
+        <div class="svc-icon w-14 h-14 rounded-2xl bg-teal/8 text-teal flex items-center justify-center mb-6">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3 class="font-display text-2xl text-ink mb-3">Telehealth Visits</h3>
+        <p class="text-muted leading-relaxed">Follow-ups, guidance, and home-program coaching from wherever you are — keeping your progress on track between visits.</p>
+      </div>
+    </div>
+    <p class="text-sm text-muted mt-8 max-w-2xl" data-reveal>Not sure which fits? Call and we'll point you the right way — <a href="tel:+12254546005" class="text-teal font-semibold ul-grow">(225) 454-6005</a>.</p>
+  </div>
+</section>
+
+<div class="bridge"></div>
+
+<!-- ============ SIGNATURE: THE PATH ============ -->
+<section id="path" class="py-24 sm:py-28 bg-surface relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-16" data-reveal>
+      <span class="chip mb-5"><span class="chip-dot"></span>What to expect</span>
+      <h2 class="font-display text-4xl sm:text-5xl text-ink font-semibold mb-5" style="line-height:1.1;padding-bottom:.04em">Your path back to motion</h2>
+      <p class="text-lg text-muted leading-relaxed">Four steps, one therapist, and a plan that's actually yours. Here's how recovery works with us.</p>
+    </div>
+
+    <div class="relative pl-2" id="path-track">
+      <div class="path-line"><div class="path-line-fill" id="path-fill"></div></div>
+
+      <div class="step flex gap-6 sm:gap-8 pb-12" data-reveal>
+        <div class="step-num">1</div>
+        <div class="pt-2">
+          <h3 class="font-display text-2xl sm:text-[1.6rem] text-ink mb-2">Evaluate</h3>
+          <p class="text-muted leading-relaxed max-w-xl">A thorough, unhurried assessment. We find the real source of the pain or limitation — and listen to what "better" means for your life.</p>
+        </div>
+      </div>
+      <div class="step flex gap-6 sm:gap-8 pb-12" data-reveal>
+        <div class="step-num">2</div>
+        <div class="pt-2">
+          <h3 class="font-display text-2xl sm:text-[1.6rem] text-ink mb-2">Restore</h3>
+          <p class="text-muted leading-relaxed max-w-xl">Hands-on manual therapy and guided movement calm the pain and rebuild range of motion, gently and safely.</p>
+        </div>
+      </div>
+      <div class="step flex gap-6 sm:gap-8 pb-12" data-reveal>
+        <div class="step-num">3</div>
+        <div class="pt-2">
+          <h3 class="font-display text-2xl sm:text-[1.6rem] text-ink mb-2">Strengthen</h3>
+          <p class="text-muted leading-relaxed max-w-xl">We build lasting strength and stability so the progress holds — and the injury is far less likely to return.</p>
+        </div>
+      </div>
+      <div class="step flex gap-6 sm:gap-8" data-reveal>
+        <div class="step-num">4</div>
+        <div class="pt-2">
+          <h3 class="font-display text-2xl sm:text-[1.6rem] text-ink mb-2">Sustain</h3>
+          <p class="text-muted leading-relaxed max-w-xl">You leave with a simple home program and the confidence to keep moving well — long after your last visit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section id="story" class="py-24 sm:py-28 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+    <div class="relative" data-reveal>
+      <div class="rounded-[26px] overflow-hidden shadow-2xl" data-img>
+        <img src="assets/story.jpg" alt="A physical therapist guiding a patient through a hands-on rehabilitation exercise" class="w-full h-[440px] sm:h-[520px] object-cover" loading="lazy">
+      </div>
+      <div class="absolute -bottom-6 -right-3 sm:right-6 bg-teal text-cream rounded-2xl px-6 py-5 shadow-xl max-w-[240px]">
+        <div class="font-display text-3xl leading-none mb-1">Dr. Ayo</div>
+        <div class="text-sm text-cream/75 leading-snug">Ayodeji Famuyide, PT — leading care on Harding Blvd since 2006.</div>
+      </div>
+    </div>
+
+    <div data-reveal>
+      <span class="chip mb-5"><span class="chip-dot"></span>Our clinic</span>
+      <h2 class="font-display text-4xl sm:text-5xl text-ink font-semibold mb-6" style="line-height:1.12;padding-bottom:.04em">Warm, welcoming, and <span class="grad-text italic">genuinely on your side.</span></h2>
+      <p class="text-lg text-muted leading-relaxed mb-5">
+        For nearly two decades, Greater Baton Rouge Physical Therapy has been a neighborhood fixture on
+        Harding Blvd — the kind of clinic where the staff learns your name and the therapist actually
+        remembers your story from one visit to the next.
+      </p>
+      <p class="text-lg text-muted leading-relaxed mb-8">
+        Led by Dr. Ayodeji "Ayo" Famuyide, PT, the team is known for being knowledgeable, patient, and
+        genuinely invested in your recovery. Whether you're coming off surgery, fighting chronic pain, or
+        can't get out of the house, we meet you where you are.
+      </p>
+      <div class="grid grid-cols-2 gap-5">
+        <div class="flex items-start gap-3">
+          <svg class="mt-1 flex-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E5B61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span class="text-ink font-medium">One-on-one, personal care</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="mt-1 flex-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E5B61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span class="text-ink font-medium">In-clinic &amp; in-home options</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="mt-1 flex-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E5B61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span class="text-ink font-medium">Compassionate, thorough team</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="mt-1 flex-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E5B61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span class="text-ink font-medium">Baton Rouge born &amp; based</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" class="py-24 sm:py-28 bg-teal text-cream relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14" data-reveal>
+      <div class="max-w-xl">
+        <span class="chip mb-5" style="background:rgba(252,249,243,.1);border-color:rgba(252,249,243,.2);color:#EFE8DC"><span class="chip-dot"></span>In their words</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold" style="line-height:1.12;padding-bottom:.04em">Recovery worth<br>talking about</h2>
+      </div>
+      <div class="flex items-center gap-3 text-cream/85">
+        <div class="flex text-sand text-xl">★★★★★</div>
+        <div class="text-sm"><span class="font-semibold text-cream">4.8 / 5</span> · 25 Google reviews</div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <figure class="rounded-2xl p-7 bg-cream/[.06] border border-cream/10 backdrop-blur-sm" data-reveal>
+        <div class="flex text-sand mb-4">★★★★★</div>
+        <blockquote class="text-cream/90 leading-relaxed mb-6">"The physician and staff are very friendly and personable and exhibit genuine concern for each patient and their recovery."</blockquote>
+        <figcaption class="text-sm text-cream/65">— Eula Shelmire, Google review</figcaption>
+      </figure>
+      <figure class="rounded-2xl p-7 bg-cream/[.06] border border-cream/10 backdrop-blur-sm" data-reveal>
+        <div class="flex text-sand mb-4">★★★★★</div>
+        <blockquote class="text-cream/90 leading-relaxed mb-6">"A wonderful place to have your needs met. The doctors and staff are exceptional and the environment is warm and welcoming. I would gladly recommend this business."</blockquote>
+        <figcaption class="text-sm text-cream/65">— Edith Smothers, Google review</figcaption>
+      </figure>
+      <figure class="rounded-2xl p-7 bg-cream/[.06] border border-cream/10 backdrop-blur-sm" data-reveal>
+        <div class="flex text-sand mb-4">★★★★★</div>
+        <blockquote class="text-cream/90 leading-relaxed mb-6">"Dr. Christy is very compassionate, empathetic, thorough, and knowledgeable of what to do and why. One of the best decisions of my life."</blockquote>
+        <figcaption class="text-sm text-cream/65">— Holly Richardson, Google review</figcaption>
+      </figure>
+      <figure class="rounded-2xl p-7 bg-cream/[.06] border border-cream/10 backdrop-blur-sm md:col-span-1" data-reveal>
+        <div class="flex text-sand mb-4">★★★★★</div>
+        <blockquote class="text-cream/90 leading-relaxed mb-6">"Dr. Famuyide and Celeste were awesome and took very good care of me. I improved so quickly and now there is no pain."</blockquote>
+        <figcaption class="text-sm text-cream/65">— Theresa McCants, Google review</figcaption>
+      </figure>
+      <figure class="rounded-2xl p-7 bg-cream/[.06] border border-cream/10 backdrop-blur-sm md:col-span-2 flex flex-col sm:flex-row sm:items-center gap-6" data-reveal>
+        <div class="flex-1">
+          <div class="flex text-sand mb-4">★★★★★</div>
+          <blockquote class="text-cream/90 leading-relaxed mb-2">"Dr. Ayo takes time to explain what the problem might be and what to expect. The staff also takes time to work with you — professional, knowledgeable, and kind."</blockquote>
+          <figcaption class="text-sm text-cream/65">— Patrick, Healthgrades review</figcaption>
+        </div>
+        <a href="tel:+12254546005" class="btn btn-primary px-6 py-3.5 rounded-full text-sm font-semibold whitespace-nowrap flex-none" style="background:#C39A5E;color:#16282B">Start your recovery</a>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section id="visit" class="py-24 sm:py-28 relative">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 items-stretch">
+    <div data-reveal>
+      <span class="chip mb-5"><span class="chip-dot"></span>Visit us</span>
+      <h2 class="font-display text-4xl sm:text-5xl text-ink font-semibold mb-8" style="line-height:1.12;padding-bottom:.04em">Come see us on <span class="grad-text italic">Harding Blvd.</span></h2>
+
+      <div class="space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-teal/8 text-teal flex items-center justify-center flex-none">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-ink mb-0.5">Address</div>
+            <a href="https://www.google.com/maps?q=3676+Harding+Blvd+Baton+Rouge+LA+70807" target="_blank" rel="noopener" class="text-muted ul-grow hover:text-teal transition">3676 Harding Blvd, Suites B &amp; C<br>Baton Rouge, LA 70807</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-teal/8 text-teal flex items-center justify-center flex-none">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-ink mb-0.5">Phone</div>
+            <a href="tel:+12254546005" class="text-muted ul-grow hover:text-teal transition">(225) 454-6005</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-teal/8 text-teal flex items-center justify-center flex-none">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="font-semibold text-ink mb-1.5 flex items-center gap-2"><span class="open-dot"></span>Hours</div>
+            <ul class="text-muted text-[.95rem] space-y-1">
+              <li class="flex justify-between max-w-xs"><span>Monday</span><span class="text-ink/50">Closed</span></li>
+              <li class="flex justify-between max-w-xs"><span>Tuesday</span><span>9:00 AM – 5:00 PM</span></li>
+              <li class="flex justify-between max-w-xs"><span>Wednesday</span><span>9:00 AM – 6:00 PM</span></li>
+              <li class="flex justify-between max-w-xs"><span>Thursday</span><span>9:00 AM – 5:00 PM</span></li>
+              <li class="flex justify-between max-w-xs"><span>Friday</span><span>9:00 AM – 6:00 PM</span></li>
+              <li class="flex justify-between max-w-xs"><span>Saturday</span><span>9:00 AM – 12:00 PM</span></li>
+              <li class="flex justify-between max-w-xs"><span>Sunday</span><span class="text-ink/50">Closed</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <a href="tel:+12254546005" class="btn btn-primary inline-flex items-center gap-2.5 mt-9 px-7 py-4 rounded-full text-base font-semibold">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call to schedule
+      </a>
+    </div>
+
+    <div class="rounded-[26px] overflow-hidden shadow-xl border border-ink/8 min-h-[420px]" data-reveal>
+      <iframe
+        title="Greater Baton Rouge Physical Therapy on Google Maps"
+        src="https://www.google.com/maps?q=3676%20Harding%20Blvd%2C%20Baton%20Rouge%2C%20LA%2070807&output=embed"
+        width="100%" height="100%" style="border:0;min-height:420px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA (WebGL showpiece) ============ -->
+<section class="relative py-28 sm:py-32 bg-surface overflow-hidden grain">
+  <canvas id="cta-canvas"></canvas>
+  <div class="relative z-10 max-w-3xl mx-auto px-5 sm:px-8 text-center" data-reveal>
+    <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-teal text-cream font-display text-2xl shadow-lg mb-8" style="padding-top:3px">G</span>
+    <h2 class="font-display text-4xl sm:text-6xl text-ink font-semibold mb-6" style="line-height:1.08;padding-bottom:.05em">Let's get you <span class="grad-text italic">moving again.</span></h2>
+    <p class="text-lg sm:text-xl text-muted leading-relaxed mb-10 max-w-xl mx-auto">
+      Pain, stiffness, and slow recoveries don't have to be the new normal. One call is the first step back.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="tel:+12254546005" class="btn btn-primary px-9 py-4 rounded-full text-base font-semibold flex items-center gap-2.5">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (225) 454-6005
+      </a>
+      <a href="https://www.google.com/maps?q=3676+Harding+Blvd+Baton+Rouge+LA+70807" target="_blank" rel="noopener" class="btn btn-ghost px-9 py-4 rounded-full text-base font-semibold">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-cream/80 pt-16 pb-28 sm:pb-14">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div class="lg:col-span-2 max-w-sm">
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-teal text-cream font-display text-lg shadow-md" style="padding-top:2px">G</span>
+          <span class="leading-tight">
+            <span class="block font-display text-lg text-cream font-semibold">Greater Baton Rouge</span>
+            <span class="block text-[.6rem] tracking-[.28em] uppercase text-sky font-semibold -mt-0.5">Physical Therapy</span>
+          </span>
+        </div>
+        <p class="text-cream/60 leading-relaxed text-sm">Compassionate, expert physical therapy in North Baton Rouge since 2006. Move better, live better.</p>
+      </div>
+      <div>
+        <div class="text-cream font-semibold mb-4 text-sm tracking-wide uppercase">Care</div>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#care" class="ul-grow hover:text-cream transition">Orthopedic Rehab</a></li>
+          <li><a href="#care" class="ul-grow hover:text-cream transition">Post-Surgical Recovery</a></li>
+          <li><a href="#care" class="ul-grow hover:text-cream transition">In-Home Therapy</a></li>
+          <li><a href="#care" class="ul-grow hover:text-cream transition">Balance &amp; Mobility</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-cream font-semibold mb-4 text-sm tracking-wide uppercase">Visit</div>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="https://www.google.com/maps?q=3676+Harding+Blvd+Baton+Rouge+LA+70807" target="_blank" rel="noopener" class="ul-grow hover:text-cream transition">3676 Harding Blvd, Ste B &amp; C<br>Baton Rouge, LA 70807</a></li>
+          <li><a href="tel:+12254546005" class="ul-grow hover:text-cream transition font-semibold text-cream">(225) 454-6005</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-cream/10 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/45">
+      <span>© 2026 Greater Baton Rouge Physical Therapy, LLC. All rights reserved.</span>
+      <span>Website preview by Turnkey Web</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="sticky-bar grid-cols-2 bg-surface/95 backdrop-blur border-t border-ink/10 shadow-[0_-8px_24px_-12px_rgba(22,40,43,.3)]">
+  <a href="tel:+12254546005" class="flex items-center justify-center gap-2 py-4 text-teal font-semibold border-r border-ink/10">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.google.com/maps?q=3676+Harding+Blvd+Baton+Rouge+LA+70807" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-4 text-ink font-semibold">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+</div>
+
+<!-- ============ JSON-LD ============ -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"PhysicalTherapy",
+  "name":"Greater Baton Rouge Physical Therapy",
+  "image":"https://turnkeyweb.org/previews/greater-baton-rouge-physical-therapy/assets/hero.jpg",
+  "url":"https://turnkeyweb.org/previews/greater-baton-rouge-physical-therapy/",
+  "telephone":"+1-225-454-6005",
+  "address":{"@type":"PostalAddress","streetAddress":"3676 Harding Blvd, Suites B & C","addressLocality":"Baton Rouge","addressRegion":"LA","postalCode":"70807","addressCountry":"US"},
+  "priceRange":"$$",
+  "medicalSpecialty":"PhysicalTherapy",
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"25"},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Tuesday","opens":"09:00","closes":"17:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Wednesday","opens":"09:00","closes":"18:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"09:00","closes":"17:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"09:00","closes":"18:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"12:00"}
+  ]
+}
+</script>
+
+<!-- ============ MOTION ============ -->
+<script>
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize:true });
+
+/* Lenis — single ticker */
+const lenis = new Lenis({ duration:1.1, easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true, smoothTouch:false });
+gsap.ticker.add((time)=> lenis.raf(time*1000));
+gsap.ticker.lagSmoothing(0);
+lenis.on('scroll', ScrollTrigger.update);
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id=a.getAttribute('href'); if(id.length<2) return;
+    const t=document.querySelector(id); if(!t) return;
+    e.preventDefault(); lenis.scrollTo(t,{offset:-74});
+  });
+});
+
+/* nav bg on scroll */
+const nav=document.getElementById('nav');
+ScrollTrigger.create({ start:'top -60', end:99999,
+  onUpdate:(s)=>{ if(s.progress||window.scrollY>60){ nav.classList.add('bg-surface/90','backdrop-blur-md','shadow-sm','border-b','border-ink/5'); } else { nav.classList.remove('bg-surface/90','backdrop-blur-md','shadow-sm','border-b','border-ink/5'); } }
+});
+window.addEventListener('scroll',()=>{ if(window.scrollY>60){ nav.classList.add('bg-surface/90','backdrop-blur-md','shadow-sm','border-b','border-ink/5'); } else { nav.classList.remove('bg-surface/90','backdrop-blur-md','shadow-sm','border-b','border-ink/5'); } },{passive:true});
+
+/* split headline (preserve inner HTML) */
+document.querySelectorAll('[data-split]').forEach(el=>{ el.innerHTML='<span>'+el.innerHTML+'</span>'; });
+
+/* reveals */
+gsap.utils.toArray('[data-reveal]').forEach(el=>{
+  ScrollTrigger.create({ trigger:el, start:'top 92%', once:true,
+    onEnter:()=> gsap.to(el,{opacity:1,y:0,duration:.7,ease:'power3.out',onComplete:()=>el.classList.add('in')}) });
+});
+/* image reveals */
+gsap.utils.toArray('[data-img]').forEach(el=>{
+  ScrollTrigger.create({ trigger:el, start:'top 85%', once:true, onEnter:()=>el.classList.add('in') });
+});
+
+/* count-up stats */
+gsap.utils.toArray('.stat').forEach(el=>{
+  const target=parseFloat(el.dataset.target), dec=parseInt(el.dataset.dec||'0'), suf=el.dataset.suffix||'';
+  ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:()=>{
+    gsap.to({v:0},{v:target,duration:1.5,ease:'power2.out',onUpdate:function(){ el.textContent=(dec?this.targets()[0].v.toFixed(dec):Math.round(this.targets()[0].v))+suf; }});
+  }});
+});
+
+/* hero video parallax (desktop) */
+ScrollTrigger.matchMedia({
+  '(min-width:768px)':()=>{
+    gsap.to('.hero-bg',{ yPercent:16, scale:1.08, ease:'none', scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
+  }
+});
+
+/* signature: recovery path line fill + active steps */
+const steps=gsap.utils.toArray('#path-track .step');
+ScrollTrigger.create({
+  trigger:'#path-track', start:'top 62%', end:'bottom 72%', scrub:.6,
+  onUpdate:(s)=>{ const f=document.getElementById('path-fill'); if(f) f.style.height=(s.progress*100)+'%'; }
+});
+steps.forEach(st=>{
+  ScrollTrigger.create({ trigger:st, start:'top 65%', end:'bottom 55%',
+    onToggle:(s)=> st.classList.toggle('active', s.isActive),
+    onEnter:()=>st.classList.add('active') });
+});
+
+/* ===== 6s screenshot safety net ===== */
+setTimeout(()=>{
+  document.querySelectorAll('[data-reveal]').forEach(el=>{ el.style.opacity=1; el.style.transform='none'; el.classList.add('in'); });
+  document.querySelectorAll('[data-img]').forEach(el=>el.classList.add('in'));
+  document.querySelectorAll('.stat').forEach(el=>{ if(el.textContent.trim()==='0'){ const d=parseInt(el.dataset.dec||'0'); el.textContent=(d?parseFloat(el.dataset.target).toFixed(d):el.dataset.target)+(el.dataset.suffix||''); } });
+  const f=document.getElementById('path-fill'); if(f&&parseFloat(f.style.height||'0')<5) f.style.height='100%';
+  document.querySelectorAll('#path-track .step').forEach(s=>s.classList.add('active'));
+},6000);
+</script>
+
+<!-- ===== Three.js drifting particle showpiece (light canvas, behind CTA) ===== -->
+<script type="module">
+(async ()=>{
+  const canvas=document.getElementById('cta-canvas'); if(!canvas) return;
+  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const mobile=window.matchMedia('(max-width:767px)').matches;
+  if(reduce){ return; } // static — CSS grain + gradient carries it
+  let THREE;
+  try{ THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'); }catch(e){ return; }
+
+  const sec=canvas.parentElement;
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile?1.5:2));
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(60,1,.1,100); cam.position.z=15;
+
+  const COUNT= mobile?70:150;
+  const geo=new THREE.BufferGeometry();
+  const pos=new Float32Array(COUNT*3), spd=new Float32Array(COUNT);
+  for(let i=0;i<COUNT;i++){
+    pos[i*3]=(Math.random()-.5)*34; pos[i*3+1]=(Math.random()-.5)*20; pos[i*3+2]=(Math.random()-.5)*10;
+    spd[i]=.004+Math.random()*.01;
+  }
+  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const colTeal=new THREE.Color('#14958F'), colSage=new THREE.Color('#7FA88C'), colSand=new THREE.Color('#C39A5E');
+  const cols=new Float32Array(COUNT*3);
+  for(let i=0;i<COUNT;i++){ const c=i%5===0?colSand:(i%2?colTeal:colSage); cols[i*3]=c.r; cols[i*3+1]=c.g; cols[i*3+2]=c.b; }
+  geo.setAttribute('color',new THREE.BufferAttribute(cols,3));
+  const mat=new THREE.PointsMaterial({size:.16,vertexColors:true,transparent:true,opacity:.55,depthWrite:false});
+  const pts=new THREE.Points(geo,mat); scene.add(pts);
+
+  function resize(){ const w=sec.clientWidth,h=sec.clientHeight; renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); }
+  resize(); window.addEventListener('resize',resize);
+
+  let visible=true, hidden=false;
+  new IntersectionObserver(es=>{ visible=es[0].isIntersecting; },{threshold:0}).observe(sec);
+  document.addEventListener('visibilitychange',()=>{ hidden=document.hidden; });
+
+  const arr=geo.attributes.position.array;
+  function tick(){
+    requestAnimationFrame(tick);
+    if(!visible||hidden) return;
+    for(let i=0;i<COUNT;i++){
+      arr[i*3+1]+=spd[i];
+      if(arr[i*3+1]>10){ arr[i*3+1]=-10; }
+    }
+    geo.attributes.position.needsUpdate=true;
+    pts.rotation.y+=.0006;
+    renderer.render(scene,cam);
+  }
+  tick();
+})();
+</script>
+
+<!-- ===== Safari autoplay rescue v2 (MANDATORY) ===== -->
+<script id="tkw-video-rescue" data-v="2">
+(function(){
+  function fallback(v){
+    if(!v.classList.contains('tkw-vid-blocked')){
+      v.classList.add('tkw-vid-blocked');
+      var host=v.parentElement,p=v.getAttribute('poster');
+      if(host&&p&&!host.getAttribute('data-tkw-poster')){
+        host.setAttribute('data-tkw-poster','1');
+        if(!/url\(/.test(host.style.backgroundImage||'')){
+          host.style.backgroundImage='url("'+p+'")';
+          host.style.backgroundSize='cover';
+          host.style.backgroundPosition='center';
+        }
+      }
+    }
+  }
+  function kick(){
+    var pending=false;
+    document.querySelectorAll('video').forEach(function(v){
+      if(v.hasAttribute('controls'))return;
+      v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');
+      v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
+      v.autoplay=true;v.setAttribute('autoplay','');
+      if(v.paused){
+        pending=true;
+        try{
+          var p=v.play();
+          if(p&&p.then){p.then(function(){v.classList.remove('tkw-vid-blocked');})
+                         .catch(function(){fallback(v);});}
+        }catch(e){fallback(v);}
+      }else{v.classList.remove('tkw-vid-blocked');}
+    });
+    return pending;
+  }
+  var evs=['pointerdown','touchend','click','keydown','scroll'];
+  function onGesture(){ if(!kick()){ evs.forEach(function(e){window.removeEventListener(e,onGesture,true);}); } }
+  evs.forEach(function(e){window.addEventListener(e,onGesture,true);});
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',kick);}else{kick();}
+  window.addEventListener('load',kick);
+  window.addEventListener('pageshow',kick);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)kick();});
+  document.addEventListener('canplay',function(e){if(e.target&&e.target.tagName==='VIDEO')kick();},true);
+  document.addEventListener('loadeddata',function(e){if(e.target&&e.target.tagName==='VIDEO')kick();},true);
+  var tries=0;var iv=setInterval(function(){kick();if(++tries>=20)clearInterval(iv);},1500);
+})();
+</script>
+
+</body>
+</html>
