@@ -146,6 +146,11 @@ body{ background:#F7F3EC; color:#16282B; font-family:'Inter',sans-serif; overflo
 
 /* particle canvas */
 #cta-canvas{ position:absolute; inset:0; z-index:0; pointer-events:none }
+.cta-bg{ background:linear-gradient(180deg,#F1EEE6 0%,#E4EDE8 46%,#EFF1EA 100%) }
+.cta-glow{ position:absolute; z-index:0; border-radius:50%; filter:blur(90px); pointer-events:none }
+.cta-glow-1{ width:520px; height:520px; background:radial-gradient(circle,rgba(20,149,143,.28),transparent 62%); top:-140px; left:-120px; animation:drift1 24s ease-in-out infinite }
+.cta-glow-2{ width:460px; height:460px; background:radial-gradient(circle,rgba(195,154,94,.22),transparent 62%); bottom:-160px; right:-120px; animation:drift1 28s ease-in-out infinite reverse }
+@keyframes drift1{ 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(38px,-26px) scale(1.08)} }
 
 .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.04; mix-blend-mode:multiply;
   background-image:radial-gradient(#16282B 1px, transparent 1px); background-size:3px 3px }
@@ -542,7 +547,9 @@ body{ background:#F7F3EC; color:#16282B; font-family:'Inter',sans-serif; overflo
 </section>
 
 <!-- ============ CLOSING CTA (WebGL showpiece) ============ -->
-<section class="relative py-28 sm:py-32 bg-surface overflow-hidden grain">
+<section class="relative py-28 sm:py-32 cta-bg overflow-hidden grain">
+  <div class="cta-glow cta-glow-1"></div>
+  <div class="cta-glow cta-glow-2"></div>
   <canvas id="cta-canvas"></canvas>
   <div class="relative z-10 max-w-3xl mx-auto px-5 sm:px-8 text-center" data-reveal>
     <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-teal text-cream font-display text-2xl shadow-lg mb-8" style="padding-top:3px">G</span>
@@ -736,7 +743,7 @@ setTimeout(()=>{
   const cols=new Float32Array(COUNT*3);
   for(let i=0;i<COUNT;i++){ const c=i%5===0?colSand:(i%2?colTeal:colSage); cols[i*3]=c.r; cols[i*3+1]=c.g; cols[i*3+2]=c.b; }
   geo.setAttribute('color',new THREE.BufferAttribute(cols,3));
-  const mat=new THREE.PointsMaterial({size:.16,vertexColors:true,transparent:true,opacity:.55,depthWrite:false});
+  const mat=new THREE.PointsMaterial({size:.19,vertexColors:true,transparent:true,opacity:.72,depthWrite:false});
   const pts=new THREE.Points(geo,mat); scene.add(pts);
 
   function resize(){ const w=sec.clientWidth,h=sec.clientHeight; renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); }
