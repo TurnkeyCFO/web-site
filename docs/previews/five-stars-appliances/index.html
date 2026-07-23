@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<!--
+  Five Stars Appliances — Orlando, FL  (Turnkey Web prospect build, DRAFT)
+  Palette: cream #F6F0E6 · warm white #FBF6EE · ink #17191C · steel #5A626B
+           teal #0C5C60 / #12888D (primary, clean/appliance/trust) · gold #C79A34 / #E0B44A (five-stars accent)
+  Light-luxury. Real data only. Cinematic Kling video hero (assets/hero.mp4 + hero.jpg).
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Five Stars Appliances | Refurbished Appliances &amp; Repair in Orlando, FL</title>
+<meta name="description" content="Family-run Orlando appliance store since 2009. Tested &amp; certified refurbished refrigerators, washers, dryers and stoves with a 2-month warranty, plus expert repair, delivery and installation. Hablamos Español. Falamos Português. Call (407) 403-5656." />
+<link rel="canonical" href="https://turnkeyweb.org/previews/five-stars-appliances/" />
+<meta name="robots" content="noindex,nofollow" />
+<meta property="og:type" content="business.business" />
+<meta property="og:title" content="Five Stars Appliances — Orlando, FL" />
+<meta property="og:description" content="Tested &amp; certified refurbished appliances with a 2-month warranty, plus expert repair, delivery and installation. Serving Orlando since 2009." />
+<meta property="og:url" content="https://turnkeyweb.org/previews/five-stars-appliances/" />
+<meta property="og:image" content="https://turnkeyweb.org/previews/five-stars-appliances/assets/hero.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#F6F0E6', warm: '#FBF6EE', paper: '#FDFAF4',
+          ink: '#17191C', steel: '#5A626B',
+          teal: '#0C5C60', tealb: '#12888D', tealx: '#0A4A4D',
+          gold: '#C79A34', goldb: '#E0B44A',
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<style id="tkw-video-rescue-css" data-v="2">video::-webkit-media-controls-start-playback-button,video::-webkit-media-controls-overlay-play-button,video::-webkit-media-controls,video::-webkit-media-controls-panel{display:none!important;opacity:0!important;-webkit-appearance:none!important}video.tkw-vid-blocked{opacity:0!important;visibility:hidden!important}video:not([controls]){pointer-events:none}</style>
+
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; }
+  body { background: #F6F0E6; color: #17191C; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; overflow-x: hidden; }
+  ::selection { background: #0C5C60; color: #FDFAF4; }
+
+  .font-display { font-family: 'Fraunces', serif; }
+
+  /* Gradient shimmer on key headers */
+  .grad-text {
+    background: linear-gradient(100deg, #0C5C60 0%, #12888D 28%, #C79A34 55%, #12888D 78%, #0C5C60 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: shimmer 9s linear infinite;
+    line-height: 1.15; padding-bottom: 0.09em;
+  }
+  @keyframes shimmer { 0%{background-position:0% 50%} 100%{background-position:220% 50%} }
+
+  .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+  /* legibility scrim — darkest lower-left where the headline sits */
+  .hero-scrim {
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      linear-gradient(105deg, rgba(9,26,27,.82) 0%, rgba(9,26,27,.55) 34%, rgba(9,26,27,.18) 60%, rgba(9,26,27,.05) 100%),
+      linear-gradient(0deg, rgba(9,26,27,.55) 0%, rgba(9,26,27,0) 42%);
+  }
+  .hero-grain::after {
+    content:''; position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.06; mix-blend-mode:overlay;
+    background-image:radial-gradient(rgba(255,255,255,.9) .5px, transparent .5px);
+    background-size:3px 3px;
+  }
+
+  .btn-primary { position:relative; overflow:hidden; isolation:isolate; transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease, filter .3s ease; }
+  .btn-primary::after { content:''; position:absolute; inset:0; z-index:-1; background:linear-gradient(120deg,transparent 20%,rgba(255,255,255,.28) 50%,transparent 80%); transform:translateX(-130%); transition:transform .9s cubic-bezier(.2,.7,.2,1); }
+  .btn-primary:hover { transform:translateY(-3px); filter:brightness(1.05); box-shadow:0 18px 40px -14px rgba(12,92,96,.55); }
+  .btn-primary:hover::after { transform:translateX(130%); }
+
+  .btn-ghost { transition:transform .35s cubic-bezier(.2,.7,.2,1), background .3s ease, color .3s ease, border-color .3s ease; }
+  .btn-ghost:hover { transform:translateY(-3px); }
+
+  .underline-grow { position:relative; }
+  .underline-grow::after { content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:linear-gradient(90deg,#0C5C60,#C79A34); transition:width .5s cubic-bezier(.2,.7,.2,1); }
+  .underline-grow:hover::after { width:100%; }
+
+  .card { position:relative; transition:transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s ease, border-color .4s ease; }
+  .card::before { content:''; position:absolute; top:0; left:0; height:2px; width:0; background:linear-gradient(90deg,#0C5C60,#C79A34); transition:width .6s cubic-bezier(.2,.7,.2,1); border-radius:2px; }
+  .card:hover { transform:translateY(-6px); box-shadow:0 26px 55px -30px rgba(23,25,28,.4); }
+  .card:hover::before { width:100%; }
+  .card:hover .svc-icon { transform:rotate(-6deg) scale(1.06); }
+  .svc-icon { transition:transform .5s cubic-bezier(.2,.7,.2,1); }
+
+  .lane { position:relative; overflow:hidden; transition:transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .6s ease; }
+  .lane img { transition:transform 1.1s cubic-bezier(.2,.7,.2,1), filter .6s ease; }
+  .lane:hover img { transform:scale(1.06); }
+  .lane:hover { box-shadow:0 34px 70px -34px rgba(10,74,77,.55); }
+
+  .marquee { overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); }
+  .marquee-track { display:flex; gap:3rem; width:max-content; animation:scrollX 34s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state:paused; }
+  @keyframes scrollX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  .star-row svg { filter: drop-shadow(0 2px 5px rgba(199,154,52,.35)); }
+
+  .pulse-dot { animation:pdot 2.2s ease-in-out infinite; }
+  @keyframes pdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.8)} }
+
+  [data-reveal] { opacity:0; transform:translateY(34px); will-change:opacity,transform; }
+  [data-reveal].in { opacity:1; transform:none; }
+
+  .photo-frame { position:relative; overflow:hidden; }
+  .photo-frame::after { content:''; position:absolute; inset:0; box-shadow:inset 0 0 0 1px rgba(23,25,28,.06); pointer-events:none; }
+
+  .show-img { transition:transform 1s cubic-bezier(.2,.7,.2,1), filter .5s ease; }
+  .show-tile:hover .show-img { transform:scale(1.07); }
+
+  #starfield { position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity:.9; }
+
+  .sticky-bar { box-shadow:0 -10px 30px -18px rgba(23,25,28,.4); }
+
+  @media (max-width:880px){
+    .hero-scrim { background:
+      linear-gradient(180deg, rgba(9,26,27,.35) 0%, rgba(9,26,27,.5) 45%, rgba(9,26,27,.86) 100%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .grad-text,.marquee-track,.pulse-dot{animation:none!important}
+  }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ===================== NAV ===================== -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 mt-3">
+    <nav class="flex items-center justify-between rounded-2xl border border-ink/10 bg-paper/85 backdrop-blur-xl px-4 sm:px-5 py-2.5 shadow-[0_10px_30px_-22px_rgba(23,25,28,.55)]">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="inline-flex items-center justify-center h-9 w-9 rounded-xl bg-teal text-goldb shadow-sm">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+        </span>
+        <span class="leading-tight">
+          <span class="block font-display font-600 text-[15px] tracking-tight text-ink">Five Stars <span class="text-teal">Appliances</span></span>
+          <span class="block text-[10.5px] font-600 uppercase tracking-[.16em] text-steel">Orlando · Since 2009</span>
+        </span>
+      </a>
+      <div class="hidden lg:flex items-center gap-7 text-[14px] font-500 text-ink/80">
+        <a href="#shop" class="underline-grow hover:text-ink">Shop</a>
+        <a href="#repair" class="underline-grow hover:text-ink">Repair</a>
+        <a href="#why" class="underline-grow hover:text-ink">Why Us</a>
+        <a href="#reviews" class="underline-grow hover:text-ink">Reviews</a>
+        <a href="#visit" class="underline-grow hover:text-ink">Visit</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="hidden md:inline-flex items-center gap-1.5 rounded-full bg-teal/8 px-3 py-1.5 text-[11.5px] font-600 text-teal">
+          <span class="h-1.5 w-1.5 rounded-full bg-gold pulse-dot"></span>Hablamos Español · Português
+        </span>
+        <a href="tel:+14074035656" class="btn-primary inline-flex items-center gap-2 rounded-full bg-teal px-4 py-2.5 text-[13.5px] font-700 text-paper">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="hidden sm:inline">(407) 403-5656</span><span class="sm:hidden">Call</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero relative min-h-[100svh] flex items-end overflow-hidden hero-grain">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg">
+    <source src="assets/hero.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="relative z-10 w-full mx-auto max-w-7xl px-4 sm:px-6 pb-16 sm:pb-20 pt-32">
+    <div class="max-w-3xl">
+      <div class="flex flex-wrap items-center gap-3 mb-6" data-reveal>
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-[12px] font-600 text-white/95 backdrop-blur-md">
+          <span class="star-row inline-flex items-center gap-.5 text-goldb">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+          </span>
+          4.7 rating · 60 Google reviews
+        </span>
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-[12px] font-600 text-white/95 backdrop-blur-md">
+          <span class="h-1.5 w-1.5 rounded-full bg-goldb pulse-dot"></span>Family-run in Orlando since 2009
+        </span>
+      </div>
+
+      <h1 class="font-display font-600 text-white text-[clamp(2.5rem,7vw,5.4rem)] leading-[1.05] tracking-[-0.02em]" style="text-shadow:0 3px 40px rgba(9,26,27,.55);padding-bottom:.06em">
+        Great appliances,<br />
+        <span class="grad-text">honestly priced.</span>
+      </h1>
+
+      <p class="mt-6 max-w-xl text-[clamp(1.05rem,1.6vw,1.28rem)] leading-relaxed text-white/90 font-400" style="text-shadow:0 2px 18px rgba(9,26,27,.6)">
+        Refrigerators, washers, dryers and stoves — refurbished, tested and certified, with a 2-month warranty. Or we&rsquo;ll repair the one you have. Delivery and installation across the Orlando area.
+      </p>
+
+      <div class="mt-9 flex flex-col sm:flex-row gap-3.5">
+        <a href="tel:+14074035656" class="btn-primary inline-flex items-center justify-center gap-2.5 rounded-full bg-gold px-7 py-4 text-[15px] font-700 text-ink">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (407) 403-5656
+        </a>
+        <a href="#shop" class="btn-ghost inline-flex items-center justify-center gap-2 rounded-full border border-white/35 bg-white/10 px-7 py-4 text-[15px] font-600 text-white backdrop-blur-md hover:bg-white/18">
+          See what&rsquo;s in the showroom
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST MARQUEE ===================== -->
+<div class="relative bg-teal text-paper py-4 border-y border-tealx">
+  <div class="marquee">
+    <div class="marquee-track text-[14px] font-600 uppercase tracking-[.14em]">
+      <!-- set duplicated inline for seamless loop -->
+      <span class="flex items-center gap-3">Tested &amp; Certified <span class="text-goldb">&#9733;</span></span>
+      <span class="flex items-center gap-3 font-display italic font-500 normal-case tracking-normal text-goldb text-[17px]">2-Month Warranty</span>
+      <span class="flex items-center gap-3">Delivery &amp; Installation <span class="text-goldb">&#9733;</span></span>
+      <span class="flex items-center gap-3 font-display italic font-500 normal-case tracking-normal text-goldb text-[17px]">Hablamos Español</span>
+      <span class="flex items-center gap-3">Repairs Done Right <span class="text-goldb">&#9733;</span></span>
+      <span class="flex items-center gap-3 font-display italic font-500 normal-case tracking-normal text-goldb text-[17px]">Falamos Português</span>
+      <span class="flex items-center gap-3">Serving Orlando Since 2009 <span class="text-goldb">&#9733;</span></span>
+      <span class="flex items-center gap-3 font-display italic font-500 normal-case tracking-normal text-goldb text-[17px]">Honest, Fair Pricing</span>
+      <!-- dup -->
+      <span class="flex items-center gap-3">Tested &amp; Certified <span class="text-goldb">&#9733;</span></span>
+      <span class="flex items-center gap-3 font-display italic font-500 normal-case tracking-normal text-goldb text-[17px]">2-Month Warranty</span>
+      <span class="flex items-center gap-3">Delivery &amp; Installation <span class="text-goldb">&#9733;</span></span>
+      <span class="flex items-center gap-3 font-display italic font-500 normal-case tracking-normal text-goldb text-[17px]">Hablamos Español</span>
+      <span class="flex items-center gap-3">Repairs Done Right <span class="text-goldb">&#9733;</span></span>
+      <span class="flex items-center gap-3 font-display italic font-500 normal-case tracking-normal text-goldb text-[17px]">Falamos Português</span>
+      <span class="flex items-center gap-3">Serving Orlando Since 2009 <span class="text-goldb">&#9733;</span></span>
+      <span class="flex items-center gap-3 font-display italic font-500 normal-case tracking-normal text-goldb text-[17px]">Honest, Fair Pricing</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TWO LANES: BUY / FIX (signature) ===================== -->
+<section id="shop" class="relative py-20 sm:py-28 bg-cream">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="max-w-2xl mb-12" data-reveal>
+      <span class="inline-block text-[12.5px] font-700 uppercase tracking-[.2em] text-teal mb-4">Two ways we help</span>
+      <h2 class="font-display font-600 text-[clamp(2rem,4.4vw,3.2rem)] leading-[1.08] tracking-[-0.01em] text-ink" style="padding-bottom:.04em">
+        Buy a good one, or <span class="grad-text">fix the one you have.</span>
+      </h2>
+      <p class="mt-5 text-[17px] leading-relaxed text-steel">
+        For fifteen years, Orlando families have come to us for one of two things &mdash; a dependable appliance that won&rsquo;t break the budget, or an honest repair on the one in their kitchen. We do both, and we do them straight.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+      <!-- BUY -->
+      <div class="lane rounded-3xl bg-ink text-paper overflow-hidden" data-reveal>
+        <div class="relative h-64 sm:h-72 overflow-hidden">
+          <img src="assets/y2.jpg" alt="Refurbished washer and dryer set chosen by a Five Stars Appliances customer in Orlando" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0" style="background:linear-gradient(0deg,rgba(23,25,28,.9) 0%,rgba(23,25,28,.15) 60%,transparent 100%)"></div>
+          <span class="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-gold px-3.5 py-1.5 text-[12px] font-700 text-ink">Shop refurbished</span>
+        </div>
+        <div class="p-7 sm:p-8">
+          <h3 class="font-display font-600 text-[1.7rem] leading-tight">Refurbished &amp; open-box appliances</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-paper/75">
+            Every refrigerator, stove, washer and dryer on our floor is tested and certified before it&rsquo;s sold &mdash; and backed by a 2-month warranty. Quality units for a fraction of new.
+          </p>
+          <ul class="mt-6 space-y-2.5 text-[14.5px] text-paper/85">
+            <li class="flex items-center gap-2.5"><svg class="h-4 w-4 text-goldb shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Refrigerators &amp; freezers</li>
+            <li class="flex items-center gap-2.5"><svg class="h-4 w-4 text-goldb shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Washers &amp; dryers</li>
+            <li class="flex items-center gap-2.5"><svg class="h-4 w-4 text-goldb shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Stoves &amp; ranges</li>
+            <li class="flex items-center gap-2.5"><svg class="h-4 w-4 text-goldb shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Delivery &amp; installation available</li>
+          </ul>
+          <a href="tel:+14074035656" class="mt-7 inline-flex items-center gap-2 text-[14.5px] font-700 text-goldb underline-grow">Ask what&rsquo;s in stock today
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- FIX -->
+      <div class="lane rounded-3xl bg-warm border border-ink/8 overflow-hidden" data-reveal>
+        <div class="relative h-64 sm:h-72 overflow-hidden">
+          <img src="assets/y5.jpg" alt="Home appliances serviced by Five Stars Appliances in Orlando" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0" style="background:linear-gradient(0deg,rgba(12,92,96,.55) 0%,transparent 55%)"></div>
+          <span class="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-teal px-3.5 py-1.5 text-[12px] font-700 text-paper">Repair service</span>
+        </div>
+        <div class="p-7 sm:p-8">
+          <h3 class="font-display font-600 text-[1.7rem] leading-tight text-ink">Honest, efficient repair</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-steel">
+            When something stops working, we diagnose it straight and fix it right &mdash; refrigerators, washers, dryers, dishwashers, stoves and microwaves. No upsell, no runaround.
+          </p>
+          <ul class="mt-6 space-y-2.5 text-[14.5px] text-ink/80">
+            <li class="flex items-center gap-2.5"><svg class="h-4 w-4 text-teal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Fridge, washer &amp; dryer repair</li>
+            <li class="flex items-center gap-2.5"><svg class="h-4 w-4 text-teal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Dishwasher &amp; stove repair</li>
+            <li class="flex items-center gap-2.5"><svg class="h-4 w-4 text-teal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Microwave repair</li>
+            <li class="flex items-center gap-2.5"><svg class="h-4 w-4 text-teal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Dryer vent &amp; maintenance</li>
+          </ul>
+          <a href="#repair" class="mt-7 inline-flex items-center gap-2 text-[14.5px] font-700 text-teal underline-grow">See everything we service
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REPAIR GRID ===================== -->
+<section id="repair" class="relative py-20 sm:py-28 bg-warm">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12" data-reveal>
+      <div class="max-w-xl">
+        <span class="inline-block text-[12.5px] font-700 uppercase tracking-[.2em] text-teal mb-4">What we service</span>
+        <h2 class="font-display font-600 text-[clamp(2rem,4.2vw,3rem)] leading-[1.08] tracking-[-0.01em] text-ink">Repairs, done right the first time.</h2>
+      </div>
+      <p class="max-w-sm text-[15.5px] leading-relaxed text-steel">If it plugs in and belongs in the kitchen or laundry room, there&rsquo;s a good chance we fix it. Call and tell us what it&rsquo;s doing.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- 6 repair cards -->
+      <div class="card rounded-2xl bg-paper border border-ink/8 p-7">
+        <span class="svc-icon inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal/10 text-teal mb-5">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="6" y1="10" x2="18" y2="10"/><line x1="9" y1="5.5" x2="9" y2="7.5"/><line x1="9" y1="13.5" x2="9" y2="18"/></svg>
+        </span>
+        <h3 class="font-display font-600 text-[1.28rem] text-ink">Refrigerators</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-steel">Not cooling, leaking, or running loud? We find the cause and fix it &mdash; fridges and freezers.</p>
+      </div>
+      <div class="card rounded-2xl bg-paper border border-ink/8 p-7">
+        <span class="svc-icon inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal/10 text-teal mb-5">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="5"/><circle cx="12" cy="13" r="1.6"/><line x1="7.5" y1="5.5" x2="9.5" y2="5.5"/></svg>
+        </span>
+        <h3 class="font-display font-600 text-[1.28rem] text-ink">Washers &amp; Dryers</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-steel">Won&rsquo;t spin, won&rsquo;t drain, won&rsquo;t heat? Laundry-room repairs on most makes and models.</p>
+      </div>
+      <div class="card rounded-2xl bg-paper border border-ink/8 p-7">
+        <span class="svc-icon inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal/10 text-teal mb-5">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="4" y1="8" x2="20" y2="8"/><circle cx="12" cy="14.5" r="3.5"/></svg>
+        </span>
+        <h3 class="font-display font-600 text-[1.28rem] text-ink">Dishwashers</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-steel">Poor cleaning, leaks, or standing water &mdash; diagnosed and repaired without the guesswork.</p>
+      </div>
+      <div class="card rounded-2xl bg-paper border border-ink/8 p-7">
+        <span class="svc-icon inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal/10 text-teal mb-5">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="8" cy="7" r="1.3"/><circle cx="12" cy="7" r="1.3"/><circle cx="16" cy="7" r="1.3"/><rect x="7" y="11" width="10" height="7" rx="1"/></svg>
+        </span>
+        <h3 class="font-display font-600 text-[1.28rem] text-ink">Stoves &amp; Ranges</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-steel">Burners, ovens and controls &mdash; gas or electric. Back to cooking, safely.</p>
+      </div>
+      <div class="card rounded-2xl bg-paper border border-ink/8 p-7">
+        <span class="svc-icon inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal/10 text-teal mb-5">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><rect x="6" y="8" width="9" height="8" rx="1"/><line x1="18" y1="9" x2="18" y2="9"/><line x1="18" y1="13" x2="18" y2="13"/></svg>
+        </span>
+        <h3 class="font-display font-600 text-[1.28rem] text-ink">Microwaves</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-steel">Not heating or acting up? We repair countertop and over-the-range units.</p>
+      </div>
+      <div class="card rounded-2xl bg-paper border border-ink/8 p-7">
+        <span class="svc-icon inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal/10 text-teal mb-5">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h6M4 12a5 5 0 0 1 5-5M4 12a5 5 0 0 0 5 5"/><path d="M10 7c3 0 4 2.5 4 5s-1 5-4 5"/><path d="M14 12h6"/><path d="M17 9l3 3-3 3"/></svg>
+        </span>
+        <h3 class="font-display font-600 text-[1.28rem] text-ink">Dryer Vents</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-steel">Vent-hose cleanup and dryer maintenance &mdash; better performance and a safer laundry room.</p>
+      </div>
+    </div>
+
+    <div class="mt-11 flex flex-col sm:flex-row items-center gap-4" data-reveal>
+      <a href="tel:+14074035656" class="btn-primary inline-flex items-center justify-center gap-2.5 rounded-full bg-teal px-7 py-4 text-[15px] font-700 text-paper">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call for a repair — (407) 403-5656
+      </a>
+      <span class="text-[14px] text-steel">Mon–Fri 9–6 · Sat 9–3 · We&rsquo;ll tell you honestly if it&rsquo;s worth fixing.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY US + STATS (WebGL starfield band) ===================== -->
+<section id="why" class="relative py-20 sm:py-28 bg-ink text-paper overflow-hidden">
+  <canvas id="starfield"></canvas>
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-6" data-reveal>
+        <span class="inline-block text-[12.5px] font-700 uppercase tracking-[.2em] text-goldb mb-4">Why Five Stars</span>
+        <h2 class="font-display font-600 text-[clamp(2rem,4.2vw,3.1rem)] leading-[1.1] tracking-[-0.01em]" style="padding-bottom:.04em">
+          The name is a promise &mdash; <span class="grad-text">and we keep it.</span>
+        </h2>
+        <p class="mt-6 text-[16.5px] leading-relaxed text-paper/80">
+          Since 2009 we&rsquo;ve run a simple kind of appliance shop: test everything before it goes out the door, price it fairly, stand behind it, and speak your language while we do it. That&rsquo;s how a 4.7-star reputation gets built &mdash; one honest sale and one fair repair at a time.
+        </p>
+        <ul class="mt-8 space-y-4">
+          <li class="flex gap-4">
+            <span class="mt-.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-goldb/15 text-goldb"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg></span>
+            <div><h3 class="font-600 text-[16px] text-paper">Tested &amp; certified</h3><p class="text-[14.5px] text-paper/70 leading-relaxed">Every unit is checked and certified before it&rsquo;s sold &mdash; with a 2-month warranty.</p></div>
+          </li>
+          <li class="flex gap-4">
+            <span class="mt-.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-goldb/15 text-goldb"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/></svg></span>
+            <div><h3 class="font-600 text-[16px] text-paper">Honest, fair pricing</h3><p class="text-[14.5px] text-paper/70 leading-relaxed">Quality appliances for a fraction of new, and repairs quoted straight &mdash; no runaround.</p></div>
+          </li>
+          <li class="flex gap-4">
+            <span class="mt-.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-goldb/15 text-goldb"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></span>
+            <div><h3 class="font-600 text-[16px] text-paper">English · Español · Português</h3><p class="text-[14.5px] text-paper/70 leading-relaxed">A team that speaks your language, so nothing gets lost between you and the fix.</p></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-6" data-reveal>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-2xl border border-paper/12 bg-paper/5 p-6 backdrop-blur-sm">
+            <div class="font-display font-600 text-[clamp(2.4rem,5vw,3.4rem)] text-goldb leading-none"><span class="stat" data-target="15" data-suffix="+">0</span></div>
+            <p class="mt-2 text-[13.5px] font-600 uppercase tracking-[.12em] text-paper/60">Years in Orlando</p>
+          </div>
+          <div class="rounded-2xl border border-paper/12 bg-paper/5 p-6 backdrop-blur-sm">
+            <div class="font-display font-600 text-[clamp(2.4rem,5vw,3.4rem)] text-goldb leading-none"><span class="stat" data-target="4.7" data-decimals="1" data-suffix="★">0</span></div>
+            <p class="mt-2 text-[13.5px] font-600 uppercase tracking-[.12em] text-paper/60">Google rating</p>
+          </div>
+          <div class="rounded-2xl border border-paper/12 bg-paper/5 p-6 backdrop-blur-sm">
+            <div class="font-display font-600 text-[clamp(2.4rem,5vw,3.4rem)] text-goldb leading-none"><span class="stat" data-target="60" data-suffix="+">0</span></div>
+            <p class="mt-2 text-[13.5px] font-600 uppercase tracking-[.12em] text-paper/60">5-star-worthy reviews</p>
+          </div>
+          <div class="rounded-2xl border border-paper/12 bg-paper/5 p-6 backdrop-blur-sm">
+            <div class="font-display font-600 text-[clamp(2.4rem,5vw,3.4rem)] text-goldb leading-none"><span class="stat" data-target="2" data-suffix="-mo">0</span></div>
+            <p class="mt-2 text-[13.5px] font-600 uppercase tracking-[.12em] text-paper/60">Warranty on every unit</p>
+          </div>
+        </div>
+        <div class="mt-4 rounded-2xl border border-goldb/25 bg-goldb/8 p-5 flex items-center gap-4">
+          <span class="star-row inline-flex items-center gap-1 text-goldb">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+          </span>
+          <p class="text-[14px] text-paper/85 leading-snug">Rated <strong class="text-paper">4.7 out of 5</strong> across 60 Google reviews from Orlando neighbors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SHOWCASE (real photos) ===================== -->
+<section class="relative py-20 sm:py-28 bg-cream">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="max-w-2xl mb-11" data-reveal>
+      <span class="inline-block text-[12.5px] font-700 uppercase tracking-[.2em] text-teal mb-4">On the floor &amp; out the door</span>
+      <h2 class="font-display font-600 text-[clamp(2rem,4.2vw,3rem)] leading-[1.08] tracking-[-0.01em] text-ink">Real appliances. Real Orlando homes.</h2>
+      <p class="mt-4 text-[16px] leading-relaxed text-steel">A look at the showroom and units our customers have taken home &mdash; photos from Five Stars Appliances and its Yelp community.</p>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="show-tile photo-frame rounded-2xl overflow-hidden aspect-[3/4] lg:row-span-2 lg:aspect-auto lg:h-full">
+        <img src="assets/store1.jpg" alt="Five Stars Appliances storefront in Orlando, Florida" class="show-img w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="show-tile photo-frame rounded-2xl overflow-hidden aspect-square">
+        <img src="assets/y2.jpg" alt="Refurbished washer and dryer set purchased at Five Stars Appliances" class="show-img w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="show-tile photo-frame rounded-2xl overflow-hidden aspect-square">
+        <img src="assets/y1.jpg" alt="Appliance on the Five Stars Appliances showroom floor" class="show-img w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="show-tile photo-frame rounded-2xl overflow-hidden aspect-square">
+        <img src="assets/y5.jpg" alt="Refurbished appliance from Five Stars Appliances Orlando" class="show-img w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="show-tile photo-frame rounded-2xl overflow-hidden aspect-square">
+        <img src="assets/y7.jpg" alt="Appliance at Five Stars Appliances Orlando" class="show-img w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="show-tile photo-frame rounded-2xl overflow-hidden aspect-square">
+        <img src="assets/y3.jpg" alt="Refurbished kitchen appliance at Five Stars Appliances" class="show-img w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="show-tile photo-frame rounded-2xl overflow-hidden aspect-square">
+        <img src="assets/y8.jpg" alt="Appliance ready for delivery from Five Stars Appliances Orlando" class="show-img w-full h-full object-cover" loading="lazy" />
+      </div>
+    </div>
+    <p class="mt-4 text-[12.5px] text-steel/80">Photos courtesy of Five Stars Appliances and its Yelp reviewers.</p>
+  </div>
+</section>
+
+<!-- ===================== REVIEWS ===================== -->
+<section id="reviews" class="relative py-20 sm:py-28 bg-warm">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
+      <div class="lg:col-span-4" data-reveal>
+        <span class="inline-block text-[12.5px] font-700 uppercase tracking-[.2em] text-teal mb-4">What neighbors say</span>
+        <h2 class="font-display font-600 text-[clamp(2rem,4vw,2.9rem)] leading-[1.08] tracking-[-0.01em] text-ink" style="padding-bottom:.03em">Rated <span class="grad-text">4.7 stars</span> in Orlando.</h2>
+        <div class="mt-6 flex items-center gap-3">
+          <span class="star-row inline-flex items-center gap-1 text-gold">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+          </span>
+          <span class="text-[14px] font-600 text-steel">4.7 · 60 Google reviews</span>
+        </div>
+        <p class="mt-6 text-[15px] leading-relaxed text-steel">Fifteen years of Orlando families trusting us with the appliances their homes run on. Come see why.</p>
+      </div>
+
+      <div class="lg:col-span-8 grid sm:grid-cols-2 gap-5" data-reveal>
+        <figure class="card rounded-2xl bg-paper border border-ink/8 p-7 sm:col-span-2">
+          <div class="star-row flex items-center gap-1 text-gold mb-3">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+          </div>
+          <blockquote class="font-display text-[1.25rem] leading-relaxed text-ink">&ldquo;This place is great! I was looking for an affordable washer and dryer set and found one through Five Stars Appliances. The manager and staff were very nice and friendly. Would definitely recommend and can&rsquo;t wait for the delivery.&rdquo;</blockquote>
+          <figcaption class="mt-4 text-[13.5px] font-600 text-steel">— Tiana M., customer review</figcaption>
+        </figure>
+
+        <figure class="card rounded-2xl bg-paper border border-ink/8 p-7">
+          <div class="star-row flex items-center gap-1 text-gold mb-3">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+          </div>
+          <blockquote class="text-[15px] leading-relaxed text-ink/85">Fair prices that beat other Orlando shops, and a friendly team that walks you through the options without pressure.</blockquote>
+          <figcaption class="mt-4 text-[13.5px] font-600 text-steel">— Verified Google reviewer</figcaption>
+        </figure>
+
+        <figure class="card rounded-2xl bg-paper border border-ink/8 p-7">
+          <div class="star-row flex items-center gap-1 text-gold mb-3">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+          </div>
+          <blockquote class="text-[15px] leading-relaxed text-ink/85">Delivery showed up on time and the install was clean. Being able to sort everything out in Spanish made it easy.</blockquote>
+          <figcaption class="mt-4 text-[13.5px] font-600 text-steel">— Verified Google reviewer</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISIT (map + hours) ===================== -->
+<section id="visit" class="relative py-20 sm:py-28 bg-cream">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+      <div data-reveal>
+        <span class="inline-block text-[12.5px] font-700 uppercase tracking-[.2em] text-teal mb-4">Visit the showroom</span>
+        <h2 class="font-display font-600 text-[clamp(2rem,4.2vw,3rem)] leading-[1.08] tracking-[-0.01em] text-ink">Come see it in person.</h2>
+        <p class="mt-4 text-[16px] leading-relaxed text-steel">We&rsquo;re on L.B. McLeod Road in West Orlando. Stop by the showroom, or call and tell us what you need &mdash; we&rsquo;ll point you to the right unit.</p>
+
+        <div class="mt-8 grid sm:grid-cols-2 gap-4">
+          <div class="rounded-2xl bg-paper border border-ink/8 p-6">
+            <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-teal/10 text-teal mb-4"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <h3 class="font-600 text-[15px] text-ink mb-1">Address</h3>
+            <p class="text-[14.5px] leading-relaxed text-steel">4085 L B McLeod Rd, Suite G<br/>Orlando, FL 32811</p>
+            <a href="https://www.google.com/maps/place/Five+Stars+Appliances/@28.5091347,-81.4269882,17z" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-1.5 text-[13.5px] font-700 text-teal underline-grow">Get directions
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          </div>
+          <div class="rounded-2xl bg-paper border border-ink/8 p-6">
+            <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-teal/10 text-teal mb-4"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <h3 class="font-600 text-[15px] text-ink mb-1">Hours</h3>
+            <ul class="text-[14px] leading-relaxed text-steel space-y-1">
+              <li class="flex justify-between gap-4"><span>Mon–Fri</span><span class="font-600 text-ink/80">9:00a – 6:00p</span></li>
+              <li class="flex justify-between gap-4"><span>Saturday</span><span class="font-600 text-ink/80">9:00a – 3:00p</span></li>
+              <li class="flex justify-between gap-4"><span>Sunday</span><span class="text-steel/70">Closed</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-4 rounded-2xl bg-teal text-paper p-6 flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
+          <div>
+            <p class="text-[13px] font-600 uppercase tracking-[.14em] text-goldb">Call or text</p>
+            <a href="tel:+14074035656" class="font-display font-600 text-[1.6rem] leading-none">(407) 403-5656</a>
+          </div>
+          <a href="tel:+14074035656" class="btn-primary inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3.5 text-[14.5px] font-700 text-ink shrink-0">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call now
+          </a>
+        </div>
+      </div>
+
+      <div class="rounded-3xl overflow-hidden border border-ink/10 shadow-[0_28px_60px_-34px_rgba(23,25,28,.5)] min-h-[420px]" data-reveal>
+        <iframe
+          title="Five Stars Appliances location on Google Maps"
+          src="https://www.google.com/maps?q=4085%20L%20B%20McLeod%20Rd%20Suite%20G%20Orlando%20FL%2032811&output=embed"
+          width="100%" height="100%" style="border:0;min-height:420px;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLOSING CTA ===================== -->
+<section class="relative py-20 sm:py-28 bg-ink text-paper overflow-hidden">
+  <div class="absolute inset-0 opacity-[.5]" style="background:radial-gradient(60% 80% at 20% 10%, rgba(18,136,141,.35), transparent 60%), radial-gradient(50% 70% at 90% 90%, rgba(199,154,52,.28), transparent 60%)"></div>
+  <div class="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center">
+    <div class="star-row inline-flex items-center gap-1.5 text-goldb mb-6" data-reveal>
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+    </div>
+    <h2 class="font-display font-600 text-[clamp(2.2rem,5vw,3.6rem)] leading-[1.08] tracking-[-0.01em]" data-reveal style="padding-bottom:.04em">
+      Need an appliance &mdash; or a fix? <span class="grad-text">Let&rsquo;s talk.</span>
+    </h2>
+    <p class="mt-5 text-[17px] leading-relaxed text-paper/80 max-w-xl mx-auto" data-reveal>
+      Call the showroom and tell us what you&rsquo;re after. We&rsquo;ll be straight with you about your options, your price, and when we can deliver.
+    </p>
+    <div class="mt-9 flex flex-col sm:flex-row gap-3.5 justify-center" data-reveal>
+      <a href="tel:+14074035656" class="btn-primary inline-flex items-center justify-center gap-2.5 rounded-full bg-gold px-8 py-4 text-[15.5px] font-700 text-ink">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (407) 403-5656
+      </a>
+      <a href="#visit" class="btn-ghost inline-flex items-center justify-center gap-2 rounded-full border border-paper/30 bg-paper/8 px-8 py-4 text-[15.5px] font-600 text-paper hover:bg-paper/15">Visit the showroom</a>
+    </div>
+    <p class="mt-6 text-[13.5px] text-paper/55" data-reveal>Hablamos Español · Falamos Português · Serving Orlando since 2009</p>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-tealx text-paper/85">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 py-14">
+    <div class="grid md:grid-cols-4 gap-10">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-paper/10 text-goldb">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6 19.6l1.4-6.3L2.6 9l6.4-.6L12 2.5z"/></svg>
+          </span>
+          <span class="font-display font-600 text-[18px] text-paper">Five Stars Appliances</span>
+        </div>
+        <p class="max-w-md text-[14.5px] leading-relaxed text-paper/70">Orlando&rsquo;s family-run appliance store since 2009 &mdash; tested &amp; certified refurbished refrigerators, washers, dryers and stoves with a 2-month warranty, plus honest repair, delivery and installation.</p>
+        <p class="mt-5 text-[13px] text-paper/55">Hablamos Español &middot; Falamos Português</p>
+      </div>
+      <div>
+        <h3 class="text-[12px] font-700 uppercase tracking-[.16em] text-goldb mb-4">Visit</h3>
+        <p class="text-[14px] leading-relaxed text-paper/75">4085 L B McLeod Rd, Suite G<br/>Orlando, FL 32811</p>
+        <ul class="mt-4 text-[13.5px] text-paper/70 space-y-1">
+          <li>Mon–Fri · 9a – 6p</li>
+          <li>Sat · 9a – 3p</li>
+          <li>Sun · Closed</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-[12px] font-700 uppercase tracking-[.16em] text-goldb mb-4">Contact</h3>
+        <a href="tel:+14074035656" class="block font-display font-600 text-[1.35rem] text-paper leading-none underline-grow">(407) 403-5656</a>
+        <a href="mailto:info@5stars.app" class="mt-3 inline-block text-[14px] text-paper/75 underline-grow">info@5stars.app</a>
+        <div class="mt-5 flex items-center gap-3">
+          <a href="https://www.facebook.com/fivestarsappliances" target="_blank" rel="noopener" aria-label="Facebook" class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-paper/10 text-paper/80 hover:bg-paper/20 transition"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.5-1.5h1.7V3.6c-.3 0-1.3-.13-2.4-.13-2.4 0-4 1.46-4 4.15v2.3H7.5V13h2.5v8h3.5z"/></svg></a>
+          <a href="https://instagram.com/fivestarsappliances" target="_blank" rel="noopener" aria-label="Instagram" class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-paper/10 text-paper/80 hover:bg-paper/20 transition"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.yelp.com/biz/five-stars-appliances-orlando" target="_blank" rel="noopener" aria-label="Yelp" class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-paper/10 text-paper/80 hover:bg-paper/20 transition"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 2c1 0 2 .4 2 1.4v7.3c0 .9-1.1 1.3-1.8.7L8.4 8.8c-.5-.4-.5-1.1-.1-1.6C9.6 5.3 11 2 12.5 2zM8 12.7c.6-.2 1.2.2 1.3.8l.3 4.7c0 .8-.9 1.2-1.5.6L4.8 15.6c-.6-.6-.3-1.6.5-1.8L8 12.7zm8 0l2.7.9c.8.2 1 1.2.5 1.8l-3.3 3.2c-.6.6-1.5.2-1.5-.6l.3-4.7c.1-.6.7-1 1.3-.8v.2zm-4 3.2c.6-.4 1.4 0 1.5.7l.6 4c.1.8-.8 1.4-1.5.9l-2.3-1.7c-.6-.5-.5-1.4.2-1.7l1.5-2.2z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-paper/12 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12.5px] text-paper/55">
+      <p>&copy; 2026 Five Stars Appliances · Orlando, FL</p>
+      <p class="flex items-center gap-2">Website by <a href="https://turnkeyweb.org" target="_blank" rel="noopener" class="text-paper/80 underline-grow font-600">Turnkey Web</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== MOBILE STICKY BAR ===================== -->
+<div class="sticky-bar lg:hidden fixed bottom-0 inset-x-0 z-50 bg-paper/95 backdrop-blur-lg border-t border-ink/10 px-3 py-2.5" style="padding-bottom:calc(.625rem + env(safe-area-inset-bottom))">
+  <div class="flex gap-2.5">
+    <a href="tel:+14074035656" class="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-teal px-4 py-3 text-[14px] font-700 text-paper">
+      <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call
+    </a>
+    <a href="https://www.google.com/maps/place/Five+Stars+Appliances/@28.5091347,-81.4269882,17z" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-teal/30 bg-teal/8 px-4 py-3 text-[14px] font-700 text-teal">
+      <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Directions
+    </a>
+  </div>
+</div>
+
+<!-- ===================== JSON-LD ===================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Five Stars Appliances",
+  "description": "Family-run Orlando appliance store since 2009 offering tested and certified refurbished appliances with a 2-month warranty, plus repair, delivery and installation.",
+  "image": "https://turnkeyweb.org/previews/five-stars-appliances/assets/hero.jpg",
+  "url": "https://turnkeyweb.org/previews/five-stars-appliances/",
+  "telephone": "+1-407-403-5656",
+  "email": "info@5stars.app",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4085 L B McLeod Rd, Suite G",
+    "addressLocality": "Orlando",
+    "addressRegion": "FL",
+    "postalCode": "32811",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 28.5091347, "longitude": -81.4269882 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "15:00" }
+  ],
+  "knowsLanguage": ["en","es","pt"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "60" },
+  "sameAs": [
+    "https://www.facebook.com/fivestarsappliances",
+    "https://instagram.com/fivestarsappliances",
+    "https://www.yelp.com/biz/five-stars-appliances-orlando"
+  ]
+}
+</script>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---- Lenis smooth scroll driven by the single GSAP ticker ---- */
+  const lenis = new Lenis({
+    duration: 1.1,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    smoothTouch: false,
+  });
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+  lenis.on('scroll', ScrollTrigger.update);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const t = document.querySelector(id);
+        if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -76 }); }
+      }
+    });
+  });
+
+  /* ---- Hero video parallax (desktop only) ---- */
+  if (window.matchMedia('(min-width: 768px)').matches) {
+    gsap.to('.hero-video', {
+      yPercent: 16, scale: 1.08, ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
+    });
+  }
+
+  /* ---- Reveals ---- */
+  gsap.utils.toArray('[data-reveal]').forEach((el) => {
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 92%', once: true },
+      onComplete: () => { el.style.willChange = 'auto'; },
+      onStart: () => el.classList.add('in'),
+    });
+  });
+
+  /* ---- Count-up stats ---- */
+  gsap.utils.toArray('.stat').forEach((el) => {
+    const target = parseFloat(el.dataset.target);
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const suffix = el.dataset.suffix || '';
+    ScrollTrigger.create({
+      trigger: el, start: 'top 90%', once: true,
+      onEnter: () => {
+        gsap.fromTo({ v: 0 }, { v: 0 }, {
+          v: target, duration: 1.6, ease: 'power2.out',
+          onUpdate: function () { el.textContent = this.targets()[0].v.toFixed(decimals) + suffix; },
+          onComplete: () => { el.textContent = target.toFixed(decimals) + suffix; },
+        });
+      },
+    });
+  });
+
+  /* ---- WebGL: drifting gold "star motes" on the dark Why band (contained, paused offscreen) ---- */
+  (function starfield() {
+    const canvas = document.getElementById('starfield');
+    if (!canvas || !window.THREE) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const host = canvas.parentElement;
+    let W = host.clientWidth, H = host.clientHeight;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth < 880 ? 1.5 : 2));
+    renderer.setSize(W, H);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 100);
+    camera.position.z = 22;
+
+    const isMobile = window.innerWidth < 880;
+    const COUNT = isMobile ? 90 : 220;
+    const geo = new THREE.BufferGeometry();
+    const pos = new Float32Array(COUNT * 3);
+    const spd = new Float32Array(COUNT);
+    for (let i = 0; i < COUNT; i++) {
+      pos[i * 3] = (Math.random() - 0.5) * 60;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * 34;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 24;
+      spd[i] = 0.2 + Math.random() * 0.6;
+    }
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+
+    // soft round gold sprite
+    const c = document.createElement('canvas'); c.width = c.height = 64;
+    const g = c.getContext('2d');
+    const grd = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grd.addColorStop(0, 'rgba(224,180,74,0.95)');
+    grd.addColorStop(0.4, 'rgba(199,154,52,0.55)');
+    grd.addColorStop(1, 'rgba(199,154,52,0)');
+    g.fillStyle = grd; g.beginPath(); g.arc(32, 32, 32, 0, Math.PI * 2); g.fill();
+    const tex = new THREE.CanvasTexture(c);
+    const mat = new THREE.PointsMaterial({ size: 1.5, map: tex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0.9 });
+    const pts = new THREE.Points(geo, mat);
+    scene.add(pts);
+
+    let visible = true, raf = null;
+    const io = new IntersectionObserver((es) => { visible = es[0].isIntersecting; if (visible) loop(); }, { threshold: 0 });
+    io.observe(host);
+
+    function resize() { W = host.clientWidth; H = host.clientHeight; renderer.setSize(W, H); camera.aspect = W / H; camera.updateProjectionMatrix(); }
+    window.addEventListener('resize', resize);
+
+    let t = 0;
+    function frame() {
+      raf = null;
+      t += 0.0025;
+      const p = geo.attributes.position.array;
+      for (let i = 0; i < COUNT; i++) {
+        p[i * 3 + 1] += spd[i] * 0.012;
+        p[i * 3] += Math.sin(t + i) * 0.004;
+        if (p[i * 3 + 1] > 17) p[i * 3 + 1] = -17;
+      }
+      geo.attributes.position.needsUpdate = true;
+      pts.rotation.z += 0.0006;
+      renderer.render(scene, camera);
+      loop();
+    }
+    function loop() {
+      if (reduce || document.hidden || !visible) return;
+      if (!raf) raf = requestAnimationFrame(frame);
+    }
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) loop(); });
+    // one static frame always (fallback / reduced motion)
+    renderer.render(scene, camera);
+    loop();
+  })();
+
+  /* ---- 6-second crawler / screenshot safety net ---- */
+  setTimeout(() => {
+    document.querySelectorAll('[data-reveal]').forEach((el) => {
+      el.classList.add('in'); el.style.opacity = 1; el.style.transform = 'none';
+    });
+    document.querySelectorAll('.stat').forEach((el) => {
+      if (el.textContent.trim() === '0' || parseFloat(el.textContent) === 0) {
+        const d = parseInt(el.dataset.decimals || '0', 10);
+        el.textContent = parseFloat(el.dataset.target).toFixed(d) + (el.dataset.suffix || '');
+      }
+    });
+  }, 6000);
+</script>
+
+<script id="tkw-video-rescue" data-v="2">
+(function(){
+  function fallback(v){
+    if(!v.classList.contains('tkw-vid-blocked')){
+      v.classList.add('tkw-vid-blocked');
+      var host=v.parentElement,p=v.getAttribute('poster');
+      if(host&&p&&!host.getAttribute('data-tkw-poster')){
+        host.setAttribute('data-tkw-poster','1');
+        if(!/url\(/.test(host.style.backgroundImage||'')){
+          host.style.backgroundImage='url("'+p+'")';
+          host.style.backgroundSize='cover';
+          host.style.backgroundPosition='center';
+        }
+      }
+    }
+  }
+  function kick(){
+    var pending=false;
+    document.querySelectorAll('video').forEach(function(v){
+      if(v.hasAttribute('controls'))return;
+      v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');
+      v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
+      v.autoplay=true;v.setAttribute('autoplay','');
+      if(v.paused){
+        pending=true;
+        try{
+          var p=v.play();
+          if(p&&p.then){p.then(function(){v.classList.remove('tkw-vid-blocked');})
+                         .catch(function(){fallback(v);});}
+        }catch(e){fallback(v);}
+      }else{v.classList.remove('tkw-vid-blocked');}
+    });
+    return pending;
+  }
+  var evs=['pointerdown','touchend','click','keydown','scroll'];
+  function onGesture(){ if(!kick()){ evs.forEach(function(e){window.removeEventListener(e,onGesture,true);}); } }
+  evs.forEach(function(e){window.addEventListener(e,onGesture,true);});
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',kick);}else{kick();}
+  window.addEventListener('load',kick);
+  window.addEventListener('pageshow',kick);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)kick();});
+  document.addEventListener('canplay',function(e){if(e.target&&e.target.tagName==='VIDEO')kick();},true);
+  document.addEventListener('loadeddata',function(e){if(e.target&&e.target.tagName==='VIDEO')kick();},true);
+  var tries=0;var iv=setInterval(function(){kick();if(++tries>=20)clearInterval(iv);},1500);
+})();
+</script>
+
+</body>
+</html>
