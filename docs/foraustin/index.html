@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>For Austin | Northpoint Church</title>
-<meta name="x-build" content="20260811-083237-ccb74f50">
+<meta name="x-build" content="20260811-083641-de5c0a1f">
 <meta name="description" content="For people. For community. For the next generation. The FOR Weekend, the FOR Day, and year-round ways to serve Greater Austin with Northpoint Church.">
 <meta name="theme-color" content="#0f1d2c">
 <meta property="og:type" content="website">
@@ -385,13 +385,42 @@ select:focus-visible,textarea:focus-visible,summary:focus-visible{
 .concert-bg::before{
   content:"";position:absolute;inset:-30% -10%;
   background:
-    linear-gradient(108deg,transparent 46%,rgba(170,225,255,.10) 50%,transparent 55%),
-    linear-gradient(72deg,transparent 62%,rgba(255,255,255,.055) 66%,transparent 71%);
+    linear-gradient(104deg,transparent 40%,rgba(170,225,255,.17) 50%,transparent 60%),
+    linear-gradient(70deg,transparent 56%,rgba(255,255,255,.09) 66%,transparent 76%),
+    linear-gradient(126deg,transparent 68%,rgba(202,73,54,.16) 78%,transparent 88%);
 }
 .concert-bg::after{content:"";position:absolute;inset:0;
   background:linear-gradient(95deg,rgba(15,29,44,.86) 0%,rgba(15,29,44,.52) 52%,rgba(15,29,44,.18) 100%)}
 .concert .shell{position:relative;z-index:1}
+.concert-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:clamp(28px,4vw,64px);align-items:center}
+@media(max-width:900px){.concert-grid{grid-template-columns:1fr;gap:34px}}
 .concert-in{max-width:640px}
+
+/* The ticket stub. Every field on it is genuinely unknown, so rather than
+   an empty right-hand column the unknowns become the object itself — the
+   shape of the announcement, waiting for its content. */
+.stub{
+  position:relative;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.2);
+  border-radius:18px;padding:clamp(24px,2.8vw,32px);backdrop-filter:blur(3px);
+  box-shadow:0 30px 70px -46px rgba(0,0,0,.9);
+}
+.stub-top{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding-bottom:16px;margin-bottom:6px;border-bottom:1px dashed rgba(255,255,255,.24)}
+.stub-top b{font-family:var(--display);font-weight:900;font-size:13px;letter-spacing:.16em;
+  text-transform:uppercase;color:#fff}
+.stub-top span{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--navy);background:var(--sky);border-radius:100px;padding:4px 10px;white-space:nowrap}
+.stub dl{margin:0;display:grid;gap:0}
+.stub dl>div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.stub dt{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);flex:none}
+.stub dd{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(1rem,1.6vw,1.2rem);
+  color:#fff;text-align:right;letter-spacing:-.015em}
+.stub dd.tbc{color:rgba(255,255,255,.42);font-weight:700;letter-spacing:.02em;font-size:14px;
+  font-family:var(--text)}
+.stub-foot{margin-top:18px;font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.5}
 .concert h2{color:#fff}
 .concert p{color:rgba(255,255,255,.8)}
 .slot{
@@ -604,7 +633,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.62);padding-block:clamp(52
 
     <div class="goal rv">
       <div>
-        <p class="goal-lab">Weekend goal &mdash; range under discussion</p>
+        <p class="goal-lab">Weekend goal &middot; not yet set</p>
         <p class="goal-fig">$50k&ndash;$100k</p>
       </div>
       <p class="goal-txt">
@@ -761,13 +790,14 @@ footer{background:var(--navy);color:rgba(255,255,255,.62);padding-block:clamp(52
 <section class="sec concert" id="concert">
   <div class="concert-bg" aria-hidden="true"></div>
   <div class="shell">
+   <div class="concert-grid">
     <div class="concert-in">
       <p class="eye on-dark rv">Also that weekend</p>
       <h2 style="font-size:clamp(2.1rem,5vw,3.3rem);font-weight:900;letter-spacing:-.03em;margin-bottom:20px" class="rv rv-d1">The Concert</h2>
       <p style="font-size:1.1rem" class="rv rv-d2">
         A night out in Leander with live music, open to anybody in Greater
-        Austin who wants to come. Tickets are handled by HotSpot, who are
-        already selling them.
+        Austin who wants to come. Ticketing is handled by HotSpot, not by this
+        page &mdash; when the listing opens, this section points straight at it.
       </p>
       <div class="slot rv rv-d2">
         <b>Content slot</b>
@@ -788,6 +818,25 @@ footer{background:var(--navy);color:rgba(255,255,255,.62);padding-block:clamp(52
       </div>
       <p class="hero-note rv rv-d4"><span class="dot"></span> Becomes a live &ldquo;Get tickets&rdquo; button the day HotSpot issues the URL</p>
     </div>
+
+    <aside class="stub rv rv-d2" aria-label="Concert details, to be announced">
+      <div class="stub-top">
+        <b>The Concert</b>
+        <span>October 2026</span>
+      </div>
+      <dl>
+        <div><dt>Artist</dt><dd class="tbc">To be announced</dd></div>
+        <div><dt>Night</dt><dd class="tbc">To be confirmed</dd></div>
+        <div><dt>Venue</dt><dd class="tbc">To be confirmed</dd></div>
+        <div><dt>Doors</dt><dd class="tbc">To be confirmed</dd></div>
+        <div><dt>Tickets</dt><dd>HotSpot</dd></div>
+      </dl>
+      <p class="stub-foot">
+        Northpoint fills these five lines and the announcement is live. Nothing
+        on this card is a decision anyone has made yet.
+      </p>
+    </aside>
+   </div>
   </div>
 </section>
 
