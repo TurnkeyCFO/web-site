@@ -6,6 +6,18 @@
 <meta name="robots" content="noindex, nofollow">
 <title>For Austin | Northpoint Church</title>
 <meta name="description" content="For people. For community. For the next generation. The FOR Weekend, the FOR Day, and year-round ways to serve Greater Austin with Northpoint Church.">
+<meta name="theme-color" content="#0f1d2c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="For Austin | Northpoint Church">
+<meta property="og:description" content="One weekend. Three days. One idea. Friday funds it, Saturday lives it, Sunday understands it — the inaugural FOR Weekend, October 2026.">
+<meta property="og:url" content="https://turnkeyweb.org/foraustin/">
+<meta property="og:image" content="https://turnkeyweb.org/foraustin/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="For Austin | Northpoint Church">
+<meta name="twitter:description" content="One weekend. Three days. One idea. The inaugural FOR Weekend, October 2026.">
+<meta name="twitter:image" content="https://turnkeyweb.org/foraustin/og.jpg">
 <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADe0lEQVR42u2WWU8bVxTHf3dWzwy22RwbswSwcUWpSGhYInX9Bq2UKuqnbKJKVdr0A1SpKChJRSmoUNWNWTxsthnPeMZz+8AWII8lvPi+HN3lXP30P+fcc8WLz76U3OJQuOXRAegAdAA6AJcApJTo/f3kHj0iOXP//QMIIdCSXRj5HFoyebGhqiDEewAwdPTubsLdKigKZvYOSsLCKRawhodB+f8jpp3LD2i2gzM+RlSvkxgaJD37gNriEk6piIxjdp5+T+i6N6OAAMxMBmd6Gs22UA2D2PPo+eJzWlUX2m303p6bU0BoGmo6SVAuc7y6jpZOIoVA7+2hVdnC/7dMuLd/gwCqim47eGvr2IUxai9foaZT1BaXQED64QKq4xC6LomRYcK9fWLfx5maQigK3sYGZi4L4kRU6fu0Wy1kGCIMHQEEVRfNthGWdRLKdvsEQEqJoukY2Ts0VldR0inMbJbU/Cxx06e5uYk5MEDL3UMIhezXX+E+/xlrvEBq5h6x1ySqHdH76ScY+TxxEOBv/g2KQnR0hJHpxxgYYPe7J+g9vSTGR3F/eEbb805yQACqZeJMfUhiaIjgTQV7apLU7Cxd0x+h6Dr26Ch6TzcIsIoTGE6S/LeP0bq6qL9+TbR/wPEff6KaJrLZxC+XMbJZzFwOcyBPen6O1NwcieFhrJERhKZdJKEUgnYz4GjxN5pvKggB9tgYwc42TqGImR84rZMTIwApJLtPntLa3iZ5/x6Ju3c5Xl8n2DvA39qm+U8Z4hiAOGxRX17GKZWwi0WEql2uAgFExw3cH5/jb25iT0yg93QTuXuYuSx2oYCMQpxSCWdyEs1xCI89/O0dakvLOBMlUrMfn950Yd56YWj8vkKwVaFr8gNUx76ehAAyilAdB9WyqD77CW9tje6FBYRpcvjLC1IP58k9/ob6ygqtnW3SD2awxwsEbpXar4vIKCTa3SE8OESGIVG1SuR5xFFEq+rSePkKs6+PsF5HnqojLv2KpUS1LPRMP9HhEe16Db0/g1BVokaDRC6LkkwSunsElQrmYB4jk6HteXh/bUAcY2QyxEGLqFHD6O1Dxm1QVeKmT1SvYQ0OIZH4lS1ot68AnFaEOGkM51BnL6U4s1f2zs5e8pXy3Iera2/1Fe1atK42ndO54B3hvXL2kq8Q70iF62udD0kHoANw6wD/AY6DYC0nL0H8AAAAAElFTkSuQmCC">
 <style>
 /* ─────────────────────────────────────────────────────────────
@@ -46,6 +58,10 @@
 
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+/* The nav is fixed at 74px, so an un-offset anchor jump parks the section
+   heading underneath it. */
+section[id],main[id]{scroll-margin-top:86px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{
   margin:0;background:var(--white);color:var(--body);
   font-family:var(--text);font-size:17px;line-height:1.65;
@@ -297,7 +313,11 @@ select:focus-visible,textarea:focus-visible,summary:focus-visible{
 .g3{grid-template-columns:repeat(3,1fr)}
 .g2{grid-template-columns:repeat(2,1fr)}
 @media(max-width:940px){.g3{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:680px){.g3,.g2{grid-template-columns:1fr}}
+/* g2 pairs prose with a form. Below ~940 the form's own two-column field
+   grid ends up under ~330px per field, which truncates select labels — so
+   the section stacks well before the cards do. */
+@media(max-width:940px){.g2{grid-template-columns:1fr}}
+@media(max-width:680px){.g3{grid-template-columns:1fr}}
 
 .card{
   background:#fff;border:1px solid var(--line);border-radius:var(--r);
